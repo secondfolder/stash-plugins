@@ -8,9 +8,18 @@ Plugins can be installed and managed from the **Settings** > **Plugins** page.
 Plugins are installed using the **Available Plugins** section. First this repo must be added as a source. To do so click
 **Add Source** and enter the following details:
 
-**Name:** `secondfolder's plugins (stable)` \
-**Source URL:** `https://secondfolder.github.io/CommunityScripts/stable/index.yml` \
-**Local Path:** `secondfolder-stable`
+**Name:**
+```
+secondfolder's plugins (stable)
+```
+**Source URL:**
+```
+https://secondfolder.github.io/stash-plugins/stable/index.yml
+```
+**Local Path:**
+```
+secondfolder-stable
+```
 
 Plugins can then be installed from the new **secondfolder's plugins (stable)** section. Once installed plugins can be 
 updated or uninstalled from the **Installed Plugins** section.
