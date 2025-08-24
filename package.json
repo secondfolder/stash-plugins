@@ -1,0 +1,6 @@
+{
+  "name": "stash-plugins",
+  "description": "This repository contains plugin and utility scripts created by the Stash community and hosted on the official GitHub repo.",
+  "license": "AGPL-3.0-only",
+  "private": true
+}
