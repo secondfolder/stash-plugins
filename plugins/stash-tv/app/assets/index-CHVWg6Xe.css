@@ -1,57 +1,98 @@
-@charset "UTF-8";*::-webkit-scrollbar {
-  display: none;
-}.VideoScroller {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  container: viewport/size;
-  --x-unit: 1svw;
-  --y-unit: 1svh;
+@charset "UTF-8";.VideoScroller {
+  position: relative;
+}
+.VideoScroller .debugStats {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  color: white;
+}
+.VideoScroller.scrollSnappingEnabled .VideoItem, .VideoScroller.scrollSnappingEnabled .dummy-video-item {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
 }
 .VideoScroller .dummy-video-item {
-  height: 100%;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  background: #000;
-  position: relative;
-  border: 1px solid transparent;
-}
-.VideoScroller.force-landscape {
-  height: 100svw;
-  width: 100svh;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) rotate(-90deg);
-  transform-origin: center center 0px;
-  --x-unit: 1svh;
-  --y-unit: 1svw;
-}
-.VideoScroller.force-landscape .VideoItem,
-.VideoScroller.force-landscape .VideoItem .ScenePlayer,
-.VideoScroller.force-landscape .dummy-video-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
 }.VideoItem {
   height: 100%;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   background: #000;
   position: relative;
   border: 1px solid transparent;
 }
+.VideoItem .loadingDeferredPreview, .VideoItem .loadingDeferredDebugBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.VideoItem .loadingDeferredDebugBackground {
+  background-color: greenyellow;
+}
+.VideoItem.cover video, .VideoItem.cover img {
+  object-fit: cover;
+}
+.VideoItem.cover .vjs-poster {
+  background-size: cover;
+}
+.VideoItem:not(.cover) video, .VideoItem:not(.cover) img {
+  object-fit: contain;
+}
+.VideoItem:not(.cover) .vjs-poster {
+  background-size: contain;
+}
+.VideoItem .debugStats {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  font-size: 12px;
+  padding: 2px 5px;
+  max-width: fit-content;
+}
+.VideoItem .video-js {
+  background-color: unset;
+}
 .VideoItem .video-js .vjs-control-bar {
-  height: 1.5em;
+  height: unset;
+  padding-bottom: var(--y-dynamic-diff);
+  flex-wrap: wrap;
+  column-gap: 1em;
+  align-items: center;
+  padding-right: var(--safe-inset-right);
+}
+.VideoItem .video-js .vjs-control-bar .vjs-control {
+  width: unset;
+}
+.VideoItem .video-js .vjs-control-bar .vjs-current-time {
+  padding-left: 35px;
+}
+.VideoItem .video-js .vjs-control-bar > .vjs-duration {
+  padding-right: 35px;
 }
 .VideoItem .video-js .vjs-control-bar .vjs-time-control {
-  padding: 0 35px;
   font-size: 0.8rem;
+  display: block;
+  height: unset;
 }
 .VideoItem .video-js .vjs-control-bar .vjs-progress-control {
+  position: unset;
   margin: 0 15px;
   width: calc(100% - 30px);
-  bottom: 1em;
   height: 2em; /* give the container (but not the bar itself) more height to make it a larger touch target on mobile */
+  translate: 0 0.7em; /* but move down visually so it's not too spaced out */
 }
 .VideoItem .video-js .vjs-control-bar .vjs-progress-control .vjs-progress-holder {
   margin: 0;
@@ -86,6 +127,15 @@
   margin: calc(var(--size) / 2 * -1) 0 0 calc(var(--size) / 2 * -1);
   opacity: 0.3;
 }
+.VideoItem:not(.inViewport):not(.currentlyScrolling) {
+  filter: brightness(0.7);
+  transition: filter 1s;
+}
+.VideoItem:not(.inViewport):not(.currentlyScrolling) .vjs-control-bar {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 1s;
+}
 .VideoItem .tap-icon {
   position: absolute;
   top: 50%;
@@ -100,14 +150,16 @@
 }
 .VideoItem .controls {
   position: absolute;
-  bottom: 3em;
+  bottom: calc(3em + var(--y-dynamic-diff));
+  padding-top: var(--safe-inset-top);
+  padding-right: var(--safe-inset-right);
   right: 3px;
   -webkit-transform: translateZ(1px);
   display: flex;
   flex-direction: column;
   justify-content: end;
   align-items: end;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
 }
 .VideoItem .controls > * {
@@ -121,7 +173,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
+  height: 48px; /* slightly smaller height as a hack to fit all icons on iPhone screen in landscape */
   width: 50px;
   background-color: transparent;
   font-size: 28px;
@@ -159,7 +211,7 @@
 }
 .VideoItem .scene-info {
   position: absolute;
-  bottom: 3em;
+  bottom: calc(5em + var(--y-dynamic-diff));
   left: 0;
   width: 100%;
   padding: 1em 5em 1em 3em;
@@ -169,6 +221,10 @@
   background-color: rgba(0, 0, 0, 0.7);
   display: grid;
   transition: opacity ease-in-out;
+}
+.VideoItem .scene-info a {
+  color: inherit;
+  text-decoration-color: rgba(255, 255, 255, 0.5215686275);
 }
 .VideoItem .scene-info h5 {
   font-size: 1.1rem;
@@ -189,12 +245,11 @@
   flex-wrap: wrap-reverse;
   justify-content: center;
   transition: opacity ease-in-out;
-  max-height: calc(var(--y-unit) * 100 - 100px);
+  max-height: calc(var(--y-unit-small) * 100 - 100px);
 }
 .VideoItem .toggleable-ui-button {
   transition: opacity ease-in-out;
 }
-
 .VideoItem .ScenePlayer {
   width: 100%;
   height: 100%;
@@ -206,12 +261,6 @@
 .VideoItem .ScenePlayer .VideoPlayer {
   width: 100%;
   height: 100%;
-}
-.VideoItem .ScenePlayer.cover video {
-  object-fit: cover;
-}
-.VideoItem .ScenePlayer.cover .vjs-poster {
-  background-size: cover;
 }
 .VideoItem .ScenePlayer .video-wrapper {
   height: 100%;
@@ -2351,6 +2400,16 @@ video::-webkit-media-text-track-display {
   want it to be visible.
   */
 }
+.ScenePlayer .video-js .vjs-progress-control:has(.vjs-marker-dot:hover) .vjs-mouse-display {
+  translate: -4px;
+}
+.ScenePlayer .video-js .vjs-progress-control .vjs-marker-dot {
+  top: unset;
+  transform: translate(-50%, 0);
+}
+.ScenePlayer .video-js .vjs-progress-control .vjs-marker-dot:hover {
+  transform: translate(-50%, 0) scale(1.5);
+}
 .ScenePlayer .video-js .vjs-current-time, .ScenePlayer .video-js .vjs-duration {
   margin-right: unset;
   margin-left: unset;
@@ -2364,9 +2423,15 @@ video::-webkit-media-text-track-display {
 }
 .ScenePlayer .video-js .vjs-source-selector {
   display: none;
+}
+.ScenePlayer .video-js .vjs-duration {
+  order: 10;
 }/*! @name videojs-overlay-buttons-multiple-players-fix @version 1.3.2 @license MIT */
-.overlay-container-fluid{width:100%;padding-right:.75rem;padding-left:.75rem;margin-right:auto;margin-left:auto}.overlay-row{display:flex;flex-wrap:wrap;margin-top:0;margin-right:-.75rem;margin-left:-.75rem}.overlay-row>*{box-sizing:border-box;flex-shrink:0;padding-right:.75rem;padding-left:.75rem;margin-top:0}.overlay-col{flex:1 0 0%}.overlay-col-1{flex:0 0 auto;width:8.3333333333%}.overlay-col-11{flex:0 0 auto;width:91.6666666667%}.mx-auto{margin:0 auto!important}.fa{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:inline-block;font-style:normal;font-variant:normal;text-rendering:auto;line-height:1}.fa-2x{font-size:2em}.fa-4x{font-size:4em}.fa-flip-horizontal{-ms-filter:"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";transform:scale(-1,1)}:root .fa-flip-horizontal{filter:none}.fa-backward:before{content:"\f04a"}.fa-history:before{content:"\f1da"}.fa-pause:before{content:"\f04c"}.fa-play:before{content:"\f04b"}.fa-forward:before{content:"\f04e"}.fa-lock:before{content:"\f023"}.fa-unlock:before{content:"\f09c"}@font-face{font-family:"Font Awesome 5 Brands";font-style:normal;font-weight:400;font-display:block;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.eot);src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.ttf) format("truetype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.svg#fontawesome) format("svg")}.fab{font-family:"Font Awesome 5 Brands";font-weight:400}@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:400;font-display:block;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-regular-400.eot);src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-regular-400.eot?#iefix) format("embedded-opentype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-regular-400.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-regular-400.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-regular-400.ttf) format("truetype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-regular-400.svg#fontawesome) format("svg")}@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:900;font-display:block;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-solid-900.eot);src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-solid-900.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-solid-900.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-solid-900.ttf) format("truetype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-solid-900.svg#fontawesome) format("svg")}.fa{font-family:"Font Awesome 5 Free";font-weight:900}.video-js .overlay-row{height:100%;width:100%;margin:0!important}.video-js .vjs-overlay{position:absolute;padding:0!important;top:0;left:0;right:0;bottom:0;z-index:1;width:100%}.vjs-overlay .control-overlay-buttons{display:grid;grid-auto-flow:column;height:100%;width:83%!important}.vjs-overlay .overlay-button{width:100%;height:100%;display:flex;justify-content:center;align-items:center}.visible-none{visibility:hidden!important}.d-none{display:none!important}.vjs-overlay .overlay-button .icon{z-index:2;transition-duration:1s;cursor:pointer;text-shadow:0 0 5px #000}.vjs-overlay .previous-button .icon:hover{transform:translateX(-25px)}.vjs-overlay .seek-left .icon:hover{transform:rotate(-50deg)}.vjs-overlay .play-button .icon:hover{transform:scale(1.2)}.vjs-overlay .seek-right .icon:hover{transform:rotate(50deg) scaleX(-1)}.vjs-overlay .next-button .icon:hover{transform:translateX(25px)}.vjs-control-bar{z-index:2}.video-js .d-none {
-  display: initial !important;
+.overlay-container-fluid{width:100%;padding-right:.75rem;padding-left:.75rem;margin-right:auto;margin-left:auto}.overlay-row{display:flex;flex-wrap:wrap;margin-top:0;margin-right:-.75rem;margin-left:-.75rem}.overlay-row>*{box-sizing:border-box;flex-shrink:0;padding-right:.75rem;padding-left:.75rem;margin-top:0}.overlay-col{flex:1 0 0%}.overlay-col-1{flex:0 0 auto;width:8.3333333333%}.overlay-col-11{flex:0 0 auto;width:91.6666666667%}.mx-auto{margin:0 auto!important}.fa{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:inline-block;font-style:normal;font-variant:normal;text-rendering:auto;line-height:1}.fa-2x{font-size:2em}.fa-4x{font-size:4em}.fa-flip-horizontal{-ms-filter:"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";transform:scale(-1,1)}:root .fa-flip-horizontal{filter:none}.fa-backward:before{content:"\f04a"}.fa-history:before{content:"\f1da"}.fa-pause:before{content:"\f04c"}.fa-play:before{content:"\f04b"}.fa-forward:before{content:"\f04e"}.fa-lock:before{content:"\f023"}.fa-unlock:before{content:"\f09c"}@font-face{font-family:"Font Awesome 5 Brands";font-style:normal;font-weight:400;font-display:block;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.eot);src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.ttf) format("truetype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.svg#fontawesome) format("svg")}.fab{font-family:"Font Awesome 5 Brands";font-weight:400}@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:400;font-display:block;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-regular-400.eot);src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-regular-400.eot?#iefix) format("embedded-opentype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-regular-400.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-regular-400.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-regular-400.ttf) format("truetype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-regular-400.svg#fontawesome) format("svg")}@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:900;font-display:block;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-solid-900.eot);src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-solid-900.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-solid-900.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-solid-900.ttf) format("truetype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-solid-900.svg#fontawesome) format("svg")}.fa{font-family:"Font Awesome 5 Free";font-weight:900}.video-js .overlay-row{height:100%;width:100%;margin:0!important}.video-js .vjs-overlay{position:absolute;padding:0!important;top:0;left:0;right:0;bottom:0;z-index:1;width:100%}.vjs-overlay .control-overlay-buttons{display:grid;grid-auto-flow:column;height:100%;width:83%!important}.vjs-overlay .overlay-button{width:100%;height:100%;display:flex;justify-content:center;align-items:center}.visible-none{visibility:hidden!important}.d-none{display:none!important}.vjs-overlay .overlay-button .icon{z-index:2;transition-duration:1s;cursor:pointer;text-shadow:0 0 5px #000}.vjs-overlay .previous-button .icon:hover{transform:translateX(-25px)}.vjs-overlay .seek-left .icon:hover{transform:rotate(-50deg)}.vjs-overlay .play-button .icon:hover{transform:scale(1.2)}.vjs-overlay .seek-right .icon:hover{transform:rotate(50deg) scaleX(-1)}.vjs-overlay .next-button .icon:hover{transform:translateX(25px)}.vjs-control-bar{z-index:2}.video-js .vjs-control-bar.d-none {
+  display: flex !important;
+}
+.video-js.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-control-bar {
+  opacity: 0.5;
 }
 .video-js .vjs-overlay {
   transition: opacity 1s;
@@ -2374,7 +2439,9 @@ video::-webkit-media-text-track-display {
 .video-js.vjs-playing .vjs-overlay {
   opacity: 0.1;
 }
-.video-js.vjs-playing .d-none {
+.video-js .vjs-overlay.d-none,
+.video-js .vjs-overlay .d-none {
+  display: initial !important;
   opacity: 0 !important;
 }
 .video-js .vjs-overlay .control-overlay-buttons {
@@ -2693,36 +2760,36 @@ video::-webkit-media-text-track-display {
   src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/sys.ttf) format("truetype");
   font-family: "Sys";
 }.SettingsTab {
-  height: 100vh;
-  height: calc(var(--vsr-vh, 1vh) * 100);
-  position: absolute;
-  top: 0;
-  width: 85%;
-  max-width: 400px;
+  height: calc(var(--y-unit-small) * 100);
+  position: fixed;
+  top: var(--safe-inset-top);
+  width: min(300px, 80%);
   touch-action: none;
   background-color: black;
+  max-height: 100%;
 }
 .SettingsTab::before {
   content: "";
   position: absolute;
-  bottom: -50%;
+  top: -50%;
   right: 0;
-  width: 200%;
+  width: calc(var(--x-unit-large) * 120);
   height: 200%;
   background-color: inherit;
 }
-.SettingsTab::after {
+.SettingsTab .swipe-zone {
   content: "";
   position: absolute;
   top: 0;
   left: 100%;
-  width: 100px;
-  height: 100%;
+  width: 50%;
+  height: calc(100% - var(--y-dynamic-diff) - 2em); /* Bit of a hack to stop it covering the video progress bar */
   z-index: 1; /* This as to be at last 1 to be interactive but should be below the video progress bar */
 }
 .SettingsTab .content {
   background: inherit;
   height: 100%;
+  height: calc(var(--y-unit-dynamic) * 100);
   width: 100%;
   z-index: 10;
   position: relative;
@@ -2793,15 +2860,14 @@ video::-webkit-media-text-track-display {
 
 .settings-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: -50%;
+  left: -50%;
+  width: calc(var(--x-unit-large) * 200);
+  height: calc(var(--y-unit-large) * 200);
   background-color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }.Loading {
-  height: 100vh;
-  height: calc(var(--vsr-vh, 1vh) * 100);
+  height: calc(var(--y-unit-small) * 100);
   width: 100%;
   padding: 20px;
   text-align: center;
@@ -2902,8 +2968,25 @@ h6 {
   font-weight: 500;
 }
 
-html:has(.force-landscape),
-body:has(.force-landscape) {
+html {
+  --x-unit-small: 1svw;
+  --y-unit-small: 1svh;
+  --x-unit-large: 1lvw;
+  --y-unit-large: 1lvh;
+  --x-unit-dynamic: 1dvw;
+  --y-unit-dynamic: 1dvh;
+  --y-dynamic-diff: calc((100 * var(--y-unit-large)) - (100 * var(--y-unit-dynamic)));
+  --safe-inset-top: env(safe-area-inset-top, 0);
+  --safe-inset-right: env(safe-area-inset-right, 0);
+  --safe-inset-bottom: env(safe-area-inset-bottom, 0);
+  --safe-inset-left: env(safe-area-inset-left, 0);
+  scroll-snap-type: y mandatory;
+  scroll-behavior: auto;
+  container: viewport/size;
+}
+
+html.force-landscape,
+html.force-landscape body {
   /*
   When in force landscape mode it shouldn't be possible to scroll up and down
   the viewport, instead scrolling should occur horizontally inside the rotated
@@ -2912,7 +2995,38 @@ body:has(.force-landscape) {
   when attempting to scroll passed the top or bottom. This breaks the illusion
   that we're in a true landscape orientation so we disable it.
   */
-  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+}
+
+html.force-landscape {
+  scroll-snap-type: unset; /* When the root is rotated scroll snapping doesn't seem to work on the root so we set it on a child instead */
+  --x-unit-small: 1svh;
+  --y-unit-small: 1svw;
+  --x-unit-large: 1lvh;
+  --y-unit-large: 1lvw;
+  --x-unit-dynamic: 1dvh;
+  --y-unit-dynamic: 1dvw;
+  --safe-inset-top: env(safe-area-inset-left, 0);
+  --safe-inset-right: env(safe-area-inset-top, 0);
+  --safe-inset-bottom: env(safe-area-inset-right, 0);
+  --safe-inset-left: env(safe-area-inset-bottom, 0);
+}
+html.force-landscape .VideoItem,
+html.force-landscape .VideoItem .ScenePlayer {
+  height: 100%;
+}
+
+html.force-landscape body {
+  height: 100svw;
+  width: calc(100svh + env(safe-area-inset-top));
+  position: absolute;
+  left: 50%;
+  top: calc(50% + env(safe-area-inset-top) / 2);
+  transform: translate(-50%, -50%) rotate(-90deg);
+  transform-origin: center center 0px;
+  overflow-y: scroll;
+  overflow-x: hidden; /* Prevent SettingsTab from causing horizontal scroll */
+  scroll-snap-type: y mandatory;
 }
 
 /* -------------------------------------------------------------------------- */

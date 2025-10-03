@@ -10861,47 +10861,6 @@ function _assertThisInitialized$1(e) {
   if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   return e;
 }
-function useIsInViewport(ref, options2) {
-  const [isIntersecting, setIsIntersecting] = reactExports.useState(false);
-  const observer = reactExports.useMemo(
-    () => new IntersectionObserver(
-      ([entry]) => setIsIntersecting(entry.isIntersecting),
-      options2
-    ),
-    []
-  );
-  reactExports.useEffect(() => {
-    if (!ref.current) {
-      console.warn("‼️ useIsInViewport: ref is null or undefined");
-      return;
-    }
-    if (ref.current) observer.observe(ref.current);
-    return () => {
-      observer.disconnect();
-    };
-  }, [ref, observer]);
-  return isIntersecting;
-}
-const useWindowSize = () => {
-  const [windowSize, setWindowSize] = reactExports.useState({ width: 0, height: 0 });
-  const handleSize = () => {
-    setWindowSize({
-      width: window.innerWidth,
-      height: window.innerHeight
-    });
-  };
-  reactExports.useLayoutEffect(() => {
-    handleSize();
-    window.addEventListener("resize", handleSize);
-    return () => window.removeEventListener("resize", handleSize);
-  }, []);
-  return windowSize;
-};
-const setCssVH = () => {
-  const windowSize = useWindowSize();
-  let vh = windowSize.height * 0.01;
-  document.documentElement.style.setProperty("--vsr-vh", `${vh}px`);
-};
 function sortPerformers(performers) {
   const ret = performers.slice();
   ret.sort((a2, b) => {
@@ -10922,7 +10881,9 @@ const GENDERS = [
   "INTERSEX",
   "NON_BINARY"
 ];
-const ITEM_BUFFER_EACH_SIDE = 5;
+function clamp$2(min2, num, max2) {
+  return Math.min(Math.max(num, min2), max2);
+}
 const PLUGIN_NAMESPACE = "stash-tv";
 const TRANSITION_DURATION = 150;
 const DEFAULT_MAXIMUM_SCENES = 500;
@@ -22190,7 +22151,7 @@ var bind$1 = function bind(context2, fn, uid) {
   bound.guid = uid ? uid + "_" + fn.guid : fn.guid;
   return bound;
 };
-var throttle = function throttle2(fn, wait) {
+var throttle$1 = function throttle(fn, wait) {
   var last = window$1.performance.now();
   var throttled = function throttled2() {
     var now2 = window$1.performance.now();
@@ -22201,7 +22162,7 @@ var throttle = function throttle2(fn, wait) {
   };
   return throttled;
 };
-var debounce$1 = function debounce(func, wait, immediate, context2) {
+var debounce$2 = function debounce(func, wait, immediate, context2) {
   if (context2 === void 0) {
     context2 = window$1;
   }
@@ -26806,7 +26767,7 @@ var TimeTooltip = /* @__PURE__ */ (function(_Component) {
   function TimeTooltip2(player, options2) {
     var _this;
     _this = _Component.call(this, player, options2) || this;
-    _this.update = throttle(bind$1(_assertThisInitialized$1(_this), _this.update), UPDATE_REFRESH_INTERVAL);
+    _this.update = throttle$1(bind$1(_assertThisInitialized$1(_this), _this.update), UPDATE_REFRESH_INTERVAL);
     return _this;
   }
   var _proto = TimeTooltip2.prototype;
@@ -26870,7 +26831,7 @@ var PlayProgressBar = /* @__PURE__ */ (function(_Component) {
   function PlayProgressBar2(player, options2) {
     var _this;
     _this = _Component.call(this, player, options2) || this;
-    _this.update = throttle(bind$1(_assertThisInitialized$1(_this), _this.update), UPDATE_REFRESH_INTERVAL);
+    _this.update = throttle$1(bind$1(_assertThisInitialized$1(_this), _this.update), UPDATE_REFRESH_INTERVAL);
     return _this;
   }
   var _proto = PlayProgressBar2.prototype;
@@ -26903,7 +26864,7 @@ var MouseTimeDisplay = /* @__PURE__ */ (function(_Component) {
   function MouseTimeDisplay2(player, options2) {
     var _this;
     _this = _Component.call(this, player, options2) || this;
-    _this.update = throttle(bind$1(_assertThisInitialized$1(_this), _this.update), UPDATE_REFRESH_INTERVAL);
+    _this.update = throttle$1(bind$1(_assertThisInitialized$1(_this), _this.update), UPDATE_REFRESH_INTERVAL);
     return _this;
   }
   var _proto = MouseTimeDisplay2.prototype;
@@ -26939,7 +26900,7 @@ var SeekBar = /* @__PURE__ */ (function(_Slider) {
   _proto.setEventHandlers_ = function setEventHandlers_() {
     var _this2 = this;
     this.update_ = bind$1(this, this.update);
-    this.update = throttle(this.update_, UPDATE_REFRESH_INTERVAL);
+    this.update = throttle$1(this.update_, UPDATE_REFRESH_INTERVAL);
     this.on(this.player_, ["ended", "durationchange", "timeupdate"], this.update);
     if (this.player_.liveTracker) {
       this.on(this.player_.liveTracker, "liveedgechange", this.update);
@@ -27203,8 +27164,8 @@ var ProgressControl = /* @__PURE__ */ (function(_Component) {
   function ProgressControl2(player, options2) {
     var _this;
     _this = _Component.call(this, player, options2) || this;
-    _this.handleMouseMove = throttle(bind$1(_assertThisInitialized$1(_this), _this.handleMouseMove), UPDATE_REFRESH_INTERVAL);
-    _this.throttledHandleMouseSeek = throttle(bind$1(_assertThisInitialized$1(_this), _this.handleMouseSeek), UPDATE_REFRESH_INTERVAL);
+    _this.handleMouseMove = throttle$1(bind$1(_assertThisInitialized$1(_this), _this.handleMouseMove), UPDATE_REFRESH_INTERVAL);
+    _this.throttledHandleMouseSeek = throttle$1(bind$1(_assertThisInitialized$1(_this), _this.handleMouseSeek), UPDATE_REFRESH_INTERVAL);
     _this.handleMouseUpHandler_ = function(e) {
       return _this.handleMouseUp(e);
     };
@@ -27438,7 +27399,7 @@ var VolumeLevelTooltip = /* @__PURE__ */ (function(_Component) {
   function VolumeLevelTooltip2(player, options2) {
     var _this;
     _this = _Component.call(this, player, options2) || this;
-    _this.update = throttle(bind$1(_assertThisInitialized$1(_this), _this.update), UPDATE_REFRESH_INTERVAL);
+    _this.update = throttle$1(bind$1(_assertThisInitialized$1(_this), _this.update), UPDATE_REFRESH_INTERVAL);
     return _this;
   }
   var _proto = VolumeLevelTooltip2.prototype;
@@ -27494,7 +27455,7 @@ var MouseVolumeLevelDisplay = /* @__PURE__ */ (function(_Component) {
   function MouseVolumeLevelDisplay2(player, options2) {
     var _this;
     _this = _Component.call(this, player, options2) || this;
-    _this.update = throttle(bind$1(_assertThisInitialized$1(_this), _this.update), UPDATE_REFRESH_INTERVAL);
+    _this.update = throttle$1(bind$1(_assertThisInitialized$1(_this), _this.update), UPDATE_REFRESH_INTERVAL);
     return _this;
   }
   var _proto = MouseVolumeLevelDisplay2.prototype;
@@ -27629,7 +27590,7 @@ var VolumeControl = /* @__PURE__ */ (function(_Component) {
     }
     _this = _Component.call(this, player, options2) || this;
     checkVolumeSupport(_assertThisInitialized$1(_this), player);
-    _this.throttledHandleMouseMove = throttle(bind$1(_assertThisInitialized$1(_this), _this.handleMouseMove), UPDATE_REFRESH_INTERVAL);
+    _this.throttledHandleMouseMove = throttle$1(bind$1(_assertThisInitialized$1(_this), _this.handleMouseMove), UPDATE_REFRESH_INTERVAL);
     _this.handleMouseUpHandler_ = function(e) {
       return _this.handleMouseUp(e);
     };
@@ -29392,7 +29353,7 @@ var ResizeManager = /* @__PURE__ */ (function(_Component) {
     _this.ResizeObserver = options2.ResizeObserver || window$1.ResizeObserver;
     _this.loadListener_ = null;
     _this.resizeObserver_ = null;
-    _this.debouncedHandler_ = debounce$1(function() {
+    _this.debouncedHandler_ = debounce$2(function() {
       _this.resizeHandler();
     }, 100, false, _assertThisInitialized$1(_this));
     if (RESIZE_OBSERVER_AVAILABLE) {
@@ -99828,7 +99789,7 @@ var now = function() {
 };
 var FUNC_ERROR_TEXT = "Expected a function";
 var nativeMax = Math.max, nativeMin = Math.min;
-function debounce2(func, wait, options2) {
+function debounce$1(func, wait, options2) {
   var lastArgs, lastThis, maxWait, result, timerId, lastCallTime, lastInvokeTime = 0, leading = false, maxing = false, trailing = true;
   if (typeof func != "function") {
     throw new TypeError(FUNC_ERROR_TEXT);
@@ -99945,7 +99906,7 @@ function offsetMiddleware(player) {
       }
     }
   }
-  const loadSource = debounce2((seconds) => {
+  const loadSource = debounce$1((seconds) => {
     const srcUrl = new URL(source.src);
     srcUrl.searchParams.set("start", seconds.toString());
     source.src = srcUrl.toString();
@@ -147863,32 +147824,32 @@ function getMutableTarget(data2, mutableTargets) {
 function maskSelectionSet(data2, selectionSet, context2, migration, path) {
   var _a2;
   var knownChanged = context2.knownChanged;
-  var memo = getMutableTarget(data2, context2.mutableTargets);
+  var memo2 = getMutableTarget(data2, context2.mutableTargets);
   if (Array.isArray(data2)) {
     for (var _i = 0, _b2 = Array.from(data2.entries()); _i < _b2.length; _i++) {
       var _c = _b2[_i], index2 = _c[0], item = _c[1];
       if (item === null) {
-        memo[index2] = null;
+        memo2[index2] = null;
         continue;
       }
       var masked = maskSelectionSet(item, selectionSet, context2, migration, globalThis.__DEV__ !== false ? "".concat(path || "", "[").concat(index2, "]") : void 0);
       if (knownChanged.has(masked)) {
-        knownChanged.add(memo);
+        knownChanged.add(memo2);
       }
-      memo[index2] = masked;
+      memo2[index2] = masked;
     }
-    return knownChanged.has(memo) ? memo : data2;
+    return knownChanged.has(memo2) ? memo2 : data2;
   }
   for (var _d = 0, _e = selectionSet.selections; _d < _e.length; _d++) {
     var selection = _e[_d];
     var value = void 0;
     if (migration) {
-      knownChanged.add(memo);
+      knownChanged.add(memo2);
     }
     if (selection.kind === Kind.FIELD) {
       var keyName = resultKeyNameFromField(selection);
       var childSelectionSet = selection.selectionSet;
-      value = memo[keyName] || data2[keyName];
+      value = memo2[keyName] || data2[keyName];
       if (value === void 0) {
         continue;
       }
@@ -147899,18 +147860,18 @@ function maskSelectionSet(data2, selectionSet, context2, migration, path) {
         }
       }
       if (!(globalThis.__DEV__ !== false)) {
-        memo[keyName] = value;
+        memo2[keyName] = value;
       }
       if (globalThis.__DEV__ !== false) {
         if (migration && keyName !== "__typename" && // either the field is not present in the memo object
         // or it has a `get` descriptor, not a `value` descriptor
         // => it is a warning accessor and we can overwrite it
         // with another accessor
-        !((_a2 = Object.getOwnPropertyDescriptor(memo, keyName)) === null || _a2 === void 0 ? void 0 : _a2.value)) {
-          Object.defineProperty(memo, keyName, getAccessorWarningDescriptor(keyName, value, path || "", context2.operationName, context2.operationType));
+        !((_a2 = Object.getOwnPropertyDescriptor(memo2, keyName)) === null || _a2 === void 0 ? void 0 : _a2.value)) {
+          Object.defineProperty(memo2, keyName, getAccessorWarningDescriptor(keyName, value, path || "", context2.operationName, context2.operationType));
         } else {
-          delete memo[keyName];
-          memo[keyName] = value;
+          delete memo2[keyName];
+          memo2[keyName] = value;
         }
       }
     }
@@ -147927,16 +147888,16 @@ function maskSelectionSet(data2, selectionSet, context2, migration, path) {
       }
     }
     if (knownChanged.has(value)) {
-      knownChanged.add(memo);
+      knownChanged.add(memo2);
     }
   }
-  if ("__typename" in data2 && !("__typename" in memo)) {
-    memo.__typename = data2.__typename;
+  if ("__typename" in data2 && !("__typename" in memo2)) {
+    memo2.__typename = data2.__typename;
   }
-  if (Object.keys(memo).length !== Object.keys(data2).length) {
-    knownChanged.add(memo);
+  if (Object.keys(memo2).length !== Object.keys(data2).length) {
+    knownChanged.add(memo2);
   }
-  return knownChanged.has(memo) ? memo : data2;
+  return knownChanged.has(memo2) ? memo2 : data2;
 }
 function getAccessorWarningDescriptor(fieldName, value, path, operationName2, operationType) {
   var getValue = function() {
@@ -153348,7 +153309,7 @@ function verifyDocumentType(document2, type2) {
     usedOperationName
   );
 }
-var useIsomorphicLayoutEffect$1 = canUseDOM$1 ? rehacktExports.useLayoutEffect : rehacktExports.useEffect;
+var useIsomorphicLayoutEffect$2 = canUseDOM$1 ? rehacktExports.useLayoutEffect : rehacktExports.useEffect;
 function useMutation(mutation, options2) {
   var client2 = useApolloClient(options2 === null || options2 === void 0 ? void 0 : options2.client);
   verifyDocumentType(mutation, DocumentType.Mutation);
@@ -153365,7 +153326,7 @@ function useMutation(mutation, options2) {
     mutation,
     options: options2
   });
-  useIsomorphicLayoutEffect$1(function() {
+  useIsomorphicLayoutEffect$2(function() {
     Object.assign(ref.current, { client: client2, options: options2, mutation });
   });
   var execute2 = rehacktExports.useCallback(function(executeOptions) {
@@ -165434,7 +165395,7 @@ function findPosition(el, rootElm) {
   };
 }
 function getPointerPosition(el, event) {
-  const rootElm = document.querySelector(".VideoScroller");
+  const rootElm = document.scrollingElement;
   if (!(rootElm instanceof HTMLElement)) {
     throw new Error("Root element not found");
   }
@@ -165442,7 +165403,7 @@ function getPointerPosition(el, event) {
   if (!(targetElm instanceof HTMLElement)) {
     throw new Error("Event target not found");
   }
-  const isForcedLandscapeMode = rootElm.classList.contains("force-landscape");
+  const isForcedLandscapeMode = document.querySelector("main")?.classList.contains("force-landscape");
   const boxTarget = findPosition(targetElm, rootElm);
   const box = findPosition(el, rootElm);
   let boxW = box.width;
@@ -165560,7 +165521,7 @@ async function getOriginalPlugin() {
     pluginName = pluginNameToBeRegistered;
     plugin = pluginToBeRegistered;
   };
-  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-GVEKj4NU.js"), true ? [] : void 0, import.meta.url);
+  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-BPBeN5rW.js"), true ? [] : void 0, import.meta.url);
   videojs.registerPlugin = originalRegisterPlugin;
   if (!pluginName || !plugin) {
     throw new Error(`Failed to load original videojs-overlay-buttons plugin`);
@@ -165571,7 +165532,7 @@ async function getOriginalPlugin() {
   };
 }
 registerVideojsOverlayButtonsExtendedPlugin();
-const videoJsOptions = {};
+const videoJsOptionsOverride = {};
 const videoJsSetupCallbacks = {};
 videojs.hook("setup", (player) => {
   player.focus = () => {
@@ -165625,6 +165586,7 @@ videojs.hook("beforesetup", function(videoEl, options2) {
       bigButtons: false,
       seekButtons: false,
       skipButtons: false,
+      persistVolume: false,
       vrMenu: false,
       touchOverlay: {
         seekLeft: {},
@@ -165652,22 +165614,41 @@ videojs.hook("beforesetup", function(videoEl, options2) {
 videojs.hook("beforesetup", function(videoEl, options2) {
   const sceneId = videoEl.parentElement?.parentElement?.parentElement?.dataset.sceneId;
   if (sceneId) {
-    return videoJsOptions[sceneId] || {};
+    return videoJsOptionsOverride[sceneId] || {};
   }
   return {};
 });
 allowPluginRemoval(videojs);
 ScenePlayer$1.displayName = "ScenePlayerOriginal";
-const ScenePlayer = reactExports.forwardRef(({ className, onTimeUpdate, hideControls, hideProgressBar, onClick, onEnded, onVideojsPlayerReady, optionsToMerge, ...otherProps }, ref) => {
+const ScenePlayer = reactExports.forwardRef(({ className, onTimeUpdate, hideControls, hideProgressBar, onClick, onEnded, onVideojsPlayerReady, optionsToMerge, muted, ...otherProps }, ref) => {
   const containerRef = reactExports.useRef(null);
   const [videoElm, setVideoElm] = reactExports.useState(null);
   const [videojsPlayer, setVideojsPlayer] = reactExports.useState(null);
+  const videojsPlayerRef = reactExports.useRef(null);
   if (onVideojsPlayerReady) {
     videoJsSetupCallbacks[otherProps.scene.id] = onVideojsPlayerReady;
   }
-  if (optionsToMerge) {
-    videoJsOptions[otherProps.scene.id] = optionsToMerge;
-  }
+  videoJsOptionsOverride[otherProps.scene.id] = {
+    muted,
+    ...optionsToMerge
+  };
+  reactExports.useEffect(() => {
+    if (muted === void 0) return;
+    videojsPlayerRef.current?.muted(muted);
+  }, [muted]);
+  reactExports.useEffect(() => {
+    return () => {
+      const videojsPlayer2 = videojsPlayerRef.current;
+      if (videojsPlayer2) {
+        videojsPlayer2.on("dispose", () => {
+          videojsPlayer2.markers = () => ({
+            clearMarkers: () => {
+            }
+          });
+        });
+      }
+    };
+  }, []);
   reactExports.useEffect(() => {
     if (videojsPlayer) {
       videojsPlayer._scene = otherProps.scene;
@@ -165689,6 +165670,7 @@ const ScenePlayer = reactExports.forwardRef(({ className, onTimeUpdate, hideCont
     setVideoElm(videoElm2);
     const player = videojs.getPlayer(videoElm2);
     if (player) {
+      videojsPlayerRef.current = player;
       setVideojsPlayer(player);
     }
   }, []);
@@ -165750,7 +165732,7 @@ const ScenePlayer = reactExports.forwardRef(({ className, onTimeUpdate, hideCont
   );
 });
 ScenePlayer.displayName = "ScenePlayer";
-const __vite_import_meta_env__$1 = {};
+const __vite_import_meta_env__$2 = {};
 const createStoreImpl = (createState) => {
   let state;
   const listeners = /* @__PURE__ */ new Set();
@@ -165769,7 +165751,7 @@ const createStoreImpl = (createState) => {
     return () => listeners.delete(listener2);
   };
   const destroy = () => {
-    if ((__vite_import_meta_env__$1 ? "development" : void 0) !== "production") {
+    if ((__vite_import_meta_env__$2 ? "production" : void 0) !== "production") {
       console.warn(
         "[DEPRECATED] The `destroy` method will be unsupported in a future version. Instead use unsubscribe function returned by subscribe. Everything will be garbage-collected if store is garbage-collected."
       );
@@ -165933,13 +165915,13 @@ function requireWithSelector() {
 }
 var withSelectorExports = requireWithSelector();
 const useSyncExternalStoreExports = /* @__PURE__ */ getDefaultExportFromCjs(withSelectorExports);
-const __vite_import_meta_env__ = {};
+const __vite_import_meta_env__$1 = {};
 const { useDebugValue } = React;
 const { useSyncExternalStoreWithSelector } = useSyncExternalStoreExports;
 let didWarnAboutEqualityFn = false;
 const identity$1 = (arg) => arg;
 function useStore(api2, selector = identity$1, equalityFn) {
-  if ((__vite_import_meta_env__ ? "development" : void 0) !== "production" && equalityFn && !didWarnAboutEqualityFn) {
+  if ((__vite_import_meta_env__$1 ? "production" : void 0) !== "production" && equalityFn && !didWarnAboutEqualityFn) {
     console.warn(
       "[DEPRECATED] Use `createWithEqualityFn` instead of `create` or use `useStoreWithEqualityFn` instead of `useStore`. They can be imported from 'zustand/traditional'. https://github.com/pmndrs/zustand/discussions/1937"
     );
@@ -165956,7 +165938,7 @@ function useStore(api2, selector = identity$1, equalityFn) {
   return slice2;
 }
 const createImpl = (createState) => {
-  if ((__vite_import_meta_env__ ? "development" : void 0) !== "production" && typeof createState !== "function") {
+  if ((__vite_import_meta_env__$1 ? "production" : void 0) !== "production" && typeof createState !== "function") {
     console.warn(
       "[DEPRECATED] Passing a vanilla store will be unsupported in a future version. Instead use `import { useStore } from 'zustand'`."
     );
@@ -165967,61 +165949,406 @@ const createImpl = (createState) => {
   return useBoundStore;
 };
 const create2 = (createState) => createState ? createImpl(createState) : createImpl;
-const useAppStateStore = create2((set4, get7) => ({
-  selectedSavedFilterId: void 0,
-  sceneFilter: void 0,
-  scenes: [],
-  scenesLoading: true,
-  showSettings: false,
-  audioMuted: false,
-  showSubtitles: false,
-  fullscreen: false,
-  letterboxing: false,
-  forceLandscape: false,
-  looping: false,
-  uiVisible: true,
-  isRandomised: false,
-  crtEffect: false,
-  setSelectedSavedFilterId: (id) => set4({ selectedSavedFilterId: id }),
-  setSceneFilter: async (apolloClient, filter) => {
-    set4({ scenesLoading: true });
-    const scenes = await fetchScenesFromStash(apolloClient, filter);
-    set4({ sceneFilter: filter, scenes, scenesLoading: false });
-  },
-  setShowSettings: (newValue) => set4((state) => ({
-    showSettings: typeof newValue === "boolean" ? newValue : newValue(state.showSettings)
-  })),
-  setAudioMuted: (newValue) => set4((state) => ({
-    audioMuted: typeof newValue === "boolean" ? newValue : newValue(state.audioMuted)
-  })),
-  setShowSubtitles: (newValue) => set4((state) => ({
-    showSubtitles: typeof newValue === "boolean" ? newValue : newValue(state.showSubtitles)
-  })),
-  setFullscreen: (newValue) => set4((state) => ({
-    fullscreen: typeof newValue === "boolean" ? newValue : newValue(state.fullscreen)
-  })),
-  setLetterboxing: (newValue) => set4((state) => ({
-    letterboxing: typeof newValue === "boolean" ? newValue : newValue(state.letterboxing)
-  })),
-  setForceLandscape: (newValue) => set4((state) => ({
-    forceLandscape: typeof newValue === "boolean" ? newValue : newValue(state.forceLandscape)
-  })),
-  setLooping: (newValue) => set4((state) => ({
-    looping: typeof newValue === "boolean" ? newValue : newValue(state.looping)
-  })),
-  toggleLooping: (newValue) => set4((state) => ({
-    looping: typeof newValue === "boolean" ? newValue : newValue(state.looping)
-  })),
-  setUiVisible: (newValue) => set4((state) => ({
-    uiVisible: typeof newValue === "boolean" ? newValue : newValue(state.uiVisible)
-  })),
-  setIsRandomised: (newValue) => set4((state) => ({
-    isRandomised: typeof newValue === "boolean" ? newValue : newValue(state.isRandomised)
-  })),
-  setCrtEffect: (newValue) => set4((state) => ({
-    crtEffect: typeof newValue === "boolean" ? newValue : newValue(state.crtEffect)
-  }))
-}));
+const __vite_import_meta_env__ = {};
+function createJSONStorage(getStorage, options2) {
+  let storage;
+  try {
+    storage = getStorage();
+  } catch (_e) {
+    return;
+  }
+  const persistStorage = {
+    getItem: (name) => {
+      var _a2;
+      const parse3 = (str2) => {
+        if (str2 === null) {
+          return null;
+        }
+        return JSON.parse(str2, void 0);
+      };
+      const str = (_a2 = storage.getItem(name)) != null ? _a2 : null;
+      if (str instanceof Promise) {
+        return str.then(parse3);
+      }
+      return parse3(str);
+    },
+    setItem: (name, newValue) => storage.setItem(
+      name,
+      JSON.stringify(newValue, void 0)
+    ),
+    removeItem: (name) => storage.removeItem(name)
+  };
+  return persistStorage;
+}
+const toThenable = (fn) => (input) => {
+  try {
+    const result = fn(input);
+    if (result instanceof Promise) {
+      return result;
+    }
+    return {
+      then(onFulfilled) {
+        return toThenable(onFulfilled)(result);
+      },
+      catch(_onRejected) {
+        return this;
+      }
+    };
+  } catch (e) {
+    return {
+      then(_onFulfilled) {
+        return this;
+      },
+      catch(onRejected) {
+        return toThenable(onRejected)(e);
+      }
+    };
+  }
+};
+const oldImpl = (config2, baseOptions) => (set4, get7, api2) => {
+  let options2 = {
+    getStorage: () => localStorage,
+    serialize: JSON.stringify,
+    deserialize: JSON.parse,
+    partialize: (state) => state,
+    version: 0,
+    merge: (persistedState, currentState) => ({
+      ...currentState,
+      ...persistedState
+    }),
+    ...baseOptions
+  };
+  let hasHydrated = false;
+  const hydrationListeners = /* @__PURE__ */ new Set();
+  const finishHydrationListeners = /* @__PURE__ */ new Set();
+  let storage;
+  try {
+    storage = options2.getStorage();
+  } catch (_e) {
+  }
+  if (!storage) {
+    return config2(
+      (...args) => {
+        console.warn(
+          `[zustand persist middleware] Unable to update item '${options2.name}', the given storage is currently unavailable.`
+        );
+        set4(...args);
+      },
+      get7,
+      api2
+    );
+  }
+  const thenableSerialize = toThenable(options2.serialize);
+  const setItem = () => {
+    const state = options2.partialize({ ...get7() });
+    let errorInSync;
+    const thenable = thenableSerialize({ state, version: options2.version }).then(
+      (serializedValue) => storage.setItem(options2.name, serializedValue)
+    ).catch((e) => {
+      errorInSync = e;
+    });
+    if (errorInSync) {
+      throw errorInSync;
+    }
+    return thenable;
+  };
+  const savedSetState = api2.setState;
+  api2.setState = (state, replace2) => {
+    savedSetState(state, replace2);
+    void setItem();
+  };
+  const configResult = config2(
+    (...args) => {
+      set4(...args);
+      void setItem();
+    },
+    get7,
+    api2
+  );
+  let stateFromStorage;
+  const hydrate = () => {
+    var _a2;
+    if (!storage) return;
+    hasHydrated = false;
+    hydrationListeners.forEach((cb) => cb(get7()));
+    const postRehydrationCallback = ((_a2 = options2.onRehydrateStorage) == null ? void 0 : _a2.call(options2, get7())) || void 0;
+    return toThenable(storage.getItem.bind(storage))(options2.name).then((storageValue) => {
+      if (storageValue) {
+        return options2.deserialize(storageValue);
+      }
+    }).then((deserializedStorageValue) => {
+      if (deserializedStorageValue) {
+        if (typeof deserializedStorageValue.version === "number" && deserializedStorageValue.version !== options2.version) {
+          if (options2.migrate) {
+            return options2.migrate(
+              deserializedStorageValue.state,
+              deserializedStorageValue.version
+            );
+          }
+          console.error(
+            `State loaded from storage couldn't be migrated since no migrate function was provided`
+          );
+        } else {
+          return deserializedStorageValue.state;
+        }
+      }
+    }).then((migratedState) => {
+      var _a22;
+      stateFromStorage = options2.merge(
+        migratedState,
+        (_a22 = get7()) != null ? _a22 : configResult
+      );
+      set4(stateFromStorage, true);
+      return setItem();
+    }).then(() => {
+      postRehydrationCallback == null ? void 0 : postRehydrationCallback(stateFromStorage, void 0);
+      hasHydrated = true;
+      finishHydrationListeners.forEach((cb) => cb(stateFromStorage));
+    }).catch((e) => {
+      postRehydrationCallback == null ? void 0 : postRehydrationCallback(void 0, e);
+    });
+  };
+  api2.persist = {
+    setOptions: (newOptions) => {
+      options2 = {
+        ...options2,
+        ...newOptions
+      };
+      if (newOptions.getStorage) {
+        storage = newOptions.getStorage();
+      }
+    },
+    clearStorage: () => {
+      storage == null ? void 0 : storage.removeItem(options2.name);
+    },
+    getOptions: () => options2,
+    rehydrate: () => hydrate(),
+    hasHydrated: () => hasHydrated,
+    onHydrate: (cb) => {
+      hydrationListeners.add(cb);
+      return () => {
+        hydrationListeners.delete(cb);
+      };
+    },
+    onFinishHydration: (cb) => {
+      finishHydrationListeners.add(cb);
+      return () => {
+        finishHydrationListeners.delete(cb);
+      };
+    }
+  };
+  hydrate();
+  return stateFromStorage || configResult;
+};
+const newImpl = (config2, baseOptions) => (set4, get7, api2) => {
+  let options2 = {
+    storage: createJSONStorage(() => localStorage),
+    partialize: (state) => state,
+    version: 0,
+    merge: (persistedState, currentState) => ({
+      ...currentState,
+      ...persistedState
+    }),
+    ...baseOptions
+  };
+  let hasHydrated = false;
+  const hydrationListeners = /* @__PURE__ */ new Set();
+  const finishHydrationListeners = /* @__PURE__ */ new Set();
+  let storage = options2.storage;
+  if (!storage) {
+    return config2(
+      (...args) => {
+        console.warn(
+          `[zustand persist middleware] Unable to update item '${options2.name}', the given storage is currently unavailable.`
+        );
+        set4(...args);
+      },
+      get7,
+      api2
+    );
+  }
+  const setItem = () => {
+    const state = options2.partialize({ ...get7() });
+    return storage.setItem(options2.name, {
+      state,
+      version: options2.version
+    });
+  };
+  const savedSetState = api2.setState;
+  api2.setState = (state, replace2) => {
+    savedSetState(state, replace2);
+    void setItem();
+  };
+  const configResult = config2(
+    (...args) => {
+      set4(...args);
+      void setItem();
+    },
+    get7,
+    api2
+  );
+  api2.getInitialState = () => configResult;
+  let stateFromStorage;
+  const hydrate = () => {
+    var _a2, _b2;
+    if (!storage) return;
+    hasHydrated = false;
+    hydrationListeners.forEach((cb) => {
+      var _a22;
+      return cb((_a22 = get7()) != null ? _a22 : configResult);
+    });
+    const postRehydrationCallback = ((_b2 = options2.onRehydrateStorage) == null ? void 0 : _b2.call(options2, (_a2 = get7()) != null ? _a2 : configResult)) || void 0;
+    return toThenable(storage.getItem.bind(storage))(options2.name).then((deserializedStorageValue) => {
+      if (deserializedStorageValue) {
+        if (typeof deserializedStorageValue.version === "number" && deserializedStorageValue.version !== options2.version) {
+          if (options2.migrate) {
+            return [
+              true,
+              options2.migrate(
+                deserializedStorageValue.state,
+                deserializedStorageValue.version
+              )
+            ];
+          }
+          console.error(
+            `State loaded from storage couldn't be migrated since no migrate function was provided`
+          );
+        } else {
+          return [false, deserializedStorageValue.state];
+        }
+      }
+      return [false, void 0];
+    }).then((migrationResult) => {
+      var _a22;
+      const [migrated, migratedState] = migrationResult;
+      stateFromStorage = options2.merge(
+        migratedState,
+        (_a22 = get7()) != null ? _a22 : configResult
+      );
+      set4(stateFromStorage, true);
+      if (migrated) {
+        return setItem();
+      }
+    }).then(() => {
+      postRehydrationCallback == null ? void 0 : postRehydrationCallback(stateFromStorage, void 0);
+      stateFromStorage = get7();
+      hasHydrated = true;
+      finishHydrationListeners.forEach((cb) => cb(stateFromStorage));
+    }).catch((e) => {
+      postRehydrationCallback == null ? void 0 : postRehydrationCallback(void 0, e);
+    });
+  };
+  api2.persist = {
+    setOptions: (newOptions) => {
+      options2 = {
+        ...options2,
+        ...newOptions
+      };
+      if (newOptions.storage) {
+        storage = newOptions.storage;
+      }
+    },
+    clearStorage: () => {
+      storage == null ? void 0 : storage.removeItem(options2.name);
+    },
+    getOptions: () => options2,
+    rehydrate: () => hydrate(),
+    hasHydrated: () => hasHydrated,
+    onHydrate: (cb) => {
+      hydrationListeners.add(cb);
+      return () => {
+        hydrationListeners.delete(cb);
+      };
+    },
+    onFinishHydration: (cb) => {
+      finishHydrationListeners.add(cb);
+      return () => {
+        finishHydrationListeners.delete(cb);
+      };
+    }
+  };
+  if (!options2.skipHydration) {
+    hydrate();
+  }
+  return stateFromStorage || configResult;
+};
+const persistImpl = (config2, baseOptions) => {
+  if ("getStorage" in baseOptions || "serialize" in baseOptions || "deserialize" in baseOptions) {
+    if ((__vite_import_meta_env__ ? "production" : void 0) !== "production") {
+      console.warn(
+        "[DEPRECATED] `getStorage`, `serialize` and `deserialize` options are deprecated. Use `storage` option instead."
+      );
+    }
+    return oldImpl(config2, baseOptions);
+  }
+  return newImpl(config2, baseOptions);
+};
+const persist = persistImpl;
+const useAppStateStore = create2()(
+  persist(
+    (set4, get7) => ({
+      selectedSavedFilterId: void 0,
+      sceneFilter: void 0,
+      scenes: [],
+      scenesLoading: true,
+      showSettings: false,
+      audioMuted: false,
+      showSubtitles: false,
+      fullscreen: false,
+      letterboxing: false,
+      forceLandscape: false,
+      looping: false,
+      uiVisible: true,
+      isRandomised: false,
+      crtEffect: false,
+      setSelectedSavedFilterId: (id) => set4({ selectedSavedFilterId: id }),
+      setSceneFilter: async (apolloClient, filter) => {
+        set4({ scenesLoading: true });
+        const scenes = await fetchScenesFromStash(apolloClient, filter);
+        set4({ sceneFilter: filter, scenes, scenesLoading: false });
+      },
+      setShowSettings: (newValue) => set4((state) => ({
+        showSettings: typeof newValue === "boolean" ? newValue : newValue(state.showSettings)
+      })),
+      setAudioMuted: (newValue) => set4((state) => ({
+        audioMuted: typeof newValue === "boolean" ? newValue : newValue(state.audioMuted)
+      })),
+      setShowSubtitles: (newValue) => set4((state) => ({
+        showSubtitles: typeof newValue === "boolean" ? newValue : newValue(state.showSubtitles)
+      })),
+      setFullscreen: (newValue) => set4((state) => ({
+        fullscreen: typeof newValue === "boolean" ? newValue : newValue(state.fullscreen)
+      })),
+      setLetterboxing: (newValue) => set4((state) => ({
+        letterboxing: typeof newValue === "boolean" ? newValue : newValue(state.letterboxing)
+      })),
+      setForceLandscape: (newValue) => set4((state) => ({
+        forceLandscape: typeof newValue === "boolean" ? newValue : newValue(state.forceLandscape)
+      })),
+      setLooping: (newValue) => set4((state) => ({
+        looping: typeof newValue === "boolean" ? newValue : newValue(state.looping)
+      })),
+      toggleLooping: (newValue) => set4((state) => ({
+        looping: typeof newValue === "boolean" ? newValue : newValue(state.looping)
+      })),
+      setUiVisible: (newValue) => set4((state) => ({
+        uiVisible: typeof newValue === "boolean" ? newValue : newValue(state.uiVisible)
+      })),
+      setIsRandomised: (newValue) => set4((state) => ({
+        isRandomised: typeof newValue === "boolean" ? newValue : newValue(state.isRandomised)
+      })),
+      setCrtEffect: (newValue) => set4((state) => ({
+        crtEffect: typeof newValue === "boolean" ? newValue : newValue(state.crtEffect)
+      }))
+    }),
+    {
+      name: "app-state",
+      partialize: (state) => Object.fromEntries(
+        Object.entries(state).filter(([key]) => !["sceneFilter", "scenes", "scenesLoading", "selectedSavedFilterId", "showSettings", "fullscreen"].includes(key))
+      )
+    }
+  )
+);
 async function fetchScenesFromStash(apolloClient, filter) {
   const { data: data2 } = await apolloClient.query({
     query: FindScenesForTvDocument,
@@ -166302,6 +166629,10 @@ const SvgVerticalEllipsisOutline = (props) => /* @__PURE__ */ reactExports.creat
   fillRule: "nonzero"
 }, fill: "currentColor" }));
 const VideoItem = (props) => {
+  reactExports.useEffect(() => {
+    console.log(`Mounted VideoItem index=${props.index} sceneId=${props.scene.id}`);
+    return () => console.log(`Unmounted VideoItem index=${props.index} sceneId=${props.scene.id}`);
+  }, []);
   const {
     showSettings,
     fullscreen,
@@ -166336,15 +166667,13 @@ const VideoItem = (props) => {
       el.addEventListener("pause", () => setPaused(true));
     };
   }, []);
-  const isInViewport = useIsInViewport(videoRef, {
-    threshold: 0.8
-  });
+  const [loadingDeferred, setLoadingDeferred] = reactExports.useState(props.currentlyScrolling);
   reactExports.useEffect(() => {
-    if (!videoRef.current) return;
-    if (props.currentIndex === props.index) {
-      videoRef.current.focus();
+    if (loadingDeferred) {
+      setLoadingDeferred(props.currentlyScrolling);
     }
-  }, [videoRef, props.currentIndex, props.index]);
+  }, [loadingDeferred, props.currentlyScrolling]);
+  const isInViewport = props.index === props.currentIndex;
   function handleVideojsPlayerReady(player) {
     videojsPlayerRef.current = player;
     player.on("volumechange", () => {
@@ -166356,30 +166685,31 @@ const VideoItem = (props) => {
   }
   reactExports.useEffect(() => {
     const videojsPlayer = videojsPlayerRef.current;
-    if (videojsPlayer) {
-      if (isInViewport) {
-        setPaused(false);
-        videojsPlayer.play()?.catch(() => setPaused(true));
-      } else {
-        videojsPlayer.pause();
-      }
+    if (!videojsPlayer) return;
+    if (props.index === props.currentIndex) {
+      setPaused(false);
+      videojsPlayer?.play()?.catch(() => setPaused(true));
+    } else {
+      videojsPlayer?.pause();
     }
-    if (isInViewport) props.changeItemHandler(props.index);
-  }, [isInViewport]);
+  }, [props.index, props.currentIndex]);
   reactExports.useEffect(() => {
     if (!isInViewport) return;
     const handleKeyDown = (e) => {
       const seekBackwardsKey = forceLandscape ? "ArrowDown" : "ArrowLeft";
       const seekForwardsKey = forceLandscape ? "ArrowUp" : "ArrowRight";
+      console.log("forawrd key", seekForwardsKey);
       if (e.key === seekBackwardsKey) {
         seekBackwards();
         e.preventDefault();
+        e.stopPropagation();
       } else if (e.key === seekForwardsKey) {
         seekForwards();
         e.preventDefault();
+        e.stopPropagation();
       }
     };
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown, { capture: true });
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
@@ -166453,14 +166783,6 @@ const VideoItem = (props) => {
     exited: { opacity: 0.35 },
     unmounted: {}
   };
-  reactExports.useEffect(() => {
-    if (isInViewport && videojsPlayerRef.current) {
-      if (audioMuted !== videojsPlayerRef.current.muted()) {
-        videojsPlayerRef.current.muted(audioMuted);
-        videojsPlayerRef.current.volume(1);
-      }
-    }
-  }, [audioMuted]);
   const itemRef = reactExports.useRef(null);
   const handleOnEnded = () => {
     if (!looping && !!itemRef.current)
@@ -166526,18 +166848,19 @@ const VideoItem = (props) => {
   return /* @__PURE__ */ React.createElement(
     "div",
     {
-      className: "VideoItem",
+      className: cx("VideoItem", { inViewport: isInViewport, "cover": !letterboxing }, props.className),
       "data-testid": "VideoItem--container",
       "data-index": props.index,
       "data-scene-id": props.scene.id,
-      ref: itemRef
+      ref: itemRef,
+      style: props.style
     },
-    /* @__PURE__ */ React.createElement(CrtEffect, { enabled: crtEffect }, /* @__PURE__ */ React.createElement(
+    /* @__PURE__ */ React.createElement(CrtEffect, { enabled: crtEffect }, void 0, void 0, /* @__PURE__ */ React.createElement("img", { className: "loadingDeferredPreview", src: props.scene.paths.screenshot || "" }), !loadingDeferred && /* @__PURE__ */ React.createElement(
       ScenePlayer,
       {
-        className: cx({ "cover": !letterboxing }),
         scene: props.scene,
         hideScrubberOverride: true,
+        muted: audioMuted,
         autoplay: false,
         permitLoop: true,
         initialTimestamp: 0,
@@ -166579,6 +166902,7 @@ const VideoItem = (props) => {
         {
           ...props.scene,
           ref: sceneInfoPanelRef,
+          scene: props.scene,
           style: {
             ...toggleableUiStyles,
             ...toggleableUiTransitionStyles[state]
@@ -166623,7 +166947,7 @@ const VideoItem = (props) => {
             }
           ),
           subtitlesButton,
-          /* @__PURE__ */ React.createElement(
+          "exitFullscreen" in document && /* @__PURE__ */ React.createElement(
             UiButton,
             {
               className: "fullscreen",
@@ -166748,6 +167072,7 @@ const SceneInfoPanel = reactExports.forwardRef(
     const parentStudioText = props.studio?.parent_studio ? " | " + props.studio.parent_studio.name : "";
     const studio = props.studio ? /* @__PURE__ */ React.createElement("span", { className: "studio" }, props.studio.name + parentStudioText) : null;
     const title = props.title ? /* @__PURE__ */ React.createElement("h5", null, props.title) : null;
+    const sceneUrl = props.paths.stream?.split("/stream")[0]?.replace("/scene", "/scenes");
     return /* @__PURE__ */ React.createElement(
       "div",
       {
@@ -166760,16 +167085,943 @@ const SceneInfoPanel = reactExports.forwardRef(
         }
       },
       studio,
-      title,
+      /* @__PURE__ */ React.createElement("a", { href: sceneUrl || "" }, title),
       performers,
       date
     );
   }
 );
+function memo(getDeps, fn, opts) {
+  let deps = opts.initialDeps ?? [];
+  let result;
+  function memoizedFunction() {
+    var _a2, _b2, _c, _d;
+    let depTime;
+    if (opts.key && ((_a2 = opts.debug) == null ? void 0 : _a2.call(opts))) depTime = Date.now();
+    const newDeps = getDeps();
+    const depsChanged = newDeps.length !== deps.length || newDeps.some((dep2, index2) => deps[index2] !== dep2);
+    if (!depsChanged) {
+      return result;
+    }
+    deps = newDeps;
+    let resultTime;
+    if (opts.key && ((_b2 = opts.debug) == null ? void 0 : _b2.call(opts))) resultTime = Date.now();
+    result = fn(...newDeps);
+    if (opts.key && ((_c = opts.debug) == null ? void 0 : _c.call(opts))) {
+      const depEndTime = Math.round((Date.now() - depTime) * 100) / 100;
+      const resultEndTime = Math.round((Date.now() - resultTime) * 100) / 100;
+      const resultFpsPercentage = resultEndTime / 16;
+      const pad = (str, num) => {
+        str = String(str);
+        while (str.length < num) {
+          str = " " + str;
+        }
+        return str;
+      };
+      console.info(
+        `%c⏱ ${pad(resultEndTime, 5)} /${pad(depEndTime, 5)} ms`,
+        `
+            font-size: .6rem;
+            font-weight: bold;
+            color: hsl(${Math.max(
+          0,
+          Math.min(120 - 120 * resultFpsPercentage, 120)
+        )}deg 100% 31%);`,
+        opts == null ? void 0 : opts.key
+      );
+    }
+    (_d = opts == null ? void 0 : opts.onChange) == null ? void 0 : _d.call(opts, result);
+    return result;
+  }
+  memoizedFunction.updateDeps = (newDeps) => {
+    deps = newDeps;
+  };
+  return memoizedFunction;
+}
+function notUndefined(value, msg) {
+  if (value === void 0) {
+    throw new Error(`Unexpected undefined${""}`);
+  } else {
+    return value;
+  }
+}
+const approxEqual = (a2, b) => Math.abs(a2 - b) < 1.01;
+const debounce2 = (targetWindow, fn, ms) => {
+  let timeoutId;
+  return function(...args) {
+    targetWindow.clearTimeout(timeoutId);
+    timeoutId = targetWindow.setTimeout(() => fn.apply(this, args), ms);
+  };
+};
+const getRect = (element) => {
+  const { offsetWidth, offsetHeight } = element;
+  return { width: offsetWidth, height: offsetHeight };
+};
+const defaultKeyExtractor = (index2) => index2;
+const defaultRangeExtractor = (range3) => {
+  const start3 = Math.max(range3.startIndex - range3.overscan, 0);
+  const end2 = Math.min(range3.endIndex + range3.overscan, range3.count - 1);
+  const arr = [];
+  for (let i = start3; i <= end2; i++) {
+    arr.push(i);
+  }
+  return arr;
+};
+const observeElementRect = (instance, cb) => {
+  const element = instance.scrollElement;
+  if (!element) {
+    return;
+  }
+  const targetWindow = instance.targetWindow;
+  if (!targetWindow) {
+    return;
+  }
+  const handler = (rect) => {
+    const { width: width2, height: height2 } = rect;
+    cb({ width: Math.round(width2), height: Math.round(height2) });
+  };
+  handler(getRect(element));
+  if (!targetWindow.ResizeObserver) {
+    return () => {
+    };
+  }
+  const observer = new targetWindow.ResizeObserver((entries) => {
+    const run6 = () => {
+      const entry = entries[0];
+      if (entry == null ? void 0 : entry.borderBoxSize) {
+        const box = entry.borderBoxSize[0];
+        if (box) {
+          handler({ width: box.inlineSize, height: box.blockSize });
+          return;
+        }
+      }
+      handler(getRect(element));
+    };
+    instance.options.useAnimationFrameWithResizeObserver ? requestAnimationFrame(run6) : run6();
+  });
+  observer.observe(element, { box: "border-box" });
+  return () => {
+    observer.unobserve(element);
+  };
+};
+const addEventListenerOptions = {
+  passive: true
+};
+const observeWindowRect = (instance, cb) => {
+  const element = instance.scrollElement;
+  if (!element) {
+    return;
+  }
+  const handler = () => {
+    cb({ width: element.innerWidth, height: element.innerHeight });
+  };
+  handler();
+  element.addEventListener("resize", handler, addEventListenerOptions);
+  return () => {
+    element.removeEventListener("resize", handler);
+  };
+};
+const supportsScrollend = typeof window == "undefined" ? true : "onscrollend" in window;
+const observeElementOffset = (instance, cb) => {
+  const element = instance.scrollElement;
+  if (!element) {
+    return;
+  }
+  const targetWindow = instance.targetWindow;
+  if (!targetWindow) {
+    return;
+  }
+  let offset = 0;
+  const fallback = instance.options.useScrollendEvent && supportsScrollend ? () => void 0 : debounce2(
+    targetWindow,
+    () => {
+      cb(offset, false);
+    },
+    instance.options.isScrollingResetDelay
+  );
+  const createHandler = (isScrolling) => () => {
+    const { horizontal, isRtl } = instance.options;
+    offset = horizontal ? element["scrollLeft"] * (isRtl && -1 || 1) : element["scrollTop"];
+    fallback();
+    cb(offset, isScrolling);
+  };
+  const handler = createHandler(true);
+  const endHandler = createHandler(false);
+  endHandler();
+  element.addEventListener("scroll", handler, addEventListenerOptions);
+  const registerScrollendEvent = instance.options.useScrollendEvent && supportsScrollend;
+  if (registerScrollendEvent) {
+    element.addEventListener("scrollend", endHandler, addEventListenerOptions);
+  }
+  return () => {
+    element.removeEventListener("scroll", handler);
+    if (registerScrollendEvent) {
+      element.removeEventListener("scrollend", endHandler);
+    }
+  };
+};
+const observeWindowOffset = (instance, cb) => {
+  const element = instance.scrollElement;
+  if (!element) {
+    return;
+  }
+  const targetWindow = instance.targetWindow;
+  if (!targetWindow) {
+    return;
+  }
+  let offset = 0;
+  const fallback = instance.options.useScrollendEvent && supportsScrollend ? () => void 0 : debounce2(
+    targetWindow,
+    () => {
+      cb(offset, false);
+    },
+    instance.options.isScrollingResetDelay
+  );
+  const createHandler = (isScrolling) => () => {
+    offset = element[instance.options.horizontal ? "scrollX" : "scrollY"];
+    fallback();
+    cb(offset, isScrolling);
+  };
+  const handler = createHandler(true);
+  const endHandler = createHandler(false);
+  endHandler();
+  element.addEventListener("scroll", handler, addEventListenerOptions);
+  const registerScrollendEvent = instance.options.useScrollendEvent && supportsScrollend;
+  if (registerScrollendEvent) {
+    element.addEventListener("scrollend", endHandler, addEventListenerOptions);
+  }
+  return () => {
+    element.removeEventListener("scroll", handler);
+    if (registerScrollendEvent) {
+      element.removeEventListener("scrollend", endHandler);
+    }
+  };
+};
+const measureElement = (element, entry, instance) => {
+  if (entry == null ? void 0 : entry.borderBoxSize) {
+    const box = entry.borderBoxSize[0];
+    if (box) {
+      const size = Math.round(
+        box[instance.options.horizontal ? "inlineSize" : "blockSize"]
+      );
+      return size;
+    }
+  }
+  return element[instance.options.horizontal ? "offsetWidth" : "offsetHeight"];
+};
+const windowScroll = (offset, {
+  adjustments = 0,
+  behavior
+}, instance) => {
+  var _a2, _b2;
+  const toOffset = offset + adjustments;
+  (_b2 = (_a2 = instance.scrollElement) == null ? void 0 : _a2.scrollTo) == null ? void 0 : _b2.call(_a2, {
+    [instance.options.horizontal ? "left" : "top"]: toOffset,
+    behavior
+  });
+};
+const elementScroll = (offset, {
+  adjustments = 0,
+  behavior
+}, instance) => {
+  var _a2, _b2;
+  const toOffset = offset + adjustments;
+  (_b2 = (_a2 = instance.scrollElement) == null ? void 0 : _a2.scrollTo) == null ? void 0 : _b2.call(_a2, {
+    [instance.options.horizontal ? "left" : "top"]: toOffset,
+    behavior
+  });
+};
+class Virtualizer {
+  constructor(opts) {
+    this.unsubs = [];
+    this.scrollElement = null;
+    this.targetWindow = null;
+    this.isScrolling = false;
+    this.measurementsCache = [];
+    this.itemSizeCache = /* @__PURE__ */ new Map();
+    this.pendingMeasuredCacheIndexes = [];
+    this.scrollRect = null;
+    this.scrollOffset = null;
+    this.scrollDirection = null;
+    this.scrollAdjustments = 0;
+    this.elementsCache = /* @__PURE__ */ new Map();
+    this.observer = /* @__PURE__ */ (() => {
+      let _ro = null;
+      const get7 = () => {
+        if (_ro) {
+          return _ro;
+        }
+        if (!this.targetWindow || !this.targetWindow.ResizeObserver) {
+          return null;
+        }
+        return _ro = new this.targetWindow.ResizeObserver((entries) => {
+          entries.forEach((entry) => {
+            const run6 = () => {
+              this._measureElement(entry.target, entry);
+            };
+            this.options.useAnimationFrameWithResizeObserver ? requestAnimationFrame(run6) : run6();
+          });
+        });
+      };
+      return {
+        disconnect: () => {
+          var _a2;
+          (_a2 = get7()) == null ? void 0 : _a2.disconnect();
+          _ro = null;
+        },
+        observe: (target) => {
+          var _a2;
+          return (_a2 = get7()) == null ? void 0 : _a2.observe(target, { box: "border-box" });
+        },
+        unobserve: (target) => {
+          var _a2;
+          return (_a2 = get7()) == null ? void 0 : _a2.unobserve(target);
+        }
+      };
+    })();
+    this.range = null;
+    this.setOptions = (opts2) => {
+      Object.entries(opts2).forEach(([key, value]) => {
+        if (typeof value === "undefined") delete opts2[key];
+      });
+      this.options = {
+        debug: false,
+        initialOffset: 0,
+        overscan: 1,
+        paddingStart: 0,
+        paddingEnd: 0,
+        scrollPaddingStart: 0,
+        scrollPaddingEnd: 0,
+        horizontal: false,
+        getItemKey: defaultKeyExtractor,
+        rangeExtractor: defaultRangeExtractor,
+        onChange: () => {
+        },
+        measureElement,
+        initialRect: { width: 0, height: 0 },
+        scrollMargin: 0,
+        gap: 0,
+        indexAttribute: "data-index",
+        initialMeasurementsCache: [],
+        lanes: 1,
+        isScrollingResetDelay: 150,
+        enabled: true,
+        isRtl: false,
+        useScrollendEvent: false,
+        useAnimationFrameWithResizeObserver: false,
+        ...opts2
+      };
+    };
+    this.notify = (sync2) => {
+      var _a2, _b2;
+      (_b2 = (_a2 = this.options).onChange) == null ? void 0 : _b2.call(_a2, this, sync2);
+    };
+    this.maybeNotify = memo(
+      () => {
+        this.calculateRange();
+        return [
+          this.isScrolling,
+          this.range ? this.range.startIndex : null,
+          this.range ? this.range.endIndex : null
+        ];
+      },
+      (isScrolling) => {
+        this.notify(isScrolling);
+      },
+      {
+        key: false,
+        debug: () => this.options.debug,
+        initialDeps: [
+          this.isScrolling,
+          this.range ? this.range.startIndex : null,
+          this.range ? this.range.endIndex : null
+        ]
+      }
+    );
+    this.cleanup = () => {
+      this.unsubs.filter(Boolean).forEach((d2) => d2());
+      this.unsubs = [];
+      this.observer.disconnect();
+      this.scrollElement = null;
+      this.targetWindow = null;
+    };
+    this._didMount = () => {
+      return () => {
+        this.cleanup();
+      };
+    };
+    this._willUpdate = () => {
+      var _a2;
+      const scrollElement = this.options.enabled ? this.options.getScrollElement() : null;
+      if (this.scrollElement !== scrollElement) {
+        this.cleanup();
+        if (!scrollElement) {
+          this.maybeNotify();
+          return;
+        }
+        this.scrollElement = scrollElement;
+        if (this.scrollElement && "ownerDocument" in this.scrollElement) {
+          this.targetWindow = this.scrollElement.ownerDocument.defaultView;
+        } else {
+          this.targetWindow = ((_a2 = this.scrollElement) == null ? void 0 : _a2.window) ?? null;
+        }
+        this.elementsCache.forEach((cached) => {
+          this.observer.observe(cached);
+        });
+        this._scrollToOffset(this.getScrollOffset(), {
+          adjustments: void 0,
+          behavior: void 0
+        });
+        this.unsubs.push(
+          this.options.observeElementRect(this, (rect) => {
+            this.scrollRect = rect;
+            this.maybeNotify();
+          })
+        );
+        this.unsubs.push(
+          this.options.observeElementOffset(this, (offset, isScrolling) => {
+            this.scrollAdjustments = 0;
+            this.scrollDirection = isScrolling ? this.getScrollOffset() < offset ? "forward" : "backward" : null;
+            this.scrollOffset = offset;
+            this.isScrolling = isScrolling;
+            this.maybeNotify();
+          })
+        );
+      }
+    };
+    this.getSize = () => {
+      if (!this.options.enabled) {
+        this.scrollRect = null;
+        return 0;
+      }
+      this.scrollRect = this.scrollRect ?? this.options.initialRect;
+      return this.scrollRect[this.options.horizontal ? "width" : "height"];
+    };
+    this.getScrollOffset = () => {
+      if (!this.options.enabled) {
+        this.scrollOffset = null;
+        return 0;
+      }
+      this.scrollOffset = this.scrollOffset ?? (typeof this.options.initialOffset === "function" ? this.options.initialOffset() : this.options.initialOffset);
+      return this.scrollOffset;
+    };
+    this.getFurthestMeasurement = (measurements, index2) => {
+      const furthestMeasurementsFound = /* @__PURE__ */ new Map();
+      const furthestMeasurements = /* @__PURE__ */ new Map();
+      for (let m = index2 - 1; m >= 0; m--) {
+        const measurement = measurements[m];
+        if (furthestMeasurementsFound.has(measurement.lane)) {
+          continue;
+        }
+        const previousFurthestMeasurement = furthestMeasurements.get(
+          measurement.lane
+        );
+        if (previousFurthestMeasurement == null || measurement.end > previousFurthestMeasurement.end) {
+          furthestMeasurements.set(measurement.lane, measurement);
+        } else if (measurement.end < previousFurthestMeasurement.end) {
+          furthestMeasurementsFound.set(measurement.lane, true);
+        }
+        if (furthestMeasurementsFound.size === this.options.lanes) {
+          break;
+        }
+      }
+      return furthestMeasurements.size === this.options.lanes ? Array.from(furthestMeasurements.values()).sort((a2, b) => {
+        if (a2.end === b.end) {
+          return a2.index - b.index;
+        }
+        return a2.end - b.end;
+      })[0] : void 0;
+    };
+    this.getMeasurementOptions = memo(
+      () => [
+        this.options.count,
+        this.options.paddingStart,
+        this.options.scrollMargin,
+        this.options.getItemKey,
+        this.options.enabled
+      ],
+      (count2, paddingStart, scrollMargin, getItemKey, enabled) => {
+        this.pendingMeasuredCacheIndexes = [];
+        return {
+          count: count2,
+          paddingStart,
+          scrollMargin,
+          getItemKey,
+          enabled
+        };
+      },
+      {
+        key: false
+      }
+    );
+    this.getMeasurements = memo(
+      () => [this.getMeasurementOptions(), this.itemSizeCache],
+      ({ count: count2, paddingStart, scrollMargin, getItemKey, enabled }, itemSizeCache) => {
+        if (!enabled) {
+          this.measurementsCache = [];
+          this.itemSizeCache.clear();
+          return [];
+        }
+        if (this.measurementsCache.length === 0) {
+          this.measurementsCache = this.options.initialMeasurementsCache;
+          this.measurementsCache.forEach((item) => {
+            this.itemSizeCache.set(item.key, item.size);
+          });
+        }
+        const min2 = this.pendingMeasuredCacheIndexes.length > 0 ? Math.min(...this.pendingMeasuredCacheIndexes) : 0;
+        this.pendingMeasuredCacheIndexes = [];
+        const measurements = this.measurementsCache.slice(0, min2);
+        for (let i = min2; i < count2; i++) {
+          const key = getItemKey(i);
+          const furthestMeasurement = this.options.lanes === 1 ? measurements[i - 1] : this.getFurthestMeasurement(measurements, i);
+          const start3 = furthestMeasurement ? furthestMeasurement.end + this.options.gap : paddingStart + scrollMargin;
+          const measuredSize = itemSizeCache.get(key);
+          const size = typeof measuredSize === "number" ? measuredSize : this.options.estimateSize(i);
+          const end2 = start3 + size;
+          const lane = furthestMeasurement ? furthestMeasurement.lane : i % this.options.lanes;
+          measurements[i] = {
+            index: i,
+            start: start3,
+            size,
+            end: end2,
+            key,
+            lane
+          };
+        }
+        this.measurementsCache = measurements;
+        return measurements;
+      },
+      {
+        key: false,
+        debug: () => this.options.debug
+      }
+    );
+    this.calculateRange = memo(
+      () => [
+        this.getMeasurements(),
+        this.getSize(),
+        this.getScrollOffset(),
+        this.options.lanes
+      ],
+      (measurements, outerSize, scrollOffset, lanes) => {
+        return this.range = measurements.length > 0 && outerSize > 0 ? calculateRange({
+          measurements,
+          outerSize,
+          scrollOffset,
+          lanes
+        }) : null;
+      },
+      {
+        key: false,
+        debug: () => this.options.debug
+      }
+    );
+    this.getVirtualIndexes = memo(
+      () => {
+        let startIndex = null;
+        let endIndex = null;
+        const range3 = this.calculateRange();
+        if (range3) {
+          startIndex = range3.startIndex;
+          endIndex = range3.endIndex;
+        }
+        this.maybeNotify.updateDeps([this.isScrolling, startIndex, endIndex]);
+        return [
+          this.options.rangeExtractor,
+          this.options.overscan,
+          this.options.count,
+          startIndex,
+          endIndex
+        ];
+      },
+      (rangeExtractor, overscan, count2, startIndex, endIndex) => {
+        return startIndex === null || endIndex === null ? [] : rangeExtractor({
+          startIndex,
+          endIndex,
+          overscan,
+          count: count2
+        });
+      },
+      {
+        key: false,
+        debug: () => this.options.debug
+      }
+    );
+    this.indexFromElement = (node2) => {
+      const attributeName = this.options.indexAttribute;
+      const indexStr = node2.getAttribute(attributeName);
+      if (!indexStr) {
+        console.warn(
+          `Missing attribute name '${attributeName}={index}' on measured element.`
+        );
+        return -1;
+      }
+      return parseInt(indexStr, 10);
+    };
+    this._measureElement = (node2, entry) => {
+      const index2 = this.indexFromElement(node2);
+      const item = this.measurementsCache[index2];
+      if (!item) {
+        return;
+      }
+      const key = item.key;
+      const prevNode = this.elementsCache.get(key);
+      if (prevNode !== node2) {
+        if (prevNode) {
+          this.observer.unobserve(prevNode);
+        }
+        this.observer.observe(node2);
+        this.elementsCache.set(key, node2);
+      }
+      if (node2.isConnected) {
+        this.resizeItem(index2, this.options.measureElement(node2, entry, this));
+      }
+    };
+    this.resizeItem = (index2, size) => {
+      const item = this.measurementsCache[index2];
+      if (!item) {
+        return;
+      }
+      const itemSize = this.itemSizeCache.get(item.key) ?? item.size;
+      const delta = size - itemSize;
+      if (delta !== 0) {
+        if (this.shouldAdjustScrollPositionOnItemSizeChange !== void 0 ? this.shouldAdjustScrollPositionOnItemSizeChange(item, delta, this) : item.start < this.getScrollOffset() + this.scrollAdjustments) {
+          this._scrollToOffset(this.getScrollOffset(), {
+            adjustments: this.scrollAdjustments += delta,
+            behavior: void 0
+          });
+        }
+        this.pendingMeasuredCacheIndexes.push(item.index);
+        this.itemSizeCache = new Map(this.itemSizeCache.set(item.key, size));
+        this.notify(false);
+      }
+    };
+    this.measureElement = (node2) => {
+      if (!node2) {
+        this.elementsCache.forEach((cached, key) => {
+          if (!cached.isConnected) {
+            this.observer.unobserve(cached);
+            this.elementsCache.delete(key);
+          }
+        });
+        return;
+      }
+      this._measureElement(node2, void 0);
+    };
+    this.getVirtualItems = memo(
+      () => [this.getVirtualIndexes(), this.getMeasurements()],
+      (indexes, measurements) => {
+        const virtualItems = [];
+        for (let k = 0, len = indexes.length; k < len; k++) {
+          const i = indexes[k];
+          const measurement = measurements[i];
+          virtualItems.push(measurement);
+        }
+        return virtualItems;
+      },
+      {
+        key: false,
+        debug: () => this.options.debug
+      }
+    );
+    this.getVirtualItemForOffset = (offset) => {
+      const measurements = this.getMeasurements();
+      if (measurements.length === 0) {
+        return void 0;
+      }
+      return notUndefined(
+        measurements[findNearestBinarySearch(
+          0,
+          measurements.length - 1,
+          (index2) => notUndefined(measurements[index2]).start,
+          offset
+        )]
+      );
+    };
+    this.getOffsetForAlignment = (toOffset, align, itemSize = 0) => {
+      const size = this.getSize();
+      const scrollOffset = this.getScrollOffset();
+      if (align === "auto") {
+        align = toOffset >= scrollOffset + size ? "end" : "start";
+      }
+      if (align === "center") {
+        toOffset += (itemSize - size) / 2;
+      } else if (align === "end") {
+        toOffset -= size;
+      }
+      const maxOffset = this.getTotalSize() + this.options.scrollMargin - size;
+      return Math.max(Math.min(maxOffset, toOffset), 0);
+    };
+    this.getOffsetForIndex = (index2, align = "auto") => {
+      index2 = Math.max(0, Math.min(index2, this.options.count - 1));
+      const item = this.measurementsCache[index2];
+      if (!item) {
+        return void 0;
+      }
+      const size = this.getSize();
+      const scrollOffset = this.getScrollOffset();
+      if (align === "auto") {
+        if (item.end >= scrollOffset + size - this.options.scrollPaddingEnd) {
+          align = "end";
+        } else if (item.start <= scrollOffset + this.options.scrollPaddingStart) {
+          align = "start";
+        } else {
+          return [scrollOffset, align];
+        }
+      }
+      const toOffset = align === "end" ? item.end + this.options.scrollPaddingEnd : item.start - this.options.scrollPaddingStart;
+      return [
+        this.getOffsetForAlignment(toOffset, align, item.size),
+        align
+      ];
+    };
+    this.isDynamicMode = () => this.elementsCache.size > 0;
+    this.scrollToOffset = (toOffset, { align = "start", behavior } = {}) => {
+      if (behavior === "smooth" && this.isDynamicMode()) {
+        console.warn(
+          "The `smooth` scroll behavior is not fully supported with dynamic size."
+        );
+      }
+      this._scrollToOffset(this.getOffsetForAlignment(toOffset, align), {
+        adjustments: void 0,
+        behavior
+      });
+    };
+    this.scrollToIndex = (index2, { align: initialAlign = "auto", behavior } = {}) => {
+      if (behavior === "smooth" && this.isDynamicMode()) {
+        console.warn(
+          "The `smooth` scroll behavior is not fully supported with dynamic size."
+        );
+      }
+      index2 = Math.max(0, Math.min(index2, this.options.count - 1));
+      let attempts = 0;
+      const maxAttempts = 10;
+      const tryScroll = (currentAlign) => {
+        if (!this.targetWindow) return;
+        const offsetInfo = this.getOffsetForIndex(index2, currentAlign);
+        if (!offsetInfo) {
+          console.warn("Failed to get offset for index:", index2);
+          return;
+        }
+        const [offset, align] = offsetInfo;
+        this._scrollToOffset(offset, { adjustments: void 0, behavior });
+        this.targetWindow.requestAnimationFrame(() => {
+          const currentOffset = this.getScrollOffset();
+          const afterInfo = this.getOffsetForIndex(index2, align);
+          if (!afterInfo) {
+            console.warn("Failed to get offset for index:", index2);
+            return;
+          }
+          if (!approxEqual(afterInfo[0], currentOffset)) {
+            scheduleRetry(align);
+          }
+        });
+      };
+      const scheduleRetry = (align) => {
+        if (!this.targetWindow) return;
+        attempts++;
+        if (attempts < maxAttempts) {
+          this.targetWindow.requestAnimationFrame(() => tryScroll(align));
+        } else {
+          console.warn(
+            `Failed to scroll to index ${index2} after ${maxAttempts} attempts.`
+          );
+        }
+      };
+      tryScroll(initialAlign);
+    };
+    this.scrollBy = (delta, { behavior } = {}) => {
+      if (behavior === "smooth" && this.isDynamicMode()) {
+        console.warn(
+          "The `smooth` scroll behavior is not fully supported with dynamic size."
+        );
+      }
+      this._scrollToOffset(this.getScrollOffset() + delta, {
+        adjustments: void 0,
+        behavior
+      });
+    };
+    this.getTotalSize = () => {
+      var _a2;
+      const measurements = this.getMeasurements();
+      let end2;
+      if (measurements.length === 0) {
+        end2 = this.options.paddingStart;
+      } else if (this.options.lanes === 1) {
+        end2 = ((_a2 = measurements[measurements.length - 1]) == null ? void 0 : _a2.end) ?? 0;
+      } else {
+        const endByLane = Array(this.options.lanes).fill(null);
+        let endIndex = measurements.length - 1;
+        while (endIndex >= 0 && endByLane.some((val) => val === null)) {
+          const item = measurements[endIndex];
+          if (endByLane[item.lane] === null) {
+            endByLane[item.lane] = item.end;
+          }
+          endIndex--;
+        }
+        end2 = Math.max(...endByLane.filter((val) => val !== null));
+      }
+      return Math.max(
+        end2 - this.options.scrollMargin + this.options.paddingEnd,
+        0
+      );
+    };
+    this._scrollToOffset = (offset, {
+      adjustments,
+      behavior
+    }) => {
+      this.options.scrollToFn(offset, { behavior, adjustments }, this);
+    };
+    this.measure = () => {
+      this.itemSizeCache = /* @__PURE__ */ new Map();
+      this.notify(false);
+    };
+    this.setOptions(opts);
+  }
+}
+const findNearestBinarySearch = (low, high, getCurrentValue, value) => {
+  while (low <= high) {
+    const middle = (low + high) / 2 | 0;
+    const currentValue = getCurrentValue(middle);
+    if (currentValue < value) {
+      low = middle + 1;
+    } else if (currentValue > value) {
+      high = middle - 1;
+    } else {
+      return middle;
+    }
+  }
+  if (low > 0) {
+    return low - 1;
+  } else {
+    return 0;
+  }
+};
+function calculateRange({
+  measurements,
+  outerSize,
+  scrollOffset,
+  lanes
+}) {
+  const lastIndex = measurements.length - 1;
+  const getOffset = (index2) => measurements[index2].start;
+  if (measurements.length <= lanes) {
+    return {
+      startIndex: 0,
+      endIndex: lastIndex
+    };
+  }
+  let startIndex = findNearestBinarySearch(
+    0,
+    lastIndex,
+    getOffset,
+    scrollOffset
+  );
+  let endIndex = startIndex;
+  if (lanes === 1) {
+    while (endIndex < lastIndex && measurements[endIndex].end < scrollOffset + outerSize) {
+      endIndex++;
+    }
+  } else if (lanes > 1) {
+    const endPerLane = Array(lanes).fill(0);
+    while (endIndex < lastIndex && endPerLane.some((pos) => pos < scrollOffset + outerSize)) {
+      const item = measurements[endIndex];
+      endPerLane[item.lane] = item.end;
+      endIndex++;
+    }
+    const startPerLane = Array(lanes).fill(scrollOffset + outerSize);
+    while (startIndex >= 0 && startPerLane.some((pos) => pos >= scrollOffset)) {
+      const item = measurements[startIndex];
+      startPerLane[item.lane] = item.start;
+      startIndex--;
+    }
+    startIndex = Math.max(0, startIndex - startIndex % lanes);
+    endIndex = Math.min(lastIndex, endIndex + (lanes - 1 - endIndex % lanes));
+  }
+  return { startIndex, endIndex };
+}
+const useIsomorphicLayoutEffect$1 = typeof document !== "undefined" ? reactExports.useLayoutEffect : reactExports.useEffect;
+function useVirtualizerBase(options2) {
+  const rerender = reactExports.useReducer(() => ({}), {})[1];
+  const resolvedOptions = {
+    ...options2,
+    onChange: (instance2, sync2) => {
+      var _a2;
+      if (sync2) {
+        reactDomExports.flushSync(rerender);
+      } else {
+        rerender();
+      }
+      (_a2 = options2.onChange) == null ? void 0 : _a2.call(options2, instance2, sync2);
+    }
+  };
+  const [instance] = reactExports.useState(
+    () => new Virtualizer(resolvedOptions)
+  );
+  instance.setOptions(resolvedOptions);
+  useIsomorphicLayoutEffect$1(() => {
+    return instance._didMount();
+  }, []);
+  useIsomorphicLayoutEffect$1(() => {
+    return instance._willUpdate();
+  });
+  return instance;
+}
+function useVirtualizer(options2) {
+  return useVirtualizerBase({
+    observeElementRect,
+    observeElementOffset,
+    scrollToFn: elementScroll,
+    ...options2
+  });
+}
+function useWindowVirtualizer(options2) {
+  return useVirtualizerBase({
+    getScrollElement: () => typeof document !== "undefined" ? window : null,
+    observeElementRect: observeWindowRect,
+    observeElementOffset: observeWindowOffset,
+    scrollToFn: windowScroll,
+    initialOffset: () => typeof document !== "undefined" ? window.scrollY : 0,
+    ...options2
+  });
+}
+var throttleit;
+var hasRequiredThrottleit;
+function requireThrottleit() {
+  if (hasRequiredThrottleit) return throttleit;
+  hasRequiredThrottleit = 1;
+  function throttle3(function_, wait) {
+    if (typeof function_ !== "function") {
+      throw new TypeError(`Expected the first argument to be a \`function\`, got \`${typeof function_}\`.`);
+    }
+    let timeoutId;
+    let lastCallTime = 0;
+    return function throttled(...arguments_) {
+      clearTimeout(timeoutId);
+      const now2 = Date.now();
+      const timeSinceLastCall = now2 - lastCallTime;
+      const delayForNextCall = wait - timeSinceLastCall;
+      if (delayForNextCall <= 0) {
+        lastCallTime = now2;
+        function_.apply(this, arguments_);
+      } else {
+        timeoutId = setTimeout(() => {
+          lastCallTime = Date.now();
+          function_.apply(this, arguments_);
+        }, delayForNextCall);
+      }
+    };
+  }
+  throttleit = throttle3;
+  return throttleit;
+}
+var throttleitExports = /* @__PURE__ */ requireThrottleit();
+const throttle2 = /* @__PURE__ */ getDefaultExportFromCjs(throttleitExports);
+const videoItemHeight = "calc(var(--y-unit-large) * 100)";
+const itemBufferEitherSide = 1;
 const VideoScroller = () => {
   const { forceLandscape: isForceLandscape, setCrtEffect } = useAppStateStore();
-  const scrollerRef = reactExports.useRef(null);
-  const [currentIndex, setCurrentIndex] = reactExports.useState(0);
+  const rootElmRef = reactExports.useRef(null);
   const { scenes } = useAppStateStore();
   const _scenesCache = reactExports.useRef([]);
   const cachedScenes = reactExports.useMemo(() => {
@@ -166782,21 +168034,137 @@ const VideoScroller = () => {
     _scenesCache.current = newValue;
     return newValue;
   }, [scenes]);
+  const estimateSizeTesterElement = reactExports.useRef(null);
+  reactExports.useEffect(() => {
+    return () => {
+      if (estimateSizeTesterElement.current) {
+        estimateSizeTesterElement.current.remove();
+        estimateSizeTesterElement.current = null;
+      }
+    };
+  }, []);
+  const sharedOptions = {
+    count: cachedScenes.length,
+    estimateSize: () => {
+      if (!estimateSizeTesterElement.current) {
+        const el = document.createElement("div");
+        el.style.height = videoItemHeight;
+        el.style.position = "absolute";
+        el.className = "VideoScroller--size-tester";
+        el.style.visibility = "hidden";
+        document.body.appendChild(el);
+        estimateSizeTesterElement.current = el;
+      }
+      const itemHeight = estimateSizeTesterElement.current.offsetHeight;
+      return itemHeight;
+    },
+    overscan: itemBufferEitherSide
+  };
+  const windowRowVirtualizer = useWindowVirtualizer({
+    ...sharedOptions,
+    enabled: !isForceLandscape,
+    scrollToFn: (...args) => {
+      return windowScroll(...args);
+    }
+  });
+  const elementRowVirtualizer = useVirtualizer({
+    ...sharedOptions,
+    enabled: isForceLandscape,
+    getScrollElement: () => document.querySelector("body"),
+    scrollToFn: (...args) => {
+      return elementScroll(...args);
+    }
+  });
+  const rowVirtualizer = isForceLandscape ? elementRowVirtualizer : windowRowVirtualizer;
+  const [currentIndex, _setCurrentIndex] = reactExports.useReducer(
+    (currentState, newState) => {
+      newState = typeof newState === "function" ? newState(currentState) : newState;
+      return clamp$2(0, newState, cachedScenes.length - 1);
+    },
+    0
+  );
+  const currentIndexRef = reactExports.useRef(currentIndex);
+  const setCurrentIndex = reactExports.useMemo(
+    () => {
+      const throttledSetCurrentIndex = throttle2((newIndex) => {
+        _setCurrentIndex(newIndex);
+      }, 100);
+      return ((newIndex) => {
+        currentIndexRef.current = typeof newIndex === "function" ? newIndex(currentIndexRef.current) : newIndex;
+        return throttledSetCurrentIndex(currentIndexRef.current);
+      });
+    },
+    [rowVirtualizer]
+  );
+  const scrollSnappingReenableTimeoutRef = reactExports.useRef();
+  const scrollSnappingEnabled = () => !scrollSnappingReenableTimeoutRef.current;
+  const scrollSnappingReenableTimeoutMs = 100;
+  const getScrollSnappingReenableHandler = () => () => {
+    clearTimeout(scrollSnappingReenableTimeoutRef.current);
+    scrollSnappingReenableTimeoutRef.current = void 0;
+    rootElmRef.current?.classList.add("scrollSnappingEnabled");
+  };
+  function temporarilyDisableScrollSnapping() {
+    if (scrollSnappingReenableTimeoutRef.current) {
+      clearTimeout(scrollSnappingReenableTimeoutRef.current);
+    }
+    scrollSnappingReenableTimeoutRef.current = setTimeout(
+      getScrollSnappingReenableHandler(),
+      scrollSnappingReenableTimeoutMs
+    );
+    rootElmRef.current?.classList.remove("scrollSnappingEnabled");
+  }
+  reactExports.useEffect(() => {
+    const scrollHandler = () => {
+      if (!scrollSnappingEnabled()) {
+        clearTimeout(scrollSnappingReenableTimeoutRef.current);
+        scrollSnappingReenableTimeoutRef.current = setTimeout(
+          getScrollSnappingReenableHandler(),
+          scrollSnappingReenableTimeoutMs
+        );
+      }
+    };
+    window.addEventListener("scroll", scrollHandler);
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
+  const scrollToIndex = reactExports.useMemo(
+    () => (index2, options2) => {
+      index2 = typeof index2 === "function" ? index2(currentIndexRef.current) : index2;
+      const container2 = rowVirtualizer.scrollElement;
+      if (!container2) return;
+      const itemHeight = rowVirtualizer.getVirtualItems()[0].size;
+      const newScrollTop = index2 * itemHeight;
+      temporarilyDisableScrollSnapping();
+      console.log({ top: newScrollTop, behavior: "smooth", ...options2 }, options2);
+      rowVirtualizer.scrollElement?.scrollTo({ top: newScrollTop, behavior: "smooth", ...options2 });
+    },
+    [rowVirtualizer]
+  );
+  reactExports.useEffect(() => {
+  }, [currentIndex]);
   reactExports.useEffect(() => {
     const handleKeyDown = (e) => {
       const nextKey = isForceLandscape ? "ArrowRight" : "ArrowDown";
       const previousKey = isForceLandscape ? "ArrowLeft" : "ArrowUp";
       if (e.key === previousKey) {
-        setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+        const newIndex = (prevIndex) => prevIndex - 1;
+        scrollToIndex(newIndex, { behavior: "instant" });
+        setCurrentIndex(newIndex);
+        e.preventDefault();
+        e.stopPropagation();
       } else if (e.key === nextKey) {
-        setCurrentIndex((prevIndex) => prevIndex + 1);
+        const newIndex = (prevIndex) => prevIndex + 1;
+        scrollToIndex(newIndex, { behavior: "instant" });
+        setCurrentIndex(newIndex);
+        e.preventDefault();
+        e.stopPropagation();
       }
     };
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown, { capture: true });
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isForceLandscape, setCurrentIndex]);
+  }, [isForceLandscape, setCurrentIndex, cachedScenes.length]);
   reactExports.useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "c") {
@@ -166808,27 +168176,126 @@ const VideoScroller = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+  reactExports.useEffect(() => {
+    const restoreScrollPosition = () => {
+      if (rowVirtualizer) {
+        const oldSize = rowVirtualizer.getVirtualItems()[0].size;
+        rowVirtualizer.measure();
+        const newSize = rowVirtualizer.getVirtualItems()[0].size;
+        if (oldSize === newSize) return;
+        scrollToIndex((currentIndex2) => currentIndex2, { behavior: "instant" });
+      }
+    };
+    window.addEventListener("resize", restoreScrollPosition);
+    return () => {
+      window.removeEventListener("resize", restoreScrollPosition);
+    };
+  }, [scrollToIndex, rowVirtualizer]);
+  reactExports.useEffect(() => {
+    scrollToIndex((currentIndex2) => currentIndex2, { behavior: "instant" });
+  }, [isForceLandscape]);
+  const observerRef = reactExports.useRef(null);
+  const mutationObserverRef = reactExports.useRef(null);
+  const observedElementsRef = reactExports.useRef(/* @__PURE__ */ new Map());
+  reactExports.useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        let maxVisibility = 0;
+        let mostVisibleIndex = currentIndexRef.current;
+        entries.forEach((entry) => {
+          const index2 = observedElementsRef.current.get(entry.target);
+          if (index2 === void 0) return;
+          const visibilityRatio = entry.intersectionRatio;
+          if (visibilityRatio > maxVisibility) {
+            maxVisibility = visibilityRatio;
+            mostVisibleIndex = index2;
+          }
+        });
+        if (mostVisibleIndex === currentIndexRef.current) return;
+        if (maxVisibility > 0.3) {
+          setCurrentIndex(mostVisibleIndex);
+        }
+      },
+      {
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+        rootMargin: "0px"
+      }
+    );
+    const updateObservedElements = () => {
+      const observer2 = observerRef.current;
+      if (!observer2) return;
+      observedElementsRef.current.forEach((_, element) => {
+        observer2.unobserve(element);
+      });
+      observedElementsRef.current.clear();
+      document.querySelectorAll("[data-index]").forEach((element) => {
+        const indexAttr = element.getAttribute("data-index");
+        if (indexAttr !== null) {
+          const index2 = parseInt(indexAttr, 10);
+          if (!isNaN(index2)) {
+            observedElementsRef.current.set(element, index2);
+            observer2.observe(element);
+          }
+        }
+      });
+    };
+    setTimeout(updateObservedElements, 100);
+    mutationObserverRef.current = new MutationObserver(updateObservedElements);
+    const container2 = document.querySelector(".VideoScroller");
+    if (container2) {
+      mutationObserverRef.current.observe(container2, {
+        childList: true,
+        subtree: false,
+        attributes: false
+      });
+    }
+    const observer = observerRef.current;
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+      if (mutationObserverRef.current) {
+        mutationObserverRef.current.disconnect();
+      }
+    };
+  }, []);
   return /* @__PURE__ */ React.createElement(
     "div",
     {
-      className: cx("VideoScroller", { "force-landscape": isForceLandscape }),
+      className: cx("VideoScroller", { scrollSnappingEnabled: scrollSnappingEnabled() }),
       "data-testid": "VideoScroller--container",
-      ref: scrollerRef,
-      tabIndex: 0
+      tabIndex: 0,
+      ref: rootElmRef,
+      style: { height: rowVirtualizer.getTotalSize() }
     },
+    void 0,
     cachedScenes.map((scene, i) => {
-      if (i >= currentIndex - ITEM_BUFFER_EACH_SIDE && i <= currentIndex + ITEM_BUFFER_EACH_SIDE) {
+      const style = {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "calc(var(--y-unit-large) * 100)",
+        transform: `translate3d(0, calc(var(--y-unit-large) * 100 * ${i}), 0)`,
+        ...{}
+      };
+      if (rowVirtualizer.getVirtualItems().some((v) => v.index === i)) {
         return /* @__PURE__ */ React.createElement(
           VideoItem$1,
           {
-            changeItemHandler: setCurrentIndex,
+            changeItemHandler: (newIndex) => {
+              scrollToIndex(newIndex);
+              setCurrentIndex(newIndex);
+            },
             currentIndex,
             index: i,
             key: scene.id,
-            scene
+            scene,
+            style,
+            currentlyScrolling: rowVirtualizer.isScrolling
           }
         );
-      } else return /* @__PURE__ */ React.createElement("div", { key: scene.id, className: "dummy-video-item" });
+      } else return /* @__PURE__ */ React.createElement("div", { key: scene.id, className: "dummy-video-item", style });
     })
   );
 };
@@ -172326,10 +173793,10 @@ class Engine {
     const config2 = this.config;
     if (!state._active) this.clean();
     if ((state._blocked || !state.intentional) && !state._force && !config2.triggerAllEvents) return;
-    const memo = this.handler(_objectSpread2(_objectSpread2(_objectSpread2({}, shared), state), {}, {
+    const memo2 = this.handler(_objectSpread2(_objectSpread2(_objectSpread2({}, shared), state), {}, {
       [this.aliasKey]: state.values
     }));
-    if (memo !== void 0) state.memo = memo;
+    if (memo2 !== void 0) state.memo = memo2;
   }
   clean() {
     this.eventStore.clean();
@@ -176380,8 +177847,9 @@ var host = createHost(primitives, {
 var animated = host.animated;
 function SettingsTab() {
   const ref = reactExports.useRef(null);
+  const overlayRef = reactExports.useRef(null);
   const { savedSceneFilters, stashTvConfig, updateStashTvConfig } = useStashConfigStore();
-  const { selectedSavedFilterId, setSelectedSavedFilterId, isRandomised, sceneFilter, setIsRandomised, scenesLoading, scenes, setShowSettings, crtEffect, setCrtEffect, showSettings } = useAppStateStore();
+  const { selectedSavedFilterId, setSelectedSavedFilterId, isRandomised, sceneFilter, setIsRandomised, scenesLoading, scenes, setShowSettings, crtEffect, setCrtEffect, showSettings, forceLandscape } = useAppStateStore();
   const noScenesAvailable = !scenesLoading && scenes.length === 0;
   const [sidebarWidth, setSidebarWidth] = React.useState(window.innerWidth);
   reactExports.useEffect(() => {
@@ -176430,19 +177898,32 @@ function SettingsTab() {
     });
   };
   const bind3 = useDrag((event) => {
-    const { values: values3, direction: [dx], dragging, offset: [ox], cancel, last, velocity: [vx], canceled } = event;
+    const {
+      xy: [xCord, yCord],
+      direction: [xDirection, yDirection],
+      offset: [xOffset, yOffset],
+      velocity: [xVelocity, yVelocity],
+      dragging,
+      cancel,
+      last,
+      canceled
+    } = event;
+    const xCordEffective = !forceLandscape ? xCord : window.innerHeight - yCord;
+    const xOffsetEffective = !forceLandscape ? xOffset : -yOffset;
+    const xVelocityEffective = !forceLandscape ? xVelocity : yVelocity;
+    const xDirectionEffective = !forceLandscape ? xDirection : -yDirection;
     if (dragging) {
-      if (values3[0] / sidebarWidth > 3) {
+      if (xCordEffective / sidebarWidth > 2) {
         cancel();
       } else {
-        api2.start({ x: ox, immediate: true });
+        api2.start({ x: xOffsetEffective, immediate: true });
       }
     } else if (last) {
-      if (vx > 0.5 && dx > 0) {
+      if (xVelocityEffective > 0.5 && xDirectionEffective > 0) {
         open({ canceled });
-      } else if (vx > 0.5 && dx < 0) {
+      } else if (xVelocityEffective > 0.5 && xDirectionEffective < 0) {
         close();
-      } else if (ox > sidebarWidth * 0.5) {
+      } else if (xOffsetEffective > sidebarWidth * 0.5) {
         open({ canceled });
       } else {
         close();
@@ -176452,10 +177933,43 @@ function SettingsTab() {
     filterTaps: true,
     bounds: () => ({ left: 0, right: sidebarWidth }),
     rubberband: true,
-    from: () => [x2.get(), 0]
+    from: () => !forceLandscape ? [x2.get(), 0] : [0, -x2.get()]
   });
+  const swipeZoneRef = reactExports.useRef(null);
+  reactExports.useEffect(() => {
+    const element = swipeZoneRef.current;
+    if (!element) return;
+    const handleClick = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const allElementsAtClickPoint = document.elementsFromPoint(event.clientX, event.clientY);
+      const nextElementBelow = allElementsAtClickPoint.find((el) => el !== element);
+      if (nextElementBelow) {
+        nextElementBelow.dispatchEvent(new MouseEvent(event.type, event));
+      }
+    };
+    element.addEventListener("click", handleClick);
+    return () => element.removeEventListener("click", handleClick);
+  }, [swipeZoneRef.current]);
   const overlayOpacity = x2.to((px2) => Math.min(sidebarWidth, px2 / sidebarWidth));
   const overlayDisplay = x2.to((px2) => px2 > 0 ? "block" : "none");
+  const getLandscapeModePositionStyleHack = () => forceLandscape ? {
+    position: "absolute",
+    top: `${document.body.scrollTop}px`
+  } : {};
+  const landscapeModePositionStyleHack = getLandscapeModePositionStyleHack();
+  reactExports.useEffect(() => {
+    const handleScroll = () => {
+      const rootElement = ref.current;
+      const overlayElement = overlayRef.current;
+      rootElement && Object.assign(rootElement.style, getLandscapeModePositionStyleHack());
+      overlayElement && Object.assign(overlayElement.style, getLandscapeModePositionStyleHack());
+    };
+    const scrollElement = forceLandscape ? document.body : document.scrollingElement;
+    if (!scrollElement) return;
+    scrollElement.addEventListener("scroll", handleScroll);
+    return () => scrollElement.removeEventListener("scroll", handleScroll);
+  }, [forceLandscape]);
   const closeButton = noScenesAvailable || scenesLoading ? null : /* @__PURE__ */ React.createElement(
     "button",
     {
@@ -176487,15 +178001,15 @@ function SettingsTab() {
       primary50: theme.colors.neutral80
     }
   });
-  const playlists = reactExports.useMemo(
+  const filters = reactExports.useMemo(
     () => savedSceneFilters.map((filter) => ({
       value: filter.id,
       label: filter.name + (filter.id === stashTvConfig.stashTvDefaultFilterID ? " (default)" : "")
     })).sort((a2, b) => a2.label.localeCompare(b.label)),
     [savedSceneFilters, stashTvConfig.stashTvDefaultFilterID]
   );
-  const selectedPlaylist = reactExports.useMemo(() => playlists.find((filter) => filter.value === selectedSavedFilterId), [selectedSavedFilterId, playlists]);
-  const scenelessFilterError = noScenesAvailable ? /* @__PURE__ */ React.createElement("div", { className: "error" }, /* @__PURE__ */ React.createElement("h2", null, "Playlist contains no scenes!"), /* @__PURE__ */ React.createElement("p", null, "No scenes were found in the currently selected playlist. Please choose a different one.")) : null;
+  const selectedFilter = reactExports.useMemo(() => filters.find((filter) => filter.value === selectedSavedFilterId), [selectedSavedFilterId, filters]);
+  const scenelessFilterError = noScenesAvailable ? /* @__PURE__ */ React.createElement("div", { className: "error" }, /* @__PURE__ */ React.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one.")) : null;
   const subtitlesList = ISO6391.getAllNames().map((name) => ({
     label: name,
     value: ISO6391.getCode(name)
@@ -176522,8 +178036,9 @@ function SettingsTab() {
     animated.div,
     {
       className: "settings-overlay",
-      style: { display: overlayDisplay, opacity: overlayOpacity },
-      onClick: () => close()
+      style: { display: overlayDisplay, opacity: overlayOpacity, ...landscapeModePositionStyleHack },
+      onClick: () => close(),
+      ref: overlayRef
     }
   ), /* @__PURE__ */ React.createElement(
     animated.div,
@@ -176531,39 +178046,40 @@ function SettingsTab() {
       className: cx("SettingsTab"),
       "data-testid": "SettingsTab",
       ref,
-      style: { right: x2.to((px2) => `calc(100% - ${px2}px)`) },
+      style: { right: x2.to((px2) => `calc(100% - ${px2}px)`), ...landscapeModePositionStyleHack },
       ...bind3()
     },
-    /* @__PURE__ */ React.createElement("div", { className: "content" }, /* @__PURE__ */ React.createElement("div", { className: "body" }, /* @__PURE__ */ React.createElement("div", { className: "item" }, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement("h3", null, "Select a playlist"), /* @__PURE__ */ React.createElement(
+    /* @__PURE__ */ React.createElement("div", { className: "swipe-zone", ref: swipeZoneRef }),
+    /* @__PURE__ */ React.createElement("div", { className: "content" }, /* @__PURE__ */ React.createElement("div", { className: "body" }, /* @__PURE__ */ React.createElement("div", { className: "item" }, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement("h3", null, "Select a filter"), /* @__PURE__ */ React.createElement(
       StateManagedSelect$1,
       {
-        defaultValue: selectedPlaylist,
+        defaultValue: selectedFilter,
         onChange: (newValue) => setSelectedSavedFilterId(newValue?.value ?? void 0),
-        options: playlists,
+        options: filters,
         placeholder: "None selected. Defaulted to all portrait scenes.",
         theme: reactSelectTheme
       }
-    )), /* @__PURE__ */ React.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV playlist"), fetchingDataWarning, scenelessFilterError), selectedPlaylist && selectedPlaylist.value !== stashTvConfig.stashTvDefaultFilterID && /* @__PURE__ */ React.createElement("div", { className: "item" }, /* @__PURE__ */ React.createElement(
+    )), /* @__PURE__ */ React.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), fetchingDataWarning, scenelessFilterError), selectedFilter && selectedFilter.value !== stashTvConfig.stashTvDefaultFilterID && /* @__PURE__ */ React.createElement("div", { className: "item" }, /* @__PURE__ */ React.createElement(
       "button",
       {
         onClick: () => {
           updateStashTvConfig({
             ...stashTvConfig,
-            stashTvDefaultFilterID: selectedPlaylist?.value
+            stashTvDefaultFilterID: selectedFilter?.value
           });
         }
       },
       'Set "',
-      selectedPlaylist?.label,
-      '" as the default playlist'
-    ), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("small", null, "Set the currently selected scene filter as the default playlist when opening Stash TV."))), /* @__PURE__ */ React.createElement("div", { className: "item checkbox-item" }, sceneFilter?.generalFilter?.sort?.startsWith("random_") ? /* @__PURE__ */ React.createElement("span", null, "Playlist is set to random order") : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement(
+      selectedFilter?.label,
+      '" as the default filter'
+    ), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("small", null, "Set the currently selected scene filter as the default filter when opening Stash TV."))), /* @__PURE__ */ React.createElement("div", { className: "item checkbox-item" }, sceneFilter?.generalFilter?.sort?.startsWith("random_") ? /* @__PURE__ */ React.createElement("span", null, "Filter is set to random order") : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement(
       "input",
       {
         checked: isRandomised,
         onChange: (event) => setIsRandomised(event.target.checked),
         type: "checkbox"
       }
-    ), /* @__PURE__ */ React.createElement("h3", null, "Randomise playlist order")), /* @__PURE__ */ React.createElement("small", null, "Randomise the order of scenes in the playlist."))), /* @__PURE__ */ React.createElement("div", { className: "item" }, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement("h3", null, "Subtitle language"), /* @__PURE__ */ React.createElement(
+    ), /* @__PURE__ */ React.createElement("h3", null, "Randomise filter order")), /* @__PURE__ */ React.createElement("small", null, "Randomise the order of scenes in the filter."))), /* @__PURE__ */ React.createElement("div", { className: "item" }, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement("h3", null, "Subtitle language"), /* @__PURE__ */ React.createElement(
       StateManagedSelect$1,
       {
         defaultValue: defaultSubtitles,
@@ -176585,7 +178101,7 @@ const Loading = (props) => {
   const smallText = props.text ?? null;
   return /* @__PURE__ */ React.createElement("div", { className: "Loading", "data-testid": "Loader" }, /* @__PURE__ */ React.createElement("h2", null, props.heading), smallText, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true })));
 };
-const FeedPage = () => {
+const FeedPage = ({ className }) => {
   const { scenesLoading, scenes, showSettings, setShowSettings, fullscreen } = useAppStateStore();
   if (!scenesLoading && scenes.length === 0) {
     setShowSettings(true);
@@ -176598,14 +178114,14 @@ const FeedPage = () => {
       return;
     }
     if (fullscreen) {
-      pageRef.current?.requestFullscreen();
+      pageRef.current?.requestFullscreen?.();
     } else {
-      document.exitFullscreen();
+      document.exitFullscreen?.();
     }
   }, [fullscreen]);
   if (scenesLoading && !showSettings)
     return /* @__PURE__ */ React.createElement(Loading, { heading: "Fetching scenes..." });
-  return /* @__PURE__ */ React.createElement("main", { "data-testid": "FeedPage", ref: pageRef }, /* @__PURE__ */ React.createElement(VideoScroller, null), /* @__PURE__ */ React.createElement(SettingsTab, null));
+  return /* @__PURE__ */ React.createElement("main", { "data-testid": "FeedPage", ref: pageRef, className }, /* @__PURE__ */ React.createElement(VideoScroller, null), /* @__PURE__ */ React.createElement(SettingsTab, null));
 };
 const modifierMessageIDs = {
   [CriterionModifier.Equals]: "criterion_modifier.equals",
@@ -180030,9 +181546,8 @@ class ListFilterModel {
 }
 const App = () => {
   const apolloClient = useApolloClient();
-  setCssVH();
   const { loadStashConfig, getSavedFilter, stashTvConfig, loading: stashConfigLoading } = useStashConfigStore();
-  const { setSceneFilter, sceneFilter, scenesLoading, selectedSavedFilterId, setSelectedSavedFilterId, ...otherAppState } = useAppStateStore();
+  const { setSceneFilter, sceneFilter, scenesLoading, selectedSavedFilterId, setSelectedSavedFilterId, forceLandscape, ...otherAppState } = useAppStateStore();
   reactExports.useEffect(() => {
     if (!apolloClient) return;
     loadStashConfig(apolloClient).catch((error) => {
@@ -180063,6 +181578,7 @@ const App = () => {
       }
     });
   }, [stashConfigLoading, selectedSavedFilterId, otherAppState.isRandomised]);
+  document.documentElement.className = cx({ "force-landscape": forceLandscape });
   return /* @__PURE__ */ React.createElement(FeedPage, null);
 };
 const processSavedFilterToGeneralFilter = (savedFilter, stashTvConfig, otherAppState) => {
@@ -180089,4 +181605,4 @@ ReactDOM.render(
 export {
   videojs as v
 };
-//# sourceMappingURL=index-BpT9v1c_.js.map
+//# sourceMappingURL=index-CKKKRVdL.js.map
