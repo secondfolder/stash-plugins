@@ -25,7 +25,7 @@
   height: 100%;
   background: #000;
   position: relative;
-  border: 1px solid transparent;
+  transition: filter 1s;
 }
 .VideoItem .loadingDeferredPreview, .VideoItem .loadingDeferredDebugBackground {
   position: absolute;
@@ -126,6 +126,9 @@
   border-radius: var(--size);
   margin: calc(var(--size) / 2 * -1) 0 0 calc(var(--size) / 2 * -1);
   opacity: 0.3;
+}
+.VideoItem .vjs-control-bar {
+  transition: opacity 0.6s;
 }
 .VideoItem:not(.inViewport):not(.currentlyScrolling) {
   filter: brightness(0.7);
@@ -2400,6 +2403,9 @@ video::-webkit-media-text-track-display {
   want it to be visible.
   */
 }
+.ScenePlayer .video-js:not(.vjs-has-started):not(.vjs-using-native-controls) video {
+  opacity: 0;
+}
 .ScenePlayer .video-js .vjs-progress-control:has(.vjs-marker-dot:hover) .vjs-mouse-display {
   translate: -4px;
 }
@@ -2759,74 +2765,7 @@ video::-webkit-media-text-track-display {
 @font-face {
   src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/sys.ttf) format("truetype");
   font-family: "Sys";
-}.SettingsTab {
-  height: calc(var(--y-unit-small) * 100);
-  position: fixed;
-  top: var(--safe-inset-top);
-  width: min(300px, 80%);
-  touch-action: none;
-  background-color: black;
-  max-height: 100%;
-}
-.SettingsTab::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  right: 0;
-  width: calc(var(--x-unit-large) * 120);
-  height: 200%;
-  background-color: inherit;
-}
-.SettingsTab .swipe-zone {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 100%;
-  width: 50%;
-  height: calc(100% - var(--y-dynamic-diff) - 2em); /* Bit of a hack to stop it covering the video progress bar */
-  z-index: 1; /* This as to be at last 1 to be interactive but should be below the video progress bar */
-}
-.SettingsTab .content {
-  background: inherit;
-  height: 100%;
-  height: calc(var(--y-unit-dynamic) * 100);
-  width: 100%;
-  z-index: 10;
-  position: relative;
-  display: grid;
-  grid-template-rows: [canvas-top main-top] 1fr [main-bottom footer-top] minmax(70px, max-content) [footer-bottom canvas-bottom];
-}
-.SettingsTab .body {
-  padding: 10px;
-  grid-row: main-top/main-bottom;
-  overflow-y: auto;
-}
-.SettingsTab .footer {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  grid-row: footer-top/footer-bottom;
-}
-.SettingsTab .footer h2 {
-  margin-right: auto;
-  margin-bottom: 0;
-}
-.SettingsTab .footer button {
-  appearance: none;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  width: 50px;
-  background-color: transparent;
-  color: white;
-  font-size: 28px;
-  line-height: 1;
-}
-.SettingsTab .item:not(:last-child) {
+}.SettingsTab .item:not(:last-child) {
   margin-bottom: 20px;
 }
 .SettingsTab .checkbox-item label {
@@ -2856,6 +2795,61 @@ video::-webkit-media-text-track-display {
 }
 .SettingsTab--warning {
   border-color: gold;
+}.SideDrawer {
+  height: calc(var(--y-unit-dynamic) * 100);
+  position: fixed;
+  top: var(--safe-inset-top);
+  width: min(300px, 80%);
+  background-color: black;
+  max-height: 100%;
+}
+.SideDrawer::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: 0;
+  width: calc(var(--x-unit-large) * 120);
+  height: 200%;
+  background-color: inherit;
+}
+.SideDrawer .content {
+  background: inherit;
+  height: 100%; /* this is too small in iOS safari but too big when viewed as a web app on iOS */
+  width: 100%;
+  z-index: 10;
+  position: relative;
+  display: grid;
+  grid-template-rows: [canvas-top main-top] 1fr [main-bottom footer-top] max-content [footer-bottom canvas-bottom];
+  padding: 1.5em;
+  gap: 1.5em;
+}
+.SideDrawer .body {
+  grid-row: main-top/main-bottom;
+  overflow-y: auto;
+}
+.SideDrawer .footer {
+  display: flex;
+  align-items: center;
+  grid-row: footer-top/footer-bottom;
+}
+.SideDrawer .footer h2 {
+  margin-right: auto;
+  margin-bottom: 0;
+}
+.SideDrawer .footer button {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  background-color: transparent;
+  color: white;
+  font-size: 28px;
+  line-height: 1;
 }
 
 .settings-overlay {
@@ -2866,6 +2860,7 @@ video::-webkit-media-text-track-display {
   height: calc(var(--y-unit-large) * 200);
   background-color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
+  touch-action: none; /* Disable scrolling videos when side drawer is open */
 }.Loading {
   height: calc(var(--y-unit-small) * 100);
   width: 100%;
@@ -2985,8 +2980,7 @@ html {
   container: viewport/size;
 }
 
-html.force-landscape,
-html.force-landscape body {
+html.force-landscape {
   /*
   When in force landscape mode it shouldn't be possible to scroll up and down
   the viewport, instead scrolling should occur horizontally inside the rotated
@@ -2999,7 +2993,6 @@ html.force-landscape body {
 }
 
 html.force-landscape {
-  scroll-snap-type: unset; /* When the root is rotated scroll snapping doesn't seem to work on the root so we set it on a child instead */
   --x-unit-small: 1svh;
   --y-unit-small: 1svw;
   --x-unit-large: 1lvh;
@@ -3010,23 +3003,26 @@ html.force-landscape {
   --safe-inset-right: env(safe-area-inset-top, 0);
   --safe-inset-bottom: env(safe-area-inset-right, 0);
   --safe-inset-left: env(safe-area-inset-bottom, 0);
-}
-html.force-landscape .VideoItem,
-html.force-landscape .VideoItem .ScenePlayer {
-  height: 100%;
-}
-
-html.force-landscape body {
-  height: 100svw;
-  width: calc(100svh + env(safe-area-inset-top));
+  scroll-snap-type: unset; /* When the root is rotated scroll snapping doesn't seem to work on the root so we set it on a child instead */
   position: absolute;
   left: 50%;
   top: calc(50% + env(safe-area-inset-top) / 2);
   transform: translate(-50%, -50%) rotate(-90deg);
   transform-origin: center center 0px;
+  overflow: hidden;
+}
+
+html.force-landscape,
+html.force-landscape body {
+  height: 100svw;
+  width: calc(100svh + env(safe-area-inset-top));
+}
+
+html.force-landscape body {
   overflow-y: scroll;
   overflow-x: hidden; /* Prevent SettingsTab from causing horizontal scroll */
   scroll-snap-type: y mandatory;
+  position: relative;
 }
 
 /* -------------------------------------------------------------------------- */

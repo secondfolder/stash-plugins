@@ -10884,6 +10884,23 @@ const GENDERS = [
 function clamp$2(min2, num, max2) {
   return Math.min(Math.max(num, min2), max2);
 }
+function updateReadOnlyProp(obj, prop, value) {
+  Object.defineProperty(obj, prop, { value, writable: true, enumerable: isEnumerableIncludingInherited(obj, prop) });
+}
+function updateReadOnlyProps(obj, props) {
+  for (const [prop, value] of Object.entries(props)) {
+    updateReadOnlyProp(obj, prop, value);
+  }
+}
+function isEnumerableIncludingInherited(obj, prop) {
+  let current = obj;
+  while (current) {
+    const desc = Object.getOwnPropertyDescriptor(current, prop);
+    if (desc) return !!desc.enumerable;
+    current = Object.getPrototypeOf(current);
+  }
+  return false;
+}
 const PLUGIN_NAMESPACE = "stash-tv";
 const TRANSITION_DURATION = 150;
 const DEFAULT_MAXIMUM_SCENES = 500;
@@ -21621,7 +21638,7 @@ function getBoundingClientRect$1(el) {
     return result;
   }
 }
-function findPosition$1(el) {
+function findPosition(el) {
   if (!el || el && !el.offsetParent) {
     return {
       left: 0,
@@ -21646,7 +21663,7 @@ function findPosition$1(el) {
     height: height2
   };
 }
-function getPointerPosition$1(el, event) {
+function getPointerPosition(el, event) {
   var translated = {
     x: 0,
     y: 0
@@ -21668,8 +21685,8 @@ function getPointerPosition$1(el, event) {
     }
   }
   var position2 = {};
-  var boxTarget = findPosition$1(event.target);
-  var box = findPosition$1(el);
+  var boxTarget = findPosition(event.target);
+  var box = findPosition(el);
   var boxW = box.width;
   var boxH = box.height;
   var offsetY = event.offsetY - (box.top - boxTarget.top);
@@ -21759,8 +21776,8 @@ var Dom = /* @__PURE__ */ Object.freeze({
   blockTextSelection,
   unblockTextSelection,
   getBoundingClientRect: getBoundingClientRect$1,
-  findPosition: findPosition$1,
-  getPointerPosition: getPointerPosition$1,
+  findPosition,
+  getPointerPosition,
   isTextNode,
   emptyEl,
   normalizeContent,
@@ -26645,7 +26662,7 @@ var Slider = /* @__PURE__ */ (function(_Component) {
     return Number(clamp$1(this.getPercent(), 0, 1).toFixed(4));
   };
   _proto.calculateDistance = function calculateDistance(event) {
-    var position2 = getPointerPosition$1(this.el_, event);
+    var position2 = getPointerPosition(this.el_, event);
     if (this.vertical()) {
       return position2.y;
     }
@@ -26779,7 +26796,7 @@ var TimeTooltip = /* @__PURE__ */ (function(_Component) {
     });
   };
   _proto.update = function update2(seekBarRect, seekBarPoint, content) {
-    var tooltipRect = findPosition$1(this.el_);
+    var tooltipRect = findPosition(this.el_);
     var playerRect = getBoundingClientRect$1(this.player_.el());
     var seekBarPointPx = seekBarRect.width * seekBarPoint;
     if (!playerRect || !tooltipRect) {
@@ -27192,8 +27209,8 @@ var ProgressControl = /* @__PURE__ */ (function(_Component) {
       return;
     }
     var seekBarEl = seekBar.el();
-    var seekBarRect = findPosition$1(seekBarEl);
-    var seekBarPoint = getPointerPosition$1(seekBarEl, event).x;
+    var seekBarRect = findPosition(seekBarEl);
+    var seekBarPoint = getPointerPosition(seekBarEl, event).x;
     seekBarPoint = clamp$1(seekBarPoint, 0, 1);
     if (mouseTimeDisplay) {
       mouseTimeDisplay.update(seekBarRect, seekBarPoint);
@@ -27518,7 +27535,7 @@ var VolumeBar = /* @__PURE__ */ (function(_Slider) {
       var volumeBarEl = this.el();
       var volumeBarRect = getBoundingClientRect$1(volumeBarEl);
       var vertical = this.vertical();
-      var volumeBarPoint = getPointerPosition$1(volumeBarEl, event);
+      var volumeBarPoint = getPointerPosition(volumeBarEl, event);
       volumeBarPoint = vertical ? volumeBarPoint.y : volumeBarPoint.x;
       volumeBarPoint = clamp$1(volumeBarPoint, 0, 1);
       mouseVolumeLevelDisplay.update(volumeBarRect, volumeBarPoint, vertical);
@@ -165355,82 +165372,6 @@ const ScenePlayer$1 = PatchComponent("ScenePlayer", ({ scene, hideScrubberOverri
     "no-file": !file
   }), onKeyDownCapture: onKeyDown, children: [jsxRuntimeExports.jsx("div", { className: "video-wrapper", ref: videoRef }), scene.interactive && (interactiveState !== ConnectionState.Ready || ((_e = getPlayer()) === null || _e === void 0 ? void 0 : _e.paused())) && jsxRuntimeExports.jsx(SceneInteractiveStatus, {}), file && showScrubber && jsxRuntimeExports.jsx(ScenePlayerScrubber, { file, scene, time, onSeek: onScrubberSeek, onScroll: onScrubberScroll })] });
 });
-function addSupportForLandscapeSupport(videojs2) {
-  videojs2.hook("setup", (player) => {
-    const seekBar = player.getChild("controlBar")?.getChild("progressControl")?.getChild("seekBar");
-    if (seekBar) {
-      seekBar.calculateDistance = function(event) {
-        const position2 = getPointerPosition(this.el_, event);
-        if (this.vertical()) {
-          return position2.y;
-        }
-        return position2.x;
-      };
-    }
-  });
-}
-function findPosition(el, rootElm) {
-  if (!el || el && !el.offsetParent) {
-    return {
-      left: 0,
-      top: 0,
-      width: 0,
-      height: 0
-    };
-  }
-  const width2 = el.offsetWidth;
-  const height2 = el.offsetHeight;
-  let left = 0;
-  let top = 0;
-  while (el.offsetParent && el !== rootElm) {
-    left += el.offsetLeft;
-    top += el.offsetTop;
-    el = el.offsetParent;
-  }
-  return {
-    left,
-    top,
-    width: width2,
-    height: height2
-  };
-}
-function getPointerPosition(el, event) {
-  const rootElm = document.scrollingElement;
-  if (!(rootElm instanceof HTMLElement)) {
-    throw new Error("Root element not found");
-  }
-  const targetElm = event.target;
-  if (!(targetElm instanceof HTMLElement)) {
-    throw new Error("Event target not found");
-  }
-  const isForcedLandscapeMode = document.querySelector("main")?.classList.contains("force-landscape");
-  const boxTarget = findPosition(targetElm, rootElm);
-  const box = findPosition(el, rootElm);
-  let boxW = box.width;
-  let boxH = box.height;
-  let offsetY;
-  let offsetX;
-  if ("changedTouches" in event) {
-    const touchEvent = event;
-    offsetX = touchEvent.changedTouches[0].pageX - box.left;
-    offsetY = touchEvent.changedTouches[0].pageY + box.top;
-    if (isForcedLandscapeMode) {
-      offsetX = rootElm.offsetWidth - touchEvent.changedTouches[0].pageY - box.left;
-      offsetY = touchEvent.changedTouches[0].pageX;
-    }
-  } else if ("offsetY" in event) {
-    const mouseEvent = event;
-    offsetY = mouseEvent.offsetY - (box.top - boxTarget.top);
-    offsetX = mouseEvent.offsetX - (box.left - boxTarget.left);
-  } else {
-    console.info("Event: ", event);
-    throw new Error("Unsupported event type");
-  }
-  return {
-    y: 1 - Math.max(0, Math.min(1, offsetY / boxH)),
-    x: Math.max(0, Math.min(1, offsetX / boxW))
-  };
-}
 function allowPluginRemoval(videojs2) {
   videojs2.hook("beforesetup", function(videoEl, options2) {
     return {
@@ -165521,7 +165462,7 @@ async function getOriginalPlugin() {
     pluginName = pluginNameToBeRegistered;
     plugin = pluginToBeRegistered;
   };
-  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-BPBeN5rW.js"), true ? [] : void 0, import.meta.url);
+  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-UxtKPQuQ.js"), true ? [] : void 0, import.meta.url);
   videojs.registerPlugin = originalRegisterPlugin;
   if (!pluginName || !plugin) {
     throw new Error(`Failed to load original videojs-overlay-buttons plugin`);
@@ -165561,7 +165502,6 @@ videojs.hook("setup", function(player) {
   const sceneId = player.el().parentElement?.parentElement?.parentElement?.dataset.sceneId;
   videoJsSetupCallbacks[sceneId || ""]?.(player);
 });
-addSupportForLandscapeSupport(videojs);
 videojs.hook("beforesetup", function(videoEl, options2) {
   return {
     userActions: {
@@ -165620,22 +165560,32 @@ videojs.hook("beforesetup", function(videoEl, options2) {
 });
 allowPluginRemoval(videojs);
 ScenePlayer$1.displayName = "ScenePlayerOriginal";
-const ScenePlayer = reactExports.forwardRef(({ className, onTimeUpdate, hideControls, hideProgressBar, onClick, onEnded, onVideojsPlayerReady, optionsToMerge, muted, ...otherProps }, ref) => {
+const ScenePlayer = reactExports.forwardRef(({ className, onTimeUpdate, hideControls, hideProgressBar, onClick, onEnded, onVideojsPlayerReady, optionsToMerge, muted, loop: loop2, ...otherProps }, ref) => {
   const containerRef = reactExports.useRef(null);
   const [videoElm, setVideoElm] = reactExports.useState(null);
   const [videojsPlayer, setVideojsPlayer] = reactExports.useState(null);
   const videojsPlayerRef = reactExports.useRef(null);
-  if (onVideojsPlayerReady) {
-    videoJsSetupCallbacks[otherProps.scene.id] = onVideojsPlayerReady;
-  }
+  videoJsSetupCallbacks[otherProps.scene.id] = (player) => {
+    if (loop2 !== void 0) {
+      setTimeout(() => !player.isDisposed() && player.loop(loop2), 100);
+    }
+    onVideojsPlayerReady?.(player);
+  };
   videoJsOptionsOverride[otherProps.scene.id] = {
-    muted,
+    muted: false,
+    loop: loop2,
+    // Unfortunately this doesn't seem to work since the stash ScenePlayer component seems immediately set
+    // the loop value itself after initialization so we have to set it the player ready callback
     ...optionsToMerge
   };
   reactExports.useEffect(() => {
     if (muted === void 0) return;
     videojsPlayerRef.current?.muted(muted);
   }, [muted]);
+  reactExports.useEffect(() => {
+    if (loop2 === void 0) return;
+    videojsPlayerRef.current?.loop(loop2);
+  }, [loop2]);
   reactExports.useEffect(() => {
     return () => {
       const videojsPlayer2 = videojsPlayerRef.current;
@@ -165726,6 +165676,7 @@ const ScenePlayer = reactExports.forwardRef(({ className, onTimeUpdate, hideCont
       ScenePlayer$1,
       {
         ...otherProps,
+        permitLoop: true,
         scene: otherProps.scene
       }
     )
@@ -166630,8 +166581,7 @@ const SvgVerticalEllipsisOutline = (props) => /* @__PURE__ */ reactExports.creat
 }, fill: "currentColor" }));
 const VideoItem = (props) => {
   reactExports.useEffect(() => {
-    console.log(`Mounted VideoItem index=${props.index} sceneId=${props.scene.id}`);
-    return () => console.log(`Unmounted VideoItem index=${props.index} sceneId=${props.scene.id}`);
+    return () => void 0;
   }, []);
   const {
     showSettings,
@@ -166682,6 +166632,9 @@ const VideoItem = (props) => {
     if (audioMuted !== player.muted()) {
       setAudioMuted(player.muted());
     }
+    player.getChild("ControlBar")?.progressControl?.el().addEventListener("pointermove", (event) => {
+      event.stopPropagation();
+    });
   }
   reactExports.useEffect(() => {
     const videojsPlayer = videojsPlayerRef.current;
@@ -166785,12 +166738,8 @@ const VideoItem = (props) => {
   };
   const itemRef = reactExports.useRef(null);
   const handleOnEnded = () => {
-    if (!looping && !!itemRef.current)
-      itemRef.current.nextElementSibling?.scrollIntoView();
+    if (!looping) props.changeItemHandler((currentIndex) => currentIndex + 1);
   };
-  reactExports.useEffect(() => {
-    if (videoRef.current) videoRef.current.loop = looping;
-  }, [looping]);
   const [sceneInfoOpen, setSceneInfoOpen] = reactExports.useState(false);
   const sceneInfoPanelRef = reactExports.useRef(null);
   const sceneInfoButtonClickHandler = () => {
@@ -166862,7 +166811,7 @@ const VideoItem = (props) => {
         hideScrubberOverride: true,
         muted: audioMuted,
         autoplay: false,
-        permitLoop: true,
+        loop: looping,
         initialTimestamp: 0,
         sendSetTimestamp: () => {
         },
@@ -168259,6 +168208,30 @@ const VideoScroller = () => {
       }
     };
   }, []);
+  const [itemsToRenderFrozen, setItemsToRenderFrozen] = reactExports.useState(false);
+  const itemsToRenderFrozenRef = reactExports.useRef(false);
+  const previousIsForceLandscapeRef = reactExports.useRef(void 0);
+  if (previousIsForceLandscapeRef.current !== isForceLandscape) {
+    const previousIsForceLandscape = previousIsForceLandscapeRef.current;
+    previousIsForceLandscapeRef.current = isForceLandscape;
+    if (previousIsForceLandscape !== void 0) {
+      setItemsToRenderFrozen(true);
+      itemsToRenderFrozenRef.current = true;
+      setTimeout(() => {
+        setItemsToRenderFrozen(false);
+        itemsToRenderFrozenRef.current = false;
+      }, 100);
+    }
+  }
+  const previousItemIndexesToRenderRef = reactExports.useRef([]);
+  const itemIndexesToRender = reactExports.useMemo(() => {
+    if (itemsToRenderFrozenRef.current && previousItemIndexesToRenderRef.current) {
+      return previousItemIndexesToRenderRef.current;
+    }
+    const newItemIndexesToRender = rowVirtualizer.getVirtualItems().map((v) => v.index);
+    previousItemIndexesToRenderRef.current = newItemIndexesToRender;
+    return newItemIndexesToRender;
+  }, [rowVirtualizer.getVirtualItems(), itemsToRenderFrozen]);
   return /* @__PURE__ */ React.createElement(
     "div",
     {
@@ -168279,7 +168252,7 @@ const VideoScroller = () => {
         transform: `translate3d(0, calc(var(--y-unit-large) * 100 * ${i}), 0)`,
         ...{}
       };
-      if (rowVirtualizer.getVirtualItems().some((v) => v.index === i)) {
+      if (itemIndexesToRender.includes(i)) {
         return /* @__PURE__ */ React.createElement(
           VideoItem$1,
           {
@@ -177845,12 +177818,11 @@ var host = createHost(primitives, {
   getComponentProps: ({ scrollTop, scrollLeft, ...props }) => props
 });
 var animated = host.animated;
-function SettingsTab() {
+function SideDrawer({ children, title, closeDisabled, className }) {
   const ref = reactExports.useRef(null);
+  const bodyRef = reactExports.useRef(null);
   const overlayRef = reactExports.useRef(null);
-  const { savedSceneFilters, stashTvConfig, updateStashTvConfig } = useStashConfigStore();
-  const { selectedSavedFilterId, setSelectedSavedFilterId, isRandomised, sceneFilter, setIsRandomised, scenesLoading, scenes, setShowSettings, crtEffect, setCrtEffect, showSettings, forceLandscape } = useAppStateStore();
-  const noScenesAvailable = !scenesLoading && scenes.length === 0;
+  const { setShowSettings, showSettings, forceLandscape } = useAppStateStore();
   const [sidebarWidth, setSidebarWidth] = React.useState(window.innerWidth);
   reactExports.useEffect(() => {
     const width2 = ref?.current?.clientWidth;
@@ -177858,9 +177830,42 @@ function SettingsTab() {
       setSidebarWidth(width2);
     }
   }, []);
+  reactExports.useEffect(() => {
+    if (!showSettings || !ref.current) return;
+    let initialClientY;
+    const handleTouchStart = (event) => {
+      initialClientY = event.touches[0].clientY;
+    };
+    const handleTouchMove = (event) => {
+      if (initialClientY === void 0) return;
+      if (!bodyRef.current) return;
+      const atTop = bodyRef.current.scrollTop === 0;
+      const atBottom = bodyRef.current.scrollHeight - bodyRef.current.scrollTop === bodyRef.current.clientHeight;
+      const deltaY = event.touches[0].clientY - initialClientY;
+      const isScrollingDown = deltaY < 0;
+      const isScrollingUp = deltaY > 0;
+      if (atTop && isScrollingUp || atBottom && isScrollingDown) {
+        event.preventDefault();
+      }
+    };
+    const handleTouchEnd = () => {
+      initialClientY = void 0;
+    };
+    ref.current?.addEventListener("touchstart", handleTouchStart);
+    ref.current?.addEventListener("touchmove", handleTouchMove);
+    ref.current?.addEventListener("touchend", handleTouchEnd);
+    return () => {
+      ref.current?.removeEventListener("touchstart", handleTouchStart);
+      ref.current?.removeEventListener("touchmove", handleTouchMove);
+      ref.current?.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [showSettings, forceLandscape]);
   const [{ x: x2 }, api2] = useSpring(() => ({
     from: {
-      x: showSettings || noScenesAvailable ? 0 : 0
+      x: 0
+      // Ideally this would be `showSettings ? sidebarWidth : 0` but we don't have a precise value for 
+      // sidebarWidth on first render so we start closed and then open immediately if needed when sidebarWidth is set
+      // with a precise value
     },
     config: {
       mass: 0.3,
@@ -177868,17 +177873,19 @@ function SettingsTab() {
       friction: 26
     }
   }));
+  const showSettingsFirstTimeRef = reactExports.useRef(true);
   reactExports.useEffect(() => {
     if (showSettings) {
-      open();
+      open({ immediate: showSettingsFirstTimeRef.current });
     } else {
       close();
     }
+    showSettingsFirstTimeRef.current = false;
   }, [showSettings]);
-  const open = ({ canceled } = { canceled: false }) => {
+  const open = ({ canceled, immediate } = { canceled: false, immediate: false }) => {
     api2.start({
       x: sidebarWidth,
-      immediate: false,
+      immediate,
       // when cancel is true, it means that the user passed the drag right threshold
       // so we change the spring config to create a nice wobbly effect
       config: canceled ? {
@@ -177897,33 +177904,45 @@ function SettingsTab() {
       onRest: () => setShowSettings(false)
     });
   };
-  const bind3 = useDrag((event) => {
+  const didDragRef = reactExports.useRef(false);
+  useDrag((state) => {
     const {
-      xy: [xCord, yCord],
-      direction: [xDirection, yDirection],
-      offset: [xOffset, yOffset],
-      velocity: [xVelocity, yVelocity],
+      xy: [xCord],
+      offset: [xOffset],
+      direction: [xDirection],
+      velocity: [xVelocity],
       dragging,
       cancel,
       last,
-      canceled
-    } = event;
-    const xCordEffective = !forceLandscape ? xCord : window.innerHeight - yCord;
-    const xOffsetEffective = !forceLandscape ? xOffset : -yOffset;
-    const xVelocityEffective = !forceLandscape ? xVelocity : yVelocity;
-    const xDirectionEffective = !forceLandscape ? xDirection : -yDirection;
+      canceled,
+      first
+    } = state;
+    if (first) {
+      if (x2.get() === 0 && xCord > x2.get() + sidebarWidth) {
+        return cancel();
+      }
+    }
     if (dragging) {
-      if (xCordEffective / sidebarWidth > 2) {
+      didDragRef.current = true;
+      if (xDirection > 0 && xCord / sidebarWidth > 2) {
         cancel();
       } else {
-        api2.start({ x: xOffsetEffective, immediate: true });
+        api2.start({ x: xOffset, immediate: true });
       }
     } else if (last) {
-      if (xVelocityEffective > 0.5 && xDirectionEffective > 0) {
+      if (didDragRef.current) {
+        window.addEventListener(
+          "click",
+          (event) => didDragRef.current && event.stopPropagation(),
+          { once: true, capture: true }
+        );
+        setTimeout(() => didDragRef.current = false, 50);
+      }
+      if (xVelocity > 0.5 && xDirection > 0) {
         open({ canceled });
-      } else if (xVelocityEffective > 0.5 && xDirectionEffective < 0) {
+      } else if (xVelocity > 0.5 && xDirection < 0) {
         close();
-      } else if (xOffsetEffective > sidebarWidth * 0.5) {
+      } else if (xOffset > sidebarWidth * 0.5) {
         open({ canceled });
       } else {
         close();
@@ -177933,24 +177952,15 @@ function SettingsTab() {
     filterTaps: true,
     bounds: () => ({ left: 0, right: sidebarWidth }),
     rubberband: true,
-    from: () => !forceLandscape ? [x2.get(), 0] : [0, -x2.get()]
+    from: () => [x2.get(), 0],
+    target: window,
+    preventScroll: true
   });
-  const swipeZoneRef = reactExports.useRef(null);
   reactExports.useEffect(() => {
-    const element = swipeZoneRef.current;
-    if (!element) return;
-    const handleClick = (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      const allElementsAtClickPoint = document.elementsFromPoint(event.clientX, event.clientY);
-      const nextElementBelow = allElementsAtClickPoint.find((el) => el !== element);
-      if (nextElementBelow) {
-        nextElementBelow.dispatchEvent(new MouseEvent(event.type, event));
-      }
-    };
-    element.addEventListener("click", handleClick);
-    return () => element.removeEventListener("click", handleClick);
-  }, [swipeZoneRef.current]);
+    window.addEventListener("click", (event) => {
+      Object.defineProperty(event, "detail", { value: 0, writable: true });
+    }, { capture: true });
+  }, []);
   const overlayOpacity = x2.to((px2) => Math.min(sidebarWidth, px2 / sidebarWidth));
   const overlayDisplay = x2.to((px2) => px2 > 0 ? "block" : "none");
   const getLandscapeModePositionStyleHack = () => forceLandscape ? {
@@ -177970,16 +177980,39 @@ function SettingsTab() {
     scrollElement.addEventListener("scroll", handleScroll);
     return () => scrollElement.removeEventListener("scroll", handleScroll);
   }, [forceLandscape]);
-  const closeButton = noScenesAvailable || scenesLoading ? null : /* @__PURE__ */ React.createElement(
+  const closeButton = closeDisabled ? null : /* @__PURE__ */ React.createElement(
     "button",
     {
-      "data-testid": "SettingsTab--closeButton",
+      "data-testid": "SideDrawer--closeButton",
       onClick: () => setShowSettings(false),
       type: "button"
     },
     /* @__PURE__ */ React.createElement(FontAwesomeIcon, { icon: faXmark }),
     /* @__PURE__ */ React.createElement("span", { className: "sr-only" }, "Close settings")
   );
+  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(
+    animated.div,
+    {
+      className: "settings-overlay",
+      style: { display: overlayDisplay, opacity: overlayOpacity, ...landscapeModePositionStyleHack },
+      onClick: () => close(),
+      ref: overlayRef
+    }
+  ), /* @__PURE__ */ React.createElement(
+    animated.div,
+    {
+      className: cx("SideDrawer", className),
+      "data-testid": "SideDrawer",
+      ref,
+      style: { right: x2.to((px2) => `calc(100% - ${px2}px)`), ...landscapeModePositionStyleHack }
+    },
+    /* @__PURE__ */ React.createElement("div", { className: "content" }, /* @__PURE__ */ React.createElement("div", { className: "body", ref: bodyRef }, children), /* @__PURE__ */ React.createElement("div", { className: "footer" }, /* @__PURE__ */ React.createElement("h2", null, title), closeButton))
+  ));
+}
+function SettingsTab() {
+  const { savedSceneFilters, stashTvConfig, updateStashTvConfig } = useStashConfigStore();
+  const { selectedSavedFilterId, setSelectedSavedFilterId, isRandomised, sceneFilter, setIsRandomised, scenesLoading, scenes, crtEffect, setCrtEffect } = useAppStateStore();
+  const noScenesAvailable = !scenesLoading && scenes.length === 0;
   const fetchingDataWarning = scenesLoading ? /* @__PURE__ */ React.createElement("div", { className: "warning" }, /* @__PURE__ */ React.createElement("h2", null, /* @__PURE__ */ React.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true }), /* @__PURE__ */ React.createElement("span", null, "Fetching data from Stash...")), /* @__PURE__ */ React.createElement("p", null, "Please wait while data is loaded.")) : null;
   const reactSelectTheme = (theme) => ({
     ...theme,
@@ -178032,70 +178065,51 @@ function SettingsTab() {
       subtitleLanguage: option?.value ?? void 0
     });
   };
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(
-    animated.div,
+  return /* @__PURE__ */ React.createElement(SideDrawer, { title: "Settings", closeDisabled: noScenesAvailable || scenesLoading, className: "SettingsTab" }, /* @__PURE__ */ React.createElement("div", { className: "item" }, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement("h3", null, "Select a filter"), /* @__PURE__ */ React.createElement(
+    StateManagedSelect$1,
     {
-      className: "settings-overlay",
-      style: { display: overlayDisplay, opacity: overlayOpacity, ...landscapeModePositionStyleHack },
-      onClick: () => close(),
-      ref: overlayRef
+      defaultValue: selectedFilter,
+      onChange: (newValue) => setSelectedSavedFilterId(newValue?.value ?? void 0),
+      options: filters,
+      placeholder: "None selected. Defaulted to all portrait scenes.",
+      theme: reactSelectTheme
     }
-  ), /* @__PURE__ */ React.createElement(
-    animated.div,
+  )), /* @__PURE__ */ React.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), fetchingDataWarning, scenelessFilterError), selectedFilter && selectedFilter.value !== stashTvConfig.stashTvDefaultFilterID && /* @__PURE__ */ React.createElement("div", { className: "item" }, /* @__PURE__ */ React.createElement(
+    "button",
     {
-      className: cx("SettingsTab"),
-      "data-testid": "SettingsTab",
-      ref,
-      style: { right: x2.to((px2) => `calc(100% - ${px2}px)`), ...landscapeModePositionStyleHack },
-      ...bind3()
+      onClick: () => {
+        updateStashTvConfig({
+          ...stashTvConfig,
+          stashTvDefaultFilterID: selectedFilter?.value
+        });
+      }
     },
-    /* @__PURE__ */ React.createElement("div", { className: "swipe-zone", ref: swipeZoneRef }),
-    /* @__PURE__ */ React.createElement("div", { className: "content" }, /* @__PURE__ */ React.createElement("div", { className: "body" }, /* @__PURE__ */ React.createElement("div", { className: "item" }, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement("h3", null, "Select a filter"), /* @__PURE__ */ React.createElement(
-      StateManagedSelect$1,
-      {
-        defaultValue: selectedFilter,
-        onChange: (newValue) => setSelectedSavedFilterId(newValue?.value ?? void 0),
-        options: filters,
-        placeholder: "None selected. Defaulted to all portrait scenes.",
-        theme: reactSelectTheme
-      }
-    )), /* @__PURE__ */ React.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), fetchingDataWarning, scenelessFilterError), selectedFilter && selectedFilter.value !== stashTvConfig.stashTvDefaultFilterID && /* @__PURE__ */ React.createElement("div", { className: "item" }, /* @__PURE__ */ React.createElement(
-      "button",
-      {
-        onClick: () => {
-          updateStashTvConfig({
-            ...stashTvConfig,
-            stashTvDefaultFilterID: selectedFilter?.value
-          });
-        }
-      },
-      'Set "',
-      selectedFilter?.label,
-      '" as the default filter'
-    ), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("small", null, "Set the currently selected scene filter as the default filter when opening Stash TV."))), /* @__PURE__ */ React.createElement("div", { className: "item checkbox-item" }, sceneFilter?.generalFilter?.sort?.startsWith("random_") ? /* @__PURE__ */ React.createElement("span", null, "Filter is set to random order") : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement(
-      "input",
-      {
-        checked: isRandomised,
-        onChange: (event) => setIsRandomised(event.target.checked),
-        type: "checkbox"
-      }
-    ), /* @__PURE__ */ React.createElement("h3", null, "Randomise filter order")), /* @__PURE__ */ React.createElement("small", null, "Randomise the order of scenes in the filter."))), /* @__PURE__ */ React.createElement("div", { className: "item" }, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement("h3", null, "Subtitle language"), /* @__PURE__ */ React.createElement(
-      StateManagedSelect$1,
-      {
-        defaultValue: defaultSubtitles,
-        onChange: onChangeSubLanguage,
-        options: subtitlesList,
-        theme: reactSelectTheme
-      }
-    )), /* @__PURE__ */ React.createElement("small", null, "Select the language to use for subtitles if available.")), /* @__PURE__ */ React.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement(
-      "input",
-      {
-        checked: crtEffect,
-        onChange: (event) => setCrtEffect(event.target.checked),
-        type: "checkbox"
-      }
-    ), /* @__PURE__ */ React.createElement("h3", null, "CRT effect")), /* @__PURE__ */ React.createElement("small", null, "Emulate the visual effects of an old CRT television."))), /* @__PURE__ */ React.createElement("div", { className: "footer" }, /* @__PURE__ */ React.createElement("h2", null, "Settings"), closeButton))
-  ));
+    'Set "',
+    selectedFilter?.label,
+    '" as the default filter'
+  ), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("small", null, "Set the currently selected scene filter as the default filter when opening Stash TV."))), /* @__PURE__ */ React.createElement("div", { className: "item checkbox-item" }, sceneFilter?.generalFilter?.sort?.startsWith("random_") ? /* @__PURE__ */ React.createElement("span", null, "Filter is set to random order") : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      checked: isRandomised,
+      onChange: (event) => setIsRandomised(event.target.checked),
+      type: "checkbox"
+    }
+  ), /* @__PURE__ */ React.createElement("h3", null, "Randomise filter order")), /* @__PURE__ */ React.createElement("small", null, "Randomise the order of scenes in the filter."))), /* @__PURE__ */ React.createElement("div", { className: "item" }, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement("h3", null, "Subtitle language"), /* @__PURE__ */ React.createElement(
+    StateManagedSelect$1,
+    {
+      defaultValue: defaultSubtitles,
+      onChange: onChangeSubLanguage,
+      options: subtitlesList,
+      theme: reactSelectTheme
+    }
+  )), /* @__PURE__ */ React.createElement("small", null, "Select the language to use for subtitles if available.")), /* @__PURE__ */ React.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      checked: crtEffect,
+      onChange: (event) => setCrtEffect(event.target.checked),
+      type: "checkbox"
+    }
+  ), /* @__PURE__ */ React.createElement("h3", null, "CRT effect")), /* @__PURE__ */ React.createElement("small", null, "Emulate the visual effects of an old CRT television.")));
 }
 const Loading = (props) => {
   const smallText = props.text ?? null;
@@ -181579,6 +181593,86 @@ const App = () => {
     });
   }, [stashConfigLoading, selectedSavedFilterId, otherAppState.isRandomised]);
   document.documentElement.className = cx({ "force-landscape": forceLandscape });
+  reactExports.useEffect(() => {
+    if (!forceLandscape) return;
+    function remapTouchEventForLandscapeMode(event) {
+      function remapTouch(touch) {
+        const effectiveClientX = window.innerHeight - touch.clientY;
+        const effectiveClientY = touch.clientX;
+        return new Touch({
+          ..."altitudeAngle" in touch && typeof touch.altitudeAngle === "number" ? { altitudeAngle: touch.altitudeAngle } : {},
+          ..."azimuthAngle" in touch && typeof touch.azimuthAngle === "number" ? { azimuthAngle: touch.azimuthAngle } : {},
+          clientX: effectiveClientX,
+          clientY: effectiveClientY,
+          force: touch.force,
+          identifier: touch.identifier,
+          pageX: effectiveClientX,
+          pageY: effectiveClientY,
+          radiusX: touch.radiusX,
+          radiusY: touch.radiusY,
+          rotationAngle: touch.rotationAngle,
+          screenX: effectiveClientX,
+          screenY: effectiveClientY,
+          target: touch.target,
+          ..."touchType" in touch ? { touchType: touch.touchType } : {}
+        });
+      }
+      if ("pageX" in event && typeof event.pageX === "number" && "pageY" in event && typeof event.pageY === "number") {
+        const effectivePageX = window.innerHeight - event.pageY;
+        const effectivePageY = event.pageX;
+        updateReadOnlyProps(event, {
+          pageX: effectivePageX,
+          pageY: effectivePageY
+        });
+      }
+      const newTouchEvent = new TouchEvent("touchstart", {
+        touches: Array.from(event.touches).map(remapTouch),
+        targetTouches: Array.from(event.targetTouches).map(remapTouch),
+        changedTouches: Array.from(event.changedTouches).map(remapTouch)
+      });
+      updateReadOnlyProps(event, {
+        touches: newTouchEvent.touches,
+        changedTouches: newTouchEvent.changedTouches,
+        targetTouches: newTouchEvent.targetTouches
+      });
+    }
+    function remapMouseEventForLandscapeMode(event) {
+      const effectiveClientX = window.innerHeight - event.clientY;
+      const effectiveClientY = event.clientX;
+      const effectiveMovementX = -event.movementY;
+      const effectiveMovementY = event.movementX;
+      updateReadOnlyProps(event, {
+        clientX: effectiveClientX,
+        clientY: effectiveClientY,
+        movementX: effectiveMovementX,
+        movementY: effectiveMovementY,
+        x: effectiveClientX,
+        y: effectiveClientY,
+        pageX: effectiveClientX,
+        pageY: effectiveClientY
+      });
+    }
+    window.addEventListener("pointerdown", remapMouseEventForLandscapeMode, { capture: true });
+    window.addEventListener("pointermove", remapMouseEventForLandscapeMode, { capture: true });
+    window.addEventListener("pointerup", remapMouseEventForLandscapeMode, { capture: true });
+    window.addEventListener("mousedown", remapMouseEventForLandscapeMode, { capture: true });
+    window.addEventListener("mousemove", remapMouseEventForLandscapeMode, { capture: true });
+    window.addEventListener("mouseup", remapMouseEventForLandscapeMode, { capture: true });
+    window.addEventListener("touchstart", remapTouchEventForLandscapeMode, { capture: true });
+    window.addEventListener("touchmove", remapTouchEventForLandscapeMode, { capture: true });
+    window.addEventListener("touchend", remapTouchEventForLandscapeMode, { capture: true });
+    return () => {
+      window.removeEventListener("pointerdown", remapMouseEventForLandscapeMode, { capture: true });
+      window.removeEventListener("pointermove", remapMouseEventForLandscapeMode, { capture: true });
+      window.removeEventListener("pointerup", remapMouseEventForLandscapeMode, { capture: true });
+      window.removeEventListener("mousedown", remapMouseEventForLandscapeMode, { capture: true });
+      window.removeEventListener("mousemove", remapMouseEventForLandscapeMode, { capture: true });
+      window.removeEventListener("mouseup", remapMouseEventForLandscapeMode, { capture: true });
+      window.removeEventListener("touchstart", remapTouchEventForLandscapeMode, { capture: true });
+      window.removeEventListener("touchmove", remapTouchEventForLandscapeMode, { capture: true });
+      window.removeEventListener("touchend", remapTouchEventForLandscapeMode, { capture: true });
+    };
+  }, [forceLandscape]);
   return /* @__PURE__ */ React.createElement(FeedPage, null);
 };
 const processSavedFilterToGeneralFilter = (savedFilter, stashTvConfig, otherAppState) => {
@@ -181605,4 +181699,4 @@ ReactDOM.render(
 export {
   videojs as v
 };
-//# sourceMappingURL=index-CKKKRVdL.js.map
+//# sourceMappingURL=index-rmqf77q4.js.map
