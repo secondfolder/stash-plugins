@@ -435,10 +435,10 @@ function requireReact() {
   return react.exports;
 }
 var reactExports = requireReact();
-const React = /* @__PURE__ */ getDefaultExportFromCjs(reactExports);
-const React$1 = /* @__PURE__ */ _mergeNamespaces({
+const React$1 = /* @__PURE__ */ getDefaultExportFromCjs(reactExports);
+const React$2 = /* @__PURE__ */ _mergeNamespaces({
   __proto__: null,
-  default: React
+  default: React$1
 }, [reactExports]);
 var reactDom = { exports: {} };
 var reactDom_production_min = {};
@@ -6532,14 +6532,14 @@ function _toPropertyKey$2(t22) {
   var i = _toPrimitive$2(t22, "string");
   return "symbol" == typeof i ? i : i + "";
 }
-const noop$6 = () => {
+const noop$7 = () => {
 };
 let _WINDOW = {};
 let _DOCUMENT = {};
 let _MUTATION_OBSERVER = null;
 let _PERFORMANCE = {
-  mark: noop$6,
-  measure: noop$6
+  mark: noop$7,
+  measure: noop$7
 };
 try {
   if (typeof window !== "undefined") _WINDOW = window;
@@ -9651,7 +9651,7 @@ var defaultProps$2 = {
   swapOpacity: false,
   widthAuto: false
 };
-var FontAwesomeIcon = /* @__PURE__ */ React.forwardRef(function(props, ref) {
+var FontAwesomeIcon = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
   var allProps = _objectSpread2$2(_objectSpread2$2({}, defaultProps$2), props);
   var iconArgs = allProps.icon, maskArgs = allProps.mask, symbol = allProps.symbol, className = allProps.className, title = allProps.title, titleId = allProps.titleId, maskId = allProps.maskId;
   var iconLookup = normalizeIconArgs(iconArgs);
@@ -9712,7 +9712,7 @@ FontAwesomeIcon.propTypes = {
   swapOpacity: PropTypes.bool,
   widthAuto: PropTypes.bool
 };
-var convertCurry = convert.bind(null, React.createElement);
+var convertCurry = convert.bind(null, React$1.createElement);
 var classnames = { exports: {} };
 /*!
 	Copyright (c) 2018 Jed Watson.
@@ -10600,7 +10600,7 @@ function _inheritsLoose$1(t3, o2) {
 const config$1 = {
   disabled: false
 };
-const TransitionGroupContext = React.createContext(null);
+const TransitionGroupContext = React$1.createContext(null);
 var forceReflow = function forceReflow2(node2) {
   return node2.scrollTop;
 };
@@ -10827,16 +10827,16 @@ var Transition = /* @__PURE__ */ (function(_React$Component) {
     var childProps = _objectWithoutPropertiesLoose$1(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
     return (
       // allows for nested Transitions
-      /* @__PURE__ */ React.createElement(TransitionGroupContext.Provider, {
+      /* @__PURE__ */ React$1.createElement(TransitionGroupContext.Provider, {
         value: null
-      }, typeof children === "function" ? children(status, childProps) : React.cloneElement(React.Children.only(children), childProps))
+      }, typeof children === "function" ? children(status, childProps) : React$1.cloneElement(React$1.Children.only(children), childProps))
     );
   };
   return Transition2;
-})(React.Component);
+})(React$1.Component);
 Transition.contextType = TransitionGroupContext;
 Transition.propTypes = {};
-function noop$5() {
+function noop$6() {
 }
 Transition.defaultProps = {
   in: false,
@@ -10845,12 +10845,12 @@ Transition.defaultProps = {
   appear: false,
   enter: true,
   exit: true,
-  onEnter: noop$5,
-  onEntering: noop$5,
-  onEntered: noop$5,
-  onExit: noop$5,
-  onExiting: noop$5,
-  onExited: noop$5
+  onEnter: noop$6,
+  onEntering: noop$6,
+  onEntered: noop$6,
+  onExit: noop$6,
+  onExiting: noop$6,
+  onExited: noop$6
 };
 Transition.UNMOUNTED = UNMOUNTED;
 Transition.EXITED = EXITED;
@@ -10903,7 +10903,6 @@ function isEnumerableIncludingInherited(obj, prop) {
 }
 const PLUGIN_NAMESPACE = "stash-tv";
 const TRANSITION_DURATION = 150;
-const DEFAULT_MAXIMUM_SCENES = 500;
 var jsxRuntime = { exports: {} };
 var reactJsxRuntime_production_min = {};
 /** @license React v17.0.2
@@ -45687,7 +45686,7 @@ var SegmentLoader = /* @__PURE__ */ (function(_videojs$EventTarget) {
   };
   return SegmentLoader2;
 })(videojs.EventTarget);
-function noop$4() {
+function noop$5() {
 }
 var toTitleCase2 = function toTitleCase3(string) {
   if (typeof string !== "string") {
@@ -46107,7 +46106,7 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
   };
   _proto.setDuration = function setDuration(duration5, doneFn) {
     if (doneFn === void 0) {
-      doneFn = noop$4;
+      doneFn = noop$5;
     }
     pushQueue({
       type: "mediaSource",
@@ -46122,7 +46121,7 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
       error = null;
     }
     if (doneFn === void 0) {
-      doneFn = noop$4;
+      doneFn = noop$5;
     }
     if (typeof error !== "string") {
       error = void 0;
@@ -46137,7 +46136,7 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
   };
   _proto.removeAudio = function removeAudio(start3, end2, done) {
     if (done === void 0) {
-      done = noop$4;
+      done = noop$5;
     }
     if (!this.audioBuffered().length || this.audioBuffered().end(0) === 0) {
       done();
@@ -46153,7 +46152,7 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
   };
   _proto.removeVideo = function removeVideo(start3, end2, done) {
     if (done === void 0) {
-      done = noop$4;
+      done = noop$5;
     }
     if (!this.videoBuffered().length || this.videoBuffered().end(0) === 0) {
       done();
@@ -47925,11 +47924,11 @@ var createMediaTypes = function createMediaTypes2() {
       groups: {},
       tracks: {},
       activePlaylistLoader: null,
-      activeGroup: noop$4,
-      activeTrack: noop$4,
-      getActiveGroup: noop$4,
-      onGroupChanged: noop$4,
-      onTrackChanged: noop$4,
+      activeGroup: noop$5,
+      activeTrack: noop$5,
+      getActiveGroup: noop$5,
+      onGroupChanged: noop$5,
+      onTrackChanged: noop$5,
       lastTrack_: null,
       logger_: logger("MediaGroups[" + type2 + "]")
     };
@@ -99723,11 +99722,11 @@ var freeSelf = typeof self == "object" && self && self.Object === Object && self
 var root$1 = freeGlobal || freeSelf || Function("return this")();
 var Symbol$1 = root$1.Symbol;
 var objectProto$1 = Object.prototype;
-var hasOwnProperty$7 = objectProto$1.hasOwnProperty;
+var hasOwnProperty$8 = objectProto$1.hasOwnProperty;
 var nativeObjectToString$1 = objectProto$1.toString;
 var symToStringTag$1 = Symbol$1 ? Symbol$1.toStringTag : void 0;
 function getRawTag(value) {
-  var isOwn = hasOwnProperty$7.call(value, symToStringTag$1), tag = value[symToStringTag$1];
+  var isOwn = hasOwnProperty$8.call(value, symToStringTag$1), tag = value[symToStringTag$1];
   try {
     value[symToStringTag$1] = void 0;
     var unmasked = true;
@@ -144143,7 +144142,7 @@ function getFragmentMaskMode(fragment) {
 }
 const defaultMakeData = () => /* @__PURE__ */ Object.create(null);
 const { forEach, slice: slice$1 } = Array.prototype;
-const { hasOwnProperty: hasOwnProperty$6 } = Object.prototype;
+const { hasOwnProperty: hasOwnProperty$7 } = Object.prototype;
 class Trie {
   constructor(weakness = true, makeData = defaultMakeData) {
     this.weakness = weakness;
@@ -144155,7 +144154,7 @@ class Trie {
   lookupArray(array) {
     let node2 = this;
     forEach.call(array, (key) => node2 = node2.getChildTrie(key));
-    return hasOwnProperty$6.call(node2, "data") ? node2.data : node2.data = this.makeData(slice$1.call(array));
+    return hasOwnProperty$7.call(node2, "data") ? node2.data : node2.data = this.makeData(slice$1.call(array));
   }
   peek() {
     return this.peekArray(arguments);
@@ -144221,9 +144220,20 @@ var canUseAsyncIteratorSymbol = canUseSymbol && Symbol.asyncIterator;
 var canUseDOM$1 = typeof maybe$1(function() {
   return window.document.createElement;
 }) === "function";
-maybe$1(function() {
-  return navigator.userAgent.indexOf("jsdom") >= 0;
-}) || false;
+var usingJSDOM = (
+  // Following advice found in this comment from @domenic (maintainer of jsdom):
+  // https://github.com/jsdom/jsdom/issues/1537#issuecomment-229405327
+  //
+  // Since we control the version of Jest and jsdom used when running Apollo
+  // Client tests, and that version is recent enought to include " jsdom/x.y.z"
+  // at the end of the user agent string, I believe this case is all we need to
+  // check. Testing for "Node.js" was recommended for backwards compatibility
+  // with older version of jsdom, but we don't have that problem.
+  maybe$1(function() {
+    return navigator.userAgent.indexOf("jsdom") >= 0;
+  }) || false
+);
+var canUseLayoutEffect = (canUseDOM$1 || isReactNative) && !usingJSDOM;
 function isNonNullObject(obj) {
   return obj !== null && typeof obj === "object";
 }
@@ -144394,17 +144404,17 @@ class StrongCache {
     return false;
   }
 }
-function noop$3() {
+function noop$4() {
 }
-const defaultDispose = noop$3;
+const defaultDispose = noop$4;
 const _WeakRef = typeof WeakRef !== "undefined" ? WeakRef : function(value) {
   return { deref: () => value };
 };
 const _WeakMap = typeof WeakMap !== "undefined" ? WeakMap : Map;
 const _FinalizationRegistry = typeof FinalizationRegistry !== "undefined" ? FinalizationRegistry : function() {
   return {
-    register: noop$3,
-    unregister: noop$3
+    register: noop$4,
+    unregister: noop$4
   };
 };
 const finalizationBatchSize = 10024;
@@ -145072,7 +145082,7 @@ Array[globalKey] || (function(Slot2) {
 })(makeSlotClass());
 const { bind: bind2, noContext } = Slot;
 const parentEntrySlot = new Slot();
-const { hasOwnProperty: hasOwnProperty$5 } = Object.prototype;
+const { hasOwnProperty: hasOwnProperty$6 } = Object.prototype;
 const arrayFromSet = Array.from || function(set4) {
   const array = [];
   set4.forEach((item) => array.push(item));
@@ -145335,7 +145345,7 @@ function dep(options2) {
   depend.dirty = function dirty(key, entryMethodName) {
     const dep2 = depsByKey.get(key);
     if (dep2) {
-      const m = entryMethodName && hasOwnProperty$5.call(EntryMethods, entryMethodName) ? entryMethodName : "setDirty";
+      const m = entryMethodName && hasOwnProperty$6.call(EntryMethods, entryMethodName) ? entryMethodName : "setDirty";
       arrayFromSet(dep2).forEach((entry) => entry[m]());
       depsByKey.delete(key);
       maybeUnsubscribe(dep2);
@@ -145835,7 +145845,7 @@ function addNonReactiveToNamedFragments(document2) {
     }
   });
 }
-var hasOwnProperty$4 = Object.prototype.hasOwnProperty;
+var hasOwnProperty$5 = Object.prototype.hasOwnProperty;
 function mergeDeep() {
   var sources = [];
   for (var _i = 0; _i < arguments.length; _i++) {
@@ -145876,7 +145886,7 @@ var DeepMerger = (
       }
       if (isNonNullObject(source) && isNonNullObject(target)) {
         Object.keys(source).forEach(function(sourceKey) {
-          if (hasOwnProperty$4.call(target, sourceKey)) {
+          if (hasOwnProperty$5.call(target, sourceKey)) {
             var targetValue = target[sourceKey];
             if (source[sourceKey] !== targetValue) {
               var result = _this.reconciler.apply(_this, __spreadArray([
@@ -147177,7 +147187,7 @@ var ApolloError = (
     return ApolloError2;
   })(Error)
 );
-var hasOwnProperty$3 = Object.prototype.hasOwnProperty;
+var hasOwnProperty$4 = Object.prototype.hasOwnProperty;
 function readMultipartBody(response, nextValue) {
   return __awaiter(this, void 0, void 0, function() {
     var decoder, contentType, delimiter2, boundaryVal, boundary, buffer, iterator, running, _a2, value, done, chunk, searchFrom, bi, message, i, headers, contentType_1, body, result, next2;
@@ -147310,7 +147320,7 @@ function parseAndCheckHttpResponse(operations) {
     return response.text().then(function(bodyText) {
       return parseJsonBody(response, bodyText);
     }).then(function(result) {
-      if (!Array.isArray(result) && !hasOwnProperty$3.call(result, "data") && !hasOwnProperty$3.call(result, "errors")) {
+      if (!Array.isArray(result) && !hasOwnProperty$4.call(result, "data") && !hasOwnProperty$4.call(result, "errors")) {
         throwServerError(response, result, "Server response was missing for query '".concat(Array.isArray(operations) ? operations.map(function(op) {
           return op.operationName;
         }) : operations.operationName, "'."));
@@ -147607,7 +147617,7 @@ var HttpLink = (
     return HttpLink2;
   })(ApolloLink)
 );
-const { toString, hasOwnProperty: hasOwnProperty$2 } = Object.prototype;
+const { toString, hasOwnProperty: hasOwnProperty$3 } = Object.prototype;
 const fnToStr = Function.prototype.toString;
 const previousComparisons = /* @__PURE__ */ new Map();
 function equal(a2, b) {
@@ -147640,7 +147650,7 @@ function check(a2, b) {
       if (keyCount !== bKeys.length)
         return false;
       for (let k = 0; k < keyCount; ++k) {
-        if (!hasOwnProperty$2.call(b, aKeys[k])) {
+        if (!hasOwnProperty$3.call(b, aKeys[k])) {
           return false;
         }
       }
@@ -150474,7 +150484,7 @@ var NetworkStatus;
 function isNetworkRequestInFlight(networkStatus) {
   return networkStatus ? networkStatus < 7 : false;
 }
-var assign$2 = Object.assign, hasOwnProperty$1 = Object.hasOwnProperty;
+var assign$2 = Object.assign, hasOwnProperty$2 = Object.hasOwnProperty;
 var ObservableQuery = (
   /** @class */
   (function(_super) {
@@ -150682,7 +150692,7 @@ var ObservableQuery = (
       } else {
         reobserveOptions.fetchPolicy = "network-only";
       }
-      if (globalThis.__DEV__ !== false && variables && hasOwnProperty$1.call(variables, "variables")) {
+      if (globalThis.__DEV__ !== false && variables && hasOwnProperty$2.call(variables, "variables")) {
         var queryDef = getQueryDefinition(this.query);
         var vars = queryDef.variableDefinitions;
         if (!vars || !vars.some(function(v) {
@@ -151386,7 +151396,7 @@ function shouldWriteResult(result, errorPolicy) {
   }
   return writeWithErrors;
 }
-var hasOwnProperty = Object.prototype.hasOwnProperty;
+var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
 var IGNORE = /* @__PURE__ */ Object.create(null);
 var QueryManager = (
   /** @class */
@@ -151592,7 +151602,7 @@ var QueryManager = (
           this.queries.forEach(function(_a2, queryId) {
             var observableQuery = _a2.observableQuery;
             var queryName = observableQuery && observableQuery.queryName;
-            if (!queryName || !hasOwnProperty.call(updateQueries_1, queryName)) {
+            if (!queryName || !hasOwnProperty$1.call(updateQueries_1, queryName)) {
               return;
             }
             var updater = updateQueries_1[queryName];
@@ -153192,6 +153202,11 @@ function requireRehackt() {
   return rehackt.exports;
 }
 var rehacktExports = requireRehackt();
+const index$1 = /* @__PURE__ */ getDefaultExportFromCjs(rehacktExports);
+const React = /* @__PURE__ */ _mergeNamespaces({
+  __proto__: null,
+  default: index$1
+}, [rehacktExports]);
 var contextKey = canUseSymbol ? Symbol.for("__APOLLO_CONTEXT__") : "__APOLLO_CONTEXT__";
 function getApolloContext() {
   invariant$2(true, 54);
@@ -153222,6 +153237,53 @@ function useApolloClient(override) {
   var client2 = override || context2.client;
   invariant$2(!!client2, 58);
   return client2;
+}
+var didWarnUncachedGetSnapshot = false;
+var uSESKey = "useSyncExternalStore";
+var realHook = React[uSESKey];
+var useSyncExternalStore = realHook || (function(subscribe, getSnapshot, getServerSnapshot) {
+  var value = getSnapshot();
+  if (
+    // DEVIATION: Using __DEV__
+    globalThis.__DEV__ !== false && !didWarnUncachedGetSnapshot && // DEVIATION: Not using Object.is because we know our snapshots will never
+    // be exotic primitive values like NaN, which is !== itself.
+    value !== getSnapshot()
+  ) {
+    didWarnUncachedGetSnapshot = true;
+    globalThis.__DEV__ !== false && invariant$2.error(68);
+  }
+  var _a2 = rehacktExports.useState({
+    inst: { value, getSnapshot }
+  }), inst = _a2[0].inst, forceUpdate = _a2[1];
+  if (canUseLayoutEffect) {
+    rehacktExports.useLayoutEffect(function() {
+      Object.assign(inst, { value, getSnapshot });
+      if (checkIfSnapshotChanged(inst)) {
+        forceUpdate({ inst });
+      }
+    }, [subscribe, value, getSnapshot]);
+  } else {
+    Object.assign(inst, { value, getSnapshot });
+  }
+  rehacktExports.useEffect(function() {
+    if (checkIfSnapshotChanged(inst)) {
+      forceUpdate({ inst });
+    }
+    return subscribe(function handleStoreChange() {
+      if (checkIfSnapshotChanged(inst)) {
+        forceUpdate({ inst });
+      }
+    });
+  }, [subscribe]);
+  return value;
+});
+function checkIfSnapshotChanged(_a2) {
+  var value = _a2.value, getSnapshot = _a2.getSnapshot;
+  try {
+    return value !== getSnapshot();
+  } catch (_b2) {
+    return true;
+  }
 }
 var DocumentType;
 (function(DocumentType2) {
@@ -153327,6 +153389,322 @@ function verifyDocumentType(document2, type2) {
   );
 }
 var useIsomorphicLayoutEffect$2 = canUseDOM$1 ? rehacktExports.useLayoutEffect : rehacktExports.useEffect;
+var wrapperSymbol = Symbol.for("apollo.hook.wrappers");
+function wrapHook(hookName, useHook, clientOrObsQuery) {
+  var queryManager = clientOrObsQuery["queryManager"];
+  var wrappers = queryManager && queryManager[wrapperSymbol];
+  var wrapper = wrappers && wrappers[hookName];
+  return wrapper ? wrapper(useHook) : useHook;
+}
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+function noop$3() {
+}
+var lastWatchOptions = Symbol();
+function useQuery(query, options2) {
+  if (options2 === void 0) {
+    options2 = /* @__PURE__ */ Object.create(null);
+  }
+  return wrapHook(
+    "useQuery",
+    // eslint-disable-next-line react-compiler/react-compiler
+    useQuery_,
+    useApolloClient(options2 && options2.client)
+  )(query, options2);
+}
+function useQuery_(query, options2) {
+  var _a2 = useQueryInternals(query, options2), result = _a2.result, obsQueryFields = _a2.obsQueryFields;
+  return rehacktExports.useMemo(function() {
+    return __assign(__assign({}, result), obsQueryFields);
+  }, [result, obsQueryFields]);
+}
+function useInternalState(client2, query, options2, renderPromises, makeWatchQueryOptions) {
+  function createInternalState(previous) {
+    var _a3;
+    verifyDocumentType(query, DocumentType.Query);
+    var internalState2 = {
+      client: client2,
+      query,
+      observable: (
+        // See if there is an existing observable that was used to fetch the same
+        // data and if so, use it instead since it will contain the proper queryId
+        // to fetch the result set. This is used during SSR.
+        renderPromises && renderPromises.getSSRObservable(makeWatchQueryOptions()) || ObservableQuery["inactiveOnCreation"].withValue(!renderPromises, function() {
+          return client2.watchQuery(getObsQueryOptions(void 0, client2, options2, makeWatchQueryOptions()));
+        })
+      ),
+      resultData: {
+        // Reuse previousData from previous InternalState (if any) to provide
+        // continuity of previousData even if/when the query or client changes.
+        previousData: (_a3 = previous === null || previous === void 0 ? void 0 : previous.resultData.current) === null || _a3 === void 0 ? void 0 : _a3.data
+      }
+    };
+    return internalState2;
+  }
+  var _a2 = rehacktExports.useState(createInternalState), internalState = _a2[0], updateInternalState = _a2[1];
+  function onQueryExecuted(watchQueryOptions) {
+    var _a3;
+    var _b2;
+    Object.assign(internalState.observable, (_a3 = {}, _a3[lastWatchOptions] = watchQueryOptions, _a3));
+    var resultData = internalState.resultData;
+    updateInternalState(__assign(__assign({}, internalState), {
+      // might be a different query
+      query: watchQueryOptions.query,
+      resultData: Object.assign(resultData, {
+        // We need to modify the previous `resultData` object as we rely on the
+        // object reference in other places
+        previousData: ((_b2 = resultData.current) === null || _b2 === void 0 ? void 0 : _b2.data) || resultData.previousData,
+        current: void 0
+      })
+    }));
+  }
+  if (client2 !== internalState.client || query !== internalState.query) {
+    var newInternalState = createInternalState(internalState);
+    updateInternalState(newInternalState);
+    return [newInternalState, onQueryExecuted];
+  }
+  return [internalState, onQueryExecuted];
+}
+function useQueryInternals(query, options2) {
+  var client2 = useApolloClient(options2.client);
+  var renderPromises = rehacktExports.useContext(getApolloContext()).renderPromises;
+  var isSyncSSR = !!renderPromises;
+  var disableNetworkFetches = client2.disableNetworkFetches;
+  var ssrAllowed = options2.ssr !== false && !options2.skip;
+  var partialRefetch = options2.partialRefetch;
+  var makeWatchQueryOptions = createMakeWatchQueryOptions(client2, query, options2, isSyncSSR);
+  var _a2 = useInternalState(client2, query, options2, renderPromises, makeWatchQueryOptions), _b2 = _a2[0], observable = _b2.observable, resultData = _b2.resultData, onQueryExecuted = _a2[1];
+  var watchQueryOptions = makeWatchQueryOptions(observable);
+  useResubscribeIfNecessary(
+    resultData,
+    // might get mutated during render
+    observable,
+    // might get mutated during render
+    client2,
+    options2,
+    watchQueryOptions
+  );
+  var obsQueryFields = rehacktExports.useMemo(function() {
+    return bindObservableMethods(observable);
+  }, [observable]);
+  useRegisterSSRObservable(observable, renderPromises, ssrAllowed);
+  var result = useObservableSubscriptionResult(resultData, observable, client2, options2, watchQueryOptions, disableNetworkFetches, partialRefetch, isSyncSSR, {
+    onCompleted: options2.onCompleted || noop$3,
+    onError: options2.onError || noop$3
+  });
+  return {
+    result,
+    obsQueryFields,
+    observable,
+    resultData,
+    client: client2,
+    onQueryExecuted
+  };
+}
+function useObservableSubscriptionResult(resultData, observable, client2, options2, watchQueryOptions, disableNetworkFetches, partialRefetch, isSyncSSR, callbacks) {
+  var callbackRef = rehacktExports.useRef(callbacks);
+  rehacktExports.useEffect(function() {
+    callbackRef.current = callbacks;
+  });
+  var resultOverride = (isSyncSSR || disableNetworkFetches) && options2.ssr === false && !options2.skip ? (
+    // If SSR has been explicitly disabled, and this function has been called
+    // on the server side, return the default loading state.
+    ssrDisabledResult
+  ) : options2.skip || watchQueryOptions.fetchPolicy === "standby" ? (
+    // When skipping a query (ie. we're not querying for data but still want to
+    // render children), make sure the `data` is cleared out and `loading` is
+    // set to `false` (since we aren't loading anything).
+    //
+    // NOTE: We no longer think this is the correct behavior. Skipping should
+    // not automatically set `data` to `undefined`, but instead leave the
+    // previous data in place. In other words, skipping should not mandate that
+    // previously received data is all of a sudden removed. Unfortunately,
+    // changing this is breaking, so we'll have to wait until Apollo Client 4.0
+    // to address this.
+    skipStandbyResult
+  ) : void 0;
+  var previousData = resultData.previousData;
+  var currentResultOverride = rehacktExports.useMemo(function() {
+    return resultOverride && toQueryResult(resultOverride, previousData, observable, client2);
+  }, [client2, observable, resultOverride, previousData]);
+  return useSyncExternalStore(rehacktExports.useCallback(function(handleStoreChange) {
+    if (isSyncSSR) {
+      return function() {
+      };
+    }
+    var onNext = function() {
+      var previousResult = resultData.current;
+      var result = observable.getCurrentResult();
+      if (previousResult && previousResult.loading === result.loading && previousResult.networkStatus === result.networkStatus && equal(previousResult.data, result.data)) {
+        return;
+      }
+      setResult(result, resultData, observable, client2, partialRefetch, handleStoreChange, callbackRef.current);
+    };
+    var onError2 = function(error) {
+      subscription.current.unsubscribe();
+      subscription.current = observable.resubscribeAfterError(onNext, onError2);
+      if (!hasOwnProperty.call(error, "graphQLErrors")) {
+        throw error;
+      }
+      var previousResult = resultData.current;
+      if (!previousResult || previousResult && previousResult.loading || !equal(error, previousResult.error)) {
+        setResult({
+          data: previousResult && previousResult.data,
+          error,
+          loading: false,
+          networkStatus: NetworkStatus.error
+        }, resultData, observable, client2, partialRefetch, handleStoreChange, callbackRef.current);
+      }
+    };
+    var subscription = { current: observable.subscribe(onNext, onError2) };
+    return function() {
+      setTimeout(function() {
+        return subscription.current.unsubscribe();
+      });
+    };
+  }, [
+    disableNetworkFetches,
+    isSyncSSR,
+    observable,
+    resultData,
+    partialRefetch,
+    client2
+  ]), function() {
+    return currentResultOverride || getCurrentResult(resultData, observable, callbackRef.current, partialRefetch, client2);
+  }, function() {
+    return currentResultOverride || getCurrentResult(resultData, observable, callbackRef.current, partialRefetch, client2);
+  });
+}
+function useRegisterSSRObservable(observable, renderPromises, ssrAllowed) {
+  if (renderPromises && ssrAllowed) {
+    renderPromises.registerSSRObservable(observable);
+    if (observable.getCurrentResult().loading) {
+      renderPromises.addObservableQueryPromise(observable);
+    }
+  }
+}
+function useResubscribeIfNecessary(resultData, observable, client2, options2, watchQueryOptions) {
+  var _a2;
+  if (observable[lastWatchOptions] && !equal(observable[lastWatchOptions], watchQueryOptions)) {
+    observable.reobserve(getObsQueryOptions(observable, client2, options2, watchQueryOptions));
+    resultData.previousData = ((_a2 = resultData.current) === null || _a2 === void 0 ? void 0 : _a2.data) || resultData.previousData;
+    resultData.current = void 0;
+  }
+  observable[lastWatchOptions] = watchQueryOptions;
+}
+function createMakeWatchQueryOptions(client2, query, _a2, isSyncSSR) {
+  if (_a2 === void 0) {
+    _a2 = {};
+  }
+  var skip = _a2.skip;
+  _a2.ssr;
+  _a2.onCompleted;
+  _a2.onError;
+  var defaultOptions2 = _a2.defaultOptions, otherOptions = __rest(_a2, ["skip", "ssr", "onCompleted", "onError", "defaultOptions"]);
+  return function(observable) {
+    var watchQueryOptions = Object.assign(otherOptions, { query });
+    if (isSyncSSR && (watchQueryOptions.fetchPolicy === "network-only" || watchQueryOptions.fetchPolicy === "cache-and-network")) {
+      watchQueryOptions.fetchPolicy = "cache-first";
+    }
+    if (!watchQueryOptions.variables) {
+      watchQueryOptions.variables = {};
+    }
+    if (skip) {
+      watchQueryOptions.initialFetchPolicy = watchQueryOptions.initialFetchPolicy || watchQueryOptions.fetchPolicy || getDefaultFetchPolicy(defaultOptions2, client2.defaultOptions);
+      watchQueryOptions.fetchPolicy = "standby";
+    } else if (!watchQueryOptions.fetchPolicy) {
+      watchQueryOptions.fetchPolicy = (observable === null || observable === void 0 ? void 0 : observable.options.initialFetchPolicy) || getDefaultFetchPolicy(defaultOptions2, client2.defaultOptions);
+    }
+    return watchQueryOptions;
+  };
+}
+function getObsQueryOptions(observable, client2, queryHookOptions, watchQueryOptions) {
+  var toMerge = [];
+  var globalDefaults = client2.defaultOptions.watchQuery;
+  if (globalDefaults)
+    toMerge.push(globalDefaults);
+  if (queryHookOptions.defaultOptions) {
+    toMerge.push(queryHookOptions.defaultOptions);
+  }
+  toMerge.push(compact(observable && observable.options, watchQueryOptions));
+  return toMerge.reduce(mergeOptions);
+}
+function setResult(nextResult, resultData, observable, client2, partialRefetch, forceUpdate, callbacks) {
+  var previousResult = resultData.current;
+  if (previousResult && previousResult.data) {
+    resultData.previousData = previousResult.data;
+  }
+  if (!nextResult.error && isNonEmptyArray(nextResult.errors)) {
+    nextResult.error = new ApolloError({ graphQLErrors: nextResult.errors });
+  }
+  resultData.current = toQueryResult(unsafeHandlePartialRefetch(nextResult, observable, partialRefetch), resultData.previousData, observable, client2);
+  forceUpdate();
+  handleErrorOrCompleted(nextResult, previousResult === null || previousResult === void 0 ? void 0 : previousResult.networkStatus, callbacks);
+}
+function handleErrorOrCompleted(result, previousNetworkStatus, callbacks) {
+  if (!result.loading) {
+    var error_1 = toApolloError(result);
+    Promise.resolve().then(function() {
+      if (error_1) {
+        callbacks.onError(error_1);
+      } else if (result.data && previousNetworkStatus !== result.networkStatus && result.networkStatus === NetworkStatus.ready) {
+        callbacks.onCompleted(result.data);
+      }
+    }).catch(function(error) {
+      globalThis.__DEV__ !== false && invariant$2.warn(error);
+    });
+  }
+}
+function getCurrentResult(resultData, observable, callbacks, partialRefetch, client2) {
+  if (!resultData.current) {
+    setResult(observable.getCurrentResult(), resultData, observable, client2, partialRefetch, function() {
+    }, callbacks);
+  }
+  return resultData.current;
+}
+function getDefaultFetchPolicy(queryHookDefaultOptions, clientDefaultOptions) {
+  var _a2;
+  return (queryHookDefaultOptions === null || queryHookDefaultOptions === void 0 ? void 0 : queryHookDefaultOptions.fetchPolicy) || ((_a2 = clientDefaultOptions === null || clientDefaultOptions === void 0 ? void 0 : clientDefaultOptions.watchQuery) === null || _a2 === void 0 ? void 0 : _a2.fetchPolicy) || "cache-first";
+}
+function toApolloError(result) {
+  return isNonEmptyArray(result.errors) ? new ApolloError({ graphQLErrors: result.errors }) : result.error;
+}
+function toQueryResult(result, previousData, observable, client2) {
+  var data2 = result.data;
+  result.partial;
+  var resultWithoutPartial = __rest(result, ["data", "partial"]);
+  var queryResult = __assign(__assign({ data: data2 }, resultWithoutPartial), { client: client2, observable, variables: observable.variables, called: result !== ssrDisabledResult && result !== skipStandbyResult, previousData });
+  return queryResult;
+}
+function unsafeHandlePartialRefetch(result, observable, partialRefetch) {
+  if (result.partial && partialRefetch && !result.loading && (!result.data || Object.keys(result.data).length === 0) && observable.options.fetchPolicy !== "cache-only") {
+    observable.refetch();
+    return __assign(__assign({}, result), { loading: true, networkStatus: NetworkStatus.refetch });
+  }
+  return result;
+}
+var ssrDisabledResult = maybeDeepFreeze({
+  loading: true,
+  data: void 0,
+  error: void 0,
+  networkStatus: NetworkStatus.loading
+});
+var skipStandbyResult = maybeDeepFreeze({
+  loading: false,
+  data: void 0,
+  error: void 0,
+  networkStatus: NetworkStatus.ready
+});
+function bindObservableMethods(observable) {
+  return {
+    refetch: observable.refetch.bind(observable),
+    reobserve: observable.reobserve.bind(observable),
+    fetchMore: observable.fetchMore.bind(observable),
+    updateQuery: observable.updateQuery.bind(observable),
+    startPolling: observable.startPolling.bind(observable),
+    stopPolling: observable.stopPolling.bind(observable),
+    subscribeToMore: observable.subscribeToMore.bind(observable)
+  };
+}
 function useMutation(mutation, options2) {
   var client2 = useApolloClient(options2 === null || options2 === void 0 ? void 0 : options2.client);
   verifyDocumentType(mutation, DocumentType.Mutation);
@@ -153334,7 +153712,7 @@ function useMutation(mutation, options2) {
     called: false,
     loading: false,
     client: client2
-  }), result = _a2[0], setResult = _a2[1];
+  }), result = _a2[0], setResult2 = _a2[1];
   var ref = rehacktExports.useRef({
     result,
     mutationId: 0,
@@ -153354,7 +153732,7 @@ function useMutation(mutation, options2) {
     var baseOptions = __assign(__assign({}, options3), { mutation: mutation2 });
     var client3 = executeOptions.client || ref.current.client;
     if (!ref.current.result.loading && !baseOptions.ignoreResults && ref.current.isMounted) {
-      setResult(ref.current.result = {
+      setResult2(ref.current.result = {
         loading: true,
         error: void 0,
         data: void 0,
@@ -153381,7 +153759,7 @@ function useMutation(mutation, options2) {
           client: client3
         };
         if (ref.current.isMounted && !equal(ref.current.result, result_1)) {
-          setResult(ref.current.result = result_1);
+          setResult2(ref.current.result = result_1);
         }
       }
       var onCompleted = executeOptions.onCompleted || ((_b2 = ref.current.options) === null || _b2 === void 0 ? void 0 : _b2.onCompleted);
@@ -153400,7 +153778,7 @@ function useMutation(mutation, options2) {
           client: client3
         };
         if (!equal(ref.current.result, result_2)) {
-          setResult(ref.current.result = result_2);
+          setResult2(ref.current.result = result_2);
         }
       }
       var onError2 = executeOptions.onError || ((_a4 = ref.current.options) === null || _a4 === void 0 ? void 0 : _a4.onError);
@@ -153419,7 +153797,7 @@ function useMutation(mutation, options2) {
         client: ref.current.client
       };
       Object.assign(ref.current, { mutationId: 0, result: result_3 });
-      setResult(result_3);
+      setResult2(result_3);
     }
   }, []);
   rehacktExports.useEffect(function() {
@@ -156434,6 +156812,10 @@ const FindScenesForTvDocument = gql`
   }
 }
     ${TvSceneDataFragmentDoc}`;
+function useFindScenesForTvQuery(baseOptions) {
+  const options2 = { ...defaultOptions, ...baseOptions };
+  return useQuery(FindScenesForTvDocument, options2);
+}
 const GetStashConfigForTvDocument = gql`
     query GetStashConfigForTv {
   configuration {
@@ -157689,7 +158071,7 @@ const useSceneIncrementPlayCount = () => useSceneAddPlayMutation({
     ]);
   }
 });
-var ThemeContext$1 = /* @__PURE__ */ React.createContext({});
+var ThemeContext$1 = /* @__PURE__ */ React$1.createContext({});
 ThemeContext$1.Consumer;
 ThemeContext$1.Provider;
 function useBootstrapPrefix(prefix2, defaultPrefix) {
@@ -157720,7 +158102,7 @@ var _excluded$8 = ["as", "disabled", "onKeyDown"];
 function isTrivialHref(href) {
   return !href || href.trim() === "#";
 }
-var SafeAnchor = /* @__PURE__ */ React.forwardRef(function(_ref3, ref) {
+var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "a" : _ref$as, disabled2 = _ref3.disabled, onKeyDown = _ref3.onKeyDown, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$8);
   var handleClick = function handleClick2(event) {
     var href = props.href, onClick = props.onClick;
@@ -157749,7 +158131,7 @@ var SafeAnchor = /* @__PURE__ */ React.forwardRef(function(_ref3, ref) {
     props.tabIndex = -1;
     props["aria-disabled"] = true;
   }
-  return /* @__PURE__ */ React.createElement(Component2, _extends$1({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({
     ref
   }, props, {
     onClick: handleClick,
@@ -157763,12 +158145,12 @@ var defaultProps$1 = {
   active: false,
   disabled: false
 };
-var Button = /* @__PURE__ */ React.forwardRef(function(_ref3, ref) {
+var Button = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, size = _ref3.size, active = _ref3.active, className = _ref3.className, block2 = _ref3.block, type2 = _ref3.type, as = _ref3.as, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$7);
   var prefix2 = useBootstrapPrefix(bsPrefix, "btn");
   var classes = cx(className, prefix2, active && "active", variant && prefix2 + "-" + variant, block2 && prefix2 + "-block", size && prefix2 + "-" + size);
   if (props.href) {
-    return /* @__PURE__ */ React.createElement(SafeAnchor, _extends$1({}, props, {
+    return /* @__PURE__ */ React$1.createElement(SafeAnchor, _extends$1({}, props, {
       as,
       ref,
       className: cx(classes, props.disabled && "disabled")
@@ -157783,7 +158165,7 @@ var Button = /* @__PURE__ */ React.forwardRef(function(_ref3, ref) {
     props.type = "button";
   }
   var Component2 = as || "button";
-  return /* @__PURE__ */ React.createElement(Component2, _extends$1({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({}, props, {
     className: classes
   }));
 });
@@ -158547,7 +158929,7 @@ const ScenePlayerScrubber = ({ file, scene, time, onSeek, onScroll }) => {
     backgroundImage: scene.paths.interactive_heatmap ? `url(${scene.paths.interactive_heatmap})` : void 0
   } }), jsxRuntimeExports.jsx("div", { ref: indicatorEl, id: "scrubber-position-indicator" }), jsxRuntimeExports.jsx("div", { id: "scrubber-current-position" }), jsxRuntimeExports.jsx("div", { className: "scrubber-viewport", children: jsxRuntimeExports.jsxs("div", { ref: sliderEl, className: "scrubber-slider", children: [jsxRuntimeExports.jsx("div", { className: "scrubber-tags", children: renderTags() }), renderSprites()] }) })] }), jsxRuntimeExports.jsx(Button, { className: "scrubber-button", id: "scrubber-forward", onClick: () => goForward(), children: jsxRuntimeExports.jsx(Icon, { className: "fa-fw", icon: faChevronRight }) })] });
 };
-const ConfigurationContext = React.createContext({});
+const ConfigurationContext = React$1.createContext({});
 var lib = {};
 var Handy$1 = {};
 var types = {};
@@ -159736,7 +160118,7 @@ function connectionStateLabel(s2) {
       return `${prefix2}.ready`;
   }
 }
-const InteractiveContext = React.createContext({
+const InteractiveContext = React$1.createContext({
   interactive: new Interactive("", 0),
   state: ConnectionState.Missing,
   serverOffset: 0,
@@ -160195,7 +160577,7 @@ createFormattedComponent("formatDisplayName");
 createFormattedDateTimePartsComponent("formatDate");
 createFormattedDateTimePartsComponent("formatTime");
 const SceneInteractiveStatus = ({}) => {
-  const { state, error } = React.useContext(InteractiveContext);
+  const { state, error } = React$1.useContext(InteractiveContext);
   function getStateClass() {
     switch (state) {
       case ConnectionState.Connecting:
@@ -164852,7 +165234,7 @@ const ScenePlayer$1 = PatchComponent("ScenePlayer", ({ scene, hideScrubberOverri
   const [sceneIncrementPlayCount] = useSceneIncrementPlayCount();
   const [time, setTime] = reactExports.useState(0);
   const [ready, setReady] = reactExports.useState(false);
-  const { interactive: interactiveClient, uploadScript, currentScript, initialised: interactiveInitialised, state: interactiveState } = React.useContext(InteractiveContext);
+  const { interactive: interactiveClient, uploadScript, currentScript, initialised: interactiveInitialised, state: interactiveState } = React$1.useContext(InteractiveContext);
   const [fullscreen, setFullscreen] = reactExports.useState(false);
   const [showScrubber, setShowScrubber] = reactExports.useState(false);
   const started = reactExports.useRef(false);
@@ -165462,7 +165844,7 @@ async function getOriginalPlugin() {
     pluginName = pluginNameToBeRegistered;
     plugin = pluginToBeRegistered;
   };
-  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-UxtKPQuQ.js"), true ? [] : void 0, import.meta.url);
+  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-BY9L3KfS.js"), true ? [] : void 0, import.meta.url);
   videojs.registerPlugin = originalRegisterPlugin;
   if (!pluginName || !plugin) {
     throw new Error(`Failed to load original videojs-overlay-buttons plugin`);
@@ -165665,14 +166047,14 @@ const ScenePlayer = reactExports.forwardRef(({ className, onTimeUpdate, hideCont
       videojsPlayer.off("tap", onTapHandler);
     };
   }, [videojsPlayer, onClick]);
-  return /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React$1.createElement(
     "div",
     {
       className: cx(["ScenePlayer", className, { "hide-controls": hideControls, "hide-progress-bar": hideProgressBar }]),
       ref: containerRef,
       "data-scene-id": otherProps.scene?.id
     },
-    /* @__PURE__ */ React.createElement(
+    /* @__PURE__ */ React$1.createElement(
       ScenePlayer$1,
       {
         ...otherProps,
@@ -165742,15 +166124,15 @@ function requireUseSyncExternalStoreShim_production() {
       function() {
         inst.value = value;
         inst.getSnapshot = getSnapshot;
-        checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+        checkIfSnapshotChanged2(inst) && forceUpdate({ inst });
       },
       [subscribe, value, getSnapshot]
     );
     useEffect(
       function() {
-        checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+        checkIfSnapshotChanged2(inst) && forceUpdate({ inst });
         return subscribe(function() {
-          checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+          checkIfSnapshotChanged2(inst) && forceUpdate({ inst });
         });
       },
       [subscribe]
@@ -165758,7 +166140,7 @@ function requireUseSyncExternalStoreShim_production() {
     useDebugValue2(value);
     return value;
   }
-  function checkIfSnapshotChanged(inst) {
+  function checkIfSnapshotChanged2(inst) {
     var latestGetSnapshot = inst.getSnapshot;
     inst = inst.value;
     try {
@@ -165801,7 +166183,7 @@ function requireWithSelector_production() {
   function is2(x2, y) {
     return x2 === y && (0 !== x2 || 1 / x2 === 1 / y) || x2 !== x2 && y !== y;
   }
-  var objectIs = "function" === typeof Object.is ? Object.is : is2, useSyncExternalStore = shim2.useSyncExternalStore, useRef = React2.useRef, useEffect = React2.useEffect, useMemo = React2.useMemo, useDebugValue2 = React2.useDebugValue;
+  var objectIs = "function" === typeof Object.is ? Object.is : is2, useSyncExternalStore2 = shim2.useSyncExternalStore, useRef = React2.useRef, useEffect = React2.useEffect, useMemo = React2.useMemo, useDebugValue2 = React2.useDebugValue;
   withSelector_production.useSyncExternalStoreWithSelector = function(subscribe, getSnapshot, getServerSnapshot, selector, isEqual2) {
     var instRef = useRef(null);
     if (null === instRef.current) {
@@ -165842,7 +166224,7 @@ function requireWithSelector_production() {
       },
       [getSnapshot, getServerSnapshot, selector, isEqual2]
     );
-    var value = useSyncExternalStore(subscribe, instRef[0], instRef[1]);
+    var value = useSyncExternalStore2(subscribe, instRef[0], instRef[1]);
     useEffect(
       function() {
         inst.hasValue = true;
@@ -165867,7 +166249,7 @@ function requireWithSelector() {
 var withSelectorExports = requireWithSelector();
 const useSyncExternalStoreExports = /* @__PURE__ */ getDefaultExportFromCjs(withSelectorExports);
 const __vite_import_meta_env__$1 = {};
-const { useDebugValue } = React;
+const { useDebugValue } = React$1;
 const { useSyncExternalStoreWithSelector } = useSyncExternalStoreExports;
 let didWarnAboutEqualityFn = false;
 const identity$1 = (arg) => arg;
@@ -166240,8 +166622,7 @@ const useAppStateStore = create2()(
     (set4, get7) => ({
       selectedSavedFilterId: void 0,
       sceneFilter: void 0,
-      scenes: [],
-      scenesLoading: true,
+      sceneFilterLoading: true,
       showSettings: false,
       audioMuted: false,
       showSubtitles: false,
@@ -166253,10 +166634,8 @@ const useAppStateStore = create2()(
       isRandomised: false,
       crtEffect: false,
       setSelectedSavedFilterId: (id) => set4({ selectedSavedFilterId: id }),
-      setSceneFilter: async (apolloClient, filter) => {
-        set4({ scenesLoading: true });
-        const scenes = await fetchScenesFromStash(apolloClient, filter);
-        set4({ sceneFilter: filter, scenes, scenesLoading: false });
+      setSceneFilter: async (filter) => {
+        set4({ sceneFilter: filter, sceneFilterLoading: false });
       },
       setShowSettings: (newValue) => set4((state) => ({
         showSettings: typeof newValue === "boolean" ? newValue : newValue(state.showSettings)
@@ -166295,27 +166674,22 @@ const useAppStateStore = create2()(
     {
       name: "app-state",
       partialize: (state) => Object.fromEntries(
-        Object.entries(state).filter(([key]) => !["sceneFilter", "scenes", "scenesLoading", "selectedSavedFilterId", "showSettings", "fullscreen"].includes(key))
+        Object.entries(state).filter(([key]) => ![
+          "sceneFilter",
+          "sceneFilterLoading",
+          "selectedSavedFilterId",
+          "showSettings",
+          "fullscreen"
+        ].includes(key))
       )
     }
   )
 );
-async function fetchScenesFromStash(apolloClient, filter) {
-  const { data: data2 } = await apolloClient.query({
-    query: FindScenesForTvDocument,
-    variables: {
-      filter: filter.generalFilter,
-      scene_filter: filter.sceneFilter
-    }
-  });
-  return data2.findScenes.scenes;
-}
 const useStashConfigStore = create2((set4, get7) => ({
   stashDefaultScenesFilter: void 0,
   savedSceneFilters: [],
   stashTvConfig: {
-    defaultFilterID: void 0,
-    maximumScenes: DEFAULT_MAXIMUM_SCENES
+    defaultFilterID: void 0
   },
   apolloClient: void 0,
   loading: true,
@@ -166438,7 +166812,7 @@ function CrtEffect(props) {
       cancelAnimationFrame(frame);
     };
   }, []);
-  return /* @__PURE__ */ React.createElement("div", { className: cx("CrtEffect", `tv-${tvState}`, { "disabled": !enabled && tvState !== "turning-off" }), ref: rootElmRef }, /* @__PURE__ */ React.createElement("canvas", { id: "canvas", className: "picture" }), /* @__PURE__ */ React.createElement("div", { className: "text" }, Array.from({ length: 6 }, (_, i) => /* @__PURE__ */ React.createElement("span", { key: i }, "AV-1"))), /* @__PURE__ */ React.createElement("div", { className: "content" }, props.children), /* @__PURE__ */ React.createElement("div", { className: "background" }));
+  return /* @__PURE__ */ React$1.createElement("div", { className: cx("CrtEffect", `tv-${tvState}`, { "disabled": !enabled && tvState !== "turning-off" }), ref: rootElmRef }, /* @__PURE__ */ React$1.createElement("canvas", { id: "canvas", className: "picture" }), /* @__PURE__ */ React$1.createElement("div", { className: "text" }, Array.from({ length: 6 }, (_, i) => /* @__PURE__ */ React$1.createElement("span", { key: i }, "AV-1"))), /* @__PURE__ */ React$1.createElement("div", { className: "content" }, props.children), /* @__PURE__ */ React$1.createElement("div", { className: "background" }));
 }
 const SvgVolumeMuteOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 576 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
   fillRule: "evenodd",
@@ -166651,20 +167025,17 @@ const VideoItem = (props) => {
     const handleKeyDown = (e) => {
       const seekBackwardsKey = forceLandscape ? "ArrowDown" : "ArrowLeft";
       const seekForwardsKey = forceLandscape ? "ArrowUp" : "ArrowRight";
-      console.log("forawrd key", seekForwardsKey);
       if (e.key === seekBackwardsKey) {
         seekBackwards();
         e.preventDefault();
-        e.stopPropagation();
       } else if (e.key === seekForwardsKey) {
         seekForwards();
         e.preventDefault();
-        e.stopPropagation();
       }
     };
     window.addEventListener("keydown", handleKeyDown, { capture: true });
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keydown", handleKeyDown, { capture: true });
     };
   }, [forceLandscape, isInViewport]);
   function getSkipTime() {
@@ -166686,7 +167057,7 @@ const VideoItem = (props) => {
   }
   function seekForwards() {
     const videojsPlayer = videojsPlayerRef.current;
-    if (!videojsPlayer) return null;
+    if (!videojsPlayer || videojsPlayer.isDisposed()) return null;
     const duration5 = videojsPlayer.duration();
     const skipAmount = getSkipTime();
     if (skipAmount === null || typeof duration5 !== "number") {
@@ -166703,7 +167074,7 @@ const VideoItem = (props) => {
   }
   function seekBackwards() {
     const videojsPlayer = videojsPlayerRef.current;
-    if (!videojsPlayer) return null;
+    if (!videojsPlayer || videojsPlayer.isDisposed()) return null;
     const duration5 = videojsPlayer.duration();
     const skipAmount = getSkipTime();
     if (skipAmount === null || typeof duration5 !== "number") {
@@ -166749,7 +167120,7 @@ const VideoItem = (props) => {
     if (!isInViewport) setSceneInfoOpen(false);
   }, [isInViewport]);
   const sceneInfoDataAvailable = props.scene.performers.length > 0 || !!props.scene.studio || !!props.scene.title || !!props.scene.date;
-  const sceneInfoButton = sceneInfoDataAvailable ? /* @__PURE__ */ React.createElement(
+  const sceneInfoButton = sceneInfoDataAvailable ? /* @__PURE__ */ React$1.createElement(
     UiButton,
     {
       className: "show-scene-info",
@@ -166765,7 +167136,7 @@ const VideoItem = (props) => {
   const captionSources = props.scene.captions && stashTvConfig.subtitleLanguage ? props.scene.captions.map((cap, i) => {
     if (cap.language_code === stashTvConfig.subtitleLanguage) {
       const src2 = props.scene.paths.caption + `?lang=${cap.language_code}&type=${cap.caption_type}`;
-      return /* @__PURE__ */ React.createElement(
+      return /* @__PURE__ */ React$1.createElement(
         "track",
         {
           default: stashTvConfig.subtitleLanguage === cap.language_code,
@@ -166778,7 +167149,7 @@ const VideoItem = (props) => {
       );
     }
   }).find((c) => !!c) : null;
-  const subtitlesButton = !!captionSources ? /* @__PURE__ */ React.createElement(
+  const subtitlesButton = !!captionSources ? /* @__PURE__ */ React$1.createElement(
     UiButton,
     {
       active: !!captionSources && showSubtitles,
@@ -166794,7 +167165,7 @@ const VideoItem = (props) => {
     if (videoRef.current && videoRef.current.textTracks.length)
       videoRef.current.textTracks[0].mode = showSubtitles ? "showing" : "disabled";
   }, [showSubtitles]);
-  return /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React$1.createElement(
     "div",
     {
       className: cx("VideoItem", { inViewport: isInViewport, "cover": !letterboxing }, props.className),
@@ -166804,7 +167175,7 @@ const VideoItem = (props) => {
       ref: itemRef,
       style: props.style
     },
-    /* @__PURE__ */ React.createElement(CrtEffect, { enabled: crtEffect }, void 0, void 0, /* @__PURE__ */ React.createElement("img", { className: "loadingDeferredPreview", src: props.scene.paths.screenshot || "" }), !loadingDeferred && /* @__PURE__ */ React.createElement(
+    /* @__PURE__ */ React$1.createElement(CrtEffect, { enabled: crtEffect }, void 0, void 0, /* @__PURE__ */ React$1.createElement("img", { className: "loadingDeferredPreview", src: props.scene.paths.screenshot || "" }), !loadingDeferred && /* @__PURE__ */ React$1.createElement(
       ScenePlayer,
       {
         scene: props.scene,
@@ -166837,7 +167208,7 @@ const VideoItem = (props) => {
           }
         }
       }
-    ), /* @__PURE__ */ React.createElement(
+    ), /* @__PURE__ */ React$1.createElement(
       Transition,
       {
         in: sceneInfoOpen,
@@ -166846,7 +167217,7 @@ const VideoItem = (props) => {
         mountOnEnter: true,
         unmountOnExit: true
       },
-      (state) => /* @__PURE__ */ React.createElement(
+      (state) => /* @__PURE__ */ React$1.createElement(
         SceneInfoPanel,
         {
           ...props.scene,
@@ -166858,12 +167229,12 @@ const VideoItem = (props) => {
           }
         }
       )
-    ), /* @__PURE__ */ React.createElement(
+    ), /* @__PURE__ */ React$1.createElement(
       "div",
       {
         className: cx("controls", { "active": uiVisible })
       },
-      /* @__PURE__ */ React.createElement(
+      /* @__PURE__ */ React$1.createElement(
         Transition,
         {
           in: uiVisible,
@@ -166871,7 +167242,7 @@ const VideoItem = (props) => {
           timeout: TRANSITION_DURATION,
           unmountOnExit: true
         },
-        (state) => /* @__PURE__ */ React.createElement(
+        (state) => /* @__PURE__ */ React$1.createElement(
           "div",
           {
             className: "toggleable-ui",
@@ -166882,7 +167253,7 @@ const VideoItem = (props) => {
               ...toggleableUiTransitionStyles[state]
             }
           },
-          /* @__PURE__ */ React.createElement(
+          /* @__PURE__ */ React$1.createElement(
             UiButton,
             {
               className: "mute",
@@ -166896,7 +167267,7 @@ const VideoItem = (props) => {
             }
           ),
           subtitlesButton,
-          "exitFullscreen" in document && /* @__PURE__ */ React.createElement(
+          "exitFullscreen" in document && /* @__PURE__ */ React$1.createElement(
             UiButton,
             {
               className: "fullscreen",
@@ -166909,7 +167280,7 @@ const VideoItem = (props) => {
               onClick: () => setFullscreen((prev2) => !prev2)
             }
           ),
-          /* @__PURE__ */ React.createElement(
+          /* @__PURE__ */ React$1.createElement(
             UiButton,
             {
               className: "letterboxing",
@@ -166922,7 +167293,7 @@ const VideoItem = (props) => {
               onClick: () => setLetterboxing((prev2) => !prev2)
             }
           ),
-          /* @__PURE__ */ React.createElement(
+          /* @__PURE__ */ React$1.createElement(
             UiButton,
             {
               className: "force-landscape",
@@ -166935,7 +167306,7 @@ const VideoItem = (props) => {
               onClick: () => setForceLandscape((prev2) => !prev2)
             }
           ),
-          /* @__PURE__ */ React.createElement(
+          /* @__PURE__ */ React$1.createElement(
             UiButton,
             {
               className: "loop",
@@ -166949,7 +167320,7 @@ const VideoItem = (props) => {
             }
           ),
           sceneInfoButton,
-          /* @__PURE__ */ React.createElement(
+          /* @__PURE__ */ React$1.createElement(
             UiButton,
             {
               className: "settings",
@@ -166964,14 +167335,14 @@ const VideoItem = (props) => {
           )
         )
       ),
-      /* @__PURE__ */ React.createElement(
+      /* @__PURE__ */ React$1.createElement(
         Transition,
         {
           in: uiVisible,
           nodeRef: uiButtonRef,
           timeout: TRANSITION_DURATION
         },
-        (state) => /* @__PURE__ */ React.createElement(
+        (state) => /* @__PURE__ */ React$1.createElement(
           UiButton,
           {
             active: uiVisible,
@@ -166993,17 +167364,17 @@ const VideoItem = (props) => {
     ))
   );
 };
-const VideoItem$1 = React.memo(VideoItem);
+const VideoItem$1 = React$1.memo(VideoItem);
 const UiButton = reactExports.forwardRef(
   ({ active, activeIcon, activeText, inactiveIcon, inactiveText, className, ...props }, ref) => {
     const fullClassName = cx(className, { active });
     const Icon2 = active ? activeIcon : inactiveIcon;
-    return /* @__PURE__ */ React.createElement("button", { className: fullClassName, ...props, onClick: props.onClick, type: "button", ref }, "icon" in Icon2 ? /* @__PURE__ */ React.createElement(FontAwesomeIcon, { icon: Icon2 }) : /* @__PURE__ */ React.createElement(Icon2, { className: "icon" }), /* @__PURE__ */ React.createElement("span", { className: "sr-only" }, active ? activeText : inactiveText));
+    return /* @__PURE__ */ React$1.createElement("button", { className: fullClassName, ...props, onClick: props.onClick, type: "button", ref }, "icon" in Icon2 ? /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: Icon2 }) : /* @__PURE__ */ React$1.createElement(Icon2, { className: "icon" }), /* @__PURE__ */ React$1.createElement("span", { className: "sr-only" }, active ? activeText : inactiveText));
   }
 );
 const SceneInfoPanel = reactExports.forwardRef(
   (props, ref) => {
-    const date = props.date ? /* @__PURE__ */ React.createElement("span", { className: "date" }, props.date) : null;
+    const date = props.date ? /* @__PURE__ */ React$1.createElement("span", { className: "date" }, props.date) : null;
     const sortedPerformers = sortPerformers(props.performers);
     const totalPerformers = sortedPerformers.length;
     const performersInner = sortedPerformers.map((pf, i) => {
@@ -167015,14 +167386,14 @@ const SceneInfoPanel = reactExports.forwardRef(
         if (isAnyBeforeLast) suffix = ", ";
         if (isOneBeforeLast) suffix += "and ";
       }
-      return /* @__PURE__ */ React.createElement(reactExports.Fragment, { key: i }, /* @__PURE__ */ React.createElement("span", null, pf.name), suffix);
+      return /* @__PURE__ */ React$1.createElement(reactExports.Fragment, { key: i }, /* @__PURE__ */ React$1.createElement("span", null, pf.name), suffix);
     });
-    const performers = performersInner.length ? /* @__PURE__ */ React.createElement("div", { className: "performers" }, performersInner) : null;
+    const performers = performersInner.length ? /* @__PURE__ */ React$1.createElement("div", { className: "performers" }, performersInner) : null;
     const parentStudioText = props.studio?.parent_studio ? " | " + props.studio.parent_studio.name : "";
-    const studio = props.studio ? /* @__PURE__ */ React.createElement("span", { className: "studio" }, props.studio.name + parentStudioText) : null;
-    const title = props.title ? /* @__PURE__ */ React.createElement("h5", null, props.title) : null;
+    const studio = props.studio ? /* @__PURE__ */ React$1.createElement("span", { className: "studio" }, props.studio.name + parentStudioText) : null;
+    const title = props.title ? /* @__PURE__ */ React$1.createElement("h5", null, props.title) : null;
     const sceneUrl = props.paths.stream?.split("/stream")[0]?.replace("/scene", "/scenes");
-    return /* @__PURE__ */ React.createElement(
+    return /* @__PURE__ */ React$1.createElement(
       "div",
       {
         className: "scene-info",
@@ -167034,7 +167405,7 @@ const SceneInfoPanel = reactExports.forwardRef(
         }
       },
       studio,
-      /* @__PURE__ */ React.createElement("a", { href: sceneUrl || "" }, title),
+      /* @__PURE__ */ React$1.createElement("a", { href: sceneUrl || "" }, title),
       performers,
       date
     );
@@ -167966,23 +168337,52 @@ function requireThrottleit() {
 }
 var throttleitExports = /* @__PURE__ */ requireThrottleit();
 const throttle2 = /* @__PURE__ */ getDefaultExportFromCjs(throttleitExports);
+const scenesPerPage = 20;
+function useScenes() {
+  const { sceneFilter } = useAppStateStore();
+  const {
+    data: data2,
+    fetchMore,
+    error: scenesError,
+    loading: scenesLoading
+  } = useFindScenesForTvQuery({
+    variables: {
+      filter: {
+        ...sceneFilter?.generalFilter,
+        // We manage pagination ourselves and so override whatever the saved filter had
+        page: 1,
+        per_page: scenesPerPage
+      },
+      scene_filter: sceneFilter?.sceneFilter
+    },
+    skip: !sceneFilter
+  });
+  return {
+    scenes: data2?.findScenes?.scenes ?? [],
+    loadMoreScenes: () => {
+      const nextPage = data2?.findScenes?.scenes.length ? Math.ceil(data2.findScenes.scenes.length / scenesPerPage) + 1 : 1;
+      fetchMore({
+        variables: {
+          filter: {
+            ...sceneFilter?.generalFilter,
+            // We manage pagination ourselves and so override whatever the saved filter had
+            page: nextPage,
+            per_page: scenesPerPage
+          },
+          scene_filter: sceneFilter?.sceneFilter
+        }
+      });
+    },
+    scenesError,
+    scenesLoading
+  };
+}
 const videoItemHeight = "calc(var(--y-unit-large) * 100)";
 const itemBufferEitherSide = 1;
 const VideoScroller = () => {
   const { forceLandscape: isForceLandscape, setCrtEffect } = useAppStateStore();
   const rootElmRef = reactExports.useRef(null);
-  const { scenes } = useAppStateStore();
-  const _scenesCache = reactExports.useRef([]);
-  const cachedScenes = reactExports.useMemo(() => {
-    if (!scenes) return [];
-    const newValue = scenes.map(
-      (newlyFetchedScene) => _scenesCache.current.find(
-        (cachedScene) => cachedScene.id === newlyFetchedScene.id
-      ) || newlyFetchedScene
-    ).filter((scene) => !!scene);
-    _scenesCache.current = newValue;
-    return newValue;
-  }, [scenes]);
+  const { scenes, loadMoreScenes } = useScenes();
   const estimateSizeTesterElement = reactExports.useRef(null);
   reactExports.useEffect(() => {
     return () => {
@@ -167993,7 +168393,7 @@ const VideoScroller = () => {
     };
   }, []);
   const sharedOptions = {
-    count: cachedScenes.length,
+    count: scenes.length,
     estimateSize: () => {
       if (!estimateSizeTesterElement.current) {
         const el = document.createElement("div");
@@ -168028,7 +168428,7 @@ const VideoScroller = () => {
   const [currentIndex, _setCurrentIndex] = reactExports.useReducer(
     (currentState, newState) => {
       newState = typeof newState === "function" ? newState(currentState) : newState;
-      return clamp$2(0, newState, cachedScenes.length - 1);
+      return clamp$2(0, newState, scenes.length - 1);
     },
     0
   );
@@ -168081,15 +168481,17 @@ const VideoScroller = () => {
       index2 = typeof index2 === "function" ? index2(currentIndexRef.current) : index2;
       const container2 = rowVirtualizer.scrollElement;
       if (!container2) return;
-      const itemHeight = rowVirtualizer.getVirtualItems()[0].size;
+      const itemHeight = rowVirtualizer.getVirtualItems()[0]?.size || 0;
       const newScrollTop = index2 * itemHeight;
       temporarilyDisableScrollSnapping();
-      console.log({ top: newScrollTop, behavior: "smooth", ...options2 }, options2);
       rowVirtualizer.scrollElement?.scrollTo({ top: newScrollTop, behavior: "smooth", ...options2 });
     },
     [rowVirtualizer]
   );
   reactExports.useEffect(() => {
+    if (currentIndex >= scenes.length - 5) {
+      loadMoreScenes();
+    }
   }, [currentIndex]);
   reactExports.useEffect(() => {
     const handleKeyDown = (e) => {
@@ -168100,20 +168502,18 @@ const VideoScroller = () => {
         scrollToIndex(newIndex, { behavior: "instant" });
         setCurrentIndex(newIndex);
         e.preventDefault();
-        e.stopPropagation();
       } else if (e.key === nextKey) {
         const newIndex = (prevIndex) => prevIndex + 1;
         scrollToIndex(newIndex, { behavior: "instant" });
         setCurrentIndex(newIndex);
         e.preventDefault();
-        e.stopPropagation();
       }
     };
     window.addEventListener("keydown", handleKeyDown, { capture: true });
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keydown", handleKeyDown, { capture: true });
     };
-  }, [isForceLandscape, setCurrentIndex, cachedScenes.length]);
+  }, [isForceLandscape, setCurrentIndex, scenes.length]);
   reactExports.useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "c") {
@@ -168232,7 +168632,7 @@ const VideoScroller = () => {
     previousItemIndexesToRenderRef.current = newItemIndexesToRender;
     return newItemIndexesToRender;
   }, [rowVirtualizer.getVirtualItems(), itemsToRenderFrozen]);
-  return /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React$1.createElement(
     "div",
     {
       className: cx("VideoScroller", { scrollSnappingEnabled: scrollSnappingEnabled() }),
@@ -168242,7 +168642,7 @@ const VideoScroller = () => {
       style: { height: rowVirtualizer.getTotalSize() }
     },
     void 0,
-    cachedScenes.map((scene, i) => {
+    scenes.map((scene, i) => {
       const style = {
         position: "absolute",
         top: 0,
@@ -168253,7 +168653,7 @@ const VideoScroller = () => {
         ...{}
       };
       if (itemIndexesToRender.includes(i)) {
-        return /* @__PURE__ */ React.createElement(
+        return /* @__PURE__ */ React$1.createElement(
           VideoItem$1,
           {
             changeItemHandler: (newIndex) => {
@@ -168268,7 +168668,7 @@ const VideoScroller = () => {
             currentlyScrolling: rowVirtualizer.isScrolling
           }
         );
-      } else return /* @__PURE__ */ React.createElement("div", { key: scene.id, className: "dummy-video-item", style });
+      } else return /* @__PURE__ */ React$1.createElement("div", { key: scene.id, className: "dummy-video-item", style });
     })
   );
 };
@@ -169532,7 +169932,7 @@ function serializeStyles(args, registered, mergedProps) {
 var syncFallback = function syncFallback2(create3) {
   return create3();
 };
-var useInsertionEffect = React$1["useInsertionEffect"] ? React$1["useInsertionEffect"] : false;
+var useInsertionEffect = React$2["useInsertionEffect"] ? React$2["useInsertionEffect"] : false;
 var useInsertionEffectAlwaysWithSyncFallback = useInsertionEffect || syncFallback;
 var EmotionCacheContext = /* @__PURE__ */ reactExports.createContext(
   // we're doing this to avoid preconstruct's dead code elimination in this one case
@@ -174588,11 +174988,11 @@ const bindToProps = (props, eventOptions, withPassiveOption) => (device, action,
   props[handlerProp].push(handler);
 };
 function useRecognizers(handlers, config2 = {}, gestureKey, nativeHandlers) {
-  const ctrl = React.useMemo(() => new Controller$1(handlers), []);
+  const ctrl = React$1.useMemo(() => new Controller$1(handlers), []);
   ctrl.applyHandlers(handlers, nativeHandlers);
   ctrl.applyConfig(config2, gestureKey);
-  React.useEffect(ctrl.effect.bind(ctrl));
-  React.useEffect(() => {
+  React$1.useEffect(ctrl.effect.bind(ctrl));
+  React$1.useEffect(() => {
     return ctrl.clean.bind(ctrl);
   }, []);
   if (config2.target === void 0) {
@@ -177823,7 +178223,7 @@ function SideDrawer({ children, title, closeDisabled, className }) {
   const bodyRef = reactExports.useRef(null);
   const overlayRef = reactExports.useRef(null);
   const { setShowSettings, showSettings, forceLandscape } = useAppStateStore();
-  const [sidebarWidth, setSidebarWidth] = React.useState(window.innerWidth);
+  const [sidebarWidth, setSidebarWidth] = React$1.useState(window.innerWidth);
   reactExports.useEffect(() => {
     const width2 = ref?.current?.clientWidth;
     if (width2) {
@@ -177980,17 +178380,17 @@ function SideDrawer({ children, title, closeDisabled, className }) {
     scrollElement.addEventListener("scroll", handleScroll);
     return () => scrollElement.removeEventListener("scroll", handleScroll);
   }, [forceLandscape]);
-  const closeButton = closeDisabled ? null : /* @__PURE__ */ React.createElement(
+  const closeButton = closeDisabled ? null : /* @__PURE__ */ React$1.createElement(
     "button",
     {
       "data-testid": "SideDrawer--closeButton",
       onClick: () => setShowSettings(false),
       type: "button"
     },
-    /* @__PURE__ */ React.createElement(FontAwesomeIcon, { icon: faXmark }),
-    /* @__PURE__ */ React.createElement("span", { className: "sr-only" }, "Close settings")
+    /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faXmark }),
+    /* @__PURE__ */ React$1.createElement("span", { className: "sr-only" }, "Close settings")
   );
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
     animated.div,
     {
       className: "settings-overlay",
@@ -177998,7 +178398,7 @@ function SideDrawer({ children, title, closeDisabled, className }) {
       onClick: () => close(),
       ref: overlayRef
     }
-  ), /* @__PURE__ */ React.createElement(
+  ), /* @__PURE__ */ React$1.createElement(
     animated.div,
     {
       className: cx("SideDrawer", className),
@@ -178006,14 +178406,15 @@ function SideDrawer({ children, title, closeDisabled, className }) {
       ref,
       style: { right: x2.to((px2) => `calc(100% - ${px2}px)`), ...landscapeModePositionStyleHack }
     },
-    /* @__PURE__ */ React.createElement("div", { className: "content" }, /* @__PURE__ */ React.createElement("div", { className: "body", ref: bodyRef }, children), /* @__PURE__ */ React.createElement("div", { className: "footer" }, /* @__PURE__ */ React.createElement("h2", null, title), closeButton))
+    /* @__PURE__ */ React$1.createElement("div", { className: "content" }, /* @__PURE__ */ React$1.createElement("div", { className: "body", ref: bodyRef }, children), /* @__PURE__ */ React$1.createElement("div", { className: "footer" }, /* @__PURE__ */ React$1.createElement("h2", null, title), closeButton))
   ));
 }
 function SettingsTab() {
   const { savedSceneFilters, stashTvConfig, updateStashTvConfig } = useStashConfigStore();
-  const { selectedSavedFilterId, setSelectedSavedFilterId, isRandomised, sceneFilter, setIsRandomised, scenesLoading, scenes, crtEffect, setCrtEffect } = useAppStateStore();
-  const noScenesAvailable = !scenesLoading && scenes.length === 0;
-  const fetchingDataWarning = scenesLoading ? /* @__PURE__ */ React.createElement("div", { className: "warning" }, /* @__PURE__ */ React.createElement("h2", null, /* @__PURE__ */ React.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true }), /* @__PURE__ */ React.createElement("span", null, "Fetching data from Stash...")), /* @__PURE__ */ React.createElement("p", null, "Please wait while data is loaded.")) : null;
+  const { selectedSavedFilterId, setSelectedSavedFilterId, isRandomised, sceneFilter, sceneFilterLoading, setIsRandomised, crtEffect, setCrtEffect } = useAppStateStore();
+  const { scenes, scenesLoading } = useScenes();
+  const noScenesAvailable = !sceneFilterLoading && !scenesLoading && scenes.length === 0;
+  const fetchingDataWarning = scenesLoading ? /* @__PURE__ */ React$1.createElement("div", { className: "warning" }, /* @__PURE__ */ React$1.createElement("h2", null, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true }), /* @__PURE__ */ React$1.createElement("span", null, "Fetching data from Stash...")), /* @__PURE__ */ React$1.createElement("p", null, "Please wait while data is loaded.")) : null;
   const reactSelectTheme = (theme) => ({
     ...theme,
     colors: {
@@ -178042,7 +178443,7 @@ function SettingsTab() {
     [savedSceneFilters, stashTvConfig.stashTvDefaultFilterID]
   );
   const selectedFilter = reactExports.useMemo(() => filters.find((filter) => filter.value === selectedSavedFilterId), [selectedSavedFilterId, filters]);
-  const scenelessFilterError = noScenesAvailable ? /* @__PURE__ */ React.createElement("div", { className: "error" }, /* @__PURE__ */ React.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one.")) : null;
+  const scenelessFilterError = noScenesAvailable ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one.")) : null;
   const subtitlesList = ISO6391.getAllNames().map((name) => ({
     label: name,
     value: ISO6391.getCode(name)
@@ -178065,7 +178466,7 @@ function SettingsTab() {
       subtitleLanguage: option?.value ?? void 0
     });
   };
-  return /* @__PURE__ */ React.createElement(SideDrawer, { title: "Settings", closeDisabled: noScenesAvailable || scenesLoading, className: "SettingsTab" }, /* @__PURE__ */ React.createElement("div", { className: "item" }, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement("h3", null, "Select a filter"), /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React$1.createElement(SideDrawer, { title: "Settings", closeDisabled: noScenesAvailable || scenesLoading, className: "SettingsTab" }, /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement("h3", null, "Select a filter"), /* @__PURE__ */ React$1.createElement(
     StateManagedSelect$1,
     {
       defaultValue: selectedFilter,
@@ -178074,7 +178475,7 @@ function SettingsTab() {
       placeholder: "None selected. Defaulted to all portrait scenes.",
       theme: reactSelectTheme
     }
-  )), /* @__PURE__ */ React.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), fetchingDataWarning, scenelessFilterError), selectedFilter && selectedFilter.value !== stashTvConfig.stashTvDefaultFilterID && /* @__PURE__ */ React.createElement("div", { className: "item" }, /* @__PURE__ */ React.createElement(
+  )), /* @__PURE__ */ React$1.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), fetchingDataWarning, scenelessFilterError), selectedFilter && selectedFilter.value !== stashTvConfig.stashTvDefaultFilterID && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
     "button",
     {
       onClick: () => {
@@ -178087,14 +178488,14 @@ function SettingsTab() {
     'Set "',
     selectedFilter?.label,
     '" as the default filter'
-  ), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("small", null, "Set the currently selected scene filter as the default filter when opening Stash TV."))), /* @__PURE__ */ React.createElement("div", { className: "item checkbox-item" }, sceneFilter?.generalFilter?.sort?.startsWith("random_") ? /* @__PURE__ */ React.createElement("span", null, "Filter is set to random order") : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement(
+  ), /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement("small", null, "Set the currently selected scene filter as the default filter when opening Stash TV."))), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, sceneFilter?.generalFilter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter is set to random order") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement(
     "input",
     {
       checked: isRandomised,
       onChange: (event) => setIsRandomised(event.target.checked),
       type: "checkbox"
     }
-  ), /* @__PURE__ */ React.createElement("h3", null, "Randomise filter order")), /* @__PURE__ */ React.createElement("small", null, "Randomise the order of scenes in the filter."))), /* @__PURE__ */ React.createElement("div", { className: "item" }, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement("h3", null, "Subtitle language"), /* @__PURE__ */ React.createElement(
+  ), /* @__PURE__ */ React$1.createElement("h3", null, "Randomise filter order")), /* @__PURE__ */ React$1.createElement("small", null, "Randomise the order of scenes in the filter."))), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement("h3", null, "Subtitle language"), /* @__PURE__ */ React$1.createElement(
     StateManagedSelect$1,
     {
       defaultValue: defaultSubtitles,
@@ -178102,22 +178503,23 @@ function SettingsTab() {
       options: subtitlesList,
       theme: reactSelectTheme
     }
-  )), /* @__PURE__ */ React.createElement("small", null, "Select the language to use for subtitles if available.")), /* @__PURE__ */ React.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React.createElement("label", null, /* @__PURE__ */ React.createElement(
+  )), /* @__PURE__ */ React$1.createElement("small", null, "Select the language to use for subtitles if available.")), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement(
     "input",
     {
       checked: crtEffect,
       onChange: (event) => setCrtEffect(event.target.checked),
       type: "checkbox"
     }
-  ), /* @__PURE__ */ React.createElement("h3", null, "CRT effect")), /* @__PURE__ */ React.createElement("small", null, "Emulate the visual effects of an old CRT television.")));
+  ), /* @__PURE__ */ React$1.createElement("h3", null, "CRT effect")), /* @__PURE__ */ React$1.createElement("small", null, "Emulate the visual effects of an old CRT television.")));
 }
 const Loading = (props) => {
   const smallText = props.text ?? null;
-  return /* @__PURE__ */ React.createElement("div", { className: "Loading", "data-testid": "Loader" }, /* @__PURE__ */ React.createElement("h2", null, props.heading), smallText, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true })));
+  return /* @__PURE__ */ React$1.createElement("div", { className: "Loading", "data-testid": "Loader" }, /* @__PURE__ */ React$1.createElement("h2", null, props.heading), smallText, /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true })));
 };
 const FeedPage = ({ className }) => {
-  const { scenesLoading, scenes, showSettings, setShowSettings, fullscreen } = useAppStateStore();
-  if (!scenesLoading && scenes.length === 0) {
+  const { showSettings, setShowSettings, sceneFilterLoading, fullscreen } = useAppStateStore();
+  const { scenes, scenesLoading } = useScenes();
+  if (!sceneFilterLoading && !scenesLoading && scenes.length === 0 && !showSettings) {
     setShowSettings(true);
   }
   const pageRef = reactExports.useRef(null);
@@ -178134,8 +178536,8 @@ const FeedPage = ({ className }) => {
     }
   }, [fullscreen]);
   if (scenesLoading && !showSettings)
-    return /* @__PURE__ */ React.createElement(Loading, { heading: "Fetching scenes..." });
-  return /* @__PURE__ */ React.createElement("main", { "data-testid": "FeedPage", ref: pageRef, className }, /* @__PURE__ */ React.createElement(VideoScroller, null), /* @__PURE__ */ React.createElement(SettingsTab, null));
+    return /* @__PURE__ */ React$1.createElement(Loading, { heading: "Fetching scenes..." });
+  return /* @__PURE__ */ React$1.createElement("main", { "data-testid": "FeedPage", ref: pageRef, className }, /* @__PURE__ */ React$1.createElement(VideoScroller, null), /* @__PURE__ */ React$1.createElement(SettingsTab, null));
 };
 const modifierMessageIDs = {
   [CriterionModifier.Equals]: "criterion_modifier.equals",
@@ -181561,7 +181963,7 @@ class ListFilterModel {
 const App = () => {
   const apolloClient = useApolloClient();
   const { loadStashConfig, getSavedFilter, stashTvConfig, loading: stashConfigLoading } = useStashConfigStore();
-  const { setSceneFilter, sceneFilter, scenesLoading, selectedSavedFilterId, setSelectedSavedFilterId, forceLandscape, ...otherAppState } = useAppStateStore();
+  const { setSceneFilter, sceneFilter, selectedSavedFilterId, setSelectedSavedFilterId, forceLandscape, ...otherAppState } = useAppStateStore();
   reactExports.useEffect(() => {
     if (!apolloClient) return;
     loadStashConfig(apolloClient).catch((error) => {
@@ -181579,7 +181981,6 @@ const App = () => {
       if (selectedSavedFilterIdRef.current !== selectedSavedFilterId) return;
       if (savedFilter) {
         setSceneFilter(
-          apolloClient,
           {
             generalFilter: processSavedFilterToGeneralFilter(
               savedFilter,
@@ -181673,7 +182074,7 @@ const App = () => {
       window.removeEventListener("touchend", remapTouchEventForLandscapeMode, { capture: true });
     };
   }, [forceLandscape]);
-  return /* @__PURE__ */ React.createElement(FeedPage, null);
+  return /* @__PURE__ */ React$1.createElement(FeedPage, null);
 };
 const processSavedFilterToGeneralFilter = (savedFilter, stashTvConfig, otherAppState) => {
   const filter = new ListFilterModel(FilterMode.Scenes);
@@ -181683,7 +182084,6 @@ const processSavedFilterToGeneralFilter = (savedFilter, stashTvConfig, otherAppS
     let seed = Math.round(Math.random() * 1e6);
     updatedFilter.sort = `random_${seed}`;
   }
-  updatedFilter.per_page = stashTvConfig.maximumScenes;
   return updatedFilter;
 };
 const processSavedFilterToSceneFilter = (savedFilter) => {
@@ -181691,12 +182091,863 @@ const processSavedFilterToSceneFilter = (savedFilter) => {
   filter.configureFromSavedFilter(savedFilter);
   return filter.makeFilter();
 };
+var object_hash = { exports: {} };
+var hasRequiredObject_hash;
+function requireObject_hash() {
+  if (hasRequiredObject_hash) return object_hash.exports;
+  hasRequiredObject_hash = 1;
+  (function(module2, exports) {
+    !(function(e) {
+      module2.exports = e();
+    })(function() {
+      return (function r3(o2, i, u) {
+        function s2(n, e2) {
+          if (!i[n]) {
+            if (!o2[n]) {
+              var t3 = "function" == typeof commonjsRequire && commonjsRequire;
+              if (!e2 && t3) return t3(n, true);
+              if (a2) return a2(n, true);
+              throw new Error("Cannot find module '" + n + "'");
+            }
+            e2 = i[n] = { exports: {} };
+            o2[n][0].call(e2.exports, function(e3) {
+              var t4 = o2[n][1][e3];
+              return s2(t4 || e3);
+            }, e2, e2.exports, r3, o2, i, u);
+          }
+          return i[n].exports;
+        }
+        for (var a2 = "function" == typeof commonjsRequire && commonjsRequire, e = 0; e < u.length; e++) s2(u[e]);
+        return s2;
+      })({ 1: [function(w2, b, m) {
+        !(function(e, n, s2, c, d2, h, p2, g2, y) {
+          var r3 = w2("crypto");
+          function t3(e2, t4) {
+            t4 = u(e2, t4);
+            var n2;
+            return void 0 === (n2 = "passthrough" !== t4.algorithm ? r3.createHash(t4.algorithm) : new l()).write && (n2.write = n2.update, n2.end = n2.update), f(t4, n2).dispatch(e2), n2.update || n2.end(""), n2.digest ? n2.digest("buffer" === t4.encoding ? void 0 : t4.encoding) : (e2 = n2.read(), "buffer" !== t4.encoding ? e2.toString(t4.encoding) : e2);
+          }
+          (m = b.exports = t3).sha1 = function(e2) {
+            return t3(e2);
+          }, m.keys = function(e2) {
+            return t3(e2, { excludeValues: true, algorithm: "sha1", encoding: "hex" });
+          }, m.MD5 = function(e2) {
+            return t3(e2, { algorithm: "md5", encoding: "hex" });
+          }, m.keysMD5 = function(e2) {
+            return t3(e2, { algorithm: "md5", encoding: "hex", excludeValues: true });
+          };
+          var o2 = r3.getHashes ? r3.getHashes().slice() : ["sha1", "md5"], i = (o2.push("passthrough"), ["buffer", "hex", "binary", "base64"]);
+          function u(e2, t4) {
+            var n2 = {};
+            if (n2.algorithm = (t4 = t4 || {}).algorithm || "sha1", n2.encoding = t4.encoding || "hex", n2.excludeValues = !!t4.excludeValues, n2.algorithm = n2.algorithm.toLowerCase(), n2.encoding = n2.encoding.toLowerCase(), n2.ignoreUnknown = true === t4.ignoreUnknown, n2.respectType = false !== t4.respectType, n2.respectFunctionNames = false !== t4.respectFunctionNames, n2.respectFunctionProperties = false !== t4.respectFunctionProperties, n2.unorderedArrays = true === t4.unorderedArrays, n2.unorderedSets = false !== t4.unorderedSets, n2.unorderedObjects = false !== t4.unorderedObjects, n2.replacer = t4.replacer || void 0, n2.excludeKeys = t4.excludeKeys || void 0, void 0 === e2) throw new Error("Object argument required.");
+            for (var r4 = 0; r4 < o2.length; ++r4) o2[r4].toLowerCase() === n2.algorithm.toLowerCase() && (n2.algorithm = o2[r4]);
+            if (-1 === o2.indexOf(n2.algorithm)) throw new Error('Algorithm "' + n2.algorithm + '"  not supported. supported values: ' + o2.join(", "));
+            if (-1 === i.indexOf(n2.encoding) && "passthrough" !== n2.algorithm) throw new Error('Encoding "' + n2.encoding + '"  not supported. supported values: ' + i.join(", "));
+            return n2;
+          }
+          function a2(e2) {
+            if ("function" == typeof e2) return null != /^function\s+\w*\s*\(\s*\)\s*{\s+\[native code\]\s+}$/i.exec(Function.prototype.toString.call(e2));
+          }
+          function f(o3, t4, i2) {
+            i2 = i2 || [];
+            function u2(e2) {
+              return t4.update ? t4.update(e2, "utf8") : t4.write(e2, "utf8");
+            }
+            return { dispatch: function(e2) {
+              return this["_" + (null === (e2 = o3.replacer ? o3.replacer(e2) : e2) ? "null" : typeof e2)](e2);
+            }, _object: function(t5) {
+              var n2, e2 = Object.prototype.toString.call(t5), r4 = /\[object (.*)\]/i.exec(e2);
+              r4 = (r4 = r4 ? r4[1] : "unknown:[" + e2 + "]").toLowerCase();
+              if (0 <= (e2 = i2.indexOf(t5))) return this.dispatch("[CIRCULAR:" + e2 + "]");
+              if (i2.push(t5), void 0 !== s2 && s2.isBuffer && s2.isBuffer(t5)) return u2("buffer:"), u2(t5);
+              if ("object" === r4 || "function" === r4 || "asyncfunction" === r4) return e2 = Object.keys(t5), o3.unorderedObjects && (e2 = e2.sort()), false === o3.respectType || a2(t5) || e2.splice(0, 0, "prototype", "__proto__", "constructor"), o3.excludeKeys && (e2 = e2.filter(function(e3) {
+                return !o3.excludeKeys(e3);
+              })), u2("object:" + e2.length + ":"), n2 = this, e2.forEach(function(e3) {
+                n2.dispatch(e3), u2(":"), o3.excludeValues || n2.dispatch(t5[e3]), u2(",");
+              });
+              if (!this["_" + r4]) {
+                if (o3.ignoreUnknown) return u2("[" + r4 + "]");
+                throw new Error('Unknown object type "' + r4 + '"');
+              }
+              this["_" + r4](t5);
+            }, _array: function(e2, t5) {
+              t5 = void 0 !== t5 ? t5 : false !== o3.unorderedArrays;
+              var n2 = this;
+              if (u2("array:" + e2.length + ":"), !t5 || e2.length <= 1) return e2.forEach(function(e3) {
+                return n2.dispatch(e3);
+              });
+              var r4 = [], t5 = e2.map(function(e3) {
+                var t6 = new l(), n3 = i2.slice();
+                return f(o3, t6, n3).dispatch(e3), r4 = r4.concat(n3.slice(i2.length)), t6.read().toString();
+              });
+              return i2 = i2.concat(r4), t5.sort(), this._array(t5, false);
+            }, _date: function(e2) {
+              return u2("date:" + e2.toJSON());
+            }, _symbol: function(e2) {
+              return u2("symbol:" + e2.toString());
+            }, _error: function(e2) {
+              return u2("error:" + e2.toString());
+            }, _boolean: function(e2) {
+              return u2("bool:" + e2.toString());
+            }, _string: function(e2) {
+              u2("string:" + e2.length + ":"), u2(e2.toString());
+            }, _function: function(e2) {
+              u2("fn:"), a2(e2) ? this.dispatch("[native]") : this.dispatch(e2.toString()), false !== o3.respectFunctionNames && this.dispatch("function-name:" + String(e2.name)), o3.respectFunctionProperties && this._object(e2);
+            }, _number: function(e2) {
+              return u2("number:" + e2.toString());
+            }, _xml: function(e2) {
+              return u2("xml:" + e2.toString());
+            }, _null: function() {
+              return u2("Null");
+            }, _undefined: function() {
+              return u2("Undefined");
+            }, _regexp: function(e2) {
+              return u2("regex:" + e2.toString());
+            }, _uint8array: function(e2) {
+              return u2("uint8array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _uint8clampedarray: function(e2) {
+              return u2("uint8clampedarray:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _int8array: function(e2) {
+              return u2("int8array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _uint16array: function(e2) {
+              return u2("uint16array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _int16array: function(e2) {
+              return u2("int16array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _uint32array: function(e2) {
+              return u2("uint32array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _int32array: function(e2) {
+              return u2("int32array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _float32array: function(e2) {
+              return u2("float32array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _float64array: function(e2) {
+              return u2("float64array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _arraybuffer: function(e2) {
+              return u2("arraybuffer:"), this.dispatch(new Uint8Array(e2));
+            }, _url: function(e2) {
+              return u2("url:" + e2.toString());
+            }, _map: function(e2) {
+              u2("map:");
+              e2 = Array.from(e2);
+              return this._array(e2, false !== o3.unorderedSets);
+            }, _set: function(e2) {
+              u2("set:");
+              e2 = Array.from(e2);
+              return this._array(e2, false !== o3.unorderedSets);
+            }, _file: function(e2) {
+              return u2("file:"), this.dispatch([e2.name, e2.size, e2.type, e2.lastModfied]);
+            }, _blob: function() {
+              if (o3.ignoreUnknown) return u2("[blob]");
+              throw Error('Hashing Blob objects is currently not supported\n(see https://github.com/puleos/object-hash/issues/26)\nUse "options.replacer" or "options.ignoreUnknown"\n');
+            }, _domwindow: function() {
+              return u2("domwindow");
+            }, _bigint: function(e2) {
+              return u2("bigint:" + e2.toString());
+            }, _process: function() {
+              return u2("process");
+            }, _timer: function() {
+              return u2("timer");
+            }, _pipe: function() {
+              return u2("pipe");
+            }, _tcp: function() {
+              return u2("tcp");
+            }, _udp: function() {
+              return u2("udp");
+            }, _tty: function() {
+              return u2("tty");
+            }, _statwatcher: function() {
+              return u2("statwatcher");
+            }, _securecontext: function() {
+              return u2("securecontext");
+            }, _connection: function() {
+              return u2("connection");
+            }, _zlib: function() {
+              return u2("zlib");
+            }, _context: function() {
+              return u2("context");
+            }, _nodescript: function() {
+              return u2("nodescript");
+            }, _httpparser: function() {
+              return u2("httpparser");
+            }, _dataview: function() {
+              return u2("dataview");
+            }, _signal: function() {
+              return u2("signal");
+            }, _fsevent: function() {
+              return u2("fsevent");
+            }, _tlswrap: function() {
+              return u2("tlswrap");
+            } };
+          }
+          function l() {
+            return { buf: "", write: function(e2) {
+              this.buf += e2;
+            }, end: function(e2) {
+              this.buf += e2;
+            }, read: function() {
+              return this.buf;
+            } };
+          }
+          m.writeToStream = function(e2, t4, n2) {
+            return void 0 === n2 && (n2 = t4, t4 = {}), f(t4 = u(e2, t4), n2).dispatch(e2);
+          };
+        }).call(this, w2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, w2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_9a5aa49d.js", "/");
+      }, { buffer: 3, crypto: 5, lYpoI2: 11 }], 2: [function(e, t3, f) {
+        !(function(e2, t4, n, r3, o2, i, u, s2, a2) {
+          !(function(e3) {
+            var a3 = "undefined" != typeof Uint8Array ? Uint8Array : Array, t5 = "+".charCodeAt(0), n2 = "/".charCodeAt(0), r4 = "0".charCodeAt(0), o3 = "a".charCodeAt(0), i2 = "A".charCodeAt(0), u2 = "-".charCodeAt(0), s3 = "_".charCodeAt(0);
+            function f2(e4) {
+              e4 = e4.charCodeAt(0);
+              return e4 === t5 || e4 === u2 ? 62 : e4 === n2 || e4 === s3 ? 63 : e4 < r4 ? -1 : e4 < r4 + 10 ? e4 - r4 + 26 + 26 : e4 < i2 + 26 ? e4 - i2 : e4 < o3 + 26 ? e4 - o3 + 26 : void 0;
+            }
+            e3.toByteArray = function(e4) {
+              var t6, n3;
+              if (0 < e4.length % 4) throw new Error("Invalid string. Length must be a multiple of 4");
+              var r5 = e4.length, r5 = "=" === e4.charAt(r5 - 2) ? 2 : "=" === e4.charAt(r5 - 1) ? 1 : 0, o4 = new a3(3 * e4.length / 4 - r5), i3 = 0 < r5 ? e4.length - 4 : e4.length, u3 = 0;
+              function s4(e5) {
+                o4[u3++] = e5;
+              }
+              for (t6 = 0; t6 < i3; t6 += 4, 0) s4((16711680 & (n3 = f2(e4.charAt(t6)) << 18 | f2(e4.charAt(t6 + 1)) << 12 | f2(e4.charAt(t6 + 2)) << 6 | f2(e4.charAt(t6 + 3)))) >> 16), s4((65280 & n3) >> 8), s4(255 & n3);
+              return 2 == r5 ? s4(255 & (n3 = f2(e4.charAt(t6)) << 2 | f2(e4.charAt(t6 + 1)) >> 4)) : 1 == r5 && (s4((n3 = f2(e4.charAt(t6)) << 10 | f2(e4.charAt(t6 + 1)) << 4 | f2(e4.charAt(t6 + 2)) >> 2) >> 8 & 255), s4(255 & n3)), o4;
+            }, e3.fromByteArray = function(e4) {
+              var t6, n3, r5, o4, i3 = e4.length % 3, u3 = "";
+              function s4(e5) {
+                return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(e5);
+              }
+              for (t6 = 0, r5 = e4.length - i3; t6 < r5; t6 += 3) n3 = (e4[t6] << 16) + (e4[t6 + 1] << 8) + e4[t6 + 2], u3 += s4((o4 = n3) >> 18 & 63) + s4(o4 >> 12 & 63) + s4(o4 >> 6 & 63) + s4(63 & o4);
+              switch (i3) {
+                case 1:
+                  u3 = (u3 += s4((n3 = e4[e4.length - 1]) >> 2)) + s4(n3 << 4 & 63) + "==";
+                  break;
+                case 2:
+                  u3 = (u3 = (u3 += s4((n3 = (e4[e4.length - 2] << 8) + e4[e4.length - 1]) >> 10)) + s4(n3 >> 4 & 63)) + s4(n3 << 2 & 63) + "=";
+              }
+              return u3;
+            };
+          })(void 0 === f ? this.base64js = {} : f);
+        }).call(this, e("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/base64-js/lib/b64.js", "/node_modules/gulp-browserify/node_modules/base64-js/lib");
+      }, { buffer: 3, lYpoI2: 11 }], 3: [function(O, e, H) {
+        !(function(e2, n, f, r3, h, p2, g2, y, w2) {
+          var a2 = O("base64-js"), i = O("ieee754");
+          function f(e3, t4, n2) {
+            if (!(this instanceof f)) return new f(e3, t4, n2);
+            var r4, o3, i2, u2, s3 = typeof e3;
+            if ("base64" === t4 && "string" == s3) for (e3 = (u2 = e3).trim ? u2.trim() : u2.replace(/^\s+|\s+$/g, ""); e3.length % 4 != 0; ) e3 += "=";
+            if ("number" == s3) r4 = j(e3);
+            else if ("string" == s3) r4 = f.byteLength(e3, t4);
+            else {
+              if ("object" != s3) throw new Error("First argument needs to be a number, array or string.");
+              r4 = j(e3.length);
+            }
+            if (f._useTypedArrays ? o3 = f._augment(new Uint8Array(r4)) : ((o3 = this).length = r4, o3._isBuffer = true), f._useTypedArrays && "number" == typeof e3.byteLength) o3._set(e3);
+            else if (C(u2 = e3) || f.isBuffer(u2) || u2 && "object" == typeof u2 && "number" == typeof u2.length) for (i2 = 0; i2 < r4; i2++) f.isBuffer(e3) ? o3[i2] = e3.readUInt8(i2) : o3[i2] = e3[i2];
+            else if ("string" == s3) o3.write(e3, 0, t4);
+            else if ("number" == s3 && !f._useTypedArrays && !n2) for (i2 = 0; i2 < r4; i2++) o3[i2] = 0;
+            return o3;
+          }
+          function b(e3, t4, n2, r4) {
+            return f._charsWritten = c((function(e4) {
+              for (var t5 = [], n3 = 0; n3 < e4.length; n3++) t5.push(255 & e4.charCodeAt(n3));
+              return t5;
+            })(t4), e3, n2, r4);
+          }
+          function m(e3, t4, n2, r4) {
+            return f._charsWritten = c((function(e4) {
+              for (var t5, n3, r5 = [], o3 = 0; o3 < e4.length; o3++) n3 = e4.charCodeAt(o3), t5 = n3 >> 8, n3 = n3 % 256, r5.push(n3), r5.push(t5);
+              return r5;
+            })(t4), e3, n2, r4);
+          }
+          function v(e3, t4, n2) {
+            var r4 = "";
+            n2 = Math.min(e3.length, n2);
+            for (var o3 = t4; o3 < n2; o3++) r4 += String.fromCharCode(e3[o3]);
+            return r4;
+          }
+          function o2(e3, t4, n2, r4) {
+            r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(null != t4, "missing offset"), d2(t4 + 1 < e3.length, "Trying to read beyond buffer length"));
+            var o3, r4 = e3.length;
+            if (!(r4 <= t4)) return n2 ? (o3 = e3[t4], t4 + 1 < r4 && (o3 |= e3[t4 + 1] << 8)) : (o3 = e3[t4] << 8, t4 + 1 < r4 && (o3 |= e3[t4 + 1])), o3;
+          }
+          function u(e3, t4, n2, r4) {
+            r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(null != t4, "missing offset"), d2(t4 + 3 < e3.length, "Trying to read beyond buffer length"));
+            var o3, r4 = e3.length;
+            if (!(r4 <= t4)) return n2 ? (t4 + 2 < r4 && (o3 = e3[t4 + 2] << 16), t4 + 1 < r4 && (o3 |= e3[t4 + 1] << 8), o3 |= e3[t4], t4 + 3 < r4 && (o3 += e3[t4 + 3] << 24 >>> 0)) : (t4 + 1 < r4 && (o3 = e3[t4 + 1] << 16), t4 + 2 < r4 && (o3 |= e3[t4 + 2] << 8), t4 + 3 < r4 && (o3 |= e3[t4 + 3]), o3 += e3[t4] << 24 >>> 0), o3;
+          }
+          function _(e3, t4, n2, r4) {
+            if (r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(null != t4, "missing offset"), d2(t4 + 1 < e3.length, "Trying to read beyond buffer length")), !(e3.length <= t4)) return r4 = o2(e3, t4, n2, true), 32768 & r4 ? -1 * (65535 - r4 + 1) : r4;
+          }
+          function E(e3, t4, n2, r4) {
+            if (r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(null != t4, "missing offset"), d2(t4 + 3 < e3.length, "Trying to read beyond buffer length")), !(e3.length <= t4)) return r4 = u(e3, t4, n2, true), 2147483648 & r4 ? -1 * (4294967295 - r4 + 1) : r4;
+          }
+          function I(e3, t4, n2, r4) {
+            return r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(t4 + 3 < e3.length, "Trying to read beyond buffer length")), i.read(e3, t4, n2, 23, 4);
+          }
+          function A2(e3, t4, n2, r4) {
+            return r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(t4 + 7 < e3.length, "Trying to read beyond buffer length")), i.read(e3, t4, n2, 52, 8);
+          }
+          function s2(e3, t4, n2, r4, o3) {
+            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 1 < e3.length, "trying to write beyond buffer length"), Y(t4, 65535));
+            o3 = e3.length;
+            if (!(o3 <= n2)) for (var i2 = 0, u2 = Math.min(o3 - n2, 2); i2 < u2; i2++) e3[n2 + i2] = (t4 & 255 << 8 * (r4 ? i2 : 1 - i2)) >>> 8 * (r4 ? i2 : 1 - i2);
+          }
+          function l(e3, t4, n2, r4, o3) {
+            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 3 < e3.length, "trying to write beyond buffer length"), Y(t4, 4294967295));
+            o3 = e3.length;
+            if (!(o3 <= n2)) for (var i2 = 0, u2 = Math.min(o3 - n2, 4); i2 < u2; i2++) e3[n2 + i2] = t4 >>> 8 * (r4 ? i2 : 3 - i2) & 255;
+          }
+          function B(e3, t4, n2, r4, o3) {
+            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 1 < e3.length, "Trying to write beyond buffer length"), F(t4, 32767, -32768)), e3.length <= n2 || s2(e3, 0 <= t4 ? t4 : 65535 + t4 + 1, n2, r4, o3);
+          }
+          function L2(e3, t4, n2, r4, o3) {
+            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 3 < e3.length, "Trying to write beyond buffer length"), F(t4, 2147483647, -2147483648)), e3.length <= n2 || l(e3, 0 <= t4 ? t4 : 4294967295 + t4 + 1, n2, r4, o3);
+          }
+          function U(e3, t4, n2, r4, o3) {
+            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 3 < e3.length, "Trying to write beyond buffer length"), D(t4, 34028234663852886e22, -34028234663852886e22)), e3.length <= n2 || i.write(e3, t4, n2, r4, 23, 4);
+          }
+          function x2(e3, t4, n2, r4, o3) {
+            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 7 < e3.length, "Trying to write beyond buffer length"), D(t4, 17976931348623157e292, -17976931348623157e292)), e3.length <= n2 || i.write(e3, t4, n2, r4, 52, 8);
+          }
+          H.Buffer = f, H.SlowBuffer = f, H.INSPECT_MAX_BYTES = 50, f.poolSize = 8192, f._useTypedArrays = (function() {
+            try {
+              var e3 = new ArrayBuffer(0), t4 = new Uint8Array(e3);
+              return t4.foo = function() {
+                return 42;
+              }, 42 === t4.foo() && "function" == typeof t4.subarray;
+            } catch (e4) {
+              return false;
+            }
+          })(), f.isEncoding = function(e3) {
+            switch (String(e3).toLowerCase()) {
+              case "hex":
+              case "utf8":
+              case "utf-8":
+              case "ascii":
+              case "binary":
+              case "base64":
+              case "raw":
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                return true;
+              default:
+                return false;
+            }
+          }, f.isBuffer = function(e3) {
+            return !(null == e3 || !e3._isBuffer);
+          }, f.byteLength = function(e3, t4) {
+            var n2;
+            switch (e3 += "", t4 || "utf8") {
+              case "hex":
+                n2 = e3.length / 2;
+                break;
+              case "utf8":
+              case "utf-8":
+                n2 = T(e3).length;
+                break;
+              case "ascii":
+              case "binary":
+              case "raw":
+                n2 = e3.length;
+                break;
+              case "base64":
+                n2 = M(e3).length;
+                break;
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                n2 = 2 * e3.length;
+                break;
+              default:
+                throw new Error("Unknown encoding");
+            }
+            return n2;
+          }, f.concat = function(e3, t4) {
+            if (d2(C(e3), "Usage: Buffer.concat(list, [totalLength])\nlist should be an Array."), 0 === e3.length) return new f(0);
+            if (1 === e3.length) return e3[0];
+            if ("number" != typeof t4) for (o3 = t4 = 0; o3 < e3.length; o3++) t4 += e3[o3].length;
+            for (var n2 = new f(t4), r4 = 0, o3 = 0; o3 < e3.length; o3++) {
+              var i2 = e3[o3];
+              i2.copy(n2, r4), r4 += i2.length;
+            }
+            return n2;
+          }, f.prototype.write = function(e3, t4, n2, r4) {
+            isFinite(t4) ? isFinite(n2) || (r4 = n2, n2 = void 0) : (a3 = r4, r4 = t4, t4 = n2, n2 = a3), t4 = Number(t4) || 0;
+            var o3, i2, u2, s3, a3 = this.length - t4;
+            switch ((!n2 || a3 < (n2 = Number(n2))) && (n2 = a3), r4 = String(r4 || "utf8").toLowerCase()) {
+              case "hex":
+                o3 = (function(e4, t5, n3, r5) {
+                  n3 = Number(n3) || 0;
+                  var o4 = e4.length - n3;
+                  (!r5 || o4 < (r5 = Number(r5))) && (r5 = o4), d2((o4 = t5.length) % 2 == 0, "Invalid hex string"), o4 / 2 < r5 && (r5 = o4 / 2);
+                  for (var i3 = 0; i3 < r5; i3++) {
+                    var u3 = parseInt(t5.substr(2 * i3, 2), 16);
+                    d2(!isNaN(u3), "Invalid hex string"), e4[n3 + i3] = u3;
+                  }
+                  return f._charsWritten = 2 * i3, i3;
+                })(this, e3, t4, n2);
+                break;
+              case "utf8":
+              case "utf-8":
+                i2 = this, u2 = t4, s3 = n2, o3 = f._charsWritten = c(T(e3), i2, u2, s3);
+                break;
+              case "ascii":
+              case "binary":
+                o3 = b(this, e3, t4, n2);
+                break;
+              case "base64":
+                i2 = this, u2 = t4, s3 = n2, o3 = f._charsWritten = c(M(e3), i2, u2, s3);
+                break;
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                o3 = m(this, e3, t4, n2);
+                break;
+              default:
+                throw new Error("Unknown encoding");
+            }
+            return o3;
+          }, f.prototype.toString = function(e3, t4, n2) {
+            var r4, o3, i2, u2, s3 = this;
+            if (e3 = String(e3 || "utf8").toLowerCase(), t4 = Number(t4) || 0, (n2 = void 0 !== n2 ? Number(n2) : s3.length) === t4) return "";
+            switch (e3) {
+              case "hex":
+                r4 = (function(e4, t5, n3) {
+                  var r5 = e4.length;
+                  (!t5 || t5 < 0) && (t5 = 0);
+                  (!n3 || n3 < 0 || r5 < n3) && (n3 = r5);
+                  for (var o4 = "", i3 = t5; i3 < n3; i3++) o4 += k(e4[i3]);
+                  return o4;
+                })(s3, t4, n2);
+                break;
+              case "utf8":
+              case "utf-8":
+                r4 = (function(e4, t5, n3) {
+                  var r5 = "", o4 = "";
+                  n3 = Math.min(e4.length, n3);
+                  for (var i3 = t5; i3 < n3; i3++) e4[i3] <= 127 ? (r5 += N(o4) + String.fromCharCode(e4[i3]), o4 = "") : o4 += "%" + e4[i3].toString(16);
+                  return r5 + N(o4);
+                })(s3, t4, n2);
+                break;
+              case "ascii":
+              case "binary":
+                r4 = v(s3, t4, n2);
+                break;
+              case "base64":
+                o3 = s3, u2 = n2, r4 = 0 === (i2 = t4) && u2 === o3.length ? a2.fromByteArray(o3) : a2.fromByteArray(o3.slice(i2, u2));
+                break;
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                r4 = (function(e4, t5, n3) {
+                  for (var r5 = e4.slice(t5, n3), o4 = "", i3 = 0; i3 < r5.length; i3 += 2) o4 += String.fromCharCode(r5[i3] + 256 * r5[i3 + 1]);
+                  return o4;
+                })(s3, t4, n2);
+                break;
+              default:
+                throw new Error("Unknown encoding");
+            }
+            return r4;
+          }, f.prototype.toJSON = function() {
+            return { type: "Buffer", data: Array.prototype.slice.call(this._arr || this, 0) };
+          }, f.prototype.copy = function(e3, t4, n2, r4) {
+            if (t4 = t4 || 0, (r4 = r4 || 0 === r4 ? r4 : this.length) !== (n2 = n2 || 0) && 0 !== e3.length && 0 !== this.length) {
+              d2(n2 <= r4, "sourceEnd < sourceStart"), d2(0 <= t4 && t4 < e3.length, "targetStart out of bounds"), d2(0 <= n2 && n2 < this.length, "sourceStart out of bounds"), d2(0 <= r4 && r4 <= this.length, "sourceEnd out of bounds"), r4 > this.length && (r4 = this.length);
+              var o3 = (r4 = e3.length - t4 < r4 - n2 ? e3.length - t4 + n2 : r4) - n2;
+              if (o3 < 100 || !f._useTypedArrays) for (var i2 = 0; i2 < o3; i2++) e3[i2 + t4] = this[i2 + n2];
+              else e3._set(this.subarray(n2, n2 + o3), t4);
+            }
+          }, f.prototype.slice = function(e3, t4) {
+            var n2 = this.length;
+            if (e3 = S2(e3, n2, 0), t4 = S2(t4, n2, n2), f._useTypedArrays) return f._augment(this.subarray(e3, t4));
+            for (var r4 = t4 - e3, o3 = new f(r4, void 0, true), i2 = 0; i2 < r4; i2++) o3[i2] = this[i2 + e3];
+            return o3;
+          }, f.prototype.get = function(e3) {
+            return console.log(".get() is deprecated. Access using array indexes instead."), this.readUInt8(e3);
+          }, f.prototype.set = function(e3, t4) {
+            return console.log(".set() is deprecated. Access using array indexes instead."), this.writeUInt8(e3, t4);
+          }, f.prototype.readUInt8 = function(e3, t4) {
+            if (t4 || (d2(null != e3, "missing offset"), d2(e3 < this.length, "Trying to read beyond buffer length")), !(e3 >= this.length)) return this[e3];
+          }, f.prototype.readUInt16LE = function(e3, t4) {
+            return o2(this, e3, true, t4);
+          }, f.prototype.readUInt16BE = function(e3, t4) {
+            return o2(this, e3, false, t4);
+          }, f.prototype.readUInt32LE = function(e3, t4) {
+            return u(this, e3, true, t4);
+          }, f.prototype.readUInt32BE = function(e3, t4) {
+            return u(this, e3, false, t4);
+          }, f.prototype.readInt8 = function(e3, t4) {
+            if (t4 || (d2(null != e3, "missing offset"), d2(e3 < this.length, "Trying to read beyond buffer length")), !(e3 >= this.length)) return 128 & this[e3] ? -1 * (255 - this[e3] + 1) : this[e3];
+          }, f.prototype.readInt16LE = function(e3, t4) {
+            return _(this, e3, true, t4);
+          }, f.prototype.readInt16BE = function(e3, t4) {
+            return _(this, e3, false, t4);
+          }, f.prototype.readInt32LE = function(e3, t4) {
+            return E(this, e3, true, t4);
+          }, f.prototype.readInt32BE = function(e3, t4) {
+            return E(this, e3, false, t4);
+          }, f.prototype.readFloatLE = function(e3, t4) {
+            return I(this, e3, true, t4);
+          }, f.prototype.readFloatBE = function(e3, t4) {
+            return I(this, e3, false, t4);
+          }, f.prototype.readDoubleLE = function(e3, t4) {
+            return A2(this, e3, true, t4);
+          }, f.prototype.readDoubleBE = function(e3, t4) {
+            return A2(this, e3, false, t4);
+          }, f.prototype.writeUInt8 = function(e3, t4, n2) {
+            n2 || (d2(null != e3, "missing value"), d2(null != t4, "missing offset"), d2(t4 < this.length, "trying to write beyond buffer length"), Y(e3, 255)), t4 >= this.length || (this[t4] = e3);
+          }, f.prototype.writeUInt16LE = function(e3, t4, n2) {
+            s2(this, e3, t4, true, n2);
+          }, f.prototype.writeUInt16BE = function(e3, t4, n2) {
+            s2(this, e3, t4, false, n2);
+          }, f.prototype.writeUInt32LE = function(e3, t4, n2) {
+            l(this, e3, t4, true, n2);
+          }, f.prototype.writeUInt32BE = function(e3, t4, n2) {
+            l(this, e3, t4, false, n2);
+          }, f.prototype.writeInt8 = function(e3, t4, n2) {
+            n2 || (d2(null != e3, "missing value"), d2(null != t4, "missing offset"), d2(t4 < this.length, "Trying to write beyond buffer length"), F(e3, 127, -128)), t4 >= this.length || (0 <= e3 ? this.writeUInt8(e3, t4, n2) : this.writeUInt8(255 + e3 + 1, t4, n2));
+          }, f.prototype.writeInt16LE = function(e3, t4, n2) {
+            B(this, e3, t4, true, n2);
+          }, f.prototype.writeInt16BE = function(e3, t4, n2) {
+            B(this, e3, t4, false, n2);
+          }, f.prototype.writeInt32LE = function(e3, t4, n2) {
+            L2(this, e3, t4, true, n2);
+          }, f.prototype.writeInt32BE = function(e3, t4, n2) {
+            L2(this, e3, t4, false, n2);
+          }, f.prototype.writeFloatLE = function(e3, t4, n2) {
+            U(this, e3, t4, true, n2);
+          }, f.prototype.writeFloatBE = function(e3, t4, n2) {
+            U(this, e3, t4, false, n2);
+          }, f.prototype.writeDoubleLE = function(e3, t4, n2) {
+            x2(this, e3, t4, true, n2);
+          }, f.prototype.writeDoubleBE = function(e3, t4, n2) {
+            x2(this, e3, t4, false, n2);
+          }, f.prototype.fill = function(e3, t4, n2) {
+            if (t4 = t4 || 0, n2 = n2 || this.length, d2("number" == typeof (e3 = "string" == typeof (e3 = e3 || 0) ? e3.charCodeAt(0) : e3) && !isNaN(e3), "value is not a number"), d2(t4 <= n2, "end < start"), n2 !== t4 && 0 !== this.length) {
+              d2(0 <= t4 && t4 < this.length, "start out of bounds"), d2(0 <= n2 && n2 <= this.length, "end out of bounds");
+              for (var r4 = t4; r4 < n2; r4++) this[r4] = e3;
+            }
+          }, f.prototype.inspect = function() {
+            for (var e3 = [], t4 = this.length, n2 = 0; n2 < t4; n2++) if (e3[n2] = k(this[n2]), n2 === H.INSPECT_MAX_BYTES) {
+              e3[n2 + 1] = "...";
+              break;
+            }
+            return "<Buffer " + e3.join(" ") + ">";
+          }, f.prototype.toArrayBuffer = function() {
+            if ("undefined" == typeof Uint8Array) throw new Error("Buffer.toArrayBuffer not supported in this browser");
+            if (f._useTypedArrays) return new f(this).buffer;
+            for (var e3 = new Uint8Array(this.length), t4 = 0, n2 = e3.length; t4 < n2; t4 += 1) e3[t4] = this[t4];
+            return e3.buffer;
+          };
+          var t3 = f.prototype;
+          function S2(e3, t4, n2) {
+            return "number" != typeof e3 ? n2 : t4 <= (e3 = ~~e3) ? t4 : 0 <= e3 || 0 <= (e3 += t4) ? e3 : 0;
+          }
+          function j(e3) {
+            return (e3 = ~~Math.ceil(+e3)) < 0 ? 0 : e3;
+          }
+          function C(e3) {
+            return (Array.isArray || function(e4) {
+              return "[object Array]" === Object.prototype.toString.call(e4);
+            })(e3);
+          }
+          function k(e3) {
+            return e3 < 16 ? "0" + e3.toString(16) : e3.toString(16);
+          }
+          function T(e3) {
+            for (var t4 = [], n2 = 0; n2 < e3.length; n2++) {
+              var r4 = e3.charCodeAt(n2);
+              if (r4 <= 127) t4.push(e3.charCodeAt(n2));
+              else for (var o3 = n2, i2 = (55296 <= r4 && r4 <= 57343 && n2++, encodeURIComponent(e3.slice(o3, n2 + 1)).substr(1).split("%")), u2 = 0; u2 < i2.length; u2++) t4.push(parseInt(i2[u2], 16));
+            }
+            return t4;
+          }
+          function M(e3) {
+            return a2.toByteArray(e3);
+          }
+          function c(e3, t4, n2, r4) {
+            for (var o3 = 0; o3 < r4 && !(o3 + n2 >= t4.length || o3 >= e3.length); o3++) t4[o3 + n2] = e3[o3];
+            return o3;
+          }
+          function N(e3) {
+            try {
+              return decodeURIComponent(e3);
+            } catch (e4) {
+              return String.fromCharCode(65533);
+            }
+          }
+          function Y(e3, t4) {
+            d2("number" == typeof e3, "cannot write a non-number as a number"), d2(0 <= e3, "specified a negative value for writing an unsigned value"), d2(e3 <= t4, "value is larger than maximum value for type"), d2(Math.floor(e3) === e3, "value has a fractional component");
+          }
+          function F(e3, t4, n2) {
+            d2("number" == typeof e3, "cannot write a non-number as a number"), d2(e3 <= t4, "value larger than maximum allowed value"), d2(n2 <= e3, "value smaller than minimum allowed value"), d2(Math.floor(e3) === e3, "value has a fractional component");
+          }
+          function D(e3, t4, n2) {
+            d2("number" == typeof e3, "cannot write a non-number as a number"), d2(e3 <= t4, "value larger than maximum allowed value"), d2(n2 <= e3, "value smaller than minimum allowed value");
+          }
+          function d2(e3, t4) {
+            if (!e3) throw new Error(t4 || "Failed assertion");
+          }
+          f._augment = function(e3) {
+            return e3._isBuffer = true, e3._get = e3.get, e3._set = e3.set, e3.get = t3.get, e3.set = t3.set, e3.write = t3.write, e3.toString = t3.toString, e3.toLocaleString = t3.toString, e3.toJSON = t3.toJSON, e3.copy = t3.copy, e3.slice = t3.slice, e3.readUInt8 = t3.readUInt8, e3.readUInt16LE = t3.readUInt16LE, e3.readUInt16BE = t3.readUInt16BE, e3.readUInt32LE = t3.readUInt32LE, e3.readUInt32BE = t3.readUInt32BE, e3.readInt8 = t3.readInt8, e3.readInt16LE = t3.readInt16LE, e3.readInt16BE = t3.readInt16BE, e3.readInt32LE = t3.readInt32LE, e3.readInt32BE = t3.readInt32BE, e3.readFloatLE = t3.readFloatLE, e3.readFloatBE = t3.readFloatBE, e3.readDoubleLE = t3.readDoubleLE, e3.readDoubleBE = t3.readDoubleBE, e3.writeUInt8 = t3.writeUInt8, e3.writeUInt16LE = t3.writeUInt16LE, e3.writeUInt16BE = t3.writeUInt16BE, e3.writeUInt32LE = t3.writeUInt32LE, e3.writeUInt32BE = t3.writeUInt32BE, e3.writeInt8 = t3.writeInt8, e3.writeInt16LE = t3.writeInt16LE, e3.writeInt16BE = t3.writeInt16BE, e3.writeInt32LE = t3.writeInt32LE, e3.writeInt32BE = t3.writeInt32BE, e3.writeFloatLE = t3.writeFloatLE, e3.writeFloatBE = t3.writeFloatBE, e3.writeDoubleLE = t3.writeDoubleLE, e3.writeDoubleBE = t3.writeDoubleBE, e3.fill = t3.fill, e3.inspect = t3.inspect, e3.toArrayBuffer = t3.toArrayBuffer, e3;
+          };
+        }).call(this, O("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, O("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/buffer/index.js", "/node_modules/gulp-browserify/node_modules/buffer");
+      }, { "base64-js": 2, buffer: 3, ieee754: 10, lYpoI2: 11 }], 4: [function(c, d2, e) {
+        !(function(e2, t3, a2, n, r3, o2, i, u, s2) {
+          var a2 = c("buffer").Buffer, f = 4, l = new a2(f);
+          l.fill(0);
+          d2.exports = { hash: function(e3, t4, n2, r4) {
+            for (var o3 = t4((function(e4, t5) {
+              e4.length % f != 0 && (n3 = e4.length + (f - e4.length % f), e4 = a2.concat([e4, l], n3));
+              for (var n3, r5 = [], o4 = t5 ? e4.readInt32BE : e4.readInt32LE, i3 = 0; i3 < e4.length; i3 += f) r5.push(o4.call(e4, i3));
+              return r5;
+            })(e3 = a2.isBuffer(e3) ? e3 : new a2(e3), r4), 8 * e3.length), t4 = r4, i2 = new a2(n2), u2 = t4 ? i2.writeInt32BE : i2.writeInt32LE, s3 = 0; s3 < o3.length; s3++) u2.call(i2, o3[s3], 4 * s3, true);
+            return i2;
+          } };
+        }).call(this, c("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/helpers.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { buffer: 3, lYpoI2: 11 }], 5: [function(v, e, _) {
+        !(function(l, c, u, d2, h, p2, g2, y, w2) {
+          var u = v("buffer").Buffer, e2 = v("./sha"), t3 = v("./sha256"), n = v("./rng"), b = { sha1: e2, sha256: t3, md5: v("./md5") }, s2 = 64, a2 = new u(s2);
+          function r3(e3, n2) {
+            var r4 = b[e3 = e3 || "sha1"], o3 = [];
+            return r4 || i("algorithm:", e3, "is not yet supported"), { update: function(e4) {
+              return u.isBuffer(e4) || (e4 = new u(e4)), o3.push(e4), e4.length, this;
+            }, digest: function(e4) {
+              var t4 = u.concat(o3), t4 = n2 ? (function(e5, t5, n3) {
+                u.isBuffer(t5) || (t5 = new u(t5)), u.isBuffer(n3) || (n3 = new u(n3)), t5.length > s2 ? t5 = e5(t5) : t5.length < s2 && (t5 = u.concat([t5, a2], s2));
+                for (var r5 = new u(s2), o4 = new u(s2), i2 = 0; i2 < s2; i2++) r5[i2] = 54 ^ t5[i2], o4[i2] = 92 ^ t5[i2];
+                return n3 = e5(u.concat([r5, n3])), e5(u.concat([o4, n3]));
+              })(r4, n2, t4) : r4(t4);
+              return o3 = null, e4 ? t4.toString(e4) : t4;
+            } };
+          }
+          function i() {
+            var e3 = [].slice.call(arguments).join(" ");
+            throw new Error([e3, "we accept pull requests", "http://github.com/dominictarr/crypto-browserify"].join("\n"));
+          }
+          a2.fill(0), _.createHash = function(e3) {
+            return r3(e3);
+          }, _.createHmac = r3, _.randomBytes = function(e3, t4) {
+            if (!t4 || !t4.call) return new u(n(e3));
+            try {
+              t4.call(this, void 0, new u(n(e3)));
+            } catch (e4) {
+              t4(e4);
+            }
+          };
+          var o2, f = ["createCredentials", "createCipher", "createCipheriv", "createDecipher", "createDecipheriv", "createSign", "createVerify", "createDiffieHellman", "pbkdf2"], m = function(e3) {
+            _[e3] = function() {
+              i("sorry,", e3, "is not implemented yet");
+            };
+          };
+          for (o2 in f) m(f[o2]);
+        }).call(this, v("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, v("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/index.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./md5": 6, "./rng": 7, "./sha": 8, "./sha256": 9, buffer: 3, lYpoI2: 11 }], 6: [function(w2, b, e) {
+        !(function(e2, r3, o2, i, u, a2, f, l, y) {
+          var t3 = w2("./helpers");
+          function n(e3, t4) {
+            e3[t4 >> 5] |= 128 << t4 % 32, e3[14 + (t4 + 64 >>> 9 << 4)] = t4;
+            for (var n2 = 1732584193, r4 = -271733879, o3 = -1732584194, i2 = 271733878, u2 = 0; u2 < e3.length; u2 += 16) {
+              var s3 = n2, a3 = r4, f2 = o3, l2 = i2, n2 = c(n2, r4, o3, i2, e3[u2 + 0], 7, -680876936), i2 = c(i2, n2, r4, o3, e3[u2 + 1], 12, -389564586), o3 = c(o3, i2, n2, r4, e3[u2 + 2], 17, 606105819), r4 = c(r4, o3, i2, n2, e3[u2 + 3], 22, -1044525330);
+              n2 = c(n2, r4, o3, i2, e3[u2 + 4], 7, -176418897), i2 = c(i2, n2, r4, o3, e3[u2 + 5], 12, 1200080426), o3 = c(o3, i2, n2, r4, e3[u2 + 6], 17, -1473231341), r4 = c(r4, o3, i2, n2, e3[u2 + 7], 22, -45705983), n2 = c(n2, r4, o3, i2, e3[u2 + 8], 7, 1770035416), i2 = c(i2, n2, r4, o3, e3[u2 + 9], 12, -1958414417), o3 = c(o3, i2, n2, r4, e3[u2 + 10], 17, -42063), r4 = c(r4, o3, i2, n2, e3[u2 + 11], 22, -1990404162), n2 = c(n2, r4, o3, i2, e3[u2 + 12], 7, 1804603682), i2 = c(i2, n2, r4, o3, e3[u2 + 13], 12, -40341101), o3 = c(o3, i2, n2, r4, e3[u2 + 14], 17, -1502002290), n2 = d2(n2, r4 = c(r4, o3, i2, n2, e3[u2 + 15], 22, 1236535329), o3, i2, e3[u2 + 1], 5, -165796510), i2 = d2(i2, n2, r4, o3, e3[u2 + 6], 9, -1069501632), o3 = d2(o3, i2, n2, r4, e3[u2 + 11], 14, 643717713), r4 = d2(r4, o3, i2, n2, e3[u2 + 0], 20, -373897302), n2 = d2(n2, r4, o3, i2, e3[u2 + 5], 5, -701558691), i2 = d2(i2, n2, r4, o3, e3[u2 + 10], 9, 38016083), o3 = d2(o3, i2, n2, r4, e3[u2 + 15], 14, -660478335), r4 = d2(r4, o3, i2, n2, e3[u2 + 4], 20, -405537848), n2 = d2(n2, r4, o3, i2, e3[u2 + 9], 5, 568446438), i2 = d2(i2, n2, r4, o3, e3[u2 + 14], 9, -1019803690), o3 = d2(o3, i2, n2, r4, e3[u2 + 3], 14, -187363961), r4 = d2(r4, o3, i2, n2, e3[u2 + 8], 20, 1163531501), n2 = d2(n2, r4, o3, i2, e3[u2 + 13], 5, -1444681467), i2 = d2(i2, n2, r4, o3, e3[u2 + 2], 9, -51403784), o3 = d2(o3, i2, n2, r4, e3[u2 + 7], 14, 1735328473), n2 = h(n2, r4 = d2(r4, o3, i2, n2, e3[u2 + 12], 20, -1926607734), o3, i2, e3[u2 + 5], 4, -378558), i2 = h(i2, n2, r4, o3, e3[u2 + 8], 11, -2022574463), o3 = h(o3, i2, n2, r4, e3[u2 + 11], 16, 1839030562), r4 = h(r4, o3, i2, n2, e3[u2 + 14], 23, -35309556), n2 = h(n2, r4, o3, i2, e3[u2 + 1], 4, -1530992060), i2 = h(i2, n2, r4, o3, e3[u2 + 4], 11, 1272893353), o3 = h(o3, i2, n2, r4, e3[u2 + 7], 16, -155497632), r4 = h(r4, o3, i2, n2, e3[u2 + 10], 23, -1094730640), n2 = h(n2, r4, o3, i2, e3[u2 + 13], 4, 681279174), i2 = h(i2, n2, r4, o3, e3[u2 + 0], 11, -358537222), o3 = h(o3, i2, n2, r4, e3[u2 + 3], 16, -722521979), r4 = h(r4, o3, i2, n2, e3[u2 + 6], 23, 76029189), n2 = h(n2, r4, o3, i2, e3[u2 + 9], 4, -640364487), i2 = h(i2, n2, r4, o3, e3[u2 + 12], 11, -421815835), o3 = h(o3, i2, n2, r4, e3[u2 + 15], 16, 530742520), n2 = p2(n2, r4 = h(r4, o3, i2, n2, e3[u2 + 2], 23, -995338651), o3, i2, e3[u2 + 0], 6, -198630844), i2 = p2(i2, n2, r4, o3, e3[u2 + 7], 10, 1126891415), o3 = p2(o3, i2, n2, r4, e3[u2 + 14], 15, -1416354905), r4 = p2(r4, o3, i2, n2, e3[u2 + 5], 21, -57434055), n2 = p2(n2, r4, o3, i2, e3[u2 + 12], 6, 1700485571), i2 = p2(i2, n2, r4, o3, e3[u2 + 3], 10, -1894986606), o3 = p2(o3, i2, n2, r4, e3[u2 + 10], 15, -1051523), r4 = p2(r4, o3, i2, n2, e3[u2 + 1], 21, -2054922799), n2 = p2(n2, r4, o3, i2, e3[u2 + 8], 6, 1873313359), i2 = p2(i2, n2, r4, o3, e3[u2 + 15], 10, -30611744), o3 = p2(o3, i2, n2, r4, e3[u2 + 6], 15, -1560198380), r4 = p2(r4, o3, i2, n2, e3[u2 + 13], 21, 1309151649), n2 = p2(n2, r4, o3, i2, e3[u2 + 4], 6, -145523070), i2 = p2(i2, n2, r4, o3, e3[u2 + 11], 10, -1120210379), o3 = p2(o3, i2, n2, r4, e3[u2 + 2], 15, 718787259), r4 = p2(r4, o3, i2, n2, e3[u2 + 9], 21, -343485551), n2 = g2(n2, s3), r4 = g2(r4, a3), o3 = g2(o3, f2), i2 = g2(i2, l2);
+            }
+            return Array(n2, r4, o3, i2);
+          }
+          function s2(e3, t4, n2, r4, o3, i2) {
+            return g2((t4 = g2(g2(t4, e3), g2(r4, i2))) << o3 | t4 >>> 32 - o3, n2);
+          }
+          function c(e3, t4, n2, r4, o3, i2, u2) {
+            return s2(t4 & n2 | ~t4 & r4, e3, t4, o3, i2, u2);
+          }
+          function d2(e3, t4, n2, r4, o3, i2, u2) {
+            return s2(t4 & r4 | n2 & ~r4, e3, t4, o3, i2, u2);
+          }
+          function h(e3, t4, n2, r4, o3, i2, u2) {
+            return s2(t4 ^ n2 ^ r4, e3, t4, o3, i2, u2);
+          }
+          function p2(e3, t4, n2, r4, o3, i2, u2) {
+            return s2(n2 ^ (t4 | ~r4), e3, t4, o3, i2, u2);
+          }
+          function g2(e3, t4) {
+            var n2 = (65535 & e3) + (65535 & t4);
+            return (e3 >> 16) + (t4 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
+          }
+          b.exports = function(e3) {
+            return t3.hash(e3, n, 16);
+          };
+        }).call(this, w2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, w2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/md5.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 7: [function(e, l, t3) {
+        !(function(e2, t4, n, r3, o2, i, u, s2, f) {
+          l.exports = function(e3) {
+            for (var t5, n2 = new Array(e3), r4 = 0; r4 < e3; r4++) 0 == (3 & r4) && (t5 = 4294967296 * Math.random()), n2[r4] = t5 >>> ((3 & r4) << 3) & 255;
+            return n2;
+          };
+        }).call(this, e("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/rng.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { buffer: 3, lYpoI2: 11 }], 8: [function(c, d2, e) {
+        !(function(e2, t3, n, r3, o2, s2, a2, f, l) {
+          var i = c("./helpers");
+          function u(l2, c2) {
+            l2[c2 >> 5] |= 128 << 24 - c2 % 32, l2[15 + (c2 + 64 >> 9 << 4)] = c2;
+            for (var e3, t4, n2, r4 = Array(80), o3 = 1732584193, i2 = -271733879, u2 = -1732584194, s3 = 271733878, d3 = -1009589776, h = 0; h < l2.length; h += 16) {
+              for (var p2 = o3, g2 = i2, y = u2, w2 = s3, b = d3, a3 = 0; a3 < 80; a3++) {
+                r4[a3] = a3 < 16 ? l2[h + a3] : v(r4[a3 - 3] ^ r4[a3 - 8] ^ r4[a3 - 14] ^ r4[a3 - 16], 1);
+                var f2 = m(m(v(o3, 5), (f2 = i2, t4 = u2, n2 = s3, (e3 = a3) < 20 ? f2 & t4 | ~f2 & n2 : !(e3 < 40) && e3 < 60 ? f2 & t4 | f2 & n2 | t4 & n2 : f2 ^ t4 ^ n2)), m(m(d3, r4[a3]), (e3 = a3) < 20 ? 1518500249 : e3 < 40 ? 1859775393 : e3 < 60 ? -1894007588 : -899497514)), d3 = s3, s3 = u2, u2 = v(i2, 30), i2 = o3, o3 = f2;
+              }
+              o3 = m(o3, p2), i2 = m(i2, g2), u2 = m(u2, y), s3 = m(s3, w2), d3 = m(d3, b);
+            }
+            return Array(o3, i2, u2, s3, d3);
+          }
+          function m(e3, t4) {
+            var n2 = (65535 & e3) + (65535 & t4);
+            return (e3 >> 16) + (t4 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
+          }
+          function v(e3, t4) {
+            return e3 << t4 | e3 >>> 32 - t4;
+          }
+          d2.exports = function(e3) {
+            return i.hash(e3, u, 20, true);
+          };
+        }).call(this, c("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/sha.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 9: [function(c, d2, e) {
+        !(function(e2, t3, n, r3, u, s2, a2, f, l) {
+          function b(e3, t4) {
+            var n2 = (65535 & e3) + (65535 & t4);
+            return (e3 >> 16) + (t4 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
+          }
+          function o2(e3, l2) {
+            var c2, d3 = new Array(1116352408, 1899447441, 3049323471, 3921009573, 961987163, 1508970993, 2453635748, 2870763221, 3624381080, 310598401, 607225278, 1426881987, 1925078388, 2162078206, 2614888103, 3248222580, 3835390401, 4022224774, 264347078, 604807628, 770255983, 1249150122, 1555081692, 1996064986, 2554220882, 2821834349, 2952996808, 3210313671, 3336571891, 3584528711, 113926993, 338241895, 666307205, 773529912, 1294757372, 1396182291, 1695183700, 1986661051, 2177026350, 2456956037, 2730485921, 2820302411, 3259730800, 3345764771, 3516065817, 3600352804, 4094571909, 275423344, 430227734, 506948616, 659060556, 883997877, 958139571, 1322822218, 1537002063, 1747873779, 1955562222, 2024104815, 2227730452, 2361852424, 2428436474, 2756734187, 3204031479, 3329325298), t4 = new Array(1779033703, 3144134277, 1013904242, 2773480762, 1359893119, 2600822924, 528734635, 1541459225), n2 = new Array(64);
+            e3[l2 >> 5] |= 128 << 24 - l2 % 32, e3[15 + (l2 + 64 >> 9 << 4)] = l2;
+            for (var r4, o3, h = 0; h < e3.length; h += 16) {
+              for (var i2 = t4[0], u2 = t4[1], s3 = t4[2], p2 = t4[3], a3 = t4[4], g2 = t4[5], y = t4[6], w2 = t4[7], f2 = 0; f2 < 64; f2++) n2[f2] = f2 < 16 ? e3[f2 + h] : b(b(b((o3 = n2[f2 - 2], m(o3, 17) ^ m(o3, 19) ^ v(o3, 10)), n2[f2 - 7]), (o3 = n2[f2 - 15], m(o3, 7) ^ m(o3, 18) ^ v(o3, 3))), n2[f2 - 16]), c2 = b(b(b(b(w2, m(o3 = a3, 6) ^ m(o3, 11) ^ m(o3, 25)), a3 & g2 ^ ~a3 & y), d3[f2]), n2[f2]), r4 = b(m(r4 = i2, 2) ^ m(r4, 13) ^ m(r4, 22), i2 & u2 ^ i2 & s3 ^ u2 & s3), w2 = y, y = g2, g2 = a3, a3 = b(p2, c2), p2 = s3, s3 = u2, u2 = i2, i2 = b(c2, r4);
+              t4[0] = b(i2, t4[0]), t4[1] = b(u2, t4[1]), t4[2] = b(s3, t4[2]), t4[3] = b(p2, t4[3]), t4[4] = b(a3, t4[4]), t4[5] = b(g2, t4[5]), t4[6] = b(y, t4[6]), t4[7] = b(w2, t4[7]);
+            }
+            return t4;
+          }
+          var i = c("./helpers"), m = function(e3, t4) {
+            return e3 >>> t4 | e3 << 32 - t4;
+          }, v = function(e3, t4) {
+            return e3 >>> t4;
+          };
+          d2.exports = function(e3) {
+            return i.hash(e3, o2, 32, true);
+          };
+        }).call(this, c("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/sha256.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 10: [function(e, t3, f) {
+        !(function(e2, t4, n, r3, o2, i, u, s2, a2) {
+          f.read = function(e3, t5, n2, r4, o3) {
+            var i2, u2, l = 8 * o3 - r4 - 1, c = (1 << l) - 1, d2 = c >> 1, s3 = -7, a3 = n2 ? o3 - 1 : 0, f2 = n2 ? -1 : 1, o3 = e3[t5 + a3];
+            for (a3 += f2, i2 = o3 & (1 << -s3) - 1, o3 >>= -s3, s3 += l; 0 < s3; i2 = 256 * i2 + e3[t5 + a3], a3 += f2, s3 -= 8) ;
+            for (u2 = i2 & (1 << -s3) - 1, i2 >>= -s3, s3 += r4; 0 < s3; u2 = 256 * u2 + e3[t5 + a3], a3 += f2, s3 -= 8) ;
+            if (0 === i2) i2 = 1 - d2;
+            else {
+              if (i2 === c) return u2 ? NaN : 1 / 0 * (o3 ? -1 : 1);
+              u2 += Math.pow(2, r4), i2 -= d2;
+            }
+            return (o3 ? -1 : 1) * u2 * Math.pow(2, i2 - r4);
+          }, f.write = function(e3, t5, l, n2, r4, c) {
+            var o3, i2, u2 = 8 * c - r4 - 1, s3 = (1 << u2) - 1, a3 = s3 >> 1, d2 = 23 === r4 ? Math.pow(2, -24) - Math.pow(2, -77) : 0, f2 = n2 ? 0 : c - 1, h = n2 ? 1 : -1, c = t5 < 0 || 0 === t5 && 1 / t5 < 0 ? 1 : 0;
+            for (t5 = Math.abs(t5), isNaN(t5) || t5 === 1 / 0 ? (i2 = isNaN(t5) ? 1 : 0, o3 = s3) : (o3 = Math.floor(Math.log(t5) / Math.LN2), t5 * (n2 = Math.pow(2, -o3)) < 1 && (o3--, n2 *= 2), 2 <= (t5 += 1 <= o3 + a3 ? d2 / n2 : d2 * Math.pow(2, 1 - a3)) * n2 && (o3++, n2 /= 2), s3 <= o3 + a3 ? (i2 = 0, o3 = s3) : 1 <= o3 + a3 ? (i2 = (t5 * n2 - 1) * Math.pow(2, r4), o3 += a3) : (i2 = t5 * Math.pow(2, a3 - 1) * Math.pow(2, r4), o3 = 0)); 8 <= r4; e3[l + f2] = 255 & i2, f2 += h, i2 /= 256, r4 -= 8) ;
+            for (o3 = o3 << r4 | i2, u2 += r4; 0 < u2; e3[l + f2] = 255 & o3, f2 += h, o3 /= 256, u2 -= 8) ;
+            e3[l + f2 - h] |= 128 * c;
+          };
+        }).call(this, e("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/ieee754/index.js", "/node_modules/gulp-browserify/node_modules/ieee754");
+      }, { buffer: 3, lYpoI2: 11 }], 11: [function(e, h, t3) {
+        !(function(e2, t4, n, r3, o2, f, l, c, d2) {
+          var i, u, s2;
+          function a2() {
+          }
+          (e2 = h.exports = {}).nextTick = (u = "undefined" != typeof window && window.setImmediate, s2 = "undefined" != typeof window && window.postMessage && window.addEventListener, u ? function(e3) {
+            return window.setImmediate(e3);
+          } : s2 ? (i = [], window.addEventListener("message", function(e3) {
+            var t5 = e3.source;
+            t5 !== window && null !== t5 || "process-tick" !== e3.data || (e3.stopPropagation(), 0 < i.length && i.shift()());
+          }, true), function(e3) {
+            i.push(e3), window.postMessage("process-tick", "*");
+          }) : function(e3) {
+            setTimeout(e3, 0);
+          }), e2.title = "browser", e2.browser = true, e2.env = {}, e2.argv = [], e2.on = a2, e2.addListener = a2, e2.once = a2, e2.off = a2, e2.removeListener = a2, e2.removeAllListeners = a2, e2.emit = a2, e2.binding = function(e3) {
+            throw new Error("process.binding is not supported");
+          }, e2.cwd = function() {
+            return "/";
+          }, e2.chdir = function(e3) {
+            throw new Error("process.chdir is not supported");
+          };
+        }).call(this, e("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/process/browser.js", "/node_modules/gulp-browserify/node_modules/process");
+      }, { buffer: 3, lYpoI2: 11 }] }, {}, [1])(1);
+    });
+  })(object_hash);
+  return object_hash.exports;
+}
+var object_hashExports = requireObject_hash();
+const hashObject = /* @__PURE__ */ getDefaultExportFromCjs(object_hashExports);
+function getApolloClient() {
+  const originalClient = getClient();
+  const originalCacheConfig = originalClient.cache.config ?? {};
+  const newCache = new InMemoryCache({
+    ...originalCacheConfig,
+    typePolicies: {
+      ...originalCacheConfig.typePolicies,
+      Query: {
+        ...originalCacheConfig.typePolicies?.Query,
+        fields: {
+          ...originalCacheConfig.typePolicies?.Query.fields,
+          findScenes: {
+            ...originalCacheConfig.typePolicies?.Query.fields?.findScenes,
+            keyArgs: (variables) => hashObject({
+              ...variables,
+              filter: {
+                ...variables?.filter,
+                page: void 0,
+                per_page: void 0
+              }
+            }),
+            merge(existing = { scenes: [] }, incoming) {
+              return {
+                ...existing,
+                ...incoming,
+                scenes: [
+                  ...existing.scenes,
+                  ...incoming.scenes.filter(
+                    (incomingScene) => !existing.scenes.some((existingScene) => existingScene.__ref === incomingScene.__ref)
+                  )
+                ]
+              };
+            }
+          }
+        }
+      }
+    }
+  });
+  const newClient = new ApolloClient({
+    link: originalClient.link,
+    cache: newCache
+  });
+  const oldModify = newCache.modify;
+  newCache.modify = (firstArg, ...otherArgs) => {
+    const { fields = {} } = firstArg;
+    if ("findScenes" in fields && typeof fields.findScenes === "function") {
+      const originalModFn = fields.findScenes;
+      fields.findScenes = (...modFnArgs) => {
+        const [originalValue, { DELETE: DELETE2 }] = modFnArgs;
+        const result = originalModFn(...modFnArgs);
+        if (result === DELETE2) {
+          return originalValue;
+        }
+        return result;
+      };
+    }
+    return oldModify.apply(newCache, [firstArg, ...otherArgs]);
+  };
+  return newClient;
+}
 const container = document.getElementById("app");
 ReactDOM.render(
-  /* @__PURE__ */ React.createElement(ApolloProvider, { client: getClient() }, /* @__PURE__ */ React.createElement(App, null)),
+  /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
 export {
   videojs as v
 };
-//# sourceMappingURL=index-rmqf77q4.js.map
+//# sourceMappingURL=index-Bo_0eUrj.js.map
