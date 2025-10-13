@@ -153388,7 +153388,7 @@ function verifyDocumentType(document2, type2) {
     usedOperationName
   );
 }
-var useIsomorphicLayoutEffect$2 = canUseDOM$1 ? rehacktExports.useLayoutEffect : rehacktExports.useEffect;
+var useIsomorphicLayoutEffect$3 = canUseDOM$1 ? rehacktExports.useLayoutEffect : rehacktExports.useEffect;
 var wrapperSymbol = Symbol.for("apollo.hook.wrappers");
 function wrapHook(hookName, useHook, clientOrObsQuery) {
   var queryManager = clientOrObsQuery["queryManager"];
@@ -153721,7 +153721,7 @@ function useMutation(mutation, options2) {
     mutation,
     options: options2
   });
-  useIsomorphicLayoutEffect$2(function() {
+  useIsomorphicLayoutEffect$3(function() {
     Object.assign(ref.current, { client: client2, options: options2, mutation });
   });
   var execute2 = rehacktExports.useCallback(function(executeOptions) {
@@ -165844,7 +165844,7 @@ async function getOriginalPlugin() {
     pluginName = pluginNameToBeRegistered;
     plugin = pluginToBeRegistered;
   };
-  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-BdTeMWnN.js"), true ? [] : void 0, import.meta.url);
+  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-0cPcierH.js"), true ? [] : void 0, import.meta.url);
   videojs.registerPlugin = originalRegisterPlugin;
   if (!pluginName || !plugin) {
     throw new Error(`Failed to load original videojs-overlay-buttons plugin`);
@@ -166633,10 +166633,6 @@ const useAppStateStore = create2()(
       uiVisible: true,
       isRandomised: false,
       crtEffect: false,
-      setSelectedSavedFilterId: (id) => set4({ selectedSavedFilterId: id }),
-      setSceneFilter: async (filter) => {
-        set4({ sceneFilter: filter, sceneFilterLoading: false });
-      },
       setShowSettings: (newValue) => set4((state) => ({
         showSettings: typeof newValue === "boolean" ? newValue : newValue(state.showSettings)
       })),
@@ -166675,9 +166671,6 @@ const useAppStateStore = create2()(
       name: "app-state",
       partialize: (state) => Object.fromEntries(
         Object.entries(state).filter(([key]) => ![
-          "sceneFilter",
-          "sceneFilterLoading",
-          "selectedSavedFilterId",
           "showSettings",
           "fullscreen"
         ].includes(key))
@@ -166686,73 +166679,58 @@ const useAppStateStore = create2()(
   )
 );
 const useStashConfigStore = create2((set4, get7) => ({
-  stashDefaultScenesFilter: void 0,
-  savedSceneFilters: [],
-  stashTvConfig: {
-    defaultFilterID: void 0
+  general: {
+    stashDefaultScenesFilter: void 0,
+    savedSceneFiltersNameAndIds: []
   },
-  apolloClient: void 0,
+  tv: {
+    defaultFilterId: void 0,
+    hideNavButton: false,
+    subtitleLanguage: void 0
+  },
   loading: true,
   loadStashConfig: async (apolloClient) => {
-    const { stashTvConfig } = get7();
+    const { general, tv } = get7();
     const config2 = await fetchStashConfigFromStash(apolloClient);
     set4({
-      stashDefaultScenesFilter: config2.configuration.ui.defaultFilters?.scenes,
-      savedSceneFilters: config2.findSavedFilters.map((filter) => ({ ...filter, mode: FilterMode.Scenes })),
-      stashTvConfig: {
-        ...stashTvConfig,
+      general: {
+        ...general,
+        stashDefaultScenesFilter: config2.configuration.ui.defaultFilters?.scenes,
+        savedSceneFiltersNameAndIds: config2.findSavedFilters.map((filter) => ({ ...filter, mode: FilterMode.Scenes }))
+      },
+      tv: {
+        ...tv,
         ...config2.configuration.plugins?.[PLUGIN_NAMESPACE] || {}
       },
-      loading: false,
-      apolloClient
+      loading: false
     });
   },
-  updateStashTvConfig: async (config2) => {
-    const { apolloClient } = get7();
+  /** 
+   * Updates the Stash TV config stored in Stash.
+   * 
+   * Providing a function will allow you to specify how the new config is merged with the existing config.
+   * Otherwise if an object is provided all top-level properties will be merged.
+   */
+  updateStashTvConfig: async (apolloClient, config2) => {
     if (!apolloClient) {
       throw new Error("Apollo Client is not initialized");
     }
-    set4((state) => ({
-      stashTvConfig: {
-        ...state.stashTvConfig,
+    const currentConfig = get7().tv;
+    if (typeof config2 === "function") {
+      config2 = config2(currentConfig);
+    } else {
+      config2 = {
+        ...currentConfig,
         ...config2
-      }
-    }));
+      };
+    }
+    set4({ tv: config2 });
     await updateStashTvConfigInStash(apolloClient, config2);
-  },
-  getSavedFilter: async (id) => {
-    const { apolloClient, savedSceneFilters, stashDefaultScenesFilter } = get7();
-    if (!apolloClient) {
-      throw new Error("Apollo Client is not initialized");
-    }
-    if (!id) {
-      return stashDefaultScenesFilter;
-    }
-    let sceneFilter = savedSceneFilters.find((filter) => filter.id === id);
-    if (sceneFilter?.find_filter) {
-      return sceneFilter;
-    }
-    sceneFilter = await fetchSavedFilterFromStash(apolloClient, id).then((data2) => data2.findSavedFilter) || void 0;
-    if (!sceneFilter) {
-      return void 0;
-    }
-    set4((state) => ({
-      ...state,
-      savedSceneFilters: [...state.savedSceneFilters.filter((s2) => s2.id !== sceneFilter?.id), sceneFilter]
-    }));
-    return sceneFilter;
   }
 }));
 async function fetchStashConfigFromStash(apolloClient) {
   const { data: data2 } = await apolloClient.query({
     query: GetStashConfigForTvDocument
-  });
-  return data2;
-}
-async function fetchSavedFilterFromStash(apolloClient, filterId) {
-  const { data: data2 } = await apolloClient.query({
-    query: FindSavedFilterDocument,
-    variables: { id: filterId }
   });
   return data2;
 }
@@ -166998,6 +166976,7 @@ const VideoItem = (props) => {
     }
   }, [loadingDeferred, props.currentlyScrolling]);
   const isInViewport = props.index === props.currentIndex;
+  const autoplay = false;
   function handleVideojsPlayerReady(player) {
     videojsPlayerRef.current = player;
     player.on("volumechange", () => {
@@ -167014,8 +166993,7 @@ const VideoItem = (props) => {
     const videojsPlayer = videojsPlayerRef.current;
     if (!videojsPlayer) return;
     if (props.index === props.currentIndex) {
-      setPaused(false);
-      videojsPlayer?.play()?.catch(() => setPaused(true));
+      return;
     } else {
       videojsPlayer?.pause();
     }
@@ -167181,7 +167159,7 @@ const VideoItem = (props) => {
         scene: props.scene,
         hideScrubberOverride: true,
         muted: audioMuted,
-        autoplay: false,
+        autoplay,
         loop: looping,
         initialTimestamp: 0,
         sendSetTimestamp: () => {
@@ -168260,7 +168238,7 @@ function calculateRange({
   }
   return { startIndex, endIndex };
 }
-const useIsomorphicLayoutEffect$1 = typeof document !== "undefined" ? reactExports.useLayoutEffect : reactExports.useEffect;
+const useIsomorphicLayoutEffect$2 = typeof document !== "undefined" ? reactExports.useLayoutEffect : reactExports.useEffect;
 function useVirtualizerBase(options2) {
   const rerender = reactExports.useReducer(() => ({}), {})[1];
   const resolvedOptions = {
@@ -168279,10 +168257,10 @@ function useVirtualizerBase(options2) {
     () => new Virtualizer(resolvedOptions)
   );
   instance.setOptions(resolvedOptions);
-  useIsomorphicLayoutEffect$1(() => {
+  useIsomorphicLayoutEffect$2(() => {
     return instance._didMount();
   }, []);
-  useIsomorphicLayoutEffect$1(() => {
+  useIsomorphicLayoutEffect$2(() => {
     return instance._willUpdate();
   });
   return instance;
@@ -168337,9 +168315,3563 @@ function requireThrottleit() {
 }
 var throttleitExports = /* @__PURE__ */ requireThrottleit();
 const throttle2 = /* @__PURE__ */ getDefaultExportFromCjs(throttleitExports);
+const modifierMessageIDs = {
+  [CriterionModifier.Equals]: "criterion_modifier.equals",
+  [CriterionModifier.NotEquals]: "criterion_modifier.not_equals",
+  [CriterionModifier.GreaterThan]: "criterion_modifier.greater_than",
+  [CriterionModifier.LessThan]: "criterion_modifier.less_than",
+  [CriterionModifier.IsNull]: "criterion_modifier.is_null",
+  [CriterionModifier.NotNull]: "criterion_modifier.not_null",
+  [CriterionModifier.Includes]: "criterion_modifier.includes",
+  [CriterionModifier.IncludesAll]: "criterion_modifier.includes_all",
+  [CriterionModifier.Excludes]: "criterion_modifier.excludes",
+  [CriterionModifier.MatchesRegex]: "criterion_modifier.matches_regex",
+  [CriterionModifier.NotMatchesRegex]: "criterion_modifier.not_matches_regex",
+  [CriterionModifier.Between]: "criterion_modifier.between",
+  [CriterionModifier.NotBetween]: "criterion_modifier.not_between"
+};
+class Criterion {
+  constructor(type2) {
+    Object.defineProperty(this, "criterionOption", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    this.criterionOption = type2;
+  }
+  isValid() {
+    return true;
+  }
+  clone() {
+    const ret = Object.assign(Object.create(Object.getPrototypeOf(this)), this);
+    ret.cloneValues();
+    return ret;
+  }
+  cloneValues() {
+  }
+  getId() {
+    return `${this.criterionOption.type}`;
+  }
+}
+class ModifierCriterion extends Criterion {
+  constructor(type2, value) {
+    super(type2);
+    Object.defineProperty(this, "_modifier", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "_value", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    this.modifier = type2.defaultModifier;
+    this.value = value;
+  }
+  get modifier() {
+    return this._modifier;
+  }
+  set modifier(value) {
+    this._modifier = value;
+  }
+  get value() {
+    return this._value;
+  }
+  set value(newValue) {
+    this._value = newValue;
+  }
+  isValid() {
+    return true;
+  }
+  modifierCriterionOption() {
+    return this.criterionOption;
+  }
+  clone() {
+    const ret = Object.assign(Object.create(Object.getPrototypeOf(this)), this);
+    ret.cloneValues();
+    return ret;
+  }
+  cloneValues() {
+  }
+  static getModifierLabel(intl, modifier) {
+    const modifierMessageID = modifierMessageIDs[modifier];
+    return modifierMessageID ? intl.formatMessage({ id: modifierMessageID }) : "";
+  }
+  getLabel(intl) {
+    const modifierString = ModifierCriterion.getModifierLabel(intl, this.modifier);
+    let valueString = "";
+    if (this.modifier !== CriterionModifier.IsNull && this.modifier !== CriterionModifier.NotNull) {
+      valueString = this.getLabelValue(intl);
+    }
+    return intl.formatMessage({ id: "criterion_modifier.format_string" }, {
+      criterion: intl.formatMessage({ id: this.criterionOption.messageID }),
+      modifierString,
+      valueString
+    });
+  }
+  toQueryParams() {
+    let encodedCriterion = {
+      type: this.criterionOption.type,
+      modifier: this.modifier
+    };
+    if (this.modifier !== CriterionModifier.IsNull && this.modifier !== CriterionModifier.NotNull) {
+      encodedCriterion.value = this.encodeValue();
+    }
+    return encodedCriterion;
+  }
+  encodeValue() {
+    return this.value;
+  }
+  decodeValue(v) {
+    if (v !== void 0 && v !== null) {
+      this.value = v;
+    }
+  }
+  fromDecodedParams(i) {
+    const c = i;
+    this.modifier = c.modifier;
+    this.decodeValue(c.value);
+  }
+  setFromSavedCriterion(criterion) {
+    const c = criterion;
+    if (c.value !== void 0 && c.value !== null) {
+      this.value = c.value;
+    }
+    this.modifier = c.modifier;
+  }
+  applyToCriterionInput(input) {
+    input[this.criterionOption.type] = this.toCriterionInput();
+  }
+  // TODO - saved criterion _should_ be criterion input
+  // kicking this can down the road a little further
+  applyToSavedCriterion(input) {
+    input[this.criterionOption.type] = {
+      value: this.value,
+      modifier: this.modifier
+    };
+  }
+  toCriterionInput() {
+    return {
+      value: this.value,
+      modifier: this.modifier
+    };
+  }
+}
+class CriterionOption {
+  constructor(options2) {
+    var _a2;
+    Object.defineProperty(this, "type", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "messageID", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "makeCriterionFn", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "hidden", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: false
+    });
+    this.type = options2.type;
+    this.messageID = options2.messageID;
+    this.makeCriterionFn = options2.makeCriterion;
+    this.hidden = (_a2 = options2.hidden) !== null && _a2 !== void 0 ? _a2 : false;
+  }
+  makeCriterion(config2) {
+    return this.makeCriterionFn(this, config2);
+  }
+}
+class ModifierCriterionOption extends CriterionOption {
+  constructor(options2) {
+    var _a2, _b2;
+    super(options2);
+    Object.defineProperty(this, "modifierOptions", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "defaultModifier", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "options", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "inputType", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    this.modifierOptions = (_a2 = options2.modifierOptions) !== null && _a2 !== void 0 ? _a2 : [];
+    this.defaultModifier = (_b2 = options2.defaultModifier) !== null && _b2 !== void 0 ? _b2 : CriterionModifier.Equals;
+    this.options = options2.options;
+    this.inputType = options2.inputType;
+  }
+}
+class ILabeledIdCriterionOption extends ModifierCriterionOption {
+  constructor(messageID, value, includeAll, inputType2, makeCriterion) {
+    const modifierOptions2 = [
+      CriterionModifier.Includes,
+      CriterionModifier.Excludes,
+      CriterionModifier.IsNull,
+      CriterionModifier.NotNull
+    ];
+    let defaultModifier2 = CriterionModifier.Includes;
+    if (includeAll) {
+      modifierOptions2.unshift(CriterionModifier.IncludesAll);
+      defaultModifier2 = CriterionModifier.IncludesAll;
+    }
+    super({
+      messageID,
+      type: value,
+      modifierOptions: modifierOptions2,
+      defaultModifier: defaultModifier2,
+      inputType: inputType2,
+      makeCriterion: makeCriterion ? makeCriterion : () => new ILabeledIdCriterion(this)
+    });
+  }
+}
+class ILabeledIdCriterion extends ModifierCriterion {
+  constructor(type2, value = []) {
+    super(type2, value);
+  }
+  cloneValues() {
+    this.value = this.value.map((v) => ({ ...v }));
+  }
+  getLabelValue(_intl) {
+    return this.value.map((v) => v.label).join(", ");
+  }
+  toCriterionInput() {
+    return {
+      value: this.value.map((v) => v.id),
+      modifier: this.modifier
+    };
+  }
+  isValid() {
+    if (this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) {
+      return true;
+    }
+    return this.value.length > 0;
+  }
+}
+class IHierarchicalLabeledIdCriterion extends ModifierCriterion {
+  constructor(type2, value = {
+    items: [],
+    excluded: [],
+    depth: 0
+  }) {
+    super(type2, value);
+  }
+  cloneValues() {
+    this.value = {
+      ...this.value,
+      items: this.value.items.map((v) => ({ ...v })),
+      excluded: this.value.excluded.map((v) => ({ ...v }))
+    };
+  }
+  get modifier() {
+    return this._modifier;
+  }
+  set modifier(value) {
+    this._modifier = value;
+    if (this.value && value !== CriterionModifier.Includes && value !== CriterionModifier.IncludesAll) {
+      this.value.excluded = [];
+    }
+  }
+  setFromSavedCriterion(criterion) {
+    var _a2;
+    const { modifier, value } = criterion;
+    if (value !== void 0) {
+      this.value = {
+        items: value.items || [],
+        excluded: value.excluded || [],
+        depth: value.depth || 0
+      };
+    }
+    const modifierOptions2 = (_a2 = this.criterionOption.modifierOptions) !== null && _a2 !== void 0 ? _a2 : [];
+    if (modifier === CriterionModifier.Excludes && modifierOptions2.find((m) => m === CriterionModifier.Excludes) === void 0) {
+      this.modifier = CriterionModifier.Includes;
+      this.value.excluded = [...this.value.excluded, ...this.value.items];
+      this.value.items = [];
+    } else {
+      this.modifier = modifier;
+    }
+  }
+  getLabelValue(_intl) {
+    var _a2;
+    const labels = ((_a2 = this.value.items) !== null && _a2 !== void 0 ? _a2 : []).map((v) => v.label).join(", ");
+    if (this.value.depth === 0) {
+      return labels;
+    }
+    return `${labels} (+${this.value.depth > 0 ? this.value.depth : "all"})`;
+  }
+  toCriterionInput() {
+    let excludes = [];
+    const depth = this.modifier === CriterionModifier.Equals ? 0 : this.value.depth;
+    if (this.value.excluded) {
+      excludes = this.value.excluded.map((v) => v.id);
+    }
+    return {
+      value: this.value.items.map((v) => v.id),
+      excludes,
+      modifier: this.modifier,
+      depth
+    };
+  }
+  isValid() {
+    if (this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) {
+      return true;
+    }
+    return this.value.items.length > 0 || this.value.excluded && this.value.excluded.length > 0;
+  }
+  getLabel(intl) {
+    let id = "criterion_modifier.format_string";
+    let modifierString = ModifierCriterion.getModifierLabel(intl, this.modifier);
+    let valueString = "";
+    let excludedString = "";
+    if (this.modifier !== CriterionModifier.IsNull && this.modifier !== CriterionModifier.NotNull) {
+      valueString = this.value.items.map((v) => v.label).join(", ");
+      if (this.value.excluded && this.value.excluded.length > 0) {
+        if (this.value.items.length === 0) {
+          modifierString = ModifierCriterion.getModifierLabel(intl, CriterionModifier.Excludes);
+          valueString = this.value.excluded.map((v) => v.label).join(", ");
+        } else {
+          id = "criterion_modifier.format_string_excludes";
+          excludedString = this.value.excluded.map((v) => v.label).join(", ");
+        }
+      }
+      if (this.value.depth !== 0) {
+        id += "_depth";
+      }
+    }
+    return intl.formatMessage({ id }, {
+      criterion: intl.formatMessage({ id: this.criterionOption.messageID }),
+      modifierString,
+      valueString,
+      excludedString,
+      depth: this.value.depth
+    });
+  }
+}
+class StringCriterionOption extends ModifierCriterionOption {
+  constructor(messageID, value, makeCriterion) {
+    super({
+      messageID,
+      type: value,
+      modifierOptions: [
+        CriterionModifier.Equals,
+        CriterionModifier.NotEquals,
+        CriterionModifier.Includes,
+        CriterionModifier.Excludes,
+        CriterionModifier.IsNull,
+        CriterionModifier.NotNull,
+        CriterionModifier.MatchesRegex,
+        CriterionModifier.NotMatchesRegex
+      ],
+      defaultModifier: CriterionModifier.Equals,
+      inputType: "text",
+      makeCriterion: makeCriterion ? makeCriterion : () => new StringCriterion(this)
+    });
+  }
+}
+function createStringCriterionOption(type2, messageID) {
+  return new StringCriterionOption(messageID !== null && messageID !== void 0 ? messageID : type2, type2);
+}
+class MandatoryStringCriterionOption extends ModifierCriterionOption {
+  constructor(messageID, value) {
+    super({
+      messageID,
+      type: value,
+      modifierOptions: [
+        CriterionModifier.Equals,
+        CriterionModifier.NotEquals,
+        CriterionModifier.Includes,
+        CriterionModifier.Excludes,
+        CriterionModifier.MatchesRegex,
+        CriterionModifier.NotMatchesRegex
+      ],
+      defaultModifier: CriterionModifier.Equals,
+      inputType: "text",
+      makeCriterion: () => new StringCriterion(this)
+    });
+  }
+}
+function createMandatoryStringCriterionOption(value, messageID) {
+  return new MandatoryStringCriterionOption(messageID !== null && messageID !== void 0 ? messageID : value, value);
+}
+class StringCriterion extends ModifierCriterion {
+  constructor(type2) {
+    super(type2, "");
+  }
+  getLabelValue(_intl) {
+    return this.value;
+  }
+  isValid() {
+    return this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull || this.value.length > 0;
+  }
+}
+class MultiStringCriterion extends ModifierCriterion {
+  constructor(type2, value = []) {
+    super(type2, value);
+  }
+  cloneValues() {
+    this.value = this.value.slice();
+  }
+  getLabelValue(_intl) {
+    return this.value.join(", ");
+  }
+  isValid() {
+    return this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull || this.value.length > 0;
+  }
+}
+class BooleanCriterionOption extends ModifierCriterionOption {
+  constructor(messageID, value, makeCriterion) {
+    super({
+      messageID,
+      type: value,
+      modifierOptions: [],
+      defaultModifier: CriterionModifier.Equals,
+      options: ["true", "false"],
+      makeCriterion: makeCriterion ? makeCriterion : () => new BooleanCriterion(this)
+    });
+  }
+}
+function createBooleanCriterionOption(value, messageID) {
+  return new BooleanCriterionOption(value, value);
+}
+class BooleanCriterion extends StringCriterion {
+  toCriterionInput() {
+    return this.value === "true";
+  }
+  isValid() {
+    return this.value === "true" || this.value === "false";
+  }
+}
+class StringBooleanCriterionOption extends ModifierCriterionOption {
+  constructor(messageID, value, makeCriterion) {
+    super({
+      messageID,
+      type: value,
+      options: ["true", "false"],
+      makeCriterion: makeCriterion ? makeCriterion : () => new StringBooleanCriterion(this)
+    });
+  }
+}
+class StringBooleanCriterion extends StringCriterion {
+  toCriterionInput() {
+    return this.value;
+  }
+  isValid() {
+    return this.value === "true" || this.value === "false";
+  }
+}
+class NumberCriterionOption extends ModifierCriterionOption {
+  constructor(messageID, value) {
+    super({
+      messageID,
+      type: value,
+      modifierOptions: [
+        CriterionModifier.Equals,
+        CriterionModifier.NotEquals,
+        CriterionModifier.GreaterThan,
+        CriterionModifier.LessThan,
+        CriterionModifier.IsNull,
+        CriterionModifier.NotNull,
+        CriterionModifier.Between,
+        CriterionModifier.NotBetween
+      ],
+      defaultModifier: CriterionModifier.Equals,
+      inputType: "number",
+      makeCriterion: () => new NumberCriterion(this)
+    });
+  }
+}
+function createNumberCriterionOption(value, messageID) {
+  return new NumberCriterionOption(messageID !== null && messageID !== void 0 ? messageID : value, value);
+}
+class NullNumberCriterionOption extends ModifierCriterionOption {
+  constructor(messageID, value, makeCriterion) {
+    super({
+      messageID,
+      type: value,
+      modifierOptions: [
+        CriterionModifier.Equals,
+        CriterionModifier.NotEquals,
+        CriterionModifier.GreaterThan,
+        CriterionModifier.LessThan,
+        CriterionModifier.Between,
+        CriterionModifier.NotBetween,
+        CriterionModifier.IsNull,
+        CriterionModifier.NotNull
+      ],
+      defaultModifier: CriterionModifier.Equals,
+      inputType: "number",
+      makeCriterion: makeCriterion ? makeCriterion : () => new NumberCriterion(this)
+    });
+  }
+}
+class MandatoryNumberCriterionOption extends ModifierCriterionOption {
+  constructor(messageID, value, makeCriterion) {
+    super({
+      messageID,
+      type: value,
+      modifierOptions: [
+        CriterionModifier.Equals,
+        CriterionModifier.NotEquals,
+        CriterionModifier.GreaterThan,
+        CriterionModifier.LessThan,
+        CriterionModifier.Between,
+        CriterionModifier.NotBetween
+      ],
+      defaultModifier: CriterionModifier.Equals,
+      inputType: "number",
+      makeCriterion: makeCriterion ? makeCriterion : () => new NumberCriterion(this)
+    });
+  }
+}
+function createMandatoryNumberCriterionOption(value, messageID) {
+  return new MandatoryNumberCriterionOption(messageID !== null && messageID !== void 0 ? messageID : value, value);
+}
+function encodeRangeValue(modifier, value) {
+  if (modifier === CriterionModifier.Between || modifier === CriterionModifier.NotBetween) {
+    return { value: value.value, value2: value.value2 };
+  }
+  return { value: value.value };
+}
+function decodeRangeValue(v) {
+  if (typeof v.value === "object") {
+    return v.value;
+  } else {
+    return { value: v.value, value2: v.value2 };
+  }
+}
+class NumberCriterion extends ModifierCriterion {
+  constructor(type2) {
+    super(type2, { value: void 0, value2: void 0 });
+  }
+  cloneValues() {
+    this.value = { ...this.value };
+  }
+  get value() {
+    return this._value;
+  }
+  set value(newValue) {
+    if (typeof newValue !== "object") {
+      this._value = {
+        value: newValue,
+        value2: void 0
+      };
+    } else {
+      this._value = newValue;
+    }
+  }
+  toCriterionInput() {
+    var _a2, _b2, _c;
+    return {
+      modifier: this.modifier,
+      value: (_b2 = (_a2 = this.value) === null || _a2 === void 0 ? void 0 : _a2.value) !== null && _b2 !== void 0 ? _b2 : 0,
+      value2: (_c = this.value) === null || _c === void 0 ? void 0 : _c.value2
+    };
+  }
+  setFromSavedCriterion(c) {
+    super.setFromSavedCriterion(c);
+  }
+  encodeValue() {
+    return encodeRangeValue(this.modifier, this.value);
+  }
+  getLabelValue(_intl) {
+    const { value, value2 } = this.value;
+    if (this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween) {
+      return `${value}, ${value2 !== null && value2 !== void 0 ? value2 : 0}`;
+    } else {
+      return `${value}`;
+    }
+  }
+  isValid() {
+    if (this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) {
+      return true;
+    }
+    const { value, value2 } = this.value;
+    if (value === void 0) {
+      return false;
+    }
+    if (value2 === void 0 && (this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween)) {
+      return false;
+    }
+    return true;
+  }
+}
+class DurationCriterionOption extends MandatoryNumberCriterionOption {
+  constructor(messageID, value) {
+    super(messageID, value, () => new DurationCriterion(this));
+  }
+}
+function createDurationCriterionOption(value, messageID) {
+  return new DurationCriterionOption(value, value);
+}
+class NullDurationCriterionOption extends NullNumberCriterionOption {
+  constructor(messageID, value) {
+    super(messageID, value, () => new DurationCriterion(this));
+  }
+}
+function createNullDurationCriterionOption(value, messageID) {
+  return new NullDurationCriterionOption(value, value);
+}
+class DurationCriterion extends ModifierCriterion {
+  constructor(type2) {
+    super(type2, { value: void 0, value2: void 0 });
+  }
+  cloneValues() {
+    this.value = { ...this.value };
+  }
+  toCriterionInput() {
+    var _a2, _b2, _c;
+    return {
+      modifier: this.modifier,
+      value: (_b2 = (_a2 = this.value) === null || _a2 === void 0 ? void 0 : _a2.value) !== null && _b2 !== void 0 ? _b2 : 0,
+      value2: (_c = this.value) === null || _c === void 0 ? void 0 : _c.value2
+    };
+  }
+  setFromSavedCriterion(c) {
+    super.setFromSavedCriterion(c);
+  }
+  encodeValue() {
+    return encodeRangeValue(this.modifier, this.value);
+  }
+  getLabelValue(_intl) {
+    var _a2, _b2;
+    const value = TextUtils.secondsToTimestamp((_a2 = this.value.value) !== null && _a2 !== void 0 ? _a2 : 0);
+    const value2 = TextUtils.secondsToTimestamp((_b2 = this.value.value2) !== null && _b2 !== void 0 ? _b2 : 0);
+    if (this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween) {
+      return `${value}, ${value2}`;
+    } else {
+      return value;
+    }
+  }
+  isValid() {
+    if (this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) {
+      return true;
+    }
+    const { value, value2 } = this.value;
+    if (value === void 0) {
+      return false;
+    }
+    if (value2 === void 0 && (this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween)) {
+      return false;
+    }
+    return true;
+  }
+}
+class DateCriterionOption extends ModifierCriterionOption {
+  constructor(messageID, value) {
+    super({
+      messageID,
+      type: value,
+      modifierOptions: [
+        CriterionModifier.Equals,
+        CriterionModifier.NotEquals,
+        CriterionModifier.GreaterThan,
+        CriterionModifier.LessThan,
+        CriterionModifier.IsNull,
+        CriterionModifier.NotNull,
+        CriterionModifier.Between,
+        CriterionModifier.NotBetween
+      ],
+      defaultModifier: CriterionModifier.Equals,
+      inputType: "text",
+      makeCriterion: () => new DateCriterion(this)
+    });
+  }
+}
+function createDateCriterionOption(value) {
+  return new DateCriterionOption(value, value);
+}
+class DateCriterion extends ModifierCriterion {
+  constructor(type2) {
+    super(type2, { value: "", value2: void 0 });
+  }
+  cloneValues() {
+    this.value = { ...this.value };
+  }
+  setFromSavedCriterion(c) {
+    super.setFromSavedCriterion(c);
+  }
+  encodeValue() {
+    return encodeRangeValue(this.modifier, this.value);
+  }
+  toCriterionInput() {
+    var _a2, _b2, _c;
+    return {
+      modifier: this.modifier,
+      value: (_b2 = (_a2 = this.value) === null || _a2 === void 0 ? void 0 : _a2.value) !== null && _b2 !== void 0 ? _b2 : "",
+      value2: (_c = this.value) === null || _c === void 0 ? void 0 : _c.value2
+    };
+  }
+  getLabelValue() {
+    const { value } = this.value;
+    return this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween ? `${value}, ${this.value.value2}` : `${value}`;
+  }
+  isValid() {
+    if (this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) {
+      return true;
+    }
+    const { value, value2 } = this.value;
+    if (!value) {
+      return false;
+    }
+    if (!value2 && (this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween)) {
+      return false;
+    }
+    return true;
+  }
+}
+class MandatoryTimestampCriterionOption extends ModifierCriterionOption {
+  constructor(messageID, value) {
+    super({
+      messageID,
+      type: value,
+      modifierOptions: [
+        CriterionModifier.GreaterThan,
+        CriterionModifier.LessThan,
+        CriterionModifier.Between,
+        CriterionModifier.NotBetween
+      ],
+      defaultModifier: CriterionModifier.GreaterThan,
+      inputType: "text",
+      makeCriterion: () => new TimestampCriterion(this)
+    });
+  }
+}
+function createMandatoryTimestampCriterionOption(value) {
+  return new MandatoryTimestampCriterionOption(value, value);
+}
+class TimestampCriterion extends ModifierCriterion {
+  constructor(type2) {
+    super(type2, { value: "", value2: void 0 });
+  }
+  cloneValues() {
+    this.value = { ...this.value };
+  }
+  toCriterionInput() {
+    var _a2;
+    return {
+      modifier: this.modifier,
+      value: this.transformValueToInput((_a2 = this.value.value) !== null && _a2 !== void 0 ? _a2 : ""),
+      value2: this.value.value2 ? this.transformValueToInput(this.value.value2) : null
+    };
+  }
+  setFromSavedCriterion(c) {
+    super.setFromSavedCriterion(c);
+    this.value = decodeRangeValue(c);
+  }
+  encodeValue() {
+    return encodeRangeValue(this.modifier, this.value);
+  }
+  getLabelValue() {
+    const { value } = this.value;
+    return this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween ? `${value}, ${this.value.value2}` : `${value}`;
+  }
+  transformValueToInput(value) {
+    value = value.trim();
+    if (/^\d{4}-\d{2}-\d{2}(( |T)\d{2}:\d{2})?$/.test(value)) {
+      return value.replace(" ", "T");
+    }
+    return "";
+  }
+  isValid() {
+    if (this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) {
+      return true;
+    }
+    const { value, value2 } = this.value;
+    if (!value) {
+      return false;
+    }
+    if (!value2 && (this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween)) {
+      return false;
+    }
+    return true;
+  }
+}
+const FavoritePerformerCriterionOption = new BooleanCriterionOption("favourite", "filter_favorites", () => new FavoritePerformerCriterion());
+class FavoritePerformerCriterion extends BooleanCriterion {
+  constructor() {
+    super(FavoritePerformerCriterionOption);
+  }
+}
+const FavoriteTagCriterionOption = new BooleanCriterionOption("favourite", "favorite", () => new FavoriteTagCriterion());
+class FavoriteTagCriterion extends BooleanCriterion {
+  constructor() {
+    super(FavoriteTagCriterionOption);
+  }
+}
+const FavoriteStudioCriterionOption = new BooleanCriterionOption("favourite", "favorite", () => new FavoriteStudioCriterion());
+class FavoriteStudioCriterion extends BooleanCriterion {
+  constructor() {
+    super(FavoriteStudioCriterionOption);
+  }
+}
+const PerformerFavoriteCriterionOption = new BooleanCriterionOption("performer_favorite", "performer_favorite", () => new PerformerFavoriteCriterion());
+class PerformerFavoriteCriterion extends BooleanCriterion {
+  constructor() {
+    super(PerformerFavoriteCriterionOption);
+  }
+}
+class IsMissingCriterion extends StringCriterion {
+  toCriterionInput() {
+    return this.value;
+  }
+}
+class IsMissingCriterionOption extends ModifierCriterionOption {
+  constructor(messageID, type2, options2) {
+    super({
+      messageID,
+      type: type2,
+      options: options2,
+      modifierOptions: [],
+      defaultModifier: CriterionModifier.Equals,
+      makeCriterion: () => new IsMissingCriterion(this)
+    });
+  }
+}
+const SceneIsMissingCriterionOption = new IsMissingCriterionOption("isMissing", "is_missing", [
+  "title",
+  "cover",
+  "details",
+  "url",
+  "date",
+  "galleries",
+  "studio",
+  "movie",
+  "performers",
+  "tags",
+  "stash_id"
+]);
+const ImageIsMissingCriterionOption = new IsMissingCriterionOption("isMissing", "is_missing", ["title", "galleries", "studio", "performers", "tags"]);
+const PerformerIsMissingCriterionOption = new IsMissingCriterionOption("isMissing", "is_missing", [
+  "url",
+  "ethnicity",
+  "country",
+  "hair_color",
+  "eye_color",
+  "height",
+  "weight",
+  "measurements",
+  "fake_tits",
+  "career_length",
+  "tattoos",
+  "piercings",
+  "aliases",
+  "gender",
+  "image",
+  "details",
+  "stash_id"
+]);
+const GalleryIsMissingCriterionOption = new IsMissingCriterionOption("isMissing", "is_missing", ["title", "details", "url", "date", "studio", "performers", "tags", "scenes"]);
+const TagIsMissingCriterionOption = new IsMissingCriterionOption("isMissing", "is_missing", ["image"]);
+const StudioIsMissingCriterionOption = new IsMissingCriterionOption("isMissing", "is_missing", ["image", "stash_id", "details"]);
+const GroupIsMissingCriterionOption = new IsMissingCriterionOption("isMissing", "is_missing", ["front_image", "back_image", "scenes"]);
+const OrganizedCriterionOption = new BooleanCriterionOption("organized", "organized", () => new OrganizedCriterion());
+class OrganizedCriterion extends BooleanCriterion {
+  constructor() {
+    super(OrganizedCriterionOption);
+  }
+}
+const HasChaptersCriterionOption = new StringBooleanCriterionOption("hasChapters", "has_chapters", () => new HasChaptersCriterion());
+class HasChaptersCriterion extends StringBooleanCriterion {
+  constructor() {
+    super(HasChaptersCriterionOption);
+  }
+}
+const modifierOptions$4 = [
+  CriterionModifier.IncludesAll,
+  CriterionModifier.Includes,
+  CriterionModifier.Equals,
+  CriterionModifier.IsNull,
+  CriterionModifier.NotNull
+];
+const defaultModifier$4 = CriterionModifier.IncludesAll;
+const inputType$5 = "performers";
+const PerformersCriterionOption = new ModifierCriterionOption({
+  messageID: "performers",
+  type: "performers",
+  modifierOptions: modifierOptions$4,
+  defaultModifier: defaultModifier$4,
+  inputType: inputType$5,
+  makeCriterion: () => new PerformersCriterion()
+});
+class PerformersCriterion extends ModifierCriterion {
+  constructor() {
+    super(PerformersCriterionOption, { items: [], excluded: [] });
+  }
+  cloneValues() {
+    this.value = {
+      ...this.value,
+      items: this.value.items.map((v) => ({ ...v })),
+      excluded: this.value.excluded.map((v) => ({ ...v }))
+    };
+  }
+  get modifier() {
+    return this._modifier;
+  }
+  set modifier(value) {
+    this._modifier = value;
+    if (value !== CriterionModifier.Includes && value !== CriterionModifier.IncludesAll) {
+      this.value.excluded = [];
+    }
+  }
+  setFromSavedCriterion(criterion) {
+    const { modifier, value } = criterion;
+    if (Array.isArray(value)) {
+      this.value = { items: value, excluded: [] };
+    } else if (value !== void 0) {
+      this.value = {
+        items: value.items || [],
+        excluded: value.excluded || []
+      };
+    }
+    if (modifier === CriterionModifier.Excludes) {
+      this.modifier = CriterionModifier.Includes;
+      this.value.excluded = [...this.value.excluded, ...this.value.items];
+      this.value.items = [];
+    } else {
+      this.modifier = modifier;
+    }
+  }
+  getLabelValue(_intl) {
+    return this.value.items.map((v) => v.label).join(", ");
+  }
+  toCriterionInput() {
+    let excludes = [];
+    if (this.value.excluded) {
+      excludes = this.value.excluded.map((v) => v.id);
+    }
+    return {
+      value: this.value.items.map((v) => v.id),
+      excludes,
+      modifier: this.modifier
+    };
+  }
+  isValid() {
+    if (this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) {
+      return true;
+    }
+    return this.value.items.length > 0 || this.value.excluded && this.value.excluded.length > 0;
+  }
+  getLabel(intl) {
+    let id = "criterion_modifier.format_string";
+    let modifierString = ModifierCriterion.getModifierLabel(intl, this.modifier);
+    let valueString = "";
+    let excludedString = "";
+    if (this.modifier !== CriterionModifier.IsNull && this.modifier !== CriterionModifier.NotNull) {
+      valueString = this.value.items.map((v) => v.label).join(", ");
+      if (this.value.excluded && this.value.excluded.length > 0) {
+        if (this.value.items.length === 0) {
+          modifierString = ModifierCriterion.getModifierLabel(intl, CriterionModifier.Excludes);
+          valueString = this.value.excluded.map((v) => v.label).join(", ");
+        } else {
+          id = "criterion_modifier.format_string_excludes";
+          excludedString = this.value.excluded.map((v) => v.label).join(", ");
+        }
+      }
+    }
+    return intl.formatMessage({ id }, {
+      criterion: intl.formatMessage({ id: this.criterionOption.messageID }),
+      modifierString,
+      valueString,
+      excludedString
+    });
+  }
+}
+const stringResolutionMap = /* @__PURE__ */ new Map([
+  ["144p", ResolutionEnum.VeryLow],
+  ["240p", ResolutionEnum.Low],
+  ["360p", ResolutionEnum.R360P],
+  ["480p", ResolutionEnum.Standard],
+  ["540p", ResolutionEnum.WebHd],
+  ["720p", ResolutionEnum.StandardHd],
+  ["1080p", ResolutionEnum.FullHd],
+  ["1440p", ResolutionEnum.QuadHd],
+  // ["1920p", ResolutionEnum.VrHd],
+  ["4k", ResolutionEnum.FourK],
+  ["5k", ResolutionEnum.FiveK],
+  ["6k", ResolutionEnum.SixK],
+  ["7k", ResolutionEnum.SevenK],
+  ["8k", ResolutionEnum.EightK],
+  ["Huge", ResolutionEnum.Huge]
+]);
+const stringToResolution = (value, caseInsensitive) => {
+  if (!value) {
+    return void 0;
+  }
+  const ret = stringResolutionMap.get(value);
+  {
+    return ret;
+  }
+};
+const resolutionStrings = Array.from(stringResolutionMap.keys());
+class BaseResolutionCriterionOption extends ModifierCriterionOption {
+  constructor(value, makeCriterion) {
+    super({
+      messageID: value,
+      type: value,
+      modifierOptions: [
+        CriterionModifier.Equals,
+        CriterionModifier.NotEquals,
+        CriterionModifier.GreaterThan,
+        CriterionModifier.LessThan
+      ],
+      options: resolutionStrings,
+      makeCriterion
+    });
+  }
+}
+class BaseResolutionCriterion extends StringCriterion {
+  toCriterionInput() {
+    const value = stringToResolution(this.value);
+    if (value !== void 0) {
+      return {
+        value,
+        modifier: this.modifier
+      };
+    }
+  }
+}
+const ResolutionCriterionOption = new BaseResolutionCriterionOption("resolution", () => new ResolutionCriterion());
+class ResolutionCriterion extends BaseResolutionCriterion {
+  constructor() {
+    super(ResolutionCriterionOption);
+  }
+}
+const AverageResolutionCriterionOption = new BaseResolutionCriterionOption("average_resolution", () => new AverageResolutionCriterion());
+class AverageResolutionCriterion extends BaseResolutionCriterion {
+  constructor() {
+    super(AverageResolutionCriterionOption);
+  }
+}
+const inputType$4 = "scenes";
+const ScenesCriterionOption = new ILabeledIdCriterionOption("scenes", "scenes", true, inputType$4, () => new ScenesCriterion());
+class ScenesCriterion extends ILabeledIdCriterion {
+  constructor() {
+    super(ScenesCriterionOption);
+  }
+}
+const modifierOptions$3 = [
+  CriterionModifier.Includes,
+  CriterionModifier.Excludes
+];
+const defaultModifier$3 = CriterionModifier.Includes;
+const MarkersScenesCriterionOption = new ModifierCriterionOption({
+  messageID: "scenes",
+  type: "scenes",
+  modifierOptions: modifierOptions$3,
+  defaultModifier: defaultModifier$3,
+  inputType: inputType$4,
+  makeCriterion: () => new MarkersScenesCriterion()
+});
+class MarkersScenesCriterion extends ILabeledIdCriterion {
+  constructor() {
+    super(MarkersScenesCriterionOption);
+  }
+}
+const modifierOptions$2 = [
+  CriterionModifier.Includes,
+  CriterionModifier.IsNull,
+  CriterionModifier.NotNull
+];
+const defaultModifier$2 = CriterionModifier.Includes;
+const inputType$3 = "studios";
+const StudiosCriterionOption = new ModifierCriterionOption({
+  messageID: "studios",
+  type: "studios",
+  modifierOptions: modifierOptions$2,
+  defaultModifier: defaultModifier$2,
+  inputType: inputType$3,
+  makeCriterion: () => new StudiosCriterion()
+});
+class StudiosCriterion extends IHierarchicalLabeledIdCriterion {
+  constructor() {
+    super(StudiosCriterionOption);
+  }
+}
+const ParentStudiosCriterionOption = new ILabeledIdCriterionOption("parent_studios", "parents", false, inputType$3, () => new ParentStudiosCriterion());
+class ParentStudiosCriterion extends ILabeledIdCriterion {
+  constructor() {
+    super(ParentStudiosCriterionOption);
+  }
+}
+const defaultModifierOptions = [
+  CriterionModifier.IncludesAll,
+  CriterionModifier.Includes,
+  CriterionModifier.Equals,
+  CriterionModifier.IsNull,
+  CriterionModifier.NotNull
+];
+const withoutEqualsModifierOptions = [
+  CriterionModifier.IncludesAll,
+  CriterionModifier.Includes,
+  CriterionModifier.IsNull,
+  CriterionModifier.NotNull
+];
+const defaultModifier$1 = CriterionModifier.IncludesAll;
+const inputType$2 = "tags";
+class BaseTagsCriterionOption extends ModifierCriterionOption {
+  constructor(messageID, type2, modifierOptions2) {
+    super({
+      messageID,
+      type: type2,
+      modifierOptions: modifierOptions2,
+      defaultModifier: defaultModifier$1,
+      inputType: inputType$2,
+      makeCriterion: () => new TagsCriterion(this)
+    });
+  }
+}
+const TagsCriterionOption = new BaseTagsCriterionOption("tags", "tags", defaultModifierOptions);
+const SceneTagsCriterionOption = new BaseTagsCriterionOption("scene_tags", "scene_tags", defaultModifierOptions);
+const PerformerTagsCriterionOption = new BaseTagsCriterionOption("performer_tags", "performer_tags", withoutEqualsModifierOptions);
+const ParentTagsCriterionOption = new BaseTagsCriterionOption("parent_tags", "parents", withoutEqualsModifierOptions);
+const ChildTagsCriterionOption = new BaseTagsCriterionOption("sub_tags", "children", withoutEqualsModifierOptions);
+class TagsCriterion extends IHierarchicalLabeledIdCriterion {
+}
+const MediaSortByOptions = [
+  "title",
+  "path",
+  "rating",
+  "file_mod_time",
+  "tag_count",
+  "performer_count",
+  "random"
+];
+class ListFilterOptions {
+  constructor(defaultSortBy2, sortByOptions2, displayModeOptions2, criterionOptions2) {
+    Object.defineProperty(this, "defaultSortBy", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: ""
+    });
+    Object.defineProperty(this, "sortByOptions", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: []
+    });
+    Object.defineProperty(this, "displayModeOptions", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: []
+    });
+    Object.defineProperty(this, "criterionOptions", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: []
+    });
+    this.defaultSortBy = defaultSortBy2;
+    this.sortByOptions = [
+      ...sortByOptions2,
+      ListFilterOptions.createSortBy("created_at"),
+      ListFilterOptions.createSortBy("updated_at")
+    ];
+    this.displayModeOptions = displayModeOptions2;
+    this.criterionOptions = criterionOptions2;
+  }
+  static createSortBy(value) {
+    return {
+      messageID: value,
+      value
+    };
+  }
+}
+var DisplayMode;
+(function(DisplayMode2) {
+  DisplayMode2[DisplayMode2["Grid"] = 0] = "Grid";
+  DisplayMode2[DisplayMode2["List"] = 1] = "List";
+  DisplayMode2[DisplayMode2["Wall"] = 2] = "Wall";
+  DisplayMode2[DisplayMode2["Tagger"] = 3] = "Tagger";
+})(DisplayMode || (DisplayMode = {}));
+var RatingSystemType;
+(function(RatingSystemType2) {
+  RatingSystemType2["Stars"] = "stars";
+  RatingSystemType2["Decimal"] = "decimal";
+})(RatingSystemType || (RatingSystemType = {}));
+var RatingStarPrecision;
+(function(RatingStarPrecision2) {
+  RatingStarPrecision2["Full"] = "full";
+  RatingStarPrecision2["Half"] = "half";
+  RatingStarPrecision2["Quarter"] = "quarter";
+  RatingStarPrecision2["Tenth"] = "tenth";
+})(RatingStarPrecision || (RatingStarPrecision = {}));
+const defaultRatingSystemType = RatingSystemType.Stars;
+const defaultRatingStarPrecision = RatingStarPrecision.Full;
+/* @__PURE__ */ new Map([
+  [
+    RatingSystemType.Stars,
+    "config.ui.editing.rating_system.type.options.stars"
+  ],
+  [
+    RatingSystemType.Decimal,
+    "config.ui.editing.rating_system.type.options.decimal"
+  ]
+]);
+/* @__PURE__ */ new Map([
+  [
+    RatingStarPrecision.Full,
+    "config.ui.editing.rating_system.star_precision.options.full"
+  ],
+  [
+    RatingStarPrecision.Half,
+    "config.ui.editing.rating_system.star_precision.options.half"
+  ],
+  [
+    RatingStarPrecision.Quarter,
+    "config.ui.editing.rating_system.star_precision.options.quarter"
+  ],
+  [
+    RatingStarPrecision.Tenth,
+    "config.ui.editing.rating_system.star_precision.options.tenth"
+  ]
+]);
+const defaultRatingSystemOptions = {
+  type: defaultRatingSystemType,
+  starPrecision: defaultRatingStarPrecision
+};
+function round$1(value, step) {
+  let denom = step;
+  if (!denom) {
+    denom = 1;
+  }
+  const inv = 1 / denom;
+  return Math.round(value * inv) / inv;
+}
+function getRatingPrecision(precision) {
+  switch (precision) {
+    case RatingStarPrecision.Full:
+      return 1;
+    case RatingStarPrecision.Half:
+      return 0.5;
+    case RatingStarPrecision.Quarter:
+      return 0.25;
+    case RatingStarPrecision.Tenth:
+      return 0.1;
+    default:
+      return 1;
+  }
+}
+function convertToRatingFormat(rating, ratingSystemOptions) {
+  if (!rating) {
+    return null;
+  }
+  const { type: type2, starPrecision } = ratingSystemOptions;
+  const precision = type2 === RatingSystemType.Decimal ? 0.1 : getRatingPrecision(starPrecision !== null && starPrecision !== void 0 ? starPrecision : RatingStarPrecision.Full);
+  const maxValue = type2 === RatingSystemType.Decimal ? 10 : 5;
+  const denom = 100 / maxValue;
+  return round$1(rating / denom, precision);
+}
+function convertFromRatingFormat(rating, ratingSystem) {
+  const maxValue = (ratingSystem !== null && ratingSystem !== void 0 ? ratingSystem : RatingSystemType.Stars) === RatingSystemType.Decimal ? 10 : 5;
+  const factor = 100 / maxValue;
+  return Math.round(rating * factor);
+}
+const modifierOptions$1 = [
+  CriterionModifier.Equals,
+  CriterionModifier.NotEquals,
+  CriterionModifier.GreaterThan,
+  CriterionModifier.LessThan,
+  CriterionModifier.Between,
+  CriterionModifier.NotBetween,
+  CriterionModifier.IsNull,
+  CriterionModifier.NotNull
+];
+function getRatingSystemOptions(config2) {
+  var _a2;
+  return (_a2 = config2 === null || config2 === void 0 ? void 0 : config2.ui.ratingSystemOptions) !== null && _a2 !== void 0 ? _a2 : defaultRatingSystemOptions;
+}
+const RatingCriterionOption = new ModifierCriterionOption({
+  messageID: "rating",
+  type: "rating100",
+  modifierOptions: modifierOptions$1,
+  defaultModifier: CriterionModifier.Equals,
+  makeCriterion: (o2, config2) => new RatingCriterion(getRatingSystemOptions(config2)),
+  inputType: "number"
+});
+class RatingCriterion extends ModifierCriterion {
+  constructor(ratingSystem) {
+    super(RatingCriterionOption, { value: 0, value2: void 0 });
+    Object.defineProperty(this, "ratingSystem", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    this.ratingSystem = ratingSystem;
+  }
+  cloneValues() {
+    this.value = { ...this.value };
+  }
+  get value() {
+    return this._value;
+  }
+  set value(newValue) {
+    if (typeof newValue !== "object") {
+      this._value = {
+        value: convertFromRatingFormat(newValue, this.ratingSystem.type),
+        value2: void 0
+      };
+    } else {
+      this._value = newValue;
+    }
+  }
+  toCriterionInput() {
+    var _a2;
+    return {
+      modifier: this.modifier,
+      value: (_a2 = this.value.value) !== null && _a2 !== void 0 ? _a2 : 0,
+      value2: this.value.value2
+    };
+  }
+  setFromSavedCriterion(c) {
+    super.setFromSavedCriterion(c);
+  }
+  encodeValue() {
+    return encodeRangeValue(this.modifier, this.value);
+  }
+  getLabelValue() {
+    var _a2, _b2, _c;
+    const { value, value2 } = this.value;
+    if (this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween) {
+      return `${(_a2 = convertToRatingFormat(value, this.ratingSystem)) !== null && _a2 !== void 0 ? _a2 : 0}, ${(_b2 = convertToRatingFormat(value2, this.ratingSystem)) !== null && _b2 !== void 0 ? _b2 : 0}`;
+    } else {
+      return `${(_c = convertToRatingFormat(value, this.ratingSystem)) !== null && _c !== void 0 ? _c : 0}`;
+    }
+  }
+}
+const PathCriterionOption = new StringCriterionOption("path", "path", () => new PathCriterion());
+class PathCriterion extends StringCriterion {
+  constructor() {
+    super(PathCriterionOption);
+  }
+}
+const defaultSortBy$7 = "path";
+const sortByOptions$7 = ["date", ...MediaSortByOptions].map(ListFilterOptions.createSortBy).concat([
+  {
+    messageID: "image_count",
+    value: "images_count"
+  },
+  {
+    messageID: "zip_file_count",
+    value: "file_count"
+  }
+]);
+const displayModeOptions$7 = [
+  DisplayMode.Grid,
+  DisplayMode.List,
+  DisplayMode.Wall
+];
+const criterionOptions$7 = [
+  createStringCriterionOption("title"),
+  createStringCriterionOption("code", "scene_code"),
+  createStringCriterionOption("details"),
+  createStringCriterionOption("photographer"),
+  PathCriterionOption,
+  createStringCriterionOption("checksum", "media_info.checksum"),
+  RatingCriterionOption,
+  OrganizedCriterionOption,
+  AverageResolutionCriterionOption,
+  GalleryIsMissingCriterionOption,
+  TagsCriterionOption,
+  HasChaptersCriterionOption,
+  createMandatoryNumberCriterionOption("tag_count"),
+  PerformerTagsCriterionOption,
+  PerformersCriterionOption,
+  createMandatoryNumberCriterionOption("performer_count"),
+  createMandatoryNumberCriterionOption("performer_age"),
+  PerformerFavoriteCriterionOption,
+  createMandatoryNumberCriterionOption("image_count"),
+  // StudioTagsCriterionOption,
+  ScenesCriterionOption,
+  StudiosCriterionOption,
+  createStringCriterionOption("url"),
+  createMandatoryNumberCriterionOption("file_count", "zip_file_count"),
+  createDateCriterionOption("date"),
+  createMandatoryTimestampCriterionOption("created_at"),
+  createMandatoryTimestampCriterionOption("updated_at")
+];
+const GalleryListFilterOptions = new ListFilterOptions(defaultSortBy$7, sortByOptions$7, displayModeOptions$7, criterionOptions$7);
+const stringOrientationMap = /* @__PURE__ */ new Map([
+  ["Landscape", OrientationEnum.Landscape],
+  ["Portrait", OrientationEnum.Portrait],
+  ["Square", OrientationEnum.Square]
+]);
+const stringToOrientation = (value, caseInsensitive) => {
+  if (!value) {
+    return void 0;
+  }
+  const ret = stringOrientationMap.get(value);
+  {
+    return ret;
+  }
+};
+const orientationStrings = Array.from(stringOrientationMap.keys());
+class OrientationCriterion extends MultiStringCriterion {
+  toCriterionInput() {
+    return {
+      value: this.value.map((v) => stringToOrientation(v)).filter((v) => v)
+    };
+  }
+}
+class BaseOrientationCriterionOption extends ModifierCriterionOption {
+  constructor(value) {
+    super({
+      messageID: value,
+      type: value,
+      options: orientationStrings,
+      makeCriterion: () => new OrientationCriterion(this)
+    });
+  }
+}
+const OrientationCriterionOption = new BaseOrientationCriterionOption("orientation");
+const inputType$1 = "galleries";
+const GalleriesCriterionOption = new ILabeledIdCriterionOption("galleries", "galleries", true, inputType$1, () => new GalleriesCriterion());
+class GalleriesCriterion extends ILabeledIdCriterion {
+  constructor() {
+    super(GalleriesCriterionOption);
+  }
+}
+const defaultSortBy$6 = "path";
+const sortByOptions$6 = ["filesize", "file_count", "date", ...MediaSortByOptions].map(ListFilterOptions.createSortBy).concat([
+  {
+    messageID: "o_count",
+    value: "o_counter"
+  }
+]);
+const displayModeOptions$6 = [DisplayMode.Grid, DisplayMode.Wall];
+const criterionOptions$6 = [
+  createStringCriterionOption("title"),
+  createStringCriterionOption("code", "scene_code"),
+  createStringCriterionOption("details"),
+  createStringCriterionOption("photographer"),
+  createMandatoryStringCriterionOption("checksum", "media_info.checksum"),
+  PathCriterionOption,
+  GalleriesCriterionOption,
+  OrganizedCriterionOption,
+  createMandatoryNumberCriterionOption("o_counter", "o_count"),
+  ResolutionCriterionOption,
+  OrientationCriterionOption,
+  ImageIsMissingCriterionOption,
+  TagsCriterionOption,
+  RatingCriterionOption,
+  createMandatoryNumberCriterionOption("tag_count"),
+  PerformerTagsCriterionOption,
+  PerformersCriterionOption,
+  createMandatoryNumberCriterionOption("performer_count"),
+  createMandatoryNumberCriterionOption("performer_age"),
+  PerformerFavoriteCriterionOption,
+  // StudioTagsCriterionOption,
+  StudiosCriterionOption,
+  createStringCriterionOption("url"),
+  createDateCriterionOption("date"),
+  createMandatoryNumberCriterionOption("file_count"),
+  createMandatoryTimestampCriterionOption("created_at"),
+  createMandatoryTimestampCriterionOption("updated_at")
+];
+const ImageListFilterOptions = new ListFilterOptions(defaultSortBy$6, sortByOptions$6, displayModeOptions$6, criterionOptions$6);
+const inputType = "groups";
+const modifierOptions = [
+  CriterionModifier.Includes,
+  CriterionModifier.Excludes,
+  CriterionModifier.IsNull,
+  CriterionModifier.NotNull
+];
+const defaultModifier = CriterionModifier.Includes;
+class BaseGroupsCriterionOption extends ModifierCriterionOption {
+  constructor(messageID, type2) {
+    super({
+      messageID,
+      type: type2,
+      modifierOptions,
+      defaultModifier,
+      inputType,
+      makeCriterion: () => new GroupsCriterion(this)
+    });
+  }
+}
+const GroupsCriterionOption = new BaseGroupsCriterionOption("groups", "groups");
+class GroupsCriterion extends IHierarchicalLabeledIdCriterion {
+}
+const ContainingGroupsCriterionOption = new BaseGroupsCriterionOption("containing_groups", "containing_groups");
+const SubGroupsCriterionOption = new BaseGroupsCriterionOption("sub_groups", "sub_groups");
+const LegacyMoviesCriterionOption = new ModifierCriterionOption({
+  messageID: "groups",
+  type: "movies",
+  modifierOptions,
+  defaultModifier,
+  inputType,
+  hidden: true,
+  makeCriterion: () => new GroupsCriterion(GroupsCriterionOption)
+});
+const defaultSortBy$5 = "name";
+const sortByOptions$5 = [
+  "name",
+  "random",
+  "date",
+  "duration",
+  "rating",
+  "tag_count",
+  "sub_group_order"
+].map(ListFilterOptions.createSortBy).concat([
+  {
+    messageID: "scene_count",
+    value: "scenes_count"
+  }
+]);
+const displayModeOptions$5 = [DisplayMode.Grid];
+const criterionOptions$5 = [
+  // StudioTagsCriterionOption,
+  StudiosCriterionOption,
+  GroupIsMissingCriterionOption,
+  createStringCriterionOption("url"),
+  createStringCriterionOption("name"),
+  createStringCriterionOption("director"),
+  createStringCriterionOption("synopsis"),
+  createDurationCriterionOption("duration"),
+  RatingCriterionOption,
+  PerformersCriterionOption,
+  createDateCriterionOption("date"),
+  ContainingGroupsCriterionOption,
+  SubGroupsCriterionOption,
+  createMandatoryNumberCriterionOption("containing_group_count"),
+  createMandatoryNumberCriterionOption("sub_group_count"),
+  TagsCriterionOption,
+  createMandatoryNumberCriterionOption("tag_count"),
+  createMandatoryTimestampCriterionOption("created_at"),
+  createMandatoryTimestampCriterionOption("updated_at")
+];
+const GroupListFilterOptions = new ListFilterOptions(defaultSortBy$5, sortByOptions$5, displayModeOptions$5, criterionOptions$5);
+const stringGenderMap = /* @__PURE__ */ new Map([
+  ["Male", GenderEnum.Male],
+  ["Female", GenderEnum.Female],
+  ["Transgender Male", GenderEnum.TransgenderMale],
+  ["Transgender Female", GenderEnum.TransgenderFemale],
+  ["Intersex", GenderEnum.Intersex],
+  ["Non-Binary", GenderEnum.NonBinary]
+]);
+const stringToGender = (value, caseInsensitive) => {
+  if (!value) {
+    return void 0;
+  }
+  const existing = Object.entries(GenderEnum).find((e) => e[1] === value);
+  if (existing)
+    return existing[1];
+  const ret = stringGenderMap.get(value);
+  {
+    return ret;
+  }
+};
+const genderStrings = Array.from(stringGenderMap.keys());
+const GenderCriterionOption = new ModifierCriterionOption({
+  messageID: "gender",
+  type: "gender",
+  options: genderStrings,
+  modifierOptions: [
+    CriterionModifier.Includes,
+    CriterionModifier.Excludes,
+    CriterionModifier.IsNull,
+    CriterionModifier.NotNull
+  ],
+  defaultModifier: CriterionModifier.Includes,
+  makeCriterion: () => new GenderCriterion()
+});
+class GenderCriterion extends MultiStringCriterion {
+  constructor(value = []) {
+    super(GenderCriterionOption, value);
+  }
+  toCriterionInput() {
+    const value = this.value.map((v) => stringToGender(v));
+    return {
+      value_list: value,
+      modifier: this.modifier
+    };
+  }
+  setFromSavedCriterion(criterion) {
+    if (typeof criterion.value === "string") {
+      criterion = {
+        ...criterion,
+        value: [criterion.value]
+      };
+    }
+    super.setFromSavedCriterion(criterion);
+  }
+}
+const stringCircumMap = /* @__PURE__ */ new Map([
+  ["Uncut", CircumisedEnum.Uncut],
+  ["Cut", CircumisedEnum.Cut]
+]);
+const stringToCircumcised = (value, caseInsensitive) => {
+  if (!value) {
+    return void 0;
+  }
+  const existing = Object.entries(CircumisedEnum).find((e) => e[1] === value);
+  if (existing)
+    return existing[1];
+  const ret = stringCircumMap.get(value);
+  {
+    return ret;
+  }
+};
+const circumcisedStrings = Array.from(stringCircumMap.keys());
+const CircumcisedCriterionOption = new ModifierCriterionOption({
+  messageID: "circumcised",
+  type: "circumcised",
+  modifierOptions: [
+    CriterionModifier.Includes,
+    CriterionModifier.Excludes,
+    CriterionModifier.IsNull,
+    CriterionModifier.NotNull
+  ],
+  defaultModifier: CriterionModifier.Includes,
+  options: circumcisedStrings,
+  makeCriterion: () => new CircumcisedCriterion()
+});
+class CircumcisedCriterion extends MultiStringCriterion {
+  constructor() {
+    super(CircumcisedCriterionOption);
+  }
+  toCriterionInput() {
+    const value = this.value.map((v) => stringToCircumcised(v));
+    return {
+      value,
+      modifier: this.modifier
+    };
+  }
+}
+const StashIDCriterionOption = new ModifierCriterionOption({
+  messageID: "stash_id",
+  type: "stash_id_endpoint",
+  modifierOptions: [
+    CriterionModifier.Equals,
+    CriterionModifier.NotEquals,
+    CriterionModifier.IsNull,
+    CriterionModifier.NotNull
+  ],
+  makeCriterion: () => new StashIDCriterion()
+});
+class StashIDCriterion extends ModifierCriterion {
+  constructor() {
+    super(StashIDCriterionOption, {
+      endpoint: "",
+      stashID: ""
+    });
+  }
+  cloneValues() {
+    this.value = { ...this.value };
+  }
+  get value() {
+    return this._value;
+  }
+  set value(newValue) {
+    if (typeof newValue !== "object") {
+      this._value = {
+        endpoint: "",
+        stashID: newValue
+      };
+    } else {
+      this._value = newValue;
+    }
+  }
+  toCriterionInput() {
+    return {
+      endpoint: this.value.endpoint,
+      stash_id: this.value.stashID,
+      modifier: this.modifier
+    };
+  }
+  getLabel(intl) {
+    const modifierString = ModifierCriterion.getModifierLabel(intl, this.modifier);
+    let valueString = "";
+    if (this.modifier !== CriterionModifier.IsNull && this.modifier !== CriterionModifier.NotNull) {
+      valueString = this.getLabelValue(intl);
+    } else if (this.value.endpoint) {
+      valueString = "(" + this.value.endpoint + ")";
+    }
+    return intl.formatMessage({ id: "criterion_modifier.format_string" }, {
+      criterion: intl.formatMessage({ id: this.criterionOption.messageID }),
+      modifierString,
+      valueString
+    });
+  }
+  getLabelValue(_intl) {
+    let ret = this.value.stashID;
+    if (this.value.endpoint) {
+      ret += " (" + this.value.endpoint + ")";
+    }
+    return ret;
+  }
+  setFromSavedCriterion(criterion) {
+    super.setFromSavedCriterion(criterion);
+  }
+  toQueryParams() {
+    super.toQueryParams();
+    let encodedCriterion;
+    if ((this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) && !this.value.endpoint) {
+      encodedCriterion = {
+        type: this.criterionOption.type,
+        modifier: this.modifier
+      };
+    } else {
+      encodedCriterion = {
+        type: this.criterionOption.type,
+        value: this.value,
+        modifier: this.modifier
+      };
+    }
+    return encodedCriterion;
+  }
+  isValid() {
+    return this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull || this.value.stashID.length > 0;
+  }
+}
+var i18nIsoCountries = {};
+const require$$0 = /* @__PURE__ */ JSON.parse('[["AF","AFG","004","ISO 3166-2:AF"],["AL","ALB","008","ISO 3166-2:AL"],["DZ","DZA","012","ISO 3166-2:DZ"],["AS","ASM","016","ISO 3166-2:AS"],["AD","AND","020","ISO 3166-2:AD"],["AO","AGO","024","ISO 3166-2:AO"],["AI","AIA","660","ISO 3166-2:AI"],["AQ","ATA","010","ISO 3166-2:AQ"],["AG","ATG","028","ISO 3166-2:AG"],["AR","ARG","032","ISO 3166-2:AR"],["AM","ARM","051","ISO 3166-2:AM"],["AW","ABW","533","ISO 3166-2:AW"],["AU","AUS","036","ISO 3166-2:AU"],["AT","AUT","040","ISO 3166-2:AT"],["AZ","AZE","031","ISO 3166-2:AZ"],["BS","BHS","044","ISO 3166-2:BS"],["BH","BHR","048","ISO 3166-2:BH"],["BD","BGD","050","ISO 3166-2:BD"],["BB","BRB","052","ISO 3166-2:BB"],["BY","BLR","112","ISO 3166-2:BY"],["BE","BEL","056","ISO 3166-2:BE"],["BZ","BLZ","084","ISO 3166-2:BZ"],["BJ","BEN","204","ISO 3166-2:BJ"],["BM","BMU","060","ISO 3166-2:BM"],["BT","BTN","064","ISO 3166-2:BT"],["BO","BOL","068","ISO 3166-2:BO"],["BA","BIH","070","ISO 3166-2:BA"],["BW","BWA","072","ISO 3166-2:BW"],["BV","BVT","074","ISO 3166-2:BV"],["BR","BRA","076","ISO 3166-2:BR"],["IO","IOT","086","ISO 3166-2:IO"],["BN","BRN","096","ISO 3166-2:BN"],["BG","BGR","100","ISO 3166-2:BG"],["BF","BFA","854","ISO 3166-2:BF"],["BI","BDI","108","ISO 3166-2:BI"],["KH","KHM","116","ISO 3166-2:KH"],["CM","CMR","120","ISO 3166-2:CM"],["CA","CAN","124","ISO 3166-2:CA"],["CV","CPV","132","ISO 3166-2:CV"],["KY","CYM","136","ISO 3166-2:KY"],["CF","CAF","140","ISO 3166-2:CF"],["TD","TCD","148","ISO 3166-2:TD"],["CL","CHL","152","ISO 3166-2:CL"],["CN","CHN","156","ISO 3166-2:CN"],["CX","CXR","162","ISO 3166-2:CX"],["CC","CCK","166","ISO 3166-2:CC"],["CO","COL","170","ISO 3166-2:CO"],["KM","COM","174","ISO 3166-2:KM"],["CG","COG","178","ISO 3166-2:CG"],["CD","COD","180","ISO 3166-2:CD"],["CK","COK","184","ISO 3166-2:CK"],["CR","CRI","188","ISO 3166-2:CR"],["CI","CIV","384","ISO 3166-2:CI"],["HR","HRV","191","ISO 3166-2:HR"],["CU","CUB","192","ISO 3166-2:CU"],["CY","CYP","196","ISO 3166-2:CY"],["CZ","CZE","203","ISO 3166-2:CZ"],["DK","DNK","208","ISO 3166-2:DK"],["DJ","DJI","262","ISO 3166-2:DJ"],["DM","DMA","212","ISO 3166-2:DM"],["DO","DOM","214","ISO 3166-2:DO"],["EC","ECU","218","ISO 3166-2:EC"],["EG","EGY","818","ISO 3166-2:EG"],["SV","SLV","222","ISO 3166-2:SV"],["GQ","GNQ","226","ISO 3166-2:GQ"],["ER","ERI","232","ISO 3166-2:ER"],["EE","EST","233","ISO 3166-2:EE"],["ET","ETH","231","ISO 3166-2:ET"],["FK","FLK","238","ISO 3166-2:FK"],["FO","FRO","234","ISO 3166-2:FO"],["FJ","FJI","242","ISO 3166-2:FJ"],["FI","FIN","246","ISO 3166-2:FI"],["FR","FRA","250","ISO 3166-2:FR"],["GF","GUF","254","ISO 3166-2:GF"],["PF","PYF","258","ISO 3166-2:PF"],["TF","ATF","260","ISO 3166-2:TF"],["GA","GAB","266","ISO 3166-2:GA"],["GM","GMB","270","ISO 3166-2:GM"],["GE","GEO","268","ISO 3166-2:GE"],["DE","DEU","276","ISO 3166-2:DE"],["GH","GHA","288","ISO 3166-2:GH"],["GI","GIB","292","ISO 3166-2:GI"],["GR","GRC","300","ISO 3166-2:GR"],["GL","GRL","304","ISO 3166-2:GL"],["GD","GRD","308","ISO 3166-2:GD"],["GP","GLP","312","ISO 3166-2:GP"],["GU","GUM","316","ISO 3166-2:GU"],["GT","GTM","320","ISO 3166-2:GT"],["GN","GIN","324","ISO 3166-2:GN"],["GW","GNB","624","ISO 3166-2:GW"],["GY","GUY","328","ISO 3166-2:GY"],["HT","HTI","332","ISO 3166-2:HT"],["HM","HMD","334","ISO 3166-2:HM"],["VA","VAT","336","ISO 3166-2:VA"],["HN","HND","340","ISO 3166-2:HN"],["HK","HKG","344","ISO 3166-2:HK"],["HU","HUN","348","ISO 3166-2:HU"],["IS","ISL","352","ISO 3166-2:IS"],["IN","IND","356","ISO 3166-2:IN"],["ID","IDN","360","ISO 3166-2:ID"],["IR","IRN","364","ISO 3166-2:IR"],["IQ","IRQ","368","ISO 3166-2:IQ"],["IE","IRL","372","ISO 3166-2:IE"],["IL","ISR","376","ISO 3166-2:IL"],["IT","ITA","380","ISO 3166-2:IT"],["JM","JAM","388","ISO 3166-2:JM"],["JP","JPN","392","ISO 3166-2:JP"],["JO","JOR","400","ISO 3166-2:JO"],["KZ","KAZ","398","ISO 3166-2:KZ"],["KE","KEN","404","ISO 3166-2:KE"],["KI","KIR","296","ISO 3166-2:KI"],["KP","PRK","408","ISO 3166-2:KP"],["KR","KOR","410","ISO 3166-2:KR"],["KW","KWT","414","ISO 3166-2:KW"],["KG","KGZ","417","ISO 3166-2:KG"],["LA","LAO","418","ISO 3166-2:LA"],["LV","LVA","428","ISO 3166-2:LV"],["LB","LBN","422","ISO 3166-2:LB"],["LS","LSO","426","ISO 3166-2:LS"],["LR","LBR","430","ISO 3166-2:LR"],["LY","LBY","434","ISO 3166-2:LY"],["LI","LIE","438","ISO 3166-2:LI"],["LT","LTU","440","ISO 3166-2:LT"],["LU","LUX","442","ISO 3166-2:LU"],["MO","MAC","446","ISO 3166-2:MO"],["MG","MDG","450","ISO 3166-2:MG"],["MW","MWI","454","ISO 3166-2:MW"],["MY","MYS","458","ISO 3166-2:MY"],["MV","MDV","462","ISO 3166-2:MV"],["ML","MLI","466","ISO 3166-2:ML"],["MT","MLT","470","ISO 3166-2:MT"],["MH","MHL","584","ISO 3166-2:MH"],["MQ","MTQ","474","ISO 3166-2:MQ"],["MR","MRT","478","ISO 3166-2:MR"],["MU","MUS","480","ISO 3166-2:MU"],["YT","MYT","175","ISO 3166-2:YT"],["MX","MEX","484","ISO 3166-2:MX"],["FM","FSM","583","ISO 3166-2:FM"],["MD","MDA","498","ISO 3166-2:MD"],["MC","MCO","492","ISO 3166-2:MC"],["MN","MNG","496","ISO 3166-2:MN"],["MS","MSR","500","ISO 3166-2:MS"],["MA","MAR","504","ISO 3166-2:MA"],["MZ","MOZ","508","ISO 3166-2:MZ"],["MM","MMR","104","ISO 3166-2:MM"],["NA","NAM","516","ISO 3166-2:NA"],["NR","NRU","520","ISO 3166-2:NR"],["NP","NPL","524","ISO 3166-2:NP"],["NL","NLD","528","ISO 3166-2:NL"],["NC","NCL","540","ISO 3166-2:NC"],["NZ","NZL","554","ISO 3166-2:NZ"],["NI","NIC","558","ISO 3166-2:NI"],["NE","NER","562","ISO 3166-2:NE"],["NG","NGA","566","ISO 3166-2:NG"],["NU","NIU","570","ISO 3166-2:NU"],["NF","NFK","574","ISO 3166-2:NF"],["MP","MNP","580","ISO 3166-2:MP"],["MK","MKD","807","ISO 3166-2:MK"],["NO","NOR","578","ISO 3166-2:NO"],["OM","OMN","512","ISO 3166-2:OM"],["PK","PAK","586","ISO 3166-2:PK"],["PW","PLW","585","ISO 3166-2:PW"],["PS","PSE","275","ISO 3166-2:PS"],["PA","PAN","591","ISO 3166-2:PA"],["PG","PNG","598","ISO 3166-2:PG"],["PY","PRY","600","ISO 3166-2:PY"],["PE","PER","604","ISO 3166-2:PE"],["PH","PHL","608","ISO 3166-2:PH"],["PN","PCN","612","ISO 3166-2:PN"],["PL","POL","616","ISO 3166-2:PL"],["PT","PRT","620","ISO 3166-2:PT"],["PR","PRI","630","ISO 3166-2:PR"],["QA","QAT","634","ISO 3166-2:QA"],["RE","REU","638","ISO 3166-2:RE"],["RO","ROU","642","ISO 3166-2:RO"],["RU","RUS","643","ISO 3166-2:RU"],["RW","RWA","646","ISO 3166-2:RW"],["SH","SHN","654","ISO 3166-2:SH"],["KN","KNA","659","ISO 3166-2:KN"],["LC","LCA","662","ISO 3166-2:LC"],["PM","SPM","666","ISO 3166-2:PM"],["VC","VCT","670","ISO 3166-2:VC"],["WS","WSM","882","ISO 3166-2:WS"],["SM","SMR","674","ISO 3166-2:SM"],["ST","STP","678","ISO 3166-2:ST"],["SA","SAU","682","ISO 3166-2:SA"],["SN","SEN","686","ISO 3166-2:SN"],["SC","SYC","690","ISO 3166-2:SC"],["SL","SLE","694","ISO 3166-2:SL"],["SG","SGP","702","ISO 3166-2:SG"],["SK","SVK","703","ISO 3166-2:SK"],["SI","SVN","705","ISO 3166-2:SI"],["SB","SLB","090","ISO 3166-2:SB"],["SO","SOM","706","ISO 3166-2:SO"],["ZA","ZAF","710","ISO 3166-2:ZA"],["GS","SGS","239","ISO 3166-2:GS"],["ES","ESP","724","ISO 3166-2:ES"],["LK","LKA","144","ISO 3166-2:LK"],["SD","SDN","729","ISO 3166-2:SD"],["SR","SUR","740","ISO 3166-2:SR"],["SJ","SJM","744","ISO 3166-2:SJ"],["SZ","SWZ","748","ISO 3166-2:SZ"],["SE","SWE","752","ISO 3166-2:SE"],["CH","CHE","756","ISO 3166-2:CH"],["SY","SYR","760","ISO 3166-2:SY"],["TW","TWN","158","ISO 3166-2:TW"],["TJ","TJK","762","ISO 3166-2:TJ"],["TZ","TZA","834","ISO 3166-2:TZ"],["TH","THA","764","ISO 3166-2:TH"],["TL","TLS","626","ISO 3166-2:TL"],["TG","TGO","768","ISO 3166-2:TG"],["TK","TKL","772","ISO 3166-2:TK"],["TO","TON","776","ISO 3166-2:TO"],["TT","TTO","780","ISO 3166-2:TT"],["TN","TUN","788","ISO 3166-2:TN"],["TR","TUR","792","ISO 3166-2:TR"],["TM","TKM","795","ISO 3166-2:TM"],["TC","TCA","796","ISO 3166-2:TC"],["TV","TUV","798","ISO 3166-2:TV"],["UG","UGA","800","ISO 3166-2:UG"],["UA","UKR","804","ISO 3166-2:UA"],["AE","ARE","784","ISO 3166-2:AE"],["GB","GBR","826","ISO 3166-2:GB"],["US","USA","840","ISO 3166-2:US"],["UM","UMI","581","ISO 3166-2:UM"],["UY","URY","858","ISO 3166-2:UY"],["UZ","UZB","860","ISO 3166-2:UZ"],["VU","VUT","548","ISO 3166-2:VU"],["VE","VEN","862","ISO 3166-2:VE"],["VN","VNM","704","ISO 3166-2:VN"],["VG","VGB","092","ISO 3166-2:VG"],["VI","VIR","850","ISO 3166-2:VI"],["WF","WLF","876","ISO 3166-2:WF"],["EH","ESH","732","ISO 3166-2:EH"],["YE","YEM","887","ISO 3166-2:YE"],["ZM","ZMB","894","ISO 3166-2:ZM"],["ZW","ZWE","716","ISO 3166-2:ZW"],["AX","ALA","248","ISO 3166-2:AX"],["BQ","BES","535","ISO 3166-2:BQ"],["CW","CUW","531","ISO 3166-2:CW"],["GG","GGY","831","ISO 3166-2:GG"],["IM","IMN","833","ISO 3166-2:IM"],["JE","JEY","832","ISO 3166-2:JE"],["ME","MNE","499","ISO 3166-2:ME"],["BL","BLM","652","ISO 3166-2:BL"],["MF","MAF","663","ISO 3166-2:MF"],["RS","SRB","688","ISO 3166-2:RS"],["SX","SXM","534","ISO 3166-2:SX"],["SS","SSD","728","ISO 3166-2:SS"],["XK","XKK","983","ISO 3166-2:XK"]]');
+const require$$1 = [
+  "br",
+  "cy",
+  "dv",
+  "sw",
+  "eu",
+  "af",
+  "am",
+  "ha",
+  "ku",
+  "ml",
+  "mt",
+  "no",
+  "ps",
+  "sd",
+  "so",
+  "sq",
+  "ta",
+  "tg",
+  "tt",
+  "ug",
+  "ur",
+  "vi",
+  "ar",
+  "az",
+  "be",
+  "bg",
+  "bn",
+  "bs",
+  "ca",
+  "cs",
+  "da",
+  "de",
+  "el",
+  "en",
+  "es",
+  "et",
+  "fa",
+  "fi",
+  "fr",
+  "ga",
+  "gl",
+  "he",
+  "hi",
+  "hr",
+  "hu",
+  "hy",
+  "id",
+  "is",
+  "it",
+  "ja",
+  "ka",
+  "kk",
+  "km",
+  "ko",
+  "ky",
+  "lt",
+  "lv",
+  "mk",
+  "mn",
+  "mr",
+  "ms",
+  "nb",
+  "nl",
+  "nn",
+  "pl",
+  "pt",
+  "ro",
+  "ru",
+  "sk",
+  "sl",
+  "sr",
+  "sv",
+  "th",
+  "tk",
+  "tr",
+  "uk",
+  "uz",
+  "zh"
+];
+var diacritics$1 = {};
+var hasRequiredDiacritics;
+function requireDiacritics() {
+  if (hasRequiredDiacritics) return diacritics$1;
+  hasRequiredDiacritics = 1;
+  diacritics$1.remove = removeDiacritics;
+  var replacementList = [
+    {
+      base: " ",
+      chars: " "
+    },
+    {
+      base: "0",
+      chars: "߀"
+    },
+    {
+      base: "A",
+      chars: "ⒶＡÀÁÂẦẤẪẨÃĀĂẰẮẴẲȦǠÄǞẢÅǺǍȀȂẠẬẶḀĄȺⱯ"
+    },
+    {
+      base: "AA",
+      chars: "Ꜳ"
+    },
+    {
+      base: "AE",
+      chars: "ÆǼǢ"
+    },
+    {
+      base: "AO",
+      chars: "Ꜵ"
+    },
+    {
+      base: "AU",
+      chars: "Ꜷ"
+    },
+    {
+      base: "AV",
+      chars: "ꜸꜺ"
+    },
+    {
+      base: "AY",
+      chars: "Ꜽ"
+    },
+    {
+      base: "B",
+      chars: "ⒷＢḂḄḆɃƁ"
+    },
+    {
+      base: "C",
+      chars: "ⒸＣꜾḈĆCĈĊČÇƇȻ"
+    },
+    {
+      base: "D",
+      chars: "ⒹＤḊĎḌḐḒḎĐƊƉᴅꝹ"
+    },
+    {
+      base: "Dh",
+      chars: "Ð"
+    },
+    {
+      base: "DZ",
+      chars: "ǱǄ"
+    },
+    {
+      base: "Dz",
+      chars: "ǲǅ"
+    },
+    {
+      base: "E",
+      chars: "ɛⒺＥÈÉÊỀẾỄỂẼĒḔḖĔĖËẺĚȄȆẸỆȨḜĘḘḚƐƎᴇ"
+    },
+    {
+      base: "F",
+      chars: "ꝼⒻＦḞƑꝻ"
+    },
+    {
+      base: "G",
+      chars: "ⒼＧǴĜḠĞĠǦĢǤƓꞠꝽꝾɢ"
+    },
+    {
+      base: "H",
+      chars: "ⒽＨĤḢḦȞḤḨḪĦⱧⱵꞍ"
+    },
+    {
+      base: "I",
+      chars: "ⒾＩÌÍÎĨĪĬİÏḮỈǏȈȊỊĮḬƗ"
+    },
+    {
+      base: "J",
+      chars: "ⒿＪĴɈȷ"
+    },
+    {
+      base: "K",
+      chars: "ⓀＫḰǨḲĶḴƘⱩꝀꝂꝄꞢ"
+    },
+    {
+      base: "L",
+      chars: "ⓁＬĿĹĽḶḸĻḼḺŁȽⱢⱠꝈꝆꞀ"
+    },
+    {
+      base: "LJ",
+      chars: "Ǉ"
+    },
+    {
+      base: "Lj",
+      chars: "ǈ"
+    },
+    {
+      base: "M",
+      chars: "ⓂＭḾṀṂⱮƜϻ"
+    },
+    {
+      base: "N",
+      chars: "ꞤȠⓃＮǸŃÑṄŇṆŅṊṈƝꞐᴎ"
+    },
+    {
+      base: "NJ",
+      chars: "Ǌ"
+    },
+    {
+      base: "Nj",
+      chars: "ǋ"
+    },
+    {
+      base: "O",
+      chars: "ⓄＯÒÓÔỒỐỖỔÕṌȬṎŌṐṒŎȮȰÖȪỎŐǑȌȎƠỜỚỠỞỢỌỘǪǬØǾƆƟꝊꝌ"
+    },
+    {
+      base: "OE",
+      chars: "Œ"
+    },
+    {
+      base: "OI",
+      chars: "Ƣ"
+    },
+    {
+      base: "OO",
+      chars: "Ꝏ"
+    },
+    {
+      base: "OU",
+      chars: "Ȣ"
+    },
+    {
+      base: "P",
+      chars: "ⓅＰṔṖƤⱣꝐꝒꝔ"
+    },
+    {
+      base: "Q",
+      chars: "ⓆＱꝖꝘɊ"
+    },
+    {
+      base: "R",
+      chars: "ⓇＲŔṘŘȐȒṚṜŖṞɌⱤꝚꞦꞂ"
+    },
+    {
+      base: "S",
+      chars: "ⓈＳẞŚṤŜṠŠṦṢṨȘŞⱾꞨꞄ"
+    },
+    {
+      base: "T",
+      chars: "ⓉＴṪŤṬȚŢṰṮŦƬƮȾꞆ"
+    },
+    {
+      base: "Th",
+      chars: "Þ"
+    },
+    {
+      base: "TZ",
+      chars: "Ꜩ"
+    },
+    {
+      base: "U",
+      chars: "ⓊＵÙÚÛŨṸŪṺŬÜǛǗǕǙỦŮŰǓȔȖƯỪỨỮỬỰỤṲŲṶṴɄ"
+    },
+    {
+      base: "V",
+      chars: "ⓋＶṼṾƲꝞɅ"
+    },
+    {
+      base: "VY",
+      chars: "Ꝡ"
+    },
+    {
+      base: "W",
+      chars: "ⓌＷẀẂŴẆẄẈⱲ"
+    },
+    {
+      base: "X",
+      chars: "ⓍＸẊẌ"
+    },
+    {
+      base: "Y",
+      chars: "ⓎＹỲÝŶỸȲẎŸỶỴƳɎỾ"
+    },
+    {
+      base: "Z",
+      chars: "ⓏＺŹẐŻŽẒẔƵȤⱿⱫꝢ"
+    },
+    {
+      base: "a",
+      chars: "ⓐａẚàáâầấẫẩãāăằắẵẳȧǡäǟảåǻǎȁȃạậặḁąⱥɐɑ"
+    },
+    {
+      base: "aa",
+      chars: "ꜳ"
+    },
+    {
+      base: "ae",
+      chars: "æǽǣ"
+    },
+    {
+      base: "ao",
+      chars: "ꜵ"
+    },
+    {
+      base: "au",
+      chars: "ꜷ"
+    },
+    {
+      base: "av",
+      chars: "ꜹꜻ"
+    },
+    {
+      base: "ay",
+      chars: "ꜽ"
+    },
+    {
+      base: "b",
+      chars: "ⓑｂḃḅḇƀƃɓƂ"
+    },
+    {
+      base: "c",
+      chars: "ｃⓒćĉċčçḉƈȼꜿↄ"
+    },
+    {
+      base: "d",
+      chars: "ⓓｄḋďḍḑḓḏđƌɖɗƋᏧԁꞪ"
+    },
+    {
+      base: "dh",
+      chars: "ð"
+    },
+    {
+      base: "dz",
+      chars: "ǳǆ"
+    },
+    {
+      base: "e",
+      chars: "ⓔｅèéêềếễểẽēḕḗĕėëẻěȅȇẹệȩḝęḙḛɇǝ"
+    },
+    {
+      base: "f",
+      chars: "ⓕｆḟƒ"
+    },
+    {
+      base: "ff",
+      chars: "ﬀ"
+    },
+    {
+      base: "fi",
+      chars: "ﬁ"
+    },
+    {
+      base: "fl",
+      chars: "ﬂ"
+    },
+    {
+      base: "ffi",
+      chars: "ﬃ"
+    },
+    {
+      base: "ffl",
+      chars: "ﬄ"
+    },
+    {
+      base: "g",
+      chars: "ⓖｇǵĝḡğġǧģǥɠꞡꝿᵹ"
+    },
+    {
+      base: "h",
+      chars: "ⓗｈĥḣḧȟḥḩḫẖħⱨⱶɥ"
+    },
+    {
+      base: "hv",
+      chars: "ƕ"
+    },
+    {
+      base: "i",
+      chars: "ⓘｉìíîĩīĭïḯỉǐȉȋịįḭɨı"
+    },
+    {
+      base: "j",
+      chars: "ⓙｊĵǰɉ"
+    },
+    {
+      base: "k",
+      chars: "ⓚｋḱǩḳķḵƙⱪꝁꝃꝅꞣ"
+    },
+    {
+      base: "l",
+      chars: "ⓛｌŀĺľḷḹļḽḻſłƚɫⱡꝉꞁꝇɭ"
+    },
+    {
+      base: "lj",
+      chars: "ǉ"
+    },
+    {
+      base: "m",
+      chars: "ⓜｍḿṁṃɱɯ"
+    },
+    {
+      base: "n",
+      chars: "ⓝｎǹńñṅňṇņṋṉƞɲŉꞑꞥлԉ"
+    },
+    {
+      base: "nj",
+      chars: "ǌ"
+    },
+    {
+      base: "o",
+      chars: "ⓞｏòóôồốỗổõṍȭṏōṑṓŏȯȱöȫỏőǒȍȏơờớỡởợọộǫǭøǿꝋꝍɵɔᴑ"
+    },
+    {
+      base: "oe",
+      chars: "œ"
+    },
+    {
+      base: "oi",
+      chars: "ƣ"
+    },
+    {
+      base: "oo",
+      chars: "ꝏ"
+    },
+    {
+      base: "ou",
+      chars: "ȣ"
+    },
+    {
+      base: "p",
+      chars: "ⓟｐṕṗƥᵽꝑꝓꝕρ"
+    },
+    {
+      base: "q",
+      chars: "ⓠｑɋꝗꝙ"
+    },
+    {
+      base: "r",
+      chars: "ⓡｒŕṙřȑȓṛṝŗṟɍɽꝛꞧꞃ"
+    },
+    {
+      base: "s",
+      chars: "ⓢｓśṥŝṡšṧṣṩșşȿꞩꞅẛʂ"
+    },
+    {
+      base: "ss",
+      chars: "ß"
+    },
+    {
+      base: "t",
+      chars: "ⓣｔṫẗťṭțţṱṯŧƭʈⱦꞇ"
+    },
+    {
+      base: "th",
+      chars: "þ"
+    },
+    {
+      base: "tz",
+      chars: "ꜩ"
+    },
+    {
+      base: "u",
+      chars: "ⓤｕùúûũṹūṻŭüǜǘǖǚủůűǔȕȗưừứữửựụṳųṷṵʉ"
+    },
+    {
+      base: "v",
+      chars: "ⓥｖṽṿʋꝟʌ"
+    },
+    {
+      base: "vy",
+      chars: "ꝡ"
+    },
+    {
+      base: "w",
+      chars: "ⓦｗẁẃŵẇẅẘẉⱳ"
+    },
+    {
+      base: "x",
+      chars: "ⓧｘẋẍ"
+    },
+    {
+      base: "y",
+      chars: "ⓨｙỳýŷỹȳẏÿỷẙỵƴɏỿ"
+    },
+    {
+      base: "z",
+      chars: "ⓩｚźẑżžẓẕƶȥɀⱬꝣ"
+    }
+  ];
+  var diacriticsMap = {};
+  for (var i = 0; i < replacementList.length; i += 1) {
+    var chars = replacementList[i].chars;
+    for (var j = 0; j < chars.length; j += 1) {
+      diacriticsMap[chars[j]] = replacementList[i].base;
+    }
+  }
+  function removeDiacritics(str) {
+    return str.replace(/[^\u0000-\u007e]/g, function(c) {
+      return diacriticsMap[c] || c;
+    });
+  }
+  diacritics$1.replacementList = replacementList;
+  diacritics$1.diacriticsMap = diacriticsMap;
+  return diacritics$1;
+}
+var hasRequiredI18nIsoCountries;
+function requireI18nIsoCountries() {
+  if (hasRequiredI18nIsoCountries) return i18nIsoCountries;
+  hasRequiredI18nIsoCountries = 1;
+  (function(exports) {
+    const codes = require$$0;
+    const supportedLocales = require$$1;
+    const removeDiacritics = requireDiacritics().remove;
+    const registeredLocales = {};
+    const alpha2 = {}, alpha3 = {}, numeric = {}, invertedNumeric = {};
+    codes.forEach(function(codeInformation) {
+      const s2 = codeInformation;
+      alpha2[s2[0]] = s2[1];
+      alpha3[s2[1]] = s2[0];
+      numeric[s2[2]] = s2[0];
+      invertedNumeric[s2[0]] = s2[2];
+    });
+    function formatNumericCode(code) {
+      return String("000" + (code ? code : "")).slice(-3);
+    }
+    function hasOwnProperty2(object, property) {
+      return Object.prototype.hasOwnProperty.call(object, property);
+    }
+    function localeFilter(localeList, filter) {
+      return Object.keys(localeList).reduce(function(newLocaleList, alpha22) {
+        const nameList = localeList[alpha22];
+        newLocaleList[alpha22] = filter(nameList, alpha22);
+        return newLocaleList;
+      }, {});
+    }
+    function filterNameBy(type2, countryNameList) {
+      switch (type2) {
+        case "official":
+          return Array.isArray(countryNameList) ? countryNameList[0] : countryNameList;
+        case "all":
+          return typeof countryNameList === "string" ? [countryNameList] : countryNameList;
+        case "alias":
+          return Array.isArray(countryNameList) ? countryNameList[1] || countryNameList[0] : countryNameList;
+        default:
+          throw new TypeError(
+            "LocaleNameType must be one of these: all, official, alias!"
+          );
+      }
+    }
+    exports.registerLocale = function(localeData) {
+      if (!localeData.locale) {
+        throw new TypeError("Missing localeData.locale");
+      }
+      if (!localeData.countries) {
+        throw new TypeError("Missing localeData.countries");
+      }
+      registeredLocales[localeData.locale] = localeData.countries;
+    };
+    function alpha3ToAlpha2(code) {
+      return alpha3[code];
+    }
+    exports.alpha3ToAlpha2 = alpha3ToAlpha2;
+    function alpha2ToAlpha3(code) {
+      return alpha2[code];
+    }
+    exports.alpha2ToAlpha3 = alpha2ToAlpha3;
+    function alpha3ToNumeric(code) {
+      return invertedNumeric[alpha3ToAlpha2(code)];
+    }
+    exports.alpha3ToNumeric = alpha3ToNumeric;
+    function alpha2ToNumeric(code) {
+      return invertedNumeric[code];
+    }
+    exports.alpha2ToNumeric = alpha2ToNumeric;
+    function numericToAlpha3(code) {
+      const padded = formatNumericCode(code);
+      return alpha2ToAlpha3(numeric[padded]);
+    }
+    exports.numericToAlpha3 = numericToAlpha3;
+    function numericToAlpha2(code) {
+      const padded = formatNumericCode(code);
+      return numeric[padded];
+    }
+    exports.numericToAlpha2 = numericToAlpha2;
+    function toAlpha3(code) {
+      if (typeof code === "string") {
+        if (/^[0-9]*$/.test(code)) {
+          return numericToAlpha3(code);
+        }
+        if (code.length === 2) {
+          return alpha2ToAlpha3(code.toUpperCase());
+        }
+        if (code.length === 3) {
+          return code.toUpperCase();
+        }
+      }
+      if (typeof code === "number") {
+        return numericToAlpha3(code);
+      }
+      return void 0;
+    }
+    exports.toAlpha3 = toAlpha3;
+    function toAlpha2(code) {
+      if (typeof code === "string") {
+        if (/^[0-9]*$/.test(code)) {
+          return numericToAlpha2(code);
+        }
+        if (code.length === 2) {
+          return code.toUpperCase();
+        }
+        if (code.length === 3) {
+          return alpha3ToAlpha2(code.toUpperCase());
+        }
+      }
+      if (typeof code === "number") {
+        return numericToAlpha2(code);
+      }
+      return void 0;
+    }
+    exports.toAlpha2 = toAlpha2;
+    exports.getName = function(code, lang, options2 = {}) {
+      if (!("select" in options2)) {
+        options2.select = "official";
+      }
+      try {
+        const codeMaps = registeredLocales[lang.toLowerCase()];
+        const nameList = codeMaps[toAlpha2(code)];
+        return filterNameBy(options2.select, nameList);
+      } catch (err) {
+        return void 0;
+      }
+    };
+    exports.getNames = function(lang, options2 = {}) {
+      if (!("select" in options2)) {
+        options2.select = "official";
+      }
+      const localeList = registeredLocales[lang.toLowerCase()];
+      if (localeList === void 0) return {};
+      return localeFilter(localeList, function(nameList) {
+        return filterNameBy(options2.select, nameList);
+      });
+    };
+    exports.getAlpha2Code = function(name, lang) {
+      const normalizeString = (string) => string.toLowerCase();
+      const areSimilar = (a2, b) => normalizeString(a2) === normalizeString(b);
+      try {
+        const codenames = registeredLocales[lang.toLowerCase()];
+        for (const p2 in codenames) {
+          if (!hasOwnProperty2(codenames, p2)) {
+            continue;
+          }
+          if (typeof codenames[p2] === "string") {
+            if (areSimilar(codenames[p2], name)) {
+              return p2;
+            }
+          }
+          if (Array.isArray(codenames[p2])) {
+            for (const mappedName of codenames[p2]) {
+              if (areSimilar(mappedName, name)) {
+                return p2;
+              }
+            }
+          }
+        }
+        return void 0;
+      } catch (err) {
+        return void 0;
+      }
+    };
+    exports.getSimpleAlpha2Code = function(name, lang) {
+      const normalizeString = (string) => removeDiacritics(string.toLowerCase());
+      const areSimilar = (a2, b) => normalizeString(a2) === normalizeString(b);
+      try {
+        const codenames = registeredLocales[lang.toLowerCase()];
+        for (const p2 in codenames) {
+          if (!hasOwnProperty2(codenames, p2)) {
+            continue;
+          }
+          if (typeof codenames[p2] === "string") {
+            if (areSimilar(codenames[p2], name)) {
+              return p2;
+            }
+          }
+          if (Array.isArray(codenames[p2])) {
+            for (const mappedName of codenames[p2]) {
+              if (areSimilar(mappedName, name)) {
+                return p2;
+              }
+            }
+          }
+        }
+        return void 0;
+      } catch (err) {
+        return void 0;
+      }
+    };
+    exports.getAlpha2Codes = function() {
+      return alpha2;
+    };
+    exports.getAlpha3Code = function(name, lang) {
+      const alpha22 = exports.getAlpha2Code(name, lang);
+      if (alpha22) {
+        return exports.toAlpha3(alpha22);
+      } else {
+        return void 0;
+      }
+    };
+    exports.getSimpleAlpha3Code = function(name, lang) {
+      const alpha22 = exports.getSimpleAlpha2Code(name, lang);
+      if (alpha22) {
+        return exports.toAlpha3(alpha22);
+      } else {
+        return void 0;
+      }
+    };
+    exports.getAlpha3Codes = function() {
+      return alpha3;
+    };
+    exports.getNumericCodes = function() {
+      return numeric;
+    };
+    exports.langs = function() {
+      return Object.keys(registeredLocales);
+    };
+    exports.getSupportedLanguages = function() {
+      return supportedLocales;
+    };
+    exports.isValid = function(code) {
+      if (!code) {
+        return false;
+      }
+      const coerced = code.toString().toUpperCase();
+      return hasOwnProperty2(alpha3, coerced) || hasOwnProperty2(alpha2, coerced) || hasOwnProperty2(numeric, coerced);
+    };
+  })(i18nIsoCountries);
+  return i18nIsoCountries;
+}
+var i18nIsoCountriesExports = requireI18nIsoCountries();
+const Countries = /* @__PURE__ */ getDefaultExportFromCjs(i18nIsoCountriesExports);
+const getLocaleCode = (code) => {
+  if (code === "zh-CN")
+    return "zh";
+  if (code === "zh-TW")
+    return "tw";
+  return code.slice(0, 2);
+};
+const getCountryByISO = (iso, locale = "en") => {
+  if (!iso)
+    return;
+  const ret = Countries.getName(iso, getLocaleCode(locale));
+  if (ret) {
+    return ret;
+  }
+  if (locale !== "en") {
+    return Countries.getName(iso, "en");
+  }
+};
+const CountryCriterionOption = new StringCriterionOption("country", "country", () => new CountryCriterion());
+class CountryCriterion extends StringCriterion {
+  constructor() {
+    super(CountryCriterionOption);
+  }
+  getLabelValue(intl) {
+    var _a2;
+    if (this.modifier === CriterionModifier.Equals || this.modifier === CriterionModifier.NotEquals) {
+      return (_a2 = getCountryByISO(this.value, intl.locale)) !== null && _a2 !== void 0 ? _a2 : this.value;
+    }
+    return super.getLabelValue(intl);
+  }
+}
+function valueToString(value) {
+  if (!value)
+    return "";
+  return value.map((v) => v).join(", ");
+}
+const CustomFieldsCriterionOption = new CriterionOption({
+  type: "custom_fields",
+  messageID: "custom_fields.title",
+  makeCriterion: () => new CustomFieldsCriterion()
+});
+class CustomFieldsCriterion extends Criterion {
+  constructor() {
+    super(CustomFieldsCriterionOption);
+    Object.defineProperty(this, "value", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: []
+    });
+  }
+  isValid() {
+    return this.value.length > 0;
+  }
+  applyToCriterionInput(input) {
+    input.custom_fields = cloneDeep(this.value);
+  }
+  applyToSavedCriterion(input) {
+    input.custom_fields = cloneDeep(this.value);
+  }
+  getLabel(intl) {
+    var _a2, _b2;
+    if (this.value.length === 0) {
+      return "";
+    }
+    const first = this.value[0];
+    let messageID;
+    let valueString = "";
+    if (first.modifier !== CriterionModifier.IsNull && first.modifier !== CriterionModifier.NotNull && ((_b2 = (_a2 = first.value) === null || _a2 === void 0 ? void 0 : _a2.length) !== null && _b2 !== void 0 ? _b2 : 0) > 0) {
+      valueString = valueToString(first.value);
+    }
+    const modifierString = ModifierCriterion.getModifierLabel(intl, first.modifier);
+    const opts = {
+      criterion: first.field,
+      modifierString,
+      valueString,
+      others: ""
+    };
+    if (this.value.length === 1) {
+      messageID = "custom_fields.criteria_format_string";
+    } else {
+      messageID = "custom_fields.criteria_format_string_others";
+      opts.others = (this.value.length - 1).toString();
+    }
+    return intl.formatMessage({ id: messageID }, opts);
+  }
+  getValueLabel(intl, v) {
+    var _a2, _b2;
+    let valueString = "";
+    if (v.modifier !== CriterionModifier.IsNull && v.modifier !== CriterionModifier.NotNull && ((_b2 = (_a2 = v.value) === null || _a2 === void 0 ? void 0 : _a2.length) !== null && _b2 !== void 0 ? _b2 : 0) > 0) {
+      valueString = valueToString(v.value);
+    }
+    const modifierString = ModifierCriterion.getModifierLabel(intl, v.modifier);
+    const opts = {
+      criterion: v.field,
+      modifierString,
+      valueString
+    };
+    return intl.formatMessage({ id: "custom_fields.criteria_format_string" }, opts);
+  }
+  toQueryParams() {
+    const encodedCriterion = {
+      type: this.criterionOption.type,
+      value: this.value
+    };
+    return encodedCriterion;
+  }
+  fromDecodedParams(i) {
+    const criterion = i;
+    this.value = cloneDeep(criterion.value);
+  }
+  setFromSavedCriterion(input) {
+    this.value = cloneDeep(input);
+  }
+}
+const defaultSortBy$4 = "name";
+const sortByOptions$4 = [
+  "name",
+  "height",
+  "birthdate",
+  "tag_count",
+  "random",
+  "rating",
+  "penis_length",
+  "play_count",
+  "last_played_at",
+  "last_o_at",
+  "career_length",
+  "weight",
+  "measurements"
+].map(ListFilterOptions.createSortBy).concat([
+  {
+    messageID: "scene_count",
+    value: "scenes_count"
+  },
+  {
+    messageID: "image_count",
+    value: "images_count"
+  },
+  {
+    messageID: "gallery_count",
+    value: "galleries_count"
+  },
+  {
+    messageID: "o_count",
+    value: "o_counter"
+  }
+]);
+const displayModeOptions$4 = [
+  DisplayMode.Grid,
+  DisplayMode.List,
+  DisplayMode.Tagger
+];
+const numberCriteria = [
+  "birth_year",
+  "death_year",
+  "age",
+  "weight",
+  "penis_length"
+];
+const stringCriteria = [
+  "name",
+  "disambiguation",
+  "details",
+  "ethnicity",
+  "hair_color",
+  "eye_color",
+  "measurements",
+  "fake_tits",
+  "career_length",
+  "tattoos",
+  "piercings",
+  "aliases"
+];
+const criterionOptions$4 = [
+  FavoritePerformerCriterionOption,
+  GenderCriterionOption,
+  CircumcisedCriterionOption,
+  PerformerIsMissingCriterionOption,
+  TagsCriterionOption,
+  StudiosCriterionOption,
+  StashIDCriterionOption,
+  createStringCriterionOption("url"),
+  RatingCriterionOption,
+  createMandatoryNumberCriterionOption("tag_count"),
+  createMandatoryNumberCriterionOption("scene_count"),
+  createMandatoryNumberCriterionOption("image_count"),
+  createMandatoryNumberCriterionOption("gallery_count"),
+  createMandatoryNumberCriterionOption("play_count"),
+  createMandatoryNumberCriterionOption("o_counter", "o_count"),
+  createBooleanCriterionOption("ignore_auto_tag"),
+  CountryCriterionOption,
+  createNumberCriterionOption("height_cm", "height"),
+  ...numberCriteria.map((c) => createNumberCriterionOption(c)),
+  ...stringCriteria.map((c) => createStringCriterionOption(c)),
+  createDateCriterionOption("birthdate"),
+  createDateCriterionOption("death_date"),
+  createMandatoryTimestampCriterionOption("created_at"),
+  createMandatoryTimestampCriterionOption("updated_at"),
+  CustomFieldsCriterionOption
+];
+const PerformerListFilterOptions = new ListFilterOptions(defaultSortBy$4, sortByOptions$4, displayModeOptions$4, criterionOptions$4);
+const defaultSortBy$3 = "title";
+const sortByOptions$3 = [
+  "duration",
+  "title",
+  "seconds",
+  "scene_id",
+  "random",
+  "scenes_updated_at"
+].map(ListFilterOptions.createSortBy);
+const displayModeOptions$3 = [DisplayMode.Grid, DisplayMode.Wall];
+const criterionOptions$3 = [
+  TagsCriterionOption,
+  MarkersScenesCriterionOption,
+  SceneTagsCriterionOption,
+  PerformersCriterionOption,
+  createNullDurationCriterionOption("duration"),
+  createMandatoryTimestampCriterionOption("created_at"),
+  createMandatoryTimestampCriterionOption("updated_at"),
+  createDateCriterionOption("scene_date"),
+  createMandatoryTimestampCriterionOption("scene_created_at"),
+  createMandatoryTimestampCriterionOption("scene_updated_at")
+];
+const SceneMarkerListFilterOptions = new ListFilterOptions(defaultSortBy$3, sortByOptions$3, displayModeOptions$3, criterionOptions$3);
+const HasMarkersCriterionOption = new StringBooleanCriterionOption("hasMarkers", "has_markers", () => new HasMarkersCriterion());
+class HasMarkersCriterion extends StringBooleanCriterion {
+  constructor() {
+    super(HasMarkersCriterionOption);
+  }
+}
+const InteractiveCriterionOption = new BooleanCriterionOption("interactive", "interactive", () => new InteractiveCriterion());
+class InteractiveCriterion extends BooleanCriterion {
+  constructor() {
+    super(InteractiveCriterionOption);
+  }
+}
+const PhashCriterionOption = new ModifierCriterionOption({
+  messageID: "media_info.phash",
+  type: "phash_distance",
+  inputType: "text",
+  modifierOptions: [
+    CriterionModifier.Equals,
+    CriterionModifier.NotEquals,
+    CriterionModifier.IsNull,
+    CriterionModifier.NotNull
+  ],
+  makeCriterion: () => new PhashCriterion()
+});
+class PhashCriterion extends ModifierCriterion {
+  constructor() {
+    super(PhashCriterionOption, { value: "", distance: 0 });
+  }
+  cloneValues() {
+    this.value = { ...this.value };
+  }
+  getLabelValue() {
+    const { value, distance } = this.value;
+    if ((this.modifier === CriterionModifier.Equals || this.modifier === CriterionModifier.NotEquals) && distance) {
+      return `${value} (${distance})`;
+    } else {
+      return `${value}`;
+    }
+  }
+  toCriterionInput() {
+    return {
+      value: this.value.value,
+      modifier: this.modifier,
+      distance: this.value.distance
+    };
+  }
+}
+const DuplicatedCriterionOption = new BooleanCriterionOption("duplicated_phash", "duplicated", () => new DuplicatedCriterion());
+class DuplicatedCriterion extends StringCriterion {
+  constructor() {
+    super(DuplicatedCriterionOption);
+  }
+  toCriterionInput() {
+    return {
+      duplicated: this.value === "true"
+    };
+  }
+}
+const languageStrings = Array.from(languageMap.values());
+const CaptionsCriterionOption = new ModifierCriterionOption({
+  messageID: "captions",
+  type: "captions",
+  modifierOptions: [
+    CriterionModifier.Includes,
+    CriterionModifier.Excludes,
+    CriterionModifier.IsNull,
+    CriterionModifier.NotNull
+  ],
+  defaultModifier: CriterionModifier.Includes,
+  options: languageStrings,
+  makeCriterion: () => new CaptionCriterion()
+});
+class CaptionCriterion extends StringCriterion {
+  constructor() {
+    super(CaptionsCriterionOption);
+  }
+  toCriterionInput() {
+    var _a2;
+    const value = (_a2 = valueToCode(this.value)) !== null && _a2 !== void 0 ? _a2 : "";
+    return {
+      value,
+      modifier: this.modifier
+    };
+  }
+}
+const defaultSortBy$2 = "date";
+const sortByOptions$2 = [
+  "organized",
+  "date",
+  "file_count",
+  "filesize",
+  "duration",
+  "framerate",
+  "bitrate",
+  "last_played_at",
+  "last_o_at",
+  "resume_time",
+  "play_duration",
+  "play_count",
+  "interactive",
+  "interactive_speed",
+  "perceptual_similarity",
+  ...MediaSortByOptions
+].map(ListFilterOptions.createSortBy).concat([
+  {
+    messageID: "o_count",
+    value: "o_counter"
+  },
+  {
+    messageID: "group_scene_number",
+    value: "group_scene_number"
+  },
+  {
+    messageID: "scene_code",
+    value: "code"
+  }
+]);
+const displayModeOptions$2 = [
+  DisplayMode.Grid,
+  DisplayMode.List,
+  DisplayMode.Wall,
+  DisplayMode.Tagger
+];
+const criterionOptions$2 = [
+  createStringCriterionOption("title"),
+  createStringCriterionOption("code", "scene_code"),
+  PathCriterionOption,
+  createStringCriterionOption("details"),
+  createStringCriterionOption("director"),
+  createMandatoryStringCriterionOption("oshash", "media_info.hash"),
+  createStringCriterionOption("checksum", "media_info.checksum"),
+  PhashCriterionOption,
+  DuplicatedCriterionOption,
+  OrganizedCriterionOption,
+  RatingCriterionOption,
+  createMandatoryNumberCriterionOption("o_counter", "o_count"),
+  ResolutionCriterionOption,
+  OrientationCriterionOption,
+  createMandatoryNumberCriterionOption("framerate"),
+  createMandatoryNumberCriterionOption("bitrate"),
+  createStringCriterionOption("video_codec"),
+  createStringCriterionOption("audio_codec"),
+  createDurationCriterionOption("duration"),
+  createDurationCriterionOption("resume_time"),
+  createDurationCriterionOption("play_duration"),
+  createMandatoryNumberCriterionOption("play_count"),
+  createMandatoryTimestampCriterionOption("last_played_at"),
+  HasMarkersCriterionOption,
+  SceneIsMissingCriterionOption,
+  TagsCriterionOption,
+  createMandatoryNumberCriterionOption("tag_count"),
+  PerformerTagsCriterionOption,
+  PerformersCriterionOption,
+  createMandatoryNumberCriterionOption("performer_count"),
+  createMandatoryNumberCriterionOption("performer_age"),
+  PerformerFavoriteCriterionOption,
+  // StudioTagsCriterionOption,
+  StudiosCriterionOption,
+  GroupsCriterionOption,
+  LegacyMoviesCriterionOption,
+  GalleriesCriterionOption,
+  createStringCriterionOption("url"),
+  StashIDCriterionOption,
+  InteractiveCriterionOption,
+  CaptionsCriterionOption,
+  createMandatoryNumberCriterionOption("interactive_speed"),
+  createMandatoryNumberCriterionOption("file_count"),
+  createDateCriterionOption("date"),
+  createMandatoryTimestampCriterionOption("created_at"),
+  createMandatoryTimestampCriterionOption("updated_at")
+];
+const SceneListFilterOptions = new ListFilterOptions(defaultSortBy$2, sortByOptions$2, displayModeOptions$2, criterionOptions$2);
+const defaultSortBy$1 = "name";
+const sortByOptions$1 = ["name", "tag_count", "random", "rating"].map(ListFilterOptions.createSortBy).concat([
+  {
+    messageID: "gallery_count",
+    value: "galleries_count"
+  },
+  {
+    messageID: "image_count",
+    value: "images_count"
+  },
+  {
+    messageID: "scene_count",
+    value: "scenes_count"
+  },
+  {
+    messageID: "subsidiary_studio_count",
+    value: "child_count"
+  }
+]);
+const displayModeOptions$1 = [DisplayMode.Grid, DisplayMode.Tagger];
+const criterionOptions$1 = [
+  FavoriteStudioCriterionOption,
+  createMandatoryStringCriterionOption("name"),
+  createStringCriterionOption("details"),
+  ParentStudiosCriterionOption,
+  StudioIsMissingCriterionOption,
+  TagsCriterionOption,
+  RatingCriterionOption,
+  createBooleanCriterionOption("ignore_auto_tag"),
+  createMandatoryNumberCriterionOption("tag_count"),
+  createMandatoryNumberCriterionOption("scene_count"),
+  createMandatoryNumberCriterionOption("image_count"),
+  createMandatoryNumberCriterionOption("gallery_count"),
+  createStringCriterionOption("url"),
+  StashIDCriterionOption,
+  createStringCriterionOption("aliases"),
+  createMandatoryNumberCriterionOption("child_count", "subsidiary_studio_count"),
+  createMandatoryTimestampCriterionOption("created_at"),
+  createMandatoryTimestampCriterionOption("updated_at")
+];
+const StudioListFilterOptions = new ListFilterOptions(defaultSortBy$1, sortByOptions$1, displayModeOptions$1, criterionOptions$1);
+const defaultSortBy = "name";
+const sortByOptions = ["name", "random"].map(ListFilterOptions.createSortBy).concat([
+  {
+    messageID: "gallery_count",
+    value: "galleries_count"
+  },
+  {
+    messageID: "image_count",
+    value: "images_count"
+  },
+  {
+    messageID: "performer_count",
+    value: "performers_count"
+  },
+  {
+    messageID: "scene_count",
+    value: "scenes_count"
+  },
+  {
+    messageID: "group_count",
+    value: "groups_count"
+  },
+  {
+    messageID: "marker_count",
+    value: "scene_markers_count"
+  },
+  {
+    messageID: "studio_count",
+    value: "studios_count"
+  }
+]);
+const displayModeOptions = [DisplayMode.Grid, DisplayMode.List];
+const criterionOptions = [
+  FavoriteTagCriterionOption,
+  createMandatoryStringCriterionOption("name"),
+  createStringCriterionOption("sort_name"),
+  TagIsMissingCriterionOption,
+  createStringCriterionOption("aliases"),
+  createStringCriterionOption("description"),
+  createBooleanCriterionOption("ignore_auto_tag"),
+  createMandatoryNumberCriterionOption("scene_count"),
+  createMandatoryNumberCriterionOption("image_count"),
+  createMandatoryNumberCriterionOption("gallery_count"),
+  createMandatoryNumberCriterionOption("performer_count"),
+  createMandatoryNumberCriterionOption("studio_count"),
+  createMandatoryNumberCriterionOption("group_count"),
+  createMandatoryNumberCriterionOption("marker_count"),
+  ParentTagsCriterionOption,
+  new MandatoryNumberCriterionOption("parent_tag_count", "parent_count"),
+  ChildTagsCriterionOption,
+  new MandatoryNumberCriterionOption("sub_tag_count", "child_count"),
+  createMandatoryTimestampCriterionOption("created_at"),
+  createMandatoryTimestampCriterionOption("updated_at")
+];
+const TagListFilterOptions = new ListFilterOptions(defaultSortBy, sortByOptions, displayModeOptions, criterionOptions);
+function getFilterOptions(mode) {
+  switch (mode) {
+    case FilterMode.Scenes:
+      return SceneListFilterOptions;
+    case FilterMode.Performers:
+      return PerformerListFilterOptions;
+    case FilterMode.Studios:
+      return StudioListFilterOptions;
+    case FilterMode.Galleries:
+      return GalleryListFilterOptions;
+    case FilterMode.SceneMarkers:
+      return SceneMarkerListFilterOptions;
+    case FilterMode.Movies:
+    case FilterMode.Groups:
+      return GroupListFilterOptions;
+    case FilterMode.Tags:
+      return TagListFilterOptions;
+    case FilterMode.Images:
+      return ImageListFilterOptions;
+  }
+}
+const DEFAULT_PARAMS = {
+  sortDirection: SortDirectionEnum.Asc,
+  displayMode: DisplayMode.Grid,
+  currentPage: 1,
+  itemsPerPage: 40
+};
+class ListFilterModel {
+  constructor(mode, config2, options2) {
+    Object.defineProperty(this, "mode", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "options", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "config", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "searchTerm", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: ""
+    });
+    Object.defineProperty(this, "currentPage", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: DEFAULT_PARAMS.currentPage
+    });
+    Object.defineProperty(this, "itemsPerPage", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: DEFAULT_PARAMS.itemsPerPage
+    });
+    Object.defineProperty(this, "sortDirection", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: DEFAULT_PARAMS.sortDirection
+    });
+    Object.defineProperty(this, "sortBy", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "displayMode", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: DEFAULT_PARAMS.displayMode
+    });
+    Object.defineProperty(this, "zoomIndex", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: 1
+    });
+    Object.defineProperty(this, "criteria", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: []
+    });
+    Object.defineProperty(this, "randomSeed", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: -1
+    });
+    Object.defineProperty(this, "defaultZoomIndex", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: 1
+    });
+    this.mode = mode;
+    this.config = config2;
+    this.options = getFilterOptions(mode);
+    const { defaultSortBy: defaultSortBy2, displayModeOptions: displayModeOptions2 } = this.options;
+    if (options2 === null || options2 === void 0 ? void 0 : options2.defaultSortBy) {
+      this.sortBy = options2.defaultSortBy;
+      if (options2.defaultSortDir) {
+        this.sortDirection = options2.defaultSortDir;
+      }
+    } else {
+      this.sortBy = defaultSortBy2;
+      if (this.sortBy === "date") {
+        this.sortDirection = SortDirectionEnum.Desc;
+      }
+    }
+    this.displayMode = displayModeOptions2[0];
+    if ((options2 === null || options2 === void 0 ? void 0 : options2.defaultZoomIndex) !== void 0) {
+      this.defaultZoomIndex = options2.defaultZoomIndex;
+      this.zoomIndex = options2.defaultZoomIndex;
+    }
+  }
+  clone() {
+    const ret = Object.assign(new ListFilterModel(this.mode, this.config), this);
+    ret.criteria = this.criteria.map((c) => c.clone());
+    return ret;
+  }
+  empty() {
+    return new ListFilterModel(this.mode, this.config, {
+      defaultZoomIndex: this.defaultZoomIndex
+    });
+  }
+  // returns the number of filters applied
+  count() {
+    return this.criteria.length;
+  }
+  configureFromDecodedParams(params) {
+    var _a2;
+    if (params.perPage !== void 0) {
+      this.itemsPerPage = params.perPage;
+    }
+    if (params.sortby !== void 0) {
+      this.sortBy = params.sortby;
+      const match2 = this.sortBy.match(/^random_(\d+)$/);
+      if (match2) {
+        this.sortBy = "random";
+        this.randomSeed = Number.parseInt(match2[1], 10);
+      }
+    }
+    if (params.sortdir !== void 0) {
+      this.sortDirection = params.sortdir === "desc" ? SortDirectionEnum.Desc : SortDirectionEnum.Asc;
+    } else {
+      this.sortDirection = params.sortby === "date" ? SortDirectionEnum.Desc : SortDirectionEnum.Asc;
+    }
+    if (params.disp !== void 0) {
+      this.displayMode = params.disp;
+    }
+    if (params.q !== void 0) {
+      this.searchTerm = params.q;
+    }
+    this.currentPage = (_a2 = params.p) !== null && _a2 !== void 0 ? _a2 : 1;
+    if (params.z !== void 0) {
+      this.zoomIndex = params.z;
+    }
+    this.criteria = [];
+    if (params.c !== void 0) {
+      for (const jsonString of params.c) {
+        try {
+          const { type: criterionType, ...savedCriterion } = JSON.parse(jsonString);
+          const criterion = this.makeCriterion(criterionType);
+          criterion.fromDecodedParams(savedCriterion);
+          this.criteria.push(criterion);
+        } catch (err) {
+          console.error("Failed to parse encoded criterion:", err);
+        }
+      }
+    }
+  }
+  // Does not decode any URL-encoding, only type conversions
+  static decodeParams(params) {
+    const ret = {};
+    if (params.perPage) {
+      ret.perPage = Number.parseInt(params.perPage, 10);
+    }
+    if (params.sortby) {
+      ret.sortby = params.sortby;
+    }
+    if (params.sortdir) {
+      ret.sortdir = params.sortdir;
+    }
+    if (params.disp) {
+      ret.disp = Number.parseInt(params.disp, 10);
+    }
+    if (params.q) {
+      ret.q = params.q.trim();
+    }
+    if (params.p) {
+      ret.p = Number.parseInt(params.p, 10);
+    }
+    if (params.z) {
+      const zoomIndex = Number.parseInt(params.z, 10);
+      if (zoomIndex >= 0) {
+        ret.z = zoomIndex;
+      }
+    }
+    if (params.c && params.c.length !== 0) {
+      ret.c = params.c.map((jsonString) => ListFilterModel.translateJSON(jsonString, true));
+    }
+    return ret;
+  }
+  static translateJSON(jsonString, decoding) {
+    let inString = false;
+    let escape2 = false;
+    return [...jsonString].map((c) => {
+      if (escape2) {
+        escape2 = false;
+        return c;
+      }
+      switch (c) {
+        case "\\":
+          if (inString) {
+            escape2 = true;
+          }
+          break;
+        case '"':
+          inString = !inString;
+          break;
+        case "(":
+          if (decoding && !inString) {
+            return "{";
+          }
+          break;
+        case ")":
+          if (decoding && !inString) {
+            return "}";
+          }
+          break;
+        case "{":
+          if (!decoding && !inString) {
+            return "(";
+          }
+          break;
+        case "}":
+          if (!decoding && !inString) {
+            return ")";
+          }
+          break;
+      }
+      return c;
+    }).join("");
+  }
+  configureFromQueryString(queryString) {
+    const query = new URLSearchParams(queryString);
+    const params = {
+      perPage: query.get("perPage"),
+      sortby: query.get("sortby"),
+      sortdir: query.get("sortdir"),
+      disp: query.get("disp"),
+      q: query.get("q"),
+      p: query.get("p"),
+      z: query.get("z"),
+      c: query.getAll("c")
+    };
+    const decoded = ListFilterModel.decodeParams(params);
+    this.configureFromDecodedParams(decoded);
+  }
+  configureFromSavedFilter(savedFilter) {
+    var _a2, _b2, _c, _d, _e, _f, _g;
+    const { find_filter: findFilter, object_filter: objectFilter, ui_options: uiOptions } = savedFilter;
+    this.itemsPerPage = (_a2 = findFilter === null || findFilter === void 0 ? void 0 : findFilter.per_page) !== null && _a2 !== void 0 ? _a2 : this.itemsPerPage;
+    this.sortBy = (_b2 = findFilter === null || findFilter === void 0 ? void 0 : findFilter.sort) !== null && _b2 !== void 0 ? _b2 : this.sortBy;
+    const match2 = (_c = this.sortBy) === null || _c === void 0 ? void 0 : _c.match(/^random_(\d+)$/);
+    if (match2) {
+      this.sortBy = "random";
+      this.randomSeed = Number.parseInt(match2[1], 10);
+    }
+    this.sortDirection = (_d = findFilter === null || findFilter === void 0 ? void 0 : findFilter.direction) !== null && _d !== void 0 ? _d : this.sortDirection;
+    this.searchTerm = (_e = findFilter === null || findFilter === void 0 ? void 0 : findFilter.q) !== null && _e !== void 0 ? _e : this.searchTerm;
+    this.displayMode = (_f = uiOptions === null || uiOptions === void 0 ? void 0 : uiOptions.display_mode) !== null && _f !== void 0 ? _f : this.displayMode;
+    this.zoomIndex = (_g = uiOptions === null || uiOptions === void 0 ? void 0 : uiOptions.zoom_index) !== null && _g !== void 0 ? _g : this.zoomIndex;
+    this.currentPage = 1;
+    this.criteria = [];
+    if (objectFilter) {
+      for (const [k, v] of Object.entries(objectFilter)) {
+        const criterion = this.makeCriterion(k);
+        criterion.setFromSavedCriterion(v);
+        this.criteria.push(criterion);
+      }
+    }
+  }
+  setRandomSeed() {
+    if (this.sortBy === "random") {
+      if (this.randomSeed === -1) {
+        this.randomSeed = Math.floor(Math.random() * 10 ** 8);
+      }
+    } else {
+      this.randomSeed = -1;
+    }
+  }
+  getSortBy() {
+    this.setRandomSeed();
+    if (this.sortBy === "random") {
+      return `random_${this.randomSeed.toString()}`;
+    }
+    return this.sortBy;
+  }
+  // Returns query parameters with necessary parts URL-encoded
+  getEncodedParams() {
+    const encodedCriteria = this.criteria.map((criterion) => {
+      const queryParams = criterion.toQueryParams();
+      let str = ListFilterModel.translateJSON(JSON.stringify(queryParams), false);
+      str = encodeURI(str);
+      str = str.replaceAll("?", encodeURIComponent("?"));
+      str = str.replaceAll("#", encodeURIComponent("#"));
+      str = str.replaceAll("&", encodeURIComponent("&"));
+      str = str.replaceAll(";", encodeURIComponent(";"));
+      str = str.replaceAll("=", encodeURIComponent("="));
+      str = str.replaceAll("+", encodeURIComponent("+"));
+      return str;
+    });
+    return {
+      perPage: this.itemsPerPage !== DEFAULT_PARAMS.itemsPerPage ? String(this.itemsPerPage) : void 0,
+      sortby: this.getSortBy(),
+      sortdir: this.sortBy === "date" ? this.sortDirection === SortDirectionEnum.Asc ? "asc" : void 0 : this.sortDirection === SortDirectionEnum.Desc ? "desc" : void 0,
+      disp: this.displayMode !== DEFAULT_PARAMS.displayMode ? String(this.displayMode) : void 0,
+      q: this.searchTerm ? encodeURIComponent(this.searchTerm) : void 0,
+      p: this.currentPage !== DEFAULT_PARAMS.currentPage ? String(this.currentPage) : void 0,
+      z: this.zoomIndex !== this.defaultZoomIndex ? String(this.zoomIndex) : void 0,
+      c: encodedCriteria
+    };
+  }
+  makeQueryParameters() {
+    const query = [];
+    const params = this.getEncodedParams();
+    if (params.q) {
+      query.push(`q=${params.q}`);
+    }
+    if (params.c) {
+      for (const c of params.c) {
+        query.push(`c=${c}`);
+      }
+    }
+    if (params.sortby) {
+      query.push(`sortby=${params.sortby}`);
+    }
+    if (params.sortdir) {
+      query.push(`sortdir=${params.sortdir}`);
+    }
+    if (params.perPage) {
+      query.push(`perPage=${params.perPage}`);
+    }
+    if (params.disp) {
+      query.push(`disp=${params.disp}`);
+    }
+    if (params.z) {
+      query.push(`z=${params.z}`);
+    }
+    if (params.p) {
+      query.push(`p=${params.p}`);
+    }
+    return query.join("&");
+  }
+  makeCriterion(type2) {
+    const { criterionOptions: criterionOptions2 } = getFilterOptions(this.mode);
+    const option = criterionOptions2.find((o2) => o2.type === type2);
+    if (!option) {
+      throw new Error(`Unknown criterion parameter name: ${type2}`);
+    }
+    return option.makeCriterion(this.config);
+  }
+  makeFindFilter() {
+    return {
+      q: this.searchTerm,
+      page: this.currentPage,
+      per_page: this.itemsPerPage,
+      sort: this.getSortBy(),
+      direction: this.sortDirection
+    };
+  }
+  makeFilter() {
+    const output = {};
+    for (const c of this.criteria) {
+      c.applyToCriterionInput(output);
+    }
+    return output;
+  }
+  // TODO - this needs to just use makeFilter, but it needs a migration
+  makeSavedFilter() {
+    const output = {};
+    for (const c of this.criteria) {
+      c.applyToSavedCriterion(output);
+    }
+    return output;
+  }
+  makeSavedUIOptions() {
+    return {
+      display_mode: this.displayMode,
+      zoom_index: this.zoomIndex
+    };
+  }
+  clearCriteria() {
+    const ret = this.clone();
+    ret.criteria = [];
+    ret.currentPage = 1;
+    return ret;
+  }
+  removeCriterion(type2) {
+    const ret = this.clone();
+    const c = ret.criteria.find((cc) => cc.criterionOption.type === type2);
+    if (!c)
+      return ret;
+    const newCriteria = ret.criteria.filter((cc) => {
+      return cc.getId() !== c.getId();
+    });
+    ret.criteria = newCriteria;
+    ret.currentPage = 1;
+    return ret;
+  }
+  removeCustomFieldCriterion(type2, index2) {
+    const ret = this.clone();
+    const c = ret.criteria.find((cc) => cc.criterionOption.type === type2);
+    if (!c)
+      return ret;
+    if (c instanceof CustomFieldsCriterion) {
+      const newCriteria = c.value.filter((_, i) => i !== index2);
+      c.value = newCriteria;
+    }
+    return ret;
+  }
+  setPageSize(pageSize) {
+    const ret = this.clone();
+    ret.itemsPerPage = pageSize;
+    return ret;
+  }
+  changePage(page) {
+    const ret = this.clone();
+    ret.currentPage = page;
+    return ret;
+  }
+  setZoom(zoomIndex) {
+    const ret = this.clone();
+    ret.zoomIndex = zoomIndex;
+    return ret;
+  }
+  setDisplayMode(displayMode) {
+    const ret = this.clone();
+    ret.displayMode = displayMode;
+    return ret;
+  }
+}
+var isBrowser$2 = typeof window !== "undefined";
+function resolveHookState(nextState, currentState) {
+  if (typeof nextState === "function") {
+    return nextState.length ? nextState(currentState) : nextState();
+  }
+  return nextState;
+}
+var useIsomorphicLayoutEffect$1 = isBrowser$2 ? reactExports.useLayoutEffect : reactExports.useEffect;
+var useEffectOnce = function(effect) {
+  reactExports.useEffect(effect, []);
+};
+function createGlobalState(initialState) {
+  var store = {
+    state: initialState instanceof Function ? initialState() : initialState,
+    setState: function(nextState) {
+      store.state = resolveHookState(nextState, store.state);
+      store.setters.forEach(function(setter) {
+        return setter(store.state);
+      });
+    },
+    setters: []
+  };
+  return function() {
+    var _a2 = reactExports.useState(store.state), globalState = _a2[0], stateSetter = _a2[1];
+    useEffectOnce(function() {
+      return function() {
+        store.setters = store.setters.filter(function(setter) {
+          return setter !== stateSetter;
+        });
+      };
+    });
+    useIsomorphicLayoutEffect$1(function() {
+      if (!store.setters.includes(stateSetter)) {
+        store.setters.push(stateSetter);
+      }
+    });
+    return [globalState, store.setState];
+  };
+}
+const useCurrentSceneFilter = createGlobalState();
+const useCurrentSceneFilterId = createGlobalState();
+const useSceneFiltersLoading = createGlobalState(true);
+const useSceneFiltersError = createGlobalState();
+function useSceneFilters() {
+  const [sceneFiltersLoading, setSceneFiltersLoading] = useSceneFiltersLoading();
+  const [sceneFiltersError, setSceneFiltersError] = useSceneFiltersError();
+  const [currentSceneFilter, setCurrentSceneFilter] = useCurrentSceneFilter();
+  const [currentSceneFilterId, setCurrentSceneFilterId] = useCurrentSceneFilterId();
+  const apolloClient = useApolloClient();
+  const {
+    general: { stashDefaultScenesFilter, savedSceneFiltersNameAndIds },
+    tv: { defaultFilterId: stashTvDefaultFilterId },
+    loading: stashConfigLoading
+  } = useStashConfigStore();
+  const { isRandomised } = useAppStateStore();
+  reactExports.useEffect(() => {
+    if (stashConfigLoading || currentSceneFilter) return;
+    async function setCurrentSceneFilterOnInitialLoad() {
+      try {
+        if (stashTvDefaultFilterId) {
+          await setCurrentSceneFilterById(stashTvDefaultFilterId);
+        } else if (stashDefaultScenesFilter) {
+          setCurrentSceneFilter(
+            convertSavedFilterInStashFormatToUsableFormat(stashDefaultScenesFilter)
+          );
+          setCurrentSceneFilterId(void 0);
+        } else {
+          setCurrentSceneFilter({
+            generalFilter: {},
+            sceneFilter: {}
+          });
+          setCurrentSceneFilterId(void 0);
+        }
+      } catch (error) {
+        setSceneFiltersError(error);
+      }
+      setSceneFiltersLoading(false);
+    }
+    setCurrentSceneFilterOnInitialLoad();
+  }, [stashConfigLoading, stashTvDefaultFilterId, stashDefaultScenesFilter]);
+  async function setCurrentSceneFilterById(id) {
+    const sceneFiltersStashResponse = await fetchSavedFilterFromStash(apolloClient, id);
+    if (!sceneFiltersStashResponse) {
+      return void 0;
+    }
+    setCurrentSceneFilter(
+      convertSavedFilterInStashFormatToUsableFormat(
+        sceneFiltersStashResponse
+      )
+    );
+    setCurrentSceneFilterId(id);
+  }
+  async function fetchSavedFilterFromStash(apolloClient2, filterId) {
+    const { data: data2 } = await apolloClient2.query({
+      query: FindSavedFilterDocument,
+      variables: { id: filterId }
+    });
+    return data2?.findSavedFilter ?? null;
+  }
+  function convertSavedFilterInStashFormatToUsableFormat(stashFormatFilter) {
+    return {
+      generalFilter: processSavedFilterToGeneralFilter(
+        stashFormatFilter,
+        { forceRandomise: isRandomised }
+      ),
+      sceneFilter: processSavedFilterToSceneFilter(stashFormatFilter)
+    };
+  }
+  return {
+    sceneFiltersLoading,
+    sceneFiltersError,
+    currentSceneFilter,
+    currentSceneFilterId,
+    setCurrentSceneFilterById,
+    sceneFiltersNameAndIds: savedSceneFiltersNameAndIds,
+    defaultStashTvFilterId: stashTvDefaultFilterId
+  };
+}
+const processSavedFilterToGeneralFilter = (savedFilter, { forceRandomise }) => {
+  const filter = new ListFilterModel(FilterMode.Scenes);
+  filter.configureFromSavedFilter(savedFilter);
+  const updatedFilter = { ...filter.makeFindFilter() };
+  if (updatedFilter.sort?.match(/^random_\d*$/) || forceRandomise) {
+    let seed = Math.round(Math.random() * 1e6);
+    updatedFilter.sort = `random_${seed}`;
+  }
+  return updatedFilter;
+};
+const processSavedFilterToSceneFilter = (savedFilter) => {
+  const filter = new ListFilterModel(FilterMode.Scenes);
+  filter.configureFromSavedFilter(savedFilter);
+  return filter.makeFilter();
+};
 const scenesPerPage = 20;
 function useScenes() {
-  const { sceneFilter } = useAppStateStore();
+  const { currentSceneFilter } = useSceneFilters();
   const {
     data: data2,
     fetchMore,
@@ -168348,14 +171880,14 @@ function useScenes() {
   } = useFindScenesForTvQuery({
     variables: {
       filter: {
-        ...sceneFilter?.generalFilter,
+        ...currentSceneFilter?.generalFilter,
         // We manage pagination ourselves and so override whatever the saved filter had
         page: 1,
         per_page: scenesPerPage
       },
-      scene_filter: sceneFilter?.sceneFilter
+      scene_filter: currentSceneFilter?.sceneFilter
     },
-    skip: !sceneFilter
+    skip: !currentSceneFilter
   });
   return {
     scenes: data2?.findScenes?.scenes ?? [],
@@ -168364,12 +171896,12 @@ function useScenes() {
       fetchMore({
         variables: {
           filter: {
-            ...sceneFilter?.generalFilter,
+            ...currentSceneFilter?.generalFilter,
             // We manage pagination ourselves and so override whatever the saved filter had
             page: nextPage,
             per_page: scenesPerPage
           },
-          scene_filter: sceneFilter?.sceneFilter
+          scene_filter: currentSceneFilter?.sceneFilter
         }
       });
     },
@@ -170051,7 +173583,7 @@ function _taggedTemplateLiteral(e, t3) {
 }
 const min = Math.min;
 const max = Math.max;
-const round$1 = Math.round;
+const round = Math.round;
 const floor = Math.floor;
 const createCoords = (v) => ({
   x: v,
@@ -170187,7 +173719,7 @@ function getCssDimensions(element) {
   const hasOffset = isHTMLElement(element);
   const offsetWidth = hasOffset ? element.offsetWidth : width2;
   const offsetHeight = hasOffset ? element.offsetHeight : height2;
-  const shouldFallback = round$1(width2) !== offsetWidth || round$1(height2) !== offsetHeight;
+  const shouldFallback = round(width2) !== offsetWidth || round(height2) !== offsetHeight;
   if (shouldFallback) {
     width2 = offsetWidth;
     height2 = offsetHeight;
@@ -170212,8 +173744,8 @@ function getScale(element) {
     height: height2,
     $: $2
   } = getCssDimensions(domElement);
-  let x2 = ($2 ? round$1(rect.width) : rect.width) / width2;
-  let y = ($2 ? round$1(rect.height) : rect.height) / height2;
+  let x2 = ($2 ? round(rect.width) : rect.width) / width2;
+  let y = ($2 ? round(rect.height) : rect.height) / height2;
   if (!x2 || !Number.isFinite(x2)) {
     x2 = 1;
   }
@@ -171651,7 +175183,7 @@ var LiveRegion = function LiveRegion2(props) {
   }, isFocused && !isInitialFocus && ScreenReaderText));
 };
 var LiveRegion$1 = LiveRegion;
-var diacritics$1 = [{
+var diacritics = [{
   base: "A",
   letters: "AⒶＡÀÁÂẦẤẪẨÃĀĂẰẮẴẲȦǠÄǞẢÅǺǍȀȂẠẬẶḀĄȺⱯ"
 }, {
@@ -171904,12 +175436,12 @@ var diacritics$1 = [{
   base: "z",
   letters: "zⓩｚźẑżžẓẕƶȥɀⱬꝣ"
 }];
-var anyDiacritic = new RegExp("[" + diacritics$1.map(function(d2) {
+var anyDiacritic = new RegExp("[" + diacritics.map(function(d2) {
   return d2.letters;
 }).join("") + "]", "g");
 var diacriticToBase = {};
-for (var i = 0; i < diacritics$1.length; i++) {
-  var diacritic = diacritics$1[i];
+for (var i = 0; i < diacritics.length; i++) {
+  var diacritic = diacritics[i];
   for (var j = 0; j < diacritic.letters.length; j++) {
     diacriticToBase[diacritic.letters[j]] = diacritic.base;
   }
@@ -178414,10 +181946,19 @@ function SideDrawer({ children, title, closeDisabled, className }) {
   ));
 }
 function SettingsTab() {
-  const { savedSceneFilters, stashTvConfig, updateStashTvConfig } = useStashConfigStore();
-  const { selectedSavedFilterId, setSelectedSavedFilterId, isRandomised, sceneFilter, sceneFilterLoading, setIsRandomised, crtEffect, setCrtEffect } = useAppStateStore();
+  const { updateStashTvConfig, tv: { subtitleLanguage } } = useStashConfigStore();
+  const apolloClient = useApolloClient();
+  const {
+    sceneFiltersNameAndIds,
+    defaultStashTvFilterId,
+    sceneFiltersLoading,
+    currentSceneFilter,
+    currentSceneFilterId,
+    setCurrentSceneFilterById
+  } = useSceneFilters();
+  const { isRandomised, setIsRandomised, crtEffect, setCrtEffect } = useAppStateStore();
   const { scenes, scenesLoading } = useScenes();
-  const noScenesAvailable = !sceneFilterLoading && !scenesLoading && scenes.length === 0;
+  const noScenesAvailable = !sceneFiltersLoading && !scenesLoading && scenes.length === 0;
   const fetchingDataWarning = scenesLoading ? /* @__PURE__ */ React$1.createElement("div", { className: "warning" }, /* @__PURE__ */ React$1.createElement("h2", null, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true }), /* @__PURE__ */ React$1.createElement("span", null, "Fetching data from Stash...")), /* @__PURE__ */ React$1.createElement("p", null, "Please wait while data is loaded.")) : null;
   const reactSelectTheme = (theme) => ({
     ...theme,
@@ -178440,13 +181981,13 @@ function SettingsTab() {
     }
   });
   const filters = reactExports.useMemo(
-    () => savedSceneFilters.map((filter) => ({
+    () => sceneFiltersNameAndIds.map((filter) => ({
       value: filter.id,
-      label: filter.name + (filter.id === stashTvConfig.stashTvDefaultFilterID ? " (default)" : "")
+      label: filter.name + (filter.id === defaultStashTvFilterId ? " (default)" : "")
     })).sort((a2, b) => a2.label.localeCompare(b.label)),
-    [savedSceneFilters, stashTvConfig.stashTvDefaultFilterID]
+    [sceneFiltersNameAndIds, defaultStashTvFilterId]
   );
-  const selectedFilter = reactExports.useMemo(() => filters.find((filter) => filter.value === selectedSavedFilterId), [selectedSavedFilterId, filters]);
+  const selectedFilter = reactExports.useMemo(() => filters.find((filter) => filter.value === currentSceneFilterId), [currentSceneFilterId, filters]);
   const scenelessFilterError = noScenesAvailable ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one.")) : null;
   const subtitlesList = ISO6391.getAllNames().map((name) => ({
     label: name,
@@ -178460,39 +182001,43 @@ function SettingsTab() {
     }
     return 0;
   });
-  const defaultSubtitles = stashTvConfig?.subtitleLanguage ? {
-    label: ISO6391.getName(stashTvConfig.subtitleLanguage),
-    value: stashTvConfig.subtitleLanguage
+  const defaultSubtitles = subtitleLanguage ? {
+    label: ISO6391.getName(subtitleLanguage),
+    value: subtitleLanguage
   } : void 0;
   const onChangeSubLanguage = (option) => {
-    updateStashTvConfig({
-      ...stashTvConfig,
-      subtitleLanguage: option?.value ?? void 0
-    });
+    updateStashTvConfig(
+      apolloClient,
+      {
+        subtitleLanguage: option?.value ?? void 0
+      }
+    );
   };
-  return /* @__PURE__ */ React$1.createElement(SideDrawer, { title: "Settings", closeDisabled: noScenesAvailable || scenesLoading, className: "SettingsTab" }, /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement("h3", null, "Select a filter"), /* @__PURE__ */ React$1.createElement(
+  return /* @__PURE__ */ React$1.createElement(SideDrawer, { title: "Settings", closeDisabled: noScenesAvailable || scenesLoading, className: "SettingsTab" }, /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement("h3", null, "Select a filter"), !sceneFiltersLoading ? /* @__PURE__ */ React$1.createElement(
     StateManagedSelect$1,
     {
       defaultValue: selectedFilter,
-      onChange: (newValue) => setSelectedSavedFilterId(newValue?.value ?? void 0),
+      onChange: (newValue) => newValue && setCurrentSceneFilterById(newValue.value),
       options: filters,
       placeholder: "None selected. Defaulted to all portrait scenes.",
       theme: reactSelectTheme
     }
-  )), /* @__PURE__ */ React$1.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), fetchingDataWarning, scenelessFilterError), selectedFilter && selectedFilter.value !== stashTvConfig.stashTvDefaultFilterID && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
+  ) : /* @__PURE__ */ React$1.createElement("div", null, "Loading...")), /* @__PURE__ */ React$1.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), fetchingDataWarning, scenelessFilterError), selectedFilter && selectedFilter.value !== defaultStashTvFilterId && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
     "button",
     {
       onClick: () => {
-        updateStashTvConfig({
-          ...stashTvConfig,
-          stashTvDefaultFilterID: selectedFilter?.value
-        });
+        updateStashTvConfig(
+          apolloClient,
+          {
+            defaultFilterId: selectedFilter?.value
+          }
+        );
       }
     },
     'Set "',
     selectedFilter?.label,
     '" as the default filter'
-  ), /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement("small", null, "Set the currently selected scene filter as the default filter when opening Stash TV."))), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, sceneFilter?.generalFilter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter is set to random order") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement(
+  ), /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement("small", null, "Set the currently selected scene filter as the default filter when opening Stash TV."))), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, currentSceneFilter?.generalFilter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter is set to random order") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement(
     "input",
     {
       checked: isRandomised,
@@ -178521,9 +182066,10 @@ const Loading = (props) => {
   return /* @__PURE__ */ React$1.createElement("div", { className: "Loading", "data-testid": "Loader" }, /* @__PURE__ */ React$1.createElement("h2", null, props.heading), smallText, /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true })));
 };
 const FeedPage = ({ className }) => {
-  const { showSettings, setShowSettings, sceneFilterLoading, fullscreen } = useAppStateStore();
+  const { showSettings, setShowSettings, fullscreen } = useAppStateStore();
+  const { sceneFiltersLoading } = useSceneFilters();
   const { scenes, scenesLoading } = useScenes();
-  const loadedButNoScenes = !sceneFilterLoading && !scenesLoading && scenes.length === 0;
+  const loadedButNoScenes = !sceneFiltersLoading && !scenesLoading && scenes.length === 0;
   if (loadedButNoScenes && !showSettings) {
     setShowSettings(true);
   }
@@ -178540,3462 +182086,15 @@ const FeedPage = ({ className }) => {
       document.exitFullscreen?.();
     }
   }, [fullscreen]);
-  return /* @__PURE__ */ React$1.createElement("main", { "data-testid": "FeedPage", ref: pageRef, className }, scenesLoading && /* @__PURE__ */ React$1.createElement(Loading, { heading: "Fetching scenes..." }), scenes.length > 0 && /* @__PURE__ */ React$1.createElement(VideoScroller, null), loadedButNoScenes && /* @__PURE__ */ React$1.createElement("div", null, "No Scenes Found"), /* @__PURE__ */ React$1.createElement(SettingsTab, null));
+  return /* @__PURE__ */ React$1.createElement("main", { "data-testid": "FeedPage", ref: pageRef, className }, (sceneFiltersLoading || scenesLoading) && /* @__PURE__ */ React$1.createElement(Loading, { heading: "Fetching scenes..." }), scenes.length > 0 && /* @__PURE__ */ React$1.createElement(VideoScroller, null), loadedButNoScenes && /* @__PURE__ */ React$1.createElement("div", null, "No Scenes Found"), /* @__PURE__ */ React$1.createElement(SettingsTab, null));
 };
-const modifierMessageIDs = {
-  [CriterionModifier.Equals]: "criterion_modifier.equals",
-  [CriterionModifier.NotEquals]: "criterion_modifier.not_equals",
-  [CriterionModifier.GreaterThan]: "criterion_modifier.greater_than",
-  [CriterionModifier.LessThan]: "criterion_modifier.less_than",
-  [CriterionModifier.IsNull]: "criterion_modifier.is_null",
-  [CriterionModifier.NotNull]: "criterion_modifier.not_null",
-  [CriterionModifier.Includes]: "criterion_modifier.includes",
-  [CriterionModifier.IncludesAll]: "criterion_modifier.includes_all",
-  [CriterionModifier.Excludes]: "criterion_modifier.excludes",
-  [CriterionModifier.MatchesRegex]: "criterion_modifier.matches_regex",
-  [CriterionModifier.NotMatchesRegex]: "criterion_modifier.not_matches_regex",
-  [CriterionModifier.Between]: "criterion_modifier.between",
-  [CriterionModifier.NotBetween]: "criterion_modifier.not_between"
-};
-class Criterion {
-  constructor(type2) {
-    Object.defineProperty(this, "criterionOption", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    this.criterionOption = type2;
-  }
-  isValid() {
-    return true;
-  }
-  clone() {
-    const ret = Object.assign(Object.create(Object.getPrototypeOf(this)), this);
-    ret.cloneValues();
-    return ret;
-  }
-  cloneValues() {
-  }
-  getId() {
-    return `${this.criterionOption.type}`;
-  }
-}
-class ModifierCriterion extends Criterion {
-  constructor(type2, value) {
-    super(type2);
-    Object.defineProperty(this, "_modifier", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "_value", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    this.modifier = type2.defaultModifier;
-    this.value = value;
-  }
-  get modifier() {
-    return this._modifier;
-  }
-  set modifier(value) {
-    this._modifier = value;
-  }
-  get value() {
-    return this._value;
-  }
-  set value(newValue) {
-    this._value = newValue;
-  }
-  isValid() {
-    return true;
-  }
-  modifierCriterionOption() {
-    return this.criterionOption;
-  }
-  clone() {
-    const ret = Object.assign(Object.create(Object.getPrototypeOf(this)), this);
-    ret.cloneValues();
-    return ret;
-  }
-  cloneValues() {
-  }
-  static getModifierLabel(intl, modifier) {
-    const modifierMessageID = modifierMessageIDs[modifier];
-    return modifierMessageID ? intl.formatMessage({ id: modifierMessageID }) : "";
-  }
-  getLabel(intl) {
-    const modifierString = ModifierCriterion.getModifierLabel(intl, this.modifier);
-    let valueString = "";
-    if (this.modifier !== CriterionModifier.IsNull && this.modifier !== CriterionModifier.NotNull) {
-      valueString = this.getLabelValue(intl);
-    }
-    return intl.formatMessage({ id: "criterion_modifier.format_string" }, {
-      criterion: intl.formatMessage({ id: this.criterionOption.messageID }),
-      modifierString,
-      valueString
-    });
-  }
-  toQueryParams() {
-    let encodedCriterion = {
-      type: this.criterionOption.type,
-      modifier: this.modifier
-    };
-    if (this.modifier !== CriterionModifier.IsNull && this.modifier !== CriterionModifier.NotNull) {
-      encodedCriterion.value = this.encodeValue();
-    }
-    return encodedCriterion;
-  }
-  encodeValue() {
-    return this.value;
-  }
-  decodeValue(v) {
-    if (v !== void 0 && v !== null) {
-      this.value = v;
-    }
-  }
-  fromDecodedParams(i) {
-    const c = i;
-    this.modifier = c.modifier;
-    this.decodeValue(c.value);
-  }
-  setFromSavedCriterion(criterion) {
-    const c = criterion;
-    if (c.value !== void 0 && c.value !== null) {
-      this.value = c.value;
-    }
-    this.modifier = c.modifier;
-  }
-  applyToCriterionInput(input) {
-    input[this.criterionOption.type] = this.toCriterionInput();
-  }
-  // TODO - saved criterion _should_ be criterion input
-  // kicking this can down the road a little further
-  applyToSavedCriterion(input) {
-    input[this.criterionOption.type] = {
-      value: this.value,
-      modifier: this.modifier
-    };
-  }
-  toCriterionInput() {
-    return {
-      value: this.value,
-      modifier: this.modifier
-    };
-  }
-}
-class CriterionOption {
-  constructor(options2) {
-    var _a2;
-    Object.defineProperty(this, "type", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "messageID", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "makeCriterionFn", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "hidden", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: false
-    });
-    this.type = options2.type;
-    this.messageID = options2.messageID;
-    this.makeCriterionFn = options2.makeCriterion;
-    this.hidden = (_a2 = options2.hidden) !== null && _a2 !== void 0 ? _a2 : false;
-  }
-  makeCriterion(config2) {
-    return this.makeCriterionFn(this, config2);
-  }
-}
-class ModifierCriterionOption extends CriterionOption {
-  constructor(options2) {
-    var _a2, _b2;
-    super(options2);
-    Object.defineProperty(this, "modifierOptions", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "defaultModifier", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "options", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "inputType", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    this.modifierOptions = (_a2 = options2.modifierOptions) !== null && _a2 !== void 0 ? _a2 : [];
-    this.defaultModifier = (_b2 = options2.defaultModifier) !== null && _b2 !== void 0 ? _b2 : CriterionModifier.Equals;
-    this.options = options2.options;
-    this.inputType = options2.inputType;
-  }
-}
-class ILabeledIdCriterionOption extends ModifierCriterionOption {
-  constructor(messageID, value, includeAll, inputType2, makeCriterion) {
-    const modifierOptions2 = [
-      CriterionModifier.Includes,
-      CriterionModifier.Excludes,
-      CriterionModifier.IsNull,
-      CriterionModifier.NotNull
-    ];
-    let defaultModifier2 = CriterionModifier.Includes;
-    if (includeAll) {
-      modifierOptions2.unshift(CriterionModifier.IncludesAll);
-      defaultModifier2 = CriterionModifier.IncludesAll;
-    }
-    super({
-      messageID,
-      type: value,
-      modifierOptions: modifierOptions2,
-      defaultModifier: defaultModifier2,
-      inputType: inputType2,
-      makeCriterion: makeCriterion ? makeCriterion : () => new ILabeledIdCriterion(this)
-    });
-  }
-}
-class ILabeledIdCriterion extends ModifierCriterion {
-  constructor(type2, value = []) {
-    super(type2, value);
-  }
-  cloneValues() {
-    this.value = this.value.map((v) => ({ ...v }));
-  }
-  getLabelValue(_intl) {
-    return this.value.map((v) => v.label).join(", ");
-  }
-  toCriterionInput() {
-    return {
-      value: this.value.map((v) => v.id),
-      modifier: this.modifier
-    };
-  }
-  isValid() {
-    if (this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) {
-      return true;
-    }
-    return this.value.length > 0;
-  }
-}
-class IHierarchicalLabeledIdCriterion extends ModifierCriterion {
-  constructor(type2, value = {
-    items: [],
-    excluded: [],
-    depth: 0
-  }) {
-    super(type2, value);
-  }
-  cloneValues() {
-    this.value = {
-      ...this.value,
-      items: this.value.items.map((v) => ({ ...v })),
-      excluded: this.value.excluded.map((v) => ({ ...v }))
-    };
-  }
-  get modifier() {
-    return this._modifier;
-  }
-  set modifier(value) {
-    this._modifier = value;
-    if (this.value && value !== CriterionModifier.Includes && value !== CriterionModifier.IncludesAll) {
-      this.value.excluded = [];
-    }
-  }
-  setFromSavedCriterion(criterion) {
-    var _a2;
-    const { modifier, value } = criterion;
-    if (value !== void 0) {
-      this.value = {
-        items: value.items || [],
-        excluded: value.excluded || [],
-        depth: value.depth || 0
-      };
-    }
-    const modifierOptions2 = (_a2 = this.criterionOption.modifierOptions) !== null && _a2 !== void 0 ? _a2 : [];
-    if (modifier === CriterionModifier.Excludes && modifierOptions2.find((m) => m === CriterionModifier.Excludes) === void 0) {
-      this.modifier = CriterionModifier.Includes;
-      this.value.excluded = [...this.value.excluded, ...this.value.items];
-      this.value.items = [];
-    } else {
-      this.modifier = modifier;
-    }
-  }
-  getLabelValue(_intl) {
-    var _a2;
-    const labels = ((_a2 = this.value.items) !== null && _a2 !== void 0 ? _a2 : []).map((v) => v.label).join(", ");
-    if (this.value.depth === 0) {
-      return labels;
-    }
-    return `${labels} (+${this.value.depth > 0 ? this.value.depth : "all"})`;
-  }
-  toCriterionInput() {
-    let excludes = [];
-    const depth = this.modifier === CriterionModifier.Equals ? 0 : this.value.depth;
-    if (this.value.excluded) {
-      excludes = this.value.excluded.map((v) => v.id);
-    }
-    return {
-      value: this.value.items.map((v) => v.id),
-      excludes,
-      modifier: this.modifier,
-      depth
-    };
-  }
-  isValid() {
-    if (this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) {
-      return true;
-    }
-    return this.value.items.length > 0 || this.value.excluded && this.value.excluded.length > 0;
-  }
-  getLabel(intl) {
-    let id = "criterion_modifier.format_string";
-    let modifierString = ModifierCriterion.getModifierLabel(intl, this.modifier);
-    let valueString = "";
-    let excludedString = "";
-    if (this.modifier !== CriterionModifier.IsNull && this.modifier !== CriterionModifier.NotNull) {
-      valueString = this.value.items.map((v) => v.label).join(", ");
-      if (this.value.excluded && this.value.excluded.length > 0) {
-        if (this.value.items.length === 0) {
-          modifierString = ModifierCriterion.getModifierLabel(intl, CriterionModifier.Excludes);
-          valueString = this.value.excluded.map((v) => v.label).join(", ");
-        } else {
-          id = "criterion_modifier.format_string_excludes";
-          excludedString = this.value.excluded.map((v) => v.label).join(", ");
-        }
-      }
-      if (this.value.depth !== 0) {
-        id += "_depth";
-      }
-    }
-    return intl.formatMessage({ id }, {
-      criterion: intl.formatMessage({ id: this.criterionOption.messageID }),
-      modifierString,
-      valueString,
-      excludedString,
-      depth: this.value.depth
-    });
-  }
-}
-class StringCriterionOption extends ModifierCriterionOption {
-  constructor(messageID, value, makeCriterion) {
-    super({
-      messageID,
-      type: value,
-      modifierOptions: [
-        CriterionModifier.Equals,
-        CriterionModifier.NotEquals,
-        CriterionModifier.Includes,
-        CriterionModifier.Excludes,
-        CriterionModifier.IsNull,
-        CriterionModifier.NotNull,
-        CriterionModifier.MatchesRegex,
-        CriterionModifier.NotMatchesRegex
-      ],
-      defaultModifier: CriterionModifier.Equals,
-      inputType: "text",
-      makeCriterion: makeCriterion ? makeCriterion : () => new StringCriterion(this)
-    });
-  }
-}
-function createStringCriterionOption(type2, messageID) {
-  return new StringCriterionOption(messageID !== null && messageID !== void 0 ? messageID : type2, type2);
-}
-class MandatoryStringCriterionOption extends ModifierCriterionOption {
-  constructor(messageID, value) {
-    super({
-      messageID,
-      type: value,
-      modifierOptions: [
-        CriterionModifier.Equals,
-        CriterionModifier.NotEquals,
-        CriterionModifier.Includes,
-        CriterionModifier.Excludes,
-        CriterionModifier.MatchesRegex,
-        CriterionModifier.NotMatchesRegex
-      ],
-      defaultModifier: CriterionModifier.Equals,
-      inputType: "text",
-      makeCriterion: () => new StringCriterion(this)
-    });
-  }
-}
-function createMandatoryStringCriterionOption(value, messageID) {
-  return new MandatoryStringCriterionOption(messageID !== null && messageID !== void 0 ? messageID : value, value);
-}
-class StringCriterion extends ModifierCriterion {
-  constructor(type2) {
-    super(type2, "");
-  }
-  getLabelValue(_intl) {
-    return this.value;
-  }
-  isValid() {
-    return this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull || this.value.length > 0;
-  }
-}
-class MultiStringCriterion extends ModifierCriterion {
-  constructor(type2, value = []) {
-    super(type2, value);
-  }
-  cloneValues() {
-    this.value = this.value.slice();
-  }
-  getLabelValue(_intl) {
-    return this.value.join(", ");
-  }
-  isValid() {
-    return this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull || this.value.length > 0;
-  }
-}
-class BooleanCriterionOption extends ModifierCriterionOption {
-  constructor(messageID, value, makeCriterion) {
-    super({
-      messageID,
-      type: value,
-      modifierOptions: [],
-      defaultModifier: CriterionModifier.Equals,
-      options: ["true", "false"],
-      makeCriterion: makeCriterion ? makeCriterion : () => new BooleanCriterion(this)
-    });
-  }
-}
-function createBooleanCriterionOption(value, messageID) {
-  return new BooleanCriterionOption(value, value);
-}
-class BooleanCriterion extends StringCriterion {
-  toCriterionInput() {
-    return this.value === "true";
-  }
-  isValid() {
-    return this.value === "true" || this.value === "false";
-  }
-}
-class StringBooleanCriterionOption extends ModifierCriterionOption {
-  constructor(messageID, value, makeCriterion) {
-    super({
-      messageID,
-      type: value,
-      options: ["true", "false"],
-      makeCriterion: makeCriterion ? makeCriterion : () => new StringBooleanCriterion(this)
-    });
-  }
-}
-class StringBooleanCriterion extends StringCriterion {
-  toCriterionInput() {
-    return this.value;
-  }
-  isValid() {
-    return this.value === "true" || this.value === "false";
-  }
-}
-class NumberCriterionOption extends ModifierCriterionOption {
-  constructor(messageID, value) {
-    super({
-      messageID,
-      type: value,
-      modifierOptions: [
-        CriterionModifier.Equals,
-        CriterionModifier.NotEquals,
-        CriterionModifier.GreaterThan,
-        CriterionModifier.LessThan,
-        CriterionModifier.IsNull,
-        CriterionModifier.NotNull,
-        CriterionModifier.Between,
-        CriterionModifier.NotBetween
-      ],
-      defaultModifier: CriterionModifier.Equals,
-      inputType: "number",
-      makeCriterion: () => new NumberCriterion(this)
-    });
-  }
-}
-function createNumberCriterionOption(value, messageID) {
-  return new NumberCriterionOption(messageID !== null && messageID !== void 0 ? messageID : value, value);
-}
-class NullNumberCriterionOption extends ModifierCriterionOption {
-  constructor(messageID, value, makeCriterion) {
-    super({
-      messageID,
-      type: value,
-      modifierOptions: [
-        CriterionModifier.Equals,
-        CriterionModifier.NotEquals,
-        CriterionModifier.GreaterThan,
-        CriterionModifier.LessThan,
-        CriterionModifier.Between,
-        CriterionModifier.NotBetween,
-        CriterionModifier.IsNull,
-        CriterionModifier.NotNull
-      ],
-      defaultModifier: CriterionModifier.Equals,
-      inputType: "number",
-      makeCriterion: makeCriterion ? makeCriterion : () => new NumberCriterion(this)
-    });
-  }
-}
-class MandatoryNumberCriterionOption extends ModifierCriterionOption {
-  constructor(messageID, value, makeCriterion) {
-    super({
-      messageID,
-      type: value,
-      modifierOptions: [
-        CriterionModifier.Equals,
-        CriterionModifier.NotEquals,
-        CriterionModifier.GreaterThan,
-        CriterionModifier.LessThan,
-        CriterionModifier.Between,
-        CriterionModifier.NotBetween
-      ],
-      defaultModifier: CriterionModifier.Equals,
-      inputType: "number",
-      makeCriterion: makeCriterion ? makeCriterion : () => new NumberCriterion(this)
-    });
-  }
-}
-function createMandatoryNumberCriterionOption(value, messageID) {
-  return new MandatoryNumberCriterionOption(messageID !== null && messageID !== void 0 ? messageID : value, value);
-}
-function encodeRangeValue(modifier, value) {
-  if (modifier === CriterionModifier.Between || modifier === CriterionModifier.NotBetween) {
-    return { value: value.value, value2: value.value2 };
-  }
-  return { value: value.value };
-}
-function decodeRangeValue(v) {
-  if (typeof v.value === "object") {
-    return v.value;
-  } else {
-    return { value: v.value, value2: v.value2 };
-  }
-}
-class NumberCriterion extends ModifierCriterion {
-  constructor(type2) {
-    super(type2, { value: void 0, value2: void 0 });
-  }
-  cloneValues() {
-    this.value = { ...this.value };
-  }
-  get value() {
-    return this._value;
-  }
-  set value(newValue) {
-    if (typeof newValue !== "object") {
-      this._value = {
-        value: newValue,
-        value2: void 0
-      };
-    } else {
-      this._value = newValue;
-    }
-  }
-  toCriterionInput() {
-    var _a2, _b2, _c;
-    return {
-      modifier: this.modifier,
-      value: (_b2 = (_a2 = this.value) === null || _a2 === void 0 ? void 0 : _a2.value) !== null && _b2 !== void 0 ? _b2 : 0,
-      value2: (_c = this.value) === null || _c === void 0 ? void 0 : _c.value2
-    };
-  }
-  setFromSavedCriterion(c) {
-    super.setFromSavedCriterion(c);
-  }
-  encodeValue() {
-    return encodeRangeValue(this.modifier, this.value);
-  }
-  getLabelValue(_intl) {
-    const { value, value2 } = this.value;
-    if (this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween) {
-      return `${value}, ${value2 !== null && value2 !== void 0 ? value2 : 0}`;
-    } else {
-      return `${value}`;
-    }
-  }
-  isValid() {
-    if (this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) {
-      return true;
-    }
-    const { value, value2 } = this.value;
-    if (value === void 0) {
-      return false;
-    }
-    if (value2 === void 0 && (this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween)) {
-      return false;
-    }
-    return true;
-  }
-}
-class DurationCriterionOption extends MandatoryNumberCriterionOption {
-  constructor(messageID, value) {
-    super(messageID, value, () => new DurationCriterion(this));
-  }
-}
-function createDurationCriterionOption(value, messageID) {
-  return new DurationCriterionOption(value, value);
-}
-class NullDurationCriterionOption extends NullNumberCriterionOption {
-  constructor(messageID, value) {
-    super(messageID, value, () => new DurationCriterion(this));
-  }
-}
-function createNullDurationCriterionOption(value, messageID) {
-  return new NullDurationCriterionOption(value, value);
-}
-class DurationCriterion extends ModifierCriterion {
-  constructor(type2) {
-    super(type2, { value: void 0, value2: void 0 });
-  }
-  cloneValues() {
-    this.value = { ...this.value };
-  }
-  toCriterionInput() {
-    var _a2, _b2, _c;
-    return {
-      modifier: this.modifier,
-      value: (_b2 = (_a2 = this.value) === null || _a2 === void 0 ? void 0 : _a2.value) !== null && _b2 !== void 0 ? _b2 : 0,
-      value2: (_c = this.value) === null || _c === void 0 ? void 0 : _c.value2
-    };
-  }
-  setFromSavedCriterion(c) {
-    super.setFromSavedCriterion(c);
-  }
-  encodeValue() {
-    return encodeRangeValue(this.modifier, this.value);
-  }
-  getLabelValue(_intl) {
-    var _a2, _b2;
-    const value = TextUtils.secondsToTimestamp((_a2 = this.value.value) !== null && _a2 !== void 0 ? _a2 : 0);
-    const value2 = TextUtils.secondsToTimestamp((_b2 = this.value.value2) !== null && _b2 !== void 0 ? _b2 : 0);
-    if (this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween) {
-      return `${value}, ${value2}`;
-    } else {
-      return value;
-    }
-  }
-  isValid() {
-    if (this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) {
-      return true;
-    }
-    const { value, value2 } = this.value;
-    if (value === void 0) {
-      return false;
-    }
-    if (value2 === void 0 && (this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween)) {
-      return false;
-    }
-    return true;
-  }
-}
-class DateCriterionOption extends ModifierCriterionOption {
-  constructor(messageID, value) {
-    super({
-      messageID,
-      type: value,
-      modifierOptions: [
-        CriterionModifier.Equals,
-        CriterionModifier.NotEquals,
-        CriterionModifier.GreaterThan,
-        CriterionModifier.LessThan,
-        CriterionModifier.IsNull,
-        CriterionModifier.NotNull,
-        CriterionModifier.Between,
-        CriterionModifier.NotBetween
-      ],
-      defaultModifier: CriterionModifier.Equals,
-      inputType: "text",
-      makeCriterion: () => new DateCriterion(this)
-    });
-  }
-}
-function createDateCriterionOption(value) {
-  return new DateCriterionOption(value, value);
-}
-class DateCriterion extends ModifierCriterion {
-  constructor(type2) {
-    super(type2, { value: "", value2: void 0 });
-  }
-  cloneValues() {
-    this.value = { ...this.value };
-  }
-  setFromSavedCriterion(c) {
-    super.setFromSavedCriterion(c);
-  }
-  encodeValue() {
-    return encodeRangeValue(this.modifier, this.value);
-  }
-  toCriterionInput() {
-    var _a2, _b2, _c;
-    return {
-      modifier: this.modifier,
-      value: (_b2 = (_a2 = this.value) === null || _a2 === void 0 ? void 0 : _a2.value) !== null && _b2 !== void 0 ? _b2 : "",
-      value2: (_c = this.value) === null || _c === void 0 ? void 0 : _c.value2
-    };
-  }
-  getLabelValue() {
-    const { value } = this.value;
-    return this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween ? `${value}, ${this.value.value2}` : `${value}`;
-  }
-  isValid() {
-    if (this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) {
-      return true;
-    }
-    const { value, value2 } = this.value;
-    if (!value) {
-      return false;
-    }
-    if (!value2 && (this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween)) {
-      return false;
-    }
-    return true;
-  }
-}
-class MandatoryTimestampCriterionOption extends ModifierCriterionOption {
-  constructor(messageID, value) {
-    super({
-      messageID,
-      type: value,
-      modifierOptions: [
-        CriterionModifier.GreaterThan,
-        CriterionModifier.LessThan,
-        CriterionModifier.Between,
-        CriterionModifier.NotBetween
-      ],
-      defaultModifier: CriterionModifier.GreaterThan,
-      inputType: "text",
-      makeCriterion: () => new TimestampCriterion(this)
-    });
-  }
-}
-function createMandatoryTimestampCriterionOption(value) {
-  return new MandatoryTimestampCriterionOption(value, value);
-}
-class TimestampCriterion extends ModifierCriterion {
-  constructor(type2) {
-    super(type2, { value: "", value2: void 0 });
-  }
-  cloneValues() {
-    this.value = { ...this.value };
-  }
-  toCriterionInput() {
-    var _a2;
-    return {
-      modifier: this.modifier,
-      value: this.transformValueToInput((_a2 = this.value.value) !== null && _a2 !== void 0 ? _a2 : ""),
-      value2: this.value.value2 ? this.transformValueToInput(this.value.value2) : null
-    };
-  }
-  setFromSavedCriterion(c) {
-    super.setFromSavedCriterion(c);
-    this.value = decodeRangeValue(c);
-  }
-  encodeValue() {
-    return encodeRangeValue(this.modifier, this.value);
-  }
-  getLabelValue() {
-    const { value } = this.value;
-    return this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween ? `${value}, ${this.value.value2}` : `${value}`;
-  }
-  transformValueToInput(value) {
-    value = value.trim();
-    if (/^\d{4}-\d{2}-\d{2}(( |T)\d{2}:\d{2})?$/.test(value)) {
-      return value.replace(" ", "T");
-    }
-    return "";
-  }
-  isValid() {
-    if (this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) {
-      return true;
-    }
-    const { value, value2 } = this.value;
-    if (!value) {
-      return false;
-    }
-    if (!value2 && (this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween)) {
-      return false;
-    }
-    return true;
-  }
-}
-const FavoritePerformerCriterionOption = new BooleanCriterionOption("favourite", "filter_favorites", () => new FavoritePerformerCriterion());
-class FavoritePerformerCriterion extends BooleanCriterion {
-  constructor() {
-    super(FavoritePerformerCriterionOption);
-  }
-}
-const FavoriteTagCriterionOption = new BooleanCriterionOption("favourite", "favorite", () => new FavoriteTagCriterion());
-class FavoriteTagCriterion extends BooleanCriterion {
-  constructor() {
-    super(FavoriteTagCriterionOption);
-  }
-}
-const FavoriteStudioCriterionOption = new BooleanCriterionOption("favourite", "favorite", () => new FavoriteStudioCriterion());
-class FavoriteStudioCriterion extends BooleanCriterion {
-  constructor() {
-    super(FavoriteStudioCriterionOption);
-  }
-}
-const PerformerFavoriteCriterionOption = new BooleanCriterionOption("performer_favorite", "performer_favorite", () => new PerformerFavoriteCriterion());
-class PerformerFavoriteCriterion extends BooleanCriterion {
-  constructor() {
-    super(PerformerFavoriteCriterionOption);
-  }
-}
-class IsMissingCriterion extends StringCriterion {
-  toCriterionInput() {
-    return this.value;
-  }
-}
-class IsMissingCriterionOption extends ModifierCriterionOption {
-  constructor(messageID, type2, options2) {
-    super({
-      messageID,
-      type: type2,
-      options: options2,
-      modifierOptions: [],
-      defaultModifier: CriterionModifier.Equals,
-      makeCriterion: () => new IsMissingCriterion(this)
-    });
-  }
-}
-const SceneIsMissingCriterionOption = new IsMissingCriterionOption("isMissing", "is_missing", [
-  "title",
-  "cover",
-  "details",
-  "url",
-  "date",
-  "galleries",
-  "studio",
-  "movie",
-  "performers",
-  "tags",
-  "stash_id"
-]);
-const ImageIsMissingCriterionOption = new IsMissingCriterionOption("isMissing", "is_missing", ["title", "galleries", "studio", "performers", "tags"]);
-const PerformerIsMissingCriterionOption = new IsMissingCriterionOption("isMissing", "is_missing", [
-  "url",
-  "ethnicity",
-  "country",
-  "hair_color",
-  "eye_color",
-  "height",
-  "weight",
-  "measurements",
-  "fake_tits",
-  "career_length",
-  "tattoos",
-  "piercings",
-  "aliases",
-  "gender",
-  "image",
-  "details",
-  "stash_id"
-]);
-const GalleryIsMissingCriterionOption = new IsMissingCriterionOption("isMissing", "is_missing", ["title", "details", "url", "date", "studio", "performers", "tags", "scenes"]);
-const TagIsMissingCriterionOption = new IsMissingCriterionOption("isMissing", "is_missing", ["image"]);
-const StudioIsMissingCriterionOption = new IsMissingCriterionOption("isMissing", "is_missing", ["image", "stash_id", "details"]);
-const GroupIsMissingCriterionOption = new IsMissingCriterionOption("isMissing", "is_missing", ["front_image", "back_image", "scenes"]);
-const OrganizedCriterionOption = new BooleanCriterionOption("organized", "organized", () => new OrganizedCriterion());
-class OrganizedCriterion extends BooleanCriterion {
-  constructor() {
-    super(OrganizedCriterionOption);
-  }
-}
-const HasChaptersCriterionOption = new StringBooleanCriterionOption("hasChapters", "has_chapters", () => new HasChaptersCriterion());
-class HasChaptersCriterion extends StringBooleanCriterion {
-  constructor() {
-    super(HasChaptersCriterionOption);
-  }
-}
-const modifierOptions$4 = [
-  CriterionModifier.IncludesAll,
-  CriterionModifier.Includes,
-  CriterionModifier.Equals,
-  CriterionModifier.IsNull,
-  CriterionModifier.NotNull
-];
-const defaultModifier$4 = CriterionModifier.IncludesAll;
-const inputType$5 = "performers";
-const PerformersCriterionOption = new ModifierCriterionOption({
-  messageID: "performers",
-  type: "performers",
-  modifierOptions: modifierOptions$4,
-  defaultModifier: defaultModifier$4,
-  inputType: inputType$5,
-  makeCriterion: () => new PerformersCriterion()
-});
-class PerformersCriterion extends ModifierCriterion {
-  constructor() {
-    super(PerformersCriterionOption, { items: [], excluded: [] });
-  }
-  cloneValues() {
-    this.value = {
-      ...this.value,
-      items: this.value.items.map((v) => ({ ...v })),
-      excluded: this.value.excluded.map((v) => ({ ...v }))
-    };
-  }
-  get modifier() {
-    return this._modifier;
-  }
-  set modifier(value) {
-    this._modifier = value;
-    if (value !== CriterionModifier.Includes && value !== CriterionModifier.IncludesAll) {
-      this.value.excluded = [];
-    }
-  }
-  setFromSavedCriterion(criterion) {
-    const { modifier, value } = criterion;
-    if (Array.isArray(value)) {
-      this.value = { items: value, excluded: [] };
-    } else if (value !== void 0) {
-      this.value = {
-        items: value.items || [],
-        excluded: value.excluded || []
-      };
-    }
-    if (modifier === CriterionModifier.Excludes) {
-      this.modifier = CriterionModifier.Includes;
-      this.value.excluded = [...this.value.excluded, ...this.value.items];
-      this.value.items = [];
-    } else {
-      this.modifier = modifier;
-    }
-  }
-  getLabelValue(_intl) {
-    return this.value.items.map((v) => v.label).join(", ");
-  }
-  toCriterionInput() {
-    let excludes = [];
-    if (this.value.excluded) {
-      excludes = this.value.excluded.map((v) => v.id);
-    }
-    return {
-      value: this.value.items.map((v) => v.id),
-      excludes,
-      modifier: this.modifier
-    };
-  }
-  isValid() {
-    if (this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) {
-      return true;
-    }
-    return this.value.items.length > 0 || this.value.excluded && this.value.excluded.length > 0;
-  }
-  getLabel(intl) {
-    let id = "criterion_modifier.format_string";
-    let modifierString = ModifierCriterion.getModifierLabel(intl, this.modifier);
-    let valueString = "";
-    let excludedString = "";
-    if (this.modifier !== CriterionModifier.IsNull && this.modifier !== CriterionModifier.NotNull) {
-      valueString = this.value.items.map((v) => v.label).join(", ");
-      if (this.value.excluded && this.value.excluded.length > 0) {
-        if (this.value.items.length === 0) {
-          modifierString = ModifierCriterion.getModifierLabel(intl, CriterionModifier.Excludes);
-          valueString = this.value.excluded.map((v) => v.label).join(", ");
-        } else {
-          id = "criterion_modifier.format_string_excludes";
-          excludedString = this.value.excluded.map((v) => v.label).join(", ");
-        }
-      }
-    }
-    return intl.formatMessage({ id }, {
-      criterion: intl.formatMessage({ id: this.criterionOption.messageID }),
-      modifierString,
-      valueString,
-      excludedString
-    });
-  }
-}
-const stringResolutionMap = /* @__PURE__ */ new Map([
-  ["144p", ResolutionEnum.VeryLow],
-  ["240p", ResolutionEnum.Low],
-  ["360p", ResolutionEnum.R360P],
-  ["480p", ResolutionEnum.Standard],
-  ["540p", ResolutionEnum.WebHd],
-  ["720p", ResolutionEnum.StandardHd],
-  ["1080p", ResolutionEnum.FullHd],
-  ["1440p", ResolutionEnum.QuadHd],
-  // ["1920p", ResolutionEnum.VrHd],
-  ["4k", ResolutionEnum.FourK],
-  ["5k", ResolutionEnum.FiveK],
-  ["6k", ResolutionEnum.SixK],
-  ["7k", ResolutionEnum.SevenK],
-  ["8k", ResolutionEnum.EightK],
-  ["Huge", ResolutionEnum.Huge]
-]);
-const stringToResolution = (value, caseInsensitive) => {
-  if (!value) {
-    return void 0;
-  }
-  const ret = stringResolutionMap.get(value);
-  {
-    return ret;
-  }
-};
-const resolutionStrings = Array.from(stringResolutionMap.keys());
-class BaseResolutionCriterionOption extends ModifierCriterionOption {
-  constructor(value, makeCriterion) {
-    super({
-      messageID: value,
-      type: value,
-      modifierOptions: [
-        CriterionModifier.Equals,
-        CriterionModifier.NotEquals,
-        CriterionModifier.GreaterThan,
-        CriterionModifier.LessThan
-      ],
-      options: resolutionStrings,
-      makeCriterion
-    });
-  }
-}
-class BaseResolutionCriterion extends StringCriterion {
-  toCriterionInput() {
-    const value = stringToResolution(this.value);
-    if (value !== void 0) {
-      return {
-        value,
-        modifier: this.modifier
-      };
-    }
-  }
-}
-const ResolutionCriterionOption = new BaseResolutionCriterionOption("resolution", () => new ResolutionCriterion());
-class ResolutionCriterion extends BaseResolutionCriterion {
-  constructor() {
-    super(ResolutionCriterionOption);
-  }
-}
-const AverageResolutionCriterionOption = new BaseResolutionCriterionOption("average_resolution", () => new AverageResolutionCriterion());
-class AverageResolutionCriterion extends BaseResolutionCriterion {
-  constructor() {
-    super(AverageResolutionCriterionOption);
-  }
-}
-const inputType$4 = "scenes";
-const ScenesCriterionOption = new ILabeledIdCriterionOption("scenes", "scenes", true, inputType$4, () => new ScenesCriterion());
-class ScenesCriterion extends ILabeledIdCriterion {
-  constructor() {
-    super(ScenesCriterionOption);
-  }
-}
-const modifierOptions$3 = [
-  CriterionModifier.Includes,
-  CriterionModifier.Excludes
-];
-const defaultModifier$3 = CriterionModifier.Includes;
-const MarkersScenesCriterionOption = new ModifierCriterionOption({
-  messageID: "scenes",
-  type: "scenes",
-  modifierOptions: modifierOptions$3,
-  defaultModifier: defaultModifier$3,
-  inputType: inputType$4,
-  makeCriterion: () => new MarkersScenesCriterion()
-});
-class MarkersScenesCriterion extends ILabeledIdCriterion {
-  constructor() {
-    super(MarkersScenesCriterionOption);
-  }
-}
-const modifierOptions$2 = [
-  CriterionModifier.Includes,
-  CriterionModifier.IsNull,
-  CriterionModifier.NotNull
-];
-const defaultModifier$2 = CriterionModifier.Includes;
-const inputType$3 = "studios";
-const StudiosCriterionOption = new ModifierCriterionOption({
-  messageID: "studios",
-  type: "studios",
-  modifierOptions: modifierOptions$2,
-  defaultModifier: defaultModifier$2,
-  inputType: inputType$3,
-  makeCriterion: () => new StudiosCriterion()
-});
-class StudiosCriterion extends IHierarchicalLabeledIdCriterion {
-  constructor() {
-    super(StudiosCriterionOption);
-  }
-}
-const ParentStudiosCriterionOption = new ILabeledIdCriterionOption("parent_studios", "parents", false, inputType$3, () => new ParentStudiosCriterion());
-class ParentStudiosCriterion extends ILabeledIdCriterion {
-  constructor() {
-    super(ParentStudiosCriterionOption);
-  }
-}
-const defaultModifierOptions = [
-  CriterionModifier.IncludesAll,
-  CriterionModifier.Includes,
-  CriterionModifier.Equals,
-  CriterionModifier.IsNull,
-  CriterionModifier.NotNull
-];
-const withoutEqualsModifierOptions = [
-  CriterionModifier.IncludesAll,
-  CriterionModifier.Includes,
-  CriterionModifier.IsNull,
-  CriterionModifier.NotNull
-];
-const defaultModifier$1 = CriterionModifier.IncludesAll;
-const inputType$2 = "tags";
-class BaseTagsCriterionOption extends ModifierCriterionOption {
-  constructor(messageID, type2, modifierOptions2) {
-    super({
-      messageID,
-      type: type2,
-      modifierOptions: modifierOptions2,
-      defaultModifier: defaultModifier$1,
-      inputType: inputType$2,
-      makeCriterion: () => new TagsCriterion(this)
-    });
-  }
-}
-const TagsCriterionOption = new BaseTagsCriterionOption("tags", "tags", defaultModifierOptions);
-const SceneTagsCriterionOption = new BaseTagsCriterionOption("scene_tags", "scene_tags", defaultModifierOptions);
-const PerformerTagsCriterionOption = new BaseTagsCriterionOption("performer_tags", "performer_tags", withoutEqualsModifierOptions);
-const ParentTagsCriterionOption = new BaseTagsCriterionOption("parent_tags", "parents", withoutEqualsModifierOptions);
-const ChildTagsCriterionOption = new BaseTagsCriterionOption("sub_tags", "children", withoutEqualsModifierOptions);
-class TagsCriterion extends IHierarchicalLabeledIdCriterion {
-}
-const MediaSortByOptions = [
-  "title",
-  "path",
-  "rating",
-  "file_mod_time",
-  "tag_count",
-  "performer_count",
-  "random"
-];
-class ListFilterOptions {
-  constructor(defaultSortBy2, sortByOptions2, displayModeOptions2, criterionOptions2) {
-    Object.defineProperty(this, "defaultSortBy", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: ""
-    });
-    Object.defineProperty(this, "sortByOptions", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: []
-    });
-    Object.defineProperty(this, "displayModeOptions", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: []
-    });
-    Object.defineProperty(this, "criterionOptions", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: []
-    });
-    this.defaultSortBy = defaultSortBy2;
-    this.sortByOptions = [
-      ...sortByOptions2,
-      ListFilterOptions.createSortBy("created_at"),
-      ListFilterOptions.createSortBy("updated_at")
-    ];
-    this.displayModeOptions = displayModeOptions2;
-    this.criterionOptions = criterionOptions2;
-  }
-  static createSortBy(value) {
-    return {
-      messageID: value,
-      value
-    };
-  }
-}
-var DisplayMode;
-(function(DisplayMode2) {
-  DisplayMode2[DisplayMode2["Grid"] = 0] = "Grid";
-  DisplayMode2[DisplayMode2["List"] = 1] = "List";
-  DisplayMode2[DisplayMode2["Wall"] = 2] = "Wall";
-  DisplayMode2[DisplayMode2["Tagger"] = 3] = "Tagger";
-})(DisplayMode || (DisplayMode = {}));
-var RatingSystemType;
-(function(RatingSystemType2) {
-  RatingSystemType2["Stars"] = "stars";
-  RatingSystemType2["Decimal"] = "decimal";
-})(RatingSystemType || (RatingSystemType = {}));
-var RatingStarPrecision;
-(function(RatingStarPrecision2) {
-  RatingStarPrecision2["Full"] = "full";
-  RatingStarPrecision2["Half"] = "half";
-  RatingStarPrecision2["Quarter"] = "quarter";
-  RatingStarPrecision2["Tenth"] = "tenth";
-})(RatingStarPrecision || (RatingStarPrecision = {}));
-const defaultRatingSystemType = RatingSystemType.Stars;
-const defaultRatingStarPrecision = RatingStarPrecision.Full;
-/* @__PURE__ */ new Map([
-  [
-    RatingSystemType.Stars,
-    "config.ui.editing.rating_system.type.options.stars"
-  ],
-  [
-    RatingSystemType.Decimal,
-    "config.ui.editing.rating_system.type.options.decimal"
-  ]
-]);
-/* @__PURE__ */ new Map([
-  [
-    RatingStarPrecision.Full,
-    "config.ui.editing.rating_system.star_precision.options.full"
-  ],
-  [
-    RatingStarPrecision.Half,
-    "config.ui.editing.rating_system.star_precision.options.half"
-  ],
-  [
-    RatingStarPrecision.Quarter,
-    "config.ui.editing.rating_system.star_precision.options.quarter"
-  ],
-  [
-    RatingStarPrecision.Tenth,
-    "config.ui.editing.rating_system.star_precision.options.tenth"
-  ]
-]);
-const defaultRatingSystemOptions = {
-  type: defaultRatingSystemType,
-  starPrecision: defaultRatingStarPrecision
-};
-function round(value, step) {
-  let denom = step;
-  if (!denom) {
-    denom = 1;
-  }
-  const inv = 1 / denom;
-  return Math.round(value * inv) / inv;
-}
-function getRatingPrecision(precision) {
-  switch (precision) {
-    case RatingStarPrecision.Full:
-      return 1;
-    case RatingStarPrecision.Half:
-      return 0.5;
-    case RatingStarPrecision.Quarter:
-      return 0.25;
-    case RatingStarPrecision.Tenth:
-      return 0.1;
-    default:
-      return 1;
-  }
-}
-function convertToRatingFormat(rating, ratingSystemOptions) {
-  if (!rating) {
-    return null;
-  }
-  const { type: type2, starPrecision } = ratingSystemOptions;
-  const precision = type2 === RatingSystemType.Decimal ? 0.1 : getRatingPrecision(starPrecision !== null && starPrecision !== void 0 ? starPrecision : RatingStarPrecision.Full);
-  const maxValue = type2 === RatingSystemType.Decimal ? 10 : 5;
-  const denom = 100 / maxValue;
-  return round(rating / denom, precision);
-}
-function convertFromRatingFormat(rating, ratingSystem) {
-  const maxValue = (ratingSystem !== null && ratingSystem !== void 0 ? ratingSystem : RatingSystemType.Stars) === RatingSystemType.Decimal ? 10 : 5;
-  const factor = 100 / maxValue;
-  return Math.round(rating * factor);
-}
-const modifierOptions$1 = [
-  CriterionModifier.Equals,
-  CriterionModifier.NotEquals,
-  CriterionModifier.GreaterThan,
-  CriterionModifier.LessThan,
-  CriterionModifier.Between,
-  CriterionModifier.NotBetween,
-  CriterionModifier.IsNull,
-  CriterionModifier.NotNull
-];
-function getRatingSystemOptions(config2) {
-  var _a2;
-  return (_a2 = config2 === null || config2 === void 0 ? void 0 : config2.ui.ratingSystemOptions) !== null && _a2 !== void 0 ? _a2 : defaultRatingSystemOptions;
-}
-const RatingCriterionOption = new ModifierCriterionOption({
-  messageID: "rating",
-  type: "rating100",
-  modifierOptions: modifierOptions$1,
-  defaultModifier: CriterionModifier.Equals,
-  makeCriterion: (o2, config2) => new RatingCriterion(getRatingSystemOptions(config2)),
-  inputType: "number"
-});
-class RatingCriterion extends ModifierCriterion {
-  constructor(ratingSystem) {
-    super(RatingCriterionOption, { value: 0, value2: void 0 });
-    Object.defineProperty(this, "ratingSystem", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    this.ratingSystem = ratingSystem;
-  }
-  cloneValues() {
-    this.value = { ...this.value };
-  }
-  get value() {
-    return this._value;
-  }
-  set value(newValue) {
-    if (typeof newValue !== "object") {
-      this._value = {
-        value: convertFromRatingFormat(newValue, this.ratingSystem.type),
-        value2: void 0
-      };
-    } else {
-      this._value = newValue;
-    }
-  }
-  toCriterionInput() {
-    var _a2;
-    return {
-      modifier: this.modifier,
-      value: (_a2 = this.value.value) !== null && _a2 !== void 0 ? _a2 : 0,
-      value2: this.value.value2
-    };
-  }
-  setFromSavedCriterion(c) {
-    super.setFromSavedCriterion(c);
-  }
-  encodeValue() {
-    return encodeRangeValue(this.modifier, this.value);
-  }
-  getLabelValue() {
-    var _a2, _b2, _c;
-    const { value, value2 } = this.value;
-    if (this.modifier === CriterionModifier.Between || this.modifier === CriterionModifier.NotBetween) {
-      return `${(_a2 = convertToRatingFormat(value, this.ratingSystem)) !== null && _a2 !== void 0 ? _a2 : 0}, ${(_b2 = convertToRatingFormat(value2, this.ratingSystem)) !== null && _b2 !== void 0 ? _b2 : 0}`;
-    } else {
-      return `${(_c = convertToRatingFormat(value, this.ratingSystem)) !== null && _c !== void 0 ? _c : 0}`;
-    }
-  }
-}
-const PathCriterionOption = new StringCriterionOption("path", "path", () => new PathCriterion());
-class PathCriterion extends StringCriterion {
-  constructor() {
-    super(PathCriterionOption);
-  }
-}
-const defaultSortBy$7 = "path";
-const sortByOptions$7 = ["date", ...MediaSortByOptions].map(ListFilterOptions.createSortBy).concat([
-  {
-    messageID: "image_count",
-    value: "images_count"
-  },
-  {
-    messageID: "zip_file_count",
-    value: "file_count"
-  }
-]);
-const displayModeOptions$7 = [
-  DisplayMode.Grid,
-  DisplayMode.List,
-  DisplayMode.Wall
-];
-const criterionOptions$7 = [
-  createStringCriterionOption("title"),
-  createStringCriterionOption("code", "scene_code"),
-  createStringCriterionOption("details"),
-  createStringCriterionOption("photographer"),
-  PathCriterionOption,
-  createStringCriterionOption("checksum", "media_info.checksum"),
-  RatingCriterionOption,
-  OrganizedCriterionOption,
-  AverageResolutionCriterionOption,
-  GalleryIsMissingCriterionOption,
-  TagsCriterionOption,
-  HasChaptersCriterionOption,
-  createMandatoryNumberCriterionOption("tag_count"),
-  PerformerTagsCriterionOption,
-  PerformersCriterionOption,
-  createMandatoryNumberCriterionOption("performer_count"),
-  createMandatoryNumberCriterionOption("performer_age"),
-  PerformerFavoriteCriterionOption,
-  createMandatoryNumberCriterionOption("image_count"),
-  // StudioTagsCriterionOption,
-  ScenesCriterionOption,
-  StudiosCriterionOption,
-  createStringCriterionOption("url"),
-  createMandatoryNumberCriterionOption("file_count", "zip_file_count"),
-  createDateCriterionOption("date"),
-  createMandatoryTimestampCriterionOption("created_at"),
-  createMandatoryTimestampCriterionOption("updated_at")
-];
-const GalleryListFilterOptions = new ListFilterOptions(defaultSortBy$7, sortByOptions$7, displayModeOptions$7, criterionOptions$7);
-const stringOrientationMap = /* @__PURE__ */ new Map([
-  ["Landscape", OrientationEnum.Landscape],
-  ["Portrait", OrientationEnum.Portrait],
-  ["Square", OrientationEnum.Square]
-]);
-const stringToOrientation = (value, caseInsensitive) => {
-  if (!value) {
-    return void 0;
-  }
-  const ret = stringOrientationMap.get(value);
-  {
-    return ret;
-  }
-};
-const orientationStrings = Array.from(stringOrientationMap.keys());
-class OrientationCriterion extends MultiStringCriterion {
-  toCriterionInput() {
-    return {
-      value: this.value.map((v) => stringToOrientation(v)).filter((v) => v)
-    };
-  }
-}
-class BaseOrientationCriterionOption extends ModifierCriterionOption {
-  constructor(value) {
-    super({
-      messageID: value,
-      type: value,
-      options: orientationStrings,
-      makeCriterion: () => new OrientationCriterion(this)
-    });
-  }
-}
-const OrientationCriterionOption = new BaseOrientationCriterionOption("orientation");
-const inputType$1 = "galleries";
-const GalleriesCriterionOption = new ILabeledIdCriterionOption("galleries", "galleries", true, inputType$1, () => new GalleriesCriterion());
-class GalleriesCriterion extends ILabeledIdCriterion {
-  constructor() {
-    super(GalleriesCriterionOption);
-  }
-}
-const defaultSortBy$6 = "path";
-const sortByOptions$6 = ["filesize", "file_count", "date", ...MediaSortByOptions].map(ListFilterOptions.createSortBy).concat([
-  {
-    messageID: "o_count",
-    value: "o_counter"
-  }
-]);
-const displayModeOptions$6 = [DisplayMode.Grid, DisplayMode.Wall];
-const criterionOptions$6 = [
-  createStringCriterionOption("title"),
-  createStringCriterionOption("code", "scene_code"),
-  createStringCriterionOption("details"),
-  createStringCriterionOption("photographer"),
-  createMandatoryStringCriterionOption("checksum", "media_info.checksum"),
-  PathCriterionOption,
-  GalleriesCriterionOption,
-  OrganizedCriterionOption,
-  createMandatoryNumberCriterionOption("o_counter", "o_count"),
-  ResolutionCriterionOption,
-  OrientationCriterionOption,
-  ImageIsMissingCriterionOption,
-  TagsCriterionOption,
-  RatingCriterionOption,
-  createMandatoryNumberCriterionOption("tag_count"),
-  PerformerTagsCriterionOption,
-  PerformersCriterionOption,
-  createMandatoryNumberCriterionOption("performer_count"),
-  createMandatoryNumberCriterionOption("performer_age"),
-  PerformerFavoriteCriterionOption,
-  // StudioTagsCriterionOption,
-  StudiosCriterionOption,
-  createStringCriterionOption("url"),
-  createDateCriterionOption("date"),
-  createMandatoryNumberCriterionOption("file_count"),
-  createMandatoryTimestampCriterionOption("created_at"),
-  createMandatoryTimestampCriterionOption("updated_at")
-];
-const ImageListFilterOptions = new ListFilterOptions(defaultSortBy$6, sortByOptions$6, displayModeOptions$6, criterionOptions$6);
-const inputType = "groups";
-const modifierOptions = [
-  CriterionModifier.Includes,
-  CriterionModifier.Excludes,
-  CriterionModifier.IsNull,
-  CriterionModifier.NotNull
-];
-const defaultModifier = CriterionModifier.Includes;
-class BaseGroupsCriterionOption extends ModifierCriterionOption {
-  constructor(messageID, type2) {
-    super({
-      messageID,
-      type: type2,
-      modifierOptions,
-      defaultModifier,
-      inputType,
-      makeCriterion: () => new GroupsCriterion(this)
-    });
-  }
-}
-const GroupsCriterionOption = new BaseGroupsCriterionOption("groups", "groups");
-class GroupsCriterion extends IHierarchicalLabeledIdCriterion {
-}
-const ContainingGroupsCriterionOption = new BaseGroupsCriterionOption("containing_groups", "containing_groups");
-const SubGroupsCriterionOption = new BaseGroupsCriterionOption("sub_groups", "sub_groups");
-const LegacyMoviesCriterionOption = new ModifierCriterionOption({
-  messageID: "groups",
-  type: "movies",
-  modifierOptions,
-  defaultModifier,
-  inputType,
-  hidden: true,
-  makeCriterion: () => new GroupsCriterion(GroupsCriterionOption)
-});
-const defaultSortBy$5 = "name";
-const sortByOptions$5 = [
-  "name",
-  "random",
-  "date",
-  "duration",
-  "rating",
-  "tag_count",
-  "sub_group_order"
-].map(ListFilterOptions.createSortBy).concat([
-  {
-    messageID: "scene_count",
-    value: "scenes_count"
-  }
-]);
-const displayModeOptions$5 = [DisplayMode.Grid];
-const criterionOptions$5 = [
-  // StudioTagsCriterionOption,
-  StudiosCriterionOption,
-  GroupIsMissingCriterionOption,
-  createStringCriterionOption("url"),
-  createStringCriterionOption("name"),
-  createStringCriterionOption("director"),
-  createStringCriterionOption("synopsis"),
-  createDurationCriterionOption("duration"),
-  RatingCriterionOption,
-  PerformersCriterionOption,
-  createDateCriterionOption("date"),
-  ContainingGroupsCriterionOption,
-  SubGroupsCriterionOption,
-  createMandatoryNumberCriterionOption("containing_group_count"),
-  createMandatoryNumberCriterionOption("sub_group_count"),
-  TagsCriterionOption,
-  createMandatoryNumberCriterionOption("tag_count"),
-  createMandatoryTimestampCriterionOption("created_at"),
-  createMandatoryTimestampCriterionOption("updated_at")
-];
-const GroupListFilterOptions = new ListFilterOptions(defaultSortBy$5, sortByOptions$5, displayModeOptions$5, criterionOptions$5);
-const stringGenderMap = /* @__PURE__ */ new Map([
-  ["Male", GenderEnum.Male],
-  ["Female", GenderEnum.Female],
-  ["Transgender Male", GenderEnum.TransgenderMale],
-  ["Transgender Female", GenderEnum.TransgenderFemale],
-  ["Intersex", GenderEnum.Intersex],
-  ["Non-Binary", GenderEnum.NonBinary]
-]);
-const stringToGender = (value, caseInsensitive) => {
-  if (!value) {
-    return void 0;
-  }
-  const existing = Object.entries(GenderEnum).find((e) => e[1] === value);
-  if (existing)
-    return existing[1];
-  const ret = stringGenderMap.get(value);
-  {
-    return ret;
-  }
-};
-const genderStrings = Array.from(stringGenderMap.keys());
-const GenderCriterionOption = new ModifierCriterionOption({
-  messageID: "gender",
-  type: "gender",
-  options: genderStrings,
-  modifierOptions: [
-    CriterionModifier.Includes,
-    CriterionModifier.Excludes,
-    CriterionModifier.IsNull,
-    CriterionModifier.NotNull
-  ],
-  defaultModifier: CriterionModifier.Includes,
-  makeCriterion: () => new GenderCriterion()
-});
-class GenderCriterion extends MultiStringCriterion {
-  constructor(value = []) {
-    super(GenderCriterionOption, value);
-  }
-  toCriterionInput() {
-    const value = this.value.map((v) => stringToGender(v));
-    return {
-      value_list: value,
-      modifier: this.modifier
-    };
-  }
-  setFromSavedCriterion(criterion) {
-    if (typeof criterion.value === "string") {
-      criterion = {
-        ...criterion,
-        value: [criterion.value]
-      };
-    }
-    super.setFromSavedCriterion(criterion);
-  }
-}
-const stringCircumMap = /* @__PURE__ */ new Map([
-  ["Uncut", CircumisedEnum.Uncut],
-  ["Cut", CircumisedEnum.Cut]
-]);
-const stringToCircumcised = (value, caseInsensitive) => {
-  if (!value) {
-    return void 0;
-  }
-  const existing = Object.entries(CircumisedEnum).find((e) => e[1] === value);
-  if (existing)
-    return existing[1];
-  const ret = stringCircumMap.get(value);
-  {
-    return ret;
-  }
-};
-const circumcisedStrings = Array.from(stringCircumMap.keys());
-const CircumcisedCriterionOption = new ModifierCriterionOption({
-  messageID: "circumcised",
-  type: "circumcised",
-  modifierOptions: [
-    CriterionModifier.Includes,
-    CriterionModifier.Excludes,
-    CriterionModifier.IsNull,
-    CriterionModifier.NotNull
-  ],
-  defaultModifier: CriterionModifier.Includes,
-  options: circumcisedStrings,
-  makeCriterion: () => new CircumcisedCriterion()
-});
-class CircumcisedCriterion extends MultiStringCriterion {
-  constructor() {
-    super(CircumcisedCriterionOption);
-  }
-  toCriterionInput() {
-    const value = this.value.map((v) => stringToCircumcised(v));
-    return {
-      value,
-      modifier: this.modifier
-    };
-  }
-}
-const StashIDCriterionOption = new ModifierCriterionOption({
-  messageID: "stash_id",
-  type: "stash_id_endpoint",
-  modifierOptions: [
-    CriterionModifier.Equals,
-    CriterionModifier.NotEquals,
-    CriterionModifier.IsNull,
-    CriterionModifier.NotNull
-  ],
-  makeCriterion: () => new StashIDCriterion()
-});
-class StashIDCriterion extends ModifierCriterion {
-  constructor() {
-    super(StashIDCriterionOption, {
-      endpoint: "",
-      stashID: ""
-    });
-  }
-  cloneValues() {
-    this.value = { ...this.value };
-  }
-  get value() {
-    return this._value;
-  }
-  set value(newValue) {
-    if (typeof newValue !== "object") {
-      this._value = {
-        endpoint: "",
-        stashID: newValue
-      };
-    } else {
-      this._value = newValue;
-    }
-  }
-  toCriterionInput() {
-    return {
-      endpoint: this.value.endpoint,
-      stash_id: this.value.stashID,
-      modifier: this.modifier
-    };
-  }
-  getLabel(intl) {
-    const modifierString = ModifierCriterion.getModifierLabel(intl, this.modifier);
-    let valueString = "";
-    if (this.modifier !== CriterionModifier.IsNull && this.modifier !== CriterionModifier.NotNull) {
-      valueString = this.getLabelValue(intl);
-    } else if (this.value.endpoint) {
-      valueString = "(" + this.value.endpoint + ")";
-    }
-    return intl.formatMessage({ id: "criterion_modifier.format_string" }, {
-      criterion: intl.formatMessage({ id: this.criterionOption.messageID }),
-      modifierString,
-      valueString
-    });
-  }
-  getLabelValue(_intl) {
-    let ret = this.value.stashID;
-    if (this.value.endpoint) {
-      ret += " (" + this.value.endpoint + ")";
-    }
-    return ret;
-  }
-  setFromSavedCriterion(criterion) {
-    super.setFromSavedCriterion(criterion);
-  }
-  toQueryParams() {
-    super.toQueryParams();
-    let encodedCriterion;
-    if ((this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull) && !this.value.endpoint) {
-      encodedCriterion = {
-        type: this.criterionOption.type,
-        modifier: this.modifier
-      };
-    } else {
-      encodedCriterion = {
-        type: this.criterionOption.type,
-        value: this.value,
-        modifier: this.modifier
-      };
-    }
-    return encodedCriterion;
-  }
-  isValid() {
-    return this.modifier === CriterionModifier.IsNull || this.modifier === CriterionModifier.NotNull || this.value.stashID.length > 0;
-  }
-}
-var i18nIsoCountries = {};
-const require$$0 = /* @__PURE__ */ JSON.parse('[["AF","AFG","004","ISO 3166-2:AF"],["AL","ALB","008","ISO 3166-2:AL"],["DZ","DZA","012","ISO 3166-2:DZ"],["AS","ASM","016","ISO 3166-2:AS"],["AD","AND","020","ISO 3166-2:AD"],["AO","AGO","024","ISO 3166-2:AO"],["AI","AIA","660","ISO 3166-2:AI"],["AQ","ATA","010","ISO 3166-2:AQ"],["AG","ATG","028","ISO 3166-2:AG"],["AR","ARG","032","ISO 3166-2:AR"],["AM","ARM","051","ISO 3166-2:AM"],["AW","ABW","533","ISO 3166-2:AW"],["AU","AUS","036","ISO 3166-2:AU"],["AT","AUT","040","ISO 3166-2:AT"],["AZ","AZE","031","ISO 3166-2:AZ"],["BS","BHS","044","ISO 3166-2:BS"],["BH","BHR","048","ISO 3166-2:BH"],["BD","BGD","050","ISO 3166-2:BD"],["BB","BRB","052","ISO 3166-2:BB"],["BY","BLR","112","ISO 3166-2:BY"],["BE","BEL","056","ISO 3166-2:BE"],["BZ","BLZ","084","ISO 3166-2:BZ"],["BJ","BEN","204","ISO 3166-2:BJ"],["BM","BMU","060","ISO 3166-2:BM"],["BT","BTN","064","ISO 3166-2:BT"],["BO","BOL","068","ISO 3166-2:BO"],["BA","BIH","070","ISO 3166-2:BA"],["BW","BWA","072","ISO 3166-2:BW"],["BV","BVT","074","ISO 3166-2:BV"],["BR","BRA","076","ISO 3166-2:BR"],["IO","IOT","086","ISO 3166-2:IO"],["BN","BRN","096","ISO 3166-2:BN"],["BG","BGR","100","ISO 3166-2:BG"],["BF","BFA","854","ISO 3166-2:BF"],["BI","BDI","108","ISO 3166-2:BI"],["KH","KHM","116","ISO 3166-2:KH"],["CM","CMR","120","ISO 3166-2:CM"],["CA","CAN","124","ISO 3166-2:CA"],["CV","CPV","132","ISO 3166-2:CV"],["KY","CYM","136","ISO 3166-2:KY"],["CF","CAF","140","ISO 3166-2:CF"],["TD","TCD","148","ISO 3166-2:TD"],["CL","CHL","152","ISO 3166-2:CL"],["CN","CHN","156","ISO 3166-2:CN"],["CX","CXR","162","ISO 3166-2:CX"],["CC","CCK","166","ISO 3166-2:CC"],["CO","COL","170","ISO 3166-2:CO"],["KM","COM","174","ISO 3166-2:KM"],["CG","COG","178","ISO 3166-2:CG"],["CD","COD","180","ISO 3166-2:CD"],["CK","COK","184","ISO 3166-2:CK"],["CR","CRI","188","ISO 3166-2:CR"],["CI","CIV","384","ISO 3166-2:CI"],["HR","HRV","191","ISO 3166-2:HR"],["CU","CUB","192","ISO 3166-2:CU"],["CY","CYP","196","ISO 3166-2:CY"],["CZ","CZE","203","ISO 3166-2:CZ"],["DK","DNK","208","ISO 3166-2:DK"],["DJ","DJI","262","ISO 3166-2:DJ"],["DM","DMA","212","ISO 3166-2:DM"],["DO","DOM","214","ISO 3166-2:DO"],["EC","ECU","218","ISO 3166-2:EC"],["EG","EGY","818","ISO 3166-2:EG"],["SV","SLV","222","ISO 3166-2:SV"],["GQ","GNQ","226","ISO 3166-2:GQ"],["ER","ERI","232","ISO 3166-2:ER"],["EE","EST","233","ISO 3166-2:EE"],["ET","ETH","231","ISO 3166-2:ET"],["FK","FLK","238","ISO 3166-2:FK"],["FO","FRO","234","ISO 3166-2:FO"],["FJ","FJI","242","ISO 3166-2:FJ"],["FI","FIN","246","ISO 3166-2:FI"],["FR","FRA","250","ISO 3166-2:FR"],["GF","GUF","254","ISO 3166-2:GF"],["PF","PYF","258","ISO 3166-2:PF"],["TF","ATF","260","ISO 3166-2:TF"],["GA","GAB","266","ISO 3166-2:GA"],["GM","GMB","270","ISO 3166-2:GM"],["GE","GEO","268","ISO 3166-2:GE"],["DE","DEU","276","ISO 3166-2:DE"],["GH","GHA","288","ISO 3166-2:GH"],["GI","GIB","292","ISO 3166-2:GI"],["GR","GRC","300","ISO 3166-2:GR"],["GL","GRL","304","ISO 3166-2:GL"],["GD","GRD","308","ISO 3166-2:GD"],["GP","GLP","312","ISO 3166-2:GP"],["GU","GUM","316","ISO 3166-2:GU"],["GT","GTM","320","ISO 3166-2:GT"],["GN","GIN","324","ISO 3166-2:GN"],["GW","GNB","624","ISO 3166-2:GW"],["GY","GUY","328","ISO 3166-2:GY"],["HT","HTI","332","ISO 3166-2:HT"],["HM","HMD","334","ISO 3166-2:HM"],["VA","VAT","336","ISO 3166-2:VA"],["HN","HND","340","ISO 3166-2:HN"],["HK","HKG","344","ISO 3166-2:HK"],["HU","HUN","348","ISO 3166-2:HU"],["IS","ISL","352","ISO 3166-2:IS"],["IN","IND","356","ISO 3166-2:IN"],["ID","IDN","360","ISO 3166-2:ID"],["IR","IRN","364","ISO 3166-2:IR"],["IQ","IRQ","368","ISO 3166-2:IQ"],["IE","IRL","372","ISO 3166-2:IE"],["IL","ISR","376","ISO 3166-2:IL"],["IT","ITA","380","ISO 3166-2:IT"],["JM","JAM","388","ISO 3166-2:JM"],["JP","JPN","392","ISO 3166-2:JP"],["JO","JOR","400","ISO 3166-2:JO"],["KZ","KAZ","398","ISO 3166-2:KZ"],["KE","KEN","404","ISO 3166-2:KE"],["KI","KIR","296","ISO 3166-2:KI"],["KP","PRK","408","ISO 3166-2:KP"],["KR","KOR","410","ISO 3166-2:KR"],["KW","KWT","414","ISO 3166-2:KW"],["KG","KGZ","417","ISO 3166-2:KG"],["LA","LAO","418","ISO 3166-2:LA"],["LV","LVA","428","ISO 3166-2:LV"],["LB","LBN","422","ISO 3166-2:LB"],["LS","LSO","426","ISO 3166-2:LS"],["LR","LBR","430","ISO 3166-2:LR"],["LY","LBY","434","ISO 3166-2:LY"],["LI","LIE","438","ISO 3166-2:LI"],["LT","LTU","440","ISO 3166-2:LT"],["LU","LUX","442","ISO 3166-2:LU"],["MO","MAC","446","ISO 3166-2:MO"],["MG","MDG","450","ISO 3166-2:MG"],["MW","MWI","454","ISO 3166-2:MW"],["MY","MYS","458","ISO 3166-2:MY"],["MV","MDV","462","ISO 3166-2:MV"],["ML","MLI","466","ISO 3166-2:ML"],["MT","MLT","470","ISO 3166-2:MT"],["MH","MHL","584","ISO 3166-2:MH"],["MQ","MTQ","474","ISO 3166-2:MQ"],["MR","MRT","478","ISO 3166-2:MR"],["MU","MUS","480","ISO 3166-2:MU"],["YT","MYT","175","ISO 3166-2:YT"],["MX","MEX","484","ISO 3166-2:MX"],["FM","FSM","583","ISO 3166-2:FM"],["MD","MDA","498","ISO 3166-2:MD"],["MC","MCO","492","ISO 3166-2:MC"],["MN","MNG","496","ISO 3166-2:MN"],["MS","MSR","500","ISO 3166-2:MS"],["MA","MAR","504","ISO 3166-2:MA"],["MZ","MOZ","508","ISO 3166-2:MZ"],["MM","MMR","104","ISO 3166-2:MM"],["NA","NAM","516","ISO 3166-2:NA"],["NR","NRU","520","ISO 3166-2:NR"],["NP","NPL","524","ISO 3166-2:NP"],["NL","NLD","528","ISO 3166-2:NL"],["NC","NCL","540","ISO 3166-2:NC"],["NZ","NZL","554","ISO 3166-2:NZ"],["NI","NIC","558","ISO 3166-2:NI"],["NE","NER","562","ISO 3166-2:NE"],["NG","NGA","566","ISO 3166-2:NG"],["NU","NIU","570","ISO 3166-2:NU"],["NF","NFK","574","ISO 3166-2:NF"],["MP","MNP","580","ISO 3166-2:MP"],["MK","MKD","807","ISO 3166-2:MK"],["NO","NOR","578","ISO 3166-2:NO"],["OM","OMN","512","ISO 3166-2:OM"],["PK","PAK","586","ISO 3166-2:PK"],["PW","PLW","585","ISO 3166-2:PW"],["PS","PSE","275","ISO 3166-2:PS"],["PA","PAN","591","ISO 3166-2:PA"],["PG","PNG","598","ISO 3166-2:PG"],["PY","PRY","600","ISO 3166-2:PY"],["PE","PER","604","ISO 3166-2:PE"],["PH","PHL","608","ISO 3166-2:PH"],["PN","PCN","612","ISO 3166-2:PN"],["PL","POL","616","ISO 3166-2:PL"],["PT","PRT","620","ISO 3166-2:PT"],["PR","PRI","630","ISO 3166-2:PR"],["QA","QAT","634","ISO 3166-2:QA"],["RE","REU","638","ISO 3166-2:RE"],["RO","ROU","642","ISO 3166-2:RO"],["RU","RUS","643","ISO 3166-2:RU"],["RW","RWA","646","ISO 3166-2:RW"],["SH","SHN","654","ISO 3166-2:SH"],["KN","KNA","659","ISO 3166-2:KN"],["LC","LCA","662","ISO 3166-2:LC"],["PM","SPM","666","ISO 3166-2:PM"],["VC","VCT","670","ISO 3166-2:VC"],["WS","WSM","882","ISO 3166-2:WS"],["SM","SMR","674","ISO 3166-2:SM"],["ST","STP","678","ISO 3166-2:ST"],["SA","SAU","682","ISO 3166-2:SA"],["SN","SEN","686","ISO 3166-2:SN"],["SC","SYC","690","ISO 3166-2:SC"],["SL","SLE","694","ISO 3166-2:SL"],["SG","SGP","702","ISO 3166-2:SG"],["SK","SVK","703","ISO 3166-2:SK"],["SI","SVN","705","ISO 3166-2:SI"],["SB","SLB","090","ISO 3166-2:SB"],["SO","SOM","706","ISO 3166-2:SO"],["ZA","ZAF","710","ISO 3166-2:ZA"],["GS","SGS","239","ISO 3166-2:GS"],["ES","ESP","724","ISO 3166-2:ES"],["LK","LKA","144","ISO 3166-2:LK"],["SD","SDN","729","ISO 3166-2:SD"],["SR","SUR","740","ISO 3166-2:SR"],["SJ","SJM","744","ISO 3166-2:SJ"],["SZ","SWZ","748","ISO 3166-2:SZ"],["SE","SWE","752","ISO 3166-2:SE"],["CH","CHE","756","ISO 3166-2:CH"],["SY","SYR","760","ISO 3166-2:SY"],["TW","TWN","158","ISO 3166-2:TW"],["TJ","TJK","762","ISO 3166-2:TJ"],["TZ","TZA","834","ISO 3166-2:TZ"],["TH","THA","764","ISO 3166-2:TH"],["TL","TLS","626","ISO 3166-2:TL"],["TG","TGO","768","ISO 3166-2:TG"],["TK","TKL","772","ISO 3166-2:TK"],["TO","TON","776","ISO 3166-2:TO"],["TT","TTO","780","ISO 3166-2:TT"],["TN","TUN","788","ISO 3166-2:TN"],["TR","TUR","792","ISO 3166-2:TR"],["TM","TKM","795","ISO 3166-2:TM"],["TC","TCA","796","ISO 3166-2:TC"],["TV","TUV","798","ISO 3166-2:TV"],["UG","UGA","800","ISO 3166-2:UG"],["UA","UKR","804","ISO 3166-2:UA"],["AE","ARE","784","ISO 3166-2:AE"],["GB","GBR","826","ISO 3166-2:GB"],["US","USA","840","ISO 3166-2:US"],["UM","UMI","581","ISO 3166-2:UM"],["UY","URY","858","ISO 3166-2:UY"],["UZ","UZB","860","ISO 3166-2:UZ"],["VU","VUT","548","ISO 3166-2:VU"],["VE","VEN","862","ISO 3166-2:VE"],["VN","VNM","704","ISO 3166-2:VN"],["VG","VGB","092","ISO 3166-2:VG"],["VI","VIR","850","ISO 3166-2:VI"],["WF","WLF","876","ISO 3166-2:WF"],["EH","ESH","732","ISO 3166-2:EH"],["YE","YEM","887","ISO 3166-2:YE"],["ZM","ZMB","894","ISO 3166-2:ZM"],["ZW","ZWE","716","ISO 3166-2:ZW"],["AX","ALA","248","ISO 3166-2:AX"],["BQ","BES","535","ISO 3166-2:BQ"],["CW","CUW","531","ISO 3166-2:CW"],["GG","GGY","831","ISO 3166-2:GG"],["IM","IMN","833","ISO 3166-2:IM"],["JE","JEY","832","ISO 3166-2:JE"],["ME","MNE","499","ISO 3166-2:ME"],["BL","BLM","652","ISO 3166-2:BL"],["MF","MAF","663","ISO 3166-2:MF"],["RS","SRB","688","ISO 3166-2:RS"],["SX","SXM","534","ISO 3166-2:SX"],["SS","SSD","728","ISO 3166-2:SS"],["XK","XKK","983","ISO 3166-2:XK"]]');
-const require$$1 = [
-  "br",
-  "cy",
-  "dv",
-  "sw",
-  "eu",
-  "af",
-  "am",
-  "ha",
-  "ku",
-  "ml",
-  "mt",
-  "no",
-  "ps",
-  "sd",
-  "so",
-  "sq",
-  "ta",
-  "tg",
-  "tt",
-  "ug",
-  "ur",
-  "vi",
-  "ar",
-  "az",
-  "be",
-  "bg",
-  "bn",
-  "bs",
-  "ca",
-  "cs",
-  "da",
-  "de",
-  "el",
-  "en",
-  "es",
-  "et",
-  "fa",
-  "fi",
-  "fr",
-  "ga",
-  "gl",
-  "he",
-  "hi",
-  "hr",
-  "hu",
-  "hy",
-  "id",
-  "is",
-  "it",
-  "ja",
-  "ka",
-  "kk",
-  "km",
-  "ko",
-  "ky",
-  "lt",
-  "lv",
-  "mk",
-  "mn",
-  "mr",
-  "ms",
-  "nb",
-  "nl",
-  "nn",
-  "pl",
-  "pt",
-  "ro",
-  "ru",
-  "sk",
-  "sl",
-  "sr",
-  "sv",
-  "th",
-  "tk",
-  "tr",
-  "uk",
-  "uz",
-  "zh"
-];
-var diacritics = {};
-var hasRequiredDiacritics;
-function requireDiacritics() {
-  if (hasRequiredDiacritics) return diacritics;
-  hasRequiredDiacritics = 1;
-  diacritics.remove = removeDiacritics;
-  var replacementList = [
-    {
-      base: " ",
-      chars: " "
-    },
-    {
-      base: "0",
-      chars: "߀"
-    },
-    {
-      base: "A",
-      chars: "ⒶＡÀÁÂẦẤẪẨÃĀĂẰẮẴẲȦǠÄǞẢÅǺǍȀȂẠẬẶḀĄȺⱯ"
-    },
-    {
-      base: "AA",
-      chars: "Ꜳ"
-    },
-    {
-      base: "AE",
-      chars: "ÆǼǢ"
-    },
-    {
-      base: "AO",
-      chars: "Ꜵ"
-    },
-    {
-      base: "AU",
-      chars: "Ꜷ"
-    },
-    {
-      base: "AV",
-      chars: "ꜸꜺ"
-    },
-    {
-      base: "AY",
-      chars: "Ꜽ"
-    },
-    {
-      base: "B",
-      chars: "ⒷＢḂḄḆɃƁ"
-    },
-    {
-      base: "C",
-      chars: "ⒸＣꜾḈĆCĈĊČÇƇȻ"
-    },
-    {
-      base: "D",
-      chars: "ⒹＤḊĎḌḐḒḎĐƊƉᴅꝹ"
-    },
-    {
-      base: "Dh",
-      chars: "Ð"
-    },
-    {
-      base: "DZ",
-      chars: "ǱǄ"
-    },
-    {
-      base: "Dz",
-      chars: "ǲǅ"
-    },
-    {
-      base: "E",
-      chars: "ɛⒺＥÈÉÊỀẾỄỂẼĒḔḖĔĖËẺĚȄȆẸỆȨḜĘḘḚƐƎᴇ"
-    },
-    {
-      base: "F",
-      chars: "ꝼⒻＦḞƑꝻ"
-    },
-    {
-      base: "G",
-      chars: "ⒼＧǴĜḠĞĠǦĢǤƓꞠꝽꝾɢ"
-    },
-    {
-      base: "H",
-      chars: "ⒽＨĤḢḦȞḤḨḪĦⱧⱵꞍ"
-    },
-    {
-      base: "I",
-      chars: "ⒾＩÌÍÎĨĪĬİÏḮỈǏȈȊỊĮḬƗ"
-    },
-    {
-      base: "J",
-      chars: "ⒿＪĴɈȷ"
-    },
-    {
-      base: "K",
-      chars: "ⓀＫḰǨḲĶḴƘⱩꝀꝂꝄꞢ"
-    },
-    {
-      base: "L",
-      chars: "ⓁＬĿĹĽḶḸĻḼḺŁȽⱢⱠꝈꝆꞀ"
-    },
-    {
-      base: "LJ",
-      chars: "Ǉ"
-    },
-    {
-      base: "Lj",
-      chars: "ǈ"
-    },
-    {
-      base: "M",
-      chars: "ⓂＭḾṀṂⱮƜϻ"
-    },
-    {
-      base: "N",
-      chars: "ꞤȠⓃＮǸŃÑṄŇṆŅṊṈƝꞐᴎ"
-    },
-    {
-      base: "NJ",
-      chars: "Ǌ"
-    },
-    {
-      base: "Nj",
-      chars: "ǋ"
-    },
-    {
-      base: "O",
-      chars: "ⓄＯÒÓÔỒỐỖỔÕṌȬṎŌṐṒŎȮȰÖȪỎŐǑȌȎƠỜỚỠỞỢỌỘǪǬØǾƆƟꝊꝌ"
-    },
-    {
-      base: "OE",
-      chars: "Œ"
-    },
-    {
-      base: "OI",
-      chars: "Ƣ"
-    },
-    {
-      base: "OO",
-      chars: "Ꝏ"
-    },
-    {
-      base: "OU",
-      chars: "Ȣ"
-    },
-    {
-      base: "P",
-      chars: "ⓅＰṔṖƤⱣꝐꝒꝔ"
-    },
-    {
-      base: "Q",
-      chars: "ⓆＱꝖꝘɊ"
-    },
-    {
-      base: "R",
-      chars: "ⓇＲŔṘŘȐȒṚṜŖṞɌⱤꝚꞦꞂ"
-    },
-    {
-      base: "S",
-      chars: "ⓈＳẞŚṤŜṠŠṦṢṨȘŞⱾꞨꞄ"
-    },
-    {
-      base: "T",
-      chars: "ⓉＴṪŤṬȚŢṰṮŦƬƮȾꞆ"
-    },
-    {
-      base: "Th",
-      chars: "Þ"
-    },
-    {
-      base: "TZ",
-      chars: "Ꜩ"
-    },
-    {
-      base: "U",
-      chars: "ⓊＵÙÚÛŨṸŪṺŬÜǛǗǕǙỦŮŰǓȔȖƯỪỨỮỬỰỤṲŲṶṴɄ"
-    },
-    {
-      base: "V",
-      chars: "ⓋＶṼṾƲꝞɅ"
-    },
-    {
-      base: "VY",
-      chars: "Ꝡ"
-    },
-    {
-      base: "W",
-      chars: "ⓌＷẀẂŴẆẄẈⱲ"
-    },
-    {
-      base: "X",
-      chars: "ⓍＸẊẌ"
-    },
-    {
-      base: "Y",
-      chars: "ⓎＹỲÝŶỸȲẎŸỶỴƳɎỾ"
-    },
-    {
-      base: "Z",
-      chars: "ⓏＺŹẐŻŽẒẔƵȤⱿⱫꝢ"
-    },
-    {
-      base: "a",
-      chars: "ⓐａẚàáâầấẫẩãāăằắẵẳȧǡäǟảåǻǎȁȃạậặḁąⱥɐɑ"
-    },
-    {
-      base: "aa",
-      chars: "ꜳ"
-    },
-    {
-      base: "ae",
-      chars: "æǽǣ"
-    },
-    {
-      base: "ao",
-      chars: "ꜵ"
-    },
-    {
-      base: "au",
-      chars: "ꜷ"
-    },
-    {
-      base: "av",
-      chars: "ꜹꜻ"
-    },
-    {
-      base: "ay",
-      chars: "ꜽ"
-    },
-    {
-      base: "b",
-      chars: "ⓑｂḃḅḇƀƃɓƂ"
-    },
-    {
-      base: "c",
-      chars: "ｃⓒćĉċčçḉƈȼꜿↄ"
-    },
-    {
-      base: "d",
-      chars: "ⓓｄḋďḍḑḓḏđƌɖɗƋᏧԁꞪ"
-    },
-    {
-      base: "dh",
-      chars: "ð"
-    },
-    {
-      base: "dz",
-      chars: "ǳǆ"
-    },
-    {
-      base: "e",
-      chars: "ⓔｅèéêềếễểẽēḕḗĕėëẻěȅȇẹệȩḝęḙḛɇǝ"
-    },
-    {
-      base: "f",
-      chars: "ⓕｆḟƒ"
-    },
-    {
-      base: "ff",
-      chars: "ﬀ"
-    },
-    {
-      base: "fi",
-      chars: "ﬁ"
-    },
-    {
-      base: "fl",
-      chars: "ﬂ"
-    },
-    {
-      base: "ffi",
-      chars: "ﬃ"
-    },
-    {
-      base: "ffl",
-      chars: "ﬄ"
-    },
-    {
-      base: "g",
-      chars: "ⓖｇǵĝḡğġǧģǥɠꞡꝿᵹ"
-    },
-    {
-      base: "h",
-      chars: "ⓗｈĥḣḧȟḥḩḫẖħⱨⱶɥ"
-    },
-    {
-      base: "hv",
-      chars: "ƕ"
-    },
-    {
-      base: "i",
-      chars: "ⓘｉìíîĩīĭïḯỉǐȉȋịįḭɨı"
-    },
-    {
-      base: "j",
-      chars: "ⓙｊĵǰɉ"
-    },
-    {
-      base: "k",
-      chars: "ⓚｋḱǩḳķḵƙⱪꝁꝃꝅꞣ"
-    },
-    {
-      base: "l",
-      chars: "ⓛｌŀĺľḷḹļḽḻſłƚɫⱡꝉꞁꝇɭ"
-    },
-    {
-      base: "lj",
-      chars: "ǉ"
-    },
-    {
-      base: "m",
-      chars: "ⓜｍḿṁṃɱɯ"
-    },
-    {
-      base: "n",
-      chars: "ⓝｎǹńñṅňṇņṋṉƞɲŉꞑꞥлԉ"
-    },
-    {
-      base: "nj",
-      chars: "ǌ"
-    },
-    {
-      base: "o",
-      chars: "ⓞｏòóôồốỗổõṍȭṏōṑṓŏȯȱöȫỏőǒȍȏơờớỡởợọộǫǭøǿꝋꝍɵɔᴑ"
-    },
-    {
-      base: "oe",
-      chars: "œ"
-    },
-    {
-      base: "oi",
-      chars: "ƣ"
-    },
-    {
-      base: "oo",
-      chars: "ꝏ"
-    },
-    {
-      base: "ou",
-      chars: "ȣ"
-    },
-    {
-      base: "p",
-      chars: "ⓟｐṕṗƥᵽꝑꝓꝕρ"
-    },
-    {
-      base: "q",
-      chars: "ⓠｑɋꝗꝙ"
-    },
-    {
-      base: "r",
-      chars: "ⓡｒŕṙřȑȓṛṝŗṟɍɽꝛꞧꞃ"
-    },
-    {
-      base: "s",
-      chars: "ⓢｓśṥŝṡšṧṣṩșşȿꞩꞅẛʂ"
-    },
-    {
-      base: "ss",
-      chars: "ß"
-    },
-    {
-      base: "t",
-      chars: "ⓣｔṫẗťṭțţṱṯŧƭʈⱦꞇ"
-    },
-    {
-      base: "th",
-      chars: "þ"
-    },
-    {
-      base: "tz",
-      chars: "ꜩ"
-    },
-    {
-      base: "u",
-      chars: "ⓤｕùúûũṹūṻŭüǜǘǖǚủůűǔȕȗưừứữửựụṳųṷṵʉ"
-    },
-    {
-      base: "v",
-      chars: "ⓥｖṽṿʋꝟʌ"
-    },
-    {
-      base: "vy",
-      chars: "ꝡ"
-    },
-    {
-      base: "w",
-      chars: "ⓦｗẁẃŵẇẅẘẉⱳ"
-    },
-    {
-      base: "x",
-      chars: "ⓧｘẋẍ"
-    },
-    {
-      base: "y",
-      chars: "ⓨｙỳýŷỹȳẏÿỷẙỵƴɏỿ"
-    },
-    {
-      base: "z",
-      chars: "ⓩｚźẑżžẓẕƶȥɀⱬꝣ"
-    }
-  ];
-  var diacriticsMap = {};
-  for (var i = 0; i < replacementList.length; i += 1) {
-    var chars = replacementList[i].chars;
-    for (var j = 0; j < chars.length; j += 1) {
-      diacriticsMap[chars[j]] = replacementList[i].base;
-    }
-  }
-  function removeDiacritics(str) {
-    return str.replace(/[^\u0000-\u007e]/g, function(c) {
-      return diacriticsMap[c] || c;
-    });
-  }
-  diacritics.replacementList = replacementList;
-  diacritics.diacriticsMap = diacriticsMap;
-  return diacritics;
-}
-var hasRequiredI18nIsoCountries;
-function requireI18nIsoCountries() {
-  if (hasRequiredI18nIsoCountries) return i18nIsoCountries;
-  hasRequiredI18nIsoCountries = 1;
-  (function(exports) {
-    const codes = require$$0;
-    const supportedLocales = require$$1;
-    const removeDiacritics = requireDiacritics().remove;
-    const registeredLocales = {};
-    const alpha2 = {}, alpha3 = {}, numeric = {}, invertedNumeric = {};
-    codes.forEach(function(codeInformation) {
-      const s2 = codeInformation;
-      alpha2[s2[0]] = s2[1];
-      alpha3[s2[1]] = s2[0];
-      numeric[s2[2]] = s2[0];
-      invertedNumeric[s2[0]] = s2[2];
-    });
-    function formatNumericCode(code) {
-      return String("000" + (code ? code : "")).slice(-3);
-    }
-    function hasOwnProperty2(object, property) {
-      return Object.prototype.hasOwnProperty.call(object, property);
-    }
-    function localeFilter(localeList, filter) {
-      return Object.keys(localeList).reduce(function(newLocaleList, alpha22) {
-        const nameList = localeList[alpha22];
-        newLocaleList[alpha22] = filter(nameList, alpha22);
-        return newLocaleList;
-      }, {});
-    }
-    function filterNameBy(type2, countryNameList) {
-      switch (type2) {
-        case "official":
-          return Array.isArray(countryNameList) ? countryNameList[0] : countryNameList;
-        case "all":
-          return typeof countryNameList === "string" ? [countryNameList] : countryNameList;
-        case "alias":
-          return Array.isArray(countryNameList) ? countryNameList[1] || countryNameList[0] : countryNameList;
-        default:
-          throw new TypeError(
-            "LocaleNameType must be one of these: all, official, alias!"
-          );
-      }
-    }
-    exports.registerLocale = function(localeData) {
-      if (!localeData.locale) {
-        throw new TypeError("Missing localeData.locale");
-      }
-      if (!localeData.countries) {
-        throw new TypeError("Missing localeData.countries");
-      }
-      registeredLocales[localeData.locale] = localeData.countries;
-    };
-    function alpha3ToAlpha2(code) {
-      return alpha3[code];
-    }
-    exports.alpha3ToAlpha2 = alpha3ToAlpha2;
-    function alpha2ToAlpha3(code) {
-      return alpha2[code];
-    }
-    exports.alpha2ToAlpha3 = alpha2ToAlpha3;
-    function alpha3ToNumeric(code) {
-      return invertedNumeric[alpha3ToAlpha2(code)];
-    }
-    exports.alpha3ToNumeric = alpha3ToNumeric;
-    function alpha2ToNumeric(code) {
-      return invertedNumeric[code];
-    }
-    exports.alpha2ToNumeric = alpha2ToNumeric;
-    function numericToAlpha3(code) {
-      const padded = formatNumericCode(code);
-      return alpha2ToAlpha3(numeric[padded]);
-    }
-    exports.numericToAlpha3 = numericToAlpha3;
-    function numericToAlpha2(code) {
-      const padded = formatNumericCode(code);
-      return numeric[padded];
-    }
-    exports.numericToAlpha2 = numericToAlpha2;
-    function toAlpha3(code) {
-      if (typeof code === "string") {
-        if (/^[0-9]*$/.test(code)) {
-          return numericToAlpha3(code);
-        }
-        if (code.length === 2) {
-          return alpha2ToAlpha3(code.toUpperCase());
-        }
-        if (code.length === 3) {
-          return code.toUpperCase();
-        }
-      }
-      if (typeof code === "number") {
-        return numericToAlpha3(code);
-      }
-      return void 0;
-    }
-    exports.toAlpha3 = toAlpha3;
-    function toAlpha2(code) {
-      if (typeof code === "string") {
-        if (/^[0-9]*$/.test(code)) {
-          return numericToAlpha2(code);
-        }
-        if (code.length === 2) {
-          return code.toUpperCase();
-        }
-        if (code.length === 3) {
-          return alpha3ToAlpha2(code.toUpperCase());
-        }
-      }
-      if (typeof code === "number") {
-        return numericToAlpha2(code);
-      }
-      return void 0;
-    }
-    exports.toAlpha2 = toAlpha2;
-    exports.getName = function(code, lang, options2 = {}) {
-      if (!("select" in options2)) {
-        options2.select = "official";
-      }
-      try {
-        const codeMaps = registeredLocales[lang.toLowerCase()];
-        const nameList = codeMaps[toAlpha2(code)];
-        return filterNameBy(options2.select, nameList);
-      } catch (err) {
-        return void 0;
-      }
-    };
-    exports.getNames = function(lang, options2 = {}) {
-      if (!("select" in options2)) {
-        options2.select = "official";
-      }
-      const localeList = registeredLocales[lang.toLowerCase()];
-      if (localeList === void 0) return {};
-      return localeFilter(localeList, function(nameList) {
-        return filterNameBy(options2.select, nameList);
-      });
-    };
-    exports.getAlpha2Code = function(name, lang) {
-      const normalizeString = (string) => string.toLowerCase();
-      const areSimilar = (a2, b) => normalizeString(a2) === normalizeString(b);
-      try {
-        const codenames = registeredLocales[lang.toLowerCase()];
-        for (const p2 in codenames) {
-          if (!hasOwnProperty2(codenames, p2)) {
-            continue;
-          }
-          if (typeof codenames[p2] === "string") {
-            if (areSimilar(codenames[p2], name)) {
-              return p2;
-            }
-          }
-          if (Array.isArray(codenames[p2])) {
-            for (const mappedName of codenames[p2]) {
-              if (areSimilar(mappedName, name)) {
-                return p2;
-              }
-            }
-          }
-        }
-        return void 0;
-      } catch (err) {
-        return void 0;
-      }
-    };
-    exports.getSimpleAlpha2Code = function(name, lang) {
-      const normalizeString = (string) => removeDiacritics(string.toLowerCase());
-      const areSimilar = (a2, b) => normalizeString(a2) === normalizeString(b);
-      try {
-        const codenames = registeredLocales[lang.toLowerCase()];
-        for (const p2 in codenames) {
-          if (!hasOwnProperty2(codenames, p2)) {
-            continue;
-          }
-          if (typeof codenames[p2] === "string") {
-            if (areSimilar(codenames[p2], name)) {
-              return p2;
-            }
-          }
-          if (Array.isArray(codenames[p2])) {
-            for (const mappedName of codenames[p2]) {
-              if (areSimilar(mappedName, name)) {
-                return p2;
-              }
-            }
-          }
-        }
-        return void 0;
-      } catch (err) {
-        return void 0;
-      }
-    };
-    exports.getAlpha2Codes = function() {
-      return alpha2;
-    };
-    exports.getAlpha3Code = function(name, lang) {
-      const alpha22 = exports.getAlpha2Code(name, lang);
-      if (alpha22) {
-        return exports.toAlpha3(alpha22);
-      } else {
-        return void 0;
-      }
-    };
-    exports.getSimpleAlpha3Code = function(name, lang) {
-      const alpha22 = exports.getSimpleAlpha2Code(name, lang);
-      if (alpha22) {
-        return exports.toAlpha3(alpha22);
-      } else {
-        return void 0;
-      }
-    };
-    exports.getAlpha3Codes = function() {
-      return alpha3;
-    };
-    exports.getNumericCodes = function() {
-      return numeric;
-    };
-    exports.langs = function() {
-      return Object.keys(registeredLocales);
-    };
-    exports.getSupportedLanguages = function() {
-      return supportedLocales;
-    };
-    exports.isValid = function(code) {
-      if (!code) {
-        return false;
-      }
-      const coerced = code.toString().toUpperCase();
-      return hasOwnProperty2(alpha3, coerced) || hasOwnProperty2(alpha2, coerced) || hasOwnProperty2(numeric, coerced);
-    };
-  })(i18nIsoCountries);
-  return i18nIsoCountries;
-}
-var i18nIsoCountriesExports = requireI18nIsoCountries();
-const Countries = /* @__PURE__ */ getDefaultExportFromCjs(i18nIsoCountriesExports);
-const getLocaleCode = (code) => {
-  if (code === "zh-CN")
-    return "zh";
-  if (code === "zh-TW")
-    return "tw";
-  return code.slice(0, 2);
-};
-const getCountryByISO = (iso, locale = "en") => {
-  if (!iso)
-    return;
-  const ret = Countries.getName(iso, getLocaleCode(locale));
-  if (ret) {
-    return ret;
-  }
-  if (locale !== "en") {
-    return Countries.getName(iso, "en");
-  }
-};
-const CountryCriterionOption = new StringCriterionOption("country", "country", () => new CountryCriterion());
-class CountryCriterion extends StringCriterion {
-  constructor() {
-    super(CountryCriterionOption);
-  }
-  getLabelValue(intl) {
-    var _a2;
-    if (this.modifier === CriterionModifier.Equals || this.modifier === CriterionModifier.NotEquals) {
-      return (_a2 = getCountryByISO(this.value, intl.locale)) !== null && _a2 !== void 0 ? _a2 : this.value;
-    }
-    return super.getLabelValue(intl);
-  }
-}
-function valueToString(value) {
-  if (!value)
-    return "";
-  return value.map((v) => v).join(", ");
-}
-const CustomFieldsCriterionOption = new CriterionOption({
-  type: "custom_fields",
-  messageID: "custom_fields.title",
-  makeCriterion: () => new CustomFieldsCriterion()
-});
-class CustomFieldsCriterion extends Criterion {
-  constructor() {
-    super(CustomFieldsCriterionOption);
-    Object.defineProperty(this, "value", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: []
-    });
-  }
-  isValid() {
-    return this.value.length > 0;
-  }
-  applyToCriterionInput(input) {
-    input.custom_fields = cloneDeep(this.value);
-  }
-  applyToSavedCriterion(input) {
-    input.custom_fields = cloneDeep(this.value);
-  }
-  getLabel(intl) {
-    var _a2, _b2;
-    if (this.value.length === 0) {
-      return "";
-    }
-    const first = this.value[0];
-    let messageID;
-    let valueString = "";
-    if (first.modifier !== CriterionModifier.IsNull && first.modifier !== CriterionModifier.NotNull && ((_b2 = (_a2 = first.value) === null || _a2 === void 0 ? void 0 : _a2.length) !== null && _b2 !== void 0 ? _b2 : 0) > 0) {
-      valueString = valueToString(first.value);
-    }
-    const modifierString = ModifierCriterion.getModifierLabel(intl, first.modifier);
-    const opts = {
-      criterion: first.field,
-      modifierString,
-      valueString,
-      others: ""
-    };
-    if (this.value.length === 1) {
-      messageID = "custom_fields.criteria_format_string";
-    } else {
-      messageID = "custom_fields.criteria_format_string_others";
-      opts.others = (this.value.length - 1).toString();
-    }
-    return intl.formatMessage({ id: messageID }, opts);
-  }
-  getValueLabel(intl, v) {
-    var _a2, _b2;
-    let valueString = "";
-    if (v.modifier !== CriterionModifier.IsNull && v.modifier !== CriterionModifier.NotNull && ((_b2 = (_a2 = v.value) === null || _a2 === void 0 ? void 0 : _a2.length) !== null && _b2 !== void 0 ? _b2 : 0) > 0) {
-      valueString = valueToString(v.value);
-    }
-    const modifierString = ModifierCriterion.getModifierLabel(intl, v.modifier);
-    const opts = {
-      criterion: v.field,
-      modifierString,
-      valueString
-    };
-    return intl.formatMessage({ id: "custom_fields.criteria_format_string" }, opts);
-  }
-  toQueryParams() {
-    const encodedCriterion = {
-      type: this.criterionOption.type,
-      value: this.value
-    };
-    return encodedCriterion;
-  }
-  fromDecodedParams(i) {
-    const criterion = i;
-    this.value = cloneDeep(criterion.value);
-  }
-  setFromSavedCriterion(input) {
-    this.value = cloneDeep(input);
-  }
-}
-const defaultSortBy$4 = "name";
-const sortByOptions$4 = [
-  "name",
-  "height",
-  "birthdate",
-  "tag_count",
-  "random",
-  "rating",
-  "penis_length",
-  "play_count",
-  "last_played_at",
-  "last_o_at",
-  "career_length",
-  "weight",
-  "measurements"
-].map(ListFilterOptions.createSortBy).concat([
-  {
-    messageID: "scene_count",
-    value: "scenes_count"
-  },
-  {
-    messageID: "image_count",
-    value: "images_count"
-  },
-  {
-    messageID: "gallery_count",
-    value: "galleries_count"
-  },
-  {
-    messageID: "o_count",
-    value: "o_counter"
-  }
-]);
-const displayModeOptions$4 = [
-  DisplayMode.Grid,
-  DisplayMode.List,
-  DisplayMode.Tagger
-];
-const numberCriteria = [
-  "birth_year",
-  "death_year",
-  "age",
-  "weight",
-  "penis_length"
-];
-const stringCriteria = [
-  "name",
-  "disambiguation",
-  "details",
-  "ethnicity",
-  "hair_color",
-  "eye_color",
-  "measurements",
-  "fake_tits",
-  "career_length",
-  "tattoos",
-  "piercings",
-  "aliases"
-];
-const criterionOptions$4 = [
-  FavoritePerformerCriterionOption,
-  GenderCriterionOption,
-  CircumcisedCriterionOption,
-  PerformerIsMissingCriterionOption,
-  TagsCriterionOption,
-  StudiosCriterionOption,
-  StashIDCriterionOption,
-  createStringCriterionOption("url"),
-  RatingCriterionOption,
-  createMandatoryNumberCriterionOption("tag_count"),
-  createMandatoryNumberCriterionOption("scene_count"),
-  createMandatoryNumberCriterionOption("image_count"),
-  createMandatoryNumberCriterionOption("gallery_count"),
-  createMandatoryNumberCriterionOption("play_count"),
-  createMandatoryNumberCriterionOption("o_counter", "o_count"),
-  createBooleanCriterionOption("ignore_auto_tag"),
-  CountryCriterionOption,
-  createNumberCriterionOption("height_cm", "height"),
-  ...numberCriteria.map((c) => createNumberCriterionOption(c)),
-  ...stringCriteria.map((c) => createStringCriterionOption(c)),
-  createDateCriterionOption("birthdate"),
-  createDateCriterionOption("death_date"),
-  createMandatoryTimestampCriterionOption("created_at"),
-  createMandatoryTimestampCriterionOption("updated_at"),
-  CustomFieldsCriterionOption
-];
-const PerformerListFilterOptions = new ListFilterOptions(defaultSortBy$4, sortByOptions$4, displayModeOptions$4, criterionOptions$4);
-const defaultSortBy$3 = "title";
-const sortByOptions$3 = [
-  "duration",
-  "title",
-  "seconds",
-  "scene_id",
-  "random",
-  "scenes_updated_at"
-].map(ListFilterOptions.createSortBy);
-const displayModeOptions$3 = [DisplayMode.Grid, DisplayMode.Wall];
-const criterionOptions$3 = [
-  TagsCriterionOption,
-  MarkersScenesCriterionOption,
-  SceneTagsCriterionOption,
-  PerformersCriterionOption,
-  createNullDurationCriterionOption("duration"),
-  createMandatoryTimestampCriterionOption("created_at"),
-  createMandatoryTimestampCriterionOption("updated_at"),
-  createDateCriterionOption("scene_date"),
-  createMandatoryTimestampCriterionOption("scene_created_at"),
-  createMandatoryTimestampCriterionOption("scene_updated_at")
-];
-const SceneMarkerListFilterOptions = new ListFilterOptions(defaultSortBy$3, sortByOptions$3, displayModeOptions$3, criterionOptions$3);
-const HasMarkersCriterionOption = new StringBooleanCriterionOption("hasMarkers", "has_markers", () => new HasMarkersCriterion());
-class HasMarkersCriterion extends StringBooleanCriterion {
-  constructor() {
-    super(HasMarkersCriterionOption);
-  }
-}
-const InteractiveCriterionOption = new BooleanCriterionOption("interactive", "interactive", () => new InteractiveCriterion());
-class InteractiveCriterion extends BooleanCriterion {
-  constructor() {
-    super(InteractiveCriterionOption);
-  }
-}
-const PhashCriterionOption = new ModifierCriterionOption({
-  messageID: "media_info.phash",
-  type: "phash_distance",
-  inputType: "text",
-  modifierOptions: [
-    CriterionModifier.Equals,
-    CriterionModifier.NotEquals,
-    CriterionModifier.IsNull,
-    CriterionModifier.NotNull
-  ],
-  makeCriterion: () => new PhashCriterion()
-});
-class PhashCriterion extends ModifierCriterion {
-  constructor() {
-    super(PhashCriterionOption, { value: "", distance: 0 });
-  }
-  cloneValues() {
-    this.value = { ...this.value };
-  }
-  getLabelValue() {
-    const { value, distance } = this.value;
-    if ((this.modifier === CriterionModifier.Equals || this.modifier === CriterionModifier.NotEquals) && distance) {
-      return `${value} (${distance})`;
-    } else {
-      return `${value}`;
-    }
-  }
-  toCriterionInput() {
-    return {
-      value: this.value.value,
-      modifier: this.modifier,
-      distance: this.value.distance
-    };
-  }
-}
-const DuplicatedCriterionOption = new BooleanCriterionOption("duplicated_phash", "duplicated", () => new DuplicatedCriterion());
-class DuplicatedCriterion extends StringCriterion {
-  constructor() {
-    super(DuplicatedCriterionOption);
-  }
-  toCriterionInput() {
-    return {
-      duplicated: this.value === "true"
-    };
-  }
-}
-const languageStrings = Array.from(languageMap.values());
-const CaptionsCriterionOption = new ModifierCriterionOption({
-  messageID: "captions",
-  type: "captions",
-  modifierOptions: [
-    CriterionModifier.Includes,
-    CriterionModifier.Excludes,
-    CriterionModifier.IsNull,
-    CriterionModifier.NotNull
-  ],
-  defaultModifier: CriterionModifier.Includes,
-  options: languageStrings,
-  makeCriterion: () => new CaptionCriterion()
-});
-class CaptionCriterion extends StringCriterion {
-  constructor() {
-    super(CaptionsCriterionOption);
-  }
-  toCriterionInput() {
-    var _a2;
-    const value = (_a2 = valueToCode(this.value)) !== null && _a2 !== void 0 ? _a2 : "";
-    return {
-      value,
-      modifier: this.modifier
-    };
-  }
-}
-const defaultSortBy$2 = "date";
-const sortByOptions$2 = [
-  "organized",
-  "date",
-  "file_count",
-  "filesize",
-  "duration",
-  "framerate",
-  "bitrate",
-  "last_played_at",
-  "last_o_at",
-  "resume_time",
-  "play_duration",
-  "play_count",
-  "interactive",
-  "interactive_speed",
-  "perceptual_similarity",
-  ...MediaSortByOptions
-].map(ListFilterOptions.createSortBy).concat([
-  {
-    messageID: "o_count",
-    value: "o_counter"
-  },
-  {
-    messageID: "group_scene_number",
-    value: "group_scene_number"
-  },
-  {
-    messageID: "scene_code",
-    value: "code"
-  }
-]);
-const displayModeOptions$2 = [
-  DisplayMode.Grid,
-  DisplayMode.List,
-  DisplayMode.Wall,
-  DisplayMode.Tagger
-];
-const criterionOptions$2 = [
-  createStringCriterionOption("title"),
-  createStringCriterionOption("code", "scene_code"),
-  PathCriterionOption,
-  createStringCriterionOption("details"),
-  createStringCriterionOption("director"),
-  createMandatoryStringCriterionOption("oshash", "media_info.hash"),
-  createStringCriterionOption("checksum", "media_info.checksum"),
-  PhashCriterionOption,
-  DuplicatedCriterionOption,
-  OrganizedCriterionOption,
-  RatingCriterionOption,
-  createMandatoryNumberCriterionOption("o_counter", "o_count"),
-  ResolutionCriterionOption,
-  OrientationCriterionOption,
-  createMandatoryNumberCriterionOption("framerate"),
-  createMandatoryNumberCriterionOption("bitrate"),
-  createStringCriterionOption("video_codec"),
-  createStringCriterionOption("audio_codec"),
-  createDurationCriterionOption("duration"),
-  createDurationCriterionOption("resume_time"),
-  createDurationCriterionOption("play_duration"),
-  createMandatoryNumberCriterionOption("play_count"),
-  createMandatoryTimestampCriterionOption("last_played_at"),
-  HasMarkersCriterionOption,
-  SceneIsMissingCriterionOption,
-  TagsCriterionOption,
-  createMandatoryNumberCriterionOption("tag_count"),
-  PerformerTagsCriterionOption,
-  PerformersCriterionOption,
-  createMandatoryNumberCriterionOption("performer_count"),
-  createMandatoryNumberCriterionOption("performer_age"),
-  PerformerFavoriteCriterionOption,
-  // StudioTagsCriterionOption,
-  StudiosCriterionOption,
-  GroupsCriterionOption,
-  LegacyMoviesCriterionOption,
-  GalleriesCriterionOption,
-  createStringCriterionOption("url"),
-  StashIDCriterionOption,
-  InteractiveCriterionOption,
-  CaptionsCriterionOption,
-  createMandatoryNumberCriterionOption("interactive_speed"),
-  createMandatoryNumberCriterionOption("file_count"),
-  createDateCriterionOption("date"),
-  createMandatoryTimestampCriterionOption("created_at"),
-  createMandatoryTimestampCriterionOption("updated_at")
-];
-const SceneListFilterOptions = new ListFilterOptions(defaultSortBy$2, sortByOptions$2, displayModeOptions$2, criterionOptions$2);
-const defaultSortBy$1 = "name";
-const sortByOptions$1 = ["name", "tag_count", "random", "rating"].map(ListFilterOptions.createSortBy).concat([
-  {
-    messageID: "gallery_count",
-    value: "galleries_count"
-  },
-  {
-    messageID: "image_count",
-    value: "images_count"
-  },
-  {
-    messageID: "scene_count",
-    value: "scenes_count"
-  },
-  {
-    messageID: "subsidiary_studio_count",
-    value: "child_count"
-  }
-]);
-const displayModeOptions$1 = [DisplayMode.Grid, DisplayMode.Tagger];
-const criterionOptions$1 = [
-  FavoriteStudioCriterionOption,
-  createMandatoryStringCriterionOption("name"),
-  createStringCriterionOption("details"),
-  ParentStudiosCriterionOption,
-  StudioIsMissingCriterionOption,
-  TagsCriterionOption,
-  RatingCriterionOption,
-  createBooleanCriterionOption("ignore_auto_tag"),
-  createMandatoryNumberCriterionOption("tag_count"),
-  createMandatoryNumberCriterionOption("scene_count"),
-  createMandatoryNumberCriterionOption("image_count"),
-  createMandatoryNumberCriterionOption("gallery_count"),
-  createStringCriterionOption("url"),
-  StashIDCriterionOption,
-  createStringCriterionOption("aliases"),
-  createMandatoryNumberCriterionOption("child_count", "subsidiary_studio_count"),
-  createMandatoryTimestampCriterionOption("created_at"),
-  createMandatoryTimestampCriterionOption("updated_at")
-];
-const StudioListFilterOptions = new ListFilterOptions(defaultSortBy$1, sortByOptions$1, displayModeOptions$1, criterionOptions$1);
-const defaultSortBy = "name";
-const sortByOptions = ["name", "random"].map(ListFilterOptions.createSortBy).concat([
-  {
-    messageID: "gallery_count",
-    value: "galleries_count"
-  },
-  {
-    messageID: "image_count",
-    value: "images_count"
-  },
-  {
-    messageID: "performer_count",
-    value: "performers_count"
-  },
-  {
-    messageID: "scene_count",
-    value: "scenes_count"
-  },
-  {
-    messageID: "group_count",
-    value: "groups_count"
-  },
-  {
-    messageID: "marker_count",
-    value: "scene_markers_count"
-  },
-  {
-    messageID: "studio_count",
-    value: "studios_count"
-  }
-]);
-const displayModeOptions = [DisplayMode.Grid, DisplayMode.List];
-const criterionOptions = [
-  FavoriteTagCriterionOption,
-  createMandatoryStringCriterionOption("name"),
-  createStringCriterionOption("sort_name"),
-  TagIsMissingCriterionOption,
-  createStringCriterionOption("aliases"),
-  createStringCriterionOption("description"),
-  createBooleanCriterionOption("ignore_auto_tag"),
-  createMandatoryNumberCriterionOption("scene_count"),
-  createMandatoryNumberCriterionOption("image_count"),
-  createMandatoryNumberCriterionOption("gallery_count"),
-  createMandatoryNumberCriterionOption("performer_count"),
-  createMandatoryNumberCriterionOption("studio_count"),
-  createMandatoryNumberCriterionOption("group_count"),
-  createMandatoryNumberCriterionOption("marker_count"),
-  ParentTagsCriterionOption,
-  new MandatoryNumberCriterionOption("parent_tag_count", "parent_count"),
-  ChildTagsCriterionOption,
-  new MandatoryNumberCriterionOption("sub_tag_count", "child_count"),
-  createMandatoryTimestampCriterionOption("created_at"),
-  createMandatoryTimestampCriterionOption("updated_at")
-];
-const TagListFilterOptions = new ListFilterOptions(defaultSortBy, sortByOptions, displayModeOptions, criterionOptions);
-function getFilterOptions(mode) {
-  switch (mode) {
-    case FilterMode.Scenes:
-      return SceneListFilterOptions;
-    case FilterMode.Performers:
-      return PerformerListFilterOptions;
-    case FilterMode.Studios:
-      return StudioListFilterOptions;
-    case FilterMode.Galleries:
-      return GalleryListFilterOptions;
-    case FilterMode.SceneMarkers:
-      return SceneMarkerListFilterOptions;
-    case FilterMode.Movies:
-    case FilterMode.Groups:
-      return GroupListFilterOptions;
-    case FilterMode.Tags:
-      return TagListFilterOptions;
-    case FilterMode.Images:
-      return ImageListFilterOptions;
-  }
-}
-const DEFAULT_PARAMS = {
-  sortDirection: SortDirectionEnum.Asc,
-  displayMode: DisplayMode.Grid,
-  currentPage: 1,
-  itemsPerPage: 40
-};
-class ListFilterModel {
-  constructor(mode, config2, options2) {
-    Object.defineProperty(this, "mode", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "options", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "config", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "searchTerm", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: ""
-    });
-    Object.defineProperty(this, "currentPage", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: DEFAULT_PARAMS.currentPage
-    });
-    Object.defineProperty(this, "itemsPerPage", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: DEFAULT_PARAMS.itemsPerPage
-    });
-    Object.defineProperty(this, "sortDirection", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: DEFAULT_PARAMS.sortDirection
-    });
-    Object.defineProperty(this, "sortBy", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "displayMode", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: DEFAULT_PARAMS.displayMode
-    });
-    Object.defineProperty(this, "zoomIndex", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: 1
-    });
-    Object.defineProperty(this, "criteria", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: []
-    });
-    Object.defineProperty(this, "randomSeed", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: -1
-    });
-    Object.defineProperty(this, "defaultZoomIndex", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: 1
-    });
-    this.mode = mode;
-    this.config = config2;
-    this.options = getFilterOptions(mode);
-    const { defaultSortBy: defaultSortBy2, displayModeOptions: displayModeOptions2 } = this.options;
-    if (options2 === null || options2 === void 0 ? void 0 : options2.defaultSortBy) {
-      this.sortBy = options2.defaultSortBy;
-      if (options2.defaultSortDir) {
-        this.sortDirection = options2.defaultSortDir;
-      }
-    } else {
-      this.sortBy = defaultSortBy2;
-      if (this.sortBy === "date") {
-        this.sortDirection = SortDirectionEnum.Desc;
-      }
-    }
-    this.displayMode = displayModeOptions2[0];
-    if ((options2 === null || options2 === void 0 ? void 0 : options2.defaultZoomIndex) !== void 0) {
-      this.defaultZoomIndex = options2.defaultZoomIndex;
-      this.zoomIndex = options2.defaultZoomIndex;
-    }
-  }
-  clone() {
-    const ret = Object.assign(new ListFilterModel(this.mode, this.config), this);
-    ret.criteria = this.criteria.map((c) => c.clone());
-    return ret;
-  }
-  empty() {
-    return new ListFilterModel(this.mode, this.config, {
-      defaultZoomIndex: this.defaultZoomIndex
-    });
-  }
-  // returns the number of filters applied
-  count() {
-    return this.criteria.length;
-  }
-  configureFromDecodedParams(params) {
-    var _a2;
-    if (params.perPage !== void 0) {
-      this.itemsPerPage = params.perPage;
-    }
-    if (params.sortby !== void 0) {
-      this.sortBy = params.sortby;
-      const match2 = this.sortBy.match(/^random_(\d+)$/);
-      if (match2) {
-        this.sortBy = "random";
-        this.randomSeed = Number.parseInt(match2[1], 10);
-      }
-    }
-    if (params.sortdir !== void 0) {
-      this.sortDirection = params.sortdir === "desc" ? SortDirectionEnum.Desc : SortDirectionEnum.Asc;
-    } else {
-      this.sortDirection = params.sortby === "date" ? SortDirectionEnum.Desc : SortDirectionEnum.Asc;
-    }
-    if (params.disp !== void 0) {
-      this.displayMode = params.disp;
-    }
-    if (params.q !== void 0) {
-      this.searchTerm = params.q;
-    }
-    this.currentPage = (_a2 = params.p) !== null && _a2 !== void 0 ? _a2 : 1;
-    if (params.z !== void 0) {
-      this.zoomIndex = params.z;
-    }
-    this.criteria = [];
-    if (params.c !== void 0) {
-      for (const jsonString of params.c) {
-        try {
-          const { type: criterionType, ...savedCriterion } = JSON.parse(jsonString);
-          const criterion = this.makeCriterion(criterionType);
-          criterion.fromDecodedParams(savedCriterion);
-          this.criteria.push(criterion);
-        } catch (err) {
-          console.error("Failed to parse encoded criterion:", err);
-        }
-      }
-    }
-  }
-  // Does not decode any URL-encoding, only type conversions
-  static decodeParams(params) {
-    const ret = {};
-    if (params.perPage) {
-      ret.perPage = Number.parseInt(params.perPage, 10);
-    }
-    if (params.sortby) {
-      ret.sortby = params.sortby;
-    }
-    if (params.sortdir) {
-      ret.sortdir = params.sortdir;
-    }
-    if (params.disp) {
-      ret.disp = Number.parseInt(params.disp, 10);
-    }
-    if (params.q) {
-      ret.q = params.q.trim();
-    }
-    if (params.p) {
-      ret.p = Number.parseInt(params.p, 10);
-    }
-    if (params.z) {
-      const zoomIndex = Number.parseInt(params.z, 10);
-      if (zoomIndex >= 0) {
-        ret.z = zoomIndex;
-      }
-    }
-    if (params.c && params.c.length !== 0) {
-      ret.c = params.c.map((jsonString) => ListFilterModel.translateJSON(jsonString, true));
-    }
-    return ret;
-  }
-  static translateJSON(jsonString, decoding) {
-    let inString = false;
-    let escape2 = false;
-    return [...jsonString].map((c) => {
-      if (escape2) {
-        escape2 = false;
-        return c;
-      }
-      switch (c) {
-        case "\\":
-          if (inString) {
-            escape2 = true;
-          }
-          break;
-        case '"':
-          inString = !inString;
-          break;
-        case "(":
-          if (decoding && !inString) {
-            return "{";
-          }
-          break;
-        case ")":
-          if (decoding && !inString) {
-            return "}";
-          }
-          break;
-        case "{":
-          if (!decoding && !inString) {
-            return "(";
-          }
-          break;
-        case "}":
-          if (!decoding && !inString) {
-            return ")";
-          }
-          break;
-      }
-      return c;
-    }).join("");
-  }
-  configureFromQueryString(queryString) {
-    const query = new URLSearchParams(queryString);
-    const params = {
-      perPage: query.get("perPage"),
-      sortby: query.get("sortby"),
-      sortdir: query.get("sortdir"),
-      disp: query.get("disp"),
-      q: query.get("q"),
-      p: query.get("p"),
-      z: query.get("z"),
-      c: query.getAll("c")
-    };
-    const decoded = ListFilterModel.decodeParams(params);
-    this.configureFromDecodedParams(decoded);
-  }
-  configureFromSavedFilter(savedFilter) {
-    var _a2, _b2, _c, _d, _e, _f, _g;
-    const { find_filter: findFilter, object_filter: objectFilter, ui_options: uiOptions } = savedFilter;
-    this.itemsPerPage = (_a2 = findFilter === null || findFilter === void 0 ? void 0 : findFilter.per_page) !== null && _a2 !== void 0 ? _a2 : this.itemsPerPage;
-    this.sortBy = (_b2 = findFilter === null || findFilter === void 0 ? void 0 : findFilter.sort) !== null && _b2 !== void 0 ? _b2 : this.sortBy;
-    const match2 = (_c = this.sortBy) === null || _c === void 0 ? void 0 : _c.match(/^random_(\d+)$/);
-    if (match2) {
-      this.sortBy = "random";
-      this.randomSeed = Number.parseInt(match2[1], 10);
-    }
-    this.sortDirection = (_d = findFilter === null || findFilter === void 0 ? void 0 : findFilter.direction) !== null && _d !== void 0 ? _d : this.sortDirection;
-    this.searchTerm = (_e = findFilter === null || findFilter === void 0 ? void 0 : findFilter.q) !== null && _e !== void 0 ? _e : this.searchTerm;
-    this.displayMode = (_f = uiOptions === null || uiOptions === void 0 ? void 0 : uiOptions.display_mode) !== null && _f !== void 0 ? _f : this.displayMode;
-    this.zoomIndex = (_g = uiOptions === null || uiOptions === void 0 ? void 0 : uiOptions.zoom_index) !== null && _g !== void 0 ? _g : this.zoomIndex;
-    this.currentPage = 1;
-    this.criteria = [];
-    if (objectFilter) {
-      for (const [k, v] of Object.entries(objectFilter)) {
-        const criterion = this.makeCriterion(k);
-        criterion.setFromSavedCriterion(v);
-        this.criteria.push(criterion);
-      }
-    }
-  }
-  setRandomSeed() {
-    if (this.sortBy === "random") {
-      if (this.randomSeed === -1) {
-        this.randomSeed = Math.floor(Math.random() * 10 ** 8);
-      }
-    } else {
-      this.randomSeed = -1;
-    }
-  }
-  getSortBy() {
-    this.setRandomSeed();
-    if (this.sortBy === "random") {
-      return `random_${this.randomSeed.toString()}`;
-    }
-    return this.sortBy;
-  }
-  // Returns query parameters with necessary parts URL-encoded
-  getEncodedParams() {
-    const encodedCriteria = this.criteria.map((criterion) => {
-      const queryParams = criterion.toQueryParams();
-      let str = ListFilterModel.translateJSON(JSON.stringify(queryParams), false);
-      str = encodeURI(str);
-      str = str.replaceAll("?", encodeURIComponent("?"));
-      str = str.replaceAll("#", encodeURIComponent("#"));
-      str = str.replaceAll("&", encodeURIComponent("&"));
-      str = str.replaceAll(";", encodeURIComponent(";"));
-      str = str.replaceAll("=", encodeURIComponent("="));
-      str = str.replaceAll("+", encodeURIComponent("+"));
-      return str;
-    });
-    return {
-      perPage: this.itemsPerPage !== DEFAULT_PARAMS.itemsPerPage ? String(this.itemsPerPage) : void 0,
-      sortby: this.getSortBy(),
-      sortdir: this.sortBy === "date" ? this.sortDirection === SortDirectionEnum.Asc ? "asc" : void 0 : this.sortDirection === SortDirectionEnum.Desc ? "desc" : void 0,
-      disp: this.displayMode !== DEFAULT_PARAMS.displayMode ? String(this.displayMode) : void 0,
-      q: this.searchTerm ? encodeURIComponent(this.searchTerm) : void 0,
-      p: this.currentPage !== DEFAULT_PARAMS.currentPage ? String(this.currentPage) : void 0,
-      z: this.zoomIndex !== this.defaultZoomIndex ? String(this.zoomIndex) : void 0,
-      c: encodedCriteria
-    };
-  }
-  makeQueryParameters() {
-    const query = [];
-    const params = this.getEncodedParams();
-    if (params.q) {
-      query.push(`q=${params.q}`);
-    }
-    if (params.c) {
-      for (const c of params.c) {
-        query.push(`c=${c}`);
-      }
-    }
-    if (params.sortby) {
-      query.push(`sortby=${params.sortby}`);
-    }
-    if (params.sortdir) {
-      query.push(`sortdir=${params.sortdir}`);
-    }
-    if (params.perPage) {
-      query.push(`perPage=${params.perPage}`);
-    }
-    if (params.disp) {
-      query.push(`disp=${params.disp}`);
-    }
-    if (params.z) {
-      query.push(`z=${params.z}`);
-    }
-    if (params.p) {
-      query.push(`p=${params.p}`);
-    }
-    return query.join("&");
-  }
-  makeCriterion(type2) {
-    const { criterionOptions: criterionOptions2 } = getFilterOptions(this.mode);
-    const option = criterionOptions2.find((o2) => o2.type === type2);
-    if (!option) {
-      throw new Error(`Unknown criterion parameter name: ${type2}`);
-    }
-    return option.makeCriterion(this.config);
-  }
-  makeFindFilter() {
-    return {
-      q: this.searchTerm,
-      page: this.currentPage,
-      per_page: this.itemsPerPage,
-      sort: this.getSortBy(),
-      direction: this.sortDirection
-    };
-  }
-  makeFilter() {
-    const output = {};
-    for (const c of this.criteria) {
-      c.applyToCriterionInput(output);
-    }
-    return output;
-  }
-  // TODO - this needs to just use makeFilter, but it needs a migration
-  makeSavedFilter() {
-    const output = {};
-    for (const c of this.criteria) {
-      c.applyToSavedCriterion(output);
-    }
-    return output;
-  }
-  makeSavedUIOptions() {
-    return {
-      display_mode: this.displayMode,
-      zoom_index: this.zoomIndex
-    };
-  }
-  clearCriteria() {
-    const ret = this.clone();
-    ret.criteria = [];
-    ret.currentPage = 1;
-    return ret;
-  }
-  removeCriterion(type2) {
-    const ret = this.clone();
-    const c = ret.criteria.find((cc) => cc.criterionOption.type === type2);
-    if (!c)
-      return ret;
-    const newCriteria = ret.criteria.filter((cc) => {
-      return cc.getId() !== c.getId();
-    });
-    ret.criteria = newCriteria;
-    ret.currentPage = 1;
-    return ret;
-  }
-  removeCustomFieldCriterion(type2, index2) {
-    const ret = this.clone();
-    const c = ret.criteria.find((cc) => cc.criterionOption.type === type2);
-    if (!c)
-      return ret;
-    if (c instanceof CustomFieldsCriterion) {
-      const newCriteria = c.value.filter((_, i) => i !== index2);
-      c.value = newCriteria;
-    }
-    return ret;
-  }
-  setPageSize(pageSize) {
-    const ret = this.clone();
-    ret.itemsPerPage = pageSize;
-    return ret;
-  }
-  changePage(page) {
-    const ret = this.clone();
-    ret.currentPage = page;
-    return ret;
-  }
-  setZoom(zoomIndex) {
-    const ret = this.clone();
-    ret.zoomIndex = zoomIndex;
-    return ret;
-  }
-  setDisplayMode(displayMode) {
-    const ret = this.clone();
-    ret.displayMode = displayMode;
-    return ret;
-  }
-}
 const App = () => {
+  const { forceLandscape } = useAppStateStore();
+  const { loadStashConfig } = useStashConfigStore();
   const apolloClient = useApolloClient();
-  const { loadStashConfig, getSavedFilter, stashTvConfig, loading: stashConfigLoading } = useStashConfigStore();
-  const { setSceneFilter, sceneFilter, selectedSavedFilterId, setSelectedSavedFilterId, forceLandscape, ...otherAppState } = useAppStateStore();
   reactExports.useEffect(() => {
-    if (!apolloClient) return;
-    loadStashConfig(apolloClient).catch((error) => {
-      console.error("Error loading stash config:", error);
-    });
+    apolloClient && loadStashConfig(apolloClient);
   }, [apolloClient]);
-  reactExports.useEffect(() => {
-    setSelectedSavedFilterId(stashTvConfig.stashTvDefaultFilterID);
-  }, [stashTvConfig.stashTvDefaultFilterID]);
-  const selectedSavedFilterIdRef = reactExports.useRef(void 0);
-  reactExports.useEffect(() => {
-    if (stashConfigLoading) return;
-    selectedSavedFilterIdRef.current = selectedSavedFilterId;
-    getSavedFilter(selectedSavedFilterId).then((savedFilter) => {
-      if (selectedSavedFilterIdRef.current !== selectedSavedFilterId) return;
-      if (savedFilter) {
-        setSceneFilter(
-          {
-            generalFilter: processSavedFilterToGeneralFilter(
-              savedFilter,
-              stashTvConfig,
-              otherAppState
-            ),
-            sceneFilter: processSavedFilterToSceneFilter(savedFilter)
-          }
-        );
-      }
-    });
-  }, [stashConfigLoading, selectedSavedFilterId, otherAppState.isRandomised]);
   document.documentElement.className = cx({ "force-landscape": forceLandscape });
   reactExports.useEffect(() => {
     if (!forceLandscape) return;
@@ -182078,21 +182177,6 @@ const App = () => {
     };
   }, [forceLandscape]);
   return /* @__PURE__ */ React$1.createElement(FeedPage, null);
-};
-const processSavedFilterToGeneralFilter = (savedFilter, stashTvConfig, otherAppState) => {
-  const filter = new ListFilterModel(FilterMode.Scenes);
-  filter.configureFromSavedFilter(savedFilter);
-  const updatedFilter = { ...filter.makeFindFilter() };
-  if (updatedFilter.sort?.match(/^random_\d*$/) || otherAppState.isRandomised) {
-    let seed = Math.round(Math.random() * 1e6);
-    updatedFilter.sort = `random_${seed}`;
-  }
-  return updatedFilter;
-};
-const processSavedFilterToSceneFilter = (savedFilter) => {
-  const filter = new ListFilterModel(FilterMode.Scenes);
-  filter.configureFromSavedFilter(savedFilter);
-  return filter.makeFilter();
 };
 var object_hash = { exports: {} };
 var hasRequiredObject_hash;
@@ -182953,4 +183037,4 @@ ReactDOM.render(
 export {
   videojs as v
 };
-//# sourceMappingURL=index-DLPVpeZp.js.map
+//# sourceMappingURL=index-OHDa8dl-.js.map
