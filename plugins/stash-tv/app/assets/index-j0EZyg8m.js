@@ -165844,7 +165844,7 @@ async function getOriginalPlugin() {
     pluginName = pluginNameToBeRegistered;
     plugin = pluginToBeRegistered;
   };
-  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-0cPcierH.js"), true ? [] : void 0, import.meta.url);
+  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-BnEO-2V1.js"), true ? [] : void 0, import.meta.url);
   videojs.registerPlugin = originalRegisterPlugin;
   if (!pluginName || !plugin) {
     throw new Error(`Failed to load original videojs-overlay-buttons plugin`);
@@ -166976,7 +166976,7 @@ const VideoItem = (props) => {
     }
   }, [loadingDeferred, props.currentlyScrolling]);
   const isInViewport = props.index === props.currentIndex;
-  const autoplay = false;
+  const autoplay = true;
   function handleVideojsPlayerReady(player) {
     videojsPlayerRef.current = player;
     player.on("volumechange", () => {
@@ -166993,7 +166993,8 @@ const VideoItem = (props) => {
     const videojsPlayer = videojsPlayerRef.current;
     if (!videojsPlayer) return;
     if (props.index === props.currentIndex) {
-      return;
+      setPaused(false);
+      videojsPlayer?.play()?.catch(() => setPaused(true));
     } else {
       videojsPlayer?.pause();
     }
@@ -183037,4 +183038,4 @@ ReactDOM.render(
 export {
   videojs as v
 };
-//# sourceMappingURL=index-OHDa8dl-.js.map
+//# sourceMappingURL=index-j0EZyg8m.js.map
