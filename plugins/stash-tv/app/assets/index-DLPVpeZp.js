@@ -165844,7 +165844,7 @@ async function getOriginalPlugin() {
     pluginName = pluginNameToBeRegistered;
     plugin = pluginToBeRegistered;
   };
-  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-DZVmuGJy.js"), true ? [] : void 0, import.meta.url);
+  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-BdTeMWnN.js"), true ? [] : void 0, import.meta.url);
   videojs.registerPlugin = originalRegisterPlugin;
   if (!pluginName || !plugin) {
     throw new Error(`Failed to load original videojs-overlay-buttons plugin`);
@@ -165954,7 +165954,7 @@ const ScenePlayer = reactExports.forwardRef(({ className, onTimeUpdate, hideCont
     onVideojsPlayerReady?.(player);
   };
   videoJsOptionsOverride[otherProps.scene.id] = {
-    muted: false,
+    muted,
     loop: loop2,
     // Unfortunately this doesn't seem to work since the stash ScenePlayer component seems immediately set
     // the loop value itself after initialization so we have to set it the player ready callback
@@ -182953,4 +182953,4 @@ ReactDOM.render(
 export {
   videojs as v
 };
-//# sourceMappingURL=index-DvKiFCqN.js.map
+//# sourceMappingURL=index-DLPVpeZp.js.map
