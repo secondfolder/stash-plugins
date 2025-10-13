@@ -165844,7 +165844,7 @@ async function getOriginalPlugin() {
     pluginName = pluginNameToBeRegistered;
     plugin = pluginToBeRegistered;
   };
-  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-BY9L3KfS.js"), true ? [] : void 0, import.meta.url);
+  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-DZVmuGJy.js"), true ? [] : void 0, import.meta.url);
   videojs.registerPlugin = originalRegisterPlugin;
   if (!pluginName || !plugin) {
     throw new Error(`Failed to load original videojs-overlay-buttons plugin`);
@@ -178297,6 +178297,10 @@ function SideDrawer({ children, title, closeDisabled, className }) {
     });
   };
   const close = () => {
+    if (closeDisabled) {
+      open();
+      return;
+    }
     api2.start({
       x: 0,
       immediate: false,
@@ -178519,7 +178523,8 @@ const Loading = (props) => {
 const FeedPage = ({ className }) => {
   const { showSettings, setShowSettings, sceneFilterLoading, fullscreen } = useAppStateStore();
   const { scenes, scenesLoading } = useScenes();
-  if (!sceneFilterLoading && !scenesLoading && scenes.length === 0 && !showSettings) {
+  const loadedButNoScenes = !sceneFilterLoading && !scenesLoading && scenes.length === 0;
+  if (loadedButNoScenes && !showSettings) {
     setShowSettings(true);
   }
   const pageRef = reactExports.useRef(null);
@@ -178535,9 +178540,7 @@ const FeedPage = ({ className }) => {
       document.exitFullscreen?.();
     }
   }, [fullscreen]);
-  if (scenesLoading && !showSettings)
-    return /* @__PURE__ */ React$1.createElement(Loading, { heading: "Fetching scenes..." });
-  return /* @__PURE__ */ React$1.createElement("main", { "data-testid": "FeedPage", ref: pageRef, className }, /* @__PURE__ */ React$1.createElement(VideoScroller, null), /* @__PURE__ */ React$1.createElement(SettingsTab, null));
+  return /* @__PURE__ */ React$1.createElement("main", { "data-testid": "FeedPage", ref: pageRef, className }, scenesLoading && /* @__PURE__ */ React$1.createElement(Loading, { heading: "Fetching scenes..." }), scenes.length > 0 && /* @__PURE__ */ React$1.createElement(VideoScroller, null), loadedButNoScenes && /* @__PURE__ */ React$1.createElement("div", null, "No Scenes Found"), /* @__PURE__ */ React$1.createElement(SettingsTab, null));
 };
 const modifierMessageIDs = {
   [CriterionModifier.Equals]: "criterion_modifier.equals",
@@ -182950,4 +182953,4 @@ ReactDOM.render(
 export {
   videojs as v
 };
-//# sourceMappingURL=index-Bo_0eUrj.js.map
+//# sourceMappingURL=index-DvKiFCqN.js.map
