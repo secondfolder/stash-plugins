@@ -10901,6 +10901,16 @@ function isEnumerableIncludingInherited(obj, prop) {
   }
   return false;
 }
+function getSceneIdForVideoJsPlayer(videoElm) {
+  let node2 = videoElm;
+  while (node2 !== null) {
+    if (node2 instanceof HTMLElement && "sceneId" in node2.dataset && node2.dataset.sceneId) {
+      return node2.dataset.sceneId;
+    }
+    node2 = node2.parentElement;
+  }
+  throw new Error("Could not find sceneId for Video.js player");
+}
 const PLUGIN_NAMESPACE = "stash-tv";
 const TRANSITION_DURATION = 150;
 var jsxRuntime = { exports: {} };
@@ -22002,9 +22012,9 @@ var supportsPassive = function supportsPassive2() {
   return _supportsPassive;
 };
 var passiveEvents = ["touchstart", "touchmove"];
-function on(elem, type2, fn) {
+function on$1(elem, type2, fn) {
   if (Array.isArray(type2)) {
-    return _handleMultipleEvents(on, elem, type2, fn);
+    return _handleMultipleEvents(on$1, elem, type2, fn);
   }
   if (!DomData.has(elem)) {
     DomData.set(elem, {});
@@ -22058,7 +22068,7 @@ function on(elem, type2, fn) {
     }
   }
 }
-function off(elem, type2, fn) {
+function off$1(elem, type2, fn) {
   if (!DomData.has(elem)) {
     return;
   }
@@ -22067,7 +22077,7 @@ function off(elem, type2, fn) {
     return;
   }
   if (Array.isArray(type2)) {
-    return _handleMultipleEvents(off, elem, type2, fn);
+    return _handleMultipleEvents(off$1, elem, type2, fn);
   }
   var removeType = function removeType2(el, t4) {
     data2.handlers[t4] = [];
@@ -22135,25 +22145,25 @@ function one(elem, type2, fn) {
     return _handleMultipleEvents(one, elem, type2, fn);
   }
   var func = function func2() {
-    off(elem, type2, func2);
+    off$1(elem, type2, func2);
     fn.apply(this, arguments);
   };
   func.guid = fn.guid = fn.guid || newGUID();
-  on(elem, type2, func);
+  on$1(elem, type2, func);
 }
 function any(elem, type2, fn) {
   var func = function func2() {
-    off(elem, type2, func2);
+    off$1(elem, type2, func2);
     fn.apply(this, arguments);
   };
   func.guid = fn.guid = fn.guid || newGUID();
-  on(elem, type2, func);
+  on$1(elem, type2, func);
 }
 var Events = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   fixEvent,
-  on,
-  off,
+  on: on$1,
+  off: off$1,
   trigger,
   one,
   any
@@ -22210,12 +22220,12 @@ EventTarget$2.prototype.on = function(type2, fn) {
   var ael = this.addEventListener;
   this.addEventListener = function() {
   };
-  on(this, type2, fn);
+  on$1(this, type2, fn);
   this.addEventListener = ael;
 };
 EventTarget$2.prototype.addEventListener = EventTarget$2.prototype.on;
 EventTarget$2.prototype.off = function(type2, fn) {
-  off(this, type2, fn);
+  off$1(this, type2, fn);
 };
 EventTarget$2.prototype.removeEventListener = EventTarget$2.prototype.off;
 EventTarget$2.prototype.one = function(type2, fn) {
@@ -22383,7 +22393,7 @@ var EventedMixin = {
    *         If the first argument was another evented object, this will be
    *         the listener function.
    */
-  on: function on2() {
+  on: function on() {
     var _this = this;
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -22509,9 +22519,9 @@ var EventedMixin = {
    *         the listener function; otherwise, _all_ listeners bound to the
    *         event type(s) will be removed.
    */
-  off: function off$1(targetOrType, typeOrListener, listener2) {
+  off: function off$1$1(targetOrType, typeOrListener, listener2) {
     if (!targetOrType || isValidEventType(targetOrType)) {
-      off(this.eventBusEl_, targetOrType, typeOrListener);
+      off$1(this.eventBusEl_, targetOrType, typeOrListener);
     } else {
       var target = targetOrType;
       var type2 = typeOrListener;
@@ -22521,8 +22531,8 @@ var EventedMixin = {
       listener2 = bind$1(this, listener2);
       this.off("dispose", listener2);
       if (target.nodeName) {
-        off(target, type2, listener2);
-        off(target, "dispose", listener2);
+        off$1(target, type2, listener2);
+        off$1(target, "dispose", listener2);
       } else if (isEvented(target)) {
         target.off(type2, listener2);
         target.off("dispose", listener2);
@@ -27812,11 +27822,11 @@ var VolumePanel = /* @__PURE__ */ (function(_Component) {
   };
   _proto.handleMouseOver = function handleMouseOver(event) {
     this.addClass("vjs-hover");
-    on(document$1, "keyup", this.handleKeyPressHandler_);
+    on$1(document$1, "keyup", this.handleKeyPressHandler_);
   };
   _proto.handleMouseOut = function handleMouseOut(event) {
     this.removeClass("vjs-hover");
-    off(document$1, "keyup", this.handleKeyPressHandler_);
+    off$1(document$1, "keyup", this.handleKeyPressHandler_);
   };
   _proto.handleKeyPress = function handleKeyPress(event) {
     if (keycode.isEventKey(event, "Esc")) {
@@ -27888,7 +27898,7 @@ var Menu$2 = /* @__PURE__ */ (function(_Component) {
       className: "vjs-menu"
     });
     el.appendChild(this.contentEl_);
-    on(el, "click", function(event) {
+    on$1(el, "click", function(event) {
       event.preventDefault();
       event.stopImmediatePropagation();
     });
@@ -28007,7 +28017,7 @@ var MenuButton = /* @__PURE__ */ (function(_Component) {
     _this.on(_this.menuButton_, "mouseenter", function() {
       _this.addClass("vjs-hover");
       _this.menu.show();
-      on(document$1, "keyup", _this.handleMenuKeyUp_);
+      on$1(document$1, "keyup", _this.handleMenuKeyUp_);
     });
     _this.on("mouseleave", function(e) {
       return _this.handleMouseLeave(e);
@@ -28105,7 +28115,7 @@ var MenuButton = /* @__PURE__ */ (function(_Component) {
   };
   _proto.handleMouseLeave = function handleMouseLeave(event) {
     this.removeClass("vjs-hover");
-    off(document$1, "keyup", this.handleMenuKeyUp_);
+    off$1(document$1, "keyup", this.handleMenuKeyUp_);
   };
   _proto.focus = function focus() {
     this.menuButton_.focus();
@@ -29382,12 +29392,12 @@ var ResizeManager = /* @__PURE__ */ (function(_Component) {
         }
         var debouncedHandler_ = _this.debouncedHandler_;
         var unloadListener_ = _this.unloadListener_ = function() {
-          off(this, "resize", debouncedHandler_);
-          off(this, "unload", unloadListener_);
+          off$1(this, "resize", debouncedHandler_);
+          off$1(this, "unload", unloadListener_);
           unloadListener_ = null;
         };
-        on(_this.el_.contentWindow, "unload", unloadListener_);
-        on(_this.el_.contentWindow, "resize", debouncedHandler_);
+        on$1(_this.el_.contentWindow, "unload", unloadListener_);
+        on$1(_this.el_.contentWindow, "resize", debouncedHandler_);
       };
       _this.one("load", _this.loadListener_);
     }
@@ -31383,7 +31393,7 @@ var Player = /* @__PURE__ */ (function(_Component) {
       eventBusKey: "el_"
     });
     if (_this.fsApi_.requestFullscreen) {
-      on(document$1, _this.fsApi_.fullscreenchange, _this.boundDocumentFullscreenChange_);
+      on$1(document$1, _this.fsApi_.fullscreenchange, _this.boundDocumentFullscreenChange_);
       _this.on(_this.fsApi_.fullscreenchange, _this.boundDocumentFullscreenChange_);
     }
     if (_this.fluid_) {
@@ -31456,8 +31466,8 @@ var Player = /* @__PURE__ */ (function(_Component) {
     var _this2 = this;
     this.trigger("dispose");
     this.off("dispose");
-    off(document$1, this.fsApi_.fullscreenchange, this.boundDocumentFullscreenChange_);
-    off(document$1, "keydown", this.boundFullWindowOnEscKey_);
+    off$1(document$1, this.fsApi_.fullscreenchange, this.boundDocumentFullscreenChange_);
+    off$1(document$1, "keydown", this.boundFullWindowOnEscKey_);
     if (this.styleEl_ && this.styleEl_.parentNode) {
       this.styleEl_.parentNode.removeChild(this.styleEl_);
       this.styleEl_ = null;
@@ -32590,7 +32600,7 @@ var Player = /* @__PURE__ */ (function(_Component) {
     this.isFullscreen(true);
     this.isFullWindow = true;
     this.docOrigOverflow = document$1.documentElement.style.overflow;
-    on(document$1, "keydown", this.boundFullWindowOnEscKey_);
+    on$1(document$1, "keydown", this.boundFullWindowOnEscKey_);
     document$1.documentElement.style.overflow = "hidden";
     addClass(document$1.body, "vjs-full-window");
     this.trigger("enterFullWindow");
@@ -32609,7 +32619,7 @@ var Player = /* @__PURE__ */ (function(_Component) {
   _proto.exitFullWindow = function exitFullWindow() {
     this.isFullscreen(false);
     this.isFullWindow = false;
-    off(document$1, "keydown", this.boundFullWindowOnEscKey_);
+    off$1(document$1, "keydown", this.boundFullWindowOnEscKey_);
     document$1.documentElement.style.overflow = this.docOrigOverflow;
     removeClass(document$1.body, "vjs-full-window");
     this.trigger("exitFullWindow");
@@ -34017,9 +34027,9 @@ videojs.resetFormatTime = resetFormatTime;
 videojs.parseUrl = parseUrl;
 videojs.isCrossOrigin = isCrossOrigin;
 videojs.EventTarget = EventTarget$2;
-videojs.on = on;
+videojs.on = on$1;
 videojs.one = one;
-videojs.off = off;
+videojs.off = off$1;
 videojs.trigger = trigger;
 videojs.xhr = XHR;
 videojs.TextTrack = TextTrack;
@@ -155406,6 +155416,7 @@ const TvSceneDataFragmentDoc = gql`
     screenshot
     stream
     caption
+    preview
   }
   studio {
     name
@@ -165772,6 +165783,59 @@ function allowPluginRemoval(videojs2) {
       plugins: pluginsToKeep
     };
   });
+  videojs2.hook("setup", (player) => {
+    const plugins2 = player.toJSON().plugins || {};
+    if (!("vrMenu" in plugins2)) {
+      player.vrMenu = (() => {
+        return {
+          setShowButton: () => {
+          }
+        };
+      });
+    }
+    if (!("skipButtons" in plugins2)) {
+      player.skipButtons = (() => {
+        return {
+          setForwardHandler: () => {
+          },
+          setBackwardHandler: () => {
+          }
+        };
+      });
+    }
+    if (!("trackActivity" in plugins2)) {
+      player.trackActivity = (() => {
+        return {
+          reset: () => {
+          },
+          setEnabled: () => {
+          }
+        };
+      });
+    }
+    if (!("vttThumbnails" in plugins2)) {
+      player.vttThumbnails = (() => {
+        return {
+          src: () => {
+          }
+        };
+      });
+    }
+    if (!("markers" in plugins2)) {
+      player.markers = (() => {
+        return {
+          findColors: () => {
+          },
+          addDotMarkers: () => {
+          },
+          addRangeMarkers: () => {
+          },
+          clearMarkers: () => {
+          }
+        };
+      });
+    }
+  });
 }
 const scriptRel = "modulepreload";
 const assetsURL = function(dep2, importerUrl) {
@@ -165844,7 +165908,7 @@ async function getOriginalPlugin() {
     pluginName = pluginNameToBeRegistered;
     plugin = pluginToBeRegistered;
   };
-  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-C9zVfXwS.js"), true ? [] : void 0, import.meta.url);
+  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-B37BwRKT.js"), true ? [] : void 0, import.meta.url);
   videojs.registerPlugin = originalRegisterPlugin;
   if (!pluginName || !plugin) {
     throw new Error(`Failed to load original videojs-overlay-buttons plugin`);
@@ -165865,24 +165929,16 @@ videojs.hook("setup", (player) => {
     const scene = "_scene" in player && player._scene;
     return scene?.files[0]?.duration || originalDuration();
   };
-  player.vrMenu = (() => {
-    return {
-      setShowButton: () => {
-      }
-    };
-  });
-  player.skipButtons = (() => {
-    return {
-      setForwardHandler: () => {
-      },
-      setBackwardHandler: () => {
-      }
-    };
-  });
 });
 videojs.hook("setup", function(player) {
-  const sceneId = player.el().parentElement?.parentElement?.parentElement?.dataset.sceneId;
-  videoJsSetupCallbacks[sceneId || ""]?.(player);
+  let sceneId;
+  try {
+    sceneId = getSceneIdForVideoJsPlayer(player.el());
+  } catch (error) {
+    console.error(error);
+    return;
+  }
+  videoJsSetupCallbacks[sceneId]?.(player);
 });
 videojs.hook("beforesetup", function(videoEl, options2) {
   return {
@@ -165904,12 +165960,12 @@ videojs.hook("beforesetup", function(videoEl, options2) {
       volumePanel: false
     },
     plugins: {
-      sourceSelector: false,
-      bigButtons: false,
-      seekButtons: false,
-      skipButtons: false,
-      persistVolume: false,
-      vrMenu: false,
+      sourceSelector: void 0,
+      bigButtons: void 0,
+      seekButtons: void 0,
+      skipButtons: void 0,
+      persistVolume: void 0,
+      vrMenu: void 0,
       touchOverlay: {
         seekLeft: {},
         play: {},
@@ -165934,23 +165990,67 @@ videojs.hook("beforesetup", function(videoEl, options2) {
   };
 });
 videojs.hook("beforesetup", function(videoEl, options2) {
-  const sceneId = videoEl.parentElement?.parentElement?.parentElement?.dataset.sceneId;
-  if (sceneId) {
-    return videoJsOptionsOverride[sceneId] || {};
+  let sceneId;
+  try {
+    sceneId = getSceneIdForVideoJsPlayer(videoEl);
+  } catch (error) {
+    console.error(error);
+    return {};
   }
-  return {};
+  return videoJsOptionsOverride[sceneId] || {};
 });
 allowPluginRemoval(videojs);
 ScenePlayer$1.displayName = "ScenePlayerOriginal";
-const ScenePlayer = reactExports.forwardRef(({ className, onTimeUpdate, hideControls, hideProgressBar, onClick, onEnded, onVideojsPlayerReady, optionsToMerge, muted, loop: loop2, ...otherProps }, ref) => {
+const ScenePlayer = reactExports.forwardRef(({
+  className,
+  onTimeUpdate,
+  hideControls,
+  hideProgressBar,
+  onClick,
+  onEnded,
+  onVideojsPlayerReady,
+  optionsToMerge,
+  muted,
+  loop: loop2,
+  trackActivity = true,
+  scrubberThumbnail = true,
+  markers = true,
+  ...otherProps
+}, ref) => {
   const containerRef = reactExports.useRef(null);
   const [videoElm, setVideoElm] = reactExports.useState(null);
   const [videojsPlayer, setVideojsPlayer] = reactExports.useState(null);
   const videojsPlayerRef = reactExports.useRef(null);
+  otherProps.scene = {
+    ...otherProps.scene,
+    sceneStreams: otherProps.scene.sceneStreams.map(
+      (stream) => ({
+        ...stream,
+        url: stream.url.replace(/\/preview$/, "/preview/stream")
+      })
+    )
+  };
+  function addWrapperToRevertPreviewUrlChange(player) {
+    const originalSourceSelector = player.sourceSelector;
+    player.sourceSelector = function(...args) {
+      const sourceSelector = originalSourceSelector.apply(this, args);
+      const originalSetSources = sourceSelector.setSources;
+      sourceSelector.setSources = function(sources, ...otherArgs) {
+        sources.forEach((source) => {
+          if (source.src) {
+            source.src = source.src.replace(/\/preview\/stream$/, "/preview");
+          }
+        });
+        originalSetSources.apply(this, [sources, ...otherArgs]);
+      };
+      return sourceSelector;
+    };
+  }
   videoJsSetupCallbacks[otherProps.scene.id] = (player) => {
     if (loop2 !== void 0) {
       setTimeout(() => !player.isDisposed() && player.loop(loop2), 100);
     }
+    addWrapperToRevertPreviewUrlChange(player);
     onVideojsPlayerReady?.(player);
   };
   videoJsOptionsOverride[otherProps.scene.id] = {
@@ -165958,7 +166058,13 @@ const ScenePlayer = reactExports.forwardRef(({ className, onTimeUpdate, hideCont
     loop: loop2,
     // Unfortunately this doesn't seem to work since the stash ScenePlayer component seems immediately set
     // the loop value itself after initialization so we have to set it the player ready callback
-    ...optionsToMerge
+    ...optionsToMerge,
+    plugins: {
+      ...!trackActivity ? { trackActivity: void 0 } : {},
+      ...!scrubberThumbnail ? { vttThumbnails: void 0 } : {},
+      ...!markers ? { markers: void 0 } : {},
+      ...optionsToMerge?.plugins
+    }
   };
   reactExports.useEffect(() => {
     if (muted === void 0) return;
@@ -166633,6 +166739,8 @@ const useAppStateStore = create2()(
       uiVisible: true,
       isRandomised: false,
       crtEffect: false,
+      scenePreviewOnly: false,
+      onlyShowMatchingOrientation: false,
       setShowSettings: (newValue) => set4((state) => ({
         showSettings: typeof newValue === "boolean" ? newValue : newValue(state.showSettings)
       })),
@@ -166665,6 +166773,12 @@ const useAppStateStore = create2()(
       })),
       setCrtEffect: (newValue) => set4((state) => ({
         crtEffect: typeof newValue === "boolean" ? newValue : newValue(state.crtEffect)
+      })),
+      setScenePreviewOnly: (newValue) => set4((state) => ({
+        scenePreviewOnly: typeof newValue === "boolean" ? newValue : newValue(state.scenePreviewOnly)
+      })),
+      setOnlyShowMatchingOrientation: (newValue) => set4((state) => ({
+        onlyShowMatchingOrientation: typeof newValue === "boolean" ? newValue : newValue(state.onlyShowMatchingOrientation)
       }))
     }),
     {
@@ -166945,6 +167059,7 @@ const VideoItem = (props) => {
     showSubtitles,
     uiVisible,
     crtEffect,
+    scenePreviewOnly,
     setShowSettings,
     setAudioMuted,
     setFullscreen,
@@ -167158,6 +167273,7 @@ const VideoItem = (props) => {
     /* @__PURE__ */ React$1.createElement(CrtEffect, { enabled: crtEffect }, void 0, void 0, /* @__PURE__ */ React$1.createElement("img", { className: "loadingDeferredPreview", src: props.scene.paths.screenshot || "" }), !loadingDeferred && /* @__PURE__ */ React$1.createElement(
       ScenePlayer,
       {
+        key: JSON.stringify([props.scene.id, scenePreviewOnly]),
         scene: props.scene,
         hideScrubberOverride: true,
         muted: audioMuted,
@@ -167175,6 +167291,9 @@ const VideoItem = (props) => {
         ref: setVideoRef,
         onEnded: handleOnEnded,
         onVideojsPlayerReady: handleVideojsPlayerReady,
+        trackActivity: !scenePreviewOnly,
+        scrubberThumbnail: !scenePreviewOnly,
+        markers: !scenePreviewOnly,
         optionsToMerge: {
           plugins: {
             touchOverlay: {
@@ -171738,6 +171857,24 @@ class ListFilterModel {
     return ret;
   }
 }
+function on2(obj) {
+  var args = [];
+  for (var _i = 1; _i < arguments.length; _i++) {
+    args[_i - 1] = arguments[_i];
+  }
+  if (obj && obj.addEventListener) {
+    obj.addEventListener.apply(obj, args);
+  }
+}
+function off(obj) {
+  var args = [];
+  for (var _i = 1; _i < arguments.length; _i++) {
+    args[_i - 1] = arguments[_i];
+  }
+  if (obj && obj.removeEventListener) {
+    obj.removeEventListener.apply(obj, args);
+  }
+}
 var isBrowser$2 = typeof window !== "undefined";
 function resolveHookState(nextState, currentState) {
   if (typeof nextState === "function") {
@@ -171748,6 +171885,55 @@ function resolveHookState(nextState, currentState) {
 var useIsomorphicLayoutEffect$1 = isBrowser$2 ? reactExports.useLayoutEffect : reactExports.useEffect;
 var useEffectOnce = function(effect) {
   reactExports.useEffect(effect, []);
+};
+var useUnmount = function(fn) {
+  var fnRef = reactExports.useRef(fn);
+  fnRef.current = fn;
+  useEffectOnce(function() {
+    return function() {
+      return fnRef.current();
+    };
+  });
+};
+var useRafState = function(initialState) {
+  var frame = reactExports.useRef(0);
+  var _a2 = reactExports.useState(initialState), state = _a2[0], setState2 = _a2[1];
+  var setRafState = reactExports.useCallback(function(value) {
+    cancelAnimationFrame(frame.current);
+    frame.current = requestAnimationFrame(function() {
+      setState2(value);
+    });
+  }, []);
+  useUnmount(function() {
+    cancelAnimationFrame(frame.current);
+  });
+  return [state, setRafState];
+};
+var useWindowSize$1 = function(_a2) {
+  var _b2 = {}, _c = _b2.initialWidth, initialWidth = _c === void 0 ? Infinity : _c, _d = _b2.initialHeight, initialHeight = _d === void 0 ? Infinity : _d, onChange3 = _b2.onChange;
+  var _e = useRafState({
+    width: isBrowser$2 ? window.innerWidth : initialWidth,
+    height: isBrowser$2 ? window.innerHeight : initialHeight
+  }), state = _e[0], setState2 = _e[1];
+  reactExports.useEffect(function() {
+    if (isBrowser$2) {
+      var handler_1 = function() {
+        var width2 = window.innerWidth;
+        var height2 = window.innerHeight;
+        setState2({
+          width: width2,
+          height: height2
+        });
+        if (onChange3)
+          onChange3(width2, height2);
+      };
+      on2(window, "resize", handler_1);
+      return function() {
+        off(window, "resize", handler_1);
+      };
+    }
+  }, []);
+  return state;
 };
 function createGlobalState(initialState) {
   var store = {
@@ -171777,22 +171963,46 @@ function createGlobalState(initialState) {
     return [globalState, store.setState];
   };
 }
-const useCurrentSceneFilter = createGlobalState();
-const useCurrentSceneFilterId = createGlobalState();
+function useWindowSize() {
+  const { forceLandscape } = useAppStateStore();
+  let { width: width2, height: height2 } = useWindowSize$1();
+  if (forceLandscape) {
+    const oldHeight = height2;
+    height2 = width2;
+    width2 = oldHeight;
+  }
+  let orientation = "square";
+  if (width2 > height2) orientation = "landscape";
+  if (height2 > width2) orientation = "portrait";
+  return { width: width2, height: height2, orientation };
+}
+const useCurrentStashFilter = createGlobalState();
 const useSceneFiltersLoading = createGlobalState(true);
 const useSceneFiltersError = createGlobalState();
 function useSceneFilters() {
   const [sceneFiltersLoading, setSceneFiltersLoading] = useSceneFiltersLoading();
   const [sceneFiltersError, setSceneFiltersError] = useSceneFiltersError();
-  const [currentSceneFilter, setCurrentSceneFilter] = useCurrentSceneFilter();
-  const [currentSceneFilterId, setCurrentSceneFilterId] = useCurrentSceneFilterId();
+  const [currentStashFilter, setCurrentStashFilter] = useCurrentStashFilter();
   const apolloClient = useApolloClient();
   const {
     general: { stashDefaultScenesFilter, savedSceneFiltersNameAndIds },
     tv: { defaultFilterId: stashTvDefaultFilterId },
     loading: stashConfigLoading
   } = useStashConfigStore();
-  const { isRandomised } = useAppStateStore();
+  const { isRandomised, onlyShowMatchingOrientation } = useAppStateStore();
+  const { orientation } = useWindowSize();
+  let limitOrientation = void 0;
+  if (onlyShowMatchingOrientation && orientation !== "square") {
+    limitOrientation = orientation;
+  }
+  const currentSceneFilter = reactExports.useMemo(
+    () => currentStashFilter && convertSavedFilterInStashFormatToUsableFormat(currentStashFilter),
+    [currentStashFilter, isRandomised, onlyShowMatchingOrientation && orientation]
+  );
+  const currentSceneFilterId = reactExports.useMemo(
+    () => currentStashFilter?.id,
+    [currentStashFilter]
+  );
   reactExports.useEffect(() => {
     if (stashConfigLoading || currentSceneFilter) return;
     async function setCurrentSceneFilterOnInitialLoad() {
@@ -171800,16 +172010,13 @@ function useSceneFilters() {
         if (stashTvDefaultFilterId) {
           await setCurrentSceneFilterById(stashTvDefaultFilterId);
         } else if (stashDefaultScenesFilter) {
-          setCurrentSceneFilter(
-            convertSavedFilterInStashFormatToUsableFormat(stashDefaultScenesFilter)
-          );
-          setCurrentSceneFilterId(void 0);
+          setCurrentStashFilter(stashDefaultScenesFilter);
         } else {
-          setCurrentSceneFilter({
-            generalFilter: {},
-            sceneFilter: {}
+          setCurrentStashFilter({
+            id: "",
+            mode: FilterMode.Scenes,
+            name: ""
           });
-          setCurrentSceneFilterId(void 0);
         }
       } catch (error) {
         setSceneFiltersError(error);
@@ -171823,12 +172030,7 @@ function useSceneFilters() {
     if (!sceneFiltersStashResponse) {
       return void 0;
     }
-    setCurrentSceneFilter(
-      convertSavedFilterInStashFormatToUsableFormat(
-        sceneFiltersStashResponse
-      )
-    );
-    setCurrentSceneFilterId(id);
+    setCurrentStashFilter(sceneFiltersStashResponse);
   }
   async function fetchSavedFilterFromStash(apolloClient2, filterId) {
     const { data: data2 } = await apolloClient2.query({
@@ -171843,7 +172045,10 @@ function useSceneFilters() {
         stashFormatFilter,
         { forceRandomise: isRandomised }
       ),
-      sceneFilter: processSavedFilterToSceneFilter(stashFormatFilter)
+      sceneFilter: processSavedFilterToSceneFilter(
+        stashFormatFilter,
+        { limitOrientation }
+      )
     };
   }
   return {
@@ -171853,10 +172058,11 @@ function useSceneFilters() {
     currentSceneFilterId,
     setCurrentSceneFilterById,
     sceneFiltersNameAndIds: savedSceneFiltersNameAndIds,
-    defaultStashTvFilterId: stashTvDefaultFilterId
+    defaultStashTvFilterId: stashTvDefaultFilterId,
+    currentStashFilter
   };
 }
-const processSavedFilterToGeneralFilter = (savedFilter, { forceRandomise }) => {
+const processSavedFilterToGeneralFilter = (savedFilter, { forceRandomise } = {}) => {
   const filter = new ListFilterModel(FilterMode.Scenes);
   filter.configureFromSavedFilter(savedFilter);
   const updatedFilter = { ...filter.makeFindFilter() };
@@ -171866,13 +172072,22 @@ const processSavedFilterToGeneralFilter = (savedFilter, { forceRandomise }) => {
   }
   return updatedFilter;
 };
-const processSavedFilterToSceneFilter = (savedFilter) => {
+const processSavedFilterToSceneFilter = (savedFilter, { limitOrientation } = {}) => {
   const filter = new ListFilterModel(FilterMode.Scenes);
   filter.configureFromSavedFilter(savedFilter);
-  return filter.makeFilter();
+  const sceneFilter = filter.makeFilter();
+  if (limitOrientation) {
+    sceneFilter.orientation = {
+      "value": [
+        limitOrientation.toUpperCase(),
+        "SQUARE"
+      ]
+    };
+  }
+  return sceneFilter;
 };
 const scenesPerPage = 20;
-function useScenes() {
+function useScenes({ previewOnly } = {}) {
   const { currentSceneFilter } = useSceneFilters();
   const {
     data: data2,
@@ -171891,8 +172106,61 @@ function useScenes() {
     },
     skip: !currentSceneFilter
   });
+  const [previewLengths, setPreviewLengths] = reactExports.useState({});
+  reactExports.useEffect(() => {
+    if (!previewOnly) return;
+    const saveDurationOnceMetadataLoaded = (event) => {
+      if (!(event?.target instanceof HTMLVideoElement)) return;
+      const videoElm = event.target;
+      try {
+        const sceneId = getSceneIdForVideoJsPlayer(videoElm);
+        setPreviewLengths(
+          (prev2) => ({
+            ...prev2,
+            [sceneId]: videoElm.duration
+          })
+        );
+      } catch (error) {
+        console.warn("Failed to get scene ID for video element", error);
+      }
+    };
+    window.addEventListener("loadedmetadata", saveDurationOnceMetadataLoaded, { capture: true });
+    return () => {
+      window.removeEventListener("loadedmetadata", saveDurationOnceMetadataLoaded, { capture: true });
+    };
+  }, [previewOnly]);
+  function makeScenePreviewOnly(scene) {
+    if (!scene.paths.preview) {
+      console.warn(`Scene ${scene.id} has no preview`);
+      return scene;
+    }
+    return {
+      ...scene,
+      sceneStreams: [
+        {
+          "url": scene.paths.preview,
+          "mime_type": "video/mp4",
+          "label": "Direct stream",
+          "__typename": "SceneStreamEndpoint"
+        }
+      ],
+      files: [
+        {
+          ...scene.files[0],
+          duration: scene.id in previewLengths ? previewLengths[scene.id] : Math.min(9.2, scene.files[0].duration)
+        },
+        ...scene.files.slice(1)
+      ],
+      resume_time: null,
+      captions: null,
+      scene_markers: []
+    };
+  }
+  const scenes = data2?.findScenes?.scenes.map(
+    previewOnly ? makeScenePreviewOnly : (s2) => s2
+  ) ?? [];
   return {
-    scenes: data2?.findScenes?.scenes ?? [],
+    scenes,
     loadMoreScenes: () => {
       const nextPage = data2?.findScenes?.scenes.length ? Math.ceil(data2.findScenes.scenes.length / scenesPerPage) + 1 : 1;
       fetchMore({
@@ -171914,9 +172182,10 @@ function useScenes() {
 const videoItemHeight = "calc(var(--y-unit-large) * 100)";
 const itemBufferEitherSide = 1;
 const VideoScroller = () => {
-  const { forceLandscape: isForceLandscape, setCrtEffect } = useAppStateStore();
+  const { forceLandscape: isForceLandscape, setCrtEffect, scenePreviewOnly, onlyShowMatchingOrientation } = useAppStateStore();
+  useWindowSize();
   const rootElmRef = reactExports.useRef(null);
-  const { scenes, loadMoreScenes } = useScenes();
+  const { scenes, loadMoreScenes } = useScenes({ previewOnly: scenePreviewOnly });
   const estimateSizeTesterElement = reactExports.useRef(null);
   reactExports.useEffect(() => {
     return () => {
@@ -181954,11 +182223,11 @@ function SettingsTab() {
     sceneFiltersNameAndIds,
     defaultStashTvFilterId,
     sceneFiltersLoading,
-    currentSceneFilter,
     currentSceneFilterId,
-    setCurrentSceneFilterById
+    setCurrentSceneFilterById,
+    currentStashFilter
   } = useSceneFilters();
-  const { isRandomised, setIsRandomised, crtEffect, setCrtEffect } = useAppStateStore();
+  const { isRandomised, setIsRandomised, crtEffect, setCrtEffect, scenePreviewOnly, setScenePreviewOnly, onlyShowMatchingOrientation, setOnlyShowMatchingOrientation } = useAppStateStore();
   const { scenes, scenesLoading } = useScenes();
   const noScenesAvailable = !sceneFiltersLoading && !scenesLoading && scenes.length === 0;
   const fetchingDataWarning = scenesLoading ? /* @__PURE__ */ React$1.createElement("div", { className: "warning" }, /* @__PURE__ */ React$1.createElement("h2", null, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true }), /* @__PURE__ */ React$1.createElement("span", null, "Fetching data from Stash...")), /* @__PURE__ */ React$1.createElement("p", null, "Please wait while data is loaded.")) : null;
@@ -182039,7 +182308,7 @@ function SettingsTab() {
     'Set "',
     selectedFilter?.label,
     '" as the default filter'
-  ), /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement("small", null, "Set the currently selected scene filter as the default filter when opening Stash TV."))), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, currentSceneFilter?.generalFilter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter is set to random order") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement(
+  ), /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement("small", null, "Set the currently selected scene filter as the default filter when opening Stash TV."))), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, currentStashFilter?.find_filter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement(
     "input",
     {
       checked: isRandomised,
@@ -182055,6 +182324,20 @@ function SettingsTab() {
       theme: reactSelectTheme
     }
   )), /* @__PURE__ */ React$1.createElement("small", null, "Select the language to use for subtitles if available.")), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement(
+    "input",
+    {
+      checked: scenePreviewOnly,
+      onChange: (event) => setScenePreviewOnly(event.target.checked),
+      type: "checkbox"
+    }
+  ), /* @__PURE__ */ React$1.createElement("h3", null, "Scene Preview Only")), /* @__PURE__ */ React$1.createElement("small", null, "Play a short preview rather than the full scene. (Requires the preview files to have been generated in Stash for a scene otherwise the full scene will be shown.)")), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement(
+    "input",
+    {
+      checked: onlyShowMatchingOrientation,
+      onChange: (event) => setOnlyShowMatchingOrientation(event.target.checked),
+      type: "checkbox"
+    }
+  ), /* @__PURE__ */ React$1.createElement("h3", null, "Only Show Scenes Matching Orientation")), /* @__PURE__ */ React$1.createElement("small", null, "Limit scenes to only those in the same orientation as the current window.")), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement(
     "input",
     {
       checked: crtEffect,
@@ -183039,4 +183322,4 @@ ReactDOM.render(
 export {
   videojs as v
 };
-//# sourceMappingURL=index-DcRa-_a8.js.map
+//# sourceMappingURL=index-CSJ7e05y.js.map
