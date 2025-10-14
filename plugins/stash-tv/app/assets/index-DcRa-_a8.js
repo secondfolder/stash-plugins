@@ -165844,7 +165844,7 @@ async function getOriginalPlugin() {
     pluginName = pluginNameToBeRegistered;
     plugin = pluginToBeRegistered;
   };
-  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-BnEO-2V1.js"), true ? [] : void 0, import.meta.url);
+  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-C9zVfXwS.js"), true ? [] : void 0, import.meta.url);
   videojs.registerPlugin = originalRegisterPlugin;
   if (!pluginName || !plugin) {
     throw new Error(`Failed to load original videojs-overlay-buttons plugin`);
@@ -166624,7 +166624,7 @@ const useAppStateStore = create2()(
       sceneFilter: void 0,
       sceneFilterLoading: true,
       showSettings: false,
-      audioMuted: false,
+      audioMuted: true,
       showSubtitles: false,
       fullscreen: false,
       letterboxing: false,
@@ -166975,8 +166975,8 @@ const VideoItem = (props) => {
       setLoadingDeferred(props.currentlyScrolling);
     }
   }, [loadingDeferred, props.currentlyScrolling]);
-  const isInViewport = props.index === props.currentIndex;
-  const autoplay = true;
+  const isCurrentVideo = props.index === props.currentIndex;
+  const autoplay = isCurrentVideo;
   function handleVideojsPlayerReady(player) {
     videojsPlayerRef.current = player;
     player.on("volumechange", () => {
@@ -166993,14 +166993,15 @@ const VideoItem = (props) => {
     const videojsPlayer = videojsPlayerRef.current;
     if (!videojsPlayer) return;
     if (props.index === props.currentIndex) {
+      if (!autoplay) return;
       setPaused(false);
       videojsPlayer?.play()?.catch(() => setPaused(true));
     } else {
       videojsPlayer?.pause();
     }
-  }, [props.index, props.currentIndex]);
+  }, [props.index, props.currentIndex, autoplay]);
   reactExports.useEffect(() => {
-    if (!isInViewport) return;
+    if (!isCurrentVideo) return;
     const handleKeyDown = (e) => {
       const seekBackwardsKey = forceLandscape ? "ArrowDown" : "ArrowLeft";
       const seekForwardsKey = forceLandscape ? "ArrowUp" : "ArrowRight";
@@ -167016,7 +167017,7 @@ const VideoItem = (props) => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown, { capture: true });
     };
-  }, [forceLandscape, isInViewport]);
+  }, [forceLandscape, isCurrentVideo]);
   function getSkipTime() {
     const duration5 = props.scene.files?.[0].duration;
     if (!duration5) {
@@ -167088,16 +167089,16 @@ const VideoItem = (props) => {
   };
   const itemRef = reactExports.useRef(null);
   const handleOnEnded = () => {
-    if (!looping) props.changeItemHandler((currentIndex) => currentIndex + 1);
+    if (!looping && isCurrentVideo) props.changeItemHandler((currentIndex) => currentIndex + 1);
   };
   const [sceneInfoOpen, setSceneInfoOpen] = reactExports.useState(false);
   const sceneInfoPanelRef = reactExports.useRef(null);
   const sceneInfoButtonClickHandler = () => {
-    if (isInViewport) setSceneInfoOpen((prev2) => !prev2);
+    if (isCurrentVideo) setSceneInfoOpen((prev2) => !prev2);
   };
   reactExports.useEffect(() => {
-    if (!isInViewport) setSceneInfoOpen(false);
-  }, [isInViewport]);
+    if (!isCurrentVideo) setSceneInfoOpen(false);
+  }, [isCurrentVideo]);
   const sceneInfoDataAvailable = props.scene.performers.length > 0 || !!props.scene.studio || !!props.scene.title || !!props.scene.date;
   const sceneInfoButton = sceneInfoDataAvailable ? /* @__PURE__ */ React$1.createElement(
     UiButton,
@@ -167147,7 +167148,7 @@ const VideoItem = (props) => {
   return /* @__PURE__ */ React$1.createElement(
     "div",
     {
-      className: cx("VideoItem", { inViewport: isInViewport, "cover": !letterboxing }, props.className),
+      className: cx("VideoItem", { inViewport: isCurrentVideo, "cover": !letterboxing }, props.className),
       "data-testid": "VideoItem--container",
       "data-index": props.index,
       "data-scene-id": props.scene.id,
@@ -183038,4 +183039,4 @@ ReactDOM.render(
 export {
   videojs as v
 };
-//# sourceMappingURL=index-j0EZyg8m.js.map
+//# sourceMappingURL=index-DcRa-_a8.js.map
