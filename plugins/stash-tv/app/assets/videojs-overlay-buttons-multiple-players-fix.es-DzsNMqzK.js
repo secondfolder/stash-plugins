@@ -1,4 +1,4 @@
-import { v as videojs } from "./index-CU4MWQSq.js";
+import { v as videojs } from "./index-BLXTloYc.js";
 /*! @name videojs-overlay-buttons-multiple-players-fix @version 1.3.2 @license MIT */
 function _extends() {
   _extends = Object.assign || function(target) {
@@ -249,4 +249,4 @@ touchOverlay.VERSION = version;
 export {
   touchOverlay as default
 };
-//# sourceMappingURL=videojs-overlay-buttons-multiple-players-fix.es-COOEfKI2.js.map
+//# sourceMappingURL=videojs-overlay-buttons-multiple-players-fix.es-DzsNMqzK.js.map
