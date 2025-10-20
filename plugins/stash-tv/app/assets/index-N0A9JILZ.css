@@ -157,7 +157,6 @@
   padding-top: var(--safe-inset-top);
   padding-right: var(--safe-inset-right);
   right: 3px;
-  -webkit-transform: translateZ(1px);
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -219,7 +218,6 @@
   width: 100%;
   padding: 1em 5em 1em 3em;
   z-index: 1;
-  -webkit-transform: translateZ(1px);
   align-self: flex-end;
   background-color: rgba(0, 0, 0, 0.7);
   display: grid;
@@ -240,6 +238,9 @@
 }
 .VideoItem .scene-info .studio {
   font-size: 0.9rem;
+}
+.VideoItem .ScenePlayer ~ * {
+  -webkit-transform: translateZ(0);
 }
 .VideoItem .toggleable-ui {
   position: relative;
@@ -2377,7 +2378,8 @@ video::-webkit-media-text-track-display {
     max-width: calc(100% - 15px);
   }
 }
-.ScenePlayer .VideoPlayer {
+
+/*# sourceMappingURL=styles.css.map */.ScenePlayer .VideoPlayer {
   max-height: initial;
   padding-bottom: initial;
 }
@@ -2521,8 +2523,9 @@ video::-webkit-media-text-track-display {
   pointer-events: none;
 }
 .CrtEffect:not(.disabled)::before {
+  --screen-background: rgba(18, 16, 16);
   content: " ";
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background: linear-gradient(color-mix(in srgb, var(--screen-background), transparent 100%) 50%, color-mix(in srgb, color-mix(in srgb, var(--screen-background), black 10%), transparent 75%) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
   z-index: 2;
   background-size: 100% 2px, 3px 100%;
   pointer-events: none;
@@ -2766,29 +2769,29 @@ video::-webkit-media-text-track-display {
   src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/sys.ttf) format("truetype");
   font-family: "Sys";
 }.SettingsTab .item:not(:last-child) {
-  margin-bottom: 20px;
+  margin-bottom: 2em;
 }
 .SettingsTab .checkbox-item label {
   display: flex;
 }
 .SettingsTab .checkbox-item label input[type=checkbox] {
-  margin-right: 10px;
+  margin-right: 1em;
 }
 .SettingsTab .checkbox-item h3 {
   margin-bottom: 0;
 }
 .SettingsTab .error,
 .SettingsTab .warning {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
   border-top: 3px solid;
   border-bottom: 3px solid;
 }
 .SettingsTab .error h2 span,
 .SettingsTab .warning h2 span {
-  margin-left: 6px;
+  margin-left: 2em;
 }
 .SettingsTab--error {
   border-color: red;
@@ -2844,8 +2847,6 @@ video::-webkit-media-text-track-display {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
-  width: 50px;
   background-color: transparent;
   color: white;
   font-size: 28px;
@@ -2864,7 +2865,7 @@ video::-webkit-media-text-track-display {
 }.Loading {
   height: calc(var(--y-unit-small) * 100);
   width: 100%;
-  padding: 20px;
+  padding: 2em;
   text-align: center;
   display: flex;
   flex-direction: column;

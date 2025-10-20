@@ -165908,7 +165908,7 @@ async function getOriginalPlugin() {
     pluginName = pluginNameToBeRegistered;
     plugin = pluginToBeRegistered;
   };
-  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-Mlw4CqSd.js"), true ? [] : void 0, import.meta.url);
+  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-ChP5Tn0n.js"), true ? [] : void 0, import.meta.url);
   videojs.registerPlugin = originalRegisterPlugin;
   if (!pluginName || !plugin) {
     throw new Error(`Failed to load original videojs-overlay-buttons plugin`);
@@ -166490,51 +166490,11 @@ const useAppStateStore = create2()(
       onlyShowMatchingOrientation: false,
       debugMode: false,
       autoPlay: true,
-      setShowSettings: (newValue) => set4((state) => ({
-        showSettings: typeof newValue === "boolean" ? newValue : newValue(state.showSettings)
-      })),
-      setAudioMuted: (newValue) => set4((state) => ({
-        audioMuted: typeof newValue === "boolean" ? newValue : newValue(state.audioMuted)
-      })),
-      setShowSubtitles: (newValue) => set4((state) => ({
-        showSubtitles: typeof newValue === "boolean" ? newValue : newValue(state.showSubtitles)
-      })),
-      setFullscreen: (newValue) => set4((state) => ({
-        fullscreen: typeof newValue === "boolean" ? newValue : newValue(state.fullscreen)
-      })),
-      setLetterboxing: (newValue) => set4((state) => ({
-        letterboxing: typeof newValue === "boolean" ? newValue : newValue(state.letterboxing)
-      })),
-      setForceLandscape: (newValue) => set4((state) => ({
-        forceLandscape: typeof newValue === "boolean" ? newValue : newValue(state.forceLandscape)
-      })),
-      setLooping: (newValue) => set4((state) => ({
-        looping: typeof newValue === "boolean" ? newValue : newValue(state.looping)
-      })),
-      toggleLooping: (newValue) => set4((state) => ({
-        looping: typeof newValue === "boolean" ? newValue : newValue(state.looping)
-      })),
-      setUiVisible: (newValue) => set4((state) => ({
-        uiVisible: typeof newValue === "boolean" ? newValue : newValue(state.uiVisible)
-      })),
-      setIsRandomised: (newValue) => set4((state) => ({
-        isRandomised: typeof newValue === "boolean" ? newValue : newValue(state.isRandomised)
-      })),
-      setCrtEffect: (newValue) => set4((state) => ({
-        crtEffect: typeof newValue === "boolean" ? newValue : newValue(state.crtEffect)
-      })),
-      setScenePreviewOnly: (newValue) => set4((state) => ({
-        scenePreviewOnly: typeof newValue === "boolean" ? newValue : newValue(state.scenePreviewOnly)
-      })),
-      setOnlyShowMatchingOrientation: (newValue) => set4((state) => ({
-        onlyShowMatchingOrientation: typeof newValue === "boolean" ? newValue : newValue(state.onlyShowMatchingOrientation)
-      })),
-      setDebugMode: (newValue) => set4((state) => ({
-        debugMode: typeof newValue === "boolean" ? newValue : newValue(state.debugMode)
-      })),
-      setAutoPlay: (newValue) => set4((state) => ({
-        autoPlay: typeof newValue === "boolean" ? newValue : newValue(state.autoPlay)
-      }))
+      set: (propName, value) => {
+        set4((state) => ({
+          [propName]: typeof value === "function" ? value(state[propName]) : value
+        }));
+      }
     }),
     {
       name: "app-state",
@@ -167074,14 +167034,7 @@ const VideoItem = (props) => {
     scenePreviewOnly,
     debugMode,
     autoPlay: globalAutoPlay,
-    setShowSettings,
-    setAudioMuted,
-    setFullscreen,
-    setLetterboxing,
-    setShowSubtitles,
-    setForceLandscape,
-    setLooping,
-    setUiVisible
+    set: setAppSetting
   } = useAppStateStore();
   reactExports.useEffect(() => {
     debugMode && console.log(`Mounted VideoItem index=${props.index} sceneId=${props.scene.id}`);
@@ -167116,11 +167069,11 @@ const VideoItem = (props) => {
     videojsPlayerRef.current = player;
     player.on("volumechange", () => {
       debugMode && console.log(`Video.js player volumechange event - player ${player.muted() ? "" : "not"} muted`);
-      setAudioMuted(player.muted());
+      setAppSetting("audioMuted", player.muted());
     });
     if (audioMuted !== player.muted()) {
       debugMode && console.log(`Video.js player loaded - player ${player.muted() ? "" : "not"} muted`);
-      setAudioMuted(player.muted());
+      setAppSetting("audioMuted", player.muted());
     }
     player.getChild("ControlBar")?.progressControl?.el().addEventListener("pointermove", (event) => {
       event.stopPropagation();
@@ -167278,7 +167231,7 @@ const VideoItem = (props) => {
       "data-testid": "VideoItem--subtitlesButton",
       inactiveIcon: faClosedCaptioning,
       inactiveText: "Show subtitles",
-      onClick: () => setShowSubtitles((prev2) => !prev2)
+      onClick: () => setAppSetting("showSubtitles", (prev2) => !prev2)
     }
   ) : null;
   reactExports.useEffect(() => {
@@ -167387,7 +167340,7 @@ const VideoItem = (props) => {
               "data-testid": "VideoItem--muteButton",
               inactiveIcon: SvgVolumeMuteOutline,
               inactiveText: "Unmute",
-              onClick: () => setAudioMuted((prev2) => !prev2)
+              onClick: () => setAppSetting("audioMuted", (prev2) => !prev2)
             }
           ),
           subtitlesButton,
@@ -167401,7 +167354,7 @@ const VideoItem = (props) => {
               "data-testid": "VideoItem--fullscreenButton",
               inactiveIcon: SvgExpandOutline,
               inactiveText: "Open fullscreen",
-              onClick: () => setFullscreen((prev2) => !prev2)
+              onClick: () => setAppSetting("fullscreen", (prev2) => !prev2)
             }
           ),
           /* @__PURE__ */ React$1.createElement(
@@ -167414,7 +167367,7 @@ const VideoItem = (props) => {
               "data-testid": "VideoItem--letterboxButton",
               inactiveIcon: SvgContain,
               inactiveText: "Fill screen",
-              onClick: () => setLetterboxing((prev2) => !prev2)
+              onClick: () => setAppSetting("letterboxing", (prev2) => !prev2)
             }
           ),
           /* @__PURE__ */ React$1.createElement(
@@ -167427,7 +167380,7 @@ const VideoItem = (props) => {
               "data-testid": "VideoItem--forceLandscapeButton",
               inactiveIcon: SvgLandscapeRotation,
               inactiveText: "Portrait",
-              onClick: () => setForceLandscape((prev2) => !prev2)
+              onClick: () => setAppSetting("forceLandscape", (prev2) => !prev2)
             }
           ),
           /* @__PURE__ */ React$1.createElement(
@@ -167440,7 +167393,7 @@ const VideoItem = (props) => {
               "data-testid": "VideoItem--loopButton",
               inactiveIcon: SvgLoopOutline,
               inactiveText: "Loop scene",
-              onClick: () => setLooping((prev2) => !prev2)
+              onClick: () => setAppSetting("looping", (prev2) => !prev2)
             }
           ),
           sceneInfoButton,
@@ -167454,7 +167407,7 @@ const VideoItem = (props) => {
               "data-testid": "VideoItem--settingsButton",
               inactiveIcon: SvgCogOutline,
               inactiveText: "Show settings",
-              onClick: () => setShowSettings((showSettings2) => !showSettings2)
+              onClick: () => setAppSetting("showSettings", (prev2) => !prev2)
             }
           )
         )
@@ -167476,7 +167429,7 @@ const VideoItem = (props) => {
             "data-testid": "VideoItem--showUiButton",
             inactiveIcon: SvgVerticalEllipsisOutline,
             inactiveText: "Show UI",
-            onClick: () => setUiVisible((prev2) => !prev2),
+            onClick: () => setAppSetting("uiVisible", (prev2) => !prev2),
             ref: uiButtonRef,
             style: {
               ...toggleableUiStyles,
@@ -172209,7 +172162,7 @@ function useScenes({ previewOnly } = {}) {
 const videoItemHeight = "calc(var(--y-unit-large) * 100)";
 const itemBufferEitherSide = 1;
 const VideoScroller = () => {
-  const { forceLandscape: isForceLandscape, setCrtEffect, scenePreviewOnly, onlyShowMatchingOrientation, debugMode } = useAppStateStore();
+  const { forceLandscape: isForceLandscape, scenePreviewOnly, onlyShowMatchingOrientation, debugMode, set: setAppSetting } = useAppStateStore();
   const { orientation } = useWindowSize();
   const rootElmRef = reactExports.useRef(null);
   const { scenes, loadMoreScenes } = useScenes({ previewOnly: scenePreviewOnly });
@@ -172273,7 +172226,11 @@ const VideoScroller = () => {
         _setCurrentIndex(newIndex);
       }, 100);
       return ((newIndex) => {
-        currentIndexRef.current = typeof newIndex === "function" ? newIndex(currentIndexRef.current) : newIndex;
+        currentIndexRef.current = clamp$2(
+          0,
+          typeof newIndex === "function" ? newIndex(currentIndexRef.current) : newIndex,
+          scenes.length - 1
+        );
         return throttledSetCurrentIndex(currentIndexRef.current);
       });
     },
@@ -172355,7 +172312,7 @@ const VideoScroller = () => {
   reactExports.useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "c") {
-        setCrtEffect((prev2) => !prev2);
+        setAppSetting("crtEffect", (prev2) => !prev2);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -172487,7 +172444,7 @@ const VideoScroller = () => {
         left: 0,
         width: "100%",
         height: "calc(var(--y-unit-large) * 100)",
-        transform: `translate3d(0, calc(var(--y-unit-large) * 100 * ${i}), 0)`,
+        transform: `translateY(calc(var(--y-unit-large) * 100 * ${i}))`,
         ...debugMode ? {
           "backgroundColor": `hsl(${i * 37 % 360}, 70%, 50%)`,
           border: `10px ${i === currentIndex ? "black" : "transparent"} dashed`
@@ -182063,7 +182020,7 @@ function SideDrawer({ children, title, closeDisabled, className }) {
   const ref = reactExports.useRef(null);
   const bodyRef = reactExports.useRef(null);
   const overlayRef = reactExports.useRef(null);
-  const { setShowSettings, showSettings, forceLandscape } = useAppStateStore();
+  const { showSettings, forceLandscape, set: setAppSetting } = useAppStateStore();
   const [sidebarWidth, setSidebarWidth] = React$1.useState(window.innerWidth);
   reactExports.useEffect(() => {
     const width2 = ref?.current?.clientWidth;
@@ -182148,7 +182105,7 @@ function SideDrawer({ children, title, closeDisabled, className }) {
         tension: 400,
         friction: 20
       } : void 0,
-      onRest: () => setShowSettings(true)
+      onRest: () => setAppSetting("showSettings", true)
     });
   };
   const close = () => {
@@ -182160,7 +182117,7 @@ function SideDrawer({ children, title, closeDisabled, className }) {
       x: 0,
       immediate: false,
       config: { ...config.stiff },
-      onRest: () => setShowSettings(false)
+      onRest: () => setAppSetting("showSettings", false)
     });
   };
   const didDragRef = reactExports.useRef(false);
@@ -182243,7 +182200,7 @@ function SideDrawer({ children, title, closeDisabled, className }) {
     "button",
     {
       "data-testid": "SideDrawer--closeButton",
-      onClick: () => setShowSettings(false),
+      onClick: () => setAppSetting("showSettings", false),
       type: "button"
     },
     /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faXmark }),
@@ -182281,17 +182238,12 @@ function SettingsTab() {
   } = useSceneFilters();
   const {
     isRandomised,
-    setIsRandomised,
     crtEffect,
-    setCrtEffect,
     scenePreviewOnly,
-    setScenePreviewOnly,
     onlyShowMatchingOrientation,
-    setOnlyShowMatchingOrientation,
     debugMode,
-    setDebugMode,
     autoPlay,
-    setAutoPlay
+    set: setAppSetting
   } = useAppStateStore();
   const { scenes, scenesLoading } = useScenes();
   const noScenesAvailable = !sceneFiltersLoading && !scenesLoading && scenes.length === 0;
@@ -182355,7 +182307,7 @@ function SettingsTab() {
     let enableDebugModeTimer;
     const handlePointerDown = () => {
       enableDebugModeTimer = setTimeout(() => {
-        setDebugMode(true);
+        setAppSetting("debugMode", true);
       }, 5e3);
     };
     const handlePointerUp = () => {
@@ -182381,7 +182333,7 @@ function SettingsTab() {
         defaultValue: selectedFilter,
         onChange: (newValue) => newValue && setCurrentSceneFilterById(newValue.value),
         options: filters,
-        placeholder: "None selected. Defaulted to all portrait scenes.",
+        placeholder: `${filters.length > 0 ? "No filter selected" : "No filters saved in stash"}. Showing all scenes.`,
         theme: reactSelectTheme
       }
     ) : /* @__PURE__ */ React$1.createElement("div", null, "Loading...")), /* @__PURE__ */ React$1.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), fetchingDataWarning, scenelessFilterError),
@@ -182405,7 +182357,7 @@ function SettingsTab() {
       "input",
       {
         checked: isRandomised,
-        onChange: (event) => setIsRandomised(event.target.checked),
+        onChange: (event) => setAppSetting("isRandomised", event.target.checked),
         type: "checkbox"
       }
     ), /* @__PURE__ */ React$1.createElement("h3", null, "Randomise filter order")), /* @__PURE__ */ React$1.createElement("small", null, "Randomise the order of scenes in the filter."))),
@@ -182422,7 +182374,7 @@ function SettingsTab() {
       "input",
       {
         checked: scenePreviewOnly,
-        onChange: (event) => setScenePreviewOnly(event.target.checked),
+        onChange: (event) => setAppSetting("scenePreviewOnly", event.target.checked),
         type: "checkbox"
       }
     ), /* @__PURE__ */ React$1.createElement("h3", null, "Scene Preview Only")), /* @__PURE__ */ React$1.createElement("small", null, "Play a short preview rather than the full scene. (Requires the preview files to have been generated in Stash for a scene otherwise the full scene will be shown.)")),
@@ -182430,7 +182382,7 @@ function SettingsTab() {
       "input",
       {
         checked: onlyShowMatchingOrientation,
-        onChange: (event) => setOnlyShowMatchingOrientation(event.target.checked),
+        onChange: (event) => setAppSetting("onlyShowMatchingOrientation", event.target.checked),
         type: "checkbox"
       }
     ), /* @__PURE__ */ React$1.createElement("h3", null, "Only Show Scenes Matching Orientation")), /* @__PURE__ */ React$1.createElement("small", null, "Limit scenes to only those in the same orientation as the current window.")),
@@ -182438,7 +182390,7 @@ function SettingsTab() {
       "input",
       {
         checked: autoPlay,
-        onChange: (event) => setAutoPlay(event.target.checked),
+        onChange: (event) => setAppSetting("autoPlay", event.target.checked),
         type: "checkbox"
       }
     ), /* @__PURE__ */ React$1.createElement("h3", null, "Auto Play")), /* @__PURE__ */ React$1.createElement("small", null, "Automatically play scenes.")),
@@ -182446,7 +182398,7 @@ function SettingsTab() {
       "input",
       {
         checked: crtEffect,
-        onChange: (event) => setCrtEffect(event.target.checked),
+        onChange: (event) => setAppSetting("crtEffect", event.target.checked),
         type: "checkbox"
       }
     ), /* @__PURE__ */ React$1.createElement("h3", null, "CRT effect")), /* @__PURE__ */ React$1.createElement("small", null, "Emulate the visual effects of an old CRT television.")),
@@ -182454,10 +182406,17 @@ function SettingsTab() {
       "input",
       {
         checked: debugMode,
-        onChange: (event) => setDebugMode(event.target.checked),
+        onChange: (event) => setAppSetting("debugMode", event.target.checked),
         type: "checkbox"
       }
-    ), /* @__PURE__ */ React$1.createElement("h3", null, "Debug mode")), /* @__PURE__ */ React$1.createElement("small", null, "Enable debug mode for additional logging and information."))
+    ), /* @__PURE__ */ React$1.createElement("h3", null, "Debug mode")), /* @__PURE__ */ React$1.createElement("small", null, "Enable debug mode for additional logging and information.")),
+    debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
+      "button",
+      {
+        onClick: () => window.location.reload()
+      },
+      "Reload Page"
+    ))
   );
 }
 const Loading = (props) => {
@@ -182465,12 +182424,12 @@ const Loading = (props) => {
   return /* @__PURE__ */ React$1.createElement("div", { className: "Loading", "data-testid": "Loader" }, /* @__PURE__ */ React$1.createElement("h2", null, props.heading), smallText, /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true })));
 };
 const FeedPage = ({ className }) => {
-  const { showSettings, setShowSettings, fullscreen } = useAppStateStore();
+  const { showSettings, fullscreen, set: setAppSetting } = useAppStateStore();
   const { sceneFiltersLoading } = useSceneFilters();
   const { scenes, scenesLoading } = useScenes();
   const loadedButNoScenes = !sceneFiltersLoading && !scenesLoading && scenes.length === 0;
   if (loadedButNoScenes && !showSettings) {
-    setShowSettings(true);
+    setAppSetting("showSettings", true);
   }
   const initialLoad = reactExports.useRef(true);
   reactExports.useEffect(() => {
@@ -183369,7 +183328,7 @@ var object_hashExports = requireObject_hash();
 const hashObject = /* @__PURE__ */ getDefaultExportFromCjs(object_hashExports);
 function getApolloClient() {
   const originalClient = getClient();
-  const originalCacheConfig = originalClient.cache.config ?? {};
+  const originalCacheConfig = "config" in originalClient.cache ? originalClient.cache.config : {};
   const newCache = new InMemoryCache({
     ...originalCacheConfig,
     typePolicies: {
@@ -183435,4 +183394,4 @@ ReactDOM.render(
 export {
   videojs as v
 };
-//# sourceMappingURL=index-DgmuIpYq.js.map
+//# sourceMappingURL=index-DR9swNtR.js.map
