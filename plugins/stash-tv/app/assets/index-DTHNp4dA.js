@@ -165908,7 +165908,7 @@ async function getOriginalPlugin() {
     pluginName = pluginNameToBeRegistered;
     plugin = pluginToBeRegistered;
   };
-  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-ChP5Tn0n.js"), true ? [] : void 0, import.meta.url);
+  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-QmY6NJYc.js"), true ? [] : void 0, import.meta.url);
   videojs.registerPlugin = originalRegisterPlugin;
   if (!pluginName || !plugin) {
     throw new Error(`Failed to load original videojs-overlay-buttons plugin`);
@@ -182416,7 +182416,8 @@ function SettingsTab() {
         onClick: () => window.location.reload()
       },
       "Reload Page"
-    ))
+    )),
+    debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.0.11")
   );
 }
 const Loading = (props) => {
@@ -183394,4 +183395,4 @@ ReactDOM.render(
 export {
   videojs as v
 };
-//# sourceMappingURL=index-DR9swNtR.js.map
+//# sourceMappingURL=index-DTHNp4dA.js.map
