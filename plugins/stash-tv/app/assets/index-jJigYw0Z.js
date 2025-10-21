@@ -165710,7 +165710,7 @@ async function getOriginalPlugin() {
     pluginName = pluginNameToBeRegistered;
     plugin = pluginToBeRegistered;
   };
-  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-CcoJIrAQ.js"), true ? [] : void 0, import.meta.url);
+  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-tGm6CsjR.js"), true ? [] : void 0, import.meta.url);
   videojs.registerPlugin = originalRegisterPlugin;
   if (!pluginName || !plugin) {
     throw new Error(`Failed to load original videojs-overlay-buttons plugin`);
@@ -171944,7 +171944,7 @@ const VideoScroller = () => {
   const [currentIndex, _setCurrentIndex] = reactExports.useReducer(
     (currentState, newState) => {
       newState = typeof newState === "function" ? newState(currentState) : newState;
-      return clamp$2(0, newState, scenes.length - 1);
+      return clamp$2(0, newState, scenes.length ? scenes.length - 1 : 0);
     },
     0
   );
@@ -172038,7 +172038,7 @@ const VideoScroller = () => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown, { capture: true });
     };
-  }, [isForceLandscape, setCurrentIndex, scenes.length]);
+  }, [isForceLandscape, setCurrentIndex]);
   reactExports.useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "c") {
@@ -172132,7 +172132,7 @@ const VideoScroller = () => {
         mutationObserverRef.current.disconnect();
       }
     };
-  }, []);
+  }, [setCurrentIndex]);
   const [itemsToRenderFrozen, setItemsToRenderFrozen] = reactExports.useState(false);
   const itemsToRenderFrozenRef = reactExports.useRef(false);
   const previousIsForceLandscapeRef = reactExports.useRef(void 0);
@@ -182149,7 +182149,7 @@ function SettingsTab() {
       },
       "Reload Page"
     )),
-    debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.0.14")
+    debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.0.15")
   );
 }
 const Loading = (props) => {
@@ -183127,4 +183127,4 @@ ReactDOM.render(
 export {
   videojs as v
 };
-//# sourceMappingURL=index-ZOx2-m0d.js.map
+//# sourceMappingURL=index-jJigYw0Z.js.map
