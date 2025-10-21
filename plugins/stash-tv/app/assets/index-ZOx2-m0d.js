@@ -132,7 +132,7 @@ function requireObjectAssign() {
       return false;
     }
   }
-  objectAssign = shouldUseNative() ? Object.assign : function(target, source) {
+  objectAssign = shouldUseNative() ? Object.assign : function(target, source2) {
     var from3;
     var to2 = toObject(target);
     var symbols;
@@ -6532,14 +6532,14 @@ function _toPropertyKey$2(t22) {
   var i = _toPrimitive$2(t22, "string");
   return "symbol" == typeof i ? i : i + "";
 }
-const noop$7 = () => {
+const noop$6 = () => {
 };
 let _WINDOW = {};
 let _DOCUMENT = {};
 let _MUTATION_OBSERVER = null;
 let _PERFORMANCE = {
-  mark: noop$7,
-  measure: noop$7
+  mark: noop$6,
+  measure: noop$6
 };
 try {
   if (typeof window !== "undefined") _WINDOW = window;
@@ -6944,30 +6944,30 @@ if (initial.familyPrefix) {
 }
 const _config = _objectSpread2$3(_objectSpread2$3({}, _default), initial);
 if (!_config.autoReplaceSvg) _config.observeMutations = false;
-const config$2 = {};
+const config$1 = {};
 Object.keys(_default).forEach((key) => {
-  Object.defineProperty(config$2, key, {
+  Object.defineProperty(config$1, key, {
     enumerable: true,
     set: function(val) {
       _config[key] = val;
-      _onChangeCb.forEach((cb) => cb(config$2));
+      _onChangeCb.forEach((cb) => cb(config$1));
     },
     get: function() {
       return _config[key];
     }
   });
 });
-Object.defineProperty(config$2, "familyPrefix", {
+Object.defineProperty(config$1, "familyPrefix", {
   enumerable: true,
   set: function(val) {
     _config.cssPrefix = val;
-    _onChangeCb.forEach((cb) => cb(config$2));
+    _onChangeCb.forEach((cb) => cb(config$1));
   },
   get: function() {
     return _config.cssPrefix;
   }
 });
-WINDOW.FontAwesomeConfig = config$2;
+WINDOW.FontAwesomeConfig = config$1;
 const _onChangeCb = [];
 function onChange(cb) {
   _onChangeCb.push(cb);
@@ -7089,8 +7089,8 @@ var baseStyles = ':root, :host {\n  --fa-font-solid: normal 900 1em/1 "Font Awes
 function css$2() {
   const dcp = DEFAULT_CSS_PREFIX;
   const drc = DEFAULT_REPLACEMENT_CLASS;
-  const fp = config$2.cssPrefix;
-  const rc = config$2.replacementClass;
+  const fp = config$1.cssPrefix;
+  const rc = config$1.replacementClass;
   let s2 = baseStyles;
   if (fp !== dcp || rc !== drc) {
     const dPatt = new RegExp("\\.".concat(dcp, "\\-"), "g");
@@ -7102,7 +7102,7 @@ function css$2() {
 }
 let _cssInserted = false;
 function ensureCss() {
-  if (config$2.autoAddCss && !_cssInserted) {
+  if (config$1.autoAddCss && !_cssInserted) {
     insertCss(css$2());
     _cssInserted = true;
   }
@@ -7316,7 +7316,7 @@ const build = () => {
     });
     return acc;
   });
-  const hasRegular = "far" in styles || config$2.autoFetchSvg;
+  const hasRegular = "far" in styles || config$1.autoFetchSvg;
   const shimLookups = reduce$1(shims, (acc, shim2) => {
     const maybeNameMaybeUnicode = shim2[0];
     let prefix2 = shim2[1];
@@ -7343,13 +7343,13 @@ const build = () => {
   });
   _byOldName = shimLookups.names;
   _byOldUnicode = shimLookups.unicodes;
-  _defaultUsablePrefix = getCanonicalPrefix(config$2.styleDefault, {
-    family: config$2.familyDefault
+  _defaultUsablePrefix = getCanonicalPrefix(config$1.styleDefault, {
+    family: config$1.familyDefault
   });
 };
 onChange((c$$1) => {
   _defaultUsablePrefix = getCanonicalPrefix(c$$1.styleDefault, {
-    family: config$2.familyDefault
+    family: config$1.familyDefault
   });
 });
 build();
@@ -7392,7 +7392,7 @@ const emptyCanonicalIcon = () => {
 function getFamilyId(values3) {
   let family = s$1;
   const famProps = FAMILY_NAMES.reduce((acc, familyId) => {
-    acc[familyId] = "".concat(config$2.cssPrefix, "-").concat(familyId);
+    acc[familyId] = "".concat(config$1.cssPrefix, "-").concat(familyId);
     return acc;
   }, {});
   L.forEach((familyId) => {
@@ -7420,7 +7420,7 @@ function moveNonFaClassesToRest(classNames2) {
   let rest = [];
   let iconName = null;
   classNames2.forEach((cls) => {
-    const result = getIconName(config$2.cssPrefix, cls);
+    const result = getIconName(config$1.cssPrefix, cls);
     if (result) {
       iconName = result;
     } else if (cls) {
@@ -7461,7 +7461,7 @@ function getCanonicalIcon(values3) {
     values: values3,
     family,
     styles,
-    config: config$2,
+    config: config$1,
     canonical,
     givenPrefix
   })), applyShimAndAlias(skipLookups, givenPrefix, canonical));
@@ -7481,7 +7481,7 @@ function applyShimAndAlias(skipLookups, givenPrefix, canonical) {
   const aliasIconName = byAlias(prefix2, iconName);
   iconName = shim2.iconName || aliasIconName || iconName;
   prefix2 = shim2.prefix || prefix2;
-  if (prefix2 === "far" && !styles["far"] && styles["fas"] && !config$2.autoFetchSvg) {
+  if (prefix2 === "far" && !styles["far"] && styles["fas"] && !config$1.autoFetchSvg) {
     prefix2 = "fas";
   }
   return {
@@ -7653,8 +7653,8 @@ function findIconDefinition(iconLookup) {
 }
 const library = new Library();
 const noAuto = () => {
-  config$2.autoReplaceSvg = false;
-  config$2.observeMutations = false;
+  config$1.autoReplaceSvg = false;
+  config$1.observeMutations = false;
   callHooks("noAuto");
 };
 const dom$2 = {
@@ -7673,10 +7673,10 @@ const dom$2 = {
     const {
       autoReplaceSvgRoot
     } = params;
-    if (config$2.autoReplaceSvg === false) {
-      config$2.autoReplaceSvg = true;
+    if (config$1.autoReplaceSvg === false) {
+      config$1.autoReplaceSvg = true;
     }
-    config$2.observeMutations = true;
+    config$1.observeMutations = true;
     domready(() => {
       autoReplace({
         autoReplaceSvgRoot
@@ -7704,7 +7704,7 @@ const parse$4 = {
         iconName: byAlias(prefix2, iconName) || iconName
       };
     }
-    if (typeof icon2 === "string" && (icon2.indexOf("".concat(config$2.cssPrefix, "-")) > -1 || icon2.match(ICON_SELECTION_SYNTAX_PATTERN))) {
+    if (typeof icon2 === "string" && (icon2.indexOf("".concat(config$1.cssPrefix, "-")) > -1 || icon2.match(ICON_SELECTION_SYNTAX_PATTERN))) {
       const canonicalIcon = getCanonicalIcon(icon2.split(" "), {
         skipLookups: true
       });
@@ -7724,7 +7724,7 @@ const parse$4 = {
 };
 const api = {
   noAuto,
-  config: config$2,
+  config: config$1,
   dom: dom$2,
   parse: parse$4,
   library,
@@ -7736,7 +7736,7 @@ const autoReplace = function() {
   const {
     autoReplaceSvgRoot = DOCUMENT
   } = params;
-  if ((Object.keys(namespace.styles).length > 0 || config$2.autoFetchSvg) && IS_DOM && config$2.autoReplaceSvg) api.dom.i2svg({
+  if ((Object.keys(namespace.styles).length > 0 || config$1.autoFetchSvg) && IS_DOM && config$1.autoReplaceSvg) api.dom.i2svg({
     node: autoReplaceSvgRoot
   });
 };
@@ -7795,7 +7795,7 @@ function asSymbol(_ref3) {
     attributes,
     symbol
   } = _ref3;
-  const id = symbol === true ? "".concat(prefix2, "-").concat(config$2.cssPrefix, "-").concat(iconName) : symbol;
+  const id = symbol === true ? "".concat(prefix2, "-").concat(config$1.cssPrefix, "-").concat(iconName) : symbol;
   return [{
     tag: "svg",
     attributes: {
@@ -7831,7 +7831,7 @@ function makeInlineSvgAbstract(params) {
     height: height2
   } = mask.found ? mask : main;
   const isUploadedIcon = Lt.includes(prefix2);
-  const attrClass = [config$2.replacementClass, iconName ? "".concat(config$2.cssPrefix, "-").concat(iconName) : ""].filter((c$$1) => extra.classes.indexOf(c$$1) === -1).filter((c$$1) => c$$1 !== "" || !!c$$1).concat(extra.classes).join(" ");
+  const attrClass = [config$1.replacementClass, iconName ? "".concat(config$1.cssPrefix, "-").concat(iconName) : ""].filter((c$$1) => extra.classes.indexOf(c$$1) === -1).filter((c$$1) => c$$1 !== "" || !!c$$1).concat(extra.classes).join(" ");
   let content = {
     children: [],
     attributes: _objectSpread2$3(_objectSpread2$3({}, extra.attributes), {}, {
@@ -7980,19 +7980,19 @@ function asFoundIcon(icon2) {
     element = {
       tag: "g",
       attributes: {
-        class: "".concat(config$2.cssPrefix, "-").concat(DUOTONE_CLASSES.GROUP)
+        class: "".concat(config$1.cssPrefix, "-").concat(DUOTONE_CLASSES.GROUP)
       },
       children: [{
         tag: "path",
         attributes: {
-          class: "".concat(config$2.cssPrefix, "-").concat(DUOTONE_CLASSES.SECONDARY),
+          class: "".concat(config$1.cssPrefix, "-").concat(DUOTONE_CLASSES.SECONDARY),
           fill: "currentColor",
           d: vectorData[0]
         }
       }, {
         tag: "path",
         attributes: {
-          class: "".concat(config$2.cssPrefix, "-").concat(DUOTONE_CLASSES.PRIMARY),
+          class: "".concat(config$1.cssPrefix, "-").concat(DUOTONE_CLASSES.PRIMARY),
           fill: "currentColor",
           d: vectorData[1]
         }
@@ -8020,13 +8020,13 @@ const missingIconResolutionMixin = {
   height: 512
 };
 function maybeNotifyMissing(iconName, prefix2) {
-  if (!PRODUCTION$1 && !config$2.showMissingIcons && iconName) {
+  if (!PRODUCTION$1 && !config$1.showMissingIcons && iconName) {
     console.error('Icon with name "'.concat(iconName, '" and prefix "').concat(prefix2, '" is missing.'));
   }
 }
 function findIcon(iconName, prefix2) {
   let givenPrefix = prefix2;
-  if (prefix2 === "fa" && config$2.styleDefault !== null) {
+  if (prefix2 === "fa" && config$1.styleDefault !== null) {
     prefix2 = getDefaultUsablePrefix();
   }
   return new Promise((resolve, reject) => {
@@ -8041,13 +8041,13 @@ function findIcon(iconName, prefix2) {
     }
     maybeNotifyMissing(iconName, prefix2);
     resolve(_objectSpread2$3(_objectSpread2$3({}, missingIconResolutionMixin), {}, {
-      icon: config$2.showMissingIcons && iconName ? callProvided("missingIconAbstract") || {} : {}
+      icon: config$1.showMissingIcons && iconName ? callProvided("missingIconAbstract") || {} : {}
     }));
   });
 }
 const noop$1$1 = () => {
 };
-const p$2 = config$2.measurePerformance && PERFORMANCE && PERFORMANCE.mark && PERFORMANCE.measure ? PERFORMANCE : {
+const p$2 = config$1.measurePerformance && PERFORMANCE && PERFORMANCE.mark && PERFORMANCE.measure ? PERFORMANCE : {
   mark: noop$1$1,
   measure: noop$1$1
 };
@@ -8076,13 +8076,13 @@ function hasPrefixAndIcon(node2) {
   return prefix2 && icon2;
 }
 function hasBeenReplaced(node2) {
-  return node2 && node2.classList && node2.classList.contains && node2.classList.contains(config$2.replacementClass);
+  return node2 && node2.classList && node2.classList.contains && node2.classList.contains(config$1.replacementClass);
 }
 function getMutator() {
-  if (config$2.autoReplaceSvg === true) {
+  if (config$1.autoReplaceSvg === true) {
     return mutators.replace;
   }
-  const mutator = mutators[config$2.autoReplaceSvg];
+  const mutator = mutators[config$1.autoReplaceSvg];
   return mutator || mutators.replace;
 }
 function createElementNS(tag) {
@@ -8123,7 +8123,7 @@ const mutators = {
       mutation[1].forEach((abstract) => {
         node2.parentNode.insertBefore(convertSVG(abstract), node2);
       });
-      if (node2.getAttribute(DATA_FA_I2SVG) === null && config$2.keepOriginalSource) {
+      if (node2.getAttribute(DATA_FA_I2SVG) === null && config$1.keepOriginalSource) {
         let comment2 = DOCUMENT.createComment(nodeAsComment(node2));
         node2.parentNode.replaceChild(comment2, node2);
       } else {
@@ -8134,14 +8134,14 @@ const mutators = {
   nest: function(mutation) {
     const node2 = mutation[0];
     const abstract = mutation[1];
-    if (~classArray(node2).indexOf(config$2.replacementClass)) {
+    if (~classArray(node2).indexOf(config$1.replacementClass)) {
       return mutators.replace(mutation);
     }
-    const forSvg = new RegExp("".concat(config$2.cssPrefix, "-.*"));
+    const forSvg = new RegExp("".concat(config$1.cssPrefix, "-.*"));
     delete abstract[0].attributes.id;
     if (abstract[0].attributes.class) {
       const splitClasses = abstract[0].attributes.class.split(" ").reduce((acc, cls) => {
-        if (cls === config$2.replacementClass || cls.match(forSvg)) {
+        if (cls === config$1.replacementClass || cls.match(forSvg)) {
           acc.toSvg.push(cls);
         } else {
           acc.toNode.push(cls);
@@ -8172,7 +8172,7 @@ function perform(mutations, callback2) {
     callbackFunction();
   } else {
     let frame = performOperationSync;
-    if (config$2.mutateApproach === MUTATION_APPROACH_ASYNC) {
+    if (config$1.mutateApproach === MUTATION_APPROACH_ASYNC) {
       frame = WINDOW.requestAnimationFrame || performOperationSync;
     }
     frame(() => {
@@ -8196,7 +8196,7 @@ function observe(options2) {
   if (!MUTATION_OBSERVER) {
     return;
   }
-  if (!config$2.observeMutations) {
+  if (!config$1.observeMutations) {
     return;
   }
   const {
@@ -8210,12 +8210,12 @@ function observe(options2) {
     const defaultPrefix = getDefaultUsablePrefix();
     toArray$1(objects).forEach((mutationRecord) => {
       if (mutationRecord.type === "childList" && mutationRecord.addedNodes.length > 0 && !isWatched(mutationRecord.addedNodes[0])) {
-        if (config$2.searchPseudoElements) {
+        if (config$1.searchPseudoElements) {
           pseudoElementsCallback(mutationRecord.target);
         }
         treeCallback(mutationRecord.target);
       }
-      if (mutationRecord.type === "attributes" && mutationRecord.target.parentNode && config$2.searchPseudoElements) {
+      if (mutationRecord.type === "attributes" && mutationRecord.target.parentNode && config$1.searchPseudoElements) {
         pseudoElementsCallback(mutationRecord.target.parentNode);
       }
       if (mutationRecord.type === "attributes" && isWatched(mutationRecord.target) && ~ATTRIBUTES_WATCHED_FOR_MUTATION.indexOf(mutationRecord.attributeName)) {
@@ -8278,7 +8278,7 @@ function classParser(node2) {
   if (val.prefix && innerText.length > 0) {
     val.iconName = byLigature(val.prefix, node2.innerText) || byUnicode(val.prefix, toHex(node2.innerText));
   }
-  if (!val.iconName && config$2.autoFetchSvg && node2.firstChild && node2.firstChild.nodeType === Node.TEXT_NODE) {
+  if (!val.iconName && config$1.autoFetchSvg && node2.firstChild && node2.firstChild.nodeType === Node.TEXT_NODE) {
     val.iconName = node2.firstChild.data;
   }
   return val;
@@ -8292,9 +8292,9 @@ function attributesParser(node2) {
   }, {});
   const title = node2.getAttribute("title");
   const titleId = node2.getAttribute("data-fa-title-id");
-  if (config$2.autoA11y) {
+  if (config$1.autoA11y) {
     if (title) {
-      extraAttributes["aria-labelledby"] = "".concat(config$2.replacementClass, "-title-").concat(titleId || nextUniqueId());
+      extraAttributes["aria-labelledby"] = "".concat(config$1.replacementClass, "-title-").concat(titleId || nextUniqueId());
     } else {
       extraAttributes["aria-hidden"] = "true";
       extraAttributes["focusable"] = "false";
@@ -8359,7 +8359,7 @@ const {
   styles: styles$2
 } = namespace;
 function generateMutation(node2) {
-  const nodeMeta = config$2.autoReplaceSvg === "nest" ? parseMeta(node2, {
+  const nodeMeta = config$1.autoReplaceSvg === "nest" ? parseMeta(node2, {
     styleParser: false
   }) : parseMeta(node2);
   if (~nodeMeta.extra.classes.indexOf(LAYERS_TEXT_CLASSNAME)) {
@@ -8377,7 +8377,7 @@ function onTree(root2) {
   const htmlClassList = DOCUMENT.documentElement.classList;
   const hclAdd = (suffix) => htmlClassList.add("".concat(HTML_CLASS_I2SVG_BASE_CLASS, "-").concat(suffix));
   const hclRemove = (suffix) => htmlClassList.remove("".concat(HTML_CLASS_I2SVG_BASE_CLASS, "-").concat(suffix));
-  const prefixes2 = config$2.autoFetchSvg ? getKnownPrefixes() : P.concat(Object.keys(styles$2));
+  const prefixes2 = config$1.autoFetchSvg ? getKnownPrefixes() : P.concat(Object.keys(styles$2));
   if (!prefixes2.includes("fa")) {
     prefixes2.push("fa");
   }
@@ -8477,9 +8477,9 @@ const render = function(iconDefinition) {
       iconDefinition,
       params
     });
-    if (config$2.autoA11y) {
+    if (config$1.autoA11y) {
       if (title) {
-        attributes["aria-labelledby"] = "".concat(config$2.replacementClass, "-title-").concat(titleId || nextUniqueId());
+        attributes["aria-labelledby"] = "".concat(config$1.replacementClass, "-title-").concat(titleId || nextUniqueId());
       } else {
         attributes["aria-hidden"] = "true";
         attributes["focusable"] = "false";
@@ -8625,7 +8625,7 @@ var Layers$1 = {
           return [{
             tag: "span",
             attributes: {
-              class: ["".concat(config$2.cssPrefix, "-layers"), ...classes].join(" ")
+              class: ["".concat(config$1.cssPrefix, "-layers"), ...classes].join(" ")
             },
             children
           }];
@@ -8659,7 +8659,7 @@ var LayersCounter = {
             extra: {
               attributes,
               styles: styles2,
-              classes: ["".concat(config$2.cssPrefix, "-layers-counter"), ...classes]
+              classes: ["".concat(config$1.cssPrefix, "-layers-counter"), ...classes]
             }
           });
         });
@@ -8694,7 +8694,7 @@ var LayersText = {
             extra: {
               attributes,
               styles: styles2,
-              classes: ["".concat(config$2.cssPrefix, "-layers-text"), ...classes]
+              classes: ["".concat(config$1.cssPrefix, "-layers-text"), ...classes]
             }
           });
         });
@@ -8716,7 +8716,7 @@ var LayersText = {
         width2 = boundingClientRect.width / computedFontSize;
         height2 = boundingClientRect.height / computedFontSize;
       }
-      if (config$2.autoA11y && !title) {
+      if (config$1.autoA11y && !title) {
         extra.attributes["aria-hidden"] = "true";
       }
       return Promise.resolve([node2, makeLayersTextAbstract({
@@ -8758,7 +8758,7 @@ function hexValueFromContent(content) {
     isSecondary: isPrependTen || isDoubled
   };
 }
-function getPrefix(fontFamily, fontWeight) {
+function getPrefix$1(fontFamily, fontWeight) {
   const fontFamilySanitized = fontFamily.replace(/^['"]|['"]$/g, "").toLowerCase();
   const fontWeightInteger = parseInt(fontWeight);
   const fontWeightSanitized = isNaN(fontWeightInteger) ? "normal" : fontWeightInteger;
@@ -8782,7 +8782,7 @@ function replaceForPosition(node2, position2) {
       return resolve();
     } else if (fontFamilyMatch && content !== "none" && content !== "") {
       const content2 = styles2.getPropertyValue("content");
-      let prefix2 = getPrefix(fontFamily, fontWeight);
+      let prefix2 = getPrefix$1(fontFamily, fontWeight);
       const {
         value: hexValue,
         isSecondary
@@ -8873,7 +8873,7 @@ var PseudoElements = {
       const {
         node: node2 = DOCUMENT
       } = params;
-      if (config$2.searchPseudoElements) {
+      if (config$1.searchPseudoElements) {
         searchPseudoElements(node2);
       }
     };
@@ -10571,296 +10571,6 @@ function requireSrc() {
 }
 var srcExports = requireSrc();
 const ISO6391 = /* @__PURE__ */ getDefaultExportFromCjs(srcExports);
-function _extends$1() {
-  return _extends$1 = Object.assign ? Object.assign.bind() : function(n) {
-    for (var e = 1; e < arguments.length; e++) {
-      var t3 = arguments[e];
-      for (var r3 in t3) ({}).hasOwnProperty.call(t3, r3) && (n[r3] = t3[r3]);
-    }
-    return n;
-  }, _extends$1.apply(null, arguments);
-}
-function _objectWithoutPropertiesLoose$1(r3, e) {
-  if (null == r3) return {};
-  var t3 = {};
-  for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
-    if (-1 !== e.indexOf(n)) continue;
-    t3[n] = r3[n];
-  }
-  return t3;
-}
-function _setPrototypeOf$1(t3, e) {
-  return _setPrototypeOf$1 = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(t4, e2) {
-    return t4.__proto__ = e2, t4;
-  }, _setPrototypeOf$1(t3, e);
-}
-function _inheritsLoose$1(t3, o2) {
-  t3.prototype = Object.create(o2.prototype), t3.prototype.constructor = t3, _setPrototypeOf$1(t3, o2);
-}
-const config$1 = {
-  disabled: false
-};
-const TransitionGroupContext = React$1.createContext(null);
-var forceReflow = function forceReflow2(node2) {
-  return node2.scrollTop;
-};
-var UNMOUNTED = "unmounted";
-var EXITED = "exited";
-var ENTERING = "entering";
-var ENTERED = "entered";
-var EXITING = "exiting";
-var Transition = /* @__PURE__ */ (function(_React$Component) {
-  _inheritsLoose$1(Transition2, _React$Component);
-  function Transition2(props, context2) {
-    var _this;
-    _this = _React$Component.call(this, props, context2) || this;
-    var parentGroup = context2;
-    var appear = parentGroup && !parentGroup.isMounting ? props.enter : props.appear;
-    var initialStatus;
-    _this.appearStatus = null;
-    if (props.in) {
-      if (appear) {
-        initialStatus = EXITED;
-        _this.appearStatus = ENTERING;
-      } else {
-        initialStatus = ENTERED;
-      }
-    } else {
-      if (props.unmountOnExit || props.mountOnEnter) {
-        initialStatus = UNMOUNTED;
-      } else {
-        initialStatus = EXITED;
-      }
-    }
-    _this.state = {
-      status: initialStatus
-    };
-    _this.nextCallback = null;
-    return _this;
-  }
-  Transition2.getDerivedStateFromProps = function getDerivedStateFromProps(_ref3, prevState) {
-    var nextIn = _ref3.in;
-    if (nextIn && prevState.status === UNMOUNTED) {
-      return {
-        status: EXITED
-      };
-    }
-    return null;
-  };
-  var _proto = Transition2.prototype;
-  _proto.componentDidMount = function componentDidMount() {
-    this.updateStatus(true, this.appearStatus);
-  };
-  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
-    var nextStatus = null;
-    if (prevProps !== this.props) {
-      var status = this.state.status;
-      if (this.props.in) {
-        if (status !== ENTERING && status !== ENTERED) {
-          nextStatus = ENTERING;
-        }
-      } else {
-        if (status === ENTERING || status === ENTERED) {
-          nextStatus = EXITING;
-        }
-      }
-    }
-    this.updateStatus(false, nextStatus);
-  };
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.cancelNextCallback();
-  };
-  _proto.getTimeouts = function getTimeouts() {
-    var timeout2 = this.props.timeout;
-    var exit, enter, appear;
-    exit = enter = appear = timeout2;
-    if (timeout2 != null && typeof timeout2 !== "number") {
-      exit = timeout2.exit;
-      enter = timeout2.enter;
-      appear = timeout2.appear !== void 0 ? timeout2.appear : enter;
-    }
-    return {
-      exit,
-      enter,
-      appear
-    };
-  };
-  _proto.updateStatus = function updateStatus(mounting, nextStatus) {
-    if (mounting === void 0) {
-      mounting = false;
-    }
-    if (nextStatus !== null) {
-      this.cancelNextCallback();
-      if (nextStatus === ENTERING) {
-        if (this.props.unmountOnExit || this.props.mountOnEnter) {
-          var node2 = this.props.nodeRef ? this.props.nodeRef.current : ReactDOM.findDOMNode(this);
-          if (node2) forceReflow(node2);
-        }
-        this.performEnter(mounting);
-      } else {
-        this.performExit();
-      }
-    } else if (this.props.unmountOnExit && this.state.status === EXITED) {
-      this.setState({
-        status: UNMOUNTED
-      });
-    }
-  };
-  _proto.performEnter = function performEnter(mounting) {
-    var _this2 = this;
-    var enter = this.props.enter;
-    var appearing = this.context ? this.context.isMounting : mounting;
-    var _ref22 = this.props.nodeRef ? [appearing] : [ReactDOM.findDOMNode(this), appearing], maybeNode = _ref22[0], maybeAppearing = _ref22[1];
-    var timeouts2 = this.getTimeouts();
-    var enterTimeout = appearing ? timeouts2.appear : timeouts2.enter;
-    if (!mounting && !enter || config$1.disabled) {
-      this.safeSetState({
-        status: ENTERED
-      }, function() {
-        _this2.props.onEntered(maybeNode);
-      });
-      return;
-    }
-    this.props.onEnter(maybeNode, maybeAppearing);
-    this.safeSetState({
-      status: ENTERING
-    }, function() {
-      _this2.props.onEntering(maybeNode, maybeAppearing);
-      _this2.onTransitionEnd(enterTimeout, function() {
-        _this2.safeSetState({
-          status: ENTERED
-        }, function() {
-          _this2.props.onEntered(maybeNode, maybeAppearing);
-        });
-      });
-    });
-  };
-  _proto.performExit = function performExit() {
-    var _this3 = this;
-    var exit = this.props.exit;
-    var timeouts2 = this.getTimeouts();
-    var maybeNode = this.props.nodeRef ? void 0 : ReactDOM.findDOMNode(this);
-    if (!exit || config$1.disabled) {
-      this.safeSetState({
-        status: EXITED
-      }, function() {
-        _this3.props.onExited(maybeNode);
-      });
-      return;
-    }
-    this.props.onExit(maybeNode);
-    this.safeSetState({
-      status: EXITING
-    }, function() {
-      _this3.props.onExiting(maybeNode);
-      _this3.onTransitionEnd(timeouts2.exit, function() {
-        _this3.safeSetState({
-          status: EXITED
-        }, function() {
-          _this3.props.onExited(maybeNode);
-        });
-      });
-    });
-  };
-  _proto.cancelNextCallback = function cancelNextCallback() {
-    if (this.nextCallback !== null) {
-      this.nextCallback.cancel();
-      this.nextCallback = null;
-    }
-  };
-  _proto.safeSetState = function safeSetState(nextState, callback2) {
-    callback2 = this.setNextCallback(callback2);
-    this.setState(nextState, callback2);
-  };
-  _proto.setNextCallback = function setNextCallback(callback2) {
-    var _this4 = this;
-    var active = true;
-    this.nextCallback = function(event) {
-      if (active) {
-        active = false;
-        _this4.nextCallback = null;
-        callback2(event);
-      }
-    };
-    this.nextCallback.cancel = function() {
-      active = false;
-    };
-    return this.nextCallback;
-  };
-  _proto.onTransitionEnd = function onTransitionEnd(timeout2, handler) {
-    this.setNextCallback(handler);
-    var node2 = this.props.nodeRef ? this.props.nodeRef.current : ReactDOM.findDOMNode(this);
-    var doesNotHaveTimeoutOrListener = timeout2 == null && !this.props.addEndListener;
-    if (!node2 || doesNotHaveTimeoutOrListener) {
-      setTimeout(this.nextCallback, 0);
-      return;
-    }
-    if (this.props.addEndListener) {
-      var _ref3 = this.props.nodeRef ? [this.nextCallback] : [node2, this.nextCallback], maybeNode = _ref3[0], maybeNextCallback = _ref3[1];
-      this.props.addEndListener(maybeNode, maybeNextCallback);
-    }
-    if (timeout2 != null) {
-      setTimeout(this.nextCallback, timeout2);
-    }
-  };
-  _proto.render = function render2() {
-    var status = this.state.status;
-    if (status === UNMOUNTED) {
-      return null;
-    }
-    var _this$props = this.props, children = _this$props.children;
-    _this$props.in;
-    _this$props.mountOnEnter;
-    _this$props.unmountOnExit;
-    _this$props.appear;
-    _this$props.enter;
-    _this$props.exit;
-    _this$props.timeout;
-    _this$props.addEndListener;
-    _this$props.onEnter;
-    _this$props.onEntering;
-    _this$props.onEntered;
-    _this$props.onExit;
-    _this$props.onExiting;
-    _this$props.onExited;
-    _this$props.nodeRef;
-    var childProps = _objectWithoutPropertiesLoose$1(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
-    return (
-      // allows for nested Transitions
-      /* @__PURE__ */ React$1.createElement(TransitionGroupContext.Provider, {
-        value: null
-      }, typeof children === "function" ? children(status, childProps) : React$1.cloneElement(React$1.Children.only(children), childProps))
-    );
-  };
-  return Transition2;
-})(React$1.Component);
-Transition.contextType = TransitionGroupContext;
-Transition.propTypes = {};
-function noop$6() {
-}
-Transition.defaultProps = {
-  in: false,
-  mountOnEnter: false,
-  unmountOnExit: false,
-  appear: false,
-  enter: true,
-  exit: true,
-  onEnter: noop$6,
-  onEntering: noop$6,
-  onEntered: noop$6,
-  onExit: noop$6,
-  onExiting: noop$6,
-  onExited: noop$6
-};
-Transition.UNMOUNTED = UNMOUNTED;
-Transition.EXITED = EXITED;
-Transition.ENTERING = ENTERING;
-Transition.ENTERED = ENTERED;
-Transition.EXITING = EXITING;
-function _assertThisInitialized$1(e) {
-  if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  return e;
-}
 function sortPerformers(performers) {
   const ret = performers.slice();
   ret.sort((a2, b) => {
@@ -10911,8 +10621,16 @@ function getSceneIdForVideoJsPlayer(videoElm) {
   }
   throw new Error("Could not find sceneId for Video.js player");
 }
-const PLUGIN_NAMESPACE = "stash-tv";
-const TRANSITION_DURATION = 150;
+function getPlayerIdForVideoJsPlayer(videoElm) {
+  let node2 = videoElm;
+  while (node2 !== null) {
+    if (node2 instanceof HTMLElement && "playerId" in node2.dataset && node2.dataset.playerId) {
+      return node2.dataset.playerId;
+    }
+    node2 = node2.parentElement;
+  }
+  throw new Error("Could not find playerId for Video.js player");
+}
 var jsxRuntime = { exports: {} };
 var reactJsxRuntime_production_min = {};
 /** @license React v17.0.2
@@ -11006,6 +10724,15 @@ function requireDocument() {
 }
 var documentExports = requireDocument();
 const document$1 = /* @__PURE__ */ getDefaultExportFromCjs(documentExports);
+function _extends$1() {
+  return _extends$1 = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e = 1; e < arguments.length; e++) {
+      var t3 = arguments[e];
+      for (var r3 in t3) ({}).hasOwnProperty.call(t3, r3) && (n[r3] = t3[r3]);
+    }
+    return n;
+  }, _extends$1.apply(null, arguments);
+}
 var keycode$1 = { exports: {} };
 var hasRequiredKeycode;
 function requireKeycode() {
@@ -11132,6 +10859,18 @@ function requireKeycode() {
 }
 var keycodeExports = requireKeycode();
 const keycode = /* @__PURE__ */ getDefaultExportFromCjs(keycodeExports);
+function _assertThisInitialized$1(e) {
+  if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  return e;
+}
+function _setPrototypeOf$1(t3, e) {
+  return _setPrototypeOf$1 = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(t4, e2) {
+    return t4.__proto__ = e2, t4;
+  }, _setPrototypeOf$1(t3, e);
+}
+function _inheritsLoose$1(t3, o2) {
+  t3.prototype = Object.create(o2.prototype), t3.prototype.constructor = t3, _setPrototypeOf$1(t3, o2);
+}
 var tuple;
 var hasRequiredTuple;
 function requireTuple() {
@@ -14550,13 +14289,13 @@ function requireConventions() {
     }
     return oc && typeof oc.freeze === "function" ? oc.freeze(object) : object;
   }
-  function assign2(target, source) {
+  function assign2(target, source2) {
     if (target === null || typeof target !== "object") {
       throw new TypeError("target is not an object");
     }
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
+    for (var key in source2) {
+      if (Object.prototype.hasOwnProperty.call(source2, key)) {
+        target[key] = source2[key];
       }
     }
     return target;
@@ -18264,12 +18003,12 @@ function requireSax() {
   function XMLReader() {
   }
   XMLReader.prototype = {
-    parse: function(source, defaultNSMap, entityMap) {
+    parse: function(source2, defaultNSMap, entityMap) {
       var domBuilder = this.domBuilder;
       domBuilder.startDocument();
       _copy(defaultNSMap, defaultNSMap = {});
       parse3(
-        source,
+        source2,
         defaultNSMap,
         entityMap,
         domBuilder,
@@ -18278,7 +18017,7 @@ function requireSax() {
       domBuilder.endDocument();
     }
   };
-  function parse3(source, defaultNSMapCopy, entityMap, domBuilder, errorHandler) {
+  function parse3(source2, defaultNSMapCopy, entityMap, domBuilder, errorHandler) {
     function fixedFromCharCode(code) {
       if (code > 65535) {
         code -= 65536;
@@ -18301,14 +18040,14 @@ function requireSax() {
     }
     function appendText(end3) {
       if (end3 > start3) {
-        var xt2 = source.substring(start3, end3).replace(/&#?\w+;/g, entityReplacer);
+        var xt2 = source2.substring(start3, end3).replace(/&#?\w+;/g, entityReplacer);
         locator && position2(start3);
         domBuilder.characters(xt2, 0, end3 - start3);
         start3 = end3;
       }
     }
     function position2(p2, m) {
-      while (p2 >= lineEnd && (m = linePattern.exec(source))) {
+      while (p2 >= lineEnd && (m = linePattern.exec(source2))) {
         lineStart = m.index;
         lineEnd = lineStart + m[0].length;
         locator.lineNumber++;
@@ -18324,11 +18063,11 @@ function requireSax() {
     var start3 = 0;
     while (true) {
       try {
-        var tagStart = source.indexOf("<", start3);
+        var tagStart = source2.indexOf("<", start3);
         if (tagStart < 0) {
-          if (!source.substr(start3).match(/^\s*$/)) {
+          if (!source2.substr(start3).match(/^\s*$/)) {
             var doc = domBuilder.doc;
-            var text = doc.createTextNode(source.substr(start3));
+            var text = doc.createTextNode(source2.substr(start3));
             doc.appendChild(text);
             domBuilder.currentElement = text;
           }
@@ -18337,13 +18076,13 @@ function requireSax() {
         if (tagStart > start3) {
           appendText(tagStart);
         }
-        switch (source.charAt(tagStart + 1)) {
+        switch (source2.charAt(tagStart + 1)) {
           case "/":
-            var end2 = source.indexOf(">", tagStart + 3);
-            var tagName = source.substring(tagStart + 2, end2).replace(/[ \t\n\r]+$/g, "");
+            var end2 = source2.indexOf(">", tagStart + 3);
+            var tagName = source2.substring(tagStart + 2, end2).replace(/[ \t\n\r]+$/g, "");
             var config2 = parseStack.pop();
             if (end2 < 0) {
-              tagName = source.substring(tagStart + 2).replace(/[\s<].*/, "");
+              tagName = source2.substring(tagStart + 2).replace(/[\s<].*/, "");
               errorHandler.error("end tag name: " + tagName + " is not complete:" + config2.tagName);
               end2 = tagStart + 1 + tagName.length;
             } else if (tagName.match(/\s</)) {
@@ -18374,19 +18113,19 @@ function requireSax() {
           // end elment
           case "?":
             locator && position2(tagStart);
-            end2 = parseInstruction(source, tagStart, domBuilder);
+            end2 = parseInstruction(source2, tagStart, domBuilder);
             break;
           case "!":
             locator && position2(tagStart);
-            end2 = parseDCC(source, tagStart, domBuilder, errorHandler);
+            end2 = parseDCC(source2, tagStart, domBuilder, errorHandler);
             break;
           default:
             locator && position2(tagStart);
             var el = new ElementAttributes();
             var currentNSMap = parseStack[parseStack.length - 1].currentNSMap;
-            var end2 = parseElementStartPart(source, tagStart, el, currentNSMap, entityReplacer, errorHandler);
+            var end2 = parseElementStartPart(source2, tagStart, el, currentNSMap, entityReplacer, errorHandler);
             var len = el.length;
-            if (!el.closed && fixSelfClosed(source, end2, el.tagName, closeMap)) {
+            if (!el.closed && fixSelfClosed(source2, end2, el.tagName, closeMap)) {
               el.closed = true;
               if (!entityMap.nbsp) {
                 errorHandler.warning("unclosed xml attribute");
@@ -18410,7 +18149,7 @@ function requireSax() {
               }
             }
             if (NAMESPACE.isHTML(el.uri) && !el.closed) {
-              end2 = parseHtmlSpecialContent(source, end2, el.tagName, entityReplacer, domBuilder);
+              end2 = parseHtmlSpecialContent(source2, end2, el.tagName, entityReplacer, domBuilder);
             } else {
               end2++;
             }
@@ -18434,7 +18173,7 @@ function requireSax() {
     t3.columnNumber = f.columnNumber;
     return t3;
   }
-  function parseElementStartPart(source, start3, el, currentNSMap, entityReplacer, errorHandler) {
+  function parseElementStartPart(source2, start3, el, currentNSMap, entityReplacer, errorHandler) {
     function addAttribute(qname, value2, startIndex) {
       if (el.attributeNames.hasOwnProperty(qname)) {
         errorHandler.fatalError("Attribute " + qname + " redefined");
@@ -18454,11 +18193,11 @@ function requireSax() {
     var p2 = ++start3;
     var s2 = S_TAG;
     while (true) {
-      var c = source.charAt(p2);
+      var c = source2.charAt(p2);
       switch (c) {
         case "=":
           if (s2 === S_ATTR) {
-            attrName = source.slice(start3, p2);
+            attrName = source2.slice(start3, p2);
             s2 = S_EQ;
           } else if (s2 === S_ATTR_SPACE) {
             s2 = S_EQ;
@@ -18471,19 +18210,19 @@ function requireSax() {
           if (s2 === S_EQ || s2 === S_ATTR) {
             if (s2 === S_ATTR) {
               errorHandler.warning('attribute value must after "="');
-              attrName = source.slice(start3, p2);
+              attrName = source2.slice(start3, p2);
             }
             start3 = p2 + 1;
-            p2 = source.indexOf(c, start3);
+            p2 = source2.indexOf(c, start3);
             if (p2 > 0) {
-              value = source.slice(start3, p2);
+              value = source2.slice(start3, p2);
               addAttribute(attrName, value, start3 - 1);
               s2 = S_ATTR_END;
             } else {
               throw new Error("attribute value no end '" + c + "' match");
             }
           } else if (s2 == S_ATTR_NOQUOT_VALUE) {
-            value = source.slice(start3, p2);
+            value = source2.slice(start3, p2);
             addAttribute(attrName, value, start3);
             errorHandler.warning('attribute "' + attrName + '" missed start quot(' + c + ")!!");
             start3 = p2 + 1;
@@ -18495,7 +18234,7 @@ function requireSax() {
         case "/":
           switch (s2) {
             case S_TAG:
-              el.setTagName(source.slice(start3, p2));
+              el.setTagName(source2.slice(start3, p2));
             case S_ATTR_END:
             case S_TAG_SPACE:
             case S_TAG_CLOSE:
@@ -18515,13 +18254,13 @@ function requireSax() {
         case "":
           errorHandler.error("unexpected end of input");
           if (s2 == S_TAG) {
-            el.setTagName(source.slice(start3, p2));
+            el.setTagName(source2.slice(start3, p2));
           }
           return p2;
         case ">":
           switch (s2) {
             case S_TAG:
-              el.setTagName(source.slice(start3, p2));
+              el.setTagName(source2.slice(start3, p2));
             case S_ATTR_END:
             case S_TAG_SPACE:
             case S_TAG_CLOSE:
@@ -18530,7 +18269,7 @@ function requireSax() {
             case S_ATTR_NOQUOT_VALUE:
             //Compatible state
             case S_ATTR:
-              value = source.slice(start3, p2);
+              value = source2.slice(start3, p2);
               if (value.slice(-1) === "/") {
                 el.closed = true;
                 value = value.slice(0, -1);
@@ -18560,15 +18299,15 @@ function requireSax() {
           if (c <= " ") {
             switch (s2) {
               case S_TAG:
-                el.setTagName(source.slice(start3, p2));
+                el.setTagName(source2.slice(start3, p2));
                 s2 = S_TAG_SPACE;
                 break;
               case S_ATTR:
-                attrName = source.slice(start3, p2);
+                attrName = source2.slice(start3, p2);
                 s2 = S_ATTR_SPACE;
                 break;
               case S_ATTR_NOQUOT_VALUE:
-                var value = source.slice(start3, p2);
+                var value = source2.slice(start3, p2);
                 errorHandler.warning('attribute "' + value + '" missed quot(")!!');
                 addAttribute(attrName, value, start3);
               case S_ATTR_END:
@@ -18674,10 +18413,10 @@ function requireSax() {
       return true;
     }
   }
-  function parseHtmlSpecialContent(source, elStartEnd, tagName, entityReplacer, domBuilder) {
+  function parseHtmlSpecialContent(source2, elStartEnd, tagName, entityReplacer, domBuilder) {
     if (/^(?:script|textarea)$/i.test(tagName)) {
-      var elEndStart = source.indexOf("</" + tagName + ">", elStartEnd);
-      var text = source.substring(elStartEnd + 1, elEndStart);
+      var elEndStart = source2.indexOf("</" + tagName + ">", elStartEnd);
+      var text = source2.substring(elStartEnd + 1, elEndStart);
       if (/[&<]/.test(text)) {
         if (/^script$/i.test(tagName)) {
           domBuilder.characters(text, 0, text.length);
@@ -18690,32 +18429,32 @@ function requireSax() {
     }
     return elStartEnd + 1;
   }
-  function fixSelfClosed(source, elStartEnd, tagName, closeMap) {
+  function fixSelfClosed(source2, elStartEnd, tagName, closeMap) {
     var pos = closeMap[tagName];
     if (pos == null) {
-      pos = source.lastIndexOf("</" + tagName + ">");
+      pos = source2.lastIndexOf("</" + tagName + ">");
       if (pos < elStartEnd) {
-        pos = source.lastIndexOf("</" + tagName);
+        pos = source2.lastIndexOf("</" + tagName);
       }
       closeMap[tagName] = pos;
     }
     return pos < elStartEnd;
   }
-  function _copy(source, target) {
-    for (var n in source) {
-      if (Object.prototype.hasOwnProperty.call(source, n)) {
-        target[n] = source[n];
+  function _copy(source2, target) {
+    for (var n in source2) {
+      if (Object.prototype.hasOwnProperty.call(source2, n)) {
+        target[n] = source2[n];
       }
     }
   }
-  function parseDCC(source, start3, domBuilder, errorHandler) {
-    var next2 = source.charAt(start3 + 2);
+  function parseDCC(source2, start3, domBuilder, errorHandler) {
+    var next2 = source2.charAt(start3 + 2);
     switch (next2) {
       case "-":
-        if (source.charAt(start3 + 3) === "-") {
-          var end2 = source.indexOf("-->", start3 + 4);
+        if (source2.charAt(start3 + 3) === "-") {
+          var end2 = source2.indexOf("-->", start3 + 4);
           if (end2 > start3) {
-            domBuilder.comment(source, start3 + 4, end2 - start3 - 4);
+            domBuilder.comment(source2, start3 + 4, end2 - start3 - 4);
             return end2 + 3;
           } else {
             errorHandler.error("Unclosed comment");
@@ -18725,14 +18464,14 @@ function requireSax() {
           return -1;
         }
       default:
-        if (source.substr(start3 + 3, 6) == "CDATA[") {
-          var end2 = source.indexOf("]]>", start3 + 9);
+        if (source2.substr(start3 + 3, 6) == "CDATA[") {
+          var end2 = source2.indexOf("]]>", start3 + 9);
           domBuilder.startCDATA();
-          domBuilder.characters(source, start3 + 9, end2 - start3 - 9);
+          domBuilder.characters(source2, start3 + 9, end2 - start3 - 9);
           domBuilder.endCDATA();
           return end2 + 3;
         }
-        var matchs = split2(source, start3);
+        var matchs = split2(source2, start3);
         var len = matchs.length;
         if (len > 1 && /!doctype/i.test(matchs[0][0])) {
           var name = matchs[1][0];
@@ -18754,10 +18493,10 @@ function requireSax() {
     }
     return -1;
   }
-  function parseInstruction(source, start3, domBuilder) {
-    var end2 = source.indexOf("?>", start3);
+  function parseInstruction(source2, start3, domBuilder) {
+    var end2 = source2.indexOf("?>", start3);
     if (end2) {
-      var match2 = source.substring(start3, end2).match(/^<\?(\S*)\s*([\s\S]*?)\s*$/);
+      var match2 = source2.substring(start3, end2).match(/^<\?(\S*)\s*([\s\S]*?)\s*$/);
       if (match2) {
         match2[0].length;
         domBuilder.processingInstruction(match2[1], match2[2]);
@@ -18812,13 +18551,13 @@ function requireSax() {
     //	getType:function(uri,localName){}
     //	getType:function(i){},
   };
-  function split2(source, start3) {
+  function split2(source2, start3) {
     var match2;
     var buf = [];
     var reg = /'[^']+'|"[^"]+"|[^\s<>\/=]+=?|(\/?\s*>|<)/g;
     reg.lastIndex = start3;
-    reg.exec(source);
-    while (match2 = reg.exec(source)) {
+    reg.exec(source2);
+    while (match2 = reg.exec(source2)) {
       buf.push(match2);
       if (match2[1]) return buf;
     }
@@ -18845,7 +18584,7 @@ function requireDomParser() {
   function DOMParser2(options2) {
     this.options = options2 || { locator: {} };
   }
-  DOMParser2.prototype.parseFromString = function(source, mimeType) {
+  DOMParser2.prototype.parseFromString = function(source2, mimeType) {
     var options2 = this.options;
     var sax3 = new XMLReader();
     var domBuilder = options2.domBuilder || new DOMHandler();
@@ -18864,9 +18603,9 @@ function requireDomParser() {
     }
     defaultNSMap.xml = defaultNSMap.xml || NAMESPACE.XML;
     var normalize2 = options2.normalizeLineEndings || normalizeLineEndings;
-    if (source && typeof source === "string") {
+    if (source2 && typeof source2 === "string") {
       sax3.parse(
-        normalize2(source),
+        normalize2(source2),
         defaultNSMap,
         entityMap
       );
@@ -19062,17 +18801,17 @@ var merge = function merge2() {
   for (var _len = arguments.length, objects = new Array(_len), _key = 0; _key < _len; _key++) {
     objects[_key] = arguments[_key];
   }
-  return objects.reduce(function(result, source) {
-    if (typeof source !== "object") {
+  return objects.reduce(function(result, source2) {
+    if (typeof source2 !== "object") {
       return result;
     }
-    Object.keys(source).forEach(function(key) {
-      if (Array.isArray(result[key]) && Array.isArray(source[key])) {
-        result[key] = result[key].concat(source[key]);
-      } else if (isObject$3(result[key]) && isObject$3(source[key])) {
-        result[key] = merge2(result[key], source[key]);
+    Object.keys(source2).forEach(function(key) {
+      if (Array.isArray(result[key]) && Array.isArray(source2[key])) {
+        result[key] = result[key].concat(source2[key]);
+      } else if (isObject$3(result[key]) && isObject$3(source2[key])) {
+        result[key] = merge2(result[key], source2[key]);
       } else {
-        result[key] = source[key];
+        result[key] = source2[key];
       }
     });
     return result;
@@ -19138,10 +18877,10 @@ var errors$1 = {
   UNSUPPORTED_UTC_TIMING_SCHEME: "UNSUPPORTED_UTC_TIMING_SCHEME"
 };
 var urlTypeToSegment = function urlTypeToSegment2(_ref3) {
-  var _ref$baseUrl = _ref3.baseUrl, baseUrl = _ref$baseUrl === void 0 ? "" : _ref$baseUrl, _ref$source = _ref3.source, source = _ref$source === void 0 ? "" : _ref$source, _ref$range = _ref3.range, range3 = _ref$range === void 0 ? "" : _ref$range, _ref$indexRange = _ref3.indexRange, indexRange = _ref$indexRange === void 0 ? "" : _ref$indexRange;
+  var _ref$baseUrl = _ref3.baseUrl, baseUrl = _ref$baseUrl === void 0 ? "" : _ref$baseUrl, _ref$source = _ref3.source, source2 = _ref$source === void 0 ? "" : _ref$source, _ref$range = _ref3.range, range3 = _ref$range === void 0 ? "" : _ref$range, _ref$indexRange = _ref3.indexRange, indexRange = _ref$indexRange === void 0 ? "" : _ref$indexRange;
   var segment = {
-    uri: source,
-    resolvedUri: resolveUrl$1(baseUrl || "", source)
+    uri: source2,
+    resolvedUri: resolveUrl$1(baseUrl || "", source2)
   };
   if (range3 || indexRange) {
     var rangeStr = range3 ? range3 : indexRange;
@@ -21351,11 +21090,11 @@ function assign$3(target) {
   if (Object.assign) {
     return _extends$1.apply(void 0, [target].concat(sources));
   }
-  sources.forEach(function(source) {
-    if (!source) {
+  sources.forEach(function(source2) {
+    if (!source2) {
       return;
     }
-    each$1(source, function(value, key) {
+    each$1(source2, function(value, key) {
       target[key] = value;
     });
   });
@@ -22677,11 +22416,11 @@ function mergeOptions$3() {
   for (var _len = arguments.length, sources = new Array(_len), _key = 0; _key < _len; _key++) {
     sources[_key] = arguments[_key];
   }
-  sources.forEach(function(source) {
-    if (!source) {
+  sources.forEach(function(source2) {
+    if (!source2) {
       return;
     }
-    each$1(source, function(value, key) {
+    each$1(source2, function(value, key) {
       if (!isPlain(value)) {
         result[key] = value;
         return;
@@ -25215,11 +24954,11 @@ Tech.withSourceHandlers = function(_Tech) {
     }
     return "";
   };
-  _Tech.selectSourceHandler = function(source, options2) {
+  _Tech.selectSourceHandler = function(source2, options2) {
     var handlers = _Tech.sourceHandlers || [];
     var can;
     for (var i = 0; i < handlers.length; i++) {
-      can = handlers[i].canHandleSource(source, options2);
+      can = handlers[i].canHandleSource(source2, options2);
       if (can) {
         return handlers[i];
       }
@@ -25246,8 +24985,8 @@ Tech.withSourceHandlers = function(_Tech) {
       return originalFn.apply(this, arguments);
     };
   }, _Tech.prototype);
-  _Tech.prototype.setSource = function(source) {
-    var sh = _Tech.selectSourceHandler(source, this.options_);
+  _Tech.prototype.setSource = function(source2) {
+    var sh = _Tech.selectSourceHandler(source2, this.options_);
     if (!sh) {
       if (_Tech.nativeSourceHandler) {
         sh = _Tech.nativeSourceHandler;
@@ -25258,9 +24997,9 @@ Tech.withSourceHandlers = function(_Tech) {
     this.disposeSourceHandler();
     this.off("dispose", this.disposeSourceHandler_);
     if (sh !== _Tech.nativeSourceHandler) {
-      this.currentSource_ = source;
+      this.currentSource_ = source2;
     }
-    this.sourceHandler_ = sh.handleSource(source, this, this.options_);
+    this.sourceHandler_ = sh.handleSource(source2, this, this.options_);
     this.one("dispose", this.disposeSourceHandler_);
   };
   _Tech.prototype.disposeSourceHandler = function() {
@@ -29838,11 +29577,11 @@ var Html5 = /* @__PURE__ */ (function(_Tech) {
   function Html52(options2, ready) {
     var _this;
     _this = _Tech.call(this, options2, ready) || this;
-    var source = options2.source;
+    var source2 = options2.source;
     var crossoriginTracks = false;
     _this.featuresVideoFrameCallback = _this.featuresVideoFrameCallback && _this.el_.tagName === "VIDEO";
-    if (source && (_this.el_.currentSrc !== source.src || options2.tag && options2.tag.initNetworkState_ === 3)) {
-      _this.setSource(source);
+    if (source2 && (_this.el_.currentSrc !== source2.src || options2.tag && options2.tag.initNetworkState_ === 3)) {
+      _this.setSource(source2);
     } else {
       _this.handleLateInit_(_this.el_);
     }
@@ -31072,17 +30811,17 @@ Html5.nativeSourceHandler.canPlayType = function(type2) {
     return "";
   }
 };
-Html5.nativeSourceHandler.canHandleSource = function(source, options2) {
-  if (source.type) {
-    return Html5.nativeSourceHandler.canPlayType(source.type);
-  } else if (source.src) {
-    var ext = getFileExtension(source.src);
+Html5.nativeSourceHandler.canHandleSource = function(source2, options2) {
+  if (source2.type) {
+    return Html5.nativeSourceHandler.canPlayType(source2.type);
+  } else if (source2.src) {
+    var ext = getFileExtension(source2.src);
     return Html5.nativeSourceHandler.canPlayType("video/" + ext);
   }
   return "";
 };
-Html5.nativeSourceHandler.handleSource = function(source, tech, options2) {
-  tech.setSrc(source.src);
+Html5.nativeSourceHandler.handleSource = function(source2, tech, options2) {
+  tech.setSrc(source2.src);
 };
 Html5.nativeSourceHandler.dispose = function() {
 };
@@ -31715,7 +31454,7 @@ var Player = /* @__PURE__ */ (function(_Component) {
     this.addClass(idClass);
     setTextContent(this.styleEl_, "\n      ." + idClass + " {\n        width: " + width2 + "px;\n        height: " + height2 + "px;\n      }\n\n      ." + idClass + ".vjs-fluid:not(.vjs-audio-only-mode) {\n        padding-top: " + ratioMultiplier * 100 + "%;\n      }\n    ");
   };
-  _proto.loadTech_ = function loadTech_(techName, source) {
+  _proto.loadTech_ = function loadTech_(techName, source2) {
     var _this4 = this;
     if (this.tech_) {
       this.unloadTech_();
@@ -31734,7 +31473,7 @@ var Player = /* @__PURE__ */ (function(_Component) {
       autoplay = false;
     }
     var techOptions = {
-      source,
+      source: source2,
       autoplay,
       "nativeControlsForTouch": this.options_.nativeControlsForTouch,
       "playerId": this.id(),
@@ -31762,7 +31501,7 @@ var Player = /* @__PURE__ */ (function(_Component) {
     if (this.tag) {
       techOptions.tag = this.tag;
     }
-    if (source && source.src === this.cache_.src && this.cache_.currentTime > 0) {
+    if (source2 && source2.src === this.cache_.src && this.cache_.currentTime > 0) {
       techOptions.startTime = this.cache_.currentTime;
     }
     var TechClass = Tech.getTech(techName);
@@ -32755,11 +32494,11 @@ var Player = /* @__PURE__ */ (function(_Component) {
         return fn(b, a2);
       };
     };
-    var finder = function finder2(_ref22, source) {
+    var finder = function finder2(_ref22, source2) {
       var techName = _ref22[0], tech = _ref22[1];
-      if (tech.canPlaySource(source, _this14.options_[techName.toLowerCase()])) {
+      if (tech.canPlaySource(source2, _this14.options_[techName.toLowerCase()])) {
         return {
-          source,
+          source: source2,
           tech: techName
         };
       }
@@ -32771,15 +32510,15 @@ var Player = /* @__PURE__ */ (function(_Component) {
     }
     return foundSourceAndTech || false;
   };
-  _proto.handleSrc_ = function handleSrc_(source, isRetry) {
+  _proto.handleSrc_ = function handleSrc_(source2, isRetry) {
     var _this15 = this;
-    if (typeof source === "undefined") {
+    if (typeof source2 === "undefined") {
       return this.cache_.src || "";
     }
     if (this.resetRetryOnError_) {
       this.resetRetryOnError_();
     }
-    var sources = filterSource(source);
+    var sources = filterSource(source2);
     if (!sources.length) {
       this.setTimeout(function() {
         this.error({
@@ -32833,12 +32572,12 @@ var Player = /* @__PURE__ */ (function(_Component) {
       };
     }
   };
-  _proto.src = function src2(source) {
-    return this.handleSrc_(source, false);
+  _proto.src = function src2(source2) {
+    return this.handleSrc_(source2, false);
   };
-  _proto.src_ = function src_(source) {
+  _proto.src_ = function src_(source2) {
     var _this16 = this;
-    var sourceTech = this.selectSource([source]);
+    var sourceTech = this.selectSource([source2]);
     if (!sourceTech) {
       return true;
     }
@@ -32852,9 +32591,9 @@ var Player = /* @__PURE__ */ (function(_Component) {
     }
     this.ready(function() {
       if (this.tech_.constructor.prototype.hasOwnProperty("setSource")) {
-        this.techCall_("setSource", source);
+        this.techCall_("setSource", source2);
       } else {
-        this.techCall_("src", source.src);
+        this.techCall_("src", source2.src);
       }
       this.changingSrc_ = false;
     }, true);
@@ -32912,10 +32651,10 @@ var Player = /* @__PURE__ */ (function(_Component) {
     this.trigger("volumechange");
   };
   _proto.currentSources = function currentSources() {
-    var source = this.currentSource();
+    var source2 = this.currentSource();
     var sources = [];
-    if (Object.keys(source).length !== 0) {
-      sources.push(source);
+    if (Object.keys(source2).length !== 0) {
+      sources.push(source2);
     }
     return this.cache_.sources || sources;
   };
@@ -34056,9 +33795,9 @@ var resolveManifestRedirect = function resolveManifestRedirect2(handleManifestRe
   }
   return url;
 };
-var logger = function logger2(source) {
+var logger = function logger2(source2) {
   if (videojs.log.debug) {
-    return videojs.log.debug.bind(videojs, "VHS:", source + " >");
+    return videojs.log.debug.bind(videojs, "VHS:", source2 + " >");
   }
   return function() {
   };
@@ -49942,7 +49681,7 @@ Vhs.isSupported = function() {
 var Component$3 = videojs.getComponent("Component");
 var VhsHandler = /* @__PURE__ */ (function(_Component) {
   _inheritsLoose$1(VhsHandler2, _Component);
-  function VhsHandler2(source, tech, options2) {
+  function VhsHandler2(source2, tech, options2) {
     var _this;
     _this = _Component.call(this, tech, videojs.mergeOptions(options2.hls, options2.vhs)) || this;
     if (options2.hls && Object.keys(options2.hls).length) {
@@ -49992,7 +49731,7 @@ var VhsHandler = /* @__PURE__ */ (function(_Component) {
       _this.player_ = _player;
     }
     _this.tech_ = tech;
-    _this.source_ = source;
+    _this.source_ = source2;
     _this.stats = {};
     _this.ignoreNextSeekingEvent_ = false;
     _this.setOptions_();
@@ -50540,12 +50279,12 @@ var VhsSourceHandler = {
     var localOptions = videojs.mergeOptions(videojs.options, options2);
     return VhsSourceHandler.canPlayType(srcObj.type, localOptions);
   },
-  handleSource: function handleSource(source, tech, options2) {
+  handleSource: function handleSource(source2, tech, options2) {
     if (options2 === void 0) {
       options2 = {};
     }
     var localOptions = videojs.mergeOptions(videojs.options, options2);
-    tech.vhs = new VhsHandler(source, tech, localOptions);
+    tech.vhs = new VhsHandler(source2, tech, localOptions);
     if (!videojs.hasOwnProperty("hls")) {
       Object.defineProperty(tech, "hls", {
         get: function get7() {
@@ -50556,7 +50295,7 @@ var VhsSourceHandler = {
       });
     }
     tech.vhs.xhr = xhrFactory();
-    tech.vhs.src(source.src, source.type);
+    tech.vhs.src(source2.src, source2.type);
     return tech.vhs;
   },
   canPlayType: function canPlayType2(type2, options2) {
@@ -62625,24 +62364,24 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
               EE.call(this);
             }
             Stream2.prototype.pipe = function(dest, options2) {
-              var source = this;
+              var source2 = this;
               function ondata(chunk) {
                 if (dest.writable) {
-                  if (false === dest.write(chunk) && source.pause) {
-                    source.pause();
+                  if (false === dest.write(chunk) && source2.pause) {
+                    source2.pause();
                   }
                 }
               }
-              source.on("data", ondata);
+              source2.on("data", ondata);
               function ondrain() {
-                if (source.readable && source.resume) {
-                  source.resume();
+                if (source2.readable && source2.resume) {
+                  source2.resume();
                 }
               }
               dest.on("drain", ondrain);
               if (!dest._isStdio && (!options2 || options2.end !== false)) {
-                source.on("end", onend);
-                source.on("close", onclose);
+                source2.on("end", onend);
+                source2.on("close", onclose);
               }
               var didOnEnd = false;
               function onend() {
@@ -62661,23 +62400,23 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                   throw er;
                 }
               }
-              source.on("error", onerror);
+              source2.on("error", onerror);
               dest.on("error", onerror);
               function cleanup() {
-                source.removeListener("data", ondata);
+                source2.removeListener("data", ondata);
                 dest.removeListener("drain", ondrain);
-                source.removeListener("end", onend);
-                source.removeListener("close", onclose);
-                source.removeListener("error", onerror);
+                source2.removeListener("end", onend);
+                source2.removeListener("close", onclose);
+                source2.removeListener("error", onerror);
                 dest.removeListener("error", onerror);
-                source.removeListener("end", cleanup);
-                source.removeListener("close", cleanup);
+                source2.removeListener("end", cleanup);
+                source2.removeListener("close", cleanup);
                 dest.removeListener("close", cleanup);
               }
-              source.on("end", cleanup);
-              source.on("close", cleanup);
+              source2.on("end", cleanup);
+              source2.on("close", cleanup);
               dest.on("close", cleanup);
-              dest.emit("pipe", source);
+              dest.emit("pipe", source2);
               return dest;
             };
           })
@@ -63651,14 +63390,14 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 }
               };
               var settings = _Utils_js__WEBPACK_IMPORTED_MODULE_1__["default"].clone(defaultSettings);
-              function mixinSettings(source, dest, path) {
-                for (var n in source) {
-                  if (source.hasOwnProperty(n)) {
+              function mixinSettings(source2, dest, path) {
+                for (var n in source2) {
+                  if (source2.hasOwnProperty(n)) {
                     if (dest.hasOwnProperty(n)) {
-                      if (_typeof2(source[n]) === "object" && source[n] !== null) {
-                        mixinSettings(source[n], dest[n], path.slice() + n + ".");
+                      if (_typeof2(source2[n]) === "object" && source2[n] !== null) {
+                        mixinSettings(source2[n], dest[n], path.slice() + n + ".");
                       } else {
-                        dest[n] = _Utils_js__WEBPACK_IMPORTED_MODULE_1__["default"].clone(source[n]);
+                        dest[n] = _Utils_js__WEBPACK_IMPORTED_MODULE_1__["default"].clone(source2[n]);
                       }
                     }
                   }
@@ -63738,13 +63477,13 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
               }
               _createClass2(Utils2, null, [{
                 key: "mixin",
-                value: function mixin(dest, source, copy2) {
+                value: function mixin(dest, source2, copy2) {
                   var s2;
                   var empty = {};
                   if (dest) {
-                    for (var name in source) {
-                      if (source.hasOwnProperty(name)) {
-                        s2 = source[name];
+                    for (var name in source2) {
+                      if (source2.hasOwnProperty(name)) {
+                        s2 = source2[name];
                         if (!(name in dest) || dest[name] !== s2 && (!(name in empty) || empty[name] !== s2)) {
                           if (_typeof2(dest[name]) === "object" && dest[name] !== null) {
                             dest[name] = Utils2.mixin(dest[name], s2, copy2);
@@ -67221,7 +66960,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 }
                 return isDynamic;
               }
-              function getId(manifest) {
+              function getId2(manifest) {
                 return manifest && manifest[_constants_DashConstants__WEBPACK_IMPORTED_MODULE_1__["default"].ID] || null;
               }
               function hasProfile(manifest, profile) {
@@ -67864,7 +67603,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 getLabelsForAdaptation,
                 getContentProtectionData,
                 getIsDynamic,
-                getId,
+                getId: getId2,
                 hasProfile,
                 getDuration,
                 getBandwidth,
@@ -69055,13 +68794,13 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                   }
                 }
               }
-              function run6(source) {
-                if (source === null || _typeof2(source) !== "object") {
-                  return source;
+              function run6(source2) {
+                if (source2 === null || _typeof2(source2) !== "object") {
+                  return source2;
                 }
-                if (source.Period_asArray && "period" in mappers) {
+                if (source2.Period_asArray && "period" in mappers) {
                   var periodMapper = mappers.period;
-                  var periods = source.Period_asArray;
+                  var periods = source2.Period_asArray;
                   for (var i = 0, len = periods.length; i < len; ++i) {
                     var period = periods[i];
                     mapItem(periodMapper, period);
@@ -69076,7 +68815,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                     }
                   }
                 }
-                return source;
+                return source2;
               }
               return {
                 run: run6
@@ -71442,7 +71181,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
               var debug = Object(_core_Debug__WEBPACK_IMPORTED_MODULE_22__["default"])(context2).getInstance({
                 settings
               });
-              var instance, logger3, source, protectionData, mediaPlayerInitialized, streamingInitialized, playbackInitialized, autoPlay, abrController, schemeLoaderFactory, timelineConverter, mediaController, protectionController, metricsReportingController, mssHandler, offlineController, adapter, mediaPlayerModel, errHandler, baseURLController, capabilities, capabilitiesFilter, streamController, textController, gapController, playbackController, dashMetrics, manifestModel, cmcdModel, videoModel, uriFragmentModel, domStorage, segmentBaseController, licenseRequestFilters, licenseResponseFilters, customCapabilitiesFilters;
+              var instance, logger3, source2, protectionData, mediaPlayerInitialized, streamingInitialized, playbackInitialized, autoPlay, abrController, schemeLoaderFactory, timelineConverter, mediaController, protectionController, metricsReportingController, mssHandler, offlineController, adapter, mediaPlayerModel, errHandler, baseURLController, capabilities, capabilitiesFilter, streamController, textController, gapController, playbackController, dashMetrics, manifestModel, cmcdModel, videoModel, uriFragmentModel, domStorage, segmentBaseController, licenseRequestFilters, licenseResponseFilters, customCapabilitiesFilters;
               function setup() {
                 logger3 = debug.getLogger(instance);
                 mediaPlayerInitialized = false;
@@ -71500,7 +71239,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                   settings = config2.settings;
                 }
               }
-              function initialize2(view, source2, AutoPlay) {
+              function initialize2(view, source22, AutoPlay) {
                 if (!capabilities) {
                   capabilities = Object(_utils_Capabilities__WEBPACK_IMPORTED_MODULE_11__["default"])(context2).getInstance();
                   capabilities.setConfig({
@@ -71587,8 +71326,8 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 if (view) {
                   attachView(view);
                 }
-                if (source2) {
-                  attachSource(source2);
+                if (source22) {
+                  attachSource(source22);
                 }
                 logger3.info("[dash.js " + getVersion() + "] MediaPlayer has been initialized");
               }
@@ -71618,7 +71357,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 _core_FactoryMaker__WEBPACK_IMPORTED_MODULE_27__["default"].deleteSingletonInstances(context2);
               }
               function isReady() {
-                return !!source && !!videoModel.getElement();
+                return !!source2 && !!videoModel.getElement();
               }
               function on3(type2, listener2, scope, options2) {
                 eventBus.on(type2, listener2, scope, options2);
@@ -72111,10 +71850,10 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 manifestLoader.load(url);
               }
               function getSource2() {
-                if (!source) {
+                if (!source2) {
                   throw SOURCE_NOT_ATTACHED_ERROR;
                 }
-                return source;
+                return source2;
               }
               function attachSource(urlOrManifest) {
                 if (!mediaPlayerInitialized) {
@@ -72123,7 +71862,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 if (typeof urlOrManifest === "string") {
                   uriFragmentModel.initialize(urlOrManifest);
                 }
-                source = urlOrManifest;
+                source2 = urlOrManifest;
                 if (streamingInitialized || playbackInitialized) {
                   _resetPlaybackControllers();
                 }
@@ -72429,14 +72168,14 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 if (offlineController) {
                   offlineController.resetRecords();
                 }
-                if (!streamingInitialized && source) {
+                if (!streamingInitialized && source2) {
                   streamingInitialized = true;
                   logger3.info("Streaming Initialized");
                   _createPlaybackControllers();
-                  if (typeof source === "string") {
-                    streamController.load(source);
+                  if (typeof source2 === "string") {
+                    streamController.load(source2);
                   } else {
-                    streamController.loadWithManifest(source);
+                    streamController.loadWithManifest(source2);
                   }
                 }
                 if (!playbackInitialized && isReady()) {
@@ -72720,27 +72459,27 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
             function MediaPlayerFactory() {
               var SUPPORTED_MIME_TYPE = "application/dash+xml";
               var logger3;
-              function create3(video, source, context2) {
+              function create3(video, source2, context2) {
                 if (!video || !/^VIDEO$/i.test(video.nodeName)) return null;
                 if (video._dashjs_player) return video._dashjs_player;
                 var player;
                 var videoID = video.id || video.name || "video element";
-                source = source || [].slice.call(video.querySelectorAll("source")).filter(function(s2) {
+                source2 = source2 || [].slice.call(video.querySelectorAll("source")).filter(function(s2) {
                   return s2.type == SUPPORTED_MIME_TYPE;
                 })[0];
-                if (!source && video.src) {
-                  source = document.createElement("source");
-                  source.src = video.src;
-                } else if (!source && !video.src) {
+                if (!source2 && video.src) {
+                  source2 = document.createElement("source");
+                  source2.src = video.src;
+                } else if (!source2 && !video.src) {
                   return null;
                 }
                 context2 = context2 || {};
                 player = Object(_MediaPlayer__WEBPACK_IMPORTED_MODULE_0__["default"])(context2).create();
-                player.initialize(video, source.src, video.autoplay);
+                player.initialize(video, source2.src, video.autoplay);
                 if (!logger3) {
                   logger3 = player.getDebug().getLogger();
                 }
-                logger3.debug("Converted " + videoID + " to dash.js player and added content: " + source.src);
+                logger3.debug("Converted " + videoID + " to dash.js player and added content: " + source2.src);
                 video._dashjs_player = player;
                 return player;
               }
@@ -73411,7 +73150,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                     reject();
                     return;
                   }
-                  logger3.info("[startPreloading] Preloading next stream with id ".concat(getId()));
+                  logger3.info("[startPreloading] Preloading next stream with id ".concat(getId2()));
                   setPreloaded(true);
                   _commonMediaInitialization(mediaSource, previousBuffers).then(function() {
                     for (var i = 0; i < streamProcessors.length && streamProcessors[i]; i++) {
@@ -73668,7 +73407,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
               function getStartTime() {
                 return streamInfo ? streamInfo.start : NaN;
               }
-              function getId() {
+              function getId2() {
                 return streamInfo ? streamInfo.id : null;
               }
               function getStreamInfo() {
@@ -73975,7 +73714,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 getIsActive,
                 getDuration,
                 getStartTime,
-                getId,
+                getId: getId2,
                 getStreamInfo,
                 getHasAudioTrack,
                 getHasVideoTrack,
@@ -78117,11 +77856,11 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                   mediaSource.setLiveSeekableRange(start3, end2);
                 }
               }
-              function signalEndOfStream(source) {
-                if (!source || source.readyState !== "open") {
+              function signalEndOfStream(source2) {
+                if (!source2 || source2.readyState !== "open") {
                   return;
                 }
-                var buffers = source.sourceBuffers;
+                var buffers = source2.sourceBuffers;
                 for (var i = 0; i < buffers.length; i++) {
                   if (buffers[i].updating) {
                     return;
@@ -78131,10 +77870,10 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                   }
                 }
                 logger3.info("call to mediaSource endOfStream");
-                source.endOfStream();
+                source2.endOfStream();
               }
-              function isBufferUpdating(source) {
-                var buffers = source.sourceBuffers;
+              function isBufferUpdating(source2) {
+                var buffers = source2.sourceBuffers;
                 for (var i = 0; i < buffers.length; i++) {
                   if (buffers[i].updating) {
                     return true;
@@ -80508,14 +80247,14 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                   _onComplete();
                   return;
                 }
-                var source = timingSources[index2];
-                if (source) {
-                  if (handlers.hasOwnProperty(source.schemeIdUri)) {
+                var source2 = timingSources[index2];
+                if (source2) {
+                  if (handlers.hasOwnProperty(source2.schemeIdUri)) {
                     var deviceTimeBeforeSync = (/* @__PURE__ */ new Date()).getTime();
-                    handlers[source.schemeIdUri](source.value, function(serverTime) {
+                    handlers[source2.schemeIdUri](source2.value, function(serverTime) {
                       var deviceTimeAfterSync = (/* @__PURE__ */ new Date()).getTime();
                       var offset = _calculateOffset(deviceTimeBeforeSync, deviceTimeAfterSync, serverTime);
-                      lastTimingSource = source;
+                      lastTimingSource = source2;
                       _onComplete(offset);
                     }, function() {
                       _attemptRecursiveSync(index2 + 1);
@@ -84336,10 +84075,10 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                   throw VIDEO_MODEL_WRONG_ELEMENT_TYPE;
                 }
               }
-              function setSource2(source) {
+              function setSource2(source2) {
                 if (element) {
-                  if (source) {
-                    element.src = source;
+                  if (source2) {
+                    element.src = source2;
                   } else {
                     element.removeAttribute("src");
                     element.load();
@@ -92254,8 +91993,8 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
               function getBufferControllerType() {
                 return BUFFER_CONTROLLER_TYPE;
               }
-              function initialize2(source) {
-                setMediaSource(source);
+              function initialize2(source2) {
+                setMediaSource(source2);
               }
               function createBufferSink(mediaInfo) {
                 return new Promise(function(resolve, reject) {
@@ -97803,7 +97542,7 @@ var TTMLTextTrackDisplay = /* @__PURE__ */ (function(_Component) {
 })(Component$2);
 videojs.registerComponent("TTMLTextTrackDisplay", TTMLTextTrackDisplay);
 var Html5DashJS = /* @__PURE__ */ (function() {
-  function Html5DashJS2(source, tech, options2) {
+  function Html5DashJS2(source2, tech, options2) {
     var _this = this;
     options2 = options2 || tech.options_;
     this.player = videojs(options2.playerId);
@@ -97812,19 +97551,19 @@ var Html5DashJS = /* @__PURE__ */ (function() {
     this.el_ = tech.el();
     this.elParent_ = this.el_.parentNode;
     this.hasFiniteDuration_ = false;
-    if (!source.src) {
+    if (!source2.src) {
       return;
     }
     tech.isReady_ = false;
     if (Html5DashJS2.updateSourceData) {
       videojs.log.warn('updateSourceData has been deprecated. Please switch to using hook("updatesource", callback).');
-      source = Html5DashJS2.updateSourceData(source);
+      source2 = Html5DashJS2.updateSourceData(source2);
     }
     Html5DashJS2.hooks("updatesource").forEach(function(hook3) {
-      source = hook3(source);
+      source2 = hook3(source2);
     });
-    var manifestSource = source.src;
-    this.keySystemOptions_ = Html5DashJS2.buildDashJSProtData(source.keySystemOptions);
+    var manifestSource = source2.src;
+    this.keySystemOptions_ = Html5DashJS2.buildDashJSProtData(source2.keySystemOptions);
     this.player.dash.mediaPlayer = dashjs$1.MediaPlayer().create();
     this.mediaPlayer_ = this.player.dash.mediaPlayer;
     if (Html5DashJS2.useVideoJSDebug) {
@@ -98027,17 +97766,17 @@ var Html5DashJS = /* @__PURE__ */ (function() {
   return Html5DashJS2;
 })();
 Html5DashJS.hooks_ = {};
-var canHandleKeySystems = function canHandleKeySystems2(source) {
-  source = JSON.parse(JSON.stringify(source));
+var canHandleKeySystems = function canHandleKeySystems2(source2) {
+  source2 = JSON.parse(JSON.stringify(source2));
   if (Html5DashJS.updateSourceData) {
     videojs.log.warn('updateSourceData has been deprecated. Please switch to using hook("updatesource", callback).');
-    source = Html5DashJS.updateSourceData(source);
+    source2 = Html5DashJS.updateSourceData(source2);
   }
   Html5DashJS.hooks("updatesource").forEach(function(hook3) {
-    source = hook3(source);
+    source2 = hook3(source2);
   });
   var videoEl = document$1.createElement("video");
-  if (source.keySystemOptions && !(window$1.navigator.requestMediaKeySystemAccess || // IE11 Win 8.1
+  if (source2.keySystemOptions && !(window$1.navigator.requestMediaKeySystemAccess || // IE11 Win 8.1
   videoEl.msSetMediaKeys)) {
     return false;
   }
@@ -98045,20 +97784,20 @@ var canHandleKeySystems = function canHandleKeySystems2(source) {
 };
 videojs.DashSourceHandler = function() {
   return {
-    canHandleSource: function canHandleSource2(source) {
+    canHandleSource: function canHandleSource2(source2) {
       var dashExtRE = /\.mpd/i;
-      if (!canHandleKeySystems(source)) {
+      if (!canHandleKeySystems(source2)) {
         return "";
       }
-      if (videojs.DashSourceHandler.canPlayType(source.type)) {
+      if (videojs.DashSourceHandler.canPlayType(source2.type)) {
         return "probably";
-      } else if (dashExtRE.test(source.src)) {
+      } else if (dashExtRE.test(source2.src)) {
         return "maybe";
       }
       return "";
     },
-    handleSource: function handleSource2(source, tech, options2) {
-      return new Html5DashJS(source, tech, options2);
+    handleSource: function handleSource2(source2, tech, options2) {
+      return new Html5DashJS(source2, tech, options2);
     },
     canPlayType: function canPlayType3(type2) {
       return videojs.DashSourceHandler.canPlayType(type2);
@@ -99899,7 +99638,7 @@ function debounce$1(func, wait, options2) {
 const loadDelay = 200;
 function offsetMiddleware(player) {
   let tech;
-  let source;
+  let source2;
   let offsetStart;
   let seeking = 0;
   function initCues(cues) {
@@ -99933,14 +99672,14 @@ function offsetMiddleware(player) {
     }
   }
   const loadSource = debounce$1((seconds) => {
-    const srcUrl = new URL(source.src);
+    const srcUrl = new URL(source2.src);
     srcUrl.searchParams.set("start", seconds.toString());
-    source.src = srcUrl.toString();
+    source2.src = srcUrl.toString();
     const poster = player.poster();
     const playbackRate = tech.playbackRate();
     seeking = tech.paused() ? 1 : 2;
     player.poster("");
-    tech.setSource(source);
+    tech.setSource(source2);
     tech.setPlaybackRate(playbackRate);
     tech.one("canplay", () => {
       player.poster(poster);
@@ -99990,12 +99729,12 @@ function offsetMiddleware(player) {
       } else {
         updateOffsetStart(void 0);
       }
-      source = srcObj;
+      source2 = srcObj;
       next2(null, srcObj);
     },
     duration(seconds) {
-      if (source.duration) {
-        return source.duration;
+      if (source2.duration) {
+        return source2.duration;
       } else {
         return seconds;
       }
@@ -100138,11 +99877,11 @@ class SkipButton extends videojs.getComponent("button") {
 videojs.registerComponent("SkipButton", SkipButton);
 videojs.registerPlugin("skipButtons", SkipButtonPlugin);
 class SourceMenuItem extends videojs.getComponent("MenuItem") {
-  constructor(parent, source) {
+  constructor(parent, source2) {
     const options2 = {};
     options2.selectable = true;
     options2.multiSelectable = false;
-    options2.label = source.label || source.type;
+    options2.label = source2.label || source2.type;
     super(parent.player(), options2);
     Object.defineProperty(this, "source", {
       enumerable: true,
@@ -100156,7 +99895,7 @@ class SourceMenuItem extends videojs.getComponent("MenuItem") {
       writable: true,
       value: false
     });
-    this.source = source;
+    this.source = source2;
     this.addClass("vjs-source-menu-item");
   }
   selected(selected) {
@@ -100190,14 +99929,14 @@ class SourceMenuButton extends videojs.getComponent("MenuButton") {
   }
   setSources(sources) {
     this.selectedSource = null;
-    this.items = sources.map((source, i) => {
+    this.items = sources.map((source2, i) => {
       if (i === 0) {
-        this.selectedSource = source;
+        this.selectedSource = source2;
       }
-      const item = new SourceMenuItem(this, source);
+      const item = new SourceMenuItem(this, source2);
       item.on("selected", () => {
-        this.selectedSource = source;
-        this.trigger("sourceselected", source);
+        this.selectedSource = source2;
+        this.trigger("sourceselected", source2);
       });
       return item;
     });
@@ -100215,16 +99954,16 @@ class SourceMenuButton extends videojs.getComponent("MenuButton") {
     }
     return this.items;
   }
-  setSelectedSource(source) {
-    this.selectedSource = source;
+  setSelectedSource(source2) {
+    this.selectedSource = source2;
     if (this.items === void 0)
       return;
     for (const item of this.items) {
       item.selected(item.source === this.selectedSource);
     }
   }
-  markSourceErrored(source) {
-    const item = this.items.find((i) => i.source.src === source.src);
+  markSourceErrored(source2) {
+    const item = this.items.find((i) => i.source.src === source2.src);
     if (item === void 0)
       return;
     item.addClass("vjs-source-menu-item-error");
@@ -100270,8 +100009,8 @@ class SourceSelectorPlugin extends videojs.getPlugin("plugin") {
       value: false
     });
     this.menu = new SourceMenuButton(player);
-    this.menu.on("sourceselected", (_, source) => {
-      this.selectedIndex = this.sources.findIndex((src2) => src2 === source);
+    this.menu.on("sourceselected", (_, source2) => {
+      this.selectedIndex = this.sources.findIndex((src2) => src2 === source2);
       if (this.selectedIndex === -1)
         return;
       this.manuallySelected = true;
@@ -106269,14 +106008,14 @@ function requireModeCtr() {
             var cipher = this._cipher;
             var blockSize = cipher.blockSize;
             var iv = this._iv;
-            var counter = this._counter;
+            var counter2 = this._counter;
             if (iv) {
-              counter = this._counter = iv.slice(0);
+              counter2 = this._counter = iv.slice(0);
               this._iv = void 0;
             }
-            var keystream = counter.slice(0);
+            var keystream = counter2.slice(0);
             cipher.encryptBlock(keystream, 0);
-            counter[blockSize - 1] = counter[blockSize - 1] + 1 | 0;
+            counter2[blockSize - 1] = counter2[blockSize - 1] + 1 | 0;
             for (var i = 0; i < blockSize; i++) {
               words[offset + i] ^= keystream[i];
             }
@@ -106338,24 +106077,24 @@ function requireModeCtrGladman() {
           }
           return word;
         }
-        function incCounter(counter) {
-          if ((counter[0] = incWord(counter[0])) === 0) {
-            counter[1] = incWord(counter[1]);
+        function incCounter(counter2) {
+          if ((counter2[0] = incWord(counter2[0])) === 0) {
+            counter2[1] = incWord(counter2[1]);
           }
-          return counter;
+          return counter2;
         }
         var Encryptor = CTRGladman.Encryptor = CTRGladman.extend({
           processBlock: function(words, offset) {
             var cipher = this._cipher;
             var blockSize = cipher.blockSize;
             var iv = this._iv;
-            var counter = this._counter;
+            var counter2 = this._counter;
             if (iv) {
-              counter = this._counter = iv.slice(0);
+              counter2 = this._counter = iv.slice(0);
               this._iv = void 0;
             }
-            incCounter(counter);
-            var keystream = counter.slice(0);
+            incCounter(counter2);
+            var keystream = counter2.slice(0);
             cipher.encryptBlock(keystream, 0);
             for (var i = 0; i < blockSize; i++) {
               words[offset + i] ^= keystream[i];
@@ -109566,9 +109305,9 @@ class VTTThumbnailsPlugin extends videojs.getPlugin("plugin") {
       this.initializeThumbnails();
     });
   }
-  src(source) {
+  src(source2) {
     this.resetPlugin();
-    this.source = source;
+    this.source = source2;
     this.initializeThumbnails();
   }
   detach() {
@@ -110115,9 +109854,9 @@ function requireWebvrPolyfill() {
       var isMobile2 = function isMobile3() {
         return /Android/i.test(navigator.userAgent) || /iPhone|iPad|iPod/i.test(navigator.userAgent);
       };
-      var copyArray2 = function copyArray3(source, dest) {
-        for (var i = 0, n = source.length; i < n; i++) {
-          dest[i] = source[i];
+      var copyArray2 = function copyArray3(source2, dest) {
+        for (var i = 0, n = source2.length; i < n; i++) {
+          dest[i] = source2[i];
         }
       };
       var extend3 = function extend4(dest, src3) {
@@ -113508,11 +113247,11 @@ if (Object.assign === void 0) {
       }
       var output = Object(target);
       for (var index2 = 1; index2 < arguments.length; index2++) {
-        var source = arguments[index2];
-        if (source !== void 0 && source !== null) {
-          for (var nextKey in source) {
-            if (Object.prototype.hasOwnProperty.call(source, nextKey)) {
-              output[nextKey] = source[nextKey];
+        var source2 = arguments[index2];
+        if (source2 !== void 0 && source2 !== null) {
+          for (var nextKey in source2) {
+            if (Object.prototype.hasOwnProperty.call(source2, nextKey)) {
+              output[nextKey] = source2[nextKey];
             }
           }
         }
@@ -115836,29 +115575,29 @@ Texture.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
   clone: function() {
     return new this.constructor().copy(this);
   },
-  copy: function(source) {
-    this.name = source.name;
-    this.image = source.image;
-    this.mipmaps = source.mipmaps.slice(0);
-    this.mapping = source.mapping;
-    this.wrapS = source.wrapS;
-    this.wrapT = source.wrapT;
-    this.magFilter = source.magFilter;
-    this.minFilter = source.minFilter;
-    this.anisotropy = source.anisotropy;
-    this.format = source.format;
-    this.type = source.type;
-    this.offset.copy(source.offset);
-    this.repeat.copy(source.repeat);
-    this.center.copy(source.center);
-    this.rotation = source.rotation;
-    this.matrixAutoUpdate = source.matrixAutoUpdate;
-    this.matrix.copy(source.matrix);
-    this.generateMipmaps = source.generateMipmaps;
-    this.premultiplyAlpha = source.premultiplyAlpha;
-    this.flipY = source.flipY;
-    this.unpackAlignment = source.unpackAlignment;
-    this.encoding = source.encoding;
+  copy: function(source2) {
+    this.name = source2.name;
+    this.image = source2.image;
+    this.mipmaps = source2.mipmaps.slice(0);
+    this.mapping = source2.mapping;
+    this.wrapS = source2.wrapS;
+    this.wrapT = source2.wrapT;
+    this.magFilter = source2.magFilter;
+    this.minFilter = source2.minFilter;
+    this.anisotropy = source2.anisotropy;
+    this.format = source2.format;
+    this.type = source2.type;
+    this.offset.copy(source2.offset);
+    this.repeat.copy(source2.repeat);
+    this.center.copy(source2.center);
+    this.rotation = source2.rotation;
+    this.matrixAutoUpdate = source2.matrixAutoUpdate;
+    this.matrix.copy(source2.matrix);
+    this.generateMipmaps = source2.generateMipmaps;
+    this.premultiplyAlpha = source2.premultiplyAlpha;
+    this.flipY = source2.flipY;
+    this.unpackAlignment = source2.unpackAlignment;
+    this.encoding = source2.encoding;
     return this;
   },
   toJSON: function(meta) {
@@ -116362,14 +116101,14 @@ WebGLRenderTarget.prototype = Object.assign(Object.create(EventDispatcher.protot
   clone: function() {
     return new this.constructor().copy(this);
   },
-  copy: function(source) {
-    this.width = source.width;
-    this.height = source.height;
-    this.viewport.copy(source.viewport);
-    this.texture = source.texture.clone();
-    this.depthBuffer = source.depthBuffer;
-    this.stencilBuffer = source.stencilBuffer;
-    this.depthTexture = source.depthTexture;
+  copy: function(source2) {
+    this.width = source2.width;
+    this.height = source2.height;
+    this.viewport.copy(source2.viewport);
+    this.texture = source2.texture.clone();
+    this.depthBuffer = source2.depthBuffer;
+    this.stencilBuffer = source2.stencilBuffer;
+    this.depthTexture = source2.depthTexture;
     return this;
   },
   dispose: function() {
@@ -118765,27 +118504,27 @@ Object3D.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
   clone: function(recursive) {
     return new this.constructor().copy(this, recursive);
   },
-  copy: function(source, recursive) {
+  copy: function(source2, recursive) {
     if (recursive === void 0) recursive = true;
-    this.name = source.name;
-    this.up.copy(source.up);
-    this.position.copy(source.position);
-    this.quaternion.copy(source.quaternion);
-    this.scale.copy(source.scale);
-    this.matrix.copy(source.matrix);
-    this.matrixWorld.copy(source.matrixWorld);
-    this.matrixAutoUpdate = source.matrixAutoUpdate;
-    this.matrixWorldNeedsUpdate = source.matrixWorldNeedsUpdate;
-    this.layers.mask = source.layers.mask;
-    this.visible = source.visible;
-    this.castShadow = source.castShadow;
-    this.receiveShadow = source.receiveShadow;
-    this.frustumCulled = source.frustumCulled;
-    this.renderOrder = source.renderOrder;
-    this.userData = JSON.parse(JSON.stringify(source.userData));
+    this.name = source2.name;
+    this.up.copy(source2.up);
+    this.position.copy(source2.position);
+    this.quaternion.copy(source2.quaternion);
+    this.scale.copy(source2.scale);
+    this.matrix.copy(source2.matrix);
+    this.matrixWorld.copy(source2.matrixWorld);
+    this.matrixAutoUpdate = source2.matrixAutoUpdate;
+    this.matrixWorldNeedsUpdate = source2.matrixWorldNeedsUpdate;
+    this.layers.mask = source2.layers.mask;
+    this.visible = source2.visible;
+    this.castShadow = source2.castShadow;
+    this.receiveShadow = source2.receiveShadow;
+    this.frustumCulled = source2.frustumCulled;
+    this.renderOrder = source2.renderOrder;
+    this.userData = JSON.parse(JSON.stringify(source2.userData));
     if (recursive === true) {
-      for (var i = 0; i < source.children.length; i++) {
-        var child = source.children[i];
+      for (var i = 0; i < source2.children.length; i++) {
+        var child = source2.children[i];
         this.add(child.clone());
       }
     }
@@ -118801,10 +118540,10 @@ function Camera() {
 Camera.prototype = Object.assign(Object.create(Object3D.prototype), {
   constructor: Camera,
   isCamera: true,
-  copy: function(source, recursive) {
-    Object3D.prototype.copy.call(this, source, recursive);
-    this.matrixWorldInverse.copy(source.matrixWorldInverse);
-    this.projectionMatrix.copy(source.projectionMatrix);
+  copy: function(source2, recursive) {
+    Object3D.prototype.copy.call(this, source2, recursive);
+    this.matrixWorldInverse.copy(source2.matrixWorldInverse);
+    this.projectionMatrix.copy(source2.projectionMatrix);
     return this;
   },
   getWorldDirection: (function() {
@@ -118842,16 +118581,16 @@ function OrthographicCamera(left, right, top, bottom, near, far) {
 OrthographicCamera.prototype = Object.assign(Object.create(Camera.prototype), {
   constructor: OrthographicCamera,
   isOrthographicCamera: true,
-  copy: function(source, recursive) {
-    Camera.prototype.copy.call(this, source, recursive);
-    this.left = source.left;
-    this.right = source.right;
-    this.top = source.top;
-    this.bottom = source.bottom;
-    this.near = source.near;
-    this.far = source.far;
-    this.zoom = source.zoom;
-    this.view = source.view === null ? null : Object.assign({}, source.view);
+  copy: function(source2, recursive) {
+    Camera.prototype.copy.call(this, source2, recursive);
+    this.left = source2.left;
+    this.right = source2.right;
+    this.top = source2.top;
+    this.bottom = source2.bottom;
+    this.near = source2.near;
+    this.far = source2.far;
+    this.zoom = source2.zoom;
+    this.view = source2.view === null ? null : Object.assign({}, source2.view);
     return this;
   },
   setViewOffset: function(fullWidth, fullHeight, x2, y, width2, height2) {
@@ -118929,18 +118668,18 @@ Object.assign(Face3.prototype, {
   clone: function() {
     return new this.constructor().copy(this);
   },
-  copy: function(source) {
-    this.a = source.a;
-    this.b = source.b;
-    this.c = source.c;
-    this.normal.copy(source.normal);
-    this.color.copy(source.color);
-    this.materialIndex = source.materialIndex;
-    for (var i = 0, il = source.vertexNormals.length; i < il; i++) {
-      this.vertexNormals[i] = source.vertexNormals[i].clone();
+  copy: function(source2) {
+    this.a = source2.a;
+    this.b = source2.b;
+    this.c = source2.c;
+    this.normal.copy(source2.normal);
+    this.color.copy(source2.color);
+    this.materialIndex = source2.materialIndex;
+    for (var i = 0, il = source2.vertexNormals.length; i < il; i++) {
+      this.vertexNormals[i] = source2.vertexNormals[i].clone();
     }
-    for (var i = 0, il = source.vertexColors.length; i < il; i++) {
-      this.vertexColors[i] = source.vertexColors[i].clone();
+    for (var i = 0, il = source2.vertexColors.length; i < il; i++) {
+      this.vertexColors[i] = source2.vertexColors[i].clone();
     }
     return this;
   }
@@ -119570,7 +119309,7 @@ Geometry.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
   clone: function() {
     return new Geometry().copy(this);
   },
-  copy: function(source) {
+  copy: function(source2) {
     var i, il, j, jl, k, kl;
     this.vertices = [];
     this.colors = [];
@@ -119583,21 +119322,21 @@ Geometry.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     this.lineDistances = [];
     this.boundingBox = null;
     this.boundingSphere = null;
-    this.name = source.name;
-    var vertices = source.vertices;
+    this.name = source2.name;
+    var vertices = source2.vertices;
     for (i = 0, il = vertices.length; i < il; i++) {
       this.vertices.push(vertices[i].clone());
     }
-    var colors3 = source.colors;
+    var colors3 = source2.colors;
     for (i = 0, il = colors3.length; i < il; i++) {
       this.colors.push(colors3[i].clone());
     }
-    var faces = source.faces;
+    var faces = source2.faces;
     for (i = 0, il = faces.length; i < il; i++) {
       this.faces.push(faces[i].clone());
     }
-    for (i = 0, il = source.faceVertexUvs.length; i < il; i++) {
-      var faceVertexUvs = source.faceVertexUvs[i];
+    for (i = 0, il = source2.faceVertexUvs.length; i < il; i++) {
+      var faceVertexUvs = source2.faceVertexUvs[i];
       if (this.faceVertexUvs[i] === void 0) {
         this.faceVertexUvs[i] = [];
       }
@@ -119610,7 +119349,7 @@ Geometry.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
         this.faceVertexUvs[i].push(uvsCopy);
       }
     }
-    var morphTargets = source.morphTargets;
+    var morphTargets = source2.morphTargets;
     for (i = 0, il = morphTargets.length; i < il; i++) {
       var morphTarget = {};
       morphTarget.name = morphTargets[i].name;
@@ -119628,7 +119367,7 @@ Geometry.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       }
       this.morphTargets.push(morphTarget);
     }
-    var morphNormals = source.morphNormals;
+    var morphNormals = source2.morphNormals;
     for (i = 0, il = morphNormals.length; i < il; i++) {
       var morphNormal = {};
       if (morphNormals[i].vertexNormals !== void 0) {
@@ -119650,33 +119389,33 @@ Geometry.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       }
       this.morphNormals.push(morphNormal);
     }
-    var skinWeights = source.skinWeights;
+    var skinWeights = source2.skinWeights;
     for (i = 0, il = skinWeights.length; i < il; i++) {
       this.skinWeights.push(skinWeights[i].clone());
     }
-    var skinIndices = source.skinIndices;
+    var skinIndices = source2.skinIndices;
     for (i = 0, il = skinIndices.length; i < il; i++) {
       this.skinIndices.push(skinIndices[i].clone());
     }
-    var lineDistances = source.lineDistances;
+    var lineDistances = source2.lineDistances;
     for (i = 0, il = lineDistances.length; i < il; i++) {
       this.lineDistances.push(lineDistances[i]);
     }
-    var boundingBox = source.boundingBox;
+    var boundingBox = source2.boundingBox;
     if (boundingBox !== null) {
       this.boundingBox = boundingBox.clone();
     }
-    var boundingSphere = source.boundingSphere;
+    var boundingSphere = source2.boundingSphere;
     if (boundingSphere !== null) {
       this.boundingSphere = boundingSphere.clone();
     }
-    this.elementsNeedUpdate = source.elementsNeedUpdate;
-    this.verticesNeedUpdate = source.verticesNeedUpdate;
-    this.uvsNeedUpdate = source.uvsNeedUpdate;
-    this.normalsNeedUpdate = source.normalsNeedUpdate;
-    this.colorsNeedUpdate = source.colorsNeedUpdate;
-    this.lineDistancesNeedUpdate = source.lineDistancesNeedUpdate;
-    this.groupsNeedUpdate = source.groupsNeedUpdate;
+    this.elementsNeedUpdate = source2.elementsNeedUpdate;
+    this.verticesNeedUpdate = source2.verticesNeedUpdate;
+    this.uvsNeedUpdate = source2.uvsNeedUpdate;
+    this.normalsNeedUpdate = source2.normalsNeedUpdate;
+    this.colorsNeedUpdate = source2.colorsNeedUpdate;
+    this.lineDistancesNeedUpdate = source2.lineDistancesNeedUpdate;
+    this.groupsNeedUpdate = source2.groupsNeedUpdate;
     return this;
   },
   dispose: function() {
@@ -119717,13 +119456,13 @@ Object.assign(BufferAttribute.prototype, {
     this.dynamic = value;
     return this;
   },
-  copy: function(source) {
-    this.name = source.name;
-    this.array = new source.array.constructor(source.array);
-    this.itemSize = source.itemSize;
-    this.count = source.count;
-    this.normalized = source.normalized;
-    this.dynamic = source.dynamic;
+  copy: function(source2) {
+    this.name = source2.name;
+    this.array = new source2.array.constructor(source2.array);
+    this.itemSize = source2.itemSize;
+    this.count = source2.count;
+    this.normalized = source2.normalized;
+    this.dynamic = source2.dynamic;
     return this;
   },
   copyAt: function(index1, attribute, index2) {
@@ -120573,7 +120312,7 @@ BufferGeometry.prototype = Object.assign(Object.create(EventDispatcher.prototype
   clone: function() {
     return new BufferGeometry().copy(this);
   },
-  copy: function(source) {
+  copy: function(source2) {
     var name, i, l;
     this.index = null;
     this.attributes = {};
@@ -120581,17 +120320,17 @@ BufferGeometry.prototype = Object.assign(Object.create(EventDispatcher.prototype
     this.groups = [];
     this.boundingBox = null;
     this.boundingSphere = null;
-    this.name = source.name;
-    var index2 = source.index;
+    this.name = source2.name;
+    var index2 = source2.index;
     if (index2 !== null) {
       this.setIndex(index2.clone());
     }
-    var attributes = source.attributes;
+    var attributes = source2.attributes;
     for (name in attributes) {
       var attribute = attributes[name];
       this.addAttribute(name, attribute.clone());
     }
-    var morphAttributes = source.morphAttributes;
+    var morphAttributes = source2.morphAttributes;
     for (name in morphAttributes) {
       var array = [];
       var morphAttribute = morphAttributes[name];
@@ -120600,22 +120339,22 @@ BufferGeometry.prototype = Object.assign(Object.create(EventDispatcher.prototype
       }
       this.morphAttributes[name] = array;
     }
-    var groups = source.groups;
+    var groups = source2.groups;
     for (i = 0, l = groups.length; i < l; i++) {
       var group = groups[i];
       this.addGroup(group.start, group.count, group.materialIndex);
     }
-    var boundingBox = source.boundingBox;
+    var boundingBox = source2.boundingBox;
     if (boundingBox !== null) {
       this.boundingBox = boundingBox.clone();
     }
-    var boundingSphere = source.boundingSphere;
+    var boundingSphere = source2.boundingSphere;
     if (boundingSphere !== null) {
       this.boundingSphere = boundingSphere.clone();
     }
-    this.drawRange.start = source.drawRange.start;
-    this.drawRange.count = source.drawRange.count;
-    this.userData = source.userData;
+    this.drawRange.start = source2.drawRange.start;
+    this.drawRange.count = source2.drawRange.count;
+    this.userData = source2.userData;
     return this;
   },
   dispose: function() {
@@ -120963,39 +120702,39 @@ Material.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
   clone: function() {
     return new this.constructor().copy(this);
   },
-  copy: function(source) {
-    this.name = source.name;
-    this.fog = source.fog;
-    this.lights = source.lights;
-    this.blending = source.blending;
-    this.side = source.side;
-    this.flatShading = source.flatShading;
-    this.vertexColors = source.vertexColors;
-    this.opacity = source.opacity;
-    this.transparent = source.transparent;
-    this.blendSrc = source.blendSrc;
-    this.blendDst = source.blendDst;
-    this.blendEquation = source.blendEquation;
-    this.blendSrcAlpha = source.blendSrcAlpha;
-    this.blendDstAlpha = source.blendDstAlpha;
-    this.blendEquationAlpha = source.blendEquationAlpha;
-    this.depthFunc = source.depthFunc;
-    this.depthTest = source.depthTest;
-    this.depthWrite = source.depthWrite;
-    this.colorWrite = source.colorWrite;
-    this.precision = source.precision;
-    this.polygonOffset = source.polygonOffset;
-    this.polygonOffsetFactor = source.polygonOffsetFactor;
-    this.polygonOffsetUnits = source.polygonOffsetUnits;
-    this.dithering = source.dithering;
-    this.alphaTest = source.alphaTest;
-    this.premultipliedAlpha = source.premultipliedAlpha;
-    this.overdraw = source.overdraw;
-    this.visible = source.visible;
-    this.userData = JSON.parse(JSON.stringify(source.userData));
-    this.clipShadows = source.clipShadows;
-    this.clipIntersection = source.clipIntersection;
-    var srcPlanes = source.clippingPlanes, dstPlanes = null;
+  copy: function(source2) {
+    this.name = source2.name;
+    this.fog = source2.fog;
+    this.lights = source2.lights;
+    this.blending = source2.blending;
+    this.side = source2.side;
+    this.flatShading = source2.flatShading;
+    this.vertexColors = source2.vertexColors;
+    this.opacity = source2.opacity;
+    this.transparent = source2.transparent;
+    this.blendSrc = source2.blendSrc;
+    this.blendDst = source2.blendDst;
+    this.blendEquation = source2.blendEquation;
+    this.blendSrcAlpha = source2.blendSrcAlpha;
+    this.blendDstAlpha = source2.blendDstAlpha;
+    this.blendEquationAlpha = source2.blendEquationAlpha;
+    this.depthFunc = source2.depthFunc;
+    this.depthTest = source2.depthTest;
+    this.depthWrite = source2.depthWrite;
+    this.colorWrite = source2.colorWrite;
+    this.precision = source2.precision;
+    this.polygonOffset = source2.polygonOffset;
+    this.polygonOffsetFactor = source2.polygonOffsetFactor;
+    this.polygonOffsetUnits = source2.polygonOffsetUnits;
+    this.dithering = source2.dithering;
+    this.alphaTest = source2.alphaTest;
+    this.premultipliedAlpha = source2.premultipliedAlpha;
+    this.overdraw = source2.overdraw;
+    this.visible = source2.visible;
+    this.userData = JSON.parse(JSON.stringify(source2.userData));
+    this.clipShadows = source2.clipShadows;
+    this.clipIntersection = source2.clipIntersection;
+    var srcPlanes = source2.clippingPlanes, dstPlanes = null;
     if (srcPlanes !== null) {
       var n = srcPlanes.length;
       dstPlanes = new Array(n);
@@ -121003,7 +120742,7 @@ Material.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
         dstPlanes[i] = srcPlanes[i].clone();
     }
     this.clippingPlanes = dstPlanes;
-    this.shadowSide = source.shadowSide;
+    this.shadowSide = source2.shadowSide;
     return this;
   },
   dispose: function() {
@@ -121037,26 +120776,26 @@ function MeshBasicMaterial(parameters) {
 MeshBasicMaterial.prototype = Object.create(Material.prototype);
 MeshBasicMaterial.prototype.constructor = MeshBasicMaterial;
 MeshBasicMaterial.prototype.isMeshBasicMaterial = true;
-MeshBasicMaterial.prototype.copy = function(source) {
-  Material.prototype.copy.call(this, source);
-  this.color.copy(source.color);
-  this.map = source.map;
-  this.lightMap = source.lightMap;
-  this.lightMapIntensity = source.lightMapIntensity;
-  this.aoMap = source.aoMap;
-  this.aoMapIntensity = source.aoMapIntensity;
-  this.specularMap = source.specularMap;
-  this.alphaMap = source.alphaMap;
-  this.envMap = source.envMap;
-  this.combine = source.combine;
-  this.reflectivity = source.reflectivity;
-  this.refractionRatio = source.refractionRatio;
-  this.wireframe = source.wireframe;
-  this.wireframeLinewidth = source.wireframeLinewidth;
-  this.wireframeLinecap = source.wireframeLinecap;
-  this.wireframeLinejoin = source.wireframeLinejoin;
-  this.skinning = source.skinning;
-  this.morphTargets = source.morphTargets;
+MeshBasicMaterial.prototype.copy = function(source2) {
+  Material.prototype.copy.call(this, source2);
+  this.color.copy(source2.color);
+  this.map = source2.map;
+  this.lightMap = source2.lightMap;
+  this.lightMapIntensity = source2.lightMapIntensity;
+  this.aoMap = source2.aoMap;
+  this.aoMapIntensity = source2.aoMapIntensity;
+  this.specularMap = source2.specularMap;
+  this.alphaMap = source2.alphaMap;
+  this.envMap = source2.envMap;
+  this.combine = source2.combine;
+  this.reflectivity = source2.reflectivity;
+  this.refractionRatio = source2.refractionRatio;
+  this.wireframe = source2.wireframe;
+  this.wireframeLinewidth = source2.wireframeLinewidth;
+  this.wireframeLinecap = source2.wireframeLinecap;
+  this.wireframeLinejoin = source2.wireframeLinejoin;
+  this.skinning = source2.skinning;
+  this.morphTargets = source2.morphTargets;
   return this;
 };
 function ShaderMaterial(parameters) {
@@ -121102,20 +120841,20 @@ function ShaderMaterial(parameters) {
 ShaderMaterial.prototype = Object.create(Material.prototype);
 ShaderMaterial.prototype.constructor = ShaderMaterial;
 ShaderMaterial.prototype.isShaderMaterial = true;
-ShaderMaterial.prototype.copy = function(source) {
-  Material.prototype.copy.call(this, source);
-  this.fragmentShader = source.fragmentShader;
-  this.vertexShader = source.vertexShader;
-  this.uniforms = UniformsUtils.clone(source.uniforms);
-  this.defines = Object.assign({}, source.defines);
-  this.wireframe = source.wireframe;
-  this.wireframeLinewidth = source.wireframeLinewidth;
-  this.lights = source.lights;
-  this.clipping = source.clipping;
-  this.skinning = source.skinning;
-  this.morphTargets = source.morphTargets;
-  this.morphNormals = source.morphNormals;
-  this.extensions = source.extensions;
+ShaderMaterial.prototype.copy = function(source2) {
+  Material.prototype.copy.call(this, source2);
+  this.fragmentShader = source2.fragmentShader;
+  this.vertexShader = source2.vertexShader;
+  this.uniforms = UniformsUtils.clone(source2.uniforms);
+  this.defines = Object.assign({}, source2.defines);
+  this.wireframe = source2.wireframe;
+  this.wireframeLinewidth = source2.wireframeLinewidth;
+  this.lights = source2.lights;
+  this.clipping = source2.clipping;
+  this.skinning = source2.skinning;
+  this.morphTargets = source2.morphTargets;
+  this.morphNormals = source2.morphNormals;
+  this.extensions = source2.extensions;
   return this;
 };
 ShaderMaterial.prototype.toJSON = function(meta) {
@@ -121631,14 +121370,14 @@ Mesh.prototype = Object.assign(Object.create(Object3D.prototype), {
   setDrawMode: function(value) {
     this.drawMode = value;
   },
-  copy: function(source) {
-    Object3D.prototype.copy.call(this, source);
-    this.drawMode = source.drawMode;
-    if (source.morphTargetInfluences !== void 0) {
-      this.morphTargetInfluences = source.morphTargetInfluences.slice();
+  copy: function(source2) {
+    Object3D.prototype.copy.call(this, source2);
+    this.drawMode = source2.drawMode;
+    if (source2.morphTargetInfluences !== void 0) {
+      this.morphTargetInfluences = source2.morphTargetInfluences.slice();
     }
-    if (source.morphTargetDictionary !== void 0) {
-      this.morphTargetDictionary = Object.assign({}, source.morphTargetDictionary);
+    if (source2.morphTargetDictionary !== void 0) {
+      this.morphTargetDictionary = Object.assign({}, source2.morphTargetDictionary);
     }
     return this;
   },
@@ -123853,18 +123592,18 @@ function MeshDepthMaterial(parameters) {
 MeshDepthMaterial.prototype = Object.create(Material.prototype);
 MeshDepthMaterial.prototype.constructor = MeshDepthMaterial;
 MeshDepthMaterial.prototype.isMeshDepthMaterial = true;
-MeshDepthMaterial.prototype.copy = function(source) {
-  Material.prototype.copy.call(this, source);
-  this.depthPacking = source.depthPacking;
-  this.skinning = source.skinning;
-  this.morphTargets = source.morphTargets;
-  this.map = source.map;
-  this.alphaMap = source.alphaMap;
-  this.displacementMap = source.displacementMap;
-  this.displacementScale = source.displacementScale;
-  this.displacementBias = source.displacementBias;
-  this.wireframe = source.wireframe;
-  this.wireframeLinewidth = source.wireframeLinewidth;
+MeshDepthMaterial.prototype.copy = function(source2) {
+  Material.prototype.copy.call(this, source2);
+  this.depthPacking = source2.depthPacking;
+  this.skinning = source2.skinning;
+  this.morphTargets = source2.morphTargets;
+  this.map = source2.map;
+  this.alphaMap = source2.alphaMap;
+  this.displacementMap = source2.displacementMap;
+  this.displacementScale = source2.displacementScale;
+  this.displacementBias = source2.displacementBias;
+  this.wireframe = source2.wireframe;
+  this.wireframeLinewidth = source2.wireframeLinewidth;
   return this;
 };
 function MeshDistanceMaterial(parameters) {
@@ -123887,18 +123626,18 @@ function MeshDistanceMaterial(parameters) {
 MeshDistanceMaterial.prototype = Object.create(Material.prototype);
 MeshDistanceMaterial.prototype.constructor = MeshDistanceMaterial;
 MeshDistanceMaterial.prototype.isMeshDistanceMaterial = true;
-MeshDistanceMaterial.prototype.copy = function(source) {
-  Material.prototype.copy.call(this, source);
-  this.referencePosition.copy(source.referencePosition);
-  this.nearDistance = source.nearDistance;
-  this.farDistance = source.farDistance;
-  this.skinning = source.skinning;
-  this.morphTargets = source.morphTargets;
-  this.map = source.map;
-  this.alphaMap = source.alphaMap;
-  this.displacementMap = source.displacementMap;
-  this.displacementScale = source.displacementScale;
-  this.displacementBias = source.displacementBias;
+MeshDistanceMaterial.prototype.copy = function(source2) {
+  Material.prototype.copy.call(this, source2);
+  this.referencePosition.copy(source2.referencePosition);
+  this.nearDistance = source2.nearDistance;
+  this.farDistance = source2.farDistance;
+  this.skinning = source2.skinning;
+  this.morphTargets = source2.morphTargets;
+  this.map = source2.map;
+  this.alphaMap = source2.alphaMap;
+  this.displacementMap = source2.displacementMap;
+  this.displacementScale = source2.displacementScale;
+  this.displacementBias = source2.displacementBias;
   return this;
 };
 function WebGLShadowMap(_renderer, _objects, maxTextureSize) {
@@ -125443,17 +125182,17 @@ function PerspectiveCamera(fov, aspect, near, far) {
 PerspectiveCamera.prototype = Object.assign(Object.create(Camera.prototype), {
   constructor: PerspectiveCamera,
   isPerspectiveCamera: true,
-  copy: function(source, recursive) {
-    Camera.prototype.copy.call(this, source, recursive);
-    this.fov = source.fov;
-    this.zoom = source.zoom;
-    this.near = source.near;
-    this.far = source.far;
-    this.focus = source.focus;
-    this.aspect = source.aspect;
-    this.view = source.view === null ? null : Object.assign({}, source.view);
-    this.filmGauge = source.filmGauge;
-    this.filmOffset = source.filmOffset;
+  copy: function(source2, recursive) {
+    Camera.prototype.copy.call(this, source2, recursive);
+    this.fov = source2.fov;
+    this.zoom = source2.zoom;
+    this.near = source2.near;
+    this.far = source2.far;
+    this.focus = source2.focus;
+    this.aspect = source2.aspect;
+    this.view = source2.view === null ? null : Object.assign({}, source2.view);
+    this.filmGauge = source2.filmGauge;
+    this.filmOffset = source2.filmOffset;
     return this;
   },
   /**
@@ -127126,13 +126865,13 @@ function Scene() {
 }
 Scene.prototype = Object.assign(Object.create(Object3D.prototype), {
   constructor: Scene,
-  copy: function(source, recursive) {
-    Object3D.prototype.copy.call(this, source, recursive);
-    if (source.background !== null) this.background = source.background.clone();
-    if (source.fog !== null) this.fog = source.fog.clone();
-    if (source.overrideMaterial !== null) this.overrideMaterial = source.overrideMaterial.clone();
-    this.autoUpdate = source.autoUpdate;
-    this.matrixAutoUpdate = source.matrixAutoUpdate;
+  copy: function(source2, recursive) {
+    Object3D.prototype.copy.call(this, source2, recursive);
+    if (source2.background !== null) this.background = source2.background.clone();
+    if (source2.fog !== null) this.fog = source2.fog.clone();
+    if (source2.overrideMaterial !== null) this.overrideMaterial = source2.overrideMaterial.clone();
+    this.autoUpdate = source2.autoUpdate;
+    this.matrixAutoUpdate = source2.matrixAutoUpdate;
     return this;
   },
   toJSON: function(meta) {
@@ -127155,11 +126894,11 @@ function SpriteMaterial(parameters) {
 SpriteMaterial.prototype = Object.create(Material.prototype);
 SpriteMaterial.prototype.constructor = SpriteMaterial;
 SpriteMaterial.prototype.isSpriteMaterial = true;
-SpriteMaterial.prototype.copy = function(source) {
-  Material.prototype.copy.call(this, source);
-  this.color.copy(source.color);
-  this.map = source.map;
-  this.rotation = source.rotation;
+SpriteMaterial.prototype.copy = function(source2) {
+  Material.prototype.copy.call(this, source2);
+  this.color.copy(source2.color);
+  this.map = source2.map;
+  this.rotation = source2.rotation;
   return this;
 };
 function Sprite(material) {
@@ -127194,9 +126933,9 @@ Sprite.prototype = Object.assign(Object.create(Object3D.prototype), {
   clone: function() {
     return new this.constructor(this.material).copy(this);
   },
-  copy: function(source) {
-    Object3D.prototype.copy.call(this, source);
-    if (source.center !== void 0) this.center.copy(source.center);
+  copy: function(source2) {
+    Object3D.prototype.copy.call(this, source2);
+    if (source2.center !== void 0) this.center.copy(source2.center);
     return this;
   }
 });
@@ -127212,9 +126951,9 @@ function LOD() {
 }
 LOD.prototype = Object.assign(Object.create(Object3D.prototype), {
   constructor: LOD,
-  copy: function(source) {
-    Object3D.prototype.copy.call(this, source, false);
-    var levels = source.levels;
+  copy: function(source2) {
+    Object3D.prototype.copy.call(this, source2, false);
+    var levels = source2.levels;
     for (var i = 0, l = levels.length; i < l; i++) {
       var level = levels[i];
       this.addLevel(level.object.clone(), level.distance);
@@ -127486,12 +127225,12 @@ function LineBasicMaterial(parameters) {
 LineBasicMaterial.prototype = Object.create(Material.prototype);
 LineBasicMaterial.prototype.constructor = LineBasicMaterial;
 LineBasicMaterial.prototype.isLineBasicMaterial = true;
-LineBasicMaterial.prototype.copy = function(source) {
-  Material.prototype.copy.call(this, source);
-  this.color.copy(source.color);
-  this.linewidth = source.linewidth;
-  this.linecap = source.linecap;
-  this.linejoin = source.linejoin;
+LineBasicMaterial.prototype.copy = function(source2) {
+  Material.prototype.copy.call(this, source2);
+  this.color.copy(source2.color);
+  this.linewidth = source2.linewidth;
+  this.linecap = source2.linecap;
+  this.linejoin = source2.linejoin;
   return this;
 };
 function Line(geometry, material, mode) {
@@ -127695,13 +127434,13 @@ function PointsMaterial(parameters) {
 PointsMaterial.prototype = Object.create(Material.prototype);
 PointsMaterial.prototype.constructor = PointsMaterial;
 PointsMaterial.prototype.isPointsMaterial = true;
-PointsMaterial.prototype.copy = function(source) {
-  Material.prototype.copy.call(this, source);
-  this.color.copy(source.color);
-  this.map = source.map;
-  this.size = source.size;
-  this.sizeAttenuation = source.sizeAttenuation;
-  this.morphTargets = source.morphTargets;
+PointsMaterial.prototype.copy = function(source2) {
+  Material.prototype.copy.call(this, source2);
+  this.color.copy(source2.color);
+  this.map = source2.map;
+  this.size = source2.size;
+  this.sizeAttenuation = source2.sizeAttenuation;
+  this.morphTargets = source2.morphTargets;
   return this;
 };
 function Points(geometry, material) {
@@ -130375,9 +130114,9 @@ function ShadowMaterial(parameters) {
 ShadowMaterial.prototype = Object.create(Material.prototype);
 ShadowMaterial.prototype.constructor = ShadowMaterial;
 ShadowMaterial.prototype.isShadowMaterial = true;
-ShadowMaterial.prototype.copy = function(source) {
-  Material.prototype.copy.call(this, source);
-  this.color.copy(source.color);
+ShadowMaterial.prototype.copy = function(source2) {
+  Material.prototype.copy.call(this, source2);
+  this.color.copy(source2.color);
   return this;
 };
 function RawShaderMaterial(parameters) {
@@ -130427,40 +130166,40 @@ function MeshStandardMaterial(parameters) {
 MeshStandardMaterial.prototype = Object.create(Material.prototype);
 MeshStandardMaterial.prototype.constructor = MeshStandardMaterial;
 MeshStandardMaterial.prototype.isMeshStandardMaterial = true;
-MeshStandardMaterial.prototype.copy = function(source) {
-  Material.prototype.copy.call(this, source);
+MeshStandardMaterial.prototype.copy = function(source2) {
+  Material.prototype.copy.call(this, source2);
   this.defines = { "STANDARD": "" };
-  this.color.copy(source.color);
-  this.roughness = source.roughness;
-  this.metalness = source.metalness;
-  this.map = source.map;
-  this.lightMap = source.lightMap;
-  this.lightMapIntensity = source.lightMapIntensity;
-  this.aoMap = source.aoMap;
-  this.aoMapIntensity = source.aoMapIntensity;
-  this.emissive.copy(source.emissive);
-  this.emissiveMap = source.emissiveMap;
-  this.emissiveIntensity = source.emissiveIntensity;
-  this.bumpMap = source.bumpMap;
-  this.bumpScale = source.bumpScale;
-  this.normalMap = source.normalMap;
-  this.normalScale.copy(source.normalScale);
-  this.displacementMap = source.displacementMap;
-  this.displacementScale = source.displacementScale;
-  this.displacementBias = source.displacementBias;
-  this.roughnessMap = source.roughnessMap;
-  this.metalnessMap = source.metalnessMap;
-  this.alphaMap = source.alphaMap;
-  this.envMap = source.envMap;
-  this.envMapIntensity = source.envMapIntensity;
-  this.refractionRatio = source.refractionRatio;
-  this.wireframe = source.wireframe;
-  this.wireframeLinewidth = source.wireframeLinewidth;
-  this.wireframeLinecap = source.wireframeLinecap;
-  this.wireframeLinejoin = source.wireframeLinejoin;
-  this.skinning = source.skinning;
-  this.morphTargets = source.morphTargets;
-  this.morphNormals = source.morphNormals;
+  this.color.copy(source2.color);
+  this.roughness = source2.roughness;
+  this.metalness = source2.metalness;
+  this.map = source2.map;
+  this.lightMap = source2.lightMap;
+  this.lightMapIntensity = source2.lightMapIntensity;
+  this.aoMap = source2.aoMap;
+  this.aoMapIntensity = source2.aoMapIntensity;
+  this.emissive.copy(source2.emissive);
+  this.emissiveMap = source2.emissiveMap;
+  this.emissiveIntensity = source2.emissiveIntensity;
+  this.bumpMap = source2.bumpMap;
+  this.bumpScale = source2.bumpScale;
+  this.normalMap = source2.normalMap;
+  this.normalScale.copy(source2.normalScale);
+  this.displacementMap = source2.displacementMap;
+  this.displacementScale = source2.displacementScale;
+  this.displacementBias = source2.displacementBias;
+  this.roughnessMap = source2.roughnessMap;
+  this.metalnessMap = source2.metalnessMap;
+  this.alphaMap = source2.alphaMap;
+  this.envMap = source2.envMap;
+  this.envMapIntensity = source2.envMapIntensity;
+  this.refractionRatio = source2.refractionRatio;
+  this.wireframe = source2.wireframe;
+  this.wireframeLinewidth = source2.wireframeLinewidth;
+  this.wireframeLinecap = source2.wireframeLinecap;
+  this.wireframeLinejoin = source2.wireframeLinejoin;
+  this.skinning = source2.skinning;
+  this.morphTargets = source2.morphTargets;
+  this.morphNormals = source2.morphNormals;
   return this;
 };
 function MeshPhysicalMaterial(parameters) {
@@ -130475,12 +130214,12 @@ function MeshPhysicalMaterial(parameters) {
 MeshPhysicalMaterial.prototype = Object.create(MeshStandardMaterial.prototype);
 MeshPhysicalMaterial.prototype.constructor = MeshPhysicalMaterial;
 MeshPhysicalMaterial.prototype.isMeshPhysicalMaterial = true;
-MeshPhysicalMaterial.prototype.copy = function(source) {
-  MeshStandardMaterial.prototype.copy.call(this, source);
+MeshPhysicalMaterial.prototype.copy = function(source2) {
+  MeshStandardMaterial.prototype.copy.call(this, source2);
   this.defines = { "PHYSICAL": "" };
-  this.reflectivity = source.reflectivity;
-  this.clearCoat = source.clearCoat;
-  this.clearCoatRoughness = source.clearCoatRoughness;
+  this.reflectivity = source2.reflectivity;
+  this.clearCoat = source2.clearCoat;
+  this.clearCoatRoughness = source2.clearCoatRoughness;
   return this;
 };
 function MeshPhongMaterial(parameters) {
@@ -130522,39 +130261,39 @@ function MeshPhongMaterial(parameters) {
 MeshPhongMaterial.prototype = Object.create(Material.prototype);
 MeshPhongMaterial.prototype.constructor = MeshPhongMaterial;
 MeshPhongMaterial.prototype.isMeshPhongMaterial = true;
-MeshPhongMaterial.prototype.copy = function(source) {
-  Material.prototype.copy.call(this, source);
-  this.color.copy(source.color);
-  this.specular.copy(source.specular);
-  this.shininess = source.shininess;
-  this.map = source.map;
-  this.lightMap = source.lightMap;
-  this.lightMapIntensity = source.lightMapIntensity;
-  this.aoMap = source.aoMap;
-  this.aoMapIntensity = source.aoMapIntensity;
-  this.emissive.copy(source.emissive);
-  this.emissiveMap = source.emissiveMap;
-  this.emissiveIntensity = source.emissiveIntensity;
-  this.bumpMap = source.bumpMap;
-  this.bumpScale = source.bumpScale;
-  this.normalMap = source.normalMap;
-  this.normalScale.copy(source.normalScale);
-  this.displacementMap = source.displacementMap;
-  this.displacementScale = source.displacementScale;
-  this.displacementBias = source.displacementBias;
-  this.specularMap = source.specularMap;
-  this.alphaMap = source.alphaMap;
-  this.envMap = source.envMap;
-  this.combine = source.combine;
-  this.reflectivity = source.reflectivity;
-  this.refractionRatio = source.refractionRatio;
-  this.wireframe = source.wireframe;
-  this.wireframeLinewidth = source.wireframeLinewidth;
-  this.wireframeLinecap = source.wireframeLinecap;
-  this.wireframeLinejoin = source.wireframeLinejoin;
-  this.skinning = source.skinning;
-  this.morphTargets = source.morphTargets;
-  this.morphNormals = source.morphNormals;
+MeshPhongMaterial.prototype.copy = function(source2) {
+  Material.prototype.copy.call(this, source2);
+  this.color.copy(source2.color);
+  this.specular.copy(source2.specular);
+  this.shininess = source2.shininess;
+  this.map = source2.map;
+  this.lightMap = source2.lightMap;
+  this.lightMapIntensity = source2.lightMapIntensity;
+  this.aoMap = source2.aoMap;
+  this.aoMapIntensity = source2.aoMapIntensity;
+  this.emissive.copy(source2.emissive);
+  this.emissiveMap = source2.emissiveMap;
+  this.emissiveIntensity = source2.emissiveIntensity;
+  this.bumpMap = source2.bumpMap;
+  this.bumpScale = source2.bumpScale;
+  this.normalMap = source2.normalMap;
+  this.normalScale.copy(source2.normalScale);
+  this.displacementMap = source2.displacementMap;
+  this.displacementScale = source2.displacementScale;
+  this.displacementBias = source2.displacementBias;
+  this.specularMap = source2.specularMap;
+  this.alphaMap = source2.alphaMap;
+  this.envMap = source2.envMap;
+  this.combine = source2.combine;
+  this.reflectivity = source2.reflectivity;
+  this.refractionRatio = source2.refractionRatio;
+  this.wireframe = source2.wireframe;
+  this.wireframeLinewidth = source2.wireframeLinewidth;
+  this.wireframeLinecap = source2.wireframeLinecap;
+  this.wireframeLinejoin = source2.wireframeLinejoin;
+  this.skinning = source2.skinning;
+  this.morphTargets = source2.morphTargets;
+  this.morphNormals = source2.morphNormals;
   return this;
 };
 function MeshToonMaterial(parameters) {
@@ -130567,9 +130306,9 @@ function MeshToonMaterial(parameters) {
 MeshToonMaterial.prototype = Object.create(MeshPhongMaterial.prototype);
 MeshToonMaterial.prototype.constructor = MeshToonMaterial;
 MeshToonMaterial.prototype.isMeshToonMaterial = true;
-MeshToonMaterial.prototype.copy = function(source) {
-  MeshPhongMaterial.prototype.copy.call(this, source);
-  this.gradientMap = source.gradientMap;
+MeshToonMaterial.prototype.copy = function(source2) {
+  MeshPhongMaterial.prototype.copy.call(this, source2);
+  this.gradientMap = source2.gradientMap;
   return this;
 };
 function MeshNormalMaterial(parameters) {
@@ -130594,20 +130333,20 @@ function MeshNormalMaterial(parameters) {
 MeshNormalMaterial.prototype = Object.create(Material.prototype);
 MeshNormalMaterial.prototype.constructor = MeshNormalMaterial;
 MeshNormalMaterial.prototype.isMeshNormalMaterial = true;
-MeshNormalMaterial.prototype.copy = function(source) {
-  Material.prototype.copy.call(this, source);
-  this.bumpMap = source.bumpMap;
-  this.bumpScale = source.bumpScale;
-  this.normalMap = source.normalMap;
-  this.normalScale.copy(source.normalScale);
-  this.displacementMap = source.displacementMap;
-  this.displacementScale = source.displacementScale;
-  this.displacementBias = source.displacementBias;
-  this.wireframe = source.wireframe;
-  this.wireframeLinewidth = source.wireframeLinewidth;
-  this.skinning = source.skinning;
-  this.morphTargets = source.morphTargets;
-  this.morphNormals = source.morphNormals;
+MeshNormalMaterial.prototype.copy = function(source2) {
+  Material.prototype.copy.call(this, source2);
+  this.bumpMap = source2.bumpMap;
+  this.bumpScale = source2.bumpScale;
+  this.normalMap = source2.normalMap;
+  this.normalScale.copy(source2.normalScale);
+  this.displacementMap = source2.displacementMap;
+  this.displacementScale = source2.displacementScale;
+  this.displacementBias = source2.displacementBias;
+  this.wireframe = source2.wireframe;
+  this.wireframeLinewidth = source2.wireframeLinewidth;
+  this.skinning = source2.skinning;
+  this.morphTargets = source2.morphTargets;
+  this.morphNormals = source2.morphNormals;
   return this;
 };
 function MeshLambertMaterial(parameters) {
@@ -130640,30 +130379,30 @@ function MeshLambertMaterial(parameters) {
 MeshLambertMaterial.prototype = Object.create(Material.prototype);
 MeshLambertMaterial.prototype.constructor = MeshLambertMaterial;
 MeshLambertMaterial.prototype.isMeshLambertMaterial = true;
-MeshLambertMaterial.prototype.copy = function(source) {
-  Material.prototype.copy.call(this, source);
-  this.color.copy(source.color);
-  this.map = source.map;
-  this.lightMap = source.lightMap;
-  this.lightMapIntensity = source.lightMapIntensity;
-  this.aoMap = source.aoMap;
-  this.aoMapIntensity = source.aoMapIntensity;
-  this.emissive.copy(source.emissive);
-  this.emissiveMap = source.emissiveMap;
-  this.emissiveIntensity = source.emissiveIntensity;
-  this.specularMap = source.specularMap;
-  this.alphaMap = source.alphaMap;
-  this.envMap = source.envMap;
-  this.combine = source.combine;
-  this.reflectivity = source.reflectivity;
-  this.refractionRatio = source.refractionRatio;
-  this.wireframe = source.wireframe;
-  this.wireframeLinewidth = source.wireframeLinewidth;
-  this.wireframeLinecap = source.wireframeLinecap;
-  this.wireframeLinejoin = source.wireframeLinejoin;
-  this.skinning = source.skinning;
-  this.morphTargets = source.morphTargets;
-  this.morphNormals = source.morphNormals;
+MeshLambertMaterial.prototype.copy = function(source2) {
+  Material.prototype.copy.call(this, source2);
+  this.color.copy(source2.color);
+  this.map = source2.map;
+  this.lightMap = source2.lightMap;
+  this.lightMapIntensity = source2.lightMapIntensity;
+  this.aoMap = source2.aoMap;
+  this.aoMapIntensity = source2.aoMapIntensity;
+  this.emissive.copy(source2.emissive);
+  this.emissiveMap = source2.emissiveMap;
+  this.emissiveIntensity = source2.emissiveIntensity;
+  this.specularMap = source2.specularMap;
+  this.alphaMap = source2.alphaMap;
+  this.envMap = source2.envMap;
+  this.combine = source2.combine;
+  this.reflectivity = source2.reflectivity;
+  this.refractionRatio = source2.refractionRatio;
+  this.wireframe = source2.wireframe;
+  this.wireframeLinewidth = source2.wireframeLinewidth;
+  this.wireframeLinecap = source2.wireframeLinecap;
+  this.wireframeLinejoin = source2.wireframeLinejoin;
+  this.skinning = source2.skinning;
+  this.morphTargets = source2.morphTargets;
+  this.morphNormals = source2.morphNormals;
   return this;
 };
 function LineDashedMaterial(parameters) {
@@ -130677,11 +130416,11 @@ function LineDashedMaterial(parameters) {
 LineDashedMaterial.prototype = Object.create(LineBasicMaterial.prototype);
 LineDashedMaterial.prototype.constructor = LineDashedMaterial;
 LineDashedMaterial.prototype.isLineDashedMaterial = true;
-LineDashedMaterial.prototype.copy = function(source) {
-  LineBasicMaterial.prototype.copy.call(this, source);
-  this.scale = source.scale;
-  this.dashSize = source.dashSize;
-  this.gapSize = source.gapSize;
+LineDashedMaterial.prototype.copy = function(source2) {
+  LineBasicMaterial.prototype.copy.call(this, source2);
+  this.scale = source2.scale;
+  this.dashSize = source2.dashSize;
+  this.gapSize = source2.gapSize;
   return this;
 };
 var Materials = /* @__PURE__ */ Object.freeze({
@@ -131333,8 +131072,8 @@ Object.assign(Curve.prototype, {
   clone: function() {
     return new this.constructor().copy(this);
   },
-  copy: function(source) {
-    this.arcLengthDivisions = source.arcLengthDivisions;
+  copy: function(source2) {
+    this.arcLengthDivisions = source2.arcLengthDivisions;
     return this;
   },
   toJSON: function() {
@@ -131403,16 +131142,16 @@ EllipseCurve.prototype.getPoint = function(t3, optionalTarget) {
   }
   return point.set(x2, y);
 };
-EllipseCurve.prototype.copy = function(source) {
-  Curve.prototype.copy.call(this, source);
-  this.aX = source.aX;
-  this.aY = source.aY;
-  this.xRadius = source.xRadius;
-  this.yRadius = source.yRadius;
-  this.aStartAngle = source.aStartAngle;
-  this.aEndAngle = source.aEndAngle;
-  this.aClockwise = source.aClockwise;
-  this.aRotation = source.aRotation;
+EllipseCurve.prototype.copy = function(source2) {
+  Curve.prototype.copy.call(this, source2);
+  this.aX = source2.aX;
+  this.aY = source2.aY;
+  this.xRadius = source2.xRadius;
+  this.yRadius = source2.yRadius;
+  this.aStartAngle = source2.aStartAngle;
+  this.aEndAngle = source2.aEndAngle;
+  this.aClockwise = source2.aClockwise;
+  this.aRotation = source2.aRotation;
   return this;
 };
 EllipseCurve.prototype.toJSON = function() {
@@ -131536,16 +131275,16 @@ CatmullRomCurve3.prototype.getPoint = function(t3, optionalTarget) {
   );
   return point;
 };
-CatmullRomCurve3.prototype.copy = function(source) {
-  Curve.prototype.copy.call(this, source);
+CatmullRomCurve3.prototype.copy = function(source2) {
+  Curve.prototype.copy.call(this, source2);
   this.points = [];
-  for (var i = 0, l = source.points.length; i < l; i++) {
-    var point = source.points[i];
+  for (var i = 0, l = source2.points.length; i < l; i++) {
+    var point = source2.points[i];
     this.points.push(point.clone());
   }
-  this.closed = source.closed;
-  this.curveType = source.curveType;
-  this.tension = source.tension;
+  this.closed = source2.closed;
+  this.curveType = source2.curveType;
+  this.tension = source2.tension;
   return this;
 };
 CatmullRomCurve3.prototype.toJSON = function() {
@@ -131629,12 +131368,12 @@ CubicBezierCurve.prototype.getPoint = function(t3, optionalTarget) {
   );
   return point;
 };
-CubicBezierCurve.prototype.copy = function(source) {
-  Curve.prototype.copy.call(this, source);
-  this.v0.copy(source.v0);
-  this.v1.copy(source.v1);
-  this.v2.copy(source.v2);
-  this.v3.copy(source.v3);
+CubicBezierCurve.prototype.copy = function(source2) {
+  Curve.prototype.copy.call(this, source2);
+  this.v0.copy(source2.v0);
+  this.v1.copy(source2.v1);
+  this.v2.copy(source2.v2);
+  this.v3.copy(source2.v3);
   return this;
 };
 CubicBezierCurve.prototype.toJSON = function() {
@@ -131674,12 +131413,12 @@ CubicBezierCurve3.prototype.getPoint = function(t3, optionalTarget) {
   );
   return point;
 };
-CubicBezierCurve3.prototype.copy = function(source) {
-  Curve.prototype.copy.call(this, source);
-  this.v0.copy(source.v0);
-  this.v1.copy(source.v1);
-  this.v2.copy(source.v2);
-  this.v3.copy(source.v3);
+CubicBezierCurve3.prototype.copy = function(source2) {
+  Curve.prototype.copy.call(this, source2);
+  this.v0.copy(source2.v0);
+  this.v1.copy(source2.v1);
+  this.v2.copy(source2.v2);
+  this.v3.copy(source2.v3);
   return this;
 };
 CubicBezierCurve3.prototype.toJSON = function() {
@@ -131724,10 +131463,10 @@ LineCurve.prototype.getTangent = function() {
   var tangent = this.v2.clone().sub(this.v1);
   return tangent.normalize();
 };
-LineCurve.prototype.copy = function(source) {
-  Curve.prototype.copy.call(this, source);
-  this.v1.copy(source.v1);
-  this.v2.copy(source.v2);
+LineCurve.prototype.copy = function(source2) {
+  Curve.prototype.copy.call(this, source2);
+  this.v1.copy(source2.v1);
+  this.v2.copy(source2.v2);
   return this;
 };
 LineCurve.prototype.toJSON = function() {
@@ -131764,10 +131503,10 @@ LineCurve3.prototype.getPoint = function(t3, optionalTarget) {
 LineCurve3.prototype.getPointAt = function(u, optionalTarget) {
   return this.getPoint(u, optionalTarget);
 };
-LineCurve3.prototype.copy = function(source) {
-  Curve.prototype.copy.call(this, source);
-  this.v1.copy(source.v1);
-  this.v2.copy(source.v2);
+LineCurve3.prototype.copy = function(source2) {
+  Curve.prototype.copy.call(this, source2);
+  this.v1.copy(source2.v1);
+  this.v2.copy(source2.v2);
   return this;
 };
 LineCurve3.prototype.toJSON = function() {
@@ -131801,11 +131540,11 @@ QuadraticBezierCurve.prototype.getPoint = function(t3, optionalTarget) {
   );
   return point;
 };
-QuadraticBezierCurve.prototype.copy = function(source) {
-  Curve.prototype.copy.call(this, source);
-  this.v0.copy(source.v0);
-  this.v1.copy(source.v1);
-  this.v2.copy(source.v2);
+QuadraticBezierCurve.prototype.copy = function(source2) {
+  Curve.prototype.copy.call(this, source2);
+  this.v0.copy(source2.v0);
+  this.v1.copy(source2.v1);
+  this.v2.copy(source2.v2);
   return this;
 };
 QuadraticBezierCurve.prototype.toJSON = function() {
@@ -131842,11 +131581,11 @@ QuadraticBezierCurve3.prototype.getPoint = function(t3, optionalTarget) {
   );
   return point;
 };
-QuadraticBezierCurve3.prototype.copy = function(source) {
-  Curve.prototype.copy.call(this, source);
-  this.v0.copy(source.v0);
-  this.v1.copy(source.v1);
-  this.v2.copy(source.v2);
+QuadraticBezierCurve3.prototype.copy = function(source2) {
+  Curve.prototype.copy.call(this, source2);
+  this.v0.copy(source2.v0);
+  this.v1.copy(source2.v1);
+  this.v2.copy(source2.v2);
   return this;
 };
 QuadraticBezierCurve3.prototype.toJSON = function() {
@@ -131887,11 +131626,11 @@ SplineCurve.prototype.getPoint = function(t3, optionalTarget) {
   );
   return point;
 };
-SplineCurve.prototype.copy = function(source) {
-  Curve.prototype.copy.call(this, source);
+SplineCurve.prototype.copy = function(source2) {
+  Curve.prototype.copy.call(this, source2);
   this.points = [];
-  for (var i = 0, l = source.points.length; i < l; i++) {
-    var point = source.points[i];
+  for (var i = 0, l = source2.points.length; i < l; i++) {
+    var point = source2.points[i];
     this.points.push(point.clone());
   }
   return this;
@@ -132024,14 +131763,14 @@ CurvePath.prototype = Object.assign(Object.create(Curve.prototype), {
     }
     return points;
   },
-  copy: function(source) {
-    Curve.prototype.copy.call(this, source);
+  copy: function(source2) {
+    Curve.prototype.copy.call(this, source2);
     this.curves = [];
-    for (var i = 0, l = source.curves.length; i < l; i++) {
-      var curve = source.curves[i];
+    for (var i = 0, l = source2.curves.length; i < l; i++) {
+      var curve = source2.curves[i];
       this.curves.push(curve.clone());
     }
-    this.autoClose = source.autoClose;
+    this.autoClose = source2.autoClose;
     return this;
   },
   toJSON: function() {
@@ -132136,9 +131875,9 @@ Path.prototype = Object.assign(Object.create(CurvePath.prototype), {
     var lastPoint = curve.getPoint(1);
     this.currentPoint.copy(lastPoint);
   },
-  copy: function(source) {
-    CurvePath.prototype.copy.call(this, source);
-    this.currentPoint.copy(source.currentPoint);
+  copy: function(source2) {
+    CurvePath.prototype.copy.call(this, source2);
+    this.currentPoint.copy(source2.currentPoint);
     return this;
   },
   toJSON: function() {
@@ -132174,11 +131913,11 @@ Shape.prototype = Object.assign(Object.create(Path.prototype), {
       holes: this.getPointsHoles(divisions)
     };
   },
-  copy: function(source) {
-    Path.prototype.copy.call(this, source);
+  copy: function(source2) {
+    Path.prototype.copy.call(this, source2);
     this.holes = [];
-    for (var i = 0, l = source.holes.length; i < l; i++) {
-      var hole = source.holes[i];
+    for (var i = 0, l = source2.holes.length; i < l; i++) {
+      var hole = source2.holes[i];
       this.holes.push(hole.clone());
     }
     return this;
@@ -132214,10 +131953,10 @@ function Light(color, intensity) {
 Light.prototype = Object.assign(Object.create(Object3D.prototype), {
   constructor: Light,
   isLight: true,
-  copy: function(source) {
-    Object3D.prototype.copy.call(this, source);
-    this.color.copy(source.color);
-    this.intensity = source.intensity;
+  copy: function(source2) {
+    Object3D.prototype.copy.call(this, source2);
+    this.color.copy(source2.color);
+    this.intensity = source2.intensity;
     return this;
   },
   toJSON: function(meta) {
@@ -132244,9 +131983,9 @@ function HemisphereLight(skyColor, groundColor, intensity) {
 HemisphereLight.prototype = Object.assign(Object.create(Light.prototype), {
   constructor: HemisphereLight,
   isHemisphereLight: true,
-  copy: function(source) {
-    Light.prototype.copy.call(this, source);
-    this.groundColor.copy(source.groundColor);
+  copy: function(source2) {
+    Light.prototype.copy.call(this, source2);
+    this.groundColor.copy(source2.groundColor);
     return this;
   }
 });
@@ -132259,11 +131998,11 @@ function LightShadow(camera) {
   this.matrix = new Matrix4();
 }
 Object.assign(LightShadow.prototype, {
-  copy: function(source) {
-    this.camera = source.camera.clone();
-    this.bias = source.bias;
-    this.radius = source.radius;
-    this.mapSize.copy(source.mapSize);
+  copy: function(source2) {
+    this.camera = source2.camera.clone();
+    this.bias = source2.bias;
+    this.radius = source2.radius;
+    this.mapSize.copy(source2.mapSize);
     return this;
   },
   clone: function() {
@@ -132321,14 +132060,14 @@ function SpotLight(color, intensity, distance, angle, penumbra, decay) {
 SpotLight.prototype = Object.assign(Object.create(Light.prototype), {
   constructor: SpotLight,
   isSpotLight: true,
-  copy: function(source) {
-    Light.prototype.copy.call(this, source);
-    this.distance = source.distance;
-    this.angle = source.angle;
-    this.penumbra = source.penumbra;
-    this.decay = source.decay;
-    this.target = source.target.clone();
-    this.shadow = source.shadow.clone();
+  copy: function(source2) {
+    Light.prototype.copy.call(this, source2);
+    this.distance = source2.distance;
+    this.angle = source2.angle;
+    this.penumbra = source2.penumbra;
+    this.decay = source2.decay;
+    this.target = source2.target.clone();
+    this.shadow = source2.shadow.clone();
     return this;
   }
 });
@@ -132350,11 +132089,11 @@ function PointLight(color, intensity, distance, decay) {
 PointLight.prototype = Object.assign(Object.create(Light.prototype), {
   constructor: PointLight,
   isPointLight: true,
-  copy: function(source) {
-    Light.prototype.copy.call(this, source);
-    this.distance = source.distance;
-    this.decay = source.decay;
-    this.shadow = source.shadow.clone();
+  copy: function(source2) {
+    Light.prototype.copy.call(this, source2);
+    this.distance = source2.distance;
+    this.decay = source2.decay;
+    this.shadow = source2.shadow.clone();
     return this;
   }
 });
@@ -132375,10 +132114,10 @@ function DirectionalLight(color, intensity) {
 DirectionalLight.prototype = Object.assign(Object.create(Light.prototype), {
   constructor: DirectionalLight,
   isDirectionalLight: true,
-  copy: function(source) {
-    Light.prototype.copy.call(this, source);
-    this.target = source.target.clone();
-    this.shadow = source.shadow.clone();
+  copy: function(source2) {
+    Light.prototype.copy.call(this, source2);
+    this.target = source2.target.clone();
+    this.shadow = source2.shadow.clone();
     return this;
   }
 });
@@ -132400,10 +132139,10 @@ function RectAreaLight(color, intensity, width2, height2) {
 RectAreaLight.prototype = Object.assign(Object.create(Light.prototype), {
   constructor: RectAreaLight,
   isRectAreaLight: true,
-  copy: function(source) {
-    Light.prototype.copy.call(this, source);
-    this.width = source.width;
-    this.height = source.height;
+  copy: function(source2) {
+    Light.prototype.copy.call(this, source2);
+    this.width = source2.width;
+    this.height = source2.height;
     return this;
   },
   toJSON: function(meta) {
@@ -135002,15 +134741,15 @@ Audio.prototype = Object.assign(Object.create(Object3D.prototype), {
       console.warn("THREE.Audio: this Audio has no playback control.");
       return;
     }
-    var source = this.context.createBufferSource();
-    source.buffer = this.buffer;
-    source.loop = this.loop;
-    source.onended = this.onEnded.bind(this);
-    source.playbackRate.setValueAtTime(this.playbackRate, this.startTime);
+    var source2 = this.context.createBufferSource();
+    source2.buffer = this.buffer;
+    source2.loop = this.loop;
+    source2.onended = this.onEnded.bind(this);
+    source2.playbackRate.setValueAtTime(this.playbackRate, this.startTime);
     this.startTime = this.context.currentTime;
-    source.start(this.startTime, this.offset);
+    source2.start(this.startTime, this.offset);
     this.isPlaying = true;
-    this.source = source;
+    this.source = source2;
     return this.connect();
   },
   pause: function() {
@@ -135428,9 +135167,9 @@ Object.assign(PropertyBinding.prototype, {
       buffer[offset] = this.node[this.propertyName];
     },
     function getValue_array(buffer, offset) {
-      var source = this.resolvedProperty;
-      for (var i = 0, n = source.length; i !== n; ++i) {
-        buffer[offset++] = source[i];
+      var source2 = this.resolvedProperty;
+      for (var i = 0, n = source2.length; i !== n; ++i) {
+        buffer[offset++] = source2[i];
       }
     },
     function getValue_arrayElement(buffer, offset) {
@@ -136483,9 +136222,9 @@ function InstancedBufferGeometry() {
 InstancedBufferGeometry.prototype = Object.assign(Object.create(BufferGeometry.prototype), {
   constructor: InstancedBufferGeometry,
   isInstancedBufferGeometry: true,
-  copy: function(source) {
-    BufferGeometry.prototype.copy.call(this, source);
-    this.maxInstancedCount = source.maxInstancedCount;
+  copy: function(source2) {
+    BufferGeometry.prototype.copy.call(this, source2);
+    this.maxInstancedCount = source2.maxInstancedCount;
     return this;
   },
   clone: function() {
@@ -136591,11 +136330,11 @@ Object.assign(InterleavedBuffer.prototype, {
     this.dynamic = value;
     return this;
   },
-  copy: function(source) {
-    this.array = new source.array.constructor(source.array);
-    this.count = source.count;
-    this.stride = source.stride;
-    this.dynamic = source.dynamic;
+  copy: function(source2) {
+    this.array = new source2.array.constructor(source2.array);
+    this.count = source2.count;
+    this.stride = source2.stride;
+    this.dynamic = source2.dynamic;
     return this;
   },
   copyAt: function(index1, attribute, index2) {
@@ -136626,9 +136365,9 @@ function InstancedInterleavedBuffer(array, stride, meshPerAttribute) {
 InstancedInterleavedBuffer.prototype = Object.assign(Object.create(InterleavedBuffer.prototype), {
   constructor: InstancedInterleavedBuffer,
   isInstancedInterleavedBuffer: true,
-  copy: function(source) {
-    InterleavedBuffer.prototype.copy.call(this, source);
-    this.meshPerAttribute = source.meshPerAttribute;
+  copy: function(source2) {
+    InterleavedBuffer.prototype.copy.call(this, source2);
+    this.meshPerAttribute = source2.meshPerAttribute;
     return this;
   }
 });
@@ -136639,9 +136378,9 @@ function InstancedBufferAttribute(array, itemSize, meshPerAttribute) {
 InstancedBufferAttribute.prototype = Object.assign(Object.create(BufferAttribute.prototype), {
   constructor: InstancedBufferAttribute,
   isInstancedBufferAttribute: true,
-  copy: function(source) {
-    BufferAttribute.prototype.copy.call(this, source);
-    this.meshPerAttribute = source.meshPerAttribute;
+  copy: function(source2) {
+    BufferAttribute.prototype.copy.call(this, source2);
+    this.meshPerAttribute = source2.meshPerAttribute;
     return this;
   }
 });
@@ -141050,10 +140789,10 @@ function invariant$1(condition, message) {
   }
 }
 const LineRegExp = /\r\n|[\n\r]/g;
-function getLocation(source, position2) {
+function getLocation(source2, position2) {
   let lastLineStart = 0;
   let line2 = 1;
-  for (const match2 of source.body.matchAll(LineRegExp)) {
+  for (const match2 of source2.body.matchAll(LineRegExp)) {
     typeof match2.index === "number" || invariant$1(false);
     if (match2.index >= position2) {
       break;
@@ -141072,15 +140811,15 @@ function printLocation(location2) {
     getLocation(location2.source, location2.start)
   );
 }
-function printSourceLocation(source, sourceLocation) {
-  const firstLineColumnOffset = source.locationOffset.column - 1;
-  const body = "".padStart(firstLineColumnOffset) + source.body;
+function printSourceLocation(source2, sourceLocation) {
+  const firstLineColumnOffset = source2.locationOffset.column - 1;
+  const body = "".padStart(firstLineColumnOffset) + source2.body;
   const lineIndex = sourceLocation.line - 1;
-  const lineOffset = source.locationOffset.line - 1;
+  const lineOffset = source2.locationOffset.line - 1;
   const lineNum = sourceLocation.line + lineOffset;
   const columnOffset = sourceLocation.line === 1 ? firstLineColumnOffset : 0;
   const columnNum = sourceLocation.column + columnOffset;
-  const locationStr = `${source.name}:${lineNum}:${columnNum}
+  const locationStr = `${source2.name}:${lineNum}:${columnNum}
 `;
   const lines = body.split(/\r\n|[\n\r]/g);
   const locationLine = lines[lineIndex];
@@ -141166,7 +140905,7 @@ class GraphQLError extends Error {
    */
   constructor(message, ...rawArgs) {
     var _this$nodes, _nodeLocations$, _ref3;
-    const { nodes, source, positions, path, originalError, extensions } = toNormalizedOptions(rawArgs);
+    const { nodes, source: source2, positions, path, originalError, extensions } = toNormalizedOptions(rawArgs);
     super(message);
     this.name = "GraphQLError";
     this.path = path !== null && path !== void 0 ? path : void 0;
@@ -141177,9 +140916,9 @@ class GraphQLError extends Error {
     const nodeLocations = undefinedIfEmpty(
       (_this$nodes = this.nodes) === null || _this$nodes === void 0 ? void 0 : _this$nodes.map((node2) => node2.loc).filter((loc) => loc != null)
     );
-    this.source = source !== null && source !== void 0 ? source : nodeLocations === null || nodeLocations === void 0 ? void 0 : (_nodeLocations$ = nodeLocations[0]) === null || _nodeLocations$ === void 0 ? void 0 : _nodeLocations$.source;
+    this.source = source2 !== null && source2 !== void 0 ? source2 : nodeLocations === null || nodeLocations === void 0 ? void 0 : (_nodeLocations$ = nodeLocations[0]) === null || _nodeLocations$ === void 0 ? void 0 : _nodeLocations$.source;
     this.positions = positions !== null && positions !== void 0 ? positions : nodeLocations === null || nodeLocations === void 0 ? void 0 : nodeLocations.map((loc) => loc.start);
-    this.locations = positions && source ? positions.map((pos) => getLocation(source, pos)) : nodeLocations === null || nodeLocations === void 0 ? void 0 : nodeLocations.map((loc) => getLocation(loc.source, loc.start));
+    this.locations = positions && source2 ? positions.map((pos) => getLocation(source2, pos)) : nodeLocations === null || nodeLocations === void 0 ? void 0 : nodeLocations.map((loc) => getLocation(loc.source, loc.start));
     const originalExtensions = isObjectLike(
       originalError === null || originalError === void 0 ? void 0 : originalError.extensions
     ) ? originalError === null || originalError === void 0 ? void 0 : originalError.extensions : void 0;
@@ -141258,9 +140997,9 @@ class GraphQLError extends Error {
 function undefinedIfEmpty(array) {
   return array === void 0 || array.length === 0 ? void 0 : array;
 }
-function syntaxError(source, position2, description) {
+function syntaxError(source2, position2, description) {
   return new GraphQLError(`Syntax Error: ${description}`, {
-    source,
+    source: source2,
     positions: [position2]
   });
 }
@@ -141280,12 +141019,12 @@ class Location {
   /**
    * The Source document the AST represents.
    */
-  constructor(startToken, endToken, source) {
+  constructor(startToken, endToken, source2) {
     this.start = startToken.start;
     this.end = endToken.end;
     this.startToken = startToken;
     this.endToken = endToken;
-    this.source = source;
+    this.source = source2;
   }
   get [Symbol.toStringTag]() {
     return "Location";
@@ -141608,9 +141347,9 @@ class Lexer {
   /**
    * The character offset at which the current line begins.
    */
-  constructor(source) {
+  constructor(source2) {
     const startOfFileToken = new Token(TokenKind.SOF, 0, 0, 0, 0);
-    this.source = source;
+    this.source = source2;
     this.lastToken = startOfFileToken;
     this.token = startOfFileToken;
     this.line = 1;
@@ -142265,11 +142004,11 @@ class Source {
     return "Source";
   }
 }
-function isSource(source) {
-  return instanceOf(source, Source);
+function isSource(source2) {
+  return instanceOf(source2, Source);
 }
-function parse$2(source, options2) {
-  const parser3 = new Parser(source, options2);
+function parse$2(source2, options2) {
+  const parser3 = new Parser(source2, options2);
   const document2 = parser3.parseDocument();
   Object.defineProperty(document2, "tokenCount", {
     enumerable: false,
@@ -142278,8 +142017,8 @@ function parse$2(source, options2) {
   return document2;
 }
 class Parser {
-  constructor(source, options2 = {}) {
-    const sourceObj = isSource(source) ? source : new Source(source);
+  constructor(source2, options2 = {}) {
+    const sourceObj = isSource(source2) ? source2 : new Source(source2);
     this._lexer = new Lexer(sourceObj);
     this._options = options2;
     this._tokenCounter = 0;
@@ -145874,8 +145613,8 @@ function mergeDeepArray(sources) {
   }
   return target;
 }
-var defaultReconciler = function(target, source, property) {
-  return this.merge(target[property], source[property]);
+var defaultReconciler = function(target, source2, property) {
+  return this.merge(target[property], source2[property]);
 };
 var DeepMerger = (
   /** @class */
@@ -145888,20 +145627,20 @@ var DeepMerger = (
       this.isObject = isNonNullObject;
       this.pastCopies = /* @__PURE__ */ new Set();
     }
-    DeepMerger2.prototype.merge = function(target, source) {
+    DeepMerger2.prototype.merge = function(target, source2) {
       var _this = this;
       var context2 = [];
       for (var _i = 2; _i < arguments.length; _i++) {
         context2[_i - 2] = arguments[_i];
       }
-      if (isNonNullObject(source) && isNonNullObject(target)) {
-        Object.keys(source).forEach(function(sourceKey) {
+      if (isNonNullObject(source2) && isNonNullObject(target)) {
+        Object.keys(source2).forEach(function(sourceKey) {
           if (hasOwnProperty$5.call(target, sourceKey)) {
             var targetValue = target[sourceKey];
-            if (source[sourceKey] !== targetValue) {
+            if (source2[sourceKey] !== targetValue) {
               var result = _this.reconciler.apply(_this, __spreadArray([
                 target,
-                source,
+                source2,
                 sourceKey
               ], context2, false));
               if (result !== targetValue) {
@@ -145911,12 +145650,12 @@ var DeepMerger = (
             }
           } else {
             target = _this.shallowCopyForMerge(target);
-            target[sourceKey] = source[sourceKey];
+            target[sourceKey] = source2[sourceKey];
           }
         });
         return target;
       }
-      return source;
+      return source2;
     };
     DeepMerger2.prototype.shallowCopyForMerge = function(value) {
       if (isNonNullObject(value)) {
@@ -147002,9 +146741,9 @@ var ApolloLink = (
 var from$1 = ApolloLink.from;
 var split = ApolloLink.split;
 var execute = ApolloLink.execute;
-function asyncIterator(source) {
+function asyncIterator(source2) {
   var _a2;
-  var iterator = source[Symbol.asyncIterator]();
+  var iterator = source2[Symbol.asyncIterator]();
   return _a2 = {
     next: function() {
       return iterator.next();
@@ -153141,10 +152880,10 @@ function stripLoc(doc) {
   }
   return doc;
 }
-function parseDocument(source) {
-  var cacheKey2 = normalize(source);
+function parseDocument(source2) {
+  var cacheKey2 = normalize(source2);
   if (!docCache.has(cacheKey2)) {
-    var parsed = parse$2(source, {
+    var parsed = parse$2(source2, {
       experimentalFragmentVariables,
       allowLegacyFragmentVariables: experimentalFragmentVariables
     });
@@ -153398,7 +153137,7 @@ function verifyDocumentType(document2, type2) {
     usedOperationName
   );
 }
-var useIsomorphicLayoutEffect$3 = canUseDOM$1 ? rehacktExports.useLayoutEffect : rehacktExports.useEffect;
+var useIsomorphicLayoutEffect$2 = canUseDOM$1 ? rehacktExports.useLayoutEffect : rehacktExports.useEffect;
 var wrapperSymbol = Symbol.for("apollo.hook.wrappers");
 function wrapHook(hookName, useHook, clientOrObsQuery) {
   var queryManager = clientOrObsQuery["queryManager"];
@@ -153731,7 +153470,7 @@ function useMutation(mutation, options2) {
     mutation,
     options: options2
   });
-  useIsomorphicLayoutEffect$3(function() {
+  useIsomorphicLayoutEffect$2(function() {
     Object.assign(ref.current, { client: client2, options: options2, mutation });
   });
   var execute2 = rehacktExports.useCallback(function(executeOptions) {
@@ -156833,7 +156572,7 @@ const GetStashConfigForTvDocument = gql`
     plugins
     ui
   }
-  findSavedFilters(mode: SCENES) {
+  availableSavedSceneFilters: findSavedFilters(mode: SCENES) {
     id
     name
   }
@@ -158082,6 +157821,15 @@ const useSceneIncrementPlayCount = () => useSceneAddPlayMutation({
     ]);
   }
 });
+function _objectWithoutPropertiesLoose$1(r3, e) {
+  if (null == r3) return {};
+  var t3 = {};
+  for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
+    if (-1 !== e.indexOf(n)) continue;
+    t3[n] = r3[n];
+  }
+  return t3;
+}
 var ThemeContext$1 = /* @__PURE__ */ React$1.createContext({});
 ThemeContext$1.Consumer;
 ThemeContext$1.Provider;
@@ -158589,12 +158337,12 @@ const formatDateTime = (intl, dateTime, utc = false) => `${formatDate(intl, date
   timeZone: utc ? "utc" : void 0
 })}`;
 const CountUnits = ["", "K", "M", "B"];
-const abbreviateCounter = (counter = 0) => {
-  if (Number.isNaN(parseFloat(String(counter))) || !Number.isFinite(counter))
+const abbreviateCounter = (counter2 = 0) => {
+  if (Number.isNaN(parseFloat(String(counter2))) || !Number.isFinite(counter2))
     return { size: 0, unit: CountUnits[0] };
   let unit = 0;
   let digits = 0;
-  let count2 = counter;
+  let count2 = counter2;
   while (count2 >= 1e3 && unit + 1 < CountUnits.length) {
     count2 /= 1e3;
     unit++;
@@ -161334,9 +161082,9 @@ function requireWebcomponentsLite() {
   if (typeof WeakMap === "undefined") {
     (function() {
       var defineProperty = Object.defineProperty;
-      var counter = Date.now() % 1e9;
+      var counter2 = Date.now() % 1e9;
       var WeakMap2 = function() {
-        this.name = "__st" + (Math.random() * 1e9 >>> 0) + (counter++ + "__");
+        this.name = "__st" + (Math.random() * 1e9 >>> 0) + (counter2++ + "__");
       };
       WeakMap2.prototype = {
         set: function(key, value) {
@@ -161792,9 +161540,9 @@ function requireWebcomponentsLite() {
         }
         return clone;
       };
-      TemplateImpl.fixClonedDom = function(clone, source) {
-        if (!source.querySelectorAll) return;
-        var s$ = source.querySelectorAll(TEMPLATE_TAG);
+      TemplateImpl.fixClonedDom = function(clone, source2) {
+        if (!source2.querySelectorAll) return;
+        var s$ = source2.querySelectorAll(TEMPLATE_TAG);
         var t$ = clone.querySelectorAll(TEMPLATE_TAG);
         for (var i = 0, l = t$.length, t3, s2; i < l; i++) {
           s2 = s$[i];
@@ -163816,12 +163564,12 @@ function requireChromecastTech() {
        * @param source {object} the source to store and play
        * @see {@link http://docs.videojs.com/Player.html#src}
        */
-      setSource(source) {
-        if (this._currentSource && this._currentSource.src === source.src && this._currentSource.type === source.type) {
+      setSource(source2) {
+        if (this._currentSource && this._currentSource.src === source2.src && this._currentSource.type === source2.type) {
           return;
         }
-        this._currentSource = source;
-        this._playSource(source, 0);
+        this._currentSource = source2;
+        this._playSource(source2, 0);
       }
       /**
        * Plays the given source, beginning at an optional starting time.
@@ -163831,8 +163579,8 @@ function requireChromecastTech() {
        * @param [startTime] The time to start playback at, in seconds
        * @see {@link http://docs.videojs.com/Player.html#src}
        */
-      _playSource(source, startTime) {
-        var castSession = this._getCastSession(), mediaInfo = new chrome.cast.media.MediaInfo(source.src, source.type), title = this._requestTitle(source), subtitle = this._requestSubtitle(source), poster = this.poster(), customData = this._requestCustomData(source), request;
+      _playSource(source2, startTime) {
+        var castSession = this._getCastSession(), mediaInfo = new chrome.cast.media.MediaInfo(source2.src, source2.type), title = this._requestTitle(source2), subtitle = this._requestSubtitle(source2), poster = this.poster(), customData = this._requestCustomData(source2), request;
         this.trigger("waiting");
         this._clearSessionTimeout();
         mediaInfo.metadata = new chrome.cast.media.GenericMediaMetadata();
@@ -165765,6 +165513,60 @@ const ScenePlayer$1 = PatchComponent("ScenePlayer", ({ scene, hideScrubberOverri
     "no-file": !file
   }), onKeyDownCapture: onKeyDown, children: [jsxRuntimeExports.jsx("div", { className: "video-wrapper", ref: videoRef }), scene.interactive && (interactiveState !== ConnectionState.Ready || ((_e = getPlayer()) === null || _e === void 0 ? void 0 : _e.paused())) && jsxRuntimeExports.jsx(SceneInteractiveStatus, {}), file && showScrubber && jsxRuntimeExports.jsx(ScenePlayerScrubber, { file, scene, time, onSeek: onScrubberSeek, onScroll: onScrubberScroll })] });
 });
+var generateUID$1 = function() {
+  var counter2 = 1;
+  var map = /* @__PURE__ */ new WeakMap();
+  var uid = function(item, index2) {
+    if (typeof item === "number" || typeof item === "string") {
+      return index2 ? "idx-".concat(index2) : "val-".concat(item);
+    }
+    if (!map.has(item)) {
+      map.set(item, counter2++);
+      return uid(item);
+    }
+    return "uid" + map.get(item);
+  };
+  return uid;
+};
+var createSource = function(prefix2) {
+  if (prefix2 === void 0) {
+    prefix2 = "";
+  }
+  return {
+    value: 1,
+    prefix: prefix2,
+    uid: generateUID$1()
+  };
+};
+var counter = createSource();
+var source = reactExports.createContext(createSource());
+var getId = function(source2) {
+  return source2.value++;
+};
+var getPrefix = function(source2) {
+  return source2 ? source2.prefix : "";
+};
+var generateUID = function(context2) {
+  var quartz = context2 || counter;
+  var prefix2 = getPrefix(quartz);
+  var id = getId(quartz);
+  var uid = prefix2 + id;
+  var gen = function(item) {
+    return uid + quartz.uid(item);
+  };
+  return { uid, gen };
+};
+var useUIDState = function() {
+  var context2 = reactExports.useContext(source);
+  var uid = reactExports.useState(function() {
+    return generateUID(context2);
+  })[0];
+  return uid;
+};
+var useUID = function() {
+  var uid = useUIDState().uid;
+  return uid;
+};
 function allowPluginRemoval(videojs2) {
   videojs2.hook("beforesetup", function(videoEl, options2) {
     return {
@@ -165908,7 +165710,7 @@ async function getOriginalPlugin() {
     pluginName = pluginNameToBeRegistered;
     plugin = pluginToBeRegistered;
   };
-  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-DzsNMqzK.js"), true ? [] : void 0, import.meta.url);
+  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-CcoJIrAQ.js"), true ? [] : void 0, import.meta.url);
   videojs.registerPlugin = originalRegisterPlugin;
   if (!pluginName || !plugin) {
     throw new Error(`Failed to load original videojs-overlay-buttons plugin`);
@@ -166520,14 +166322,14 @@ videojs.hook("setup", (player) => {
   };
 });
 videojs.hook("setup", function(player) {
-  let sceneId;
+  let playerId;
   try {
-    sceneId = getSceneIdForVideoJsPlayer(player.el());
+    playerId = getPlayerIdForVideoJsPlayer(player.el());
   } catch (error) {
     console.error(error);
     return;
   }
-  videoJsSetupCallbacks[sceneId]?.(player);
+  videoJsSetupCallbacks[playerId]?.(player);
 });
 videojs.hook("beforesetup", function(videoEl, options2) {
   return {
@@ -166579,14 +166381,14 @@ videojs.hook("beforesetup", function(videoEl, options2) {
   };
 });
 videojs.hook("beforesetup", function(videoEl, options2) {
-  let sceneId;
+  let playerId;
   try {
-    sceneId = getSceneIdForVideoJsPlayer(videoEl);
+    playerId = getPlayerIdForVideoJsPlayer(videoEl);
   } catch (error) {
     console.error(error);
     return {};
   }
-  return videoJsOptionsOverride[sceneId] || {};
+  return videoJsOptionsOverride[playerId] || {};
 });
 allowPluginRemoval(videojs);
 ScenePlayer$1.displayName = "ScenePlayerOriginal";
@@ -166617,6 +166419,7 @@ const ScenePlayer = reactExports.forwardRef(({
   const [videoElm, setVideoElm] = reactExports.useState(null);
   const [videojsPlayer, setVideojsPlayer] = reactExports.useState(null);
   const videojsPlayerRef = reactExports.useRef(null);
+  const playerId = useUID();
   otherProps.scene = {
     ...otherProps.scene,
     sceneStreams: otherProps.scene.sceneStreams.map(
@@ -166632,9 +166435,9 @@ const ScenePlayer = reactExports.forwardRef(({
       const sourceSelector = originalSourceSelector.apply(this, args);
       const originalSetSources = sourceSelector.setSources;
       sourceSelector.setSources = function(sources, ...otherArgs) {
-        sources.forEach((source) => {
-          if (source.src) {
-            source.src = source.src.replace(/\/preview\/stream$/, "/preview");
+        sources.forEach((source2) => {
+          if (source2.src) {
+            source2.src = source2.src.replace(/\/preview\/stream$/, "/preview");
           }
         });
         originalSetSources.apply(this, [sources, ...otherArgs]);
@@ -166642,14 +166445,14 @@ const ScenePlayer = reactExports.forwardRef(({
       return sourceSelector;
     };
   }
-  videoJsSetupCallbacks[otherProps.scene.id] = (player) => {
+  videoJsSetupCallbacks[playerId] = (player) => {
     if (loop2 !== void 0) {
       setTimeout(() => !player.isDisposed() && player.loop(loop2), 100);
     }
     addWrapperToRevertPreviewUrlChange(player);
     onVideojsPlayerReady?.(player);
   };
-  videoJsOptionsOverride[otherProps.scene.id] = {
+  videoJsOptionsOverride[playerId] = {
     muted,
     loop: loop2,
     // Unfortunately this doesn't seem to work since the stash ScenePlayer component seems immediately set
@@ -166754,7 +166557,8 @@ const ScenePlayer = reactExports.forwardRef(({
     {
       className: cx(["ScenePlayer", className, { "hide-controls": hideControls, "hide-progress-bar": hideProgressBar }]),
       ref: containerRef,
-      "data-scene-id": otherProps.scene?.id
+      "data-scene-id": otherProps.scene?.id,
+      "data-player-id": playerId
     },
     /* @__PURE__ */ React$1.createElement(
       ScenePlayer$1,
@@ -166767,10 +166571,11 @@ const ScenePlayer = reactExports.forwardRef(({
   );
 });
 ScenePlayer.displayName = "ScenePlayer";
+const PLUGIN_NAMESPACE = "stash-tv";
 const useStashConfigStore = create2((set4, get7) => ({
   general: {
     stashDefaultScenesFilter: void 0,
-    savedSceneFiltersNameAndIds: []
+    availableSavedSceneFilters: []
   },
   tv: {
     defaultFilterId: void 0,
@@ -166785,7 +166590,7 @@ const useStashConfigStore = create2((set4, get7) => ({
       general: {
         ...general,
         stashDefaultScenesFilter: config2.configuration.ui.defaultFilters?.scenes,
-        savedSceneFiltersNameAndIds: config2.findSavedFilters.map((filter) => ({ ...filter, mode: FilterMode.Scenes }))
+        availableSavedSceneFilters: config2.availableSavedSceneFilters
       },
       tv: {
         ...tv,
@@ -167161,25 +166966,6 @@ const VideoItem = (props) => {
     }
     props.changeItemHandler((currentIndex) => Math.max(currentIndex - 1, 0));
   }
-  const uiButtonDrawerRef = reactExports.useRef(null);
-  const uiButtonRef = reactExports.useRef(null);
-  const toggleableUiStyles = {
-    transitionDuration: TRANSITION_DURATION / 1e3 + "s"
-  };
-  const toggleableUiTransitionStyles = {
-    entering: { opacity: 1 },
-    entered: { opacity: 1 },
-    exiting: { opacity: 0 },
-    exited: { opacity: 0 },
-    unmounted: {}
-  };
-  const toggleUiButtonTransitionStyles = {
-    entering: { opacity: 1 },
-    entered: { opacity: 1 },
-    exiting: { opacity: 0.35 },
-    exited: { opacity: 0.35 },
-    unmounted: {}
-  };
   const itemRef = reactExports.useRef(null);
   const handleOnEnded = () => {
     if (!looping && isCurrentVideo) props.changeItemHandler((currentIndex) => currentIndex + 1);
@@ -167286,157 +167072,117 @@ const VideoItem = (props) => {
         }
       }
     ), /* @__PURE__ */ React$1.createElement(
-      Transition,
+      SceneInfoPanel,
       {
-        in: sceneInfoOpen,
-        nodeRef: sceneInfoPanelRef,
-        timeout: TRANSITION_DURATION,
-        mountOnEnter: true,
-        unmountOnExit: true
-      },
-      (state) => /* @__PURE__ */ React$1.createElement(
-        SceneInfoPanel,
-        {
-          ...props.scene,
-          ref: sceneInfoPanelRef,
-          scene: props.scene,
-          style: {
-            ...toggleableUiStyles,
-            ...toggleableUiTransitionStyles[state]
-          }
-        }
-      )
+        ...props.scene,
+        ref: sceneInfoPanelRef,
+        scene: props.scene,
+        className: cx({ active: sceneInfoOpen })
+      }
     ), /* @__PURE__ */ React$1.createElement(
       "div",
       {
-        className: cx("controls", { "active": uiVisible })
+        className: "controls"
       },
       /* @__PURE__ */ React$1.createElement(
-        Transition,
+        "div",
         {
-          in: uiVisible,
-          nodeRef: uiButtonDrawerRef,
-          timeout: TRANSITION_DURATION,
-          unmountOnExit: true
+          className: cx("toggleable-ui", { "active": uiVisible }),
+          "data-testid": "VideoItem--toggleableUi"
         },
-        (state) => /* @__PURE__ */ React$1.createElement(
-          "div",
+        /* @__PURE__ */ React$1.createElement(
+          UiButton,
           {
-            className: "toggleable-ui",
-            "data-testid": "VideoItem--toggleableUi",
-            ref: uiButtonDrawerRef,
-            style: {
-              ...toggleableUiStyles,
-              ...toggleableUiTransitionStyles[state]
-            }
-          },
-          /* @__PURE__ */ React$1.createElement(
-            UiButton,
-            {
-              className: "mute",
-              active: !audioMuted,
-              activeIcon: faVolumeHigh,
-              activeText: "Mute",
-              "data-testid": "VideoItem--muteButton",
-              inactiveIcon: SvgVolumeMuteOutline,
-              inactiveText: "Unmute",
-              onClick: () => setAppSetting("audioMuted", (prev2) => !prev2)
-            }
-          ),
-          subtitlesButton,
-          "exitFullscreen" in document && /* @__PURE__ */ React$1.createElement(
-            UiButton,
-            {
-              className: "fullscreen",
-              active: fullscreen,
-              activeIcon: faExpand,
-              activeText: "Close fullscreen",
-              "data-testid": "VideoItem--fullscreenButton",
-              inactiveIcon: SvgExpandOutline,
-              inactiveText: "Open fullscreen",
-              onClick: () => setAppSetting("fullscreen", (prev2) => !prev2)
-            }
-          ),
-          /* @__PURE__ */ React$1.createElement(
-            UiButton,
-            {
-              className: "letterboxing",
-              active: !letterboxing,
-              activeIcon: SvgCoverOutline,
-              activeText: "Constrain to screen",
-              "data-testid": "VideoItem--letterboxButton",
-              inactiveIcon: SvgContain,
-              inactiveText: "Fill screen",
-              onClick: () => setAppSetting("letterboxing", (prev2) => !prev2)
-            }
-          ),
-          /* @__PURE__ */ React$1.createElement(
-            UiButton,
-            {
-              className: "force-landscape",
-              active: !forceLandscape,
-              activeIcon: SvgPortraitRotationOutline,
-              activeText: "Landscape",
-              "data-testid": "VideoItem--forceLandscapeButton",
-              inactiveIcon: SvgLandscapeRotation,
-              inactiveText: "Portrait",
-              onClick: () => setAppSetting("forceLandscape", (prev2) => !prev2)
-            }
-          ),
-          /* @__PURE__ */ React$1.createElement(
-            UiButton,
-            {
-              className: "loop",
-              active: looping,
-              activeIcon: faRepeat,
-              activeText: "Stop looping scene",
-              "data-testid": "VideoItem--loopButton",
-              inactiveIcon: SvgLoopOutline,
-              inactiveText: "Loop scene",
-              onClick: () => setAppSetting("looping", (prev2) => !prev2)
-            }
-          ),
-          sceneInfoButton,
-          /* @__PURE__ */ React$1.createElement(
-            UiButton,
-            {
-              className: "settings",
-              active: showSettings,
-              activeIcon: faGear,
-              activeText: "Close settings",
-              "data-testid": "VideoItem--settingsButton",
-              inactiveIcon: SvgCogOutline,
-              inactiveText: "Show settings",
-              onClick: () => setAppSetting("showSettings", (prev2) => !prev2)
-            }
-          )
+            className: "mute",
+            active: !audioMuted,
+            activeIcon: faVolumeHigh,
+            activeText: "Mute",
+            "data-testid": "VideoItem--muteButton",
+            inactiveIcon: SvgVolumeMuteOutline,
+            inactiveText: "Unmute",
+            onClick: () => setAppSetting("audioMuted", (prev2) => !prev2)
+          }
+        ),
+        subtitlesButton,
+        "exitFullscreen" in document && /* @__PURE__ */ React$1.createElement(
+          UiButton,
+          {
+            className: "fullscreen",
+            active: fullscreen,
+            activeIcon: faExpand,
+            activeText: "Close fullscreen",
+            "data-testid": "VideoItem--fullscreenButton",
+            inactiveIcon: SvgExpandOutline,
+            inactiveText: "Open fullscreen",
+            onClick: () => setAppSetting("fullscreen", (prev2) => !prev2)
+          }
+        ),
+        /* @__PURE__ */ React$1.createElement(
+          UiButton,
+          {
+            className: "letterboxing",
+            active: !letterboxing,
+            activeIcon: SvgCoverOutline,
+            activeText: "Constrain to screen",
+            "data-testid": "VideoItem--letterboxButton",
+            inactiveIcon: SvgContain,
+            inactiveText: "Fill screen",
+            onClick: () => setAppSetting("letterboxing", (prev2) => !prev2)
+          }
+        ),
+        /* @__PURE__ */ React$1.createElement(
+          UiButton,
+          {
+            className: "force-landscape",
+            active: !forceLandscape,
+            activeIcon: SvgPortraitRotationOutline,
+            activeText: "Landscape",
+            "data-testid": "VideoItem--forceLandscapeButton",
+            inactiveIcon: SvgLandscapeRotation,
+            inactiveText: "Portrait",
+            onClick: () => setAppSetting("forceLandscape", (prev2) => !prev2)
+          }
+        ),
+        /* @__PURE__ */ React$1.createElement(
+          UiButton,
+          {
+            className: "loop",
+            active: looping,
+            activeIcon: faRepeat,
+            activeText: "Stop looping scene",
+            "data-testid": "VideoItem--loopButton",
+            inactiveIcon: SvgLoopOutline,
+            inactiveText: "Loop scene",
+            onClick: () => setAppSetting("looping", (prev2) => !prev2)
+          }
+        ),
+        sceneInfoButton,
+        /* @__PURE__ */ React$1.createElement(
+          UiButton,
+          {
+            className: "settings",
+            active: showSettings,
+            activeIcon: faGear,
+            activeText: "Close settings",
+            "data-testid": "VideoItem--settingsButton",
+            inactiveIcon: SvgCogOutline,
+            inactiveText: "Show settings",
+            onClick: () => setAppSetting("showSettings", (prev2) => !prev2)
+          }
         )
       ),
       /* @__PURE__ */ React$1.createElement(
-        Transition,
+        UiButton,
         {
-          in: uiVisible,
-          nodeRef: uiButtonRef,
-          timeout: TRANSITION_DURATION
-        },
-        (state) => /* @__PURE__ */ React$1.createElement(
-          UiButton,
-          {
-            active: uiVisible,
-            activeIcon: faEllipsisVertical,
-            activeText: "Hide UI",
-            className: "toggleable-ui-button",
-            "data-testid": "VideoItem--showUiButton",
-            inactiveIcon: SvgVerticalEllipsisOutline,
-            inactiveText: "Show UI",
-            onClick: () => setAppSetting("uiVisible", (prev2) => !prev2),
-            ref: uiButtonRef,
-            style: {
-              ...toggleableUiStyles,
-              ...toggleUiButtonTransitionStyles[state]
-            }
-          }
-        )
+          active: uiVisible,
+          activeIcon: faEllipsisVertical,
+          activeText: "Hide UI",
+          className: cx("toggleable-ui-button", { "active": uiVisible }),
+          "data-testid": "VideoItem--showUiButton",
+          inactiveIcon: SvgVerticalEllipsisOutline,
+          inactiveText: "Show UI",
+          onClick: () => setAppSetting("uiVisible", (prev2) => !prev2)
+        }
       )
     ))
   );
@@ -167473,7 +167219,7 @@ const SceneInfoPanel = reactExports.forwardRef(
     return /* @__PURE__ */ React$1.createElement(
       "div",
       {
-        className: "scene-info",
+        className: cx("scene-info", props.className),
         "data-testid": "VideoItem--sceneInfo",
         style: props.style,
         ref,
@@ -168337,7 +168083,7 @@ function calculateRange({
   }
   return { startIndex, endIndex };
 }
-const useIsomorphicLayoutEffect$2 = typeof document !== "undefined" ? reactExports.useLayoutEffect : reactExports.useEffect;
+const useIsomorphicLayoutEffect$1 = typeof document !== "undefined" ? reactExports.useLayoutEffect : reactExports.useEffect;
 function useVirtualizerBase(options2) {
   const rerender = reactExports.useReducer(() => ({}), {})[1];
   const resolvedOptions = {
@@ -168356,10 +168102,10 @@ function useVirtualizerBase(options2) {
     () => new Virtualizer(resolvedOptions)
   );
   instance.setOptions(resolvedOptions);
-  useIsomorphicLayoutEffect$2(() => {
+  useIsomorphicLayoutEffect$1(() => {
     return instance._didMount();
   }, []);
-  useIsomorphicLayoutEffect$2(() => {
+  useIsomorphicLayoutEffect$1(() => {
     return instance._willUpdate();
   });
   return instance;
@@ -171854,13 +171600,6 @@ function off(obj) {
   }
 }
 var isBrowser$2 = typeof window !== "undefined";
-function resolveHookState(nextState, currentState) {
-  if (typeof nextState === "function") {
-    return nextState.length ? nextState(currentState) : nextState();
-  }
-  return nextState;
-}
-var useIsomorphicLayoutEffect$1 = isBrowser$2 ? reactExports.useLayoutEffect : reactExports.useEffect;
 var useEffectOnce = function(effect) {
   reactExports.useEffect(effect, []);
 };
@@ -171913,34 +171652,6 @@ var useWindowSize$1 = function(_a2) {
   }, []);
   return state;
 };
-function createGlobalState(initialState) {
-  var store = {
-    state: initialState instanceof Function ? initialState() : initialState,
-    setState: function(nextState) {
-      store.state = resolveHookState(nextState, store.state);
-      store.setters.forEach(function(setter) {
-        return setter(store.state);
-      });
-    },
-    setters: []
-  };
-  return function() {
-    var _a2 = reactExports.useState(store.state), globalState = _a2[0], stateSetter = _a2[1];
-    useEffectOnce(function() {
-      return function() {
-        store.setters = store.setters.filter(function(setter) {
-          return setter !== stateSetter;
-        });
-      };
-    });
-    useIsomorphicLayoutEffect$1(function() {
-      if (!store.setters.includes(stateSetter)) {
-        store.setters.push(stateSetter);
-      }
-    });
-    return [globalState, store.setState];
-  };
-}
 function useWindowSize() {
   const { forceLandscape } = useAppStateStore();
   let { width: width2, height: height2 } = useWindowSize$1();
@@ -171954,16 +171665,26 @@ function useWindowSize() {
   if (height2 > width2) orientation = "portrait";
   return { width: width2, height: height2, orientation };
 }
-const useCurrentStashFilter = createGlobalState();
-const useSceneFiltersLoading = createGlobalState(true);
-const useSceneFiltersError = createGlobalState();
+const useGlobalFilterState = create2((set4, get7) => ({
+  currentSavedFilter: void 0,
+  setCurrentSavedFilter: (filter) => set4({ currentSavedFilter: filter }),
+  loading: true,
+  setLoading: (loading2) => set4({ loading: loading2 }),
+  error: void 0,
+  setError: (error) => set4({ error })
+}));
 function useSceneFilters() {
-  const [sceneFiltersLoading, setSceneFiltersLoading] = useSceneFiltersLoading();
-  const [sceneFiltersError, setSceneFiltersError] = useSceneFiltersError();
-  const [currentStashFilter, setCurrentStashFilter] = useCurrentStashFilter();
+  const {
+    currentSavedFilter,
+    setCurrentSavedFilter,
+    loading: sceneFiltersLoading,
+    setLoading: setSceneFiltersLoading,
+    error: sceneFiltersError,
+    setError: setSceneFiltersError
+  } = useGlobalFilterState();
   const apolloClient = useApolloClient();
   const {
-    general: { stashDefaultScenesFilter, savedSceneFiltersNameAndIds },
+    general: { stashDefaultScenesFilter, availableSavedSceneFilters },
     tv: { defaultFilterId: stashTvDefaultFilterId },
     loading: stashConfigLoading
   } = useStashConfigStore();
@@ -171973,27 +171694,30 @@ function useSceneFilters() {
   if (onlyShowMatchingOrientation && orientation !== "square") {
     limitOrientation = orientation;
   }
-  const currentSceneFilter = reactExports.useMemo(
-    () => currentStashFilter && convertSavedFilterInStashFormatToUsableFormat(currentStashFilter),
-    [currentStashFilter, isRandomised, onlyShowMatchingOrientation && orientation]
-  );
-  const currentSceneFilterId = reactExports.useMemo(
-    () => currentStashFilter?.id,
-    [currentStashFilter]
+  const currentSearchableFilter = reactExports.useMemo(
+    () => currentSavedFilter && convertSavedToSearchableFilter(currentSavedFilter),
+    [currentSavedFilter, isRandomised, onlyShowMatchingOrientation && orientation]
   );
   reactExports.useEffect(() => {
-    if (stashConfigLoading || currentSceneFilter) return;
+    if (stashConfigLoading || currentSavedFilter) return;
     async function setCurrentSceneFilterOnInitialLoad() {
       try {
         if (stashTvDefaultFilterId) {
           await setCurrentSceneFilterById(stashTvDefaultFilterId);
         } else if (stashDefaultScenesFilter) {
-          setCurrentStashFilter(stashDefaultScenesFilter);
+          setCurrentSavedFilter({
+            ...stashDefaultScenesFilter,
+            filter: ""
+            // The filter prop is deprecated in favour of find_filter and object_filter, and it's not 
+            // provided when getting a default saved filter so we can safely set an empty string here.
+          });
         } else {
-          setCurrentStashFilter({
+          setCurrentSavedFilter({
             id: "",
             mode: FilterMode.Scenes,
-            name: ""
+            name: "",
+            filter: ""
+            // See the comment above about the `filter` prop
           });
         }
       } catch (error) {
@@ -172008,7 +171732,11 @@ function useSceneFilters() {
     if (!sceneFiltersStashResponse) {
       return void 0;
     }
-    setCurrentStashFilter(sceneFiltersStashResponse);
+    setCurrentSavedFilter({
+      ...sceneFiltersStashResponse,
+      filter: ""
+      // See the comment above about the `filter` prop
+    });
   }
   async function fetchSavedFilterFromStash(apolloClient2, filterId) {
     const { data: data2 } = await apolloClient2.query({
@@ -172017,53 +171745,55 @@ function useSceneFilters() {
     });
     return data2?.findSavedFilter ?? null;
   }
-  function convertSavedFilterInStashFormatToUsableFormat(stashFormatFilter) {
+  function convertSavedToSearchableFilter(savedFilter) {
+    function getGeneralFilter() {
+      const filter = new ListFilterModel(FilterMode.Scenes);
+      filter.configureFromSavedFilter(savedFilter);
+      const updatedFilter = { ...filter.makeFindFilter() };
+      if (updatedFilter.sort?.match(/^random_\d*$/) || isRandomised) {
+        let seed = Math.round(Math.random() * 1e6);
+        updatedFilter.sort = `random_${seed}`;
+      }
+      return updatedFilter;
+    }
+    function getSceneFilter() {
+      const filter = new ListFilterModel(FilterMode.Scenes);
+      filter.configureFromSavedFilter(savedFilter);
+      const sceneFilter = filter.makeFilter();
+      if (limitOrientation) {
+        sceneFilter.orientation = {
+          "value": [
+            limitOrientation.toUpperCase(),
+            "SQUARE"
+          ]
+        };
+      }
+      return sceneFilter;
+    }
     return {
-      generalFilter: processSavedFilterToGeneralFilter(
-        stashFormatFilter,
-        { forceRandomise: isRandomised }
-      ),
-      sceneFilter: processSavedFilterToSceneFilter(
-        stashFormatFilter,
-        { limitOrientation }
-      )
+      savedFilter,
+      generalFilter: getGeneralFilter(),
+      sceneFilter: getSceneFilter(),
+      get isStashTvDefaultFilter() {
+        return savedFilter.id === useStashConfigStore.getState().tv.defaultFilterId;
+      }
     };
   }
+  const availableSavedSceneFiltersWithDefault = reactExports.useMemo(
+    () => availableSavedSceneFilters.map((filter) => ({
+      ...filter,
+      isStashTvDefaultFilter: filter.id === stashTvDefaultFilterId
+    })),
+    [availableSavedSceneFilters, stashTvDefaultFilterId]
+  );
   return {
     sceneFiltersLoading,
     sceneFiltersError,
-    currentSceneFilter,
-    currentSceneFilterId,
+    currentSceneFilter: currentSearchableFilter,
     setCurrentSceneFilterById,
-    sceneFiltersNameAndIds: savedSceneFiltersNameAndIds,
-    defaultStashTvFilterId: stashTvDefaultFilterId,
-    currentStashFilter
+    availableSavedSceneFilters: availableSavedSceneFiltersWithDefault
   };
 }
-const processSavedFilterToGeneralFilter = (savedFilter, { forceRandomise } = {}) => {
-  const filter = new ListFilterModel(FilterMode.Scenes);
-  filter.configureFromSavedFilter(savedFilter);
-  const updatedFilter = { ...filter.makeFindFilter() };
-  if (updatedFilter.sort?.match(/^random_\d*$/) || forceRandomise) {
-    let seed = Math.round(Math.random() * 1e6);
-    updatedFilter.sort = `random_${seed}`;
-  }
-  return updatedFilter;
-};
-const processSavedFilterToSceneFilter = (savedFilter, { limitOrientation } = {}) => {
-  const filter = new ListFilterModel(FilterMode.Scenes);
-  filter.configureFromSavedFilter(savedFilter);
-  const sceneFilter = filter.makeFilter();
-  if (limitOrientation) {
-    sceneFilter.orientation = {
-      "value": [
-        limitOrientation.toUpperCase(),
-        "SQUARE"
-      ]
-    };
-  }
-  return sceneFilter;
-};
 const scenesPerPage = 20;
 function useScenes({ previewOnly } = {}) {
   const { currentSceneFilter } = useSceneFilters();
@@ -172229,12 +171959,12 @@ const VideoScroller = () => {
         currentIndexRef.current = clamp$2(
           0,
           typeof newIndex === "function" ? newIndex(currentIndexRef.current) : newIndex,
-          scenes.length - 1
+          scenes.length ? scenes.length - 1 : 0
         );
         return throttledSetCurrentIndex(currentIndexRef.current);
       });
     },
-    [rowVirtualizer]
+    [rowVirtualizer, scenes.length]
   );
   const scrollSnappingReenableTimeoutRef = reactExports.useRef();
   const scrollSnappingEnabled = () => !scrollSnappingReenableTimeoutRef.current;
@@ -178527,29 +178257,29 @@ const dragAction = {
   engine: DragEngine,
   resolver: dragConfigResolver
 };
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
+function _objectWithoutPropertiesLoose(source2, excluded) {
+  if (source2 == null) return {};
   var target = {};
-  var sourceKeys = Object.keys(source);
+  var sourceKeys = Object.keys(source2);
   var key, i;
   for (i = 0; i < sourceKeys.length; i++) {
     key = sourceKeys[i];
     if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
+    target[key] = source2[key];
   }
   return target;
 }
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-  var target = _objectWithoutPropertiesLoose(source, excluded);
+function _objectWithoutProperties(source2, excluded) {
+  if (source2 == null) return {};
+  var target = _objectWithoutPropertiesLoose(source2, excluded);
   var key, i;
   if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source2);
     for (i = 0; i < sourceSymbolKeys.length; i++) {
       key = sourceSymbolKeys[i];
       if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
+      if (!Object.prototype.propertyIsEnumerable.call(source2, key)) continue;
+      target[key] = source2[key];
     }
   }
   return target;
@@ -179757,28 +179487,28 @@ var AnimatedString = class _AnimatedString extends AnimatedValue {
 };
 var TreeContext = { dependencies: null };
 var AnimatedObject = class extends Animated {
-  constructor(source) {
+  constructor(source2) {
     super();
-    this.source = source;
-    this.setValue(source);
+    this.source = source2;
+    this.setValue(source2);
   }
   getValue(animated2) {
     const values3 = {};
-    eachProp(this.source, (source, key) => {
-      if (isAnimated(source)) {
-        values3[key] = source.getValue(animated2);
-      } else if (hasFluidValue(source)) {
-        values3[key] = getFluidValue(source);
+    eachProp(this.source, (source2, key) => {
+      if (isAnimated(source2)) {
+        values3[key] = source2.getValue(animated2);
+      } else if (hasFluidValue(source2)) {
+        values3[key] = getFluidValue(source2);
       } else if (!animated2) {
-        values3[key] = source;
+        values3[key] = source2;
       }
     });
     return values3;
   }
   /** Replace the raw object data */
-  setValue(source) {
-    this.source = source;
-    this.payload = this._makePayload(source);
+  setValue(source2) {
+    this.source = source2;
+    this.payload = this._makePayload(source2);
   }
   reset() {
     if (this.payload) {
@@ -179786,41 +179516,41 @@ var AnimatedObject = class extends Animated {
     }
   }
   /** Create a payload set. */
-  _makePayload(source) {
-    if (source) {
+  _makePayload(source2) {
+    if (source2) {
       const payload = /* @__PURE__ */ new Set();
-      eachProp(source, this._addToPayload, payload);
+      eachProp(source2, this._addToPayload, payload);
       return Array.from(payload);
     }
   }
   /** Add to a payload set. */
-  _addToPayload(source) {
-    if (TreeContext.dependencies && hasFluidValue(source)) {
-      TreeContext.dependencies.add(source);
+  _addToPayload(source2) {
+    if (TreeContext.dependencies && hasFluidValue(source2)) {
+      TreeContext.dependencies.add(source2);
     }
-    const payload = getPayload(source);
+    const payload = getPayload(source2);
     if (payload) {
       each(payload, (node2) => this.add(node2));
     }
   }
 };
 var AnimatedArray = class _AnimatedArray extends AnimatedObject {
-  constructor(source) {
-    super(source);
+  constructor(source2) {
+    super(source2);
   }
   /** @internal */
-  static create(source) {
-    return new _AnimatedArray(source);
+  static create(source2) {
+    return new _AnimatedArray(source2);
   }
   getValue() {
     return this.source.map((node2) => node2.getValue());
   }
-  setValue(source) {
+  setValue(source2) {
     const payload = this.getPayload();
-    if (source.length == payload.length) {
-      return payload.map((node2, i) => node2.setValue(source[i])).some(Boolean);
+    if (source2.length == payload.length) {
+      return payload.map((node2, i) => node2.setValue(source2[i])).some(Boolean);
     }
-    super.setValue(source.map(makeAnimated));
+    super.setValue(source2.map(makeAnimated));
     return true;
   }
 };
@@ -181557,9 +181287,9 @@ function useSpring(props, deps) {
   return isFn || arguments.length == 2 ? [values3, ref] : values3;
 }
 var Interpolation = class extends FrameValue {
-  constructor(source, args) {
+  constructor(source2, args) {
     super();
-    this.source = source;
+    this.source = source2;
     this.idle = true;
     this._active = /* @__PURE__ */ new Set();
     this.calc = createInterpolator(...args);
@@ -181599,15 +181329,15 @@ var Interpolation = class extends FrameValue {
   // Observe our sources only when we're observed.
   _attach() {
     let priority2 = 1;
-    each(toArray(this.source), (source) => {
-      if (hasFluidValue(source)) {
-        addFluidObserver(source, this);
+    each(toArray(this.source), (source2) => {
+      if (hasFluidValue(source2)) {
+        addFluidObserver(source2, this);
       }
-      if (isFrameValue(source)) {
-        if (!source.idle) {
-          this._active.add(source);
+      if (isFrameValue(source2)) {
+        if (!source2.idle) {
+          this._active.add(source2);
         }
-        priority2 = Math.max(priority2, source.priority + 1);
+        priority2 = Math.max(priority2, source2.priority + 1);
       }
     });
     this.priority = priority2;
@@ -181615,9 +181345,9 @@ var Interpolation = class extends FrameValue {
   }
   // Stop observing our sources once we have no observers.
   _detach() {
-    each(toArray(this.source), (source) => {
-      if (hasFluidValue(source)) {
-        removeFluidObserver(source, this);
+    each(toArray(this.source), (source2) => {
+      if (hasFluidValue(source2)) {
+        removeFluidObserver(source2, this);
       }
     });
     this._active.clear();
@@ -181642,8 +181372,8 @@ var Interpolation = class extends FrameValue {
     }
   }
 };
-function isIdle(source) {
-  return source.idle !== false;
+function isIdle(source2) {
+  return source2.idle !== false;
 }
 function checkIdle(active) {
   return !active.size || Array.from(active).every(isIdle);
@@ -181662,7 +181392,7 @@ function becomeIdle(self2) {
 }
 globals_exports.assign({
   createStringInterpolator: createStringInterpolator2,
-  to: (source, args) => new Interpolation(source, args)
+  to: (source2, args) => new Interpolation(source2, args)
 });
 var isCustomPropRE = /^--/;
 function dangerousStyleValue(name, value) {
@@ -182229,12 +181959,11 @@ function SettingsTab() {
   const { updateStashTvConfig, tv: { subtitleLanguage } } = useStashConfigStore();
   const apolloClient = useApolloClient();
   const {
-    sceneFiltersNameAndIds,
-    defaultStashTvFilterId,
     sceneFiltersLoading,
-    currentSceneFilterId,
+    sceneFiltersError,
+    currentSceneFilter,
     setCurrentSceneFilterById,
-    currentStashFilter
+    availableSavedSceneFilters
   } = useSceneFilters();
   const {
     isRandomised,
@@ -182269,14 +181998,17 @@ function SettingsTab() {
     }
   });
   const filters = reactExports.useMemo(
-    () => sceneFiltersNameAndIds.map((filter) => ({
+    () => availableSavedSceneFilters.map((filter) => ({
       value: filter.id,
-      label: filter.name + (filter.id === defaultStashTvFilterId ? " (default)" : "")
+      label: filter.name + (filter.isStashTvDefaultFilter ? " (default)" : ""),
+      isStashTvDefaultFilter: filter.isStashTvDefaultFilter
     })).sort((a2, b) => a2.label.localeCompare(b.label)),
-    [sceneFiltersNameAndIds, defaultStashTvFilterId]
+    [availableSavedSceneFilters]
   );
-  const selectedFilter = reactExports.useMemo(() => filters.find((filter) => filter.value === currentSceneFilterId), [currentSceneFilterId, filters]);
-  const scenelessFilterError = noScenesAvailable ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one.")) : null;
+  const selectedFilter = reactExports.useMemo(
+    () => filters.find((filter) => filter.value === currentSceneFilter?.savedFilter?.id),
+    [currentSceneFilter, filters]
+  );
   const subtitlesList = ISO6391.getAllNames().map((name) => ({
     label: name,
     value: ISO6391.getCode(name)
@@ -182324,7 +182056,7 @@ function SettingsTab() {
     SideDrawer,
     {
       title: /* @__PURE__ */ React$1.createElement("span", { ref: titleRef }, "Settings"),
-      closeDisabled: noScenesAvailable || scenesLoading,
+      closeDisabled: noScenesAvailable || scenesLoading || Boolean(sceneFiltersError),
       className: "SettingsTab"
     },
     /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement("h3", null, "Select a filter"), !sceneFiltersLoading ? /* @__PURE__ */ React$1.createElement(
@@ -182336,8 +182068,8 @@ function SettingsTab() {
         placeholder: `${filters.length > 0 ? "No filter selected" : "No filters saved in stash"}. Showing all scenes.`,
         theme: reactSelectTheme
       }
-    ) : /* @__PURE__ */ React$1.createElement("div", null, "Loading...")), /* @__PURE__ */ React$1.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), fetchingDataWarning, scenelessFilterError),
-    selectedFilter && selectedFilter.value !== defaultStashTvFilterId && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
+    ) : /* @__PURE__ */ React$1.createElement("div", null, "Loading...")), /* @__PURE__ */ React$1.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), fetchingDataWarning, sceneFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noScenesAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))),
+    selectedFilter && !selectedFilter.isStashTvDefaultFilter && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
       "button",
       {
         onClick: () => {
@@ -182353,7 +182085,7 @@ function SettingsTab() {
       selectedFilter?.label,
       '" as the default filter'
     ), /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement("small", null, "Set the currently selected scene filter as the default filter when opening Stash TV."))),
-    /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, currentStashFilter?.find_filter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement(
+    /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, currentSceneFilter?.savedFilter?.find_filter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement(
       "input",
       {
         checked: isRandomised,
@@ -182417,7 +182149,7 @@ function SettingsTab() {
       },
       "Reload Page"
     )),
-    debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.0.13")
+    debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.0.14")
   );
 }
 const Loading = (props) => {
@@ -183395,4 +183127,4 @@ ReactDOM.render(
 export {
   videojs as v
 };
-//# sourceMappingURL=index-BLXTloYc.js.map
+//# sourceMappingURL=index-ZOx2-m0d.js.map

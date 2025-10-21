@@ -221,7 +221,6 @@
   align-self: flex-end;
   background-color: rgba(0, 0, 0, 0.7);
   display: grid;
-  transition: opacity ease-in-out;
 }
 .VideoItem .scene-info a {
   color: inherit;
@@ -268,6 +267,21 @@
 }
 .VideoItem .ScenePlayer .video-wrapper {
   height: 100%;
+}
+.VideoItem .scene-info, .VideoItem .toggleable-ui, .VideoItem .toggleable-ui-button {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease-in-out, visibility 0s linear 0.15s; /* delay visibility change until after opacity fades */
+  /* When visible */
+}
+.VideoItem .scene-info.toggleable-ui-button, .VideoItem .toggleable-ui.toggleable-ui-button, .VideoItem .toggleable-ui-button.toggleable-ui-button {
+  opacity: 0.35;
+  visibility: unset;
+}
+.VideoItem .scene-info.active, .VideoItem .toggleable-ui.active, .VideoItem .toggleable-ui-button.active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.15s ease-in-out, visibility 0s linear 0s; /* immediate visibility */
 }.vjs-marker-dot {
   position: absolute;
   background-color: #10b981;
