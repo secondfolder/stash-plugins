@@ -7773,12 +7773,12 @@ function asIcon(_ref3) {
       width: width2,
       height: height2
     } = main;
-    const offset = {
+    const offset3 = {
       x: width2 / height2 / 2,
       y: 0.5
     };
     attributes["style"] = joinStyles(_objectSpread2$3(_objectSpread2$3({}, styles2), {}, {
-      "transform-origin": "".concat(offset.x + transform3.x / 16, "em ").concat(offset.y + transform3.y / 16, "em")
+      "transform-origin": "".concat(offset3.x + transform3.x / 16, "em ").concat(offset3.y + transform3.y / 16, "em")
     }));
   }
   return [{
@@ -14231,22 +14231,22 @@ var concatTypedArrays = function concatTypedArrays2() {
     return total + (buf.byteLength || buf.length);
   }, 0);
   var tempBuffer = new Uint8Array(totalLen);
-  var offset = 0;
+  var offset3 = 0;
   buffers.forEach(function(buf) {
     buf = toUint8(buf);
-    tempBuffer.set(buf, offset);
-    offset += buf.byteLength;
+    tempBuffer.set(buf, offset3);
+    offset3 += buf.byteLength;
   });
   return tempBuffer;
 };
 var bytesMatch = function bytesMatch2(a2, b, _temp3) {
-  var _ref3 = _temp3 === void 0 ? {} : _temp3, _ref3$offset = _ref3.offset, offset = _ref3$offset === void 0 ? 0 : _ref3$offset, _ref3$mask = _ref3.mask, mask = _ref3$mask === void 0 ? [] : _ref3$mask;
+  var _ref3 = _temp3 === void 0 ? {} : _temp3, _ref3$offset = _ref3.offset, offset3 = _ref3$offset === void 0 ? 0 : _ref3$offset, _ref3$mask = _ref3.mask, mask = _ref3$mask === void 0 ? [] : _ref3$mask;
   a2 = toUint8(a2);
   b = toUint8(b);
   var fn = b.every ? b.every : Array.prototype.every;
-  return b.length && a2.length - offset >= b.length && // ie 11 doesn't support every on uin8
+  return b.length && a2.length - offset3 >= b.length && // ie 11 doesn't support every on uin8
   fn.call(b, function(bByte, i) {
-    var aByte = mask[i] ? mask[i] & a2[offset + i] : a2[offset + i];
+    var aByte = mask[i] ? mask[i] & a2[offset3 + i] : a2[offset3 + i];
     return bByte === aByte;
   });
 };
@@ -15421,26 +15421,26 @@ function requireDom() {
   }
   CharacterData.prototype = {
     data: "",
-    substringData: function(offset, count2) {
-      return this.data.substring(offset, offset + count2);
+    substringData: function(offset3, count2) {
+      return this.data.substring(offset3, offset3 + count2);
     },
     appendData: function(text) {
       text = this.data + text;
       this.nodeValue = this.data = text;
       this.length = text.length;
     },
-    insertData: function(offset, text) {
-      this.replaceData(offset, 0, text);
+    insertData: function(offset3, text) {
+      this.replaceData(offset3, 0, text);
     },
     appendChild: function(newChild) {
       throw new Error(ExceptionMessage[HIERARCHY_REQUEST_ERR]);
     },
-    deleteData: function(offset, count2) {
-      this.replaceData(offset, count2, "");
+    deleteData: function(offset3, count2) {
+      this.replaceData(offset3, count2, "");
     },
-    replaceData: function(offset, count2, text) {
-      var start3 = this.data.substring(0, offset);
-      var end2 = this.data.substring(offset + count2);
+    replaceData: function(offset3, count2, text) {
+      var start3 = this.data.substring(0, offset3);
+      var end2 = this.data.substring(offset3 + count2);
       text = start3 + text + end2;
       this.nodeValue = this.data = text;
       this.length = text.length;
@@ -15452,10 +15452,10 @@ function requireDom() {
   Text.prototype = {
     nodeName: "#text",
     nodeType: TEXT_NODE,
-    splitText: function(offset) {
+    splitText: function(offset3) {
       var text = this.data;
-      var newText = text.substring(offset);
-      text = text.substring(0, offset);
+      var newText = text.substring(offset3);
+      text = text.substring(0, offset3);
       this.data = this.nodeValue = text;
       this.length = text.length;
       var newNode = this.ownerDocument.createTextNode(newText);
@@ -18517,12 +18517,12 @@ function requireSax() {
       }
       this.tagName = tagName;
     },
-    addValue: function(qName, value, offset) {
+    addValue: function(qName, value, offset3) {
       if (!tagNamePattern.test(qName)) {
         throw new Error("invalid attribute:" + qName);
       }
       this.attributeNames[qName] = this.length;
-      this[this.length++] = { qName, value, offset };
+      this[this.length++] = { qName, value, offset: offset3 };
     },
     length: 0,
     getLocalName: function(i) {
@@ -20402,31 +20402,31 @@ function requireParseSidx() {
 var parseSidxExports = requireParseSidx();
 const parseSidx = /* @__PURE__ */ getDefaultExportFromCjs(parseSidxExports);
 var ID3 = toUint8([73, 68, 51]);
-var getId3Size = function getId3Size2(bytes, offset) {
-  if (offset === void 0) {
-    offset = 0;
+var getId3Size = function getId3Size2(bytes, offset3) {
+  if (offset3 === void 0) {
+    offset3 = 0;
   }
   bytes = toUint8(bytes);
-  var flags = bytes[offset + 5];
-  var returnSize = bytes[offset + 6] << 21 | bytes[offset + 7] << 14 | bytes[offset + 8] << 7 | bytes[offset + 9];
+  var flags = bytes[offset3 + 5];
+  var returnSize = bytes[offset3 + 6] << 21 | bytes[offset3 + 7] << 14 | bytes[offset3 + 8] << 7 | bytes[offset3 + 9];
   var footerPresent = (flags & 16) >> 4;
   if (footerPresent) {
     return returnSize + 20;
   }
   return returnSize + 10;
 };
-var getId3Offset = function getId3Offset2(bytes, offset) {
-  if (offset === void 0) {
-    offset = 0;
+var getId3Offset = function getId3Offset2(bytes, offset3) {
+  if (offset3 === void 0) {
+    offset3 = 0;
   }
   bytes = toUint8(bytes);
-  if (bytes.length - offset < 10 || !bytesMatch(bytes, ID3, {
-    offset
+  if (bytes.length - offset3 < 10 || !bytesMatch(bytes, ID3, {
+    offset: offset3
   })) {
-    return offset;
+    return offset3;
   }
-  offset += getId3Size(bytes, offset);
-  return getId3Offset2(bytes, offset);
+  offset3 += getId3Size(bytes, offset3);
+  return getId3Offset2(bytes, offset3);
 };
 var normalizePath$1 = function normalizePath(path) {
   if (typeof path === "string") {
@@ -20519,17 +20519,17 @@ var getLength = function getLength2(byte) {
   }
   return len;
 };
-var getvint = function getvint2(bytes, offset, removeLength, signed) {
+var getvint = function getvint2(bytes, offset3, removeLength, signed) {
   if (removeLength === void 0) {
     removeLength = true;
   }
   if (signed === void 0) {
     signed = false;
   }
-  var length2 = getLength(bytes[offset]);
-  var valueBytes = bytes.subarray(offset, offset + length2);
+  var length2 = getLength(bytes[offset3]);
+  var valueBytes = bytes.subarray(offset3, offset3 + length2);
   if (removeLength) {
-    valueBytes = Array.prototype.slice.call(bytes, offset, offset + length2);
+    valueBytes = Array.prototype.slice.call(bytes, offset3, offset3 + length2);
     valueBytes[0] ^= LENGTH_TABLE[length2 - 1];
   }
   return {
@@ -20559,16 +20559,16 @@ var normalizePaths2 = function normalizePaths3(paths) {
     return normalizePath2(p2);
   });
 };
-var getInfinityDataSize = function getInfinityDataSize2(id, bytes, offset) {
-  if (offset >= bytes.length) {
+var getInfinityDataSize = function getInfinityDataSize2(id, bytes, offset3) {
+  if (offset3 >= bytes.length) {
     return bytes.length;
   }
-  var innerid = getvint(bytes, offset, false);
+  var innerid = getvint(bytes, offset3, false);
   if (bytesMatch(id.bytes, innerid.bytes)) {
-    return offset;
+    return offset3;
   }
-  var dataHeader = getvint(bytes, offset + innerid.length);
-  return getInfinityDataSize2(id, bytes, offset + dataHeader.length + dataHeader.value + innerid.length);
+  var dataHeader = getvint(bytes, offset3 + innerid.length);
+  return getInfinityDataSize2(id, bytes, offset3 + dataHeader.length + dataHeader.value + innerid.length);
 };
 var findEbml = function findEbml2(bytes, paths) {
   paths = normalizePaths2(paths);
@@ -20703,16 +20703,16 @@ var CONSTANTS = {
 };
 var _isLikely = {
   aac: function aac(bytes) {
-    var offset = getId3Offset(bytes);
+    var offset3 = getId3Offset(bytes);
     return bytesMatch(bytes, [255, 16], {
-      offset,
+      offset: offset3,
       mask: [255, 22]
     });
   },
   mp3: function mp3(bytes) {
-    var offset = getId3Offset(bytes);
+    var offset3 = getId3Offset(bytes);
     return bytesMatch(bytes, [255, 2], {
-      offset,
+      offset: offset3,
       mask: [255, 6]
     });
   },
@@ -20754,9 +20754,9 @@ var _isLikely = {
     });
   },
   ac3: function ac3(bytes) {
-    var offset = getId3Offset(bytes);
+    var offset3 = getId3Offset(bytes);
     return bytesMatch(bytes, CONSTANTS.ac3, {
-      offset
+      offset: offset3
     });
   },
   ts: function ts(bytes) {
@@ -20773,9 +20773,9 @@ var _isLikely = {
     return false;
   },
   flac: function flac(bytes) {
-    var offset = getId3Offset(bytes);
+    var offset3 = getId3Offset(bytes);
     return bytesMatch(bytes, CONSTANTS.flac, {
-      offset
+      offset: offset3
     });
   },
   ogg: function ogg(bytes) {
@@ -29183,7 +29183,7 @@ var ResizeManager = /* @__PURE__ */ (function(_Component) {
   return ResizeManager2;
 })(Component$1$1);
 Component$1$1.registerComponent("ResizeManager", ResizeManager);
-var defaults$4 = {
+var defaults$5 = {
   trackingThreshold: 20,
   liveTolerance: 15
 };
@@ -29191,7 +29191,7 @@ var LiveTracker = /* @__PURE__ */ (function(_Component) {
   _inheritsLoose$1(LiveTracker2, _Component);
   function LiveTracker2(player, options2) {
     var _this;
-    var options_ = mergeOptions$3(defaults$4, options2, {
+    var options_ = mergeOptions$3(defaults$5, options2, {
       createEl: false
     });
     _this = _Component.call(this, player, options_) || this;
@@ -34637,14 +34637,14 @@ var updateSegment = function updateSegment2(a2, b) {
   }
   return result;
 };
-var updateSegments = function updateSegments2(original, update2, offset) {
+var updateSegments = function updateSegments2(original, update2, offset3) {
   var oldSegments = original.slice();
   var newSegments = update2.slice();
-  offset = offset || 0;
+  offset3 = offset3 || 0;
   var result = [];
   var currentMap;
   for (var newIndex = 0; newIndex < newSegments.length; newIndex++) {
-    var oldSegment = oldSegments[newIndex + offset];
+    var oldSegment = oldSegments[newIndex + offset3];
     var newSegment = newSegments[newIndex];
     if (oldSegment) {
       currentMap = oldSegment.map || currentMap;
@@ -35757,10 +35757,10 @@ var DashPlaylistLoader = /* @__PURE__ */ (function(_EventTarget) {
           code: 2
         }, request);
       }
-      var _playlist$sidx$bytera = playlist.sidx.byterange, offset = _playlist$sidx$bytera.offset, length2 = _playlist$sidx$bytera.length;
-      if (bytes.length >= length2 + offset) {
+      var _playlist$sidx$bytera = playlist.sidx.byterange, offset3 = _playlist$sidx$bytera.offset, length2 = _playlist$sidx$bytera.length;
+      if (bytes.length >= length2 + offset3) {
         return fin(err, {
-          response: bytes.subarray(offset, offset + length2),
+          response: bytes.subarray(offset3, offset3 + length2),
           status: request.status,
           uri: request.uri
         });
@@ -37224,7 +37224,7 @@ var workerCode$1 = transform(getWorkerString(function() {
   };
   (function() {
     var audioTrun, videoTrun, trunHeader;
-    trunHeader = function trunHeader2(samples, offset) {
+    trunHeader = function trunHeader2(samples, offset3) {
       var durationPresent = 0, sizePresent = 0, flagsPresent = 0, compositionTimeOffset = 0;
       if (samples.length) {
         if (samples[0].duration !== void 0) {
@@ -37252,18 +37252,18 @@ var workerCode$1 = transform(getWorkerString(function() {
         (samples.length & 65280) >>> 8,
         samples.length & 255,
         // sample_count
-        (offset & 4278190080) >>> 24,
-        (offset & 16711680) >>> 16,
-        (offset & 65280) >>> 8,
-        offset & 255
+        (offset3 & 4278190080) >>> 24,
+        (offset3 & 16711680) >>> 16,
+        (offset3 & 65280) >>> 8,
+        offset3 & 255
         // data_offset
       ];
     };
-    videoTrun = function videoTrun2(track, offset) {
+    videoTrun = function videoTrun2(track, offset3) {
       var bytesOffest, bytes, header, samples, sample, i;
       samples = track.samples || [];
-      offset += 8 + 12 + 16 * samples.length;
-      header = trunHeader(samples, offset);
+      offset3 += 8 + 12 + 16 * samples.length;
+      header = trunHeader(samples, offset3);
       bytes = new Uint8Array(header.length + samples.length * 16);
       bytes.set(header);
       bytesOffest = header.length;
@@ -37288,11 +37288,11 @@ var workerCode$1 = transform(getWorkerString(function() {
       }
       return box(types2.trun, bytes);
     };
-    audioTrun = function audioTrun2(track, offset) {
+    audioTrun = function audioTrun2(track, offset3) {
       var bytes, bytesOffest, header, samples, sample, i;
       samples = track.samples || [];
-      offset += 8 + 12 + 8 * samples.length;
-      header = trunHeader(samples, offset);
+      offset3 += 8 + 12 + 8 * samples.length;
+      header = trunHeader(samples, offset3);
       bytes = new Uint8Array(header.length + samples.length * 8);
       bytes.set(header);
       bytesOffest = header.length;
@@ -37309,11 +37309,11 @@ var workerCode$1 = transform(getWorkerString(function() {
       }
       return box(types2.trun, bytes);
     };
-    trun$1 = function trun2(track, offset) {
+    trun$1 = function trun2(track, offset3) {
       if (track.type === "audio") {
-        return audioTrun(track, offset);
+        return audioTrun(track, offset3);
       }
-      return videoTrun(track, offset);
+      return videoTrun(track, offset3);
     };
   })();
   var mp4Generator = {
@@ -37764,19 +37764,19 @@ var workerCode$1 = transform(getWorkerString(function() {
     return sei.payload.subarray(8, sei.payload.length - 1);
   };
   var parseCaptionPackets = function parseCaptionPackets2(pts, userData) {
-    var results = [], i, count2, offset, data2;
+    var results = [], i, count2, offset3, data2;
     if (!(userData[0] & 64)) {
       return results;
     }
     count2 = userData[0] & 31;
     for (i = 0; i < count2; i++) {
-      offset = i * 3;
+      offset3 = i * 3;
       data2 = {
-        type: userData[offset + 2] & 3,
+        type: userData[offset3 + 2] & 3,
         pts
       };
-      if (userData[offset + 2] & 4) {
-        data2.ccData = userData[offset + 3] << 8 | userData[offset + 4];
+      if (userData[offset3 + 2] & 4) {
+        data2.ccData = userData[offset3 + 3] << 8 | userData[offset3 + 4];
         results.push(data2);
       }
     }
@@ -39234,14 +39234,14 @@ var workerCode$1 = transform(getWorkerString(function() {
     this.packetsWaitingForPmt = [];
     this.programMapTable = void 0;
     parsePsi = function parsePsi2(payload, psi) {
-      var offset = 0;
+      var offset3 = 0;
       if (psi.payloadUnitStartIndicator) {
-        offset += payload[offset] + 1;
+        offset3 += payload[offset3] + 1;
       }
       if (psi.type === "pat") {
-        parsePat2(payload.subarray(offset), psi);
+        parsePat2(payload.subarray(offset3), psi);
       } else {
-        parsePmt2(payload.subarray(offset), psi);
+        parsePmt2(payload.subarray(offset3), psi);
       }
     };
     parsePat2 = function parsePat3(payload, pat) {
@@ -39251,7 +39251,7 @@ var workerCode$1 = transform(getWorkerString(function() {
       pat.pmtPid = self2.pmtPid;
     };
     parsePmt2 = function parsePmt3(payload, pmt) {
-      var sectionLength, tableEnd, programInfoLength, offset;
+      var sectionLength, tableEnd, programInfoLength, offset3;
       if (!(payload[5] & 1)) {
         return;
       }
@@ -39263,10 +39263,10 @@ var workerCode$1 = transform(getWorkerString(function() {
       sectionLength = (payload[1] & 15) << 8 | payload[2];
       tableEnd = 3 + sectionLength - 4;
       programInfoLength = (payload[10] & 15) << 8 | payload[11];
-      offset = 12 + programInfoLength;
-      while (offset < tableEnd) {
-        var streamType = payload[offset];
-        var pid = (payload[offset + 1] & 31) << 8 | payload[offset + 2];
+      offset3 = 12 + programInfoLength;
+      while (offset3 < tableEnd) {
+        var streamType = payload[offset3];
+        var pid = (payload[offset3 + 1] & 31) << 8 | payload[offset3 + 2];
         if (streamType === streamTypes.H264_STREAM_TYPE && self2.programMapTable.video === null) {
           self2.programMapTable.video = pid;
         } else if (streamType === streamTypes.ADTS_STREAM_TYPE && self2.programMapTable.audio === null) {
@@ -39274,37 +39274,37 @@ var workerCode$1 = transform(getWorkerString(function() {
         } else if (streamType === streamTypes.METADATA_STREAM_TYPE) {
           self2.programMapTable["timed-metadata"][pid] = streamType;
         }
-        offset += ((payload[offset + 3] & 15) << 8 | payload[offset + 4]) + 5;
+        offset3 += ((payload[offset3 + 3] & 15) << 8 | payload[offset3 + 4]) + 5;
       }
       pmt.programMapTable = self2.programMapTable;
     };
     this.push = function(packet) {
-      var result = {}, offset = 4;
+      var result = {}, offset3 = 4;
       result.payloadUnitStartIndicator = !!(packet[1] & 64);
       result.pid = packet[1] & 31;
       result.pid <<= 8;
       result.pid |= packet[2];
       if ((packet[3] & 48) >>> 4 > 1) {
-        offset += packet[offset] + 1;
+        offset3 += packet[offset3] + 1;
       }
       if (result.pid === 0) {
         result.type = "pat";
-        parsePsi(packet.subarray(offset), result);
+        parsePsi(packet.subarray(offset3), result);
         this.trigger("data", result);
       } else if (result.pid === this.pmtPid) {
         result.type = "pmt";
-        parsePsi(packet.subarray(offset), result);
+        parsePsi(packet.subarray(offset3), result);
         this.trigger("data", result);
         while (this.packetsWaitingForPmt.length) {
           this.processPes_.apply(this, this.packetsWaitingForPmt.shift());
         }
       } else if (this.programMapTable === void 0) {
-        this.packetsWaitingForPmt.push([packet, offset, result]);
+        this.packetsWaitingForPmt.push([packet, offset3, result]);
       } else {
-        this.processPes_(packet, offset, result);
+        this.processPes_(packet, offset3, result);
       }
     };
-    this.processPes_ = function(packet, offset, result) {
+    this.processPes_ = function(packet, offset3, result) {
       if (result.pid === this.programMapTable.video) {
         result.streamType = streamTypes.H264_STREAM_TYPE;
       } else if (result.pid === this.programMapTable.audio) {
@@ -39313,7 +39313,7 @@ var workerCode$1 = transform(getWorkerString(function() {
         result.streamType = this.programMapTable["timed-metadata"][result.pid];
       }
       result.type = "pes";
-      result.data = packet.subarray(offset);
+      result.data = packet.subarray(offset3);
       this.trigger("data", result);
     };
   };
@@ -39357,15 +39357,15 @@ var workerCode$1 = transform(getWorkerString(function() {
     }, flushStream = function flushStream2(stream2, type3, forceFlush) {
       var packetData = new Uint8Array(stream2.size), event = {
         type: type3
-      }, i = 0, offset = 0, packetFlushable = false, fragment;
+      }, i = 0, offset3 = 0, packetFlushable = false, fragment;
       if (!stream2.data.length || stream2.size < 9) {
         return;
       }
       event.trackId = stream2.data[0].pid;
       for (i = 0; i < stream2.data.length; i++) {
         fragment = stream2.data[i];
-        packetData.set(fragment.data, offset);
-        offset += fragment.data.byteLength;
+        packetData.set(fragment.data, offset3);
+        offset3 += fragment.data.byteLength;
       }
       parsePes(packetData, event);
       packetFlushable = type3 === "video" || event.packetLength <= stream2.size;
@@ -40010,18 +40010,18 @@ var workerCode$1 = transform(getWorkerString(function() {
     }
     return returnSize + 10;
   };
-  var getId3Offset3 = function getId3Offset4(data2, offset) {
-    if (data2.length - offset < 10 || data2[offset] !== "I".charCodeAt(0) || data2[offset + 1] !== "D".charCodeAt(0) || data2[offset + 2] !== "3".charCodeAt(0)) {
-      return offset;
+  var getId3Offset3 = function getId3Offset4(data2, offset3) {
+    if (data2.length - offset3 < 10 || data2[offset3] !== "I".charCodeAt(0) || data2[offset3 + 1] !== "D".charCodeAt(0) || data2[offset3 + 2] !== "3".charCodeAt(0)) {
+      return offset3;
     }
-    offset += parseId3TagSize(data2, offset);
-    return getId3Offset4(data2, offset);
+    offset3 += parseId3TagSize(data2, offset3);
+    return getId3Offset4(data2, offset3);
   };
   var isLikelyAacData$1 = function isLikelyAacData2(data2) {
-    var offset = getId3Offset3(data2, 0);
-    return data2.length >= offset + 2 && (data2[offset] & 255) === 255 && (data2[offset + 1] & 240) === 240 && // verify that the 2 layer bits are 0, aka this
+    var offset3 = getId3Offset3(data2, 0);
+    return data2.length >= offset3 + 2 && (data2[offset3] & 255) === 255 && (data2[offset3 + 1] & 240) === 240 && // verify that the 2 layer bits are 0, aka this
     // is not mp3 data but aac data.
-    (data2[offset + 1] & 22) === 16;
+    (data2[offset3 + 1] & 22) === 16;
   };
   var parseSyncSafeInteger = function parseSyncSafeInteger2(data2) {
     return data2[0] << 21 | data2[1] << 14 | data2[2] << 7 | data2[3];
@@ -40578,7 +40578,7 @@ var workerCode$1 = transform(getWorkerString(function() {
   };
   _CoalesceStream.prototype = new stream();
   _CoalesceStream.prototype.flush = function(flushSource) {
-    var offset = 0, event = {
+    var offset3 = 0, event = {
       captions: [],
       captionStreams: {},
       metadata: [],
@@ -40621,8 +40621,8 @@ var workerCode$1 = transform(getWorkerString(function() {
       event.initSegment.set(initSegment);
       event.data = new Uint8Array(this.pendingBytes);
       for (i = 0; i < this.pendingBoxes.length; i++) {
-        event.data.set(this.pendingBoxes[i], offset);
-        offset += this.pendingBoxes[i].byteLength;
+        event.data.set(this.pendingBoxes[i], offset3);
+        offset3 += this.pendingBoxes[i].byteLength;
       }
       for (i = 0; i < this.pendingCaptions.length; i++) {
         caption = this.pendingCaptions[i];
@@ -40943,31 +40943,31 @@ var workerCode$1 = transform(getWorkerString(function() {
       version: data2[0],
       flags: new Uint8Array(data2.subarray(1, 4)),
       samples: []
-    }, view = new DataView(data2.buffer, data2.byteOffset, data2.byteLength), dataOffsetPresent = result.flags[2] & 1, firstSampleFlagsPresent = result.flags[2] & 4, sampleDurationPresent = result.flags[1] & 1, sampleSizePresent = result.flags[1] & 2, sampleFlagsPresent = result.flags[1] & 4, sampleCompositionTimeOffsetPresent = result.flags[1] & 8, sampleCount = view.getUint32(4), offset = 8, sample;
+    }, view = new DataView(data2.buffer, data2.byteOffset, data2.byteLength), dataOffsetPresent = result.flags[2] & 1, firstSampleFlagsPresent = result.flags[2] & 4, sampleDurationPresent = result.flags[1] & 1, sampleSizePresent = result.flags[1] & 2, sampleFlagsPresent = result.flags[1] & 4, sampleCompositionTimeOffsetPresent = result.flags[1] & 8, sampleCount = view.getUint32(4), offset3 = 8, sample;
     if (dataOffsetPresent) {
-      result.dataOffset = view.getInt32(offset);
-      offset += 4;
+      result.dataOffset = view.getInt32(offset3);
+      offset3 += 4;
     }
     if (firstSampleFlagsPresent && sampleCount) {
       sample = {
-        flags: parseSampleFlags_1(data2.subarray(offset, offset + 4))
+        flags: parseSampleFlags_1(data2.subarray(offset3, offset3 + 4))
       };
-      offset += 4;
+      offset3 += 4;
       if (sampleDurationPresent) {
-        sample.duration = view.getUint32(offset);
-        offset += 4;
+        sample.duration = view.getUint32(offset3);
+        offset3 += 4;
       }
       if (sampleSizePresent) {
-        sample.size = view.getUint32(offset);
-        offset += 4;
+        sample.size = view.getUint32(offset3);
+        offset3 += 4;
       }
       if (sampleCompositionTimeOffsetPresent) {
         if (result.version === 1) {
-          sample.compositionTimeOffset = view.getInt32(offset);
+          sample.compositionTimeOffset = view.getInt32(offset3);
         } else {
-          sample.compositionTimeOffset = view.getUint32(offset);
+          sample.compositionTimeOffset = view.getUint32(offset3);
         }
-        offset += 4;
+        offset3 += 4;
       }
       result.samples.push(sample);
       sampleCount--;
@@ -40975,24 +40975,24 @@ var workerCode$1 = transform(getWorkerString(function() {
     while (sampleCount--) {
       sample = {};
       if (sampleDurationPresent) {
-        sample.duration = view.getUint32(offset);
-        offset += 4;
+        sample.duration = view.getUint32(offset3);
+        offset3 += 4;
       }
       if (sampleSizePresent) {
-        sample.size = view.getUint32(offset);
-        offset += 4;
+        sample.size = view.getUint32(offset3);
+        offset3 += 4;
       }
       if (sampleFlagsPresent) {
-        sample.flags = parseSampleFlags_1(data2.subarray(offset, offset + 4));
-        offset += 4;
+        sample.flags = parseSampleFlags_1(data2.subarray(offset3, offset3 + 4));
+        offset3 += 4;
       }
       if (sampleCompositionTimeOffsetPresent) {
         if (result.version === 1) {
-          sample.compositionTimeOffset = view.getInt32(offset);
+          sample.compositionTimeOffset = view.getInt32(offset3);
         } else {
-          sample.compositionTimeOffset = view.getUint32(offset);
+          sample.compositionTimeOffset = view.getUint32(offset3);
         }
-        offset += 4;
+        offset3 += 4;
       }
       result.samples.push(sample);
     }
@@ -41049,8 +41049,8 @@ var workerCode$1 = transform(getWorkerString(function() {
   var window_12 = win;
   var discardEmulationPreventionBytes3 = captionPacketParser.discardEmulationPreventionBytes;
   var CaptionStream = captionStream.CaptionStream;
-  var mapToSample = function mapToSample2(offset, samples) {
-    var approximateOffset = offset;
+  var mapToSample = function mapToSample2(offset3, samples) {
+    var approximateOffset = offset3;
     for (var i = 0; i < samples.length; i++) {
       var sample = samples[i];
       if (approximateOffset < sample.size) {
@@ -41506,11 +41506,11 @@ var workerCode$1 = transform(getWorkerString(function() {
     return !!(packet[1] & 64);
   };
   var parseAdaptionField = function parseAdaptionField2(packet) {
-    var offset = 0;
+    var offset3 = 0;
     if ((packet[3] & 48) >>> 4 > 1) {
-      offset += packet[4] + 1;
+      offset3 += packet[4] + 1;
     }
-    return offset;
+    return offset3;
   };
   var parseType = function parseType2(packet, pmtPid) {
     var pid = parsePid(packet);
@@ -41525,11 +41525,11 @@ var workerCode$1 = transform(getWorkerString(function() {
   };
   var parsePat = function parsePat2(packet) {
     var pusi = parsePayloadUnitStartIndicator(packet);
-    var offset = 4 + parseAdaptionField(packet);
+    var offset3 = 4 + parseAdaptionField(packet);
     if (pusi) {
-      offset += packet[offset] + 1;
+      offset3 += packet[offset3] + 1;
     }
-    return (packet[offset + 10] & 31) << 8 | packet[offset + 11];
+    return (packet[offset3 + 10] & 31) << 8 | packet[offset3 + 11];
   };
   var parsePmt = function parsePmt2(packet) {
     var programMapTable = {};
@@ -41545,11 +41545,11 @@ var workerCode$1 = transform(getWorkerString(function() {
     sectionLength = (packet[payloadOffset + 1] & 15) << 8 | packet[payloadOffset + 2];
     tableEnd = 3 + sectionLength - 4;
     programInfoLength = (packet[payloadOffset + 10] & 15) << 8 | packet[payloadOffset + 11];
-    var offset = 12 + programInfoLength;
-    while (offset < tableEnd) {
-      var i = payloadOffset + offset;
+    var offset3 = 12 + programInfoLength;
+    while (offset3 < tableEnd) {
+      var i = payloadOffset + offset3;
       programMapTable[(packet[i + 1] & 31) << 8 | packet[i + 2]] = packet[i];
-      offset += ((packet[i + 3] & 15) << 8 | packet[i + 4]) + 5;
+      offset3 += ((packet[i + 3] & 15) << 8 | packet[i + 4]) + 5;
     }
     return programMapTable;
   };
@@ -41572,23 +41572,23 @@ var workerCode$1 = transform(getWorkerString(function() {
     if (!pusi) {
       return null;
     }
-    var offset = 4 + parseAdaptionField(packet);
-    if (offset >= packet.byteLength) {
+    var offset3 = 4 + parseAdaptionField(packet);
+    if (offset3 >= packet.byteLength) {
       return null;
     }
     var pes = null;
     var ptsDtsFlags;
-    ptsDtsFlags = packet[offset + 7];
+    ptsDtsFlags = packet[offset3 + 7];
     if (ptsDtsFlags & 192) {
       pes = {};
-      pes.pts = (packet[offset + 9] & 14) << 27 | (packet[offset + 10] & 255) << 20 | (packet[offset + 11] & 254) << 12 | (packet[offset + 12] & 255) << 5 | (packet[offset + 13] & 254) >>> 3;
+      pes.pts = (packet[offset3 + 9] & 14) << 27 | (packet[offset3 + 10] & 255) << 20 | (packet[offset3 + 11] & 254) << 12 | (packet[offset3 + 12] & 255) << 5 | (packet[offset3 + 13] & 254) >>> 3;
       pes.pts *= 4;
-      pes.pts += (packet[offset + 13] & 6) >>> 1;
+      pes.pts += (packet[offset3 + 13] & 6) >>> 1;
       pes.dts = pes.pts;
       if (ptsDtsFlags & 64) {
-        pes.dts = (packet[offset + 14] & 14) << 27 | (packet[offset + 15] & 255) << 20 | (packet[offset + 16] & 254) << 12 | (packet[offset + 17] & 255) << 5 | (packet[offset + 18] & 254) >>> 3;
+        pes.dts = (packet[offset3 + 14] & 14) << 27 | (packet[offset3 + 15] & 255) << 20 | (packet[offset3 + 16] & 254) << 12 | (packet[offset3 + 17] & 255) << 5 | (packet[offset3 + 18] & 254) >>> 3;
         pes.dts *= 4;
-        pes.dts += (packet[offset + 18] & 6) >>> 1;
+        pes.dts += (packet[offset3 + 18] & 6) >>> 1;
       }
     }
     return pes;
@@ -41610,8 +41610,8 @@ var workerCode$1 = transform(getWorkerString(function() {
     }
   };
   var videoPacketContainsKeyFrame = function videoPacketContainsKeyFrame2(packet) {
-    var offset = 4 + parseAdaptionField(packet);
-    var frameBuffer = packet.subarray(offset);
+    var offset3 = 4 + parseAdaptionField(packet);
+    var frameBuffer = packet.subarray(offset3);
     var frameI = 0;
     var frameSyncPoint = 0;
     var foundKeyFrame = false;
@@ -43404,13 +43404,13 @@ var lowestBitrateCompatibleVariantSelector = function lowestBitrateCompatibleVar
   return playlistsWithVideo[0] || null;
 };
 var concatSegments = function concatSegments2(segmentObj) {
-  var offset = 0;
+  var offset3 = 0;
   var tempBuffer;
   if (segmentObj.bytes) {
     tempBuffer = new Uint8Array(segmentObj.bytes);
     segmentObj.segments.forEach(function(segment) {
-      tempBuffer.set(segment, offset);
-      offset += segment.byteLength;
+      tempBuffer.set(segment, offset3);
+      offset3 += segment.byteLength;
     });
   }
   return tempBuffer;
@@ -45547,14 +45547,14 @@ var actions = {
       }
     };
   },
-  timestampOffset: function timestampOffset(offset) {
+  timestampOffset: function timestampOffset(offset3) {
     return function(type2, sourceUpdater) {
       var sourceBuffer = sourceUpdater[type2 + "Buffer"];
       if (!inSourceBuffers(sourceUpdater.mediaSource, sourceBuffer)) {
         return;
       }
-      sourceUpdater.logger_("Setting " + type2 + "timestampOffset to " + offset);
-      sourceBuffer.timestampOffset = offset;
+      sourceUpdater.logger_("Setting " + type2 + "timestampOffset to " + offset3);
+      sourceBuffer.timestampOffset = offset3;
     };
   },
   callback: function callback(_callback) {
@@ -45921,29 +45921,29 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
     }
     return false;
   };
-  _proto.audioTimestampOffset = function audioTimestampOffset(offset) {
-    if (typeof offset !== "undefined" && this.audioBuffer && // no point in updating if it's the same
-    this.audioTimestampOffset_ !== offset) {
+  _proto.audioTimestampOffset = function audioTimestampOffset(offset3) {
+    if (typeof offset3 !== "undefined" && this.audioBuffer && // no point in updating if it's the same
+    this.audioTimestampOffset_ !== offset3) {
       pushQueue({
         type: "audio",
         sourceUpdater: this,
-        action: actions.timestampOffset(offset),
+        action: actions.timestampOffset(offset3),
         name: "timestampOffset"
       });
-      this.audioTimestampOffset_ = offset;
+      this.audioTimestampOffset_ = offset3;
     }
     return this.audioTimestampOffset_;
   };
-  _proto.videoTimestampOffset = function videoTimestampOffset(offset) {
-    if (typeof offset !== "undefined" && this.videoBuffer && // no point in updating if it's the same
-    this.videoTimestampOffset !== offset) {
+  _proto.videoTimestampOffset = function videoTimestampOffset(offset3) {
+    if (typeof offset3 !== "undefined" && this.videoBuffer && // no point in updating if it's the same
+    this.videoTimestampOffset !== offset3) {
       pushQueue({
         type: "video",
         sourceUpdater: this,
-        action: actions.timestampOffset(offset),
+        action: actions.timestampOffset(offset3),
         name: "timestampOffset"
       });
-      this.videoTimestampOffset_ = offset;
+      this.videoTimestampOffset_ = offset3;
     }
     return this.videoTimestampOffset_;
   };
@@ -46283,14 +46283,14 @@ var findAdCue = function findAdCue2(track, mediaTime) {
   }
   return null;
 };
-var updateAdCues = function updateAdCues2(media, track, offset) {
-  if (offset === void 0) {
-    offset = 0;
+var updateAdCues = function updateAdCues2(media, track, offset3) {
+  if (offset3 === void 0) {
+    offset3 = 0;
   }
   if (!media.segments) {
     return;
   }
-  var mediaTime = offset;
+  var mediaTime = offset3;
   var cue;
   for (var i = 0; i < media.segments.length; i++) {
     var segment = media.segments[i];
@@ -46910,7 +46910,7 @@ var workerCode = transform(getWorkerString(function() {
       }
     }
     var _proto = AES2.prototype;
-    _proto.decrypt = function decrypt4(encrypted0, encrypted1, encrypted2, encrypted3, out, offset) {
+    _proto.decrypt = function decrypt4(encrypted0, encrypted1, encrypted2, encrypted3, out, offset3) {
       var key = this._key[1];
       var a2 = encrypted0 ^ key[0];
       var b = encrypted3 ^ key[1];
@@ -46939,7 +46939,7 @@ var workerCode = transform(getWorkerString(function() {
         c = c2;
       }
       for (i = 0; i < 4; i++) {
-        out[(3 & -i) + offset] = sbox[a2 >>> 24] << 24 ^ sbox[b >> 16 & 255] << 16 ^ sbox[c >> 8 & 255] << 8 ^ sbox[d2 & 255] ^ key[kIndex++];
+        out[(3 & -i) + offset3] = sbox[a2 >>> 24] << 24 ^ sbox[b >> 16 & 255] << 16 ^ sbox[c >> 8 & 255] << 8 ^ sbox[d2 & 255] ^ key[kIndex++];
         a22 = a2;
         a2 = b;
         b = c;
@@ -48911,12 +48911,12 @@ var MasterPlaylistController = /* @__PURE__ */ (function(_videojs$EventTarget) {
     });
   };
   _proto.updateAdCues_ = function updateAdCues_(media) {
-    var offset = 0;
+    var offset3 = 0;
     var seekable3 = this.seekable();
     if (seekable3.length) {
-      offset = seekable3.start(0);
+      offset3 = seekable3.start(0);
     }
-    updateAdCues(media, this.cueTagsTrack_, offset);
+    updateAdCues(media, this.cueTagsTrack_, offset3);
   };
   _proto.goalBufferLength = function goalBufferLength() {
     var currentTime = this.tech_.currentTime();
@@ -49445,7 +49445,7 @@ var initPlugin = function initPlugin2(player, options2) {
 var reloadSourceOnError = function reloadSourceOnError2(options2) {
   initPlugin(this, options2);
 };
-var version$4 = "2.16.3";
+var version$4$1 = "2.16.3";
 var version$3$1 = "6.0.1";
 var version$2$1 = "0.22.1";
 var version$1$1 = "4.8.0";
@@ -50188,7 +50188,7 @@ var VhsHandler = /* @__PURE__ */ (function(_Component) {
   };
   VhsHandler2.version = function version$52() {
     return {
-      "@videojs/http-streaming": version$4,
+      "@videojs/http-streaming": version$4$1,
       "mux.js": version$3$1,
       "mpd-parser": version$2$1,
       "m3u8-parser": version$1$1,
@@ -50271,7 +50271,7 @@ var VhsHandler = /* @__PURE__ */ (function(_Component) {
 })(Component$3);
 var VhsSourceHandler = {
   name: "videojs-http-streaming",
-  VERSION: version$4,
+  VERSION: version$4$1,
   canHandleSource: function canHandleSource(srcObj, options2) {
     if (options2 === void 0) {
       options2 = {};
@@ -50356,8 +50356,8 @@ if (!videojs.use) {
 videojs.options.vhs = videojs.options.vhs || {};
 videojs.options.hls = videojs.options.hls || {};
 if (!videojs.getPlugin || !videojs.getPlugin("reloadSourceOnError")) {
-  var registerPlugin$1 = videojs.registerPlugin || videojs.plugin;
-  registerPlugin$1("reloadSourceOnError", reloadSourceOnError);
+  var registerPlugin$2 = videojs.registerPlugin || videojs.plugin;
+  registerPlugin$2("reloadSourceOnError", reloadSourceOnError);
 }
 const useScript = (urls, condition = true) => {
   const [loadStates, setLoadStates] = reactExports.useState();
@@ -52764,20 +52764,20 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
               }
             };
             ISOBox.prototype._readInt = function(size) {
-              var result = null, offset = this._cursor.offset - this._raw.byteOffset;
+              var result = null, offset3 = this._cursor.offset - this._raw.byteOffset;
               switch (size) {
                 case 8:
-                  result = this._raw.getInt8(offset);
+                  result = this._raw.getInt8(offset3);
                   break;
                 case 16:
-                  result = this._raw.getInt16(offset);
+                  result = this._raw.getInt16(offset3);
                   break;
                 case 32:
-                  result = this._raw.getInt32(offset);
+                  result = this._raw.getInt32(offset3);
                   break;
                 case 64:
-                  var s1 = this._raw.getInt32(offset);
-                  var s2 = this._raw.getInt32(offset + 4);
+                  var s1 = this._raw.getInt32(offset3);
+                  var s2 = this._raw.getInt32(offset3 + 4);
                   result = s1 * Math.pow(2, 32) + s2;
                   break;
               }
@@ -52785,25 +52785,25 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
               return result;
             };
             ISOBox.prototype._readUint = function(size) {
-              var result = null, offset = this._cursor.offset - this._raw.byteOffset, s1, s2;
+              var result = null, offset3 = this._cursor.offset - this._raw.byteOffset, s1, s2;
               switch (size) {
                 case 8:
-                  result = this._raw.getUint8(offset);
+                  result = this._raw.getUint8(offset3);
                   break;
                 case 16:
-                  result = this._raw.getUint16(offset);
+                  result = this._raw.getUint16(offset3);
                   break;
                 case 24:
-                  s1 = this._raw.getUint16(offset);
-                  s2 = this._raw.getUint8(offset + 2);
+                  s1 = this._raw.getUint16(offset3);
+                  s2 = this._raw.getUint8(offset3 + 2);
                   result = (s1 << 8) + s2;
                   break;
                 case 32:
-                  result = this._raw.getUint32(offset);
+                  result = this._raw.getUint32(offset3);
                   break;
                 case 64:
-                  s1 = this._raw.getUint32(offset);
-                  s2 = this._raw.getUint32(offset + 4);
+                  s1 = this._raw.getUint32(offset3);
+                  s2 = this._raw.getUint32(offset3 + 4);
                   result = s1 * Math.pow(2, 32) + s2;
                   break;
               }
@@ -52972,22 +52972,22 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
             };
             ISOBox.prototype._writeInt = function(size, value) {
               if (this._rawo) {
-                var offset = this._cursor.offset - this._rawo.byteOffset;
+                var offset3 = this._cursor.offset - this._rawo.byteOffset;
                 switch (size) {
                   case 8:
-                    this._rawo.setInt8(offset, value);
+                    this._rawo.setInt8(offset3, value);
                     break;
                   case 16:
-                    this._rawo.setInt16(offset, value);
+                    this._rawo.setInt16(offset3, value);
                     break;
                   case 32:
-                    this._rawo.setInt32(offset, value);
+                    this._rawo.setInt32(offset3, value);
                     break;
                   case 64:
                     var s1 = Math.floor(value / Math.pow(2, 32));
                     var s2 = value - s1 * Math.pow(2, 32);
-                    this._rawo.setUint32(offset, s1);
-                    this._rawo.setUint32(offset + 4, s2);
+                    this._rawo.setUint32(offset3, s1);
+                    this._rawo.setUint32(offset3 + 4, s2);
                     break;
                 }
                 this._cursor.offset += size >> 3;
@@ -52997,28 +52997,28 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
             };
             ISOBox.prototype._writeUint = function(size, value) {
               if (this._rawo) {
-                var offset = this._cursor.offset - this._rawo.byteOffset, s1, s2;
+                var offset3 = this._cursor.offset - this._rawo.byteOffset, s1, s2;
                 switch (size) {
                   case 8:
-                    this._rawo.setUint8(offset, value);
+                    this._rawo.setUint8(offset3, value);
                     break;
                   case 16:
-                    this._rawo.setUint16(offset, value);
+                    this._rawo.setUint16(offset3, value);
                     break;
                   case 24:
                     s1 = (value & 16776960) >> 8;
                     s2 = value & 255;
-                    this._rawo.setUint16(offset, s1);
-                    this._rawo.setUint8(offset + 2, s2);
+                    this._rawo.setUint16(offset3, s1);
+                    this._rawo.setUint8(offset3 + 2, s2);
                     break;
                   case 32:
-                    this._rawo.setUint32(offset, value);
+                    this._rawo.setUint32(offset3, value);
                     break;
                   case 64:
                     s1 = Math.floor(value / Math.pow(2, 32));
                     s2 = value - s1 * Math.pow(2, 32);
-                    this._rawo.setUint32(offset, s1);
-                    this._rawo.setUint32(offset + 4, s2);
+                    this._rawo.setUint32(offset3, s1);
+                    this._rawo.setUint32(offset3 + 4, s2);
                     break;
                 }
                 this._cursor.offset += size >> 3;
@@ -53051,9 +53051,9 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
               if (data2) {
                 if (this._rawo) {
                   if (data2 instanceof Array) {
-                    var offset = this._cursor.offset - this._rawo.byteOffset;
+                    var offset3 = this._cursor.offset - this._rawo.byteOffset;
                     for (var i = 0; i < data2.length; i++) {
-                      this._rawo.setInt8(offset + i, data2[i]);
+                      this._rawo.setInt8(offset3 + i, data2[i]);
                     }
                     this._cursor.offset += data2.length;
                   }
@@ -54111,7 +54111,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
           /*! no static exports found */
           /***/
           (function(module22, exports2) {
-            exports2.read = function(buffer, offset, isLE, mLen, nBytes) {
+            exports2.read = function(buffer, offset3, isLE, mLen, nBytes) {
               var e, m;
               var eLen = nBytes * 8 - mLen - 1;
               var eMax = (1 << eLen) - 1;
@@ -54119,17 +54119,17 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
               var nBits = -7;
               var i = isLE ? nBytes - 1 : 0;
               var d2 = isLE ? -1 : 1;
-              var s2 = buffer[offset + i];
+              var s2 = buffer[offset3 + i];
               i += d2;
               e = s2 & (1 << -nBits) - 1;
               s2 >>= -nBits;
               nBits += eLen;
-              for (; nBits > 0; e = e * 256 + buffer[offset + i], i += d2, nBits -= 8) {
+              for (; nBits > 0; e = e * 256 + buffer[offset3 + i], i += d2, nBits -= 8) {
               }
               m = e & (1 << -nBits) - 1;
               e >>= -nBits;
               nBits += mLen;
-              for (; nBits > 0; m = m * 256 + buffer[offset + i], i += d2, nBits -= 8) {
+              for (; nBits > 0; m = m * 256 + buffer[offset3 + i], i += d2, nBits -= 8) {
               }
               if (e === 0) {
                 e = 1 - eBias;
@@ -54141,7 +54141,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
               }
               return (s2 ? -1 : 1) * m * Math.pow(2, e - mLen);
             };
-            exports2.write = function(buffer, value, offset, isLE, mLen, nBytes) {
+            exports2.write = function(buffer, value, offset3, isLE, mLen, nBytes) {
               var e, m, c;
               var eLen = nBytes * 8 - mLen - 1;
               var eMax = (1 << eLen) - 1;
@@ -54180,13 +54180,13 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                   e = 0;
                 }
               }
-              for (; mLen >= 8; buffer[offset + i] = m & 255, i += d2, m /= 256, mLen -= 8) {
+              for (; mLen >= 8; buffer[offset3 + i] = m & 255, i += d2, m /= 256, mLen -= 8) {
               }
               e = e << mLen | m;
               eLen += mLen;
-              for (; eLen > 0; buffer[offset + i] = e & 255, i += d2, e /= 256, eLen -= 8) {
+              for (; eLen > 0; buffer[offset3 + i] = e & 255, i += d2, e /= 256, eLen -= 8) {
               }
-              buffer[offset + i - d2] |= s2 * 128;
+              buffer[offset3 + i - d2] |= s2 * 128;
             };
           })
         ),
@@ -55652,21 +55652,21 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
           /***/
           (function(module22, exports2, __webpack_require__) {
             (function(imscISD, imscNames2, imscStyles2) {
-              imscISD.generateISD = function(tt, offset, errorHandler) {
+              imscISD.generateISD = function(tt, offset3, errorHandler) {
                 var isd = new ISD(tt);
                 var context2 = {
                   /* empty for now */
                 };
                 for (var r3 in tt.head.layout.regions) {
-                  var c = isdProcessContentElement(tt, offset, tt.head.layout.regions[r3], tt.body, null, "", tt.head.layout.regions[r3], errorHandler, context2);
+                  var c = isdProcessContentElement(tt, offset3, tt.head.layout.regions[r3], tt.body, null, "", tt.head.layout.regions[r3], errorHandler, context2);
                   if (c !== null) {
                     isd.contents.push(c.element);
                   }
                 }
                 return isd;
               };
-              function isdProcessContentElement(doc, offset, region, body, parent, inherited_region_id, elem, errorHandler, context2) {
-                if (offset < elem.begin || offset >= elem.end) {
+              function isdProcessContentElement(doc, offset3, region, body, parent, inherited_region_id, elem, errorHandler, context2) {
+                if (offset3 < elem.begin || offset3 >= elem.end) {
                   return null;
                 }
                 var associated_region_id = "regionID" in elem && elem.regionID !== "" ? elem.regionID : inherited_region_id;
@@ -55674,7 +55674,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                   return null;
                 var isd_element = new ISDContentElement(elem);
                 for (var i in elem.sets) {
-                  if (offset < elem.sets[i].begin || offset >= elem.sets[i].end)
+                  if (offset3 < elem.sets[i].begin || offset3 >= elem.sets[i].end)
                     continue;
                   isd_element.styleAttrs[elem.sets[i].qname] = elem.sets[i].value;
                 }
@@ -55758,7 +55758,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                   contents = elem.contents;
                 }
                 for (var x2 in contents) {
-                  var c = isdProcessContentElement(doc, offset, region, body, isd_element, associated_region_id, contents[x2], errorHandler, context2);
+                  var c = isdProcessContentElement(doc, offset3, region, body, isd_element, associated_region_id, contents[x2], errorHandler, context2);
                   if (c !== null) {
                     isd_element.contents.push(c.element);
                   }
@@ -57259,9 +57259,9 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
               Buffer2.prototype.lastIndexOf = function lastIndexOf(val, byteOffset, encoding) {
                 return bidirectionalIndexOf(this, val, byteOffset, encoding, false);
               };
-              function hexWrite(buf, string, offset, length2) {
-                offset = Number(offset) || 0;
-                var remaining = buf.length - offset;
+              function hexWrite(buf, string, offset3, length2) {
+                offset3 = Number(offset3) || 0;
+                var remaining = buf.length - offset3;
                 if (!length2) {
                   length2 = remaining;
                 } else {
@@ -57278,36 +57278,36 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 for (var i = 0; i < length2; ++i) {
                   var parsed = parseInt(string.substr(i * 2, 2), 16);
                   if (isNaN(parsed)) return i;
-                  buf[offset + i] = parsed;
+                  buf[offset3 + i] = parsed;
                 }
                 return i;
               }
-              function utf8Write(buf, string, offset, length2) {
-                return blitBuffer(utf8ToBytes(string, buf.length - offset), buf, offset, length2);
+              function utf8Write(buf, string, offset3, length2) {
+                return blitBuffer(utf8ToBytes(string, buf.length - offset3), buf, offset3, length2);
               }
-              function asciiWrite(buf, string, offset, length2) {
-                return blitBuffer(asciiToBytes(string), buf, offset, length2);
+              function asciiWrite(buf, string, offset3, length2) {
+                return blitBuffer(asciiToBytes(string), buf, offset3, length2);
               }
-              function latin1Write(buf, string, offset, length2) {
-                return asciiWrite(buf, string, offset, length2);
+              function latin1Write(buf, string, offset3, length2) {
+                return asciiWrite(buf, string, offset3, length2);
               }
-              function base64Write(buf, string, offset, length2) {
-                return blitBuffer(base64ToBytes(string), buf, offset, length2);
+              function base64Write(buf, string, offset3, length2) {
+                return blitBuffer(base64ToBytes(string), buf, offset3, length2);
               }
-              function ucs2Write(buf, string, offset, length2) {
-                return blitBuffer(utf16leToBytes(string, buf.length - offset), buf, offset, length2);
+              function ucs2Write(buf, string, offset3, length2) {
+                return blitBuffer(utf16leToBytes(string, buf.length - offset3), buf, offset3, length2);
               }
-              Buffer2.prototype.write = function write(string, offset, length2, encoding) {
-                if (offset === void 0) {
+              Buffer2.prototype.write = function write(string, offset3, length2, encoding) {
+                if (offset3 === void 0) {
                   encoding = "utf8";
                   length2 = this.length;
-                  offset = 0;
-                } else if (length2 === void 0 && typeof offset === "string") {
-                  encoding = offset;
+                  offset3 = 0;
+                } else if (length2 === void 0 && typeof offset3 === "string") {
+                  encoding = offset3;
                   length2 = this.length;
-                  offset = 0;
-                } else if (isFinite(offset)) {
-                  offset = offset | 0;
+                  offset3 = 0;
+                } else if (isFinite(offset3)) {
+                  offset3 = offset3 | 0;
                   if (isFinite(length2)) {
                     length2 = length2 | 0;
                     if (encoding === void 0) encoding = "utf8";
@@ -57320,9 +57320,9 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                     "Buffer.write(string, encoding, offset[, length]) is no longer supported"
                   );
                 }
-                var remaining = this.length - offset;
+                var remaining = this.length - offset3;
                 if (length2 === void 0 || length2 > remaining) length2 = remaining;
-                if (string.length > 0 && (length2 < 0 || offset < 0) || offset > this.length) {
+                if (string.length > 0 && (length2 < 0 || offset3 < 0) || offset3 > this.length) {
                   throw new RangeError("Attempt to write outside buffer bounds");
                 }
                 if (!encoding) encoding = "utf8";
@@ -57330,22 +57330,22 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 for (; ; ) {
                   switch (encoding) {
                     case "hex":
-                      return hexWrite(this, string, offset, length2);
+                      return hexWrite(this, string, offset3, length2);
                     case "utf8":
                     case "utf-8":
-                      return utf8Write(this, string, offset, length2);
+                      return utf8Write(this, string, offset3, length2);
                     case "ascii":
-                      return asciiWrite(this, string, offset, length2);
+                      return asciiWrite(this, string, offset3, length2);
                     case "latin1":
                     case "binary":
-                      return latin1Write(this, string, offset, length2);
+                      return latin1Write(this, string, offset3, length2);
                     case "base64":
-                      return base64Write(this, string, offset, length2);
+                      return base64Write(this, string, offset3, length2);
                     case "ucs2":
                     case "ucs-2":
                     case "utf16le":
                     case "utf-16le":
-                      return ucs2Write(this, string, offset, length2);
+                      return ucs2Write(this, string, offset3, length2);
                     default:
                       if (loweredCase) throw new TypeError("Unknown encoding: " + encoding);
                       encoding = ("" + encoding).toLowerCase();
@@ -57506,360 +57506,360 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 }
                 return newBuf;
               };
-              function checkOffset(offset, ext, length2) {
-                if (offset % 1 !== 0 || offset < 0) throw new RangeError("offset is not uint");
-                if (offset + ext > length2) throw new RangeError("Trying to access beyond buffer length");
+              function checkOffset(offset3, ext, length2) {
+                if (offset3 % 1 !== 0 || offset3 < 0) throw new RangeError("offset is not uint");
+                if (offset3 + ext > length2) throw new RangeError("Trying to access beyond buffer length");
               }
-              Buffer2.prototype.readUIntLE = function readUIntLE(offset, byteLength2, noAssert) {
-                offset = offset | 0;
+              Buffer2.prototype.readUIntLE = function readUIntLE(offset3, byteLength2, noAssert) {
+                offset3 = offset3 | 0;
                 byteLength2 = byteLength2 | 0;
-                if (!noAssert) checkOffset(offset, byteLength2, this.length);
-                var val = this[offset];
+                if (!noAssert) checkOffset(offset3, byteLength2, this.length);
+                var val = this[offset3];
                 var mul = 1;
                 var i = 0;
                 while (++i < byteLength2 && (mul *= 256)) {
-                  val += this[offset + i] * mul;
+                  val += this[offset3 + i] * mul;
                 }
                 return val;
               };
-              Buffer2.prototype.readUIntBE = function readUIntBE(offset, byteLength2, noAssert) {
-                offset = offset | 0;
+              Buffer2.prototype.readUIntBE = function readUIntBE(offset3, byteLength2, noAssert) {
+                offset3 = offset3 | 0;
                 byteLength2 = byteLength2 | 0;
                 if (!noAssert) {
-                  checkOffset(offset, byteLength2, this.length);
+                  checkOffset(offset3, byteLength2, this.length);
                 }
-                var val = this[offset + --byteLength2];
+                var val = this[offset3 + --byteLength2];
                 var mul = 1;
                 while (byteLength2 > 0 && (mul *= 256)) {
-                  val += this[offset + --byteLength2] * mul;
+                  val += this[offset3 + --byteLength2] * mul;
                 }
                 return val;
               };
-              Buffer2.prototype.readUInt8 = function readUInt8(offset, noAssert) {
-                if (!noAssert) checkOffset(offset, 1, this.length);
-                return this[offset];
+              Buffer2.prototype.readUInt8 = function readUInt8(offset3, noAssert) {
+                if (!noAssert) checkOffset(offset3, 1, this.length);
+                return this[offset3];
               };
-              Buffer2.prototype.readUInt16LE = function readUInt16LE(offset, noAssert) {
-                if (!noAssert) checkOffset(offset, 2, this.length);
-                return this[offset] | this[offset + 1] << 8;
+              Buffer2.prototype.readUInt16LE = function readUInt16LE(offset3, noAssert) {
+                if (!noAssert) checkOffset(offset3, 2, this.length);
+                return this[offset3] | this[offset3 + 1] << 8;
               };
-              Buffer2.prototype.readUInt16BE = function readUInt16BE(offset, noAssert) {
-                if (!noAssert) checkOffset(offset, 2, this.length);
-                return this[offset] << 8 | this[offset + 1];
+              Buffer2.prototype.readUInt16BE = function readUInt16BE(offset3, noAssert) {
+                if (!noAssert) checkOffset(offset3, 2, this.length);
+                return this[offset3] << 8 | this[offset3 + 1];
               };
-              Buffer2.prototype.readUInt32LE = function readUInt32LE(offset, noAssert) {
-                if (!noAssert) checkOffset(offset, 4, this.length);
-                return (this[offset] | this[offset + 1] << 8 | this[offset + 2] << 16) + this[offset + 3] * 16777216;
+              Buffer2.prototype.readUInt32LE = function readUInt32LE(offset3, noAssert) {
+                if (!noAssert) checkOffset(offset3, 4, this.length);
+                return (this[offset3] | this[offset3 + 1] << 8 | this[offset3 + 2] << 16) + this[offset3 + 3] * 16777216;
               };
-              Buffer2.prototype.readUInt32BE = function readUInt32BE(offset, noAssert) {
-                if (!noAssert) checkOffset(offset, 4, this.length);
-                return this[offset] * 16777216 + (this[offset + 1] << 16 | this[offset + 2] << 8 | this[offset + 3]);
+              Buffer2.prototype.readUInt32BE = function readUInt32BE(offset3, noAssert) {
+                if (!noAssert) checkOffset(offset3, 4, this.length);
+                return this[offset3] * 16777216 + (this[offset3 + 1] << 16 | this[offset3 + 2] << 8 | this[offset3 + 3]);
               };
-              Buffer2.prototype.readIntLE = function readIntLE(offset, byteLength2, noAssert) {
-                offset = offset | 0;
+              Buffer2.prototype.readIntLE = function readIntLE(offset3, byteLength2, noAssert) {
+                offset3 = offset3 | 0;
                 byteLength2 = byteLength2 | 0;
-                if (!noAssert) checkOffset(offset, byteLength2, this.length);
-                var val = this[offset];
+                if (!noAssert) checkOffset(offset3, byteLength2, this.length);
+                var val = this[offset3];
                 var mul = 1;
                 var i = 0;
                 while (++i < byteLength2 && (mul *= 256)) {
-                  val += this[offset + i] * mul;
+                  val += this[offset3 + i] * mul;
                 }
                 mul *= 128;
                 if (val >= mul) val -= Math.pow(2, 8 * byteLength2);
                 return val;
               };
-              Buffer2.prototype.readIntBE = function readIntBE(offset, byteLength2, noAssert) {
-                offset = offset | 0;
+              Buffer2.prototype.readIntBE = function readIntBE(offset3, byteLength2, noAssert) {
+                offset3 = offset3 | 0;
                 byteLength2 = byteLength2 | 0;
-                if (!noAssert) checkOffset(offset, byteLength2, this.length);
+                if (!noAssert) checkOffset(offset3, byteLength2, this.length);
                 var i = byteLength2;
                 var mul = 1;
-                var val = this[offset + --i];
+                var val = this[offset3 + --i];
                 while (i > 0 && (mul *= 256)) {
-                  val += this[offset + --i] * mul;
+                  val += this[offset3 + --i] * mul;
                 }
                 mul *= 128;
                 if (val >= mul) val -= Math.pow(2, 8 * byteLength2);
                 return val;
               };
-              Buffer2.prototype.readInt8 = function readInt8(offset, noAssert) {
-                if (!noAssert) checkOffset(offset, 1, this.length);
-                if (!(this[offset] & 128)) return this[offset];
-                return (255 - this[offset] + 1) * -1;
+              Buffer2.prototype.readInt8 = function readInt8(offset3, noAssert) {
+                if (!noAssert) checkOffset(offset3, 1, this.length);
+                if (!(this[offset3] & 128)) return this[offset3];
+                return (255 - this[offset3] + 1) * -1;
               };
-              Buffer2.prototype.readInt16LE = function readInt16LE(offset, noAssert) {
-                if (!noAssert) checkOffset(offset, 2, this.length);
-                var val = this[offset] | this[offset + 1] << 8;
+              Buffer2.prototype.readInt16LE = function readInt16LE(offset3, noAssert) {
+                if (!noAssert) checkOffset(offset3, 2, this.length);
+                var val = this[offset3] | this[offset3 + 1] << 8;
                 return val & 32768 ? val | 4294901760 : val;
               };
-              Buffer2.prototype.readInt16BE = function readInt16BE(offset, noAssert) {
-                if (!noAssert) checkOffset(offset, 2, this.length);
-                var val = this[offset + 1] | this[offset] << 8;
+              Buffer2.prototype.readInt16BE = function readInt16BE(offset3, noAssert) {
+                if (!noAssert) checkOffset(offset3, 2, this.length);
+                var val = this[offset3 + 1] | this[offset3] << 8;
                 return val & 32768 ? val | 4294901760 : val;
               };
-              Buffer2.prototype.readInt32LE = function readInt32LE(offset, noAssert) {
-                if (!noAssert) checkOffset(offset, 4, this.length);
-                return this[offset] | this[offset + 1] << 8 | this[offset + 2] << 16 | this[offset + 3] << 24;
+              Buffer2.prototype.readInt32LE = function readInt32LE(offset3, noAssert) {
+                if (!noAssert) checkOffset(offset3, 4, this.length);
+                return this[offset3] | this[offset3 + 1] << 8 | this[offset3 + 2] << 16 | this[offset3 + 3] << 24;
               };
-              Buffer2.prototype.readInt32BE = function readInt32BE(offset, noAssert) {
-                if (!noAssert) checkOffset(offset, 4, this.length);
-                return this[offset] << 24 | this[offset + 1] << 16 | this[offset + 2] << 8 | this[offset + 3];
+              Buffer2.prototype.readInt32BE = function readInt32BE(offset3, noAssert) {
+                if (!noAssert) checkOffset(offset3, 4, this.length);
+                return this[offset3] << 24 | this[offset3 + 1] << 16 | this[offset3 + 2] << 8 | this[offset3 + 3];
               };
-              Buffer2.prototype.readFloatLE = function readFloatLE(offset, noAssert) {
-                if (!noAssert) checkOffset(offset, 4, this.length);
-                return ieee754.read(this, offset, true, 23, 4);
+              Buffer2.prototype.readFloatLE = function readFloatLE(offset3, noAssert) {
+                if (!noAssert) checkOffset(offset3, 4, this.length);
+                return ieee754.read(this, offset3, true, 23, 4);
               };
-              Buffer2.prototype.readFloatBE = function readFloatBE(offset, noAssert) {
-                if (!noAssert) checkOffset(offset, 4, this.length);
-                return ieee754.read(this, offset, false, 23, 4);
+              Buffer2.prototype.readFloatBE = function readFloatBE(offset3, noAssert) {
+                if (!noAssert) checkOffset(offset3, 4, this.length);
+                return ieee754.read(this, offset3, false, 23, 4);
               };
-              Buffer2.prototype.readDoubleLE = function readDoubleLE(offset, noAssert) {
-                if (!noAssert) checkOffset(offset, 8, this.length);
-                return ieee754.read(this, offset, true, 52, 8);
+              Buffer2.prototype.readDoubleLE = function readDoubleLE(offset3, noAssert) {
+                if (!noAssert) checkOffset(offset3, 8, this.length);
+                return ieee754.read(this, offset3, true, 52, 8);
               };
-              Buffer2.prototype.readDoubleBE = function readDoubleBE(offset, noAssert) {
-                if (!noAssert) checkOffset(offset, 8, this.length);
-                return ieee754.read(this, offset, false, 52, 8);
+              Buffer2.prototype.readDoubleBE = function readDoubleBE(offset3, noAssert) {
+                if (!noAssert) checkOffset(offset3, 8, this.length);
+                return ieee754.read(this, offset3, false, 52, 8);
               };
-              function checkInt(buf, value, offset, ext, max2, min2) {
+              function checkInt(buf, value, offset3, ext, max2, min2) {
                 if (!Buffer2.isBuffer(buf)) throw new TypeError('"buffer" argument must be a Buffer instance');
                 if (value > max2 || value < min2) throw new RangeError('"value" argument is out of bounds');
-                if (offset + ext > buf.length) throw new RangeError("Index out of range");
+                if (offset3 + ext > buf.length) throw new RangeError("Index out of range");
               }
-              Buffer2.prototype.writeUIntLE = function writeUIntLE(value, offset, byteLength2, noAssert) {
+              Buffer2.prototype.writeUIntLE = function writeUIntLE(value, offset3, byteLength2, noAssert) {
                 value = +value;
-                offset = offset | 0;
+                offset3 = offset3 | 0;
                 byteLength2 = byteLength2 | 0;
                 if (!noAssert) {
                   var maxBytes = Math.pow(2, 8 * byteLength2) - 1;
-                  checkInt(this, value, offset, byteLength2, maxBytes, 0);
+                  checkInt(this, value, offset3, byteLength2, maxBytes, 0);
                 }
                 var mul = 1;
                 var i = 0;
-                this[offset] = value & 255;
+                this[offset3] = value & 255;
                 while (++i < byteLength2 && (mul *= 256)) {
-                  this[offset + i] = value / mul & 255;
+                  this[offset3 + i] = value / mul & 255;
                 }
-                return offset + byteLength2;
+                return offset3 + byteLength2;
               };
-              Buffer2.prototype.writeUIntBE = function writeUIntBE(value, offset, byteLength2, noAssert) {
+              Buffer2.prototype.writeUIntBE = function writeUIntBE(value, offset3, byteLength2, noAssert) {
                 value = +value;
-                offset = offset | 0;
+                offset3 = offset3 | 0;
                 byteLength2 = byteLength2 | 0;
                 if (!noAssert) {
                   var maxBytes = Math.pow(2, 8 * byteLength2) - 1;
-                  checkInt(this, value, offset, byteLength2, maxBytes, 0);
+                  checkInt(this, value, offset3, byteLength2, maxBytes, 0);
                 }
                 var i = byteLength2 - 1;
                 var mul = 1;
-                this[offset + i] = value & 255;
+                this[offset3 + i] = value & 255;
                 while (--i >= 0 && (mul *= 256)) {
-                  this[offset + i] = value / mul & 255;
+                  this[offset3 + i] = value / mul & 255;
                 }
-                return offset + byteLength2;
+                return offset3 + byteLength2;
               };
-              Buffer2.prototype.writeUInt8 = function writeUInt8(value, offset, noAssert) {
+              Buffer2.prototype.writeUInt8 = function writeUInt8(value, offset3, noAssert) {
                 value = +value;
-                offset = offset | 0;
-                if (!noAssert) checkInt(this, value, offset, 1, 255, 0);
+                offset3 = offset3 | 0;
+                if (!noAssert) checkInt(this, value, offset3, 1, 255, 0);
                 if (!Buffer2.TYPED_ARRAY_SUPPORT) value = Math.floor(value);
-                this[offset] = value & 255;
-                return offset + 1;
+                this[offset3] = value & 255;
+                return offset3 + 1;
               };
-              function objectWriteUInt16(buf, value, offset, littleEndian) {
+              function objectWriteUInt16(buf, value, offset3, littleEndian) {
                 if (value < 0) value = 65535 + value + 1;
-                for (var i = 0, j = Math.min(buf.length - offset, 2); i < j; ++i) {
-                  buf[offset + i] = (value & 255 << 8 * (littleEndian ? i : 1 - i)) >>> (littleEndian ? i : 1 - i) * 8;
+                for (var i = 0, j = Math.min(buf.length - offset3, 2); i < j; ++i) {
+                  buf[offset3 + i] = (value & 255 << 8 * (littleEndian ? i : 1 - i)) >>> (littleEndian ? i : 1 - i) * 8;
                 }
               }
-              Buffer2.prototype.writeUInt16LE = function writeUInt16LE(value, offset, noAssert) {
+              Buffer2.prototype.writeUInt16LE = function writeUInt16LE(value, offset3, noAssert) {
                 value = +value;
-                offset = offset | 0;
-                if (!noAssert) checkInt(this, value, offset, 2, 65535, 0);
+                offset3 = offset3 | 0;
+                if (!noAssert) checkInt(this, value, offset3, 2, 65535, 0);
                 if (Buffer2.TYPED_ARRAY_SUPPORT) {
-                  this[offset] = value & 255;
-                  this[offset + 1] = value >>> 8;
+                  this[offset3] = value & 255;
+                  this[offset3 + 1] = value >>> 8;
                 } else {
-                  objectWriteUInt16(this, value, offset, true);
+                  objectWriteUInt16(this, value, offset3, true);
                 }
-                return offset + 2;
+                return offset3 + 2;
               };
-              Buffer2.prototype.writeUInt16BE = function writeUInt16BE(value, offset, noAssert) {
+              Buffer2.prototype.writeUInt16BE = function writeUInt16BE(value, offset3, noAssert) {
                 value = +value;
-                offset = offset | 0;
-                if (!noAssert) checkInt(this, value, offset, 2, 65535, 0);
+                offset3 = offset3 | 0;
+                if (!noAssert) checkInt(this, value, offset3, 2, 65535, 0);
                 if (Buffer2.TYPED_ARRAY_SUPPORT) {
-                  this[offset] = value >>> 8;
-                  this[offset + 1] = value & 255;
+                  this[offset3] = value >>> 8;
+                  this[offset3 + 1] = value & 255;
                 } else {
-                  objectWriteUInt16(this, value, offset, false);
+                  objectWriteUInt16(this, value, offset3, false);
                 }
-                return offset + 2;
+                return offset3 + 2;
               };
-              function objectWriteUInt32(buf, value, offset, littleEndian) {
+              function objectWriteUInt32(buf, value, offset3, littleEndian) {
                 if (value < 0) value = 4294967295 + value + 1;
-                for (var i = 0, j = Math.min(buf.length - offset, 4); i < j; ++i) {
-                  buf[offset + i] = value >>> (littleEndian ? i : 3 - i) * 8 & 255;
+                for (var i = 0, j = Math.min(buf.length - offset3, 4); i < j; ++i) {
+                  buf[offset3 + i] = value >>> (littleEndian ? i : 3 - i) * 8 & 255;
                 }
               }
-              Buffer2.prototype.writeUInt32LE = function writeUInt32LE(value, offset, noAssert) {
+              Buffer2.prototype.writeUInt32LE = function writeUInt32LE(value, offset3, noAssert) {
                 value = +value;
-                offset = offset | 0;
-                if (!noAssert) checkInt(this, value, offset, 4, 4294967295, 0);
+                offset3 = offset3 | 0;
+                if (!noAssert) checkInt(this, value, offset3, 4, 4294967295, 0);
                 if (Buffer2.TYPED_ARRAY_SUPPORT) {
-                  this[offset + 3] = value >>> 24;
-                  this[offset + 2] = value >>> 16;
-                  this[offset + 1] = value >>> 8;
-                  this[offset] = value & 255;
+                  this[offset3 + 3] = value >>> 24;
+                  this[offset3 + 2] = value >>> 16;
+                  this[offset3 + 1] = value >>> 8;
+                  this[offset3] = value & 255;
                 } else {
-                  objectWriteUInt32(this, value, offset, true);
+                  objectWriteUInt32(this, value, offset3, true);
                 }
-                return offset + 4;
+                return offset3 + 4;
               };
-              Buffer2.prototype.writeUInt32BE = function writeUInt32BE(value, offset, noAssert) {
+              Buffer2.prototype.writeUInt32BE = function writeUInt32BE(value, offset3, noAssert) {
                 value = +value;
-                offset = offset | 0;
-                if (!noAssert) checkInt(this, value, offset, 4, 4294967295, 0);
+                offset3 = offset3 | 0;
+                if (!noAssert) checkInt(this, value, offset3, 4, 4294967295, 0);
                 if (Buffer2.TYPED_ARRAY_SUPPORT) {
-                  this[offset] = value >>> 24;
-                  this[offset + 1] = value >>> 16;
-                  this[offset + 2] = value >>> 8;
-                  this[offset + 3] = value & 255;
+                  this[offset3] = value >>> 24;
+                  this[offset3 + 1] = value >>> 16;
+                  this[offset3 + 2] = value >>> 8;
+                  this[offset3 + 3] = value & 255;
                 } else {
-                  objectWriteUInt32(this, value, offset, false);
+                  objectWriteUInt32(this, value, offset3, false);
                 }
-                return offset + 4;
+                return offset3 + 4;
               };
-              Buffer2.prototype.writeIntLE = function writeIntLE(value, offset, byteLength2, noAssert) {
+              Buffer2.prototype.writeIntLE = function writeIntLE(value, offset3, byteLength2, noAssert) {
                 value = +value;
-                offset = offset | 0;
+                offset3 = offset3 | 0;
                 if (!noAssert) {
                   var limit = Math.pow(2, 8 * byteLength2 - 1);
-                  checkInt(this, value, offset, byteLength2, limit - 1, -limit);
+                  checkInt(this, value, offset3, byteLength2, limit - 1, -limit);
                 }
                 var i = 0;
                 var mul = 1;
                 var sub = 0;
-                this[offset] = value & 255;
+                this[offset3] = value & 255;
                 while (++i < byteLength2 && (mul *= 256)) {
-                  if (value < 0 && sub === 0 && this[offset + i - 1] !== 0) {
+                  if (value < 0 && sub === 0 && this[offset3 + i - 1] !== 0) {
                     sub = 1;
                   }
-                  this[offset + i] = (value / mul >> 0) - sub & 255;
+                  this[offset3 + i] = (value / mul >> 0) - sub & 255;
                 }
-                return offset + byteLength2;
+                return offset3 + byteLength2;
               };
-              Buffer2.prototype.writeIntBE = function writeIntBE(value, offset, byteLength2, noAssert) {
+              Buffer2.prototype.writeIntBE = function writeIntBE(value, offset3, byteLength2, noAssert) {
                 value = +value;
-                offset = offset | 0;
+                offset3 = offset3 | 0;
                 if (!noAssert) {
                   var limit = Math.pow(2, 8 * byteLength2 - 1);
-                  checkInt(this, value, offset, byteLength2, limit - 1, -limit);
+                  checkInt(this, value, offset3, byteLength2, limit - 1, -limit);
                 }
                 var i = byteLength2 - 1;
                 var mul = 1;
                 var sub = 0;
-                this[offset + i] = value & 255;
+                this[offset3 + i] = value & 255;
                 while (--i >= 0 && (mul *= 256)) {
-                  if (value < 0 && sub === 0 && this[offset + i + 1] !== 0) {
+                  if (value < 0 && sub === 0 && this[offset3 + i + 1] !== 0) {
                     sub = 1;
                   }
-                  this[offset + i] = (value / mul >> 0) - sub & 255;
+                  this[offset3 + i] = (value / mul >> 0) - sub & 255;
                 }
-                return offset + byteLength2;
+                return offset3 + byteLength2;
               };
-              Buffer2.prototype.writeInt8 = function writeInt8(value, offset, noAssert) {
+              Buffer2.prototype.writeInt8 = function writeInt8(value, offset3, noAssert) {
                 value = +value;
-                offset = offset | 0;
-                if (!noAssert) checkInt(this, value, offset, 1, 127, -128);
+                offset3 = offset3 | 0;
+                if (!noAssert) checkInt(this, value, offset3, 1, 127, -128);
                 if (!Buffer2.TYPED_ARRAY_SUPPORT) value = Math.floor(value);
                 if (value < 0) value = 255 + value + 1;
-                this[offset] = value & 255;
-                return offset + 1;
+                this[offset3] = value & 255;
+                return offset3 + 1;
               };
-              Buffer2.prototype.writeInt16LE = function writeInt16LE(value, offset, noAssert) {
+              Buffer2.prototype.writeInt16LE = function writeInt16LE(value, offset3, noAssert) {
                 value = +value;
-                offset = offset | 0;
-                if (!noAssert) checkInt(this, value, offset, 2, 32767, -32768);
+                offset3 = offset3 | 0;
+                if (!noAssert) checkInt(this, value, offset3, 2, 32767, -32768);
                 if (Buffer2.TYPED_ARRAY_SUPPORT) {
-                  this[offset] = value & 255;
-                  this[offset + 1] = value >>> 8;
+                  this[offset3] = value & 255;
+                  this[offset3 + 1] = value >>> 8;
                 } else {
-                  objectWriteUInt16(this, value, offset, true);
+                  objectWriteUInt16(this, value, offset3, true);
                 }
-                return offset + 2;
+                return offset3 + 2;
               };
-              Buffer2.prototype.writeInt16BE = function writeInt16BE(value, offset, noAssert) {
+              Buffer2.prototype.writeInt16BE = function writeInt16BE(value, offset3, noAssert) {
                 value = +value;
-                offset = offset | 0;
-                if (!noAssert) checkInt(this, value, offset, 2, 32767, -32768);
+                offset3 = offset3 | 0;
+                if (!noAssert) checkInt(this, value, offset3, 2, 32767, -32768);
                 if (Buffer2.TYPED_ARRAY_SUPPORT) {
-                  this[offset] = value >>> 8;
-                  this[offset + 1] = value & 255;
+                  this[offset3] = value >>> 8;
+                  this[offset3 + 1] = value & 255;
                 } else {
-                  objectWriteUInt16(this, value, offset, false);
+                  objectWriteUInt16(this, value, offset3, false);
                 }
-                return offset + 2;
+                return offset3 + 2;
               };
-              Buffer2.prototype.writeInt32LE = function writeInt32LE(value, offset, noAssert) {
+              Buffer2.prototype.writeInt32LE = function writeInt32LE(value, offset3, noAssert) {
                 value = +value;
-                offset = offset | 0;
-                if (!noAssert) checkInt(this, value, offset, 4, 2147483647, -2147483648);
+                offset3 = offset3 | 0;
+                if (!noAssert) checkInt(this, value, offset3, 4, 2147483647, -2147483648);
                 if (Buffer2.TYPED_ARRAY_SUPPORT) {
-                  this[offset] = value & 255;
-                  this[offset + 1] = value >>> 8;
-                  this[offset + 2] = value >>> 16;
-                  this[offset + 3] = value >>> 24;
+                  this[offset3] = value & 255;
+                  this[offset3 + 1] = value >>> 8;
+                  this[offset3 + 2] = value >>> 16;
+                  this[offset3 + 3] = value >>> 24;
                 } else {
-                  objectWriteUInt32(this, value, offset, true);
+                  objectWriteUInt32(this, value, offset3, true);
                 }
-                return offset + 4;
+                return offset3 + 4;
               };
-              Buffer2.prototype.writeInt32BE = function writeInt32BE(value, offset, noAssert) {
+              Buffer2.prototype.writeInt32BE = function writeInt32BE(value, offset3, noAssert) {
                 value = +value;
-                offset = offset | 0;
-                if (!noAssert) checkInt(this, value, offset, 4, 2147483647, -2147483648);
+                offset3 = offset3 | 0;
+                if (!noAssert) checkInt(this, value, offset3, 4, 2147483647, -2147483648);
                 if (value < 0) value = 4294967295 + value + 1;
                 if (Buffer2.TYPED_ARRAY_SUPPORT) {
-                  this[offset] = value >>> 24;
-                  this[offset + 1] = value >>> 16;
-                  this[offset + 2] = value >>> 8;
-                  this[offset + 3] = value & 255;
+                  this[offset3] = value >>> 24;
+                  this[offset3 + 1] = value >>> 16;
+                  this[offset3 + 2] = value >>> 8;
+                  this[offset3 + 3] = value & 255;
                 } else {
-                  objectWriteUInt32(this, value, offset, false);
+                  objectWriteUInt32(this, value, offset3, false);
                 }
-                return offset + 4;
+                return offset3 + 4;
               };
-              function checkIEEE754(buf, value, offset, ext, max2, min2) {
-                if (offset + ext > buf.length) throw new RangeError("Index out of range");
-                if (offset < 0) throw new RangeError("Index out of range");
+              function checkIEEE754(buf, value, offset3, ext, max2, min2) {
+                if (offset3 + ext > buf.length) throw new RangeError("Index out of range");
+                if (offset3 < 0) throw new RangeError("Index out of range");
               }
-              function writeFloat(buf, value, offset, littleEndian, noAssert) {
+              function writeFloat(buf, value, offset3, littleEndian, noAssert) {
                 if (!noAssert) {
-                  checkIEEE754(buf, value, offset, 4);
+                  checkIEEE754(buf, value, offset3, 4);
                 }
-                ieee754.write(buf, value, offset, littleEndian, 23, 4);
-                return offset + 4;
+                ieee754.write(buf, value, offset3, littleEndian, 23, 4);
+                return offset3 + 4;
               }
-              Buffer2.prototype.writeFloatLE = function writeFloatLE(value, offset, noAssert) {
-                return writeFloat(this, value, offset, true, noAssert);
+              Buffer2.prototype.writeFloatLE = function writeFloatLE(value, offset3, noAssert) {
+                return writeFloat(this, value, offset3, true, noAssert);
               };
-              Buffer2.prototype.writeFloatBE = function writeFloatBE(value, offset, noAssert) {
-                return writeFloat(this, value, offset, false, noAssert);
+              Buffer2.prototype.writeFloatBE = function writeFloatBE(value, offset3, noAssert) {
+                return writeFloat(this, value, offset3, false, noAssert);
               };
-              function writeDouble(buf, value, offset, littleEndian, noAssert) {
+              function writeDouble(buf, value, offset3, littleEndian, noAssert) {
                 if (!noAssert) {
-                  checkIEEE754(buf, value, offset, 8);
+                  checkIEEE754(buf, value, offset3, 8);
                 }
-                ieee754.write(buf, value, offset, littleEndian, 52, 8);
-                return offset + 8;
+                ieee754.write(buf, value, offset3, littleEndian, 52, 8);
+                return offset3 + 8;
               }
-              Buffer2.prototype.writeDoubleLE = function writeDoubleLE(value, offset, noAssert) {
-                return writeDouble(this, value, offset, true, noAssert);
+              Buffer2.prototype.writeDoubleLE = function writeDoubleLE(value, offset3, noAssert) {
+                return writeDouble(this, value, offset3, true, noAssert);
               };
-              Buffer2.prototype.writeDoubleBE = function writeDoubleBE(value, offset, noAssert) {
-                return writeDouble(this, value, offset, false, noAssert);
+              Buffer2.prototype.writeDoubleBE = function writeDoubleBE(value, offset3, noAssert) {
+                return writeDouble(this, value, offset3, false, noAssert);
               };
               Buffer2.prototype.copy = function copy2(target, targetStart, start3, end2) {
                 if (!start3) start3 = 0;
@@ -58045,10 +58045,10 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
               function base64ToBytes(str) {
                 return base64.toByteArray(base64clean(str));
               }
-              function blitBuffer(src2, dst, offset, length2) {
+              function blitBuffer(src2, dst, offset3, length2) {
                 for (var i = 0; i < length2; ++i) {
-                  if (i + offset >= dst.length || i >= src2.length) break;
-                  dst[i + offset] = src2[i];
+                  if (i + offset3 >= dst.length || i >= src2.length) break;
+                  dst[i + offset3] = src2[i];
                 }
                 return i;
               }
@@ -60419,8 +60419,8 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
               /*! util */
               1
             );
-            function copyBuffer(src2, target, offset) {
-              src2.copy(target, offset);
+            function copyBuffer(src2, target, offset3) {
+              src2.copy(target, offset3);
             }
             module22.exports = (function() {
               function BufferList() {
@@ -65578,7 +65578,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                       var j, len, ss, se, r3;
                       var segs = [];
                       var count2 = 0;
-                      var offset = (sidx.offset || info.range.start) + sidx.size;
+                      var offset3 = (sidx.offset || info.range.start) + sidx.size;
                       var tmpCallback = function tmpCallback2(result) {
                         if (result) {
                           segs = segs.concat(result);
@@ -65594,9 +65594,9 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                         }
                       };
                       for (j = 0, len = ref.length; j < len; j++) {
-                        ss = offset;
-                        se = offset + ref[j].referenced_size - 1;
-                        offset = offset + ref[j].referenced_size;
+                        ss = offset3;
+                        se = offset3 + ref[j].referenced_size - 1;
+                        offset3 = offset3 + ref[j].referenced_size;
                         r3 = {
                           start: ss,
                           end: se
@@ -68866,8 +68866,8 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 }
                 var list = representation.adaptation.period.mpd.manifest.Period_asArray[representation.adaptation.period.index].AdaptationSet_asArray[representation.adaptation.index].Representation_asArray[representation.index].SegmentList;
                 var startNumber2 = representation && !isNaN(representation.startNumber) ? representation.startNumber : 1;
-                var offset = Math.max(startNumber2 - 1, 0);
-                mediaFinishedInformation.numberOfSegments = offset + list.SegmentURL_asArray.length;
+                var offset3 = Math.max(startNumber2 - 1, 0);
+                mediaFinishedInformation.numberOfSegments = offset3 + list.SegmentURL_asArray.length;
                 return mediaFinishedInformation;
               }
               function getSegmentByIndex(representation, index2) {
@@ -80230,8 +80230,8 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                   var deviceTimeBeforeSync = Date.now();
                   handlers[lastTimingSource.schemeIdUri](lastTimingSource.value, function(serverTime) {
                     var deviceTimeAfterSync = Date.now();
-                    var offset = _calculateOffset(deviceTimeBeforeSync, deviceTimeAfterSync, serverTime);
-                    backgroundSyncTimeOffsets.push(offset);
+                    var offset3 = _calculateOffset(deviceTimeBeforeSync, deviceTimeAfterSync, serverTime);
+                    backgroundSyncTimeOffsets.push(offset3);
                     _attemptBackgroundSync(attempts - 1);
                   }, function() {
                     _completeBackgroundTimeSyncSequence();
@@ -80253,9 +80253,9 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                     var deviceTimeBeforeSync = (/* @__PURE__ */ new Date()).getTime();
                     handlers[source2.schemeIdUri](source2.value, function(serverTime) {
                       var deviceTimeAfterSync = (/* @__PURE__ */ new Date()).getTime();
-                      var offset = _calculateOffset(deviceTimeBeforeSync, deviceTimeAfterSync, serverTime);
+                      var offset3 = _calculateOffset(deviceTimeBeforeSync, deviceTimeAfterSync, serverTime);
                       lastTimingSource = source2;
-                      _onComplete(offset);
+                      _onComplete(offset3);
                     }, function() {
                       _attemptRecursiveSync(index2 + 1);
                     });
@@ -80285,12 +80285,12 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 }
               }
               function _onComplete() {
-                var offset = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : NaN;
-                var failed = isNaN(offset);
+                var offset3 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : NaN;
+                var failed = isNaN(offset3);
                 if (failed && settings.get().streaming.utcSynchronization.useManifestDateHeaderTimeSource) {
                   _checkForDateHeader();
                 } else {
-                  _completeTimeSyncSequence(failed, offset);
+                  _completeTimeSyncSequence(failed, offset3);
                 }
               }
               function _alternateXsdatetimeDecoder(xsdatetimeStr) {
@@ -80394,19 +80394,19 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                   _completeTimeSyncSequence(true);
                 }
               }
-              function _completeTimeSyncSequence(failed, offset) {
-                if (!isNaN(lastOffset) && !isNaN(offset) && !failed) {
-                  _adjustTimeBetweenSyncAttempts(offset);
+              function _completeTimeSyncSequence(failed, offset3) {
+                if (!isNaN(lastOffset) && !isNaN(offset3) && !failed) {
+                  _adjustTimeBetweenSyncAttempts(offset3);
                 }
-                if (!failed && !isNaN(offset)) {
+                if (!failed && !isNaN(offset3)) {
                   timeOfLastSync = Date.now();
                   isSynchronizing = false;
                   var shouldAttemptBackgroundSync = isNaN(lastOffset);
-                  lastOffset = offset;
+                  lastOffset = offset3;
                   if (shouldAttemptBackgroundSync) {
                     _onAttemptBackgroundSync();
                   }
-                  logger3.debug("Completed UTC sync. Setting client - server offset to ".concat(offset));
+                  logger3.debug("Completed UTC sync. Setting client - server offset to ".concat(offset3));
                 }
                 if (failed) {
                   lastTimingSource = null;
@@ -80414,13 +80414,13 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                   errHandler.error(new _vo_DashJSError__WEBPACK_IMPORTED_MODULE_0__["default"](_core_errors_Errors__WEBPACK_IMPORTED_MODULE_4__["default"].TIME_SYNC_FAILED_ERROR_CODE, _core_errors_Errors__WEBPACK_IMPORTED_MODULE_4__["default"].TIME_SYNC_FAILED_ERROR_MESSAGE));
                 }
                 eventBus.trigger(_core_events_Events__WEBPACK_IMPORTED_MODULE_3__["default"].UPDATE_TIME_SYNC_OFFSET, {
-                  offset
+                  offset: offset3
                 });
                 eventBus.trigger(_core_events_Events__WEBPACK_IMPORTED_MODULE_3__["default"].TIME_SYNCHRONIZATION_COMPLETED);
               }
-              function _adjustTimeBetweenSyncAttempts(offset) {
+              function _adjustTimeBetweenSyncAttempts(offset3) {
                 try {
-                  var isOffsetDriftWithinThreshold = _isOffsetDriftWithinThreshold(offset);
+                  var isOffsetDriftWithinThreshold = _isOffsetDriftWithinThreshold(offset3);
                   var timeBetweenSyncAttempts = !isNaN(internalTimeBetweenSyncAttempts) ? internalTimeBetweenSyncAttempts : DEFAULT_TIME_BETWEEN_SYNC_ATTEMPTS;
                   var timeBetweenSyncAttemptsAdjustmentFactor = !isNaN(settings.get().streaming.utcSynchronization.timeBetweenSyncAttemptsAdjustmentFactor) ? settings.get().streaming.utcSynchronization.timeBetweenSyncAttemptsAdjustmentFactor : DEFAULT_TIME_BETWEEN_SYNC_ATTEMPTS_ADJUSTMENT_FACTOR;
                   var maximumTimeBetweenSyncAttempts = !isNaN(settings.get().streaming.utcSynchronization.maximumTimeBetweenSyncAttempts) ? settings.get().streaming.utcSynchronization.maximumTimeBetweenSyncAttempts : DEFAULT_MAXIMUM_TIME_BETWEEN_SYNC;
@@ -80456,7 +80456,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 isBackgroundSynchronizing = false;
                 timeOfLastBackgroundSync = Date.now();
               }
-              function _isOffsetDriftWithinThreshold(offset) {
+              function _isOffsetDriftWithinThreshold(offset3) {
                 try {
                   if (isNaN(lastOffset)) {
                     return true;
@@ -80464,7 +80464,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                   var maxAllowedDrift = settings.get().streaming.utcSynchronization.maximumAllowedDrift && !isNaN(settings.get().streaming.utcSynchronization.maximumAllowedDrift) ? settings.get().streaming.utcSynchronization.maximumAllowedDrift : DEFAULT_MAXIMUM_ALLOWED_DRIFT;
                   var lowerBound = lastOffset - maxAllowedDrift;
                   var upperBound = lastOffset + maxAllowedDrift;
-                  return offset >= lowerBound && offset <= upperBound;
+                  return offset3 >= lowerBound && offset3 <= upperBound;
                 } catch (e) {
                   return true;
                 }
@@ -84531,7 +84531,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                     var bytesReceived = 0;
                     var signaledFirstByte = false;
                     var remaining = new Uint8Array();
-                    var offset = 0;
+                    var offset3 = 0;
                     if (calculationMode === _constants_Constants__WEBPACK_IMPORTED_MODULE_2__["default"].ABR_FETCH_THROUGHPUT_CALCULATION_AAST && lowLatencyThroughputModel) {
                       var fetchMeassurement = function fetchMeassurement2(stream) {
                         var reader = stream.getReader();
@@ -84614,7 +84614,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                           bytes: value2.length
                         });
                         if (calculationMode === _constants_Constants__WEBPACK_IMPORTED_MODULE_2__["default"].ABR_FETCH_THROUGHPUT_CALCULATION_MOOF_PARSING && lastChunkWasFinished) {
-                          var _boxesInfo = boxParser.findLastTopIsoBoxCompleted(["moof"], remaining, offset);
+                          var _boxesInfo = boxParser.findLastTopIsoBoxCompleted(["moof"], remaining, offset3);
                           if (_boxesInfo.found) {
                             lastChunkWasFinished = false;
                             startTimeData.push({
@@ -84624,7 +84624,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                             });
                           }
                         }
-                        var boxesInfo = boxParser.findLastTopIsoBoxCompleted(["moov", "mdat"], remaining, offset);
+                        var boxesInfo = boxParser.findLastTopIsoBoxCompleted(["moov", "mdat"], remaining, offset3);
                         if (boxesInfo.found) {
                           var end2 = boxesInfo.lastCompletedOffset + boxesInfo.size;
                           if (calculationMode === _constants_Constants__WEBPACK_IMPORTED_MODULE_2__["default"].ABR_FETCH_THROUGHPUT_CALCULATION_MOOF_PARSING && !lastChunkWasFinished) {
@@ -84648,9 +84648,9 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                             lengthComputable: false,
                             noTrace: true
                           });
-                          offset = 0;
+                          offset3 = 0;
                         } else {
-                          offset = boxesInfo.lastCompletedOffset;
+                          offset3 = boxesInfo.lastCompletedOffset;
                           if (!signaledFirstByte) {
                             httpRequest.progress({
                               lengthComputable: false,
@@ -85369,15 +85369,15 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
               }, {
                 key: "getPSSHData",
                 value: function getPSSHData(pssh) {
-                  var offset = 8;
+                  var offset3 = 8;
                   var view = new DataView(pssh);
-                  var version2 = view.getUint8(offset);
-                  offset += 20;
+                  var version2 = view.getUint8(offset3);
+                  offset3 += 20;
                   if (version2 > 0) {
-                    offset += 4 + 16 * view.getUint32(offset);
+                    offset3 += 4 + 16 * view.getUint32(offset3);
                   }
-                  offset += 4;
-                  return pssh.slice(offset);
+                  offset3 += 4;
+                  return pssh.slice(offset3);
                 }
                 /**
                  * Returns the PSSH associated with the given key system from the concatenated
@@ -86929,18 +86929,18 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 if (initData) {
                   var data2 = new DataView(initData);
                   var numRecords = data2.getUint16(4, true);
-                  var offset = 6;
+                  var offset3 = 6;
                   var parser3 = new DOMParser();
                   for (var i = 0; i < numRecords; i++) {
-                    var recordType = data2.getUint16(offset, true);
-                    offset += 2;
-                    var recordLength = data2.getUint16(offset, true);
-                    offset += 2;
+                    var recordType = data2.getUint16(offset3, true);
+                    offset3 += 2;
+                    var recordLength = data2.getUint16(offset3, true);
+                    offset3 += 2;
                     if (recordType !== 1) {
-                      offset += recordLength;
+                      offset3 += recordLength;
                       continue;
                     }
-                    var recordData = initData.slice(offset, offset + recordLength);
+                    var recordData = initData.slice(offset3, offset3 + recordLength);
                     var record = String.fromCharCode.apply(null, new Uint16Array(recordData));
                     var xmlDoc = parser3.parseFromString(record, "application/xml");
                     if (xmlDoc.getElementsByTagName("LA_URL")[0]) {
@@ -93638,7 +93638,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                   return;
                 }
                 var track = thumbnailTracks.getCurrentTrack();
-                var offset, request;
+                var offset3, request;
                 if (!track || track.segmentDuration <= 0 || time === void 0 || time === null) {
                   callback2(null);
                   return;
@@ -93647,8 +93647,8 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 if (request) {
                   track.segmentDuration = request.duration;
                 }
-                offset = time % track.segmentDuration;
-                var thumbIndex = Math.floor(offset * track.tilesHor * track.tilesVert / track.segmentDuration);
+                offset3 = time % track.segmentDuration;
+                var thumbIndex = Math.floor(offset3 * track.tilesHor * track.tilesVert / track.segmentDuration);
                 var thumbnail = new _vo_Thumbnail__WEBPACK_IMPORTED_MODULE_2__["default"]();
                 thumbnail.width = Math.floor(track.widthPerTile);
                 thumbnail.height = Math.floor(track.heightPerTile);
@@ -94146,30 +94146,30 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 dashIsoFile.setData(parsedFile);
                 return dashIsoFile;
               }
-              function findLastTopIsoBoxCompleted(types2, buffer, offset) {
-                if (offset === void 0) {
-                  offset = 0;
+              function findLastTopIsoBoxCompleted(types2, buffer, offset3) {
+                if (offset3 === void 0) {
+                  offset3 = 0;
                 }
-                if (!buffer || offset + 8 >= buffer.byteLength) {
+                if (!buffer || offset3 + 8 >= buffer.byteLength) {
                   return new _vo_IsoBoxSearchInfo__WEBPACK_IMPORTED_MODULE_4__["default"](0, false);
                 }
                 var data2 = buffer instanceof ArrayBuffer ? new Uint8Array(buffer) : buffer;
                 var boxInfo;
                 var lastCompletedOffset = 0;
-                while (offset < data2.byteLength) {
-                  var boxSize = parseUint32(data2, offset);
-                  var boxType = parseIsoBoxType(data2, offset + 4);
+                while (offset3 < data2.byteLength) {
+                  var boxSize = parseUint32(data2, offset3);
+                  var boxType = parseIsoBoxType(data2, offset3 + 4);
                   if (boxSize === 0) {
                     break;
                   }
-                  if (offset + boxSize <= data2.byteLength) {
+                  if (offset3 + boxSize <= data2.byteLength) {
                     if (types2.indexOf(boxType) >= 0) {
-                      boxInfo = new _vo_IsoBoxSearchInfo__WEBPACK_IMPORTED_MODULE_4__["default"](offset, true, boxSize);
+                      boxInfo = new _vo_IsoBoxSearchInfo__WEBPACK_IMPORTED_MODULE_4__["default"](offset3, true, boxSize);
                     } else {
-                      lastCompletedOffset = offset + boxSize;
+                      lastCompletedOffset = offset3 + boxSize;
                     }
                   }
-                  offset += boxSize;
+                  offset3 += boxSize;
                 }
                 if (!boxInfo) {
                   return new _vo_IsoBoxSearchInfo__WEBPACK_IMPORTED_MODULE_4__["default"](lastCompletedOffset, false);
@@ -94258,11 +94258,11 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 var mdhdBox = isoFile ? isoFile.getBox("mdhd") : void 0;
                 return mdhdBox ? mdhdBox.timescale : NaN;
               }
-              function parseUint32(data2, offset) {
-                return data2[offset + 3] >>> 0 | data2[offset + 2] << 8 >>> 0 | data2[offset + 1] << 16 >>> 0 | data2[offset] << 24 >>> 0;
+              function parseUint32(data2, offset3) {
+                return data2[offset3 + 3] >>> 0 | data2[offset3 + 2] << 8 >>> 0 | data2[offset3 + 1] << 16 >>> 0 | data2[offset3] << 24 >>> 0;
               }
-              function parseIsoBoxType(data2, offset) {
-                return String.fromCharCode(data2[offset++]) + String.fromCharCode(data2[offset++]) + String.fromCharCode(data2[offset++]) + String.fromCharCode(data2[offset]);
+              function parseIsoBoxType(data2, offset3) {
+                return String.fromCharCode(data2[offset3++]) + String.fromCharCode(data2[offset3++]) + String.fromCharCode(data2[offset3++]) + String.fromCharCode(data2[offset3]);
               }
               function findInitRange(data2) {
                 var initRange = null;
@@ -94282,30 +94282,30 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                 }
                 return initRange;
               }
-              function parsePayload(types2, buffer, offset) {
-                if (offset === void 0) {
-                  offset = 0;
+              function parsePayload(types2, buffer, offset3) {
+                if (offset3 === void 0) {
+                  offset3 = 0;
                 }
-                if (!buffer || offset + 8 >= buffer.byteLength) {
+                if (!buffer || offset3 + 8 >= buffer.byteLength) {
                   return new _vo_IsoBoxSearchInfo__WEBPACK_IMPORTED_MODULE_4__["default"](0, false);
                 }
                 var data2 = buffer instanceof ArrayBuffer ? new Uint8Array(buffer) : buffer;
                 var boxInfo;
                 var lastCompletedOffset = 0;
-                while (offset < data2.byteLength) {
-                  var boxSize = parseUint32(data2, offset);
-                  var boxType = parseIsoBoxType(data2, offset + 4);
+                while (offset3 < data2.byteLength) {
+                  var boxSize = parseUint32(data2, offset3);
+                  var boxType = parseIsoBoxType(data2, offset3 + 4);
                   if (boxSize === 0) {
                     break;
                   }
-                  if (offset + boxSize <= data2.byteLength) {
+                  if (offset3 + boxSize <= data2.byteLength) {
                     if (types2.indexOf(boxType) >= 0) {
-                      boxInfo = new _vo_IsoBoxSearchInfo__WEBPACK_IMPORTED_MODULE_4__["default"](offset, true, boxSize, boxType);
+                      boxInfo = new _vo_IsoBoxSearchInfo__WEBPACK_IMPORTED_MODULE_4__["default"](offset3, true, boxSize, boxType);
                     } else {
-                      lastCompletedOffset = offset + boxSize;
+                      lastCompletedOffset = offset3 + boxSize;
                     }
                   }
-                  offset += boxSize;
+                  offset3 += boxSize;
                 }
                 if (!boxInfo) {
                   return new _vo_IsoBoxSearchInfo__WEBPACK_IMPORTED_MODULE_4__["default"](lastCompletedOffset, false);
@@ -97816,7 +97816,7 @@ if (window$1.MediaSource) {
 }
 videojs.Html5DashJS = Html5DashJS;
 /*! @name videojs-mobile-ui @version 0.8.0 @license MIT */
-var version$3 = "0.8.0";
+var version$4 = "0.8.0";
 var Component$1 = videojs.getComponent("Component");
 var dom = videojs.dom || videojs;
 var TouchOverlay = /* @__PURE__ */ (function(_Component) {
@@ -97898,7 +97898,7 @@ var TouchOverlay = /* @__PURE__ */ (function(_Component) {
   return TouchOverlay2;
 })(Component$1);
 Component$1.registerComponent("TouchOverlay", TouchOverlay);
-var defaults$3 = {
+var defaults$4 = {
   fullscreen: {
     enterOnRotate: true,
     exitOnRotate: true,
@@ -97930,8 +97930,8 @@ var getOrientation = function getOrientation2() {
   }
   return "portrait";
 };
-var registerPlugin = videojs.registerPlugin || videojs.plugin;
-var onPlayerReady$1 = function onPlayerReady(player, options2) {
+var registerPlugin$1 = videojs.registerPlugin || videojs.plugin;
+var onPlayerReady$2 = function onPlayerReady(player, options2) {
   player.addClass("vjs-mobile-ui");
   if (options2.fullscreen.iOS) {
     videojs.log.warn("videojs-mobile-ui: `fullscreen.iOS` is deprecated. Use Video.js option `preferFullWindow` instead.");
@@ -98019,20 +98019,20 @@ var mobileUi = function mobileUi2(options2) {
   }
   if (options2.forceForTesting || videojs.browser.IS_ANDROID || videojs.browser.IS_IOS) {
     this.ready(function() {
-      onPlayerReady$1(_this, videojs.mergeOptions(defaults$3, options2));
+      onPlayerReady$2(_this, videojs.mergeOptions(defaults$4, options2));
     });
   }
 };
-registerPlugin("mobileUi", mobileUi);
-mobileUi.VERSION = version$3;
+registerPlugin$1("mobileUi", mobileUi);
+mobileUi.VERSION = version$4;
 /*! @name videojs-seek-buttons @version 3.0.1 @license Apache-2.0 */
-var version$2 = "3.0.1";
+var version$3 = "3.0.1";
 var Button$2 = videojs.getComponent("Button");
-var defaults$2 = {
+var defaults$3 = {
   forwardIndex: 1,
   backIndex: 1
 };
-var onPlayerReady2 = function onPlayerReady3(player, options2) {
+var onPlayerReady$1 = function onPlayerReady2(player, options2) {
   player.addClass("vjs-seek-buttons");
   if (options2.forward && options2.forward > 0) {
     player.controlBar.seekForward = player.controlBar.addChild("seekButton", {
@@ -98050,10 +98050,10 @@ var onPlayerReady2 = function onPlayerReady3(player, options2) {
 var seekButtons = function seekButtons2(options2) {
   var _this = this;
   this.ready(function() {
-    onPlayerReady2(_this, videojs.mergeOptions(defaults$2, options2));
+    onPlayerReady$1(_this, videojs.mergeOptions(defaults$3, options2));
   });
 };
-seekButtons.VERSION = version$2;
+seekButtons.VERSION = version$3;
 var SeekButton = /* @__PURE__ */ (function(_Button) {
   _inheritsLoose$1(SeekButton2, _Button);
   function SeekButton2(player, options2) {
@@ -99642,20 +99642,20 @@ function offsetMiddleware(player) {
   let offsetStart;
   let seeking = 0;
   function initCues(cues) {
-    const offset = offsetStart !== null && offsetStart !== void 0 ? offsetStart : 0;
+    const offset3 = offsetStart !== null && offsetStart !== void 0 ? offsetStart : 0;
     for (let j = 0; j < cues.length; j++) {
       const cue = cues[j];
       cue._startTime = cue.startTime;
-      cue.startTime = cue._startTime - offset;
+      cue.startTime = cue._startTime - offset3;
       cue._endTime = cue.endTime;
-      cue.endTime = cue._endTime - offset;
+      cue.endTime = cue._endTime - offset3;
     }
   }
-  function updateOffsetStart(offset) {
-    offsetStart = offset;
+  function updateOffsetStart(offset3) {
+    offsetStart = offset3;
     if (!tech)
       return;
-    offset = offset !== null && offset !== void 0 ? offset : 0;
+    offset3 = offset3 !== null && offset3 !== void 0 ? offset3 : 0;
     const tracks = tech.remoteTextTracks();
     for (let i = 0; i < tracks.length; i++) {
       const { cues } = tracks[i];
@@ -99665,8 +99665,8 @@ function offsetMiddleware(player) {
           if (cue._startTime === void 0 || cue._endTime === void 0) {
             continue;
           }
-          cue.startTime = cue._startTime - offset;
-          cue.endTime = cue._endTime - offset;
+          cue.startTime = cue._startTime - offset3;
+          cue.endTime = cue._endTime - offset3;
         }
       }
     }
@@ -102766,8 +102766,8 @@ function requireCore() {
             var nWordsReady = nBlocksReady * blockSize;
             var nBytesReady = Math2.min(nWordsReady * 4, dataSigBytes);
             if (nWordsReady) {
-              for (var offset = 0; offset < nWordsReady; offset += blockSize) {
-                this._doProcessBlock(dataWords, offset);
+              for (var offset3 = 0; offset3 < nWordsReady; offset3 += blockSize) {
+                this._doProcessBlock(dataWords, offset3);
               }
               processedWords = dataWords.splice(0, nWordsReady);
               data2.sigBytes -= nBytesReady;
@@ -103583,29 +103583,29 @@ function requireMd5() {
               271733878
             ]);
           },
-          _doProcessBlock: function(M, offset) {
+          _doProcessBlock: function(M, offset3) {
             for (var i = 0; i < 16; i++) {
-              var offset_i = offset + i;
+              var offset_i = offset3 + i;
               var M_offset_i = M[offset_i];
               M[offset_i] = (M_offset_i << 8 | M_offset_i >>> 24) & 16711935 | (M_offset_i << 24 | M_offset_i >>> 8) & 4278255360;
             }
             var H = this._hash.words;
-            var M_offset_0 = M[offset + 0];
-            var M_offset_1 = M[offset + 1];
-            var M_offset_2 = M[offset + 2];
-            var M_offset_3 = M[offset + 3];
-            var M_offset_4 = M[offset + 4];
-            var M_offset_5 = M[offset + 5];
-            var M_offset_6 = M[offset + 6];
-            var M_offset_7 = M[offset + 7];
-            var M_offset_8 = M[offset + 8];
-            var M_offset_9 = M[offset + 9];
-            var M_offset_10 = M[offset + 10];
-            var M_offset_11 = M[offset + 11];
-            var M_offset_12 = M[offset + 12];
-            var M_offset_13 = M[offset + 13];
-            var M_offset_14 = M[offset + 14];
-            var M_offset_15 = M[offset + 15];
+            var M_offset_0 = M[offset3 + 0];
+            var M_offset_1 = M[offset3 + 1];
+            var M_offset_2 = M[offset3 + 2];
+            var M_offset_3 = M[offset3 + 3];
+            var M_offset_4 = M[offset3 + 4];
+            var M_offset_5 = M[offset3 + 5];
+            var M_offset_6 = M[offset3 + 6];
+            var M_offset_7 = M[offset3 + 7];
+            var M_offset_8 = M[offset3 + 8];
+            var M_offset_9 = M[offset3 + 9];
+            var M_offset_10 = M[offset3 + 10];
+            var M_offset_11 = M[offset3 + 11];
+            var M_offset_12 = M[offset3 + 12];
+            var M_offset_13 = M[offset3 + 13];
+            var M_offset_14 = M[offset3 + 14];
+            var M_offset_15 = M[offset3 + 15];
             var a2 = H[0];
             var b = H[1];
             var c = H[2];
@@ -103758,7 +103758,7 @@ function requireSha1() {
               3285377520
             ]);
           },
-          _doProcessBlock: function(M, offset) {
+          _doProcessBlock: function(M, offset3) {
             var H = this._hash.words;
             var a2 = H[0];
             var b = H[1];
@@ -103767,7 +103767,7 @@ function requireSha1() {
             var e = H[4];
             for (var i = 0; i < 80; i++) {
               if (i < 16) {
-                W[i] = M[offset + i] | 0;
+                W[i] = M[offset3 + i] | 0;
               } else {
                 var n = W[i - 3] ^ W[i - 8] ^ W[i - 14] ^ W[i - 16];
                 W[i] = n << 1 | n >>> 31;
@@ -103871,7 +103871,7 @@ function requireSha256() {
           _doReset: function() {
             this._hash = new WordArray.init(H.slice(0));
           },
-          _doProcessBlock: function(M, offset) {
+          _doProcessBlock: function(M, offset3) {
             var H2 = this._hash.words;
             var a2 = H2[0];
             var b = H2[1];
@@ -103883,7 +103883,7 @@ function requireSha256() {
             var h = H2[7];
             for (var i = 0; i < 64; i++) {
               if (i < 16) {
-                W[i] = M[offset + i] | 0;
+                W[i] = M[offset3 + i] | 0;
               } else {
                 var gamma0x = W[i - 15];
                 var gamma0 = (gamma0x << 25 | gamma0x >>> 7) ^ (gamma0x << 14 | gamma0x >>> 18) ^ gamma0x >>> 3;
@@ -104110,7 +104110,7 @@ function requireSha512() {
               new X64Word.init(1541459225, 327033209)
             ]);
           },
-          _doProcessBlock: function(M, offset) {
+          _doProcessBlock: function(M, offset3) {
             var H = this._hash.words;
             var H0 = H[0];
             var H1 = H[1];
@@ -104157,8 +104157,8 @@ function requireSha512() {
               var Wih;
               var Wi = W[i];
               if (i < 16) {
-                Wih = Wi.high = M[offset + i * 2] | 0;
-                Wil = Wi.low = M[offset + i * 2 + 1] | 0;
+                Wih = Wi.high = M[offset3 + i * 2] | 0;
+                Wil = Wi.low = M[offset3 + i * 2 + 1] | 0;
               } else {
                 var gamma0x = W[i - 15];
                 var gamma0xh = gamma0x.high;
@@ -104398,12 +104398,12 @@ function requireSha3() {
             }
             this.blockSize = (1600 - 2 * this.cfg.outputLength) / 32;
           },
-          _doProcessBlock: function(M, offset) {
+          _doProcessBlock: function(M, offset3) {
             var state = this._state;
             var nBlockSizeLanes = this.blockSize / 2;
             for (var i = 0; i < nBlockSizeLanes; i++) {
-              var M2i = M[offset + 2 * i];
-              var M2i1 = M[offset + 2 * i + 1];
+              var M2i = M[offset3 + 2 * i];
+              var M2i1 = M[offset3 + 2 * i + 1];
               M2i = (M2i << 8 | M2i >>> 24) & 16711935 | (M2i << 24 | M2i >>> 8) & 4278255360;
               M2i1 = (M2i1 << 8 | M2i1 >>> 24) & 16711935 | (M2i1 << 24 | M2i1 >>> 8) & 4278255360;
               var lane = state[i];
@@ -104878,9 +104878,9 @@ function requireRipemd160() {
           _doReset: function() {
             this._hash = WordArray.create([1732584193, 4023233417, 2562383102, 271733878, 3285377520]);
           },
-          _doProcessBlock: function(M, offset) {
+          _doProcessBlock: function(M, offset3) {
             for (var i = 0; i < 16; i++) {
-              var offset_i = offset + i;
+              var offset_i = offset3 + i;
               var M_offset_i = M[offset_i];
               M[offset_i] = (M_offset_i << 8 | M_offset_i >>> 24) & 16711935 | (M_offset_i << 24 | M_offset_i >>> 8) & 4278255360;
             }
@@ -104900,7 +104900,7 @@ function requireRipemd160() {
             er = el = H[4];
             var t3;
             for (var i = 0; i < 80; i += 1) {
-              t3 = al + M[offset + zl[i]] | 0;
+              t3 = al + M[offset3 + zl[i]] | 0;
               if (i < 16) {
                 t3 += f1(bl, cl, dl) + hl[0];
               } else if (i < 32) {
@@ -104920,7 +104920,7 @@ function requireRipemd160() {
               dl = rotl(cl, 10);
               cl = bl;
               bl = t3;
-              t3 = ar + M[offset + zr[i]] | 0;
+              t3 = ar + M[offset3 + zr[i]] | 0;
               if (i < 16) {
                 t3 += f5(br, cr, dr) + hr[0];
               } else if (i < 32) {
@@ -105526,12 +105526,12 @@ function requireCipherCore() {
              *
              *     mode.processBlock(data.words, offset);
              */
-            processBlock: function(words, offset) {
+            processBlock: function(words, offset3) {
               var cipher = this._cipher;
               var blockSize = cipher.blockSize;
-              xorBlock.call(this, words, offset, blockSize);
-              cipher.encryptBlock(words, offset);
-              this._prevBlock = words.slice(offset, offset + blockSize);
+              xorBlock.call(this, words, offset3, blockSize);
+              cipher.encryptBlock(words, offset3);
+              this._prevBlock = words.slice(offset3, offset3 + blockSize);
             }
           });
           CBC2.Decryptor = CBC2.extend({
@@ -105545,16 +105545,16 @@ function requireCipherCore() {
              *
              *     mode.processBlock(data.words, offset);
              */
-            processBlock: function(words, offset) {
+            processBlock: function(words, offset3) {
               var cipher = this._cipher;
               var blockSize = cipher.blockSize;
-              var thisBlock = words.slice(offset, offset + blockSize);
-              cipher.decryptBlock(words, offset);
-              xorBlock.call(this, words, offset, blockSize);
+              var thisBlock = words.slice(offset3, offset3 + blockSize);
+              cipher.decryptBlock(words, offset3);
+              xorBlock.call(this, words, offset3, blockSize);
               this._prevBlock = thisBlock;
             }
           });
-          function xorBlock(words, offset, blockSize) {
+          function xorBlock(words, offset3, blockSize) {
             var block2;
             var iv = this._iv;
             if (iv) {
@@ -105564,7 +105564,7 @@ function requireCipherCore() {
               block2 = this._prevBlock;
             }
             for (var i = 0; i < blockSize; i++) {
-              words[offset + i] ^= block2[i];
+              words[offset3 + i] ^= block2[i];
             }
           }
           return CBC2;
@@ -105640,8 +105640,8 @@ function requireCipherCore() {
               this._mode.__creator = modeCreator;
             }
           },
-          _doProcessBlock: function(words, offset) {
-            this._mode.processBlock(words, offset);
+          _doProcessBlock: function(words, offset3) {
+            this._mode.processBlock(words, offset3);
           },
           _doFinalize: function() {
             var finalProcessedBlocks;
@@ -105952,23 +105952,23 @@ function requireModeCfb() {
       CryptoJS2.mode.CFB = (function() {
         var CFB = CryptoJS2.lib.BlockCipherMode.extend();
         CFB.Encryptor = CFB.extend({
-          processBlock: function(words, offset) {
+          processBlock: function(words, offset3) {
             var cipher = this._cipher;
             var blockSize = cipher.blockSize;
-            generateKeystreamAndEncrypt.call(this, words, offset, blockSize, cipher);
-            this._prevBlock = words.slice(offset, offset + blockSize);
+            generateKeystreamAndEncrypt.call(this, words, offset3, blockSize, cipher);
+            this._prevBlock = words.slice(offset3, offset3 + blockSize);
           }
         });
         CFB.Decryptor = CFB.extend({
-          processBlock: function(words, offset) {
+          processBlock: function(words, offset3) {
             var cipher = this._cipher;
             var blockSize = cipher.blockSize;
-            var thisBlock = words.slice(offset, offset + blockSize);
-            generateKeystreamAndEncrypt.call(this, words, offset, blockSize, cipher);
+            var thisBlock = words.slice(offset3, offset3 + blockSize);
+            generateKeystreamAndEncrypt.call(this, words, offset3, blockSize, cipher);
             this._prevBlock = thisBlock;
           }
         });
-        function generateKeystreamAndEncrypt(words, offset, blockSize, cipher) {
+        function generateKeystreamAndEncrypt(words, offset3, blockSize, cipher) {
           var keystream;
           var iv = this._iv;
           if (iv) {
@@ -105979,7 +105979,7 @@ function requireModeCfb() {
           }
           cipher.encryptBlock(keystream, 0);
           for (var i = 0; i < blockSize; i++) {
-            words[offset + i] ^= keystream[i];
+            words[offset3 + i] ^= keystream[i];
           }
         }
         return CFB;
@@ -106004,7 +106004,7 @@ function requireModeCtr() {
       CryptoJS2.mode.CTR = (function() {
         var CTR = CryptoJS2.lib.BlockCipherMode.extend();
         var Encryptor = CTR.Encryptor = CTR.extend({
-          processBlock: function(words, offset) {
+          processBlock: function(words, offset3) {
             var cipher = this._cipher;
             var blockSize = cipher.blockSize;
             var iv = this._iv;
@@ -106017,7 +106017,7 @@ function requireModeCtr() {
             cipher.encryptBlock(keystream, 0);
             counter2[blockSize - 1] = counter2[blockSize - 1] + 1 | 0;
             for (var i = 0; i < blockSize; i++) {
-              words[offset + i] ^= keystream[i];
+              words[offset3 + i] ^= keystream[i];
             }
           }
         });
@@ -106084,7 +106084,7 @@ function requireModeCtrGladman() {
           return counter2;
         }
         var Encryptor = CTRGladman.Encryptor = CTRGladman.extend({
-          processBlock: function(words, offset) {
+          processBlock: function(words, offset3) {
             var cipher = this._cipher;
             var blockSize = cipher.blockSize;
             var iv = this._iv;
@@ -106097,7 +106097,7 @@ function requireModeCtrGladman() {
             var keystream = counter2.slice(0);
             cipher.encryptBlock(keystream, 0);
             for (var i = 0; i < blockSize; i++) {
-              words[offset + i] ^= keystream[i];
+              words[offset3 + i] ^= keystream[i];
             }
           }
         });
@@ -106124,7 +106124,7 @@ function requireModeOfb() {
       CryptoJS2.mode.OFB = (function() {
         var OFB = CryptoJS2.lib.BlockCipherMode.extend();
         var Encryptor = OFB.Encryptor = OFB.extend({
-          processBlock: function(words, offset) {
+          processBlock: function(words, offset3) {
             var cipher = this._cipher;
             var blockSize = cipher.blockSize;
             var iv = this._iv;
@@ -106135,7 +106135,7 @@ function requireModeOfb() {
             }
             cipher.encryptBlock(keystream, 0);
             for (var i = 0; i < blockSize; i++) {
-              words[offset + i] ^= keystream[i];
+              words[offset3 + i] ^= keystream[i];
             }
           }
         });
@@ -106162,13 +106162,13 @@ function requireModeEcb() {
       CryptoJS2.mode.ECB = (function() {
         var ECB = CryptoJS2.lib.BlockCipherMode.extend();
         ECB.Encryptor = ECB.extend({
-          processBlock: function(words, offset) {
-            this._cipher.encryptBlock(words, offset);
+          processBlock: function(words, offset3) {
+            this._cipher.encryptBlock(words, offset3);
           }
         });
         ECB.Decryptor = ECB.extend({
-          processBlock: function(words, offset) {
-            this._cipher.decryptBlock(words, offset);
+          processBlock: function(words, offset3) {
+            this._cipher.decryptBlock(words, offset3);
           }
         });
         return ECB;
@@ -106489,24 +106489,24 @@ function requireAes() {
               }
             }
           },
-          encryptBlock: function(M, offset) {
-            this._doCryptBlock(M, offset, this._keySchedule, SUB_MIX_0, SUB_MIX_1, SUB_MIX_2, SUB_MIX_3, SBOX);
+          encryptBlock: function(M, offset3) {
+            this._doCryptBlock(M, offset3, this._keySchedule, SUB_MIX_0, SUB_MIX_1, SUB_MIX_2, SUB_MIX_3, SBOX);
           },
-          decryptBlock: function(M, offset) {
-            var t3 = M[offset + 1];
-            M[offset + 1] = M[offset + 3];
-            M[offset + 3] = t3;
-            this._doCryptBlock(M, offset, this._invKeySchedule, INV_SUB_MIX_0, INV_SUB_MIX_1, INV_SUB_MIX_2, INV_SUB_MIX_3, INV_SBOX);
-            var t3 = M[offset + 1];
-            M[offset + 1] = M[offset + 3];
-            M[offset + 3] = t3;
+          decryptBlock: function(M, offset3) {
+            var t3 = M[offset3 + 1];
+            M[offset3 + 1] = M[offset3 + 3];
+            M[offset3 + 3] = t3;
+            this._doCryptBlock(M, offset3, this._invKeySchedule, INV_SUB_MIX_0, INV_SUB_MIX_1, INV_SUB_MIX_2, INV_SUB_MIX_3, INV_SBOX);
+            var t3 = M[offset3 + 1];
+            M[offset3 + 1] = M[offset3 + 3];
+            M[offset3 + 3] = t3;
           },
-          _doCryptBlock: function(M, offset, keySchedule, SUB_MIX_02, SUB_MIX_12, SUB_MIX_22, SUB_MIX_32, SBOX2) {
+          _doCryptBlock: function(M, offset3, keySchedule, SUB_MIX_02, SUB_MIX_12, SUB_MIX_22, SUB_MIX_32, SBOX2) {
             var nRounds = this._nRounds;
-            var s0 = M[offset] ^ keySchedule[0];
-            var s1 = M[offset + 1] ^ keySchedule[1];
-            var s2 = M[offset + 2] ^ keySchedule[2];
-            var s3 = M[offset + 3] ^ keySchedule[3];
+            var s0 = M[offset3] ^ keySchedule[0];
+            var s1 = M[offset3 + 1] ^ keySchedule[1];
+            var s2 = M[offset3 + 2] ^ keySchedule[2];
+            var s3 = M[offset3 + 3] ^ keySchedule[3];
             var ksRow = 4;
             for (var round2 = 1; round2 < nRounds; round2++) {
               var t0 = SUB_MIX_02[s0 >>> 24] ^ SUB_MIX_12[s1 >>> 16 & 255] ^ SUB_MIX_22[s2 >>> 8 & 255] ^ SUB_MIX_32[s3 & 255] ^ keySchedule[ksRow++];
@@ -106522,10 +106522,10 @@ function requireAes() {
             var t1 = (SBOX2[s1 >>> 24] << 24 | SBOX2[s2 >>> 16 & 255] << 16 | SBOX2[s3 >>> 8 & 255] << 8 | SBOX2[s0 & 255]) ^ keySchedule[ksRow++];
             var t22 = (SBOX2[s2 >>> 24] << 24 | SBOX2[s3 >>> 16 & 255] << 16 | SBOX2[s0 >>> 8 & 255] << 8 | SBOX2[s1 & 255]) ^ keySchedule[ksRow++];
             var t3 = (SBOX2[s3 >>> 24] << 24 | SBOX2[s0 >>> 16 & 255] << 16 | SBOX2[s1 >>> 8 & 255] << 8 | SBOX2[s2 & 255]) ^ keySchedule[ksRow++];
-            M[offset] = t0;
-            M[offset + 1] = t1;
-            M[offset + 2] = t22;
-            M[offset + 3] = t3;
+            M[offset3] = t0;
+            M[offset3 + 1] = t1;
+            M[offset3 + 2] = t22;
+            M[offset3 + 3] = t3;
           },
           keySize: 256 / 32
         });
@@ -107231,15 +107231,15 @@ function requireTripledes() {
               invSubKeys[i] = subKeys[15 - i];
             }
           },
-          encryptBlock: function(M, offset) {
-            this._doCryptBlock(M, offset, this._subKeys);
+          encryptBlock: function(M, offset3) {
+            this._doCryptBlock(M, offset3, this._subKeys);
           },
-          decryptBlock: function(M, offset) {
-            this._doCryptBlock(M, offset, this._invSubKeys);
+          decryptBlock: function(M, offset3) {
+            this._doCryptBlock(M, offset3, this._invSubKeys);
           },
-          _doCryptBlock: function(M, offset, subKeys) {
-            this._lBlock = M[offset];
-            this._rBlock = M[offset + 1];
+          _doCryptBlock: function(M, offset3, subKeys) {
+            this._lBlock = M[offset3];
+            this._rBlock = M[offset3 + 1];
             exchangeLR.call(this, 4, 252645135);
             exchangeLR.call(this, 16, 65535);
             exchangeRL.call(this, 2, 858993459);
@@ -107264,22 +107264,22 @@ function requireTripledes() {
             exchangeRL.call(this, 2, 858993459);
             exchangeLR.call(this, 16, 65535);
             exchangeLR.call(this, 4, 252645135);
-            M[offset] = this._lBlock;
-            M[offset + 1] = this._rBlock;
+            M[offset3] = this._lBlock;
+            M[offset3 + 1] = this._rBlock;
           },
           keySize: 64 / 32,
           ivSize: 64 / 32,
           blockSize: 64 / 32
         });
-        function exchangeLR(offset, mask) {
-          var t3 = (this._lBlock >>> offset ^ this._rBlock) & mask;
+        function exchangeLR(offset3, mask) {
+          var t3 = (this._lBlock >>> offset3 ^ this._rBlock) & mask;
           this._rBlock ^= t3;
-          this._lBlock ^= t3 << offset;
+          this._lBlock ^= t3 << offset3;
         }
-        function exchangeRL(offset, mask) {
-          var t3 = (this._rBlock >>> offset ^ this._lBlock) & mask;
+        function exchangeRL(offset3, mask) {
+          var t3 = (this._rBlock >>> offset3 ^ this._lBlock) & mask;
           this._lBlock ^= t3;
-          this._rBlock ^= t3 << offset;
+          this._rBlock ^= t3 << offset3;
         }
         C.DES = BlockCipher._createHelper(DES);
         var TripleDES = C_algo.TripleDES = BlockCipher.extend({
@@ -107296,15 +107296,15 @@ function requireTripledes() {
             this._des2 = DES.createEncryptor(WordArray.create(key2));
             this._des3 = DES.createEncryptor(WordArray.create(key3));
           },
-          encryptBlock: function(M, offset) {
-            this._des1.encryptBlock(M, offset);
-            this._des2.decryptBlock(M, offset);
-            this._des3.encryptBlock(M, offset);
+          encryptBlock: function(M, offset3) {
+            this._des1.encryptBlock(M, offset3);
+            this._des2.decryptBlock(M, offset3);
+            this._des3.encryptBlock(M, offset3);
           },
-          decryptBlock: function(M, offset) {
-            this._des3.decryptBlock(M, offset);
-            this._des2.encryptBlock(M, offset);
-            this._des1.decryptBlock(M, offset);
+          decryptBlock: function(M, offset3) {
+            this._des3.decryptBlock(M, offset3);
+            this._des2.encryptBlock(M, offset3);
+            this._des1.decryptBlock(M, offset3);
           },
           keySize: 192 / 32,
           ivSize: 64 / 32,
@@ -107353,8 +107353,8 @@ function requireRc4() {
             }
             this._i = this._j = 0;
           },
-          _doProcessBlock: function(M, offset) {
-            M[offset] ^= generateKeystreamWord.call(this);
+          _doProcessBlock: function(M, offset3) {
+            M[offset3] ^= generateKeystreamWord.call(this);
           },
           keySize: 256 / 32,
           ivSize: 0
@@ -107475,7 +107475,7 @@ function requireRabbit() {
               }
             }
           },
-          _doProcessBlock: function(M, offset) {
+          _doProcessBlock: function(M, offset3) {
             var X = this._X;
             nextState.call(this);
             S2[0] = X[0] ^ X[5] >>> 16 ^ X[3] << 16;
@@ -107484,7 +107484,7 @@ function requireRabbit() {
             S2[3] = X[6] ^ X[3] >>> 16 ^ X[1] << 16;
             for (var i = 0; i < 4; i++) {
               S2[i] = (S2[i] << 8 | S2[i] >>> 24) & 16711935 | (S2[i] << 24 | S2[i] >>> 8) & 4278255360;
-              M[offset + i] ^= S2[i];
+              M[offset3 + i] ^= S2[i];
             }
           },
           blockSize: 128 / 32,
@@ -107601,7 +107601,7 @@ function requireRabbitLegacy() {
               }
             }
           },
-          _doProcessBlock: function(M, offset) {
+          _doProcessBlock: function(M, offset3) {
             var X = this._X;
             nextState.call(this);
             S2[0] = X[0] ^ X[5] >>> 16 ^ X[3] << 16;
@@ -107610,7 +107610,7 @@ function requireRabbitLegacy() {
             S2[3] = X[6] ^ X[3] >>> 16 ^ X[1] << 16;
             for (var i = 0; i < 4; i++) {
               S2[i] = (S2[i] << 8 | S2[i] >>> 24) & 16711935 | (S2[i] << 24 | S2[i] >>> 8) & 4278255360;
-              M[offset + i] ^= S2[i];
+              M[offset3 + i] ^= S2[i];
             }
           },
           blockSize: 128 / 32,
@@ -108823,15 +108823,15 @@ function requireBlowfish() {
             var keySize = key.sigBytes / 4;
             BlowFishInit(BLOWFISH_CTX, keyWords, keySize);
           },
-          encryptBlock: function(M, offset) {
-            var res = BlowFish_Encrypt(BLOWFISH_CTX, M[offset], M[offset + 1]);
-            M[offset] = res.left;
-            M[offset + 1] = res.right;
+          encryptBlock: function(M, offset3) {
+            var res = BlowFish_Encrypt(BLOWFISH_CTX, M[offset3], M[offset3 + 1]);
+            M[offset3] = res.left;
+            M[offset3 + 1] = res.right;
           },
-          decryptBlock: function(M, offset) {
-            var res = BlowFish_Decrypt(BLOWFISH_CTX, M[offset], M[offset + 1]);
-            M[offset] = res.left;
-            M[offset + 1] = res.right;
+          decryptBlock: function(M, offset3) {
+            var res = BlowFish_Decrypt(BLOWFISH_CTX, M[offset3], M[offset3 + 1]);
+            M[offset3] = res.left;
+            M[offset3 + 1] = res.right;
           },
           blockSize: 64 / 32,
           keySize: 128 / 32,
@@ -110312,12 +110312,12 @@ function requireWebvrPolyfill() {
             }
             var defaultOrientation = new Float32Array([0, 0, 0, 1]);
             var defaultPosition = new Float32Array([0, 0, 0]);
-            function updateEyeMatrices(projection, view, pose, fov, offset, vrDisplay) {
+            function updateEyeMatrices(projection, view, pose, fov, offset3, vrDisplay) {
               mat4_perspectiveFromFieldOfView(projection, fov || null, vrDisplay.depthNear, vrDisplay.depthFar);
               var orientation = pose.orientation || defaultOrientation;
               var position2 = pose.position || defaultPosition;
               mat4_fromRotationTranslation(view, orientation, position2);
-              if (offset) mat4_translate(view, view, offset);
+              if (offset3) mat4_translate(view, view, offset3);
               mat4_invert(view, view);
             }
             return function(frameData, pose, vrDisplay) {
@@ -112935,22 +112935,22 @@ function requireWebvrPolyfill() {
             return fieldOfView;
           };
           CardboardVRDisplay2.prototype._getEyeOffset = function(whichEye) {
-            var offset;
+            var offset3;
             if (whichEye == Eye.LEFT) {
-              offset = [-this.deviceInfo_.viewer.interLensDistance * 0.5, 0, 0];
+              offset3 = [-this.deviceInfo_.viewer.interLensDistance * 0.5, 0, 0];
             } else if (whichEye == Eye.RIGHT) {
-              offset = [this.deviceInfo_.viewer.interLensDistance * 0.5, 0, 0];
+              offset3 = [this.deviceInfo_.viewer.interLensDistance * 0.5, 0, 0];
             } else {
               console.error("Invalid eye provided: %s", whichEye);
               return null;
             }
-            return offset;
+            return offset3;
           };
           CardboardVRDisplay2.prototype.getEyeParameters = function(whichEye) {
-            var offset = this._getEyeOffset(whichEye);
+            var offset3 = this._getEyeOffset(whichEye);
             var fieldOfView = this._getFieldOfView(whichEye);
             var eyeParams = {
-              offset,
+              offset: offset3,
               renderWidth: this.deviceInfo_.device.width * 0.5 * this.bufferScale_,
               renderHeight: this.deviceInfo_.device.height * this.bufferScale_
             };
@@ -113746,21 +113746,21 @@ Object.assign(Vector2.prototype, {
   equals: function(v) {
     return v.x === this.x && v.y === this.y;
   },
-  fromArray: function(array, offset) {
-    if (offset === void 0) offset = 0;
-    this.x = array[offset];
-    this.y = array[offset + 1];
+  fromArray: function(array, offset3) {
+    if (offset3 === void 0) offset3 = 0;
+    this.x = array[offset3];
+    this.y = array[offset3 + 1];
     return this;
   },
-  toArray: function(array, offset) {
+  toArray: function(array, offset3) {
     if (array === void 0) array = [];
-    if (offset === void 0) offset = 0;
-    array[offset] = this.x;
-    array[offset + 1] = this.y;
+    if (offset3 === void 0) offset3 = 0;
+    array[offset3] = this.x;
+    array[offset3 + 1] = this.y;
     return array;
   },
-  fromBufferAttribute: function(attribute, index2, offset) {
-    if (offset !== void 0) {
+  fromBufferAttribute: function(attribute, index2, offset3) {
+    if (offset3 !== void 0) {
       console.warn("THREE.Vector2: offset has been removed from .fromBufferAttribute().");
     }
     this.x = attribute.getX(index2);
@@ -114497,33 +114497,33 @@ Object.assign(Matrix4.prototype, {
     }
     return true;
   },
-  fromArray: function(array, offset) {
-    if (offset === void 0) offset = 0;
+  fromArray: function(array, offset3) {
+    if (offset3 === void 0) offset3 = 0;
     for (var i = 0; i < 16; i++) {
-      this.elements[i] = array[i + offset];
+      this.elements[i] = array[i + offset3];
     }
     return this;
   },
-  toArray: function(array, offset) {
+  toArray: function(array, offset3) {
     if (array === void 0) array = [];
-    if (offset === void 0) offset = 0;
+    if (offset3 === void 0) offset3 = 0;
     var te = this.elements;
-    array[offset] = te[0];
-    array[offset + 1] = te[1];
-    array[offset + 2] = te[2];
-    array[offset + 3] = te[3];
-    array[offset + 4] = te[4];
-    array[offset + 5] = te[5];
-    array[offset + 6] = te[6];
-    array[offset + 7] = te[7];
-    array[offset + 8] = te[8];
-    array[offset + 9] = te[9];
-    array[offset + 10] = te[10];
-    array[offset + 11] = te[11];
-    array[offset + 12] = te[12];
-    array[offset + 13] = te[13];
-    array[offset + 14] = te[14];
-    array[offset + 15] = te[15];
+    array[offset3] = te[0];
+    array[offset3 + 1] = te[1];
+    array[offset3 + 2] = te[2];
+    array[offset3 + 3] = te[3];
+    array[offset3 + 4] = te[4];
+    array[offset3 + 5] = te[5];
+    array[offset3 + 6] = te[6];
+    array[offset3 + 7] = te[7];
+    array[offset3 + 8] = te[8];
+    array[offset3 + 9] = te[9];
+    array[offset3 + 10] = te[10];
+    array[offset3 + 11] = te[11];
+    array[offset3 + 12] = te[12];
+    array[offset3 + 13] = te[13];
+    array[offset3 + 14] = te[14];
+    array[offset3 + 15] = te[15];
     return array;
   }
 });
@@ -114830,22 +114830,22 @@ Object.assign(Quaternion.prototype, {
   equals: function(quaternion) {
     return quaternion._x === this._x && quaternion._y === this._y && quaternion._z === this._z && quaternion._w === this._w;
   },
-  fromArray: function(array, offset) {
-    if (offset === void 0) offset = 0;
-    this._x = array[offset];
-    this._y = array[offset + 1];
-    this._z = array[offset + 2];
-    this._w = array[offset + 3];
+  fromArray: function(array, offset3) {
+    if (offset3 === void 0) offset3 = 0;
+    this._x = array[offset3];
+    this._y = array[offset3 + 1];
+    this._z = array[offset3 + 2];
+    this._w = array[offset3 + 3];
     this.onChangeCallback();
     return this;
   },
-  toArray: function(array, offset) {
+  toArray: function(array, offset3) {
     if (array === void 0) array = [];
-    if (offset === void 0) offset = 0;
-    array[offset] = this._x;
-    array[offset + 1] = this._y;
-    array[offset + 2] = this._z;
-    array[offset + 3] = this._w;
+    if (offset3 === void 0) offset3 = 0;
+    array[offset3] = this._x;
+    array[offset3 + 1] = this._y;
+    array[offset3 + 2] = this._z;
+    array[offset3 + 3] = this._w;
     return array;
   },
   onChange: function(callback2) {
@@ -115240,23 +115240,23 @@ Object.assign(Vector3.prototype, {
   equals: function(v) {
     return v.x === this.x && v.y === this.y && v.z === this.z;
   },
-  fromArray: function(array, offset) {
-    if (offset === void 0) offset = 0;
-    this.x = array[offset];
-    this.y = array[offset + 1];
-    this.z = array[offset + 2];
+  fromArray: function(array, offset3) {
+    if (offset3 === void 0) offset3 = 0;
+    this.x = array[offset3];
+    this.y = array[offset3 + 1];
+    this.z = array[offset3 + 2];
     return this;
   },
-  toArray: function(array, offset) {
+  toArray: function(array, offset3) {
     if (array === void 0) array = [];
-    if (offset === void 0) offset = 0;
-    array[offset] = this.x;
-    array[offset + 1] = this.y;
-    array[offset + 2] = this.z;
+    if (offset3 === void 0) offset3 = 0;
+    array[offset3] = this.x;
+    array[offset3 + 1] = this.y;
+    array[offset3 + 2] = this.z;
     return array;
   },
-  fromBufferAttribute: function(attribute, index2, offset) {
-    if (offset !== void 0) {
+  fromBufferAttribute: function(attribute, index2, offset3) {
+    if (offset3 !== void 0) {
       console.warn("THREE.Vector3: offset has been removed from .fromBufferAttribute().");
     }
     this.x = attribute.getX(index2);
@@ -115512,26 +115512,26 @@ Object.assign(Matrix3.prototype, {
     }
     return true;
   },
-  fromArray: function(array, offset) {
-    if (offset === void 0) offset = 0;
+  fromArray: function(array, offset3) {
+    if (offset3 === void 0) offset3 = 0;
     for (var i = 0; i < 9; i++) {
-      this.elements[i] = array[i + offset];
+      this.elements[i] = array[i + offset3];
     }
     return this;
   },
-  toArray: function(array, offset) {
+  toArray: function(array, offset3) {
     if (array === void 0) array = [];
-    if (offset === void 0) offset = 0;
+    if (offset3 === void 0) offset3 = 0;
     var te = this.elements;
-    array[offset] = te[0];
-    array[offset + 1] = te[1];
-    array[offset + 2] = te[2];
-    array[offset + 3] = te[3];
-    array[offset + 4] = te[4];
-    array[offset + 5] = te[5];
-    array[offset + 6] = te[6];
-    array[offset + 7] = te[7];
-    array[offset + 8] = te[8];
+    array[offset3] = te[0];
+    array[offset3 + 1] = te[1];
+    array[offset3 + 2] = te[2];
+    array[offset3 + 3] = te[3];
+    array[offset3 + 4] = te[4];
+    array[offset3 + 5] = te[5];
+    array[offset3 + 6] = te[6];
+    array[offset3 + 7] = te[7];
+    array[offset3 + 8] = te[8];
     return array;
   }
 });
@@ -116044,25 +116044,25 @@ Object.assign(Vector4.prototype, {
   equals: function(v) {
     return v.x === this.x && v.y === this.y && v.z === this.z && v.w === this.w;
   },
-  fromArray: function(array, offset) {
-    if (offset === void 0) offset = 0;
-    this.x = array[offset];
-    this.y = array[offset + 1];
-    this.z = array[offset + 2];
-    this.w = array[offset + 3];
+  fromArray: function(array, offset3) {
+    if (offset3 === void 0) offset3 = 0;
+    this.x = array[offset3];
+    this.y = array[offset3 + 1];
+    this.z = array[offset3 + 2];
+    this.w = array[offset3 + 3];
     return this;
   },
-  toArray: function(array, offset) {
+  toArray: function(array, offset3) {
     if (array === void 0) array = [];
-    if (offset === void 0) offset = 0;
-    array[offset] = this.x;
-    array[offset + 1] = this.y;
-    array[offset + 2] = this.z;
-    array[offset + 3] = this.w;
+    if (offset3 === void 0) offset3 = 0;
+    array[offset3] = this.x;
+    array[offset3 + 1] = this.y;
+    array[offset3 + 2] = this.z;
+    array[offset3 + 3] = this.w;
     return array;
   },
-  fromBufferAttribute: function(attribute, index2, offset) {
-    if (offset !== void 0) {
+  fromBufferAttribute: function(attribute, index2, offset3) {
+    if (offset3 !== void 0) {
       console.warn("THREE.Vector4: offset has been removed from .fromBufferAttribute().");
     }
     this.x = attribute.getX(index2);
@@ -116470,9 +116470,9 @@ Object.assign(Box3.prototype, {
     this.max.z = Math.max(xaz, xbz) + Math.max(yaz, ybz) + Math.max(zaz, zbz) + m[14];
     return this;
   },
-  translate: function(offset) {
-    this.min.add(offset);
-    this.max.add(offset);
+  translate: function(offset3) {
+    this.min.add(offset3);
+    this.max.add(offset3);
     return this;
   },
   equals: function(box) {
@@ -116560,8 +116560,8 @@ Object.assign(Sphere.prototype, {
     this.radius = this.radius * matrix.getMaxScaleOnAxis();
     return this;
   },
-  translate: function(offset) {
-    this.center.add(offset);
+  translate: function(offset3) {
+    this.center.add(offset3);
     return this;
   },
   equals: function(sphere) {
@@ -116680,8 +116680,8 @@ Object.assign(Plane.prototype, {
       return this;
     };
   })(),
-  translate: function(offset) {
-    this.constant -= offset.dot(this.normal);
+  translate: function(offset3) {
+    this.constant -= offset3.dot(this.normal);
     return this;
   },
   equals: function(plane) {
@@ -117465,19 +117465,19 @@ Object.assign(Color.prototype, {
   equals: function(c) {
     return c.r === this.r && c.g === this.g && c.b === this.b;
   },
-  fromArray: function(array, offset) {
-    if (offset === void 0) offset = 0;
-    this.r = array[offset];
-    this.g = array[offset + 1];
-    this.b = array[offset + 2];
+  fromArray: function(array, offset3) {
+    if (offset3 === void 0) offset3 = 0;
+    this.r = array[offset3];
+    this.g = array[offset3 + 1];
+    this.b = array[offset3 + 2];
     return this;
   },
-  toArray: function(array, offset) {
+  toArray: function(array, offset3) {
     if (array === void 0) array = [];
-    if (offset === void 0) offset = 0;
-    array[offset] = this.r;
-    array[offset + 1] = this.g;
-    array[offset + 2] = this.b;
+    if (offset3 === void 0) offset3 = 0;
+    array[offset3] = this.r;
+    array[offset3 + 1] = this.g;
+    array[offset3 + 2] = this.b;
     return array;
   },
   toJSON: function() {
@@ -118051,13 +118051,13 @@ Object.assign(Euler.prototype, {
     this.onChangeCallback();
     return this;
   },
-  toArray: function(array, offset) {
+  toArray: function(array, offset3) {
     if (array === void 0) array = [];
-    if (offset === void 0) offset = 0;
-    array[offset] = this._x;
-    array[offset + 1] = this._y;
-    array[offset + 2] = this._z;
-    array[offset + 3] = this._order;
+    if (offset3 === void 0) offset3 = 0;
+    array[offset3] = this._x;
+    array[offset3 + 1] = this._y;
+    array[offset3 + 2] = this._z;
+    array[offset3 + 3] = this._order;
     return array;
   },
   toVector3: function(optionalResult) {
@@ -118858,11 +118858,11 @@ Geometry.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     return this;
   },
   center: (function() {
-    var offset = new Vector3();
+    var offset3 = new Vector3();
     return function center() {
       this.computeBoundingBox();
-      this.boundingBox.getCenter(offset).negate();
-      this.translate(offset.x, offset.y, offset.z);
+      this.boundingBox.getCenter(offset3).negate();
+      this.translate(offset3.x, offset3.y, offset3.z);
       return this;
     };
   })(),
@@ -119478,64 +119478,64 @@ Object.assign(BufferAttribute.prototype, {
     return this;
   },
   copyColorsArray: function(colors3) {
-    var array = this.array, offset = 0;
+    var array = this.array, offset3 = 0;
     for (var i = 0, l = colors3.length; i < l; i++) {
       var color = colors3[i];
       if (color === void 0) {
         console.warn("THREE.BufferAttribute.copyColorsArray(): color is undefined", i);
         color = new Color();
       }
-      array[offset++] = color.r;
-      array[offset++] = color.g;
-      array[offset++] = color.b;
+      array[offset3++] = color.r;
+      array[offset3++] = color.g;
+      array[offset3++] = color.b;
     }
     return this;
   },
   copyVector2sArray: function(vectors) {
-    var array = this.array, offset = 0;
+    var array = this.array, offset3 = 0;
     for (var i = 0, l = vectors.length; i < l; i++) {
       var vector = vectors[i];
       if (vector === void 0) {
         console.warn("THREE.BufferAttribute.copyVector2sArray(): vector is undefined", i);
         vector = new Vector2();
       }
-      array[offset++] = vector.x;
-      array[offset++] = vector.y;
+      array[offset3++] = vector.x;
+      array[offset3++] = vector.y;
     }
     return this;
   },
   copyVector3sArray: function(vectors) {
-    var array = this.array, offset = 0;
+    var array = this.array, offset3 = 0;
     for (var i = 0, l = vectors.length; i < l; i++) {
       var vector = vectors[i];
       if (vector === void 0) {
         console.warn("THREE.BufferAttribute.copyVector3sArray(): vector is undefined", i);
         vector = new Vector3();
       }
-      array[offset++] = vector.x;
-      array[offset++] = vector.y;
-      array[offset++] = vector.z;
+      array[offset3++] = vector.x;
+      array[offset3++] = vector.y;
+      array[offset3++] = vector.z;
     }
     return this;
   },
   copyVector4sArray: function(vectors) {
-    var array = this.array, offset = 0;
+    var array = this.array, offset3 = 0;
     for (var i = 0, l = vectors.length; i < l; i++) {
       var vector = vectors[i];
       if (vector === void 0) {
         console.warn("THREE.BufferAttribute.copyVector4sArray(): vector is undefined", i);
         vector = new Vector4();
       }
-      array[offset++] = vector.x;
-      array[offset++] = vector.y;
-      array[offset++] = vector.z;
-      array[offset++] = vector.w;
+      array[offset3++] = vector.x;
+      array[offset3++] = vector.y;
+      array[offset3++] = vector.z;
+      array[offset3++] = vector.w;
     }
     return this;
   },
-  set: function(value, offset) {
-    if (offset === void 0) offset = 0;
-    this.array.set(value, offset);
+  set: function(value, offset3) {
+    if (offset3 === void 0) offset3 = 0;
+    this.array.set(value, offset3);
     return this;
   },
   getX: function(index2) {
@@ -119915,11 +119915,11 @@ BufferGeometry.prototype = Object.assign(Object.create(EventDispatcher.prototype
     };
   })(),
   center: (function() {
-    var offset = new Vector3();
+    var offset3 = new Vector3();
     return function center() {
       this.computeBoundingBox();
-      this.boundingBox.getCenter(offset).negate();
-      this.translate(offset.x, offset.y, offset.z);
+      this.boundingBox.getCenter(offset3).negate();
+      this.translate(offset3.x, offset3.y, offset3.z);
       return this;
     };
   })(),
@@ -120190,13 +120190,13 @@ BufferGeometry.prototype = Object.assign(Object.create(EventDispatcher.prototype
       attributes.normal.needsUpdate = true;
     }
   },
-  merge: function(geometry, offset) {
+  merge: function(geometry, offset3) {
     if (!(geometry && geometry.isBufferGeometry)) {
       console.error("THREE.BufferGeometry.merge(): geometry not an instance of THREE.BufferGeometry.", geometry);
       return;
     }
-    if (offset === void 0) {
-      offset = 0;
+    if (offset3 === void 0) {
+      offset3 = 0;
       console.warn(
         "THREE.BufferGeometry.merge(): Overwriting original geometry, starting at offset=0. Use BufferGeometryUtils.mergeBufferGeometries() for lossless merge."
       );
@@ -120209,7 +120209,7 @@ BufferGeometry.prototype = Object.assign(Object.create(EventDispatcher.prototype
       var attribute2 = geometry.attributes[key];
       var attributeArray2 = attribute2.array;
       var attributeSize = attribute2.itemSize;
-      for (var i = 0, j = attributeSize * offset; i < attributeArray2.length; i++, j++) {
+      for (var i = 0, j = attributeSize * offset3; i < attributeArray2.length; i++, j++) {
         attributeArray1[j] = attributeArray2[i];
       }
     }
@@ -122125,9 +122125,9 @@ function flatten2(array, nBlocks, blockSize) {
   }
   if (nBlocks !== 0) {
     firstElem.toArray(r3, 0);
-    for (var i = 1, offset = 0; i !== nBlocks; ++i) {
-      offset += blockSize;
-      array[i].toArray(r3, offset);
+    for (var i = 1, offset3 = 0; i !== nBlocks; ++i) {
+      offset3 += blockSize;
+      array[i].toArray(r3, offset3);
     }
   }
   return r3;
@@ -125973,7 +125973,7 @@ function WebGLRenderer(parameters) {
           if (geometryAttribute.isInterleavedBufferAttribute) {
             var data2 = geometryAttribute.data;
             var stride = data2.stride;
-            var offset = geometryAttribute.offset;
+            var offset3 = geometryAttribute.offset;
             if (data2 && data2.isInstancedInterleavedBuffer) {
               state.enableAttributeAndDivisor(programAttribute, data2.meshPerAttribute);
               if (geometry.maxInstancedCount === void 0) {
@@ -125983,7 +125983,7 @@ function WebGLRenderer(parameters) {
               state.enableAttribute(programAttribute);
             }
             _gl.bindBuffer(_gl.ARRAY_BUFFER, buffer);
-            _gl.vertexAttribPointer(programAttribute, size, type2, normalized, stride * bytesPerElement, offset * bytesPerElement);
+            _gl.vertexAttribPointer(programAttribute, size, type2, normalized, stride * bytesPerElement, offset3 * bytesPerElement);
           } else {
             if (geometryAttribute.isInstancedBufferAttribute) {
               state.enableAttributeAndDivisor(programAttribute, geometryAttribute.meshPerAttribute);
@@ -129249,16 +129249,16 @@ function ExtrudeBufferGeometry(shapes, options2) {
       var start3 = verticesArray.length / 3;
       if (bevelEnabled) {
         var layer = 0;
-        var offset = vlen * layer;
+        var offset3 = vlen * layer;
         for (i2 = 0; i2 < flen; i2++) {
           face = faces[i2];
-          f3(face[2] + offset, face[1] + offset, face[0] + offset);
+          f3(face[2] + offset3, face[1] + offset3, face[0] + offset3);
         }
         layer = steps + bevelSegments * 2;
-        offset = vlen * layer;
+        offset3 = vlen * layer;
         for (i2 = 0; i2 < flen; i2++) {
           face = faces[i2];
-          f3(face[0] + offset, face[1] + offset, face[2] + offset);
+          f3(face[0] + offset3, face[1] + offset3, face[2] + offset3);
         }
       } else {
         for (i2 = 0; i2 < flen; i2++) {
@@ -132267,9 +132267,9 @@ Object.assign(Interpolant.prototype, {
     return this.settings || this.DefaultSettings_;
   },
   copySampleValue_: function(index2) {
-    var result = this.resultBuffer, values3 = this.sampleValues, stride = this.valueSize, offset = index2 * stride;
+    var result = this.resultBuffer, values3 = this.sampleValues, stride = this.valueSize, offset3 = index2 * stride;
     for (var i = 0; i !== stride; ++i) {
-      result[i] = values3[offset + i];
+      result[i] = values3[offset3 + i];
     }
     return result;
   },
@@ -132293,9 +132293,9 @@ function QuaternionLinearInterpolant(parameterPositions, sampleValues, sampleSiz
 QuaternionLinearInterpolant.prototype = Object.assign(Object.create(Interpolant.prototype), {
   constructor: QuaternionLinearInterpolant,
   interpolate_: function(i1, t0, t3, t1) {
-    var result = this.resultBuffer, values3 = this.sampleValues, stride = this.valueSize, offset = i1 * stride, alpha = (t3 - t0) / (t1 - t0);
-    for (var end2 = offset + stride; offset !== end2; offset += 4) {
-      Quaternion.slerpFlat(result, 0, values3, offset - stride, values3, offset, alpha);
+    var result = this.resultBuffer, values3 = this.sampleValues, stride = this.valueSize, offset3 = i1 * stride, alpha = (t3 - t0) / (t1 - t0);
+    for (var end2 = offset3 + stride; offset3 !== end2; offset3 += 4) {
+      Quaternion.slerpFlat(result, 0, values3, offset3 - stride, values3, offset3, alpha);
     }
     return result;
   }
@@ -132721,9 +132721,9 @@ Object.assign(KeyframeTrack.prototype, {
       var timeNext = times[i + 1];
       if (time !== timeNext && (i !== 1 || time !== time[0])) {
         if (!smoothInterpolation) {
-          var offset = i * stride, offsetP = offset - stride, offsetN = offset + stride;
+          var offset3 = i * stride, offsetP = offset3 - stride, offsetN = offset3 + stride;
           for (var j = 0; j !== stride; ++j) {
-            var value = values3[offset + j];
+            var value = values3[offset3 + j];
             if (value !== values3[offsetP + j] || value !== values3[offsetN + j]) {
               keep = true;
               break;
@@ -133162,7 +133162,7 @@ Object.assign(Loader.prototype, {
     var materialLoader = new MaterialLoader();
     return function createMaterial(m, texturePath, crossOrigin) {
       var textures = {};
-      function loadTexture(path, repeat, offset, wrap2, anisotropy) {
+      function loadTexture(path, repeat, offset3, wrap2, anisotropy) {
         var fullPath = texturePath + path;
         var loader = Loader.Handlers.get(fullPath);
         var texture;
@@ -133177,8 +133177,8 @@ Object.assign(Loader.prototype, {
           if (repeat[0] !== 1) texture.wrapS = RepeatWrapping;
           if (repeat[1] !== 1) texture.wrapT = RepeatWrapping;
         }
-        if (offset !== void 0) {
-          texture.offset.fromArray(offset);
+        if (offset3 !== void 0) {
+          texture.offset.fromArray(offset3);
         }
         if (wrap2 !== void 0) {
           if (wrap2[0] === "repeat") texture.wrapS = RepeatWrapping;
@@ -133410,7 +133410,7 @@ Object.assign(JSONLoader.prototype, {
       function isBitSet(value, position2) {
         return value & 1 << position2;
       }
-      var i, j, fi, offset, zLength, colorIndex, normalIndex, uvIndex, materialIndex, type2, isQuad, hasMaterial, hasFaceVertexUv, hasFaceNormal, hasFaceVertexNormal, hasFaceColor, hasFaceVertexColor, vertex, face, faceA, faceB, hex, normal, uvLayer, uv, u, v, faces = json.faces, vertices = json.vertices, normals = json.normals, colors3 = json.colors, scale = json.scale, nUvLayers = 0;
+      var i, j, fi, offset3, zLength, colorIndex, normalIndex, uvIndex, materialIndex, type2, isQuad, hasMaterial, hasFaceVertexUv, hasFaceNormal, hasFaceVertexNormal, hasFaceColor, hasFaceVertexColor, vertex, face, faceA, faceB, hex, normal, uvLayer, uv, u, v, faces = json.faces, vertices = json.vertices, normals = json.normals, colors3 = json.colors, scale = json.scale, nUvLayers = 0;
       if (json.uvs !== void 0) {
         for (i = 0; i < json.uvs.length; i++) {
           if (json.uvs[i].length) nUvLayers++;
@@ -133419,19 +133419,19 @@ Object.assign(JSONLoader.prototype, {
           geometry.faceVertexUvs[i] = [];
         }
       }
-      offset = 0;
+      offset3 = 0;
       zLength = vertices.length;
-      while (offset < zLength) {
+      while (offset3 < zLength) {
         vertex = new Vector3();
-        vertex.x = vertices[offset++] * scale;
-        vertex.y = vertices[offset++] * scale;
-        vertex.z = vertices[offset++] * scale;
+        vertex.x = vertices[offset3++] * scale;
+        vertex.y = vertices[offset3++] * scale;
+        vertex.z = vertices[offset3++] * scale;
         geometry.vertices.push(vertex);
       }
-      offset = 0;
+      offset3 = 0;
       zLength = faces.length;
-      while (offset < zLength) {
-        type2 = faces[offset++];
+      while (offset3 < zLength) {
+        type2 = faces[offset3++];
         isQuad = isBitSet(type2, 0);
         hasMaterial = isBitSet(type2, 1);
         hasFaceVertexUv = isBitSet(type2, 3);
@@ -133441,16 +133441,16 @@ Object.assign(JSONLoader.prototype, {
         hasFaceVertexColor = isBitSet(type2, 7);
         if (isQuad) {
           faceA = new Face3();
-          faceA.a = faces[offset];
-          faceA.b = faces[offset + 1];
-          faceA.c = faces[offset + 3];
+          faceA.a = faces[offset3];
+          faceA.b = faces[offset3 + 1];
+          faceA.c = faces[offset3 + 3];
           faceB = new Face3();
-          faceB.a = faces[offset + 1];
-          faceB.b = faces[offset + 2];
-          faceB.c = faces[offset + 3];
-          offset += 4;
+          faceB.a = faces[offset3 + 1];
+          faceB.b = faces[offset3 + 2];
+          faceB.c = faces[offset3 + 3];
+          offset3 += 4;
           if (hasMaterial) {
-            materialIndex = faces[offset++];
+            materialIndex = faces[offset3++];
             faceA.materialIndex = materialIndex;
             faceB.materialIndex = materialIndex;
           }
@@ -133461,7 +133461,7 @@ Object.assign(JSONLoader.prototype, {
               geometry.faceVertexUvs[i][fi] = [];
               geometry.faceVertexUvs[i][fi + 1] = [];
               for (j = 0; j < 4; j++) {
-                uvIndex = faces[offset++];
+                uvIndex = faces[offset3++];
                 u = uvLayer[uvIndex * 2];
                 v = uvLayer[uvIndex * 2 + 1];
                 uv = new Vector2(u, v);
@@ -133471,7 +133471,7 @@ Object.assign(JSONLoader.prototype, {
             }
           }
           if (hasFaceNormal) {
-            normalIndex = faces[offset++] * 3;
+            normalIndex = faces[offset3++] * 3;
             faceA.normal.set(
               normals[normalIndex++],
               normals[normalIndex++],
@@ -133481,7 +133481,7 @@ Object.assign(JSONLoader.prototype, {
           }
           if (hasFaceVertexNormal) {
             for (i = 0; i < 4; i++) {
-              normalIndex = faces[offset++] * 3;
+              normalIndex = faces[offset3++] * 3;
               normal = new Vector3(
                 normals[normalIndex++],
                 normals[normalIndex++],
@@ -133492,14 +133492,14 @@ Object.assign(JSONLoader.prototype, {
             }
           }
           if (hasFaceColor) {
-            colorIndex = faces[offset++];
+            colorIndex = faces[offset3++];
             hex = colors3[colorIndex];
             faceA.color.setHex(hex);
             faceB.color.setHex(hex);
           }
           if (hasFaceVertexColor) {
             for (i = 0; i < 4; i++) {
-              colorIndex = faces[offset++];
+              colorIndex = faces[offset3++];
               hex = colors3[colorIndex];
               if (i !== 2) faceA.vertexColors.push(new Color(hex));
               if (i !== 0) faceB.vertexColors.push(new Color(hex));
@@ -133509,11 +133509,11 @@ Object.assign(JSONLoader.prototype, {
           geometry.faces.push(faceB);
         } else {
           face = new Face3();
-          face.a = faces[offset++];
-          face.b = faces[offset++];
-          face.c = faces[offset++];
+          face.a = faces[offset3++];
+          face.b = faces[offset3++];
+          face.c = faces[offset3++];
           if (hasMaterial) {
-            materialIndex = faces[offset++];
+            materialIndex = faces[offset3++];
             face.materialIndex = materialIndex;
           }
           fi = geometry.faces.length;
@@ -133522,7 +133522,7 @@ Object.assign(JSONLoader.prototype, {
               uvLayer = json.uvs[i];
               geometry.faceVertexUvs[i][fi] = [];
               for (j = 0; j < 3; j++) {
-                uvIndex = faces[offset++];
+                uvIndex = faces[offset3++];
                 u = uvLayer[uvIndex * 2];
                 v = uvLayer[uvIndex * 2 + 1];
                 uv = new Vector2(u, v);
@@ -133531,7 +133531,7 @@ Object.assign(JSONLoader.prototype, {
             }
           }
           if (hasFaceNormal) {
-            normalIndex = faces[offset++] * 3;
+            normalIndex = faces[offset3++] * 3;
             face.normal.set(
               normals[normalIndex++],
               normals[normalIndex++],
@@ -133540,7 +133540,7 @@ Object.assign(JSONLoader.prototype, {
           }
           if (hasFaceVertexNormal) {
             for (i = 0; i < 3; i++) {
-              normalIndex = faces[offset++] * 3;
+              normalIndex = faces[offset3++] * 3;
               normal = new Vector3(
                 normals[normalIndex++],
                 normals[normalIndex++],
@@ -133550,12 +133550,12 @@ Object.assign(JSONLoader.prototype, {
             }
           }
           if (hasFaceColor) {
-            colorIndex = faces[offset++];
+            colorIndex = faces[offset3++];
             face.color.setHex(colors3[colorIndex]);
           }
           if (hasFaceVertexColor) {
             for (i = 0; i < 3; i++) {
-              colorIndex = faces[offset++];
+              colorIndex = faces[offset3++];
               face.vertexColors.push(new Color(colors3[colorIndex]));
             }
           }
@@ -134948,28 +134948,28 @@ function PropertyMixer(binding, typeName, valueSize) {
 Object.assign(PropertyMixer.prototype, {
   // accumulate data in the 'incoming' region into 'accu<i>'
   accumulate: function(accuIndex, weight) {
-    var buffer = this.buffer, stride = this.valueSize, offset = accuIndex * stride + stride, currentWeight = this.cumulativeWeight;
+    var buffer = this.buffer, stride = this.valueSize, offset3 = accuIndex * stride + stride, currentWeight = this.cumulativeWeight;
     if (currentWeight === 0) {
       for (var i = 0; i !== stride; ++i) {
-        buffer[offset + i] = buffer[i];
+        buffer[offset3 + i] = buffer[i];
       }
       currentWeight = weight;
     } else {
       currentWeight += weight;
       var mix = weight / currentWeight;
-      this._mixBufferRegion(buffer, offset, 0, mix, stride);
+      this._mixBufferRegion(buffer, offset3, 0, mix, stride);
     }
     this.cumulativeWeight = currentWeight;
   },
   // apply the state of 'accu<i>' to the binding when accus differ
   apply: function(accuIndex) {
-    var stride = this.valueSize, buffer = this.buffer, offset = accuIndex * stride + stride, weight = this.cumulativeWeight, binding = this.binding;
+    var stride = this.valueSize, buffer = this.buffer, offset3 = accuIndex * stride + stride, weight = this.cumulativeWeight, binding = this.binding;
     this.cumulativeWeight = 0;
     if (weight < 1) {
       var originalValueOffset = stride * 3;
       this._mixBufferRegion(
         buffer,
-        offset,
+        offset3,
         originalValueOffset,
         1 - weight,
         stride
@@ -134977,7 +134977,7 @@ Object.assign(PropertyMixer.prototype, {
     }
     for (var i = stride, e = stride + stride; i !== e; ++i) {
       if (buffer[i] !== buffer[i + stride]) {
-        binding.setValue(buffer, offset);
+        binding.setValue(buffer, offset3);
         break;
       }
     }
@@ -135023,15 +135023,15 @@ function Composite(targetGroup, path, optionalParsedPath) {
   this._bindings = targetGroup.subscribe_(path, parsedPath);
 }
 Object.assign(Composite.prototype, {
-  getValue: function(array, offset) {
+  getValue: function(array, offset3) {
     this.bind();
     var firstValidIndex = this._targetGroup.nCachedObjects_, binding = this._bindings[firstValidIndex];
-    if (binding !== void 0) binding.getValue(array, offset);
+    if (binding !== void 0) binding.getValue(array, offset3);
   },
-  setValue: function(array, offset) {
+  setValue: function(array, offset3) {
     var bindings = this._bindings;
     for (var i = this._targetGroup.nCachedObjects_, n = bindings.length; i !== n; ++i) {
-      bindings[i].setValue(array, offset);
+      bindings[i].setValue(array, offset3);
     }
   },
   bind: function() {
@@ -135163,96 +135163,96 @@ Object.assign(PropertyBinding.prototype, {
     MatrixWorldNeedsUpdate: 2
   },
   GetterByBindingType: [
-    function getValue_direct(buffer, offset) {
-      buffer[offset] = this.node[this.propertyName];
+    function getValue_direct(buffer, offset3) {
+      buffer[offset3] = this.node[this.propertyName];
     },
-    function getValue_array(buffer, offset) {
+    function getValue_array(buffer, offset3) {
       var source2 = this.resolvedProperty;
       for (var i = 0, n = source2.length; i !== n; ++i) {
-        buffer[offset++] = source2[i];
+        buffer[offset3++] = source2[i];
       }
     },
-    function getValue_arrayElement(buffer, offset) {
-      buffer[offset] = this.resolvedProperty[this.propertyIndex];
+    function getValue_arrayElement(buffer, offset3) {
+      buffer[offset3] = this.resolvedProperty[this.propertyIndex];
     },
-    function getValue_toArray(buffer, offset) {
-      this.resolvedProperty.toArray(buffer, offset);
+    function getValue_toArray(buffer, offset3) {
+      this.resolvedProperty.toArray(buffer, offset3);
     }
   ],
   SetterByBindingTypeAndVersioning: [
     [
       // Direct
-      function setValue_direct(buffer, offset) {
-        this.targetObject[this.propertyName] = buffer[offset];
+      function setValue_direct(buffer, offset3) {
+        this.targetObject[this.propertyName] = buffer[offset3];
       },
-      function setValue_direct_setNeedsUpdate(buffer, offset) {
-        this.targetObject[this.propertyName] = buffer[offset];
+      function setValue_direct_setNeedsUpdate(buffer, offset3) {
+        this.targetObject[this.propertyName] = buffer[offset3];
         this.targetObject.needsUpdate = true;
       },
-      function setValue_direct_setMatrixWorldNeedsUpdate(buffer, offset) {
-        this.targetObject[this.propertyName] = buffer[offset];
+      function setValue_direct_setMatrixWorldNeedsUpdate(buffer, offset3) {
+        this.targetObject[this.propertyName] = buffer[offset3];
         this.targetObject.matrixWorldNeedsUpdate = true;
       }
     ],
     [
       // EntireArray
-      function setValue_array(buffer, offset) {
+      function setValue_array(buffer, offset3) {
         var dest = this.resolvedProperty;
         for (var i = 0, n = dest.length; i !== n; ++i) {
-          dest[i] = buffer[offset++];
+          dest[i] = buffer[offset3++];
         }
       },
-      function setValue_array_setNeedsUpdate(buffer, offset) {
+      function setValue_array_setNeedsUpdate(buffer, offset3) {
         var dest = this.resolvedProperty;
         for (var i = 0, n = dest.length; i !== n; ++i) {
-          dest[i] = buffer[offset++];
+          dest[i] = buffer[offset3++];
         }
         this.targetObject.needsUpdate = true;
       },
-      function setValue_array_setMatrixWorldNeedsUpdate(buffer, offset) {
+      function setValue_array_setMatrixWorldNeedsUpdate(buffer, offset3) {
         var dest = this.resolvedProperty;
         for (var i = 0, n = dest.length; i !== n; ++i) {
-          dest[i] = buffer[offset++];
+          dest[i] = buffer[offset3++];
         }
         this.targetObject.matrixWorldNeedsUpdate = true;
       }
     ],
     [
       // ArrayElement
-      function setValue_arrayElement(buffer, offset) {
-        this.resolvedProperty[this.propertyIndex] = buffer[offset];
+      function setValue_arrayElement(buffer, offset3) {
+        this.resolvedProperty[this.propertyIndex] = buffer[offset3];
       },
-      function setValue_arrayElement_setNeedsUpdate(buffer, offset) {
-        this.resolvedProperty[this.propertyIndex] = buffer[offset];
+      function setValue_arrayElement_setNeedsUpdate(buffer, offset3) {
+        this.resolvedProperty[this.propertyIndex] = buffer[offset3];
         this.targetObject.needsUpdate = true;
       },
-      function setValue_arrayElement_setMatrixWorldNeedsUpdate(buffer, offset) {
-        this.resolvedProperty[this.propertyIndex] = buffer[offset];
+      function setValue_arrayElement_setMatrixWorldNeedsUpdate(buffer, offset3) {
+        this.resolvedProperty[this.propertyIndex] = buffer[offset3];
         this.targetObject.matrixWorldNeedsUpdate = true;
       }
     ],
     [
       // HasToFromArray
-      function setValue_fromArray(buffer, offset) {
-        this.resolvedProperty.fromArray(buffer, offset);
+      function setValue_fromArray(buffer, offset3) {
+        this.resolvedProperty.fromArray(buffer, offset3);
       },
-      function setValue_fromArray_setNeedsUpdate(buffer, offset) {
-        this.resolvedProperty.fromArray(buffer, offset);
+      function setValue_fromArray_setNeedsUpdate(buffer, offset3) {
+        this.resolvedProperty.fromArray(buffer, offset3);
         this.targetObject.needsUpdate = true;
       },
-      function setValue_fromArray_setMatrixWorldNeedsUpdate(buffer, offset) {
-        this.resolvedProperty.fromArray(buffer, offset);
+      function setValue_fromArray_setMatrixWorldNeedsUpdate(buffer, offset3) {
+        this.resolvedProperty.fromArray(buffer, offset3);
         this.targetObject.matrixWorldNeedsUpdate = true;
       }
     ]
   ],
-  getValue: function getValue_unbound(targetArray, offset) {
+  getValue: function getValue_unbound(targetArray, offset3) {
     this.bind();
-    this.getValue(targetArray, offset);
+    this.getValue(targetArray, offset3);
   },
-  setValue: function getValue_unbound2(sourceArray, offset) {
+  setValue: function getValue_unbound2(sourceArray, offset3) {
     this.bind();
-    this.setValue(sourceArray, offset);
+    this.setValue(sourceArray, offset3);
   },
   // create getter / setter pair for a property in the scene graph
   bind: function() {
@@ -136231,10 +136231,10 @@ InstancedBufferGeometry.prototype = Object.assign(Object.create(BufferGeometry.p
     return new this.constructor().copy(this);
   }
 });
-function InterleavedBufferAttribute(interleavedBuffer, itemSize, offset, normalized) {
+function InterleavedBufferAttribute(interleavedBuffer, itemSize, offset3, normalized) {
   this.data = interleavedBuffer;
   this.itemSize = itemSize;
-  this.offset = offset;
+  this.offset = offset3;
   this.normalized = normalized === true;
 }
 Object.defineProperties(InterleavedBufferAttribute.prototype, {
@@ -136345,9 +136345,9 @@ Object.assign(InterleavedBuffer.prototype, {
     }
     return this;
   },
-  set: function(value, offset) {
-    if (offset === void 0) offset = 0;
-    this.array.set(value, offset);
+  set: function(value, offset3) {
+    if (offset3 === void 0) offset3 = 0;
+    this.array.set(value, offset3);
     return this;
   },
   clone: function() {
@@ -136673,9 +136673,9 @@ Object.assign(Box2.prototype, {
     this.max.max(box.max);
     return this;
   },
-  translate: function(offset) {
-    this.min.add(offset);
-    this.max.add(offset);
+  translate: function(offset3) {
+    this.min.add(offset3);
+    this.max.add(offset3);
     return this;
   },
   equals: function(box) {
@@ -137640,9 +137640,9 @@ Object.assign(_Math, {
   }
 });
 Object.assign(Matrix3.prototype, {
-  flattenToArrayOffset: function(array, offset) {
+  flattenToArrayOffset: function(array, offset3) {
     console.warn("THREE.Matrix3: .flattenToArrayOffset() has been deprecated. Use .toArray() instead.");
-    return this.toArray(array, offset);
+    return this.toArray(array, offset3);
   },
   multiplyVector3: function(vector) {
     console.warn("THREE.Matrix3: .multiplyVector3() has been removed. Use vector.applyMatrix3( matrix ) instead.");
@@ -137664,9 +137664,9 @@ Object.assign(Matrix4.prototype, {
     console.warn("THREE.Matrix4: .extractPosition() has been renamed to .copyPosition().");
     return this.copyPosition(m);
   },
-  flattenToArrayOffset: function(array, offset) {
+  flattenToArrayOffset: function(array, offset3) {
     console.warn("THREE.Matrix4: .flattenToArrayOffset() has been deprecated. Use .toArray() instead.");
-    return this.toArray(array, offset);
+    return this.toArray(array, offset3);
   },
   getPosition: /* @__PURE__ */ (function() {
     var v1;
@@ -137798,9 +137798,9 @@ Object.assign(Shape.prototype, {
   }
 });
 Object.assign(Vector2.prototype, {
-  fromAttribute: function(attribute, index2, offset) {
+  fromAttribute: function(attribute, index2, offset3) {
     console.warn("THREE.Vector2: .fromAttribute() has been renamed to .fromBufferAttribute().");
-    return this.fromBufferAttribute(attribute, index2, offset);
+    return this.fromBufferAttribute(attribute, index2, offset3);
   },
   distanceToManhattan: function(v) {
     console.warn("THREE.Vector2: .distanceToManhattan() has been renamed to .manhattanDistanceTo().");
@@ -137834,9 +137834,9 @@ Object.assign(Vector3.prototype, {
     console.warn("THREE.Vector3: .applyProjection() has been removed. Use .applyMatrix4( m ) instead.");
     return this.applyMatrix4(m);
   },
-  fromAttribute: function(attribute, index2, offset) {
+  fromAttribute: function(attribute, index2, offset3) {
     console.warn("THREE.Vector3: .fromAttribute() has been renamed to .fromBufferAttribute().");
-    return this.fromBufferAttribute(attribute, index2, offset);
+    return this.fromBufferAttribute(attribute, index2, offset3);
   },
   distanceToManhattan: function(v) {
     console.warn("THREE.Vector3: .distanceToManhattan() has been renamed to .manhattanDistanceTo().");
@@ -137848,9 +137848,9 @@ Object.assign(Vector3.prototype, {
   }
 });
 Object.assign(Vector4.prototype, {
-  fromAttribute: function(attribute, index2, offset) {
+  fromAttribute: function(attribute, index2, offset3) {
     console.warn("THREE.Vector4: .fromAttribute() has been renamed to .fromBufferAttribute().");
-    return this.fromBufferAttribute(attribute, index2, offset);
+    return this.fromBufferAttribute(attribute, index2, offset3);
   },
   lengthManhattan: function() {
     console.warn("THREE.Vector4: .lengthManhattan() has been renamed to .manhattanLength().");
@@ -138387,7 +138387,7 @@ CubeCamera.prototype.updateCubeMap = function(renderer, scene) {
   return this.update(renderer, scene);
 };
 /*! @name videojs-vr @version 1.8.0 @license Apache-2.0 */
-var version$1 = "1.8.0";
+var version$2 = "1.8.0";
 var VRControls = function(object, onError2) {
   var scope = this;
   var vrDisplay, vrDisplays;
@@ -138805,16 +138805,16 @@ var OrbitControls = function(object, domElement) {
     state = STATE.NONE;
   };
   this.update = (function() {
-    var offset = new Vector3();
+    var offset3 = new Vector3();
     var quat = new Quaternion().setFromUnitVectors(object.up, new Vector3(0, 1, 0));
     var quatInverse = quat.clone().inverse();
     var lastPosition = new Vector3();
     var lastQuaternion = new Quaternion();
     return function update2() {
       var position2 = scope.object.position;
-      offset.copy(position2).sub(scope.target);
-      offset.applyQuaternion(quat);
-      spherical.setFromVector3(offset);
+      offset3.copy(position2).sub(scope.target);
+      offset3.applyQuaternion(quat);
+      spherical.setFromVector3(offset3);
       if (scope.autoRotate && state === STATE.NONE) {
         scope.rotateLeft(getAutoRotationAngle());
       }
@@ -138826,9 +138826,9 @@ var OrbitControls = function(object, domElement) {
       spherical.radius *= scale;
       spherical.radius = Math.max(scope.minDistance, Math.min(scope.maxDistance, spherical.radius));
       scope.target.add(panOffset);
-      offset.setFromSpherical(spherical);
-      offset.applyQuaternion(quatInverse);
-      position2.copy(scope.target).add(offset);
+      offset3.setFromSpherical(spherical);
+      offset3.applyQuaternion(quatInverse);
+      position2.copy(scope.target).add(offset3);
       scope.object.lookAt(scope.target);
       if (scope.enableDamping === true) {
         sphericalDelta.theta *= 1 - scope.dampingFactor;
@@ -138915,13 +138915,13 @@ var OrbitControls = function(object, domElement) {
     };
   })();
   var pan = (function() {
-    var offset = new Vector3();
+    var offset3 = new Vector3();
     return function pan2(deltaX, deltaY) {
       var element = scope.domElement === document ? scope.domElement.body : scope.domElement;
       if (scope.object.isPerspectiveCamera) {
         var position2 = scope.object.position;
-        offset.copy(position2).sub(scope.target);
-        var targetDistance = offset.length();
+        offset3.copy(position2).sub(scope.target);
+        var targetDistance = offset3.length();
         targetDistance *= Math.tan(scope.object.fov / 2 * Math.PI / 180);
         panLeft(2 * deltaX * targetDistance / element.clientHeight, scope.object.matrix);
         panUp(2 * deltaY * targetDistance / element.clientHeight, scope.object.matrix);
@@ -139648,7 +139648,7 @@ function _arrayLikeToArray$2(arr, len) {
   }
   return arr2;
 }
-var defaults$1 = {
+var defaults$2 = {
   debug: false,
   omnitone: false,
   forceCardboard: false,
@@ -139680,7 +139680,7 @@ var VR = /* @__PURE__ */ (function(_Plugin) {
   _inheritsLoose$1(VR2, _Plugin);
   function VR2(player, options2) {
     var _this;
-    var settings = videojs.mergeOptions(defaults$1, options2);
+    var settings = videojs.mergeOptions(defaults$2, options2);
     _this = _Plugin.call(this, player, settings) || this;
     _this.options_ = settings;
     _this.player_ = player;
@@ -140307,7 +140307,7 @@ var VR = /* @__PURE__ */ (function(_Plugin) {
 })(Plugin);
 VR.prototype.setTimeout = Component.prototype.setTimeout;
 VR.prototype.clearTimeout = Component.prototype.clearTimeout;
-VR.VERSION = version$1;
+VR.VERSION = version$2;
 videojs.registerPlugin("vr", VR);
 var VRType;
 (function(VRType2) {
@@ -140663,7 +140663,7 @@ function wrapConsoleMethod(name) {
   invariant3.warn = wrapConsoleMethod("warn");
   invariant3.error = wrapConsoleMethod("error");
 })(invariant$3 || (invariant$3 = {}));
-var version = "3.13.9";
+var version$1 = "3.13.9";
 function maybe$1(thunk) {
   try {
     return thunk();
@@ -140740,7 +140740,7 @@ function newInvariantError(message) {
   }
   return new InvariantError(getHandledErrorMsg(message, optionalParams) || getFallbackErrorMsg(message, optionalParams));
 }
-var ApolloErrorMessageHandler = Symbol.for("ApolloErrorMessageHandler_" + version);
+var ApolloErrorMessageHandler = Symbol.for("ApolloErrorMessageHandler_" + version$1);
 function stringify$1(arg) {
   if (typeof arg == "string") {
     return arg;
@@ -140766,7 +140766,7 @@ function getFallbackErrorMsg(message, messageArgs) {
   if (!message)
     return;
   return "An error occurred! For more details, see the full error text at https://go.apollo.dev/c/err#".concat(encodeURIComponent(JSON.stringify({
-    version,
+    version: version$1,
     message,
     args: messageArgs.map(stringify$1)
   })));
@@ -152565,7 +152565,7 @@ var ApolloClient = (
       this.watchFragment = this.watchFragment.bind(this);
       this.resetStore = this.resetStore.bind(this);
       this.reFetchObservableQueries = this.reFetchObservableQueries.bind(this);
-      this.version = version;
+      this.version = version$1;
       this.localState = new LocalState({
         cache: cache2,
         client: this,
@@ -156551,8 +156551,8 @@ gql`
 }
     ${SelectTagDataFragmentDoc}`;
 const FindScenesForTvDocument = gql`
-    query FindScenesForTv($filter: FindFilterType, $scene_filter: SceneFilterType, $scene_ids: [Int!]) {
-  findScenes(filter: $filter, scene_filter: $scene_filter, scene_ids: $scene_ids) {
+    query FindScenesForTv($filter: FindFilterType, $scene_filter: SceneFilterType, $ids: [ID!]) {
+  findScenes(filter: $filter, scene_filter: $scene_filter, ids: $ids) {
     count
     filesize
     duration
@@ -156566,6 +156566,37 @@ function useFindScenesForTvQuery(baseOptions) {
   const options2 = { ...defaultOptions, ...baseOptions };
   return useQuery(FindScenesForTvDocument, options2);
 }
+const FindSceneMarkersForTvDocument = gql`
+    query FindSceneMarkersForTv($filter: FindFilterType, $scene_marker_filter: SceneMarkerFilterType, $ids: [ID!]) {
+  findSceneMarkers(
+    scene_marker_filter: $scene_marker_filter
+    filter: $filter
+    ids: $ids
+  ) {
+    count
+    scene_markers {
+      id
+      title
+      seconds
+      end_seconds
+      stream
+      primary_tag {
+        name
+      }
+      tags {
+        name
+      }
+      scene {
+        ...TvSceneData
+      }
+    }
+  }
+}
+    ${TvSceneDataFragmentDoc}`;
+function useFindSceneMarkersForTvQuery(baseOptions) {
+  const options2 = { ...defaultOptions, ...baseOptions };
+  return useQuery(FindSceneMarkersForTvDocument, options2);
+}
 const GetStashConfigForTvDocument = gql`
     query GetStashConfigForTv {
   configuration {
@@ -156573,6 +156604,10 @@ const GetStashConfigForTvDocument = gql`
     ui
   }
   availableSavedSceneFilters: findSavedFilters(mode: SCENES) {
+    id
+    name
+  }
+  availableSavedMarkerFilters: findSavedFilters(mode: SCENE_MARKERS) {
     id
     name
   }
@@ -159136,12 +159171,12 @@ function requireHandy() {
       });
     }
     /** Sets the current manual offset of the Handy in milliseconds. Negative values mean that the script will be delayed, positive values mean that the script will be advanced. */
-    setHstpoffset(offset) {
+    setHstpoffset(offset3) {
       return __awaiter2(this, void 0, void 0, function* () {
         const json = yield this.putJson("hstp/offset", {
-          offset: Math.round(offset)
+          offset: Math.round(offset3)
         });
-        this.hstpOffset = offset;
+        this.hstpOffset = offset3;
         this.connected = true;
         return json.result;
       });
@@ -159212,10 +159247,10 @@ function requireHandy() {
           min: min2,
           fixed: fixed || false
         });
-        const offset = min2 - this.slideMin;
+        const offset3 = min2 - this.slideMin;
         this.slideMin = min2;
         if (fixed) {
-          this.slideMax += offset;
+          this.slideMax += offset3;
           this.slideMax = Math.max(0, Math.min(100, this.slideMax));
         }
         this.connected = true;
@@ -159230,10 +159265,10 @@ function requireHandy() {
           max: max2,
           fixed: fixed || false
         });
-        const offset = max2 - this.slideMax;
+        const offset3 = max2 - this.slideMax;
         this.slideMax = max2;
         if (fixed) {
-          this.slideMin += offset;
+          this.slideMin += offset3;
           this.slideMin = Math.max(0, Math.min(100, this.slideMin));
         }
         this.connected = true;
@@ -159261,16 +159296,16 @@ function requireHandy() {
           const endTime = (/* @__PURE__ */ new Date()).valueOf();
           const rtd = endTime - startTime;
           const estimatedServerTime = serverTime + rtd / 2;
-          const offset = estimatedServerTime - endTime;
-          offsets.push(offset);
+          const offset3 = estimatedServerTime - endTime;
+          offsets.push(offset3);
           if (onProgress)
             onProgress(i / trips);
         }
-        const mean = offsets.reduce((acc, offset) => acc + offset, 0) / offsets.length;
-        const errors2 = offsets.map((offset) => Math.pow(offset - mean, 2));
-        const sd = Math.sqrt(errors2.reduce((acc, offset) => acc + offset, 0) / errors2.length);
-        offsets = offsets.filter((offset) => Math.abs(offset - mean) < sd);
-        const offsetAggregate = offsets.reduce((acc, offset) => acc + offset) / offsets.length;
+        const mean = offsets.reduce((acc, offset3) => acc + offset3, 0) / offsets.length;
+        const errors2 = offsets.map((offset3) => Math.pow(offset3 - mean, 2));
+        const sd = Math.sqrt(errors2.reduce((acc, offset3) => acc + offset3, 0) / errors2.length);
+        offsets = offsets.filter((offset3) => Math.abs(offset3 - mean) < sd);
+        const offsetAggregate = offsets.reduce((acc, offset3) => acc + offset3) / offsets.length;
         this.estimatedServerTimeOffset = offsetAggregate;
         return this.estimatedServerTimeOffset;
       });
@@ -159551,16 +159586,16 @@ function requireHandyLegacy() {
           const endTime = (/* @__PURE__ */ new Date()).valueOf();
           const rtd = endTime - startTime;
           const estimatedServerTime = Number(json.serverTime) + rtd / 2;
-          const offset = estimatedServerTime - endTime;
-          offsets.push(offset);
+          const offset3 = estimatedServerTime - endTime;
+          offsets.push(offset3);
           if (onProgress)
             onProgress(i / trips);
         }
-        const mean = offsets.reduce((acc, offset) => acc + offset, 0) / offsets.length;
-        const errors2 = offsets.map((offset) => Math.pow(offset - mean, 2));
-        const sd = Math.sqrt(errors2.reduce((acc, offset) => acc + offset, 0) / errors2.length);
-        offsets = offsets.filter((offset) => Math.abs(offset - mean) < sd);
-        const offsetAggregate = offsets.reduce((acc, offset) => acc + offset) / offsets.length;
+        const mean = offsets.reduce((acc, offset3) => acc + offset3, 0) / offsets.length;
+        const errors2 = offsets.map((offset3) => Math.pow(offset3 - mean, 2));
+        const sd = Math.sqrt(errors2.reduce((acc, offset3) => acc + offset3, 0) / errors2.length);
+        offsets = offsets.filter((offset3) => Math.abs(offset3 - mean) < sd);
+        const offsetAggregate = offsets.reduce((acc, offset3) => acc + offset3) / offsets.length;
         this.serverTimeOffset = offsetAggregate;
         return this.serverTimeOffset;
       });
@@ -159595,10 +159630,10 @@ function requireHandyLegacy() {
         return json;
       });
     }
-    syncOffset(offset) {
+    syncOffset(offset3) {
       return __awaiter2(this, void 0, void 0, function* () {
         this.enforceConnectionKey();
-        const url = this.getUrl("syncOffset") + "?offset=" + offset;
+        const url = this.getUrl("syncOffset") + "?offset=" + offset3;
         const response = yield fetch(url);
         const json = yield response.json();
         if (json.error)
@@ -159789,8 +159824,8 @@ class Interactive {
   get useStashHostedFunscript() {
     return this._useStashHostedFunscript;
   }
-  set scriptOffset(offset) {
-    this._scriptOffset = offset;
+  set scriptOffset(offset3) {
+    this._scriptOffset = offset3;
   }
   async uploadScript(funscriptPath, apiKey) {
     if (!(this._handy.connectionKey && funscriptPath)) {
@@ -159816,8 +159851,8 @@ class Interactive {
   async sync() {
     return this._handy.getServerTimeOffset();
   }
-  setServerTimeOffset(offset) {
-    this._handy.estimatedServerTimeOffset = offset;
+  setServerTimeOffset(offset3) {
+    this._handy.estimatedServerTimeOffset = offset3;
   }
   async play(position2) {
     if (!this._connected) {
@@ -165710,7 +165745,7 @@ async function getOriginalPlugin() {
     pluginName = pluginNameToBeRegistered;
     plugin = pluginToBeRegistered;
   };
-  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-tGm6CsjR.js"), true ? [] : void 0, import.meta.url);
+  await __vitePreload(() => import("./videojs-overlay-buttons-multiple-players-fix.es-EyV59y8r.js"), true ? [] : void 0, import.meta.url);
   videojs.registerPlugin = originalRegisterPlugin;
   if (!pluginName || !plugin) {
     throw new Error(`Failed to load original videojs-overlay-buttons plugin`);
@@ -166309,16 +166344,108 @@ const useAppStateStore = create2()(
     }
   )
 );
+/*! @name videojs-offset @version 2.1.3 @license MIT */
+var version = "2.1.3";
+var defaults$1 = {};
+var registerPlugin = videojs.registerPlugin || videojs.plugin;
+var onPlayerTimeUpdate = function onPlayerTimeUpdate2() {
+  var _this = this;
+  var curr = this.currentTime();
+  if (curr < 0) {
+    this.currentTime(0);
+    this.play();
+  }
+  if (this._offsetEnd > 0 && curr > this._offsetEnd - this._offsetStart) {
+    this.off("timeupdate", onPlayerTimeUpdate2);
+    this.pause();
+    this.trigger("ended");
+    this.one("play", function() {
+      _this.on("timeupdate", onPlayerTimeUpdate2);
+    });
+    if (!this._restartBeginning) {
+      this.currentTime(this._offsetEnd - this._offsetStart);
+    } else {
+      this.trigger("loadstart");
+      this.currentTime(0);
+    }
+  }
+};
+var onPlayerReady3 = function onPlayerReady4(player, options2) {
+  player.one("play", function() {
+    player.on("timeupdate", onPlayerTimeUpdate);
+  });
+};
+var offset = function offset2(options2) {
+  var _this2 = this;
+  options2 = options2 || {};
+  var Player2 = this.constructor;
+  this._offsetStart = parseFloat(options2.start || "0");
+  this._offsetEnd = parseFloat(options2.end || "0");
+  this._restartBeginning = options2.restart_beginning || false;
+  if (!Player2.__super__ || !Player2.__super__.__offsetInit) {
+    Player2.__super__ = {
+      __offsetInit: true,
+      duration: Player2.prototype.duration,
+      currentTime: Player2.prototype.currentTime,
+      bufferedPercent: Player2.prototype.bufferedPercent,
+      remainingTime: Player2.prototype.remainingTime,
+      buffered: Player2.prototype.buffered
+    };
+    Player2.prototype.duration = function() {
+      if (this._offsetEnd !== void 0 && this._offsetStart !== void 0) {
+        if (this._offsetEnd > 0) {
+          return this._offsetEnd - this._offsetStart;
+        }
+        return Player2.__super__.duration.apply(this, arguments) - this._offsetStart;
+      }
+      return Player2.__super__.duration.apply(this, arguments);
+    };
+    Player2.prototype.currentTime = function(seconds) {
+      if (seconds !== void 0) {
+        if (this._offsetStart !== void 0) {
+          return Player2.__super__.currentTime.call(this, seconds + this._offsetStart);
+        }
+        return Player2.__super__.currentTime.call(this, seconds);
+      }
+      if (this._offsetStart !== void 0) {
+        var t3 = Player2.__super__.currentTime.apply(this) - this._offsetStart;
+        this.getCache().currentTime = t3;
+        return t3;
+      }
+      return Player2.__super__.currentTime.apply(this);
+    };
+    Player2.prototype.remainingTime = function() {
+      return this.duration() - this.currentTime();
+    };
+    Player2.prototype.startOffset = function() {
+      return this._offsetStart;
+    };
+    Player2.prototype.endOffset = function() {
+      if (this._offsetEnd > 0) {
+        return this._offsetEnd;
+      }
+      return this.duration();
+    };
+    Player2.prototype.buffered = function() {
+      var buff = Player2.__super__.buffered.call(this);
+      var ranges = [];
+      for (var i = 0; i < buff.length; i++) {
+        ranges[i] = [Math.max(0, buff.start(i) - this._offsetStart), Math.min(Math.max(0, buff.end(i) - this._offsetStart), this.duration())];
+      }
+      return videojs.createTimeRanges(ranges);
+    };
+  }
+  this.ready(function() {
+    onPlayerReady3(_this2, videojs.mergeOptions(defaults$1, options2));
+  });
+};
+registerPlugin("offset", offset);
+offset.VERSION = version;
 registerVideojsOverlayButtonsExtendedPlugin();
 const videoJsOptionsOverride = {};
 const videoJsSetupCallbacks = {};
 videojs.hook("setup", (player) => {
   player.focus = () => {
-  };
-  const originalDuration = player.duration;
-  player.duration = () => {
-    const scene = "_scene" in player && player._scene;
-    return scene?.files[0]?.duration || originalDuration();
   };
 });
 videojs.hook("setup", function(player) {
@@ -166406,9 +166533,27 @@ const ScenePlayer = reactExports.forwardRef(({
   trackActivity = true,
   scrubberThumbnail = true,
   markers = true,
+  refVideo,
+  onPlay,
+  onPause,
+  initialTimestamp,
   ...otherProps
 }, ref) => {
   const containerRef = reactExports.useRef(null);
+  reactExports.useEffect(() => {
+    const rootElm = containerRef.current;
+    if (!rootElm) {
+      console.warn("ScenePlayer: Could not get root elm");
+      return;
+    }
+    if (ref) {
+      if (typeof ref === "function") {
+        ref(rootElm);
+      } else {
+        ref.current = rootElm;
+      }
+    }
+  }, []);
   const { debugMode } = useAppStateStore();
   reactExports.useEffect(() => {
     debugMode && console.log(`Mounted ScenePlayer sceneId=${otherProps.scene.id}`);
@@ -166445,12 +166590,47 @@ const ScenePlayer = reactExports.forwardRef(({
       return sourceSelector;
     };
   }
+  function disableBuggyOnEndHandling(player) {
+    const originalOn = player.on;
+    player.on = function(...args) {
+      const [event, listener2] = args;
+      if (event === "ended" && listener2 === stubOnComplete) {
+        return;
+      }
+      return originalOn.apply(this, args);
+    };
+    const originalOff = player.off;
+    player.off = function(...args) {
+      const [event, listener2] = args;
+      if (event === "ended" && !listener2) {
+        return;
+      }
+      return originalOff.apply(this, args);
+    };
+  }
+  function stubOnComplete() {
+  }
+  reactExports.useEffect(() => {
+    const player = videojsPlayerRef.current;
+    if (!onEnded || !player || player.isDisposed()) return;
+    player.on("ended", onEnded);
+    return () => player.off("ended", onEnded);
+  }, [onEnded]);
   videoJsSetupCallbacks[playerId] = (player) => {
     if (loop2 !== void 0) {
       setTimeout(() => !player.isDisposed() && player.loop(loop2), 100);
     }
     addWrapperToRevertPreviewUrlChange(player);
+    disableBuggyOnEndHandling(player);
     onVideojsPlayerReady?.(player);
+    videojsPlayerRef.current = player;
+    setVideojsPlayer(player);
+    const videoElm2 = player.el()?.querySelector("video");
+    if (!videoElm2) {
+      console.warn("ScenePlayer: No video element found in container");
+      return;
+    }
+    setVideoElm(videoElm2);
   };
   videoJsOptionsOverride[playerId] = {
     muted,
@@ -166466,12 +166646,14 @@ const ScenePlayer = reactExports.forwardRef(({
     }
   };
   reactExports.useEffect(() => {
-    if (muted === void 0) return;
-    videojsPlayerRef.current?.muted(muted);
+    const player = videojsPlayerRef.current;
+    if (muted === void 0 || !player || player.isDisposed()) return;
+    player.muted(muted);
   }, [muted]);
   reactExports.useEffect(() => {
-    if (loop2 === void 0) return;
-    videojsPlayerRef.current?.loop(loop2);
+    const player = videojsPlayerRef.current;
+    if (loop2 === void 0 || !player || player.isDisposed()) return;
+    player.loop(loop2);
   }, [loop2]);
   reactExports.useEffect(() => {
     return () => {
@@ -166492,25 +166674,28 @@ const ScenePlayer = reactExports.forwardRef(({
     }
   }, [videojsPlayer, otherProps.scene]);
   reactExports.useEffect(() => {
-    const videoElm2 = containerRef.current?.querySelector("video");
-    if (!videoElm2) {
-      console.warn("ScenePlayer: No video element found in container");
-      return;
-    }
-    if (ref) {
-      if (typeof ref === "function") {
-        ref(videoElm2);
-      } else if (ref && "current" in ref) {
-        ref.current = videoElm2;
+    if (refVideo) {
+      if (typeof refVideo === "function") {
+        refVideo(videoElm);
+      } else {
+        refVideo.current = videoElm;
       }
     }
-    setVideoElm(videoElm2);
-    const player = videojs.getPlayer(videoElm2);
-    if (player) {
-      videojsPlayerRef.current = player;
-      setVideojsPlayer(player);
-    }
-  }, []);
+  }, [videoElm, refVideo]);
+  reactExports.useEffect(() => {
+    if (!videoElm || !onPlay) return;
+    videoElm.addEventListener("play", onPlay);
+    return () => {
+      videoElm.removeEventListener("play", onPlay);
+    };
+  }, [videoElm, onPlay]);
+  reactExports.useEffect(() => {
+    if (!videoElm || !onPause) return;
+    videoElm.addEventListener("pause", onPause);
+    return () => {
+      videoElm.removeEventListener("pause", onPause);
+    };
+  }, [videoElm, onPause]);
   reactExports.useEffect(() => {
     if (!videoElm || !onTimeUpdate) return;
     videoElm.addEventListener("timeupdate", onTimeUpdate);
@@ -166518,13 +166703,13 @@ const ScenePlayer = reactExports.forwardRef(({
       videoElm.removeEventListener("timeupdate", onTimeUpdate);
     };
   }, [videoElm, onTimeUpdate]);
-  reactExports.useEffect(() => {
-    if (!videoElm || !onEnded) return;
-    videoElm.addEventListener("ended", onEnded);
-    return () => {
-      videoElm.removeEventListener("ended", onEnded);
-    };
-  }, [videoElm, onEnded]);
+  const scene = reactExports.useMemo(() => {
+    let scene2 = JSON.parse(JSON.stringify(otherProps.scene));
+    if (initialTimestamp !== void 0) {
+      scene2.resume_time = otherProps.scene.files?.[0]?.duration;
+    }
+    return scene2;
+  }, [otherProps.scene, initialTimestamp]);
   const lastTouchEndEventRef = reactExports.useRef(null);
   reactExports.useEffect(() => {
     if (!videojsPlayer || !onClick) return;
@@ -166564,8 +166749,10 @@ const ScenePlayer = reactExports.forwardRef(({
       ScenePlayer$1,
       {
         ...otherProps,
+        initialTimestamp: initialTimestamp || 0,
         permitLoop: true,
-        scene: otherProps.scene
+        scene,
+        onComplete: stubOnComplete
       }
     )
   );
@@ -166575,7 +166762,8 @@ const PLUGIN_NAMESPACE = "stash-tv";
 const useStashConfigStore = create2((set4, get7) => ({
   general: {
     stashDefaultScenesFilter: void 0,
-    availableSavedSceneFilters: []
+    availableSavedSceneFilters: [],
+    availableSavedMarkerFilters: []
   },
   tv: {
     defaultFilterId: void 0,
@@ -166590,7 +166778,8 @@ const useStashConfigStore = create2((set4, get7) => ({
       general: {
         ...general,
         stashDefaultScenesFilter: config2.configuration.ui.defaultFilters?.scenes,
-        availableSavedSceneFilters: config2.availableSavedSceneFilters
+        availableSavedSceneFilters: config2.availableSavedSceneFilters,
+        availableSavedMarkerFilters: config2.availableSavedMarkerFilters
       },
       tv: {
         ...tv,
@@ -166825,6 +167014,797 @@ const SvgVerticalEllipsisOutline = (props) => /* @__PURE__ */ reactExports.creat
 }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M96,64C78.445,64 64,78.445 64,96C64,113.555 78.445,128 96,128C113.555,128 128,113.555 128,96C128,78.445     113.555,64 96,64ZM96,160C60.891,160 32,131.109 32,96C32,60.891 60.891,32 96,32C131.109,32 160,60.891     160,96C160,131.109 131.109,160 96,160ZM128,256C128,238.445 113.555,224 96,224C78.445,224 64,238.445     64,256C64,273.555 78.445,288 96,288C113.555,288 128,273.555 128,256ZM32,256C32,220.891 60.891,192 96,192C131.109,192     160,220.891 160,256C160,291.109 131.109,320 96,320C60.891,320 32,291.109 32,256ZM128,416C128,398.445 113.555,384     96,384C78.445,384 64,398.445 64,416C64,433.555 78.445,448 96,448C113.555,448 128,433.555 128,416ZM32,416C32,380.891     60.891,352 96,352C131.109,352 160,380.891 160,416C160,451.109 131.109,480 96,480C60.891,480 32,451.109 32,416Z", style: {
   fillRule: "nonzero"
 }, fill: "currentColor" }));
+var object_hash = { exports: {} };
+var hasRequiredObject_hash;
+function requireObject_hash() {
+  if (hasRequiredObject_hash) return object_hash.exports;
+  hasRequiredObject_hash = 1;
+  (function(module2, exports) {
+    !(function(e) {
+      module2.exports = e();
+    })(function() {
+      return (function r3(o2, i, u) {
+        function s2(n, e2) {
+          if (!i[n]) {
+            if (!o2[n]) {
+              var t3 = "function" == typeof commonjsRequire && commonjsRequire;
+              if (!e2 && t3) return t3(n, true);
+              if (a2) return a2(n, true);
+              throw new Error("Cannot find module '" + n + "'");
+            }
+            e2 = i[n] = { exports: {} };
+            o2[n][0].call(e2.exports, function(e3) {
+              var t4 = o2[n][1][e3];
+              return s2(t4 || e3);
+            }, e2, e2.exports, r3, o2, i, u);
+          }
+          return i[n].exports;
+        }
+        for (var a2 = "function" == typeof commonjsRequire && commonjsRequire, e = 0; e < u.length; e++) s2(u[e]);
+        return s2;
+      })({ 1: [function(w2, b, m) {
+        !(function(e, n, s2, c, d2, h, p2, g2, y) {
+          var r3 = w2("crypto");
+          function t3(e2, t4) {
+            t4 = u(e2, t4);
+            var n2;
+            return void 0 === (n2 = "passthrough" !== t4.algorithm ? r3.createHash(t4.algorithm) : new l()).write && (n2.write = n2.update, n2.end = n2.update), f(t4, n2).dispatch(e2), n2.update || n2.end(""), n2.digest ? n2.digest("buffer" === t4.encoding ? void 0 : t4.encoding) : (e2 = n2.read(), "buffer" !== t4.encoding ? e2.toString(t4.encoding) : e2);
+          }
+          (m = b.exports = t3).sha1 = function(e2) {
+            return t3(e2);
+          }, m.keys = function(e2) {
+            return t3(e2, { excludeValues: true, algorithm: "sha1", encoding: "hex" });
+          }, m.MD5 = function(e2) {
+            return t3(e2, { algorithm: "md5", encoding: "hex" });
+          }, m.keysMD5 = function(e2) {
+            return t3(e2, { algorithm: "md5", encoding: "hex", excludeValues: true });
+          };
+          var o2 = r3.getHashes ? r3.getHashes().slice() : ["sha1", "md5"], i = (o2.push("passthrough"), ["buffer", "hex", "binary", "base64"]);
+          function u(e2, t4) {
+            var n2 = {};
+            if (n2.algorithm = (t4 = t4 || {}).algorithm || "sha1", n2.encoding = t4.encoding || "hex", n2.excludeValues = !!t4.excludeValues, n2.algorithm = n2.algorithm.toLowerCase(), n2.encoding = n2.encoding.toLowerCase(), n2.ignoreUnknown = true === t4.ignoreUnknown, n2.respectType = false !== t4.respectType, n2.respectFunctionNames = false !== t4.respectFunctionNames, n2.respectFunctionProperties = false !== t4.respectFunctionProperties, n2.unorderedArrays = true === t4.unorderedArrays, n2.unorderedSets = false !== t4.unorderedSets, n2.unorderedObjects = false !== t4.unorderedObjects, n2.replacer = t4.replacer || void 0, n2.excludeKeys = t4.excludeKeys || void 0, void 0 === e2) throw new Error("Object argument required.");
+            for (var r4 = 0; r4 < o2.length; ++r4) o2[r4].toLowerCase() === n2.algorithm.toLowerCase() && (n2.algorithm = o2[r4]);
+            if (-1 === o2.indexOf(n2.algorithm)) throw new Error('Algorithm "' + n2.algorithm + '"  not supported. supported values: ' + o2.join(", "));
+            if (-1 === i.indexOf(n2.encoding) && "passthrough" !== n2.algorithm) throw new Error('Encoding "' + n2.encoding + '"  not supported. supported values: ' + i.join(", "));
+            return n2;
+          }
+          function a2(e2) {
+            if ("function" == typeof e2) return null != /^function\s+\w*\s*\(\s*\)\s*{\s+\[native code\]\s+}$/i.exec(Function.prototype.toString.call(e2));
+          }
+          function f(o3, t4, i2) {
+            i2 = i2 || [];
+            function u2(e2) {
+              return t4.update ? t4.update(e2, "utf8") : t4.write(e2, "utf8");
+            }
+            return { dispatch: function(e2) {
+              return this["_" + (null === (e2 = o3.replacer ? o3.replacer(e2) : e2) ? "null" : typeof e2)](e2);
+            }, _object: function(t5) {
+              var n2, e2 = Object.prototype.toString.call(t5), r4 = /\[object (.*)\]/i.exec(e2);
+              r4 = (r4 = r4 ? r4[1] : "unknown:[" + e2 + "]").toLowerCase();
+              if (0 <= (e2 = i2.indexOf(t5))) return this.dispatch("[CIRCULAR:" + e2 + "]");
+              if (i2.push(t5), void 0 !== s2 && s2.isBuffer && s2.isBuffer(t5)) return u2("buffer:"), u2(t5);
+              if ("object" === r4 || "function" === r4 || "asyncfunction" === r4) return e2 = Object.keys(t5), o3.unorderedObjects && (e2 = e2.sort()), false === o3.respectType || a2(t5) || e2.splice(0, 0, "prototype", "__proto__", "constructor"), o3.excludeKeys && (e2 = e2.filter(function(e3) {
+                return !o3.excludeKeys(e3);
+              })), u2("object:" + e2.length + ":"), n2 = this, e2.forEach(function(e3) {
+                n2.dispatch(e3), u2(":"), o3.excludeValues || n2.dispatch(t5[e3]), u2(",");
+              });
+              if (!this["_" + r4]) {
+                if (o3.ignoreUnknown) return u2("[" + r4 + "]");
+                throw new Error('Unknown object type "' + r4 + '"');
+              }
+              this["_" + r4](t5);
+            }, _array: function(e2, t5) {
+              t5 = void 0 !== t5 ? t5 : false !== o3.unorderedArrays;
+              var n2 = this;
+              if (u2("array:" + e2.length + ":"), !t5 || e2.length <= 1) return e2.forEach(function(e3) {
+                return n2.dispatch(e3);
+              });
+              var r4 = [], t5 = e2.map(function(e3) {
+                var t6 = new l(), n3 = i2.slice();
+                return f(o3, t6, n3).dispatch(e3), r4 = r4.concat(n3.slice(i2.length)), t6.read().toString();
+              });
+              return i2 = i2.concat(r4), t5.sort(), this._array(t5, false);
+            }, _date: function(e2) {
+              return u2("date:" + e2.toJSON());
+            }, _symbol: function(e2) {
+              return u2("symbol:" + e2.toString());
+            }, _error: function(e2) {
+              return u2("error:" + e2.toString());
+            }, _boolean: function(e2) {
+              return u2("bool:" + e2.toString());
+            }, _string: function(e2) {
+              u2("string:" + e2.length + ":"), u2(e2.toString());
+            }, _function: function(e2) {
+              u2("fn:"), a2(e2) ? this.dispatch("[native]") : this.dispatch(e2.toString()), false !== o3.respectFunctionNames && this.dispatch("function-name:" + String(e2.name)), o3.respectFunctionProperties && this._object(e2);
+            }, _number: function(e2) {
+              return u2("number:" + e2.toString());
+            }, _xml: function(e2) {
+              return u2("xml:" + e2.toString());
+            }, _null: function() {
+              return u2("Null");
+            }, _undefined: function() {
+              return u2("Undefined");
+            }, _regexp: function(e2) {
+              return u2("regex:" + e2.toString());
+            }, _uint8array: function(e2) {
+              return u2("uint8array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _uint8clampedarray: function(e2) {
+              return u2("uint8clampedarray:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _int8array: function(e2) {
+              return u2("int8array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _uint16array: function(e2) {
+              return u2("uint16array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _int16array: function(e2) {
+              return u2("int16array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _uint32array: function(e2) {
+              return u2("uint32array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _int32array: function(e2) {
+              return u2("int32array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _float32array: function(e2) {
+              return u2("float32array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _float64array: function(e2) {
+              return u2("float64array:"), this.dispatch(Array.prototype.slice.call(e2));
+            }, _arraybuffer: function(e2) {
+              return u2("arraybuffer:"), this.dispatch(new Uint8Array(e2));
+            }, _url: function(e2) {
+              return u2("url:" + e2.toString());
+            }, _map: function(e2) {
+              u2("map:");
+              e2 = Array.from(e2);
+              return this._array(e2, false !== o3.unorderedSets);
+            }, _set: function(e2) {
+              u2("set:");
+              e2 = Array.from(e2);
+              return this._array(e2, false !== o3.unorderedSets);
+            }, _file: function(e2) {
+              return u2("file:"), this.dispatch([e2.name, e2.size, e2.type, e2.lastModfied]);
+            }, _blob: function() {
+              if (o3.ignoreUnknown) return u2("[blob]");
+              throw Error('Hashing Blob objects is currently not supported\n(see https://github.com/puleos/object-hash/issues/26)\nUse "options.replacer" or "options.ignoreUnknown"\n');
+            }, _domwindow: function() {
+              return u2("domwindow");
+            }, _bigint: function(e2) {
+              return u2("bigint:" + e2.toString());
+            }, _process: function() {
+              return u2("process");
+            }, _timer: function() {
+              return u2("timer");
+            }, _pipe: function() {
+              return u2("pipe");
+            }, _tcp: function() {
+              return u2("tcp");
+            }, _udp: function() {
+              return u2("udp");
+            }, _tty: function() {
+              return u2("tty");
+            }, _statwatcher: function() {
+              return u2("statwatcher");
+            }, _securecontext: function() {
+              return u2("securecontext");
+            }, _connection: function() {
+              return u2("connection");
+            }, _zlib: function() {
+              return u2("zlib");
+            }, _context: function() {
+              return u2("context");
+            }, _nodescript: function() {
+              return u2("nodescript");
+            }, _httpparser: function() {
+              return u2("httpparser");
+            }, _dataview: function() {
+              return u2("dataview");
+            }, _signal: function() {
+              return u2("signal");
+            }, _fsevent: function() {
+              return u2("fsevent");
+            }, _tlswrap: function() {
+              return u2("tlswrap");
+            } };
+          }
+          function l() {
+            return { buf: "", write: function(e2) {
+              this.buf += e2;
+            }, end: function(e2) {
+              this.buf += e2;
+            }, read: function() {
+              return this.buf;
+            } };
+          }
+          m.writeToStream = function(e2, t4, n2) {
+            return void 0 === n2 && (n2 = t4, t4 = {}), f(t4 = u(e2, t4), n2).dispatch(e2);
+          };
+        }).call(this, w2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, w2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_9a5aa49d.js", "/");
+      }, { buffer: 3, crypto: 5, lYpoI2: 11 }], 2: [function(e, t3, f) {
+        !(function(e2, t4, n, r3, o2, i, u, s2, a2) {
+          !(function(e3) {
+            var a3 = "undefined" != typeof Uint8Array ? Uint8Array : Array, t5 = "+".charCodeAt(0), n2 = "/".charCodeAt(0), r4 = "0".charCodeAt(0), o3 = "a".charCodeAt(0), i2 = "A".charCodeAt(0), u2 = "-".charCodeAt(0), s3 = "_".charCodeAt(0);
+            function f2(e4) {
+              e4 = e4.charCodeAt(0);
+              return e4 === t5 || e4 === u2 ? 62 : e4 === n2 || e4 === s3 ? 63 : e4 < r4 ? -1 : e4 < r4 + 10 ? e4 - r4 + 26 + 26 : e4 < i2 + 26 ? e4 - i2 : e4 < o3 + 26 ? e4 - o3 + 26 : void 0;
+            }
+            e3.toByteArray = function(e4) {
+              var t6, n3;
+              if (0 < e4.length % 4) throw new Error("Invalid string. Length must be a multiple of 4");
+              var r5 = e4.length, r5 = "=" === e4.charAt(r5 - 2) ? 2 : "=" === e4.charAt(r5 - 1) ? 1 : 0, o4 = new a3(3 * e4.length / 4 - r5), i3 = 0 < r5 ? e4.length - 4 : e4.length, u3 = 0;
+              function s4(e5) {
+                o4[u3++] = e5;
+              }
+              for (t6 = 0; t6 < i3; t6 += 4, 0) s4((16711680 & (n3 = f2(e4.charAt(t6)) << 18 | f2(e4.charAt(t6 + 1)) << 12 | f2(e4.charAt(t6 + 2)) << 6 | f2(e4.charAt(t6 + 3)))) >> 16), s4((65280 & n3) >> 8), s4(255 & n3);
+              return 2 == r5 ? s4(255 & (n3 = f2(e4.charAt(t6)) << 2 | f2(e4.charAt(t6 + 1)) >> 4)) : 1 == r5 && (s4((n3 = f2(e4.charAt(t6)) << 10 | f2(e4.charAt(t6 + 1)) << 4 | f2(e4.charAt(t6 + 2)) >> 2) >> 8 & 255), s4(255 & n3)), o4;
+            }, e3.fromByteArray = function(e4) {
+              var t6, n3, r5, o4, i3 = e4.length % 3, u3 = "";
+              function s4(e5) {
+                return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(e5);
+              }
+              for (t6 = 0, r5 = e4.length - i3; t6 < r5; t6 += 3) n3 = (e4[t6] << 16) + (e4[t6 + 1] << 8) + e4[t6 + 2], u3 += s4((o4 = n3) >> 18 & 63) + s4(o4 >> 12 & 63) + s4(o4 >> 6 & 63) + s4(63 & o4);
+              switch (i3) {
+                case 1:
+                  u3 = (u3 += s4((n3 = e4[e4.length - 1]) >> 2)) + s4(n3 << 4 & 63) + "==";
+                  break;
+                case 2:
+                  u3 = (u3 = (u3 += s4((n3 = (e4[e4.length - 2] << 8) + e4[e4.length - 1]) >> 10)) + s4(n3 >> 4 & 63)) + s4(n3 << 2 & 63) + "=";
+              }
+              return u3;
+            };
+          })(void 0 === f ? this.base64js = {} : f);
+        }).call(this, e("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/base64-js/lib/b64.js", "/node_modules/gulp-browserify/node_modules/base64-js/lib");
+      }, { buffer: 3, lYpoI2: 11 }], 3: [function(O, e, H) {
+        !(function(e2, n, f, r3, h, p2, g2, y, w2) {
+          var a2 = O("base64-js"), i = O("ieee754");
+          function f(e3, t4, n2) {
+            if (!(this instanceof f)) return new f(e3, t4, n2);
+            var r4, o3, i2, u2, s3 = typeof e3;
+            if ("base64" === t4 && "string" == s3) for (e3 = (u2 = e3).trim ? u2.trim() : u2.replace(/^\s+|\s+$/g, ""); e3.length % 4 != 0; ) e3 += "=";
+            if ("number" == s3) r4 = j(e3);
+            else if ("string" == s3) r4 = f.byteLength(e3, t4);
+            else {
+              if ("object" != s3) throw new Error("First argument needs to be a number, array or string.");
+              r4 = j(e3.length);
+            }
+            if (f._useTypedArrays ? o3 = f._augment(new Uint8Array(r4)) : ((o3 = this).length = r4, o3._isBuffer = true), f._useTypedArrays && "number" == typeof e3.byteLength) o3._set(e3);
+            else if (C(u2 = e3) || f.isBuffer(u2) || u2 && "object" == typeof u2 && "number" == typeof u2.length) for (i2 = 0; i2 < r4; i2++) f.isBuffer(e3) ? o3[i2] = e3.readUInt8(i2) : o3[i2] = e3[i2];
+            else if ("string" == s3) o3.write(e3, 0, t4);
+            else if ("number" == s3 && !f._useTypedArrays && !n2) for (i2 = 0; i2 < r4; i2++) o3[i2] = 0;
+            return o3;
+          }
+          function b(e3, t4, n2, r4) {
+            return f._charsWritten = c((function(e4) {
+              for (var t5 = [], n3 = 0; n3 < e4.length; n3++) t5.push(255 & e4.charCodeAt(n3));
+              return t5;
+            })(t4), e3, n2, r4);
+          }
+          function m(e3, t4, n2, r4) {
+            return f._charsWritten = c((function(e4) {
+              for (var t5, n3, r5 = [], o3 = 0; o3 < e4.length; o3++) n3 = e4.charCodeAt(o3), t5 = n3 >> 8, n3 = n3 % 256, r5.push(n3), r5.push(t5);
+              return r5;
+            })(t4), e3, n2, r4);
+          }
+          function v(e3, t4, n2) {
+            var r4 = "";
+            n2 = Math.min(e3.length, n2);
+            for (var o3 = t4; o3 < n2; o3++) r4 += String.fromCharCode(e3[o3]);
+            return r4;
+          }
+          function o2(e3, t4, n2, r4) {
+            r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(null != t4, "missing offset"), d2(t4 + 1 < e3.length, "Trying to read beyond buffer length"));
+            var o3, r4 = e3.length;
+            if (!(r4 <= t4)) return n2 ? (o3 = e3[t4], t4 + 1 < r4 && (o3 |= e3[t4 + 1] << 8)) : (o3 = e3[t4] << 8, t4 + 1 < r4 && (o3 |= e3[t4 + 1])), o3;
+          }
+          function u(e3, t4, n2, r4) {
+            r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(null != t4, "missing offset"), d2(t4 + 3 < e3.length, "Trying to read beyond buffer length"));
+            var o3, r4 = e3.length;
+            if (!(r4 <= t4)) return n2 ? (t4 + 2 < r4 && (o3 = e3[t4 + 2] << 16), t4 + 1 < r4 && (o3 |= e3[t4 + 1] << 8), o3 |= e3[t4], t4 + 3 < r4 && (o3 += e3[t4 + 3] << 24 >>> 0)) : (t4 + 1 < r4 && (o3 = e3[t4 + 1] << 16), t4 + 2 < r4 && (o3 |= e3[t4 + 2] << 8), t4 + 3 < r4 && (o3 |= e3[t4 + 3]), o3 += e3[t4] << 24 >>> 0), o3;
+          }
+          function _(e3, t4, n2, r4) {
+            if (r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(null != t4, "missing offset"), d2(t4 + 1 < e3.length, "Trying to read beyond buffer length")), !(e3.length <= t4)) return r4 = o2(e3, t4, n2, true), 32768 & r4 ? -1 * (65535 - r4 + 1) : r4;
+          }
+          function E(e3, t4, n2, r4) {
+            if (r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(null != t4, "missing offset"), d2(t4 + 3 < e3.length, "Trying to read beyond buffer length")), !(e3.length <= t4)) return r4 = u(e3, t4, n2, true), 2147483648 & r4 ? -1 * (4294967295 - r4 + 1) : r4;
+          }
+          function I(e3, t4, n2, r4) {
+            return r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(t4 + 3 < e3.length, "Trying to read beyond buffer length")), i.read(e3, t4, n2, 23, 4);
+          }
+          function A2(e3, t4, n2, r4) {
+            return r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(t4 + 7 < e3.length, "Trying to read beyond buffer length")), i.read(e3, t4, n2, 52, 8);
+          }
+          function s2(e3, t4, n2, r4, o3) {
+            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 1 < e3.length, "trying to write beyond buffer length"), Y(t4, 65535));
+            o3 = e3.length;
+            if (!(o3 <= n2)) for (var i2 = 0, u2 = Math.min(o3 - n2, 2); i2 < u2; i2++) e3[n2 + i2] = (t4 & 255 << 8 * (r4 ? i2 : 1 - i2)) >>> 8 * (r4 ? i2 : 1 - i2);
+          }
+          function l(e3, t4, n2, r4, o3) {
+            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 3 < e3.length, "trying to write beyond buffer length"), Y(t4, 4294967295));
+            o3 = e3.length;
+            if (!(o3 <= n2)) for (var i2 = 0, u2 = Math.min(o3 - n2, 4); i2 < u2; i2++) e3[n2 + i2] = t4 >>> 8 * (r4 ? i2 : 3 - i2) & 255;
+          }
+          function B(e3, t4, n2, r4, o3) {
+            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 1 < e3.length, "Trying to write beyond buffer length"), F(t4, 32767, -32768)), e3.length <= n2 || s2(e3, 0 <= t4 ? t4 : 65535 + t4 + 1, n2, r4, o3);
+          }
+          function L2(e3, t4, n2, r4, o3) {
+            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 3 < e3.length, "Trying to write beyond buffer length"), F(t4, 2147483647, -2147483648)), e3.length <= n2 || l(e3, 0 <= t4 ? t4 : 4294967295 + t4 + 1, n2, r4, o3);
+          }
+          function U(e3, t4, n2, r4, o3) {
+            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 3 < e3.length, "Trying to write beyond buffer length"), D(t4, 34028234663852886e22, -34028234663852886e22)), e3.length <= n2 || i.write(e3, t4, n2, r4, 23, 4);
+          }
+          function x2(e3, t4, n2, r4, o3) {
+            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 7 < e3.length, "Trying to write beyond buffer length"), D(t4, 17976931348623157e292, -17976931348623157e292)), e3.length <= n2 || i.write(e3, t4, n2, r4, 52, 8);
+          }
+          H.Buffer = f, H.SlowBuffer = f, H.INSPECT_MAX_BYTES = 50, f.poolSize = 8192, f._useTypedArrays = (function() {
+            try {
+              var e3 = new ArrayBuffer(0), t4 = new Uint8Array(e3);
+              return t4.foo = function() {
+                return 42;
+              }, 42 === t4.foo() && "function" == typeof t4.subarray;
+            } catch (e4) {
+              return false;
+            }
+          })(), f.isEncoding = function(e3) {
+            switch (String(e3).toLowerCase()) {
+              case "hex":
+              case "utf8":
+              case "utf-8":
+              case "ascii":
+              case "binary":
+              case "base64":
+              case "raw":
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                return true;
+              default:
+                return false;
+            }
+          }, f.isBuffer = function(e3) {
+            return !(null == e3 || !e3._isBuffer);
+          }, f.byteLength = function(e3, t4) {
+            var n2;
+            switch (e3 += "", t4 || "utf8") {
+              case "hex":
+                n2 = e3.length / 2;
+                break;
+              case "utf8":
+              case "utf-8":
+                n2 = T(e3).length;
+                break;
+              case "ascii":
+              case "binary":
+              case "raw":
+                n2 = e3.length;
+                break;
+              case "base64":
+                n2 = M(e3).length;
+                break;
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                n2 = 2 * e3.length;
+                break;
+              default:
+                throw new Error("Unknown encoding");
+            }
+            return n2;
+          }, f.concat = function(e3, t4) {
+            if (d2(C(e3), "Usage: Buffer.concat(list, [totalLength])\nlist should be an Array."), 0 === e3.length) return new f(0);
+            if (1 === e3.length) return e3[0];
+            if ("number" != typeof t4) for (o3 = t4 = 0; o3 < e3.length; o3++) t4 += e3[o3].length;
+            for (var n2 = new f(t4), r4 = 0, o3 = 0; o3 < e3.length; o3++) {
+              var i2 = e3[o3];
+              i2.copy(n2, r4), r4 += i2.length;
+            }
+            return n2;
+          }, f.prototype.write = function(e3, t4, n2, r4) {
+            isFinite(t4) ? isFinite(n2) || (r4 = n2, n2 = void 0) : (a3 = r4, r4 = t4, t4 = n2, n2 = a3), t4 = Number(t4) || 0;
+            var o3, i2, u2, s3, a3 = this.length - t4;
+            switch ((!n2 || a3 < (n2 = Number(n2))) && (n2 = a3), r4 = String(r4 || "utf8").toLowerCase()) {
+              case "hex":
+                o3 = (function(e4, t5, n3, r5) {
+                  n3 = Number(n3) || 0;
+                  var o4 = e4.length - n3;
+                  (!r5 || o4 < (r5 = Number(r5))) && (r5 = o4), d2((o4 = t5.length) % 2 == 0, "Invalid hex string"), o4 / 2 < r5 && (r5 = o4 / 2);
+                  for (var i3 = 0; i3 < r5; i3++) {
+                    var u3 = parseInt(t5.substr(2 * i3, 2), 16);
+                    d2(!isNaN(u3), "Invalid hex string"), e4[n3 + i3] = u3;
+                  }
+                  return f._charsWritten = 2 * i3, i3;
+                })(this, e3, t4, n2);
+                break;
+              case "utf8":
+              case "utf-8":
+                i2 = this, u2 = t4, s3 = n2, o3 = f._charsWritten = c(T(e3), i2, u2, s3);
+                break;
+              case "ascii":
+              case "binary":
+                o3 = b(this, e3, t4, n2);
+                break;
+              case "base64":
+                i2 = this, u2 = t4, s3 = n2, o3 = f._charsWritten = c(M(e3), i2, u2, s3);
+                break;
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                o3 = m(this, e3, t4, n2);
+                break;
+              default:
+                throw new Error("Unknown encoding");
+            }
+            return o3;
+          }, f.prototype.toString = function(e3, t4, n2) {
+            var r4, o3, i2, u2, s3 = this;
+            if (e3 = String(e3 || "utf8").toLowerCase(), t4 = Number(t4) || 0, (n2 = void 0 !== n2 ? Number(n2) : s3.length) === t4) return "";
+            switch (e3) {
+              case "hex":
+                r4 = (function(e4, t5, n3) {
+                  var r5 = e4.length;
+                  (!t5 || t5 < 0) && (t5 = 0);
+                  (!n3 || n3 < 0 || r5 < n3) && (n3 = r5);
+                  for (var o4 = "", i3 = t5; i3 < n3; i3++) o4 += k(e4[i3]);
+                  return o4;
+                })(s3, t4, n2);
+                break;
+              case "utf8":
+              case "utf-8":
+                r4 = (function(e4, t5, n3) {
+                  var r5 = "", o4 = "";
+                  n3 = Math.min(e4.length, n3);
+                  for (var i3 = t5; i3 < n3; i3++) e4[i3] <= 127 ? (r5 += N(o4) + String.fromCharCode(e4[i3]), o4 = "") : o4 += "%" + e4[i3].toString(16);
+                  return r5 + N(o4);
+                })(s3, t4, n2);
+                break;
+              case "ascii":
+              case "binary":
+                r4 = v(s3, t4, n2);
+                break;
+              case "base64":
+                o3 = s3, u2 = n2, r4 = 0 === (i2 = t4) && u2 === o3.length ? a2.fromByteArray(o3) : a2.fromByteArray(o3.slice(i2, u2));
+                break;
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                r4 = (function(e4, t5, n3) {
+                  for (var r5 = e4.slice(t5, n3), o4 = "", i3 = 0; i3 < r5.length; i3 += 2) o4 += String.fromCharCode(r5[i3] + 256 * r5[i3 + 1]);
+                  return o4;
+                })(s3, t4, n2);
+                break;
+              default:
+                throw new Error("Unknown encoding");
+            }
+            return r4;
+          }, f.prototype.toJSON = function() {
+            return { type: "Buffer", data: Array.prototype.slice.call(this._arr || this, 0) };
+          }, f.prototype.copy = function(e3, t4, n2, r4) {
+            if (t4 = t4 || 0, (r4 = r4 || 0 === r4 ? r4 : this.length) !== (n2 = n2 || 0) && 0 !== e3.length && 0 !== this.length) {
+              d2(n2 <= r4, "sourceEnd < sourceStart"), d2(0 <= t4 && t4 < e3.length, "targetStart out of bounds"), d2(0 <= n2 && n2 < this.length, "sourceStart out of bounds"), d2(0 <= r4 && r4 <= this.length, "sourceEnd out of bounds"), r4 > this.length && (r4 = this.length);
+              var o3 = (r4 = e3.length - t4 < r4 - n2 ? e3.length - t4 + n2 : r4) - n2;
+              if (o3 < 100 || !f._useTypedArrays) for (var i2 = 0; i2 < o3; i2++) e3[i2 + t4] = this[i2 + n2];
+              else e3._set(this.subarray(n2, n2 + o3), t4);
+            }
+          }, f.prototype.slice = function(e3, t4) {
+            var n2 = this.length;
+            if (e3 = S2(e3, n2, 0), t4 = S2(t4, n2, n2), f._useTypedArrays) return f._augment(this.subarray(e3, t4));
+            for (var r4 = t4 - e3, o3 = new f(r4, void 0, true), i2 = 0; i2 < r4; i2++) o3[i2] = this[i2 + e3];
+            return o3;
+          }, f.prototype.get = function(e3) {
+            return console.log(".get() is deprecated. Access using array indexes instead."), this.readUInt8(e3);
+          }, f.prototype.set = function(e3, t4) {
+            return console.log(".set() is deprecated. Access using array indexes instead."), this.writeUInt8(e3, t4);
+          }, f.prototype.readUInt8 = function(e3, t4) {
+            if (t4 || (d2(null != e3, "missing offset"), d2(e3 < this.length, "Trying to read beyond buffer length")), !(e3 >= this.length)) return this[e3];
+          }, f.prototype.readUInt16LE = function(e3, t4) {
+            return o2(this, e3, true, t4);
+          }, f.prototype.readUInt16BE = function(e3, t4) {
+            return o2(this, e3, false, t4);
+          }, f.prototype.readUInt32LE = function(e3, t4) {
+            return u(this, e3, true, t4);
+          }, f.prototype.readUInt32BE = function(e3, t4) {
+            return u(this, e3, false, t4);
+          }, f.prototype.readInt8 = function(e3, t4) {
+            if (t4 || (d2(null != e3, "missing offset"), d2(e3 < this.length, "Trying to read beyond buffer length")), !(e3 >= this.length)) return 128 & this[e3] ? -1 * (255 - this[e3] + 1) : this[e3];
+          }, f.prototype.readInt16LE = function(e3, t4) {
+            return _(this, e3, true, t4);
+          }, f.prototype.readInt16BE = function(e3, t4) {
+            return _(this, e3, false, t4);
+          }, f.prototype.readInt32LE = function(e3, t4) {
+            return E(this, e3, true, t4);
+          }, f.prototype.readInt32BE = function(e3, t4) {
+            return E(this, e3, false, t4);
+          }, f.prototype.readFloatLE = function(e3, t4) {
+            return I(this, e3, true, t4);
+          }, f.prototype.readFloatBE = function(e3, t4) {
+            return I(this, e3, false, t4);
+          }, f.prototype.readDoubleLE = function(e3, t4) {
+            return A2(this, e3, true, t4);
+          }, f.prototype.readDoubleBE = function(e3, t4) {
+            return A2(this, e3, false, t4);
+          }, f.prototype.writeUInt8 = function(e3, t4, n2) {
+            n2 || (d2(null != e3, "missing value"), d2(null != t4, "missing offset"), d2(t4 < this.length, "trying to write beyond buffer length"), Y(e3, 255)), t4 >= this.length || (this[t4] = e3);
+          }, f.prototype.writeUInt16LE = function(e3, t4, n2) {
+            s2(this, e3, t4, true, n2);
+          }, f.prototype.writeUInt16BE = function(e3, t4, n2) {
+            s2(this, e3, t4, false, n2);
+          }, f.prototype.writeUInt32LE = function(e3, t4, n2) {
+            l(this, e3, t4, true, n2);
+          }, f.prototype.writeUInt32BE = function(e3, t4, n2) {
+            l(this, e3, t4, false, n2);
+          }, f.prototype.writeInt8 = function(e3, t4, n2) {
+            n2 || (d2(null != e3, "missing value"), d2(null != t4, "missing offset"), d2(t4 < this.length, "Trying to write beyond buffer length"), F(e3, 127, -128)), t4 >= this.length || (0 <= e3 ? this.writeUInt8(e3, t4, n2) : this.writeUInt8(255 + e3 + 1, t4, n2));
+          }, f.prototype.writeInt16LE = function(e3, t4, n2) {
+            B(this, e3, t4, true, n2);
+          }, f.prototype.writeInt16BE = function(e3, t4, n2) {
+            B(this, e3, t4, false, n2);
+          }, f.prototype.writeInt32LE = function(e3, t4, n2) {
+            L2(this, e3, t4, true, n2);
+          }, f.prototype.writeInt32BE = function(e3, t4, n2) {
+            L2(this, e3, t4, false, n2);
+          }, f.prototype.writeFloatLE = function(e3, t4, n2) {
+            U(this, e3, t4, true, n2);
+          }, f.prototype.writeFloatBE = function(e3, t4, n2) {
+            U(this, e3, t4, false, n2);
+          }, f.prototype.writeDoubleLE = function(e3, t4, n2) {
+            x2(this, e3, t4, true, n2);
+          }, f.prototype.writeDoubleBE = function(e3, t4, n2) {
+            x2(this, e3, t4, false, n2);
+          }, f.prototype.fill = function(e3, t4, n2) {
+            if (t4 = t4 || 0, n2 = n2 || this.length, d2("number" == typeof (e3 = "string" == typeof (e3 = e3 || 0) ? e3.charCodeAt(0) : e3) && !isNaN(e3), "value is not a number"), d2(t4 <= n2, "end < start"), n2 !== t4 && 0 !== this.length) {
+              d2(0 <= t4 && t4 < this.length, "start out of bounds"), d2(0 <= n2 && n2 <= this.length, "end out of bounds");
+              for (var r4 = t4; r4 < n2; r4++) this[r4] = e3;
+            }
+          }, f.prototype.inspect = function() {
+            for (var e3 = [], t4 = this.length, n2 = 0; n2 < t4; n2++) if (e3[n2] = k(this[n2]), n2 === H.INSPECT_MAX_BYTES) {
+              e3[n2 + 1] = "...";
+              break;
+            }
+            return "<Buffer " + e3.join(" ") + ">";
+          }, f.prototype.toArrayBuffer = function() {
+            if ("undefined" == typeof Uint8Array) throw new Error("Buffer.toArrayBuffer not supported in this browser");
+            if (f._useTypedArrays) return new f(this).buffer;
+            for (var e3 = new Uint8Array(this.length), t4 = 0, n2 = e3.length; t4 < n2; t4 += 1) e3[t4] = this[t4];
+            return e3.buffer;
+          };
+          var t3 = f.prototype;
+          function S2(e3, t4, n2) {
+            return "number" != typeof e3 ? n2 : t4 <= (e3 = ~~e3) ? t4 : 0 <= e3 || 0 <= (e3 += t4) ? e3 : 0;
+          }
+          function j(e3) {
+            return (e3 = ~~Math.ceil(+e3)) < 0 ? 0 : e3;
+          }
+          function C(e3) {
+            return (Array.isArray || function(e4) {
+              return "[object Array]" === Object.prototype.toString.call(e4);
+            })(e3);
+          }
+          function k(e3) {
+            return e3 < 16 ? "0" + e3.toString(16) : e3.toString(16);
+          }
+          function T(e3) {
+            for (var t4 = [], n2 = 0; n2 < e3.length; n2++) {
+              var r4 = e3.charCodeAt(n2);
+              if (r4 <= 127) t4.push(e3.charCodeAt(n2));
+              else for (var o3 = n2, i2 = (55296 <= r4 && r4 <= 57343 && n2++, encodeURIComponent(e3.slice(o3, n2 + 1)).substr(1).split("%")), u2 = 0; u2 < i2.length; u2++) t4.push(parseInt(i2[u2], 16));
+            }
+            return t4;
+          }
+          function M(e3) {
+            return a2.toByteArray(e3);
+          }
+          function c(e3, t4, n2, r4) {
+            for (var o3 = 0; o3 < r4 && !(o3 + n2 >= t4.length || o3 >= e3.length); o3++) t4[o3 + n2] = e3[o3];
+            return o3;
+          }
+          function N(e3) {
+            try {
+              return decodeURIComponent(e3);
+            } catch (e4) {
+              return String.fromCharCode(65533);
+            }
+          }
+          function Y(e3, t4) {
+            d2("number" == typeof e3, "cannot write a non-number as a number"), d2(0 <= e3, "specified a negative value for writing an unsigned value"), d2(e3 <= t4, "value is larger than maximum value for type"), d2(Math.floor(e3) === e3, "value has a fractional component");
+          }
+          function F(e3, t4, n2) {
+            d2("number" == typeof e3, "cannot write a non-number as a number"), d2(e3 <= t4, "value larger than maximum allowed value"), d2(n2 <= e3, "value smaller than minimum allowed value"), d2(Math.floor(e3) === e3, "value has a fractional component");
+          }
+          function D(e3, t4, n2) {
+            d2("number" == typeof e3, "cannot write a non-number as a number"), d2(e3 <= t4, "value larger than maximum allowed value"), d2(n2 <= e3, "value smaller than minimum allowed value");
+          }
+          function d2(e3, t4) {
+            if (!e3) throw new Error(t4 || "Failed assertion");
+          }
+          f._augment = function(e3) {
+            return e3._isBuffer = true, e3._get = e3.get, e3._set = e3.set, e3.get = t3.get, e3.set = t3.set, e3.write = t3.write, e3.toString = t3.toString, e3.toLocaleString = t3.toString, e3.toJSON = t3.toJSON, e3.copy = t3.copy, e3.slice = t3.slice, e3.readUInt8 = t3.readUInt8, e3.readUInt16LE = t3.readUInt16LE, e3.readUInt16BE = t3.readUInt16BE, e3.readUInt32LE = t3.readUInt32LE, e3.readUInt32BE = t3.readUInt32BE, e3.readInt8 = t3.readInt8, e3.readInt16LE = t3.readInt16LE, e3.readInt16BE = t3.readInt16BE, e3.readInt32LE = t3.readInt32LE, e3.readInt32BE = t3.readInt32BE, e3.readFloatLE = t3.readFloatLE, e3.readFloatBE = t3.readFloatBE, e3.readDoubleLE = t3.readDoubleLE, e3.readDoubleBE = t3.readDoubleBE, e3.writeUInt8 = t3.writeUInt8, e3.writeUInt16LE = t3.writeUInt16LE, e3.writeUInt16BE = t3.writeUInt16BE, e3.writeUInt32LE = t3.writeUInt32LE, e3.writeUInt32BE = t3.writeUInt32BE, e3.writeInt8 = t3.writeInt8, e3.writeInt16LE = t3.writeInt16LE, e3.writeInt16BE = t3.writeInt16BE, e3.writeInt32LE = t3.writeInt32LE, e3.writeInt32BE = t3.writeInt32BE, e3.writeFloatLE = t3.writeFloatLE, e3.writeFloatBE = t3.writeFloatBE, e3.writeDoubleLE = t3.writeDoubleLE, e3.writeDoubleBE = t3.writeDoubleBE, e3.fill = t3.fill, e3.inspect = t3.inspect, e3.toArrayBuffer = t3.toArrayBuffer, e3;
+          };
+        }).call(this, O("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, O("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/buffer/index.js", "/node_modules/gulp-browserify/node_modules/buffer");
+      }, { "base64-js": 2, buffer: 3, ieee754: 10, lYpoI2: 11 }], 4: [function(c, d2, e) {
+        !(function(e2, t3, a2, n, r3, o2, i, u, s2) {
+          var a2 = c("buffer").Buffer, f = 4, l = new a2(f);
+          l.fill(0);
+          d2.exports = { hash: function(e3, t4, n2, r4) {
+            for (var o3 = t4((function(e4, t5) {
+              e4.length % f != 0 && (n3 = e4.length + (f - e4.length % f), e4 = a2.concat([e4, l], n3));
+              for (var n3, r5 = [], o4 = t5 ? e4.readInt32BE : e4.readInt32LE, i3 = 0; i3 < e4.length; i3 += f) r5.push(o4.call(e4, i3));
+              return r5;
+            })(e3 = a2.isBuffer(e3) ? e3 : new a2(e3), r4), 8 * e3.length), t4 = r4, i2 = new a2(n2), u2 = t4 ? i2.writeInt32BE : i2.writeInt32LE, s3 = 0; s3 < o3.length; s3++) u2.call(i2, o3[s3], 4 * s3, true);
+            return i2;
+          } };
+        }).call(this, c("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/helpers.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { buffer: 3, lYpoI2: 11 }], 5: [function(v, e, _) {
+        !(function(l, c, u, d2, h, p2, g2, y, w2) {
+          var u = v("buffer").Buffer, e2 = v("./sha"), t3 = v("./sha256"), n = v("./rng"), b = { sha1: e2, sha256: t3, md5: v("./md5") }, s2 = 64, a2 = new u(s2);
+          function r3(e3, n2) {
+            var r4 = b[e3 = e3 || "sha1"], o3 = [];
+            return r4 || i("algorithm:", e3, "is not yet supported"), { update: function(e4) {
+              return u.isBuffer(e4) || (e4 = new u(e4)), o3.push(e4), e4.length, this;
+            }, digest: function(e4) {
+              var t4 = u.concat(o3), t4 = n2 ? (function(e5, t5, n3) {
+                u.isBuffer(t5) || (t5 = new u(t5)), u.isBuffer(n3) || (n3 = new u(n3)), t5.length > s2 ? t5 = e5(t5) : t5.length < s2 && (t5 = u.concat([t5, a2], s2));
+                for (var r5 = new u(s2), o4 = new u(s2), i2 = 0; i2 < s2; i2++) r5[i2] = 54 ^ t5[i2], o4[i2] = 92 ^ t5[i2];
+                return n3 = e5(u.concat([r5, n3])), e5(u.concat([o4, n3]));
+              })(r4, n2, t4) : r4(t4);
+              return o3 = null, e4 ? t4.toString(e4) : t4;
+            } };
+          }
+          function i() {
+            var e3 = [].slice.call(arguments).join(" ");
+            throw new Error([e3, "we accept pull requests", "http://github.com/dominictarr/crypto-browserify"].join("\n"));
+          }
+          a2.fill(0), _.createHash = function(e3) {
+            return r3(e3);
+          }, _.createHmac = r3, _.randomBytes = function(e3, t4) {
+            if (!t4 || !t4.call) return new u(n(e3));
+            try {
+              t4.call(this, void 0, new u(n(e3)));
+            } catch (e4) {
+              t4(e4);
+            }
+          };
+          var o2, f = ["createCredentials", "createCipher", "createCipheriv", "createDecipher", "createDecipheriv", "createSign", "createVerify", "createDiffieHellman", "pbkdf2"], m = function(e3) {
+            _[e3] = function() {
+              i("sorry,", e3, "is not implemented yet");
+            };
+          };
+          for (o2 in f) m(f[o2]);
+        }).call(this, v("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, v("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/index.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./md5": 6, "./rng": 7, "./sha": 8, "./sha256": 9, buffer: 3, lYpoI2: 11 }], 6: [function(w2, b, e) {
+        !(function(e2, r3, o2, i, u, a2, f, l, y) {
+          var t3 = w2("./helpers");
+          function n(e3, t4) {
+            e3[t4 >> 5] |= 128 << t4 % 32, e3[14 + (t4 + 64 >>> 9 << 4)] = t4;
+            for (var n2 = 1732584193, r4 = -271733879, o3 = -1732584194, i2 = 271733878, u2 = 0; u2 < e3.length; u2 += 16) {
+              var s3 = n2, a3 = r4, f2 = o3, l2 = i2, n2 = c(n2, r4, o3, i2, e3[u2 + 0], 7, -680876936), i2 = c(i2, n2, r4, o3, e3[u2 + 1], 12, -389564586), o3 = c(o3, i2, n2, r4, e3[u2 + 2], 17, 606105819), r4 = c(r4, o3, i2, n2, e3[u2 + 3], 22, -1044525330);
+              n2 = c(n2, r4, o3, i2, e3[u2 + 4], 7, -176418897), i2 = c(i2, n2, r4, o3, e3[u2 + 5], 12, 1200080426), o3 = c(o3, i2, n2, r4, e3[u2 + 6], 17, -1473231341), r4 = c(r4, o3, i2, n2, e3[u2 + 7], 22, -45705983), n2 = c(n2, r4, o3, i2, e3[u2 + 8], 7, 1770035416), i2 = c(i2, n2, r4, o3, e3[u2 + 9], 12, -1958414417), o3 = c(o3, i2, n2, r4, e3[u2 + 10], 17, -42063), r4 = c(r4, o3, i2, n2, e3[u2 + 11], 22, -1990404162), n2 = c(n2, r4, o3, i2, e3[u2 + 12], 7, 1804603682), i2 = c(i2, n2, r4, o3, e3[u2 + 13], 12, -40341101), o3 = c(o3, i2, n2, r4, e3[u2 + 14], 17, -1502002290), n2 = d2(n2, r4 = c(r4, o3, i2, n2, e3[u2 + 15], 22, 1236535329), o3, i2, e3[u2 + 1], 5, -165796510), i2 = d2(i2, n2, r4, o3, e3[u2 + 6], 9, -1069501632), o3 = d2(o3, i2, n2, r4, e3[u2 + 11], 14, 643717713), r4 = d2(r4, o3, i2, n2, e3[u2 + 0], 20, -373897302), n2 = d2(n2, r4, o3, i2, e3[u2 + 5], 5, -701558691), i2 = d2(i2, n2, r4, o3, e3[u2 + 10], 9, 38016083), o3 = d2(o3, i2, n2, r4, e3[u2 + 15], 14, -660478335), r4 = d2(r4, o3, i2, n2, e3[u2 + 4], 20, -405537848), n2 = d2(n2, r4, o3, i2, e3[u2 + 9], 5, 568446438), i2 = d2(i2, n2, r4, o3, e3[u2 + 14], 9, -1019803690), o3 = d2(o3, i2, n2, r4, e3[u2 + 3], 14, -187363961), r4 = d2(r4, o3, i2, n2, e3[u2 + 8], 20, 1163531501), n2 = d2(n2, r4, o3, i2, e3[u2 + 13], 5, -1444681467), i2 = d2(i2, n2, r4, o3, e3[u2 + 2], 9, -51403784), o3 = d2(o3, i2, n2, r4, e3[u2 + 7], 14, 1735328473), n2 = h(n2, r4 = d2(r4, o3, i2, n2, e3[u2 + 12], 20, -1926607734), o3, i2, e3[u2 + 5], 4, -378558), i2 = h(i2, n2, r4, o3, e3[u2 + 8], 11, -2022574463), o3 = h(o3, i2, n2, r4, e3[u2 + 11], 16, 1839030562), r4 = h(r4, o3, i2, n2, e3[u2 + 14], 23, -35309556), n2 = h(n2, r4, o3, i2, e3[u2 + 1], 4, -1530992060), i2 = h(i2, n2, r4, o3, e3[u2 + 4], 11, 1272893353), o3 = h(o3, i2, n2, r4, e3[u2 + 7], 16, -155497632), r4 = h(r4, o3, i2, n2, e3[u2 + 10], 23, -1094730640), n2 = h(n2, r4, o3, i2, e3[u2 + 13], 4, 681279174), i2 = h(i2, n2, r4, o3, e3[u2 + 0], 11, -358537222), o3 = h(o3, i2, n2, r4, e3[u2 + 3], 16, -722521979), r4 = h(r4, o3, i2, n2, e3[u2 + 6], 23, 76029189), n2 = h(n2, r4, o3, i2, e3[u2 + 9], 4, -640364487), i2 = h(i2, n2, r4, o3, e3[u2 + 12], 11, -421815835), o3 = h(o3, i2, n2, r4, e3[u2 + 15], 16, 530742520), n2 = p2(n2, r4 = h(r4, o3, i2, n2, e3[u2 + 2], 23, -995338651), o3, i2, e3[u2 + 0], 6, -198630844), i2 = p2(i2, n2, r4, o3, e3[u2 + 7], 10, 1126891415), o3 = p2(o3, i2, n2, r4, e3[u2 + 14], 15, -1416354905), r4 = p2(r4, o3, i2, n2, e3[u2 + 5], 21, -57434055), n2 = p2(n2, r4, o3, i2, e3[u2 + 12], 6, 1700485571), i2 = p2(i2, n2, r4, o3, e3[u2 + 3], 10, -1894986606), o3 = p2(o3, i2, n2, r4, e3[u2 + 10], 15, -1051523), r4 = p2(r4, o3, i2, n2, e3[u2 + 1], 21, -2054922799), n2 = p2(n2, r4, o3, i2, e3[u2 + 8], 6, 1873313359), i2 = p2(i2, n2, r4, o3, e3[u2 + 15], 10, -30611744), o3 = p2(o3, i2, n2, r4, e3[u2 + 6], 15, -1560198380), r4 = p2(r4, o3, i2, n2, e3[u2 + 13], 21, 1309151649), n2 = p2(n2, r4, o3, i2, e3[u2 + 4], 6, -145523070), i2 = p2(i2, n2, r4, o3, e3[u2 + 11], 10, -1120210379), o3 = p2(o3, i2, n2, r4, e3[u2 + 2], 15, 718787259), r4 = p2(r4, o3, i2, n2, e3[u2 + 9], 21, -343485551), n2 = g2(n2, s3), r4 = g2(r4, a3), o3 = g2(o3, f2), i2 = g2(i2, l2);
+            }
+            return Array(n2, r4, o3, i2);
+          }
+          function s2(e3, t4, n2, r4, o3, i2) {
+            return g2((t4 = g2(g2(t4, e3), g2(r4, i2))) << o3 | t4 >>> 32 - o3, n2);
+          }
+          function c(e3, t4, n2, r4, o3, i2, u2) {
+            return s2(t4 & n2 | ~t4 & r4, e3, t4, o3, i2, u2);
+          }
+          function d2(e3, t4, n2, r4, o3, i2, u2) {
+            return s2(t4 & r4 | n2 & ~r4, e3, t4, o3, i2, u2);
+          }
+          function h(e3, t4, n2, r4, o3, i2, u2) {
+            return s2(t4 ^ n2 ^ r4, e3, t4, o3, i2, u2);
+          }
+          function p2(e3, t4, n2, r4, o3, i2, u2) {
+            return s2(n2 ^ (t4 | ~r4), e3, t4, o3, i2, u2);
+          }
+          function g2(e3, t4) {
+            var n2 = (65535 & e3) + (65535 & t4);
+            return (e3 >> 16) + (t4 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
+          }
+          b.exports = function(e3) {
+            return t3.hash(e3, n, 16);
+          };
+        }).call(this, w2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, w2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/md5.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 7: [function(e, l, t3) {
+        !(function(e2, t4, n, r3, o2, i, u, s2, f) {
+          l.exports = function(e3) {
+            for (var t5, n2 = new Array(e3), r4 = 0; r4 < e3; r4++) 0 == (3 & r4) && (t5 = 4294967296 * Math.random()), n2[r4] = t5 >>> ((3 & r4) << 3) & 255;
+            return n2;
+          };
+        }).call(this, e("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/rng.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { buffer: 3, lYpoI2: 11 }], 8: [function(c, d2, e) {
+        !(function(e2, t3, n, r3, o2, s2, a2, f, l) {
+          var i = c("./helpers");
+          function u(l2, c2) {
+            l2[c2 >> 5] |= 128 << 24 - c2 % 32, l2[15 + (c2 + 64 >> 9 << 4)] = c2;
+            for (var e3, t4, n2, r4 = Array(80), o3 = 1732584193, i2 = -271733879, u2 = -1732584194, s3 = 271733878, d3 = -1009589776, h = 0; h < l2.length; h += 16) {
+              for (var p2 = o3, g2 = i2, y = u2, w2 = s3, b = d3, a3 = 0; a3 < 80; a3++) {
+                r4[a3] = a3 < 16 ? l2[h + a3] : v(r4[a3 - 3] ^ r4[a3 - 8] ^ r4[a3 - 14] ^ r4[a3 - 16], 1);
+                var f2 = m(m(v(o3, 5), (f2 = i2, t4 = u2, n2 = s3, (e3 = a3) < 20 ? f2 & t4 | ~f2 & n2 : !(e3 < 40) && e3 < 60 ? f2 & t4 | f2 & n2 | t4 & n2 : f2 ^ t4 ^ n2)), m(m(d3, r4[a3]), (e3 = a3) < 20 ? 1518500249 : e3 < 40 ? 1859775393 : e3 < 60 ? -1894007588 : -899497514)), d3 = s3, s3 = u2, u2 = v(i2, 30), i2 = o3, o3 = f2;
+              }
+              o3 = m(o3, p2), i2 = m(i2, g2), u2 = m(u2, y), s3 = m(s3, w2), d3 = m(d3, b);
+            }
+            return Array(o3, i2, u2, s3, d3);
+          }
+          function m(e3, t4) {
+            var n2 = (65535 & e3) + (65535 & t4);
+            return (e3 >> 16) + (t4 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
+          }
+          function v(e3, t4) {
+            return e3 << t4 | e3 >>> 32 - t4;
+          }
+          d2.exports = function(e3) {
+            return i.hash(e3, u, 20, true);
+          };
+        }).call(this, c("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/sha.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 9: [function(c, d2, e) {
+        !(function(e2, t3, n, r3, u, s2, a2, f, l) {
+          function b(e3, t4) {
+            var n2 = (65535 & e3) + (65535 & t4);
+            return (e3 >> 16) + (t4 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
+          }
+          function o2(e3, l2) {
+            var c2, d3 = new Array(1116352408, 1899447441, 3049323471, 3921009573, 961987163, 1508970993, 2453635748, 2870763221, 3624381080, 310598401, 607225278, 1426881987, 1925078388, 2162078206, 2614888103, 3248222580, 3835390401, 4022224774, 264347078, 604807628, 770255983, 1249150122, 1555081692, 1996064986, 2554220882, 2821834349, 2952996808, 3210313671, 3336571891, 3584528711, 113926993, 338241895, 666307205, 773529912, 1294757372, 1396182291, 1695183700, 1986661051, 2177026350, 2456956037, 2730485921, 2820302411, 3259730800, 3345764771, 3516065817, 3600352804, 4094571909, 275423344, 430227734, 506948616, 659060556, 883997877, 958139571, 1322822218, 1537002063, 1747873779, 1955562222, 2024104815, 2227730452, 2361852424, 2428436474, 2756734187, 3204031479, 3329325298), t4 = new Array(1779033703, 3144134277, 1013904242, 2773480762, 1359893119, 2600822924, 528734635, 1541459225), n2 = new Array(64);
+            e3[l2 >> 5] |= 128 << 24 - l2 % 32, e3[15 + (l2 + 64 >> 9 << 4)] = l2;
+            for (var r4, o3, h = 0; h < e3.length; h += 16) {
+              for (var i2 = t4[0], u2 = t4[1], s3 = t4[2], p2 = t4[3], a3 = t4[4], g2 = t4[5], y = t4[6], w2 = t4[7], f2 = 0; f2 < 64; f2++) n2[f2] = f2 < 16 ? e3[f2 + h] : b(b(b((o3 = n2[f2 - 2], m(o3, 17) ^ m(o3, 19) ^ v(o3, 10)), n2[f2 - 7]), (o3 = n2[f2 - 15], m(o3, 7) ^ m(o3, 18) ^ v(o3, 3))), n2[f2 - 16]), c2 = b(b(b(b(w2, m(o3 = a3, 6) ^ m(o3, 11) ^ m(o3, 25)), a3 & g2 ^ ~a3 & y), d3[f2]), n2[f2]), r4 = b(m(r4 = i2, 2) ^ m(r4, 13) ^ m(r4, 22), i2 & u2 ^ i2 & s3 ^ u2 & s3), w2 = y, y = g2, g2 = a3, a3 = b(p2, c2), p2 = s3, s3 = u2, u2 = i2, i2 = b(c2, r4);
+              t4[0] = b(i2, t4[0]), t4[1] = b(u2, t4[1]), t4[2] = b(s3, t4[2]), t4[3] = b(p2, t4[3]), t4[4] = b(a3, t4[4]), t4[5] = b(g2, t4[5]), t4[6] = b(y, t4[6]), t4[7] = b(w2, t4[7]);
+            }
+            return t4;
+          }
+          var i = c("./helpers"), m = function(e3, t4) {
+            return e3 >>> t4 | e3 << 32 - t4;
+          }, v = function(e3, t4) {
+            return e3 >>> t4;
+          };
+          d2.exports = function(e3) {
+            return i.hash(e3, o2, 32, true);
+          };
+        }).call(this, c("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/sha256.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 10: [function(e, t3, f) {
+        !(function(e2, t4, n, r3, o2, i, u, s2, a2) {
+          f.read = function(e3, t5, n2, r4, o3) {
+            var i2, u2, l = 8 * o3 - r4 - 1, c = (1 << l) - 1, d2 = c >> 1, s3 = -7, a3 = n2 ? o3 - 1 : 0, f2 = n2 ? -1 : 1, o3 = e3[t5 + a3];
+            for (a3 += f2, i2 = o3 & (1 << -s3) - 1, o3 >>= -s3, s3 += l; 0 < s3; i2 = 256 * i2 + e3[t5 + a3], a3 += f2, s3 -= 8) ;
+            for (u2 = i2 & (1 << -s3) - 1, i2 >>= -s3, s3 += r4; 0 < s3; u2 = 256 * u2 + e3[t5 + a3], a3 += f2, s3 -= 8) ;
+            if (0 === i2) i2 = 1 - d2;
+            else {
+              if (i2 === c) return u2 ? NaN : 1 / 0 * (o3 ? -1 : 1);
+              u2 += Math.pow(2, r4), i2 -= d2;
+            }
+            return (o3 ? -1 : 1) * u2 * Math.pow(2, i2 - r4);
+          }, f.write = function(e3, t5, l, n2, r4, c) {
+            var o3, i2, u2 = 8 * c - r4 - 1, s3 = (1 << u2) - 1, a3 = s3 >> 1, d2 = 23 === r4 ? Math.pow(2, -24) - Math.pow(2, -77) : 0, f2 = n2 ? 0 : c - 1, h = n2 ? 1 : -1, c = t5 < 0 || 0 === t5 && 1 / t5 < 0 ? 1 : 0;
+            for (t5 = Math.abs(t5), isNaN(t5) || t5 === 1 / 0 ? (i2 = isNaN(t5) ? 1 : 0, o3 = s3) : (o3 = Math.floor(Math.log(t5) / Math.LN2), t5 * (n2 = Math.pow(2, -o3)) < 1 && (o3--, n2 *= 2), 2 <= (t5 += 1 <= o3 + a3 ? d2 / n2 : d2 * Math.pow(2, 1 - a3)) * n2 && (o3++, n2 /= 2), s3 <= o3 + a3 ? (i2 = 0, o3 = s3) : 1 <= o3 + a3 ? (i2 = (t5 * n2 - 1) * Math.pow(2, r4), o3 += a3) : (i2 = t5 * Math.pow(2, a3 - 1) * Math.pow(2, r4), o3 = 0)); 8 <= r4; e3[l + f2] = 255 & i2, f2 += h, i2 /= 256, r4 -= 8) ;
+            for (o3 = o3 << r4 | i2, u2 += r4; 0 < u2; e3[l + f2] = 255 & o3, f2 += h, o3 /= 256, u2 -= 8) ;
+            e3[l + f2 - h] |= 128 * c;
+          };
+        }).call(this, e("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/ieee754/index.js", "/node_modules/gulp-browserify/node_modules/ieee754");
+      }, { buffer: 3, lYpoI2: 11 }], 11: [function(e, h, t3) {
+        !(function(e2, t4, n, r3, o2, f, l, c, d2) {
+          var i, u, s2;
+          function a2() {
+          }
+          (e2 = h.exports = {}).nextTick = (u = "undefined" != typeof window && window.setImmediate, s2 = "undefined" != typeof window && window.postMessage && window.addEventListener, u ? function(e3) {
+            return window.setImmediate(e3);
+          } : s2 ? (i = [], window.addEventListener("message", function(e3) {
+            var t5 = e3.source;
+            t5 !== window && null !== t5 || "process-tick" !== e3.data || (e3.stopPropagation(), 0 < i.length && i.shift()());
+          }, true), function(e3) {
+            i.push(e3), window.postMessage("process-tick", "*");
+          }) : function(e3) {
+            setTimeout(e3, 0);
+          }), e2.title = "browser", e2.browser = true, e2.env = {}, e2.argv = [], e2.on = a2, e2.addListener = a2, e2.once = a2, e2.off = a2, e2.removeListener = a2, e2.removeAllListeners = a2, e2.emit = a2, e2.binding = function(e3) {
+            throw new Error("process.binding is not supported");
+          }, e2.cwd = function() {
+            return "/";
+          }, e2.chdir = function(e3) {
+            throw new Error("process.chdir is not supported");
+          };
+        }).call(this, e("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/process/browser.js", "/node_modules/gulp-browserify/node_modules/process");
+      }, { buffer: 3, lYpoI2: 11 }] }, {}, [1])(1);
+    });
+  })(object_hash);
+  return object_hash.exports;
+}
+var object_hashExports = requireObject_hash();
+const hashObject = /* @__PURE__ */ getDefaultExportFromCjs(object_hashExports);
 const VideoItem = (props) => {
   const {
     showSettings,
@@ -166841,27 +167821,16 @@ const VideoItem = (props) => {
     autoPlay: globalAutoPlay,
     set: setAppSetting
   } = useAppStateStore();
+  const scene = props.mediaItem.entityType === "scene" ? props.mediaItem.entity : props.mediaItem.entity.scene;
   reactExports.useEffect(() => {
-    debugMode && console.log(`Mounted VideoItem index=${props.index} sceneId=${props.scene.id}`);
+    debugMode && console.log(`Mounted VideoItem index=${props.index} sceneId=${scene.id}`);
     return () => {
-      debugMode && console.log(`Unmounted VideoItem index=${props.index} sceneId=${props.scene.id}`);
+      debugMode && console.log(`Unmounted VideoItem index=${props.index} sceneId=${scene.id}`);
     };
   }, []);
   const { tv: { subtitleLanguage } } = useStashConfigStore();
   const videojsPlayerRef = reactExports.useRef(null);
-  const [paused, setPaused] = reactExports.useState(true);
   const videoRef = reactExports.useRef(null);
-  const setVideoRef = reactExports.useMemo(() => {
-    return (el) => {
-      videoRef.current = el;
-      if (!el) return;
-      if (el.paused !== paused) {
-        setPaused(el.paused);
-      }
-      el.addEventListener("playing", () => setPaused(false));
-      el.addEventListener("pause", () => setPaused(true));
-    };
-  }, []);
   const [loadingDeferred, setLoadingDeferred] = reactExports.useState(props.currentlyScrolling);
   reactExports.useEffect(() => {
     if (loadingDeferred) {
@@ -166885,12 +167854,39 @@ const VideoItem = (props) => {
     });
   }
   reactExports.useEffect(() => {
+    const player = videojsPlayerRef.current;
+    if (!debugMode || !isCurrentVideo || !player || player.isDisposed()) return;
+    window.tvCurrentPlayer = player;
+  }, [isCurrentVideo]);
+  const firstDurationChangeRef = reactExports.useRef(true);
+  reactExports.useEffect(() => {
+    const player = videojsPlayerRef.current;
+    if (!player || player.isDisposed()) return;
+    if (firstDurationChangeRef.current) {
+      firstDurationChangeRef.current = false;
+      return;
+    }
+    player.duration(scene.files?.[0]?.duration);
+  }, [scene.files?.[0]?.duration]);
+  reactExports.useEffect(() => {
+    const player = videojsPlayerRef.current;
+    if (!looping || props.mediaItem.entityType !== "marker" || !player || player.isDisposed()) return;
+    const handleEnded = () => {
+      player.one("loadstart", () => {
+        player.play();
+      });
+    };
+    player.on("ended", handleEnded);
+    return () => {
+      player.off("ended", handleEnded);
+    };
+  }, [looping]);
+  reactExports.useEffect(() => {
     const videojsPlayer = videojsPlayerRef.current;
     if (!videojsPlayer) return;
     if (props.index === props.currentIndex) {
       if (!autoplay) return;
-      setPaused(false);
-      videojsPlayer?.play()?.catch(() => setPaused(true));
+      videojsPlayer?.play();
     } else {
       videojsPlayer?.pause();
     }
@@ -166915,7 +167911,7 @@ const VideoItem = (props) => {
     };
   }, [forceLandscape, isCurrentVideo]);
   function getSkipTime() {
-    const duration5 = props.scene.files?.[0].duration;
+    const duration5 = scene.files?.[0].duration;
     if (!duration5) {
       return null;
     }
@@ -166978,7 +167974,7 @@ const VideoItem = (props) => {
   reactExports.useEffect(() => {
     if (!isCurrentVideo) setSceneInfoOpen(false);
   }, [isCurrentVideo]);
-  const sceneInfoDataAvailable = props.scene.performers.length > 0 || !!props.scene.studio || !!props.scene.title || !!props.scene.date;
+  const sceneInfoDataAvailable = scene.performers.length > 0 || !!scene.studio || !!scene.title || !!scene.date;
   const sceneInfoButton = sceneInfoDataAvailable ? /* @__PURE__ */ React$1.createElement(
     UiButton,
     {
@@ -166992,9 +167988,9 @@ const VideoItem = (props) => {
       onClick: sceneInfoButtonClickHandler
     }
   ) : null;
-  const captionSources = props.scene.captions && subtitleLanguage ? props.scene.captions.map((cap, i) => {
+  const captionSources = scene.captions && subtitleLanguage ? scene.captions.map((cap, i) => {
     if (cap.language_code === subtitleLanguage) {
-      const src2 = props.scene.paths.caption + `?lang=${cap.language_code}&type=${cap.caption_type}`;
+      const src2 = scene.paths.caption + `?lang=${cap.language_code}&type=${cap.caption_type}`;
       return /* @__PURE__ */ React$1.createElement(
         "track",
         {
@@ -167024,38 +168020,37 @@ const VideoItem = (props) => {
     if (videoRef.current && videoRef.current.textTracks.length)
       videoRef.current.textTracks[0].mode = showSubtitles ? "showing" : "disabled";
   }, [showSubtitles]);
+  const videoJsControlBarElm = videojsPlayerRef.current?.getChild("ControlBar")?.el();
   return /* @__PURE__ */ React$1.createElement(
     "div",
     {
       className: cx("VideoItem", { inViewport: isCurrentVideo, "cover": !letterboxing }, props.className),
       "data-testid": "VideoItem--container",
       "data-index": props.index,
-      "data-scene-id": props.scene.id,
+      "data-scene-id": scene.id,
       ref: itemRef,
       style: props.style
     },
-    /* @__PURE__ */ React$1.createElement(CrtEffect, { enabled: crtEffect }, debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, props.index, " - ", props.scene.id, " ", paused ? "Paused" : "Playing", " ", loadingDeferred ? "(Loading deferred)" : ""), debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "loadingDeferredDebugBackground" }), /* @__PURE__ */ React$1.createElement("img", { className: "loadingDeferredPreview", src: props.scene.paths.screenshot || "" }), !loadingDeferred && /* @__PURE__ */ React$1.createElement(
+    /* @__PURE__ */ React$1.createElement(CrtEffect, { enabled: crtEffect }, debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, props.index, " - ", scene.id, " ", loadingDeferred ? "(Loading deferred)" : "", " ", props.mediaItem.entityType === "marker" ? `(Marker: ${props.mediaItem.entity.primary_tag.name})` : ""), debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "loadingDeferredDebugBackground" }), /* @__PURE__ */ React$1.createElement("img", { className: "loadingDeferredPreview", src: scene.paths.screenshot || "" }), !loadingDeferred && /* @__PURE__ */ React$1.createElement(
       ScenePlayer,
       {
-        key: JSON.stringify([props.scene.id, scenePreviewOnly]),
-        scene: props.scene,
+        key: JSON.stringify([scene.id, hashObject(scene.sceneStreams)]),
+        scene,
         hideScrubberOverride: true,
         muted: audioMuted,
         autoplay,
         loop: looping,
-        initialTimestamp: 0,
+        initialTimestamp: props.mediaItem.entityType === "marker" ? 0 : void 0,
         sendSetTimestamp: () => {
-        },
-        onComplete: () => {
         },
         onNext: () => {
         },
         onPrevious: () => {
         },
-        ref: setVideoRef,
+        refVideo: videoRef,
         onEnded: handleOnEnded,
         onVideojsPlayerReady: handleVideojsPlayerReady,
-        trackActivity: !scenePreviewOnly,
+        trackActivity: !scenePreviewOnly && props.mediaItem.entityType !== "marker",
         scrubberThumbnail: !scenePreviewOnly,
         markers: !scenePreviewOnly,
         optionsToMerge: {
@@ -167067,16 +168062,28 @@ const VideoItem = (props) => {
               seekRight: {
                 handleClick: seekForwards
               }
-            }
+            },
+            ...props.mediaItem.entityType === "marker" && !scenePreviewOnly ? {
+              offset: {
+                start: props.mediaItem.entity.seconds,
+                end: props.mediaItem.entity.seconds + props.mediaItem.entity.duration,
+                // This moves the play head to the start of the marker clip but does not resume play even if loop is
+                // true so we handle that ourselves in an onEnded handler
+                restart_beginning: true
+              }
+            } : {}
           }
         }
       }
+    ), props.mediaItem.entityType === "marker" && videoJsControlBarElm && reactDomExports.createPortal(
+      /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "vjs-control" }, props.mediaItem.entity.title || props.mediaItem.entity.primary_tag.name), /* @__PURE__ */ React$1.createElement("div", { className: "vjs-custom-control-spacer vjs-spacer" }, " ")),
+      videoJsControlBarElm
     ), /* @__PURE__ */ React$1.createElement(
       SceneInfoPanel,
       {
-        ...props.scene,
+        ...scene,
         ref: sceneInfoPanelRef,
-        scene: props.scene,
+        scene,
         className: cx({ active: sceneInfoOpen })
       }
     ), /* @__PURE__ */ React$1.createElement(
@@ -167228,7 +168235,7 @@ const SceneInfoPanel = reactExports.forwardRef(
         }
       },
       studio,
-      /* @__PURE__ */ React$1.createElement("a", { href: sceneUrl || "" }, title),
+      /* @__PURE__ */ React$1.createElement("a", { href: sceneUrl || "", target: "_blank" }, title),
       performers,
       date
     );
@@ -167374,19 +168381,19 @@ const observeElementOffset = (instance, cb) => {
   if (!targetWindow) {
     return;
   }
-  let offset = 0;
+  let offset3 = 0;
   const fallback = instance.options.useScrollendEvent && supportsScrollend ? () => void 0 : debounce2(
     targetWindow,
     () => {
-      cb(offset, false);
+      cb(offset3, false);
     },
     instance.options.isScrollingResetDelay
   );
   const createHandler = (isScrolling) => () => {
     const { horizontal, isRtl } = instance.options;
-    offset = horizontal ? element["scrollLeft"] * (isRtl && -1 || 1) : element["scrollTop"];
+    offset3 = horizontal ? element["scrollLeft"] * (isRtl && -1 || 1) : element["scrollTop"];
     fallback();
-    cb(offset, isScrolling);
+    cb(offset3, isScrolling);
   };
   const handler = createHandler(true);
   const endHandler = createHandler(false);
@@ -167412,18 +168419,18 @@ const observeWindowOffset = (instance, cb) => {
   if (!targetWindow) {
     return;
   }
-  let offset = 0;
+  let offset3 = 0;
   const fallback = instance.options.useScrollendEvent && supportsScrollend ? () => void 0 : debounce2(
     targetWindow,
     () => {
-      cb(offset, false);
+      cb(offset3, false);
     },
     instance.options.isScrollingResetDelay
   );
   const createHandler = (isScrolling) => () => {
-    offset = element[instance.options.horizontal ? "scrollX" : "scrollY"];
+    offset3 = element[instance.options.horizontal ? "scrollX" : "scrollY"];
     fallback();
-    cb(offset, isScrolling);
+    cb(offset3, isScrolling);
   };
   const handler = createHandler(true);
   const endHandler = createHandler(false);
@@ -167452,23 +168459,23 @@ const measureElement = (element, entry, instance) => {
   }
   return element[instance.options.horizontal ? "offsetWidth" : "offsetHeight"];
 };
-const windowScroll = (offset, {
+const windowScroll = (offset3, {
   adjustments = 0,
   behavior
 }, instance) => {
   var _a2, _b2;
-  const toOffset = offset + adjustments;
+  const toOffset = offset3 + adjustments;
   (_b2 = (_a2 = instance.scrollElement) == null ? void 0 : _a2.scrollTo) == null ? void 0 : _b2.call(_a2, {
     [instance.options.horizontal ? "left" : "top"]: toOffset,
     behavior
   });
 };
-const elementScroll = (offset, {
+const elementScroll = (offset3, {
   adjustments = 0,
   behavior
 }, instance) => {
   var _a2, _b2;
-  const toOffset = offset + adjustments;
+  const toOffset = offset3 + adjustments;
   (_b2 = (_a2 = instance.scrollElement) == null ? void 0 : _a2.scrollTo) == null ? void 0 : _b2.call(_a2, {
     [instance.options.horizontal ? "left" : "top"]: toOffset,
     behavior
@@ -167622,10 +168629,10 @@ class Virtualizer {
           })
         );
         this.unsubs.push(
-          this.options.observeElementOffset(this, (offset, isScrolling) => {
+          this.options.observeElementOffset(this, (offset3, isScrolling) => {
             this.scrollAdjustments = 0;
-            this.scrollDirection = isScrolling ? this.getScrollOffset() < offset ? "forward" : "backward" : null;
-            this.scrollOffset = offset;
+            this.scrollDirection = isScrolling ? this.getScrollOffset() < offset3 ? "forward" : "backward" : null;
+            this.scrollOffset = offset3;
             this.isScrolling = isScrolling;
             this.maybeNotify();
           })
@@ -167867,7 +168874,7 @@ class Virtualizer {
         debug: () => this.options.debug
       }
     );
-    this.getVirtualItemForOffset = (offset) => {
+    this.getVirtualItemForOffset = (offset3) => {
       const measurements = this.getMeasurements();
       if (measurements.length === 0) {
         return void 0;
@@ -167877,7 +168884,7 @@ class Virtualizer {
           0,
           measurements.length - 1,
           (index2) => notUndefined(measurements[index2]).start,
-          offset
+          offset3
         )]
       );
     };
@@ -167946,8 +168953,8 @@ class Virtualizer {
           console.warn("Failed to get offset for index:", index2);
           return;
         }
-        const [offset, align] = offsetInfo;
-        this._scrollToOffset(offset, { adjustments: void 0, behavior });
+        const [offset3, align] = offsetInfo;
+        this._scrollToOffset(offset3, { adjustments: void 0, behavior });
         this.targetWindow.requestAnimationFrame(() => {
           const currentOffset = this.getScrollOffset();
           const afterInfo = this.getOffsetForIndex(index2, align);
@@ -168009,11 +169016,11 @@ class Virtualizer {
         0
       );
     };
-    this._scrollToOffset = (offset, {
+    this._scrollToOffset = (offset3, {
       adjustments,
       behavior
     }) => {
-      this.options.scrollToFn(offset, { behavior, adjustments }, this);
+      this.options.scrollToFn(offset3, { behavior, adjustments }, this);
     };
     this.measure = () => {
       this.itemSizeCache = /* @__PURE__ */ new Map();
@@ -171673,18 +172680,18 @@ const useGlobalFilterState = create2((set4, get7) => ({
   error: void 0,
   setError: (error) => set4({ error })
 }));
-function useSceneFilters() {
+function useMediaItemFilters() {
   const {
     currentSavedFilter,
     setCurrentSavedFilter,
-    loading: sceneFiltersLoading,
-    setLoading: setSceneFiltersLoading,
-    error: sceneFiltersError,
-    setError: setSceneFiltersError
+    loading: mediaItemFiltersLoading,
+    setLoading: setMediaItemFiltersLoading,
+    error: mediaItemFiltersError,
+    setError: setMediaItemFiltersError
   } = useGlobalFilterState();
   const apolloClient = useApolloClient();
   const {
-    general: { stashDefaultScenesFilter, availableSavedSceneFilters },
+    general: { stashDefaultScenesFilter, availableSavedSceneFilters, availableSavedMarkerFilters },
     tv: { defaultFilterId: stashTvDefaultFilterId },
     loading: stashConfigLoading
   } = useStashConfigStore();
@@ -171700,10 +172707,10 @@ function useSceneFilters() {
   );
   reactExports.useEffect(() => {
     if (stashConfigLoading || currentSavedFilter) return;
-    async function setCurrentSceneFilterOnInitialLoad() {
+    async function setCurrentMediaItemFilterOnInitialLoad() {
       try {
         if (stashTvDefaultFilterId) {
-          await setCurrentSceneFilterById(stashTvDefaultFilterId);
+          await setCurrentMediaItemFilterById(stashTvDefaultFilterId);
         } else if (stashDefaultScenesFilter) {
           setCurrentSavedFilter({
             ...stashDefaultScenesFilter,
@@ -171721,19 +172728,19 @@ function useSceneFilters() {
           });
         }
       } catch (error) {
-        setSceneFiltersError(error);
+        setMediaItemFiltersError(error);
       }
-      setSceneFiltersLoading(false);
+      setMediaItemFiltersLoading(false);
     }
-    setCurrentSceneFilterOnInitialLoad();
+    setCurrentMediaItemFilterOnInitialLoad();
   }, [stashConfigLoading, stashTvDefaultFilterId, stashDefaultScenesFilter]);
-  async function setCurrentSceneFilterById(id) {
-    const sceneFiltersStashResponse = await fetchSavedFilterFromStash(apolloClient, id);
-    if (!sceneFiltersStashResponse) {
+  async function setCurrentMediaItemFilterById(id) {
+    const mediaItemFiltersStashResponse = await fetchSavedFilterFromStash(apolloClient, id);
+    if (!mediaItemFiltersStashResponse) {
       return void 0;
     }
     setCurrentSavedFilter({
-      ...sceneFiltersStashResponse,
+      ...mediaItemFiltersStashResponse,
       filter: ""
       // See the comment above about the `filter` prop
     });
@@ -171747,7 +172754,7 @@ function useSceneFilters() {
   }
   function convertSavedToSearchableFilter(savedFilter) {
     function getGeneralFilter() {
-      const filter = new ListFilterModel(FilterMode.Scenes);
+      const filter = new ListFilterModel(savedFilter.mode);
       filter.configureFromSavedFilter(savedFilter);
       const updatedFilter = { ...filter.makeFindFilter() };
       if (updatedFilter.sort?.match(/^random_\d*$/) || isRandomised) {
@@ -171757,7 +172764,7 @@ function useSceneFilters() {
       return updatedFilter;
     }
     function getSceneFilter() {
-      const filter = new ListFilterModel(FilterMode.Scenes);
+      const filter = new ListFilterModel(savedFilter.mode);
       filter.configureFromSavedFilter(savedFilter);
       const sceneFilter = filter.makeFilter();
       if (limitOrientation) {
@@ -171770,51 +172777,120 @@ function useSceneFilters() {
       }
       return sceneFilter;
     }
-    return {
+    function getMarkerFilter() {
+      const filter = new ListFilterModel(savedFilter.mode);
+      filter.configureFromSavedFilter(savedFilter);
+      return filter.makeFilter();
+    }
+    const sharedProps = {
       savedFilter,
       generalFilter: getGeneralFilter(),
-      sceneFilter: getSceneFilter(),
       get isStashTvDefaultFilter() {
         return savedFilter.id === useStashConfigStore.getState().tv.defaultFilterId;
       }
     };
+    if (savedFilter.mode === FilterMode.Scenes) {
+      return {
+        ...sharedProps,
+        entityFilter: getSceneFilter(),
+        entityType: "scene"
+      };
+    } else if (savedFilter.mode === FilterMode.SceneMarkers) {
+      return {
+        ...sharedProps,
+        entityFilter: getMarkerFilter(),
+        entityType: "marker"
+      };
+    } else {
+      throw new Error(`Unsupported saved filter mode: ${savedFilter.mode}`);
+    }
   }
-  const availableSavedSceneFiltersWithDefault = reactExports.useMemo(
-    () => availableSavedSceneFilters.map((filter) => ({
-      ...filter,
-      isStashTvDefaultFilter: filter.id === stashTvDefaultFilterId
-    })),
+  const availableSavedFilters = reactExports.useMemo(
+    () => {
+      const savedFilters = [];
+      const savedFiltersByType = [
+        ["scene", availableSavedSceneFilters],
+        ["marker", availableSavedMarkerFilters]
+      ];
+      for (const [entityType, savedFiltersOfType] of savedFiltersByType) {
+        for (const savedFilter of savedFiltersOfType) {
+          savedFilters.push({
+            ...savedFilter,
+            isStashTvDefaultFilter: savedFilter.id === stashTvDefaultFilterId,
+            entityType
+          });
+        }
+      }
+      return savedFilters;
+    },
     [availableSavedSceneFilters, stashTvDefaultFilterId]
   );
   return {
-    sceneFiltersLoading,
-    sceneFiltersError,
-    currentSceneFilter: currentSearchableFilter,
-    setCurrentSceneFilterById,
-    availableSavedSceneFilters: availableSavedSceneFiltersWithDefault
+    mediaItemFiltersLoading,
+    mediaItemFiltersError,
+    currentMediaItemFilter: currentSearchableFilter,
+    clearCurrentMediaItemFilter: () => setCurrentSavedFilter(void 0),
+    setCurrentMediaItemFilterById,
+    availableSavedFilters
   };
 }
-const scenesPerPage = 20;
-function useScenes({ previewOnly } = {}) {
-  const { currentSceneFilter } = useSceneFilters();
+const mediaItemsPerPage = 20;
+function useMediaItems({ previewOnly } = {}) {
+  const { currentMediaItemFilter } = useMediaItemFilters();
   const { debugMode } = useAppStateStore();
-  const {
-    data: data2,
-    fetchMore,
-    error: scenesError,
-    loading: scenesLoading
-  } = useFindScenesForTvQuery({
-    variables: {
-      filter: {
-        ...currentSceneFilter?.generalFilter,
-        // We manage pagination ourselves and so override whatever the saved filter had
-        page: 1,
-        per_page: scenesPerPage
+  let response;
+  let mediaItems;
+  if (!currentMediaItemFilter || currentMediaItemFilter.entityType === "scene") {
+    response = useFindScenesForTvQuery({
+      variables: {
+        filter: {
+          ...currentMediaItemFilter?.generalFilter,
+          // We manage pagination ourselves and so override whatever the saved filter had
+          page: 1,
+          per_page: mediaItemsPerPage
+        },
+        scene_filter: currentMediaItemFilter?.entityFilter
       },
-      scene_filter: currentSceneFilter?.sceneFilter
-    },
-    skip: !currentSceneFilter
-  });
+      skip: !currentMediaItemFilter
+    });
+    mediaItems = response.data?.findScenes.scenes.map((scene) => ({
+      id: `scene:${scene.id}`,
+      entityType: "scene",
+      entity: scene
+    })) || [];
+  } else if (currentMediaItemFilter.entityType === "marker") {
+    response = useFindSceneMarkersForTvQuery({
+      variables: {
+        filter: {
+          ...currentMediaItemFilter.generalFilter,
+          // We manage pagination ourselves and so override whatever the saved filter had
+          page: 1,
+          per_page: mediaItemsPerPage
+        },
+        scene_marker_filter: currentMediaItemFilter.entityFilter
+      }
+    });
+    mediaItems = response.data?.findSceneMarkers.scene_markers.map((marker) => ({
+      id: `marker:${marker.id}`,
+      entityType: "marker",
+      entity: {
+        ...marker,
+        get duration() {
+          const defaultMarkerLength = 20;
+          const endTime = marker.end_seconds ?? Math.min(marker.seconds + defaultMarkerLength, marker.scene.files[0].duration);
+          return endTime - marker.seconds;
+        }
+      }
+    })) || [];
+  } else {
+    console.info("currentMediaItemFilter:", currentMediaItemFilter);
+    throw new Error("Unsupported media item filter entity type");
+  }
+  const {
+    fetchMore,
+    error: mediaItemsError,
+    loading: mediaItemsLoading
+  } = response;
   const [previewLengths, setPreviewLengths] = reactExports.useState({});
   reactExports.useEffect(() => {
     if (!previewOnly) return;
@@ -171838,16 +172914,31 @@ function useScenes({ previewOnly } = {}) {
       window.removeEventListener("loadedmetadata", saveDurationOnceMetadataLoaded, { capture: true });
     };
   }, [previewOnly]);
-  function makeScenePreviewOnly(scene) {
-    if (!scene.paths.preview) {
-      console.warn(`Scene ${scene.id} has no preview`);
-      return scene;
+  function makeMediaItemPreviewOnly(mediaItem) {
+    let previewUrl;
+    if (mediaItem.entityType === "scene") {
+      previewUrl = mediaItem.entity.paths.preview;
+    } else if (mediaItem.entityType === "marker") {
+      previewUrl = mediaItem.entity.stream;
+    } else {
+      throw new Error("Unsupported media item entity type");
     }
-    return {
+    if (!previewUrl) {
+      console.warn(`Media item ${mediaItem.id} has no preview`);
+      return mediaItem;
+    }
+    const scene = "scene" in mediaItem.entity ? mediaItem.entity.scene : mediaItem.entity;
+    let duration5;
+    if (mediaItem.entityType === "marker") {
+      duration5 = mediaItem.entity.duration;
+    } else {
+      duration5 = scene.id in previewLengths ? previewLengths[scene.id] : Math.min(9.2, scene.files[0].duration);
+    }
+    const updatedScene = {
       ...scene,
       sceneStreams: [
         {
-          "url": scene.paths.preview,
+          "url": previewUrl,
           "mime_type": "video/mp4",
           "label": "Direct stream",
           "__typename": "SceneStreamEndpoint"
@@ -171856,7 +172947,7 @@ function useScenes({ previewOnly } = {}) {
       files: [
         {
           ...scene.files[0],
-          duration: scene.id in previewLengths ? previewLengths[scene.id] : Math.min(9.2, scene.files[0].duration)
+          duration: duration5
         },
         ...scene.files.slice(1)
       ],
@@ -171864,29 +172955,52 @@ function useScenes({ previewOnly } = {}) {
       captions: null,
       scene_markers: []
     };
+    if (mediaItem.entityType === "scene") {
+      return {
+        ...mediaItem,
+        entity: updatedScene
+      };
+    } else if (mediaItem.entityType === "marker") {
+      return {
+        ...mediaItem,
+        entity: {
+          ...mediaItem.entity,
+          scene: updatedScene
+        }
+      };
+    } else {
+      return mediaItem;
+    }
   }
-  const scenes = data2?.findScenes?.scenes.map(
-    previewOnly ? makeScenePreviewOnly : (s2) => s2
-  ) ?? [];
   return {
-    scenes,
-    loadMoreScenes: () => {
-      const nextPage = data2?.findScenes?.scenes.length ? Math.ceil(data2.findScenes.scenes.length / scenesPerPage) + 1 : 1;
-      debugMode && console.log("Fetch next scenes page:", nextPage);
+    mediaItems: mediaItems.map(
+      (mediaItem) => previewOnly ? makeMediaItemPreviewOnly(mediaItem) : mediaItem
+    ),
+    loadMoreMediaItems: () => {
+      const nextPage = mediaItems.length ? Math.ceil(mediaItems.length / mediaItemsPerPage) + 1 : 1;
+      debugMode && console.log("Fetch next media page:", nextPage);
+      let entityFilterKey;
+      if (currentMediaItemFilter?.entityType === "scene") {
+        entityFilterKey = "scene_filter";
+      } else if (currentMediaItemFilter?.entityType === "marker") {
+        entityFilterKey = "scene_marker_filter";
+      } else {
+        throw new Error("Unsupported media filter entity type");
+      }
       fetchMore({
         variables: {
           filter: {
-            ...currentSceneFilter?.generalFilter,
+            ...currentMediaItemFilter?.generalFilter,
             // We manage pagination ourselves and so override whatever the saved filter had
             page: nextPage,
-            per_page: scenesPerPage
+            per_page: mediaItemsPerPage
           },
-          scene_filter: currentSceneFilter?.sceneFilter
+          [entityFilterKey]: currentMediaItemFilter?.entityFilter
         }
       });
     },
-    scenesError,
-    scenesLoading
+    mediaItemsError,
+    mediaItemsLoading
   };
 }
 const videoItemHeight = "calc(var(--y-unit-large) * 100)";
@@ -171895,7 +173009,7 @@ const VideoScroller = () => {
   const { forceLandscape: isForceLandscape, scenePreviewOnly, onlyShowMatchingOrientation, debugMode, set: setAppSetting } = useAppStateStore();
   const { orientation } = useWindowSize();
   const rootElmRef = reactExports.useRef(null);
-  const { scenes, loadMoreScenes } = useScenes({ previewOnly: scenePreviewOnly });
+  const { mediaItems, loadMoreMediaItems } = useMediaItems({ previewOnly: scenePreviewOnly });
   const estimateSizeTesterElement = reactExports.useRef(null);
   reactExports.useEffect(() => {
     return () => {
@@ -171906,7 +173020,7 @@ const VideoScroller = () => {
     };
   }, []);
   const sharedOptions = {
-    count: scenes.length,
+    count: mediaItems.length,
     estimateSize: () => {
       if (!estimateSizeTesterElement.current) {
         const el = document.createElement("div");
@@ -171944,7 +173058,7 @@ const VideoScroller = () => {
   const [currentIndex, _setCurrentIndex] = reactExports.useReducer(
     (currentState, newState) => {
       newState = typeof newState === "function" ? newState(currentState) : newState;
-      return clamp$2(0, newState, scenes.length ? scenes.length - 1 : 0);
+      return clamp$2(0, newState, mediaItems.length ? mediaItems.length - 1 : 0);
     },
     0
   );
@@ -171959,12 +173073,12 @@ const VideoScroller = () => {
         currentIndexRef.current = clamp$2(
           0,
           typeof newIndex === "function" ? newIndex(currentIndexRef.current) : newIndex,
-          scenes.length ? scenes.length - 1 : 0
+          mediaItems.length ? mediaItems.length - 1 : 0
         );
         return throttledSetCurrentIndex(currentIndexRef.current);
       });
     },
-    [rowVirtualizer, scenes.length]
+    [rowVirtualizer, mediaItems.length]
   );
   const scrollSnappingReenableTimeoutRef = reactExports.useRef();
   const scrollSnappingEnabled = () => !scrollSnappingReenableTimeoutRef.current;
@@ -171998,8 +173112,8 @@ const VideoScroller = () => {
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
-  const scrollToIndex = reactExports.useMemo(
-    () => (index2, options2) => {
+  const scrollToIndex = reactExports.useCallback(
+    (index2, options2) => {
       index2 = typeof index2 === "function" ? index2(currentIndexRef.current) : index2;
       const container2 = rowVirtualizer.scrollElement;
       if (!container2) return;
@@ -172013,10 +173127,10 @@ const VideoScroller = () => {
   );
   reactExports.useEffect(() => {
     debugMode && console.log("currentIndex changed to", currentIndex);
-    if (currentIndex >= scenes.length - 5) {
-      loadMoreScenes();
+    if (currentIndex >= mediaItems.length - 5) {
+      loadMoreMediaItems();
     }
-  }, [currentIndex]);
+  }, [currentIndex, mediaItems.length]);
   reactExports.useEffect(() => {
     const handleKeyDown = (e) => {
       const nextKey = isForceLandscape ? "ArrowRight" : "ArrowDown";
@@ -172166,8 +173280,8 @@ const VideoScroller = () => {
       ref: rootElmRef,
       style: { height: rowVirtualizer.getTotalSize() }
     },
-    debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, rowVirtualizer.isScrolling ? "Scrolling" : "Not Scrolling", " ", "(", scenes.length, " scenes)", onlyShowMatchingOrientation && ` limiting to ${orientation} orientation`),
-    scenes.map((scene, i) => {
+    debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, rowVirtualizer.isScrolling ? "Scrolling" : "Not Scrolling", " ", "(", mediaItems.length, " media loaded)", onlyShowMatchingOrientation && ` limiting to ${orientation} orientation`),
+    mediaItems.map((mediaItem, i) => {
       const style = {
         position: "absolute",
         top: 0,
@@ -172190,13 +173304,13 @@ const VideoScroller = () => {
             },
             currentIndex,
             index: i,
-            key: scene.id,
-            scene,
+            key: mediaItem.id,
+            mediaItem,
             style,
             currentlyScrolling: rowVirtualizer.isScrolling
           }
         );
-      } else return /* @__PURE__ */ React$1.createElement("div", { key: scene.id, className: "dummy-video-item", style });
+      } else return /* @__PURE__ */ React$1.createElement("div", { key: mediaItem.id, className: "dummy-video-item", style });
     })
   );
 };
@@ -172652,7 +173766,7 @@ function compile(value) {
 }
 function parse$1(value, root2, parent, rule, rules, rulesets, pseudo, points, declarations) {
   var index2 = 0;
-  var offset = 0;
+  var offset3 = 0;
   var length2 = pseudo;
   var atrule = 0;
   var property = 0;
@@ -172716,7 +173830,7 @@ function parse$1(value, root2, parent, rule, rules, rulesets, pseudo, points, de
           case 125:
             scanning = 0;
           // ;
-          case 59 + offset:
+          case 59 + offset3:
             if (ampersand == -1) characters2 = replace(characters2, /\f/g, "");
             if (property > 0 && strlen(characters2) - length2)
               append(property > 32 ? declaration(characters2 + ";", rule, parent, length2 - 1) : declaration(replace(characters2, " ", "") + ";", rule, parent, length2 - 2), declarations);
@@ -172726,9 +173840,9 @@ function parse$1(value, root2, parent, rule, rules, rulesets, pseudo, points, de
             characters2 += ";";
           // { rule/at-rule
           default:
-            append(reference = ruleset(characters2, root2, parent, index2, offset, rules, points, type2, props = [], children = [], length2), rulesets);
+            append(reference = ruleset(characters2, root2, parent, index2, offset3, rules, points, type2, props = [], children = [], length2), rulesets);
             if (character2 === 123)
-              if (offset === 0)
+              if (offset3 === 0)
                 parse$1(characters2, root2, reference, reference, props, rulesets, length2, points, children);
               else
                 switch (atrule === 99 && charat(characters2, 3) === 110 ? 100 : atrule) {
@@ -172743,7 +173857,7 @@ function parse$1(value, root2, parent, rule, rules, rulesets, pseudo, points, de
                     parse$1(characters2, reference, reference, reference, [""], children, 0, points, children);
                 }
         }
-        index2 = offset = property = 0, variable = ampersand = 1, type2 = characters2 = "", length2 = pseudo;
+        index2 = offset3 = property = 0, variable = ampersand = 1, type2 = characters2 = "", length2 = pseudo;
         break;
       // :
       case 58:
@@ -172758,7 +173872,7 @@ function parse$1(value, root2, parent, rule, rules, rulesets, pseudo, points, de
         switch (characters2 += from2(character2), character2 * variable) {
           // &
           case 38:
-            ampersand = offset > 0 ? 1 : (characters2 += "\f", -1);
+            ampersand = offset3 > 0 ? 1 : (characters2 += "\f", -1);
             break;
           // ,
           case 44:
@@ -172768,7 +173882,7 @@ function parse$1(value, root2, parent, rule, rules, rulesets, pseudo, points, de
           case 64:
             if (peek() === 45)
               characters2 += delimit(next());
-            atrule = peek(), offset = length2 = strlen(type2 = characters2 += identifier(caret())), character2++;
+            atrule = peek(), offset3 = length2 = strlen(type2 = characters2 += identifier(caret())), character2++;
             break;
           // -
           case 45:
@@ -172778,15 +173892,15 @@ function parse$1(value, root2, parent, rule, rules, rulesets, pseudo, points, de
     }
   return rulesets;
 }
-function ruleset(value, root2, parent, index2, offset, rules, points, type2, props, children, length2) {
-  var post = offset - 1;
-  var rule = offset === 0 ? rules : [""];
+function ruleset(value, root2, parent, index2, offset3, rules, points, type2, props, children, length2) {
+  var post = offset3 - 1;
+  var rule = offset3 === 0 ? rules : [""];
   var size = sizeof(rule);
   for (var i = 0, j = 0, k = 0; i < index2; ++i)
     for (var x2 = 0, y = substr(value, post + 1, post = abs(j = points[i])), z = value; x2 < size; ++x2)
       if (z = trim(j > 0 ? rule[x2] + " " + y : replace(y, /&\f/g, rule[x2])))
         props[k++] = z;
-  return node(value, root2, parent, offset === 0 ? RULESET : type2, props, children, length2);
+  return node(value, root2, parent, offset3 === 0 ? RULESET : type2, props, children, length2);
 }
 function comment(value, root2, parent) {
   return node(value, root2, parent, COMMENT, from2(char()), substr(value, 2, -2), 0);
@@ -174387,11 +175501,11 @@ var LoadingMessage = function LoadingMessage2(_ref7) {
   }), innerProps), children);
 };
 var menuPortalCSS = function menuPortalCSS2(_ref8) {
-  var rect = _ref8.rect, offset = _ref8.offset, position2 = _ref8.position;
+  var rect = _ref8.rect, offset3 = _ref8.offset, position2 = _ref8.position;
   return {
     left: rect.left,
     position: position2,
-    top: offset,
+    top: offset3,
     width: rect.width,
     zIndex: 1
   };
@@ -174411,10 +175525,10 @@ var MenuPortal = function MenuPortal2(props) {
     if (!controlElement) return;
     var rect = getBoundingClientObj(controlElement);
     var scrollDistance = menuPosition === "fixed" ? 0 : window.pageYOffset;
-    var offset = rect[placement] + scrollDistance;
-    if (offset !== (computedPosition === null || computedPosition === void 0 ? void 0 : computedPosition.offset) || rect.left !== (computedPosition === null || computedPosition === void 0 ? void 0 : computedPosition.rect.left) || rect.width !== (computedPosition === null || computedPosition === void 0 ? void 0 : computedPosition.rect.width)) {
+    var offset3 = rect[placement] + scrollDistance;
+    if (offset3 !== (computedPosition === null || computedPosition === void 0 ? void 0 : computedPosition.offset) || rect.left !== (computedPosition === null || computedPosition === void 0 ? void 0 : computedPosition.rect.left) || rect.width !== (computedPosition === null || computedPosition === void 0 ? void 0 : computedPosition.rect.width)) {
       setComputedPosition({
-        offset,
+        offset: offset3,
         rect
       });
     }
@@ -174605,14 +175719,14 @@ var loadingIndicatorCSS = function loadingIndicatorCSS2(_ref5, unstyled) {
   });
 };
 var LoadingDot = function LoadingDot2(_ref6) {
-  var delay = _ref6.delay, offset = _ref6.offset;
+  var delay = _ref6.delay, offset3 = _ref6.offset;
   return jsx("span", {
     css: /* @__PURE__ */ css({
       animation: "".concat(loadingDotAnimations, " 1s ease-in-out ").concat(delay, "ms infinite;"),
       backgroundColor: "currentColor",
       borderRadius: "1em",
       display: "inline-block",
-      marginLeft: offset ? "1em" : void 0,
+      marginLeft: offset3 ? "1em" : void 0,
       height: "1em",
       verticalAlign: "top",
       width: "1em"
@@ -181959,12 +183073,13 @@ function SettingsTab() {
   const { updateStashTvConfig, tv: { subtitleLanguage } } = useStashConfigStore();
   const apolloClient = useApolloClient();
   const {
-    sceneFiltersLoading,
-    sceneFiltersError,
-    currentSceneFilter,
-    setCurrentSceneFilterById,
-    availableSavedSceneFilters
-  } = useSceneFilters();
+    mediaItemFiltersLoading,
+    mediaItemFiltersError,
+    currentMediaItemFilter,
+    setCurrentMediaItemFilterById,
+    clearCurrentMediaItemFilter,
+    availableSavedFilters
+  } = useMediaItemFilters();
   const {
     isRandomised,
     crtEffect,
@@ -181974,9 +183089,14 @@ function SettingsTab() {
     autoPlay,
     set: setAppSetting
   } = useAppStateStore();
-  const { scenes, scenesLoading } = useScenes();
-  const noScenesAvailable = !sceneFiltersLoading && !scenesLoading && scenes.length === 0;
-  const fetchingDataWarning = scenesLoading ? /* @__PURE__ */ React$1.createElement("div", { className: "warning" }, /* @__PURE__ */ React$1.createElement("h2", null, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true }), /* @__PURE__ */ React$1.createElement("span", null, "Fetching data from Stash...")), /* @__PURE__ */ React$1.createElement("p", null, "Please wait while data is loaded.")) : null;
+  const { mediaItems, mediaItemsLoading } = useMediaItems();
+  const noMediaItemsAvailable = !mediaItemFiltersLoading && !mediaItemsLoading && mediaItems.length === 0;
+  const [mediaFilterType, setMediaFilterType] = React$1.useState("scene");
+  reactExports.useEffect(() => {
+    if (!currentMediaItemFilter) return;
+    setMediaFilterType(currentMediaItemFilter.entityType);
+  }, [currentMediaItemFilter]);
+  const fetchingDataWarning = mediaItemsLoading ? /* @__PURE__ */ React$1.createElement("div", { className: "warning" }, /* @__PURE__ */ React$1.createElement("h2", null, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true }), /* @__PURE__ */ React$1.createElement("span", null, "Fetching data from Stash...")), /* @__PURE__ */ React$1.createElement("p", null, "Please wait while data is loaded.")) : null;
   const reactSelectTheme = (theme) => ({
     ...theme,
     colors: {
@@ -181997,18 +183117,25 @@ function SettingsTab() {
       primary50: theme.colors.neutral80
     }
   });
+  const filterTypes = [
+    {
+      label: "Scenes",
+      value: "scene"
+    },
+    {
+      label: "Markers",
+      value: "marker"
+    }
+  ];
   const filters = reactExports.useMemo(
-    () => availableSavedSceneFilters.map((filter) => ({
+    () => availableSavedFilters.filter((filter) => filter.entityType === mediaFilterType).map((filter) => ({
       value: filter.id,
       label: filter.name + (filter.isStashTvDefaultFilter ? " (default)" : ""),
       isStashTvDefaultFilter: filter.isStashTvDefaultFilter
     })).sort((a2, b) => a2.label.localeCompare(b.label)),
-    [availableSavedSceneFilters]
+    [availableSavedFilters, mediaFilterType]
   );
-  const selectedFilter = reactExports.useMemo(
-    () => filters.find((filter) => filter.value === currentSceneFilter?.savedFilter?.id),
-    [currentSceneFilter, filters]
-  );
+  const selectedFilter = filters.find((filter) => filter.value === currentMediaItemFilter?.savedFilter?.id);
   const subtitlesList = ISO6391.getAllNames().map((name) => ({
     label: name,
     value: ISO6391.getCode(name)
@@ -182056,19 +183183,33 @@ function SettingsTab() {
     SideDrawer,
     {
       title: /* @__PURE__ */ React$1.createElement("span", { ref: titleRef }, "Settings"),
-      closeDisabled: noScenesAvailable || scenesLoading || Boolean(sceneFiltersError),
+      closeDisabled: noMediaItemsAvailable || mediaItemsLoading || Boolean(mediaItemFiltersError),
       className: "SettingsTab"
     },
-    /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement("h3", null, "Select a filter"), !sceneFiltersLoading ? /* @__PURE__ */ React$1.createElement(
+    /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement("h3", null, "Select a filter type"), /* @__PURE__ */ React$1.createElement(
       StateManagedSelect$1,
       {
-        defaultValue: selectedFilter,
-        onChange: (newValue) => newValue && setCurrentSceneFilterById(newValue.value),
+        value: filterTypes.find((ft) => ft.value === mediaFilterType),
+        onChange: (newValue) => {
+          if (!newValue) return;
+          setMediaFilterType(newValue.value);
+          if (newValue.value !== currentMediaItemFilter?.entityType) clearCurrentMediaItemFilter();
+        },
+        options: filterTypes,
+        placeholder: "Select filter type",
+        theme: reactSelectTheme
+      }
+    ))),
+    /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement("h3", null, "Select a filter"), !mediaItemFiltersLoading ? /* @__PURE__ */ React$1.createElement(
+      StateManagedSelect$1,
+      {
+        value: selectedFilter ?? null,
+        onChange: (newValue) => newValue && setCurrentMediaItemFilterById(newValue.value),
         options: filters,
         placeholder: `${filters.length > 0 ? "No filter selected" : "No filters saved in stash"}. Showing all scenes.`,
         theme: reactSelectTheme
       }
-    ) : /* @__PURE__ */ React$1.createElement("div", null, "Loading...")), /* @__PURE__ */ React$1.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), fetchingDataWarning, sceneFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noScenesAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))),
+    ) : /* @__PURE__ */ React$1.createElement("div", null, "Loading...")), /* @__PURE__ */ React$1.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), fetchingDataWarning, mediaItemFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))),
     selectedFilter && !selectedFilter.isStashTvDefaultFilter && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
       "button",
       {
@@ -182085,7 +183226,7 @@ function SettingsTab() {
       selectedFilter?.label,
       '" as the default filter'
     ), /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement("small", null, "Set the currently selected scene filter as the default filter when opening Stash TV."))),
-    /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, currentSceneFilter?.savedFilter?.find_filter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement(
+    /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, currentMediaItemFilter?.savedFilter?.find_filter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement(
       "input",
       {
         checked: isRandomised,
@@ -182149,7 +183290,7 @@ function SettingsTab() {
       },
       "Reload Page"
     )),
-    debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.0.15")
+    debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.1.0")
   );
 }
 const Loading = (props) => {
@@ -182158,9 +183299,9 @@ const Loading = (props) => {
 };
 const FeedPage = ({ className }) => {
   const { showSettings, fullscreen, set: setAppSetting } = useAppStateStore();
-  const { sceneFiltersLoading } = useSceneFilters();
-  const { scenes, scenesLoading } = useScenes();
-  const loadedButNoScenes = !sceneFiltersLoading && !scenesLoading && scenes.length === 0;
+  const { mediaItemFiltersLoading } = useMediaItemFilters();
+  const { mediaItems, mediaItemsLoading } = useMediaItems();
+  const loadedButNoScenes = !mediaItemFiltersLoading && !mediaItemsLoading && mediaItems.length === 0;
   if (loadedButNoScenes && !showSettings) {
     setAppSetting("showSettings", true);
   }
@@ -182176,7 +183317,7 @@ const FeedPage = ({ className }) => {
       document.exitFullscreen?.();
     }
   }, [fullscreen]);
-  return /* @__PURE__ */ React$1.createElement("main", { "data-testid": "FeedPage", className }, (sceneFiltersLoading || scenesLoading) && /* @__PURE__ */ React$1.createElement(Loading, { heading: "Fetching scenes..." }), scenes.length > 0 && /* @__PURE__ */ React$1.createElement(VideoScroller, null), loadedButNoScenes && /* @__PURE__ */ React$1.createElement("div", null, "No Scenes Found"), /* @__PURE__ */ React$1.createElement(SettingsTab, null));
+  return /* @__PURE__ */ React$1.createElement("main", { "data-testid": "FeedPage", className }, (mediaItemFiltersLoading || mediaItemsLoading) && /* @__PURE__ */ React$1.createElement(Loading, { heading: "Fetching media..." }), mediaItems.length > 0 && /* @__PURE__ */ React$1.createElement(VideoScroller, null), loadedButNoScenes && /* @__PURE__ */ React$1.createElement("div", null, "No Media Found"), /* @__PURE__ */ React$1.createElement(SettingsTab, null));
 };
 const App = () => {
   const { forceLandscape } = useAppStateStore();
@@ -182268,797 +183409,6 @@ const App = () => {
   }, [forceLandscape]);
   return /* @__PURE__ */ React$1.createElement(FeedPage, null);
 };
-var object_hash = { exports: {} };
-var hasRequiredObject_hash;
-function requireObject_hash() {
-  if (hasRequiredObject_hash) return object_hash.exports;
-  hasRequiredObject_hash = 1;
-  (function(module2, exports) {
-    !(function(e) {
-      module2.exports = e();
-    })(function() {
-      return (function r3(o2, i, u) {
-        function s2(n, e2) {
-          if (!i[n]) {
-            if (!o2[n]) {
-              var t3 = "function" == typeof commonjsRequire && commonjsRequire;
-              if (!e2 && t3) return t3(n, true);
-              if (a2) return a2(n, true);
-              throw new Error("Cannot find module '" + n + "'");
-            }
-            e2 = i[n] = { exports: {} };
-            o2[n][0].call(e2.exports, function(e3) {
-              var t4 = o2[n][1][e3];
-              return s2(t4 || e3);
-            }, e2, e2.exports, r3, o2, i, u);
-          }
-          return i[n].exports;
-        }
-        for (var a2 = "function" == typeof commonjsRequire && commonjsRequire, e = 0; e < u.length; e++) s2(u[e]);
-        return s2;
-      })({ 1: [function(w2, b, m) {
-        !(function(e, n, s2, c, d2, h, p2, g2, y) {
-          var r3 = w2("crypto");
-          function t3(e2, t4) {
-            t4 = u(e2, t4);
-            var n2;
-            return void 0 === (n2 = "passthrough" !== t4.algorithm ? r3.createHash(t4.algorithm) : new l()).write && (n2.write = n2.update, n2.end = n2.update), f(t4, n2).dispatch(e2), n2.update || n2.end(""), n2.digest ? n2.digest("buffer" === t4.encoding ? void 0 : t4.encoding) : (e2 = n2.read(), "buffer" !== t4.encoding ? e2.toString(t4.encoding) : e2);
-          }
-          (m = b.exports = t3).sha1 = function(e2) {
-            return t3(e2);
-          }, m.keys = function(e2) {
-            return t3(e2, { excludeValues: true, algorithm: "sha1", encoding: "hex" });
-          }, m.MD5 = function(e2) {
-            return t3(e2, { algorithm: "md5", encoding: "hex" });
-          }, m.keysMD5 = function(e2) {
-            return t3(e2, { algorithm: "md5", encoding: "hex", excludeValues: true });
-          };
-          var o2 = r3.getHashes ? r3.getHashes().slice() : ["sha1", "md5"], i = (o2.push("passthrough"), ["buffer", "hex", "binary", "base64"]);
-          function u(e2, t4) {
-            var n2 = {};
-            if (n2.algorithm = (t4 = t4 || {}).algorithm || "sha1", n2.encoding = t4.encoding || "hex", n2.excludeValues = !!t4.excludeValues, n2.algorithm = n2.algorithm.toLowerCase(), n2.encoding = n2.encoding.toLowerCase(), n2.ignoreUnknown = true === t4.ignoreUnknown, n2.respectType = false !== t4.respectType, n2.respectFunctionNames = false !== t4.respectFunctionNames, n2.respectFunctionProperties = false !== t4.respectFunctionProperties, n2.unorderedArrays = true === t4.unorderedArrays, n2.unorderedSets = false !== t4.unorderedSets, n2.unorderedObjects = false !== t4.unorderedObjects, n2.replacer = t4.replacer || void 0, n2.excludeKeys = t4.excludeKeys || void 0, void 0 === e2) throw new Error("Object argument required.");
-            for (var r4 = 0; r4 < o2.length; ++r4) o2[r4].toLowerCase() === n2.algorithm.toLowerCase() && (n2.algorithm = o2[r4]);
-            if (-1 === o2.indexOf(n2.algorithm)) throw new Error('Algorithm "' + n2.algorithm + '"  not supported. supported values: ' + o2.join(", "));
-            if (-1 === i.indexOf(n2.encoding) && "passthrough" !== n2.algorithm) throw new Error('Encoding "' + n2.encoding + '"  not supported. supported values: ' + i.join(", "));
-            return n2;
-          }
-          function a2(e2) {
-            if ("function" == typeof e2) return null != /^function\s+\w*\s*\(\s*\)\s*{\s+\[native code\]\s+}$/i.exec(Function.prototype.toString.call(e2));
-          }
-          function f(o3, t4, i2) {
-            i2 = i2 || [];
-            function u2(e2) {
-              return t4.update ? t4.update(e2, "utf8") : t4.write(e2, "utf8");
-            }
-            return { dispatch: function(e2) {
-              return this["_" + (null === (e2 = o3.replacer ? o3.replacer(e2) : e2) ? "null" : typeof e2)](e2);
-            }, _object: function(t5) {
-              var n2, e2 = Object.prototype.toString.call(t5), r4 = /\[object (.*)\]/i.exec(e2);
-              r4 = (r4 = r4 ? r4[1] : "unknown:[" + e2 + "]").toLowerCase();
-              if (0 <= (e2 = i2.indexOf(t5))) return this.dispatch("[CIRCULAR:" + e2 + "]");
-              if (i2.push(t5), void 0 !== s2 && s2.isBuffer && s2.isBuffer(t5)) return u2("buffer:"), u2(t5);
-              if ("object" === r4 || "function" === r4 || "asyncfunction" === r4) return e2 = Object.keys(t5), o3.unorderedObjects && (e2 = e2.sort()), false === o3.respectType || a2(t5) || e2.splice(0, 0, "prototype", "__proto__", "constructor"), o3.excludeKeys && (e2 = e2.filter(function(e3) {
-                return !o3.excludeKeys(e3);
-              })), u2("object:" + e2.length + ":"), n2 = this, e2.forEach(function(e3) {
-                n2.dispatch(e3), u2(":"), o3.excludeValues || n2.dispatch(t5[e3]), u2(",");
-              });
-              if (!this["_" + r4]) {
-                if (o3.ignoreUnknown) return u2("[" + r4 + "]");
-                throw new Error('Unknown object type "' + r4 + '"');
-              }
-              this["_" + r4](t5);
-            }, _array: function(e2, t5) {
-              t5 = void 0 !== t5 ? t5 : false !== o3.unorderedArrays;
-              var n2 = this;
-              if (u2("array:" + e2.length + ":"), !t5 || e2.length <= 1) return e2.forEach(function(e3) {
-                return n2.dispatch(e3);
-              });
-              var r4 = [], t5 = e2.map(function(e3) {
-                var t6 = new l(), n3 = i2.slice();
-                return f(o3, t6, n3).dispatch(e3), r4 = r4.concat(n3.slice(i2.length)), t6.read().toString();
-              });
-              return i2 = i2.concat(r4), t5.sort(), this._array(t5, false);
-            }, _date: function(e2) {
-              return u2("date:" + e2.toJSON());
-            }, _symbol: function(e2) {
-              return u2("symbol:" + e2.toString());
-            }, _error: function(e2) {
-              return u2("error:" + e2.toString());
-            }, _boolean: function(e2) {
-              return u2("bool:" + e2.toString());
-            }, _string: function(e2) {
-              u2("string:" + e2.length + ":"), u2(e2.toString());
-            }, _function: function(e2) {
-              u2("fn:"), a2(e2) ? this.dispatch("[native]") : this.dispatch(e2.toString()), false !== o3.respectFunctionNames && this.dispatch("function-name:" + String(e2.name)), o3.respectFunctionProperties && this._object(e2);
-            }, _number: function(e2) {
-              return u2("number:" + e2.toString());
-            }, _xml: function(e2) {
-              return u2("xml:" + e2.toString());
-            }, _null: function() {
-              return u2("Null");
-            }, _undefined: function() {
-              return u2("Undefined");
-            }, _regexp: function(e2) {
-              return u2("regex:" + e2.toString());
-            }, _uint8array: function(e2) {
-              return u2("uint8array:"), this.dispatch(Array.prototype.slice.call(e2));
-            }, _uint8clampedarray: function(e2) {
-              return u2("uint8clampedarray:"), this.dispatch(Array.prototype.slice.call(e2));
-            }, _int8array: function(e2) {
-              return u2("int8array:"), this.dispatch(Array.prototype.slice.call(e2));
-            }, _uint16array: function(e2) {
-              return u2("uint16array:"), this.dispatch(Array.prototype.slice.call(e2));
-            }, _int16array: function(e2) {
-              return u2("int16array:"), this.dispatch(Array.prototype.slice.call(e2));
-            }, _uint32array: function(e2) {
-              return u2("uint32array:"), this.dispatch(Array.prototype.slice.call(e2));
-            }, _int32array: function(e2) {
-              return u2("int32array:"), this.dispatch(Array.prototype.slice.call(e2));
-            }, _float32array: function(e2) {
-              return u2("float32array:"), this.dispatch(Array.prototype.slice.call(e2));
-            }, _float64array: function(e2) {
-              return u2("float64array:"), this.dispatch(Array.prototype.slice.call(e2));
-            }, _arraybuffer: function(e2) {
-              return u2("arraybuffer:"), this.dispatch(new Uint8Array(e2));
-            }, _url: function(e2) {
-              return u2("url:" + e2.toString());
-            }, _map: function(e2) {
-              u2("map:");
-              e2 = Array.from(e2);
-              return this._array(e2, false !== o3.unorderedSets);
-            }, _set: function(e2) {
-              u2("set:");
-              e2 = Array.from(e2);
-              return this._array(e2, false !== o3.unorderedSets);
-            }, _file: function(e2) {
-              return u2("file:"), this.dispatch([e2.name, e2.size, e2.type, e2.lastModfied]);
-            }, _blob: function() {
-              if (o3.ignoreUnknown) return u2("[blob]");
-              throw Error('Hashing Blob objects is currently not supported\n(see https://github.com/puleos/object-hash/issues/26)\nUse "options.replacer" or "options.ignoreUnknown"\n');
-            }, _domwindow: function() {
-              return u2("domwindow");
-            }, _bigint: function(e2) {
-              return u2("bigint:" + e2.toString());
-            }, _process: function() {
-              return u2("process");
-            }, _timer: function() {
-              return u2("timer");
-            }, _pipe: function() {
-              return u2("pipe");
-            }, _tcp: function() {
-              return u2("tcp");
-            }, _udp: function() {
-              return u2("udp");
-            }, _tty: function() {
-              return u2("tty");
-            }, _statwatcher: function() {
-              return u2("statwatcher");
-            }, _securecontext: function() {
-              return u2("securecontext");
-            }, _connection: function() {
-              return u2("connection");
-            }, _zlib: function() {
-              return u2("zlib");
-            }, _context: function() {
-              return u2("context");
-            }, _nodescript: function() {
-              return u2("nodescript");
-            }, _httpparser: function() {
-              return u2("httpparser");
-            }, _dataview: function() {
-              return u2("dataview");
-            }, _signal: function() {
-              return u2("signal");
-            }, _fsevent: function() {
-              return u2("fsevent");
-            }, _tlswrap: function() {
-              return u2("tlswrap");
-            } };
-          }
-          function l() {
-            return { buf: "", write: function(e2) {
-              this.buf += e2;
-            }, end: function(e2) {
-              this.buf += e2;
-            }, read: function() {
-              return this.buf;
-            } };
-          }
-          m.writeToStream = function(e2, t4, n2) {
-            return void 0 === n2 && (n2 = t4, t4 = {}), f(t4 = u(e2, t4), n2).dispatch(e2);
-          };
-        }).call(this, w2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, w2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_9a5aa49d.js", "/");
-      }, { buffer: 3, crypto: 5, lYpoI2: 11 }], 2: [function(e, t3, f) {
-        !(function(e2, t4, n, r3, o2, i, u, s2, a2) {
-          !(function(e3) {
-            var a3 = "undefined" != typeof Uint8Array ? Uint8Array : Array, t5 = "+".charCodeAt(0), n2 = "/".charCodeAt(0), r4 = "0".charCodeAt(0), o3 = "a".charCodeAt(0), i2 = "A".charCodeAt(0), u2 = "-".charCodeAt(0), s3 = "_".charCodeAt(0);
-            function f2(e4) {
-              e4 = e4.charCodeAt(0);
-              return e4 === t5 || e4 === u2 ? 62 : e4 === n2 || e4 === s3 ? 63 : e4 < r4 ? -1 : e4 < r4 + 10 ? e4 - r4 + 26 + 26 : e4 < i2 + 26 ? e4 - i2 : e4 < o3 + 26 ? e4 - o3 + 26 : void 0;
-            }
-            e3.toByteArray = function(e4) {
-              var t6, n3;
-              if (0 < e4.length % 4) throw new Error("Invalid string. Length must be a multiple of 4");
-              var r5 = e4.length, r5 = "=" === e4.charAt(r5 - 2) ? 2 : "=" === e4.charAt(r5 - 1) ? 1 : 0, o4 = new a3(3 * e4.length / 4 - r5), i3 = 0 < r5 ? e4.length - 4 : e4.length, u3 = 0;
-              function s4(e5) {
-                o4[u3++] = e5;
-              }
-              for (t6 = 0; t6 < i3; t6 += 4, 0) s4((16711680 & (n3 = f2(e4.charAt(t6)) << 18 | f2(e4.charAt(t6 + 1)) << 12 | f2(e4.charAt(t6 + 2)) << 6 | f2(e4.charAt(t6 + 3)))) >> 16), s4((65280 & n3) >> 8), s4(255 & n3);
-              return 2 == r5 ? s4(255 & (n3 = f2(e4.charAt(t6)) << 2 | f2(e4.charAt(t6 + 1)) >> 4)) : 1 == r5 && (s4((n3 = f2(e4.charAt(t6)) << 10 | f2(e4.charAt(t6 + 1)) << 4 | f2(e4.charAt(t6 + 2)) >> 2) >> 8 & 255), s4(255 & n3)), o4;
-            }, e3.fromByteArray = function(e4) {
-              var t6, n3, r5, o4, i3 = e4.length % 3, u3 = "";
-              function s4(e5) {
-                return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(e5);
-              }
-              for (t6 = 0, r5 = e4.length - i3; t6 < r5; t6 += 3) n3 = (e4[t6] << 16) + (e4[t6 + 1] << 8) + e4[t6 + 2], u3 += s4((o4 = n3) >> 18 & 63) + s4(o4 >> 12 & 63) + s4(o4 >> 6 & 63) + s4(63 & o4);
-              switch (i3) {
-                case 1:
-                  u3 = (u3 += s4((n3 = e4[e4.length - 1]) >> 2)) + s4(n3 << 4 & 63) + "==";
-                  break;
-                case 2:
-                  u3 = (u3 = (u3 += s4((n3 = (e4[e4.length - 2] << 8) + e4[e4.length - 1]) >> 10)) + s4(n3 >> 4 & 63)) + s4(n3 << 2 & 63) + "=";
-              }
-              return u3;
-            };
-          })(void 0 === f ? this.base64js = {} : f);
-        }).call(this, e("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/base64-js/lib/b64.js", "/node_modules/gulp-browserify/node_modules/base64-js/lib");
-      }, { buffer: 3, lYpoI2: 11 }], 3: [function(O, e, H) {
-        !(function(e2, n, f, r3, h, p2, g2, y, w2) {
-          var a2 = O("base64-js"), i = O("ieee754");
-          function f(e3, t4, n2) {
-            if (!(this instanceof f)) return new f(e3, t4, n2);
-            var r4, o3, i2, u2, s3 = typeof e3;
-            if ("base64" === t4 && "string" == s3) for (e3 = (u2 = e3).trim ? u2.trim() : u2.replace(/^\s+|\s+$/g, ""); e3.length % 4 != 0; ) e3 += "=";
-            if ("number" == s3) r4 = j(e3);
-            else if ("string" == s3) r4 = f.byteLength(e3, t4);
-            else {
-              if ("object" != s3) throw new Error("First argument needs to be a number, array or string.");
-              r4 = j(e3.length);
-            }
-            if (f._useTypedArrays ? o3 = f._augment(new Uint8Array(r4)) : ((o3 = this).length = r4, o3._isBuffer = true), f._useTypedArrays && "number" == typeof e3.byteLength) o3._set(e3);
-            else if (C(u2 = e3) || f.isBuffer(u2) || u2 && "object" == typeof u2 && "number" == typeof u2.length) for (i2 = 0; i2 < r4; i2++) f.isBuffer(e3) ? o3[i2] = e3.readUInt8(i2) : o3[i2] = e3[i2];
-            else if ("string" == s3) o3.write(e3, 0, t4);
-            else if ("number" == s3 && !f._useTypedArrays && !n2) for (i2 = 0; i2 < r4; i2++) o3[i2] = 0;
-            return o3;
-          }
-          function b(e3, t4, n2, r4) {
-            return f._charsWritten = c((function(e4) {
-              for (var t5 = [], n3 = 0; n3 < e4.length; n3++) t5.push(255 & e4.charCodeAt(n3));
-              return t5;
-            })(t4), e3, n2, r4);
-          }
-          function m(e3, t4, n2, r4) {
-            return f._charsWritten = c((function(e4) {
-              for (var t5, n3, r5 = [], o3 = 0; o3 < e4.length; o3++) n3 = e4.charCodeAt(o3), t5 = n3 >> 8, n3 = n3 % 256, r5.push(n3), r5.push(t5);
-              return r5;
-            })(t4), e3, n2, r4);
-          }
-          function v(e3, t4, n2) {
-            var r4 = "";
-            n2 = Math.min(e3.length, n2);
-            for (var o3 = t4; o3 < n2; o3++) r4 += String.fromCharCode(e3[o3]);
-            return r4;
-          }
-          function o2(e3, t4, n2, r4) {
-            r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(null != t4, "missing offset"), d2(t4 + 1 < e3.length, "Trying to read beyond buffer length"));
-            var o3, r4 = e3.length;
-            if (!(r4 <= t4)) return n2 ? (o3 = e3[t4], t4 + 1 < r4 && (o3 |= e3[t4 + 1] << 8)) : (o3 = e3[t4] << 8, t4 + 1 < r4 && (o3 |= e3[t4 + 1])), o3;
-          }
-          function u(e3, t4, n2, r4) {
-            r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(null != t4, "missing offset"), d2(t4 + 3 < e3.length, "Trying to read beyond buffer length"));
-            var o3, r4 = e3.length;
-            if (!(r4 <= t4)) return n2 ? (t4 + 2 < r4 && (o3 = e3[t4 + 2] << 16), t4 + 1 < r4 && (o3 |= e3[t4 + 1] << 8), o3 |= e3[t4], t4 + 3 < r4 && (o3 += e3[t4 + 3] << 24 >>> 0)) : (t4 + 1 < r4 && (o3 = e3[t4 + 1] << 16), t4 + 2 < r4 && (o3 |= e3[t4 + 2] << 8), t4 + 3 < r4 && (o3 |= e3[t4 + 3]), o3 += e3[t4] << 24 >>> 0), o3;
-          }
-          function _(e3, t4, n2, r4) {
-            if (r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(null != t4, "missing offset"), d2(t4 + 1 < e3.length, "Trying to read beyond buffer length")), !(e3.length <= t4)) return r4 = o2(e3, t4, n2, true), 32768 & r4 ? -1 * (65535 - r4 + 1) : r4;
-          }
-          function E(e3, t4, n2, r4) {
-            if (r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(null != t4, "missing offset"), d2(t4 + 3 < e3.length, "Trying to read beyond buffer length")), !(e3.length <= t4)) return r4 = u(e3, t4, n2, true), 2147483648 & r4 ? -1 * (4294967295 - r4 + 1) : r4;
-          }
-          function I(e3, t4, n2, r4) {
-            return r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(t4 + 3 < e3.length, "Trying to read beyond buffer length")), i.read(e3, t4, n2, 23, 4);
-          }
-          function A2(e3, t4, n2, r4) {
-            return r4 || (d2("boolean" == typeof n2, "missing or invalid endian"), d2(t4 + 7 < e3.length, "Trying to read beyond buffer length")), i.read(e3, t4, n2, 52, 8);
-          }
-          function s2(e3, t4, n2, r4, o3) {
-            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 1 < e3.length, "trying to write beyond buffer length"), Y(t4, 65535));
-            o3 = e3.length;
-            if (!(o3 <= n2)) for (var i2 = 0, u2 = Math.min(o3 - n2, 2); i2 < u2; i2++) e3[n2 + i2] = (t4 & 255 << 8 * (r4 ? i2 : 1 - i2)) >>> 8 * (r4 ? i2 : 1 - i2);
-          }
-          function l(e3, t4, n2, r4, o3) {
-            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 3 < e3.length, "trying to write beyond buffer length"), Y(t4, 4294967295));
-            o3 = e3.length;
-            if (!(o3 <= n2)) for (var i2 = 0, u2 = Math.min(o3 - n2, 4); i2 < u2; i2++) e3[n2 + i2] = t4 >>> 8 * (r4 ? i2 : 3 - i2) & 255;
-          }
-          function B(e3, t4, n2, r4, o3) {
-            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 1 < e3.length, "Trying to write beyond buffer length"), F(t4, 32767, -32768)), e3.length <= n2 || s2(e3, 0 <= t4 ? t4 : 65535 + t4 + 1, n2, r4, o3);
-          }
-          function L2(e3, t4, n2, r4, o3) {
-            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 3 < e3.length, "Trying to write beyond buffer length"), F(t4, 2147483647, -2147483648)), e3.length <= n2 || l(e3, 0 <= t4 ? t4 : 4294967295 + t4 + 1, n2, r4, o3);
-          }
-          function U(e3, t4, n2, r4, o3) {
-            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 3 < e3.length, "Trying to write beyond buffer length"), D(t4, 34028234663852886e22, -34028234663852886e22)), e3.length <= n2 || i.write(e3, t4, n2, r4, 23, 4);
-          }
-          function x2(e3, t4, n2, r4, o3) {
-            o3 || (d2(null != t4, "missing value"), d2("boolean" == typeof r4, "missing or invalid endian"), d2(null != n2, "missing offset"), d2(n2 + 7 < e3.length, "Trying to write beyond buffer length"), D(t4, 17976931348623157e292, -17976931348623157e292)), e3.length <= n2 || i.write(e3, t4, n2, r4, 52, 8);
-          }
-          H.Buffer = f, H.SlowBuffer = f, H.INSPECT_MAX_BYTES = 50, f.poolSize = 8192, f._useTypedArrays = (function() {
-            try {
-              var e3 = new ArrayBuffer(0), t4 = new Uint8Array(e3);
-              return t4.foo = function() {
-                return 42;
-              }, 42 === t4.foo() && "function" == typeof t4.subarray;
-            } catch (e4) {
-              return false;
-            }
-          })(), f.isEncoding = function(e3) {
-            switch (String(e3).toLowerCase()) {
-              case "hex":
-              case "utf8":
-              case "utf-8":
-              case "ascii":
-              case "binary":
-              case "base64":
-              case "raw":
-              case "ucs2":
-              case "ucs-2":
-              case "utf16le":
-              case "utf-16le":
-                return true;
-              default:
-                return false;
-            }
-          }, f.isBuffer = function(e3) {
-            return !(null == e3 || !e3._isBuffer);
-          }, f.byteLength = function(e3, t4) {
-            var n2;
-            switch (e3 += "", t4 || "utf8") {
-              case "hex":
-                n2 = e3.length / 2;
-                break;
-              case "utf8":
-              case "utf-8":
-                n2 = T(e3).length;
-                break;
-              case "ascii":
-              case "binary":
-              case "raw":
-                n2 = e3.length;
-                break;
-              case "base64":
-                n2 = M(e3).length;
-                break;
-              case "ucs2":
-              case "ucs-2":
-              case "utf16le":
-              case "utf-16le":
-                n2 = 2 * e3.length;
-                break;
-              default:
-                throw new Error("Unknown encoding");
-            }
-            return n2;
-          }, f.concat = function(e3, t4) {
-            if (d2(C(e3), "Usage: Buffer.concat(list, [totalLength])\nlist should be an Array."), 0 === e3.length) return new f(0);
-            if (1 === e3.length) return e3[0];
-            if ("number" != typeof t4) for (o3 = t4 = 0; o3 < e3.length; o3++) t4 += e3[o3].length;
-            for (var n2 = new f(t4), r4 = 0, o3 = 0; o3 < e3.length; o3++) {
-              var i2 = e3[o3];
-              i2.copy(n2, r4), r4 += i2.length;
-            }
-            return n2;
-          }, f.prototype.write = function(e3, t4, n2, r4) {
-            isFinite(t4) ? isFinite(n2) || (r4 = n2, n2 = void 0) : (a3 = r4, r4 = t4, t4 = n2, n2 = a3), t4 = Number(t4) || 0;
-            var o3, i2, u2, s3, a3 = this.length - t4;
-            switch ((!n2 || a3 < (n2 = Number(n2))) && (n2 = a3), r4 = String(r4 || "utf8").toLowerCase()) {
-              case "hex":
-                o3 = (function(e4, t5, n3, r5) {
-                  n3 = Number(n3) || 0;
-                  var o4 = e4.length - n3;
-                  (!r5 || o4 < (r5 = Number(r5))) && (r5 = o4), d2((o4 = t5.length) % 2 == 0, "Invalid hex string"), o4 / 2 < r5 && (r5 = o4 / 2);
-                  for (var i3 = 0; i3 < r5; i3++) {
-                    var u3 = parseInt(t5.substr(2 * i3, 2), 16);
-                    d2(!isNaN(u3), "Invalid hex string"), e4[n3 + i3] = u3;
-                  }
-                  return f._charsWritten = 2 * i3, i3;
-                })(this, e3, t4, n2);
-                break;
-              case "utf8":
-              case "utf-8":
-                i2 = this, u2 = t4, s3 = n2, o3 = f._charsWritten = c(T(e3), i2, u2, s3);
-                break;
-              case "ascii":
-              case "binary":
-                o3 = b(this, e3, t4, n2);
-                break;
-              case "base64":
-                i2 = this, u2 = t4, s3 = n2, o3 = f._charsWritten = c(M(e3), i2, u2, s3);
-                break;
-              case "ucs2":
-              case "ucs-2":
-              case "utf16le":
-              case "utf-16le":
-                o3 = m(this, e3, t4, n2);
-                break;
-              default:
-                throw new Error("Unknown encoding");
-            }
-            return o3;
-          }, f.prototype.toString = function(e3, t4, n2) {
-            var r4, o3, i2, u2, s3 = this;
-            if (e3 = String(e3 || "utf8").toLowerCase(), t4 = Number(t4) || 0, (n2 = void 0 !== n2 ? Number(n2) : s3.length) === t4) return "";
-            switch (e3) {
-              case "hex":
-                r4 = (function(e4, t5, n3) {
-                  var r5 = e4.length;
-                  (!t5 || t5 < 0) && (t5 = 0);
-                  (!n3 || n3 < 0 || r5 < n3) && (n3 = r5);
-                  for (var o4 = "", i3 = t5; i3 < n3; i3++) o4 += k(e4[i3]);
-                  return o4;
-                })(s3, t4, n2);
-                break;
-              case "utf8":
-              case "utf-8":
-                r4 = (function(e4, t5, n3) {
-                  var r5 = "", o4 = "";
-                  n3 = Math.min(e4.length, n3);
-                  for (var i3 = t5; i3 < n3; i3++) e4[i3] <= 127 ? (r5 += N(o4) + String.fromCharCode(e4[i3]), o4 = "") : o4 += "%" + e4[i3].toString(16);
-                  return r5 + N(o4);
-                })(s3, t4, n2);
-                break;
-              case "ascii":
-              case "binary":
-                r4 = v(s3, t4, n2);
-                break;
-              case "base64":
-                o3 = s3, u2 = n2, r4 = 0 === (i2 = t4) && u2 === o3.length ? a2.fromByteArray(o3) : a2.fromByteArray(o3.slice(i2, u2));
-                break;
-              case "ucs2":
-              case "ucs-2":
-              case "utf16le":
-              case "utf-16le":
-                r4 = (function(e4, t5, n3) {
-                  for (var r5 = e4.slice(t5, n3), o4 = "", i3 = 0; i3 < r5.length; i3 += 2) o4 += String.fromCharCode(r5[i3] + 256 * r5[i3 + 1]);
-                  return o4;
-                })(s3, t4, n2);
-                break;
-              default:
-                throw new Error("Unknown encoding");
-            }
-            return r4;
-          }, f.prototype.toJSON = function() {
-            return { type: "Buffer", data: Array.prototype.slice.call(this._arr || this, 0) };
-          }, f.prototype.copy = function(e3, t4, n2, r4) {
-            if (t4 = t4 || 0, (r4 = r4 || 0 === r4 ? r4 : this.length) !== (n2 = n2 || 0) && 0 !== e3.length && 0 !== this.length) {
-              d2(n2 <= r4, "sourceEnd < sourceStart"), d2(0 <= t4 && t4 < e3.length, "targetStart out of bounds"), d2(0 <= n2 && n2 < this.length, "sourceStart out of bounds"), d2(0 <= r4 && r4 <= this.length, "sourceEnd out of bounds"), r4 > this.length && (r4 = this.length);
-              var o3 = (r4 = e3.length - t4 < r4 - n2 ? e3.length - t4 + n2 : r4) - n2;
-              if (o3 < 100 || !f._useTypedArrays) for (var i2 = 0; i2 < o3; i2++) e3[i2 + t4] = this[i2 + n2];
-              else e3._set(this.subarray(n2, n2 + o3), t4);
-            }
-          }, f.prototype.slice = function(e3, t4) {
-            var n2 = this.length;
-            if (e3 = S2(e3, n2, 0), t4 = S2(t4, n2, n2), f._useTypedArrays) return f._augment(this.subarray(e3, t4));
-            for (var r4 = t4 - e3, o3 = new f(r4, void 0, true), i2 = 0; i2 < r4; i2++) o3[i2] = this[i2 + e3];
-            return o3;
-          }, f.prototype.get = function(e3) {
-            return console.log(".get() is deprecated. Access using array indexes instead."), this.readUInt8(e3);
-          }, f.prototype.set = function(e3, t4) {
-            return console.log(".set() is deprecated. Access using array indexes instead."), this.writeUInt8(e3, t4);
-          }, f.prototype.readUInt8 = function(e3, t4) {
-            if (t4 || (d2(null != e3, "missing offset"), d2(e3 < this.length, "Trying to read beyond buffer length")), !(e3 >= this.length)) return this[e3];
-          }, f.prototype.readUInt16LE = function(e3, t4) {
-            return o2(this, e3, true, t4);
-          }, f.prototype.readUInt16BE = function(e3, t4) {
-            return o2(this, e3, false, t4);
-          }, f.prototype.readUInt32LE = function(e3, t4) {
-            return u(this, e3, true, t4);
-          }, f.prototype.readUInt32BE = function(e3, t4) {
-            return u(this, e3, false, t4);
-          }, f.prototype.readInt8 = function(e3, t4) {
-            if (t4 || (d2(null != e3, "missing offset"), d2(e3 < this.length, "Trying to read beyond buffer length")), !(e3 >= this.length)) return 128 & this[e3] ? -1 * (255 - this[e3] + 1) : this[e3];
-          }, f.prototype.readInt16LE = function(e3, t4) {
-            return _(this, e3, true, t4);
-          }, f.prototype.readInt16BE = function(e3, t4) {
-            return _(this, e3, false, t4);
-          }, f.prototype.readInt32LE = function(e3, t4) {
-            return E(this, e3, true, t4);
-          }, f.prototype.readInt32BE = function(e3, t4) {
-            return E(this, e3, false, t4);
-          }, f.prototype.readFloatLE = function(e3, t4) {
-            return I(this, e3, true, t4);
-          }, f.prototype.readFloatBE = function(e3, t4) {
-            return I(this, e3, false, t4);
-          }, f.prototype.readDoubleLE = function(e3, t4) {
-            return A2(this, e3, true, t4);
-          }, f.prototype.readDoubleBE = function(e3, t4) {
-            return A2(this, e3, false, t4);
-          }, f.prototype.writeUInt8 = function(e3, t4, n2) {
-            n2 || (d2(null != e3, "missing value"), d2(null != t4, "missing offset"), d2(t4 < this.length, "trying to write beyond buffer length"), Y(e3, 255)), t4 >= this.length || (this[t4] = e3);
-          }, f.prototype.writeUInt16LE = function(e3, t4, n2) {
-            s2(this, e3, t4, true, n2);
-          }, f.prototype.writeUInt16BE = function(e3, t4, n2) {
-            s2(this, e3, t4, false, n2);
-          }, f.prototype.writeUInt32LE = function(e3, t4, n2) {
-            l(this, e3, t4, true, n2);
-          }, f.prototype.writeUInt32BE = function(e3, t4, n2) {
-            l(this, e3, t4, false, n2);
-          }, f.prototype.writeInt8 = function(e3, t4, n2) {
-            n2 || (d2(null != e3, "missing value"), d2(null != t4, "missing offset"), d2(t4 < this.length, "Trying to write beyond buffer length"), F(e3, 127, -128)), t4 >= this.length || (0 <= e3 ? this.writeUInt8(e3, t4, n2) : this.writeUInt8(255 + e3 + 1, t4, n2));
-          }, f.prototype.writeInt16LE = function(e3, t4, n2) {
-            B(this, e3, t4, true, n2);
-          }, f.prototype.writeInt16BE = function(e3, t4, n2) {
-            B(this, e3, t4, false, n2);
-          }, f.prototype.writeInt32LE = function(e3, t4, n2) {
-            L2(this, e3, t4, true, n2);
-          }, f.prototype.writeInt32BE = function(e3, t4, n2) {
-            L2(this, e3, t4, false, n2);
-          }, f.prototype.writeFloatLE = function(e3, t4, n2) {
-            U(this, e3, t4, true, n2);
-          }, f.prototype.writeFloatBE = function(e3, t4, n2) {
-            U(this, e3, t4, false, n2);
-          }, f.prototype.writeDoubleLE = function(e3, t4, n2) {
-            x2(this, e3, t4, true, n2);
-          }, f.prototype.writeDoubleBE = function(e3, t4, n2) {
-            x2(this, e3, t4, false, n2);
-          }, f.prototype.fill = function(e3, t4, n2) {
-            if (t4 = t4 || 0, n2 = n2 || this.length, d2("number" == typeof (e3 = "string" == typeof (e3 = e3 || 0) ? e3.charCodeAt(0) : e3) && !isNaN(e3), "value is not a number"), d2(t4 <= n2, "end < start"), n2 !== t4 && 0 !== this.length) {
-              d2(0 <= t4 && t4 < this.length, "start out of bounds"), d2(0 <= n2 && n2 <= this.length, "end out of bounds");
-              for (var r4 = t4; r4 < n2; r4++) this[r4] = e3;
-            }
-          }, f.prototype.inspect = function() {
-            for (var e3 = [], t4 = this.length, n2 = 0; n2 < t4; n2++) if (e3[n2] = k(this[n2]), n2 === H.INSPECT_MAX_BYTES) {
-              e3[n2 + 1] = "...";
-              break;
-            }
-            return "<Buffer " + e3.join(" ") + ">";
-          }, f.prototype.toArrayBuffer = function() {
-            if ("undefined" == typeof Uint8Array) throw new Error("Buffer.toArrayBuffer not supported in this browser");
-            if (f._useTypedArrays) return new f(this).buffer;
-            for (var e3 = new Uint8Array(this.length), t4 = 0, n2 = e3.length; t4 < n2; t4 += 1) e3[t4] = this[t4];
-            return e3.buffer;
-          };
-          var t3 = f.prototype;
-          function S2(e3, t4, n2) {
-            return "number" != typeof e3 ? n2 : t4 <= (e3 = ~~e3) ? t4 : 0 <= e3 || 0 <= (e3 += t4) ? e3 : 0;
-          }
-          function j(e3) {
-            return (e3 = ~~Math.ceil(+e3)) < 0 ? 0 : e3;
-          }
-          function C(e3) {
-            return (Array.isArray || function(e4) {
-              return "[object Array]" === Object.prototype.toString.call(e4);
-            })(e3);
-          }
-          function k(e3) {
-            return e3 < 16 ? "0" + e3.toString(16) : e3.toString(16);
-          }
-          function T(e3) {
-            for (var t4 = [], n2 = 0; n2 < e3.length; n2++) {
-              var r4 = e3.charCodeAt(n2);
-              if (r4 <= 127) t4.push(e3.charCodeAt(n2));
-              else for (var o3 = n2, i2 = (55296 <= r4 && r4 <= 57343 && n2++, encodeURIComponent(e3.slice(o3, n2 + 1)).substr(1).split("%")), u2 = 0; u2 < i2.length; u2++) t4.push(parseInt(i2[u2], 16));
-            }
-            return t4;
-          }
-          function M(e3) {
-            return a2.toByteArray(e3);
-          }
-          function c(e3, t4, n2, r4) {
-            for (var o3 = 0; o3 < r4 && !(o3 + n2 >= t4.length || o3 >= e3.length); o3++) t4[o3 + n2] = e3[o3];
-            return o3;
-          }
-          function N(e3) {
-            try {
-              return decodeURIComponent(e3);
-            } catch (e4) {
-              return String.fromCharCode(65533);
-            }
-          }
-          function Y(e3, t4) {
-            d2("number" == typeof e3, "cannot write a non-number as a number"), d2(0 <= e3, "specified a negative value for writing an unsigned value"), d2(e3 <= t4, "value is larger than maximum value for type"), d2(Math.floor(e3) === e3, "value has a fractional component");
-          }
-          function F(e3, t4, n2) {
-            d2("number" == typeof e3, "cannot write a non-number as a number"), d2(e3 <= t4, "value larger than maximum allowed value"), d2(n2 <= e3, "value smaller than minimum allowed value"), d2(Math.floor(e3) === e3, "value has a fractional component");
-          }
-          function D(e3, t4, n2) {
-            d2("number" == typeof e3, "cannot write a non-number as a number"), d2(e3 <= t4, "value larger than maximum allowed value"), d2(n2 <= e3, "value smaller than minimum allowed value");
-          }
-          function d2(e3, t4) {
-            if (!e3) throw new Error(t4 || "Failed assertion");
-          }
-          f._augment = function(e3) {
-            return e3._isBuffer = true, e3._get = e3.get, e3._set = e3.set, e3.get = t3.get, e3.set = t3.set, e3.write = t3.write, e3.toString = t3.toString, e3.toLocaleString = t3.toString, e3.toJSON = t3.toJSON, e3.copy = t3.copy, e3.slice = t3.slice, e3.readUInt8 = t3.readUInt8, e3.readUInt16LE = t3.readUInt16LE, e3.readUInt16BE = t3.readUInt16BE, e3.readUInt32LE = t3.readUInt32LE, e3.readUInt32BE = t3.readUInt32BE, e3.readInt8 = t3.readInt8, e3.readInt16LE = t3.readInt16LE, e3.readInt16BE = t3.readInt16BE, e3.readInt32LE = t3.readInt32LE, e3.readInt32BE = t3.readInt32BE, e3.readFloatLE = t3.readFloatLE, e3.readFloatBE = t3.readFloatBE, e3.readDoubleLE = t3.readDoubleLE, e3.readDoubleBE = t3.readDoubleBE, e3.writeUInt8 = t3.writeUInt8, e3.writeUInt16LE = t3.writeUInt16LE, e3.writeUInt16BE = t3.writeUInt16BE, e3.writeUInt32LE = t3.writeUInt32LE, e3.writeUInt32BE = t3.writeUInt32BE, e3.writeInt8 = t3.writeInt8, e3.writeInt16LE = t3.writeInt16LE, e3.writeInt16BE = t3.writeInt16BE, e3.writeInt32LE = t3.writeInt32LE, e3.writeInt32BE = t3.writeInt32BE, e3.writeFloatLE = t3.writeFloatLE, e3.writeFloatBE = t3.writeFloatBE, e3.writeDoubleLE = t3.writeDoubleLE, e3.writeDoubleBE = t3.writeDoubleBE, e3.fill = t3.fill, e3.inspect = t3.inspect, e3.toArrayBuffer = t3.toArrayBuffer, e3;
-          };
-        }).call(this, O("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, O("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/buffer/index.js", "/node_modules/gulp-browserify/node_modules/buffer");
-      }, { "base64-js": 2, buffer: 3, ieee754: 10, lYpoI2: 11 }], 4: [function(c, d2, e) {
-        !(function(e2, t3, a2, n, r3, o2, i, u, s2) {
-          var a2 = c("buffer").Buffer, f = 4, l = new a2(f);
-          l.fill(0);
-          d2.exports = { hash: function(e3, t4, n2, r4) {
-            for (var o3 = t4((function(e4, t5) {
-              e4.length % f != 0 && (n3 = e4.length + (f - e4.length % f), e4 = a2.concat([e4, l], n3));
-              for (var n3, r5 = [], o4 = t5 ? e4.readInt32BE : e4.readInt32LE, i3 = 0; i3 < e4.length; i3 += f) r5.push(o4.call(e4, i3));
-              return r5;
-            })(e3 = a2.isBuffer(e3) ? e3 : new a2(e3), r4), 8 * e3.length), t4 = r4, i2 = new a2(n2), u2 = t4 ? i2.writeInt32BE : i2.writeInt32LE, s3 = 0; s3 < o3.length; s3++) u2.call(i2, o3[s3], 4 * s3, true);
-            return i2;
-          } };
-        }).call(this, c("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/helpers.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { buffer: 3, lYpoI2: 11 }], 5: [function(v, e, _) {
-        !(function(l, c, u, d2, h, p2, g2, y, w2) {
-          var u = v("buffer").Buffer, e2 = v("./sha"), t3 = v("./sha256"), n = v("./rng"), b = { sha1: e2, sha256: t3, md5: v("./md5") }, s2 = 64, a2 = new u(s2);
-          function r3(e3, n2) {
-            var r4 = b[e3 = e3 || "sha1"], o3 = [];
-            return r4 || i("algorithm:", e3, "is not yet supported"), { update: function(e4) {
-              return u.isBuffer(e4) || (e4 = new u(e4)), o3.push(e4), e4.length, this;
-            }, digest: function(e4) {
-              var t4 = u.concat(o3), t4 = n2 ? (function(e5, t5, n3) {
-                u.isBuffer(t5) || (t5 = new u(t5)), u.isBuffer(n3) || (n3 = new u(n3)), t5.length > s2 ? t5 = e5(t5) : t5.length < s2 && (t5 = u.concat([t5, a2], s2));
-                for (var r5 = new u(s2), o4 = new u(s2), i2 = 0; i2 < s2; i2++) r5[i2] = 54 ^ t5[i2], o4[i2] = 92 ^ t5[i2];
-                return n3 = e5(u.concat([r5, n3])), e5(u.concat([o4, n3]));
-              })(r4, n2, t4) : r4(t4);
-              return o3 = null, e4 ? t4.toString(e4) : t4;
-            } };
-          }
-          function i() {
-            var e3 = [].slice.call(arguments).join(" ");
-            throw new Error([e3, "we accept pull requests", "http://github.com/dominictarr/crypto-browserify"].join("\n"));
-          }
-          a2.fill(0), _.createHash = function(e3) {
-            return r3(e3);
-          }, _.createHmac = r3, _.randomBytes = function(e3, t4) {
-            if (!t4 || !t4.call) return new u(n(e3));
-            try {
-              t4.call(this, void 0, new u(n(e3)));
-            } catch (e4) {
-              t4(e4);
-            }
-          };
-          var o2, f = ["createCredentials", "createCipher", "createCipheriv", "createDecipher", "createDecipheriv", "createSign", "createVerify", "createDiffieHellman", "pbkdf2"], m = function(e3) {
-            _[e3] = function() {
-              i("sorry,", e3, "is not implemented yet");
-            };
-          };
-          for (o2 in f) m(f[o2]);
-        }).call(this, v("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, v("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/index.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { "./md5": 6, "./rng": 7, "./sha": 8, "./sha256": 9, buffer: 3, lYpoI2: 11 }], 6: [function(w2, b, e) {
-        !(function(e2, r3, o2, i, u, a2, f, l, y) {
-          var t3 = w2("./helpers");
-          function n(e3, t4) {
-            e3[t4 >> 5] |= 128 << t4 % 32, e3[14 + (t4 + 64 >>> 9 << 4)] = t4;
-            for (var n2 = 1732584193, r4 = -271733879, o3 = -1732584194, i2 = 271733878, u2 = 0; u2 < e3.length; u2 += 16) {
-              var s3 = n2, a3 = r4, f2 = o3, l2 = i2, n2 = c(n2, r4, o3, i2, e3[u2 + 0], 7, -680876936), i2 = c(i2, n2, r4, o3, e3[u2 + 1], 12, -389564586), o3 = c(o3, i2, n2, r4, e3[u2 + 2], 17, 606105819), r4 = c(r4, o3, i2, n2, e3[u2 + 3], 22, -1044525330);
-              n2 = c(n2, r4, o3, i2, e3[u2 + 4], 7, -176418897), i2 = c(i2, n2, r4, o3, e3[u2 + 5], 12, 1200080426), o3 = c(o3, i2, n2, r4, e3[u2 + 6], 17, -1473231341), r4 = c(r4, o3, i2, n2, e3[u2 + 7], 22, -45705983), n2 = c(n2, r4, o3, i2, e3[u2 + 8], 7, 1770035416), i2 = c(i2, n2, r4, o3, e3[u2 + 9], 12, -1958414417), o3 = c(o3, i2, n2, r4, e3[u2 + 10], 17, -42063), r4 = c(r4, o3, i2, n2, e3[u2 + 11], 22, -1990404162), n2 = c(n2, r4, o3, i2, e3[u2 + 12], 7, 1804603682), i2 = c(i2, n2, r4, o3, e3[u2 + 13], 12, -40341101), o3 = c(o3, i2, n2, r4, e3[u2 + 14], 17, -1502002290), n2 = d2(n2, r4 = c(r4, o3, i2, n2, e3[u2 + 15], 22, 1236535329), o3, i2, e3[u2 + 1], 5, -165796510), i2 = d2(i2, n2, r4, o3, e3[u2 + 6], 9, -1069501632), o3 = d2(o3, i2, n2, r4, e3[u2 + 11], 14, 643717713), r4 = d2(r4, o3, i2, n2, e3[u2 + 0], 20, -373897302), n2 = d2(n2, r4, o3, i2, e3[u2 + 5], 5, -701558691), i2 = d2(i2, n2, r4, o3, e3[u2 + 10], 9, 38016083), o3 = d2(o3, i2, n2, r4, e3[u2 + 15], 14, -660478335), r4 = d2(r4, o3, i2, n2, e3[u2 + 4], 20, -405537848), n2 = d2(n2, r4, o3, i2, e3[u2 + 9], 5, 568446438), i2 = d2(i2, n2, r4, o3, e3[u2 + 14], 9, -1019803690), o3 = d2(o3, i2, n2, r4, e3[u2 + 3], 14, -187363961), r4 = d2(r4, o3, i2, n2, e3[u2 + 8], 20, 1163531501), n2 = d2(n2, r4, o3, i2, e3[u2 + 13], 5, -1444681467), i2 = d2(i2, n2, r4, o3, e3[u2 + 2], 9, -51403784), o3 = d2(o3, i2, n2, r4, e3[u2 + 7], 14, 1735328473), n2 = h(n2, r4 = d2(r4, o3, i2, n2, e3[u2 + 12], 20, -1926607734), o3, i2, e3[u2 + 5], 4, -378558), i2 = h(i2, n2, r4, o3, e3[u2 + 8], 11, -2022574463), o3 = h(o3, i2, n2, r4, e3[u2 + 11], 16, 1839030562), r4 = h(r4, o3, i2, n2, e3[u2 + 14], 23, -35309556), n2 = h(n2, r4, o3, i2, e3[u2 + 1], 4, -1530992060), i2 = h(i2, n2, r4, o3, e3[u2 + 4], 11, 1272893353), o3 = h(o3, i2, n2, r4, e3[u2 + 7], 16, -155497632), r4 = h(r4, o3, i2, n2, e3[u2 + 10], 23, -1094730640), n2 = h(n2, r4, o3, i2, e3[u2 + 13], 4, 681279174), i2 = h(i2, n2, r4, o3, e3[u2 + 0], 11, -358537222), o3 = h(o3, i2, n2, r4, e3[u2 + 3], 16, -722521979), r4 = h(r4, o3, i2, n2, e3[u2 + 6], 23, 76029189), n2 = h(n2, r4, o3, i2, e3[u2 + 9], 4, -640364487), i2 = h(i2, n2, r4, o3, e3[u2 + 12], 11, -421815835), o3 = h(o3, i2, n2, r4, e3[u2 + 15], 16, 530742520), n2 = p2(n2, r4 = h(r4, o3, i2, n2, e3[u2 + 2], 23, -995338651), o3, i2, e3[u2 + 0], 6, -198630844), i2 = p2(i2, n2, r4, o3, e3[u2 + 7], 10, 1126891415), o3 = p2(o3, i2, n2, r4, e3[u2 + 14], 15, -1416354905), r4 = p2(r4, o3, i2, n2, e3[u2 + 5], 21, -57434055), n2 = p2(n2, r4, o3, i2, e3[u2 + 12], 6, 1700485571), i2 = p2(i2, n2, r4, o3, e3[u2 + 3], 10, -1894986606), o3 = p2(o3, i2, n2, r4, e3[u2 + 10], 15, -1051523), r4 = p2(r4, o3, i2, n2, e3[u2 + 1], 21, -2054922799), n2 = p2(n2, r4, o3, i2, e3[u2 + 8], 6, 1873313359), i2 = p2(i2, n2, r4, o3, e3[u2 + 15], 10, -30611744), o3 = p2(o3, i2, n2, r4, e3[u2 + 6], 15, -1560198380), r4 = p2(r4, o3, i2, n2, e3[u2 + 13], 21, 1309151649), n2 = p2(n2, r4, o3, i2, e3[u2 + 4], 6, -145523070), i2 = p2(i2, n2, r4, o3, e3[u2 + 11], 10, -1120210379), o3 = p2(o3, i2, n2, r4, e3[u2 + 2], 15, 718787259), r4 = p2(r4, o3, i2, n2, e3[u2 + 9], 21, -343485551), n2 = g2(n2, s3), r4 = g2(r4, a3), o3 = g2(o3, f2), i2 = g2(i2, l2);
-            }
-            return Array(n2, r4, o3, i2);
-          }
-          function s2(e3, t4, n2, r4, o3, i2) {
-            return g2((t4 = g2(g2(t4, e3), g2(r4, i2))) << o3 | t4 >>> 32 - o3, n2);
-          }
-          function c(e3, t4, n2, r4, o3, i2, u2) {
-            return s2(t4 & n2 | ~t4 & r4, e3, t4, o3, i2, u2);
-          }
-          function d2(e3, t4, n2, r4, o3, i2, u2) {
-            return s2(t4 & r4 | n2 & ~r4, e3, t4, o3, i2, u2);
-          }
-          function h(e3, t4, n2, r4, o3, i2, u2) {
-            return s2(t4 ^ n2 ^ r4, e3, t4, o3, i2, u2);
-          }
-          function p2(e3, t4, n2, r4, o3, i2, u2) {
-            return s2(n2 ^ (t4 | ~r4), e3, t4, o3, i2, u2);
-          }
-          function g2(e3, t4) {
-            var n2 = (65535 & e3) + (65535 & t4);
-            return (e3 >> 16) + (t4 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
-          }
-          b.exports = function(e3) {
-            return t3.hash(e3, n, 16);
-          };
-        }).call(this, w2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, w2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/md5.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 7: [function(e, l, t3) {
-        !(function(e2, t4, n, r3, o2, i, u, s2, f) {
-          l.exports = function(e3) {
-            for (var t5, n2 = new Array(e3), r4 = 0; r4 < e3; r4++) 0 == (3 & r4) && (t5 = 4294967296 * Math.random()), n2[r4] = t5 >>> ((3 & r4) << 3) & 255;
-            return n2;
-          };
-        }).call(this, e("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/rng.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { buffer: 3, lYpoI2: 11 }], 8: [function(c, d2, e) {
-        !(function(e2, t3, n, r3, o2, s2, a2, f, l) {
-          var i = c("./helpers");
-          function u(l2, c2) {
-            l2[c2 >> 5] |= 128 << 24 - c2 % 32, l2[15 + (c2 + 64 >> 9 << 4)] = c2;
-            for (var e3, t4, n2, r4 = Array(80), o3 = 1732584193, i2 = -271733879, u2 = -1732584194, s3 = 271733878, d3 = -1009589776, h = 0; h < l2.length; h += 16) {
-              for (var p2 = o3, g2 = i2, y = u2, w2 = s3, b = d3, a3 = 0; a3 < 80; a3++) {
-                r4[a3] = a3 < 16 ? l2[h + a3] : v(r4[a3 - 3] ^ r4[a3 - 8] ^ r4[a3 - 14] ^ r4[a3 - 16], 1);
-                var f2 = m(m(v(o3, 5), (f2 = i2, t4 = u2, n2 = s3, (e3 = a3) < 20 ? f2 & t4 | ~f2 & n2 : !(e3 < 40) && e3 < 60 ? f2 & t4 | f2 & n2 | t4 & n2 : f2 ^ t4 ^ n2)), m(m(d3, r4[a3]), (e3 = a3) < 20 ? 1518500249 : e3 < 40 ? 1859775393 : e3 < 60 ? -1894007588 : -899497514)), d3 = s3, s3 = u2, u2 = v(i2, 30), i2 = o3, o3 = f2;
-              }
-              o3 = m(o3, p2), i2 = m(i2, g2), u2 = m(u2, y), s3 = m(s3, w2), d3 = m(d3, b);
-            }
-            return Array(o3, i2, u2, s3, d3);
-          }
-          function m(e3, t4) {
-            var n2 = (65535 & e3) + (65535 & t4);
-            return (e3 >> 16) + (t4 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
-          }
-          function v(e3, t4) {
-            return e3 << t4 | e3 >>> 32 - t4;
-          }
-          d2.exports = function(e3) {
-            return i.hash(e3, u, 20, true);
-          };
-        }).call(this, c("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/sha.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 9: [function(c, d2, e) {
-        !(function(e2, t3, n, r3, u, s2, a2, f, l) {
-          function b(e3, t4) {
-            var n2 = (65535 & e3) + (65535 & t4);
-            return (e3 >> 16) + (t4 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
-          }
-          function o2(e3, l2) {
-            var c2, d3 = new Array(1116352408, 1899447441, 3049323471, 3921009573, 961987163, 1508970993, 2453635748, 2870763221, 3624381080, 310598401, 607225278, 1426881987, 1925078388, 2162078206, 2614888103, 3248222580, 3835390401, 4022224774, 264347078, 604807628, 770255983, 1249150122, 1555081692, 1996064986, 2554220882, 2821834349, 2952996808, 3210313671, 3336571891, 3584528711, 113926993, 338241895, 666307205, 773529912, 1294757372, 1396182291, 1695183700, 1986661051, 2177026350, 2456956037, 2730485921, 2820302411, 3259730800, 3345764771, 3516065817, 3600352804, 4094571909, 275423344, 430227734, 506948616, 659060556, 883997877, 958139571, 1322822218, 1537002063, 1747873779, 1955562222, 2024104815, 2227730452, 2361852424, 2428436474, 2756734187, 3204031479, 3329325298), t4 = new Array(1779033703, 3144134277, 1013904242, 2773480762, 1359893119, 2600822924, 528734635, 1541459225), n2 = new Array(64);
-            e3[l2 >> 5] |= 128 << 24 - l2 % 32, e3[15 + (l2 + 64 >> 9 << 4)] = l2;
-            for (var r4, o3, h = 0; h < e3.length; h += 16) {
-              for (var i2 = t4[0], u2 = t4[1], s3 = t4[2], p2 = t4[3], a3 = t4[4], g2 = t4[5], y = t4[6], w2 = t4[7], f2 = 0; f2 < 64; f2++) n2[f2] = f2 < 16 ? e3[f2 + h] : b(b(b((o3 = n2[f2 - 2], m(o3, 17) ^ m(o3, 19) ^ v(o3, 10)), n2[f2 - 7]), (o3 = n2[f2 - 15], m(o3, 7) ^ m(o3, 18) ^ v(o3, 3))), n2[f2 - 16]), c2 = b(b(b(b(w2, m(o3 = a3, 6) ^ m(o3, 11) ^ m(o3, 25)), a3 & g2 ^ ~a3 & y), d3[f2]), n2[f2]), r4 = b(m(r4 = i2, 2) ^ m(r4, 13) ^ m(r4, 22), i2 & u2 ^ i2 & s3 ^ u2 & s3), w2 = y, y = g2, g2 = a3, a3 = b(p2, c2), p2 = s3, s3 = u2, u2 = i2, i2 = b(c2, r4);
-              t4[0] = b(i2, t4[0]), t4[1] = b(u2, t4[1]), t4[2] = b(s3, t4[2]), t4[3] = b(p2, t4[3]), t4[4] = b(a3, t4[4]), t4[5] = b(g2, t4[5]), t4[6] = b(y, t4[6]), t4[7] = b(w2, t4[7]);
-            }
-            return t4;
-          }
-          var i = c("./helpers"), m = function(e3, t4) {
-            return e3 >>> t4 | e3 << 32 - t4;
-          }, v = function(e3, t4) {
-            return e3 >>> t4;
-          };
-          d2.exports = function(e3) {
-            return i.hash(e3, o2, 32, true);
-          };
-        }).call(this, c("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/sha256.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 10: [function(e, t3, f) {
-        !(function(e2, t4, n, r3, o2, i, u, s2, a2) {
-          f.read = function(e3, t5, n2, r4, o3) {
-            var i2, u2, l = 8 * o3 - r4 - 1, c = (1 << l) - 1, d2 = c >> 1, s3 = -7, a3 = n2 ? o3 - 1 : 0, f2 = n2 ? -1 : 1, o3 = e3[t5 + a3];
-            for (a3 += f2, i2 = o3 & (1 << -s3) - 1, o3 >>= -s3, s3 += l; 0 < s3; i2 = 256 * i2 + e3[t5 + a3], a3 += f2, s3 -= 8) ;
-            for (u2 = i2 & (1 << -s3) - 1, i2 >>= -s3, s3 += r4; 0 < s3; u2 = 256 * u2 + e3[t5 + a3], a3 += f2, s3 -= 8) ;
-            if (0 === i2) i2 = 1 - d2;
-            else {
-              if (i2 === c) return u2 ? NaN : 1 / 0 * (o3 ? -1 : 1);
-              u2 += Math.pow(2, r4), i2 -= d2;
-            }
-            return (o3 ? -1 : 1) * u2 * Math.pow(2, i2 - r4);
-          }, f.write = function(e3, t5, l, n2, r4, c) {
-            var o3, i2, u2 = 8 * c - r4 - 1, s3 = (1 << u2) - 1, a3 = s3 >> 1, d2 = 23 === r4 ? Math.pow(2, -24) - Math.pow(2, -77) : 0, f2 = n2 ? 0 : c - 1, h = n2 ? 1 : -1, c = t5 < 0 || 0 === t5 && 1 / t5 < 0 ? 1 : 0;
-            for (t5 = Math.abs(t5), isNaN(t5) || t5 === 1 / 0 ? (i2 = isNaN(t5) ? 1 : 0, o3 = s3) : (o3 = Math.floor(Math.log(t5) / Math.LN2), t5 * (n2 = Math.pow(2, -o3)) < 1 && (o3--, n2 *= 2), 2 <= (t5 += 1 <= o3 + a3 ? d2 / n2 : d2 * Math.pow(2, 1 - a3)) * n2 && (o3++, n2 /= 2), s3 <= o3 + a3 ? (i2 = 0, o3 = s3) : 1 <= o3 + a3 ? (i2 = (t5 * n2 - 1) * Math.pow(2, r4), o3 += a3) : (i2 = t5 * Math.pow(2, a3 - 1) * Math.pow(2, r4), o3 = 0)); 8 <= r4; e3[l + f2] = 255 & i2, f2 += h, i2 /= 256, r4 -= 8) ;
-            for (o3 = o3 << r4 | i2, u2 += r4; 0 < u2; e3[l + f2] = 255 & o3, f2 += h, o3 /= 256, u2 -= 8) ;
-            e3[l + f2 - h] |= 128 * c;
-          };
-        }).call(this, e("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/ieee754/index.js", "/node_modules/gulp-browserify/node_modules/ieee754");
-      }, { buffer: 3, lYpoI2: 11 }], 11: [function(e, h, t3) {
-        !(function(e2, t4, n, r3, o2, f, l, c, d2) {
-          var i, u, s2;
-          function a2() {
-          }
-          (e2 = h.exports = {}).nextTick = (u = "undefined" != typeof window && window.setImmediate, s2 = "undefined" != typeof window && window.postMessage && window.addEventListener, u ? function(e3) {
-            return window.setImmediate(e3);
-          } : s2 ? (i = [], window.addEventListener("message", function(e3) {
-            var t5 = e3.source;
-            t5 !== window && null !== t5 || "process-tick" !== e3.data || (e3.stopPropagation(), 0 < i.length && i.shift()());
-          }, true), function(e3) {
-            i.push(e3), window.postMessage("process-tick", "*");
-          }) : function(e3) {
-            setTimeout(e3, 0);
-          }), e2.title = "browser", e2.browser = true, e2.env = {}, e2.argv = [], e2.on = a2, e2.addListener = a2, e2.once = a2, e2.off = a2, e2.removeListener = a2, e2.removeAllListeners = a2, e2.emit = a2, e2.binding = function(e3) {
-            throw new Error("process.binding is not supported");
-          }, e2.cwd = function() {
-            return "/";
-          }, e2.chdir = function(e3) {
-            throw new Error("process.chdir is not supported");
-          };
-        }).call(this, e("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/process/browser.js", "/node_modules/gulp-browserify/node_modules/process");
-      }, { buffer: 3, lYpoI2: 11 }] }, {}, [1])(1);
-    });
-  })(object_hash);
-  return object_hash.exports;
-}
-var object_hashExports = requireObject_hash();
-const hashObject = /* @__PURE__ */ getDefaultExportFromCjs(object_hashExports);
 function getApolloClient() {
   const originalClient = getClient();
   const originalCacheConfig = "config" in originalClient.cache ? originalClient.cache.config : {};
@@ -183127,4 +183477,4 @@ ReactDOM.render(
 export {
   videojs as v
 };
-//# sourceMappingURL=index-jJigYw0Z.js.map
+//# sourceMappingURL=index-BfY7BI-u.js.map
