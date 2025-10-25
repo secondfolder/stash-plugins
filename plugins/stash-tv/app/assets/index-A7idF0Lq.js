@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-Dz36RwI2.js"(exports, module) {
+  "assets/index-A7idF0Lq.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -167759,6 +167759,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         if (!button) return;
         button.innerHTML = "";
         button.insertAdjacentElement("beforeend", faPlayIcon.node[0]);
+        button.addEventListener("click", (event2) => {
+          event2.stopPropagation();
+        });
         button.addEventListener("touchend", (event2) => {
           event2.stopPropagation();
         });
@@ -167856,6 +167859,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         const { target: videoElm } = event2;
         if (!videoElm || !(videoElm instanceof HTMLElement)) return;
         const videoElmWidth = videoElm.clientWidth;
+        if (debugMode) console.log(`Click at X=${event2.clientX} (video width: ${videoElmWidth})`, videoElm);
         if (event2.clientX < videoElmWidth / 3) {
           seekBackwards();
         } else if (event2.clientX < videoElmWidth / 3 * 2) {
@@ -167867,7 +167871,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         } else {
           seekForwards();
         }
-      }, []);
+      }, [debugMode]);
       reactExports.useEffect(() => {
         if (!isCurrentVideo) return;
         const handleKeyDown = (e) => {
@@ -181979,7 +181983,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           },
           "Reload Page"
         )),
-        debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.2.0")
+        debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.2.1")
       );
     }
     const Loading = (props) => {
@@ -182173,4 +182177,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-Dz36RwI2.js.map
+//# sourceMappingURL=index-A7idF0Lq.js.map

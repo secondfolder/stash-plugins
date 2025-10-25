@@ -2743,6 +2743,10 @@ video::-webkit-media-text-track-display {
     display: block;
 }
 
+html:has(dialog[open]) .video-js .vjs-big-play-button {
+    display: none;
+}
+
 .vjs-big-play-centered .vjs-big-play-button {
     height: 100%;
     width: 33.3%;
@@ -2764,6 +2768,16 @@ video::-webkit-media-text-track-display {
 .vjs-poster {
     pointer-events: none;
     cursor: initial;
+}
+
+.video-js {
+    /* Stop control bar from hiding after timeout */
+    .vjs-control-bar.d-none {
+      display: flex !important;
+    }
+    &.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-control-bar {
+      opacity: 0.5;
+    }
 }.SettingsTab .item:not(:last-child) {
   margin-bottom: 2em;
 }
@@ -2900,6 +2914,8 @@ video::-webkit-media-text-track-display {
   color: inherit;
   border: inherit;
   padding: inherit;
+  
+  --cell-padding: min(2em, calc(var(--x-unit-dynamic) * 3));
 
   > * {
     display: flex;
@@ -2908,7 +2924,7 @@ video::-webkit-media-text-track-display {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
-    padding: min(2em, calc(var(--x-unit-dynamic) * 3));
+    padding: var(--cell-padding);
     text-shadow: 
       black 0 0 30px, 
       black 0 0 30px, 
@@ -2932,6 +2948,14 @@ video::-webkit-media-text-track-display {
       justify-content: flex-start;
     }
     
+    &.col-left {
+      padding-left: calc(var(--cell-padding) + var(--safe-inset-left));
+    }
+    
+    &.col-right {
+      padding-right: calc(var(--cell-padding) + var(--safe-inset-right));
+    }
+    
     span {
       max-width: 15rem;
     }
@@ -2941,7 +2965,11 @@ video::-webkit-media-text-track-display {
     border-top: var(--border);
     flex-direction: row;
     justify-content: space-between;
-    padding: 1rem 2rem;
+    padding: 
+      1rem
+      calc(var(--cell-padding) + var(--safe-inset-right))
+      calc(var(--cell-padding) + var(--safe-inset-bottom))
+      calc(var(--cell-padding) + var(--safe-inset-left));
     gap: 1.5rem 4rem;
     
     @media (max-width: 600px) {
