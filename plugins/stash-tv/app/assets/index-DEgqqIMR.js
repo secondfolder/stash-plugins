@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-C9_wEY2G.js"(exports, module) {
+  "assets/index-DEgqqIMR.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -177303,7 +177303,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           },
           "Reload Page"
         )),
-        debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.3.0")
+        debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.3.1")
       );
     }
     const Loading = (props) => {
@@ -177515,4 +177515,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-C9_wEY2G.js.map
+//# sourceMappingURL=index-DEgqqIMR.js.map
