@@ -2840,7 +2840,7 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   position: fixed;
   top: var(--safe-inset-top);
   width: min(300px, 80%);
-  background-color: black;
+  background-color: var(--body-bg);
   max-height: 100%;
 }
 .SideDrawer::before {
@@ -3051,13 +3051,6 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   }
 }
 
-/* Blueprint dark theme */
-/*!
- * Bootstrap v4.6.2 (https://getbootstrap.com/)
- * Copyright 2011-2022 The Bootstrap Authors
- * Copyright 2011-2022 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
 .fib,.fi{background-size:contain;background-position:50%;background-repeat:no-repeat}
 .fi{position:relative;display:inline-block;width:1.333333em;line-height:1em}
 .fi:before{content:" "}
@@ -3602,6 +3595,43 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
 .fi-un.fis{background-image:url(./un-CJoUS1_J.svg)}
 .fi-xk{background-image:url(./xk-BOGoRkzZ.svg)}
 .fi-xk.fis{background-image:url(./xk-BftLirx4.svg)}
+:root {
+  --secondary: #394b59;
+  --muted-gray: #bfccd6;
+  --success: #0f9960;
+  --warning: #d9822b;
+  --danger: #db3737;
+  --theme-colors-primary: #137cbd;
+  --theme-colors-secondary: #394b59;
+  --theme-colors-success: #0f9960;
+  --theme-colors-warning: #d9822b;
+  --theme-colors-danger: #db3737;
+  --theme-colors-dark: #394b59;
+  --body-bg: #202b33;
+  --text-muted: #bfccd6;
+  --link-color: #48aff0;
+  --link-hover-color: #48aff0;
+  --text-color: #f5f8fa;
+  --pre-color: #f5f8fa;
+  --navbar-dark-color: rgb(245, 248, 250);
+  --popover-bg: #394b59;
+  --dark-text: #182026;
+  --textfield-bg: rgba(16, 22, 26, 0.3);
+  --card-bg: #30404d;
+  --card-cap-bg: rgba(0, 0, 0, 0.03);
+  --red1: #a82a2a;
+  --orange1: #a66321;
+  --sepia1: #63411e;
+  --dark-gray2: #202b33;
+  --dark-gray5: #394b59;
+}
+/* Blueprint dark theme */
+/*!
+ * Bootstrap v4.6.2 (https://getbootstrap.com/)
+ * Copyright 2011-2022 The Bootstrap Authors
+ * Copyright 2011-2022 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -13533,6 +13563,38 @@ kbd {
 html:has(dialog[open]):not(.force-landscape), html:has(dialog[open]).force-landscape body {
   overflow: hidden;
   scrollbar-gutter: stable;
+}
+
+div.react-select__menu .react-select__option--is-selected,
+div.dropdown-menu .react-select__option--is-selected {
+  background-color: var(--theme-colors-primary);
+}
+
+.react-select {
+  --default-colour: color-mix(in srgb, var(--text-color) 80%, black);
+  --hover-colour: var(--text-color);
+}
+.react-select .react-select__menu {
+  margin-top: 2px;
+  z-index: 10;
+}
+.react-select .react-select__control {
+  min-height: 1lh;
+}
+.react-select .react-select__control .react-select__input-container {
+  margin: 0;
+}
+.react-select .react-select__control .react-select__indicator {
+  color: var(--default-colour);
+  transition: color 150ms;
+  padding: 0.3em 0.5em;
+}
+.react-select .react-select__control .react-select__indicator-separator {
+  background-color: color-mix(in srgb, var(--text-color) 40%, black);
+  margin: 0;
+}
+.react-select:hover .react-select__indicator {
+  color: var(--hover-colour);
 }
 
 /* -------------------------------------------------------------------------- */
