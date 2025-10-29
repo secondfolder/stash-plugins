@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-C5LjvoRJ.js"(exports, module) {
+  "assets/index-B--ljzTn.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -173074,11 +173074,15 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       if (height > width) orientation = "portrait";
       return { width, height, orientation };
     }
-    const useGlobalFilterState = create((set2, get2) => ({
+    const useGlobalFilterState$1 = create((set2, get2) => ({
       currentSavedFilter: void 0,
       setCurrentSavedFilter: (filter) => set2({ currentSavedFilter: filter }),
-      loading: true,
+      currentSearchableFilter: void 0,
+      loading: false,
       setLoading: (loading2) => set2({ loading: loading2 }),
+      neverLoaded: true,
+      setNeverLoaded: (neverLoaded) => set2({ neverLoaded }),
+      loadingResponsibilityClaimed: false,
       error: void 0,
       setError: (error) => set2({ error })
     }));
@@ -173088,10 +173092,16 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         setCurrentSavedFilter,
         loading: mediaItemFiltersLoading,
         setLoading: setMediaItemFiltersLoading,
+        neverLoaded: mediaItemFiltersNeverLoaded,
+        setNeverLoaded: setMediaItemFiltersNeverLoaded,
         error: mediaItemFiltersError,
         setError: setMediaItemFiltersError
-      } = useGlobalFilterState();
+      } = useGlobalFilterState$1();
       const apolloClient = useApolloClient();
+      const [isResponsibleForLoading] = reactExports.useState(!useGlobalFilterState$1.getState().loadingResponsibilityClaimed);
+      if (isResponsibleForLoading && !useGlobalFilterState$1.getState().loadingResponsibilityClaimed) {
+        useGlobalFilterState$1.setState({ loadingResponsibilityClaimed: true });
+      }
       const {
         general: { stashDefaultScenesFilter, availableSavedSceneFilters, availableSavedMarkerFilters },
         tv: { defaultFilterId: stashTvDefaultFilterId },
@@ -173103,13 +173113,17 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       if (onlyShowMatchingOrientation && orientation !== "square") {
         limitOrientation = orientation;
       }
-      const currentSearchableFilter = reactExports.useMemo(
-        () => currentSavedFilter && convertSavedToSearchableFilter(currentSavedFilter),
-        [currentSavedFilter, isRandomised, onlyShowMatchingOrientation && orientation]
-      );
       reactExports.useEffect(() => {
-        if (stashConfigLoading || currentSavedFilter) return;
+        if (!isResponsibleForLoading) return;
+        useGlobalFilterState$1.setState({
+          currentSearchableFilter: currentSavedFilter ? convertSavedToSearchableFilter(currentSavedFilter) : void 0
+        });
+      }, [currentSavedFilter, isRandomised, onlyShowMatchingOrientation && orientation]);
+      reactExports.useEffect(() => {
+        if (stashConfigLoading || currentSavedFilter || !isResponsibleForLoading) return;
         async function setCurrentMediaItemFilterOnInitialLoad() {
+          setMediaItemFiltersLoading(true);
+          setMediaItemFiltersNeverLoaded(false);
           try {
             if (stashTvDefaultFilterId) {
               await setCurrentMediaItemFilterById(stashTvDefaultFilterId);
@@ -173137,6 +173151,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         setCurrentMediaItemFilterOnInitialLoad();
       }, [stashConfigLoading, stashTvDefaultFilterId, stashDefaultScenesFilter]);
       async function setCurrentMediaItemFilterById(id) {
+        setMediaItemFiltersLoading(true);
         const mediaItemFiltersStashResponse = await fetchSavedFilterFromStash(apolloClient, id);
         if (!mediaItemFiltersStashResponse) {
           return void 0;
@@ -173146,6 +173161,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           filter: ""
           // See the comment above about the `filter` prop
         });
+        setMediaItemFiltersLoading(false);
       }
       async function fetchSavedFilterFromStash(apolloClient2, filterId) {
         const { data: data2 } = await apolloClient2.query({
@@ -173228,65 +173244,82 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         [availableSavedSceneFilters, stashTvDefaultFilterId]
       );
       return {
-        mediaItemFiltersLoading,
+        mediaItemFiltersLoading: mediaItemFiltersLoading || mediaItemFiltersNeverLoaded,
         mediaItemFiltersError,
-        currentMediaItemFilter: currentSearchableFilter,
+        currentMediaItemFilter: useGlobalFilterState$1.getState().currentSearchableFilter,
         clearCurrentMediaItemFilter: () => setCurrentSavedFilter(void 0),
         setCurrentMediaItemFilterById,
         availableSavedFilters
       };
     }
     const mediaItemsPerPage = 20;
-    function useMediaItems({ previewOnly } = {}) {
+    const useGlobalFilterState = create((set2, get2) => ({
+      response: null,
+      mediaItems: []
+    }));
+    function useMediaItems() {
       const { currentMediaItemFilter } = useMediaItemFilters();
-      const { debugMode } = useAppStateStore();
+      const { debugMode, scenePreviewOnly: previewOnly } = useAppStateStore();
+      const [isResponsibleForLoading] = reactExports.useState(!useGlobalFilterState.getState().response);
       let response;
       let mediaItems;
-      if (!currentMediaItemFilter || currentMediaItemFilter.entityType === "scene") {
-        response = useFindScenesForTvQuery({
-          variables: {
-            filter: {
-              ...currentMediaItemFilter?.generalFilter,
-              // We manage pagination ourselves and so override whatever the saved filter had
-              page: 1,
-              per_page: mediaItemsPerPage
+      if (isResponsibleForLoading) {
+        if (!currentMediaItemFilter || currentMediaItemFilter.entityType === "scene") {
+          response = useFindScenesForTvQuery({
+            variables: {
+              filter: {
+                ...currentMediaItemFilter?.generalFilter,
+                // We manage pagination ourselves and so override whatever the saved filter had
+                page: 1,
+                per_page: mediaItemsPerPage
+              },
+              scene_filter: currentMediaItemFilter?.entityFilter
             },
-            scene_filter: currentMediaItemFilter?.entityFilter
-          },
-          skip: !currentMediaItemFilter
-        });
-        mediaItems = response.data?.findScenes.scenes.map((scene) => ({
-          id: `scene:${scene.id}`,
-          entityType: "scene",
-          entity: scene
-        })) || [];
-      } else if (currentMediaItemFilter.entityType === "marker") {
-        response = useFindSceneMarkersForTvQuery({
-          variables: {
-            filter: {
-              ...currentMediaItemFilter.generalFilter,
-              // We manage pagination ourselves and so override whatever the saved filter had
-              page: 1,
-              per_page: mediaItemsPerPage
-            },
-            scene_marker_filter: currentMediaItemFilter.entityFilter
-          }
-        });
-        mediaItems = response.data?.findSceneMarkers.scene_markers.map((marker) => ({
-          id: `marker:${marker.id}`,
-          entityType: "marker",
-          entity: {
-            ...marker,
-            get duration() {
-              const defaultMarkerLength = 20;
-              const endTime = marker.end_seconds ?? Math.min(marker.seconds + defaultMarkerLength, marker.scene.files[0].duration);
-              return endTime - marker.seconds;
+            skip: !currentMediaItemFilter
+          });
+          mediaItems = response.data?.findScenes.scenes.map((scene) => ({
+            id: `scene:${scene.id}`,
+            entityType: "scene",
+            entity: scene
+          })) || [];
+        } else if (currentMediaItemFilter.entityType === "marker") {
+          response = useFindSceneMarkersForTvQuery({
+            variables: {
+              filter: {
+                ...currentMediaItemFilter.generalFilter,
+                // We manage pagination ourselves and so override whatever the saved filter had
+                page: 1,
+                per_page: mediaItemsPerPage
+              },
+              scene_marker_filter: currentMediaItemFilter.entityFilter
             }
-          }
-        })) || [];
+          });
+          mediaItems = response.data?.findSceneMarkers.scene_markers.map((marker) => ({
+            id: `marker:${marker.id}`,
+            entityType: "marker",
+            entity: {
+              ...marker,
+              get duration() {
+                const defaultMarkerLength = 20;
+                const endTime = marker.end_seconds ?? Math.min(marker.seconds + defaultMarkerLength, marker.scene.files[0].duration);
+                return endTime - marker.seconds;
+              }
+            }
+          })) || [];
+        } else {
+          console.info("currentMediaItemFilter:", currentMediaItemFilter);
+          throw new Error("Unsupported media item filter entity type");
+        }
+        useGlobalFilterState.setState({ mediaItems, response });
+        reactExports.useEffect(() => {
+          console.log("currentMediaItemFilter changed, resetting media items", currentMediaItemFilter);
+        }, [currentMediaItemFilter]);
       } else {
-        console.info("currentMediaItemFilter:", currentMediaItemFilter);
-        throw new Error("Unsupported media item filter entity type");
+        response = useGlobalFilterState((state) => state.response);
+        mediaItems = useGlobalFilterState((state) => state.mediaItems);
+      }
+      if (response === null) {
+        throw new Error("Media items response is not initialized");
       }
       const {
         fetchMore,
@@ -173408,10 +173441,10 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     const videoItemHeight = "calc(var(--y-unit-large) * 100)";
     const itemBufferEitherSide = 1;
     const VideoScroller = () => {
-      const { forceLandscape: isForceLandscape, scenePreviewOnly, onlyShowMatchingOrientation, debugMode, set: setAppSetting } = useAppStateStore();
+      const { forceLandscape: isForceLandscape, onlyShowMatchingOrientation, debugMode, set: setAppSetting } = useAppStateStore();
       const { orientation } = useWindowSize();
       const rootElmRef = reactExports.useRef(null);
-      const { mediaItems, loadMoreMediaItems } = useMediaItems({ previewOnly: scenePreviewOnly });
+      const { mediaItems, loadMoreMediaItems } = useMediaItems();
       const estimateSizeTesterElement = reactExports.useRef(null);
       reactExports.useEffect(() => {
         return () => {
@@ -182403,7 +182436,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           },
           "Reload Page"
         )),
-        debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.3.2")
+        debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.3.3")
       );
     }
     const Loading = (props) => {
@@ -182638,4 +182671,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-C5LjvoRJ.js.map
+//# sourceMappingURL=index-B--ljzTn.js.map
