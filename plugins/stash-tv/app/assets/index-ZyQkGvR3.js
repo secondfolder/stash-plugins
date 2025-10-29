@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-B--ljzTn.js"(exports, module) {
+  "assets/index-ZyQkGvR3.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -166132,7 +166132,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         }
       };
       const getState = () => state;
-      const getInitialState = () => initialState;
+      const getInitialState2 = () => initialState;
       const subscribe = (listener2) => {
         listeners.add(listener2);
         return () => listeners.delete(listener2);
@@ -166145,7 +166145,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         }
         listeners.clear();
       };
-      const api2 = { setState, getState, getInitialState, subscribe, destroy };
+      const api2 = { setState, getState, getInitialState: getInitialState2, subscribe, destroy };
       const initialState = state = createState(setState, getState, api2);
       return api2;
     };
@@ -173011,6 +173011,32 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     var isBrowser$1 = typeof window !== "undefined";
     var useEffectOnce = function(effect) {
       reactExports.useEffect(effect, []);
+    };
+    var getInitialState = function(query, defaultState) {
+      if (isBrowser$1) {
+        return window.matchMedia(query).matches;
+      }
+      return false;
+    };
+    var useMedia = function(query, defaultState) {
+      var _a2 = reactExports.useState(getInitialState(query)), state = _a2[0], setState = _a2[1];
+      reactExports.useEffect(function() {
+        var mounted = true;
+        var mql = window.matchMedia(query);
+        var onChange2 = function() {
+          if (!mounted) {
+            return;
+          }
+          setState(!!mql.matches);
+        };
+        mql.addEventListener("change", onChange2);
+        setState(mql.matches);
+        return function() {
+          mounted = false;
+          mql.removeEventListener("change", onChange2);
+        };
+      }, [query]);
+      return state;
     };
     var useUnmount = function(fn) {
       var fnRef = reactExports.useRef(fn);
@@ -182234,6 +182260,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       } = useAppStateStore();
       const { mediaItems, mediaItemsLoading } = useMediaItems();
       const noMediaItemsAvailable = !mediaItemFiltersLoading && !mediaItemsLoading && mediaItems.length === 0;
+      const hasTouchScreen = useMedia("(pointer: coarse)");
       const [mediaFilterType, setMediaFilterType] = React$1.useState("scene");
       reactExports.useEffect(() => {
         if (!currentMediaItemFilter) return;
@@ -182305,6 +182332,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           StateManagedSelect$1,
           {
             inputId: "filter-type",
+            isSearchable: !hasTouchScreen,
             className: cx("react-select"),
             classNamePrefix: "react-select",
             value: filterTypes.find((ft) => ft.value === mediaFilterType),
@@ -182323,6 +182351,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             inputId: "filter",
             className: cx("react-select"),
             classNamePrefix: "react-select",
+            isSearchable: !hasTouchScreen,
             value: selectedFilter ?? null,
             onChange: (newValue) => newValue && setCurrentMediaItemFilterById(newValue.value),
             options: filters,
@@ -182363,6 +182392,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             inputId: "subtitle-language",
             className: cx("react-select"),
             classNamePrefix: "react-select",
+            isSearchable: !hasTouchScreen,
             value: defaultSubtitles,
             onChange: (newValue) => {
               if (!newValue) return;
@@ -182436,7 +182466,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           },
           "Reload Page"
         )),
-        debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.3.3")
+        debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.3.4")
       );
     }
     const Loading = (props) => {
@@ -182671,4 +182701,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-B--ljzTn.js.map
+//# sourceMappingURL=index-ZyQkGvR3.js.map
