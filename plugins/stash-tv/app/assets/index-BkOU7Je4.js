@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-BCUhO9pK.js"(exports, module) {
+  "assets/index-BkOU7Je4.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -6435,6 +6435,11 @@ var require_index_001 = __commonJS({
       iconName: "repeat",
       icon: [512, 512, [128257], "f363", "M0 224c0 17.7 14.3 32 32 32s32-14.3 32-32c0-53 43-96 96-96l160 0 0 32c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-9.2-9.2-22.9-11.9-34.9-6.9S320 19.1 320 32l0 32L160 64C71.6 64 0 135.6 0 224zm512 64c0-17.7-14.3-32-32-32s-32 14.3-32 32c0 53-43 96-96 96l-160 0 0-32c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6l0-32 160 0c88.4 0 160-71.6 160-160z"]
     };
+    const faCirclePlay = {
+      prefix: "fas",
+      iconName: "circle-play",
+      icon: [512, 512, [61469, "play-circle"], "f144", "M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9l0 176c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z"]
+    };
     const faCircle = {
       prefix: "fas",
       iconName: "circle",
@@ -6464,6 +6469,11 @@ var require_index_001 = __commonJS({
       prefix: "fas",
       iconName: "closed-captioning",
       icon: [576, 512, [], "f20a", "M0 96C0 60.7 28.7 32 64 32l448 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM200 208c14.2 0 27 6.1 35.8 16c8.8 9.9 24 10.7 33.9 1.9s10.7-24 1.9-33.9c-17.5-19.6-43.1-32-71.5-32c-53 0-96 43-96 96s43 96 96 96c28.4 0 54-12.4 71.5-32c8.8-9.9 8-25-1.9-33.9s-25-8-33.9 1.9c-8.8 9.9-21.6 16-35.8 16c-26.5 0-48-21.5-48-48s21.5-48 48-48zm144 48c0-26.5 21.5-48 48-48c14.2 0 27 6.1 35.8 16c8.8 9.9 24 10.7 33.9 1.9s10.7-24 1.9-33.9c-17.5-19.6-43.1-32-71.5-32c-53 0-96 43-96 96s43 96 96 96c28.4 0 54-12.4 71.5-32c8.8-9.9 8-25-1.9-33.9s-25-8-33.9 1.9c-8.8 9.9-21.6 16-35.8 16c-26.5 0-48-21.5-48-48z"]
+    };
+    const faLocationDot = {
+      prefix: "fas",
+      iconName: "location-dot",
+      icon: [384, 512, ["map-marker-alt"], "f3c5", "M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"]
     };
     const faPlay = {
       prefix: "fas",
@@ -173215,6 +173225,16 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }, [stashConfigLoading, stashTvDefaultFilterId, stashDefaultScenesFilter]);
       async function setCurrentMediaItemFilterById(id) {
         setMediaItemFiltersLoading(true);
+        const { name, entityType } = availableSavedFilters.find((f) => f.id === id) || {};
+        if (name && entityType) {
+          setCurrentSavedFilter({
+            id,
+            mode: entityType === "scene" ? FilterMode.Scenes : FilterMode.SceneMarkers,
+            name,
+            filter: ""
+            // See the comment above about the `filter` prop
+          });
+        }
         const mediaItemFiltersStashResponse = await fetchSavedFilterFromStash(apolloClient, id);
         if (!mediaItemFiltersStashResponse) {
           return void 0;
@@ -173244,11 +173264,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           }
           return updatedFilter;
         }
-        function getSceneFilter() {
-          const filter = new ListFilterModel(savedFilter.mode);
-          filter.configureFromSavedFilter(savedFilter);
-          const sceneFilter = filter.makeFilter();
+        function addSceneFiltersMods(sceneFilter) {
           if (limitOrientation) {
+            sceneFilter = sceneFilter || {};
             sceneFilter.orientation = {
               "value": [
                 limitOrientation.toUpperCase(),
@@ -173258,10 +173276,19 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           }
           return sceneFilter;
         }
+        function getSceneFilter() {
+          const filter = new ListFilterModel(savedFilter.mode);
+          filter.configureFromSavedFilter(savedFilter);
+          return addSceneFiltersMods(
+            filter.makeFilter()
+          );
+        }
         function getMarkerFilter() {
           const filter = new ListFilterModel(savedFilter.mode);
           filter.configureFromSavedFilter(savedFilter);
-          return filter.makeFilter();
+          const markerFilter = filter.makeFilter();
+          markerFilter.scene_filter = addSceneFiltersMods(markerFilter.scene_filter);
+          return markerFilter;
         }
         const sharedProps = {
           savedFilter,
@@ -173306,10 +173333,16 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         },
         [availableSavedSceneFilters, stashTvDefaultFilterId]
       );
+      const [lastLoadedCurrentMediaItemFilter, setLastLoadedCurrentMediaItemFilter] = reactExports.useState(useGlobalFilterState$1.getState().currentSearchableFilter);
+      reactExports.useEffect(() => {
+        if (mediaItemFiltersLoading) return;
+        setLastLoadedCurrentMediaItemFilter(useGlobalFilterState$1.getState().currentSearchableFilter);
+      }, [useGlobalFilterState$1.getState().currentSearchableFilter, mediaItemFiltersLoading]);
       return {
         mediaItemFiltersLoading: mediaItemFiltersLoading || mediaItemFiltersNeverLoaded,
         mediaItemFiltersError,
         currentMediaItemFilter: useGlobalFilterState$1.getState().currentSearchableFilter,
+        lastLoadedCurrentMediaItemFilter,
         clearCurrentMediaItemFilter: () => setCurrentSavedFilter(void 0),
         setCurrentMediaItemFilterById,
         availableSavedFilters
@@ -173321,40 +173354,40 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       mediaItems: []
     }));
     function useMediaItems() {
-      const { currentMediaItemFilter } = useMediaItemFilters();
+      const { lastLoadedCurrentMediaItemFilter } = useMediaItemFilters();
       const { debugMode, scenePreviewOnly: previewOnly } = useAppStateStore();
       const [isResponsibleForLoading] = reactExports.useState(!useGlobalFilterState.getState().response);
       let response;
       let mediaItems;
       if (isResponsibleForLoading) {
-        if (!currentMediaItemFilter || currentMediaItemFilter.entityType === "scene") {
+        if (!lastLoadedCurrentMediaItemFilter || lastLoadedCurrentMediaItemFilter.entityType === "scene") {
           response = useFindScenesForTvQuery({
             variables: {
               filter: {
-                ...currentMediaItemFilter?.generalFilter,
+                ...lastLoadedCurrentMediaItemFilter?.generalFilter,
                 // We manage pagination ourselves and so override whatever the saved filter had
                 page: 1,
                 per_page: mediaItemsPerPage
               },
-              scene_filter: currentMediaItemFilter?.entityFilter
+              scene_filter: lastLoadedCurrentMediaItemFilter?.entityFilter
             },
-            skip: !currentMediaItemFilter
+            skip: !lastLoadedCurrentMediaItemFilter
           });
           mediaItems = response.data?.findScenes.scenes.map((scene) => ({
             id: `scene:${scene.id}`,
             entityType: "scene",
             entity: scene
           })) || [];
-        } else if (currentMediaItemFilter.entityType === "marker") {
+        } else if (lastLoadedCurrentMediaItemFilter.entityType === "marker") {
           response = useFindSceneMarkersForTvQuery({
             variables: {
               filter: {
-                ...currentMediaItemFilter.generalFilter,
+                ...lastLoadedCurrentMediaItemFilter.generalFilter,
                 // We manage pagination ourselves and so override whatever the saved filter had
                 page: 1,
                 per_page: mediaItemsPerPage
               },
-              scene_marker_filter: currentMediaItemFilter.entityFilter
+              scene_marker_filter: lastLoadedCurrentMediaItemFilter.entityFilter
             }
           });
           mediaItems = response.data?.findSceneMarkers.scene_markers.map((marker) => ({
@@ -173370,13 +173403,13 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             }
           })) || [];
         } else {
-          console.info("currentMediaItemFilter:", currentMediaItemFilter);
+          console.info("lastLoadedCurrentMediaItemFilter:", lastLoadedCurrentMediaItemFilter);
           throw new Error("Unsupported media item filter entity type");
         }
         useGlobalFilterState.setState({ mediaItems, response });
         reactExports.useEffect(() => {
-          console.log("currentMediaItemFilter changed, resetting media items", currentMediaItemFilter);
-        }, [currentMediaItemFilter]);
+          useAppStateStore.getState().debugMode && console.log("lastLoadedCurrentMediaItemFilter changed, resetting media items", lastLoadedCurrentMediaItemFilter);
+        }, [lastLoadedCurrentMediaItemFilter]);
       } else {
         response = useGlobalFilterState((state) => state.response);
         mediaItems = useGlobalFilterState((state) => state.mediaItems);
@@ -173478,9 +173511,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           const nextPage = mediaItems.length ? Math.ceil(mediaItems.length / mediaItemsPerPage) + 1 : 1;
           debugMode && console.log("Fetch next media page:", nextPage);
           let entityFilterKey;
-          if (currentMediaItemFilter?.entityType === "scene") {
+          if (lastLoadedCurrentMediaItemFilter?.entityType === "scene") {
             entityFilterKey = "scene_filter";
-          } else if (currentMediaItemFilter?.entityType === "marker") {
+          } else if (lastLoadedCurrentMediaItemFilter?.entityType === "marker") {
             entityFilterKey = "scene_marker_filter";
           } else {
             throw new Error("Unsupported media filter entity type");
@@ -173488,12 +173521,12 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           fetchMore({
             variables: {
               filter: {
-                ...currentMediaItemFilter?.generalFilter,
+                ...lastLoadedCurrentMediaItemFilter?.generalFilter,
                 // We manage pagination ourselves and so override whatever the saved filter had
                 page: nextPage,
                 per_page: mediaItemsPerPage
               },
-              [entityFilterKey]: currentMediaItemFilter?.entityFilter
+              [entityFilterKey]: lastLoadedCurrentMediaItemFilter?.entityFilter
             }
           });
         },
@@ -182246,16 +182279,22 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         scrollElement.addEventListener("scroll", handleScroll);
         return () => scrollElement.removeEventListener("scroll", handleScroll);
       }, [forceLandscape]);
-      const closeButton = closeDisabled ? null : /* @__PURE__ */ React$1.createElement(
-        "button",
-        {
-          "data-testid": "SideDrawer--closeButton",
-          onClick: () => setAppSetting("showSettings", false),
-          type: "button"
-        },
-        /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faXmark }),
-        /* @__PURE__ */ React$1.createElement("span", { className: "sr-only" }, "Close settings")
-      );
+      let closeButton = null;
+      if (closeDisabled === "loading") {
+        closeButton = /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { className: "action", icon: faSpinner, pulse: true });
+      } else if (!closeDisabled) {
+        closeButton = /* @__PURE__ */ React$1.createElement(
+          "button",
+          {
+            className: "action",
+            "data-testid": "SideDrawer--closeButton",
+            onClick: () => setAppSetting("showSettings", false),
+            type: "button"
+          },
+          /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faXmark }),
+          /* @__PURE__ */ React$1.createElement("span", { className: "sr-only" }, "Close settings")
+        );
+      }
       return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
         animated.div,
         {
@@ -182283,7 +182322,6 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         mediaItemFiltersError,
         currentMediaItemFilter,
         setCurrentMediaItemFilterById,
-        clearCurrentMediaItemFilter,
         availableSavedFilters
       } = useMediaItemFilters();
       const {
@@ -182299,31 +182337,31 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       const { mediaItems, mediaItemsLoading } = useMediaItems();
       const noMediaItemsAvailable = !mediaItemFiltersLoading && !mediaItemsLoading && mediaItems.length === 0;
       const hasTouchScreen = useMedia("(pointer: coarse)");
-      const [mediaFilterType, setMediaFilterType] = React$1.useState("scene");
-      reactExports.useEffect(() => {
-        if (!currentMediaItemFilter) return;
-        setMediaFilterType(currentMediaItemFilter.entityType);
-      }, [currentMediaItemFilter]);
-      const fetchingDataWarning = mediaItemsLoading ? /* @__PURE__ */ React$1.createElement("div", { className: "warning" }, /* @__PURE__ */ React$1.createElement("h2", null, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true }), /* @__PURE__ */ React$1.createElement("span", null, "Fetching data from Stash...")), /* @__PURE__ */ React$1.createElement("p", null, "Please wait while data is loaded.")) : null;
-      const filterTypes = [
-        {
-          label: "Scenes",
-          value: "scene"
-        },
-        {
-          label: "Markers",
-          value: "marker"
-        }
-      ];
-      const filters = reactExports.useMemo(
-        () => availableSavedFilters.filter((filter) => filter.entityType === mediaFilterType).map((filter) => ({
+      const allFilters = reactExports.useMemo(
+        () => availableSavedFilters.map((filter) => ({
           value: filter.id,
           label: filter.name + (filter.isStashTvDefaultFilter ? " (default)" : ""),
-          isStashTvDefaultFilter: filter.isStashTvDefaultFilter
+          isStashTvDefaultFilter: filter.isStashTvDefaultFilter,
+          filterType: filter.entityType
         })).sort((a2, b) => a2.label.localeCompare(b.label)),
-        [availableSavedFilters, mediaFilterType]
+        [availableSavedFilters]
       );
-      const selectedFilter = filters.find((filter) => filter.value === currentMediaItemFilter?.savedFilter?.id);
+      const allFiltersGrouped = reactExports.useMemo(
+        () => [
+          {
+            label: "Scene Filters",
+            filterType: "scene",
+            options: allFilters.filter((filter) => filter.filterType === "scene")
+          },
+          {
+            label: "Marker Filters",
+            filterType: "marker",
+            options: allFilters.filter((filter) => filter.filterType === "marker")
+          }
+        ],
+        [allFilters]
+      );
+      const selectedFilter = allFilters.find((filter) => filter.value === currentMediaItemFilter?.savedFilter?.id);
       const subtitlesList = ISO6391.getAllNames().map((name) => ({
         label: name,
         value: ISO6391.getCode(name)
@@ -182364,40 +182402,28 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         SideDrawer,
         {
           title: /* @__PURE__ */ React$1.createElement("span", { ref: titleRef }, "Settings"),
-          closeDisabled: noMediaItemsAvailable || mediaItemsLoading || Boolean(mediaItemFiltersError),
+          closeDisabled: mediaItemFiltersLoading || mediaItemsLoading ? "loading" : noMediaItemsAvailable || Boolean(mediaItemFiltersError),
           className: "SettingsTab"
         },
-        /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "filter-type" }, "Media Type"), /* @__PURE__ */ React$1.createElement(
-          StateManagedSelect$1,
-          {
-            inputId: "filter-type",
-            isSearchable: !hasTouchScreen,
-            className: cx("react-select"),
-            classNamePrefix: "react-select",
-            value: filterTypes.find((ft) => ft.value === mediaFilterType),
-            onChange: (newValue) => {
-              if (!newValue) return;
-              setMediaFilterType(newValue.value);
-              if (newValue.value !== currentMediaItemFilter?.entityType) clearCurrentMediaItemFilter();
-            },
-            options: filterTypes,
-            placeholder: "Select filter type"
-          }
-        )),
-        /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "filter" }, filterTypes.find((type) => type.value === mediaFilterType)?.label, " Filter"), !mediaItemFiltersLoading ? /* @__PURE__ */ React$1.createElement(
+        /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "filter" }, "Media Filter"), !mediaItemFiltersLoading || allFiltersGrouped.length ? /* @__PURE__ */ React$1.createElement(
           StateManagedSelect$1,
           {
             inputId: "filter",
             className: cx("react-select"),
+            isLoading: mediaItemFiltersLoading || mediaItemsLoading,
             classNamePrefix: "react-select",
             isSearchable: !hasTouchScreen,
             value: selectedFilter ?? null,
             onChange: (newValue) => newValue && setCurrentMediaItemFilterById(newValue.value),
-            options: filters,
-            placeholder: `${filters.length > 0 ? "No filter selected" : "No filters saved in stash"}. Showing all scenes.`
+            options: allFiltersGrouped,
+            placeholder: `${allFilters.length > 0 ? "No filter selected" : "No filters saved in stash"}. Showing all scenes.`,
+            components: {
+              GroupHeading: (props) => /* @__PURE__ */ React$1.createElement(components.GroupHeading, { ...props }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: props.data.filterType === "scene" ? faCirclePlay : faLocationDot }), props.data.label),
+              SingleValue: (props) => /* @__PURE__ */ React$1.createElement(components.SingleValue, { ...props }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: props.data.filterType === "scene" ? faCirclePlay : faLocationDot }), props.data.label)
+            }
           }
-        ) : /* @__PURE__ */ React$1.createElement("div", null, "Loading..."), /* @__PURE__ */ React$1.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), fetchingDataWarning, mediaItemFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))),
-        selectedFilter && !selectedFilter.isStashTvDefaultFilter && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
+        ) : /* @__PURE__ */ React$1.createElement("div", null, "Loading..."), /* @__PURE__ */ React$1.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), mediaItemFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))),
+        selectedFilter && !selectedFilter.isStashTvDefaultFilter && !noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
           Button,
           {
             onClick: () => {
@@ -182511,7 +182537,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onClick: () => window.location.reload()
           },
           "Reload Page"
-        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.4.0"))
+        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.5.0"))
       );
     }
     const Loading = (props) => {
@@ -182746,4 +182772,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BCUhO9pK.js.map
+//# sourceMappingURL=index-BkOU7Je4.js.map
