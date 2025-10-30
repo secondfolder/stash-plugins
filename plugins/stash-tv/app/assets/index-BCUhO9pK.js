@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-ZyQkGvR3.js"(exports, module) {
+  "assets/index-BCUhO9pK.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -166689,6 +166689,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           crtEffect: false,
           scenePreviewOnly: false,
           onlyShowMatchingOrientation: false,
+          showDevOptions: false,
           debugMode: false,
           autoPlay: true,
           showGuideOverlay: true,
@@ -166811,6 +166812,25 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     videojs.hook("setup", (player) => {
       player.focus = () => {
       };
+      const originalDurationFunction = player.duration.bind(player);
+      const usingOffsetPlugin = !!player.toJSON().plugins.offset;
+      function modifiedDurationFunction(newDuration) {
+        if (usingOffsetPlugin) {
+          return newDuration === void 0 ? originalDurationFunction() : originalDurationFunction(newDuration);
+        }
+        const scene = "_scene" in player ? player._scene : void 0;
+        const durationFromVideoElm = player.tech({ IWillNotUseThisInPlugins: true }).el()?.duration;
+        const durationFromScene = scene?.files[0]?.duration;
+        const duration2 = !isNaN(durationFromVideoElm) && isFinite(durationFromVideoElm) ? durationFromVideoElm : durationFromScene;
+        if (duration2 === void 0) {
+          return originalDurationFunction();
+        }
+        if (newDuration !== void 0) {
+          return originalDurationFunction(duration2);
+        }
+        return duration2;
+      }
+      player.duration = modifiedDurationFunction;
     });
     videojs.hook("setup", function(player) {
       let playerId;
@@ -168192,6 +168212,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       });
     };
     videojs.registerPlugin("styledBigPlayButton", styledBigPlayButton);
+    const noAnimateDurationThreshold = 30;
     const VideoItem = (props) => {
       const {
         showSettings,
@@ -168204,6 +168225,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         uiVisible,
         crtEffect,
         scenePreviewOnly,
+        showDevOptions,
         debugMode,
         autoPlay: globalAutoPlay,
         showGuideOverlay,
@@ -168246,9 +168268,10 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         });
       }
       reactExports.useEffect(() => {
-        if (!debugMode || !isCurrentVideo || !videojsPlayerRef.current) return;
+        if (!showDevOptions || !isCurrentVideo || !videojsPlayerRef.current) return;
         window.tvCurrentPlayer = videojsPlayerRef.current;
-      }, [isCurrentVideo, debugMode]);
+        window.tvCurrentMediaItem = props.mediaItem;
+      }, [isCurrentVideo, showDevOptions]);
       const firstDurationChangeRef = reactExports.useRef(true);
       reactExports.useEffect(() => {
         if (!videojsPlayerRef.current) return;
@@ -168280,7 +168303,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         }
       }, [props.index, props.currentIndex, autoplay]);
       const handleClick = reactExports.useCallback((event2) => {
-        const { target: videoElm } = event2;
+        const { currentTarget: videoElm } = event2;
         if (!videoElm || !(videoElm instanceof HTMLElement)) return;
         const videoElmWidth = videoElm.clientWidth;
         if (debugMode) console.log(`Click at X=${event2.clientX} (video width: ${videoElmWidth})`, videoElm);
@@ -168305,9 +168328,11 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           if (e.key === seekBackwardsKey) {
             seekBackwards();
             e.preventDefault();
+            e.stopPropagation();
           } else if (e.key === seekForwardsKey) {
             seekForwards();
             e.preventDefault();
+            e.stopPropagation();
           }
         };
         window.addEventListener("keydown", handleKeyDown, { capture: true });
@@ -168320,7 +168345,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         videojsPlayerRef.current?.pause();
       }, [showGuideOverlay]);
       function getSkipTime() {
-        const duration2 = scene.files?.[0].duration;
+        const duration2 = videojsPlayerRef.current?.duration();
         if (!duration2) {
           return null;
         }
@@ -168332,7 +168357,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         } else if (duration2 > 1 * 60) {
           skipPercent = 0.2;
         } else {
-          skipPercent = 0.5;
+          skipPercent = 0.33;
         }
         return duration2 * skipPercent;
       }
@@ -168341,38 +168366,50 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         const duration2 = videojsPlayerRef.current?.duration();
         if (duration2 === void 0) return;
         const skipAmount = getSkipTime();
-        debugMode && console.log("Seeking forwards", { skipAmount, duration: duration2 });
         if (skipAmount === null || typeof duration2 !== "number") {
           return null;
         }
         const nextSkipAheadTime = videojsPlayerRef.current?.currentTime() + skipAmount;
-        if (nextSkipAheadTime < duration2) {
-          videojsPlayerRef.current?.currentTime(nextSkipAheadTime);
-          videojsPlayerRef.current?.play();
+        debugMode && console.log("Seeking forwards", { skipAmount, duration: duration2, nextSkipAheadTime });
+        if (nextSkipAheadTime > duration2) {
+          props.changeItemHandler(
+            (currentIndex) => currentIndex + 1,
+            { ...duration2 < noAnimateDurationThreshold ? { behavior: "instant" } : {} }
+          );
           return;
         }
-        props.changeItemHandler((currentIndex) => currentIndex + 1);
-        return null;
+        videojsPlayerRef.current?.currentTime(nextSkipAheadTime);
+        videojsPlayerRef.current?.play();
       }
       function seekBackwards() {
         if (!videojsPlayerRef.current) return null;
         const duration2 = videojsPlayerRef.current?.duration();
         const skipAmount = getSkipTime();
-        debugMode && console.log("Seeking backwards", { skipAmount, duration: duration2 });
         if (skipAmount === null || typeof duration2 !== "number") {
           return null;
         }
-        const nextSkipBackTime = videojsPlayerRef.current?.currentTime() - skipAmount;
-        if (nextSkipBackTime >= 0) {
-          videojsPlayerRef.current?.currentTime(nextSkipBackTime);
-          videojsPlayerRef.current?.play();
-          return;
+        let nextSkipBackTime = videojsPlayerRef.current?.currentTime() - skipAmount;
+        debugMode && console.log("Seeking backwards", { skipAmount, duration: duration2, nextSkipBackTime });
+        if (nextSkipBackTime <= 0) {
+          if (props.index === 0) {
+            nextSkipBackTime = 0;
+          } else {
+            props.changeItemHandler(
+              (currentIndex) => Math.max(currentIndex - 1, 0),
+              { ...duration2 < noAnimateDurationThreshold ? { behavior: "instant" } : {} }
+            );
+            return;
+          }
         }
-        props.changeItemHandler((currentIndex) => Math.max(currentIndex - 1, 0));
+        videojsPlayerRef.current?.currentTime(nextSkipBackTime);
+        videojsPlayerRef.current?.play();
       }
       const itemRef = reactExports.useRef(null);
       const handleOnEnded = () => {
-        if (!looping && isCurrentVideo) props.changeItemHandler((currentIndex) => currentIndex + 1);
+        if (!looping && isCurrentVideo) props.changeItemHandler(
+          (currentIndex) => currentIndex + 1,
+          { ...(videojsPlayerRef.current?.duration() || 0) < noAnimateDurationThreshold ? { behavior: "instant" } : {} }
+        );
       };
       const [sceneInfoOpen, setSceneInfoOpen] = reactExports.useState(false);
       const sceneInfoPanelRef = reactExports.useRef(null);
@@ -168460,7 +168497,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onClick: handleClick,
             onVideojsPlayerReady: handleVideojsPlayerReady,
             trackActivity: !scenePreviewOnly && props.mediaItem.entityType !== "marker",
-            scrubberThumbnail: !scenePreviewOnly,
+            scrubberThumbnail: !scenePreviewOnly && props.mediaItem.entityType !== "marker",
             markers: !scenePreviewOnly,
             optionsToMerge: {
               plugins: {
@@ -168624,7 +168661,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         const parentStudioText = props.studio?.parent_studio ? " | " + props.studio.parent_studio.name : "";
         const studio = props.studio ? /* @__PURE__ */ React$1.createElement("span", { className: "studio" }, props.studio.name + parentStudioText) : null;
         const title = props.title ? /* @__PURE__ */ React$1.createElement("h5", null, props.title) : null;
-        const sceneUrl = props.paths.stream?.split("/stream")[0]?.replace("/scene", "/scenes");
+        let sceneUrl = props.paths.stream?.split("/stream")[0]?.replace("/scene", "/scenes");
         return /* @__PURE__ */ React$1.createElement(
           "div",
           {
@@ -173759,8 +173796,8 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             return /* @__PURE__ */ React$1.createElement(
               VideoItem$1,
               {
-                changeItemHandler: (newIndex) => {
-                  scrollToIndex(newIndex);
+                changeItemHandler: (newIndex, scrollOptions) => {
+                  scrollToIndex(newIndex, scrollOptions);
                   setCurrentIndex(newIndex);
                 },
                 currentIndex,
@@ -182254,6 +182291,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         crtEffect,
         scenePreviewOnly,
         onlyShowMatchingOrientation,
+        showDevOptions,
         debugMode,
         autoPlay,
         set: setAppSetting
@@ -182305,19 +182343,20 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       const titleRef = React$1.useRef(null);
       reactExports.useEffect(() => {
         if (!titleRef.current) return;
-        let enableDebugModeTimer;
-        const handlePointerDown = () => {
-          enableDebugModeTimer = setTimeout(() => {
-            setAppSetting("debugMode", true);
-          }, 5e3);
-        };
+        let clearClickCountTimer;
+        let clickCount = 0;
         const handlePointerUp = () => {
-          clearTimeout(enableDebugModeTimer);
+          clickCount += 1;
+          if (clickCount > 4) {
+            setAppSetting("showDevOptions", true);
+          }
+          clearTimeout(clearClickCountTimer);
+          clearClickCountTimer = setTimeout(() => {
+            clickCount = 0;
+          }, 1e3);
         };
-        titleRef.current.addEventListener("pointerdown", handlePointerDown);
         titleRef.current.addEventListener("pointerup", handlePointerUp);
         return () => {
-          titleRef.current?.removeEventListener("pointerdown", handlePointerDown);
           titleRef.current?.removeEventListener("pointerup", handlePointerUp);
         };
       }, [titleRef]);
@@ -182443,15 +182482,6 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onChange: (event2) => setAppSetting("crtEffect", event2.target.checked)
           }
         ), /* @__PURE__ */ React$1.createElement("small", null, "Emulate the visual effects of an old CRT television.")),
-        /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item", style: { display: debugMode ? "block" : "none" } }, /* @__PURE__ */ React$1.createElement(
-          FormImpl.Switch,
-          {
-            id: "debug-mode",
-            label: "Debug Mode",
-            checked: debugMode,
-            onChange: (event2) => setAppSetting("debugMode", event2.target.checked)
-          }
-        ), /* @__PURE__ */ React$1.createElement("small", null, "Enable debug mode for additional logging and information.")),
         /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement(
           Button,
           {
@@ -182459,14 +182489,29 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           },
           "Show Guide"
         )), /* @__PURE__ */ React$1.createElement("small", null, "Open the guide see instructions for using Stash TV.")),
-        debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
+        showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
+          FormImpl.Switch,
+          {
+            id: "show-dev-options",
+            label: "Hide Developer Options",
+            checked: showDevOptions,
+            onChange: (event2) => setAppSetting("showDevOptions", false)
+          }
+        ), /* @__PURE__ */ React$1.createElement("small", null, "Hide developer options.")), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
+          FormImpl.Switch,
+          {
+            id: "debug-mode",
+            label: "Debug Mode",
+            checked: debugMode,
+            onChange: (event2) => setAppSetting("debugMode", event2.target.checked)
+          }
+        ), /* @__PURE__ */ React$1.createElement("small", null, "Enable debug mode for additional logging and information.")), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
           Button,
           {
             onClick: () => window.location.reload()
           },
           "Reload Page"
-        )),
-        debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.3.4")
+        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.4.0"))
       );
     }
     const Loading = (props) => {
@@ -182701,4 +182746,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-ZyQkGvR3.js.map
+//# sourceMappingURL=index-BCUhO9pK.js.map
