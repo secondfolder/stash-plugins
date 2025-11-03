@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-BkOU7Je4.js"(exports, module) {
+  "assets/index-71KElual.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -6516,7 +6516,7 @@ var require_index_001 = __commonJS({
      * Copyright 2024 Fonticons, Inc.
      */
     function _defineProperty$2(e, r2, t2) {
-      return (r2 = _toPropertyKey$1(r2)) in e ? Object.defineProperty(e, r2, {
+      return (r2 = _toPropertyKey$2(r2)) in e ? Object.defineProperty(e, r2, {
         value: t2,
         enumerable: true,
         configurable: true,
@@ -6544,7 +6544,7 @@ var require_index_001 = __commonJS({
       }
       return e;
     }
-    function _toPrimitive$1(t2, r2) {
+    function _toPrimitive$2(t2, r2) {
       if ("object" != typeof t2 || !t2) return t2;
       var e = t2[Symbol.toPrimitive];
       if (void 0 !== e) {
@@ -6554,18 +6554,18 @@ var require_index_001 = __commonJS({
       }
       return ("string" === r2 ? String : Number)(t2);
     }
-    function _toPropertyKey$1(t2) {
-      var i2 = _toPrimitive$1(t2, "string");
+    function _toPropertyKey$2(t2) {
+      var i2 = _toPrimitive$2(t2, "string");
       return "symbol" == typeof i2 ? i2 : i2 + "";
     }
-    const noop$5 = () => {
+    const noop$6 = () => {
     };
     let _WINDOW = {};
     let _DOCUMENT = {};
     let _MUTATION_OBSERVER = null;
     let _PERFORMANCE = {
-      mark: noop$5,
-      measure: noop$5
+      mark: noop$6,
+      measure: noop$6
     };
     try {
       if (typeof window !== "undefined") _WINDOW = window;
@@ -6970,30 +6970,30 @@ var require_index_001 = __commonJS({
     }
     const _config = _objectSpread2$2(_objectSpread2$2({}, _default), initial);
     if (!_config.autoReplaceSvg) _config.observeMutations = false;
-    const config$1 = {};
+    const config$2 = {};
     Object.keys(_default).forEach((key) => {
-      Object.defineProperty(config$1, key, {
+      Object.defineProperty(config$2, key, {
         enumerable: true,
         set: function(val) {
           _config[key] = val;
-          _onChangeCb.forEach((cb) => cb(config$1));
+          _onChangeCb.forEach((cb) => cb(config$2));
         },
         get: function() {
           return _config[key];
         }
       });
     });
-    Object.defineProperty(config$1, "familyPrefix", {
+    Object.defineProperty(config$2, "familyPrefix", {
       enumerable: true,
       set: function(val) {
         _config.cssPrefix = val;
-        _onChangeCb.forEach((cb) => cb(config$1));
+        _onChangeCb.forEach((cb) => cb(config$2));
       },
       get: function() {
         return _config.cssPrefix;
       }
     });
-    WINDOW.FontAwesomeConfig = config$1;
+    WINDOW.FontAwesomeConfig = config$2;
     const _onChangeCb = [];
     function onChange(cb) {
       _onChangeCb.push(cb);
@@ -7115,8 +7115,8 @@ var require_index_001 = __commonJS({
     function css$2() {
       const dcp = DEFAULT_CSS_PREFIX;
       const drc = DEFAULT_REPLACEMENT_CLASS;
-      const fp = config$1.cssPrefix;
-      const rc = config$1.replacementClass;
+      const fp = config$2.cssPrefix;
+      const rc = config$2.replacementClass;
       let s2 = baseStyles;
       if (fp !== dcp || rc !== drc) {
         const dPatt = new RegExp("\\.".concat(dcp, "\\-"), "g");
@@ -7128,7 +7128,7 @@ var require_index_001 = __commonJS({
     }
     let _cssInserted = false;
     function ensureCss() {
-      if (config$1.autoAddCss && !_cssInserted) {
+      if (config$2.autoAddCss && !_cssInserted) {
         insertCss(css$2());
         _cssInserted = true;
       }
@@ -7342,7 +7342,7 @@ var require_index_001 = __commonJS({
         });
         return acc;
       });
-      const hasRegular = "far" in styles || config$1.autoFetchSvg;
+      const hasRegular = "far" in styles || config$2.autoFetchSvg;
       const shimLookups = reduce$1(shims, (acc, shim2) => {
         const maybeNameMaybeUnicode = shim2[0];
         let prefix2 = shim2[1];
@@ -7369,13 +7369,13 @@ var require_index_001 = __commonJS({
       });
       _byOldName = shimLookups.names;
       _byOldUnicode = shimLookups.unicodes;
-      _defaultUsablePrefix = getCanonicalPrefix(config$1.styleDefault, {
-        family: config$1.familyDefault
+      _defaultUsablePrefix = getCanonicalPrefix(config$2.styleDefault, {
+        family: config$2.familyDefault
       });
     };
     onChange((c$$1) => {
       _defaultUsablePrefix = getCanonicalPrefix(c$$1.styleDefault, {
-        family: config$1.familyDefault
+        family: config$2.familyDefault
       });
     });
     build();
@@ -7418,7 +7418,7 @@ var require_index_001 = __commonJS({
     function getFamilyId(values2) {
       let family = s$1;
       const famProps = FAMILY_NAMES.reduce((acc, familyId) => {
-        acc[familyId] = "".concat(config$1.cssPrefix, "-").concat(familyId);
+        acc[familyId] = "".concat(config$2.cssPrefix, "-").concat(familyId);
         return acc;
       }, {});
       L.forEach((familyId) => {
@@ -7446,7 +7446,7 @@ var require_index_001 = __commonJS({
       let rest = [];
       let iconName = null;
       classNames2.forEach((cls) => {
-        const result = getIconName(config$1.cssPrefix, cls);
+        const result = getIconName(config$2.cssPrefix, cls);
         if (result) {
           iconName = result;
         } else if (cls) {
@@ -7487,7 +7487,7 @@ var require_index_001 = __commonJS({
         values: values2,
         family,
         styles,
-        config: config$1,
+        config: config$2,
         canonical,
         givenPrefix
       })), applyShimAndAlias(skipLookups, givenPrefix, canonical));
@@ -7507,7 +7507,7 @@ var require_index_001 = __commonJS({
       const aliasIconName = byAlias(prefix2, iconName);
       iconName = shim2.iconName || aliasIconName || iconName;
       prefix2 = shim2.prefix || prefix2;
-      if (prefix2 === "far" && !styles["far"] && styles["fas"] && !config$1.autoFetchSvg) {
+      if (prefix2 === "far" && !styles["far"] && styles["fas"] && !config$2.autoFetchSvg) {
         prefix2 = "fas";
       }
       return {
@@ -7679,8 +7679,8 @@ var require_index_001 = __commonJS({
     }
     const library = new Library();
     const noAuto = () => {
-      config$1.autoReplaceSvg = false;
-      config$1.observeMutations = false;
+      config$2.autoReplaceSvg = false;
+      config$2.observeMutations = false;
       callHooks("noAuto");
     };
     const dom$2 = {
@@ -7699,10 +7699,10 @@ var require_index_001 = __commonJS({
         const {
           autoReplaceSvgRoot
         } = params;
-        if (config$1.autoReplaceSvg === false) {
-          config$1.autoReplaceSvg = true;
+        if (config$2.autoReplaceSvg === false) {
+          config$2.autoReplaceSvg = true;
         }
-        config$1.observeMutations = true;
+        config$2.observeMutations = true;
         domready(() => {
           autoReplace({
             autoReplaceSvgRoot
@@ -7730,7 +7730,7 @@ var require_index_001 = __commonJS({
             iconName: byAlias(prefix2, iconName) || iconName
           };
         }
-        if (typeof icon2 === "string" && (icon2.indexOf("".concat(config$1.cssPrefix, "-")) > -1 || icon2.match(ICON_SELECTION_SYNTAX_PATTERN))) {
+        if (typeof icon2 === "string" && (icon2.indexOf("".concat(config$2.cssPrefix, "-")) > -1 || icon2.match(ICON_SELECTION_SYNTAX_PATTERN))) {
           const canonicalIcon = getCanonicalIcon(icon2.split(" "), {
             skipLookups: true
           });
@@ -7750,7 +7750,7 @@ var require_index_001 = __commonJS({
     };
     const api = {
       noAuto,
-      config: config$1,
+      config: config$2,
       dom: dom$2,
       parse: parse$3,
       library,
@@ -7762,7 +7762,7 @@ var require_index_001 = __commonJS({
       const {
         autoReplaceSvgRoot = DOCUMENT
       } = params;
-      if ((Object.keys(namespace.styles).length > 0 || config$1.autoFetchSvg) && IS_DOM && config$1.autoReplaceSvg) api.dom.i2svg({
+      if ((Object.keys(namespace.styles).length > 0 || config$2.autoFetchSvg) && IS_DOM && config$2.autoReplaceSvg) api.dom.i2svg({
         node: autoReplaceSvgRoot
       });
     };
@@ -7821,7 +7821,7 @@ var require_index_001 = __commonJS({
         attributes,
         symbol
       } = _ref3;
-      const id = symbol === true ? "".concat(prefix2, "-").concat(config$1.cssPrefix, "-").concat(iconName) : symbol;
+      const id = symbol === true ? "".concat(prefix2, "-").concat(config$2.cssPrefix, "-").concat(iconName) : symbol;
       return [{
         tag: "svg",
         attributes: {
@@ -7857,7 +7857,7 @@ var require_index_001 = __commonJS({
         height
       } = mask.found ? mask : main;
       const isUploadedIcon = Lt.includes(prefix2);
-      const attrClass = [config$1.replacementClass, iconName ? "".concat(config$1.cssPrefix, "-").concat(iconName) : ""].filter((c$$1) => extra.classes.indexOf(c$$1) === -1).filter((c$$1) => c$$1 !== "" || !!c$$1).concat(extra.classes).join(" ");
+      const attrClass = [config$2.replacementClass, iconName ? "".concat(config$2.cssPrefix, "-").concat(iconName) : ""].filter((c$$1) => extra.classes.indexOf(c$$1) === -1).filter((c$$1) => c$$1 !== "" || !!c$$1).concat(extra.classes).join(" ");
       let content = {
         children: [],
         attributes: _objectSpread2$2(_objectSpread2$2({}, extra.attributes), {}, {
@@ -8006,19 +8006,19 @@ var require_index_001 = __commonJS({
         element = {
           tag: "g",
           attributes: {
-            class: "".concat(config$1.cssPrefix, "-").concat(DUOTONE_CLASSES.GROUP)
+            class: "".concat(config$2.cssPrefix, "-").concat(DUOTONE_CLASSES.GROUP)
           },
           children: [{
             tag: "path",
             attributes: {
-              class: "".concat(config$1.cssPrefix, "-").concat(DUOTONE_CLASSES.SECONDARY),
+              class: "".concat(config$2.cssPrefix, "-").concat(DUOTONE_CLASSES.SECONDARY),
               fill: "currentColor",
               d: vectorData[0]
             }
           }, {
             tag: "path",
             attributes: {
-              class: "".concat(config$1.cssPrefix, "-").concat(DUOTONE_CLASSES.PRIMARY),
+              class: "".concat(config$2.cssPrefix, "-").concat(DUOTONE_CLASSES.PRIMARY),
               fill: "currentColor",
               d: vectorData[1]
             }
@@ -8046,13 +8046,13 @@ var require_index_001 = __commonJS({
       height: 512
     };
     function maybeNotifyMissing(iconName, prefix2) {
-      if (!PRODUCTION$1 && !config$1.showMissingIcons && iconName) {
+      if (!PRODUCTION$1 && !config$2.showMissingIcons && iconName) {
         console.error('Icon with name "'.concat(iconName, '" and prefix "').concat(prefix2, '" is missing.'));
       }
     }
     function findIcon(iconName, prefix2) {
       let givenPrefix = prefix2;
-      if (prefix2 === "fa" && config$1.styleDefault !== null) {
+      if (prefix2 === "fa" && config$2.styleDefault !== null) {
         prefix2 = getDefaultUsablePrefix();
       }
       return new Promise((resolve, reject) => {
@@ -8067,13 +8067,13 @@ var require_index_001 = __commonJS({
         }
         maybeNotifyMissing(iconName, prefix2);
         resolve(_objectSpread2$2(_objectSpread2$2({}, missingIconResolutionMixin), {}, {
-          icon: config$1.showMissingIcons && iconName ? callProvided("missingIconAbstract") || {} : {}
+          icon: config$2.showMissingIcons && iconName ? callProvided("missingIconAbstract") || {} : {}
         }));
       });
     }
     const noop$1$1 = () => {
     };
-    const p$2 = config$1.measurePerformance && PERFORMANCE && PERFORMANCE.mark && PERFORMANCE.measure ? PERFORMANCE : {
+    const p$2 = config$2.measurePerformance && PERFORMANCE && PERFORMANCE.mark && PERFORMANCE.measure ? PERFORMANCE : {
       mark: noop$1$1,
       measure: noop$1$1
     };
@@ -8102,13 +8102,13 @@ var require_index_001 = __commonJS({
       return prefix2 && icon2;
     }
     function hasBeenReplaced(node2) {
-      return node2 && node2.classList && node2.classList.contains && node2.classList.contains(config$1.replacementClass);
+      return node2 && node2.classList && node2.classList.contains && node2.classList.contains(config$2.replacementClass);
     }
     function getMutator() {
-      if (config$1.autoReplaceSvg === true) {
+      if (config$2.autoReplaceSvg === true) {
         return mutators.replace;
       }
-      const mutator = mutators[config$1.autoReplaceSvg];
+      const mutator = mutators[config$2.autoReplaceSvg];
       return mutator || mutators.replace;
     }
     function createElementNS(tag) {
@@ -8149,7 +8149,7 @@ var require_index_001 = __commonJS({
           mutation[1].forEach((abstract) => {
             node2.parentNode.insertBefore(convertSVG(abstract), node2);
           });
-          if (node2.getAttribute(DATA_FA_I2SVG) === null && config$1.keepOriginalSource) {
+          if (node2.getAttribute(DATA_FA_I2SVG) === null && config$2.keepOriginalSource) {
             let comment2 = DOCUMENT.createComment(nodeAsComment(node2));
             node2.parentNode.replaceChild(comment2, node2);
           } else {
@@ -8160,14 +8160,14 @@ var require_index_001 = __commonJS({
       nest: function(mutation) {
         const node2 = mutation[0];
         const abstract = mutation[1];
-        if (~classArray(node2).indexOf(config$1.replacementClass)) {
+        if (~classArray(node2).indexOf(config$2.replacementClass)) {
           return mutators.replace(mutation);
         }
-        const forSvg = new RegExp("".concat(config$1.cssPrefix, "-.*"));
+        const forSvg = new RegExp("".concat(config$2.cssPrefix, "-.*"));
         delete abstract[0].attributes.id;
         if (abstract[0].attributes.class) {
           const splitClasses = abstract[0].attributes.class.split(" ").reduce((acc, cls) => {
-            if (cls === config$1.replacementClass || cls.match(forSvg)) {
+            if (cls === config$2.replacementClass || cls.match(forSvg)) {
               acc.toSvg.push(cls);
             } else {
               acc.toNode.push(cls);
@@ -8198,7 +8198,7 @@ var require_index_001 = __commonJS({
         callbackFunction();
       } else {
         let frame = performOperationSync;
-        if (config$1.mutateApproach === MUTATION_APPROACH_ASYNC) {
+        if (config$2.mutateApproach === MUTATION_APPROACH_ASYNC) {
           frame = WINDOW.requestAnimationFrame || performOperationSync;
         }
         frame(() => {
@@ -8222,7 +8222,7 @@ var require_index_001 = __commonJS({
       if (!MUTATION_OBSERVER) {
         return;
       }
-      if (!config$1.observeMutations) {
+      if (!config$2.observeMutations) {
         return;
       }
       const {
@@ -8236,12 +8236,12 @@ var require_index_001 = __commonJS({
         const defaultPrefix = getDefaultUsablePrefix();
         toArray$1(objects).forEach((mutationRecord) => {
           if (mutationRecord.type === "childList" && mutationRecord.addedNodes.length > 0 && !isWatched(mutationRecord.addedNodes[0])) {
-            if (config$1.searchPseudoElements) {
+            if (config$2.searchPseudoElements) {
               pseudoElementsCallback(mutationRecord.target);
             }
             treeCallback(mutationRecord.target);
           }
-          if (mutationRecord.type === "attributes" && mutationRecord.target.parentNode && config$1.searchPseudoElements) {
+          if (mutationRecord.type === "attributes" && mutationRecord.target.parentNode && config$2.searchPseudoElements) {
             pseudoElementsCallback(mutationRecord.target.parentNode);
           }
           if (mutationRecord.type === "attributes" && isWatched(mutationRecord.target) && ~ATTRIBUTES_WATCHED_FOR_MUTATION.indexOf(mutationRecord.attributeName)) {
@@ -8304,7 +8304,7 @@ var require_index_001 = __commonJS({
       if (val.prefix && innerText.length > 0) {
         val.iconName = byLigature(val.prefix, node2.innerText) || byUnicode(val.prefix, toHex(node2.innerText));
       }
-      if (!val.iconName && config$1.autoFetchSvg && node2.firstChild && node2.firstChild.nodeType === Node.TEXT_NODE) {
+      if (!val.iconName && config$2.autoFetchSvg && node2.firstChild && node2.firstChild.nodeType === Node.TEXT_NODE) {
         val.iconName = node2.firstChild.data;
       }
       return val;
@@ -8318,9 +8318,9 @@ var require_index_001 = __commonJS({
       }, {});
       const title = node2.getAttribute("title");
       const titleId = node2.getAttribute("data-fa-title-id");
-      if (config$1.autoA11y) {
+      if (config$2.autoA11y) {
         if (title) {
-          extraAttributes["aria-labelledby"] = "".concat(config$1.replacementClass, "-title-").concat(titleId || nextUniqueId());
+          extraAttributes["aria-labelledby"] = "".concat(config$2.replacementClass, "-title-").concat(titleId || nextUniqueId());
         } else {
           extraAttributes["aria-hidden"] = "true";
           extraAttributes["focusable"] = "false";
@@ -8385,7 +8385,7 @@ var require_index_001 = __commonJS({
       styles: styles$2
     } = namespace;
     function generateMutation(node2) {
-      const nodeMeta = config$1.autoReplaceSvg === "nest" ? parseMeta(node2, {
+      const nodeMeta = config$2.autoReplaceSvg === "nest" ? parseMeta(node2, {
         styleParser: false
       }) : parseMeta(node2);
       if (~nodeMeta.extra.classes.indexOf(LAYERS_TEXT_CLASSNAME)) {
@@ -8403,7 +8403,7 @@ var require_index_001 = __commonJS({
       const htmlClassList = DOCUMENT.documentElement.classList;
       const hclAdd = (suffix) => htmlClassList.add("".concat(HTML_CLASS_I2SVG_BASE_CLASS, "-").concat(suffix));
       const hclRemove = (suffix) => htmlClassList.remove("".concat(HTML_CLASS_I2SVG_BASE_CLASS, "-").concat(suffix));
-      const prefixes2 = config$1.autoFetchSvg ? getKnownPrefixes() : P.concat(Object.keys(styles$2));
+      const prefixes2 = config$2.autoFetchSvg ? getKnownPrefixes() : P.concat(Object.keys(styles$2));
       if (!prefixes2.includes("fa")) {
         prefixes2.push("fa");
       }
@@ -8503,9 +8503,9 @@ var require_index_001 = __commonJS({
           iconDefinition,
           params
         });
-        if (config$1.autoA11y) {
+        if (config$2.autoA11y) {
           if (title) {
-            attributes["aria-labelledby"] = "".concat(config$1.replacementClass, "-title-").concat(titleId || nextUniqueId());
+            attributes["aria-labelledby"] = "".concat(config$2.replacementClass, "-title-").concat(titleId || nextUniqueId());
           } else {
             attributes["aria-hidden"] = "true";
             attributes["focusable"] = "false";
@@ -8651,7 +8651,7 @@ var require_index_001 = __commonJS({
               return [{
                 tag: "span",
                 attributes: {
-                  class: ["".concat(config$1.cssPrefix, "-layers"), ...classes].join(" ")
+                  class: ["".concat(config$2.cssPrefix, "-layers"), ...classes].join(" ")
                 },
                 children
               }];
@@ -8685,7 +8685,7 @@ var require_index_001 = __commonJS({
                 extra: {
                   attributes,
                   styles: styles2,
-                  classes: ["".concat(config$1.cssPrefix, "-layers-counter"), ...classes]
+                  classes: ["".concat(config$2.cssPrefix, "-layers-counter"), ...classes]
                 }
               });
             });
@@ -8720,7 +8720,7 @@ var require_index_001 = __commonJS({
                 extra: {
                   attributes,
                   styles: styles2,
-                  classes: ["".concat(config$1.cssPrefix, "-layers-text"), ...classes]
+                  classes: ["".concat(config$2.cssPrefix, "-layers-text"), ...classes]
                 }
               });
             });
@@ -8742,7 +8742,7 @@ var require_index_001 = __commonJS({
             width = boundingClientRect.width / computedFontSize;
             height = boundingClientRect.height / computedFontSize;
           }
-          if (config$1.autoA11y && !title) {
+          if (config$2.autoA11y && !title) {
             extra.attributes["aria-hidden"] = "true";
           }
           return Promise.resolve([node2, makeLayersTextAbstract({
@@ -8899,7 +8899,7 @@ var require_index_001 = __commonJS({
           const {
             node: node2 = DOCUMENT
           } = params;
-          if (config$1.searchPseudoElements) {
+          if (config$2.searchPseudoElements) {
             searchPseudoElements(node2);
           }
         };
@@ -9371,7 +9371,7 @@ var require_index_001 = __commonJS({
       if (Array.isArray(r2)) return _arrayLikeToArray$3(r2);
     }
     function _defineProperty$1(e, r2, t2) {
-      return (r2 = _toPropertyKey(r2)) in e ? Object.defineProperty(e, r2, {
+      return (r2 = _toPropertyKey$1(r2)) in e ? Object.defineProperty(e, r2, {
         value: t2,
         enumerable: true,
         configurable: true,
@@ -9451,7 +9451,7 @@ var require_index_001 = __commonJS({
     function _toConsumableArray$1(r2) {
       return _arrayWithoutHoles$1(r2) || _iterableToArray$1(r2) || _unsupportedIterableToArray$3(r2) || _nonIterableSpread$1();
     }
-    function _toPrimitive(t2, r2) {
+    function _toPrimitive$1(t2, r2) {
       if ("object" != typeof t2 || !t2) return t2;
       var e = t2[Symbol.toPrimitive];
       if (void 0 !== e) {
@@ -9461,8 +9461,8 @@ var require_index_001 = __commonJS({
       }
       return ("string" === r2 ? String : Number)(t2);
     }
-    function _toPropertyKey(t2) {
-      var i2 = _toPrimitive(t2, "string");
+    function _toPropertyKey$1(t2) {
+      var i2 = _toPrimitive$1(t2, "string");
       return "symbol" == typeof i2 ? i2 : i2 + "";
     }
     function _typeof$1(o2) {
@@ -9556,7 +9556,7 @@ var require_index_001 = __commonJS({
       });
       return string.substr(0, 1).toLowerCase() + string.substr(1);
     }
-    var _excluded$n = ["style"];
+    var _excluded$r = ["style"];
     function capitalize(val) {
       return val.charAt(0).toUpperCase() + val.slice(1);
     }
@@ -9602,7 +9602,7 @@ var require_index_001 = __commonJS({
       }, {
         attrs: {}
       });
-      var _extraProps$style = extraProps.style, existingStyle = _extraProps$style === void 0 ? {} : _extraProps$style, remaining = _objectWithoutProperties$1(extraProps, _excluded$n);
+      var _extraProps$style = extraProps.style, existingStyle = _extraProps$style === void 0 ? {} : _extraProps$style, remaining = _objectWithoutProperties$1(extraProps, _excluded$r);
       mixins.attrs["style"] = _objectSpread2$1(_objectSpread2$1({}, mixins.attrs["style"]), existingStyle);
       return createElement2.apply(void 0, [element.tag, _objectSpread2$1(_objectSpread2$1({}, mixins.attrs), remaining)].concat(_toConsumableArray$1(children)));
     }
@@ -9646,7 +9646,7 @@ var require_index_001 = __commonJS({
     function objectWithKey(key, value) {
       return Array.isArray(value) && value.length > 0 || !Array.isArray(value) && value ? _defineProperty$1({}, key, value) : {};
     }
-    var defaultProps$4 = {
+    var defaultProps$5 = {
       border: false,
       className: "",
       mask: null,
@@ -9678,7 +9678,7 @@ var require_index_001 = __commonJS({
       widthAuto: false
     };
     var FontAwesomeIcon = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
-      var allProps = _objectSpread2$1(_objectSpread2$1({}, defaultProps$4), props);
+      var allProps = _objectSpread2$1(_objectSpread2$1({}, defaultProps$5), props);
       var iconArgs = allProps.icon, maskArgs = allProps.mask, symbol = allProps.symbol, className = allProps.className, title = allProps.title, titleId = allProps.titleId, maskId = allProps.maskId;
       var iconLookup = normalizeIconArgs(iconArgs);
       var classes = objectWithKey("classes", [].concat(_toConsumableArray$1(classList(allProps)), _toConsumableArray$1((className || "").split(" "))));
@@ -9699,7 +9699,7 @@ var require_index_001 = __commonJS({
         ref
       };
       Object.keys(allProps).forEach(function(key) {
-        if (!defaultProps$4.hasOwnProperty(key)) {
+        if (!defaultProps$5.hasOwnProperty(key)) {
           extraProps[key] = allProps[key];
         }
       });
@@ -11308,9 +11308,9 @@ var require_index_001 = __commonJS({
         // a number of possible default values as properties where 'defaultKey' is
         // the key of the property that will be chosen; otherwise it's assumed to be
         // a single value.
-        get: function(k, dflt, defaultKey) {
-          if (defaultKey) {
-            return this.has(k) ? this.values[k] : dflt[defaultKey];
+        get: function(k, dflt, defaultKey2) {
+          if (defaultKey2) {
+            return this.has(k) ? this.values[k] : dflt[defaultKey2];
           }
           return this.has(k) ? this.values[k] : dflt;
         },
@@ -19779,7 +19779,7 @@ var require_index_001 = __commonJS({
         return prev2 / current;
       }));
     };
-    var parseDuration = function parseDuration2(str) {
+    var parseDuration$2 = function parseDuration2(str) {
       var SECONDS_IN_YEAR = 365 * 24 * 60 * 60;
       var SECONDS_IN_MONTH = 30 * 24 * 60 * 60;
       var SECONDS_IN_DAY = 24 * 60 * 60;
@@ -19811,7 +19811,7 @@ var require_index_001 = __commonJS({
        *         The duration in seconds
        */
       mediaPresentationDuration: function mediaPresentationDuration(value) {
-        return parseDuration(value);
+        return parseDuration$2(value);
       },
       /**
        * Specifies the Segment availability start time for all Segments referred to in this
@@ -19836,7 +19836,7 @@ var require_index_001 = __commonJS({
        *         The duration in seconds
        */
       minimumUpdatePeriod: function minimumUpdatePeriod(value) {
-        return parseDuration(value);
+        return parseDuration$2(value);
       },
       /**
        * Specifies the suggested presentation delay. Format is a
@@ -19848,7 +19848,7 @@ var require_index_001 = __commonJS({
        *         The duration in seconds
        */
       suggestedPresentationDelay: function suggestedPresentationDelay(value) {
-        return parseDuration(value);
+        return parseDuration$2(value);
       },
       /**
        * specifices the type of mpd. Can be either "static" or "dynamic"
@@ -19872,7 +19872,7 @@ var require_index_001 = __commonJS({
        *         The duration in seconds
        */
       timeShiftBufferDepth: function timeShiftBufferDepth(value) {
-        return parseDuration(value);
+        return parseDuration$2(value);
       },
       /**
        * Specifies the PeriodStart time of the Period relative to the availabilityStarttime.
@@ -19884,7 +19884,7 @@ var require_index_001 = __commonJS({
        *         The duration in seconds
        */
       start: function start2(value) {
-        return parseDuration(value);
+        return parseDuration$2(value);
       },
       /**
        * Specifies the width of the visual presentation
@@ -19979,7 +19979,7 @@ var require_index_001 = __commonJS({
       duration: function duration2(value) {
         var parsedValue = parseInt(value, 10);
         if (isNaN(parsedValue)) {
-          return parseDuration(value);
+          return parseDuration$2(value);
         }
         return parsedValue;
       },
@@ -22129,7 +22129,7 @@ var require_index_001 = __commonJS({
         listener: listener2
       };
     };
-    var listen = function listen2(target, method, type, listener2) {
+    var listen$1 = function listen2(target, method, type, listener2) {
       validateTarget(target, target, method);
       if (target.nodeName) {
         Events[method](target, type, listener2);
@@ -22167,7 +22167,7 @@ var require_index_001 = __commonJS({
           args[_key] = arguments[_key];
         }
         var _normalizeListenArgs = normalizeListenArgs(this, args, "on"), isTargetingSelf = _normalizeListenArgs.isTargetingSelf, target = _normalizeListenArgs.target, type = _normalizeListenArgs.type, listener2 = _normalizeListenArgs.listener;
-        listen(target, "on", type, listener2);
+        listen$1(target, "on", type, listener2);
         if (!isTargetingSelf) {
           var removeListenerOnDispose = function removeListenerOnDispose2() {
             return _this.off(target, type, listener2);
@@ -22177,8 +22177,8 @@ var require_index_001 = __commonJS({
             return _this.off("dispose", removeListenerOnDispose);
           };
           removeRemoverOnTargetDispose.guid = listener2.guid;
-          listen(this, "on", "dispose", removeListenerOnDispose);
-          listen(target, "on", "dispose", removeRemoverOnTargetDispose);
+          listen$1(this, "on", "dispose", removeListenerOnDispose);
+          listen$1(target, "on", "dispose", removeRemoverOnTargetDispose);
         }
       },
       /**
@@ -22211,7 +22211,7 @@ var require_index_001 = __commonJS({
         }
         var _normalizeListenArgs2 = normalizeListenArgs(this, args, "one"), isTargetingSelf = _normalizeListenArgs2.isTargetingSelf, target = _normalizeListenArgs2.target, type = _normalizeListenArgs2.type, listener2 = _normalizeListenArgs2.listener;
         if (isTargetingSelf) {
-          listen(target, "one", type, listener2);
+          listen$1(target, "one", type, listener2);
         } else {
           var wrapper = function wrapper2() {
             _this2.off(target, type, wrapper2);
@@ -22221,7 +22221,7 @@ var require_index_001 = __commonJS({
             listener2.apply(null, largs);
           };
           wrapper.guid = listener2.guid;
-          listen(target, "one", type, wrapper);
+          listen$1(target, "one", type, wrapper);
         }
       },
       /**
@@ -22255,7 +22255,7 @@ var require_index_001 = __commonJS({
         }
         var _normalizeListenArgs3 = normalizeListenArgs(this, args, "any"), isTargetingSelf = _normalizeListenArgs3.isTargetingSelf, target = _normalizeListenArgs3.target, type = _normalizeListenArgs3.type, listener2 = _normalizeListenArgs3.listener;
         if (isTargetingSelf) {
-          listen(target, "any", type, listener2);
+          listen$1(target, "any", type, listener2);
         } else {
           var wrapper = function wrapper2() {
             _this3.off(target, type, wrapper2);
@@ -22265,7 +22265,7 @@ var require_index_001 = __commonJS({
             listener2.apply(null, largs);
           };
           wrapper.guid = listener2.guid;
-          listen(target, "any", type, wrapper);
+          listen$1(target, "any", type, wrapper);
         }
       },
       /**
@@ -33700,14 +33700,14 @@ var require_index_001 = __commonJS({
     videojs.hookOnce = hookOnce;
     videojs.removeHook = removeHook;
     if (window$1.VIDEOJS_NO_DYNAMIC_STYLE !== true && isReal()) {
-      var style = $(".vjs-styles-defaults");
-      if (!style) {
-        style = createStyleElement$1("vjs-styles-defaults");
+      var style$1 = $(".vjs-styles-defaults");
+      if (!style$1) {
+        style$1 = createStyleElement$1("vjs-styles-defaults");
         var head = $("head");
         if (head) {
-          head.insertBefore(style, head.firstChild);
+          head.insertBefore(style$1, head.firstChild);
         }
-        setTextContent(style, "\n      .video-js {\n        width: 300px;\n        height: 150px;\n      }\n\n      .vjs-fluid:not(.vjs-audio-only-mode) {\n        padding-top: 56.25%\n      }\n    ");
+        setTextContent(style$1, "\n      .video-js {\n        width: 300px;\n        height: 150px;\n      }\n\n      .vjs-fluid:not(.vjs-audio-only-mode) {\n        padding-top: 56.25%\n      }\n    ");
       }
     }
     autoSetupTimeout(1, videojs);
@@ -45464,7 +45464,7 @@ var require_index_001 = __commonJS({
       };
       return SegmentLoader2;
     })(videojs.EventTarget);
-    function noop$4() {
+    function noop$5() {
     }
     var toTitleCase = function toTitleCase2(string) {
       if (typeof string !== "string") {
@@ -45884,7 +45884,7 @@ var require_index_001 = __commonJS({
       };
       _proto.setDuration = function setDuration(duration2, doneFn) {
         if (doneFn === void 0) {
-          doneFn = noop$4;
+          doneFn = noop$5;
         }
         pushQueue({
           type: "mediaSource",
@@ -45899,7 +45899,7 @@ var require_index_001 = __commonJS({
           error = null;
         }
         if (doneFn === void 0) {
-          doneFn = noop$4;
+          doneFn = noop$5;
         }
         if (typeof error !== "string") {
           error = void 0;
@@ -45914,7 +45914,7 @@ var require_index_001 = __commonJS({
       };
       _proto.removeAudio = function removeAudio(start2, end2, done) {
         if (done === void 0) {
-          done = noop$4;
+          done = noop$5;
         }
         if (!this.audioBuffered().length || this.audioBuffered().end(0) === 0) {
           done();
@@ -45930,7 +45930,7 @@ var require_index_001 = __commonJS({
       };
       _proto.removeVideo = function removeVideo(start2, end2, done) {
         if (done === void 0) {
-          done = noop$4;
+          done = noop$5;
         }
         if (!this.videoBuffered().length || this.videoBuffered().end(0) === 0) {
           done();
@@ -47702,11 +47702,11 @@ var require_index_001 = __commonJS({
           groups: {},
           tracks: {},
           activePlaylistLoader: null,
-          activeGroup: noop$4,
-          activeTrack: noop$4,
-          getActiveGroup: noop$4,
-          onGroupChanged: noop$4,
-          onTrackChanged: noop$4,
+          activeGroup: noop$5,
+          activeTrack: noop$5,
+          getActiveGroup: noop$5,
+          onGroupChanged: noop$5,
+          onTrackChanged: noop$5,
           lastTrack_: null,
           logger_: logger("MediaGroups[" + type + "]")
         };
@@ -84220,12 +84220,12 @@ var require_index_001 = __commonJS({
                   function getEnded() {
                     return element ? element.ended : null;
                   }
-                  function addEventListener(eventName, eventCallBack) {
+                  function addEventListener2(eventName, eventCallBack) {
                     if (element) {
                       element.addEventListener(eventName, eventCallBack);
                     }
                   }
-                  function removeEventListener(eventName, eventCallBack) {
+                  function removeEventListener2(eventName, eventCallBack) {
                     if (element) {
                       element.removeEventListener(eventName, eventCallBack);
                     }
@@ -84305,10 +84305,10 @@ var require_index_001 = __commonJS({
                   }
                   function _listenOnce(event2, callback) {
                     var func = function func2() {
-                      removeEventListener(event2, func2);
+                      removeEventListener2(event2, func2);
                       callback(event2);
                     };
-                    addEventListener(event2, func);
+                    addEventListener2(event2, func);
                   }
                   instance = {
                     initialize: initialize2,
@@ -84331,8 +84331,8 @@ var require_index_001 = __commonJS({
                     getTTMLRenderingDiv,
                     setTTMLRenderingDiv,
                     getPlaybackQuality,
-                    addEventListener,
-                    removeEventListener,
+                    addEventListener: addEventListener2,
+                    removeEventListener: removeEventListener2,
                     getReadyState,
                     getBufferRange,
                     getClientWidth,
@@ -92077,7 +92077,7 @@ var require_index_001 = __commonJS({
                     }
                     isBufferingCompleted = value;
                     if (isBufferingCompleted) {
-                      triggerEvent(_core_events_Events__WEBPACK_IMPORTED_MODULE_1__["default"].BUFFERING_COMPLETED);
+                      triggerEvent2(_core_events_Events__WEBPACK_IMPORTED_MODULE_1__["default"].BUFFERING_COMPLETED);
                     }
                   }
                   function reset2(errored) {
@@ -92129,7 +92129,7 @@ var require_index_001 = __commonJS({
                   function pruneAllSafely() {
                     return Promise.resolve();
                   }
-                  function triggerEvent(eventType, data2) {
+                  function triggerEvent2(eventType, data2) {
                     var payload = {};
                     eventBus.trigger(eventType, payload, {
                       streamId: streamInfo.id,
@@ -134511,16 +134511,16 @@ var require_index_001 = __commonJS({
         return this;
       }
     });
-    var context;
+    var context$1;
     var AudioContext = {
       getContext: function() {
-        if (context === void 0) {
-          context = new (window.AudioContext || window.webkitAudioContext)();
+        if (context$1 === void 0) {
+          context$1 = new (window.AudioContext || window.webkitAudioContext)();
         }
-        return context;
+        return context$1;
       },
       setContext: function(value) {
-        context = value;
+        context$1 = value;
       }
     };
     function AudioLoader(manager) {
@@ -143995,7 +143995,7 @@ spurious results.`);
     var canUseWeakSet = typeof WeakSet === "function";
     var canUseSymbol = typeof Symbol === "function" && typeof Symbol.for === "function";
     var canUseAsyncIteratorSymbol = canUseSymbol && Symbol.asyncIterator;
-    var canUseDOM$1 = typeof maybe$1(function() {
+    var canUseDOM$2 = typeof maybe$1(function() {
       return window.document.createElement;
     }) === "function";
     var usingJSDOM = (
@@ -144011,7 +144011,7 @@ spurious results.`);
         return navigator.userAgent.indexOf("jsdom") >= 0;
       }) || false
     );
-    var canUseLayoutEffect = (canUseDOM$1 || isReactNative) && !usingJSDOM;
+    var canUseLayoutEffect = (canUseDOM$2 || isReactNative) && !usingJSDOM;
     function isNonNullObject(obj) {
       return obj !== null && typeof obj === "object";
     }
@@ -144182,17 +144182,17 @@ spurious results.`);
         return false;
       }
     }
-    function noop$3() {
+    function noop$4() {
     }
-    const defaultDispose = noop$3;
+    const defaultDispose = noop$4;
     const _WeakRef = typeof WeakRef !== "undefined" ? WeakRef : function(value) {
       return { deref: () => value };
     };
     const _WeakMap = typeof WeakMap !== "undefined" ? WeakMap : Map;
     const _FinalizationRegistry = typeof FinalizationRegistry !== "undefined" ? FinalizationRegistry : function() {
       return {
-        register: noop$3,
-        unregister: noop$3
+        register: noop$4,
+        unregister: noop$4
       };
     };
     const finalizationBatchSize = 10024;
@@ -145353,11 +145353,11 @@ spurious results.`);
         return config2;
       };
     }
-    function makeInUseGetterFunction(defaultKey) {
+    function makeInUseGetterFunction(defaultKey2) {
       var map = /* @__PURE__ */ new Map();
       return function inUseGetterFunction(key) {
         if (key === void 0) {
-          key = defaultKey;
+          key = defaultKey2;
         }
         var inUse = map.get(key);
         if (!inUse) {
@@ -153166,7 +153166,7 @@ spurious results.`);
         usedOperationName
       );
     }
-    var useIsomorphicLayoutEffect$2 = canUseDOM$1 ? rehacktExports.useLayoutEffect : rehacktExports.useEffect;
+    var useIsomorphicLayoutEffect$2 = canUseDOM$2 ? rehacktExports.useLayoutEffect : rehacktExports.useEffect;
     var wrapperSymbol = Symbol.for("apollo.hook.wrappers");
     function wrapHook(hookName, useHook, clientOrObsQuery) {
       var queryManager = clientOrObsQuery["queryManager"];
@@ -153175,7 +153175,7 @@ spurious results.`);
       return wrapper ? wrapper(useHook) : useHook;
     }
     var hasOwnProperty = Object.prototype.hasOwnProperty;
-    function noop$2() {
+    function noop$3() {
     }
     var lastWatchOptions = Symbol();
     function useQuery(query, options2) {
@@ -153266,8 +153266,8 @@ spurious results.`);
       }, [observable]);
       useRegisterSSRObservable(observable, renderPromises, ssrAllowed);
       var result = useObservableSubscriptionResult(resultData, observable, client2, options2, watchQueryOptions, disableNetworkFetches, partialRefetch, isSyncSSR, {
-        onCompleted: options2.onCompleted || noop$2,
-        onError: options2.onError || noop$2
+        onCompleted: options2.onCompleted || noop$3,
+        onError: options2.onError || noop$3
       });
       return {
         result,
@@ -157894,12 +157894,485 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }
       return t2;
     }
+    function defaultKey(key) {
+      return "default" + key.charAt(0).toUpperCase() + key.substr(1);
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return typeof key === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (typeof input !== "object" || input === null) return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint);
+        if (typeof res !== "object") return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return String(input);
+    }
+    function useUncontrolledProp(propValue, defaultValue, handler) {
+      var wasPropRef = reactExports.useRef(propValue !== void 0);
+      var _useState = reactExports.useState(defaultValue), stateValue = _useState[0], setState = _useState[1];
+      var isProp = propValue !== void 0;
+      var wasProp = wasPropRef.current;
+      wasPropRef.current = isProp;
+      if (!isProp && wasProp && stateValue !== defaultValue) {
+        setState(defaultValue);
+      }
+      return [isProp ? propValue : stateValue, reactExports.useCallback(function(value) {
+        for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+          args[_key - 1] = arguments[_key];
+        }
+        if (handler) handler.apply(void 0, [value].concat(args));
+        setState(value);
+      }, [handler])];
+    }
+    function useUncontrolled(props, config2) {
+      return Object.keys(config2).reduce(function(result, fieldName) {
+        var _extends2;
+        var _ref3 = result, defaultValue = _ref3[defaultKey(fieldName)], propsValue = _ref3[fieldName], rest = _objectWithoutPropertiesLoose(_ref3, [defaultKey(fieldName), fieldName].map(_toPropertyKey));
+        var handlerName = config2[fieldName];
+        var _useUncontrolledProp = useUncontrolledProp(propsValue, defaultValue, props[handlerName]), value = _useUncontrolledProp[0], handler = _useUncontrolledProp[1];
+        return _extends$1({}, rest, (_extends2 = {}, _extends2[fieldName] = value, _extends2[handlerName] = handler, _extends2));
+      }, props);
+    }
     var ThemeContext$1 = /* @__PURE__ */ React$1.createContext({});
     ThemeContext$1.Consumer;
     ThemeContext$1.Provider;
     function useBootstrapPrefix(prefix2, defaultPrefix) {
       var prefixes2 = reactExports.useContext(ThemeContext$1);
       return prefix2 || prefixes2[defaultPrefix] || defaultPrefix;
+    }
+    var SelectableContext = /* @__PURE__ */ React$1.createContext(null);
+    var context = /* @__PURE__ */ React$1.createContext(null);
+    context.displayName = "AccordionContext";
+    var _excluded$q = ["as", "children", "eventKey", "onClick"];
+    function useAccordionToggle(eventKey, onClick) {
+      var contextEventKey = reactExports.useContext(context);
+      var onSelect = reactExports.useContext(SelectableContext);
+      return function(e) {
+        var eventKeyPassed = eventKey === contextEventKey ? null : eventKey;
+        if (onSelect) onSelect(eventKeyPassed, e);
+        if (onClick) onClick(e);
+      };
+    }
+    var AccordionToggle$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
+      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "button" : _ref$as, children = _ref3.children, eventKey = _ref3.eventKey, onClick = _ref3.onClick, props = _objectWithoutPropertiesLoose(_ref3, _excluded$q);
+      var accordionOnClick = useAccordionToggle(eventKey, onClick);
+      if (Component2 === "button") {
+        props.type = "button";
+      }
+      return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({
+        ref,
+        onClick: accordionOnClick
+      }, props), children);
+    });
+    function ownerDocument(node2) {
+      return node2 && node2.ownerDocument || document;
+    }
+    function ownerWindow(node2) {
+      var doc = ownerDocument(node2);
+      return doc && doc.defaultView || window;
+    }
+    function getComputedStyle$2(node2, psuedoElement) {
+      return ownerWindow(node2).getComputedStyle(node2, psuedoElement);
+    }
+    var rUpper = /([A-Z])/g;
+    function hyphenate(string) {
+      return string.replace(rUpper, "-$1").toLowerCase();
+    }
+    var msPattern = /^ms-/;
+    function hyphenateStyleName(string) {
+      return hyphenate(string).replace(msPattern, "-ms-");
+    }
+    var supportedTransforms = /^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i;
+    function isTransform(value) {
+      return !!(value && supportedTransforms.test(value));
+    }
+    function style(node2, property) {
+      var css3 = "";
+      var transforms = "";
+      if (typeof property === "string") {
+        return node2.style.getPropertyValue(hyphenateStyleName(property)) || getComputedStyle$2(node2).getPropertyValue(hyphenateStyleName(property));
+      }
+      Object.keys(property).forEach(function(key) {
+        var value = property[key];
+        if (!value && value !== 0) {
+          node2.style.removeProperty(hyphenateStyleName(key));
+        } else if (isTransform(key)) {
+          transforms += key + "(" + value + ") ";
+        } else {
+          css3 += hyphenateStyleName(key) + ": " + value + ";";
+        }
+      });
+      if (transforms) {
+        css3 += "transform: " + transforms + ";";
+      }
+      node2.style.cssText += ";" + css3;
+    }
+    const config$1 = {
+      disabled: false
+    };
+    const TransitionGroupContext = React$1.createContext(null);
+    var forceReflow = function forceReflow2(node2) {
+      return node2.scrollTop;
+    };
+    var UNMOUNTED = "unmounted";
+    var EXITED = "exited";
+    var ENTERING = "entering";
+    var ENTERED = "entered";
+    var EXITING = "exiting";
+    var Transition = /* @__PURE__ */ (function(_React$Component) {
+      _inheritsLoose$1(Transition2, _React$Component);
+      function Transition2(props, context2) {
+        var _this;
+        _this = _React$Component.call(this, props, context2) || this;
+        var parentGroup = context2;
+        var appear = parentGroup && !parentGroup.isMounting ? props.enter : props.appear;
+        var initialStatus;
+        _this.appearStatus = null;
+        if (props.in) {
+          if (appear) {
+            initialStatus = EXITED;
+            _this.appearStatus = ENTERING;
+          } else {
+            initialStatus = ENTERED;
+          }
+        } else {
+          if (props.unmountOnExit || props.mountOnEnter) {
+            initialStatus = UNMOUNTED;
+          } else {
+            initialStatus = EXITED;
+          }
+        }
+        _this.state = {
+          status: initialStatus
+        };
+        _this.nextCallback = null;
+        return _this;
+      }
+      Transition2.getDerivedStateFromProps = function getDerivedStateFromProps(_ref3, prevState) {
+        var nextIn = _ref3.in;
+        if (nextIn && prevState.status === UNMOUNTED) {
+          return {
+            status: EXITED
+          };
+        }
+        return null;
+      };
+      var _proto = Transition2.prototype;
+      _proto.componentDidMount = function componentDidMount() {
+        this.updateStatus(true, this.appearStatus);
+      };
+      _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+        var nextStatus = null;
+        if (prevProps !== this.props) {
+          var status = this.state.status;
+          if (this.props.in) {
+            if (status !== ENTERING && status !== ENTERED) {
+              nextStatus = ENTERING;
+            }
+          } else {
+            if (status === ENTERING || status === ENTERED) {
+              nextStatus = EXITING;
+            }
+          }
+        }
+        this.updateStatus(false, nextStatus);
+      };
+      _proto.componentWillUnmount = function componentWillUnmount() {
+        this.cancelNextCallback();
+      };
+      _proto.getTimeouts = function getTimeouts() {
+        var timeout2 = this.props.timeout;
+        var exit, enter, appear;
+        exit = enter = appear = timeout2;
+        if (timeout2 != null && typeof timeout2 !== "number") {
+          exit = timeout2.exit;
+          enter = timeout2.enter;
+          appear = timeout2.appear !== void 0 ? timeout2.appear : enter;
+        }
+        return {
+          exit,
+          enter,
+          appear
+        };
+      };
+      _proto.updateStatus = function updateStatus(mounting, nextStatus) {
+        if (mounting === void 0) {
+          mounting = false;
+        }
+        if (nextStatus !== null) {
+          this.cancelNextCallback();
+          if (nextStatus === ENTERING) {
+            if (this.props.unmountOnExit || this.props.mountOnEnter) {
+              var node2 = this.props.nodeRef ? this.props.nodeRef.current : ReactDOM.findDOMNode(this);
+              if (node2) forceReflow(node2);
+            }
+            this.performEnter(mounting);
+          } else {
+            this.performExit();
+          }
+        } else if (this.props.unmountOnExit && this.state.status === EXITED) {
+          this.setState({
+            status: UNMOUNTED
+          });
+        }
+      };
+      _proto.performEnter = function performEnter(mounting) {
+        var _this2 = this;
+        var enter = this.props.enter;
+        var appearing = this.context ? this.context.isMounting : mounting;
+        var _ref22 = this.props.nodeRef ? [appearing] : [ReactDOM.findDOMNode(this), appearing], maybeNode = _ref22[0], maybeAppearing = _ref22[1];
+        var timeouts2 = this.getTimeouts();
+        var enterTimeout = appearing ? timeouts2.appear : timeouts2.enter;
+        if (!mounting && !enter || config$1.disabled) {
+          this.safeSetState({
+            status: ENTERED
+          }, function() {
+            _this2.props.onEntered(maybeNode);
+          });
+          return;
+        }
+        this.props.onEnter(maybeNode, maybeAppearing);
+        this.safeSetState({
+          status: ENTERING
+        }, function() {
+          _this2.props.onEntering(maybeNode, maybeAppearing);
+          _this2.onTransitionEnd(enterTimeout, function() {
+            _this2.safeSetState({
+              status: ENTERED
+            }, function() {
+              _this2.props.onEntered(maybeNode, maybeAppearing);
+            });
+          });
+        });
+      };
+      _proto.performExit = function performExit() {
+        var _this3 = this;
+        var exit = this.props.exit;
+        var timeouts2 = this.getTimeouts();
+        var maybeNode = this.props.nodeRef ? void 0 : ReactDOM.findDOMNode(this);
+        if (!exit || config$1.disabled) {
+          this.safeSetState({
+            status: EXITED
+          }, function() {
+            _this3.props.onExited(maybeNode);
+          });
+          return;
+        }
+        this.props.onExit(maybeNode);
+        this.safeSetState({
+          status: EXITING
+        }, function() {
+          _this3.props.onExiting(maybeNode);
+          _this3.onTransitionEnd(timeouts2.exit, function() {
+            _this3.safeSetState({
+              status: EXITED
+            }, function() {
+              _this3.props.onExited(maybeNode);
+            });
+          });
+        });
+      };
+      _proto.cancelNextCallback = function cancelNextCallback() {
+        if (this.nextCallback !== null) {
+          this.nextCallback.cancel();
+          this.nextCallback = null;
+        }
+      };
+      _proto.safeSetState = function safeSetState(nextState, callback) {
+        callback = this.setNextCallback(callback);
+        this.setState(nextState, callback);
+      };
+      _proto.setNextCallback = function setNextCallback(callback) {
+        var _this4 = this;
+        var active = true;
+        this.nextCallback = function(event2) {
+          if (active) {
+            active = false;
+            _this4.nextCallback = null;
+            callback(event2);
+          }
+        };
+        this.nextCallback.cancel = function() {
+          active = false;
+        };
+        return this.nextCallback;
+      };
+      _proto.onTransitionEnd = function onTransitionEnd(timeout2, handler) {
+        this.setNextCallback(handler);
+        var node2 = this.props.nodeRef ? this.props.nodeRef.current : ReactDOM.findDOMNode(this);
+        var doesNotHaveTimeoutOrListener = timeout2 == null && !this.props.addEndListener;
+        if (!node2 || doesNotHaveTimeoutOrListener) {
+          setTimeout(this.nextCallback, 0);
+          return;
+        }
+        if (this.props.addEndListener) {
+          var _ref3 = this.props.nodeRef ? [this.nextCallback] : [node2, this.nextCallback], maybeNode = _ref3[0], maybeNextCallback = _ref3[1];
+          this.props.addEndListener(maybeNode, maybeNextCallback);
+        }
+        if (timeout2 != null) {
+          setTimeout(this.nextCallback, timeout2);
+        }
+      };
+      _proto.render = function render2() {
+        var status = this.state.status;
+        if (status === UNMOUNTED) {
+          return null;
+        }
+        var _this$props = this.props, children = _this$props.children;
+        _this$props.in;
+        _this$props.mountOnEnter;
+        _this$props.unmountOnExit;
+        _this$props.appear;
+        _this$props.enter;
+        _this$props.exit;
+        _this$props.timeout;
+        _this$props.addEndListener;
+        _this$props.onEnter;
+        _this$props.onEntering;
+        _this$props.onEntered;
+        _this$props.onExit;
+        _this$props.onExiting;
+        _this$props.onExited;
+        _this$props.nodeRef;
+        var childProps = _objectWithoutPropertiesLoose(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
+        return (
+          // allows for nested Transitions
+          /* @__PURE__ */ React$1.createElement(TransitionGroupContext.Provider, {
+            value: null
+          }, typeof children === "function" ? children(status, childProps) : React$1.cloneElement(React$1.Children.only(children), childProps))
+        );
+      };
+      return Transition2;
+    })(React$1.Component);
+    Transition.contextType = TransitionGroupContext;
+    Transition.propTypes = {};
+    function noop$2() {
+    }
+    Transition.defaultProps = {
+      in: false,
+      mountOnEnter: false,
+      unmountOnExit: false,
+      appear: false,
+      enter: true,
+      exit: true,
+      onEnter: noop$2,
+      onEntering: noop$2,
+      onEntered: noop$2,
+      onExit: noop$2,
+      onExiting: noop$2,
+      onExited: noop$2
+    };
+    Transition.UNMOUNTED = UNMOUNTED;
+    Transition.EXITED = EXITED;
+    Transition.ENTERING = ENTERING;
+    Transition.ENTERED = ENTERED;
+    Transition.EXITING = EXITING;
+    const canUseDOM$1 = !!(typeof window !== "undefined" && window.document && window.document.createElement);
+    var optionsSupported = false;
+    var onceSupported = false;
+    try {
+      var options$1 = {
+        get passive() {
+          return optionsSupported = true;
+        },
+        get once() {
+          return onceSupported = optionsSupported = true;
+        }
+      };
+      if (canUseDOM$1) {
+        window.addEventListener("test", options$1, options$1);
+        window.removeEventListener("test", options$1, true);
+      }
+    } catch (e) {
+    }
+    function addEventListener(node2, eventName, handler, options2) {
+      if (options2 && typeof options2 !== "boolean" && !onceSupported) {
+        var once2 = options2.once, capture = options2.capture;
+        var wrappedHandler = handler;
+        if (!onceSupported && once2) {
+          wrappedHandler = handler.__once || function onceHandler(event2) {
+            this.removeEventListener(eventName, onceHandler, capture);
+            handler.call(this, event2);
+          };
+          handler.__once = wrappedHandler;
+        }
+        node2.addEventListener(eventName, wrappedHandler, optionsSupported ? options2 : capture);
+      }
+      node2.addEventListener(eventName, handler, options2);
+    }
+    function removeEventListener(node2, eventName, handler, options2) {
+      var capture = options2 && typeof options2 !== "boolean" ? options2.capture : options2;
+      node2.removeEventListener(eventName, handler, capture);
+      if (handler.__once) {
+        node2.removeEventListener(eventName, handler.__once, capture);
+      }
+    }
+    function listen(node2, eventName, handler, options2) {
+      addEventListener(node2, eventName, handler, options2);
+      return function() {
+        removeEventListener(node2, eventName, handler, options2);
+      };
+    }
+    function triggerEvent(node2, eventName, bubbles, cancelable) {
+      if (cancelable === void 0) {
+        cancelable = true;
+      }
+      if (node2) {
+        var event2 = document.createEvent("HTMLEvents");
+        event2.initEvent(eventName, bubbles, cancelable);
+        node2.dispatchEvent(event2);
+      }
+    }
+    function parseDuration$1(node2) {
+      var str = style(node2, "transitionDuration") || "";
+      var mult = str.indexOf("ms") === -1 ? 1e3 : 1;
+      return parseFloat(str) * mult;
+    }
+    function emulateTransitionEnd(element, duration2, padding) {
+      if (padding === void 0) {
+        padding = 5;
+      }
+      var called = false;
+      var handle = setTimeout(function() {
+        if (!called) triggerEvent(element, "transitionend", true);
+      }, duration2 + padding);
+      var remove = listen(element, "transitionend", function() {
+        called = true;
+      }, {
+        once: true
+      });
+      return function() {
+        clearTimeout(handle);
+        remove();
+      };
+    }
+    function transitionEnd(element, handler, duration2, padding) {
+      if (duration2 == null) duration2 = parseDuration$1(element) || 0;
+      var removeEmulate = emulateTransitionEnd(element, duration2, padding);
+      var remove = listen(element, "transitionend", handler);
+      return function() {
+        removeEmulate();
+        remove();
+      };
+    }
+    function parseDuration(node2, property) {
+      var str = style(node2, property) || "";
+      var mult = str.indexOf("ms") === -1 ? 1e3 : 1;
+      return parseFloat(str) * mult;
+    }
+    function transitionEndListener(element, handler) {
+      var duration2 = parseDuration(element, "transitionDuration");
+      var delay = parseDuration(element, "transitionDelay");
+      var remove = transitionEnd(element, function(e) {
+        if (e.target === element) {
+          remove();
+          handler(e);
+        }
+      }, duration2 + delay);
     }
     function createChainedFunction() {
       for (var _len = arguments.length, funcs = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -157921,6 +158394,114 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         };
       }, null);
     }
+    function triggerBrowserReflow(node2) {
+      node2.offsetHeight;
+    }
+    var _excluded$p = ["onEnter", "onEntering", "onEntered", "onExit", "onExiting", "className", "children", "dimension", "getDimensionValue"];
+    var _collapseStyles;
+    var MARGINS = {
+      height: ["marginTop", "marginBottom"],
+      width: ["marginLeft", "marginRight"]
+    };
+    function getDefaultDimensionValue(dimension, elem) {
+      var offset2 = "offset" + dimension[0].toUpperCase() + dimension.slice(1);
+      var value = elem[offset2];
+      var margins = MARGINS[dimension];
+      return value + // @ts-ignore
+      parseInt(style(elem, margins[0]), 10) + // @ts-ignore
+      parseInt(style(elem, margins[1]), 10);
+    }
+    var collapseStyles = (_collapseStyles = {}, _collapseStyles[EXITED] = "collapse", _collapseStyles[EXITING] = "collapsing", _collapseStyles[ENTERING] = "collapsing", _collapseStyles[ENTERED] = "collapse show", _collapseStyles);
+    var defaultProps$4 = {
+      in: false,
+      timeout: 300,
+      mountOnEnter: false,
+      unmountOnExit: false,
+      appear: false,
+      getDimensionValue: getDefaultDimensionValue
+    };
+    var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
+      var onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, className = _ref3.className, children = _ref3.children, _ref$dimension = _ref3.dimension, dimension = _ref$dimension === void 0 ? "height" : _ref$dimension, _ref$getDimensionValu = _ref3.getDimensionValue, getDimensionValue = _ref$getDimensionValu === void 0 ? getDefaultDimensionValue : _ref$getDimensionValu, props = _objectWithoutPropertiesLoose(_ref3, _excluded$p);
+      var computedDimension = typeof dimension === "function" ? dimension() : dimension;
+      var handleEnter = reactExports.useMemo(function() {
+        return createChainedFunction(function(elem) {
+          elem.style[computedDimension] = "0";
+        }, onEnter);
+      }, [computedDimension, onEnter]);
+      var handleEntering = reactExports.useMemo(function() {
+        return createChainedFunction(function(elem) {
+          var scroll = "scroll" + computedDimension[0].toUpperCase() + computedDimension.slice(1);
+          elem.style[computedDimension] = elem[scroll] + "px";
+        }, onEntering);
+      }, [computedDimension, onEntering]);
+      var handleEntered = reactExports.useMemo(function() {
+        return createChainedFunction(function(elem) {
+          elem.style[computedDimension] = null;
+        }, onEntered);
+      }, [computedDimension, onEntered]);
+      var handleExit = reactExports.useMemo(function() {
+        return createChainedFunction(function(elem) {
+          elem.style[computedDimension] = getDimensionValue(computedDimension, elem) + "px";
+          triggerBrowserReflow(elem);
+        }, onExit);
+      }, [onExit, getDimensionValue, computedDimension]);
+      var handleExiting = reactExports.useMemo(function() {
+        return createChainedFunction(function(elem) {
+          elem.style[computedDimension] = null;
+        }, onExiting);
+      }, [computedDimension, onExiting]);
+      return /* @__PURE__ */ React$1.createElement(
+        Transition,
+        _extends$1({
+          ref,
+          addEndListener: transitionEndListener
+        }, props, {
+          "aria-expanded": props.role ? props.in : null,
+          onEnter: handleEnter,
+          onEntering: handleEntering,
+          onEntered: handleEntered,
+          onExit: handleExit,
+          onExiting: handleExiting
+        }),
+        function(state, innerProps) {
+          return /* @__PURE__ */ React$1.cloneElement(children, _extends$1({}, innerProps, {
+            className: cx(className, children.props.className, collapseStyles[state], computedDimension === "width" && "width")
+          }));
+        }
+      );
+    });
+    Collapse.defaultProps = defaultProps$4;
+    var _excluded$o = ["children", "eventKey"];
+    var AccordionCollapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
+      var children = _ref3.children, eventKey = _ref3.eventKey, props = _objectWithoutPropertiesLoose(_ref3, _excluded$o);
+      var contextEventKey = reactExports.useContext(context);
+      return /* @__PURE__ */ React$1.createElement(SelectableContext.Provider, {
+        value: null
+      }, /* @__PURE__ */ React$1.createElement(Collapse, _extends$1({
+        ref,
+        in: contextEventKey === eventKey
+      }, props), /* @__PURE__ */ React$1.createElement("div", null, React$1.Children.only(children))));
+    });
+    AccordionCollapse.displayName = "AccordionCollapse";
+    var _excluded$n = ["as", "activeKey", "bsPrefix", "children", "className", "onSelect"];
+    var Accordion = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
+      var _useUncontrolled = useUncontrolled(props, {
+        activeKey: "onSelect"
+      }), _useUncontrolled$as = _useUncontrolled.as, Component2 = _useUncontrolled$as === void 0 ? "div" : _useUncontrolled$as, activeKey = _useUncontrolled.activeKey, bsPrefix = _useUncontrolled.bsPrefix, children = _useUncontrolled.children, className = _useUncontrolled.className, onSelect = _useUncontrolled.onSelect, controlledProps = _objectWithoutPropertiesLoose(_useUncontrolled, _excluded$n);
+      var finalClassName = cx(className, useBootstrapPrefix(bsPrefix, "accordion"));
+      return /* @__PURE__ */ React$1.createElement(context.Provider, {
+        value: activeKey || null
+      }, /* @__PURE__ */ React$1.createElement(SelectableContext.Provider, {
+        value: onSelect || null
+      }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1({
+        ref
+      }, controlledProps, {
+        className: finalClassName
+      }), children)));
+    });
+    Accordion.displayName = "Accordion";
+    Accordion.Toggle = AccordionToggle$1;
+    Accordion.Collapse = AccordionCollapse;
     var rHyphen = /-(.)/g;
     function camelize(string) {
       return string.replace(rHyphen, function(_, chr) {
@@ -173037,6 +173618,14 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         return ret;
       }
     }
+    function useFirstMountState() {
+      var isFirst = reactExports.useRef(true);
+      if (isFirst.current) {
+        isFirst.current = false;
+        return true;
+      }
+      return isFirst.current;
+    }
     function on(obj) {
       var args = [];
       for (var _i2 = 1; _i2 < arguments.length; _i2++) {
@@ -173147,34 +173736,34 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       if (height > width) orientation = "portrait";
       return { width, height, orientation };
     }
-    const useGlobalFilterState$1 = create((set2, get2) => ({
-      currentSavedFilter: void 0,
-      setCurrentSavedFilter: (filter) => set2({ currentSavedFilter: filter }),
-      currentSearchableFilter: void 0,
-      loading: false,
-      setLoading: (loading2) => set2({ loading: loading2 }),
+    function useConditionalMemo(factory2, deps, shouldRecompute) {
+      const valueRef = reactExports.useRef();
+      const firstMount = useFirstMountState();
+      shouldRecompute = shouldRecompute || firstMount;
+      return reactExports.useMemo(() => {
+        if (shouldRecompute) {
+          valueRef.current = factory2();
+        }
+        return valueRef.current;
+      }, [shouldRecompute, ...deps || []]);
+    }
+    const useGlobalFilterState = create(() => ({
       neverLoaded: true,
-      setNeverLoaded: (neverLoaded) => set2({ neverLoaded }),
       loadingResponsibilityClaimed: false,
+      currentSavedFilter: void 0,
+      loading: false,
       error: void 0,
-      setError: (error) => set2({ error })
+      randomSeed: getRandomSeed()
     }));
     function useMediaItemFilters() {
       const {
+        neverLoaded,
         currentSavedFilter,
-        setCurrentSavedFilter,
         loading: mediaItemFiltersLoading,
-        setLoading: setMediaItemFiltersLoading,
-        neverLoaded: mediaItemFiltersNeverLoaded,
-        setNeverLoaded: setMediaItemFiltersNeverLoaded,
         error: mediaItemFiltersError,
-        setError: setMediaItemFiltersError
-      } = useGlobalFilterState$1();
+        randomSeed
+      } = useGlobalFilterState();
       const apolloClient = useApolloClient();
-      const [isResponsibleForLoading] = reactExports.useState(!useGlobalFilterState$1.getState().loadingResponsibilityClaimed);
-      if (isResponsibleForLoading && !useGlobalFilterState$1.getState().loadingResponsibilityClaimed) {
-        useGlobalFilterState$1.setState({ loadingResponsibilityClaimed: true });
-      }
       const {
         general: { stashDefaultScenesFilter, availableSavedSceneFilters, availableSavedMarkerFilters },
         tv: { defaultFilterId: stashTvDefaultFilterId },
@@ -173186,65 +173775,76 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       if (onlyShowMatchingOrientation && orientation !== "square") {
         limitOrientation = orientation;
       }
+      const currentSearchableFilter = reactExports.useMemo(
+        () => currentSavedFilter ? convertSavedToSearchableFilter(currentSavedFilter) : void 0,
+        [currentSavedFilter, isRandomised && randomSeed, limitOrientation]
+      );
+      const lastLoadedCurrentMediaItemFilter = useConditionalMemo(
+        () => currentSearchableFilter,
+        [currentSearchableFilter],
+        !mediaItemFiltersLoading
+      );
       reactExports.useEffect(() => {
-        if (!isResponsibleForLoading) return;
-        useGlobalFilterState$1.setState({
-          currentSearchableFilter: currentSavedFilter ? convertSavedToSearchableFilter(currentSavedFilter) : void 0
-        });
-      }, [currentSavedFilter, isRandomised, onlyShowMatchingOrientation && orientation]);
-      reactExports.useEffect(() => {
-        if (stashConfigLoading || currentSavedFilter || !isResponsibleForLoading) return;
+        if (useGlobalFilterState.getState().loadingResponsibilityClaimed || stashConfigLoading) return;
+        useGlobalFilterState.setState({ loadingResponsibilityClaimed: true, loading: true });
         async function setCurrentMediaItemFilterOnInitialLoad() {
-          setMediaItemFiltersLoading(true);
-          setMediaItemFiltersNeverLoaded(false);
           try {
             if (stashTvDefaultFilterId) {
               await setCurrentMediaItemFilterById(stashTvDefaultFilterId);
             } else if (stashDefaultScenesFilter) {
-              setCurrentSavedFilter({
-                ...stashDefaultScenesFilter,
-                filter: ""
-                // The filter prop is deprecated in favour of find_filter and object_filter, and it's not 
-                // provided when getting a default saved filter so we can safely set an empty string here.
+              useGlobalFilterState.setState({
+                currentSavedFilter: {
+                  ...stashDefaultScenesFilter,
+                  filter: ""
+                  // The filter prop is deprecated in favour of find_filter and object_filter, and it's not 
+                  // provided when getting a default saved filter so we can safely set an empty string here.
+                }
               });
             } else {
-              setCurrentSavedFilter({
-                id: "",
-                mode: FilterMode.Scenes,
-                name: "",
-                filter: ""
-                // See the comment above about the `filter` prop
+              useGlobalFilterState.setState({
+                currentSavedFilter: {
+                  id: "",
+                  mode: FilterMode.Scenes,
+                  name: "",
+                  filter: ""
+                  // See the comment above about the `filter` prop
+                }
               });
             }
           } catch (error) {
-            setMediaItemFiltersError(error);
+            useGlobalFilterState.setState({ error });
           }
-          setMediaItemFiltersLoading(false);
+          useGlobalFilterState.setState({ loading: false });
         }
         setCurrentMediaItemFilterOnInitialLoad();
-      }, [stashConfigLoading, stashTvDefaultFilterId, stashDefaultScenesFilter]);
+      }, [neverLoaded, stashConfigLoading, stashTvDefaultFilterId, stashDefaultScenesFilter]);
       async function setCurrentMediaItemFilterById(id) {
-        setMediaItemFiltersLoading(true);
+        useGlobalFilterState.setState({ loading: true });
         const { name, entityType } = availableSavedFilters.find((f) => f.id === id) || {};
         if (name && entityType) {
-          setCurrentSavedFilter({
-            id,
-            mode: entityType === "scene" ? FilterMode.Scenes : FilterMode.SceneMarkers,
-            name,
-            filter: ""
-            // See the comment above about the `filter` prop
+          useGlobalFilterState.setState({
+            currentSavedFilter: {
+              id,
+              mode: entityType === "scene" ? FilterMode.Scenes : FilterMode.SceneMarkers,
+              name,
+              filter: ""
+              // See the comment above about the `filter` prop
+            }
           });
         }
         const mediaItemFiltersStashResponse = await fetchSavedFilterFromStash(apolloClient, id);
         if (!mediaItemFiltersStashResponse) {
           return void 0;
         }
-        setCurrentSavedFilter({
-          ...mediaItemFiltersStashResponse,
-          filter: ""
-          // See the comment above about the `filter` prop
+        useGlobalFilterState.setState({
+          randomSeed: getRandomSeed(),
+          currentSavedFilter: {
+            ...mediaItemFiltersStashResponse,
+            filter: ""
+            // See the comment above about the `filter` prop
+          },
+          loading: false
         });
-        setMediaItemFiltersLoading(false);
       }
       async function fetchSavedFilterFromStash(apolloClient2, filterId) {
         const { data: data2 } = await apolloClient2.query({
@@ -173259,8 +173859,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           filter.configureFromSavedFilter(savedFilter);
           const updatedFilter = { ...filter.makeFindFilter() };
           if (updatedFilter.sort?.match(/^random_\d*$/) || isRandomised) {
-            let seed = Math.round(Math.random() * 1e6);
-            updatedFilter.sort = `random_${seed}`;
+            updatedFilter.sort = `random_${randomSeed}`;
           }
           return updatedFilter;
         }
@@ -173333,64 +173932,63 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         },
         [availableSavedSceneFilters, stashTvDefaultFilterId]
       );
-      const [lastLoadedCurrentMediaItemFilter, setLastLoadedCurrentMediaItemFilter] = reactExports.useState(useGlobalFilterState$1.getState().currentSearchableFilter);
-      reactExports.useEffect(() => {
-        if (mediaItemFiltersLoading) return;
-        setLastLoadedCurrentMediaItemFilter(useGlobalFilterState$1.getState().currentSearchableFilter);
-      }, [useGlobalFilterState$1.getState().currentSearchableFilter, mediaItemFiltersLoading]);
       return {
-        mediaItemFiltersLoading: mediaItemFiltersLoading || mediaItemFiltersNeverLoaded,
+        mediaItemFiltersLoading,
+        mediaItemFiltersNeverLoaded: neverLoaded,
         mediaItemFiltersError,
-        currentMediaItemFilter: useGlobalFilterState$1.getState().currentSearchableFilter,
+        currentMediaItemFilter: currentSearchableFilter,
         lastLoadedCurrentMediaItemFilter,
-        clearCurrentMediaItemFilter: () => setCurrentSavedFilter(void 0),
+        clearCurrentMediaItemFilter: () => useGlobalFilterState.setState({ currentSavedFilter: void 0 }),
         setCurrentMediaItemFilterById,
         availableSavedFilters
       };
     }
+    function getRandomSeed() {
+      return Math.round(Math.random() * 1e6);
+    }
     const mediaItemsPerPage = 20;
-    const useGlobalFilterState = create((set2, get2) => ({
-      response: null,
-      mediaItems: []
-    }));
     function useMediaItems() {
       const { lastLoadedCurrentMediaItemFilter } = useMediaItemFilters();
       const { debugMode, scenePreviewOnly: previewOnly } = useAppStateStore();
-      const [isResponsibleForLoading] = reactExports.useState(!useGlobalFilterState.getState().response);
+      const [neverLoaded, setNeverLoaded] = reactExports.useState(true);
       let response;
       let mediaItems;
-      if (isResponsibleForLoading) {
-        if (!lastLoadedCurrentMediaItemFilter || lastLoadedCurrentMediaItemFilter.entityType === "scene") {
-          response = useFindScenesForTvQuery({
-            variables: {
-              filter: {
-                ...lastLoadedCurrentMediaItemFilter?.generalFilter,
-                // We manage pagination ourselves and so override whatever the saved filter had
-                page: 1,
-                per_page: mediaItemsPerPage
-              },
-              scene_filter: lastLoadedCurrentMediaItemFilter?.entityFilter
+      if (!lastLoadedCurrentMediaItemFilter || lastLoadedCurrentMediaItemFilter.entityType === "scene") {
+        const scenesResponse = useFindScenesForTvQuery({
+          variables: {
+            filter: {
+              ...lastLoadedCurrentMediaItemFilter?.generalFilter,
+              // We manage pagination ourselves and so override whatever the saved filter had
+              page: 1,
+              per_page: mediaItemsPerPage
             },
-            skip: !lastLoadedCurrentMediaItemFilter
-          });
-          mediaItems = response.data?.findScenes.scenes.map((scene) => ({
+            scene_filter: lastLoadedCurrentMediaItemFilter?.entityFilter
+          },
+          skip: !lastLoadedCurrentMediaItemFilter
+        });
+        mediaItems = reactExports.useMemo(
+          () => scenesResponse.data?.findScenes.scenes.map((scene) => ({
             id: `scene:${scene.id}`,
             entityType: "scene",
             entity: scene
-          })) || [];
-        } else if (lastLoadedCurrentMediaItemFilter.entityType === "marker") {
-          response = useFindSceneMarkersForTvQuery({
-            variables: {
-              filter: {
-                ...lastLoadedCurrentMediaItemFilter.generalFilter,
-                // We manage pagination ourselves and so override whatever the saved filter had
-                page: 1,
-                per_page: mediaItemsPerPage
-              },
-              scene_marker_filter: lastLoadedCurrentMediaItemFilter.entityFilter
-            }
-          });
-          mediaItems = response.data?.findSceneMarkers.scene_markers.map((marker) => ({
+          })) || [],
+          [scenesResponse.data?.findScenes.scenes]
+        );
+        response = scenesResponse;
+      } else if (lastLoadedCurrentMediaItemFilter.entityType === "marker") {
+        const markersResponse = useFindSceneMarkersForTvQuery({
+          variables: {
+            filter: {
+              ...lastLoadedCurrentMediaItemFilter.generalFilter,
+              // We manage pagination ourselves and so override whatever the saved filter had
+              page: 1,
+              per_page: mediaItemsPerPage
+            },
+            scene_marker_filter: lastLoadedCurrentMediaItemFilter.entityFilter
+          }
+        });
+        mediaItems = reactExports.useMemo(
+          () => markersResponse.data?.findSceneMarkers.scene_markers.map((marker) => ({
             id: `marker:${marker.id}`,
             entityType: "marker",
             entity: {
@@ -173401,27 +173999,25 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
                 return endTime - marker.seconds;
               }
             }
-          })) || [];
-        } else {
-          console.info("lastLoadedCurrentMediaItemFilter:", lastLoadedCurrentMediaItemFilter);
-          throw new Error("Unsupported media item filter entity type");
-        }
-        useGlobalFilterState.setState({ mediaItems, response });
-        reactExports.useEffect(() => {
-          useAppStateStore.getState().debugMode && console.log("lastLoadedCurrentMediaItemFilter changed, resetting media items", lastLoadedCurrentMediaItemFilter);
-        }, [lastLoadedCurrentMediaItemFilter]);
+          })) || [],
+          [markersResponse.data?.findSceneMarkers.scene_markers]
+        );
+        response = markersResponse;
       } else {
-        response = useGlobalFilterState((state) => state.response);
-        mediaItems = useGlobalFilterState((state) => state.mediaItems);
+        console.info("lastLoadedCurrentMediaItemFilter:", lastLoadedCurrentMediaItemFilter);
+        throw new Error("Unsupported media item filter entity type");
       }
-      if (response === null) {
-        throw new Error("Media items response is not initialized");
-      }
+      reactExports.useEffect(() => {
+        useAppStateStore.getState().debugMode && console.log("lastLoadedCurrentMediaItemFilter changed, resetting media items", lastLoadedCurrentMediaItemFilter);
+      }, [lastLoadedCurrentMediaItemFilter]);
       const {
         fetchMore,
         error: mediaItemsError,
         loading: mediaItemsLoading
       } = response;
+      reactExports.useEffect(() => {
+        mediaItems.length && setNeverLoaded(false);
+      }, [mediaItems.length]);
       const [previewLengths, setPreviewLengths] = reactExports.useState({});
       reactExports.useEffect(() => {
         if (!previewOnly) return;
@@ -173504,8 +174100,11 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         }
       }
       return {
-        mediaItems: mediaItems.map(
-          (mediaItem) => previewOnly ? makeMediaItemPreviewOnly(mediaItem) : mediaItem
+        mediaItems: reactExports.useMemo(
+          () => mediaItems.map(
+            (mediaItem) => previewOnly ? makeMediaItemPreviewOnly(mediaItem) : mediaItem
+          ),
+          [mediaItems, previewOnly, hashObject(previewLengths)]
         ),
         loadMoreMediaItems: () => {
           const nextPage = mediaItems.length ? Math.ceil(mediaItems.length / mediaItemsPerPage) + 1 : 1;
@@ -173531,7 +174130,8 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           });
         },
         mediaItemsError,
-        mediaItemsLoading
+        mediaItemsLoading,
+        mediaItemsNeverLoaded: neverLoaded
       };
     }
     const videoItemHeight = "calc(var(--y-unit-large) * 100)";
@@ -177649,7 +178249,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       return hideSelectedOptions;
     };
     var instanceId = 1;
-    var Select = /* @__PURE__ */ (function(_Component) {
+    var Select$1 = /* @__PURE__ */ (function(_Component) {
       _inherits(Select2, _Component);
       var _super = _createSuper(Select2);
       function Select2(_props) {
@@ -178936,14 +179536,28 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }]);
       return Select2;
     })(reactExports.Component);
-    Select.defaultProps = defaultProps;
+    Select$1.defaultProps = defaultProps;
     var StateManagedSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
       var baseSelectProps = useStateManager(props);
-      return /* @__PURE__ */ reactExports.createElement(Select, _extends$1({
+      return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1({
         ref
       }, baseSelectProps));
     });
     var StateManagedSelect$1 = StateManagedSelect;
+    const Select = (props) => {
+      const { className, ...otherProps } = props;
+      const hasTouchScreen = useMedia("(pointer: coarse)");
+      const isSearchable = props.isSearchable !== void 0 ? props.isSearchable : !hasTouchScreen;
+      return /* @__PURE__ */ React$1.createElement(
+        StateManagedSelect$1,
+        {
+          className: cx("Select", "react-select", className),
+          classNamePrefix: "react-select",
+          isSearchable,
+          ...otherProps
+        }
+      );
+    };
     var updateQueue = makeQueue();
     var raf = (fn) => schedule(fn, updateQueue);
     var writeQueue = makeQueue();
@@ -182280,7 +182894,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         return () => scrollElement.removeEventListener("scroll", handleScroll);
       }, [forceLandscape]);
       let closeButton = null;
-      if (closeDisabled === "loading") {
+      if (closeDisabled === "because loading") {
         closeButton = /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { className: "action", icon: faSpinner, pulse: true });
       } else if (!closeDisabled) {
         closeButton = /* @__PURE__ */ React$1.createElement(
@@ -182334,9 +182948,8 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         autoPlay,
         set: setAppSetting
       } = useAppStateStore();
-      const { mediaItems, mediaItemsLoading } = useMediaItems();
+      const { mediaItems, mediaItemsLoading, mediaItemsNeverLoaded, mediaItemsError } = useMediaItems();
       const noMediaItemsAvailable = !mediaItemFiltersLoading && !mediaItemsLoading && mediaItems.length === 0;
-      const hasTouchScreen = useMedia("(pointer: coarse)");
       const allFilters = reactExports.useMemo(
         () => availableSavedFilters.map((filter) => ({
           value: filter.id,
@@ -182398,21 +183011,27 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           titleRef.current?.removeEventListener("pointerup", handlePointerUp);
         };
       }, [titleRef]);
+      const isFirstLoad = mediaItemsNeverLoaded && !mediaItemFiltersError && !mediaItemsError;
+      let disableClose = false;
+      if (!isFirstLoad && (mediaItemFiltersLoading || mediaItemsLoading)) {
+        disableClose = "because loading";
+      } else if (!isFirstLoad && noMediaItemsAvailable) {
+        disableClose = true;
+      } else if (mediaItemsError || mediaItemFiltersError) {
+        disableClose = true;
+      }
       return /* @__PURE__ */ React$1.createElement(
         SideDrawer,
         {
           title: /* @__PURE__ */ React$1.createElement("span", { ref: titleRef }, "Settings"),
-          closeDisabled: mediaItemFiltersLoading || mediaItemsLoading ? "loading" : noMediaItemsAvailable || Boolean(mediaItemFiltersError),
+          closeDisabled: disableClose,
           className: "SettingsTab"
         },
-        /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "filter" }, "Media Filter"), !mediaItemFiltersLoading || allFiltersGrouped.length ? /* @__PURE__ */ React$1.createElement(
-          StateManagedSelect$1,
+        /* @__PURE__ */ React$1.createElement(Accordion, { defaultActiveKey: "0" }, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "0" }, "Media Feed"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "0" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "filter" }, "Media Filter"), !mediaItemFiltersLoading || allFiltersGrouped.length ? /* @__PURE__ */ React$1.createElement(
+          Select,
           {
             inputId: "filter",
-            className: cx("react-select"),
             isLoading: mediaItemFiltersLoading || mediaItemsLoading,
-            classNamePrefix: "react-select",
-            isSearchable: !hasTouchScreen,
             value: selectedFilter ?? null,
             onChange: (newValue) => newValue && setCurrentMediaItemFilterById(newValue.value),
             options: allFiltersGrouped,
@@ -182422,8 +183041,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
               SingleValue: (props) => /* @__PURE__ */ React$1.createElement(components.SingleValue, { ...props }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: props.data.filterType === "scene" ? faCirclePlay : faLocationDot }), props.data.label)
             }
           }
-        ) : /* @__PURE__ */ React$1.createElement("div", null, "Loading..."), /* @__PURE__ */ React$1.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), mediaItemFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))),
-        selectedFilter && !selectedFilter.isStashTvDefaultFilter && !noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
+        ) : /* @__PURE__ */ React$1.createElement("div", null, "Loading..."), /* @__PURE__ */ React$1.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), mediaItemFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))), selectedFilter && !selectedFilter.isStashTvDefaultFilter && !noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
           Button,
           {
             onClick: () => {
@@ -182438,8 +183056,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           'Set "',
           selectedFilter?.label,
           '" as the default filter'
-        ), /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement("small", null, "Set the currently selected scene filter as the default filter when opening Stash TV."))),
-        /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, currentMediaItemFilter?.savedFilter?.find_filter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
+        ), /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement("small", null, "Set the currently selected scene filter as the default filter when opening Stash TV."))), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, currentMediaItemFilter?.savedFilter?.find_filter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
           FormImpl.Switch,
           {
             id: "randomise-filter",
@@ -182450,14 +183067,34 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
               setAppSetting("isRandomised", event2.target.checked);
             }
           }
-        ), /* @__PURE__ */ React$1.createElement("small", null, "Randomise the order of scenes in the filter."))),
-        /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "subtitle-language" }, "Subtitle language"), /* @__PURE__ */ React$1.createElement(
-          StateManagedSelect$1,
+        ), /* @__PURE__ */ React$1.createElement("small", null, "Randomise the order of scenes in the filter."))), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
+          FormImpl.Switch,
+          {
+            id: "only-show-matching-orientation",
+            label: "Only Show Scenes Matching Orientation",
+            checked: onlyShowMatchingOrientation,
+            onChange: (event2) => setAppSetting("onlyShowMatchingOrientation", event2.target.checked)
+          }
+        ), /* @__PURE__ */ React$1.createElement("small", null, "Limit scenes to only those in the same orientation as the current window.")))), /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "1" }, "Media Player"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "1" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
+          FormImpl.Switch,
+          {
+            id: "auto-play",
+            label: "Auto Play",
+            checked: autoPlay,
+            onChange: (event2) => setAppSetting("autoPlay", event2.target.checked)
+          }
+        ), /* @__PURE__ */ React$1.createElement("small", null, "Automatically play scenes.")), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
+          FormImpl.Switch,
+          {
+            id: "scene-preview-only",
+            label: "Scene Preview Only",
+            checked: scenePreviewOnly,
+            onChange: (event2) => setAppSetting("scenePreviewOnly", event2.target.checked)
+          }
+        ), /* @__PURE__ */ React$1.createElement("small", null, "Play a short preview rather than the full scene. (Requires the preview files to have been generated in Stash for a scene otherwise the full scene will be shown.)")), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "subtitle-language" }, "Subtitle language"), /* @__PURE__ */ React$1.createElement(
+          Select,
           {
             inputId: "subtitle-language",
-            className: cx("react-select"),
-            classNamePrefix: "react-select",
-            isSearchable: !hasTouchScreen,
             value: defaultSubtitles,
             onChange: (newValue) => {
               if (!newValue) return;
@@ -182471,35 +183108,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             options: subtitlesList,
             placeholder: "Select a subtitle language"
           }
-        ), /* @__PURE__ */ React$1.createElement("small", null, "Select the language to use for subtitles if available.")),
-        /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
-          FormImpl.Switch,
-          {
-            id: "scene-preview-only",
-            label: "Scene Preview Only",
-            checked: scenePreviewOnly,
-            onChange: (event2) => setAppSetting("scenePreviewOnly", event2.target.checked)
-          }
-        ), /* @__PURE__ */ React$1.createElement("small", null, "Play a short preview rather than the full scene. (Requires the preview files to have been generated in Stash for a scene otherwise the full scene will be shown.)")),
-        /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
-          FormImpl.Switch,
-          {
-            id: "only-show-matching-orientation",
-            label: "Only Show Scenes Matching Orientation",
-            checked: onlyShowMatchingOrientation,
-            onChange: (event2) => setAppSetting("onlyShowMatchingOrientation", event2.target.checked)
-          }
-        ), /* @__PURE__ */ React$1.createElement("small", null, "Limit scenes to only those in the same orientation as the current window.")),
-        /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
-          FormImpl.Switch,
-          {
-            id: "auto-play",
-            label: "Auto Play",
-            checked: autoPlay,
-            onChange: (event2) => setAppSetting("autoPlay", event2.target.checked)
-          }
-        ), /* @__PURE__ */ React$1.createElement("small", null, "Automatically play scenes.")),
-        /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
+        ), /* @__PURE__ */ React$1.createElement("small", null, "Select the language to use for subtitles if available.")), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
           FormImpl.Switch,
           {
             id: "crt-effect",
@@ -182507,15 +183116,13 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             checked: crtEffect,
             onChange: (event2) => setAppSetting("crtEffect", event2.target.checked)
           }
-        ), /* @__PURE__ */ React$1.createElement("small", null, "Emulate the visual effects of an old CRT television.")),
-        /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement("label", null, /* @__PURE__ */ React$1.createElement(
+        ), /* @__PURE__ */ React$1.createElement("small", null, "Emulate the visual effects of an old CRT television.")))), /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "2" }, "Help"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "2" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item show-guide-overlay" }, /* @__PURE__ */ React$1.createElement(
           Button,
           {
             onClick: () => setAppSetting("showGuideOverlay", true)
           },
           "Show Guide"
-        )), /* @__PURE__ */ React$1.createElement("small", null, "Open the guide see instructions for using Stash TV.")),
-        showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
+        ), /* @__PURE__ */ React$1.createElement("small", null, "Show instructions for using Stash TV.")))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "3" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "3" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
           FormImpl.Switch,
           {
             id: "show-dev-options",
@@ -182531,15 +183138,32 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             checked: debugMode,
             onChange: (event2) => setAppSetting("debugMode", event2.target.checked)
           }
-        ), /* @__PURE__ */ React$1.createElement("small", null, "Enable debug mode for additional logging and information.")), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
+        ), /* @__PURE__ */ React$1.createElement("small", null, "Enable debug mode for additional logging and information.")), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
+          FormImpl.Switch,
+          {
+            id: "enable-render-debugging",
+            label: "Enable Render Debugging",
+            checked: JSON.parse(localStorage.getItem("enableRenderDebugging") || "false"),
+            onChange: (event2) => {
+              localStorage.setItem("enableRenderDebugging", JSON.stringify(event2.target.checked));
+              window.location.reload();
+            }
+          }
+        ), /* @__PURE__ */ React$1.createElement("small", null, "Enable render debugging.")), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
           Button,
           {
             onClick: () => window.location.reload()
           },
           "Reload Page"
-        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.5.0"))
+        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.6.0")))))
       );
     }
+    const AccordionToggle = (props) => {
+      const { children, className, as, variant, eventKey, ...otherProps } = props;
+      const contextEventKey = reactExports.useContext(context);
+      const open = contextEventKey === eventKey;
+      return /* @__PURE__ */ React$1.createElement(Accordion.Toggle, { className: cx(className, open ? "open" : ""), as: Button, variant: "link", eventKey, ...otherProps }, /* @__PURE__ */ React$1.createElement("h3", null, /* @__PURE__ */ React$1.createElement("span", null, children), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faChevronLeft })));
+    };
     const Loading = (props) => {
       const smallText = props.text ?? null;
       return /* @__PURE__ */ React$1.createElement("div", { className: "Loading", "data-testid": "Loader" }, /* @__PURE__ */ React$1.createElement("h2", null, props.heading), smallText, /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true })));
@@ -182567,9 +183191,10 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     };
     const FeedPage = ({ className }) => {
       const { showSettings, fullscreen, showGuideOverlay, set: setAppSetting } = useAppStateStore();
-      const { mediaItemFiltersLoading } = useMediaItemFilters();
-      const { mediaItems, mediaItemsLoading } = useMediaItems();
-      const loadedButNoScenes = !mediaItemFiltersLoading && !mediaItemsLoading && mediaItems.length === 0;
+      const { mediaItemFiltersLoading, mediaItemFiltersError } = useMediaItemFilters();
+      const { mediaItems, mediaItemsLoading, mediaItemsNeverLoaded, mediaItemsError } = useMediaItems();
+      const isFirstLoad = mediaItemsNeverLoaded && !mediaItemFiltersError && !mediaItemsError;
+      const loadedButNoScenes = !isFirstLoad && mediaItems.length === 0;
       if (loadedButNoScenes && !showSettings) {
         setAppSetting("showSettings", true);
       }
@@ -182772,4 +183397,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BkOU7Je4.js.map
+//# sourceMappingURL=index-71KElual.js.map

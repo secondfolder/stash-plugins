@@ -2788,7 +2788,97 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
     .vjs-icon-placeholder {
         display: none;
     }
-}.SettingsTab .item:not(:last-child) {
+}.Select {
+  .react-select__menu {
+    margin-top: 2px;
+    z-index: 10;
+  
+    .react-select__option--is-selected {
+      background-color: var(--theme-colors-primary);
+    }
+
+    .react-select__group {
+      padding-bottom: 0;
+      padding-top: 0;
+      margin-bottom: 8px;
+      margin-top: 8px;
+
+      .react-select__group-heading {
+        font-size: 1.1em;
+        text-transform: unset;
+        color: inherit;
+        background-color: var(--textfield-bg);
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+      }
+    }
+  }
+
+  .react-select__control {
+    min-height: 1lh;
+
+    .react-select__single-value {
+      display: flex;
+      gap: 0.5em;
+      align-items: center;
+    }
+
+    .react-select__input-container {
+      margin: 0;
+    }
+
+    .react-select__indicator {
+      color: color-mix(in srgb, var(--text-color) 80%, black);
+      transition: color 150ms;
+      padding: 0.3em 0.5em;
+    }
+
+    .react-select__indicator-separator {
+      background-color: color-mix(in srgb, var(--text-color) 40%, black);
+      margin: 0;
+    }
+  }
+
+  &:hover {
+    .react-select__indicator {
+      color: var(--text-color);
+    }
+  }
+}.SettingsTab .accordion > button {
+  display: block;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
+  transition: margin-bottom 0.3s ease;
+  margin-bottom: 0.2em;
+}
+.SettingsTab .accordion > button:focus {
+  box-shadow: none;
+}
+.SettingsTab .accordion > button h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5em;
+}
+.SettingsTab .accordion > button h3 svg {
+  transition: rotate 0.3s ease;
+  translate: 0 calc(50% - 0.4cap);
+}
+.SettingsTab .accordion > button.open svg {
+  rotate: -90deg;
+}
+.SettingsTab .accordion > button.open + div {
+  margin-bottom: 2.5rem;
+}
+.SettingsTab .accordion > button:not(.open) {
+  margin-bottom: 1.5rem;
+}
+.SettingsTab .item:not(:last-child) {
   margin-bottom: 2em;
 }
 .SettingsTab .form-group {
@@ -2802,21 +2892,29 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
 }
 .SettingsTab .custom-switch .custom-control-label {
   align-items: baseline;
-  display: grid;
-  grid-template-columns: 1fr min-content;
-  gap: 1rem;
+  display: flex;
   --baseline-offset: 0.1rem;
+  --knob-width: calc(1rem - 4px);
+  /* The track */
+  /* The knob */
 }
 .SettingsTab .custom-switch .custom-control-label::before, .SettingsTab .custom-switch .custom-control-label::after {
   position: unset;
   grid-column: 2;
   grid-row: 1;
+  flex: 0 0 auto;
 }
 .SettingsTab .custom-switch .custom-control-label::before {
   translate: 0 var(--baseline-offset);
+  order: 3;
 }
 .SettingsTab .custom-switch .custom-control-label::after {
-  translate: 2px calc(var(--baseline-offset) - 2px);
+  translate: calc(var(--knob-width) + 2px) calc(var(--baseline-offset) - 2px);
+  order: 2;
+  position: relative;
+  top: unset;
+  left: var(--width);
+  z-index: 2;
 }
 .SettingsTab .checkbox-item label {
   display: flex;
@@ -2826,6 +2924,15 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
 }
 .SettingsTab .checkbox-item h3 {
   margin-bottom: 0;
+}
+.SettingsTab .show-guide-overlay {
+  display: flex;
+  gap: 1em;
+  margin-top: 0.5em;
+  align-items: center;
+}
+.SettingsTab .show-guide-overlay button {
+  flex: 0 0 auto;
 }
 .SettingsTab .error,
 .SettingsTab .warning {
@@ -2900,6 +3007,7 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   background-color: transparent;
   font-size: 28px;
   line-height: 1;
+  color: inherit; /* Not sure why this is necessary but it seems to be */
 }
 
 .settings-overlay {
@@ -13571,60 +13679,6 @@ kbd {
 html:has(dialog[open]):not(.force-landscape), html:has(dialog[open]).force-landscape body {
   overflow: hidden;
   scrollbar-gutter: stable;
-}
-
-div.react-select__menu .react-select__option--is-selected,
-div.dropdown-menu .react-select__option--is-selected {
-  background-color: var(--theme-colors-primary);
-}
-
-.react-select {
-  --default-colour: color-mix(in srgb, var(--text-color) 80%, black);
-  --hover-colour: var(--text-color);
-}
-.react-select .react-select__menu {
-  margin-top: 2px;
-  z-index: 10;
-}
-.react-select .react-select__menu .react-select__group {
-  padding-bottom: 0;
-  padding-top: 0;
-  margin-bottom: 8px;
-  margin-top: 8px;
-}
-.react-select .react-select__menu .react-select__group .react-select__group-heading {
-  font-size: 1.1em;
-  text-transform: unset;
-  color: inherit;
-  background-color: var(--textfield-bg);
-  padding-top: 0.4em;
-  padding-bottom: 0.4em;
-  display: flex;
-  gap: 0.5em;
-  align-items: center;
-}
-.react-select .react-select__control {
-  min-height: 1lh;
-}
-.react-select .react-select__control .react-select__single-value {
-  display: flex;
-  gap: 0.5em;
-  align-items: center;
-}
-.react-select .react-select__control .react-select__input-container {
-  margin: 0;
-}
-.react-select .react-select__control .react-select__indicator {
-  color: var(--default-colour);
-  transition: color 150ms;
-  padding: 0.3em 0.5em;
-}
-.react-select .react-select__control .react-select__indicator-separator {
-  background-color: color-mix(in srgb, var(--text-color) 40%, black);
-  margin: 0;
-}
-.react-select:hover .react-select__indicator {
-  color: var(--hover-colour);
 }
 
 /* -------------------------------------------------------------------------- */
