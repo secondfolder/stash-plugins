@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-BA7qGHak.js"(exports, module) {
+  "assets/index-B_Z5UIkX.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -167411,9 +167411,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           return newDuration === void 0 ? originalDurationFunction() : originalDurationFunction(newDuration);
         }
         const scene = "_scene" in player ? player._scene : void 0;
-        const durationFromVideoElm = player.tech({ IWillNotUseThisInPlugins: true }).el()?.duration;
-        const durationFromScene = scene?.files[0]?.duration;
-        const duration2 = !isNaN(durationFromVideoElm) && isFinite(durationFromVideoElm) ? durationFromVideoElm : durationFromScene;
+        const duration2 = scene?.files[0]?.duration;
         if (duration2 === void 0) {
           return originalDurationFunction();
         }
@@ -168990,6 +168988,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           return;
         }
         videojsPlayerRef.current?.currentTime(nextSkipAheadTime);
+        setCurrentlyPlayingMarker(findCurrentlyPlayingMarker(nextSkipAheadTime));
         videojsPlayerRef.current?.play();
       }
       function seekBackwards() {
@@ -169013,6 +169012,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           }
         }
         videojsPlayerRef.current?.currentTime(nextSkipBackTime);
+        setCurrentlyPlayingMarker(findCurrentlyPlayingMarker(nextSkipBackTime));
         videojsPlayerRef.current?.play();
       }
       const itemRef = reactExports.useRef(null);
@@ -169111,9 +169111,27 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         }
       };
       const [currentlyPlayingMarker, setCurrentlyPlayingMarker] = reactExports.useState(findCurrentlyPlayingMarker(0));
+      const currentlyPlayingMarkerDisplayName = reactExports.useMemo(
+        () => {
+          if (!currentlyPlayingMarker) return null;
+          const tags = [currentlyPlayingMarker.primary_tag, ...currentlyPlayingMarker.tags].filter((tag) => tag.name !== currentlyPlayingMarker.title);
+          const tagsFormatted = tags.length ? /* @__PURE__ */ React$1.createElement("span", { className: "tags" }, tags.map((tag, index2) => {
+            let joiner;
+            if (index2 === tags.length - 2) {
+              joiner = " & ";
+            } else if (index2 < tags.length - 2) {
+              joiner = ", ";
+            }
+            return /* @__PURE__ */ React$1.createElement(React$1.Fragment, { key: tag.name + index2 }, /* @__PURE__ */ React$1.createElement("span", { className: "tag", key: index2 }, tag.name), joiner && /* @__PURE__ */ React$1.createElement("span", { className: "joiner" }, joiner));
+          })) : null;
+          const titleFormatted = currentlyPlayingMarker.title ? /* @__PURE__ */ React$1.createElement("span", { className: "title" }, currentlyPlayingMarker.title) : null;
+          return titleFormatted ?? tagsFormatted;
+        },
+        [currentlyPlayingMarker]
+      );
       const handleOnTimeUpdate = (event2) => {
-        if (!(event2.target instanceof HTMLVideoElement)) return;
-        const currentTime = event2.target.currentTime;
+        const currentTime = videojsPlayerRef.current?.currentTime();
+        if (currentTime === void 0) return;
         const marker = findCurrentlyPlayingMarker(currentTime);
         if (marker === currentlyPlayingMarker) return;
         debugMode && console.log(`Marker playback update - now playing marker `, marker ? `id=${marker.title ?? marker.primary_tag.name}` : "none", { currentTime, marker });
@@ -169170,7 +169188,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             }
           }
         ), currentlyPlayingMarker && videoJsControlBarElm && reactDomExports.createPortal(
-          /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "vjs-control" }, currentlyPlayingMarker.title || currentlyPlayingMarker.primary_tag.name), /* @__PURE__ */ React$1.createElement("div", { className: "vjs-custom-control-spacer vjs-spacer" }, " ")),
+          /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "vjs-control" }, currentlyPlayingMarkerDisplayName), /* @__PURE__ */ React$1.createElement("div", { className: "vjs-custom-control-spacer vjs-spacer" }, " ")),
           videoJsControlBarElm
         ), /* @__PURE__ */ React$1.createElement(
           SceneInfoPanel,
@@ -183186,7 +183204,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onClick: () => window.location.reload()
           },
           "Reload Page"
-        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.7.0")))))
+        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.8.0")))))
       );
     }
     const AccordionToggle = (props) => {
@@ -183428,4 +183446,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BA7qGHak.js.map
+//# sourceMappingURL=index-B_Z5UIkX.js.map

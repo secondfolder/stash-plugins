@@ -139,6 +139,10 @@
   pointer-events: none !important;
   transition: opacity 1s;
 }
+.VideoItem .tags > .joiner {
+  color: var(--text-muted);
+  font-style: italic;
+}
 .VideoItem .tap-icon {
   position: absolute;
   top: 50%;
