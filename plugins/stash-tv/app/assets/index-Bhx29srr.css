@@ -2425,12 +2425,8 @@ video::-webkit-media-text-track-display {
 .ScenePlayer .video-js .vjs-progress-control:has(.vjs-marker-dot:hover) .vjs-mouse-display {
   translate: -4px;
 }
-.ScenePlayer .video-js .vjs-progress-control .vjs-marker-dot {
-  top: unset;
-  transform: translate(-50%, 0);
-}
 .ScenePlayer .video-js .vjs-progress-control .vjs-marker-dot:hover {
-  transform: translate(-50%, 0) scale(1.5);
+  scale: 1.1;
 }
 .ScenePlayer .video-js .vjs-current-time, .ScenePlayer .video-js .vjs-duration {
   margin-right: unset;

@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-71KElual.js"(exports, module) {
+  "assets/index-BA7qGHak.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -167283,6 +167283,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           showDevOptions: false,
           debugMode: false,
           autoPlay: true,
+          startPosition: "resume",
           showGuideOverlay: true,
           set: (propName, value) => {
             set2((state) => ({
@@ -167580,6 +167581,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         onVideojsPlayerReady?.(player);
         videojsPlayerRef.current = player;
         setVideojsPlayer(player);
+        handleInitialTimestamp();
         const videoElm2 = player.el()?.querySelector("video");
         if (!videoElm2) {
           console.warn("ScenePlayer: No video element found in container");
@@ -167587,6 +167589,10 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         }
         setVideoElm(videoElm2);
       };
+      function handleInitialTimestamp() {
+        if (!initialTimestamp) return;
+        videojsPlayerRef.current?.currentTime(initialTimestamp);
+      }
       videoJsOptionsOverride[playerId] = {
         muted,
         loop: loop2,
@@ -167710,7 +167716,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           ScenePlayer$1,
           {
             ...otherProps,
-            initialTimestamp: initialTimestamp || 0,
+            initialTimestamp: 0,
             permitLoop: true,
             scene,
             onComplete: stubOnComplete
@@ -168819,6 +168825,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         showDevOptions,
         debugMode,
         autoPlay: globalAutoPlay,
+        startPosition,
         showGuideOverlay,
         set: setAppSetting
       } = useAppStateStore();
@@ -168935,9 +168942,10 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         if (!showGuideOverlay) return;
         videojsPlayerRef.current?.pause();
       }, [showGuideOverlay]);
-      function getSkipTime() {
+      function getSkipTime(direction) {
         const duration2 = videojsPlayerRef.current?.duration();
-        if (!duration2) {
+        const currentTime = videojsPlayerRef.current?.currentTime();
+        if (!duration2 || currentTime === void 0) {
           return null;
         }
         let skipPercent;
@@ -168950,13 +168958,25 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         } else {
           skipPercent = 0.33;
         }
-        return duration2 * skipPercent;
+        let skipTimeAmount = duration2 * skipPercent;
+        const newCurrentTime = currentTime + (direction === "forwards" ? skipTimeAmount : -skipTimeAmount);
+        const markerSearchStartTime = direction === "forwards" ? currentTime : newCurrentTime - skipTimeAmount * 0.5;
+        const markerSearchEndTime = direction === "forwards" ? newCurrentTime + skipTimeAmount * 0.5 : currentTime - 2;
+        const markersToSearch = direction === "forwards" ? scene.scene_markers : scene.scene_markers.slice().reverse();
+        const marker = markersToSearch.find(
+          (marker2) => marker2.seconds >= markerSearchStartTime && marker2.seconds <= markerSearchEndTime
+        );
+        if (marker) {
+          debugMode && console.log(`Skipping to marker ${marker.title ?? marker.primary_tag.name} at ${marker.seconds}s`, { marker, markersToSearch });
+          skipTimeAmount = Math.abs(marker.seconds - currentTime);
+        }
+        return skipTimeAmount;
       }
       function seekForwards() {
         if (!videojsPlayerRef.current) return null;
         const duration2 = videojsPlayerRef.current?.duration();
         if (duration2 === void 0) return;
-        const skipAmount = getSkipTime();
+        const skipAmount = getSkipTime("forwards");
         if (skipAmount === null || typeof duration2 !== "number") {
           return null;
         }
@@ -168975,7 +168995,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       function seekBackwards() {
         if (!videojsPlayerRef.current) return null;
         const duration2 = videojsPlayerRef.current?.duration();
-        const skipAmount = getSkipTime();
+        const skipAmount = getSkipTime("backwards");
         if (skipAmount === null || typeof duration2 !== "number") {
           return null;
         }
@@ -169056,6 +169076,49 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         if (videoRef.current && videoRef.current.textTracks.length)
           videoRef.current.textTracks[0].mode = showSubtitles ? "showing" : "disabled";
       }, [showSubtitles]);
+      function getRandomPointInScene(scene2) {
+        if (scene2.scene_markers.length) {
+          const randomMarker = scene2.scene_markers[Math.floor(Math.random() * scene2.scene_markers.length)];
+          return randomMarker.seconds;
+        }
+        const duration2 = scene2.files?.[0]?.duration || 0;
+        const min2 = duration2 * 0.05;
+        const max2 = duration2 * 0.95;
+        const randomPoint = Math.random() * (max2 - min2) + min2;
+        return Math.floor(randomPoint);
+      }
+      let initialTimestamp;
+      if (props.mediaItem.entityType === "marker" || startPosition === "beginning") {
+        initialTimestamp = 0;
+      } else if (startPosition === "random") {
+        initialTimestamp = getRandomPointInScene(scene);
+      }
+      const findCurrentlyPlayingMarker = (currentTime) => {
+        if (props.mediaItem.entityType === "marker") {
+          return props.mediaItem.entity;
+        } else if (props.mediaItem.entityType === "scene") {
+          const scene2 = props.mediaItem.entity;
+          const marker = scene2.scene_markers.find((marker2) => {
+            const markerStartSearchTime = marker2.seconds;
+            const nextMarker = scene2.scene_markers.find((m) => m.seconds > markerStartSearchTime);
+            const makerEndTime = marker2.end_seconds ?? marker2.seconds + 20;
+            const makerEndSearchTime = Math.min(makerEndTime, nextMarker?.seconds ?? Infinity);
+            return markerStartSearchTime <= currentTime && makerEndSearchTime > currentTime;
+          });
+          return marker;
+        } else {
+          props.mediaItem;
+        }
+      };
+      const [currentlyPlayingMarker, setCurrentlyPlayingMarker] = reactExports.useState(findCurrentlyPlayingMarker(0));
+      const handleOnTimeUpdate = (event2) => {
+        if (!(event2.target instanceof HTMLVideoElement)) return;
+        const currentTime = event2.target.currentTime;
+        const marker = findCurrentlyPlayingMarker(currentTime);
+        if (marker === currentlyPlayingMarker) return;
+        debugMode && console.log(`Marker playback update - now playing marker `, marker ? `id=${marker.title ?? marker.primary_tag.name}` : "none", { currentTime, marker });
+        setCurrentlyPlayingMarker(marker);
+      };
       const videoJsControlBarElm = videojsPlayerRef.current?.getChild("ControlBar")?.el();
       return /* @__PURE__ */ React$1.createElement(
         "div",
@@ -169071,12 +169134,13 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           ScenePlayer,
           {
             key: JSON.stringify([scene.id, hashObject(scene.sceneStreams)]),
+            onTimeUpdate: handleOnTimeUpdate,
             scene,
             hideScrubberOverride: true,
             muted: audioMuted,
             autoplay,
             loop: looping,
-            initialTimestamp: props.mediaItem.entityType === "marker" ? 0 : void 0,
+            initialTimestamp,
             sendSetTimestamp: () => {
             },
             onNext: () => {
@@ -169105,8 +169169,8 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
               }
             }
           }
-        ), props.mediaItem.entityType === "marker" && videoJsControlBarElm && reactDomExports.createPortal(
-          /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "vjs-control" }, props.mediaItem.entity.title || props.mediaItem.entity.primary_tag.name), /* @__PURE__ */ React$1.createElement("div", { className: "vjs-custom-control-spacer vjs-spacer" }, " ")),
+        ), currentlyPlayingMarker && videoJsControlBarElm && reactDomExports.createPortal(
+          /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "vjs-control" }, currentlyPlayingMarker.title || currentlyPlayingMarker.primary_tag.name), /* @__PURE__ */ React$1.createElement("div", { className: "vjs-custom-control-spacer vjs-spacer" }, " ")),
           videoJsControlBarElm
         ), /* @__PURE__ */ React$1.createElement(
           SceneInfoPanel,
@@ -182796,36 +182860,6 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           close();
         }
       }, [sidebarWidth]);
-      reactExports.useEffect(() => {
-        if (!showSettings || !ref.current) return;
-        let initialClientY;
-        const handleTouchStart = (event2) => {
-          initialClientY = event2.touches[0].clientY;
-        };
-        const handleTouchMove = (event2) => {
-          if (initialClientY === void 0) return;
-          if (!bodyRef.current) return;
-          const atTop = bodyRef.current.scrollTop === 0;
-          const atBottom = bodyRef.current.scrollHeight - bodyRef.current.scrollTop === bodyRef.current.clientHeight;
-          const deltaY = event2.touches[0].clientY - initialClientY;
-          const isScrollingDown = deltaY < 0;
-          const isScrollingUp = deltaY > 0;
-          if (atTop && isScrollingUp || atBottom && isScrollingDown) {
-            event2.preventDefault();
-          }
-        };
-        const handleTouchEnd = () => {
-          initialClientY = void 0;
-        };
-        ref.current?.addEventListener("touchstart", handleTouchStart);
-        ref.current?.addEventListener("touchmove", handleTouchMove);
-        ref.current?.addEventListener("touchend", handleTouchEnd);
-        return () => {
-          ref.current?.removeEventListener("touchstart", handleTouchStart);
-          ref.current?.removeEventListener("touchmove", handleTouchMove);
-          ref.current?.removeEventListener("touchend", handleTouchEnd);
-        };
-      }, [showSettings, forceLandscape]);
       const [{ x: x2 }, api2] = useSpring(() => ({
         from: {
           x: 0
@@ -182876,23 +182910,6 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       };
       const overlayOpacity = x2.to((px2) => Math.min(sidebarWidth, px2 / sidebarWidth));
       const overlayDisplay = x2.to((px2) => px2 > 0 ? "block" : "none");
-      const getLandscapeModePositionStyleHack = () => forceLandscape ? {
-        position: "absolute",
-        top: `${document.body.scrollTop}px`
-      } : {};
-      const landscapeModePositionStyleHack = getLandscapeModePositionStyleHack();
-      reactExports.useEffect(() => {
-        const handleScroll = () => {
-          const rootElement = ref.current;
-          const overlayElement = overlayRef.current;
-          rootElement && Object.assign(rootElement.style, getLandscapeModePositionStyleHack());
-          overlayElement && Object.assign(overlayElement.style, getLandscapeModePositionStyleHack());
-        };
-        const scrollElement = forceLandscape ? document.body : document.scrollingElement;
-        if (!scrollElement) return;
-        scrollElement.addEventListener("scroll", handleScroll);
-        return () => scrollElement.removeEventListener("scroll", handleScroll);
-      }, [forceLandscape]);
       let closeButton = null;
       if (closeDisabled === "because loading") {
         closeButton = /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { className: "action", icon: faSpinner, pulse: true });
@@ -182913,7 +182930,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         animated.div,
         {
           className: "settings-overlay",
-          style: { display: overlayDisplay, opacity: overlayOpacity, ...landscapeModePositionStyleHack },
+          style: { display: overlayDisplay, opacity: overlayOpacity },
           onClick: () => close(),
           ref: overlayRef
         }
@@ -182923,7 +182940,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           className: cx("SideDrawer", className),
           "data-testid": "SideDrawer",
           ref,
-          style: { right: x2.to((px2) => `calc(100% - ${px2}px)`), ...landscapeModePositionStyleHack }
+          style: { right: x2.to((px2) => `calc(100% - ${px2}px)`) }
         },
         /* @__PURE__ */ React$1.createElement("div", { className: "content" }, /* @__PURE__ */ React$1.createElement("div", { className: "body", ref: bodyRef }, children), /* @__PURE__ */ React$1.createElement("div", { className: "footer" }, /* @__PURE__ */ React$1.createElement("h2", null, title), closeButton))
       ));
@@ -182946,6 +182963,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         showDevOptions,
         debugMode,
         autoPlay,
+        startPosition,
         set: setAppSetting
       } = useAppStateStore();
       const { mediaItems, mediaItemsLoading, mediaItemsNeverLoaded, mediaItemsError } = useMediaItems();
@@ -183020,6 +183038,11 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       } else if (mediaItemsError || mediaItemFiltersError) {
         disableClose = true;
       }
+      const startPositionOptions = [
+        { value: "resume", label: "Resume from last position" },
+        { value: "beginning", label: "Beginning" },
+        { value: "random", label: "Random marker (or position if none)" }
+      ];
       return /* @__PURE__ */ React$1.createElement(
         SideDrawer,
         {
@@ -183027,7 +183050,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           closeDisabled: disableClose,
           className: "SettingsTab"
         },
-        /* @__PURE__ */ React$1.createElement(Accordion, { defaultActiveKey: "0" }, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "0" }, "Media Feed"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "0" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "filter" }, "Media Filter"), !mediaItemFiltersLoading || allFiltersGrouped.length ? /* @__PURE__ */ React$1.createElement(
+        /* @__PURE__ */ React$1.createElement(Accordion, { defaultActiveKey: "0" }, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "0" }, "Media Feed"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "0" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "filter" }, "Media Filter"), /* @__PURE__ */ React$1.createElement(
           Select,
           {
             inputId: "filter",
@@ -183041,7 +183064,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
               SingleValue: (props) => /* @__PURE__ */ React$1.createElement(components.SingleValue, { ...props }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: props.data.filterType === "scene" ? faCirclePlay : faLocationDot }), props.data.label)
             }
           }
-        ) : /* @__PURE__ */ React$1.createElement("div", null, "Loading..."), /* @__PURE__ */ React$1.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), mediaItemFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))), selectedFilter && !selectedFilter.isStashTvDefaultFilter && !noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
+        ), /* @__PURE__ */ React$1.createElement("small", null, "Choose a scene filter from Stash to use as your Stash TV filter"), mediaItemFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))), selectedFilter && !selectedFilter.isStashTvDefaultFilter && !noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement(
           Button,
           {
             onClick: () => {
@@ -183083,7 +183106,15 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             checked: autoPlay,
             onChange: (event2) => setAppSetting("autoPlay", event2.target.checked)
           }
-        ), /* @__PURE__ */ React$1.createElement("small", null, "Automatically play scenes.")), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
+        ), /* @__PURE__ */ React$1.createElement("small", null, "Automatically play scenes.")), selectedFilter?.filterType === "scene" && /* @__PURE__ */ React$1.createElement("div", { className: "item" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "start-position" }, "Start Point"), /* @__PURE__ */ React$1.createElement(
+          Select,
+          {
+            inputId: "start-position",
+            value: startPositionOptions.find((option) => option.value === startPosition) ?? null,
+            onChange: (newValue) => newValue && setAppSetting("startPosition", newValue.value),
+            options: startPositionOptions
+          }
+        ), /* @__PURE__ */ React$1.createElement("small", null, "The point in the scene to start playback from.")), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
           FormImpl.Switch,
           {
             id: "scene-preview-only",
@@ -183155,7 +183186,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onClick: () => window.location.reload()
           },
           "Reload Page"
-        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.6.0")))))
+        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.7.0")))))
       );
     }
     const AccordionToggle = (props) => {
@@ -183397,4 +183428,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-71KElual.js.map
+//# sourceMappingURL=index-BA7qGHak.js.map
