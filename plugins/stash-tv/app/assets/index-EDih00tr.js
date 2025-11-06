@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-B_Z5UIkX.js"(exports, module) {
+  "assets/index-EDih00tr.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -6425,3320 +6425,6 @@ var require_index_001 = __commonJS({
     }
     var reactDomExports = requireReactDom();
     const ReactDOM = /* @__PURE__ */ getDefaultExportFromCjs(reactDomExports);
-    /*!
-     * Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com
-     * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
-     * Copyright 2024 Fonticons, Inc.
-     */
-    const faRepeat = {
-      prefix: "fas",
-      iconName: "repeat",
-      icon: [512, 512, [128257], "f363", "M0 224c0 17.7 14.3 32 32 32s32-14.3 32-32c0-53 43-96 96-96l160 0 0 32c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-9.2-9.2-22.9-11.9-34.9-6.9S320 19.1 320 32l0 32L160 64C71.6 64 0 135.6 0 224zm512 64c0-17.7-14.3-32-32-32s-32 14.3-32 32c0 53-43 96-96 96l-160 0 0-32c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6l0-32 160 0c88.4 0 160-71.6 160-160z"]
-    };
-    const faCirclePlay = {
-      prefix: "fas",
-      iconName: "circle-play",
-      icon: [512, 512, [61469, "play-circle"], "f144", "M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9l0 176c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z"]
-    };
-    const faCircle = {
-      prefix: "fas",
-      iconName: "circle",
-      icon: [512, 512, [128308, 128309, 128992, 128993, 128994, 128995, 128996, 9679, 9898, 9899, 11044, 61708, 61915], "f111", "M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"]
-    };
-    const faVolumeHigh = {
-      prefix: "fas",
-      iconName: "volume-high",
-      icon: [640, 512, [128266, "volume-up"], "f028", "M533.6 32.5C598.5 85.2 640 165.8 640 256s-41.5 170.7-106.4 223.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C557.5 398.2 592 331.2 592 256s-34.5-142.2-88.7-186.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM473.1 107c43.2 35.2 70.9 88.9 70.9 149s-27.7 113.8-70.9 149c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C475.3 341.3 496 301.1 496 256s-20.7-85.3-53.2-111.8c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zm-60.5 74.5C434.1 199.1 448 225.9 448 256s-13.9 56.9-35.4 74.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C393.1 284.4 400 271 400 256s-6.9-28.4-17.7-37.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM301.1 34.8C312.6 40 320 51.4 320 64l0 384c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352 64 352c-35.3 0-64-28.7-64-64l0-64c0-35.3 28.7-64 64-64l67.8 0L266.7 40.1c9.4-8.4 22.9-10.4 34.4-5.3z"]
-    };
-    const faCircleInfo = {
-      prefix: "fas",
-      iconName: "circle-info",
-      icon: [512, 512, ["info-circle"], "f05a", "M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336l24 0 0-64-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l48 0c13.3 0 24 10.7 24 24l0 88 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"]
-    };
-    const faGear = {
-      prefix: "fas",
-      iconName: "gear",
-      icon: [512, 512, [9881, "cog"], "f013", "M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z"]
-    };
-    const faEllipsisVertical = {
-      prefix: "fas",
-      iconName: "ellipsis-vertical",
-      icon: [128, 512, ["ellipsis-v"], "f142", "M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"]
-    };
-    const faClosedCaptioning = {
-      prefix: "fas",
-      iconName: "closed-captioning",
-      icon: [576, 512, [], "f20a", "M0 96C0 60.7 28.7 32 64 32l448 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM200 208c14.2 0 27 6.1 35.8 16c8.8 9.9 24 10.7 33.9 1.9s10.7-24 1.9-33.9c-17.5-19.6-43.1-32-71.5-32c-53 0-96 43-96 96s43 96 96 96c28.4 0 54-12.4 71.5-32c8.8-9.9 8-25-1.9-33.9s-25-8-33.9 1.9c-8.8 9.9-21.6 16-35.8 16c-26.5 0-48-21.5-48-48s21.5-48 48-48zm144 48c0-26.5 21.5-48 48-48c14.2 0 27 6.1 35.8 16c8.8 9.9 24 10.7 33.9 1.9s10.7-24 1.9-33.9c-17.5-19.6-43.1-32-71.5-32c-53 0-96 43-96 96s43 96 96 96c28.4 0 54-12.4 71.5-32c8.8-9.9 8-25-1.9-33.9s-25-8-33.9 1.9c-8.8 9.9-21.6 16-35.8 16c-26.5 0-48-21.5-48-48z"]
-    };
-    const faLocationDot = {
-      prefix: "fas",
-      iconName: "location-dot",
-      icon: [384, 512, ["map-marker-alt"], "f3c5", "M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"]
-    };
-    const faPlay = {
-      prefix: "fas",
-      iconName: "play",
-      icon: [384, 512, [9654], "f04b", "M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"]
-    };
-    const faExpand = {
-      prefix: "fas",
-      iconName: "expand",
-      icon: [448, 512, [], "f065", "M32 32C14.3 32 0 46.3 0 64l0 96c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64 64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7 14.3 32 32 32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0 0-64zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0 0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96c0-17.7-14.3-32-32-32l-96 0zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l96 0c17.7 0 32-14.3 32-32l0-96z"]
-    };
-    const faXmark = {
-      prefix: "fas",
-      iconName: "xmark",
-      icon: [384, 512, [128473, 10005, 10006, 10060, 215, "close", "multiply", "remove", "times"], "f00d", "M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"]
-    };
-    const faChevronLeft = {
-      prefix: "fas",
-      iconName: "chevron-left",
-      icon: [320, 512, [9001], "f053", "M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"]
-    };
-    const faChevronRight = {
-      prefix: "fas",
-      iconName: "chevron-right",
-      icon: [320, 512, [9002], "f054", "M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"]
-    };
-    const faSpinner = {
-      prefix: "fas",
-      iconName: "spinner",
-      icon: [512, 512, [], "f110", "M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z"]
-    };
-    const faClockRotateLeft = {
-      prefix: "fas",
-      iconName: "clock-rotate-left",
-      icon: [512, 512, ["history"], "f1da", "M75 75L41 41C25.9 25.9 0 36.6 0 57.9L0 168c0 13.3 10.7 24 24 24l110.1 0c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24l0 104c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65 0-94.1c0-13.3-10.7-24-24-24z"]
-    };
-    /*!
-     * Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com
-     * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
-     * Copyright 2024 Fonticons, Inc.
-     */
-    function _defineProperty$2(e, r2, t2) {
-      return (r2 = _toPropertyKey$2(r2)) in e ? Object.defineProperty(e, r2, {
-        value: t2,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      }) : e[r2] = t2, e;
-    }
-    function ownKeys$2(e, r2) {
-      var t2 = Object.keys(e);
-      if (Object.getOwnPropertySymbols) {
-        var o2 = Object.getOwnPropertySymbols(e);
-        r2 && (o2 = o2.filter(function(r3) {
-          return Object.getOwnPropertyDescriptor(e, r3).enumerable;
-        })), t2.push.apply(t2, o2);
-      }
-      return t2;
-    }
-    function _objectSpread2$2(e) {
-      for (var r2 = 1; r2 < arguments.length; r2++) {
-        var t2 = null != arguments[r2] ? arguments[r2] : {};
-        r2 % 2 ? ownKeys$2(Object(t2), true).forEach(function(r3) {
-          _defineProperty$2(e, r3, t2[r3]);
-        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t2)) : ownKeys$2(Object(t2)).forEach(function(r3) {
-          Object.defineProperty(e, r3, Object.getOwnPropertyDescriptor(t2, r3));
-        });
-      }
-      return e;
-    }
-    function _toPrimitive$2(t2, r2) {
-      if ("object" != typeof t2 || !t2) return t2;
-      var e = t2[Symbol.toPrimitive];
-      if (void 0 !== e) {
-        var i2 = e.call(t2, r2);
-        if ("object" != typeof i2) return i2;
-        throw new TypeError("@@toPrimitive must return a primitive value.");
-      }
-      return ("string" === r2 ? String : Number)(t2);
-    }
-    function _toPropertyKey$2(t2) {
-      var i2 = _toPrimitive$2(t2, "string");
-      return "symbol" == typeof i2 ? i2 : i2 + "";
-    }
-    const noop$6 = () => {
-    };
-    let _WINDOW = {};
-    let _DOCUMENT = {};
-    let _MUTATION_OBSERVER = null;
-    let _PERFORMANCE = {
-      mark: noop$6,
-      measure: noop$6
-    };
-    try {
-      if (typeof window !== "undefined") _WINDOW = window;
-      if (typeof document !== "undefined") _DOCUMENT = document;
-      if (typeof MutationObserver !== "undefined") _MUTATION_OBSERVER = MutationObserver;
-      if (typeof performance !== "undefined") _PERFORMANCE = performance;
-    } catch (e) {
-    }
-    const {
-      userAgent = ""
-    } = _WINDOW.navigator || {};
-    const WINDOW = _WINDOW;
-    const DOCUMENT = _DOCUMENT;
-    const MUTATION_OBSERVER = _MUTATION_OBSERVER;
-    const PERFORMANCE = _PERFORMANCE;
-    !!WINDOW.document;
-    const IS_DOM = !!DOCUMENT.documentElement && !!DOCUMENT.head && typeof DOCUMENT.addEventListener === "function" && typeof DOCUMENT.createElement === "function";
-    const IS_IE = ~userAgent.indexOf("MSIE") || ~userAgent.indexOf("Trident/");
-    var p = /fa(s|r|l|t|d|dr|dl|dt|b|k|kd|ss|sr|sl|st|sds|sdr|sdl|sdt)?[\-\ ]/, g = /Font ?Awesome ?([56 ]*)(Solid|Regular|Light|Thin|Duotone|Brands|Free|Pro|Sharp Duotone|Sharp|Kit)?.*/i;
-    var S = {
-      classic: {
-        fa: "solid",
-        fas: "solid",
-        "fa-solid": "solid",
-        far: "regular",
-        "fa-regular": "regular",
-        fal: "light",
-        "fa-light": "light",
-        fat: "thin",
-        "fa-thin": "thin",
-        fab: "brands",
-        "fa-brands": "brands"
-      },
-      duotone: {
-        fa: "solid",
-        fad: "solid",
-        "fa-solid": "solid",
-        "fa-duotone": "solid",
-        fadr: "regular",
-        "fa-regular": "regular",
-        fadl: "light",
-        "fa-light": "light",
-        fadt: "thin",
-        "fa-thin": "thin"
-      },
-      sharp: {
-        fa: "solid",
-        fass: "solid",
-        "fa-solid": "solid",
-        fasr: "regular",
-        "fa-regular": "regular",
-        fasl: "light",
-        "fa-light": "light",
-        fast: "thin",
-        "fa-thin": "thin"
-      },
-      "sharp-duotone": {
-        fa: "solid",
-        fasds: "solid",
-        "fa-solid": "solid",
-        fasdr: "regular",
-        "fa-regular": "regular",
-        fasdl: "light",
-        "fa-light": "light",
-        fasdt: "thin",
-        "fa-thin": "thin"
-      }
-    }, A = {
-      GROUP: "duotone-group",
-      PRIMARY: "primary",
-      SECONDARY: "secondary"
-    }, P = ["fa-classic", "fa-duotone", "fa-sharp", "fa-sharp-duotone"];
-    var s$1 = "classic", t = "duotone", r = "sharp", o = "sharp-duotone", L = [s$1, t, r, o];
-    var G = {
-      classic: {
-        900: "fas",
-        400: "far",
-        normal: "far",
-        300: "fal",
-        100: "fat"
-      },
-      duotone: {
-        900: "fad",
-        400: "fadr",
-        300: "fadl",
-        100: "fadt"
-      },
-      sharp: {
-        900: "fass",
-        400: "fasr",
-        300: "fasl",
-        100: "fast"
-      },
-      "sharp-duotone": {
-        900: "fasds",
-        400: "fasdr",
-        300: "fasdl",
-        100: "fasdt"
-      }
-    };
-    var lt = {
-      "Font Awesome 6 Free": {
-        900: "fas",
-        400: "far"
-      },
-      "Font Awesome 6 Pro": {
-        900: "fas",
-        400: "far",
-        normal: "far",
-        300: "fal",
-        100: "fat"
-      },
-      "Font Awesome 6 Brands": {
-        400: "fab",
-        normal: "fab"
-      },
-      "Font Awesome 6 Duotone": {
-        900: "fad",
-        400: "fadr",
-        normal: "fadr",
-        300: "fadl",
-        100: "fadt"
-      },
-      "Font Awesome 6 Sharp": {
-        900: "fass",
-        400: "fasr",
-        normal: "fasr",
-        300: "fasl",
-        100: "fast"
-      },
-      "Font Awesome 6 Sharp Duotone": {
-        900: "fasds",
-        400: "fasdr",
-        normal: "fasdr",
-        300: "fasdl",
-        100: "fasdt"
-      }
-    };
-    var pt = /* @__PURE__ */ new Map([["classic", {
-      defaultShortPrefixId: "fas",
-      defaultStyleId: "solid",
-      styleIds: ["solid", "regular", "light", "thin", "brands"],
-      futureStyleIds: [],
-      defaultFontWeight: 900
-    }], ["sharp", {
-      defaultShortPrefixId: "fass",
-      defaultStyleId: "solid",
-      styleIds: ["solid", "regular", "light", "thin"],
-      futureStyleIds: [],
-      defaultFontWeight: 900
-    }], ["duotone", {
-      defaultShortPrefixId: "fad",
-      defaultStyleId: "solid",
-      styleIds: ["solid", "regular", "light", "thin"],
-      futureStyleIds: [],
-      defaultFontWeight: 900
-    }], ["sharp-duotone", {
-      defaultShortPrefixId: "fasds",
-      defaultStyleId: "solid",
-      styleIds: ["solid", "regular", "light", "thin"],
-      futureStyleIds: [],
-      defaultFontWeight: 900
-    }]]), xt = {
-      classic: {
-        solid: "fas",
-        regular: "far",
-        light: "fal",
-        thin: "fat",
-        brands: "fab"
-      },
-      duotone: {
-        solid: "fad",
-        regular: "fadr",
-        light: "fadl",
-        thin: "fadt"
-      },
-      sharp: {
-        solid: "fass",
-        regular: "fasr",
-        light: "fasl",
-        thin: "fast"
-      },
-      "sharp-duotone": {
-        solid: "fasds",
-        regular: "fasdr",
-        light: "fasdl",
-        thin: "fasdt"
-      }
-    };
-    var Ft = ["fak", "fa-kit", "fakd", "fa-kit-duotone"], St = {
-      kit: {
-        fak: "kit",
-        "fa-kit": "kit"
-      },
-      "kit-duotone": {
-        fakd: "kit-duotone",
-        "fa-kit-duotone": "kit-duotone"
-      }
-    }, At = ["kit"];
-    var Ct = {
-      kit: {
-        "fa-kit": "fak"
-      }
-    };
-    var Lt = ["fak", "fakd"], Wt = {
-      kit: {
-        fak: "fa-kit"
-      }
-    };
-    var Et = {
-      kit: {
-        kit: "fak"
-      },
-      "kit-duotone": {
-        "kit-duotone": "fakd"
-      }
-    };
-    var t$1 = {
-      GROUP: "duotone-group",
-      SWAP_OPACITY: "swap-opacity",
-      PRIMARY: "primary",
-      SECONDARY: "secondary"
-    }, r$1 = ["fa-classic", "fa-duotone", "fa-sharp", "fa-sharp-duotone"];
-    var bt$1 = ["fak", "fa-kit", "fakd", "fa-kit-duotone"];
-    var Yt = {
-      "Font Awesome Kit": {
-        400: "fak",
-        normal: "fak"
-      },
-      "Font Awesome Kit Duotone": {
-        400: "fakd",
-        normal: "fakd"
-      }
-    };
-    var ua = {
-      classic: {
-        "fa-brands": "fab",
-        "fa-duotone": "fad",
-        "fa-light": "fal",
-        "fa-regular": "far",
-        "fa-solid": "fas",
-        "fa-thin": "fat"
-      },
-      duotone: {
-        "fa-regular": "fadr",
-        "fa-light": "fadl",
-        "fa-thin": "fadt"
-      },
-      sharp: {
-        "fa-solid": "fass",
-        "fa-regular": "fasr",
-        "fa-light": "fasl",
-        "fa-thin": "fast"
-      },
-      "sharp-duotone": {
-        "fa-solid": "fasds",
-        "fa-regular": "fasdr",
-        "fa-light": "fasdl",
-        "fa-thin": "fasdt"
-      }
-    }, I$1 = {
-      classic: ["fas", "far", "fal", "fat", "fad"],
-      duotone: ["fadr", "fadl", "fadt"],
-      sharp: ["fass", "fasr", "fasl", "fast"],
-      "sharp-duotone": ["fasds", "fasdr", "fasdl", "fasdt"]
-    }, ga = {
-      classic: {
-        fab: "fa-brands",
-        fad: "fa-duotone",
-        fal: "fa-light",
-        far: "fa-regular",
-        fas: "fa-solid",
-        fat: "fa-thin"
-      },
-      duotone: {
-        fadr: "fa-regular",
-        fadl: "fa-light",
-        fadt: "fa-thin"
-      },
-      sharp: {
-        fass: "fa-solid",
-        fasr: "fa-regular",
-        fasl: "fa-light",
-        fast: "fa-thin"
-      },
-      "sharp-duotone": {
-        fasds: "fa-solid",
-        fasdr: "fa-regular",
-        fasdl: "fa-light",
-        fasdt: "fa-thin"
-      }
-    }, x = ["fa-solid", "fa-regular", "fa-light", "fa-thin", "fa-duotone", "fa-brands"], Ia = ["fa", "fas", "far", "fal", "fat", "fad", "fadr", "fadl", "fadt", "fab", "fass", "fasr", "fasl", "fast", "fasds", "fasdr", "fasdl", "fasdt", ...r$1, ...x], m$1 = ["solid", "regular", "light", "thin", "duotone", "brands"], c$1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], F$1 = c$1.concat([11, 12, 13, 14, 15, 16, 17, 18, 19, 20]), ma = [...Object.keys(I$1), ...m$1, "2xs", "xs", "sm", "lg", "xl", "2xl", "beat", "border", "fade", "beat-fade", "bounce", "flip-both", "flip-horizontal", "flip-vertical", "flip", "fw", "inverse", "layers-counter", "layers-text", "layers", "li", "pull-left", "pull-right", "pulse", "rotate-180", "rotate-270", "rotate-90", "rotate-by", "shake", "spin-pulse", "spin-reverse", "spin", "stack-1x", "stack-2x", "stack", "ul", t$1.GROUP, t$1.SWAP_OPACITY, t$1.PRIMARY, t$1.SECONDARY].concat(c$1.map((a2) => "".concat(a2, "x"))).concat(F$1.map((a2) => "w-".concat(a2)));
-    var wa = {
-      "Font Awesome 5 Free": {
-        900: "fas",
-        400: "far"
-      },
-      "Font Awesome 5 Pro": {
-        900: "fas",
-        400: "far",
-        normal: "far",
-        300: "fal"
-      },
-      "Font Awesome 5 Brands": {
-        400: "fab",
-        normal: "fab"
-      },
-      "Font Awesome 5 Duotone": {
-        900: "fad"
-      }
-    };
-    const NAMESPACE_IDENTIFIER = "___FONT_AWESOME___";
-    const UNITS_IN_GRID = 16;
-    const DEFAULT_CSS_PREFIX = "fa";
-    const DEFAULT_REPLACEMENT_CLASS = "svg-inline--fa";
-    const DATA_FA_I2SVG = "data-fa-i2svg";
-    const DATA_FA_PSEUDO_ELEMENT = "data-fa-pseudo-element";
-    const DATA_FA_PSEUDO_ELEMENT_PENDING = "data-fa-pseudo-element-pending";
-    const DATA_PREFIX = "data-prefix";
-    const DATA_ICON = "data-icon";
-    const HTML_CLASS_I2SVG_BASE_CLASS = "fontawesome-i2svg";
-    const MUTATION_APPROACH_ASYNC = "async";
-    const TAGNAMES_TO_SKIP_FOR_PSEUDOELEMENTS = ["HTML", "HEAD", "STYLE", "SCRIPT"];
-    const PRODUCTION$1 = (() => {
-      try {
-        return true;
-      } catch (e$$1) {
-        return false;
-      }
-    })();
-    function familyProxy(obj) {
-      return new Proxy(obj, {
-        get(target, prop) {
-          return prop in target ? target[prop] : target[s$1];
-        }
-      });
-    }
-    const _PREFIX_TO_STYLE = _objectSpread2$2({}, S);
-    _PREFIX_TO_STYLE[s$1] = _objectSpread2$2(_objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, {
-      "fa-duotone": "duotone"
-    }), S[s$1]), St["kit"]), St["kit-duotone"]);
-    const PREFIX_TO_STYLE = familyProxy(_PREFIX_TO_STYLE);
-    const _STYLE_TO_PREFIX = _objectSpread2$2({}, xt);
-    _STYLE_TO_PREFIX[s$1] = _objectSpread2$2(_objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, {
-      duotone: "fad"
-    }), _STYLE_TO_PREFIX[s$1]), Et["kit"]), Et["kit-duotone"]);
-    const STYLE_TO_PREFIX = familyProxy(_STYLE_TO_PREFIX);
-    const _PREFIX_TO_LONG_STYLE = _objectSpread2$2({}, ga);
-    _PREFIX_TO_LONG_STYLE[s$1] = _objectSpread2$2(_objectSpread2$2({}, _PREFIX_TO_LONG_STYLE[s$1]), Wt["kit"]);
-    const PREFIX_TO_LONG_STYLE = familyProxy(_PREFIX_TO_LONG_STYLE);
-    const _LONG_STYLE_TO_PREFIX = _objectSpread2$2({}, ua);
-    _LONG_STYLE_TO_PREFIX[s$1] = _objectSpread2$2(_objectSpread2$2({}, _LONG_STYLE_TO_PREFIX[s$1]), Ct["kit"]);
-    familyProxy(_LONG_STYLE_TO_PREFIX);
-    const ICON_SELECTION_SYNTAX_PATTERN = p;
-    const LAYERS_TEXT_CLASSNAME = "fa-layers-text";
-    const FONT_FAMILY_PATTERN = g;
-    const _FONT_WEIGHT_TO_PREFIX = _objectSpread2$2({}, G);
-    familyProxy(_FONT_WEIGHT_TO_PREFIX);
-    const ATTRIBUTES_WATCHED_FOR_MUTATION = ["class", "data-prefix", "data-icon", "data-fa-transform", "data-fa-mask"];
-    const DUOTONE_CLASSES = A;
-    const RESERVED_CLASSES = [...At, ...ma];
-    const initial = WINDOW.FontAwesomeConfig || {};
-    function getAttrConfig(attr) {
-      var element = DOCUMENT.querySelector("script[" + attr + "]");
-      if (element) {
-        return element.getAttribute(attr);
-      }
-    }
-    function coerce(val) {
-      if (val === "") return true;
-      if (val === "false") return false;
-      if (val === "true") return true;
-      return val;
-    }
-    if (DOCUMENT && typeof DOCUMENT.querySelector === "function") {
-      const attrs = [["data-family-prefix", "familyPrefix"], ["data-css-prefix", "cssPrefix"], ["data-family-default", "familyDefault"], ["data-style-default", "styleDefault"], ["data-replacement-class", "replacementClass"], ["data-auto-replace-svg", "autoReplaceSvg"], ["data-auto-add-css", "autoAddCss"], ["data-auto-a11y", "autoA11y"], ["data-search-pseudo-elements", "searchPseudoElements"], ["data-observe-mutations", "observeMutations"], ["data-mutate-approach", "mutateApproach"], ["data-keep-original-source", "keepOriginalSource"], ["data-measure-performance", "measurePerformance"], ["data-show-missing-icons", "showMissingIcons"]];
-      attrs.forEach((_ref3) => {
-        let [attr, key] = _ref3;
-        const val = coerce(getAttrConfig(attr));
-        if (val !== void 0 && val !== null) {
-          initial[key] = val;
-        }
-      });
-    }
-    const _default = {
-      styleDefault: "solid",
-      familyDefault: s$1,
-      cssPrefix: DEFAULT_CSS_PREFIX,
-      replacementClass: DEFAULT_REPLACEMENT_CLASS,
-      autoReplaceSvg: true,
-      autoAddCss: true,
-      autoA11y: true,
-      searchPseudoElements: false,
-      observeMutations: true,
-      mutateApproach: "async",
-      keepOriginalSource: true,
-      measurePerformance: false,
-      showMissingIcons: true
-    };
-    if (initial.familyPrefix) {
-      initial.cssPrefix = initial.familyPrefix;
-    }
-    const _config = _objectSpread2$2(_objectSpread2$2({}, _default), initial);
-    if (!_config.autoReplaceSvg) _config.observeMutations = false;
-    const config$2 = {};
-    Object.keys(_default).forEach((key) => {
-      Object.defineProperty(config$2, key, {
-        enumerable: true,
-        set: function(val) {
-          _config[key] = val;
-          _onChangeCb.forEach((cb) => cb(config$2));
-        },
-        get: function() {
-          return _config[key];
-        }
-      });
-    });
-    Object.defineProperty(config$2, "familyPrefix", {
-      enumerable: true,
-      set: function(val) {
-        _config.cssPrefix = val;
-        _onChangeCb.forEach((cb) => cb(config$2));
-      },
-      get: function() {
-        return _config.cssPrefix;
-      }
-    });
-    WINDOW.FontAwesomeConfig = config$2;
-    const _onChangeCb = [];
-    function onChange(cb) {
-      _onChangeCb.push(cb);
-      return () => {
-        _onChangeCb.splice(_onChangeCb.indexOf(cb), 1);
-      };
-    }
-    const d$2 = UNITS_IN_GRID;
-    const meaninglessTransform = {
-      size: 16,
-      x: 0,
-      y: 0,
-      rotate: 0,
-      flipX: false,
-      flipY: false
-    };
-    function insertCss(css22) {
-      if (!css22 || !IS_DOM) {
-        return;
-      }
-      const style2 = DOCUMENT.createElement("style");
-      style2.setAttribute("type", "text/css");
-      style2.innerHTML = css22;
-      const headChildren = DOCUMENT.head.childNodes;
-      let beforeChild = null;
-      for (let i2 = headChildren.length - 1; i2 > -1; i2--) {
-        const child = headChildren[i2];
-        const tagName = (child.tagName || "").toUpperCase();
-        if (["STYLE", "LINK"].indexOf(tagName) > -1) {
-          beforeChild = child;
-        }
-      }
-      DOCUMENT.head.insertBefore(style2, beforeChild);
-      return css22;
-    }
-    const idPool = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    function nextUniqueId() {
-      let size = 12;
-      let id = "";
-      while (size-- > 0) {
-        id += idPool[Math.random() * 62 | 0];
-      }
-      return id;
-    }
-    function toArray$1(obj) {
-      const array = [];
-      for (let i2 = (obj || []).length >>> 0; i2--; ) {
-        array[i2] = obj[i2];
-      }
-      return array;
-    }
-    function classArray(node2) {
-      if (node2.classList) {
-        return toArray$1(node2.classList);
-      } else {
-        return (node2.getAttribute("class") || "").split(" ").filter((i2) => i2);
-      }
-    }
-    function htmlEscape(str) {
-      return "".concat(str).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    }
-    function joinAttributes(attributes) {
-      return Object.keys(attributes || {}).reduce((acc, attributeName) => {
-        return acc + "".concat(attributeName, '="').concat(htmlEscape(attributes[attributeName]), '" ');
-      }, "").trim();
-    }
-    function joinStyles(styles2) {
-      return Object.keys(styles2 || {}).reduce((acc, styleName) => {
-        return acc + "".concat(styleName, ": ").concat(styles2[styleName].trim(), ";");
-      }, "");
-    }
-    function transformIsMeaningful(transform2) {
-      return transform2.size !== meaninglessTransform.size || transform2.x !== meaninglessTransform.x || transform2.y !== meaninglessTransform.y || transform2.rotate !== meaninglessTransform.rotate || transform2.flipX || transform2.flipY;
-    }
-    function transformForSvg(_ref3) {
-      let {
-        transform: transform2,
-        containerWidth,
-        iconWidth
-      } = _ref3;
-      const outer = {
-        transform: "translate(".concat(containerWidth / 2, " 256)")
-      };
-      const innerTranslate = "translate(".concat(transform2.x * 32, ", ").concat(transform2.y * 32, ") ");
-      const innerScale = "scale(".concat(transform2.size / 16 * (transform2.flipX ? -1 : 1), ", ").concat(transform2.size / 16 * (transform2.flipY ? -1 : 1), ") ");
-      const innerRotate = "rotate(".concat(transform2.rotate, " 0 0)");
-      const inner = {
-        transform: "".concat(innerTranslate, " ").concat(innerScale, " ").concat(innerRotate)
-      };
-      const path = {
-        transform: "translate(".concat(iconWidth / 2 * -1, " -256)")
-      };
-      return {
-        outer,
-        inner,
-        path
-      };
-    }
-    function transformForCss(_ref22) {
-      let {
-        transform: transform2,
-        width = UNITS_IN_GRID,
-        height = UNITS_IN_GRID,
-        startCentered = false
-      } = _ref22;
-      let val = "";
-      if (startCentered && IS_IE) {
-        val += "translate(".concat(transform2.x / d$2 - width / 2, "em, ").concat(transform2.y / d$2 - height / 2, "em) ");
-      } else if (startCentered) {
-        val += "translate(calc(-50% + ".concat(transform2.x / d$2, "em), calc(-50% + ").concat(transform2.y / d$2, "em)) ");
-      } else {
-        val += "translate(".concat(transform2.x / d$2, "em, ").concat(transform2.y / d$2, "em) ");
-      }
-      val += "scale(".concat(transform2.size / d$2 * (transform2.flipX ? -1 : 1), ", ").concat(transform2.size / d$2 * (transform2.flipY ? -1 : 1), ") ");
-      val += "rotate(".concat(transform2.rotate, "deg) ");
-      return val;
-    }
-    var baseStyles = ':root, :host {\n  --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";\n  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";\n  --fa-font-light: normal 300 1em/1 "Font Awesome 6 Pro";\n  --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Pro";\n  --fa-font-duotone: normal 900 1em/1 "Font Awesome 6 Duotone";\n  --fa-font-duotone-regular: normal 400 1em/1 "Font Awesome 6 Duotone";\n  --fa-font-duotone-light: normal 300 1em/1 "Font Awesome 6 Duotone";\n  --fa-font-duotone-thin: normal 100 1em/1 "Font Awesome 6 Duotone";\n  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";\n  --fa-font-sharp-solid: normal 900 1em/1 "Font Awesome 6 Sharp";\n  --fa-font-sharp-regular: normal 400 1em/1 "Font Awesome 6 Sharp";\n  --fa-font-sharp-light: normal 300 1em/1 "Font Awesome 6 Sharp";\n  --fa-font-sharp-thin: normal 100 1em/1 "Font Awesome 6 Sharp";\n  --fa-font-sharp-duotone-solid: normal 900 1em/1 "Font Awesome 6 Sharp Duotone";\n  --fa-font-sharp-duotone-regular: normal 400 1em/1 "Font Awesome 6 Sharp Duotone";\n  --fa-font-sharp-duotone-light: normal 300 1em/1 "Font Awesome 6 Sharp Duotone";\n  --fa-font-sharp-duotone-thin: normal 100 1em/1 "Font Awesome 6 Sharp Duotone";\n}\n\nsvg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {\n  overflow: visible;\n  box-sizing: content-box;\n}\n\n.svg-inline--fa {\n  display: var(--fa-display, inline-block);\n  height: 1em;\n  overflow: visible;\n  vertical-align: -0.125em;\n}\n.svg-inline--fa.fa-2xs {\n  vertical-align: 0.1em;\n}\n.svg-inline--fa.fa-xs {\n  vertical-align: 0em;\n}\n.svg-inline--fa.fa-sm {\n  vertical-align: -0.0714285705em;\n}\n.svg-inline--fa.fa-lg {\n  vertical-align: -0.2em;\n}\n.svg-inline--fa.fa-xl {\n  vertical-align: -0.25em;\n}\n.svg-inline--fa.fa-2xl {\n  vertical-align: -0.3125em;\n}\n.svg-inline--fa.fa-pull-left {\n  margin-right: var(--fa-pull-margin, 0.3em);\n  width: auto;\n}\n.svg-inline--fa.fa-pull-right {\n  margin-left: var(--fa-pull-margin, 0.3em);\n  width: auto;\n}\n.svg-inline--fa.fa-li {\n  width: var(--fa-li-width, 2em);\n  top: 0.25em;\n}\n.svg-inline--fa.fa-fw {\n  width: var(--fa-fw-width, 1.25em);\n}\n\n.fa-layers svg.svg-inline--fa {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0;\n}\n\n.fa-layers-counter, .fa-layers-text {\n  display: inline-block;\n  position: absolute;\n  text-align: center;\n}\n\n.fa-layers {\n  display: inline-block;\n  height: 1em;\n  position: relative;\n  text-align: center;\n  vertical-align: -0.125em;\n  width: 1em;\n}\n.fa-layers svg.svg-inline--fa {\n  transform-origin: center center;\n}\n\n.fa-layers-text {\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  transform-origin: center center;\n}\n\n.fa-layers-counter {\n  background-color: var(--fa-counter-background-color, #ff253a);\n  border-radius: var(--fa-counter-border-radius, 1em);\n  box-sizing: border-box;\n  color: var(--fa-inverse, #fff);\n  line-height: var(--fa-counter-line-height, 1);\n  max-width: var(--fa-counter-max-width, 5em);\n  min-width: var(--fa-counter-min-width, 1.5em);\n  overflow: hidden;\n  padding: var(--fa-counter-padding, 0.25em 0.5em);\n  right: var(--fa-right, 0);\n  text-overflow: ellipsis;\n  top: var(--fa-top, 0);\n  transform: scale(var(--fa-counter-scale, 0.25));\n  transform-origin: top right;\n}\n\n.fa-layers-bottom-right {\n  bottom: var(--fa-bottom, 0);\n  right: var(--fa-right, 0);\n  top: auto;\n  transform: scale(var(--fa-layers-scale, 0.25));\n  transform-origin: bottom right;\n}\n\n.fa-layers-bottom-left {\n  bottom: var(--fa-bottom, 0);\n  left: var(--fa-left, 0);\n  right: auto;\n  top: auto;\n  transform: scale(var(--fa-layers-scale, 0.25));\n  transform-origin: bottom left;\n}\n\n.fa-layers-top-right {\n  top: var(--fa-top, 0);\n  right: var(--fa-right, 0);\n  transform: scale(var(--fa-layers-scale, 0.25));\n  transform-origin: top right;\n}\n\n.fa-layers-top-left {\n  left: var(--fa-left, 0);\n  right: auto;\n  top: var(--fa-top, 0);\n  transform: scale(var(--fa-layers-scale, 0.25));\n  transform-origin: top left;\n}\n\n.fa-1x {\n  font-size: 1em;\n}\n\n.fa-2x {\n  font-size: 2em;\n}\n\n.fa-3x {\n  font-size: 3em;\n}\n\n.fa-4x {\n  font-size: 4em;\n}\n\n.fa-5x {\n  font-size: 5em;\n}\n\n.fa-6x {\n  font-size: 6em;\n}\n\n.fa-7x {\n  font-size: 7em;\n}\n\n.fa-8x {\n  font-size: 8em;\n}\n\n.fa-9x {\n  font-size: 9em;\n}\n\n.fa-10x {\n  font-size: 10em;\n}\n\n.fa-2xs {\n  font-size: 0.625em;\n  line-height: 0.1em;\n  vertical-align: 0.225em;\n}\n\n.fa-xs {\n  font-size: 0.75em;\n  line-height: 0.0833333337em;\n  vertical-align: 0.125em;\n}\n\n.fa-sm {\n  font-size: 0.875em;\n  line-height: 0.0714285718em;\n  vertical-align: 0.0535714295em;\n}\n\n.fa-lg {\n  font-size: 1.25em;\n  line-height: 0.05em;\n  vertical-align: -0.075em;\n}\n\n.fa-xl {\n  font-size: 1.5em;\n  line-height: 0.0416666682em;\n  vertical-align: -0.125em;\n}\n\n.fa-2xl {\n  font-size: 2em;\n  line-height: 0.03125em;\n  vertical-align: -0.1875em;\n}\n\n.fa-fw {\n  text-align: center;\n  width: 1.25em;\n}\n\n.fa-ul {\n  list-style-type: none;\n  margin-left: var(--fa-li-margin, 2.5em);\n  padding-left: 0;\n}\n.fa-ul > li {\n  position: relative;\n}\n\n.fa-li {\n  left: calc(-1 * var(--fa-li-width, 2em));\n  position: absolute;\n  text-align: center;\n  width: var(--fa-li-width, 2em);\n  line-height: inherit;\n}\n\n.fa-border {\n  border-color: var(--fa-border-color, #eee);\n  border-radius: var(--fa-border-radius, 0.1em);\n  border-style: var(--fa-border-style, solid);\n  border-width: var(--fa-border-width, 0.08em);\n  padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);\n}\n\n.fa-pull-left {\n  float: left;\n  margin-right: var(--fa-pull-margin, 0.3em);\n}\n\n.fa-pull-right {\n  float: right;\n  margin-left: var(--fa-pull-margin, 0.3em);\n}\n\n.fa-beat {\n  animation-name: fa-beat;\n  animation-delay: var(--fa-animation-delay, 0s);\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 1s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, ease-in-out);\n}\n\n.fa-bounce {\n  animation-name: fa-bounce;\n  animation-delay: var(--fa-animation-delay, 0s);\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 1s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));\n}\n\n.fa-fade {\n  animation-name: fa-fade;\n  animation-delay: var(--fa-animation-delay, 0s);\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 1s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));\n}\n\n.fa-beat-fade {\n  animation-name: fa-beat-fade;\n  animation-delay: var(--fa-animation-delay, 0s);\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 1s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));\n}\n\n.fa-flip {\n  animation-name: fa-flip;\n  animation-delay: var(--fa-animation-delay, 0s);\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 1s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, ease-in-out);\n}\n\n.fa-shake {\n  animation-name: fa-shake;\n  animation-delay: var(--fa-animation-delay, 0s);\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 1s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, linear);\n}\n\n.fa-spin {\n  animation-name: fa-spin;\n  animation-delay: var(--fa-animation-delay, 0s);\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 2s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, linear);\n}\n\n.fa-spin-reverse {\n  --fa-animation-direction: reverse;\n}\n\n.fa-pulse,\n.fa-spin-pulse {\n  animation-name: fa-spin;\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 1s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, steps(8));\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .fa-beat,\n.fa-bounce,\n.fa-fade,\n.fa-beat-fade,\n.fa-flip,\n.fa-pulse,\n.fa-shake,\n.fa-spin,\n.fa-spin-pulse {\n    animation-delay: -1ms;\n    animation-duration: 1ms;\n    animation-iteration-count: 1;\n    transition-delay: 0s;\n    transition-duration: 0s;\n  }\n}\n@keyframes fa-beat {\n  0%, 90% {\n    transform: scale(1);\n  }\n  45% {\n    transform: scale(var(--fa-beat-scale, 1.25));\n  }\n}\n@keyframes fa-bounce {\n  0% {\n    transform: scale(1, 1) translateY(0);\n  }\n  10% {\n    transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);\n  }\n  30% {\n    transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));\n  }\n  50% {\n    transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);\n  }\n  57% {\n    transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));\n  }\n  64% {\n    transform: scale(1, 1) translateY(0);\n  }\n  100% {\n    transform: scale(1, 1) translateY(0);\n  }\n}\n@keyframes fa-fade {\n  50% {\n    opacity: var(--fa-fade-opacity, 0.4);\n  }\n}\n@keyframes fa-beat-fade {\n  0%, 100% {\n    opacity: var(--fa-beat-fade-opacity, 0.4);\n    transform: scale(1);\n  }\n  50% {\n    opacity: 1;\n    transform: scale(var(--fa-beat-fade-scale, 1.125));\n  }\n}\n@keyframes fa-flip {\n  50% {\n    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));\n  }\n}\n@keyframes fa-shake {\n  0% {\n    transform: rotate(-15deg);\n  }\n  4% {\n    transform: rotate(15deg);\n  }\n  8%, 24% {\n    transform: rotate(-18deg);\n  }\n  12%, 28% {\n    transform: rotate(18deg);\n  }\n  16% {\n    transform: rotate(-22deg);\n  }\n  20% {\n    transform: rotate(22deg);\n  }\n  32% {\n    transform: rotate(-12deg);\n  }\n  36% {\n    transform: rotate(12deg);\n  }\n  40%, 100% {\n    transform: rotate(0deg);\n  }\n}\n@keyframes fa-spin {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n.fa-rotate-90 {\n  transform: rotate(90deg);\n}\n\n.fa-rotate-180 {\n  transform: rotate(180deg);\n}\n\n.fa-rotate-270 {\n  transform: rotate(270deg);\n}\n\n.fa-flip-horizontal {\n  transform: scale(-1, 1);\n}\n\n.fa-flip-vertical {\n  transform: scale(1, -1);\n}\n\n.fa-flip-both,\n.fa-flip-horizontal.fa-flip-vertical {\n  transform: scale(-1, -1);\n}\n\n.fa-rotate-by {\n  transform: rotate(var(--fa-rotate-angle, 0));\n}\n\n.fa-stack {\n  display: inline-block;\n  vertical-align: middle;\n  height: 2em;\n  position: relative;\n  width: 2.5em;\n}\n\n.fa-stack-1x,\n.fa-stack-2x {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0;\n  z-index: var(--fa-stack-z-index, auto);\n}\n\n.svg-inline--fa.fa-stack-1x {\n  height: 1em;\n  width: 1.25em;\n}\n.svg-inline--fa.fa-stack-2x {\n  height: 2em;\n  width: 2.5em;\n}\n\n.fa-inverse {\n  color: var(--fa-inverse, #fff);\n}\n\n.sr-only,\n.fa-sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border-width: 0;\n}\n\n.sr-only-focusable:not(:focus),\n.fa-sr-only-focusable:not(:focus) {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border-width: 0;\n}\n\n.svg-inline--fa .fa-primary {\n  fill: var(--fa-primary-color, currentColor);\n  opacity: var(--fa-primary-opacity, 1);\n}\n\n.svg-inline--fa .fa-secondary {\n  fill: var(--fa-secondary-color, currentColor);\n  opacity: var(--fa-secondary-opacity, 0.4);\n}\n\n.svg-inline--fa.fa-swap-opacity .fa-primary {\n  opacity: var(--fa-secondary-opacity, 0.4);\n}\n\n.svg-inline--fa.fa-swap-opacity .fa-secondary {\n  opacity: var(--fa-primary-opacity, 1);\n}\n\n.svg-inline--fa mask .fa-primary,\n.svg-inline--fa mask .fa-secondary {\n  fill: black;\n}';
-    function css$2() {
-      const dcp = DEFAULT_CSS_PREFIX;
-      const drc = DEFAULT_REPLACEMENT_CLASS;
-      const fp = config$2.cssPrefix;
-      const rc = config$2.replacementClass;
-      let s2 = baseStyles;
-      if (fp !== dcp || rc !== drc) {
-        const dPatt = new RegExp("\\.".concat(dcp, "\\-"), "g");
-        const customPropPatt = new RegExp("\\--".concat(dcp, "\\-"), "g");
-        const rPatt = new RegExp("\\.".concat(drc), "g");
-        s2 = s2.replace(dPatt, ".".concat(fp, "-")).replace(customPropPatt, "--".concat(fp, "-")).replace(rPatt, ".".concat(rc));
-      }
-      return s2;
-    }
-    let _cssInserted = false;
-    function ensureCss() {
-      if (config$2.autoAddCss && !_cssInserted) {
-        insertCss(css$2());
-        _cssInserted = true;
-      }
-    }
-    var InjectCSS = {
-      mixout() {
-        return {
-          dom: {
-            css: css$2,
-            insertCss: ensureCss
-          }
-        };
-      },
-      hooks() {
-        return {
-          beforeDOMElementCreation() {
-            ensureCss();
-          },
-          beforeI2svg() {
-            ensureCss();
-          }
-        };
-      }
-    };
-    const w$1 = WINDOW || {};
-    if (!w$1[NAMESPACE_IDENTIFIER]) w$1[NAMESPACE_IDENTIFIER] = {};
-    if (!w$1[NAMESPACE_IDENTIFIER].styles) w$1[NAMESPACE_IDENTIFIER].styles = {};
-    if (!w$1[NAMESPACE_IDENTIFIER].hooks) w$1[NAMESPACE_IDENTIFIER].hooks = {};
-    if (!w$1[NAMESPACE_IDENTIFIER].shims) w$1[NAMESPACE_IDENTIFIER].shims = [];
-    var namespace = w$1[NAMESPACE_IDENTIFIER];
-    const functions = [];
-    const listener = function() {
-      DOCUMENT.removeEventListener("DOMContentLoaded", listener);
-      loaded = 1;
-      functions.map((fn) => fn());
-    };
-    let loaded = false;
-    if (IS_DOM) {
-      loaded = (DOCUMENT.documentElement.doScroll ? /^loaded|^c/ : /^loaded|^i|^c/).test(DOCUMENT.readyState);
-      if (!loaded) DOCUMENT.addEventListener("DOMContentLoaded", listener);
-    }
-    function domready(fn) {
-      if (!IS_DOM) return;
-      loaded ? setTimeout(fn, 0) : functions.push(fn);
-    }
-    function toHtml(abstractNodes) {
-      const {
-        tag,
-        attributes = {},
-        children = []
-      } = abstractNodes;
-      if (typeof abstractNodes === "string") {
-        return htmlEscape(abstractNodes);
-      } else {
-        return "<".concat(tag, " ").concat(joinAttributes(attributes), ">").concat(children.map(toHtml).join(""), "</").concat(tag, ">");
-      }
-    }
-    function iconFromMapping(mapping, prefix2, iconName) {
-      if (mapping && mapping[prefix2] && mapping[prefix2][iconName]) {
-        return {
-          prefix: prefix2,
-          iconName,
-          icon: mapping[prefix2][iconName]
-        };
-      }
-    }
-    var reduce$1 = function fastReduceObject(subject, fn, initialValue, thisContext) {
-      var keys2 = Object.keys(subject), length2 = keys2.length, iterator = fn, i2, key, result;
-      if (initialValue === void 0) {
-        i2 = 1;
-        result = subject[keys2[0]];
-      } else {
-        i2 = 0;
-        result = initialValue;
-      }
-      for (; i2 < length2; i2++) {
-        key = keys2[i2];
-        result = iterator(result, subject[key], key, subject);
-      }
-      return result;
-    };
-    function ucs2decode(string) {
-      const output = [];
-      let counter2 = 0;
-      const length2 = string.length;
-      while (counter2 < length2) {
-        const value = string.charCodeAt(counter2++);
-        if (value >= 55296 && value <= 56319 && counter2 < length2) {
-          const extra = string.charCodeAt(counter2++);
-          if ((extra & 64512) == 56320) {
-            output.push(((value & 1023) << 10) + (extra & 1023) + 65536);
-          } else {
-            output.push(value);
-            counter2--;
-          }
-        } else {
-          output.push(value);
-        }
-      }
-      return output;
-    }
-    function toHex(unicode) {
-      const decoded = ucs2decode(unicode);
-      return decoded.length === 1 ? decoded[0].toString(16) : null;
-    }
-    function codePointAt(string, index2) {
-      const size = string.length;
-      let first = string.charCodeAt(index2);
-      let second;
-      if (first >= 55296 && first <= 56319 && size > index2 + 1) {
-        second = string.charCodeAt(index2 + 1);
-        if (second >= 56320 && second <= 57343) {
-          return (first - 55296) * 1024 + second - 56320 + 65536;
-        }
-      }
-      return first;
-    }
-    function normalizeIcons(icons) {
-      return Object.keys(icons).reduce((acc, iconName) => {
-        const icon2 = icons[iconName];
-        const expanded = !!icon2.icon;
-        if (expanded) {
-          acc[icon2.iconName] = icon2.icon;
-        } else {
-          acc[iconName] = icon2;
-        }
-        return acc;
-      }, {});
-    }
-    function defineIcons(prefix2, icons) {
-      let params = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
-      const {
-        skipHooks = false
-      } = params;
-      const normalized = normalizeIcons(icons);
-      if (typeof namespace.hooks.addPack === "function" && !skipHooks) {
-        namespace.hooks.addPack(prefix2, normalizeIcons(icons));
-      } else {
-        namespace.styles[prefix2] = _objectSpread2$2(_objectSpread2$2({}, namespace.styles[prefix2] || {}), normalized);
-      }
-      if (prefix2 === "fas") {
-        defineIcons("fa", icons);
-      }
-    }
-    const {
-      styles,
-      shims
-    } = namespace;
-    const FAMILY_NAMES = Object.keys(PREFIX_TO_LONG_STYLE);
-    const PREFIXES_FOR_FAMILY = FAMILY_NAMES.reduce((acc, familyId) => {
-      acc[familyId] = Object.keys(PREFIX_TO_LONG_STYLE[familyId]);
-      return acc;
-    }, {});
-    let _defaultUsablePrefix = null;
-    let _byUnicode = {};
-    let _byLigature = {};
-    let _byOldName = {};
-    let _byOldUnicode = {};
-    let _byAlias = {};
-    function isReserved(name) {
-      return ~RESERVED_CLASSES.indexOf(name);
-    }
-    function getIconName(cssPrefix, cls) {
-      const parts = cls.split("-");
-      const prefix2 = parts[0];
-      const iconName = parts.slice(1).join("-");
-      if (prefix2 === cssPrefix && iconName !== "" && !isReserved(iconName)) {
-        return iconName;
-      } else {
-        return null;
-      }
-    }
-    const build = () => {
-      const lookup = (reducer) => {
-        return reduce$1(styles, (o$$1, style2, prefix2) => {
-          o$$1[prefix2] = reduce$1(style2, reducer, {});
-          return o$$1;
-        }, {});
-      };
-      _byUnicode = lookup((acc, icon2, iconName) => {
-        if (icon2[3]) {
-          acc[icon2[3]] = iconName;
-        }
-        if (icon2[2]) {
-          const aliases = icon2[2].filter((a$$1) => {
-            return typeof a$$1 === "number";
-          });
-          aliases.forEach((alias) => {
-            acc[alias.toString(16)] = iconName;
-          });
-        }
-        return acc;
-      });
-      _byLigature = lookup((acc, icon2, iconName) => {
-        acc[iconName] = iconName;
-        if (icon2[2]) {
-          const aliases = icon2[2].filter((a$$1) => {
-            return typeof a$$1 === "string";
-          });
-          aliases.forEach((alias) => {
-            acc[alias] = iconName;
-          });
-        }
-        return acc;
-      });
-      _byAlias = lookup((acc, icon2, iconName) => {
-        const aliases = icon2[2];
-        acc[iconName] = iconName;
-        aliases.forEach((alias) => {
-          acc[alias] = iconName;
-        });
-        return acc;
-      });
-      const hasRegular = "far" in styles || config$2.autoFetchSvg;
-      const shimLookups = reduce$1(shims, (acc, shim2) => {
-        const maybeNameMaybeUnicode = shim2[0];
-        let prefix2 = shim2[1];
-        const iconName = shim2[2];
-        if (prefix2 === "far" && !hasRegular) {
-          prefix2 = "fas";
-        }
-        if (typeof maybeNameMaybeUnicode === "string") {
-          acc.names[maybeNameMaybeUnicode] = {
-            prefix: prefix2,
-            iconName
-          };
-        }
-        if (typeof maybeNameMaybeUnicode === "number") {
-          acc.unicodes[maybeNameMaybeUnicode.toString(16)] = {
-            prefix: prefix2,
-            iconName
-          };
-        }
-        return acc;
-      }, {
-        names: {},
-        unicodes: {}
-      });
-      _byOldName = shimLookups.names;
-      _byOldUnicode = shimLookups.unicodes;
-      _defaultUsablePrefix = getCanonicalPrefix(config$2.styleDefault, {
-        family: config$2.familyDefault
-      });
-    };
-    onChange((c$$1) => {
-      _defaultUsablePrefix = getCanonicalPrefix(c$$1.styleDefault, {
-        family: config$2.familyDefault
-      });
-    });
-    build();
-    function byUnicode(prefix2, unicode) {
-      return (_byUnicode[prefix2] || {})[unicode];
-    }
-    function byLigature(prefix2, ligature) {
-      return (_byLigature[prefix2] || {})[ligature];
-    }
-    function byAlias(prefix2, alias) {
-      return (_byAlias[prefix2] || {})[alias];
-    }
-    function byOldName(name) {
-      return _byOldName[name] || {
-        prefix: null,
-        iconName: null
-      };
-    }
-    function byOldUnicode(unicode) {
-      const oldUnicode = _byOldUnicode[unicode];
-      const newUnicode = byUnicode("fas", unicode);
-      return oldUnicode || (newUnicode ? {
-        prefix: "fas",
-        iconName: newUnicode
-      } : null) || {
-        prefix: null,
-        iconName: null
-      };
-    }
-    function getDefaultUsablePrefix() {
-      return _defaultUsablePrefix;
-    }
-    const emptyCanonicalIcon = () => {
-      return {
-        prefix: null,
-        iconName: null,
-        rest: []
-      };
-    };
-    function getFamilyId(values2) {
-      let family = s$1;
-      const famProps = FAMILY_NAMES.reduce((acc, familyId) => {
-        acc[familyId] = "".concat(config$2.cssPrefix, "-").concat(familyId);
-        return acc;
-      }, {});
-      L.forEach((familyId) => {
-        if (values2.includes(famProps[familyId]) || values2.some((v$$1) => PREFIXES_FOR_FAMILY[familyId].includes(v$$1))) {
-          family = familyId;
-        }
-      });
-      return family;
-    }
-    function getCanonicalPrefix(styleOrPrefix) {
-      let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-      const {
-        family = s$1
-      } = params;
-      const style2 = PREFIX_TO_STYLE[family][styleOrPrefix];
-      if (family === t && !styleOrPrefix) {
-        return "fad";
-      }
-      const prefix2 = STYLE_TO_PREFIX[family][styleOrPrefix] || STYLE_TO_PREFIX[family][style2];
-      const defined = styleOrPrefix in namespace.styles ? styleOrPrefix : null;
-      const result = prefix2 || defined || null;
-      return result;
-    }
-    function moveNonFaClassesToRest(classNames2) {
-      let rest = [];
-      let iconName = null;
-      classNames2.forEach((cls) => {
-        const result = getIconName(config$2.cssPrefix, cls);
-        if (result) {
-          iconName = result;
-        } else if (cls) {
-          rest.push(cls);
-        }
-      });
-      return {
-        iconName,
-        rest
-      };
-    }
-    function sortedUniqueValues(arr) {
-      return arr.sort().filter((value, index2, arr2) => {
-        return arr2.indexOf(value) === index2;
-      });
-    }
-    function getCanonicalIcon(values2) {
-      let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-      const {
-        skipLookups = false
-      } = params;
-      let givenPrefix = null;
-      const faCombinedClasses = Ia.concat(bt$1);
-      const faStyleOrFamilyClasses = sortedUniqueValues(values2.filter((cls) => faCombinedClasses.includes(cls)));
-      const nonStyleOrFamilyClasses = sortedUniqueValues(values2.filter((cls) => !Ia.includes(cls)));
-      const faStyles = faStyleOrFamilyClasses.filter((cls) => {
-        givenPrefix = cls;
-        return !P.includes(cls);
-      });
-      const [styleFromValues = null] = faStyles;
-      const family = getFamilyId(faStyleOrFamilyClasses);
-      const canonical = _objectSpread2$2(_objectSpread2$2({}, moveNonFaClassesToRest(nonStyleOrFamilyClasses)), {}, {
-        prefix: getCanonicalPrefix(styleFromValues, {
-          family
-        })
-      });
-      return _objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, canonical), getDefaultCanonicalPrefix({
-        values: values2,
-        family,
-        styles,
-        config: config$2,
-        canonical,
-        givenPrefix
-      })), applyShimAndAlias(skipLookups, givenPrefix, canonical));
-    }
-    function applyShimAndAlias(skipLookups, givenPrefix, canonical) {
-      let {
-        prefix: prefix2,
-        iconName
-      } = canonical;
-      if (skipLookups || !prefix2 || !iconName) {
-        return {
-          prefix: prefix2,
-          iconName
-        };
-      }
-      const shim2 = givenPrefix === "fa" ? byOldName(iconName) : {};
-      const aliasIconName = byAlias(prefix2, iconName);
-      iconName = shim2.iconName || aliasIconName || iconName;
-      prefix2 = shim2.prefix || prefix2;
-      if (prefix2 === "far" && !styles["far"] && styles["fas"] && !config$2.autoFetchSvg) {
-        prefix2 = "fas";
-      }
-      return {
-        prefix: prefix2,
-        iconName
-      };
-    }
-    const newCanonicalFamilies = L.filter((familyId) => {
-      return familyId !== s$1 || familyId !== t;
-    });
-    const newCanonicalStyles = Object.keys(ga).filter((key) => key !== s$1).map((key) => Object.keys(ga[key])).flat();
-    function getDefaultCanonicalPrefix(prefixOptions) {
-      const {
-        values: values2,
-        family,
-        canonical,
-        givenPrefix = "",
-        styles: styles2 = {},
-        config: config$$1 = {}
-      } = prefixOptions;
-      const isDuotoneFamily = family === t;
-      const valuesHasDuotone = values2.includes("fa-duotone") || values2.includes("fad");
-      const defaultFamilyIsDuotone = config$$1.familyDefault === "duotone";
-      const canonicalPrefixIsDuotone = canonical.prefix === "fad" || canonical.prefix === "fa-duotone";
-      if (!isDuotoneFamily && (valuesHasDuotone || defaultFamilyIsDuotone || canonicalPrefixIsDuotone)) {
-        canonical.prefix = "fad";
-      }
-      if (values2.includes("fa-brands") || values2.includes("fab")) {
-        canonical.prefix = "fab";
-      }
-      if (!canonical.prefix && newCanonicalFamilies.includes(family)) {
-        const validPrefix = Object.keys(styles2).find((key) => newCanonicalStyles.includes(key));
-        if (validPrefix || config$$1.autoFetchSvg) {
-          const defaultPrefix = pt.get(family).defaultShortPrefixId;
-          canonical.prefix = defaultPrefix;
-          canonical.iconName = byAlias(canonical.prefix, canonical.iconName) || canonical.iconName;
-        }
-      }
-      if (canonical.prefix === "fa" || givenPrefix === "fa") {
-        canonical.prefix = getDefaultUsablePrefix() || "fas";
-      }
-      return canonical;
-    }
-    class Library {
-      constructor() {
-        this.definitions = {};
-      }
-      add() {
-        for (var _len = arguments.length, definitions = new Array(_len), _key = 0; _key < _len; _key++) {
-          definitions[_key] = arguments[_key];
-        }
-        const additions = definitions.reduce(this._pullDefinitions, {});
-        Object.keys(additions).forEach((key) => {
-          this.definitions[key] = _objectSpread2$2(_objectSpread2$2({}, this.definitions[key] || {}), additions[key]);
-          defineIcons(key, additions[key]);
-          const longPrefix = PREFIX_TO_LONG_STYLE[s$1][key];
-          if (longPrefix) defineIcons(longPrefix, additions[key]);
-          build();
-        });
-      }
-      reset() {
-        this.definitions = {};
-      }
-      _pullDefinitions(additions, definition) {
-        const normalized = definition.prefix && definition.iconName && definition.icon ? {
-          0: definition
-        } : definition;
-        Object.keys(normalized).map((key) => {
-          const {
-            prefix: prefix2,
-            iconName,
-            icon: icon2
-          } = normalized[key];
-          const aliases = icon2[2];
-          if (!additions[prefix2]) additions[prefix2] = {};
-          if (aliases.length > 0) {
-            aliases.forEach((alias) => {
-              if (typeof alias === "string") {
-                additions[prefix2][alias] = icon2;
-              }
-            });
-          }
-          additions[prefix2][iconName] = icon2;
-        });
-        return additions;
-      }
-    }
-    let _plugins = [];
-    let _hooks = {};
-    const providers = {};
-    const defaultProviderKeys = Object.keys(providers);
-    function registerPlugins(nextPlugins, _ref3) {
-      let {
-        mixoutsTo: obj
-      } = _ref3;
-      _plugins = nextPlugins;
-      _hooks = {};
-      Object.keys(providers).forEach((k) => {
-        if (defaultProviderKeys.indexOf(k) === -1) {
-          delete providers[k];
-        }
-      });
-      _plugins.forEach((plugin) => {
-        const mixout = plugin.mixout ? plugin.mixout() : {};
-        Object.keys(mixout).forEach((tk) => {
-          if (typeof mixout[tk] === "function") {
-            obj[tk] = mixout[tk];
-          }
-          if (typeof mixout[tk] === "object") {
-            Object.keys(mixout[tk]).forEach((sk) => {
-              if (!obj[tk]) {
-                obj[tk] = {};
-              }
-              obj[tk][sk] = mixout[tk][sk];
-            });
-          }
-        });
-        if (plugin.hooks) {
-          const hooks2 = plugin.hooks();
-          Object.keys(hooks2).forEach((hook2) => {
-            if (!_hooks[hook2]) {
-              _hooks[hook2] = [];
-            }
-            _hooks[hook2].push(hooks2[hook2]);
-          });
-        }
-        if (plugin.provides) {
-          plugin.provides(providers);
-        }
-      });
-      return obj;
-    }
-    function chainHooks(hook2, accumulator) {
-      for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-        args[_key - 2] = arguments[_key];
-      }
-      const hookFns = _hooks[hook2] || [];
-      hookFns.forEach((hookFn) => {
-        accumulator = hookFn.apply(null, [accumulator, ...args]);
-      });
-      return accumulator;
-    }
-    function callHooks(hook2) {
-      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-        args[_key2 - 1] = arguments[_key2];
-      }
-      const hookFns = _hooks[hook2] || [];
-      hookFns.forEach((hookFn) => {
-        hookFn.apply(null, args);
-      });
-      return void 0;
-    }
-    function callProvided() {
-      const hook2 = arguments[0];
-      const args = Array.prototype.slice.call(arguments, 1);
-      return providers[hook2] ? providers[hook2].apply(null, args) : void 0;
-    }
-    function findIconDefinition(iconLookup) {
-      if (iconLookup.prefix === "fa") {
-        iconLookup.prefix = "fas";
-      }
-      let {
-        iconName
-      } = iconLookup;
-      const prefix2 = iconLookup.prefix || getDefaultUsablePrefix();
-      if (!iconName) return;
-      iconName = byAlias(prefix2, iconName) || iconName;
-      return iconFromMapping(library.definitions, prefix2, iconName) || iconFromMapping(namespace.styles, prefix2, iconName);
-    }
-    const library = new Library();
-    const noAuto = () => {
-      config$2.autoReplaceSvg = false;
-      config$2.observeMutations = false;
-      callHooks("noAuto");
-    };
-    const dom$2 = {
-      i2svg: function() {
-        let params = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-        if (IS_DOM) {
-          callHooks("beforeI2svg", params);
-          callProvided("pseudoElements2svg", params);
-          return callProvided("i2svg", params);
-        } else {
-          return Promise.reject(new Error("Operation requires a DOM of some kind."));
-        }
-      },
-      watch: function() {
-        let params = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-        const {
-          autoReplaceSvgRoot
-        } = params;
-        if (config$2.autoReplaceSvg === false) {
-          config$2.autoReplaceSvg = true;
-        }
-        config$2.observeMutations = true;
-        domready(() => {
-          autoReplace({
-            autoReplaceSvgRoot
-          });
-          callHooks("watch", params);
-        });
-      }
-    };
-    const parse$3 = {
-      icon: (icon2) => {
-        if (icon2 === null) {
-          return null;
-        }
-        if (typeof icon2 === "object" && icon2.prefix && icon2.iconName) {
-          return {
-            prefix: icon2.prefix,
-            iconName: byAlias(icon2.prefix, icon2.iconName) || icon2.iconName
-          };
-        }
-        if (Array.isArray(icon2) && icon2.length === 2) {
-          const iconName = icon2[1].indexOf("fa-") === 0 ? icon2[1].slice(3) : icon2[1];
-          const prefix2 = getCanonicalPrefix(icon2[0]);
-          return {
-            prefix: prefix2,
-            iconName: byAlias(prefix2, iconName) || iconName
-          };
-        }
-        if (typeof icon2 === "string" && (icon2.indexOf("".concat(config$2.cssPrefix, "-")) > -1 || icon2.match(ICON_SELECTION_SYNTAX_PATTERN))) {
-          const canonicalIcon = getCanonicalIcon(icon2.split(" "), {
-            skipLookups: true
-          });
-          return {
-            prefix: canonicalIcon.prefix || getDefaultUsablePrefix(),
-            iconName: byAlias(canonicalIcon.prefix, canonicalIcon.iconName) || canonicalIcon.iconName
-          };
-        }
-        if (typeof icon2 === "string") {
-          const prefix2 = getDefaultUsablePrefix();
-          return {
-            prefix: prefix2,
-            iconName: byAlias(prefix2, icon2) || icon2
-          };
-        }
-      }
-    };
-    const api = {
-      noAuto,
-      config: config$2,
-      dom: dom$2,
-      parse: parse$3,
-      library,
-      findIconDefinition,
-      toHtml
-    };
-    const autoReplace = function() {
-      let params = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-      const {
-        autoReplaceSvgRoot = DOCUMENT
-      } = params;
-      if ((Object.keys(namespace.styles).length > 0 || config$2.autoFetchSvg) && IS_DOM && config$2.autoReplaceSvg) api.dom.i2svg({
-        node: autoReplaceSvgRoot
-      });
-    };
-    function domVariants(val, abstractCreator) {
-      Object.defineProperty(val, "abstract", {
-        get: abstractCreator
-      });
-      Object.defineProperty(val, "html", {
-        get: function() {
-          return val.abstract.map((a2) => toHtml(a2));
-        }
-      });
-      Object.defineProperty(val, "node", {
-        get: function() {
-          if (!IS_DOM) return;
-          const container2 = DOCUMENT.createElement("div");
-          container2.innerHTML = val.html;
-          return container2.children;
-        }
-      });
-      return val;
-    }
-    function asIcon(_ref3) {
-      let {
-        children,
-        main,
-        mask,
-        attributes,
-        styles: styles2,
-        transform: transform2
-      } = _ref3;
-      if (transformIsMeaningful(transform2) && main.found && !mask.found) {
-        const {
-          width,
-          height
-        } = main;
-        const offset2 = {
-          x: width / height / 2,
-          y: 0.5
-        };
-        attributes["style"] = joinStyles(_objectSpread2$2(_objectSpread2$2({}, styles2), {}, {
-          "transform-origin": "".concat(offset2.x + transform2.x / 16, "em ").concat(offset2.y + transform2.y / 16, "em")
-        }));
-      }
-      return [{
-        tag: "svg",
-        attributes,
-        children
-      }];
-    }
-    function asSymbol(_ref3) {
-      let {
-        prefix: prefix2,
-        iconName,
-        children,
-        attributes,
-        symbol
-      } = _ref3;
-      const id = symbol === true ? "".concat(prefix2, "-").concat(config$2.cssPrefix, "-").concat(iconName) : symbol;
-      return [{
-        tag: "svg",
-        attributes: {
-          style: "display: none;"
-        },
-        children: [{
-          tag: "symbol",
-          attributes: _objectSpread2$2(_objectSpread2$2({}, attributes), {}, {
-            id
-          }),
-          children
-        }]
-      }];
-    }
-    function makeInlineSvgAbstract(params) {
-      const {
-        icons: {
-          main,
-          mask
-        },
-        prefix: prefix2,
-        iconName,
-        transform: transform2,
-        symbol,
-        title,
-        maskId,
-        titleId,
-        extra,
-        watchable = false
-      } = params;
-      const {
-        width,
-        height
-      } = mask.found ? mask : main;
-      const isUploadedIcon = Lt.includes(prefix2);
-      const attrClass = [config$2.replacementClass, iconName ? "".concat(config$2.cssPrefix, "-").concat(iconName) : ""].filter((c$$1) => extra.classes.indexOf(c$$1) === -1).filter((c$$1) => c$$1 !== "" || !!c$$1).concat(extra.classes).join(" ");
-      let content = {
-        children: [],
-        attributes: _objectSpread2$2(_objectSpread2$2({}, extra.attributes), {}, {
-          "data-prefix": prefix2,
-          "data-icon": iconName,
-          "class": attrClass,
-          "role": extra.attributes.role || "img",
-          "xmlns": "http://www.w3.org/2000/svg",
-          "viewBox": "0 0 ".concat(width, " ").concat(height)
-        })
-      };
-      const uploadedIconWidthStyle = isUploadedIcon && !~extra.classes.indexOf("fa-fw") ? {
-        width: "".concat(width / height * 16 * 0.0625, "em")
-      } : {};
-      if (watchable) {
-        content.attributes[DATA_FA_I2SVG] = "";
-      }
-      if (title) {
-        content.children.push({
-          tag: "title",
-          attributes: {
-            id: content.attributes["aria-labelledby"] || "title-".concat(titleId || nextUniqueId())
-          },
-          children: [title]
-        });
-        delete content.attributes.title;
-      }
-      const args = _objectSpread2$2(_objectSpread2$2({}, content), {}, {
-        prefix: prefix2,
-        iconName,
-        main,
-        mask,
-        maskId,
-        transform: transform2,
-        symbol,
-        styles: _objectSpread2$2(_objectSpread2$2({}, uploadedIconWidthStyle), extra.styles)
-      });
-      const {
-        children,
-        attributes
-      } = mask.found && main.found ? callProvided("generateAbstractMask", args) || {
-        children: [],
-        attributes: {}
-      } : callProvided("generateAbstractIcon", args) || {
-        children: [],
-        attributes: {}
-      };
-      args.children = children;
-      args.attributes = attributes;
-      if (symbol) {
-        return asSymbol(args);
-      } else {
-        return asIcon(args);
-      }
-    }
-    function makeLayersTextAbstract(params) {
-      const {
-        content,
-        width,
-        height,
-        transform: transform2,
-        title,
-        extra,
-        watchable = false
-      } = params;
-      const attributes = _objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, extra.attributes), title ? {
-        "title": title
-      } : {}), {}, {
-        "class": extra.classes.join(" ")
-      });
-      if (watchable) {
-        attributes[DATA_FA_I2SVG] = "";
-      }
-      const styles2 = _objectSpread2$2({}, extra.styles);
-      if (transformIsMeaningful(transform2)) {
-        styles2["transform"] = transformForCss({
-          transform: transform2,
-          startCentered: true,
-          width,
-          height
-        });
-        styles2["-webkit-transform"] = styles2["transform"];
-      }
-      const styleString = joinStyles(styles2);
-      if (styleString.length > 0) {
-        attributes["style"] = styleString;
-      }
-      const val = [];
-      val.push({
-        tag: "span",
-        attributes,
-        children: [content]
-      });
-      if (title) {
-        val.push({
-          tag: "span",
-          attributes: {
-            class: "sr-only"
-          },
-          children: [title]
-        });
-      }
-      return val;
-    }
-    function makeLayersCounterAbstract(params) {
-      const {
-        content,
-        title,
-        extra
-      } = params;
-      const attributes = _objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, extra.attributes), title ? {
-        "title": title
-      } : {}), {}, {
-        "class": extra.classes.join(" ")
-      });
-      const styleString = joinStyles(extra.styles);
-      if (styleString.length > 0) {
-        attributes["style"] = styleString;
-      }
-      const val = [];
-      val.push({
-        tag: "span",
-        attributes,
-        children: [content]
-      });
-      if (title) {
-        val.push({
-          tag: "span",
-          attributes: {
-            class: "sr-only"
-          },
-          children: [title]
-        });
-      }
-      return val;
-    }
-    const {
-      styles: styles$1
-    } = namespace;
-    function asFoundIcon(icon2) {
-      const width = icon2[0];
-      const height = icon2[1];
-      const [vectorData] = icon2.slice(4);
-      let element = null;
-      if (Array.isArray(vectorData)) {
-        element = {
-          tag: "g",
-          attributes: {
-            class: "".concat(config$2.cssPrefix, "-").concat(DUOTONE_CLASSES.GROUP)
-          },
-          children: [{
-            tag: "path",
-            attributes: {
-              class: "".concat(config$2.cssPrefix, "-").concat(DUOTONE_CLASSES.SECONDARY),
-              fill: "currentColor",
-              d: vectorData[0]
-            }
-          }, {
-            tag: "path",
-            attributes: {
-              class: "".concat(config$2.cssPrefix, "-").concat(DUOTONE_CLASSES.PRIMARY),
-              fill: "currentColor",
-              d: vectorData[1]
-            }
-          }]
-        };
-      } else {
-        element = {
-          tag: "path",
-          attributes: {
-            fill: "currentColor",
-            d: vectorData
-          }
-        };
-      }
-      return {
-        found: true,
-        width,
-        height,
-        icon: element
-      };
-    }
-    const missingIconResolutionMixin = {
-      found: false,
-      width: 512,
-      height: 512
-    };
-    function maybeNotifyMissing(iconName, prefix2) {
-      if (!PRODUCTION$1 && !config$2.showMissingIcons && iconName) {
-        console.error('Icon with name "'.concat(iconName, '" and prefix "').concat(prefix2, '" is missing.'));
-      }
-    }
-    function findIcon(iconName, prefix2) {
-      let givenPrefix = prefix2;
-      if (prefix2 === "fa" && config$2.styleDefault !== null) {
-        prefix2 = getDefaultUsablePrefix();
-      }
-      return new Promise((resolve, reject) => {
-        if (givenPrefix === "fa") {
-          const shim2 = byOldName(iconName) || {};
-          iconName = shim2.iconName || iconName;
-          prefix2 = shim2.prefix || prefix2;
-        }
-        if (iconName && prefix2 && styles$1[prefix2] && styles$1[prefix2][iconName]) {
-          const icon2 = styles$1[prefix2][iconName];
-          return resolve(asFoundIcon(icon2));
-        }
-        maybeNotifyMissing(iconName, prefix2);
-        resolve(_objectSpread2$2(_objectSpread2$2({}, missingIconResolutionMixin), {}, {
-          icon: config$2.showMissingIcons && iconName ? callProvided("missingIconAbstract") || {} : {}
-        }));
-      });
-    }
-    const noop$1$1 = () => {
-    };
-    const p$2 = config$2.measurePerformance && PERFORMANCE && PERFORMANCE.mark && PERFORMANCE.measure ? PERFORMANCE : {
-      mark: noop$1$1,
-      measure: noop$1$1
-    };
-    const preamble = 'FA "6.7.2"';
-    const begin = (name) => {
-      p$2.mark("".concat(preamble, " ").concat(name, " begins"));
-      return () => end(name);
-    };
-    const end = (name) => {
-      p$2.mark("".concat(preamble, " ").concat(name, " ends"));
-      p$2.measure("".concat(preamble, " ").concat(name), "".concat(preamble, " ").concat(name, " begins"), "".concat(preamble, " ").concat(name, " ends"));
-    };
-    var perf = {
-      begin,
-      end
-    };
-    const noop$2$1 = () => {
-    };
-    function isWatched(node2) {
-      const i2svg = node2.getAttribute ? node2.getAttribute(DATA_FA_I2SVG) : null;
-      return typeof i2svg === "string";
-    }
-    function hasPrefixAndIcon(node2) {
-      const prefix2 = node2.getAttribute ? node2.getAttribute(DATA_PREFIX) : null;
-      const icon2 = node2.getAttribute ? node2.getAttribute(DATA_ICON) : null;
-      return prefix2 && icon2;
-    }
-    function hasBeenReplaced(node2) {
-      return node2 && node2.classList && node2.classList.contains && node2.classList.contains(config$2.replacementClass);
-    }
-    function getMutator() {
-      if (config$2.autoReplaceSvg === true) {
-        return mutators.replace;
-      }
-      const mutator = mutators[config$2.autoReplaceSvg];
-      return mutator || mutators.replace;
-    }
-    function createElementNS(tag) {
-      return DOCUMENT.createElementNS("http://www.w3.org/2000/svg", tag);
-    }
-    function createElement(tag) {
-      return DOCUMENT.createElement(tag);
-    }
-    function convertSVG(abstractObj) {
-      let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-      const {
-        ceFn = abstractObj.tag === "svg" ? createElementNS : createElement
-      } = params;
-      if (typeof abstractObj === "string") {
-        return DOCUMENT.createTextNode(abstractObj);
-      }
-      const tag = ceFn(abstractObj.tag);
-      Object.keys(abstractObj.attributes || []).forEach(function(key) {
-        tag.setAttribute(key, abstractObj.attributes[key]);
-      });
-      const children = abstractObj.children || [];
-      children.forEach(function(child) {
-        tag.appendChild(convertSVG(child, {
-          ceFn
-        }));
-      });
-      return tag;
-    }
-    function nodeAsComment(node2) {
-      let comment2 = " ".concat(node2.outerHTML, " ");
-      comment2 = "".concat(comment2, "Font Awesome fontawesome.com ");
-      return comment2;
-    }
-    const mutators = {
-      replace: function(mutation) {
-        const node2 = mutation[0];
-        if (node2.parentNode) {
-          mutation[1].forEach((abstract) => {
-            node2.parentNode.insertBefore(convertSVG(abstract), node2);
-          });
-          if (node2.getAttribute(DATA_FA_I2SVG) === null && config$2.keepOriginalSource) {
-            let comment2 = DOCUMENT.createComment(nodeAsComment(node2));
-            node2.parentNode.replaceChild(comment2, node2);
-          } else {
-            node2.remove();
-          }
-        }
-      },
-      nest: function(mutation) {
-        const node2 = mutation[0];
-        const abstract = mutation[1];
-        if (~classArray(node2).indexOf(config$2.replacementClass)) {
-          return mutators.replace(mutation);
-        }
-        const forSvg = new RegExp("".concat(config$2.cssPrefix, "-.*"));
-        delete abstract[0].attributes.id;
-        if (abstract[0].attributes.class) {
-          const splitClasses = abstract[0].attributes.class.split(" ").reduce((acc, cls) => {
-            if (cls === config$2.replacementClass || cls.match(forSvg)) {
-              acc.toSvg.push(cls);
-            } else {
-              acc.toNode.push(cls);
-            }
-            return acc;
-          }, {
-            toNode: [],
-            toSvg: []
-          });
-          abstract[0].attributes.class = splitClasses.toSvg.join(" ");
-          if (splitClasses.toNode.length === 0) {
-            node2.removeAttribute("class");
-          } else {
-            node2.setAttribute("class", splitClasses.toNode.join(" "));
-          }
-        }
-        const newInnerHTML = abstract.map((a2) => toHtml(a2)).join("\n");
-        node2.setAttribute(DATA_FA_I2SVG, "");
-        node2.innerHTML = newInnerHTML;
-      }
-    };
-    function performOperationSync(op) {
-      op();
-    }
-    function perform(mutations, callback) {
-      const callbackFunction = typeof callback === "function" ? callback : noop$2$1;
-      if (mutations.length === 0) {
-        callbackFunction();
-      } else {
-        let frame = performOperationSync;
-        if (config$2.mutateApproach === MUTATION_APPROACH_ASYNC) {
-          frame = WINDOW.requestAnimationFrame || performOperationSync;
-        }
-        frame(() => {
-          const mutator = getMutator();
-          const mark = perf.begin("mutate");
-          mutations.map(mutator);
-          mark();
-          callbackFunction();
-        });
-      }
-    }
-    let disabled = false;
-    function disableObservation() {
-      disabled = true;
-    }
-    function enableObservation() {
-      disabled = false;
-    }
-    let mo = null;
-    function observe(options2) {
-      if (!MUTATION_OBSERVER) {
-        return;
-      }
-      if (!config$2.observeMutations) {
-        return;
-      }
-      const {
-        treeCallback = noop$2$1,
-        nodeCallback = noop$2$1,
-        pseudoElementsCallback = noop$2$1,
-        observeMutationsRoot = DOCUMENT
-      } = options2;
-      mo = new MUTATION_OBSERVER((objects) => {
-        if (disabled) return;
-        const defaultPrefix = getDefaultUsablePrefix();
-        toArray$1(objects).forEach((mutationRecord) => {
-          if (mutationRecord.type === "childList" && mutationRecord.addedNodes.length > 0 && !isWatched(mutationRecord.addedNodes[0])) {
-            if (config$2.searchPseudoElements) {
-              pseudoElementsCallback(mutationRecord.target);
-            }
-            treeCallback(mutationRecord.target);
-          }
-          if (mutationRecord.type === "attributes" && mutationRecord.target.parentNode && config$2.searchPseudoElements) {
-            pseudoElementsCallback(mutationRecord.target.parentNode);
-          }
-          if (mutationRecord.type === "attributes" && isWatched(mutationRecord.target) && ~ATTRIBUTES_WATCHED_FOR_MUTATION.indexOf(mutationRecord.attributeName)) {
-            if (mutationRecord.attributeName === "class" && hasPrefixAndIcon(mutationRecord.target)) {
-              const {
-                prefix: prefix2,
-                iconName
-              } = getCanonicalIcon(classArray(mutationRecord.target));
-              mutationRecord.target.setAttribute(DATA_PREFIX, prefix2 || defaultPrefix);
-              if (iconName) mutationRecord.target.setAttribute(DATA_ICON, iconName);
-            } else if (hasBeenReplaced(mutationRecord.target)) {
-              nodeCallback(mutationRecord.target);
-            }
-          }
-        });
-      });
-      if (!IS_DOM) return;
-      mo.observe(observeMutationsRoot, {
-        childList: true,
-        attributes: true,
-        characterData: true,
-        subtree: true
-      });
-    }
-    function disconnect() {
-      if (!mo) return;
-      mo.disconnect();
-    }
-    function styleParser(node2) {
-      const style2 = node2.getAttribute("style");
-      let val = [];
-      if (style2) {
-        val = style2.split(";").reduce((acc, style22) => {
-          const styles2 = style22.split(":");
-          const prop = styles2[0];
-          const value = styles2.slice(1);
-          if (prop && value.length > 0) {
-            acc[prop] = value.join(":").trim();
-          }
-          return acc;
-        }, {});
-      }
-      return val;
-    }
-    function classParser(node2) {
-      const existingPrefix = node2.getAttribute("data-prefix");
-      const existingIconName = node2.getAttribute("data-icon");
-      const innerText = node2.innerText !== void 0 ? node2.innerText.trim() : "";
-      let val = getCanonicalIcon(classArray(node2));
-      if (!val.prefix) {
-        val.prefix = getDefaultUsablePrefix();
-      }
-      if (existingPrefix && existingIconName) {
-        val.prefix = existingPrefix;
-        val.iconName = existingIconName;
-      }
-      if (val.iconName && val.prefix) {
-        return val;
-      }
-      if (val.prefix && innerText.length > 0) {
-        val.iconName = byLigature(val.prefix, node2.innerText) || byUnicode(val.prefix, toHex(node2.innerText));
-      }
-      if (!val.iconName && config$2.autoFetchSvg && node2.firstChild && node2.firstChild.nodeType === Node.TEXT_NODE) {
-        val.iconName = node2.firstChild.data;
-      }
-      return val;
-    }
-    function attributesParser(node2) {
-      const extraAttributes = toArray$1(node2.attributes).reduce((acc, attr) => {
-        if (acc.name !== "class" && acc.name !== "style") {
-          acc[attr.name] = attr.value;
-        }
-        return acc;
-      }, {});
-      const title = node2.getAttribute("title");
-      const titleId = node2.getAttribute("data-fa-title-id");
-      if (config$2.autoA11y) {
-        if (title) {
-          extraAttributes["aria-labelledby"] = "".concat(config$2.replacementClass, "-title-").concat(titleId || nextUniqueId());
-        } else {
-          extraAttributes["aria-hidden"] = "true";
-          extraAttributes["focusable"] = "false";
-        }
-      }
-      return extraAttributes;
-    }
-    function blankMeta() {
-      return {
-        iconName: null,
-        title: null,
-        titleId: null,
-        prefix: null,
-        transform: meaninglessTransform,
-        symbol: false,
-        mask: {
-          iconName: null,
-          prefix: null,
-          rest: []
-        },
-        maskId: null,
-        extra: {
-          classes: [],
-          styles: {},
-          attributes: {}
-        }
-      };
-    }
-    function parseMeta(node2) {
-      let parser2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {
-        styleParser: true
-      };
-      const {
-        iconName,
-        prefix: prefix2,
-        rest: extraClasses
-      } = classParser(node2);
-      const extraAttributes = attributesParser(node2);
-      const pluginMeta = chainHooks("parseNodeAttributes", {}, node2);
-      let extraStyles = parser2.styleParser ? styleParser(node2) : [];
-      return _objectSpread2$2({
-        iconName,
-        title: node2.getAttribute("title"),
-        titleId: node2.getAttribute("data-fa-title-id"),
-        prefix: prefix2,
-        transform: meaninglessTransform,
-        mask: {
-          iconName: null,
-          prefix: null,
-          rest: []
-        },
-        maskId: null,
-        symbol: false,
-        extra: {
-          classes: extraClasses,
-          styles: extraStyles,
-          attributes: extraAttributes
-        }
-      }, pluginMeta);
-    }
-    const {
-      styles: styles$2
-    } = namespace;
-    function generateMutation(node2) {
-      const nodeMeta = config$2.autoReplaceSvg === "nest" ? parseMeta(node2, {
-        styleParser: false
-      }) : parseMeta(node2);
-      if (~nodeMeta.extra.classes.indexOf(LAYERS_TEXT_CLASSNAME)) {
-        return callProvided("generateLayersText", node2, nodeMeta);
-      } else {
-        return callProvided("generateSvgReplacementMutation", node2, nodeMeta);
-      }
-    }
-    function getKnownPrefixes() {
-      return [...Ft, ...Ia];
-    }
-    function onTree(root2) {
-      let callback = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : null;
-      if (!IS_DOM) return Promise.resolve();
-      const htmlClassList = DOCUMENT.documentElement.classList;
-      const hclAdd = (suffix) => htmlClassList.add("".concat(HTML_CLASS_I2SVG_BASE_CLASS, "-").concat(suffix));
-      const hclRemove = (suffix) => htmlClassList.remove("".concat(HTML_CLASS_I2SVG_BASE_CLASS, "-").concat(suffix));
-      const prefixes2 = config$2.autoFetchSvg ? getKnownPrefixes() : P.concat(Object.keys(styles$2));
-      if (!prefixes2.includes("fa")) {
-        prefixes2.push("fa");
-      }
-      const prefixesDomQuery = [".".concat(LAYERS_TEXT_CLASSNAME, ":not([").concat(DATA_FA_I2SVG, "])")].concat(prefixes2.map((p$$1) => ".".concat(p$$1, ":not([").concat(DATA_FA_I2SVG, "])"))).join(", ");
-      if (prefixesDomQuery.length === 0) {
-        return Promise.resolve();
-      }
-      let candidates = [];
-      try {
-        candidates = toArray$1(root2.querySelectorAll(prefixesDomQuery));
-      } catch (e$$1) {
-      }
-      if (candidates.length > 0) {
-        hclAdd("pending");
-        hclRemove("complete");
-      } else {
-        return Promise.resolve();
-      }
-      const mark = perf.begin("onTree");
-      const mutations = candidates.reduce((acc, node2) => {
-        try {
-          const mutation = generateMutation(node2);
-          if (mutation) {
-            acc.push(mutation);
-          }
-        } catch (e$$1) {
-          if (!PRODUCTION$1) {
-            if (e$$1.name === "MissingIcon") {
-              console.error(e$$1);
-            }
-          }
-        }
-        return acc;
-      }, []);
-      return new Promise((resolve, reject) => {
-        Promise.all(mutations).then((resolvedMutations) => {
-          perform(resolvedMutations, () => {
-            hclAdd("active");
-            hclAdd("complete");
-            hclRemove("pending");
-            if (typeof callback === "function") callback();
-            mark();
-            resolve();
-          });
-        }).catch((e$$1) => {
-          mark();
-          reject(e$$1);
-        });
-      });
-    }
-    function onNode(node2) {
-      let callback = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : null;
-      generateMutation(node2).then((mutation) => {
-        if (mutation) {
-          perform([mutation], callback);
-        }
-      });
-    }
-    function resolveIcons(next2) {
-      return function(maybeIconDefinition) {
-        let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-        const iconDefinition = (maybeIconDefinition || {}).icon ? maybeIconDefinition : findIconDefinition(maybeIconDefinition || {});
-        let {
-          mask
-        } = params;
-        if (mask) {
-          mask = (mask || {}).icon ? mask : findIconDefinition(mask || {});
-        }
-        return next2(iconDefinition, _objectSpread2$2(_objectSpread2$2({}, params), {}, {
-          mask
-        }));
-      };
-    }
-    const render = function(iconDefinition) {
-      let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-      const {
-        transform: transform2 = meaninglessTransform,
-        symbol = false,
-        mask = null,
-        maskId = null,
-        title = null,
-        titleId = null,
-        classes = [],
-        attributes = {},
-        styles: styles2 = {}
-      } = params;
-      if (!iconDefinition) return;
-      const {
-        prefix: prefix2,
-        iconName,
-        icon: icon2
-      } = iconDefinition;
-      return domVariants(_objectSpread2$2({
-        type: "icon"
-      }, iconDefinition), () => {
-        callHooks("beforeDOMElementCreation", {
-          iconDefinition,
-          params
-        });
-        if (config$2.autoA11y) {
-          if (title) {
-            attributes["aria-labelledby"] = "".concat(config$2.replacementClass, "-title-").concat(titleId || nextUniqueId());
-          } else {
-            attributes["aria-hidden"] = "true";
-            attributes["focusable"] = "false";
-          }
-        }
-        return makeInlineSvgAbstract({
-          icons: {
-            main: asFoundIcon(icon2),
-            mask: mask ? asFoundIcon(mask.icon) : {
-              found: false,
-              width: null,
-              height: null,
-              icon: {}
-            }
-          },
-          prefix: prefix2,
-          iconName,
-          transform: _objectSpread2$2(_objectSpread2$2({}, meaninglessTransform), transform2),
-          symbol,
-          title,
-          maskId,
-          titleId,
-          extra: {
-            attributes,
-            styles: styles2,
-            classes
-          }
-        });
-      });
-    };
-    var ReplaceElements = {
-      mixout() {
-        return {
-          icon: resolveIcons(render)
-        };
-      },
-      hooks() {
-        return {
-          mutationObserverCallbacks(accumulator) {
-            accumulator.treeCallback = onTree;
-            accumulator.nodeCallback = onNode;
-            return accumulator;
-          }
-        };
-      },
-      provides(providers$$1) {
-        providers$$1.i2svg = function(params) {
-          const {
-            node: node2 = DOCUMENT,
-            callback = () => {
-            }
-          } = params;
-          return onTree(node2, callback);
-        };
-        providers$$1.generateSvgReplacementMutation = function(node2, nodeMeta) {
-          const {
-            iconName,
-            title,
-            titleId,
-            prefix: prefix2,
-            transform: transform2,
-            symbol,
-            mask,
-            maskId,
-            extra
-          } = nodeMeta;
-          return new Promise((resolve, reject) => {
-            Promise.all([findIcon(iconName, prefix2), mask.iconName ? findIcon(mask.iconName, mask.prefix) : Promise.resolve({
-              found: false,
-              width: 512,
-              height: 512,
-              icon: {}
-            })]).then((_ref3) => {
-              let [main, mask2] = _ref3;
-              resolve([node2, makeInlineSvgAbstract({
-                icons: {
-                  main,
-                  mask: mask2
-                },
-                prefix: prefix2,
-                iconName,
-                transform: transform2,
-                symbol,
-                maskId,
-                title,
-                titleId,
-                extra,
-                watchable: true
-              })]);
-            }).catch(reject);
-          });
-        };
-        providers$$1.generateAbstractIcon = function(_ref22) {
-          let {
-            children,
-            attributes,
-            main,
-            transform: transform2,
-            styles: styles2
-          } = _ref22;
-          const styleString = joinStyles(styles2);
-          if (styleString.length > 0) {
-            attributes["style"] = styleString;
-          }
-          let nextChild;
-          if (transformIsMeaningful(transform2)) {
-            nextChild = callProvided("generateAbstractTransformGrouping", {
-              main,
-              transform: transform2,
-              containerWidth: main.width,
-              iconWidth: main.width
-            });
-          }
-          children.push(nextChild || main.icon);
-          return {
-            children,
-            attributes
-          };
-        };
-      }
-    };
-    var Layers$1 = {
-      mixout() {
-        return {
-          layer(assembler) {
-            let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-            const {
-              classes = []
-            } = params;
-            return domVariants({
-              type: "layer"
-            }, () => {
-              callHooks("beforeDOMElementCreation", {
-                assembler,
-                params
-              });
-              let children = [];
-              assembler((args) => {
-                Array.isArray(args) ? args.map((a2) => {
-                  children = children.concat(a2.abstract);
-                }) : children = children.concat(args.abstract);
-              });
-              return [{
-                tag: "span",
-                attributes: {
-                  class: ["".concat(config$2.cssPrefix, "-layers"), ...classes].join(" ")
-                },
-                children
-              }];
-            });
-          }
-        };
-      }
-    };
-    var LayersCounter = {
-      mixout() {
-        return {
-          counter(content) {
-            let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-            const {
-              title = null,
-              classes = [],
-              attributes = {},
-              styles: styles2 = {}
-            } = params;
-            return domVariants({
-              type: "counter",
-              content
-            }, () => {
-              callHooks("beforeDOMElementCreation", {
-                content,
-                params
-              });
-              return makeLayersCounterAbstract({
-                content: content.toString(),
-                title,
-                extra: {
-                  attributes,
-                  styles: styles2,
-                  classes: ["".concat(config$2.cssPrefix, "-layers-counter"), ...classes]
-                }
-              });
-            });
-          }
-        };
-      }
-    };
-    var LayersText = {
-      mixout() {
-        return {
-          text(content) {
-            let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-            const {
-              transform: transform2 = meaninglessTransform,
-              title = null,
-              classes = [],
-              attributes = {},
-              styles: styles2 = {}
-            } = params;
-            return domVariants({
-              type: "text",
-              content
-            }, () => {
-              callHooks("beforeDOMElementCreation", {
-                content,
-                params
-              });
-              return makeLayersTextAbstract({
-                content,
-                transform: _objectSpread2$2(_objectSpread2$2({}, meaninglessTransform), transform2),
-                title,
-                extra: {
-                  attributes,
-                  styles: styles2,
-                  classes: ["".concat(config$2.cssPrefix, "-layers-text"), ...classes]
-                }
-              });
-            });
-          }
-        };
-      },
-      provides(providers$$1) {
-        providers$$1.generateLayersText = function(node2, nodeMeta) {
-          const {
-            title,
-            transform: transform2,
-            extra
-          } = nodeMeta;
-          let width = null;
-          let height = null;
-          if (IS_IE) {
-            const computedFontSize = parseInt(getComputedStyle(node2).fontSize, 10);
-            const boundingClientRect = node2.getBoundingClientRect();
-            width = boundingClientRect.width / computedFontSize;
-            height = boundingClientRect.height / computedFontSize;
-          }
-          if (config$2.autoA11y && !title) {
-            extra.attributes["aria-hidden"] = "true";
-          }
-          return Promise.resolve([node2, makeLayersTextAbstract({
-            content: node2.innerHTML,
-            width,
-            height,
-            transform: transform2,
-            title,
-            extra,
-            watchable: true
-          })]);
-        };
-      }
-    };
-    const CLEAN_CONTENT_PATTERN = new RegExp('"', "ug");
-    const SECONDARY_UNICODE_RANGE = [1105920, 1112319];
-    const _FONT_FAMILY_WEIGHT_TO_PREFIX = _objectSpread2$2(_objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, {
-      FontAwesome: {
-        normal: "fas",
-        400: "fas"
-      }
-    }), lt), wa), Yt);
-    const FONT_FAMILY_WEIGHT_TO_PREFIX = Object.keys(_FONT_FAMILY_WEIGHT_TO_PREFIX).reduce((acc, key) => {
-      acc[key.toLowerCase()] = _FONT_FAMILY_WEIGHT_TO_PREFIX[key];
-      return acc;
-    }, {});
-    const FONT_FAMILY_WEIGHT_FALLBACK = Object.keys(FONT_FAMILY_WEIGHT_TO_PREFIX).reduce((acc, fontFamily) => {
-      const weights = FONT_FAMILY_WEIGHT_TO_PREFIX[fontFamily];
-      acc[fontFamily] = weights[900] || [...Object.entries(weights)][0][1];
-      return acc;
-    }, {});
-    function hexValueFromContent(content) {
-      const cleaned = content.replace(CLEAN_CONTENT_PATTERN, "");
-      const codePoint = codePointAt(cleaned, 0);
-      const isPrependTen = codePoint >= SECONDARY_UNICODE_RANGE[0] && codePoint <= SECONDARY_UNICODE_RANGE[1];
-      const isDoubled = cleaned.length === 2 ? cleaned[0] === cleaned[1] : false;
-      return {
-        value: isDoubled ? toHex(cleaned[0]) : toHex(cleaned),
-        isSecondary: isPrependTen || isDoubled
-      };
-    }
-    function getPrefix$1(fontFamily, fontWeight) {
-      const fontFamilySanitized = fontFamily.replace(/^['"]|['"]$/g, "").toLowerCase();
-      const fontWeightInteger = parseInt(fontWeight);
-      const fontWeightSanitized = isNaN(fontWeightInteger) ? "normal" : fontWeightInteger;
-      return (FONT_FAMILY_WEIGHT_TO_PREFIX[fontFamilySanitized] || {})[fontWeightSanitized] || FONT_FAMILY_WEIGHT_FALLBACK[fontFamilySanitized];
-    }
-    function replaceForPosition(node2, position2) {
-      const pendingAttribute = "".concat(DATA_FA_PSEUDO_ELEMENT_PENDING).concat(position2.replace(":", "-"));
-      return new Promise((resolve, reject) => {
-        if (node2.getAttribute(pendingAttribute) !== null) {
-          return resolve();
-        }
-        const children = toArray$1(node2.children);
-        const alreadyProcessedPseudoElement = children.filter((c$$1) => c$$1.getAttribute(DATA_FA_PSEUDO_ELEMENT) === position2)[0];
-        const styles2 = WINDOW.getComputedStyle(node2, position2);
-        const fontFamily = styles2.getPropertyValue("font-family");
-        const fontFamilyMatch = fontFamily.match(FONT_FAMILY_PATTERN);
-        const fontWeight = styles2.getPropertyValue("font-weight");
-        const content = styles2.getPropertyValue("content");
-        if (alreadyProcessedPseudoElement && !fontFamilyMatch) {
-          node2.removeChild(alreadyProcessedPseudoElement);
-          return resolve();
-        } else if (fontFamilyMatch && content !== "none" && content !== "") {
-          const content2 = styles2.getPropertyValue("content");
-          let prefix2 = getPrefix$1(fontFamily, fontWeight);
-          const {
-            value: hexValue,
-            isSecondary
-          } = hexValueFromContent(content2);
-          const isV4 = fontFamilyMatch[0].startsWith("FontAwesome");
-          let iconName = byUnicode(prefix2, hexValue);
-          let iconIdentifier = iconName;
-          if (isV4) {
-            const iconName4 = byOldUnicode(hexValue);
-            if (iconName4.iconName && iconName4.prefix) {
-              iconName = iconName4.iconName;
-              prefix2 = iconName4.prefix;
-            }
-          }
-          if (iconName && !isSecondary && (!alreadyProcessedPseudoElement || alreadyProcessedPseudoElement.getAttribute(DATA_PREFIX) !== prefix2 || alreadyProcessedPseudoElement.getAttribute(DATA_ICON) !== iconIdentifier)) {
-            node2.setAttribute(pendingAttribute, iconIdentifier);
-            if (alreadyProcessedPseudoElement) {
-              node2.removeChild(alreadyProcessedPseudoElement);
-            }
-            const meta = blankMeta();
-            const {
-              extra
-            } = meta;
-            extra.attributes[DATA_FA_PSEUDO_ELEMENT] = position2;
-            findIcon(iconName, prefix2).then((main) => {
-              const abstract = makeInlineSvgAbstract(_objectSpread2$2(_objectSpread2$2({}, meta), {}, {
-                icons: {
-                  main,
-                  mask: emptyCanonicalIcon()
-                },
-                prefix: prefix2,
-                iconName: iconIdentifier,
-                extra,
-                watchable: true
-              }));
-              const element = DOCUMENT.createElementNS("http://www.w3.org/2000/svg", "svg");
-              if (position2 === "::before") {
-                node2.insertBefore(element, node2.firstChild);
-              } else {
-                node2.appendChild(element);
-              }
-              element.outerHTML = abstract.map((a$$1) => toHtml(a$$1)).join("\n");
-              node2.removeAttribute(pendingAttribute);
-              resolve();
-            }).catch(reject);
-          } else {
-            resolve();
-          }
-        } else {
-          resolve();
-        }
-      });
-    }
-    function replace$1(node2) {
-      return Promise.all([replaceForPosition(node2, "::before"), replaceForPosition(node2, "::after")]);
-    }
-    function processable(node2) {
-      return node2.parentNode !== document.head && !~TAGNAMES_TO_SKIP_FOR_PSEUDOELEMENTS.indexOf(node2.tagName.toUpperCase()) && !node2.getAttribute(DATA_FA_PSEUDO_ELEMENT) && (!node2.parentNode || node2.parentNode.tagName !== "svg");
-    }
-    function searchPseudoElements(root2) {
-      if (!IS_DOM) return;
-      return new Promise((resolve, reject) => {
-        const operations = toArray$1(root2.querySelectorAll("*")).filter(processable).map(replace$1);
-        const end2 = perf.begin("searchPseudoElements");
-        disableObservation();
-        Promise.all(operations).then(() => {
-          end2();
-          enableObservation();
-          resolve();
-        }).catch(() => {
-          end2();
-          enableObservation();
-          reject();
-        });
-      });
-    }
-    var PseudoElements = {
-      hooks() {
-        return {
-          mutationObserverCallbacks(accumulator) {
-            accumulator.pseudoElementsCallback = searchPseudoElements;
-            return accumulator;
-          }
-        };
-      },
-      provides(providers2) {
-        providers2.pseudoElements2svg = function(params) {
-          const {
-            node: node2 = DOCUMENT
-          } = params;
-          if (config$2.searchPseudoElements) {
-            searchPseudoElements(node2);
-          }
-        };
-      }
-    };
-    let _unwatched = false;
-    var MutationObserver$1 = {
-      mixout() {
-        return {
-          dom: {
-            unwatch() {
-              disableObservation();
-              _unwatched = true;
-            }
-          }
-        };
-      },
-      hooks() {
-        return {
-          bootstrap() {
-            observe(chainHooks("mutationObserverCallbacks", {}));
-          },
-          noAuto() {
-            disconnect();
-          },
-          watch(params) {
-            const {
-              observeMutationsRoot
-            } = params;
-            if (_unwatched) {
-              enableObservation();
-            } else {
-              observe(chainHooks("mutationObserverCallbacks", {
-                observeMutationsRoot
-              }));
-            }
-          }
-        };
-      }
-    };
-    const parseTransformString = (transformString) => {
-      let transform2 = {
-        size: 16,
-        x: 0,
-        y: 0,
-        flipX: false,
-        flipY: false,
-        rotate: 0
-      };
-      return transformString.toLowerCase().split(" ").reduce((acc, n) => {
-        const parts = n.toLowerCase().split("-");
-        const first = parts[0];
-        let rest = parts.slice(1).join("-");
-        if (first && rest === "h") {
-          acc.flipX = true;
-          return acc;
-        }
-        if (first && rest === "v") {
-          acc.flipY = true;
-          return acc;
-        }
-        rest = parseFloat(rest);
-        if (isNaN(rest)) {
-          return acc;
-        }
-        switch (first) {
-          case "grow":
-            acc.size = acc.size + rest;
-            break;
-          case "shrink":
-            acc.size = acc.size - rest;
-            break;
-          case "left":
-            acc.x = acc.x - rest;
-            break;
-          case "right":
-            acc.x = acc.x + rest;
-            break;
-          case "up":
-            acc.y = acc.y - rest;
-            break;
-          case "down":
-            acc.y = acc.y + rest;
-            break;
-          case "rotate":
-            acc.rotate = acc.rotate + rest;
-            break;
-        }
-        return acc;
-      }, transform2);
-    };
-    var PowerTransforms = {
-      mixout() {
-        return {
-          parse: {
-            transform: (transformString) => {
-              return parseTransformString(transformString);
-            }
-          }
-        };
-      },
-      hooks() {
-        return {
-          parseNodeAttributes(accumulator, node2) {
-            const transformString = node2.getAttribute("data-fa-transform");
-            if (transformString) {
-              accumulator.transform = parseTransformString(transformString);
-            }
-            return accumulator;
-          }
-        };
-      },
-      provides(providers2) {
-        providers2.generateAbstractTransformGrouping = function(_ref3) {
-          let {
-            main,
-            transform: transform2,
-            containerWidth,
-            iconWidth
-          } = _ref3;
-          const outer = {
-            transform: "translate(".concat(containerWidth / 2, " 256)")
-          };
-          const innerTranslate = "translate(".concat(transform2.x * 32, ", ").concat(transform2.y * 32, ") ");
-          const innerScale = "scale(".concat(transform2.size / 16 * (transform2.flipX ? -1 : 1), ", ").concat(transform2.size / 16 * (transform2.flipY ? -1 : 1), ") ");
-          const innerRotate = "rotate(".concat(transform2.rotate, " 0 0)");
-          const inner = {
-            transform: "".concat(innerTranslate, " ").concat(innerScale, " ").concat(innerRotate)
-          };
-          const path = {
-            transform: "translate(".concat(iconWidth / 2 * -1, " -256)")
-          };
-          const operations = {
-            outer,
-            inner,
-            path
-          };
-          return {
-            tag: "g",
-            attributes: _objectSpread2$2({}, operations.outer),
-            children: [{
-              tag: "g",
-              attributes: _objectSpread2$2({}, operations.inner),
-              children: [{
-                tag: main.icon.tag,
-                children: main.icon.children,
-                attributes: _objectSpread2$2(_objectSpread2$2({}, main.icon.attributes), operations.path)
-              }]
-            }]
-          };
-        };
-      }
-    };
-    const ALL_SPACE = {
-      x: 0,
-      y: 0,
-      width: "100%",
-      height: "100%"
-    };
-    function fillBlack(abstract) {
-      let force = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
-      if (abstract.attributes && (abstract.attributes.fill || force)) {
-        abstract.attributes.fill = "black";
-      }
-      return abstract;
-    }
-    function deGroup(abstract) {
-      if (abstract.tag === "g") {
-        return abstract.children;
-      } else {
-        return [abstract];
-      }
-    }
-    var Masks = {
-      hooks() {
-        return {
-          parseNodeAttributes(accumulator, node2) {
-            const maskData = node2.getAttribute("data-fa-mask");
-            const mask = !maskData ? emptyCanonicalIcon() : getCanonicalIcon(maskData.split(" ").map((i2) => i2.trim()));
-            if (!mask.prefix) {
-              mask.prefix = getDefaultUsablePrefix();
-            }
-            accumulator.mask = mask;
-            accumulator.maskId = node2.getAttribute("data-fa-mask-id");
-            return accumulator;
-          }
-        };
-      },
-      provides(providers2) {
-        providers2.generateAbstractMask = function(_ref3) {
-          let {
-            children,
-            attributes,
-            main,
-            mask,
-            maskId: explicitMaskId,
-            transform: transform2
-          } = _ref3;
-          const {
-            width: mainWidth,
-            icon: mainPath
-          } = main;
-          const {
-            width: maskWidth,
-            icon: maskPath
-          } = mask;
-          const trans = transformForSvg({
-            transform: transform2,
-            containerWidth: maskWidth,
-            iconWidth: mainWidth
-          });
-          const maskRect = {
-            tag: "rect",
-            attributes: _objectSpread2$2(_objectSpread2$2({}, ALL_SPACE), {}, {
-              fill: "white"
-            })
-          };
-          const maskInnerGroupChildrenMixin = mainPath.children ? {
-            children: mainPath.children.map(fillBlack)
-          } : {};
-          const maskInnerGroup = {
-            tag: "g",
-            attributes: _objectSpread2$2({}, trans.inner),
-            children: [fillBlack(_objectSpread2$2({
-              tag: mainPath.tag,
-              attributes: _objectSpread2$2(_objectSpread2$2({}, mainPath.attributes), trans.path)
-            }, maskInnerGroupChildrenMixin))]
-          };
-          const maskOuterGroup = {
-            tag: "g",
-            attributes: _objectSpread2$2({}, trans.outer),
-            children: [maskInnerGroup]
-          };
-          const maskId = "mask-".concat(explicitMaskId || nextUniqueId());
-          const clipId = "clip-".concat(explicitMaskId || nextUniqueId());
-          const maskTag = {
-            tag: "mask",
-            attributes: _objectSpread2$2(_objectSpread2$2({}, ALL_SPACE), {}, {
-              id: maskId,
-              maskUnits: "userSpaceOnUse",
-              maskContentUnits: "userSpaceOnUse"
-            }),
-            children: [maskRect, maskOuterGroup]
-          };
-          const defs = {
-            tag: "defs",
-            children: [{
-              tag: "clipPath",
-              attributes: {
-                id: clipId
-              },
-              children: deGroup(maskPath)
-            }, maskTag]
-          };
-          children.push(defs, {
-            tag: "rect",
-            attributes: _objectSpread2$2({
-              fill: "currentColor",
-              "clip-path": "url(#".concat(clipId, ")"),
-              mask: "url(#".concat(maskId, ")")
-            }, ALL_SPACE)
-          });
-          return {
-            children,
-            attributes
-          };
-        };
-      }
-    };
-    var MissingIconIndicator = {
-      provides(providers2) {
-        let reduceMotion = false;
-        if (WINDOW.matchMedia) {
-          reduceMotion = WINDOW.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        }
-        providers2.missingIconAbstract = function() {
-          const gChildren = [];
-          const FILL = {
-            fill: "currentColor"
-          };
-          const ANIMATION_BASE = {
-            attributeType: "XML",
-            repeatCount: "indefinite",
-            dur: "2s"
-          };
-          gChildren.push({
-            tag: "path",
-            attributes: _objectSpread2$2(_objectSpread2$2({}, FILL), {}, {
-              d: "M156.5,447.7l-12.6,29.5c-18.7-9.5-35.9-21.2-51.5-34.9l22.7-22.7C127.6,430.5,141.5,440,156.5,447.7z M40.6,272H8.5 c1.4,21.2,5.4,41.7,11.7,61.1L50,321.2C45.1,305.5,41.8,289,40.6,272z M40.6,240c1.4-18.8,5.2-37,11.1-54.1l-29.5-12.6 C14.7,194.3,10,216.7,8.5,240H40.6z M64.3,156.5c7.8-14.9,17.2-28.8,28.1-41.5L69.7,92.3c-13.7,15.6-25.5,32.8-34.9,51.5 L64.3,156.5z M397,419.6c-13.9,12-29.4,22.3-46.1,30.4l11.9,29.8c20.7-9.9,39.8-22.6,56.9-37.6L397,419.6z M115,92.4 c13.9-12,29.4-22.3,46.1-30.4l-11.9-29.8c-20.7,9.9-39.8,22.6-56.8,37.6L115,92.4z M447.7,355.5c-7.8,14.9-17.2,28.8-28.1,41.5 l22.7,22.7c13.7-15.6,25.5-32.9,34.9-51.5L447.7,355.5z M471.4,272c-1.4,18.8-5.2,37-11.1,54.1l29.5,12.6 c7.5-21.1,12.2-43.5,13.6-66.8H471.4z M321.2,462c-15.7,5-32.2,8.2-49.2,9.4v32.1c21.2-1.4,41.7-5.4,61.1-11.7L321.2,462z M240,471.4c-18.8-1.4-37-5.2-54.1-11.1l-12.6,29.5c21.1,7.5,43.5,12.2,66.8,13.6V471.4z M462,190.8c5,15.7,8.2,32.2,9.4,49.2h32.1 c-1.4-21.2-5.4-41.7-11.7-61.1L462,190.8z M92.4,397c-12-13.9-22.3-29.4-30.4-46.1l-29.8,11.9c9.9,20.7,22.6,39.8,37.6,56.9 L92.4,397z M272,40.6c18.8,1.4,36.9,5.2,54.1,11.1l12.6-29.5C317.7,14.7,295.3,10,272,8.5V40.6z M190.8,50 c15.7-5,32.2-8.2,49.2-9.4V8.5c-21.2,1.4-41.7,5.4-61.1,11.7L190.8,50z M442.3,92.3L419.6,115c12,13.9,22.3,29.4,30.5,46.1 l29.8-11.9C470,128.5,457.3,109.4,442.3,92.3z M397,92.4l22.7-22.7c-15.6-13.7-32.8-25.5-51.5-34.9l-12.6,29.5 C370.4,72.1,384.4,81.5,397,92.4z"
-            })
-          });
-          const OPACITY_ANIMATE = _objectSpread2$2(_objectSpread2$2({}, ANIMATION_BASE), {}, {
-            attributeName: "opacity"
-          });
-          const dot = {
-            tag: "circle",
-            attributes: _objectSpread2$2(_objectSpread2$2({}, FILL), {}, {
-              cx: "256",
-              cy: "364",
-              r: "28"
-            }),
-            children: []
-          };
-          if (!reduceMotion) {
-            dot.children.push({
-              tag: "animate",
-              attributes: _objectSpread2$2(_objectSpread2$2({}, ANIMATION_BASE), {}, {
-                attributeName: "r",
-                values: "28;14;28;28;14;28;"
-              })
-            }, {
-              tag: "animate",
-              attributes: _objectSpread2$2(_objectSpread2$2({}, OPACITY_ANIMATE), {}, {
-                values: "1;0;1;1;0;1;"
-              })
-            });
-          }
-          gChildren.push(dot);
-          gChildren.push({
-            tag: "path",
-            attributes: _objectSpread2$2(_objectSpread2$2({}, FILL), {}, {
-              opacity: "1",
-              d: "M263.7,312h-16c-6.6,0-12-5.4-12-12c0-71,77.4-63.9,77.4-107.8c0-20-17.8-40.2-57.4-40.2c-29.1,0-44.3,9.6-59.2,28.7 c-3.9,5-11.1,6-16.2,2.4l-13.1-9.2c-5.6-3.9-6.9-11.8-2.6-17.2c21.2-27.2,46.4-44.7,91.2-44.7c52.3,0,97.4,29.8,97.4,80.2 c0,67.6-77.4,63.5-77.4,107.8C275.7,306.6,270.3,312,263.7,312z"
-            }),
-            children: reduceMotion ? [] : [{
-              tag: "animate",
-              attributes: _objectSpread2$2(_objectSpread2$2({}, OPACITY_ANIMATE), {}, {
-                values: "1;0;0;0;0;1;"
-              })
-            }]
-          });
-          if (!reduceMotion) {
-            gChildren.push({
-              tag: "path",
-              attributes: _objectSpread2$2(_objectSpread2$2({}, FILL), {}, {
-                opacity: "0",
-                d: "M232.5,134.5l7,168c0.3,6.4,5.6,11.5,12,11.5h9c6.4,0,11.7-5.1,12-11.5l7-168c0.3-6.8-5.2-12.5-12-12.5h-23 C237.7,122,232.2,127.7,232.5,134.5z"
-              }),
-              children: [{
-                tag: "animate",
-                attributes: _objectSpread2$2(_objectSpread2$2({}, OPACITY_ANIMATE), {}, {
-                  values: "0;0;1;1;0;0;"
-                })
-              }]
-            });
-          }
-          return {
-            tag: "g",
-            attributes: {
-              "class": "missing"
-            },
-            children: gChildren
-          };
-        };
-      }
-    };
-    var SvgSymbols = {
-      hooks() {
-        return {
-          parseNodeAttributes(accumulator, node2) {
-            const symbolData = node2.getAttribute("data-fa-symbol");
-            const symbol = symbolData === null ? false : symbolData === "" ? true : symbolData;
-            accumulator["symbol"] = symbol;
-            return accumulator;
-          }
-        };
-      }
-    };
-    var plugins = [InjectCSS, ReplaceElements, Layers$1, LayersCounter, LayersText, PseudoElements, MutationObserver$1, PowerTransforms, Masks, MissingIconIndicator, SvgSymbols];
-    registerPlugins(plugins, {
-      mixoutsTo: api
-    });
-    api.noAuto;
-    api.config;
-    api.library;
-    api.dom;
-    const parse$1$1 = api.parse;
-    api.findIconDefinition;
-    api.toHtml;
-    const icon = api.icon;
-    api.layer;
-    api.text;
-    api.counter;
-    var propTypes$1 = { exports: {} };
-    var ReactPropTypesSecret_1;
-    var hasRequiredReactPropTypesSecret;
-    function requireReactPropTypesSecret() {
-      if (hasRequiredReactPropTypesSecret) return ReactPropTypesSecret_1;
-      hasRequiredReactPropTypesSecret = 1;
-      var ReactPropTypesSecret = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
-      ReactPropTypesSecret_1 = ReactPropTypesSecret;
-      return ReactPropTypesSecret_1;
-    }
-    var factoryWithThrowingShims;
-    var hasRequiredFactoryWithThrowingShims;
-    function requireFactoryWithThrowingShims() {
-      if (hasRequiredFactoryWithThrowingShims) return factoryWithThrowingShims;
-      hasRequiredFactoryWithThrowingShims = 1;
-      var ReactPropTypesSecret = /* @__PURE__ */ requireReactPropTypesSecret();
-      function emptyFunction() {
-      }
-      function emptyFunctionWithReset() {
-      }
-      emptyFunctionWithReset.resetWarningCache = emptyFunction;
-      factoryWithThrowingShims = function() {
-        function shim2(props, propName, componentName, location2, propFullName, secret) {
-          if (secret === ReactPropTypesSecret) {
-            return;
-          }
-          var err = new Error(
-            "Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types"
-          );
-          err.name = "Invariant Violation";
-          throw err;
-        }
-        shim2.isRequired = shim2;
-        function getShim() {
-          return shim2;
-        }
-        var ReactPropTypes = {
-          array: shim2,
-          bigint: shim2,
-          bool: shim2,
-          func: shim2,
-          number: shim2,
-          object: shim2,
-          string: shim2,
-          symbol: shim2,
-          any: shim2,
-          arrayOf: getShim,
-          element: shim2,
-          elementType: shim2,
-          instanceOf: getShim,
-          node: shim2,
-          objectOf: getShim,
-          oneOf: getShim,
-          oneOfType: getShim,
-          shape: getShim,
-          exact: getShim,
-          checkPropTypes: emptyFunctionWithReset,
-          resetWarningCache: emptyFunction
-        };
-        ReactPropTypes.PropTypes = ReactPropTypes;
-        return ReactPropTypes;
-      };
-      return factoryWithThrowingShims;
-    }
-    var hasRequiredPropTypes;
-    function requirePropTypes() {
-      if (hasRequiredPropTypes) return propTypes$1.exports;
-      hasRequiredPropTypes = 1;
-      {
-        propTypes$1.exports = /* @__PURE__ */ requireFactoryWithThrowingShims()();
-      }
-      return propTypes$1.exports;
-    }
-    var propTypesExports = /* @__PURE__ */ requirePropTypes();
-    const PropTypes = /* @__PURE__ */ getDefaultExportFromCjs(propTypesExports);
-    var define_process_env_default = {};
-    function _arrayLikeToArray$3(r2, a2) {
-      (null == a2 || a2 > r2.length) && (a2 = r2.length);
-      for (var e = 0, n = Array(a2); e < a2; e++) n[e] = r2[e];
-      return n;
-    }
-    function _arrayWithHoles$1(r2) {
-      if (Array.isArray(r2)) return r2;
-    }
-    function _arrayWithoutHoles$1(r2) {
-      if (Array.isArray(r2)) return _arrayLikeToArray$3(r2);
-    }
-    function _defineProperty$1(e, r2, t2) {
-      return (r2 = _toPropertyKey$1(r2)) in e ? Object.defineProperty(e, r2, {
-        value: t2,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      }) : e[r2] = t2, e;
-    }
-    function _iterableToArray$1(r2) {
-      if ("undefined" != typeof Symbol && null != r2[Symbol.iterator] || null != r2["@@iterator"]) return Array.from(r2);
-    }
-    function _iterableToArrayLimit$1(r2, l) {
-      var t2 = null == r2 ? null : "undefined" != typeof Symbol && r2[Symbol.iterator] || r2["@@iterator"];
-      if (null != t2) {
-        var e, n, i2, u, a2 = [], f = true, o2 = false;
-        try {
-          if (i2 = (t2 = t2.call(r2)).next, 0 === l) ;
-          else for (; !(f = (e = i2.call(t2)).done) && (a2.push(e.value), a2.length !== l); f = true) ;
-        } catch (r22) {
-          o2 = true, n = r22;
-        } finally {
-          try {
-            if (!f && null != t2.return && (u = t2.return(), Object(u) !== u)) return;
-          } finally {
-            if (o2) throw n;
-          }
-        }
-        return a2;
-      }
-    }
-    function _nonIterableRest$1() {
-      throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }
-    function _nonIterableSpread$1() {
-      throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }
-    function ownKeys$1(e, r2) {
-      var t2 = Object.keys(e);
-      if (Object.getOwnPropertySymbols) {
-        var o2 = Object.getOwnPropertySymbols(e);
-        r2 && (o2 = o2.filter(function(r22) {
-          return Object.getOwnPropertyDescriptor(e, r22).enumerable;
-        })), t2.push.apply(t2, o2);
-      }
-      return t2;
-    }
-    function _objectSpread2$1(e) {
-      for (var r2 = 1; r2 < arguments.length; r2++) {
-        var t2 = null != arguments[r2] ? arguments[r2] : {};
-        r2 % 2 ? ownKeys$1(Object(t2), true).forEach(function(r22) {
-          _defineProperty$1(e, r22, t2[r22]);
-        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t2)) : ownKeys$1(Object(t2)).forEach(function(r22) {
-          Object.defineProperty(e, r22, Object.getOwnPropertyDescriptor(t2, r22));
-        });
-      }
-      return e;
-    }
-    function _objectWithoutProperties$1(e, t2) {
-      if (null == e) return {};
-      var o2, r2, i2 = _objectWithoutPropertiesLoose$1(e, t2);
-      if (Object.getOwnPropertySymbols) {
-        var n = Object.getOwnPropertySymbols(e);
-        for (r2 = 0; r2 < n.length; r2++) o2 = n[r2], -1 === t2.indexOf(o2) && {}.propertyIsEnumerable.call(e, o2) && (i2[o2] = e[o2]);
-      }
-      return i2;
-    }
-    function _objectWithoutPropertiesLoose$1(r2, e) {
-      if (null == r2) return {};
-      var t2 = {};
-      for (var n in r2) if ({}.hasOwnProperty.call(r2, n)) {
-        if (-1 !== e.indexOf(n)) continue;
-        t2[n] = r2[n];
-      }
-      return t2;
-    }
-    function _slicedToArray$1(r2, e) {
-      return _arrayWithHoles$1(r2) || _iterableToArrayLimit$1(r2, e) || _unsupportedIterableToArray$3(r2, e) || _nonIterableRest$1();
-    }
-    function _toConsumableArray$1(r2) {
-      return _arrayWithoutHoles$1(r2) || _iterableToArray$1(r2) || _unsupportedIterableToArray$3(r2) || _nonIterableSpread$1();
-    }
-    function _toPrimitive$1(t2, r2) {
-      if ("object" != typeof t2 || !t2) return t2;
-      var e = t2[Symbol.toPrimitive];
-      if (void 0 !== e) {
-        var i2 = e.call(t2, r2);
-        if ("object" != typeof i2) return i2;
-        throw new TypeError("@@toPrimitive must return a primitive value.");
-      }
-      return ("string" === r2 ? String : Number)(t2);
-    }
-    function _toPropertyKey$1(t2) {
-      var i2 = _toPrimitive$1(t2, "string");
-      return "symbol" == typeof i2 ? i2 : i2 + "";
-    }
-    function _typeof$1(o2) {
-      "@babel/helpers - typeof";
-      return _typeof$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o22) {
-        return typeof o22;
-      } : function(o22) {
-        return o22 && "function" == typeof Symbol && o22.constructor === Symbol && o22 !== Symbol.prototype ? "symbol" : typeof o22;
-      }, _typeof$1(o2);
-    }
-    function _unsupportedIterableToArray$3(r2, a2) {
-      if (r2) {
-        if ("string" == typeof r2) return _arrayLikeToArray$3(r2, a2);
-        var t2 = {}.toString.call(r2).slice(8, -1);
-        return "Object" === t2 && r2.constructor && (t2 = r2.constructor.name), "Map" === t2 || "Set" === t2 ? Array.from(r2) : "Arguments" === t2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t2) ? _arrayLikeToArray$3(r2, a2) : void 0;
-      }
-    }
-    var ICON_PACKS_STARTING_VERSION = "7.0.0-alpha1";
-    var SVG_CORE_VERSION;
-    try {
-      var svgCorePackageJson = require("@fortawesome/fontawesome-svg-core/package.json");
-      SVG_CORE_VERSION = svgCorePackageJson.version;
-    } catch (e) {
-      SVG_CORE_VERSION = define_process_env_default.FA_VERSION || "7.0.0-alpha8";
-    }
-    function classList(props) {
-      var beat = props.beat, fade = props.fade, beatFade = props.beatFade, bounce = props.bounce, shake = props.shake, flash = props.flash, spin = props.spin, spinPulse = props.spinPulse, spinReverse = props.spinReverse, pulse = props.pulse, fixedWidth = props.fixedWidth, inverse = props.inverse, border = props.border, listItem = props.listItem, flip = props.flip, size = props.size, rotation = props.rotation, pull = props.pull, swapOpacity = props.swapOpacity, rotateBy = props.rotateBy, widthAuto = props.widthAuto;
-      var isVersion7OrLater = versionCheckGte(SVG_CORE_VERSION, ICON_PACKS_STARTING_VERSION);
-      var classes = _defineProperty$1(_defineProperty$1(_defineProperty$1(_defineProperty$1(_defineProperty$1(_defineProperty$1({
-        "fa-beat": beat,
-        "fa-fade": fade,
-        "fa-beat-fade": beatFade,
-        "fa-bounce": bounce,
-        "fa-shake": shake,
-        "fa-flash": flash,
-        "fa-spin": spin,
-        "fa-spin-reverse": spinReverse,
-        "fa-spin-pulse": spinPulse,
-        "fa-pulse": pulse,
-        "fa-fw": fixedWidth,
-        "fa-inverse": inverse,
-        "fa-border": border,
-        "fa-li": listItem,
-        "fa-flip": flip === true,
-        "fa-flip-horizontal": flip === "horizontal" || flip === "both",
-        "fa-flip-vertical": flip === "vertical" || flip === "both"
-      }, "fa-".concat(size), typeof size !== "undefined" && size !== null), "fa-rotate-".concat(rotation), typeof rotation !== "undefined" && rotation !== null && rotation !== 0), "fa-pull-".concat(pull), typeof pull !== "undefined" && pull !== null), "fa-swap-opacity", swapOpacity), "fa-rotate-by", isVersion7OrLater && rotateBy), "fa-width-auto", isVersion7OrLater && widthAuto);
-      return Object.keys(classes).map(function(key) {
-        return classes[key] ? key : null;
-      }).filter(function(key) {
-        return key;
-      });
-    }
-    function versionCheckGte(version1, version2) {
-      var _version1$split = version1.split("-"), _version1$split2 = _slicedToArray$1(_version1$split, 2), v1Base = _version1$split2[0], v1PreRelease = _version1$split2[1];
-      var _version2$split = version2.split("-"), _version2$split2 = _slicedToArray$1(_version2$split, 2), v2Base = _version2$split2[0], v2PreRelease = _version2$split2[1];
-      var v1Parts = v1Base.split(".");
-      var v2Parts = v2Base.split(".");
-      for (var i2 = 0; i2 < Math.max(v1Parts.length, v2Parts.length); i2++) {
-        var v1Part = v1Parts[i2] || "0";
-        var v2Part = v2Parts[i2] || "0";
-        var v1Num = parseInt(v1Part, 10);
-        var v2Num = parseInt(v2Part, 10);
-        if (v1Num !== v2Num) {
-          return v1Num > v2Num;
-        }
-      }
-      for (var _i2 = 0; _i2 < Math.max(v1Parts.length, v2Parts.length); _i2++) {
-        var _v1Part = v1Parts[_i2] || "0";
-        var _v2Part = v2Parts[_i2] || "0";
-        if (_v1Part !== _v2Part) {
-          if (_v1Part.length !== _v2Part.length) {
-            return _v1Part.length < _v2Part.length;
-          }
-        }
-      }
-      if (v1PreRelease && !v2PreRelease) return false;
-      if (!v1PreRelease && v2PreRelease) return true;
-      return true;
-    }
-    function _isNumerical(obj) {
-      obj = obj - 0;
-      return obj === obj;
-    }
-    function camelize$1(string) {
-      if (_isNumerical(string)) {
-        return string;
-      }
-      string = string.replace(/[\-_\s]+(.)?/g, function(match2, chr) {
-        return chr ? chr.toUpperCase() : "";
-      });
-      return string.substr(0, 1).toLowerCase() + string.substr(1);
-    }
-    var _excluded$r = ["style"];
-    function capitalize(val) {
-      return val.charAt(0).toUpperCase() + val.slice(1);
-    }
-    function styleToObject(style2) {
-      return style2.split(";").map(function(s2) {
-        return s2.trim();
-      }).filter(function(s2) {
-        return s2;
-      }).reduce(function(acc, pair) {
-        var i2 = pair.indexOf(":");
-        var prop = camelize$1(pair.slice(0, i2));
-        var value = pair.slice(i2 + 1).trim();
-        prop.startsWith("webkit") ? acc[capitalize(prop)] = value : acc[prop] = value;
-        return acc;
-      }, {});
-    }
-    function convert(createElement2, element) {
-      var extraProps = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
-      if (typeof element === "string") {
-        return element;
-      }
-      var children = (element.children || []).map(function(child) {
-        return convert(createElement2, child);
-      });
-      var mixins = Object.keys(element.attributes || {}).reduce(function(acc, key) {
-        var val = element.attributes[key];
-        switch (key) {
-          case "class":
-            acc.attrs["className"] = val;
-            delete element.attributes["class"];
-            break;
-          case "style":
-            acc.attrs["style"] = styleToObject(val);
-            break;
-          default:
-            if (key.indexOf("aria-") === 0 || key.indexOf("data-") === 0) {
-              acc.attrs[key.toLowerCase()] = val;
-            } else {
-              acc.attrs[camelize$1(key)] = val;
-            }
-        }
-        return acc;
-      }, {
-        attrs: {}
-      });
-      var _extraProps$style = extraProps.style, existingStyle = _extraProps$style === void 0 ? {} : _extraProps$style, remaining = _objectWithoutProperties$1(extraProps, _excluded$r);
-      mixins.attrs["style"] = _objectSpread2$1(_objectSpread2$1({}, mixins.attrs["style"]), existingStyle);
-      return createElement2.apply(void 0, [element.tag, _objectSpread2$1(_objectSpread2$1({}, mixins.attrs), remaining)].concat(_toConsumableArray$1(children)));
-    }
-    var PRODUCTION = false;
-    try {
-      PRODUCTION = true;
-    } catch (e) {
-    }
-    function log$2() {
-      if (!PRODUCTION && console && typeof console.error === "function") {
-        var _console;
-        (_console = console).error.apply(_console, arguments);
-      }
-    }
-    function normalizeIconArgs(icon2) {
-      if (icon2 && _typeof$1(icon2) === "object" && icon2.prefix && icon2.iconName && icon2.icon) {
-        return icon2;
-      }
-      if (parse$1$1.icon) {
-        return parse$1$1.icon(icon2);
-      }
-      if (icon2 === null) {
-        return null;
-      }
-      if (icon2 && _typeof$1(icon2) === "object" && icon2.prefix && icon2.iconName) {
-        return icon2;
-      }
-      if (Array.isArray(icon2) && icon2.length === 2) {
-        return {
-          prefix: icon2[0],
-          iconName: icon2[1]
-        };
-      }
-      if (typeof icon2 === "string") {
-        return {
-          prefix: "fas",
-          iconName: icon2
-        };
-      }
-    }
-    function objectWithKey(key, value) {
-      return Array.isArray(value) && value.length > 0 || !Array.isArray(value) && value ? _defineProperty$1({}, key, value) : {};
-    }
-    var defaultProps$5 = {
-      border: false,
-      className: "",
-      mask: null,
-      maskId: null,
-      // the fixedWidth property has been deprecated as of version 7
-      fixedWidth: false,
-      inverse: false,
-      flip: false,
-      icon: null,
-      listItem: false,
-      pull: null,
-      pulse: false,
-      rotation: null,
-      rotateBy: false,
-      size: null,
-      spin: false,
-      spinPulse: false,
-      spinReverse: false,
-      beat: false,
-      fade: false,
-      beatFade: false,
-      bounce: false,
-      shake: false,
-      symbol: false,
-      title: "",
-      titleId: null,
-      transform: null,
-      swapOpacity: false,
-      widthAuto: false
-    };
-    var FontAwesomeIcon = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
-      var allProps = _objectSpread2$1(_objectSpread2$1({}, defaultProps$5), props);
-      var iconArgs = allProps.icon, maskArgs = allProps.mask, symbol = allProps.symbol, className = allProps.className, title = allProps.title, titleId = allProps.titleId, maskId = allProps.maskId;
-      var iconLookup = normalizeIconArgs(iconArgs);
-      var classes = objectWithKey("classes", [].concat(_toConsumableArray$1(classList(allProps)), _toConsumableArray$1((className || "").split(" "))));
-      var transform2 = objectWithKey("transform", typeof allProps.transform === "string" ? parse$1$1.transform(allProps.transform) : allProps.transform);
-      var mask = objectWithKey("mask", normalizeIconArgs(maskArgs));
-      var renderedIcon = icon(iconLookup, _objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1({}, classes), transform2), mask), {}, {
-        symbol,
-        title,
-        titleId,
-        maskId
-      }));
-      if (!renderedIcon) {
-        log$2("Could not find icon", iconLookup);
-        return null;
-      }
-      var abstract = renderedIcon.abstract;
-      var extraProps = {
-        ref
-      };
-      Object.keys(allProps).forEach(function(key) {
-        if (!defaultProps$5.hasOwnProperty(key)) {
-          extraProps[key] = allProps[key];
-        }
-      });
-      return convertCurry(abstract[0], extraProps);
-    });
-    FontAwesomeIcon.displayName = "FontAwesomeIcon";
-    FontAwesomeIcon.propTypes = {
-      beat: PropTypes.bool,
-      border: PropTypes.bool,
-      beatFade: PropTypes.bool,
-      bounce: PropTypes.bool,
-      className: PropTypes.string,
-      fade: PropTypes.bool,
-      flash: PropTypes.bool,
-      mask: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.string]),
-      maskId: PropTypes.string,
-      // the fixedWidth property has been deprecated as of version 7
-      fixedWidth: PropTypes.bool,
-      inverse: PropTypes.bool,
-      flip: PropTypes.oneOf([true, false, "horizontal", "vertical", "both"]),
-      icon: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.string]),
-      listItem: PropTypes.bool,
-      pull: PropTypes.oneOf(["right", "left"]),
-      pulse: PropTypes.bool,
-      rotation: PropTypes.oneOf([0, 90, 180, 270]),
-      rotateBy: PropTypes.bool,
-      shake: PropTypes.bool,
-      size: PropTypes.oneOf(["2xs", "xs", "sm", "lg", "xl", "2xl", "1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x", "9x", "10x"]),
-      spin: PropTypes.bool,
-      spinPulse: PropTypes.bool,
-      spinReverse: PropTypes.bool,
-      symbol: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-      title: PropTypes.string,
-      titleId: PropTypes.string,
-      transform: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-      swapOpacity: PropTypes.bool,
-      widthAuto: PropTypes.bool
-    };
-    var convertCurry = convert.bind(null, React$1.createElement);
     var classnames = { exports: {} };
     /*!
     	Copyright (c) 2018 Jed Watson.
@@ -9804,859 +6490,6 @@ var require_index_001 = __commonJS({
     }
     var classnamesExports = requireClassnames();
     const cx = /* @__PURE__ */ getDefaultExportFromCjs(classnamesExports);
-    var data;
-    var hasRequiredData;
-    function requireData() {
-      if (hasRequiredData) return data;
-      hasRequiredData = 1;
-      const LANGUAGES_LIST = {
-        aa: {
-          name: "Afar",
-          nativeName: "Afaraf"
-        },
-        ab: {
-          name: "Abkhaz",
-          nativeName: "аҧсуа бызшәа"
-        },
-        ae: {
-          name: "Avestan",
-          nativeName: "avesta"
-        },
-        af: {
-          name: "Afrikaans",
-          nativeName: "Afrikaans"
-        },
-        ak: {
-          name: "Akan",
-          nativeName: "Akan"
-        },
-        am: {
-          name: "Amharic",
-          nativeName: "አማርኛ"
-        },
-        an: {
-          name: "Aragonese",
-          nativeName: "aragonés"
-        },
-        ar: {
-          name: "Arabic",
-          nativeName: "العربية"
-        },
-        as: {
-          name: "Assamese",
-          nativeName: "অসমীয়া"
-        },
-        av: {
-          name: "Avaric",
-          nativeName: "авар мацӀ"
-        },
-        ay: {
-          name: "Aymara",
-          nativeName: "aymar aru"
-        },
-        az: {
-          name: "Azerbaijani",
-          nativeName: "azərbaycan dili"
-        },
-        ba: {
-          name: "Bashkir",
-          nativeName: "башҡорт теле"
-        },
-        be: {
-          name: "Belarusian",
-          nativeName: "беларуская мова"
-        },
-        bg: {
-          name: "Bulgarian",
-          nativeName: "български език"
-        },
-        bi: {
-          name: "Bislama",
-          nativeName: "Bislama"
-        },
-        bm: {
-          name: "Bambara",
-          nativeName: "bamanankan"
-        },
-        bn: {
-          name: "Bengali",
-          nativeName: "বাংলা"
-        },
-        bo: {
-          name: "Tibetan",
-          nativeName: "བོད་ཡིག"
-        },
-        br: {
-          name: "Breton",
-          nativeName: "brezhoneg"
-        },
-        bs: {
-          name: "Bosnian",
-          nativeName: "bosanski jezik"
-        },
-        ca: {
-          name: "Catalan",
-          nativeName: "Català"
-        },
-        ce: {
-          name: "Chechen",
-          nativeName: "нохчийн мотт"
-        },
-        ch: {
-          name: "Chamorro",
-          nativeName: "Chamoru"
-        },
-        co: {
-          name: "Corsican",
-          nativeName: "corsu"
-        },
-        cr: {
-          name: "Cree",
-          nativeName: "ᓀᐦᐃᔭᐍᐏᐣ"
-        },
-        cs: {
-          name: "Czech",
-          nativeName: "Čeština"
-        },
-        cu: {
-          name: "Old Church Slavonic",
-          nativeName: "ѩзыкъ словѣньскъ"
-        },
-        cv: {
-          name: "Chuvash",
-          nativeName: "чӑваш чӗлхи"
-        },
-        cy: {
-          name: "Welsh",
-          nativeName: "Cymraeg"
-        },
-        da: {
-          name: "Danish",
-          nativeName: "Dansk"
-        },
-        de: {
-          name: "German",
-          nativeName: "Deutsch"
-        },
-        dv: {
-          name: "Divehi",
-          nativeName: "ދިވެހި"
-        },
-        dz: {
-          name: "Dzongkha",
-          nativeName: "རྫོང་ཁ"
-        },
-        ee: {
-          name: "Ewe",
-          nativeName: "Eʋegbe"
-        },
-        el: {
-          name: "Greek",
-          nativeName: "Ελληνικά"
-        },
-        en: {
-          name: "English",
-          nativeName: "English"
-        },
-        eo: {
-          name: "Esperanto",
-          nativeName: "Esperanto"
-        },
-        es: {
-          name: "Spanish",
-          nativeName: "Español"
-        },
-        et: {
-          name: "Estonian",
-          nativeName: "eesti"
-        },
-        eu: {
-          name: "Basque",
-          nativeName: "euskara"
-        },
-        fa: {
-          name: "Persian",
-          nativeName: "فارسی"
-        },
-        ff: {
-          name: "Fula",
-          nativeName: "Fulfulde"
-        },
-        fi: {
-          name: "Finnish",
-          nativeName: "suomi"
-        },
-        fj: {
-          name: "Fijian",
-          nativeName: "vosa Vakaviti"
-        },
-        fo: {
-          name: "Faroese",
-          nativeName: "Føroyskt"
-        },
-        fr: {
-          name: "French",
-          nativeName: "Français"
-        },
-        fy: {
-          name: "Western Frisian",
-          nativeName: "Frysk"
-        },
-        ga: {
-          name: "Irish",
-          nativeName: "Gaeilge"
-        },
-        gd: {
-          name: "Scottish Gaelic",
-          nativeName: "Gàidhlig"
-        },
-        gl: {
-          name: "Galician",
-          nativeName: "galego"
-        },
-        gn: {
-          name: "Guaraní",
-          nativeName: "Avañe'ẽ"
-        },
-        gu: {
-          name: "Gujarati",
-          nativeName: "ગુજરાતી"
-        },
-        gv: {
-          name: "Manx",
-          nativeName: "Gaelg"
-        },
-        ha: {
-          name: "Hausa",
-          nativeName: "هَوُسَ"
-        },
-        he: {
-          name: "Hebrew",
-          nativeName: "עברית"
-        },
-        hi: {
-          name: "Hindi",
-          nativeName: "हिन्दी"
-        },
-        ho: {
-          name: "Hiri Motu",
-          nativeName: "Hiri Motu"
-        },
-        hr: {
-          name: "Croatian",
-          nativeName: "Hrvatski"
-        },
-        ht: {
-          name: "Haitian",
-          nativeName: "Kreyòl ayisyen"
-        },
-        hu: {
-          name: "Hungarian",
-          nativeName: "magyar"
-        },
-        hy: {
-          name: "Armenian",
-          nativeName: "Հայերեն"
-        },
-        hz: {
-          name: "Herero",
-          nativeName: "Otjiherero"
-        },
-        ia: {
-          name: "Interlingua",
-          nativeName: "Interlingua"
-        },
-        id: {
-          name: "Indonesian",
-          nativeName: "Bahasa Indonesia"
-        },
-        ie: {
-          name: "Interlingue",
-          nativeName: "Interlingue"
-        },
-        ig: {
-          name: "Igbo",
-          nativeName: "Asụsụ Igbo"
-        },
-        ii: {
-          name: "Nuosu",
-          nativeName: "ꆈꌠ꒿ Nuosuhxop"
-        },
-        ik: {
-          name: "Inupiaq",
-          nativeName: "Iñupiaq"
-        },
-        io: {
-          name: "Ido",
-          nativeName: "Ido"
-        },
-        is: {
-          name: "Icelandic",
-          nativeName: "Íslenska"
-        },
-        it: {
-          name: "Italian",
-          nativeName: "Italiano"
-        },
-        iu: {
-          name: "Inuktitut",
-          nativeName: "ᐃᓄᒃᑎᑐᑦ"
-        },
-        ja: {
-          name: "Japanese",
-          nativeName: "日本語"
-        },
-        jv: {
-          name: "Javanese",
-          nativeName: "basa Jawa"
-        },
-        ka: {
-          name: "Georgian",
-          nativeName: "ქართული"
-        },
-        kg: {
-          name: "Kongo",
-          nativeName: "Kikongo"
-        },
-        ki: {
-          name: "Kikuyu",
-          nativeName: "Gĩkũyũ"
-        },
-        kj: {
-          name: "Kwanyama",
-          nativeName: "Kuanyama"
-        },
-        kk: {
-          name: "Kazakh",
-          nativeName: "қазақ тілі"
-        },
-        kl: {
-          name: "Kalaallisut",
-          nativeName: "kalaallisut"
-        },
-        km: {
-          name: "Khmer",
-          nativeName: "ខេមរភាសា"
-        },
-        kn: {
-          name: "Kannada",
-          nativeName: "ಕನ್ನಡ"
-        },
-        ko: {
-          name: "Korean",
-          nativeName: "한국어"
-        },
-        kr: {
-          name: "Kanuri",
-          nativeName: "Kanuri"
-        },
-        ks: {
-          name: "Kashmiri",
-          nativeName: "कश्मीरी"
-        },
-        ku: {
-          name: "Kurdish",
-          nativeName: "Kurdî"
-        },
-        kv: {
-          name: "Komi",
-          nativeName: "коми кыв"
-        },
-        kw: {
-          name: "Cornish",
-          nativeName: "Kernewek"
-        },
-        ky: {
-          name: "Kyrgyz",
-          nativeName: "Кыргызча"
-        },
-        la: {
-          name: "Latin",
-          nativeName: "latine"
-        },
-        lb: {
-          name: "Luxembourgish",
-          nativeName: "Lëtzebuergesch"
-        },
-        lg: {
-          name: "Ganda",
-          nativeName: "Luganda"
-        },
-        li: {
-          name: "Limburgish",
-          nativeName: "Limburgs"
-        },
-        ln: {
-          name: "Lingala",
-          nativeName: "Lingála"
-        },
-        lo: {
-          name: "Lao",
-          nativeName: "ພາສາລາວ"
-        },
-        lt: {
-          name: "Lithuanian",
-          nativeName: "lietuvių kalba"
-        },
-        lu: {
-          name: "Luba-Katanga",
-          nativeName: "Kiluba"
-        },
-        lv: {
-          name: "Latvian",
-          nativeName: "latviešu valoda"
-        },
-        mg: {
-          name: "Malagasy",
-          nativeName: "fiteny malagasy"
-        },
-        mh: {
-          name: "Marshallese",
-          nativeName: "Kajin M̧ajeļ"
-        },
-        mi: {
-          name: "Māori",
-          nativeName: "te reo Māori"
-        },
-        mk: {
-          name: "Macedonian",
-          nativeName: "македонски јазик"
-        },
-        ml: {
-          name: "Malayalam",
-          nativeName: "മലയാളം"
-        },
-        mn: {
-          name: "Mongolian",
-          nativeName: "Монгол хэл"
-        },
-        mr: {
-          name: "Marathi",
-          nativeName: "मराठी"
-        },
-        ms: {
-          name: "Malay",
-          nativeName: "Bahasa Melayu"
-        },
-        mt: {
-          name: "Maltese",
-          nativeName: "Malti"
-        },
-        my: {
-          name: "Burmese",
-          nativeName: "ဗမာစာ"
-        },
-        na: {
-          name: "Nauru",
-          nativeName: "Dorerin Naoero"
-        },
-        nb: {
-          name: "Norwegian Bokmål",
-          nativeName: "Norsk bokmål"
-        },
-        nd: {
-          name: "Northern Ndebele",
-          nativeName: "isiNdebele"
-        },
-        ne: {
-          name: "Nepali",
-          nativeName: "नेपाली"
-        },
-        ng: {
-          name: "Ndonga",
-          nativeName: "Owambo"
-        },
-        nl: {
-          name: "Dutch",
-          nativeName: "Nederlands"
-        },
-        nn: {
-          name: "Norwegian Nynorsk",
-          nativeName: "Norsk nynorsk"
-        },
-        no: {
-          name: "Norwegian",
-          nativeName: "Norsk"
-        },
-        nr: {
-          name: "Southern Ndebele",
-          nativeName: "isiNdebele"
-        },
-        nv: {
-          name: "Navajo",
-          nativeName: "Diné bizaad"
-        },
-        ny: {
-          name: "Chichewa",
-          nativeName: "chiCheŵa"
-        },
-        oc: {
-          name: "Occitan",
-          nativeName: "occitan"
-        },
-        oj: {
-          name: "Ojibwe",
-          nativeName: "ᐊᓂᔑᓈᐯᒧᐎᓐ"
-        },
-        om: {
-          name: "Oromo",
-          nativeName: "Afaan Oromoo"
-        },
-        or: {
-          name: "Oriya",
-          nativeName: "ଓଡ଼ିଆ"
-        },
-        os: {
-          name: "Ossetian",
-          nativeName: "ирон æвзаг"
-        },
-        pa: {
-          name: "Panjabi",
-          nativeName: "ਪੰਜਾਬੀ"
-        },
-        pi: {
-          name: "Pāli",
-          nativeName: "पाऴि"
-        },
-        pl: {
-          name: "Polish",
-          nativeName: "Polski"
-        },
-        ps: {
-          name: "Pashto",
-          nativeName: "پښتو"
-        },
-        pt: {
-          name: "Portuguese",
-          nativeName: "Português"
-        },
-        qu: {
-          name: "Quechua",
-          nativeName: "Runa Simi"
-        },
-        rm: {
-          name: "Romansh",
-          nativeName: "rumantsch grischun"
-        },
-        rn: {
-          name: "Kirundi",
-          nativeName: "Ikirundi"
-        },
-        ro: {
-          name: "Romanian",
-          nativeName: "Română"
-        },
-        ru: {
-          name: "Russian",
-          nativeName: "Русский"
-        },
-        rw: {
-          name: "Kinyarwanda",
-          nativeName: "Ikinyarwanda"
-        },
-        sa: {
-          name: "Sanskrit",
-          nativeName: "संस्कृतम्"
-        },
-        sc: {
-          name: "Sardinian",
-          nativeName: "sardu"
-        },
-        sd: {
-          name: "Sindhi",
-          nativeName: "सिन्धी"
-        },
-        se: {
-          name: "Northern Sami",
-          nativeName: "Davvisámegiella"
-        },
-        sg: {
-          name: "Sango",
-          nativeName: "yângâ tî sängö"
-        },
-        si: {
-          name: "Sinhala",
-          nativeName: "සිංහල"
-        },
-        sk: {
-          name: "Slovak",
-          nativeName: "Slovenčina"
-        },
-        sl: {
-          name: "Slovenian",
-          nativeName: "slovenščina"
-        },
-        sm: {
-          name: "Samoan",
-          nativeName: "gagana fa'a Samoa"
-        },
-        sn: {
-          name: "Shona",
-          nativeName: "chiShona"
-        },
-        so: {
-          name: "Somali",
-          nativeName: "Soomaaliga"
-        },
-        sq: {
-          name: "Albanian",
-          nativeName: "Shqip"
-        },
-        sr: {
-          name: "Serbian",
-          nativeName: "српски језик"
-        },
-        ss: {
-          name: "Swati",
-          nativeName: "SiSwati"
-        },
-        st: {
-          name: "Southern Sotho",
-          nativeName: "Sesotho"
-        },
-        su: {
-          name: "Sundanese",
-          nativeName: "Basa Sunda"
-        },
-        sv: {
-          name: "Swedish",
-          nativeName: "Svenska"
-        },
-        sw: {
-          name: "Swahili",
-          nativeName: "Kiswahili"
-        },
-        ta: {
-          name: "Tamil",
-          nativeName: "தமிழ்"
-        },
-        te: {
-          name: "Telugu",
-          nativeName: "తెలుగు"
-        },
-        tg: {
-          name: "Tajik",
-          nativeName: "тоҷикӣ"
-        },
-        th: {
-          name: "Thai",
-          nativeName: "ไทย"
-        },
-        ti: {
-          name: "Tigrinya",
-          nativeName: "ትግርኛ"
-        },
-        tk: {
-          name: "Turkmen",
-          nativeName: "Türkmençe"
-        },
-        tl: {
-          name: "Tagalog",
-          nativeName: "Wikang Tagalog"
-        },
-        tn: {
-          name: "Tswana",
-          nativeName: "Setswana"
-        },
-        to: {
-          name: "Tonga",
-          nativeName: "faka Tonga"
-        },
-        tr: {
-          name: "Turkish",
-          nativeName: "Türkçe"
-        },
-        ts: {
-          name: "Tsonga",
-          nativeName: "Xitsonga"
-        },
-        tt: {
-          name: "Tatar",
-          nativeName: "татар теле"
-        },
-        tw: {
-          name: "Twi",
-          nativeName: "Twi"
-        },
-        ty: {
-          name: "Tahitian",
-          nativeName: "Reo Tahiti"
-        },
-        ug: {
-          name: "Uyghur",
-          nativeName: "ئۇيغۇرچە‎"
-        },
-        uk: {
-          name: "Ukrainian",
-          nativeName: "Українська"
-        },
-        ur: {
-          name: "Urdu",
-          nativeName: "اردو"
-        },
-        uz: {
-          name: "Uzbek",
-          nativeName: "Ўзбек"
-        },
-        ve: {
-          name: "Venda",
-          nativeName: "Tshivenḓa"
-        },
-        vi: {
-          name: "Vietnamese",
-          nativeName: "Tiếng Việt"
-        },
-        vo: {
-          name: "Volapük",
-          nativeName: "Volapük"
-        },
-        wa: {
-          name: "Walloon",
-          nativeName: "walon"
-        },
-        wo: {
-          name: "Wolof",
-          nativeName: "Wollof"
-        },
-        xh: {
-          name: "Xhosa",
-          nativeName: "isiXhosa"
-        },
-        yi: {
-          name: "Yiddish",
-          nativeName: "ייִדיש"
-        },
-        yo: {
-          name: "Yoruba",
-          nativeName: "Yorùbá"
-        },
-        za: {
-          name: "Zhuang",
-          nativeName: "Saɯ cueŋƅ"
-        },
-        zh: {
-          name: "Chinese",
-          nativeName: "中文"
-        },
-        zu: {
-          name: "Zulu",
-          nativeName: "isiZulu"
-        }
-      };
-      data = LANGUAGES_LIST;
-      return data;
-    }
-    var src;
-    var hasRequiredSrc;
-    function requireSrc() {
-      if (hasRequiredSrc) return src;
-      hasRequiredSrc = 1;
-      const LANGUAGES_LIST = requireData();
-      const LANGUAGES = {};
-      const LANGUAGES_BY_NAME = {};
-      const LANGUAGE_CODES = [];
-      const LANGUAGE_NAMES = [];
-      const LANGUAGE_NATIVE_NAMES = [];
-      for (const code in LANGUAGES_LIST) {
-        const { name, nativeName } = LANGUAGES_LIST[code];
-        LANGUAGES[code] = LANGUAGES_BY_NAME[name.toLowerCase()] = LANGUAGES_BY_NAME[nativeName.toLowerCase()] = { code, name, nativeName };
-        LANGUAGE_CODES.push(code);
-        LANGUAGE_NAMES.push(name);
-        LANGUAGE_NATIVE_NAMES.push(nativeName);
-      }
-      src = class ISO63912 {
-        static getLanguages(codes = []) {
-          return codes.map(
-            (code) => ISO63912.validate(code) ? Object.assign({}, LANGUAGES[code]) : { code, name: "", nativeName: "" }
-          );
-        }
-        static getName(code) {
-          return ISO63912.validate(code) ? LANGUAGES_LIST[code].name : "";
-        }
-        static getAllNames() {
-          return LANGUAGE_NAMES.slice();
-        }
-        static getNativeName(code) {
-          return ISO63912.validate(code) ? LANGUAGES_LIST[code].nativeName : "";
-        }
-        static getAllNativeNames() {
-          return LANGUAGE_NATIVE_NAMES.slice();
-        }
-        static getCode(name) {
-          name = name.toLowerCase();
-          return LANGUAGES_BY_NAME.hasOwnProperty(name) ? LANGUAGES_BY_NAME[name].code : "";
-        }
-        static getAllCodes() {
-          return LANGUAGE_CODES.slice();
-        }
-        static validate(code) {
-          return LANGUAGES_LIST.hasOwnProperty(code);
-        }
-      };
-      return src;
-    }
-    var srcExports = requireSrc();
-    const ISO6391 = /* @__PURE__ */ getDefaultExportFromCjs(srcExports);
-    function sortPerformers(performers) {
-      const ret = performers.slice();
-      ret.sort((a2, b) => {
-        if (a2.gender === b.gender) {
-          return (a2.name ?? "").localeCompare(b.name ?? "");
-        }
-        const aIndex = a2.gender ? GENDERS.indexOf(a2.gender) : GENDERS.length;
-        const bIndex = b.gender ? GENDERS.indexOf(b.gender) : GENDERS.length;
-        return aIndex - bIndex;
-      });
-      return ret;
-    }
-    const GENDERS = [
-      "FEMALE",
-      "TRANSGENDER_FEMALE",
-      "MALE",
-      "TRANSGENDER_MALE",
-      "INTERSEX",
-      "NON_BINARY"
-    ];
-    function clamp$1(min2, num, max2) {
-      return Math.min(Math.max(num, min2), max2);
-    }
-    function updateReadOnlyProp(obj, prop, value) {
-      Object.defineProperty(obj, prop, { value, writable: true, enumerable: isEnumerableIncludingInherited(obj, prop) });
-    }
-    function updateReadOnlyProps(obj, props) {
-      for (const [prop, value] of Object.entries(props)) {
-        updateReadOnlyProp(obj, prop, value);
-      }
-    }
-    function isEnumerableIncludingInherited(obj, prop) {
-      let current = obj;
-      while (current) {
-        const desc = Object.getOwnPropertyDescriptor(current, prop);
-        if (desc) return !!desc.enumerable;
-        current = Object.getPrototypeOf(current);
-      }
-      return false;
-    }
-    function getSceneIdForVideoJsPlayer(videoElm) {
-      let node2 = videoElm;
-      while (node2 !== null) {
-        if (node2 instanceof HTMLElement && "sceneId" in node2.dataset && node2.dataset.sceneId) {
-          return node2.dataset.sceneId;
-        }
-        node2 = node2.parentElement;
-      }
-      throw new Error("Could not find sceneId for Video.js player");
-    }
-    function getPlayerIdForVideoJsPlayer(videoElm) {
-      let node2 = videoElm;
-      while (node2 !== null) {
-        if (node2 instanceof HTMLElement && "playerId" in node2.dataset && node2.dataset.playerId) {
-          return node2.dataset.playerId;
-        }
-        node2 = node2.parentElement;
-      }
-      throw new Error("Could not find playerId for Video.js player");
-    }
     var jsxRuntime = { exports: {} };
     var reactJsxRuntime_production_min = {};
     /** @license React v17.0.2
@@ -14287,7 +10120,7 @@ var require_index_001 = __commonJS({
       });
     };
     var lib$1 = {};
-    var dom$1 = {};
+    var dom$2 = {};
     var conventions = {};
     var hasRequiredConventions;
     function requireConventions() {
@@ -14429,7 +10262,7 @@ var require_index_001 = __commonJS({
     }
     var hasRequiredDom;
     function requireDom() {
-      if (hasRequiredDom) return dom$1;
+      if (hasRequiredDom) return dom$2;
       hasRequiredDom = 1;
       var conventions2 = requireConventions();
       var find2 = conventions2.find;
@@ -15850,14 +11683,14 @@ var require_index_001 = __commonJS({
         }
       } catch (e) {
       }
-      dom$1.DocumentType = DocumentType2;
-      dom$1.DOMException = DOMException;
-      dom$1.DOMImplementation = DOMImplementation;
-      dom$1.Element = Element2;
-      dom$1.Node = Node2;
-      dom$1.NodeList = NodeList;
-      dom$1.XMLSerializer = XMLSerializer;
-      return dom$1;
+      dom$2.DocumentType = DocumentType2;
+      dom$2.DOMException = DOMException;
+      dom$2.DOMImplementation = DOMImplementation;
+      dom$2.Element = Element2;
+      dom$2.Node = Node2;
+      dom$2.NodeList = NodeList;
+      dom$2.XMLSerializer = XMLSerializer;
+      return dom$2;
     }
     var domParser = {};
     var entities = {};
@@ -20347,7 +16180,7 @@ var require_index_001 = __commonJS({
       }
       return attributes;
     };
-    var parse$2 = function parse2(manifestString, options2) {
+    var parse$3 = function parse2(manifestString, options2) {
       if (options2 === void 0) {
         options2 = {};
       }
@@ -21104,7 +16937,7 @@ var require_index_001 = __commonJS({
         return fn(object[key], key);
       });
     }
-    function reduce(object, fn, initial2) {
+    function reduce$1(object, fn, initial2) {
       if (initial2 === void 0) {
         initial2 = 0;
       }
@@ -26296,7 +22129,7 @@ var require_index_001 = __commonJS({
     })(Button$3);
     SeekToLive.prototype.controlText_ = "Seek to live, currently playing live";
     Component$1$1.registerComponent("SeekToLive", SeekToLive);
-    var clamp = function clamp2(number, min2, max2) {
+    var clamp$1 = function clamp2(number, min2, max2) {
       number = Number(number);
       return Math.min(max2, Math.max(min2, isNaN(number) ? min2 : number));
     };
@@ -26436,7 +22269,7 @@ var require_index_001 = __commonJS({
         return progress;
       };
       _proto.getProgress = function getProgress() {
-        return Number(clamp(this.getPercent(), 0, 1).toFixed(4));
+        return Number(clamp$1(this.getPercent(), 0, 1).toFixed(4));
       };
       _proto.calculateDistance = function calculateDistance(event2) {
         var position2 = getPointerPosition(this.el_, event2);
@@ -26477,7 +22310,7 @@ var require_index_001 = __commonJS({
     })(Component$1$1);
     Component$1$1.registerComponent("Slider", Slider);
     var percentify = function percentify2(time, end2) {
-      return clamp(time / end2 * 100, 0, 100).toFixed(2) + "%";
+      return clamp$1(time / end2 * 100, 0, 100).toFixed(2) + "%";
     };
     var LoadProgressBar = /* @__PURE__ */ (function(_Component) {
       _inheritsLoose$1(LoadProgressBar2, _Component);
@@ -26988,7 +22821,7 @@ var require_index_001 = __commonJS({
         var seekBarEl = seekBar.el();
         var seekBarRect = findPosition(seekBarEl);
         var seekBarPoint = getPointerPosition(seekBarEl, event2).x;
-        seekBarPoint = clamp(seekBarPoint, 0, 1);
+        seekBarPoint = clamp$1(seekBarPoint, 0, 1);
         if (mouseTimeDisplay) {
           mouseTimeDisplay.update(seekBarRect, seekBarPoint);
         }
@@ -27314,7 +23147,7 @@ var require_index_001 = __commonJS({
           var vertical = this.vertical();
           var volumeBarPoint = getPointerPosition(volumeBarEl, event2);
           volumeBarPoint = vertical ? volumeBarPoint.y : volumeBarPoint.x;
-          volumeBarPoint = clamp(volumeBarPoint, 0, 1);
+          volumeBarPoint = clamp$1(volumeBarPoint, 0, 1);
           mouseVolumeLevelDisplay.update(volumeBarRect, volumeBarPoint, vertical);
         }
         if (!isSingleLeftClick(event2)) {
@@ -29064,7 +24897,7 @@ var require_index_001 = __commonJS({
       };
       _proto.getValues = function getValues() {
         var _this3 = this;
-        return reduce(selectConfigs, function(accum, config2, key) {
+        return reduce$1(selectConfigs, function(accum, config2, key) {
           var value = getSelectedOptionValue(_this3.$(config2.selector), config2.parser);
           if (value !== void 0) {
             accum[key] = value;
@@ -34425,7 +30258,7 @@ var require_index_001 = __commonJS({
       playlistMatch,
       segmentDurationWithParts
     };
-    var log = videojs.log;
+    var log$2 = videojs.log;
     var createPlaylistID = function createPlaylistID2(index2, uri) {
       return index2 + "-" + uri;
     };
@@ -34485,7 +30318,7 @@ var require_index_001 = __commonJS({
         }, 0);
         if (onwarn) {
           onwarn("manifest has no partTargetDuration defaulting to " + partTargetDuration);
-          log.error("LL-HLS manifest has parts but lacks required #EXT-X-PART-INF:PART-TARGET value. See https://datatracker.ietf.org/doc/html/draft-pantos-hls-rfc8216bis-09#section-4.4.3.7. Playback is not guaranteed.");
+          log$2.error("LL-HLS manifest has parts but lacks required #EXT-X-PART-INF:PART-TARGET value. See https://datatracker.ietf.org/doc/html/draft-pantos-hls-rfc8216bis-09#section-4.4.3.7. Playback is not guaranteed.");
         }
         manifest.partTargetDuration = partTargetDuration;
       }
@@ -34528,7 +30361,7 @@ var require_index_001 = __commonJS({
         master.playlists[playlist.id] = playlist;
         master.playlists[playlist.uri] = playlist;
         if (!playlist.attributes.BANDWIDTH) {
-          log.warn("Invalid playlist STREAM-INF detected. Missing BANDWIDTH attribute.");
+          log$2.warn("Invalid playlist STREAM-INF detected. Missing BANDWIDTH attribute.");
         }
       }
     };
@@ -35587,7 +31420,7 @@ var require_index_001 = __commonJS({
     };
     var parseMasterXml = function parseMasterXml2(_ref3) {
       var masterXml = _ref3.masterXml, srcUrl = _ref3.srcUrl, clientOffset = _ref3.clientOffset, sidxMapping = _ref3.sidxMapping, previousManifest = _ref3.previousManifest;
-      var manifest = parse$2(masterXml, {
+      var manifest = parse$3(masterXml, {
         manifestUri: srcUrl,
         clientOffset,
         sidxMapping,
@@ -45464,7 +41297,7 @@ var require_index_001 = __commonJS({
       };
       return SegmentLoader2;
     })(videojs.EventTarget);
-    function noop$5() {
+    function noop$6() {
     }
     var toTitleCase = function toTitleCase2(string) {
       if (typeof string !== "string") {
@@ -45884,7 +41717,7 @@ var require_index_001 = __commonJS({
       };
       _proto.setDuration = function setDuration(duration2, doneFn) {
         if (doneFn === void 0) {
-          doneFn = noop$5;
+          doneFn = noop$6;
         }
         pushQueue({
           type: "mediaSource",
@@ -45899,7 +41732,7 @@ var require_index_001 = __commonJS({
           error = null;
         }
         if (doneFn === void 0) {
-          doneFn = noop$5;
+          doneFn = noop$6;
         }
         if (typeof error !== "string") {
           error = void 0;
@@ -45914,7 +41747,7 @@ var require_index_001 = __commonJS({
       };
       _proto.removeAudio = function removeAudio(start2, end2, done) {
         if (done === void 0) {
-          done = noop$5;
+          done = noop$6;
         }
         if (!this.audioBuffered().length || this.audioBuffered().end(0) === 0) {
           done();
@@ -45930,7 +41763,7 @@ var require_index_001 = __commonJS({
       };
       _proto.removeVideo = function removeVideo(start2, end2, done) {
         if (done === void 0) {
-          done = noop$5;
+          done = noop$6;
         }
         if (!this.videoBuffered().length || this.videoBuffered().end(0) === 0) {
           done();
@@ -47702,11 +43535,11 @@ var require_index_001 = __commonJS({
           groups: {},
           tracks: {},
           activePlaylistLoader: null,
-          activeGroup: noop$5,
-          activeTrack: noop$5,
-          getActiveGroup: noop$5,
-          onGroupChanged: noop$5,
-          onTrackChanged: noop$5,
+          activeGroup: noop$6,
+          activeTrack: noop$6,
+          getActiveGroup: noop$6,
+          onGroupChanged: noop$6,
+          onTrackChanged: noop$6,
           lastTrack_: null,
           logger_: logger("MediaGroups[" + type + "]")
         };
@@ -97847,7 +93680,7 @@ var require_index_001 = __commonJS({
     /*! @name videojs-mobile-ui @version 0.8.0 @license MIT */
     var version$4 = "0.8.0";
     var Component$1 = videojs.getComponent("Component");
-    var dom = videojs.dom || videojs;
+    var dom$1 = videojs.dom || videojs;
     var TouchOverlay = /* @__PURE__ */ (function(_Component) {
       _inheritsLoose$1(TouchOverlay2, _Component);
       function TouchOverlay2(player, options2) {
@@ -97867,7 +93700,7 @@ var require_index_001 = __commonJS({
       }
       var _proto = TouchOverlay2.prototype;
       _proto.createEl = function createEl2() {
-        var el = dom.createEl("div", {
+        var el = dom$1.createEl("div", {
           className: "vjs-touch-overlay",
           // Touch overlay is not tabbable.
           tabIndex: -1
@@ -118103,10 +113936,10 @@ var require_index_001 = __commonJS({
       onChangeCallback: function() {
       }
     });
-    function Layers() {
+    function Layers$1() {
       this.mask = 1 | 0;
     }
-    Object.assign(Layers.prototype, {
+    Object.assign(Layers$1.prototype, {
       set: function(channel) {
         this.mask = 1 << channel | 0;
       },
@@ -118172,7 +114005,7 @@ var require_index_001 = __commonJS({
       this.matrixWorld = new Matrix4();
       this.matrixAutoUpdate = Object3D.DefaultMatrixAutoUpdate;
       this.matrixWorldNeedsUpdate = false;
-      this.layers = new Layers();
+      this.layers = new Layers$1();
       this.visible = true;
       this.castShadow = false;
       this.receiveShadow = false;
@@ -139652,7 +135485,7 @@ var require_index_001 = __commonJS({
     function _createForOfIteratorHelperLoose$1(o2, allowArrayLike) {
       var it = typeof Symbol !== "undefined" && o2[Symbol.iterator] || o2["@@iterator"];
       if (it) return (it = it.call(o2)).next.bind(it);
-      if (Array.isArray(o2) || (it = _unsupportedIterableToArray$2(o2)) || allowArrayLike) {
+      if (Array.isArray(o2) || (it = _unsupportedIterableToArray$3(o2)) || allowArrayLike) {
         if (it) o2 = it;
         var i2 = 0;
         return function() {
@@ -139662,15 +135495,15 @@ var require_index_001 = __commonJS({
       }
       throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }
-    function _unsupportedIterableToArray$2(o2, minLen) {
+    function _unsupportedIterableToArray$3(o2, minLen) {
       if (!o2) return;
-      if (typeof o2 === "string") return _arrayLikeToArray$2(o2, minLen);
+      if (typeof o2 === "string") return _arrayLikeToArray$3(o2, minLen);
       var n = Object.prototype.toString.call(o2).slice(8, -1);
       if (n === "Object" && o2.constructor) n = o2.constructor.name;
       if (n === "Map" || n === "Set") return Array.from(o2);
-      if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$2(o2, minLen);
+      if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$3(o2, minLen);
     }
-    function _arrayLikeToArray$2(arr, len) {
+    function _arrayLikeToArray$3(arr, len) {
       if (len == null || len > arr.length) len = arr.length;
       for (var i2 = 0, arr2 = new Array(len); i2 < len; i2++) {
         arr2[i2] = arr[i2];
@@ -142036,7 +137869,7 @@ spurious results.`);
     function isSource(source2) {
       return instanceOf(source2, Source);
     }
-    function parse$1(source2, options2) {
+    function parse$2(source2, options2) {
       const parser2 = new Parser(source2, options2);
       const document2 = parser2.parseDocument();
       Object.defineProperty(document2, "tokenCount", {
@@ -144182,17 +140015,17 @@ spurious results.`);
         return false;
       }
     }
-    function noop$4() {
+    function noop$5() {
     }
-    const defaultDispose = noop$4;
+    const defaultDispose = noop$5;
     const _WeakRef = typeof WeakRef !== "undefined" ? WeakRef : function(value) {
       return { deref: () => value };
     };
     const _WeakMap = typeof WeakMap !== "undefined" ? WeakMap : Map;
     const _FinalizationRegistry = typeof FinalizationRegistry !== "undefined" ? FinalizationRegistry : function() {
       return {
-        register: noop$4,
-        unregister: noop$4
+        register: noop$5,
+        unregister: noop$5
       };
     };
     const finalizationBatchSize = 10024;
@@ -145705,7 +141538,7 @@ spurious results.`);
     function _createForOfIteratorHelperLoose(o2, allowArrayLike) {
       var it = typeof Symbol !== "undefined" && o2[Symbol.iterator] || o2["@@iterator"];
       if (it) return (it = it.call(o2)).next.bind(it);
-      if (Array.isArray(o2) || (it = _unsupportedIterableToArray$1(o2)) || allowArrayLike) {
+      if (Array.isArray(o2) || (it = _unsupportedIterableToArray$2(o2)) || allowArrayLike) {
         if (it) o2 = it;
         var i2 = 0;
         return function() {
@@ -145715,15 +141548,15 @@ spurious results.`);
       }
       throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }
-    function _unsupportedIterableToArray$1(o2, minLen) {
+    function _unsupportedIterableToArray$2(o2, minLen) {
       if (!o2) return;
-      if (typeof o2 === "string") return _arrayLikeToArray$1(o2, minLen);
+      if (typeof o2 === "string") return _arrayLikeToArray$2(o2, minLen);
       var n = Object.prototype.toString.call(o2).slice(8, -1);
       if (n === "Object" && o2.constructor) n = o2.constructor.name;
       if (n === "Map" || n === "Set") return Array.from(o2);
-      if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$1(o2, minLen);
+      if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$2(o2, minLen);
     }
-    function _arrayLikeToArray$1(arr, len) {
+    function _arrayLikeToArray$2(arr, len) {
       if (len == null || len > arr.length) len = arr.length;
       for (var i2 = 0, arr2 = new Array(len); i2 < len; i2++) {
         arr2[i2] = arr[i2];
@@ -152912,7 +148745,7 @@ spurious results.`);
     function parseDocument(source2) {
       var cacheKey2 = normalize(source2);
       if (!docCache.has(cacheKey2)) {
-        var parsed = parse$1(source2, {
+        var parsed = parse$2(source2, {
           experimentalFragmentVariables,
           allowLegacyFragmentVariables: experimentalFragmentVariables
         });
@@ -153175,7 +149008,7 @@ spurious results.`);
       return wrapper ? wrapper(useHook) : useHook;
     }
     var hasOwnProperty = Object.prototype.hasOwnProperty;
-    function noop$3() {
+    function noop$4() {
     }
     var lastWatchOptions = Symbol();
     function useQuery(query, options2) {
@@ -153266,8 +149099,8 @@ spurious results.`);
       }, [observable]);
       useRegisterSSRObservable(observable, renderPromises, ssrAllowed);
       var result = useObservableSubscriptionResult(resultData, observable, client2, options2, watchQueryOptions, disableNetworkFetches, partialRefetch, isSyncSSR, {
-        onCompleted: options2.onCompleted || noop$3,
-        onError: options2.onError || noop$3
+        onCompleted: options2.onCompleted || noop$4,
+        onError: options2.onError || noop$4
       });
       return {
         result,
@@ -155931,13 +151764,17 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 }
     ${SavedFilterDataFragmentDoc}`;
-    gql`
+    const FindSavedFiltersDocument = gql`
     query FindSavedFilters($mode: FilterMode) {
   findSavedFilters(mode: $mode) {
     ...SavedFilterData
   }
 }
     ${SavedFilterDataFragmentDoc}`;
+    function useFindSavedFiltersQuery(baseOptions) {
+      const options2 = { ...defaultOptions, ...baseOptions };
+      return useQuery(FindSavedFiltersDocument, options2);
+    }
     gql`
     query FindGalleries($filter: FindFilterType, $gallery_filter: GalleryFilterType) {
   findGalleries(gallery_filter: $gallery_filter, filter: $filter) {
@@ -156485,13 +152322,17 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 }
     ${PackageDataFragmentDoc}`;
-    gql`
+    const ConfigurationDocument = gql`
     query Configuration {
   configuration {
     ...ConfigData
   }
 }
     ${ConfigDataFragmentDoc}`;
+    function useConfigurationQuery(baseOptions) {
+      const options2 = { ...defaultOptions, ...baseOptions };
+      return useQuery(ConfigurationDocument, options2);
+    }
     gql`
     query Directory($path: String) {
   directory(path: $path) {
@@ -156626,7 +152467,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       const options2 = { ...defaultOptions, ...baseOptions };
       return useQuery(FindSceneMarkersForTvDocument, options2);
     }
-    const GetStashConfigForTvDocument = gql`
+    gql`
     query GetStashConfigForTv {
   configuration {
     plugins
@@ -157812,6 +153653,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       cache2.modify({ fields });
       cache2.gc();
     }
+    const useFindSavedFilters = (mode) => useFindSavedFiltersQuery({
+      variables: { mode }
+    });
     function updateStats(cache2, field, diff) {
       cache2.modify({
         fields: {
@@ -157885,7 +153729,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         ]);
       }
     });
-    function _objectWithoutPropertiesLoose(r2, e) {
+    function _objectWithoutPropertiesLoose$1(r2, e) {
       if (null == r2) return {};
       var t2 = {};
       for (var n in r2) if ({}.hasOwnProperty.call(r2, n)) {
@@ -157897,11 +153741,11 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     function defaultKey(key) {
       return "default" + key.charAt(0).toUpperCase() + key.substr(1);
     }
-    function _toPropertyKey(arg) {
-      var key = _toPrimitive(arg, "string");
+    function _toPropertyKey$2(arg) {
+      var key = _toPrimitive$2(arg, "string");
       return typeof key === "symbol" ? key : String(key);
     }
-    function _toPrimitive(input, hint) {
+    function _toPrimitive$2(input, hint) {
       if (typeof input !== "object" || input === null) return input;
       var prim = input[Symbol.toPrimitive];
       if (prim !== void 0) {
@@ -157931,7 +153775,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     function useUncontrolled(props, config2) {
       return Object.keys(config2).reduce(function(result, fieldName) {
         var _extends2;
-        var _ref3 = result, defaultValue = _ref3[defaultKey(fieldName)], propsValue = _ref3[fieldName], rest = _objectWithoutPropertiesLoose(_ref3, [defaultKey(fieldName), fieldName].map(_toPropertyKey));
+        var _ref3 = result, defaultValue = _ref3[defaultKey(fieldName)], propsValue = _ref3[fieldName], rest = _objectWithoutPropertiesLoose$1(_ref3, [defaultKey(fieldName), fieldName].map(_toPropertyKey$2));
         var handlerName = config2[fieldName];
         var _useUncontrolledProp = useUncontrolledProp(propsValue, defaultValue, props[handlerName]), value = _useUncontrolledProp[0], handler = _useUncontrolledProp[1];
         return _extends$1({}, rest, (_extends2 = {}, _extends2[fieldName] = value, _extends2[handlerName] = handler, _extends2));
@@ -157947,7 +153791,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     var SelectableContext = /* @__PURE__ */ React$1.createContext(null);
     var context = /* @__PURE__ */ React$1.createContext(null);
     context.displayName = "AccordionContext";
-    var _excluded$q = ["as", "children", "eventKey", "onClick"];
+    var _excluded$r = ["as", "children", "eventKey", "onClick"];
     function useAccordionToggle(eventKey, onClick) {
       var contextEventKey = reactExports.useContext(context);
       var onSelect = reactExports.useContext(SelectableContext);
@@ -157958,7 +153802,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       };
     }
     var AccordionToggle$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "button" : _ref$as, children = _ref3.children, eventKey = _ref3.eventKey, onClick = _ref3.onClick, props = _objectWithoutPropertiesLoose(_ref3, _excluded$q);
+      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "button" : _ref$as, children = _ref3.children, eventKey = _ref3.eventKey, onClick = _ref3.onClick, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$r);
       var accordionOnClick = useAccordionToggle(eventKey, onClick);
       if (Component2 === "button") {
         props.type = "button";
@@ -158011,7 +153855,82 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }
       node2.style.cssText += ";" + css3;
     }
-    const config$1 = {
+    var propTypes$1 = { exports: {} };
+    var ReactPropTypesSecret_1;
+    var hasRequiredReactPropTypesSecret;
+    function requireReactPropTypesSecret() {
+      if (hasRequiredReactPropTypesSecret) return ReactPropTypesSecret_1;
+      hasRequiredReactPropTypesSecret = 1;
+      var ReactPropTypesSecret = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
+      ReactPropTypesSecret_1 = ReactPropTypesSecret;
+      return ReactPropTypesSecret_1;
+    }
+    var factoryWithThrowingShims;
+    var hasRequiredFactoryWithThrowingShims;
+    function requireFactoryWithThrowingShims() {
+      if (hasRequiredFactoryWithThrowingShims) return factoryWithThrowingShims;
+      hasRequiredFactoryWithThrowingShims = 1;
+      var ReactPropTypesSecret = /* @__PURE__ */ requireReactPropTypesSecret();
+      function emptyFunction() {
+      }
+      function emptyFunctionWithReset() {
+      }
+      emptyFunctionWithReset.resetWarningCache = emptyFunction;
+      factoryWithThrowingShims = function() {
+        function shim2(props, propName, componentName, location2, propFullName, secret) {
+          if (secret === ReactPropTypesSecret) {
+            return;
+          }
+          var err = new Error(
+            "Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types"
+          );
+          err.name = "Invariant Violation";
+          throw err;
+        }
+        shim2.isRequired = shim2;
+        function getShim() {
+          return shim2;
+        }
+        var ReactPropTypes = {
+          array: shim2,
+          bigint: shim2,
+          bool: shim2,
+          func: shim2,
+          number: shim2,
+          object: shim2,
+          string: shim2,
+          symbol: shim2,
+          any: shim2,
+          arrayOf: getShim,
+          element: shim2,
+          elementType: shim2,
+          instanceOf: getShim,
+          node: shim2,
+          objectOf: getShim,
+          oneOf: getShim,
+          oneOfType: getShim,
+          shape: getShim,
+          exact: getShim,
+          checkPropTypes: emptyFunctionWithReset,
+          resetWarningCache: emptyFunction
+        };
+        ReactPropTypes.PropTypes = ReactPropTypes;
+        return ReactPropTypes;
+      };
+      return factoryWithThrowingShims;
+    }
+    var hasRequiredPropTypes;
+    function requirePropTypes() {
+      if (hasRequiredPropTypes) return propTypes$1.exports;
+      hasRequiredPropTypes = 1;
+      {
+        propTypes$1.exports = /* @__PURE__ */ requireFactoryWithThrowingShims()();
+      }
+      return propTypes$1.exports;
+    }
+    var propTypesExports = /* @__PURE__ */ requirePropTypes();
+    const PropTypes = /* @__PURE__ */ getDefaultExportFromCjs(propTypesExports);
+    const config$2 = {
       disabled: false
     };
     const TransitionGroupContext = React$1.createContext(null);
@@ -158127,7 +154046,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         var _ref22 = this.props.nodeRef ? [appearing] : [ReactDOM.findDOMNode(this), appearing], maybeNode = _ref22[0], maybeAppearing = _ref22[1];
         var timeouts2 = this.getTimeouts();
         var enterTimeout = appearing ? timeouts2.appear : timeouts2.enter;
-        if (!mounting && !enter || config$1.disabled) {
+        if (!mounting && !enter || config$2.disabled) {
           this.safeSetState({
             status: ENTERED
           }, function() {
@@ -158154,7 +154073,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         var exit = this.props.exit;
         var timeouts2 = this.getTimeouts();
         var maybeNode = this.props.nodeRef ? void 0 : ReactDOM.findDOMNode(this);
-        if (!exit || config$1.disabled) {
+        if (!exit || config$2.disabled) {
           this.safeSetState({
             status: EXITED
           }, function() {
@@ -158238,7 +154157,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         _this$props.onExiting;
         _this$props.onExited;
         _this$props.nodeRef;
-        var childProps = _objectWithoutPropertiesLoose(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
+        var childProps = _objectWithoutPropertiesLoose$1(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
         return (
           // allows for nested Transitions
           /* @__PURE__ */ React$1.createElement(TransitionGroupContext.Provider, {
@@ -158250,7 +154169,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     })(React$1.Component);
     Transition.contextType = TransitionGroupContext;
     Transition.propTypes = {};
-    function noop$2() {
+    function noop$3() {
     }
     Transition.defaultProps = {
       in: false,
@@ -158259,12 +154178,12 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       appear: false,
       enter: true,
       exit: true,
-      onEnter: noop$2,
-      onEntering: noop$2,
-      onEntered: noop$2,
-      onExit: noop$2,
-      onExiting: noop$2,
-      onExited: noop$2
+      onEnter: noop$3,
+      onEntering: noop$3,
+      onEntered: noop$3,
+      onExit: noop$3,
+      onExiting: noop$3,
+      onExited: noop$3
     };
     Transition.UNMOUNTED = UNMOUNTED;
     Transition.EXITED = EXITED;
@@ -158397,7 +154316,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     function triggerBrowserReflow(node2) {
       node2.offsetHeight;
     }
-    var _excluded$p = ["onEnter", "onEntering", "onEntered", "onExit", "onExiting", "className", "children", "dimension", "getDimensionValue"];
+    var _excluded$q = ["onEnter", "onEntering", "onEntered", "onExit", "onExiting", "className", "children", "dimension", "getDimensionValue"];
     var _collapseStyles;
     var MARGINS = {
       height: ["marginTop", "marginBottom"],
@@ -158412,7 +154331,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       parseInt(style(elem, margins[1]), 10);
     }
     var collapseStyles = (_collapseStyles = {}, _collapseStyles[EXITED] = "collapse", _collapseStyles[EXITING] = "collapsing", _collapseStyles[ENTERING] = "collapsing", _collapseStyles[ENTERED] = "collapse show", _collapseStyles);
-    var defaultProps$4 = {
+    var defaultProps$5 = {
       in: false,
       timeout: 300,
       mountOnEnter: false,
@@ -158421,7 +154340,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       getDimensionValue: getDefaultDimensionValue
     };
     var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, className = _ref3.className, children = _ref3.children, _ref$dimension = _ref3.dimension, dimension = _ref$dimension === void 0 ? "height" : _ref$dimension, _ref$getDimensionValu = _ref3.getDimensionValue, getDimensionValue = _ref$getDimensionValu === void 0 ? getDefaultDimensionValue : _ref$getDimensionValu, props = _objectWithoutPropertiesLoose(_ref3, _excluded$p);
+      var onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, className = _ref3.className, children = _ref3.children, _ref$dimension = _ref3.dimension, dimension = _ref$dimension === void 0 ? "height" : _ref$dimension, _ref$getDimensionValu = _ref3.getDimensionValue, getDimensionValue = _ref$getDimensionValu === void 0 ? getDefaultDimensionValue : _ref$getDimensionValu, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$q);
       var computedDimension = typeof dimension === "function" ? dimension() : dimension;
       var handleEnter = reactExports.useMemo(function() {
         return createChainedFunction(function(elem) {
@@ -158470,10 +154389,10 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         }
       );
     });
-    Collapse.defaultProps = defaultProps$4;
-    var _excluded$o = ["children", "eventKey"];
+    Collapse.defaultProps = defaultProps$5;
+    var _excluded$p = ["children", "eventKey"];
     var AccordionCollapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var children = _ref3.children, eventKey = _ref3.eventKey, props = _objectWithoutPropertiesLoose(_ref3, _excluded$o);
+      var children = _ref3.children, eventKey = _ref3.eventKey, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$p);
       var contextEventKey = reactExports.useContext(context);
       return /* @__PURE__ */ React$1.createElement(SelectableContext.Provider, {
         value: null
@@ -158483,11 +154402,11 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }, props), /* @__PURE__ */ React$1.createElement("div", null, React$1.Children.only(children))));
     });
     AccordionCollapse.displayName = "AccordionCollapse";
-    var _excluded$n = ["as", "activeKey", "bsPrefix", "children", "className", "onSelect"];
+    var _excluded$o = ["as", "activeKey", "bsPrefix", "children", "className", "onSelect"];
     var Accordion = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
       var _useUncontrolled = useUncontrolled(props, {
         activeKey: "onSelect"
-      }), _useUncontrolled$as = _useUncontrolled.as, Component2 = _useUncontrolled$as === void 0 ? "div" : _useUncontrolled$as, activeKey = _useUncontrolled.activeKey, bsPrefix = _useUncontrolled.bsPrefix, children = _useUncontrolled.children, className = _useUncontrolled.className, onSelect = _useUncontrolled.onSelect, controlledProps = _objectWithoutPropertiesLoose(_useUncontrolled, _excluded$n);
+      }), _useUncontrolled$as = _useUncontrolled.as, Component2 = _useUncontrolled$as === void 0 ? "div" : _useUncontrolled$as, activeKey = _useUncontrolled.activeKey, bsPrefix = _useUncontrolled.bsPrefix, children = _useUncontrolled.children, className = _useUncontrolled.className, onSelect = _useUncontrolled.onSelect, controlledProps = _objectWithoutPropertiesLoose$1(_useUncontrolled, _excluded$o);
       var finalClassName = cx(className, useBootstrapPrefix(bsPrefix, "accordion"));
       return /* @__PURE__ */ React$1.createElement(context.Provider, {
         value: activeKey || null
@@ -158503,19 +154422,19 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     Accordion.Toggle = AccordionToggle$1;
     Accordion.Collapse = AccordionCollapse;
     var rHyphen = /-(.)/g;
-    function camelize(string) {
+    function camelize$1(string) {
       return string.replace(rHyphen, function(_, chr) {
         return chr.toUpperCase();
       });
     }
-    var _excluded$m = ["className", "bsPrefix", "as"];
+    var _excluded$n = ["className", "bsPrefix", "as"];
     var pascalCase = function pascalCase2(str) {
-      return str[0].toUpperCase() + camelize(str).slice(1);
+      return str[0].toUpperCase() + camelize$1(str).slice(1);
     };
     function createWithBsPrefix(prefix2, _temp) {
       var _ref3 = {}, _ref$displayName = _ref3.displayName, displayName = _ref$displayName === void 0 ? pascalCase(prefix2) : _ref$displayName, Component2 = _ref3.Component, defaultProps2 = _ref3.defaultProps;
       var BsComponent = /* @__PURE__ */ React$1.forwardRef(function(_ref22, ref) {
-        var className = _ref22.className, bsPrefix = _ref22.bsPrefix, _ref2$as = _ref22.as, Tag = _ref2$as === void 0 ? Component2 || "div" : _ref2$as, props = _objectWithoutPropertiesLoose(_ref22, _excluded$m);
+        var className = _ref22.className, bsPrefix = _ref22.bsPrefix, _ref2$as = _ref22.as, Tag = _ref2$as === void 0 ? Component2 || "div" : _ref2$as, props = _objectWithoutPropertiesLoose$1(_ref22, _excluded$n);
         var resolvedPrefix = useBootstrapPrefix(bsPrefix, prefix2);
         return /* @__PURE__ */ React$1.createElement(Tag, _extends$1({
           ref,
@@ -158526,12 +154445,12 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       BsComponent.displayName = displayName;
       return BsComponent;
     }
-    var _excluded$l = ["as", "disabled", "onKeyDown"];
+    var _excluded$m = ["as", "disabled", "onKeyDown"];
     function isTrivialHref(href) {
       return !href || href.trim() === "#";
     }
     var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "a" : _ref$as, disabled2 = _ref3.disabled, onKeyDown = _ref3.onKeyDown, props = _objectWithoutPropertiesLoose(_ref3, _excluded$l);
+      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "a" : _ref$as, disabled2 = _ref3.disabled, onKeyDown = _ref3.onKeyDown, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$m);
       var handleClick = function handleClick2(event2) {
         var href = props.href, onClick = props.onClick;
         if (disabled2 || isTrivialHref(href)) {
@@ -158567,14 +154486,14 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }));
     });
     SafeAnchor.displayName = "SafeAnchor";
-    var _excluded$k = ["bsPrefix", "variant", "size", "active", "className", "block", "type", "as"];
-    var defaultProps$3 = {
+    var _excluded$l = ["bsPrefix", "variant", "size", "active", "className", "block", "type", "as"];
+    var defaultProps$4 = {
       variant: "primary",
       active: false,
       disabled: false
     };
     var Button = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, size = _ref3.size, active = _ref3.active, className = _ref3.className, block2 = _ref3.block, type = _ref3.type, as = _ref3.as, props = _objectWithoutPropertiesLoose(_ref3, _excluded$k);
+      var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, size = _ref3.size, active = _ref3.active, className = _ref3.className, block2 = _ref3.block, type = _ref3.type, as = _ref3.as, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$l);
       var prefix2 = useBootstrapPrefix(bsPrefix, "btn");
       var classes = cx(className, prefix2, active && "active", variant && prefix2 + "-" + variant, block2 && prefix2 + "-block", size && prefix2 + "-" + size);
       if (props.href) {
@@ -158598,13 +154517,13 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }));
     });
     Button.displayName = "Button";
-    Button.defaultProps = defaultProps$3;
-    var _excluded$j = ["bsPrefix", "className", "as"];
+    Button.defaultProps = defaultProps$4;
+    var _excluded$k = ["bsPrefix", "className", "as"];
     var DEVICE_SIZES = ["xl", "lg", "md", "sm", "xs"];
     var Col = /* @__PURE__ */ React$1.forwardRef(
       // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       function(_ref3, ref) {
-        var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose(_ref3, _excluded$j);
+        var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$k);
         var prefix2 = useBootstrapPrefix(bsPrefix, "col");
         var spans = [];
         var classes = [];
@@ -158712,7 +154631,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       return all.exports;
     }
     requireAll();
-    var _excluded$i = ["as", "className", "type", "tooltip"];
+    var _excluded$j = ["as", "className", "type", "tooltip"];
     var propTypes = {
       /**
        * Specify whether the feedback is for valid or invalid fields
@@ -158727,7 +154646,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     var Feedback = /* @__PURE__ */ React$1.forwardRef(
       // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       function(_ref3, ref) {
-        var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, _ref$type = _ref3.type, type = _ref$type === void 0 ? "valid" : _ref$type, _ref$tooltip = _ref3.tooltip, tooltip = _ref$tooltip === void 0 ? false : _ref$tooltip, props = _objectWithoutPropertiesLoose(_ref3, _excluded$i);
+        var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, _ref$type = _ref3.type, type = _ref$type === void 0 ? "valid" : _ref$type, _ref$tooltip = _ref3.tooltip, tooltip = _ref$tooltip === void 0 ? false : _ref$tooltip, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$j);
         return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({}, props, {
           ref,
           className: cx(className, type + "-" + (tooltip ? "tooltip" : "feedback"))
@@ -158739,9 +154658,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     var FormContext = /* @__PURE__ */ React$1.createContext({
       controlId: void 0
     });
-    var _excluded$h = ["id", "bsPrefix", "bsCustomPrefix", "className", "type", "isValid", "isInvalid", "isStatic", "as"];
+    var _excluded$i = ["id", "bsPrefix", "bsCustomPrefix", "className", "type", "isValid", "isInvalid", "isStatic", "as"];
     var FormCheckInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, _ref$type = _ref3.type, type = _ref$type === void 0 ? "checkbox" : _ref$type, _ref$isValid = _ref3.isValid, isValid = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, isStatic = _ref3.isStatic, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose(_ref3, _excluded$h);
+      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, _ref$type = _ref3.type, type = _ref$type === void 0 ? "checkbox" : _ref$type, _ref$isValid = _ref3.isValid, isValid = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, isStatic = _ref3.isStatic, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$i);
       var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom = _useContext.custom;
       var _ref22 = custom ? [bsCustomPrefix, "custom-control-input"] : [bsPrefix, "form-check-input"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
       bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -158753,9 +154672,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }));
     });
     FormCheckInput.displayName = "FormCheckInput";
-    var _excluded$g = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
+    var _excluded$h = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
     var FormCheckLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose(_ref3, _excluded$g);
+      var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$h);
       var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom = _useContext.custom;
       var _ref22 = custom ? [bsCustomPrefix, "custom-control-label"] : [bsPrefix, "form-check-label"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
       bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -158766,9 +154685,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }));
     });
     FormCheckLabel.displayName = "FormCheckLabel";
-    var _excluded$f = ["id", "bsPrefix", "bsCustomPrefix", "inline", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "title", "type", "label", "children", "custom", "as"];
+    var _excluded$g = ["id", "bsPrefix", "bsCustomPrefix", "inline", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "title", "type", "label", "children", "custom", "as"];
     var FormCheck = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$inline = _ref3.inline, inline = _ref$inline === void 0 ? false : _ref$inline, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, _ref$title = _ref3.title, title = _ref$title === void 0 ? "" : _ref$title, _ref$type = _ref3.type, type = _ref$type === void 0 ? "checkbox" : _ref$type, label = _ref3.label, children = _ref3.children, propCustom = _ref3.custom, _ref$as = _ref3.as, as = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose(_ref3, _excluded$f);
+      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$inline = _ref3.inline, inline = _ref$inline === void 0 ? false : _ref$inline, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, _ref$title = _ref3.title, title = _ref$title === void 0 ? "" : _ref$title, _ref$type = _ref3.type, type = _ref$type === void 0 ? "checkbox" : _ref$type, label = _ref3.label, children = _ref3.children, propCustom = _ref3.custom, _ref$as = _ref3.as, as = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$g);
       var custom = type === "switch" ? true : propCustom;
       var _ref22 = custom ? [bsCustomPrefix, "custom-control"] : [bsPrefix, "form-check"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
       bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -158804,9 +154723,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     FormCheck.displayName = "FormCheck";
     FormCheck.Input = FormCheckInput;
     FormCheck.Label = FormCheckLabel;
-    var _excluded$e = ["id", "bsPrefix", "bsCustomPrefix", "className", "isValid", "isInvalid", "lang", "as"];
+    var _excluded$f = ["id", "bsPrefix", "bsCustomPrefix", "className", "isValid", "isInvalid", "lang", "as"];
     var FormFileInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, isValid = _ref3.isValid, isInvalid = _ref3.isInvalid, lang = _ref3.lang, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose(_ref3, _excluded$e);
+      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, isValid = _ref3.isValid, isInvalid = _ref3.isInvalid, lang = _ref3.lang, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$f);
       var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom = _useContext.custom;
       var type = "file";
       var _ref22 = custom ? [bsCustomPrefix, "custom-file-input"] : [bsPrefix, "form-control-file"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
@@ -158820,9 +154739,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }));
     });
     FormFileInput.displayName = "FormFileInput";
-    var _excluded$d = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
+    var _excluded$e = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
     var FormFileLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose(_ref3, _excluded$d);
+      var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$e);
       var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom = _useContext.custom;
       var _ref22 = custom ? [bsCustomPrefix, "custom-file-label"] : [bsPrefix, "form-file-label"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
       bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -158834,9 +154753,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }));
     });
     FormFileLabel.displayName = "FormFileLabel";
-    var _excluded$c = ["id", "bsPrefix", "bsCustomPrefix", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "label", "children", "custom", "lang", "data-browse", "as", "inputAs"];
+    var _excluded$d = ["id", "bsPrefix", "bsCustomPrefix", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "label", "children", "custom", "lang", "data-browse", "as", "inputAs"];
     var FormFile = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, label = _ref3.label, children = _ref3.children, custom = _ref3.custom, lang = _ref3.lang, dataBrowse = _ref3["data-browse"], _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, _ref$inputAs = _ref3.inputAs, inputAs = _ref$inputAs === void 0 ? "input" : _ref$inputAs, props = _objectWithoutPropertiesLoose(_ref3, _excluded$c);
+      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, label = _ref3.label, children = _ref3.children, custom = _ref3.custom, lang = _ref3.lang, dataBrowse = _ref3["data-browse"], _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, _ref$inputAs = _ref3.inputAs, inputAs = _ref$inputAs === void 0 ? "input" : _ref$inputAs, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$d);
       var _ref22 = custom ? [bsCustomPrefix, "custom"] : [bsPrefix, "form-file"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
       bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
       var type = "file";
@@ -158871,9 +154790,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     FormFile.displayName = "FormFile";
     FormFile.Input = FormFileInput;
     FormFile.Label = FormFileLabel;
-    var _excluded$b = ["bsPrefix", "bsCustomPrefix", "type", "size", "htmlSize", "id", "className", "isValid", "isInvalid", "plaintext", "readOnly", "custom", "as"];
+    var _excluded$c = ["bsPrefix", "bsCustomPrefix", "type", "size", "htmlSize", "id", "className", "isValid", "isInvalid", "plaintext", "readOnly", "custom", "as"];
     var FormControl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, type = _ref3.type, size = _ref3.size, htmlSize = _ref3.htmlSize, id = _ref3.id, className = _ref3.className, _ref$isValid = _ref3.isValid, isValid = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, plaintext = _ref3.plaintext, readOnly = _ref3.readOnly, custom = _ref3.custom, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose(_ref3, _excluded$b);
+      var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, type = _ref3.type, size = _ref3.size, htmlSize = _ref3.htmlSize, id = _ref3.id, className = _ref3.className, _ref$isValid = _ref3.isValid, isValid = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, plaintext = _ref3.plaintext, readOnly = _ref3.readOnly, custom = _ref3.custom, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$c);
       var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId;
       var _ref22 = custom ? [bsCustomPrefix, "custom"] : [bsPrefix, "form-control"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
       bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -158907,9 +154826,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     const FormControl$1 = Object.assign(FormControl, {
       Feedback
     });
-    var _excluded$a = ["bsPrefix", "className", "children", "controlId", "as"];
+    var _excluded$b = ["bsPrefix", "className", "children", "controlId", "as"];
     var FormGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, controlId = _ref3.controlId, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose(_ref3, _excluded$a);
+      var bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, controlId = _ref3.controlId, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$b);
       bsPrefix = useBootstrapPrefix(bsPrefix, "form-group");
       var context2 = reactExports.useMemo(function() {
         return {
@@ -158924,13 +154843,13 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }), children));
     });
     FormGroup.displayName = "FormGroup";
-    var _excluded$9 = ["as", "bsPrefix", "column", "srOnly", "className", "htmlFor"];
-    var defaultProps$2 = {
+    var _excluded$a = ["as", "bsPrefix", "column", "srOnly", "className", "htmlFor"];
+    var defaultProps$3 = {
       column: false,
       srOnly: false
     };
     var FormLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "label" : _ref$as, bsPrefix = _ref3.bsPrefix, column2 = _ref3.column, srOnly = _ref3.srOnly, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose(_ref3, _excluded$9);
+      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "label" : _ref$as, bsPrefix = _ref3.bsPrefix, column2 = _ref3.column, srOnly = _ref3.srOnly, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$a);
       var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId;
       bsPrefix = useBootstrapPrefix(bsPrefix, "form-label");
       var columnClass = "col-form-label";
@@ -158953,12 +154872,12 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       );
     });
     FormLabel.displayName = "FormLabel";
-    FormLabel.defaultProps = defaultProps$2;
-    var _excluded$8 = ["bsPrefix", "className", "as", "muted"];
+    FormLabel.defaultProps = defaultProps$3;
+    var _excluded$9 = ["bsPrefix", "className", "as", "muted"];
     var FormText = /* @__PURE__ */ React$1.forwardRef(
       // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       function(_ref3, ref) {
-        var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "small" : _ref$as, muted = _ref3.muted, props = _objectWithoutPropertiesLoose(_ref3, _excluded$8);
+        var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "small" : _ref$as, muted = _ref3.muted, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$9);
         bsPrefix = useBootstrapPrefix(bsPrefix, "form-text");
         return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({}, props, {
           ref,
@@ -158967,22 +154886,22 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }
     );
     FormText.displayName = "FormText";
-    var Switch = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
+    var Switch$1 = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
       return /* @__PURE__ */ React$1.createElement(FormCheck, _extends$1({}, props, {
         ref,
         type: "switch"
       }));
     });
-    Switch.displayName = "Switch";
-    Switch.Input = FormCheck.Input;
-    Switch.Label = FormCheck.Label;
-    var _excluded$7 = ["bsPrefix", "inline", "className", "validated", "as"];
+    Switch$1.displayName = "Switch";
+    Switch$1.Input = FormCheck.Input;
+    Switch$1.Label = FormCheck.Label;
+    var _excluded$8 = ["bsPrefix", "inline", "className", "validated", "as"];
     var FormRow = createWithBsPrefix("form-row");
-    var defaultProps$1 = {
+    var defaultProps$2 = {
       inline: false
     };
     var FormImpl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var bsPrefix = _ref3.bsPrefix, inline = _ref3.inline, className = _ref3.className, validated = _ref3.validated, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "form" : _ref$as, props = _objectWithoutPropertiesLoose(_ref3, _excluded$7);
+      var bsPrefix = _ref3.bsPrefix, inline = _ref3.inline, className = _ref3.className, validated = _ref3.validated, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "form" : _ref$as, props = _objectWithoutPropertiesLoose$1(_ref3, _excluded$8);
       bsPrefix = useBootstrapPrefix(bsPrefix, "form");
       return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({}, props, {
         ref,
@@ -158990,13 +154909,13 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }));
     });
     FormImpl.displayName = "Form";
-    FormImpl.defaultProps = defaultProps$1;
+    FormImpl.defaultProps = defaultProps$2;
     FormImpl.Row = FormRow;
     FormImpl.Group = FormGroup;
     FormImpl.Control = FormControl$1;
     FormImpl.Check = FormCheck;
     FormImpl.File = FormFile;
-    FormImpl.Switch = Switch;
+    FormImpl.Switch = Switch$1;
     FormImpl.Label = FormLabel;
     FormImpl.Text = FormText;
     const Units = [
@@ -159454,6 +155373,3160 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       stripQuotes,
       addQuotes
     };
+    /*!
+     * Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com
+     * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+     * Copyright 2024 Fonticons, Inc.
+     */
+    function _defineProperty$2(e, r2, t2) {
+      return (r2 = _toPropertyKey$1(r2)) in e ? Object.defineProperty(e, r2, {
+        value: t2,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      }) : e[r2] = t2, e;
+    }
+    function ownKeys$2(e, r2) {
+      var t2 = Object.keys(e);
+      if (Object.getOwnPropertySymbols) {
+        var o2 = Object.getOwnPropertySymbols(e);
+        r2 && (o2 = o2.filter(function(r3) {
+          return Object.getOwnPropertyDescriptor(e, r3).enumerable;
+        })), t2.push.apply(t2, o2);
+      }
+      return t2;
+    }
+    function _objectSpread2$2(e) {
+      for (var r2 = 1; r2 < arguments.length; r2++) {
+        var t2 = null != arguments[r2] ? arguments[r2] : {};
+        r2 % 2 ? ownKeys$2(Object(t2), true).forEach(function(r3) {
+          _defineProperty$2(e, r3, t2[r3]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t2)) : ownKeys$2(Object(t2)).forEach(function(r3) {
+          Object.defineProperty(e, r3, Object.getOwnPropertyDescriptor(t2, r3));
+        });
+      }
+      return e;
+    }
+    function _toPrimitive$1(t2, r2) {
+      if ("object" != typeof t2 || !t2) return t2;
+      var e = t2[Symbol.toPrimitive];
+      if (void 0 !== e) {
+        var i2 = e.call(t2, r2);
+        if ("object" != typeof i2) return i2;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return ("string" === r2 ? String : Number)(t2);
+    }
+    function _toPropertyKey$1(t2) {
+      var i2 = _toPrimitive$1(t2, "string");
+      return "symbol" == typeof i2 ? i2 : i2 + "";
+    }
+    const noop$2 = () => {
+    };
+    let _WINDOW = {};
+    let _DOCUMENT = {};
+    let _MUTATION_OBSERVER = null;
+    let _PERFORMANCE = {
+      mark: noop$2,
+      measure: noop$2
+    };
+    try {
+      if (typeof window !== "undefined") _WINDOW = window;
+      if (typeof document !== "undefined") _DOCUMENT = document;
+      if (typeof MutationObserver !== "undefined") _MUTATION_OBSERVER = MutationObserver;
+      if (typeof performance !== "undefined") _PERFORMANCE = performance;
+    } catch (e) {
+    }
+    const {
+      userAgent = ""
+    } = _WINDOW.navigator || {};
+    const WINDOW = _WINDOW;
+    const DOCUMENT = _DOCUMENT;
+    const MUTATION_OBSERVER = _MUTATION_OBSERVER;
+    const PERFORMANCE = _PERFORMANCE;
+    !!WINDOW.document;
+    const IS_DOM = !!DOCUMENT.documentElement && !!DOCUMENT.head && typeof DOCUMENT.addEventListener === "function" && typeof DOCUMENT.createElement === "function";
+    const IS_IE = ~userAgent.indexOf("MSIE") || ~userAgent.indexOf("Trident/");
+    var p = /fa(s|r|l|t|d|dr|dl|dt|b|k|kd|ss|sr|sl|st|sds|sdr|sdl|sdt)?[\-\ ]/, g = /Font ?Awesome ?([56 ]*)(Solid|Regular|Light|Thin|Duotone|Brands|Free|Pro|Sharp Duotone|Sharp|Kit)?.*/i;
+    var S = {
+      classic: {
+        fa: "solid",
+        fas: "solid",
+        "fa-solid": "solid",
+        far: "regular",
+        "fa-regular": "regular",
+        fal: "light",
+        "fa-light": "light",
+        fat: "thin",
+        "fa-thin": "thin",
+        fab: "brands",
+        "fa-brands": "brands"
+      },
+      duotone: {
+        fa: "solid",
+        fad: "solid",
+        "fa-solid": "solid",
+        "fa-duotone": "solid",
+        fadr: "regular",
+        "fa-regular": "regular",
+        fadl: "light",
+        "fa-light": "light",
+        fadt: "thin",
+        "fa-thin": "thin"
+      },
+      sharp: {
+        fa: "solid",
+        fass: "solid",
+        "fa-solid": "solid",
+        fasr: "regular",
+        "fa-regular": "regular",
+        fasl: "light",
+        "fa-light": "light",
+        fast: "thin",
+        "fa-thin": "thin"
+      },
+      "sharp-duotone": {
+        fa: "solid",
+        fasds: "solid",
+        "fa-solid": "solid",
+        fasdr: "regular",
+        "fa-regular": "regular",
+        fasdl: "light",
+        "fa-light": "light",
+        fasdt: "thin",
+        "fa-thin": "thin"
+      }
+    }, A = {
+      GROUP: "duotone-group",
+      PRIMARY: "primary",
+      SECONDARY: "secondary"
+    }, P = ["fa-classic", "fa-duotone", "fa-sharp", "fa-sharp-duotone"];
+    var s$1 = "classic", t = "duotone", r = "sharp", o = "sharp-duotone", L = [s$1, t, r, o];
+    var G = {
+      classic: {
+        900: "fas",
+        400: "far",
+        normal: "far",
+        300: "fal",
+        100: "fat"
+      },
+      duotone: {
+        900: "fad",
+        400: "fadr",
+        300: "fadl",
+        100: "fadt"
+      },
+      sharp: {
+        900: "fass",
+        400: "fasr",
+        300: "fasl",
+        100: "fast"
+      },
+      "sharp-duotone": {
+        900: "fasds",
+        400: "fasdr",
+        300: "fasdl",
+        100: "fasdt"
+      }
+    };
+    var lt = {
+      "Font Awesome 6 Free": {
+        900: "fas",
+        400: "far"
+      },
+      "Font Awesome 6 Pro": {
+        900: "fas",
+        400: "far",
+        normal: "far",
+        300: "fal",
+        100: "fat"
+      },
+      "Font Awesome 6 Brands": {
+        400: "fab",
+        normal: "fab"
+      },
+      "Font Awesome 6 Duotone": {
+        900: "fad",
+        400: "fadr",
+        normal: "fadr",
+        300: "fadl",
+        100: "fadt"
+      },
+      "Font Awesome 6 Sharp": {
+        900: "fass",
+        400: "fasr",
+        normal: "fasr",
+        300: "fasl",
+        100: "fast"
+      },
+      "Font Awesome 6 Sharp Duotone": {
+        900: "fasds",
+        400: "fasdr",
+        normal: "fasdr",
+        300: "fasdl",
+        100: "fasdt"
+      }
+    };
+    var pt = /* @__PURE__ */ new Map([["classic", {
+      defaultShortPrefixId: "fas",
+      defaultStyleId: "solid",
+      styleIds: ["solid", "regular", "light", "thin", "brands"],
+      futureStyleIds: [],
+      defaultFontWeight: 900
+    }], ["sharp", {
+      defaultShortPrefixId: "fass",
+      defaultStyleId: "solid",
+      styleIds: ["solid", "regular", "light", "thin"],
+      futureStyleIds: [],
+      defaultFontWeight: 900
+    }], ["duotone", {
+      defaultShortPrefixId: "fad",
+      defaultStyleId: "solid",
+      styleIds: ["solid", "regular", "light", "thin"],
+      futureStyleIds: [],
+      defaultFontWeight: 900
+    }], ["sharp-duotone", {
+      defaultShortPrefixId: "fasds",
+      defaultStyleId: "solid",
+      styleIds: ["solid", "regular", "light", "thin"],
+      futureStyleIds: [],
+      defaultFontWeight: 900
+    }]]), xt = {
+      classic: {
+        solid: "fas",
+        regular: "far",
+        light: "fal",
+        thin: "fat",
+        brands: "fab"
+      },
+      duotone: {
+        solid: "fad",
+        regular: "fadr",
+        light: "fadl",
+        thin: "fadt"
+      },
+      sharp: {
+        solid: "fass",
+        regular: "fasr",
+        light: "fasl",
+        thin: "fast"
+      },
+      "sharp-duotone": {
+        solid: "fasds",
+        regular: "fasdr",
+        light: "fasdl",
+        thin: "fasdt"
+      }
+    };
+    var Ft = ["fak", "fa-kit", "fakd", "fa-kit-duotone"], St = {
+      kit: {
+        fak: "kit",
+        "fa-kit": "kit"
+      },
+      "kit-duotone": {
+        fakd: "kit-duotone",
+        "fa-kit-duotone": "kit-duotone"
+      }
+    }, At = ["kit"];
+    var Ct = {
+      kit: {
+        "fa-kit": "fak"
+      }
+    };
+    var Lt = ["fak", "fakd"], Wt = {
+      kit: {
+        fak: "fa-kit"
+      }
+    };
+    var Et = {
+      kit: {
+        kit: "fak"
+      },
+      "kit-duotone": {
+        "kit-duotone": "fakd"
+      }
+    };
+    var t$1 = {
+      GROUP: "duotone-group",
+      SWAP_OPACITY: "swap-opacity",
+      PRIMARY: "primary",
+      SECONDARY: "secondary"
+    }, r$1 = ["fa-classic", "fa-duotone", "fa-sharp", "fa-sharp-duotone"];
+    var bt$1 = ["fak", "fa-kit", "fakd", "fa-kit-duotone"];
+    var Yt = {
+      "Font Awesome Kit": {
+        400: "fak",
+        normal: "fak"
+      },
+      "Font Awesome Kit Duotone": {
+        400: "fakd",
+        normal: "fakd"
+      }
+    };
+    var ua = {
+      classic: {
+        "fa-brands": "fab",
+        "fa-duotone": "fad",
+        "fa-light": "fal",
+        "fa-regular": "far",
+        "fa-solid": "fas",
+        "fa-thin": "fat"
+      },
+      duotone: {
+        "fa-regular": "fadr",
+        "fa-light": "fadl",
+        "fa-thin": "fadt"
+      },
+      sharp: {
+        "fa-solid": "fass",
+        "fa-regular": "fasr",
+        "fa-light": "fasl",
+        "fa-thin": "fast"
+      },
+      "sharp-duotone": {
+        "fa-solid": "fasds",
+        "fa-regular": "fasdr",
+        "fa-light": "fasdl",
+        "fa-thin": "fasdt"
+      }
+    }, I$1 = {
+      classic: ["fas", "far", "fal", "fat", "fad"],
+      duotone: ["fadr", "fadl", "fadt"],
+      sharp: ["fass", "fasr", "fasl", "fast"],
+      "sharp-duotone": ["fasds", "fasdr", "fasdl", "fasdt"]
+    }, ga = {
+      classic: {
+        fab: "fa-brands",
+        fad: "fa-duotone",
+        fal: "fa-light",
+        far: "fa-regular",
+        fas: "fa-solid",
+        fat: "fa-thin"
+      },
+      duotone: {
+        fadr: "fa-regular",
+        fadl: "fa-light",
+        fadt: "fa-thin"
+      },
+      sharp: {
+        fass: "fa-solid",
+        fasr: "fa-regular",
+        fasl: "fa-light",
+        fast: "fa-thin"
+      },
+      "sharp-duotone": {
+        fasds: "fa-solid",
+        fasdr: "fa-regular",
+        fasdl: "fa-light",
+        fasdt: "fa-thin"
+      }
+    }, x = ["fa-solid", "fa-regular", "fa-light", "fa-thin", "fa-duotone", "fa-brands"], Ia = ["fa", "fas", "far", "fal", "fat", "fad", "fadr", "fadl", "fadt", "fab", "fass", "fasr", "fasl", "fast", "fasds", "fasdr", "fasdl", "fasdt", ...r$1, ...x], m$1 = ["solid", "regular", "light", "thin", "duotone", "brands"], c$1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], F$1 = c$1.concat([11, 12, 13, 14, 15, 16, 17, 18, 19, 20]), ma = [...Object.keys(I$1), ...m$1, "2xs", "xs", "sm", "lg", "xl", "2xl", "beat", "border", "fade", "beat-fade", "bounce", "flip-both", "flip-horizontal", "flip-vertical", "flip", "fw", "inverse", "layers-counter", "layers-text", "layers", "li", "pull-left", "pull-right", "pulse", "rotate-180", "rotate-270", "rotate-90", "rotate-by", "shake", "spin-pulse", "spin-reverse", "spin", "stack-1x", "stack-2x", "stack", "ul", t$1.GROUP, t$1.SWAP_OPACITY, t$1.PRIMARY, t$1.SECONDARY].concat(c$1.map((a2) => "".concat(a2, "x"))).concat(F$1.map((a2) => "w-".concat(a2)));
+    var wa = {
+      "Font Awesome 5 Free": {
+        900: "fas",
+        400: "far"
+      },
+      "Font Awesome 5 Pro": {
+        900: "fas",
+        400: "far",
+        normal: "far",
+        300: "fal"
+      },
+      "Font Awesome 5 Brands": {
+        400: "fab",
+        normal: "fab"
+      },
+      "Font Awesome 5 Duotone": {
+        900: "fad"
+      }
+    };
+    const NAMESPACE_IDENTIFIER = "___FONT_AWESOME___";
+    const UNITS_IN_GRID = 16;
+    const DEFAULT_CSS_PREFIX = "fa";
+    const DEFAULT_REPLACEMENT_CLASS = "svg-inline--fa";
+    const DATA_FA_I2SVG = "data-fa-i2svg";
+    const DATA_FA_PSEUDO_ELEMENT = "data-fa-pseudo-element";
+    const DATA_FA_PSEUDO_ELEMENT_PENDING = "data-fa-pseudo-element-pending";
+    const DATA_PREFIX = "data-prefix";
+    const DATA_ICON = "data-icon";
+    const HTML_CLASS_I2SVG_BASE_CLASS = "fontawesome-i2svg";
+    const MUTATION_APPROACH_ASYNC = "async";
+    const TAGNAMES_TO_SKIP_FOR_PSEUDOELEMENTS = ["HTML", "HEAD", "STYLE", "SCRIPT"];
+    const PRODUCTION$1 = (() => {
+      try {
+        return true;
+      } catch (e$$1) {
+        return false;
+      }
+    })();
+    function familyProxy(obj) {
+      return new Proxy(obj, {
+        get(target, prop) {
+          return prop in target ? target[prop] : target[s$1];
+        }
+      });
+    }
+    const _PREFIX_TO_STYLE = _objectSpread2$2({}, S);
+    _PREFIX_TO_STYLE[s$1] = _objectSpread2$2(_objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, {
+      "fa-duotone": "duotone"
+    }), S[s$1]), St["kit"]), St["kit-duotone"]);
+    const PREFIX_TO_STYLE = familyProxy(_PREFIX_TO_STYLE);
+    const _STYLE_TO_PREFIX = _objectSpread2$2({}, xt);
+    _STYLE_TO_PREFIX[s$1] = _objectSpread2$2(_objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, {
+      duotone: "fad"
+    }), _STYLE_TO_PREFIX[s$1]), Et["kit"]), Et["kit-duotone"]);
+    const STYLE_TO_PREFIX = familyProxy(_STYLE_TO_PREFIX);
+    const _PREFIX_TO_LONG_STYLE = _objectSpread2$2({}, ga);
+    _PREFIX_TO_LONG_STYLE[s$1] = _objectSpread2$2(_objectSpread2$2({}, _PREFIX_TO_LONG_STYLE[s$1]), Wt["kit"]);
+    const PREFIX_TO_LONG_STYLE = familyProxy(_PREFIX_TO_LONG_STYLE);
+    const _LONG_STYLE_TO_PREFIX = _objectSpread2$2({}, ua);
+    _LONG_STYLE_TO_PREFIX[s$1] = _objectSpread2$2(_objectSpread2$2({}, _LONG_STYLE_TO_PREFIX[s$1]), Ct["kit"]);
+    familyProxy(_LONG_STYLE_TO_PREFIX);
+    const ICON_SELECTION_SYNTAX_PATTERN = p;
+    const LAYERS_TEXT_CLASSNAME = "fa-layers-text";
+    const FONT_FAMILY_PATTERN = g;
+    const _FONT_WEIGHT_TO_PREFIX = _objectSpread2$2({}, G);
+    familyProxy(_FONT_WEIGHT_TO_PREFIX);
+    const ATTRIBUTES_WATCHED_FOR_MUTATION = ["class", "data-prefix", "data-icon", "data-fa-transform", "data-fa-mask"];
+    const DUOTONE_CLASSES = A;
+    const RESERVED_CLASSES = [...At, ...ma];
+    const initial = WINDOW.FontAwesomeConfig || {};
+    function getAttrConfig(attr) {
+      var element = DOCUMENT.querySelector("script[" + attr + "]");
+      if (element) {
+        return element.getAttribute(attr);
+      }
+    }
+    function coerce(val) {
+      if (val === "") return true;
+      if (val === "false") return false;
+      if (val === "true") return true;
+      return val;
+    }
+    if (DOCUMENT && typeof DOCUMENT.querySelector === "function") {
+      const attrs = [["data-family-prefix", "familyPrefix"], ["data-css-prefix", "cssPrefix"], ["data-family-default", "familyDefault"], ["data-style-default", "styleDefault"], ["data-replacement-class", "replacementClass"], ["data-auto-replace-svg", "autoReplaceSvg"], ["data-auto-add-css", "autoAddCss"], ["data-auto-a11y", "autoA11y"], ["data-search-pseudo-elements", "searchPseudoElements"], ["data-observe-mutations", "observeMutations"], ["data-mutate-approach", "mutateApproach"], ["data-keep-original-source", "keepOriginalSource"], ["data-measure-performance", "measurePerformance"], ["data-show-missing-icons", "showMissingIcons"]];
+      attrs.forEach((_ref3) => {
+        let [attr, key] = _ref3;
+        const val = coerce(getAttrConfig(attr));
+        if (val !== void 0 && val !== null) {
+          initial[key] = val;
+        }
+      });
+    }
+    const _default = {
+      styleDefault: "solid",
+      familyDefault: s$1,
+      cssPrefix: DEFAULT_CSS_PREFIX,
+      replacementClass: DEFAULT_REPLACEMENT_CLASS,
+      autoReplaceSvg: true,
+      autoAddCss: true,
+      autoA11y: true,
+      searchPseudoElements: false,
+      observeMutations: true,
+      mutateApproach: "async",
+      keepOriginalSource: true,
+      measurePerformance: false,
+      showMissingIcons: true
+    };
+    if (initial.familyPrefix) {
+      initial.cssPrefix = initial.familyPrefix;
+    }
+    const _config = _objectSpread2$2(_objectSpread2$2({}, _default), initial);
+    if (!_config.autoReplaceSvg) _config.observeMutations = false;
+    const config$1 = {};
+    Object.keys(_default).forEach((key) => {
+      Object.defineProperty(config$1, key, {
+        enumerable: true,
+        set: function(val) {
+          _config[key] = val;
+          _onChangeCb.forEach((cb) => cb(config$1));
+        },
+        get: function() {
+          return _config[key];
+        }
+      });
+    });
+    Object.defineProperty(config$1, "familyPrefix", {
+      enumerable: true,
+      set: function(val) {
+        _config.cssPrefix = val;
+        _onChangeCb.forEach((cb) => cb(config$1));
+      },
+      get: function() {
+        return _config.cssPrefix;
+      }
+    });
+    WINDOW.FontAwesomeConfig = config$1;
+    const _onChangeCb = [];
+    function onChange(cb) {
+      _onChangeCb.push(cb);
+      return () => {
+        _onChangeCb.splice(_onChangeCb.indexOf(cb), 1);
+      };
+    }
+    const d$2 = UNITS_IN_GRID;
+    const meaninglessTransform = {
+      size: 16,
+      x: 0,
+      y: 0,
+      rotate: 0,
+      flipX: false,
+      flipY: false
+    };
+    function insertCss(css22) {
+      if (!css22 || !IS_DOM) {
+        return;
+      }
+      const style2 = DOCUMENT.createElement("style");
+      style2.setAttribute("type", "text/css");
+      style2.innerHTML = css22;
+      const headChildren = DOCUMENT.head.childNodes;
+      let beforeChild = null;
+      for (let i2 = headChildren.length - 1; i2 > -1; i2--) {
+        const child = headChildren[i2];
+        const tagName = (child.tagName || "").toUpperCase();
+        if (["STYLE", "LINK"].indexOf(tagName) > -1) {
+          beforeChild = child;
+        }
+      }
+      DOCUMENT.head.insertBefore(style2, beforeChild);
+      return css22;
+    }
+    const idPool = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    function nextUniqueId() {
+      let size = 12;
+      let id = "";
+      while (size-- > 0) {
+        id += idPool[Math.random() * 62 | 0];
+      }
+      return id;
+    }
+    function toArray$1(obj) {
+      const array = [];
+      for (let i2 = (obj || []).length >>> 0; i2--; ) {
+        array[i2] = obj[i2];
+      }
+      return array;
+    }
+    function classArray(node2) {
+      if (node2.classList) {
+        return toArray$1(node2.classList);
+      } else {
+        return (node2.getAttribute("class") || "").split(" ").filter((i2) => i2);
+      }
+    }
+    function htmlEscape(str) {
+      return "".concat(str).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+    function joinAttributes(attributes) {
+      return Object.keys(attributes || {}).reduce((acc, attributeName) => {
+        return acc + "".concat(attributeName, '="').concat(htmlEscape(attributes[attributeName]), '" ');
+      }, "").trim();
+    }
+    function joinStyles(styles2) {
+      return Object.keys(styles2 || {}).reduce((acc, styleName) => {
+        return acc + "".concat(styleName, ": ").concat(styles2[styleName].trim(), ";");
+      }, "");
+    }
+    function transformIsMeaningful(transform2) {
+      return transform2.size !== meaninglessTransform.size || transform2.x !== meaninglessTransform.x || transform2.y !== meaninglessTransform.y || transform2.rotate !== meaninglessTransform.rotate || transform2.flipX || transform2.flipY;
+    }
+    function transformForSvg(_ref3) {
+      let {
+        transform: transform2,
+        containerWidth,
+        iconWidth
+      } = _ref3;
+      const outer = {
+        transform: "translate(".concat(containerWidth / 2, " 256)")
+      };
+      const innerTranslate = "translate(".concat(transform2.x * 32, ", ").concat(transform2.y * 32, ") ");
+      const innerScale = "scale(".concat(transform2.size / 16 * (transform2.flipX ? -1 : 1), ", ").concat(transform2.size / 16 * (transform2.flipY ? -1 : 1), ") ");
+      const innerRotate = "rotate(".concat(transform2.rotate, " 0 0)");
+      const inner = {
+        transform: "".concat(innerTranslate, " ").concat(innerScale, " ").concat(innerRotate)
+      };
+      const path = {
+        transform: "translate(".concat(iconWidth / 2 * -1, " -256)")
+      };
+      return {
+        outer,
+        inner,
+        path
+      };
+    }
+    function transformForCss(_ref22) {
+      let {
+        transform: transform2,
+        width = UNITS_IN_GRID,
+        height = UNITS_IN_GRID,
+        startCentered = false
+      } = _ref22;
+      let val = "";
+      if (startCentered && IS_IE) {
+        val += "translate(".concat(transform2.x / d$2 - width / 2, "em, ").concat(transform2.y / d$2 - height / 2, "em) ");
+      } else if (startCentered) {
+        val += "translate(calc(-50% + ".concat(transform2.x / d$2, "em), calc(-50% + ").concat(transform2.y / d$2, "em)) ");
+      } else {
+        val += "translate(".concat(transform2.x / d$2, "em, ").concat(transform2.y / d$2, "em) ");
+      }
+      val += "scale(".concat(transform2.size / d$2 * (transform2.flipX ? -1 : 1), ", ").concat(transform2.size / d$2 * (transform2.flipY ? -1 : 1), ") ");
+      val += "rotate(".concat(transform2.rotate, "deg) ");
+      return val;
+    }
+    var baseStyles = ':root, :host {\n  --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";\n  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";\n  --fa-font-light: normal 300 1em/1 "Font Awesome 6 Pro";\n  --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Pro";\n  --fa-font-duotone: normal 900 1em/1 "Font Awesome 6 Duotone";\n  --fa-font-duotone-regular: normal 400 1em/1 "Font Awesome 6 Duotone";\n  --fa-font-duotone-light: normal 300 1em/1 "Font Awesome 6 Duotone";\n  --fa-font-duotone-thin: normal 100 1em/1 "Font Awesome 6 Duotone";\n  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";\n  --fa-font-sharp-solid: normal 900 1em/1 "Font Awesome 6 Sharp";\n  --fa-font-sharp-regular: normal 400 1em/1 "Font Awesome 6 Sharp";\n  --fa-font-sharp-light: normal 300 1em/1 "Font Awesome 6 Sharp";\n  --fa-font-sharp-thin: normal 100 1em/1 "Font Awesome 6 Sharp";\n  --fa-font-sharp-duotone-solid: normal 900 1em/1 "Font Awesome 6 Sharp Duotone";\n  --fa-font-sharp-duotone-regular: normal 400 1em/1 "Font Awesome 6 Sharp Duotone";\n  --fa-font-sharp-duotone-light: normal 300 1em/1 "Font Awesome 6 Sharp Duotone";\n  --fa-font-sharp-duotone-thin: normal 100 1em/1 "Font Awesome 6 Sharp Duotone";\n}\n\nsvg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {\n  overflow: visible;\n  box-sizing: content-box;\n}\n\n.svg-inline--fa {\n  display: var(--fa-display, inline-block);\n  height: 1em;\n  overflow: visible;\n  vertical-align: -0.125em;\n}\n.svg-inline--fa.fa-2xs {\n  vertical-align: 0.1em;\n}\n.svg-inline--fa.fa-xs {\n  vertical-align: 0em;\n}\n.svg-inline--fa.fa-sm {\n  vertical-align: -0.0714285705em;\n}\n.svg-inline--fa.fa-lg {\n  vertical-align: -0.2em;\n}\n.svg-inline--fa.fa-xl {\n  vertical-align: -0.25em;\n}\n.svg-inline--fa.fa-2xl {\n  vertical-align: -0.3125em;\n}\n.svg-inline--fa.fa-pull-left {\n  margin-right: var(--fa-pull-margin, 0.3em);\n  width: auto;\n}\n.svg-inline--fa.fa-pull-right {\n  margin-left: var(--fa-pull-margin, 0.3em);\n  width: auto;\n}\n.svg-inline--fa.fa-li {\n  width: var(--fa-li-width, 2em);\n  top: 0.25em;\n}\n.svg-inline--fa.fa-fw {\n  width: var(--fa-fw-width, 1.25em);\n}\n\n.fa-layers svg.svg-inline--fa {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0;\n}\n\n.fa-layers-counter, .fa-layers-text {\n  display: inline-block;\n  position: absolute;\n  text-align: center;\n}\n\n.fa-layers {\n  display: inline-block;\n  height: 1em;\n  position: relative;\n  text-align: center;\n  vertical-align: -0.125em;\n  width: 1em;\n}\n.fa-layers svg.svg-inline--fa {\n  transform-origin: center center;\n}\n\n.fa-layers-text {\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  transform-origin: center center;\n}\n\n.fa-layers-counter {\n  background-color: var(--fa-counter-background-color, #ff253a);\n  border-radius: var(--fa-counter-border-radius, 1em);\n  box-sizing: border-box;\n  color: var(--fa-inverse, #fff);\n  line-height: var(--fa-counter-line-height, 1);\n  max-width: var(--fa-counter-max-width, 5em);\n  min-width: var(--fa-counter-min-width, 1.5em);\n  overflow: hidden;\n  padding: var(--fa-counter-padding, 0.25em 0.5em);\n  right: var(--fa-right, 0);\n  text-overflow: ellipsis;\n  top: var(--fa-top, 0);\n  transform: scale(var(--fa-counter-scale, 0.25));\n  transform-origin: top right;\n}\n\n.fa-layers-bottom-right {\n  bottom: var(--fa-bottom, 0);\n  right: var(--fa-right, 0);\n  top: auto;\n  transform: scale(var(--fa-layers-scale, 0.25));\n  transform-origin: bottom right;\n}\n\n.fa-layers-bottom-left {\n  bottom: var(--fa-bottom, 0);\n  left: var(--fa-left, 0);\n  right: auto;\n  top: auto;\n  transform: scale(var(--fa-layers-scale, 0.25));\n  transform-origin: bottom left;\n}\n\n.fa-layers-top-right {\n  top: var(--fa-top, 0);\n  right: var(--fa-right, 0);\n  transform: scale(var(--fa-layers-scale, 0.25));\n  transform-origin: top right;\n}\n\n.fa-layers-top-left {\n  left: var(--fa-left, 0);\n  right: auto;\n  top: var(--fa-top, 0);\n  transform: scale(var(--fa-layers-scale, 0.25));\n  transform-origin: top left;\n}\n\n.fa-1x {\n  font-size: 1em;\n}\n\n.fa-2x {\n  font-size: 2em;\n}\n\n.fa-3x {\n  font-size: 3em;\n}\n\n.fa-4x {\n  font-size: 4em;\n}\n\n.fa-5x {\n  font-size: 5em;\n}\n\n.fa-6x {\n  font-size: 6em;\n}\n\n.fa-7x {\n  font-size: 7em;\n}\n\n.fa-8x {\n  font-size: 8em;\n}\n\n.fa-9x {\n  font-size: 9em;\n}\n\n.fa-10x {\n  font-size: 10em;\n}\n\n.fa-2xs {\n  font-size: 0.625em;\n  line-height: 0.1em;\n  vertical-align: 0.225em;\n}\n\n.fa-xs {\n  font-size: 0.75em;\n  line-height: 0.0833333337em;\n  vertical-align: 0.125em;\n}\n\n.fa-sm {\n  font-size: 0.875em;\n  line-height: 0.0714285718em;\n  vertical-align: 0.0535714295em;\n}\n\n.fa-lg {\n  font-size: 1.25em;\n  line-height: 0.05em;\n  vertical-align: -0.075em;\n}\n\n.fa-xl {\n  font-size: 1.5em;\n  line-height: 0.0416666682em;\n  vertical-align: -0.125em;\n}\n\n.fa-2xl {\n  font-size: 2em;\n  line-height: 0.03125em;\n  vertical-align: -0.1875em;\n}\n\n.fa-fw {\n  text-align: center;\n  width: 1.25em;\n}\n\n.fa-ul {\n  list-style-type: none;\n  margin-left: var(--fa-li-margin, 2.5em);\n  padding-left: 0;\n}\n.fa-ul > li {\n  position: relative;\n}\n\n.fa-li {\n  left: calc(-1 * var(--fa-li-width, 2em));\n  position: absolute;\n  text-align: center;\n  width: var(--fa-li-width, 2em);\n  line-height: inherit;\n}\n\n.fa-border {\n  border-color: var(--fa-border-color, #eee);\n  border-radius: var(--fa-border-radius, 0.1em);\n  border-style: var(--fa-border-style, solid);\n  border-width: var(--fa-border-width, 0.08em);\n  padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);\n}\n\n.fa-pull-left {\n  float: left;\n  margin-right: var(--fa-pull-margin, 0.3em);\n}\n\n.fa-pull-right {\n  float: right;\n  margin-left: var(--fa-pull-margin, 0.3em);\n}\n\n.fa-beat {\n  animation-name: fa-beat;\n  animation-delay: var(--fa-animation-delay, 0s);\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 1s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, ease-in-out);\n}\n\n.fa-bounce {\n  animation-name: fa-bounce;\n  animation-delay: var(--fa-animation-delay, 0s);\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 1s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));\n}\n\n.fa-fade {\n  animation-name: fa-fade;\n  animation-delay: var(--fa-animation-delay, 0s);\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 1s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));\n}\n\n.fa-beat-fade {\n  animation-name: fa-beat-fade;\n  animation-delay: var(--fa-animation-delay, 0s);\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 1s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));\n}\n\n.fa-flip {\n  animation-name: fa-flip;\n  animation-delay: var(--fa-animation-delay, 0s);\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 1s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, ease-in-out);\n}\n\n.fa-shake {\n  animation-name: fa-shake;\n  animation-delay: var(--fa-animation-delay, 0s);\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 1s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, linear);\n}\n\n.fa-spin {\n  animation-name: fa-spin;\n  animation-delay: var(--fa-animation-delay, 0s);\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 2s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, linear);\n}\n\n.fa-spin-reverse {\n  --fa-animation-direction: reverse;\n}\n\n.fa-pulse,\n.fa-spin-pulse {\n  animation-name: fa-spin;\n  animation-direction: var(--fa-animation-direction, normal);\n  animation-duration: var(--fa-animation-duration, 1s);\n  animation-iteration-count: var(--fa-animation-iteration-count, infinite);\n  animation-timing-function: var(--fa-animation-timing, steps(8));\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .fa-beat,\n.fa-bounce,\n.fa-fade,\n.fa-beat-fade,\n.fa-flip,\n.fa-pulse,\n.fa-shake,\n.fa-spin,\n.fa-spin-pulse {\n    animation-delay: -1ms;\n    animation-duration: 1ms;\n    animation-iteration-count: 1;\n    transition-delay: 0s;\n    transition-duration: 0s;\n  }\n}\n@keyframes fa-beat {\n  0%, 90% {\n    transform: scale(1);\n  }\n  45% {\n    transform: scale(var(--fa-beat-scale, 1.25));\n  }\n}\n@keyframes fa-bounce {\n  0% {\n    transform: scale(1, 1) translateY(0);\n  }\n  10% {\n    transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);\n  }\n  30% {\n    transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));\n  }\n  50% {\n    transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);\n  }\n  57% {\n    transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));\n  }\n  64% {\n    transform: scale(1, 1) translateY(0);\n  }\n  100% {\n    transform: scale(1, 1) translateY(0);\n  }\n}\n@keyframes fa-fade {\n  50% {\n    opacity: var(--fa-fade-opacity, 0.4);\n  }\n}\n@keyframes fa-beat-fade {\n  0%, 100% {\n    opacity: var(--fa-beat-fade-opacity, 0.4);\n    transform: scale(1);\n  }\n  50% {\n    opacity: 1;\n    transform: scale(var(--fa-beat-fade-scale, 1.125));\n  }\n}\n@keyframes fa-flip {\n  50% {\n    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));\n  }\n}\n@keyframes fa-shake {\n  0% {\n    transform: rotate(-15deg);\n  }\n  4% {\n    transform: rotate(15deg);\n  }\n  8%, 24% {\n    transform: rotate(-18deg);\n  }\n  12%, 28% {\n    transform: rotate(18deg);\n  }\n  16% {\n    transform: rotate(-22deg);\n  }\n  20% {\n    transform: rotate(22deg);\n  }\n  32% {\n    transform: rotate(-12deg);\n  }\n  36% {\n    transform: rotate(12deg);\n  }\n  40%, 100% {\n    transform: rotate(0deg);\n  }\n}\n@keyframes fa-spin {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n.fa-rotate-90 {\n  transform: rotate(90deg);\n}\n\n.fa-rotate-180 {\n  transform: rotate(180deg);\n}\n\n.fa-rotate-270 {\n  transform: rotate(270deg);\n}\n\n.fa-flip-horizontal {\n  transform: scale(-1, 1);\n}\n\n.fa-flip-vertical {\n  transform: scale(1, -1);\n}\n\n.fa-flip-both,\n.fa-flip-horizontal.fa-flip-vertical {\n  transform: scale(-1, -1);\n}\n\n.fa-rotate-by {\n  transform: rotate(var(--fa-rotate-angle, 0));\n}\n\n.fa-stack {\n  display: inline-block;\n  vertical-align: middle;\n  height: 2em;\n  position: relative;\n  width: 2.5em;\n}\n\n.fa-stack-1x,\n.fa-stack-2x {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0;\n  z-index: var(--fa-stack-z-index, auto);\n}\n\n.svg-inline--fa.fa-stack-1x {\n  height: 1em;\n  width: 1.25em;\n}\n.svg-inline--fa.fa-stack-2x {\n  height: 2em;\n  width: 2.5em;\n}\n\n.fa-inverse {\n  color: var(--fa-inverse, #fff);\n}\n\n.sr-only,\n.fa-sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border-width: 0;\n}\n\n.sr-only-focusable:not(:focus),\n.fa-sr-only-focusable:not(:focus) {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border-width: 0;\n}\n\n.svg-inline--fa .fa-primary {\n  fill: var(--fa-primary-color, currentColor);\n  opacity: var(--fa-primary-opacity, 1);\n}\n\n.svg-inline--fa .fa-secondary {\n  fill: var(--fa-secondary-color, currentColor);\n  opacity: var(--fa-secondary-opacity, 0.4);\n}\n\n.svg-inline--fa.fa-swap-opacity .fa-primary {\n  opacity: var(--fa-secondary-opacity, 0.4);\n}\n\n.svg-inline--fa.fa-swap-opacity .fa-secondary {\n  opacity: var(--fa-primary-opacity, 1);\n}\n\n.svg-inline--fa mask .fa-primary,\n.svg-inline--fa mask .fa-secondary {\n  fill: black;\n}';
+    function css$2() {
+      const dcp = DEFAULT_CSS_PREFIX;
+      const drc = DEFAULT_REPLACEMENT_CLASS;
+      const fp = config$1.cssPrefix;
+      const rc = config$1.replacementClass;
+      let s2 = baseStyles;
+      if (fp !== dcp || rc !== drc) {
+        const dPatt = new RegExp("\\.".concat(dcp, "\\-"), "g");
+        const customPropPatt = new RegExp("\\--".concat(dcp, "\\-"), "g");
+        const rPatt = new RegExp("\\.".concat(drc), "g");
+        s2 = s2.replace(dPatt, ".".concat(fp, "-")).replace(customPropPatt, "--".concat(fp, "-")).replace(rPatt, ".".concat(rc));
+      }
+      return s2;
+    }
+    let _cssInserted = false;
+    function ensureCss() {
+      if (config$1.autoAddCss && !_cssInserted) {
+        insertCss(css$2());
+        _cssInserted = true;
+      }
+    }
+    var InjectCSS = {
+      mixout() {
+        return {
+          dom: {
+            css: css$2,
+            insertCss: ensureCss
+          }
+        };
+      },
+      hooks() {
+        return {
+          beforeDOMElementCreation() {
+            ensureCss();
+          },
+          beforeI2svg() {
+            ensureCss();
+          }
+        };
+      }
+    };
+    const w$1 = WINDOW || {};
+    if (!w$1[NAMESPACE_IDENTIFIER]) w$1[NAMESPACE_IDENTIFIER] = {};
+    if (!w$1[NAMESPACE_IDENTIFIER].styles) w$1[NAMESPACE_IDENTIFIER].styles = {};
+    if (!w$1[NAMESPACE_IDENTIFIER].hooks) w$1[NAMESPACE_IDENTIFIER].hooks = {};
+    if (!w$1[NAMESPACE_IDENTIFIER].shims) w$1[NAMESPACE_IDENTIFIER].shims = [];
+    var namespace = w$1[NAMESPACE_IDENTIFIER];
+    const functions = [];
+    const listener = function() {
+      DOCUMENT.removeEventListener("DOMContentLoaded", listener);
+      loaded = 1;
+      functions.map((fn) => fn());
+    };
+    let loaded = false;
+    if (IS_DOM) {
+      loaded = (DOCUMENT.documentElement.doScroll ? /^loaded|^c/ : /^loaded|^i|^c/).test(DOCUMENT.readyState);
+      if (!loaded) DOCUMENT.addEventListener("DOMContentLoaded", listener);
+    }
+    function domready(fn) {
+      if (!IS_DOM) return;
+      loaded ? setTimeout(fn, 0) : functions.push(fn);
+    }
+    function toHtml(abstractNodes) {
+      const {
+        tag,
+        attributes = {},
+        children = []
+      } = abstractNodes;
+      if (typeof abstractNodes === "string") {
+        return htmlEscape(abstractNodes);
+      } else {
+        return "<".concat(tag, " ").concat(joinAttributes(attributes), ">").concat(children.map(toHtml).join(""), "</").concat(tag, ">");
+      }
+    }
+    function iconFromMapping(mapping, prefix2, iconName) {
+      if (mapping && mapping[prefix2] && mapping[prefix2][iconName]) {
+        return {
+          prefix: prefix2,
+          iconName,
+          icon: mapping[prefix2][iconName]
+        };
+      }
+    }
+    var reduce = function fastReduceObject(subject, fn, initialValue, thisContext) {
+      var keys2 = Object.keys(subject), length2 = keys2.length, iterator = fn, i2, key, result;
+      if (initialValue === void 0) {
+        i2 = 1;
+        result = subject[keys2[0]];
+      } else {
+        i2 = 0;
+        result = initialValue;
+      }
+      for (; i2 < length2; i2++) {
+        key = keys2[i2];
+        result = iterator(result, subject[key], key, subject);
+      }
+      return result;
+    };
+    function ucs2decode(string) {
+      const output = [];
+      let counter2 = 0;
+      const length2 = string.length;
+      while (counter2 < length2) {
+        const value = string.charCodeAt(counter2++);
+        if (value >= 55296 && value <= 56319 && counter2 < length2) {
+          const extra = string.charCodeAt(counter2++);
+          if ((extra & 64512) == 56320) {
+            output.push(((value & 1023) << 10) + (extra & 1023) + 65536);
+          } else {
+            output.push(value);
+            counter2--;
+          }
+        } else {
+          output.push(value);
+        }
+      }
+      return output;
+    }
+    function toHex(unicode) {
+      const decoded = ucs2decode(unicode);
+      return decoded.length === 1 ? decoded[0].toString(16) : null;
+    }
+    function codePointAt(string, index2) {
+      const size = string.length;
+      let first = string.charCodeAt(index2);
+      let second;
+      if (first >= 55296 && first <= 56319 && size > index2 + 1) {
+        second = string.charCodeAt(index2 + 1);
+        if (second >= 56320 && second <= 57343) {
+          return (first - 55296) * 1024 + second - 56320 + 65536;
+        }
+      }
+      return first;
+    }
+    function normalizeIcons(icons) {
+      return Object.keys(icons).reduce((acc, iconName) => {
+        const icon2 = icons[iconName];
+        const expanded = !!icon2.icon;
+        if (expanded) {
+          acc[icon2.iconName] = icon2.icon;
+        } else {
+          acc[iconName] = icon2;
+        }
+        return acc;
+      }, {});
+    }
+    function defineIcons(prefix2, icons) {
+      let params = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
+      const {
+        skipHooks = false
+      } = params;
+      const normalized = normalizeIcons(icons);
+      if (typeof namespace.hooks.addPack === "function" && !skipHooks) {
+        namespace.hooks.addPack(prefix2, normalizeIcons(icons));
+      } else {
+        namespace.styles[prefix2] = _objectSpread2$2(_objectSpread2$2({}, namespace.styles[prefix2] || {}), normalized);
+      }
+      if (prefix2 === "fas") {
+        defineIcons("fa", icons);
+      }
+    }
+    const {
+      styles,
+      shims
+    } = namespace;
+    const FAMILY_NAMES = Object.keys(PREFIX_TO_LONG_STYLE);
+    const PREFIXES_FOR_FAMILY = FAMILY_NAMES.reduce((acc, familyId) => {
+      acc[familyId] = Object.keys(PREFIX_TO_LONG_STYLE[familyId]);
+      return acc;
+    }, {});
+    let _defaultUsablePrefix = null;
+    let _byUnicode = {};
+    let _byLigature = {};
+    let _byOldName = {};
+    let _byOldUnicode = {};
+    let _byAlias = {};
+    function isReserved(name) {
+      return ~RESERVED_CLASSES.indexOf(name);
+    }
+    function getIconName(cssPrefix, cls) {
+      const parts = cls.split("-");
+      const prefix2 = parts[0];
+      const iconName = parts.slice(1).join("-");
+      if (prefix2 === cssPrefix && iconName !== "" && !isReserved(iconName)) {
+        return iconName;
+      } else {
+        return null;
+      }
+    }
+    const build = () => {
+      const lookup = (reducer) => {
+        return reduce(styles, (o$$1, style2, prefix2) => {
+          o$$1[prefix2] = reduce(style2, reducer, {});
+          return o$$1;
+        }, {});
+      };
+      _byUnicode = lookup((acc, icon2, iconName) => {
+        if (icon2[3]) {
+          acc[icon2[3]] = iconName;
+        }
+        if (icon2[2]) {
+          const aliases = icon2[2].filter((a$$1) => {
+            return typeof a$$1 === "number";
+          });
+          aliases.forEach((alias) => {
+            acc[alias.toString(16)] = iconName;
+          });
+        }
+        return acc;
+      });
+      _byLigature = lookup((acc, icon2, iconName) => {
+        acc[iconName] = iconName;
+        if (icon2[2]) {
+          const aliases = icon2[2].filter((a$$1) => {
+            return typeof a$$1 === "string";
+          });
+          aliases.forEach((alias) => {
+            acc[alias] = iconName;
+          });
+        }
+        return acc;
+      });
+      _byAlias = lookup((acc, icon2, iconName) => {
+        const aliases = icon2[2];
+        acc[iconName] = iconName;
+        aliases.forEach((alias) => {
+          acc[alias] = iconName;
+        });
+        return acc;
+      });
+      const hasRegular = "far" in styles || config$1.autoFetchSvg;
+      const shimLookups = reduce(shims, (acc, shim2) => {
+        const maybeNameMaybeUnicode = shim2[0];
+        let prefix2 = shim2[1];
+        const iconName = shim2[2];
+        if (prefix2 === "far" && !hasRegular) {
+          prefix2 = "fas";
+        }
+        if (typeof maybeNameMaybeUnicode === "string") {
+          acc.names[maybeNameMaybeUnicode] = {
+            prefix: prefix2,
+            iconName
+          };
+        }
+        if (typeof maybeNameMaybeUnicode === "number") {
+          acc.unicodes[maybeNameMaybeUnicode.toString(16)] = {
+            prefix: prefix2,
+            iconName
+          };
+        }
+        return acc;
+      }, {
+        names: {},
+        unicodes: {}
+      });
+      _byOldName = shimLookups.names;
+      _byOldUnicode = shimLookups.unicodes;
+      _defaultUsablePrefix = getCanonicalPrefix(config$1.styleDefault, {
+        family: config$1.familyDefault
+      });
+    };
+    onChange((c$$1) => {
+      _defaultUsablePrefix = getCanonicalPrefix(c$$1.styleDefault, {
+        family: config$1.familyDefault
+      });
+    });
+    build();
+    function byUnicode(prefix2, unicode) {
+      return (_byUnicode[prefix2] || {})[unicode];
+    }
+    function byLigature(prefix2, ligature) {
+      return (_byLigature[prefix2] || {})[ligature];
+    }
+    function byAlias(prefix2, alias) {
+      return (_byAlias[prefix2] || {})[alias];
+    }
+    function byOldName(name) {
+      return _byOldName[name] || {
+        prefix: null,
+        iconName: null
+      };
+    }
+    function byOldUnicode(unicode) {
+      const oldUnicode = _byOldUnicode[unicode];
+      const newUnicode = byUnicode("fas", unicode);
+      return oldUnicode || (newUnicode ? {
+        prefix: "fas",
+        iconName: newUnicode
+      } : null) || {
+        prefix: null,
+        iconName: null
+      };
+    }
+    function getDefaultUsablePrefix() {
+      return _defaultUsablePrefix;
+    }
+    const emptyCanonicalIcon = () => {
+      return {
+        prefix: null,
+        iconName: null,
+        rest: []
+      };
+    };
+    function getFamilyId(values2) {
+      let family = s$1;
+      const famProps = FAMILY_NAMES.reduce((acc, familyId) => {
+        acc[familyId] = "".concat(config$1.cssPrefix, "-").concat(familyId);
+        return acc;
+      }, {});
+      L.forEach((familyId) => {
+        if (values2.includes(famProps[familyId]) || values2.some((v$$1) => PREFIXES_FOR_FAMILY[familyId].includes(v$$1))) {
+          family = familyId;
+        }
+      });
+      return family;
+    }
+    function getCanonicalPrefix(styleOrPrefix) {
+      let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+      const {
+        family = s$1
+      } = params;
+      const style2 = PREFIX_TO_STYLE[family][styleOrPrefix];
+      if (family === t && !styleOrPrefix) {
+        return "fad";
+      }
+      const prefix2 = STYLE_TO_PREFIX[family][styleOrPrefix] || STYLE_TO_PREFIX[family][style2];
+      const defined = styleOrPrefix in namespace.styles ? styleOrPrefix : null;
+      const result = prefix2 || defined || null;
+      return result;
+    }
+    function moveNonFaClassesToRest(classNames2) {
+      let rest = [];
+      let iconName = null;
+      classNames2.forEach((cls) => {
+        const result = getIconName(config$1.cssPrefix, cls);
+        if (result) {
+          iconName = result;
+        } else if (cls) {
+          rest.push(cls);
+        }
+      });
+      return {
+        iconName,
+        rest
+      };
+    }
+    function sortedUniqueValues(arr) {
+      return arr.sort().filter((value, index2, arr2) => {
+        return arr2.indexOf(value) === index2;
+      });
+    }
+    function getCanonicalIcon(values2) {
+      let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+      const {
+        skipLookups = false
+      } = params;
+      let givenPrefix = null;
+      const faCombinedClasses = Ia.concat(bt$1);
+      const faStyleOrFamilyClasses = sortedUniqueValues(values2.filter((cls) => faCombinedClasses.includes(cls)));
+      const nonStyleOrFamilyClasses = sortedUniqueValues(values2.filter((cls) => !Ia.includes(cls)));
+      const faStyles = faStyleOrFamilyClasses.filter((cls) => {
+        givenPrefix = cls;
+        return !P.includes(cls);
+      });
+      const [styleFromValues = null] = faStyles;
+      const family = getFamilyId(faStyleOrFamilyClasses);
+      const canonical = _objectSpread2$2(_objectSpread2$2({}, moveNonFaClassesToRest(nonStyleOrFamilyClasses)), {}, {
+        prefix: getCanonicalPrefix(styleFromValues, {
+          family
+        })
+      });
+      return _objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, canonical), getDefaultCanonicalPrefix({
+        values: values2,
+        family,
+        styles,
+        config: config$1,
+        canonical,
+        givenPrefix
+      })), applyShimAndAlias(skipLookups, givenPrefix, canonical));
+    }
+    function applyShimAndAlias(skipLookups, givenPrefix, canonical) {
+      let {
+        prefix: prefix2,
+        iconName
+      } = canonical;
+      if (skipLookups || !prefix2 || !iconName) {
+        return {
+          prefix: prefix2,
+          iconName
+        };
+      }
+      const shim2 = givenPrefix === "fa" ? byOldName(iconName) : {};
+      const aliasIconName = byAlias(prefix2, iconName);
+      iconName = shim2.iconName || aliasIconName || iconName;
+      prefix2 = shim2.prefix || prefix2;
+      if (prefix2 === "far" && !styles["far"] && styles["fas"] && !config$1.autoFetchSvg) {
+        prefix2 = "fas";
+      }
+      return {
+        prefix: prefix2,
+        iconName
+      };
+    }
+    const newCanonicalFamilies = L.filter((familyId) => {
+      return familyId !== s$1 || familyId !== t;
+    });
+    const newCanonicalStyles = Object.keys(ga).filter((key) => key !== s$1).map((key) => Object.keys(ga[key])).flat();
+    function getDefaultCanonicalPrefix(prefixOptions) {
+      const {
+        values: values2,
+        family,
+        canonical,
+        givenPrefix = "",
+        styles: styles2 = {},
+        config: config$$1 = {}
+      } = prefixOptions;
+      const isDuotoneFamily = family === t;
+      const valuesHasDuotone = values2.includes("fa-duotone") || values2.includes("fad");
+      const defaultFamilyIsDuotone = config$$1.familyDefault === "duotone";
+      const canonicalPrefixIsDuotone = canonical.prefix === "fad" || canonical.prefix === "fa-duotone";
+      if (!isDuotoneFamily && (valuesHasDuotone || defaultFamilyIsDuotone || canonicalPrefixIsDuotone)) {
+        canonical.prefix = "fad";
+      }
+      if (values2.includes("fa-brands") || values2.includes("fab")) {
+        canonical.prefix = "fab";
+      }
+      if (!canonical.prefix && newCanonicalFamilies.includes(family)) {
+        const validPrefix = Object.keys(styles2).find((key) => newCanonicalStyles.includes(key));
+        if (validPrefix || config$$1.autoFetchSvg) {
+          const defaultPrefix = pt.get(family).defaultShortPrefixId;
+          canonical.prefix = defaultPrefix;
+          canonical.iconName = byAlias(canonical.prefix, canonical.iconName) || canonical.iconName;
+        }
+      }
+      if (canonical.prefix === "fa" || givenPrefix === "fa") {
+        canonical.prefix = getDefaultUsablePrefix() || "fas";
+      }
+      return canonical;
+    }
+    class Library {
+      constructor() {
+        this.definitions = {};
+      }
+      add() {
+        for (var _len = arguments.length, definitions = new Array(_len), _key = 0; _key < _len; _key++) {
+          definitions[_key] = arguments[_key];
+        }
+        const additions = definitions.reduce(this._pullDefinitions, {});
+        Object.keys(additions).forEach((key) => {
+          this.definitions[key] = _objectSpread2$2(_objectSpread2$2({}, this.definitions[key] || {}), additions[key]);
+          defineIcons(key, additions[key]);
+          const longPrefix = PREFIX_TO_LONG_STYLE[s$1][key];
+          if (longPrefix) defineIcons(longPrefix, additions[key]);
+          build();
+        });
+      }
+      reset() {
+        this.definitions = {};
+      }
+      _pullDefinitions(additions, definition) {
+        const normalized = definition.prefix && definition.iconName && definition.icon ? {
+          0: definition
+        } : definition;
+        Object.keys(normalized).map((key) => {
+          const {
+            prefix: prefix2,
+            iconName,
+            icon: icon2
+          } = normalized[key];
+          const aliases = icon2[2];
+          if (!additions[prefix2]) additions[prefix2] = {};
+          if (aliases.length > 0) {
+            aliases.forEach((alias) => {
+              if (typeof alias === "string") {
+                additions[prefix2][alias] = icon2;
+              }
+            });
+          }
+          additions[prefix2][iconName] = icon2;
+        });
+        return additions;
+      }
+    }
+    let _plugins = [];
+    let _hooks = {};
+    const providers = {};
+    const defaultProviderKeys = Object.keys(providers);
+    function registerPlugins(nextPlugins, _ref3) {
+      let {
+        mixoutsTo: obj
+      } = _ref3;
+      _plugins = nextPlugins;
+      _hooks = {};
+      Object.keys(providers).forEach((k) => {
+        if (defaultProviderKeys.indexOf(k) === -1) {
+          delete providers[k];
+        }
+      });
+      _plugins.forEach((plugin) => {
+        const mixout = plugin.mixout ? plugin.mixout() : {};
+        Object.keys(mixout).forEach((tk) => {
+          if (typeof mixout[tk] === "function") {
+            obj[tk] = mixout[tk];
+          }
+          if (typeof mixout[tk] === "object") {
+            Object.keys(mixout[tk]).forEach((sk) => {
+              if (!obj[tk]) {
+                obj[tk] = {};
+              }
+              obj[tk][sk] = mixout[tk][sk];
+            });
+          }
+        });
+        if (plugin.hooks) {
+          const hooks2 = plugin.hooks();
+          Object.keys(hooks2).forEach((hook2) => {
+            if (!_hooks[hook2]) {
+              _hooks[hook2] = [];
+            }
+            _hooks[hook2].push(hooks2[hook2]);
+          });
+        }
+        if (plugin.provides) {
+          plugin.provides(providers);
+        }
+      });
+      return obj;
+    }
+    function chainHooks(hook2, accumulator) {
+      for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+        args[_key - 2] = arguments[_key];
+      }
+      const hookFns = _hooks[hook2] || [];
+      hookFns.forEach((hookFn) => {
+        accumulator = hookFn.apply(null, [accumulator, ...args]);
+      });
+      return accumulator;
+    }
+    function callHooks(hook2) {
+      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+        args[_key2 - 1] = arguments[_key2];
+      }
+      const hookFns = _hooks[hook2] || [];
+      hookFns.forEach((hookFn) => {
+        hookFn.apply(null, args);
+      });
+      return void 0;
+    }
+    function callProvided() {
+      const hook2 = arguments[0];
+      const args = Array.prototype.slice.call(arguments, 1);
+      return providers[hook2] ? providers[hook2].apply(null, args) : void 0;
+    }
+    function findIconDefinition(iconLookup) {
+      if (iconLookup.prefix === "fa") {
+        iconLookup.prefix = "fas";
+      }
+      let {
+        iconName
+      } = iconLookup;
+      const prefix2 = iconLookup.prefix || getDefaultUsablePrefix();
+      if (!iconName) return;
+      iconName = byAlias(prefix2, iconName) || iconName;
+      return iconFromMapping(library.definitions, prefix2, iconName) || iconFromMapping(namespace.styles, prefix2, iconName);
+    }
+    const library = new Library();
+    const noAuto = () => {
+      config$1.autoReplaceSvg = false;
+      config$1.observeMutations = false;
+      callHooks("noAuto");
+    };
+    const dom = {
+      i2svg: function() {
+        let params = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
+        if (IS_DOM) {
+          callHooks("beforeI2svg", params);
+          callProvided("pseudoElements2svg", params);
+          return callProvided("i2svg", params);
+        } else {
+          return Promise.reject(new Error("Operation requires a DOM of some kind."));
+        }
+      },
+      watch: function() {
+        let params = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
+        const {
+          autoReplaceSvgRoot
+        } = params;
+        if (config$1.autoReplaceSvg === false) {
+          config$1.autoReplaceSvg = true;
+        }
+        config$1.observeMutations = true;
+        domready(() => {
+          autoReplace({
+            autoReplaceSvgRoot
+          });
+          callHooks("watch", params);
+        });
+      }
+    };
+    const parse$1 = {
+      icon: (icon2) => {
+        if (icon2 === null) {
+          return null;
+        }
+        if (typeof icon2 === "object" && icon2.prefix && icon2.iconName) {
+          return {
+            prefix: icon2.prefix,
+            iconName: byAlias(icon2.prefix, icon2.iconName) || icon2.iconName
+          };
+        }
+        if (Array.isArray(icon2) && icon2.length === 2) {
+          const iconName = icon2[1].indexOf("fa-") === 0 ? icon2[1].slice(3) : icon2[1];
+          const prefix2 = getCanonicalPrefix(icon2[0]);
+          return {
+            prefix: prefix2,
+            iconName: byAlias(prefix2, iconName) || iconName
+          };
+        }
+        if (typeof icon2 === "string" && (icon2.indexOf("".concat(config$1.cssPrefix, "-")) > -1 || icon2.match(ICON_SELECTION_SYNTAX_PATTERN))) {
+          const canonicalIcon = getCanonicalIcon(icon2.split(" "), {
+            skipLookups: true
+          });
+          return {
+            prefix: canonicalIcon.prefix || getDefaultUsablePrefix(),
+            iconName: byAlias(canonicalIcon.prefix, canonicalIcon.iconName) || canonicalIcon.iconName
+          };
+        }
+        if (typeof icon2 === "string") {
+          const prefix2 = getDefaultUsablePrefix();
+          return {
+            prefix: prefix2,
+            iconName: byAlias(prefix2, icon2) || icon2
+          };
+        }
+      }
+    };
+    const api = {
+      noAuto,
+      config: config$1,
+      dom,
+      parse: parse$1,
+      library,
+      findIconDefinition,
+      toHtml
+    };
+    const autoReplace = function() {
+      let params = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
+      const {
+        autoReplaceSvgRoot = DOCUMENT
+      } = params;
+      if ((Object.keys(namespace.styles).length > 0 || config$1.autoFetchSvg) && IS_DOM && config$1.autoReplaceSvg) api.dom.i2svg({
+        node: autoReplaceSvgRoot
+      });
+    };
+    function domVariants(val, abstractCreator) {
+      Object.defineProperty(val, "abstract", {
+        get: abstractCreator
+      });
+      Object.defineProperty(val, "html", {
+        get: function() {
+          return val.abstract.map((a2) => toHtml(a2));
+        }
+      });
+      Object.defineProperty(val, "node", {
+        get: function() {
+          if (!IS_DOM) return;
+          const container2 = DOCUMENT.createElement("div");
+          container2.innerHTML = val.html;
+          return container2.children;
+        }
+      });
+      return val;
+    }
+    function asIcon(_ref3) {
+      let {
+        children,
+        main,
+        mask,
+        attributes,
+        styles: styles2,
+        transform: transform2
+      } = _ref3;
+      if (transformIsMeaningful(transform2) && main.found && !mask.found) {
+        const {
+          width,
+          height
+        } = main;
+        const offset2 = {
+          x: width / height / 2,
+          y: 0.5
+        };
+        attributes["style"] = joinStyles(_objectSpread2$2(_objectSpread2$2({}, styles2), {}, {
+          "transform-origin": "".concat(offset2.x + transform2.x / 16, "em ").concat(offset2.y + transform2.y / 16, "em")
+        }));
+      }
+      return [{
+        tag: "svg",
+        attributes,
+        children
+      }];
+    }
+    function asSymbol(_ref3) {
+      let {
+        prefix: prefix2,
+        iconName,
+        children,
+        attributes,
+        symbol
+      } = _ref3;
+      const id = symbol === true ? "".concat(prefix2, "-").concat(config$1.cssPrefix, "-").concat(iconName) : symbol;
+      return [{
+        tag: "svg",
+        attributes: {
+          style: "display: none;"
+        },
+        children: [{
+          tag: "symbol",
+          attributes: _objectSpread2$2(_objectSpread2$2({}, attributes), {}, {
+            id
+          }),
+          children
+        }]
+      }];
+    }
+    function makeInlineSvgAbstract(params) {
+      const {
+        icons: {
+          main,
+          mask
+        },
+        prefix: prefix2,
+        iconName,
+        transform: transform2,
+        symbol,
+        title,
+        maskId,
+        titleId,
+        extra,
+        watchable = false
+      } = params;
+      const {
+        width,
+        height
+      } = mask.found ? mask : main;
+      const isUploadedIcon = Lt.includes(prefix2);
+      const attrClass = [config$1.replacementClass, iconName ? "".concat(config$1.cssPrefix, "-").concat(iconName) : ""].filter((c$$1) => extra.classes.indexOf(c$$1) === -1).filter((c$$1) => c$$1 !== "" || !!c$$1).concat(extra.classes).join(" ");
+      let content = {
+        children: [],
+        attributes: _objectSpread2$2(_objectSpread2$2({}, extra.attributes), {}, {
+          "data-prefix": prefix2,
+          "data-icon": iconName,
+          "class": attrClass,
+          "role": extra.attributes.role || "img",
+          "xmlns": "http://www.w3.org/2000/svg",
+          "viewBox": "0 0 ".concat(width, " ").concat(height)
+        })
+      };
+      const uploadedIconWidthStyle = isUploadedIcon && !~extra.classes.indexOf("fa-fw") ? {
+        width: "".concat(width / height * 16 * 0.0625, "em")
+      } : {};
+      if (watchable) {
+        content.attributes[DATA_FA_I2SVG] = "";
+      }
+      if (title) {
+        content.children.push({
+          tag: "title",
+          attributes: {
+            id: content.attributes["aria-labelledby"] || "title-".concat(titleId || nextUniqueId())
+          },
+          children: [title]
+        });
+        delete content.attributes.title;
+      }
+      const args = _objectSpread2$2(_objectSpread2$2({}, content), {}, {
+        prefix: prefix2,
+        iconName,
+        main,
+        mask,
+        maskId,
+        transform: transform2,
+        symbol,
+        styles: _objectSpread2$2(_objectSpread2$2({}, uploadedIconWidthStyle), extra.styles)
+      });
+      const {
+        children,
+        attributes
+      } = mask.found && main.found ? callProvided("generateAbstractMask", args) || {
+        children: [],
+        attributes: {}
+      } : callProvided("generateAbstractIcon", args) || {
+        children: [],
+        attributes: {}
+      };
+      args.children = children;
+      args.attributes = attributes;
+      if (symbol) {
+        return asSymbol(args);
+      } else {
+        return asIcon(args);
+      }
+    }
+    function makeLayersTextAbstract(params) {
+      const {
+        content,
+        width,
+        height,
+        transform: transform2,
+        title,
+        extra,
+        watchable = false
+      } = params;
+      const attributes = _objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, extra.attributes), title ? {
+        "title": title
+      } : {}), {}, {
+        "class": extra.classes.join(" ")
+      });
+      if (watchable) {
+        attributes[DATA_FA_I2SVG] = "";
+      }
+      const styles2 = _objectSpread2$2({}, extra.styles);
+      if (transformIsMeaningful(transform2)) {
+        styles2["transform"] = transformForCss({
+          transform: transform2,
+          startCentered: true,
+          width,
+          height
+        });
+        styles2["-webkit-transform"] = styles2["transform"];
+      }
+      const styleString = joinStyles(styles2);
+      if (styleString.length > 0) {
+        attributes["style"] = styleString;
+      }
+      const val = [];
+      val.push({
+        tag: "span",
+        attributes,
+        children: [content]
+      });
+      if (title) {
+        val.push({
+          tag: "span",
+          attributes: {
+            class: "sr-only"
+          },
+          children: [title]
+        });
+      }
+      return val;
+    }
+    function makeLayersCounterAbstract(params) {
+      const {
+        content,
+        title,
+        extra
+      } = params;
+      const attributes = _objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, extra.attributes), title ? {
+        "title": title
+      } : {}), {}, {
+        "class": extra.classes.join(" ")
+      });
+      const styleString = joinStyles(extra.styles);
+      if (styleString.length > 0) {
+        attributes["style"] = styleString;
+      }
+      const val = [];
+      val.push({
+        tag: "span",
+        attributes,
+        children: [content]
+      });
+      if (title) {
+        val.push({
+          tag: "span",
+          attributes: {
+            class: "sr-only"
+          },
+          children: [title]
+        });
+      }
+      return val;
+    }
+    const {
+      styles: styles$1
+    } = namespace;
+    function asFoundIcon(icon2) {
+      const width = icon2[0];
+      const height = icon2[1];
+      const [vectorData] = icon2.slice(4);
+      let element = null;
+      if (Array.isArray(vectorData)) {
+        element = {
+          tag: "g",
+          attributes: {
+            class: "".concat(config$1.cssPrefix, "-").concat(DUOTONE_CLASSES.GROUP)
+          },
+          children: [{
+            tag: "path",
+            attributes: {
+              class: "".concat(config$1.cssPrefix, "-").concat(DUOTONE_CLASSES.SECONDARY),
+              fill: "currentColor",
+              d: vectorData[0]
+            }
+          }, {
+            tag: "path",
+            attributes: {
+              class: "".concat(config$1.cssPrefix, "-").concat(DUOTONE_CLASSES.PRIMARY),
+              fill: "currentColor",
+              d: vectorData[1]
+            }
+          }]
+        };
+      } else {
+        element = {
+          tag: "path",
+          attributes: {
+            fill: "currentColor",
+            d: vectorData
+          }
+        };
+      }
+      return {
+        found: true,
+        width,
+        height,
+        icon: element
+      };
+    }
+    const missingIconResolutionMixin = {
+      found: false,
+      width: 512,
+      height: 512
+    };
+    function maybeNotifyMissing(iconName, prefix2) {
+      if (!PRODUCTION$1 && !config$1.showMissingIcons && iconName) {
+        console.error('Icon with name "'.concat(iconName, '" and prefix "').concat(prefix2, '" is missing.'));
+      }
+    }
+    function findIcon(iconName, prefix2) {
+      let givenPrefix = prefix2;
+      if (prefix2 === "fa" && config$1.styleDefault !== null) {
+        prefix2 = getDefaultUsablePrefix();
+      }
+      return new Promise((resolve, reject) => {
+        if (givenPrefix === "fa") {
+          const shim2 = byOldName(iconName) || {};
+          iconName = shim2.iconName || iconName;
+          prefix2 = shim2.prefix || prefix2;
+        }
+        if (iconName && prefix2 && styles$1[prefix2] && styles$1[prefix2][iconName]) {
+          const icon2 = styles$1[prefix2][iconName];
+          return resolve(asFoundIcon(icon2));
+        }
+        maybeNotifyMissing(iconName, prefix2);
+        resolve(_objectSpread2$2(_objectSpread2$2({}, missingIconResolutionMixin), {}, {
+          icon: config$1.showMissingIcons && iconName ? callProvided("missingIconAbstract") || {} : {}
+        }));
+      });
+    }
+    const noop$1$1 = () => {
+    };
+    const p$2 = config$1.measurePerformance && PERFORMANCE && PERFORMANCE.mark && PERFORMANCE.measure ? PERFORMANCE : {
+      mark: noop$1$1,
+      measure: noop$1$1
+    };
+    const preamble = 'FA "6.7.2"';
+    const begin = (name) => {
+      p$2.mark("".concat(preamble, " ").concat(name, " begins"));
+      return () => end(name);
+    };
+    const end = (name) => {
+      p$2.mark("".concat(preamble, " ").concat(name, " ends"));
+      p$2.measure("".concat(preamble, " ").concat(name), "".concat(preamble, " ").concat(name, " begins"), "".concat(preamble, " ").concat(name, " ends"));
+    };
+    var perf = {
+      begin,
+      end
+    };
+    const noop$2$1 = () => {
+    };
+    function isWatched(node2) {
+      const i2svg = node2.getAttribute ? node2.getAttribute(DATA_FA_I2SVG) : null;
+      return typeof i2svg === "string";
+    }
+    function hasPrefixAndIcon(node2) {
+      const prefix2 = node2.getAttribute ? node2.getAttribute(DATA_PREFIX) : null;
+      const icon2 = node2.getAttribute ? node2.getAttribute(DATA_ICON) : null;
+      return prefix2 && icon2;
+    }
+    function hasBeenReplaced(node2) {
+      return node2 && node2.classList && node2.classList.contains && node2.classList.contains(config$1.replacementClass);
+    }
+    function getMutator() {
+      if (config$1.autoReplaceSvg === true) {
+        return mutators.replace;
+      }
+      const mutator = mutators[config$1.autoReplaceSvg];
+      return mutator || mutators.replace;
+    }
+    function createElementNS(tag) {
+      return DOCUMENT.createElementNS("http://www.w3.org/2000/svg", tag);
+    }
+    function createElement(tag) {
+      return DOCUMENT.createElement(tag);
+    }
+    function convertSVG(abstractObj) {
+      let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+      const {
+        ceFn = abstractObj.tag === "svg" ? createElementNS : createElement
+      } = params;
+      if (typeof abstractObj === "string") {
+        return DOCUMENT.createTextNode(abstractObj);
+      }
+      const tag = ceFn(abstractObj.tag);
+      Object.keys(abstractObj.attributes || []).forEach(function(key) {
+        tag.setAttribute(key, abstractObj.attributes[key]);
+      });
+      const children = abstractObj.children || [];
+      children.forEach(function(child) {
+        tag.appendChild(convertSVG(child, {
+          ceFn
+        }));
+      });
+      return tag;
+    }
+    function nodeAsComment(node2) {
+      let comment2 = " ".concat(node2.outerHTML, " ");
+      comment2 = "".concat(comment2, "Font Awesome fontawesome.com ");
+      return comment2;
+    }
+    const mutators = {
+      replace: function(mutation) {
+        const node2 = mutation[0];
+        if (node2.parentNode) {
+          mutation[1].forEach((abstract) => {
+            node2.parentNode.insertBefore(convertSVG(abstract), node2);
+          });
+          if (node2.getAttribute(DATA_FA_I2SVG) === null && config$1.keepOriginalSource) {
+            let comment2 = DOCUMENT.createComment(nodeAsComment(node2));
+            node2.parentNode.replaceChild(comment2, node2);
+          } else {
+            node2.remove();
+          }
+        }
+      },
+      nest: function(mutation) {
+        const node2 = mutation[0];
+        const abstract = mutation[1];
+        if (~classArray(node2).indexOf(config$1.replacementClass)) {
+          return mutators.replace(mutation);
+        }
+        const forSvg = new RegExp("".concat(config$1.cssPrefix, "-.*"));
+        delete abstract[0].attributes.id;
+        if (abstract[0].attributes.class) {
+          const splitClasses = abstract[0].attributes.class.split(" ").reduce((acc, cls) => {
+            if (cls === config$1.replacementClass || cls.match(forSvg)) {
+              acc.toSvg.push(cls);
+            } else {
+              acc.toNode.push(cls);
+            }
+            return acc;
+          }, {
+            toNode: [],
+            toSvg: []
+          });
+          abstract[0].attributes.class = splitClasses.toSvg.join(" ");
+          if (splitClasses.toNode.length === 0) {
+            node2.removeAttribute("class");
+          } else {
+            node2.setAttribute("class", splitClasses.toNode.join(" "));
+          }
+        }
+        const newInnerHTML = abstract.map((a2) => toHtml(a2)).join("\n");
+        node2.setAttribute(DATA_FA_I2SVG, "");
+        node2.innerHTML = newInnerHTML;
+      }
+    };
+    function performOperationSync(op) {
+      op();
+    }
+    function perform(mutations, callback) {
+      const callbackFunction = typeof callback === "function" ? callback : noop$2$1;
+      if (mutations.length === 0) {
+        callbackFunction();
+      } else {
+        let frame = performOperationSync;
+        if (config$1.mutateApproach === MUTATION_APPROACH_ASYNC) {
+          frame = WINDOW.requestAnimationFrame || performOperationSync;
+        }
+        frame(() => {
+          const mutator = getMutator();
+          const mark = perf.begin("mutate");
+          mutations.map(mutator);
+          mark();
+          callbackFunction();
+        });
+      }
+    }
+    let disabled = false;
+    function disableObservation() {
+      disabled = true;
+    }
+    function enableObservation() {
+      disabled = false;
+    }
+    let mo = null;
+    function observe(options2) {
+      if (!MUTATION_OBSERVER) {
+        return;
+      }
+      if (!config$1.observeMutations) {
+        return;
+      }
+      const {
+        treeCallback = noop$2$1,
+        nodeCallback = noop$2$1,
+        pseudoElementsCallback = noop$2$1,
+        observeMutationsRoot = DOCUMENT
+      } = options2;
+      mo = new MUTATION_OBSERVER((objects) => {
+        if (disabled) return;
+        const defaultPrefix = getDefaultUsablePrefix();
+        toArray$1(objects).forEach((mutationRecord) => {
+          if (mutationRecord.type === "childList" && mutationRecord.addedNodes.length > 0 && !isWatched(mutationRecord.addedNodes[0])) {
+            if (config$1.searchPseudoElements) {
+              pseudoElementsCallback(mutationRecord.target);
+            }
+            treeCallback(mutationRecord.target);
+          }
+          if (mutationRecord.type === "attributes" && mutationRecord.target.parentNode && config$1.searchPseudoElements) {
+            pseudoElementsCallback(mutationRecord.target.parentNode);
+          }
+          if (mutationRecord.type === "attributes" && isWatched(mutationRecord.target) && ~ATTRIBUTES_WATCHED_FOR_MUTATION.indexOf(mutationRecord.attributeName)) {
+            if (mutationRecord.attributeName === "class" && hasPrefixAndIcon(mutationRecord.target)) {
+              const {
+                prefix: prefix2,
+                iconName
+              } = getCanonicalIcon(classArray(mutationRecord.target));
+              mutationRecord.target.setAttribute(DATA_PREFIX, prefix2 || defaultPrefix);
+              if (iconName) mutationRecord.target.setAttribute(DATA_ICON, iconName);
+            } else if (hasBeenReplaced(mutationRecord.target)) {
+              nodeCallback(mutationRecord.target);
+            }
+          }
+        });
+      });
+      if (!IS_DOM) return;
+      mo.observe(observeMutationsRoot, {
+        childList: true,
+        attributes: true,
+        characterData: true,
+        subtree: true
+      });
+    }
+    function disconnect() {
+      if (!mo) return;
+      mo.disconnect();
+    }
+    function styleParser(node2) {
+      const style2 = node2.getAttribute("style");
+      let val = [];
+      if (style2) {
+        val = style2.split(";").reduce((acc, style22) => {
+          const styles2 = style22.split(":");
+          const prop = styles2[0];
+          const value = styles2.slice(1);
+          if (prop && value.length > 0) {
+            acc[prop] = value.join(":").trim();
+          }
+          return acc;
+        }, {});
+      }
+      return val;
+    }
+    function classParser(node2) {
+      const existingPrefix = node2.getAttribute("data-prefix");
+      const existingIconName = node2.getAttribute("data-icon");
+      const innerText = node2.innerText !== void 0 ? node2.innerText.trim() : "";
+      let val = getCanonicalIcon(classArray(node2));
+      if (!val.prefix) {
+        val.prefix = getDefaultUsablePrefix();
+      }
+      if (existingPrefix && existingIconName) {
+        val.prefix = existingPrefix;
+        val.iconName = existingIconName;
+      }
+      if (val.iconName && val.prefix) {
+        return val;
+      }
+      if (val.prefix && innerText.length > 0) {
+        val.iconName = byLigature(val.prefix, node2.innerText) || byUnicode(val.prefix, toHex(node2.innerText));
+      }
+      if (!val.iconName && config$1.autoFetchSvg && node2.firstChild && node2.firstChild.nodeType === Node.TEXT_NODE) {
+        val.iconName = node2.firstChild.data;
+      }
+      return val;
+    }
+    function attributesParser(node2) {
+      const extraAttributes = toArray$1(node2.attributes).reduce((acc, attr) => {
+        if (acc.name !== "class" && acc.name !== "style") {
+          acc[attr.name] = attr.value;
+        }
+        return acc;
+      }, {});
+      const title = node2.getAttribute("title");
+      const titleId = node2.getAttribute("data-fa-title-id");
+      if (config$1.autoA11y) {
+        if (title) {
+          extraAttributes["aria-labelledby"] = "".concat(config$1.replacementClass, "-title-").concat(titleId || nextUniqueId());
+        } else {
+          extraAttributes["aria-hidden"] = "true";
+          extraAttributes["focusable"] = "false";
+        }
+      }
+      return extraAttributes;
+    }
+    function blankMeta() {
+      return {
+        iconName: null,
+        title: null,
+        titleId: null,
+        prefix: null,
+        transform: meaninglessTransform,
+        symbol: false,
+        mask: {
+          iconName: null,
+          prefix: null,
+          rest: []
+        },
+        maskId: null,
+        extra: {
+          classes: [],
+          styles: {},
+          attributes: {}
+        }
+      };
+    }
+    function parseMeta(node2) {
+      let parser2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {
+        styleParser: true
+      };
+      const {
+        iconName,
+        prefix: prefix2,
+        rest: extraClasses
+      } = classParser(node2);
+      const extraAttributes = attributesParser(node2);
+      const pluginMeta = chainHooks("parseNodeAttributes", {}, node2);
+      let extraStyles = parser2.styleParser ? styleParser(node2) : [];
+      return _objectSpread2$2({
+        iconName,
+        title: node2.getAttribute("title"),
+        titleId: node2.getAttribute("data-fa-title-id"),
+        prefix: prefix2,
+        transform: meaninglessTransform,
+        mask: {
+          iconName: null,
+          prefix: null,
+          rest: []
+        },
+        maskId: null,
+        symbol: false,
+        extra: {
+          classes: extraClasses,
+          styles: extraStyles,
+          attributes: extraAttributes
+        }
+      }, pluginMeta);
+    }
+    const {
+      styles: styles$2
+    } = namespace;
+    function generateMutation(node2) {
+      const nodeMeta = config$1.autoReplaceSvg === "nest" ? parseMeta(node2, {
+        styleParser: false
+      }) : parseMeta(node2);
+      if (~nodeMeta.extra.classes.indexOf(LAYERS_TEXT_CLASSNAME)) {
+        return callProvided("generateLayersText", node2, nodeMeta);
+      } else {
+        return callProvided("generateSvgReplacementMutation", node2, nodeMeta);
+      }
+    }
+    function getKnownPrefixes() {
+      return [...Ft, ...Ia];
+    }
+    function onTree(root2) {
+      let callback = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : null;
+      if (!IS_DOM) return Promise.resolve();
+      const htmlClassList = DOCUMENT.documentElement.classList;
+      const hclAdd = (suffix) => htmlClassList.add("".concat(HTML_CLASS_I2SVG_BASE_CLASS, "-").concat(suffix));
+      const hclRemove = (suffix) => htmlClassList.remove("".concat(HTML_CLASS_I2SVG_BASE_CLASS, "-").concat(suffix));
+      const prefixes2 = config$1.autoFetchSvg ? getKnownPrefixes() : P.concat(Object.keys(styles$2));
+      if (!prefixes2.includes("fa")) {
+        prefixes2.push("fa");
+      }
+      const prefixesDomQuery = [".".concat(LAYERS_TEXT_CLASSNAME, ":not([").concat(DATA_FA_I2SVG, "])")].concat(prefixes2.map((p$$1) => ".".concat(p$$1, ":not([").concat(DATA_FA_I2SVG, "])"))).join(", ");
+      if (prefixesDomQuery.length === 0) {
+        return Promise.resolve();
+      }
+      let candidates = [];
+      try {
+        candidates = toArray$1(root2.querySelectorAll(prefixesDomQuery));
+      } catch (e$$1) {
+      }
+      if (candidates.length > 0) {
+        hclAdd("pending");
+        hclRemove("complete");
+      } else {
+        return Promise.resolve();
+      }
+      const mark = perf.begin("onTree");
+      const mutations = candidates.reduce((acc, node2) => {
+        try {
+          const mutation = generateMutation(node2);
+          if (mutation) {
+            acc.push(mutation);
+          }
+        } catch (e$$1) {
+          if (!PRODUCTION$1) {
+            if (e$$1.name === "MissingIcon") {
+              console.error(e$$1);
+            }
+          }
+        }
+        return acc;
+      }, []);
+      return new Promise((resolve, reject) => {
+        Promise.all(mutations).then((resolvedMutations) => {
+          perform(resolvedMutations, () => {
+            hclAdd("active");
+            hclAdd("complete");
+            hclRemove("pending");
+            if (typeof callback === "function") callback();
+            mark();
+            resolve();
+          });
+        }).catch((e$$1) => {
+          mark();
+          reject(e$$1);
+        });
+      });
+    }
+    function onNode(node2) {
+      let callback = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : null;
+      generateMutation(node2).then((mutation) => {
+        if (mutation) {
+          perform([mutation], callback);
+        }
+      });
+    }
+    function resolveIcons(next2) {
+      return function(maybeIconDefinition) {
+        let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+        const iconDefinition = (maybeIconDefinition || {}).icon ? maybeIconDefinition : findIconDefinition(maybeIconDefinition || {});
+        let {
+          mask
+        } = params;
+        if (mask) {
+          mask = (mask || {}).icon ? mask : findIconDefinition(mask || {});
+        }
+        return next2(iconDefinition, _objectSpread2$2(_objectSpread2$2({}, params), {}, {
+          mask
+        }));
+      };
+    }
+    const render = function(iconDefinition) {
+      let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+      const {
+        transform: transform2 = meaninglessTransform,
+        symbol = false,
+        mask = null,
+        maskId = null,
+        title = null,
+        titleId = null,
+        classes = [],
+        attributes = {},
+        styles: styles2 = {}
+      } = params;
+      if (!iconDefinition) return;
+      const {
+        prefix: prefix2,
+        iconName,
+        icon: icon2
+      } = iconDefinition;
+      return domVariants(_objectSpread2$2({
+        type: "icon"
+      }, iconDefinition), () => {
+        callHooks("beforeDOMElementCreation", {
+          iconDefinition,
+          params
+        });
+        if (config$1.autoA11y) {
+          if (title) {
+            attributes["aria-labelledby"] = "".concat(config$1.replacementClass, "-title-").concat(titleId || nextUniqueId());
+          } else {
+            attributes["aria-hidden"] = "true";
+            attributes["focusable"] = "false";
+          }
+        }
+        return makeInlineSvgAbstract({
+          icons: {
+            main: asFoundIcon(icon2),
+            mask: mask ? asFoundIcon(mask.icon) : {
+              found: false,
+              width: null,
+              height: null,
+              icon: {}
+            }
+          },
+          prefix: prefix2,
+          iconName,
+          transform: _objectSpread2$2(_objectSpread2$2({}, meaninglessTransform), transform2),
+          symbol,
+          title,
+          maskId,
+          titleId,
+          extra: {
+            attributes,
+            styles: styles2,
+            classes
+          }
+        });
+      });
+    };
+    var ReplaceElements = {
+      mixout() {
+        return {
+          icon: resolveIcons(render)
+        };
+      },
+      hooks() {
+        return {
+          mutationObserverCallbacks(accumulator) {
+            accumulator.treeCallback = onTree;
+            accumulator.nodeCallback = onNode;
+            return accumulator;
+          }
+        };
+      },
+      provides(providers$$1) {
+        providers$$1.i2svg = function(params) {
+          const {
+            node: node2 = DOCUMENT,
+            callback = () => {
+            }
+          } = params;
+          return onTree(node2, callback);
+        };
+        providers$$1.generateSvgReplacementMutation = function(node2, nodeMeta) {
+          const {
+            iconName,
+            title,
+            titleId,
+            prefix: prefix2,
+            transform: transform2,
+            symbol,
+            mask,
+            maskId,
+            extra
+          } = nodeMeta;
+          return new Promise((resolve, reject) => {
+            Promise.all([findIcon(iconName, prefix2), mask.iconName ? findIcon(mask.iconName, mask.prefix) : Promise.resolve({
+              found: false,
+              width: 512,
+              height: 512,
+              icon: {}
+            })]).then((_ref3) => {
+              let [main, mask2] = _ref3;
+              resolve([node2, makeInlineSvgAbstract({
+                icons: {
+                  main,
+                  mask: mask2
+                },
+                prefix: prefix2,
+                iconName,
+                transform: transform2,
+                symbol,
+                maskId,
+                title,
+                titleId,
+                extra,
+                watchable: true
+              })]);
+            }).catch(reject);
+          });
+        };
+        providers$$1.generateAbstractIcon = function(_ref22) {
+          let {
+            children,
+            attributes,
+            main,
+            transform: transform2,
+            styles: styles2
+          } = _ref22;
+          const styleString = joinStyles(styles2);
+          if (styleString.length > 0) {
+            attributes["style"] = styleString;
+          }
+          let nextChild;
+          if (transformIsMeaningful(transform2)) {
+            nextChild = callProvided("generateAbstractTransformGrouping", {
+              main,
+              transform: transform2,
+              containerWidth: main.width,
+              iconWidth: main.width
+            });
+          }
+          children.push(nextChild || main.icon);
+          return {
+            children,
+            attributes
+          };
+        };
+      }
+    };
+    var Layers = {
+      mixout() {
+        return {
+          layer(assembler) {
+            let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+            const {
+              classes = []
+            } = params;
+            return domVariants({
+              type: "layer"
+            }, () => {
+              callHooks("beforeDOMElementCreation", {
+                assembler,
+                params
+              });
+              let children = [];
+              assembler((args) => {
+                Array.isArray(args) ? args.map((a2) => {
+                  children = children.concat(a2.abstract);
+                }) : children = children.concat(args.abstract);
+              });
+              return [{
+                tag: "span",
+                attributes: {
+                  class: ["".concat(config$1.cssPrefix, "-layers"), ...classes].join(" ")
+                },
+                children
+              }];
+            });
+          }
+        };
+      }
+    };
+    var LayersCounter = {
+      mixout() {
+        return {
+          counter(content) {
+            let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+            const {
+              title = null,
+              classes = [],
+              attributes = {},
+              styles: styles2 = {}
+            } = params;
+            return domVariants({
+              type: "counter",
+              content
+            }, () => {
+              callHooks("beforeDOMElementCreation", {
+                content,
+                params
+              });
+              return makeLayersCounterAbstract({
+                content: content.toString(),
+                title,
+                extra: {
+                  attributes,
+                  styles: styles2,
+                  classes: ["".concat(config$1.cssPrefix, "-layers-counter"), ...classes]
+                }
+              });
+            });
+          }
+        };
+      }
+    };
+    var LayersText = {
+      mixout() {
+        return {
+          text(content) {
+            let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+            const {
+              transform: transform2 = meaninglessTransform,
+              title = null,
+              classes = [],
+              attributes = {},
+              styles: styles2 = {}
+            } = params;
+            return domVariants({
+              type: "text",
+              content
+            }, () => {
+              callHooks("beforeDOMElementCreation", {
+                content,
+                params
+              });
+              return makeLayersTextAbstract({
+                content,
+                transform: _objectSpread2$2(_objectSpread2$2({}, meaninglessTransform), transform2),
+                title,
+                extra: {
+                  attributes,
+                  styles: styles2,
+                  classes: ["".concat(config$1.cssPrefix, "-layers-text"), ...classes]
+                }
+              });
+            });
+          }
+        };
+      },
+      provides(providers$$1) {
+        providers$$1.generateLayersText = function(node2, nodeMeta) {
+          const {
+            title,
+            transform: transform2,
+            extra
+          } = nodeMeta;
+          let width = null;
+          let height = null;
+          if (IS_IE) {
+            const computedFontSize = parseInt(getComputedStyle(node2).fontSize, 10);
+            const boundingClientRect = node2.getBoundingClientRect();
+            width = boundingClientRect.width / computedFontSize;
+            height = boundingClientRect.height / computedFontSize;
+          }
+          if (config$1.autoA11y && !title) {
+            extra.attributes["aria-hidden"] = "true";
+          }
+          return Promise.resolve([node2, makeLayersTextAbstract({
+            content: node2.innerHTML,
+            width,
+            height,
+            transform: transform2,
+            title,
+            extra,
+            watchable: true
+          })]);
+        };
+      }
+    };
+    const CLEAN_CONTENT_PATTERN = new RegExp('"', "ug");
+    const SECONDARY_UNICODE_RANGE = [1105920, 1112319];
+    const _FONT_FAMILY_WEIGHT_TO_PREFIX = _objectSpread2$2(_objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, {
+      FontAwesome: {
+        normal: "fas",
+        400: "fas"
+      }
+    }), lt), wa), Yt);
+    const FONT_FAMILY_WEIGHT_TO_PREFIX = Object.keys(_FONT_FAMILY_WEIGHT_TO_PREFIX).reduce((acc, key) => {
+      acc[key.toLowerCase()] = _FONT_FAMILY_WEIGHT_TO_PREFIX[key];
+      return acc;
+    }, {});
+    const FONT_FAMILY_WEIGHT_FALLBACK = Object.keys(FONT_FAMILY_WEIGHT_TO_PREFIX).reduce((acc, fontFamily) => {
+      const weights = FONT_FAMILY_WEIGHT_TO_PREFIX[fontFamily];
+      acc[fontFamily] = weights[900] || [...Object.entries(weights)][0][1];
+      return acc;
+    }, {});
+    function hexValueFromContent(content) {
+      const cleaned = content.replace(CLEAN_CONTENT_PATTERN, "");
+      const codePoint = codePointAt(cleaned, 0);
+      const isPrependTen = codePoint >= SECONDARY_UNICODE_RANGE[0] && codePoint <= SECONDARY_UNICODE_RANGE[1];
+      const isDoubled = cleaned.length === 2 ? cleaned[0] === cleaned[1] : false;
+      return {
+        value: isDoubled ? toHex(cleaned[0]) : toHex(cleaned),
+        isSecondary: isPrependTen || isDoubled
+      };
+    }
+    function getPrefix$1(fontFamily, fontWeight) {
+      const fontFamilySanitized = fontFamily.replace(/^['"]|['"]$/g, "").toLowerCase();
+      const fontWeightInteger = parseInt(fontWeight);
+      const fontWeightSanitized = isNaN(fontWeightInteger) ? "normal" : fontWeightInteger;
+      return (FONT_FAMILY_WEIGHT_TO_PREFIX[fontFamilySanitized] || {})[fontWeightSanitized] || FONT_FAMILY_WEIGHT_FALLBACK[fontFamilySanitized];
+    }
+    function replaceForPosition(node2, position2) {
+      const pendingAttribute = "".concat(DATA_FA_PSEUDO_ELEMENT_PENDING).concat(position2.replace(":", "-"));
+      return new Promise((resolve, reject) => {
+        if (node2.getAttribute(pendingAttribute) !== null) {
+          return resolve();
+        }
+        const children = toArray$1(node2.children);
+        const alreadyProcessedPseudoElement = children.filter((c$$1) => c$$1.getAttribute(DATA_FA_PSEUDO_ELEMENT) === position2)[0];
+        const styles2 = WINDOW.getComputedStyle(node2, position2);
+        const fontFamily = styles2.getPropertyValue("font-family");
+        const fontFamilyMatch = fontFamily.match(FONT_FAMILY_PATTERN);
+        const fontWeight = styles2.getPropertyValue("font-weight");
+        const content = styles2.getPropertyValue("content");
+        if (alreadyProcessedPseudoElement && !fontFamilyMatch) {
+          node2.removeChild(alreadyProcessedPseudoElement);
+          return resolve();
+        } else if (fontFamilyMatch && content !== "none" && content !== "") {
+          const content2 = styles2.getPropertyValue("content");
+          let prefix2 = getPrefix$1(fontFamily, fontWeight);
+          const {
+            value: hexValue,
+            isSecondary
+          } = hexValueFromContent(content2);
+          const isV4 = fontFamilyMatch[0].startsWith("FontAwesome");
+          let iconName = byUnicode(prefix2, hexValue);
+          let iconIdentifier = iconName;
+          if (isV4) {
+            const iconName4 = byOldUnicode(hexValue);
+            if (iconName4.iconName && iconName4.prefix) {
+              iconName = iconName4.iconName;
+              prefix2 = iconName4.prefix;
+            }
+          }
+          if (iconName && !isSecondary && (!alreadyProcessedPseudoElement || alreadyProcessedPseudoElement.getAttribute(DATA_PREFIX) !== prefix2 || alreadyProcessedPseudoElement.getAttribute(DATA_ICON) !== iconIdentifier)) {
+            node2.setAttribute(pendingAttribute, iconIdentifier);
+            if (alreadyProcessedPseudoElement) {
+              node2.removeChild(alreadyProcessedPseudoElement);
+            }
+            const meta = blankMeta();
+            const {
+              extra
+            } = meta;
+            extra.attributes[DATA_FA_PSEUDO_ELEMENT] = position2;
+            findIcon(iconName, prefix2).then((main) => {
+              const abstract = makeInlineSvgAbstract(_objectSpread2$2(_objectSpread2$2({}, meta), {}, {
+                icons: {
+                  main,
+                  mask: emptyCanonicalIcon()
+                },
+                prefix: prefix2,
+                iconName: iconIdentifier,
+                extra,
+                watchable: true
+              }));
+              const element = DOCUMENT.createElementNS("http://www.w3.org/2000/svg", "svg");
+              if (position2 === "::before") {
+                node2.insertBefore(element, node2.firstChild);
+              } else {
+                node2.appendChild(element);
+              }
+              element.outerHTML = abstract.map((a$$1) => toHtml(a$$1)).join("\n");
+              node2.removeAttribute(pendingAttribute);
+              resolve();
+            }).catch(reject);
+          } else {
+            resolve();
+          }
+        } else {
+          resolve();
+        }
+      });
+    }
+    function replace$1(node2) {
+      return Promise.all([replaceForPosition(node2, "::before"), replaceForPosition(node2, "::after")]);
+    }
+    function processable(node2) {
+      return node2.parentNode !== document.head && !~TAGNAMES_TO_SKIP_FOR_PSEUDOELEMENTS.indexOf(node2.tagName.toUpperCase()) && !node2.getAttribute(DATA_FA_PSEUDO_ELEMENT) && (!node2.parentNode || node2.parentNode.tagName !== "svg");
+    }
+    function searchPseudoElements(root2) {
+      if (!IS_DOM) return;
+      return new Promise((resolve, reject) => {
+        const operations = toArray$1(root2.querySelectorAll("*")).filter(processable).map(replace$1);
+        const end2 = perf.begin("searchPseudoElements");
+        disableObservation();
+        Promise.all(operations).then(() => {
+          end2();
+          enableObservation();
+          resolve();
+        }).catch(() => {
+          end2();
+          enableObservation();
+          reject();
+        });
+      });
+    }
+    var PseudoElements = {
+      hooks() {
+        return {
+          mutationObserverCallbacks(accumulator) {
+            accumulator.pseudoElementsCallback = searchPseudoElements;
+            return accumulator;
+          }
+        };
+      },
+      provides(providers2) {
+        providers2.pseudoElements2svg = function(params) {
+          const {
+            node: node2 = DOCUMENT
+          } = params;
+          if (config$1.searchPseudoElements) {
+            searchPseudoElements(node2);
+          }
+        };
+      }
+    };
+    let _unwatched = false;
+    var MutationObserver$1 = {
+      mixout() {
+        return {
+          dom: {
+            unwatch() {
+              disableObservation();
+              _unwatched = true;
+            }
+          }
+        };
+      },
+      hooks() {
+        return {
+          bootstrap() {
+            observe(chainHooks("mutationObserverCallbacks", {}));
+          },
+          noAuto() {
+            disconnect();
+          },
+          watch(params) {
+            const {
+              observeMutationsRoot
+            } = params;
+            if (_unwatched) {
+              enableObservation();
+            } else {
+              observe(chainHooks("mutationObserverCallbacks", {
+                observeMutationsRoot
+              }));
+            }
+          }
+        };
+      }
+    };
+    const parseTransformString = (transformString) => {
+      let transform2 = {
+        size: 16,
+        x: 0,
+        y: 0,
+        flipX: false,
+        flipY: false,
+        rotate: 0
+      };
+      return transformString.toLowerCase().split(" ").reduce((acc, n) => {
+        const parts = n.toLowerCase().split("-");
+        const first = parts[0];
+        let rest = parts.slice(1).join("-");
+        if (first && rest === "h") {
+          acc.flipX = true;
+          return acc;
+        }
+        if (first && rest === "v") {
+          acc.flipY = true;
+          return acc;
+        }
+        rest = parseFloat(rest);
+        if (isNaN(rest)) {
+          return acc;
+        }
+        switch (first) {
+          case "grow":
+            acc.size = acc.size + rest;
+            break;
+          case "shrink":
+            acc.size = acc.size - rest;
+            break;
+          case "left":
+            acc.x = acc.x - rest;
+            break;
+          case "right":
+            acc.x = acc.x + rest;
+            break;
+          case "up":
+            acc.y = acc.y - rest;
+            break;
+          case "down":
+            acc.y = acc.y + rest;
+            break;
+          case "rotate":
+            acc.rotate = acc.rotate + rest;
+            break;
+        }
+        return acc;
+      }, transform2);
+    };
+    var PowerTransforms = {
+      mixout() {
+        return {
+          parse: {
+            transform: (transformString) => {
+              return parseTransformString(transformString);
+            }
+          }
+        };
+      },
+      hooks() {
+        return {
+          parseNodeAttributes(accumulator, node2) {
+            const transformString = node2.getAttribute("data-fa-transform");
+            if (transformString) {
+              accumulator.transform = parseTransformString(transformString);
+            }
+            return accumulator;
+          }
+        };
+      },
+      provides(providers2) {
+        providers2.generateAbstractTransformGrouping = function(_ref3) {
+          let {
+            main,
+            transform: transform2,
+            containerWidth,
+            iconWidth
+          } = _ref3;
+          const outer = {
+            transform: "translate(".concat(containerWidth / 2, " 256)")
+          };
+          const innerTranslate = "translate(".concat(transform2.x * 32, ", ").concat(transform2.y * 32, ") ");
+          const innerScale = "scale(".concat(transform2.size / 16 * (transform2.flipX ? -1 : 1), ", ").concat(transform2.size / 16 * (transform2.flipY ? -1 : 1), ") ");
+          const innerRotate = "rotate(".concat(transform2.rotate, " 0 0)");
+          const inner = {
+            transform: "".concat(innerTranslate, " ").concat(innerScale, " ").concat(innerRotate)
+          };
+          const path = {
+            transform: "translate(".concat(iconWidth / 2 * -1, " -256)")
+          };
+          const operations = {
+            outer,
+            inner,
+            path
+          };
+          return {
+            tag: "g",
+            attributes: _objectSpread2$2({}, operations.outer),
+            children: [{
+              tag: "g",
+              attributes: _objectSpread2$2({}, operations.inner),
+              children: [{
+                tag: main.icon.tag,
+                children: main.icon.children,
+                attributes: _objectSpread2$2(_objectSpread2$2({}, main.icon.attributes), operations.path)
+              }]
+            }]
+          };
+        };
+      }
+    };
+    const ALL_SPACE = {
+      x: 0,
+      y: 0,
+      width: "100%",
+      height: "100%"
+    };
+    function fillBlack(abstract) {
+      let force = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
+      if (abstract.attributes && (abstract.attributes.fill || force)) {
+        abstract.attributes.fill = "black";
+      }
+      return abstract;
+    }
+    function deGroup(abstract) {
+      if (abstract.tag === "g") {
+        return abstract.children;
+      } else {
+        return [abstract];
+      }
+    }
+    var Masks = {
+      hooks() {
+        return {
+          parseNodeAttributes(accumulator, node2) {
+            const maskData = node2.getAttribute("data-fa-mask");
+            const mask = !maskData ? emptyCanonicalIcon() : getCanonicalIcon(maskData.split(" ").map((i2) => i2.trim()));
+            if (!mask.prefix) {
+              mask.prefix = getDefaultUsablePrefix();
+            }
+            accumulator.mask = mask;
+            accumulator.maskId = node2.getAttribute("data-fa-mask-id");
+            return accumulator;
+          }
+        };
+      },
+      provides(providers2) {
+        providers2.generateAbstractMask = function(_ref3) {
+          let {
+            children,
+            attributes,
+            main,
+            mask,
+            maskId: explicitMaskId,
+            transform: transform2
+          } = _ref3;
+          const {
+            width: mainWidth,
+            icon: mainPath
+          } = main;
+          const {
+            width: maskWidth,
+            icon: maskPath
+          } = mask;
+          const trans = transformForSvg({
+            transform: transform2,
+            containerWidth: maskWidth,
+            iconWidth: mainWidth
+          });
+          const maskRect = {
+            tag: "rect",
+            attributes: _objectSpread2$2(_objectSpread2$2({}, ALL_SPACE), {}, {
+              fill: "white"
+            })
+          };
+          const maskInnerGroupChildrenMixin = mainPath.children ? {
+            children: mainPath.children.map(fillBlack)
+          } : {};
+          const maskInnerGroup = {
+            tag: "g",
+            attributes: _objectSpread2$2({}, trans.inner),
+            children: [fillBlack(_objectSpread2$2({
+              tag: mainPath.tag,
+              attributes: _objectSpread2$2(_objectSpread2$2({}, mainPath.attributes), trans.path)
+            }, maskInnerGroupChildrenMixin))]
+          };
+          const maskOuterGroup = {
+            tag: "g",
+            attributes: _objectSpread2$2({}, trans.outer),
+            children: [maskInnerGroup]
+          };
+          const maskId = "mask-".concat(explicitMaskId || nextUniqueId());
+          const clipId = "clip-".concat(explicitMaskId || nextUniqueId());
+          const maskTag = {
+            tag: "mask",
+            attributes: _objectSpread2$2(_objectSpread2$2({}, ALL_SPACE), {}, {
+              id: maskId,
+              maskUnits: "userSpaceOnUse",
+              maskContentUnits: "userSpaceOnUse"
+            }),
+            children: [maskRect, maskOuterGroup]
+          };
+          const defs = {
+            tag: "defs",
+            children: [{
+              tag: "clipPath",
+              attributes: {
+                id: clipId
+              },
+              children: deGroup(maskPath)
+            }, maskTag]
+          };
+          children.push(defs, {
+            tag: "rect",
+            attributes: _objectSpread2$2({
+              fill: "currentColor",
+              "clip-path": "url(#".concat(clipId, ")"),
+              mask: "url(#".concat(maskId, ")")
+            }, ALL_SPACE)
+          });
+          return {
+            children,
+            attributes
+          };
+        };
+      }
+    };
+    var MissingIconIndicator = {
+      provides(providers2) {
+        let reduceMotion = false;
+        if (WINDOW.matchMedia) {
+          reduceMotion = WINDOW.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        }
+        providers2.missingIconAbstract = function() {
+          const gChildren = [];
+          const FILL = {
+            fill: "currentColor"
+          };
+          const ANIMATION_BASE = {
+            attributeType: "XML",
+            repeatCount: "indefinite",
+            dur: "2s"
+          };
+          gChildren.push({
+            tag: "path",
+            attributes: _objectSpread2$2(_objectSpread2$2({}, FILL), {}, {
+              d: "M156.5,447.7l-12.6,29.5c-18.7-9.5-35.9-21.2-51.5-34.9l22.7-22.7C127.6,430.5,141.5,440,156.5,447.7z M40.6,272H8.5 c1.4,21.2,5.4,41.7,11.7,61.1L50,321.2C45.1,305.5,41.8,289,40.6,272z M40.6,240c1.4-18.8,5.2-37,11.1-54.1l-29.5-12.6 C14.7,194.3,10,216.7,8.5,240H40.6z M64.3,156.5c7.8-14.9,17.2-28.8,28.1-41.5L69.7,92.3c-13.7,15.6-25.5,32.8-34.9,51.5 L64.3,156.5z M397,419.6c-13.9,12-29.4,22.3-46.1,30.4l11.9,29.8c20.7-9.9,39.8-22.6,56.9-37.6L397,419.6z M115,92.4 c13.9-12,29.4-22.3,46.1-30.4l-11.9-29.8c-20.7,9.9-39.8,22.6-56.8,37.6L115,92.4z M447.7,355.5c-7.8,14.9-17.2,28.8-28.1,41.5 l22.7,22.7c13.7-15.6,25.5-32.9,34.9-51.5L447.7,355.5z M471.4,272c-1.4,18.8-5.2,37-11.1,54.1l29.5,12.6 c7.5-21.1,12.2-43.5,13.6-66.8H471.4z M321.2,462c-15.7,5-32.2,8.2-49.2,9.4v32.1c21.2-1.4,41.7-5.4,61.1-11.7L321.2,462z M240,471.4c-18.8-1.4-37-5.2-54.1-11.1l-12.6,29.5c21.1,7.5,43.5,12.2,66.8,13.6V471.4z M462,190.8c5,15.7,8.2,32.2,9.4,49.2h32.1 c-1.4-21.2-5.4-41.7-11.7-61.1L462,190.8z M92.4,397c-12-13.9-22.3-29.4-30.4-46.1l-29.8,11.9c9.9,20.7,22.6,39.8,37.6,56.9 L92.4,397z M272,40.6c18.8,1.4,36.9,5.2,54.1,11.1l12.6-29.5C317.7,14.7,295.3,10,272,8.5V40.6z M190.8,50 c15.7-5,32.2-8.2,49.2-9.4V8.5c-21.2,1.4-41.7,5.4-61.1,11.7L190.8,50z M442.3,92.3L419.6,115c12,13.9,22.3,29.4,30.5,46.1 l29.8-11.9C470,128.5,457.3,109.4,442.3,92.3z M397,92.4l22.7-22.7c-15.6-13.7-32.8-25.5-51.5-34.9l-12.6,29.5 C370.4,72.1,384.4,81.5,397,92.4z"
+            })
+          });
+          const OPACITY_ANIMATE = _objectSpread2$2(_objectSpread2$2({}, ANIMATION_BASE), {}, {
+            attributeName: "opacity"
+          });
+          const dot = {
+            tag: "circle",
+            attributes: _objectSpread2$2(_objectSpread2$2({}, FILL), {}, {
+              cx: "256",
+              cy: "364",
+              r: "28"
+            }),
+            children: []
+          };
+          if (!reduceMotion) {
+            dot.children.push({
+              tag: "animate",
+              attributes: _objectSpread2$2(_objectSpread2$2({}, ANIMATION_BASE), {}, {
+                attributeName: "r",
+                values: "28;14;28;28;14;28;"
+              })
+            }, {
+              tag: "animate",
+              attributes: _objectSpread2$2(_objectSpread2$2({}, OPACITY_ANIMATE), {}, {
+                values: "1;0;1;1;0;1;"
+              })
+            });
+          }
+          gChildren.push(dot);
+          gChildren.push({
+            tag: "path",
+            attributes: _objectSpread2$2(_objectSpread2$2({}, FILL), {}, {
+              opacity: "1",
+              d: "M263.7,312h-16c-6.6,0-12-5.4-12-12c0-71,77.4-63.9,77.4-107.8c0-20-17.8-40.2-57.4-40.2c-29.1,0-44.3,9.6-59.2,28.7 c-3.9,5-11.1,6-16.2,2.4l-13.1-9.2c-5.6-3.9-6.9-11.8-2.6-17.2c21.2-27.2,46.4-44.7,91.2-44.7c52.3,0,97.4,29.8,97.4,80.2 c0,67.6-77.4,63.5-77.4,107.8C275.7,306.6,270.3,312,263.7,312z"
+            }),
+            children: reduceMotion ? [] : [{
+              tag: "animate",
+              attributes: _objectSpread2$2(_objectSpread2$2({}, OPACITY_ANIMATE), {}, {
+                values: "1;0;0;0;0;1;"
+              })
+            }]
+          });
+          if (!reduceMotion) {
+            gChildren.push({
+              tag: "path",
+              attributes: _objectSpread2$2(_objectSpread2$2({}, FILL), {}, {
+                opacity: "0",
+                d: "M232.5,134.5l7,168c0.3,6.4,5.6,11.5,12,11.5h9c6.4,0,11.7-5.1,12-11.5l7-168c0.3-6.8-5.2-12.5-12-12.5h-23 C237.7,122,232.2,127.7,232.5,134.5z"
+              }),
+              children: [{
+                tag: "animate",
+                attributes: _objectSpread2$2(_objectSpread2$2({}, OPACITY_ANIMATE), {}, {
+                  values: "0;0;1;1;0;0;"
+                })
+              }]
+            });
+          }
+          return {
+            tag: "g",
+            attributes: {
+              "class": "missing"
+            },
+            children: gChildren
+          };
+        };
+      }
+    };
+    var SvgSymbols = {
+      hooks() {
+        return {
+          parseNodeAttributes(accumulator, node2) {
+            const symbolData = node2.getAttribute("data-fa-symbol");
+            const symbol = symbolData === null ? false : symbolData === "" ? true : symbolData;
+            accumulator["symbol"] = symbol;
+            return accumulator;
+          }
+        };
+      }
+    };
+    var plugins = [InjectCSS, ReplaceElements, Layers, LayersCounter, LayersText, PseudoElements, MutationObserver$1, PowerTransforms, Masks, MissingIconIndicator, SvgSymbols];
+    registerPlugins(plugins, {
+      mixoutsTo: api
+    });
+    api.noAuto;
+    api.config;
+    api.library;
+    api.dom;
+    const parse$1$1 = api.parse;
+    api.findIconDefinition;
+    api.toHtml;
+    const icon = api.icon;
+    api.layer;
+    api.text;
+    api.counter;
+    var define_process_env_default = {};
+    function _arrayLikeToArray$1(r2, a2) {
+      (null == a2 || a2 > r2.length) && (a2 = r2.length);
+      for (var e = 0, n = Array(a2); e < a2; e++) n[e] = r2[e];
+      return n;
+    }
+    function _arrayWithHoles$1(r2) {
+      if (Array.isArray(r2)) return r2;
+    }
+    function _arrayWithoutHoles$1(r2) {
+      if (Array.isArray(r2)) return _arrayLikeToArray$1(r2);
+    }
+    function _defineProperty$1(e, r2, t2) {
+      return (r2 = _toPropertyKey(r2)) in e ? Object.defineProperty(e, r2, {
+        value: t2,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      }) : e[r2] = t2, e;
+    }
+    function _iterableToArray$1(r2) {
+      if ("undefined" != typeof Symbol && null != r2[Symbol.iterator] || null != r2["@@iterator"]) return Array.from(r2);
+    }
+    function _iterableToArrayLimit$1(r2, l) {
+      var t2 = null == r2 ? null : "undefined" != typeof Symbol && r2[Symbol.iterator] || r2["@@iterator"];
+      if (null != t2) {
+        var e, n, i2, u, a2 = [], f = true, o2 = false;
+        try {
+          if (i2 = (t2 = t2.call(r2)).next, 0 === l) ;
+          else for (; !(f = (e = i2.call(t2)).done) && (a2.push(e.value), a2.length !== l); f = true) ;
+        } catch (r22) {
+          o2 = true, n = r22;
+        } finally {
+          try {
+            if (!f && null != t2.return && (u = t2.return(), Object(u) !== u)) return;
+          } finally {
+            if (o2) throw n;
+          }
+        }
+        return a2;
+      }
+    }
+    function _nonIterableRest$1() {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+    }
+    function _nonIterableSpread$1() {
+      throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+    }
+    function ownKeys$1(e, r2) {
+      var t2 = Object.keys(e);
+      if (Object.getOwnPropertySymbols) {
+        var o2 = Object.getOwnPropertySymbols(e);
+        r2 && (o2 = o2.filter(function(r22) {
+          return Object.getOwnPropertyDescriptor(e, r22).enumerable;
+        })), t2.push.apply(t2, o2);
+      }
+      return t2;
+    }
+    function _objectSpread2$1(e) {
+      for (var r2 = 1; r2 < arguments.length; r2++) {
+        var t2 = null != arguments[r2] ? arguments[r2] : {};
+        r2 % 2 ? ownKeys$1(Object(t2), true).forEach(function(r22) {
+          _defineProperty$1(e, r22, t2[r22]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t2)) : ownKeys$1(Object(t2)).forEach(function(r22) {
+          Object.defineProperty(e, r22, Object.getOwnPropertyDescriptor(t2, r22));
+        });
+      }
+      return e;
+    }
+    function _objectWithoutProperties$1(e, t2) {
+      if (null == e) return {};
+      var o2, r2, i2 = _objectWithoutPropertiesLoose(e, t2);
+      if (Object.getOwnPropertySymbols) {
+        var n = Object.getOwnPropertySymbols(e);
+        for (r2 = 0; r2 < n.length; r2++) o2 = n[r2], -1 === t2.indexOf(o2) && {}.propertyIsEnumerable.call(e, o2) && (i2[o2] = e[o2]);
+      }
+      return i2;
+    }
+    function _objectWithoutPropertiesLoose(r2, e) {
+      if (null == r2) return {};
+      var t2 = {};
+      for (var n in r2) if ({}.hasOwnProperty.call(r2, n)) {
+        if (-1 !== e.indexOf(n)) continue;
+        t2[n] = r2[n];
+      }
+      return t2;
+    }
+    function _slicedToArray$1(r2, e) {
+      return _arrayWithHoles$1(r2) || _iterableToArrayLimit$1(r2, e) || _unsupportedIterableToArray$1(r2, e) || _nonIterableRest$1();
+    }
+    function _toConsumableArray$1(r2) {
+      return _arrayWithoutHoles$1(r2) || _iterableToArray$1(r2) || _unsupportedIterableToArray$1(r2) || _nonIterableSpread$1();
+    }
+    function _toPrimitive(t2, r2) {
+      if ("object" != typeof t2 || !t2) return t2;
+      var e = t2[Symbol.toPrimitive];
+      if (void 0 !== e) {
+        var i2 = e.call(t2, r2);
+        if ("object" != typeof i2) return i2;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return ("string" === r2 ? String : Number)(t2);
+    }
+    function _toPropertyKey(t2) {
+      var i2 = _toPrimitive(t2, "string");
+      return "symbol" == typeof i2 ? i2 : i2 + "";
+    }
+    function _typeof$1(o2) {
+      "@babel/helpers - typeof";
+      return _typeof$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o22) {
+        return typeof o22;
+      } : function(o22) {
+        return o22 && "function" == typeof Symbol && o22.constructor === Symbol && o22 !== Symbol.prototype ? "symbol" : typeof o22;
+      }, _typeof$1(o2);
+    }
+    function _unsupportedIterableToArray$1(r2, a2) {
+      if (r2) {
+        if ("string" == typeof r2) return _arrayLikeToArray$1(r2, a2);
+        var t2 = {}.toString.call(r2).slice(8, -1);
+        return "Object" === t2 && r2.constructor && (t2 = r2.constructor.name), "Map" === t2 || "Set" === t2 ? Array.from(r2) : "Arguments" === t2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t2) ? _arrayLikeToArray$1(r2, a2) : void 0;
+      }
+    }
+    var ICON_PACKS_STARTING_VERSION = "7.0.0-alpha1";
+    var SVG_CORE_VERSION;
+    try {
+      var svgCorePackageJson = require("@fortawesome/fontawesome-svg-core/package.json");
+      SVG_CORE_VERSION = svgCorePackageJson.version;
+    } catch (e) {
+      SVG_CORE_VERSION = define_process_env_default.FA_VERSION || "7.0.0-alpha8";
+    }
+    function classList(props) {
+      var beat = props.beat, fade = props.fade, beatFade = props.beatFade, bounce = props.bounce, shake = props.shake, flash = props.flash, spin = props.spin, spinPulse = props.spinPulse, spinReverse = props.spinReverse, pulse = props.pulse, fixedWidth = props.fixedWidth, inverse = props.inverse, border = props.border, listItem = props.listItem, flip = props.flip, size = props.size, rotation = props.rotation, pull = props.pull, swapOpacity = props.swapOpacity, rotateBy = props.rotateBy, widthAuto = props.widthAuto;
+      var isVersion7OrLater = versionCheckGte(SVG_CORE_VERSION, ICON_PACKS_STARTING_VERSION);
+      var classes = _defineProperty$1(_defineProperty$1(_defineProperty$1(_defineProperty$1(_defineProperty$1(_defineProperty$1({
+        "fa-beat": beat,
+        "fa-fade": fade,
+        "fa-beat-fade": beatFade,
+        "fa-bounce": bounce,
+        "fa-shake": shake,
+        "fa-flash": flash,
+        "fa-spin": spin,
+        "fa-spin-reverse": spinReverse,
+        "fa-spin-pulse": spinPulse,
+        "fa-pulse": pulse,
+        "fa-fw": fixedWidth,
+        "fa-inverse": inverse,
+        "fa-border": border,
+        "fa-li": listItem,
+        "fa-flip": flip === true,
+        "fa-flip-horizontal": flip === "horizontal" || flip === "both",
+        "fa-flip-vertical": flip === "vertical" || flip === "both"
+      }, "fa-".concat(size), typeof size !== "undefined" && size !== null), "fa-rotate-".concat(rotation), typeof rotation !== "undefined" && rotation !== null && rotation !== 0), "fa-pull-".concat(pull), typeof pull !== "undefined" && pull !== null), "fa-swap-opacity", swapOpacity), "fa-rotate-by", isVersion7OrLater && rotateBy), "fa-width-auto", isVersion7OrLater && widthAuto);
+      return Object.keys(classes).map(function(key) {
+        return classes[key] ? key : null;
+      }).filter(function(key) {
+        return key;
+      });
+    }
+    function versionCheckGte(version1, version2) {
+      var _version1$split = version1.split("-"), _version1$split2 = _slicedToArray$1(_version1$split, 2), v1Base = _version1$split2[0], v1PreRelease = _version1$split2[1];
+      var _version2$split = version2.split("-"), _version2$split2 = _slicedToArray$1(_version2$split, 2), v2Base = _version2$split2[0], v2PreRelease = _version2$split2[1];
+      var v1Parts = v1Base.split(".");
+      var v2Parts = v2Base.split(".");
+      for (var i2 = 0; i2 < Math.max(v1Parts.length, v2Parts.length); i2++) {
+        var v1Part = v1Parts[i2] || "0";
+        var v2Part = v2Parts[i2] || "0";
+        var v1Num = parseInt(v1Part, 10);
+        var v2Num = parseInt(v2Part, 10);
+        if (v1Num !== v2Num) {
+          return v1Num > v2Num;
+        }
+      }
+      for (var _i2 = 0; _i2 < Math.max(v1Parts.length, v2Parts.length); _i2++) {
+        var _v1Part = v1Parts[_i2] || "0";
+        var _v2Part = v2Parts[_i2] || "0";
+        if (_v1Part !== _v2Part) {
+          if (_v1Part.length !== _v2Part.length) {
+            return _v1Part.length < _v2Part.length;
+          }
+        }
+      }
+      if (v1PreRelease && !v2PreRelease) return false;
+      if (!v1PreRelease && v2PreRelease) return true;
+      return true;
+    }
+    function _isNumerical(obj) {
+      obj = obj - 0;
+      return obj === obj;
+    }
+    function camelize(string) {
+      if (_isNumerical(string)) {
+        return string;
+      }
+      string = string.replace(/[\-_\s]+(.)?/g, function(match2, chr) {
+        return chr ? chr.toUpperCase() : "";
+      });
+      return string.substr(0, 1).toLowerCase() + string.substr(1);
+    }
+    var _excluded$7 = ["style"];
+    function capitalize(val) {
+      return val.charAt(0).toUpperCase() + val.slice(1);
+    }
+    function styleToObject(style2) {
+      return style2.split(";").map(function(s2) {
+        return s2.trim();
+      }).filter(function(s2) {
+        return s2;
+      }).reduce(function(acc, pair) {
+        var i2 = pair.indexOf(":");
+        var prop = camelize(pair.slice(0, i2));
+        var value = pair.slice(i2 + 1).trim();
+        prop.startsWith("webkit") ? acc[capitalize(prop)] = value : acc[prop] = value;
+        return acc;
+      }, {});
+    }
+    function convert(createElement2, element) {
+      var extraProps = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
+      if (typeof element === "string") {
+        return element;
+      }
+      var children = (element.children || []).map(function(child) {
+        return convert(createElement2, child);
+      });
+      var mixins = Object.keys(element.attributes || {}).reduce(function(acc, key) {
+        var val = element.attributes[key];
+        switch (key) {
+          case "class":
+            acc.attrs["className"] = val;
+            delete element.attributes["class"];
+            break;
+          case "style":
+            acc.attrs["style"] = styleToObject(val);
+            break;
+          default:
+            if (key.indexOf("aria-") === 0 || key.indexOf("data-") === 0) {
+              acc.attrs[key.toLowerCase()] = val;
+            } else {
+              acc.attrs[camelize(key)] = val;
+            }
+        }
+        return acc;
+      }, {
+        attrs: {}
+      });
+      var _extraProps$style = extraProps.style, existingStyle = _extraProps$style === void 0 ? {} : _extraProps$style, remaining = _objectWithoutProperties$1(extraProps, _excluded$7);
+      mixins.attrs["style"] = _objectSpread2$1(_objectSpread2$1({}, mixins.attrs["style"]), existingStyle);
+      return createElement2.apply(void 0, [element.tag, _objectSpread2$1(_objectSpread2$1({}, mixins.attrs), remaining)].concat(_toConsumableArray$1(children)));
+    }
+    var PRODUCTION = false;
+    try {
+      PRODUCTION = true;
+    } catch (e) {
+    }
+    function log() {
+      if (!PRODUCTION && console && typeof console.error === "function") {
+        var _console;
+        (_console = console).error.apply(_console, arguments);
+      }
+    }
+    function normalizeIconArgs(icon2) {
+      if (icon2 && _typeof$1(icon2) === "object" && icon2.prefix && icon2.iconName && icon2.icon) {
+        return icon2;
+      }
+      if (parse$1$1.icon) {
+        return parse$1$1.icon(icon2);
+      }
+      if (icon2 === null) {
+        return null;
+      }
+      if (icon2 && _typeof$1(icon2) === "object" && icon2.prefix && icon2.iconName) {
+        return icon2;
+      }
+      if (Array.isArray(icon2) && icon2.length === 2) {
+        return {
+          prefix: icon2[0],
+          iconName: icon2[1]
+        };
+      }
+      if (typeof icon2 === "string") {
+        return {
+          prefix: "fas",
+          iconName: icon2
+        };
+      }
+    }
+    function objectWithKey(key, value) {
+      return Array.isArray(value) && value.length > 0 || !Array.isArray(value) && value ? _defineProperty$1({}, key, value) : {};
+    }
+    var defaultProps$1 = {
+      border: false,
+      className: "",
+      mask: null,
+      maskId: null,
+      // the fixedWidth property has been deprecated as of version 7
+      fixedWidth: false,
+      inverse: false,
+      flip: false,
+      icon: null,
+      listItem: false,
+      pull: null,
+      pulse: false,
+      rotation: null,
+      rotateBy: false,
+      size: null,
+      spin: false,
+      spinPulse: false,
+      spinReverse: false,
+      beat: false,
+      fade: false,
+      beatFade: false,
+      bounce: false,
+      shake: false,
+      symbol: false,
+      title: "",
+      titleId: null,
+      transform: null,
+      swapOpacity: false,
+      widthAuto: false
+    };
+    var FontAwesomeIcon = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
+      var allProps = _objectSpread2$1(_objectSpread2$1({}, defaultProps$1), props);
+      var iconArgs = allProps.icon, maskArgs = allProps.mask, symbol = allProps.symbol, className = allProps.className, title = allProps.title, titleId = allProps.titleId, maskId = allProps.maskId;
+      var iconLookup = normalizeIconArgs(iconArgs);
+      var classes = objectWithKey("classes", [].concat(_toConsumableArray$1(classList(allProps)), _toConsumableArray$1((className || "").split(" "))));
+      var transform2 = objectWithKey("transform", typeof allProps.transform === "string" ? parse$1$1.transform(allProps.transform) : allProps.transform);
+      var mask = objectWithKey("mask", normalizeIconArgs(maskArgs));
+      var renderedIcon = icon(iconLookup, _objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1({}, classes), transform2), mask), {}, {
+        symbol,
+        title,
+        titleId,
+        maskId
+      }));
+      if (!renderedIcon) {
+        log("Could not find icon", iconLookup);
+        return null;
+      }
+      var abstract = renderedIcon.abstract;
+      var extraProps = {
+        ref
+      };
+      Object.keys(allProps).forEach(function(key) {
+        if (!defaultProps$1.hasOwnProperty(key)) {
+          extraProps[key] = allProps[key];
+        }
+      });
+      return convertCurry(abstract[0], extraProps);
+    });
+    FontAwesomeIcon.displayName = "FontAwesomeIcon";
+    FontAwesomeIcon.propTypes = {
+      beat: PropTypes.bool,
+      border: PropTypes.bool,
+      beatFade: PropTypes.bool,
+      bounce: PropTypes.bool,
+      className: PropTypes.string,
+      fade: PropTypes.bool,
+      flash: PropTypes.bool,
+      mask: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.string]),
+      maskId: PropTypes.string,
+      // the fixedWidth property has been deprecated as of version 7
+      fixedWidth: PropTypes.bool,
+      inverse: PropTypes.bool,
+      flip: PropTypes.oneOf([true, false, "horizontal", "vertical", "both"]),
+      icon: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.string]),
+      listItem: PropTypes.bool,
+      pull: PropTypes.oneOf(["right", "left"]),
+      pulse: PropTypes.bool,
+      rotation: PropTypes.oneOf([0, 90, 180, 270]),
+      rotateBy: PropTypes.bool,
+      shake: PropTypes.bool,
+      size: PropTypes.oneOf(["2xs", "xs", "sm", "lg", "xl", "2xl", "1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x", "9x", "10x"]),
+      spin: PropTypes.bool,
+      spinPulse: PropTypes.bool,
+      spinReverse: PropTypes.bool,
+      symbol: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+      title: PropTypes.string,
+      titleId: PropTypes.string,
+      transform: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+      swapOpacity: PropTypes.bool,
+      widthAuto: PropTypes.bool
+    };
+    var convertCurry = convert.bind(null, React$1.createElement);
     let components$1 = {};
     const beforeFns = {};
     const insteadFns = {};
@@ -159511,6 +158584,91 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       var _a2;
       return jsxRuntimeExports.jsx(FontAwesomeIcon, { ...props, className: `fa-icon ${(_a2 = props.className) !== null && _a2 !== void 0 ? _a2 : ""}` });
     });
+    /*!
+     * Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com
+     * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+     * Copyright 2024 Fonticons, Inc.
+     */
+    const faRepeat = {
+      prefix: "fas",
+      iconName: "repeat",
+      icon: [512, 512, [128257], "f363", "M0 224c0 17.7 14.3 32 32 32s32-14.3 32-32c0-53 43-96 96-96l160 0 0 32c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-9.2-9.2-22.9-11.9-34.9-6.9S320 19.1 320 32l0 32L160 64C71.6 64 0 135.6 0 224zm512 64c0-17.7-14.3-32-32-32s-32 14.3-32 32c0 53-43 96-96 96l-160 0 0-32c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6l0-32 160 0c88.4 0 160-71.6 160-160z"]
+    };
+    const faCirclePlay = {
+      prefix: "fas",
+      iconName: "circle-play",
+      icon: [512, 512, [61469, "play-circle"], "f144", "M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9l0 176c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z"]
+    };
+    const faCircle = {
+      prefix: "fas",
+      iconName: "circle",
+      icon: [512, 512, [128308, 128309, 128992, 128993, 128994, 128995, 128996, 9679, 9898, 9899, 11044, 61708, 61915], "f111", "M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"]
+    };
+    const faVolumeHigh = {
+      prefix: "fas",
+      iconName: "volume-high",
+      icon: [640, 512, [128266, "volume-up"], "f028", "M533.6 32.5C598.5 85.2 640 165.8 640 256s-41.5 170.7-106.4 223.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C557.5 398.2 592 331.2 592 256s-34.5-142.2-88.7-186.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM473.1 107c43.2 35.2 70.9 88.9 70.9 149s-27.7 113.8-70.9 149c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C475.3 341.3 496 301.1 496 256s-20.7-85.3-53.2-111.8c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zm-60.5 74.5C434.1 199.1 448 225.9 448 256s-13.9 56.9-35.4 74.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C393.1 284.4 400 271 400 256s-6.9-28.4-17.7-37.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM301.1 34.8C312.6 40 320 51.4 320 64l0 384c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352 64 352c-35.3 0-64-28.7-64-64l0-64c0-35.3 28.7-64 64-64l67.8 0L266.7 40.1c9.4-8.4 22.9-10.4 34.4-5.3z"]
+    };
+    const faCircleInfo = {
+      prefix: "fas",
+      iconName: "circle-info",
+      icon: [512, 512, ["info-circle"], "f05a", "M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336l24 0 0-64-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l48 0c13.3 0 24 10.7 24 24l0 88 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"]
+    };
+    const faGear = {
+      prefix: "fas",
+      iconName: "gear",
+      icon: [512, 512, [9881, "cog"], "f013", "M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z"]
+    };
+    const faEllipsisVertical = {
+      prefix: "fas",
+      iconName: "ellipsis-vertical",
+      icon: [128, 512, ["ellipsis-v"], "f142", "M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"]
+    };
+    const faClosedCaptioning = {
+      prefix: "fas",
+      iconName: "closed-captioning",
+      icon: [576, 512, [], "f20a", "M0 96C0 60.7 28.7 32 64 32l448 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM200 208c14.2 0 27 6.1 35.8 16c8.8 9.9 24 10.7 33.9 1.9s10.7-24 1.9-33.9c-17.5-19.6-43.1-32-71.5-32c-53 0-96 43-96 96s43 96 96 96c28.4 0 54-12.4 71.5-32c8.8-9.9 8-25-1.9-33.9s-25-8-33.9 1.9c-8.8 9.9-21.6 16-35.8 16c-26.5 0-48-21.5-48-48s21.5-48 48-48zm144 48c0-26.5 21.5-48 48-48c14.2 0 27 6.1 35.8 16c8.8 9.9 24 10.7 33.9 1.9s10.7-24 1.9-33.9c-17.5-19.6-43.1-32-71.5-32c-53 0-96 43-96 96s43 96 96 96c28.4 0 54-12.4 71.5-32c8.8-9.9 8-25-1.9-33.9s-25-8-33.9 1.9c-8.8 9.9-21.6 16-35.8 16c-26.5 0-48-21.5-48-48z"]
+    };
+    const faLocationDot = {
+      prefix: "fas",
+      iconName: "location-dot",
+      icon: [384, 512, ["map-marker-alt"], "f3c5", "M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"]
+    };
+    const faPlay = {
+      prefix: "fas",
+      iconName: "play",
+      icon: [384, 512, [9654], "f04b", "M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"]
+    };
+    const faExpand = {
+      prefix: "fas",
+      iconName: "expand",
+      icon: [448, 512, [], "f065", "M32 32C14.3 32 0 46.3 0 64l0 96c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64 64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7 14.3 32 32 32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0 0-64zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0 0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96c0-17.7-14.3-32-32-32l-96 0zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l96 0c17.7 0 32-14.3 32-32l0-96z"]
+    };
+    const faXmark = {
+      prefix: "fas",
+      iconName: "xmark",
+      icon: [384, 512, [128473, 10005, 10006, 10060, 215, "close", "multiply", "remove", "times"], "f00d", "M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"]
+    };
+    const faChevronLeft = {
+      prefix: "fas",
+      iconName: "chevron-left",
+      icon: [320, 512, [9001], "f053", "M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"]
+    };
+    const faChevronRight = {
+      prefix: "fas",
+      iconName: "chevron-right",
+      icon: [320, 512, [9002], "f054", "M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"]
+    };
+    const faSpinner = {
+      prefix: "fas",
+      iconName: "spinner",
+      icon: [512, 512, [], "f110", "M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z"]
+    };
+    const faClockRotateLeft = {
+      prefix: "fas",
+      iconName: "clock-rotate-left",
+      icon: [512, 512, ["history"], "f1da", "M75 75L41 41C25.9 25.9 0 36.6 0 57.9L0 168c0 13.3 10.7 24 24 24l110.1 0c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24l0 104c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65 0-94.1c0-13.3-10.7-24-24-24z"]
+    };
     function getSpriteInfo(vttPath, response) {
       const sprites = [];
       const parser2 = new browserIndexExports.WebVTT.Parser(window, browserIndexExports.WebVTT.StringDecoder());
@@ -159758,6 +158916,12 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       } }), jsxRuntimeExports.jsx("div", { ref: indicatorEl, id: "scrubber-position-indicator" }), jsxRuntimeExports.jsx("div", { id: "scrubber-current-position" }), jsxRuntimeExports.jsx("div", { className: "scrubber-viewport", children: jsxRuntimeExports.jsxs("div", { ref: sliderEl, className: "scrubber-slider", children: [jsxRuntimeExports.jsx("div", { className: "scrubber-tags", children: renderTags() }), renderSprites()] }) })] }), jsxRuntimeExports.jsx(Button, { className: "scrubber-button", id: "scrubber-forward", onClick: () => goForward(), children: jsxRuntimeExports.jsx(Icon, { className: "fa-fw", icon: faChevronRight }) })] });
     };
     const ConfigurationContext = React$1.createContext({});
+    const ConfigurationProvider = ({ loading: loading2, configuration, children }) => {
+      return jsxRuntimeExports.jsx(ConfigurationContext.Provider, { value: {
+        configuration,
+        loading: loading2
+      }, children });
+    };
     var lib = {};
     var Handy$1 = {};
     var types = {};
@@ -166710,6 +165874,66 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         }
       });
     }
+    function sortPerformers(performers) {
+      const ret = performers.slice();
+      ret.sort((a2, b) => {
+        if (a2.gender === b.gender) {
+          return (a2.name ?? "").localeCompare(b.name ?? "");
+        }
+        const aIndex = a2.gender ? GENDERS.indexOf(a2.gender) : GENDERS.length;
+        const bIndex = b.gender ? GENDERS.indexOf(b.gender) : GENDERS.length;
+        return aIndex - bIndex;
+      });
+      return ret;
+    }
+    const GENDERS = [
+      "FEMALE",
+      "TRANSGENDER_FEMALE",
+      "MALE",
+      "TRANSGENDER_MALE",
+      "INTERSEX",
+      "NON_BINARY"
+    ];
+    function clamp(min2, num, max2) {
+      return Math.min(Math.max(num, min2), max2);
+    }
+    function updateReadOnlyProp(obj, prop, value) {
+      Object.defineProperty(obj, prop, { value, writable: true, enumerable: isEnumerableIncludingInherited(obj, prop) });
+    }
+    function updateReadOnlyProps(obj, props) {
+      for (const [prop, value] of Object.entries(props)) {
+        updateReadOnlyProp(obj, prop, value);
+      }
+    }
+    function isEnumerableIncludingInherited(obj, prop) {
+      let current = obj;
+      while (current) {
+        const desc = Object.getOwnPropertyDescriptor(current, prop);
+        if (desc) return !!desc.enumerable;
+        current = Object.getPrototypeOf(current);
+      }
+      return false;
+    }
+    function getSceneIdForVideoJsPlayer(videoElm) {
+      let node2 = videoElm;
+      while (node2 !== null) {
+        if (node2 instanceof HTMLElement && "sceneId" in node2.dataset && node2.dataset.sceneId) {
+          return node2.dataset.sceneId;
+        }
+        node2 = node2.parentElement;
+      }
+      throw new Error("Could not find sceneId for Video.js player");
+    }
+    function getPlayerIdForVideoJsPlayer(videoElm) {
+      let node2 = videoElm;
+      while (node2 !== null) {
+        if (node2 instanceof HTMLElement && "playerId" in node2.dataset && node2.dataset.playerId) {
+          return node2.dataset.playerId;
+        }
+        node2 = node2.parentElement;
+      }
+      throw new Error("Could not find playerId for Video.js player");
+    }
     const __vite_import_meta_env__$2 = {};
     const createStoreImpl = (createState) => {
       let state;
@@ -167723,74 +166947,6 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       );
     });
     ScenePlayer.displayName = "ScenePlayer";
-    const PLUGIN_NAMESPACE = "stash-tv";
-    const useStashConfigStore = create((set2, get2) => ({
-      general: {
-        stashDefaultScenesFilter: void 0,
-        availableSavedSceneFilters: [],
-        availableSavedMarkerFilters: []
-      },
-      tv: {
-        defaultFilterId: void 0,
-        hideNavButton: false,
-        subtitleLanguage: void 0
-      },
-      loading: true,
-      loadStashConfig: async (apolloClient) => {
-        const { general, tv } = get2();
-        const config2 = await fetchStashConfigFromStash(apolloClient);
-        set2({
-          general: {
-            ...general,
-            stashDefaultScenesFilter: config2.configuration.ui.defaultFilters?.scenes,
-            availableSavedSceneFilters: config2.availableSavedSceneFilters,
-            availableSavedMarkerFilters: config2.availableSavedMarkerFilters
-          },
-          tv: {
-            ...tv,
-            ...config2.configuration.plugins?.[PLUGIN_NAMESPACE] || {}
-          },
-          loading: false
-        });
-      },
-      /** 
-       * Updates the Stash TV config stored in Stash.
-       * 
-       * Providing a function will allow you to specify how the new config is merged with the existing config.
-       * Otherwise if an object is provided all top-level properties will be merged.
-       */
-      updateStashTvConfig: async (apolloClient, config2) => {
-        if (!apolloClient) {
-          throw new Error("Apollo Client is not initialized");
-        }
-        const currentConfig = get2().tv;
-        if (typeof config2 === "function") {
-          config2 = config2(currentConfig);
-        } else {
-          config2 = {
-            ...currentConfig,
-            ...config2
-          };
-        }
-        set2({ tv: config2 });
-        await updateStashTvConfigInStash(apolloClient, config2);
-      }
-    }));
-    async function fetchStashConfigFromStash(apolloClient) {
-      const { data: data2 } = await apolloClient.query({
-        query: GetStashConfigForTvDocument
-      });
-      return data2;
-    }
-    async function updateStashTvConfigInStash(apolloClient, config2) {
-      await apolloClient.mutate({
-        mutation: ConfigurePluginDocument,
-        variables: {
-          plugin_id: PLUGIN_NAMESPACE,
-          input: config2
-        }
-      });
-    }
     function CrtEffect(props) {
       const enabled = props.enabled ?? true;
       const [tvState, setTvState] = reactExports.useState("off");
@@ -167840,145 +166996,6 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }, []);
       return /* @__PURE__ */ React$1.createElement("div", { className: cx("CrtEffect", `tv-${tvState}`, { "disabled": !enabled && tvState !== "turning-off" }), ref: rootElmRef }, /* @__PURE__ */ React$1.createElement("canvas", { id: "canvas", className: "picture" }), /* @__PURE__ */ React$1.createElement("div", { className: "text" }, Array.from({ length: 6 }, (_, i2) => /* @__PURE__ */ React$1.createElement("span", { key: i2 }, "AV-1"))), /* @__PURE__ */ React$1.createElement("div", { className: "content" }, props.children), /* @__PURE__ */ React$1.createElement("div", { className: "background" }));
     }
-    const SvgVolumeMuteOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 576 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      strokeMiterlimit: 1.5
-    }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { id: "Speaker", style: {
-      fill: "currentColor"
-    }, d: "M301.1,34.8C312.6,40 320,51.4 320,64L320,448C320,460.6 312.6,472 301.1,477.2C289.6,482.4 276.1,480.3 266.7,471.9L131.8,352L64,352C28.7,352 0,323.3 0,288L0,224C0,188.7 28.7,160 64,160L131.8,160L266.7,40.1C276.1,31.7 289.6,29.7 301.1,34.8ZM287,66.208L287,445.792L153.723,327.334C147.682,321.966 139.882,319 131.8,319L64,319C46.902,319 33,305.098 33,288L33,224C33,206.902 46.902,193 64,193L131.8,193C139.882,193 147.682,190.034 153.723,184.666L287,66.208Z" }), /* @__PURE__ */ reactExports.createElement("g", { id: "Cross", transform: "matrix(1,0,0,1,-4,1.5)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M401,174L563,335", style: {
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: 33
-    } }), /* @__PURE__ */ reactExports.createElement("path", { d: "M563,174L401,335", style: {
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: 33
-    } })));
-    const SvgExpandOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 448 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      strokeMiterlimit: 1.5
-    }, ...props }, /* @__PURE__ */ reactExports.createElement("g", { id: "Layer4" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M144,48L16.078,48L16.078,176.461", style: {
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: 32
-    } }), /* @__PURE__ */ reactExports.createElement("path", { d: "M304,48L431.922,48L431.617,176.461", style: {
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: 32
-    } }), /* @__PURE__ */ reactExports.createElement("path", { d: "M432.078,336L432.078,464.304L304,464.302", style: {
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: 32
-    } }), /* @__PURE__ */ reactExports.createElement("path", { d: "M16.078,336L16.316,464.302L144.081,463.805", style: {
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: 32
-    } })));
-    const SvgContain = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      strokeMiterlimit: 1.5
-    }, ...props }, /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(1,0,0,0.933333,32,17.0667)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M48,16L48,496", style: {
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: 64
-    } })), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(0.909091,0,0,0.947368,30.5455,21.0526)" }, /* @__PURE__ */ reactExports.createElement("path", { style: {
-      fill: "currentColor",
-      stroke: "none"
-    }, d: "M336,138.222C336,114.919 316.284,96 292,96L204,96C179.716,96 160,114.919 160,138.222L160,357.778C160,381.081 179.716,400 204,400L292,400C316.284,400 336,381.081 336,357.778L336,138.222Z" })), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(1,0,0,0.933333,-32,17.0667)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M464,16L464,496", style: {
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: 64
-    } })));
-    const SvgCoverOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      strokeMiterlimit: 1.5
-    }, ...props }, /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(1,0,0,1,64,-7.10543e-15)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M48,16L48,496", style: {
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: 32
-    } })), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(1.15385,0,0,1,-39.3846,0)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M464,63.922C464,37.473 445.39,16 422.468,16L89.532,16C66.61,16 48,37.473 48,63.922L48,448.078C48,474.527 66.61,496 89.532,496L422.468,496C445.39,496 464,474.527 464,448.078L464,63.922Z", style: {
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: "29.64px"
-    } })), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(1,0,0,1,-64,-1.42109e-14)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M464,16L464,496", style: {
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: 32
-    } })));
-    const SvgPortraitRotationOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      strokeMiterlimit: 1.5
-    }, ...props }, /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(-1,1.22465e-16,-1.22465e-16,-1,512,511.978)" }, /* @__PURE__ */ reactExports.createElement("path", { style: {
-      fill: "currentColor"
-    }, d: "M410.077,112C348.846,56.436 290.187,47.978 256,47.978C229.593,47.978 103.954,54.87 32,183.783C27.761,191.378 14.26,194.62 6,186C-2.132,177.513 4.433,167.298 8,161.183C64.601,64.151 145.36,15.501 256,15.978C314.573,16.231 368.584,36.768 432.937,89.552C452.606,72.048 466.105,60.036 466.105,60.036C477.535,49.865 494.967,50.952 505.072,62.307C509.592,67.387 512.045,73.905 511.999,80.773L511.441,183.94C511.46,188.475 509.436,192.819 506.074,195.81C502.713,198.802 490.399,202.263 483.485,194.494C483.485,194.494 443.887,148.843 410.077,112ZM479.982,90.523L479.687,142.089L454.209,113.457L479.982,90.523Z" })), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(-0.909091,-1.11332e-16,1.16019e-16,-0.947368,481.455,490.947)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M336,138.222C336,114.919 316.284,96 292,96L204,96C179.716,96 160,114.919 160,138.222L160,357.778C160,381.081 179.716,400 204,400L292,400C316.284,400 336,381.081 336,357.778L336,138.222Z", style: {
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: "34.47px"
-    } })), /* @__PURE__ */ reactExports.createElement("path", { style: {
-      fill: "currentColor"
-    }, d: "M410.077,112C348.846,56.436 290.187,48 256,48C229.593,48 103.954,54.87 32,183.783C27.761,191.378 14.26,194.62 6,186C-2.132,177.513 4.433,167.298 8,161.183C64.601,64.151 145.36,15.522 256,16C314.573,16.253 368.584,36.768 432.937,89.552C452.606,72.048 466.105,60.036 466.105,60.036C477.535,49.865 494.967,50.952 505.072,62.307C509.592,67.387 512.045,73.905 511.999,80.773L511.441,183.94C511.46,188.475 509.436,192.819 506.074,195.81C502.713,198.802 490.399,202.263 483.485,194.494C483.485,194.494 443.887,148.843 410.077,112ZM479.982,90.523L479.687,142.089L454.209,113.457L479.982,90.523Z" }));
-    const SvgLandscapeRotation = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      strokeMiterlimit: 1.5
-    }, ...props }, /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(5.56658e-17,0.909091,-0.947368,5.80096e-17,490.947,30.5453)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M336,138.222C336,114.919 316.284,96 292,96L204,96C179.716,96 160,114.919 160,138.222L160,357.778C160,381.081 179.716,400 204,400L292,400C316.284,400 336,381.081 336,357.778L336,138.222Z", style: {
-      fill: "currentColor",
-      stroke: "none",
-      strokeWidth: "34.47px"
-    } })), /* @__PURE__ */ reactExports.createElement("path", { style: {
-      fill: "currentColor"
-    }, d: "M405.077,128C343.846,72.436 290.187,64 256,64C229.593,64 127.954,67.087 56,196C47.153,211.429 28.255,214.044 16,204C-3.058,188.798 4.433,167.298 8,161.183C64.601,64.151 145.36,-0.478 256,0C314.573,0.253 379.319,27.216 443.672,80C463.341,62.496 466.105,60.036 466.105,60.036C477.535,49.865 494.967,50.952 505.072,62.307C509.592,67.387 512.045,73.905 511.999,80.773L511.441,183.94C511.46,188.475 505.39,201.538 501.074,202.81C486.713,207.041 470.914,199.978 464,192.209C464,192.209 438.887,164.843 405.077,128Z" }), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(-1,1.22465e-16,-1.22465e-16,-1,513.757,511.997)" }, /* @__PURE__ */ reactExports.createElement("path", { style: {
-      fill: "currentColor"
-    }, d: "M405.077,128C343.846,72.436 290.187,64 256,64C229.593,64 127.954,67.087 56,196C47.153,211.429 28.255,214.044 16,204C-3.058,188.798 4.433,167.298 8,161.183C64.601,64.151 145.36,-0.478 256,0C314.573,0.253 379.319,27.216 443.672,80C463.341,62.496 466.105,60.036 466.105,60.036C477.535,49.865 494.967,50.952 505.072,62.307C509.592,67.387 512.045,73.905 511.999,80.773L511.441,183.94C511.46,188.475 505.39,201.538 501.074,202.81C486.713,207.041 470.914,199.978 464,192.209C464,192.209 438.887,164.843 405.077,128Z" })));
-    const SvgLoopOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      strokeLinejoin: "round",
-      strokeMiterlimit: 2
-    }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M15.2,272C6.4,271.5 -0.4,264 0,255.2L0.4,247.2C5.1,153.5 82.4,80 176.2,80L320,80L320,35.6C320,20.3 332.3,8     347.6,8C354.4,8 361,10.5 366,15.1L442.7,84.1C446.1,87.1 448,91.5 448,96C448,100.5 446.1,104.9     442.7,107.9L366,176.9C360.9,181.5 354.4,184 347.6,184C332.4,184 320,171.7 320,156.4L320,112L176.2,112C99.5,112     36.2,172.2 32.4,248.8L32,256.8C31.6,265.6 24,272.4     15.2,272ZM352,146.5L408.1,96L352,45.5L352,146.5ZM496.8,240C505.6,240.4 512.4,248 512,256.8L511.6,264.8C506.9,358.5     429.6,432 335.8,432L192,432L192,476.4C192,491.6 179.7,504 164.4,504C157.6,504 151,501.5     146,496.9L69.3,427.9C65.9,424.9 64,420.5 64,416C64,411.5 65.9,407.1 69.3,404.1L146,335.1C151.1,330.5 157.6,328     164.4,328C179.6,328 192,340.3 192,355.6L192,400L335.8,400C412.5,400 475.8,339.8 479.6,263.2L480,255.2C480.4,246.4     488,239.6 496.8,240ZM160,365.5L103.9,416L160,466.5L160,365.5Z", style: {
-      fillRule: "nonzero"
-    }, fill: "currentColor" }));
-    const SvgInfoOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      strokeLinejoin: "round",
-      strokeMiterlimit: 2
-    }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M256,32C378.883,32 480,133.117 480,256C480,378.883 378.883,480 256,480C133.117,480 32,378.883     32,256C32,133.117 133.117,32 256,32ZM256,512C396.437,512 512,396.437 512,256C512,115.563 396.437,0 256,0C115.563,0     -0,115.563 0,256C0,396.437 115.563,512 256,512ZM208,352C199.2,352 192,359.2 192,368C192,376.8 199.2,384     208,384L304,384C312.8,384 320,376.8 320,368C320,359.2 312.8,352 304,352L272,352L272,240C272,231.2 264.8,224     256,224L216,224C207.2,224 200,231.2 200,240C200,248.8 207.2,256 216,256L240,256L240,352L208,352ZM256,184C269.166,184     280,173.166 280,160C280,146.834 269.166,136 256,136C242.834,136 232,146.834 232,160C232,173.166 242.834,184     256,184Z", style: {
-      fillRule: "nonzero"
-    }, fill: "currentColor" }));
-    const SvgCogOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      strokeLinejoin: "round",
-      strokeMiterlimit: 2
-    }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M223.3,37.8C223.7,36.3 224.6,35 225.7,34C235.6,32.7 245.7,32 256,32C266.3,32 276.4,32.7 286.3,34C287.4,35     288.2,36.3 288.7,37.8L302.4,85.5C305.9,97.6 314.6,106.6 324.9,111.6C332.5,115.2 339.7,119.4 346.6,124.1C356,130.6     368.3,133.6 380.5,130.6L428.7,118.6C430.2,118.2 431.7,118.3 433.1,118.8C438.5,125.7 443.5,133     448,140.6L452.3,148C456.5,155.5 460.2,163.3 463.5,171.3C463.2,172.8 462.5,174.2 461.4,175.3L426.8,211C418.1,220     414.6,232.1 415.5,243.5C415.8,247.6 416,251.8 416,256C416,260.2 415.8,264.4 415.5,268.5C414.6,279.9 418.1,292     426.8,301L461.3,336.7C462.4,337.8 463.1,339.2 463.4,340.7C460.1,348.7 456.4,356.5 452.2,364.1L448,371.4C443.4,379     438.4,386.2 433.1,393.2C431.7,393.7 430.2,393.7 428.7,393.4L380.5,381.4C368.3,378.4 356.1,381.4     346.6,387.9C339.7,392.6 332.5,396.8 324.9,400.4C314.6,405.3 305.8,414.4 302.4,426.5L288.7,474.2C288.3,475.7     287.4,477 286.3,478C276.4,479.3 266.3,480 256,480C245.7,480 235.6,479.3 225.7,478C224.6,477 223.8,475.7     223.3,474.2L209.6,426.5C206.1,414.4 197.4,405.4 187.1,400.4C179.5,396.8 172.3,392.6 165.4,387.9C156,381.4     143.7,378.4 131.5,381.4L83.3,393.4C81.8,393.8 80.3,393.7 78.9,393.2C73.5,386.2 68.5,379     63.9,371.4L59.7,364.1C55.5,356.6 51.8,348.8 48.5,340.7C48.8,339.2 49.5,337.8 50.6,336.7L85.2,301C93.9,292 97.4,279.9     96.5,268.5C96.2,264.4 96,260.2 96,256C96,251.8 96.2,247.6 96.5,243.5C97.4,232.1 93.9,220     85.2,211L50.7,175.2C49.6,174.1 48.9,172.7 48.6,171.2C51.9,163.2 55.6,155.4 59.8,147.8L64,140.5C68.6,132.9 73.6,125.7     79,118.7C80.4,118.2 81.9,118.2 83.4,118.5L131.6,130.5C143.8,133.5 156,130.5 165.5,124C172.4,119.3 179.6,115.1     187.2,111.5C197.5,106.6 206.3,97.5 209.7,85.4L223.4,37.7L223.3,37.8ZM256,0C243,0 230.1,1 217.6,2.9C215.9,3.2     214.2,3.7 212.6,4.5C203.1,9.4 195.7,18.1 192.6,29L178.9,76.7C178.3,78.9 176.4,81.2 173.3,82.7C164.2,87 155.5,92.1     147.3,97.7C144.5,99.6 141.5,100.1 139.3,99.5L91.1,87.5C80.2,84.8 69,86.9 60,92.6C58.5,93.5 57.2,94.7     56.1,96.1C49,105 42.4,114.3 36.5,124.1L36.4,124.4L32,132L31.9,132.3C26.5,142.1 21.7,152.2 17.6,162.7C17,164.3     16.6,166 16.5,167.7C16,178.5 19.8,189.3 27.7,197.5L62.2,233.2C63.8,234.9 64.9,237.6 64.6,241C64.2,246 64,251     64,256C64,261 64.2,266.1 64.6,271C64.9,274.4 63.8,277.2 62.2,278.8L27.7,314.6C19.8,322.8 16,333.6     16.5,344.4C16.6,346.1 17,347.8 17.6,349.4C21.7,359.9 26.5,370 31.9,379.8L32,380.1L36.4,387.7L36.5,388C42.4,397.8     48.9,407.2 56.1,416.1C57.2,417.5 58.5,418.7 60,419.6C69,425.3 80.2,427.4 91.1,424.7L139.3,412.7C141.5,412.1     144.5,412.6 147.3,414.5C155.5,420.2 164.2,425.2 173.3,429.5C176.4,431 178.2,433.3 178.9,435.5L192.6,483C195.7,493.8     203.1,502.5 212.6,507.5C214.2,508.3 215.8,508.9 217.6,509.1C230.1,511 243,512 256,512C269,512 281.9,511     294.4,509.1C296.1,508.8 297.8,508.3 299.4,507.5C308.9,502.6 316.3,493.9 319.4,483L333.1,435.3C333.7,433.1     335.6,430.8 338.7,429.3C347.8,425 356.5,419.9 364.7,414.3C367.5,412.4 370.5,411.9     372.7,412.5L420.9,424.5C431.8,427.2 443,425.2 452,419.4C453.5,418.5 454.8,417.3 455.9,415.9C463,407 469.5,397.7     475.4,387.9L475.6,387.6L480,380L480.1,379.7C485.5,370 490.3,359.8 494.4,349.3C495,347.7 495.4,346     495.5,344.3C496,333.5 492.2,322.7 484.3,314.5L449.8,278.8C448.2,277.1 447.1,274.4 447.4,271C447.8,266 448,261     448,256C448,251 447.8,245.9 447.4,241C447.1,237.6 448.2,234.8 449.8,233.2L484.3,197.5C492.2,189.3 496,178.5     495.5,167.7C495.4,166 495,164.3 494.4,162.7C490.3,152.2 485.5,142.1     480.1,132.3L480,132L475.6,124.4L475.4,124.1C469.5,114.3 463,104.9 455.9,96.1C454.8,94.7 453.5,93.5 452,92.6C443,86.9     431.8,84.8 420.9,87.5L372.7,99.5C370.5,100.1 367.5,99.6 364.7,97.7C356.5,92 347.8,87 338.7,82.7C335.6,81.2     333.8,78.9 333.1,76.7L319.4,29C316.3,18.2 308.9,9.5 299.4,4.5C297.8,3.7 296.2,3.1 294.4,2.9C281.9,1 269,0     256,0ZM200,256C200,225.279 225.279,200 256,200C286.721,200 312,225.279 312,256C312,286.721 286.721,312     256,312C225.279,312 200,286.721 200,256ZM344,256C344,207.725 304.275,168 256,168C207.725,168 168,207.725     168,256C168,304.275 207.725,344 256,344C304.275,344 344,304.275 344,256Z", style: {
-      fillRule: "nonzero"
-    }, fill: "currentColor" }));
-    const SvgVerticalEllipsisOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 192 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      strokeLinejoin: "round",
-      strokeMiterlimit: 2
-    }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M96,64C78.445,64 64,78.445 64,96C64,113.555 78.445,128 96,128C113.555,128 128,113.555 128,96C128,78.445     113.555,64 96,64ZM96,160C60.891,160 32,131.109 32,96C32,60.891 60.891,32 96,32C131.109,32 160,60.891     160,96C160,131.109 131.109,160 96,160ZM128,256C128,238.445 113.555,224 96,224C78.445,224 64,238.445     64,256C64,273.555 78.445,288 96,288C113.555,288 128,273.555 128,256ZM32,256C32,220.891 60.891,192 96,192C131.109,192     160,220.891 160,256C160,291.109 131.109,320 96,320C60.891,320 32,291.109 32,256ZM128,416C128,398.445 113.555,384     96,384C78.445,384 64,398.445 64,416C64,433.555 78.445,448 96,448C113.555,448 128,433.555 128,416ZM32,416C32,380.891     60.891,352 96,352C131.109,352 160,380.891 160,416C160,451.109 131.109,480 96,480C60.891,480 32,451.109 32,416Z", style: {
-      fillRule: "nonzero"
-    }, fill: "currentColor" }));
     var object_hash = { exports: {} };
     var hasRequiredObject_hash;
     function requireObject_hash() {
@@ -168806,9 +167823,1007 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         });
       });
     };
-    videojs.registerPlugin("styledBigPlayButton", styledBigPlayButton);
-    const noAnimateDurationThreshold = 30;
-    const VideoItem = (props) => {
+    const SvgVolumeMuteOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 576 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      strokeMiterlimit: 1.5
+    }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { id: "Speaker", style: {
+      fill: "currentColor"
+    }, d: "M301.1,34.8C312.6,40 320,51.4 320,64L320,448C320,460.6 312.6,472 301.1,477.2C289.6,482.4 276.1,480.3 266.7,471.9L131.8,352L64,352C28.7,352 0,323.3 0,288L0,224C0,188.7 28.7,160 64,160L131.8,160L266.7,40.1C276.1,31.7 289.6,29.7 301.1,34.8ZM287,66.208L287,445.792L153.723,327.334C147.682,321.966 139.882,319 131.8,319L64,319C46.902,319 33,305.098 33,288L33,224C33,206.902 46.902,193 64,193L131.8,193C139.882,193 147.682,190.034 153.723,184.666L287,66.208Z" }), /* @__PURE__ */ reactExports.createElement("g", { id: "Cross", transform: "matrix(1,0,0,1,-4,1.5)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M401,174L563,335", style: {
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: 33
+    } }), /* @__PURE__ */ reactExports.createElement("path", { d: "M563,174L401,335", style: {
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: 33
+    } })));
+    const SvgExpandOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 448 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      strokeMiterlimit: 1.5
+    }, ...props }, /* @__PURE__ */ reactExports.createElement("g", { id: "Layer4" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M144,48L16.078,48L16.078,176.461", style: {
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: 32
+    } }), /* @__PURE__ */ reactExports.createElement("path", { d: "M304,48L431.922,48L431.617,176.461", style: {
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: 32
+    } }), /* @__PURE__ */ reactExports.createElement("path", { d: "M432.078,336L432.078,464.304L304,464.302", style: {
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: 32
+    } }), /* @__PURE__ */ reactExports.createElement("path", { d: "M16.078,336L16.316,464.302L144.081,463.805", style: {
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: 32
+    } })));
+    const SvgContain = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      strokeMiterlimit: 1.5
+    }, ...props }, /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(1,0,0,0.933333,32,17.0667)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M48,16L48,496", style: {
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: 64
+    } })), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(0.909091,0,0,0.947368,30.5455,21.0526)" }, /* @__PURE__ */ reactExports.createElement("path", { style: {
+      fill: "currentColor",
+      stroke: "none"
+    }, d: "M336,138.222C336,114.919 316.284,96 292,96L204,96C179.716,96 160,114.919 160,138.222L160,357.778C160,381.081 179.716,400 204,400L292,400C316.284,400 336,381.081 336,357.778L336,138.222Z" })), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(1,0,0,0.933333,-32,17.0667)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M464,16L464,496", style: {
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: 64
+    } })));
+    const SvgCoverOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      strokeMiterlimit: 1.5
+    }, ...props }, /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(1,0,0,1,64,-7.10543e-15)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M48,16L48,496", style: {
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: 32
+    } })), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(1.15385,0,0,1,-39.3846,0)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M464,63.922C464,37.473 445.39,16 422.468,16L89.532,16C66.61,16 48,37.473 48,63.922L48,448.078C48,474.527 66.61,496 89.532,496L422.468,496C445.39,496 464,474.527 464,448.078L464,63.922Z", style: {
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "29.64px"
+    } })), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(1,0,0,1,-64,-1.42109e-14)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M464,16L464,496", style: {
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: 32
+    } })));
+    const SvgPortraitRotationOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      strokeMiterlimit: 1.5
+    }, ...props }, /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(-1,1.22465e-16,-1.22465e-16,-1,512,511.978)" }, /* @__PURE__ */ reactExports.createElement("path", { style: {
+      fill: "currentColor"
+    }, d: "M410.077,112C348.846,56.436 290.187,47.978 256,47.978C229.593,47.978 103.954,54.87 32,183.783C27.761,191.378 14.26,194.62 6,186C-2.132,177.513 4.433,167.298 8,161.183C64.601,64.151 145.36,15.501 256,15.978C314.573,16.231 368.584,36.768 432.937,89.552C452.606,72.048 466.105,60.036 466.105,60.036C477.535,49.865 494.967,50.952 505.072,62.307C509.592,67.387 512.045,73.905 511.999,80.773L511.441,183.94C511.46,188.475 509.436,192.819 506.074,195.81C502.713,198.802 490.399,202.263 483.485,194.494C483.485,194.494 443.887,148.843 410.077,112ZM479.982,90.523L479.687,142.089L454.209,113.457L479.982,90.523Z" })), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(-0.909091,-1.11332e-16,1.16019e-16,-0.947368,481.455,490.947)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M336,138.222C336,114.919 316.284,96 292,96L204,96C179.716,96 160,114.919 160,138.222L160,357.778C160,381.081 179.716,400 204,400L292,400C316.284,400 336,381.081 336,357.778L336,138.222Z", style: {
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "34.47px"
+    } })), /* @__PURE__ */ reactExports.createElement("path", { style: {
+      fill: "currentColor"
+    }, d: "M410.077,112C348.846,56.436 290.187,48 256,48C229.593,48 103.954,54.87 32,183.783C27.761,191.378 14.26,194.62 6,186C-2.132,177.513 4.433,167.298 8,161.183C64.601,64.151 145.36,15.522 256,16C314.573,16.253 368.584,36.768 432.937,89.552C452.606,72.048 466.105,60.036 466.105,60.036C477.535,49.865 494.967,50.952 505.072,62.307C509.592,67.387 512.045,73.905 511.999,80.773L511.441,183.94C511.46,188.475 509.436,192.819 506.074,195.81C502.713,198.802 490.399,202.263 483.485,194.494C483.485,194.494 443.887,148.843 410.077,112ZM479.982,90.523L479.687,142.089L454.209,113.457L479.982,90.523Z" }));
+    const SvgLandscapeRotation = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      strokeMiterlimit: 1.5
+    }, ...props }, /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(5.56658e-17,0.909091,-0.947368,5.80096e-17,490.947,30.5453)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M336,138.222C336,114.919 316.284,96 292,96L204,96C179.716,96 160,114.919 160,138.222L160,357.778C160,381.081 179.716,400 204,400L292,400C316.284,400 336,381.081 336,357.778L336,138.222Z", style: {
+      fill: "currentColor",
+      stroke: "none",
+      strokeWidth: "34.47px"
+    } })), /* @__PURE__ */ reactExports.createElement("path", { style: {
+      fill: "currentColor"
+    }, d: "M405.077,128C343.846,72.436 290.187,64 256,64C229.593,64 127.954,67.087 56,196C47.153,211.429 28.255,214.044 16,204C-3.058,188.798 4.433,167.298 8,161.183C64.601,64.151 145.36,-0.478 256,0C314.573,0.253 379.319,27.216 443.672,80C463.341,62.496 466.105,60.036 466.105,60.036C477.535,49.865 494.967,50.952 505.072,62.307C509.592,67.387 512.045,73.905 511.999,80.773L511.441,183.94C511.46,188.475 505.39,201.538 501.074,202.81C486.713,207.041 470.914,199.978 464,192.209C464,192.209 438.887,164.843 405.077,128Z" }), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(-1,1.22465e-16,-1.22465e-16,-1,513.757,511.997)" }, /* @__PURE__ */ reactExports.createElement("path", { style: {
+      fill: "currentColor"
+    }, d: "M405.077,128C343.846,72.436 290.187,64 256,64C229.593,64 127.954,67.087 56,196C47.153,211.429 28.255,214.044 16,204C-3.058,188.798 4.433,167.298 8,161.183C64.601,64.151 145.36,-0.478 256,0C314.573,0.253 379.319,27.216 443.672,80C463.341,62.496 466.105,60.036 466.105,60.036C477.535,49.865 494.967,50.952 505.072,62.307C509.592,67.387 512.045,73.905 511.999,80.773L511.441,183.94C511.46,188.475 505.39,201.538 501.074,202.81C486.713,207.041 470.914,199.978 464,192.209C464,192.209 438.887,164.843 405.077,128Z" })));
+    const SvgLoopOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      strokeLinejoin: "round",
+      strokeMiterlimit: 2
+    }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M15.2,272C6.4,271.5 -0.4,264 0,255.2L0.4,247.2C5.1,153.5 82.4,80 176.2,80L320,80L320,35.6C320,20.3 332.3,8     347.6,8C354.4,8 361,10.5 366,15.1L442.7,84.1C446.1,87.1 448,91.5 448,96C448,100.5 446.1,104.9     442.7,107.9L366,176.9C360.9,181.5 354.4,184 347.6,184C332.4,184 320,171.7 320,156.4L320,112L176.2,112C99.5,112     36.2,172.2 32.4,248.8L32,256.8C31.6,265.6 24,272.4     15.2,272ZM352,146.5L408.1,96L352,45.5L352,146.5ZM496.8,240C505.6,240.4 512.4,248 512,256.8L511.6,264.8C506.9,358.5     429.6,432 335.8,432L192,432L192,476.4C192,491.6 179.7,504 164.4,504C157.6,504 151,501.5     146,496.9L69.3,427.9C65.9,424.9 64,420.5 64,416C64,411.5 65.9,407.1 69.3,404.1L146,335.1C151.1,330.5 157.6,328     164.4,328C179.6,328 192,340.3 192,355.6L192,400L335.8,400C412.5,400 475.8,339.8 479.6,263.2L480,255.2C480.4,246.4     488,239.6 496.8,240ZM160,365.5L103.9,416L160,466.5L160,365.5Z", style: {
+      fillRule: "nonzero"
+    }, fill: "currentColor" }));
+    const SvgCogOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      strokeLinejoin: "round",
+      strokeMiterlimit: 2
+    }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M223.3,37.8C223.7,36.3 224.6,35 225.7,34C235.6,32.7 245.7,32 256,32C266.3,32 276.4,32.7 286.3,34C287.4,35     288.2,36.3 288.7,37.8L302.4,85.5C305.9,97.6 314.6,106.6 324.9,111.6C332.5,115.2 339.7,119.4 346.6,124.1C356,130.6     368.3,133.6 380.5,130.6L428.7,118.6C430.2,118.2 431.7,118.3 433.1,118.8C438.5,125.7 443.5,133     448,140.6L452.3,148C456.5,155.5 460.2,163.3 463.5,171.3C463.2,172.8 462.5,174.2 461.4,175.3L426.8,211C418.1,220     414.6,232.1 415.5,243.5C415.8,247.6 416,251.8 416,256C416,260.2 415.8,264.4 415.5,268.5C414.6,279.9 418.1,292     426.8,301L461.3,336.7C462.4,337.8 463.1,339.2 463.4,340.7C460.1,348.7 456.4,356.5 452.2,364.1L448,371.4C443.4,379     438.4,386.2 433.1,393.2C431.7,393.7 430.2,393.7 428.7,393.4L380.5,381.4C368.3,378.4 356.1,381.4     346.6,387.9C339.7,392.6 332.5,396.8 324.9,400.4C314.6,405.3 305.8,414.4 302.4,426.5L288.7,474.2C288.3,475.7     287.4,477 286.3,478C276.4,479.3 266.3,480 256,480C245.7,480 235.6,479.3 225.7,478C224.6,477 223.8,475.7     223.3,474.2L209.6,426.5C206.1,414.4 197.4,405.4 187.1,400.4C179.5,396.8 172.3,392.6 165.4,387.9C156,381.4     143.7,378.4 131.5,381.4L83.3,393.4C81.8,393.8 80.3,393.7 78.9,393.2C73.5,386.2 68.5,379     63.9,371.4L59.7,364.1C55.5,356.6 51.8,348.8 48.5,340.7C48.8,339.2 49.5,337.8 50.6,336.7L85.2,301C93.9,292 97.4,279.9     96.5,268.5C96.2,264.4 96,260.2 96,256C96,251.8 96.2,247.6 96.5,243.5C97.4,232.1 93.9,220     85.2,211L50.7,175.2C49.6,174.1 48.9,172.7 48.6,171.2C51.9,163.2 55.6,155.4 59.8,147.8L64,140.5C68.6,132.9 73.6,125.7     79,118.7C80.4,118.2 81.9,118.2 83.4,118.5L131.6,130.5C143.8,133.5 156,130.5 165.5,124C172.4,119.3 179.6,115.1     187.2,111.5C197.5,106.6 206.3,97.5 209.7,85.4L223.4,37.7L223.3,37.8ZM256,0C243,0 230.1,1 217.6,2.9C215.9,3.2     214.2,3.7 212.6,4.5C203.1,9.4 195.7,18.1 192.6,29L178.9,76.7C178.3,78.9 176.4,81.2 173.3,82.7C164.2,87 155.5,92.1     147.3,97.7C144.5,99.6 141.5,100.1 139.3,99.5L91.1,87.5C80.2,84.8 69,86.9 60,92.6C58.5,93.5 57.2,94.7     56.1,96.1C49,105 42.4,114.3 36.5,124.1L36.4,124.4L32,132L31.9,132.3C26.5,142.1 21.7,152.2 17.6,162.7C17,164.3     16.6,166 16.5,167.7C16,178.5 19.8,189.3 27.7,197.5L62.2,233.2C63.8,234.9 64.9,237.6 64.6,241C64.2,246 64,251     64,256C64,261 64.2,266.1 64.6,271C64.9,274.4 63.8,277.2 62.2,278.8L27.7,314.6C19.8,322.8 16,333.6     16.5,344.4C16.6,346.1 17,347.8 17.6,349.4C21.7,359.9 26.5,370 31.9,379.8L32,380.1L36.4,387.7L36.5,388C42.4,397.8     48.9,407.2 56.1,416.1C57.2,417.5 58.5,418.7 60,419.6C69,425.3 80.2,427.4 91.1,424.7L139.3,412.7C141.5,412.1     144.5,412.6 147.3,414.5C155.5,420.2 164.2,425.2 173.3,429.5C176.4,431 178.2,433.3 178.9,435.5L192.6,483C195.7,493.8     203.1,502.5 212.6,507.5C214.2,508.3 215.8,508.9 217.6,509.1C230.1,511 243,512 256,512C269,512 281.9,511     294.4,509.1C296.1,508.8 297.8,508.3 299.4,507.5C308.9,502.6 316.3,493.9 319.4,483L333.1,435.3C333.7,433.1     335.6,430.8 338.7,429.3C347.8,425 356.5,419.9 364.7,414.3C367.5,412.4 370.5,411.9     372.7,412.5L420.9,424.5C431.8,427.2 443,425.2 452,419.4C453.5,418.5 454.8,417.3 455.9,415.9C463,407 469.5,397.7     475.4,387.9L475.6,387.6L480,380L480.1,379.7C485.5,370 490.3,359.8 494.4,349.3C495,347.7 495.4,346     495.5,344.3C496,333.5 492.2,322.7 484.3,314.5L449.8,278.8C448.2,277.1 447.1,274.4 447.4,271C447.8,266 448,261     448,256C448,251 447.8,245.9 447.4,241C447.1,237.6 448.2,234.8 449.8,233.2L484.3,197.5C492.2,189.3 496,178.5     495.5,167.7C495.4,166 495,164.3 494.4,162.7C490.3,152.2 485.5,142.1     480.1,132.3L480,132L475.6,124.4L475.4,124.1C469.5,114.3 463,104.9 455.9,96.1C454.8,94.7 453.5,93.5 452,92.6C443,86.9     431.8,84.8 420.9,87.5L372.7,99.5C370.5,100.1 367.5,99.6 364.7,97.7C356.5,92 347.8,87 338.7,82.7C335.6,81.2     333.8,78.9 333.1,76.7L319.4,29C316.3,18.2 308.9,9.5 299.4,4.5C297.8,3.7 296.2,3.1 294.4,2.9C281.9,1 269,0     256,0ZM200,256C200,225.279 225.279,200 256,200C286.721,200 312,225.279 312,256C312,286.721 286.721,312     256,312C225.279,312 200,286.721 200,256ZM344,256C344,207.725 304.275,168 256,168C207.725,168 168,207.725     168,256C168,304.275 207.725,344 256,344C304.275,344 344,304.275 344,256Z", style: {
+      fillRule: "nonzero"
+    }, fill: "currentColor" }));
+    const SvgInfoOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      strokeLinejoin: "round",
+      strokeMiterlimit: 2
+    }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M256,32C378.883,32 480,133.117 480,256C480,378.883 378.883,480 256,480C133.117,480 32,378.883     32,256C32,133.117 133.117,32 256,32ZM256,512C396.437,512 512,396.437 512,256C512,115.563 396.437,0 256,0C115.563,0     -0,115.563 0,256C0,396.437 115.563,512 256,512ZM208,352C199.2,352 192,359.2 192,368C192,376.8 199.2,384     208,384L304,384C312.8,384 320,376.8 320,368C320,359.2 312.8,352 304,352L272,352L272,240C272,231.2 264.8,224     256,224L216,224C207.2,224 200,231.2 200,240C200,248.8 207.2,256 216,256L240,256L240,352L208,352ZM256,184C269.166,184     280,173.166 280,160C280,146.834 269.166,136 256,136C242.834,136 232,146.834 232,160C232,173.166 242.834,184     256,184Z", style: {
+      fillRule: "nonzero"
+    }, fill: "currentColor" }));
+    const SvgVerticalEllipsisOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 192 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      strokeLinejoin: "round",
+      strokeMiterlimit: 2
+    }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M96,64C78.445,64 64,78.445 64,96C64,113.555 78.445,128 96,128C113.555,128 128,113.555 128,96C128,78.445     113.555,64 96,64ZM96,160C60.891,160 32,131.109 32,96C32,60.891 60.891,32 96,32C131.109,32 160,60.891     160,96C160,131.109 131.109,160 96,160ZM128,256C128,238.445 113.555,224 96,224C78.445,224 64,238.445     64,256C64,273.555 78.445,288 96,288C113.555,288 128,273.555 128,256ZM32,256C32,220.891 60.891,192 96,192C131.109,192     160,220.891 160,256C160,291.109 131.109,320 96,320C60.891,320 32,291.109 32,256ZM128,416C128,398.445 113.555,384     96,384C78.445,384 64,398.445 64,416C64,433.555 78.445,448 96,448C113.555,448 128,433.555 128,416ZM32,416C32,380.891     60.891,352 96,352C131.109,352 160,380.891 160,416C160,451.109 131.109,480 96,480C60.891,480 32,451.109 32,416Z", style: {
+      fillRule: "nonzero"
+    }, fill: "currentColor" }));
+    var data;
+    var hasRequiredData;
+    function requireData() {
+      if (hasRequiredData) return data;
+      hasRequiredData = 1;
+      const LANGUAGES_LIST = {
+        aa: {
+          name: "Afar",
+          nativeName: "Afaraf"
+        },
+        ab: {
+          name: "Abkhaz",
+          nativeName: "аҧсуа бызшәа"
+        },
+        ae: {
+          name: "Avestan",
+          nativeName: "avesta"
+        },
+        af: {
+          name: "Afrikaans",
+          nativeName: "Afrikaans"
+        },
+        ak: {
+          name: "Akan",
+          nativeName: "Akan"
+        },
+        am: {
+          name: "Amharic",
+          nativeName: "አማርኛ"
+        },
+        an: {
+          name: "Aragonese",
+          nativeName: "aragonés"
+        },
+        ar: {
+          name: "Arabic",
+          nativeName: "العربية"
+        },
+        as: {
+          name: "Assamese",
+          nativeName: "অসমীয়া"
+        },
+        av: {
+          name: "Avaric",
+          nativeName: "авар мацӀ"
+        },
+        ay: {
+          name: "Aymara",
+          nativeName: "aymar aru"
+        },
+        az: {
+          name: "Azerbaijani",
+          nativeName: "azərbaycan dili"
+        },
+        ba: {
+          name: "Bashkir",
+          nativeName: "башҡорт теле"
+        },
+        be: {
+          name: "Belarusian",
+          nativeName: "беларуская мова"
+        },
+        bg: {
+          name: "Bulgarian",
+          nativeName: "български език"
+        },
+        bi: {
+          name: "Bislama",
+          nativeName: "Bislama"
+        },
+        bm: {
+          name: "Bambara",
+          nativeName: "bamanankan"
+        },
+        bn: {
+          name: "Bengali",
+          nativeName: "বাংলা"
+        },
+        bo: {
+          name: "Tibetan",
+          nativeName: "བོད་ཡིག"
+        },
+        br: {
+          name: "Breton",
+          nativeName: "brezhoneg"
+        },
+        bs: {
+          name: "Bosnian",
+          nativeName: "bosanski jezik"
+        },
+        ca: {
+          name: "Catalan",
+          nativeName: "Català"
+        },
+        ce: {
+          name: "Chechen",
+          nativeName: "нохчийн мотт"
+        },
+        ch: {
+          name: "Chamorro",
+          nativeName: "Chamoru"
+        },
+        co: {
+          name: "Corsican",
+          nativeName: "corsu"
+        },
+        cr: {
+          name: "Cree",
+          nativeName: "ᓀᐦᐃᔭᐍᐏᐣ"
+        },
+        cs: {
+          name: "Czech",
+          nativeName: "Čeština"
+        },
+        cu: {
+          name: "Old Church Slavonic",
+          nativeName: "ѩзыкъ словѣньскъ"
+        },
+        cv: {
+          name: "Chuvash",
+          nativeName: "чӑваш чӗлхи"
+        },
+        cy: {
+          name: "Welsh",
+          nativeName: "Cymraeg"
+        },
+        da: {
+          name: "Danish",
+          nativeName: "Dansk"
+        },
+        de: {
+          name: "German",
+          nativeName: "Deutsch"
+        },
+        dv: {
+          name: "Divehi",
+          nativeName: "ދިވެހި"
+        },
+        dz: {
+          name: "Dzongkha",
+          nativeName: "རྫོང་ཁ"
+        },
+        ee: {
+          name: "Ewe",
+          nativeName: "Eʋegbe"
+        },
+        el: {
+          name: "Greek",
+          nativeName: "Ελληνικά"
+        },
+        en: {
+          name: "English",
+          nativeName: "English"
+        },
+        eo: {
+          name: "Esperanto",
+          nativeName: "Esperanto"
+        },
+        es: {
+          name: "Spanish",
+          nativeName: "Español"
+        },
+        et: {
+          name: "Estonian",
+          nativeName: "eesti"
+        },
+        eu: {
+          name: "Basque",
+          nativeName: "euskara"
+        },
+        fa: {
+          name: "Persian",
+          nativeName: "فارسی"
+        },
+        ff: {
+          name: "Fula",
+          nativeName: "Fulfulde"
+        },
+        fi: {
+          name: "Finnish",
+          nativeName: "suomi"
+        },
+        fj: {
+          name: "Fijian",
+          nativeName: "vosa Vakaviti"
+        },
+        fo: {
+          name: "Faroese",
+          nativeName: "Føroyskt"
+        },
+        fr: {
+          name: "French",
+          nativeName: "Français"
+        },
+        fy: {
+          name: "Western Frisian",
+          nativeName: "Frysk"
+        },
+        ga: {
+          name: "Irish",
+          nativeName: "Gaeilge"
+        },
+        gd: {
+          name: "Scottish Gaelic",
+          nativeName: "Gàidhlig"
+        },
+        gl: {
+          name: "Galician",
+          nativeName: "galego"
+        },
+        gn: {
+          name: "Guaraní",
+          nativeName: "Avañe'ẽ"
+        },
+        gu: {
+          name: "Gujarati",
+          nativeName: "ગુજરાતી"
+        },
+        gv: {
+          name: "Manx",
+          nativeName: "Gaelg"
+        },
+        ha: {
+          name: "Hausa",
+          nativeName: "هَوُسَ"
+        },
+        he: {
+          name: "Hebrew",
+          nativeName: "עברית"
+        },
+        hi: {
+          name: "Hindi",
+          nativeName: "हिन्दी"
+        },
+        ho: {
+          name: "Hiri Motu",
+          nativeName: "Hiri Motu"
+        },
+        hr: {
+          name: "Croatian",
+          nativeName: "Hrvatski"
+        },
+        ht: {
+          name: "Haitian",
+          nativeName: "Kreyòl ayisyen"
+        },
+        hu: {
+          name: "Hungarian",
+          nativeName: "magyar"
+        },
+        hy: {
+          name: "Armenian",
+          nativeName: "Հայերեն"
+        },
+        hz: {
+          name: "Herero",
+          nativeName: "Otjiherero"
+        },
+        ia: {
+          name: "Interlingua",
+          nativeName: "Interlingua"
+        },
+        id: {
+          name: "Indonesian",
+          nativeName: "Bahasa Indonesia"
+        },
+        ie: {
+          name: "Interlingue",
+          nativeName: "Interlingue"
+        },
+        ig: {
+          name: "Igbo",
+          nativeName: "Asụsụ Igbo"
+        },
+        ii: {
+          name: "Nuosu",
+          nativeName: "ꆈꌠ꒿ Nuosuhxop"
+        },
+        ik: {
+          name: "Inupiaq",
+          nativeName: "Iñupiaq"
+        },
+        io: {
+          name: "Ido",
+          nativeName: "Ido"
+        },
+        is: {
+          name: "Icelandic",
+          nativeName: "Íslenska"
+        },
+        it: {
+          name: "Italian",
+          nativeName: "Italiano"
+        },
+        iu: {
+          name: "Inuktitut",
+          nativeName: "ᐃᓄᒃᑎᑐᑦ"
+        },
+        ja: {
+          name: "Japanese",
+          nativeName: "日本語"
+        },
+        jv: {
+          name: "Javanese",
+          nativeName: "basa Jawa"
+        },
+        ka: {
+          name: "Georgian",
+          nativeName: "ქართული"
+        },
+        kg: {
+          name: "Kongo",
+          nativeName: "Kikongo"
+        },
+        ki: {
+          name: "Kikuyu",
+          nativeName: "Gĩkũyũ"
+        },
+        kj: {
+          name: "Kwanyama",
+          nativeName: "Kuanyama"
+        },
+        kk: {
+          name: "Kazakh",
+          nativeName: "қазақ тілі"
+        },
+        kl: {
+          name: "Kalaallisut",
+          nativeName: "kalaallisut"
+        },
+        km: {
+          name: "Khmer",
+          nativeName: "ខេមរភាសា"
+        },
+        kn: {
+          name: "Kannada",
+          nativeName: "ಕನ್ನಡ"
+        },
+        ko: {
+          name: "Korean",
+          nativeName: "한국어"
+        },
+        kr: {
+          name: "Kanuri",
+          nativeName: "Kanuri"
+        },
+        ks: {
+          name: "Kashmiri",
+          nativeName: "कश्मीरी"
+        },
+        ku: {
+          name: "Kurdish",
+          nativeName: "Kurdî"
+        },
+        kv: {
+          name: "Komi",
+          nativeName: "коми кыв"
+        },
+        kw: {
+          name: "Cornish",
+          nativeName: "Kernewek"
+        },
+        ky: {
+          name: "Kyrgyz",
+          nativeName: "Кыргызча"
+        },
+        la: {
+          name: "Latin",
+          nativeName: "latine"
+        },
+        lb: {
+          name: "Luxembourgish",
+          nativeName: "Lëtzebuergesch"
+        },
+        lg: {
+          name: "Ganda",
+          nativeName: "Luganda"
+        },
+        li: {
+          name: "Limburgish",
+          nativeName: "Limburgs"
+        },
+        ln: {
+          name: "Lingala",
+          nativeName: "Lingála"
+        },
+        lo: {
+          name: "Lao",
+          nativeName: "ພາສາລາວ"
+        },
+        lt: {
+          name: "Lithuanian",
+          nativeName: "lietuvių kalba"
+        },
+        lu: {
+          name: "Luba-Katanga",
+          nativeName: "Kiluba"
+        },
+        lv: {
+          name: "Latvian",
+          nativeName: "latviešu valoda"
+        },
+        mg: {
+          name: "Malagasy",
+          nativeName: "fiteny malagasy"
+        },
+        mh: {
+          name: "Marshallese",
+          nativeName: "Kajin M̧ajeļ"
+        },
+        mi: {
+          name: "Māori",
+          nativeName: "te reo Māori"
+        },
+        mk: {
+          name: "Macedonian",
+          nativeName: "македонски јазик"
+        },
+        ml: {
+          name: "Malayalam",
+          nativeName: "മലയാളം"
+        },
+        mn: {
+          name: "Mongolian",
+          nativeName: "Монгол хэл"
+        },
+        mr: {
+          name: "Marathi",
+          nativeName: "मराठी"
+        },
+        ms: {
+          name: "Malay",
+          nativeName: "Bahasa Melayu"
+        },
+        mt: {
+          name: "Maltese",
+          nativeName: "Malti"
+        },
+        my: {
+          name: "Burmese",
+          nativeName: "ဗမာစာ"
+        },
+        na: {
+          name: "Nauru",
+          nativeName: "Dorerin Naoero"
+        },
+        nb: {
+          name: "Norwegian Bokmål",
+          nativeName: "Norsk bokmål"
+        },
+        nd: {
+          name: "Northern Ndebele",
+          nativeName: "isiNdebele"
+        },
+        ne: {
+          name: "Nepali",
+          nativeName: "नेपाली"
+        },
+        ng: {
+          name: "Ndonga",
+          nativeName: "Owambo"
+        },
+        nl: {
+          name: "Dutch",
+          nativeName: "Nederlands"
+        },
+        nn: {
+          name: "Norwegian Nynorsk",
+          nativeName: "Norsk nynorsk"
+        },
+        no: {
+          name: "Norwegian",
+          nativeName: "Norsk"
+        },
+        nr: {
+          name: "Southern Ndebele",
+          nativeName: "isiNdebele"
+        },
+        nv: {
+          name: "Navajo",
+          nativeName: "Diné bizaad"
+        },
+        ny: {
+          name: "Chichewa",
+          nativeName: "chiCheŵa"
+        },
+        oc: {
+          name: "Occitan",
+          nativeName: "occitan"
+        },
+        oj: {
+          name: "Ojibwe",
+          nativeName: "ᐊᓂᔑᓈᐯᒧᐎᓐ"
+        },
+        om: {
+          name: "Oromo",
+          nativeName: "Afaan Oromoo"
+        },
+        or: {
+          name: "Oriya",
+          nativeName: "ଓଡ଼ିଆ"
+        },
+        os: {
+          name: "Ossetian",
+          nativeName: "ирон æвзаг"
+        },
+        pa: {
+          name: "Panjabi",
+          nativeName: "ਪੰਜਾਬੀ"
+        },
+        pi: {
+          name: "Pāli",
+          nativeName: "पाऴि"
+        },
+        pl: {
+          name: "Polish",
+          nativeName: "Polski"
+        },
+        ps: {
+          name: "Pashto",
+          nativeName: "پښتو"
+        },
+        pt: {
+          name: "Portuguese",
+          nativeName: "Português"
+        },
+        qu: {
+          name: "Quechua",
+          nativeName: "Runa Simi"
+        },
+        rm: {
+          name: "Romansh",
+          nativeName: "rumantsch grischun"
+        },
+        rn: {
+          name: "Kirundi",
+          nativeName: "Ikirundi"
+        },
+        ro: {
+          name: "Romanian",
+          nativeName: "Română"
+        },
+        ru: {
+          name: "Russian",
+          nativeName: "Русский"
+        },
+        rw: {
+          name: "Kinyarwanda",
+          nativeName: "Ikinyarwanda"
+        },
+        sa: {
+          name: "Sanskrit",
+          nativeName: "संस्कृतम्"
+        },
+        sc: {
+          name: "Sardinian",
+          nativeName: "sardu"
+        },
+        sd: {
+          name: "Sindhi",
+          nativeName: "सिन्धी"
+        },
+        se: {
+          name: "Northern Sami",
+          nativeName: "Davvisámegiella"
+        },
+        sg: {
+          name: "Sango",
+          nativeName: "yângâ tî sängö"
+        },
+        si: {
+          name: "Sinhala",
+          nativeName: "සිංහල"
+        },
+        sk: {
+          name: "Slovak",
+          nativeName: "Slovenčina"
+        },
+        sl: {
+          name: "Slovenian",
+          nativeName: "slovenščina"
+        },
+        sm: {
+          name: "Samoan",
+          nativeName: "gagana fa'a Samoa"
+        },
+        sn: {
+          name: "Shona",
+          nativeName: "chiShona"
+        },
+        so: {
+          name: "Somali",
+          nativeName: "Soomaaliga"
+        },
+        sq: {
+          name: "Albanian",
+          nativeName: "Shqip"
+        },
+        sr: {
+          name: "Serbian",
+          nativeName: "српски језик"
+        },
+        ss: {
+          name: "Swati",
+          nativeName: "SiSwati"
+        },
+        st: {
+          name: "Southern Sotho",
+          nativeName: "Sesotho"
+        },
+        su: {
+          name: "Sundanese",
+          nativeName: "Basa Sunda"
+        },
+        sv: {
+          name: "Swedish",
+          nativeName: "Svenska"
+        },
+        sw: {
+          name: "Swahili",
+          nativeName: "Kiswahili"
+        },
+        ta: {
+          name: "Tamil",
+          nativeName: "தமிழ்"
+        },
+        te: {
+          name: "Telugu",
+          nativeName: "తెలుగు"
+        },
+        tg: {
+          name: "Tajik",
+          nativeName: "тоҷикӣ"
+        },
+        th: {
+          name: "Thai",
+          nativeName: "ไทย"
+        },
+        ti: {
+          name: "Tigrinya",
+          nativeName: "ትግርኛ"
+        },
+        tk: {
+          name: "Turkmen",
+          nativeName: "Türkmençe"
+        },
+        tl: {
+          name: "Tagalog",
+          nativeName: "Wikang Tagalog"
+        },
+        tn: {
+          name: "Tswana",
+          nativeName: "Setswana"
+        },
+        to: {
+          name: "Tonga",
+          nativeName: "faka Tonga"
+        },
+        tr: {
+          name: "Turkish",
+          nativeName: "Türkçe"
+        },
+        ts: {
+          name: "Tsonga",
+          nativeName: "Xitsonga"
+        },
+        tt: {
+          name: "Tatar",
+          nativeName: "татар теле"
+        },
+        tw: {
+          name: "Twi",
+          nativeName: "Twi"
+        },
+        ty: {
+          name: "Tahitian",
+          nativeName: "Reo Tahiti"
+        },
+        ug: {
+          name: "Uyghur",
+          nativeName: "ئۇيغۇرچە‎"
+        },
+        uk: {
+          name: "Ukrainian",
+          nativeName: "Українська"
+        },
+        ur: {
+          name: "Urdu",
+          nativeName: "اردو"
+        },
+        uz: {
+          name: "Uzbek",
+          nativeName: "Ўзбек"
+        },
+        ve: {
+          name: "Venda",
+          nativeName: "Tshivenḓa"
+        },
+        vi: {
+          name: "Vietnamese",
+          nativeName: "Tiếng Việt"
+        },
+        vo: {
+          name: "Volapük",
+          nativeName: "Volapük"
+        },
+        wa: {
+          name: "Walloon",
+          nativeName: "walon"
+        },
+        wo: {
+          name: "Wolof",
+          nativeName: "Wollof"
+        },
+        xh: {
+          name: "Xhosa",
+          nativeName: "isiXhosa"
+        },
+        yi: {
+          name: "Yiddish",
+          nativeName: "ייִדיש"
+        },
+        yo: {
+          name: "Yoruba",
+          nativeName: "Yorùbá"
+        },
+        za: {
+          name: "Zhuang",
+          nativeName: "Saɯ cueŋƅ"
+        },
+        zh: {
+          name: "Chinese",
+          nativeName: "中文"
+        },
+        zu: {
+          name: "Zulu",
+          nativeName: "isiZulu"
+        }
+      };
+      data = LANGUAGES_LIST;
+      return data;
+    }
+    var src;
+    var hasRequiredSrc;
+    function requireSrc() {
+      if (hasRequiredSrc) return src;
+      hasRequiredSrc = 1;
+      const LANGUAGES_LIST = requireData();
+      const LANGUAGES = {};
+      const LANGUAGES_BY_NAME = {};
+      const LANGUAGE_CODES = [];
+      const LANGUAGE_NAMES = [];
+      const LANGUAGE_NATIVE_NAMES = [];
+      for (const code in LANGUAGES_LIST) {
+        const { name, nativeName } = LANGUAGES_LIST[code];
+        LANGUAGES[code] = LANGUAGES_BY_NAME[name.toLowerCase()] = LANGUAGES_BY_NAME[nativeName.toLowerCase()] = { code, name, nativeName };
+        LANGUAGE_CODES.push(code);
+        LANGUAGE_NAMES.push(name);
+        LANGUAGE_NATIVE_NAMES.push(nativeName);
+      }
+      src = class ISO63912 {
+        static getLanguages(codes = []) {
+          return codes.map(
+            (code) => ISO63912.validate(code) ? Object.assign({}, LANGUAGES[code]) : { code, name: "", nativeName: "" }
+          );
+        }
+        static getName(code) {
+          return ISO63912.validate(code) ? LANGUAGES_LIST[code].name : "";
+        }
+        static getAllNames() {
+          return LANGUAGE_NAMES.slice();
+        }
+        static getNativeName(code) {
+          return ISO63912.validate(code) ? LANGUAGES_LIST[code].nativeName : "";
+        }
+        static getAllNativeNames() {
+          return LANGUAGE_NATIVE_NAMES.slice();
+        }
+        static getCode(name) {
+          name = name.toLowerCase();
+          return LANGUAGES_BY_NAME.hasOwnProperty(name) ? LANGUAGES_BY_NAME[name].code : "";
+        }
+        static getAllCodes() {
+          return LANGUAGE_CODES.slice();
+        }
+        static validate(code) {
+          return LANGUAGES_LIST.hasOwnProperty(code);
+        }
+      };
+      return src;
+    }
+    var srcExports = requireSrc();
+    const ISO6391 = /* @__PURE__ */ getDefaultExportFromCjs(srcExports);
+    const ActionButton = reactExports.forwardRef(
+      ({ active, activeIcon, activeText, inactiveIcon, inactiveText, className, ...props }, ref) => {
+        const Icon2 = active ? activeIcon : inactiveIcon;
+        return /* @__PURE__ */ React$1.createElement(
+          "button",
+          {
+            className: cx("ActionButton", className, { active }),
+            ...props,
+            onClick: props.onClick,
+            type: "button",
+            ref
+          },
+          "icon" in Icon2 ? /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: Icon2 }) : /* @__PURE__ */ React$1.createElement(Icon2, { className: "icon" }),
+          /* @__PURE__ */ React$1.createElement("span", { className: "sr-only" }, active ? activeText : inactiveText)
+        );
+      }
+    );
+    const PLUGIN_NAMESPACE = "stash-tv";
+    function useStashTvConfig() {
+      const {
+        configuration: {
+          plugins: {
+            [PLUGIN_NAMESPACE]: stashTvConfig = {}
+          } = {}
+        } = {},
+        loading: loading2
+      } = reactExports.useContext(ConfigurationContext);
+      const [mutatePlugin] = useMutation(
+        ConfigurePluginDocument,
+        {
+          update: (cache2, result) => updateStashTvPluginConfig(cache2, result.data?.configurePlugin)
+        }
+      );
+      function updateStashTvPluginConfig(cache2, result) {
+        if (!result) return;
+        const existing = cache2.readQuery({
+          query: ConfigurationDocument
+        });
+        cache2.writeQuery({
+          query: ConfigurationDocument,
+          data: {
+            configuration: {
+              ...existing?.configuration,
+              plugins: {
+                ...existing?.configuration?.plugins,
+                [PLUGIN_NAMESPACE]: result
+              }
+            }
+          }
+        });
+      }
+      function update2(config2) {
+        return mutatePlugin({
+          variables: {
+            plugin_id: PLUGIN_NAMESPACE,
+            input: {
+              ...stashTvConfig,
+              ...config2
+            }
+          }
+        });
+      }
+      return {
+        data: stashTvConfig,
+        loading: loading2,
+        update: update2
+      };
+    }
+    function ActionButtons({ scene, sceneInfoOpen, setSceneInfoOpen }) {
       const {
         showSettings,
         fullscreen,
@@ -168818,6 +168833,204 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         looping,
         showSubtitles,
         uiVisible,
+        set: setAppSetting
+      } = useAppStateStore();
+      const { data: { subtitleLanguage } } = useStashTvConfig();
+      const sceneInfoDataAvailable = scene.performers.length > 0 || !!scene.studio || !!scene.title || !!scene.date;
+      const captionSources = scene.captions && subtitleLanguage ? scene.captions.map((cap, i2) => {
+        if (cap.language_code === subtitleLanguage) {
+          const src2 = scene.paths.caption + `?lang=${cap.language_code}&type=${cap.caption_type}`;
+          return /* @__PURE__ */ React$1.createElement(
+            "track",
+            {
+              default: subtitleLanguage === cap.language_code,
+              key: i2,
+              kind: "captions",
+              label: ISO6391.getName(cap.language_code) || "Unknown",
+              src: src2,
+              srcLang: cap.language_code
+            }
+          );
+        }
+      }).find((c) => !!c) : null;
+      return /* @__PURE__ */ React$1.createElement(
+        "div",
+        {
+          className: "ActionButtons"
+        },
+        /* @__PURE__ */ React$1.createElement(
+          "div",
+          {
+            className: cx("toggleable-ui", { "active": uiVisible }),
+            "data-testid": "MediaSlide--toggleableUi"
+          },
+          /* @__PURE__ */ React$1.createElement(
+            ActionButton,
+            {
+              className: "mute",
+              active: !audioMuted,
+              activeIcon: faVolumeHigh,
+              activeText: "Mute",
+              "data-testid": "MediaSlide--muteButton",
+              inactiveIcon: SvgVolumeMuteOutline,
+              inactiveText: "Unmute",
+              onClick: () => setAppSetting("audioMuted", (prev2) => !prev2)
+            }
+          ),
+          captionSources && /* @__PURE__ */ React$1.createElement(
+            ActionButton,
+            {
+              active: !!captionSources && showSubtitles,
+              activeIcon: faClosedCaptioning,
+              activeText: "Hide subtitles",
+              "data-testid": "MediaSlide--subtitlesButton",
+              inactiveIcon: faClosedCaptioning,
+              inactiveText: "Show subtitles",
+              onClick: () => setAppSetting("showSubtitles", (prev2) => !prev2)
+            }
+          ),
+          "exitFullscreen" in document && /* @__PURE__ */ React$1.createElement(
+            ActionButton,
+            {
+              className: "fullscreen",
+              active: fullscreen,
+              activeIcon: faExpand,
+              activeText: "Close fullscreen",
+              "data-testid": "MediaSlide--fullscreenButton",
+              inactiveIcon: SvgExpandOutline,
+              inactiveText: "Open fullscreen",
+              onClick: () => setAppSetting("fullscreen", (prev2) => !prev2)
+            }
+          ),
+          /* @__PURE__ */ React$1.createElement(
+            ActionButton,
+            {
+              className: "letterboxing",
+              active: !letterboxing,
+              activeIcon: SvgCoverOutline,
+              activeText: "Constrain to screen",
+              "data-testid": "MediaSlide--letterboxButton",
+              inactiveIcon: SvgContain,
+              inactiveText: "Fill screen",
+              onClick: () => setAppSetting("letterboxing", (prev2) => !prev2)
+            }
+          ),
+          /* @__PURE__ */ React$1.createElement(
+            ActionButton,
+            {
+              className: "force-landscape",
+              active: !forceLandscape,
+              activeIcon: SvgPortraitRotationOutline,
+              activeText: "Landscape",
+              "data-testid": "MediaSlide--forceLandscapeButton",
+              inactiveIcon: SvgLandscapeRotation,
+              inactiveText: "Portrait",
+              onClick: () => setAppSetting("forceLandscape", (prev2) => !prev2)
+            }
+          ),
+          /* @__PURE__ */ React$1.createElement(
+            ActionButton,
+            {
+              className: "loop",
+              active: looping,
+              activeIcon: faRepeat,
+              activeText: "Stop looping scene",
+              "data-testid": "MediaSlide--loopButton",
+              inactiveIcon: SvgLoopOutline,
+              inactiveText: "Loop scene",
+              onClick: () => setAppSetting("looping", (prev2) => !prev2)
+            }
+          ),
+          sceneInfoDataAvailable && /* @__PURE__ */ React$1.createElement(
+            ActionButton,
+            {
+              className: "show-scene-info",
+              active: sceneInfoOpen,
+              activeIcon: faCircleInfo,
+              activeText: "Close scene info",
+              "data-testid": "MediaSlide--infoButton",
+              inactiveIcon: SvgInfoOutline,
+              inactiveText: "Show scene info",
+              onClick: () => setSceneInfoOpen(!sceneInfoOpen)
+            }
+          ),
+          /* @__PURE__ */ React$1.createElement(
+            ActionButton,
+            {
+              className: "settings",
+              active: showSettings,
+              activeIcon: faGear,
+              activeText: "Close settings",
+              "data-testid": "MediaSlide--settingsButton",
+              inactiveIcon: SvgCogOutline,
+              inactiveText: "Show settings",
+              onClick: () => setAppSetting("showSettings", (prev2) => !prev2)
+            }
+          )
+        ),
+        /* @__PURE__ */ React$1.createElement(
+          ActionButton,
+          {
+            active: uiVisible,
+            activeIcon: faEllipsisVertical,
+            activeText: "Hide UI",
+            className: cx("toggleable-ui-button", { "active": uiVisible }),
+            "data-testid": "MediaSlide--showActionButton",
+            inactiveIcon: SvgVerticalEllipsisOutline,
+            inactiveText: "Show UI",
+            onClick: () => setAppSetting("uiVisible", (prev2) => !prev2)
+          }
+        )
+      );
+    }
+    const SceneInfo = reactExports.forwardRef(
+      ({ scene, className, style: style2 }, ref) => {
+        const date = scene.date ? /* @__PURE__ */ React$1.createElement("span", { className: "date" }, scene.date) : null;
+        const sortedPerformers = sortPerformers(scene.performers);
+        const totalPerformers = sortedPerformers.length;
+        const performersInner = sortedPerformers.map((pf, i2) => {
+          const isOneBeforeLast = i2 === totalPerformers - 2;
+          const isAnyBeforeLast = i2 < totalPerformers - 1;
+          let suffix = null;
+          if (totalPerformers === 2 && isOneBeforeLast) suffix = " and ";
+          else {
+            if (isAnyBeforeLast) suffix = ", ";
+            if (isOneBeforeLast) suffix += "and ";
+          }
+          return /* @__PURE__ */ React$1.createElement(React$1.Fragment, { key: i2 }, /* @__PURE__ */ React$1.createElement("span", null, pf.name), suffix);
+        });
+        const performers = performersInner.length ? /* @__PURE__ */ React$1.createElement("div", { className: "performers" }, performersInner) : null;
+        const parentStudioText = scene.studio?.parent_studio ? " | " + scene.studio.parent_studio.name : "";
+        const studio = scene.studio ? /* @__PURE__ */ React$1.createElement("span", { className: "studio" }, scene.studio.name + parentStudioText) : null;
+        const title = scene.title ? /* @__PURE__ */ React$1.createElement("h5", null, scene.title) : null;
+        let sceneUrl = scene.paths.stream?.split("/stream")[0]?.replace("/scene", "/scenes");
+        return /* @__PURE__ */ React$1.createElement(
+          "div",
+          {
+            className: cx("SceneInfo", className),
+            "data-testid": "MediaSlide--sceneInfo",
+            style: style2,
+            ref,
+            onClick: (event2) => {
+              event2.stopPropagation();
+            }
+          },
+          studio,
+          /* @__PURE__ */ React$1.createElement("a", { href: sceneUrl || "", target: "_blank" }, title),
+          performers,
+          date
+        );
+      }
+    );
+    videojs.registerPlugin("styledBigPlayButton", styledBigPlayButton);
+    const noAnimateDurationThreshold = 30;
+    const MediaSlide = (props) => {
+      const {
+        letterboxing,
+        forceLandscape,
+        audioMuted,
+        looping,
+        showSubtitles,
         crtEffect,
         scenePreviewOnly,
         showDevOptions,
@@ -168825,16 +169038,16 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         autoPlay: globalAutoPlay,
         startPosition,
         showGuideOverlay,
+        uiVisible,
         set: setAppSetting
       } = useAppStateStore();
       const scene = props.mediaItem.entityType === "scene" ? props.mediaItem.entity : props.mediaItem.entity.scene;
       reactExports.useEffect(() => {
-        debugMode && console.log(`Mounted VideoItem index=${props.index} sceneId=${scene.id}`);
+        debugMode && console.log(`Mounted MediaSlide index=${props.index} sceneId=${scene.id}`);
         return () => {
-          debugMode && console.log(`Unmounted VideoItem index=${props.index} sceneId=${scene.id}`);
+          debugMode && console.log(`Unmounted MediaSlide index=${props.index} sceneId=${scene.id}`);
         };
       }, []);
-      const { tv: { subtitleLanguage } } = useStashConfigStore();
       const videojsPlayerRef = useGetterRef(
         (player) => player?.isDisposed() ? null : player,
         null,
@@ -168920,7 +169133,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         const handleKeyDown = (e) => {
           const seekBackwardsKey = forceLandscape ? "ArrowDown" : "ArrowLeft";
           const seekForwardsKey = forceLandscape ? "ArrowUp" : "ArrowRight";
-          debugMode && (e.key === seekBackwardsKey || e.key === seekForwardsKey) && console.log(`VideoItem ${props.index} Keydown`, e.key, { seekBackwardsKey, seekForwardsKey });
+          debugMode && (e.key === seekBackwardsKey || e.key === seekForwardsKey) && console.log(`MediaSlide ${props.index} Keydown`, e.key, { seekBackwardsKey, seekForwardsKey });
           if (e.key === seekBackwardsKey) {
             seekBackwards();
             e.preventDefault();
@@ -169024,54 +169237,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       };
       const [sceneInfoOpen, setSceneInfoOpen] = reactExports.useState(false);
       const sceneInfoPanelRef = reactExports.useRef(null);
-      const sceneInfoButtonClickHandler = () => {
-        if (isCurrentVideo) setSceneInfoOpen((prev2) => !prev2);
-      };
       reactExports.useEffect(() => {
         if (!isCurrentVideo) setSceneInfoOpen(false);
       }, [isCurrentVideo]);
-      const sceneInfoDataAvailable = scene.performers.length > 0 || !!scene.studio || !!scene.title || !!scene.date;
-      const sceneInfoButton = sceneInfoDataAvailable ? /* @__PURE__ */ React$1.createElement(
-        UiButton,
-        {
-          className: "show-scene-info",
-          active: sceneInfoOpen,
-          activeIcon: faCircleInfo,
-          activeText: "Close scene info",
-          "data-testid": "VideoItem--infoButton",
-          inactiveIcon: SvgInfoOutline,
-          inactiveText: "Show scene info",
-          onClick: sceneInfoButtonClickHandler
-        }
-      ) : null;
-      const captionSources = scene.captions && subtitleLanguage ? scene.captions.map((cap, i2) => {
-        if (cap.language_code === subtitleLanguage) {
-          const src2 = scene.paths.caption + `?lang=${cap.language_code}&type=${cap.caption_type}`;
-          return /* @__PURE__ */ React$1.createElement(
-            "track",
-            {
-              default: subtitleLanguage === cap.language_code,
-              key: i2,
-              kind: "captions",
-              label: ISO6391.getName(cap.language_code) || "Unknown",
-              src: src2,
-              srcLang: cap.language_code
-            }
-          );
-        }
-      }).find((c) => !!c) : null;
-      const subtitlesButton = !!captionSources ? /* @__PURE__ */ React$1.createElement(
-        UiButton,
-        {
-          active: !!captionSources && showSubtitles,
-          activeIcon: faClosedCaptioning,
-          activeText: "Hide subtitles",
-          "data-testid": "VideoItem--subtitlesButton",
-          inactiveIcon: faClosedCaptioning,
-          inactiveText: "Show subtitles",
-          onClick: () => setAppSetting("showSubtitles", (prev2) => !prev2)
-        }
-      ) : null;
       reactExports.useEffect(() => {
         if (videoRef.current && videoRef.current.textTracks.length)
           videoRef.current.textTracks[0].mode = showSubtitles ? "showing" : "disabled";
@@ -169141,8 +169309,8 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       return /* @__PURE__ */ React$1.createElement(
         "div",
         {
-          className: cx("VideoItem", { inViewport: isCurrentVideo, "cover": !letterboxing }, props.className),
-          "data-testid": "VideoItem--container",
+          className: cx("MediaSlide", { inViewport: isCurrentVideo, "cover": !letterboxing, "hide-controls": !uiVisible }, props.className),
+          "data-testid": "MediaSlide--container",
           "data-index": props.index,
           "data-scene-id": scene.id,
           ref: itemRef,
@@ -169191,168 +169359,16 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "vjs-control" }, currentlyPlayingMarkerDisplayName), /* @__PURE__ */ React$1.createElement("div", { className: "vjs-custom-control-spacer vjs-spacer" }, " ")),
           videoJsControlBarElm
         ), /* @__PURE__ */ React$1.createElement(
-          SceneInfoPanel,
+          SceneInfo,
           {
-            ...scene,
             ref: sceneInfoPanelRef,
             scene,
             className: cx({ active: sceneInfoOpen })
           }
-        ), /* @__PURE__ */ React$1.createElement(
-          "div",
-          {
-            className: "controls"
-          },
-          /* @__PURE__ */ React$1.createElement(
-            "div",
-            {
-              className: cx("toggleable-ui", { "active": uiVisible }),
-              "data-testid": "VideoItem--toggleableUi"
-            },
-            /* @__PURE__ */ React$1.createElement(
-              UiButton,
-              {
-                className: "mute",
-                active: !audioMuted,
-                activeIcon: faVolumeHigh,
-                activeText: "Mute",
-                "data-testid": "VideoItem--muteButton",
-                inactiveIcon: SvgVolumeMuteOutline,
-                inactiveText: "Unmute",
-                onClick: () => setAppSetting("audioMuted", (prev2) => !prev2)
-              }
-            ),
-            subtitlesButton,
-            "exitFullscreen" in document && /* @__PURE__ */ React$1.createElement(
-              UiButton,
-              {
-                className: "fullscreen",
-                active: fullscreen,
-                activeIcon: faExpand,
-                activeText: "Close fullscreen",
-                "data-testid": "VideoItem--fullscreenButton",
-                inactiveIcon: SvgExpandOutline,
-                inactiveText: "Open fullscreen",
-                onClick: () => setAppSetting("fullscreen", (prev2) => !prev2)
-              }
-            ),
-            /* @__PURE__ */ React$1.createElement(
-              UiButton,
-              {
-                className: "letterboxing",
-                active: !letterboxing,
-                activeIcon: SvgCoverOutline,
-                activeText: "Constrain to screen",
-                "data-testid": "VideoItem--letterboxButton",
-                inactiveIcon: SvgContain,
-                inactiveText: "Fill screen",
-                onClick: () => setAppSetting("letterboxing", (prev2) => !prev2)
-              }
-            ),
-            /* @__PURE__ */ React$1.createElement(
-              UiButton,
-              {
-                className: "force-landscape",
-                active: !forceLandscape,
-                activeIcon: SvgPortraitRotationOutline,
-                activeText: "Landscape",
-                "data-testid": "VideoItem--forceLandscapeButton",
-                inactiveIcon: SvgLandscapeRotation,
-                inactiveText: "Portrait",
-                onClick: () => setAppSetting("forceLandscape", (prev2) => !prev2)
-              }
-            ),
-            /* @__PURE__ */ React$1.createElement(
-              UiButton,
-              {
-                className: "loop",
-                active: looping,
-                activeIcon: faRepeat,
-                activeText: "Stop looping scene",
-                "data-testid": "VideoItem--loopButton",
-                inactiveIcon: SvgLoopOutline,
-                inactiveText: "Loop scene",
-                onClick: () => setAppSetting("looping", (prev2) => !prev2)
-              }
-            ),
-            sceneInfoButton,
-            /* @__PURE__ */ React$1.createElement(
-              UiButton,
-              {
-                className: "settings",
-                active: showSettings,
-                activeIcon: faGear,
-                activeText: "Close settings",
-                "data-testid": "VideoItem--settingsButton",
-                inactiveIcon: SvgCogOutline,
-                inactiveText: "Show settings",
-                onClick: () => setAppSetting("showSettings", (prev2) => !prev2)
-              }
-            )
-          ),
-          /* @__PURE__ */ React$1.createElement(
-            UiButton,
-            {
-              active: uiVisible,
-              activeIcon: faEllipsisVertical,
-              activeText: "Hide UI",
-              className: cx("toggleable-ui-button", { "active": uiVisible }),
-              "data-testid": "VideoItem--showUiButton",
-              inactiveIcon: SvgVerticalEllipsisOutline,
-              inactiveText: "Show UI",
-              onClick: () => setAppSetting("uiVisible", (prev2) => !prev2)
-            }
-          )
-        ))
+        ), /* @__PURE__ */ React$1.createElement(ActionButtons, { scene, sceneInfoOpen, setSceneInfoOpen }))
       );
     };
-    const VideoItem$1 = React$1.memo(VideoItem);
-    const UiButton = reactExports.forwardRef(
-      ({ active, activeIcon, activeText, inactiveIcon, inactiveText, className, ...props }, ref) => {
-        const fullClassName = cx(className, { active });
-        const Icon2 = active ? activeIcon : inactiveIcon;
-        return /* @__PURE__ */ React$1.createElement("button", { className: fullClassName, ...props, onClick: props.onClick, type: "button", ref }, "icon" in Icon2 ? /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: Icon2 }) : /* @__PURE__ */ React$1.createElement(Icon2, { className: "icon" }), /* @__PURE__ */ React$1.createElement("span", { className: "sr-only" }, active ? activeText : inactiveText));
-      }
-    );
-    const SceneInfoPanel = reactExports.forwardRef(
-      (props, ref) => {
-        const date = props.date ? /* @__PURE__ */ React$1.createElement("span", { className: "date" }, props.date) : null;
-        const sortedPerformers = sortPerformers(props.performers);
-        const totalPerformers = sortedPerformers.length;
-        const performersInner = sortedPerformers.map((pf, i2) => {
-          const isOneBeforeLast = i2 === totalPerformers - 2;
-          const isAnyBeforeLast = i2 < totalPerformers - 1;
-          let suffix = null;
-          if (totalPerformers === 2 && isOneBeforeLast) suffix = " and ";
-          else {
-            if (isAnyBeforeLast) suffix = ", ";
-            if (isOneBeforeLast) suffix += "and ";
-          }
-          return /* @__PURE__ */ React$1.createElement(reactExports.Fragment, { key: i2 }, /* @__PURE__ */ React$1.createElement("span", null, pf.name), suffix);
-        });
-        const performers = performersInner.length ? /* @__PURE__ */ React$1.createElement("div", { className: "performers" }, performersInner) : null;
-        const parentStudioText = props.studio?.parent_studio ? " | " + props.studio.parent_studio.name : "";
-        const studio = props.studio ? /* @__PURE__ */ React$1.createElement("span", { className: "studio" }, props.studio.name + parentStudioText) : null;
-        const title = props.title ? /* @__PURE__ */ React$1.createElement("h5", null, props.title) : null;
-        let sceneUrl = props.paths.stream?.split("/stream")[0]?.replace("/scene", "/scenes");
-        return /* @__PURE__ */ React$1.createElement(
-          "div",
-          {
-            className: cx("scene-info", props.className),
-            "data-testid": "VideoItem--sceneInfo",
-            style: props.style,
-            ref,
-            onClick: (event2) => {
-              event2.stopPropagation();
-            }
-          },
-          studio,
-          /* @__PURE__ */ React$1.createElement("a", { href: sceneUrl || "", target: "_blank" }, title),
-          performers,
-          date
-        );
-      }
-    );
+    const MediaSlide$1 = React$1.memo(MediaSlide);
     function memo(getDeps, fn, opts) {
       let deps = opts.initialDeps ?? [];
       let result;
@@ -173847,10 +173863,25 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       } = useGlobalFilterState();
       const apolloClient = useApolloClient();
       const {
-        general: { stashDefaultScenesFilter, availableSavedSceneFilters, availableSavedMarkerFilters },
-        tv: { defaultFilterId: stashTvDefaultFilterId },
-        loading: stashConfigLoading
-      } = useStashConfigStore();
+        configuration: {
+          ui: {
+            defaultFilters: {
+              scenes: stashDefaultScenesFilter
+            } = {}
+          } = {}
+        } = {},
+        loading: stashConfigurationLoading
+      } = reactExports.useContext(ConfigurationContext);
+      const {
+        data: { findSavedFilters: availableSavedSceneFilters = [] } = {},
+        loading: loadingAvailableSavedSceneFilters
+      } = useFindSavedFilters(FilterMode.Scenes);
+      const {
+        data: { findSavedFilters: availableSavedMarkerFilters = [] } = {},
+        loading: loadingAvailableSavedMarkerFilters
+      } = useFindSavedFilters(FilterMode.SceneMarkers);
+      const { data: { defaultFilterId: stashTvDefaultFilterId } } = useStashTvConfig();
+      const stashDataLoading = stashConfigurationLoading || loadingAvailableSavedSceneFilters || loadingAvailableSavedMarkerFilters;
       const { isRandomised, onlyShowMatchingOrientation } = useAppStateStore();
       const { orientation } = useWindowSize();
       let limitOrientation = void 0;
@@ -173867,7 +173898,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         !mediaItemFiltersLoading
       );
       reactExports.useEffect(() => {
-        if (useGlobalFilterState.getState().loadingResponsibilityClaimed || stashConfigLoading) return;
+        if (useGlobalFilterState.getState().loadingResponsibilityClaimed || stashDataLoading) return;
         useGlobalFilterState.setState({ loadingResponsibilityClaimed: true, loading: true });
         async function setCurrentMediaItemFilterOnInitialLoad() {
           try {
@@ -173878,7 +173909,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
                 currentSavedFilter: {
                   ...stashDefaultScenesFilter,
                   filter: ""
-                  // The filter prop is deprecated in favour of find_filter and object_filter, and it's not 
+                  // The filter prop is deprecated in favour of find_filter and object_filter, and it's not
                   // provided when getting a default saved filter so we can safely set an empty string here.
                 }
               });
@@ -173899,7 +173930,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           useGlobalFilterState.setState({ loading: false });
         }
         setCurrentMediaItemFilterOnInitialLoad();
-      }, [neverLoaded, stashConfigLoading, stashTvDefaultFilterId, stashDefaultScenesFilter]);
+      }, [neverLoaded, stashDataLoading, stashTvDefaultFilterId, stashDefaultScenesFilter]);
       async function setCurrentMediaItemFilterById(id) {
         useGlobalFilterState.setState({ loading: true });
         const { name, entityType } = availableSavedFilters.find((f) => f.id === id) || {};
@@ -173975,7 +174006,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           savedFilter,
           generalFilter: getGeneralFilter(),
           get isStashTvDefaultFilter() {
-            return savedFilter.id === useStashConfigStore.getState().tv.defaultFilterId;
+            return savedFilter.id === stashTvDefaultFilterId;
           }
         };
         if (savedFilter.mode === FilterMode.Scenes) {
@@ -174216,7 +174247,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         mediaItemsNeverLoaded: neverLoaded
       };
     }
-    const videoItemHeight = "calc(var(--y-unit-large) * 100)";
+    const mediaSlideHeight = "calc(var(--y-unit-large) * 100)";
     const itemBufferEitherSide = 1;
     const VideoScroller = () => {
       const { forceLandscape: isForceLandscape, onlyShowMatchingOrientation, debugMode, set: setAppSetting } = useAppStateStore();
@@ -174237,7 +174268,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         estimateSize: () => {
           if (!estimateSizeTesterElement.current) {
             const el = document.createElement("div");
-            el.style.height = videoItemHeight;
+            el.style.height = mediaSlideHeight;
             el.style.position = "absolute";
             el.className = "VideoScroller--size-tester";
             el.style.visibility = "hidden";
@@ -174271,7 +174302,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       const [currentIndex, _setCurrentIndex] = reactExports.useReducer(
         (currentState, newState) => {
           newState = typeof newState === "function" ? newState(currentState) : newState;
-          return clamp$1(0, newState, mediaItems.length ? mediaItems.length - 1 : 0);
+          return clamp(0, newState, mediaItems.length ? mediaItems.length - 1 : 0);
         },
         0
       );
@@ -174283,7 +174314,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             _setCurrentIndex(newIndex);
           }, 100);
           return ((newIndex) => {
-            currentIndexRef.current = clamp$1(
+            currentIndexRef.current = clamp(
               0,
               typeof newIndex === "function" ? newIndex(currentIndexRef.current) : newIndex,
               mediaItems.length ? mediaItems.length - 1 : 0
@@ -174500,8 +174531,8 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             top: 0,
             left: 0,
             width: "100%",
-            height: "calc(var(--y-unit-large) * 100)",
-            transform: `translateY(calc(var(--y-unit-large) * 100 * ${i2}))`,
+            height: mediaSlideHeight,
+            transform: `translateY(calc(${mediaSlideHeight} * ${i2}))`,
             ...debugMode ? {
               "backgroundColor": `hsl(${i2 * 37 % 360}, 70%, 50%)`,
               border: `10px ${i2 === currentIndex ? "black" : "transparent"} dashed`
@@ -174509,7 +174540,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           };
           if (itemIndexesToRender.includes(i2)) {
             return /* @__PURE__ */ React$1.createElement(
-              VideoItem$1,
+              MediaSlide$1,
               {
                 changeItemHandler: (newIndex, scrollOptions) => {
                   scrollToIndex(newIndex, scrollOptions);
@@ -174622,7 +174653,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     }
     function _objectWithoutProperties(e, t2) {
       if (null == e) return {};
-      var o2, r2, i2 = _objectWithoutPropertiesLoose(e, t2);
+      var o2, r2, i2 = _objectWithoutPropertiesLoose$1(e, t2);
       if (Object.getOwnPropertySymbols) {
         var n = Object.getOwnPropertySymbols(e);
         for (r2 = 0; r2 < n.length; r2++) o2 = n[r2], -1 === t2.indexOf(o2) && {}.propertyIsEnumerable.call(e, o2) && (i2[o2] = e[o2]);
@@ -182881,7 +182912,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       const [{ x: x2 }, api2] = useSpring(() => ({
         from: {
           x: 0
-          // Ideally this would be `showSettings ? sidebarWidth : 0` but we don't have a precise value for 
+          // Ideally this would be `showSettings ? sidebarWidth : 0` but we don't have a precise value for
           // sidebarWidth on first render so we start closed and then open immediately if needed when sidebarWidth is set
           // with a precise value
         },
@@ -182963,9 +182994,18 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         /* @__PURE__ */ React$1.createElement("div", { className: "content" }, /* @__PURE__ */ React$1.createElement("div", { className: "body", ref: bodyRef }, children), /* @__PURE__ */ React$1.createElement("div", { className: "footer" }, /* @__PURE__ */ React$1.createElement("h2", null, title), closeButton))
       ));
     }
+    const Switch = function Switch2(props) {
+      return /* @__PURE__ */ React$1.createElement(
+        FormImpl.Switch,
+        {
+          ...props,
+          className: cx("Switch", props.className),
+          label: /* @__PURE__ */ React$1.createElement("span", null, props.label)
+        }
+      );
+    };
     function SettingsTab() {
-      const { updateStashTvConfig, tv: { subtitleLanguage } } = useStashConfigStore();
-      const apolloClient = useApolloClient();
+      const { data: { subtitleLanguage }, update: updateStashTvConfig } = useStashTvConfig();
       const {
         mediaItemFiltersLoading,
         mediaItemFiltersError,
@@ -183087,7 +183127,6 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           {
             onClick: () => {
               updateStashTvConfig(
-                apolloClient,
                 {
                   defaultFilterId: selectedFilter?.value
                 }
@@ -183098,7 +183137,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           selectedFilter?.label,
           '" as the default filter'
         ), /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement("small", null, "Set the currently selected scene filter as the default filter when opening Stash TV."))), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, currentMediaItemFilter?.savedFilter?.find_filter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
-          FormImpl.Switch,
+          Switch,
           {
             id: "randomise-filter",
             checked: isRandomised,
@@ -183109,7 +183148,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             }
           }
         ), /* @__PURE__ */ React$1.createElement("small", null, "Randomise the order of scenes in the filter."))), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
-          FormImpl.Switch,
+          Switch,
           {
             id: "only-show-matching-orientation",
             label: "Only Show Scenes Matching Orientation",
@@ -183117,7 +183156,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onChange: (event2) => setAppSetting("onlyShowMatchingOrientation", event2.target.checked)
           }
         ), /* @__PURE__ */ React$1.createElement("small", null, "Limit scenes to only those in the same orientation as the current window.")))), /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "1" }, "Media Player"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "1" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
-          FormImpl.Switch,
+          Switch,
           {
             id: "auto-play",
             label: "Auto Play",
@@ -183133,7 +183172,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             options: startPositionOptions
           }
         ), /* @__PURE__ */ React$1.createElement("small", null, "The point in the scene to start playback from.")), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
-          FormImpl.Switch,
+          Switch,
           {
             id: "scene-preview-only",
             label: "Scene Preview Only",
@@ -183148,7 +183187,6 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onChange: (newValue) => {
               if (!newValue) return;
               updateStashTvConfig(
-                apolloClient,
                 {
                   subtitleLanguage: newValue.value
                 }
@@ -183158,7 +183196,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             placeholder: "Select a subtitle language"
           }
         ), /* @__PURE__ */ React$1.createElement("small", null, "Select the language to use for subtitles if available.")), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
-          FormImpl.Switch,
+          Switch,
           {
             id: "crt-effect",
             label: "CRT Effect",
@@ -183172,7 +183210,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           },
           "Show Guide"
         ), /* @__PURE__ */ React$1.createElement("small", null, "Show instructions for using Stash TV.")))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "3" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "3" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
-          FormImpl.Switch,
+          Switch,
           {
             id: "show-dev-options",
             label: "Hide Developer Options",
@@ -183180,7 +183218,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onChange: (event2) => setAppSetting("showDevOptions", false)
           }
         ), /* @__PURE__ */ React$1.createElement("small", null, "Hide developer options.")), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
-          FormImpl.Switch,
+          Switch,
           {
             id: "debug-mode",
             label: "Debug Mode",
@@ -183188,7 +183226,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onChange: (event2) => setAppSetting("debugMode", event2.target.checked)
           }
         ), /* @__PURE__ */ React$1.createElement("small", null, "Enable debug mode for additional logging and information.")), /* @__PURE__ */ React$1.createElement("div", { className: "item checkbox-item" }, /* @__PURE__ */ React$1.createElement(
-          FormImpl.Switch,
+          Switch,
           {
             id: "enable-render-debugging",
             label: "Enable Render Debugging",
@@ -183204,7 +183242,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onClick: () => window.location.reload()
           },
           "Reload Page"
-        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.8.0")))))
+        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.8.1")))))
       );
     }
     const AccordionToggle = (props) => {
@@ -183267,11 +183305,15 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     };
     const App = () => {
       const { forceLandscape } = useAppStateStore();
-      const { loadStashConfig } = useStashConfigStore();
-      const apolloClient = useApolloClient();
-      reactExports.useEffect(() => {
-        apolloClient && loadStashConfig(apolloClient);
-      }, [apolloClient]);
+      const stashConfig = useConfigurationQuery();
+      const modifiedStashConfig = {
+        ...stashConfig.data?.configuration,
+        interface: {
+          ...stashConfig.data?.configuration?.interface,
+          // Stash TV has it's own autoplay setting so we don't want to have that overridden by Stash settings
+          autostartVideo: false
+        }
+      };
       document.documentElement.className = cx({ "force-landscape": forceLandscape });
       reactExports.useEffect(() => {
         if (!forceLandscape) return;
@@ -183353,7 +183395,14 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           window.removeEventListener("touchend", remapTouchEventForLandscapeMode, { capture: true });
         };
       }, [forceLandscape]);
-      return /* @__PURE__ */ React$1.createElement(FeedPage, null);
+      return /* @__PURE__ */ React$1.createElement(
+        ConfigurationProvider,
+        {
+          configuration: modifiedStashConfig,
+          loading: stashConfig.loading
+        },
+        /* @__PURE__ */ React$1.createElement(FeedPage, null)
+      );
     };
     function getApolloClient() {
       const originalClient = getClient();
@@ -183446,4 +183495,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-B_Z5UIkX.js.map
+//# sourceMappingURL=index-EDih00tr.js.map

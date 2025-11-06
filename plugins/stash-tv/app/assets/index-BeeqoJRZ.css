@@ -12,7 +12,7 @@
   font-size: 0.8rem;
   color: white;
 }
-.VideoScroller.scrollSnappingEnabled .VideoItem, .VideoScroller.scrollSnappingEnabled .dummy-video-item {
+.VideoScroller.scrollSnappingEnabled .MediaSlide, .VideoScroller.scrollSnappingEnabled .dummy-video-item {
   scroll-snap-align: start;
   scroll-snap-stop: normal;
 }
@@ -21,13 +21,13 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-}.VideoItem {
+}.MediaSlide {
   height: 100%;
   background: #000;
   position: relative;
   transition: filter 1s;
 }
-.VideoItem .loadingDeferredPreview, .VideoItem .loadingDeferredDebugBackground {
+.MediaSlide .loadingDeferredPreview, .MediaSlide .loadingDeferredDebugBackground {
   position: absolute;
   top: 0;
   left: 0;
@@ -36,22 +36,22 @@
   object-fit: cover;
   z-index: 0;
 }
-.VideoItem .loadingDeferredDebugBackground {
+.MediaSlide .loadingDeferredDebugBackground {
   background-color: greenyellow;
 }
-.VideoItem.cover video, .VideoItem.cover img {
+.MediaSlide.cover video, .MediaSlide.cover img {
   object-fit: cover;
 }
-.VideoItem.cover .vjs-poster {
+.MediaSlide.cover .vjs-poster {
   background-size: cover;
 }
-.VideoItem:not(.cover) video, .VideoItem:not(.cover) img {
+.MediaSlide:not(.cover) video, .MediaSlide:not(.cover) img {
   object-fit: contain;
 }
-.VideoItem:not(.cover) .vjs-poster {
+.MediaSlide:not(.cover) .vjs-poster {
   background-size: contain;
 }
-.VideoItem .debugStats {
+.MediaSlide .debugStats {
   position: absolute;
   top: 0;
   left: 0;
@@ -62,54 +62,54 @@
   padding: 2px 5px;
   max-width: fit-content;
 }
-.VideoItem .video-js {
+.MediaSlide .video-js {
   background-color: unset;
 }
-.VideoItem .video-js .vjs-control-bar {
+.MediaSlide .video-js .vjs-control-bar {
   height: unset;
   padding-bottom: var(--y-dynamic-diff);
+  padding-right: calc(var(--safe-inset-right) + 50px);
   flex-wrap: wrap;
   column-gap: 1em;
   align-items: center;
-  padding-right: var(--safe-inset-right);
 }
-.VideoItem .video-js .vjs-control-bar .vjs-control {
+.MediaSlide .video-js .vjs-control-bar .vjs-control {
   width: unset;
 }
-.VideoItem .video-js .vjs-control-bar .vjs-current-time {
+.MediaSlide .video-js .vjs-control-bar .vjs-current-time {
   padding-left: 35px;
 }
-.VideoItem .video-js .vjs-control-bar > .vjs-duration {
-  padding-right: 35px;
+.MediaSlide .video-js .vjs-control-bar > .vjs-duration {
+  padding-right: 15px;
 }
-.VideoItem .video-js .vjs-control-bar .vjs-time-control {
+.MediaSlide .video-js .vjs-control-bar .vjs-time-control {
   font-size: 0.8rem;
   display: block;
   height: unset;
 }
-.VideoItem .video-js .vjs-control-bar .vjs-progress-control {
+.MediaSlide .video-js .vjs-control-bar .vjs-progress-control {
   position: unset;
   margin: 0 15px;
   width: calc(100% - 30px);
   height: 2em; /* give the container (but not the bar itself) more height to make it a larger touch target on mobile */
   translate: 0 0.7em; /* but move down visually so it's not too spaced out */
 }
-.VideoItem .video-js .vjs-control-bar .vjs-progress-control .vjs-progress-holder {
+.MediaSlide .video-js .vjs-control-bar .vjs-progress-control .vjs-progress-holder {
   margin: 0;
   background-color: rgba(115, 115, 115, 0.2);
   /* Hide the current play position handle */
   /* Show a seeking position handle */
 }
-.VideoItem .video-js .vjs-control-bar .vjs-progress-control .vjs-progress-holder .vjs-load-progress {
+.MediaSlide .video-js .vjs-control-bar .vjs-progress-control .vjs-progress-holder .vjs-load-progress {
   background: transparent;
 }
-.VideoItem .video-js .vjs-control-bar .vjs-progress-control .vjs-progress-holder .vjs-load-progress div {
+.MediaSlide .video-js .vjs-control-bar .vjs-progress-control .vjs-progress-holder .vjs-load-progress div {
   background: rgba(115, 115, 115, 0.4);
 }
-.VideoItem .video-js .vjs-control-bar .vjs-progress-control .vjs-progress-holder .vjs-play-progress:before {
+.MediaSlide .video-js .vjs-control-bar .vjs-progress-control .vjs-progress-holder .vjs-play-progress:before {
   color: transparent;
 }
-.VideoItem .video-js .vjs-control-bar .vjs-progress-control .vjs-progress-holder .vjs-mouse-display:before {
+.MediaSlide .video-js .vjs-control-bar .vjs-progress-control .vjs-progress-holder .vjs-mouse-display:before {
   /* Taken from the default videojs play position handle */
   font-size: 0.9em;
   position: absolute;
@@ -119,7 +119,7 @@
   content: "\f111";
   font-family: VideoJS;
 }
-.VideoItem .video-js .vjs-loading-spinner {
+.MediaSlide .video-js .vjs-loading-spinner {
   --size: 120px;
   width: var(--size);
   height: var(--size);
@@ -127,23 +127,23 @@
   margin: calc(var(--size) / 2 * -1) 0 0 calc(var(--size) / 2 * -1);
   opacity: 0.3;
 }
-.VideoItem .vjs-control-bar {
+.MediaSlide .vjs-control-bar {
   transition: opacity 0.6s;
 }
-.VideoItem:not(.inViewport):not(.currentlyScrolling) {
+.MediaSlide:not(.inViewport):not(.currentlyScrolling) {
   filter: brightness(0.7);
   transition: filter 1s;
 }
-.VideoItem:not(.inViewport):not(.currentlyScrolling) .vjs-control-bar {
+.MediaSlide:not(.inViewport):not(.currentlyScrolling) .vjs-control-bar {
   opacity: 0 !important;
   pointer-events: none !important;
   transition: opacity 1s;
 }
-.VideoItem .tags > .joiner {
+.MediaSlide .tags > .joiner {
   color: var(--text-muted);
   font-style: italic;
 }
-.VideoItem .tap-icon {
+.MediaSlide .tap-icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -152,100 +152,13 @@
   opacity: 0;
   pointer-events: none;
 }
-.VideoItem .tap-icon.transparent {
+.MediaSlide .tap-icon.transparent {
   opacity: 0.5 !important;
 }
-.VideoItem .controls {
-  position: absolute;
-  bottom: calc(3em + var(--y-dynamic-diff));
-  padding-top: var(--safe-inset-top);
-  padding-right: var(--safe-inset-right);
-  right: 3px;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  align-items: end;
-  z-index: 2;
-  pointer-events: none;
-}
-.VideoItem .controls > * {
-  pointer-events: initial;
-}
-.VideoItem .controls button {
-  appearance: none;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 48px; /* slightly smaller height as a hack to fit all icons on iPhone screen in landscape */
-  width: 50px;
-  background-color: transparent;
-  font-size: 28px;
-  line-height: 1;
-}
-@container viewport (min-aspect-ratio: 1/1) {
-  .VideoItem .controls button {
-    /* width >= height */
-  }
-  .VideoItem .controls button.letterboxing svg {
-    transform: rotate(90deg);
-  }
-}
-.VideoItem .controls button svg {
-  height: 1em;
-  --shadow-layer-opacity: 0.1;
-  /* Compensate for icons with less mass having visually lighter shadows */
-  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, var(--shadow-layer-opacity))) drop-shadow(-5px -5px 10px rgba(0, 0, 0, var(--shadow-layer-opacity))) drop-shadow(5px -5px 10px rgba(0, 0, 0, var(--shadow-layer-opacity))) drop-shadow(-5px 5px 10px rgba(0, 0, 0, var(--shadow-layer-opacity)));
-}
-.VideoItem .controls button svg.fa-expand {
-  --shadow-layer-opacity: 0.24;
-}
-.VideoItem .controls button svg.fa-down-left-and-up-right-to-center {
-  --shadow-layer-opacity: 0.14;
-}
-.VideoItem .controls button svg.fa-repeat {
-  --shadow-layer-opacity: 0.19;
-}
-.VideoItem .controls button svg.fa-ellipsis-vertical {
-  --shadow-layer-opacity: 0.26;
-}
-.VideoItem .controls button path {
-  stroke: white;
-  color: white;
-}
-.VideoItem .scene-info {
-  position: absolute;
-  bottom: calc(5em + var(--y-dynamic-diff));
-  left: 0;
-  width: 100%;
-  padding: 1em 5em 1em 3em;
-  z-index: 1;
-  align-self: flex-end;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: grid;
-}
-.VideoItem .scene-info a {
-  color: inherit;
-  text-decoration-color: rgba(255, 255, 255, 0.5215686275);
-}
-.VideoItem .scene-info h5 {
-  font-size: 1.1rem;
-}
-.VideoItem .scene-info .date {
-  font-size: 0.9rem;
-}
-.VideoItem .scene-info .performers {
-  font-size: 0.9rem;
-}
-.VideoItem .scene-info .studio {
-  font-size: 0.9rem;
-}
-.VideoItem .ScenePlayer ~ * {
+.MediaSlide .ScenePlayer ~ * {
   -webkit-transform: translateZ(0);
 }
-.VideoItem .toggleable-ui {
+.MediaSlide .toggleable-ui {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -254,10 +167,10 @@
   transition: opacity ease-in-out;
   max-height: calc(var(--y-unit-small) * 100 - 100px);
 }
-.VideoItem .toggleable-ui-button {
+.MediaSlide .toggleable-ui-button {
   transition: opacity ease-in-out;
 }
-.VideoItem .ScenePlayer {
+.MediaSlide .ScenePlayer {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -265,26 +178,36 @@
   align-items: center;
   display: flex;
 }
-.VideoItem .ScenePlayer .VideoPlayer {
+.MediaSlide .ScenePlayer .VideoPlayer {
   width: 100%;
   height: 100%;
 }
-.VideoItem .ScenePlayer .video-wrapper {
+.MediaSlide .ScenePlayer .video-wrapper {
   height: 100%;
 }
-.VideoItem .scene-info, .VideoItem .toggleable-ui, .VideoItem .toggleable-ui-button {
+.MediaSlide.hide-controls .SceneInfo,
+.MediaSlide.hide-controls .toggleable-ui,
+.MediaSlide.hide-controls .toggleable-ui-button,
+.MediaSlide.hide-controls .video-js.vjs-user-inactive .vjs-control-bar,
+.MediaSlide.hide-controls .video-js .vjs-control-bar {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.15s ease-in-out, visibility 0s linear 0.15s; /* delay visibility change until after opacity fades */
-  /* When visible */
 }
-.VideoItem .scene-info.toggleable-ui-button, .VideoItem .toggleable-ui.toggleable-ui-button, .VideoItem .toggleable-ui-button.toggleable-ui-button {
+.MediaSlide.hide-controls .SceneInfo.toggleable-ui-button,
+.MediaSlide.hide-controls .toggleable-ui.toggleable-ui-button,
+.MediaSlide.hide-controls .toggleable-ui-button.toggleable-ui-button,
+.MediaSlide.hide-controls .video-js.vjs-user-inactive .vjs-control-bar.toggleable-ui-button,
+.MediaSlide.hide-controls .video-js .vjs-control-bar.toggleable-ui-button {
   opacity: 0.35;
   visibility: unset;
 }
-.VideoItem .scene-info.active, .VideoItem .toggleable-ui.active, .VideoItem .toggleable-ui-button.active {
-  opacity: 1;
-  visibility: visible;
+.MediaSlide .SceneInfo:not(.active) {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease-in-out, visibility 0s linear 0.15s; /* delay visibility change until after opacity fades */
+}
+.MediaSlide .SceneInfo, .MediaSlide .toggleable-ui, .MediaSlide .toggleable-ui-button, .MediaSlide .vjs-control-bar {
   transition: opacity 0.15s ease-in-out, visibility 0s linear 0s; /* immediate visibility */
 }.vjs-marker-dot {
   position: absolute;
@@ -2415,7 +2338,7 @@ video::-webkit-media-text-track-display {
 }
 .ScenePlayer .video-js {
   /*
-  We need to include this since the sourceSelector plugin expects it to exist but we don't 
+  We need to include this since the sourceSelector plugin expects it to exist but we don't
   want it to be visible.
   */
   /*
@@ -2762,7 +2685,7 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
     &:hover {
         font-size: 9em;
     }
-    
+
     svg {
         /* Slightly move the play icon to the right to better center it visually with the loading spinner */
         translate: 0.1em;
@@ -2788,11 +2711,122 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
     .vjs-icon-placeholder {
         display: none;
     }
-}.Select {
+}
+.ActionButton {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  /* slightly smaller height as a hack to fit all icons on iPhone screen in landscape */
+  width: 50px;
+
+  background-color: transparent;
+  font-size: 28px;
+  line-height: 1;
+
+  svg {
+    height: 1em;
+    --shadow-layer-opacity: 0.1;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, var(--shadow-layer-opacity))) drop-shadow(-5px -5px 10px rgba(0, 0, 0, var(--shadow-layer-opacity))) drop-shadow(5px -5px 10px rgba(0, 0, 0, var(--shadow-layer-opacity))) drop-shadow(-5px 5px 10px rgba(0, 0, 0, var(--shadow-layer-opacity)));
+
+    path {
+      stroke: white;
+      color: white;
+    }
+  }
+}
+.ActionButtons {
+  position: absolute;
+  bottom: calc(var(--y-dynamic-diff) + 1em);
+  padding-top: var(--safe-inset-top);
+  padding-right: var(--safe-inset-right);
+  right: 3px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+  z-index: 2;
+  pointer-events: none;
+
+  >* {
+    pointer-events: initial;
+  }
+
+  .ActionButton {
+    /* Rotate icon if device is landscape to reflect device */
+    @container viewport (min-aspect-ratio: 1/1) {
+      /* width >= height */
+      &.letterboxing svg {
+        transform: rotate(90deg);
+      }
+    }
+
+    svg {
+      /* Compensate for icons with less mass having visually lighter shadows */
+      &.fa-expand {
+        --shadow-layer-opacity: 0.24;
+      }
+
+      &.fa-down-left-and-up-right-to-center {
+        --shadow-layer-opacity: 0.14;
+      }
+
+      &.fa-repeat {
+        --shadow-layer-opacity: 0.19;
+      }
+
+      &.fa-ellipsis-vertical {
+        --shadow-layer-opacity: 0.26;
+      }
+    }
+  }
+}
+.SceneInfo {
+  position: absolute;
+  bottom: calc(5em + var(--y-dynamic-diff));
+  left: 0;
+  width: 100%;
+  padding: 1em 5em 1em 3em;
+  z-index: 1;
+
+  align-self: flex-end;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  display: grid;
+
+  a {
+    color: inherit;
+    text-decoration-color: #ffffff85;
+  }
+
+  /* Title */
+  h5 {
+    font-size: 1.1rem;
+  }
+
+  .date {
+    font-size: 0.9rem;
+  }
+
+  .performers {
+    font-size: 0.9rem;
+  }
+
+  .studio {
+    font-size: 0.9rem;
+  }
+}
+.Select {
   .react-select__menu {
     margin-top: 2px;
     z-index: 10;
-  
+
     .react-select__option--is-selected {
       background-color: var(--theme-colors-primary);
     }
@@ -2847,7 +2881,8 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
       color: var(--text-color);
     }
   }
-}.SettingsTab .accordion > button {
+}
+.SettingsTab .accordion > button {
   display: block;
   padding: 0;
   width: 100%;
@@ -2886,35 +2921,6 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
 }
 .SettingsTab label {
   font-size: 1.3rem;
-}
-.SettingsTab .custom-switch {
-  padding-left: initial;
-}
-.SettingsTab .custom-switch .custom-control-label {
-  align-items: baseline;
-  display: flex;
-  --baseline-offset: 0.1rem;
-  --knob-width: calc(1rem - 4px);
-  /* The track */
-  /* The knob */
-}
-.SettingsTab .custom-switch .custom-control-label::before, .SettingsTab .custom-switch .custom-control-label::after {
-  position: unset;
-  grid-column: 2;
-  grid-row: 1;
-  flex: 0 0 auto;
-}
-.SettingsTab .custom-switch .custom-control-label::before {
-  translate: 0 var(--baseline-offset);
-  order: 3;
-}
-.SettingsTab .custom-switch .custom-control-label::after {
-  translate: calc(var(--knob-width) + 2px) calc(var(--baseline-offset) - 2px);
-  order: 2;
-  position: relative;
-  top: unset;
-  left: var(--width);
-  z-index: 2;
 }
 .SettingsTab .checkbox-item label {
   display: flex;
@@ -3019,7 +3025,48 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   background-color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
   touch-action: none; /* Disable scrolling videos when side drawer is open */
-}.Loading {
+}.Switch {
+  /* We add that extra class selector to increase specificity to override bootstrap styles */
+  &.custom-switch {
+    padding-left: initial;
+
+    .custom-control-label {
+      align-items: baseline;
+      display: flex;
+      --baseline-offset: 0.1rem;
+      --knob-width: calc(1rem - 4px);
+
+      span {
+        flex: 1 1 auto;
+      }
+
+      &::before,
+      &::after {
+        position: unset;
+        grid-column: 2;
+        grid-row: 1;
+        flex: 0 0 auto;
+      }
+
+      /* The track */
+      &::before {
+        translate: 0 var(--baseline-offset);
+        order: 3;
+      }
+
+      /* The knob */
+      &::after {
+        translate: calc(var(--knob-width) + 2px) calc(var(--baseline-offset) - 2px);
+        order: 2;
+        position: relative;
+        top: unset;
+        left: var(--width);
+        z-index: 2;
+      }
+    }
+  }
+}
+.Loading {
   height: calc(var(--y-unit-small) * 100);
   width: 100%;
   padding: 2em;
@@ -3059,16 +3106,16 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   z-index: 3;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(3px);
-  
+
   /* Reset styles applied by <dialog /> */
   color: inherit;
   border: inherit;
   padding: inherit;
-  
+
   --view-unit-min: min(var(--x-unit-dynamic), var(--y-unit-dynamic));
-  
+
   font-size: clamp(1rem, calc(var(--view-unit-min) * 3), 1.3rem);
-  
+
   --cell-padding: min(2em, calc(var(--view-unit-min) * 3));
   --border: 1px solid #ffffff27;
 
@@ -3088,44 +3135,44 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
       color: #fff;
     }
   }
-  
+
   .header {
-    padding: 
+    padding:
       calc(var(--cell-padding) + var(--safe-inset-top))
       calc(var(--cell-padding) + var(--safe-inset-left))
       var(--cell-padding)
       calc(var(--cell-padding) + var(--safe-inset-left));
     /* Doesn't really matter but when using dev tools to select the header by default it will select a spacer div
-       instead as that is the next element in the DOM so is layered on top. Explicitly set z-index for the header and
-       footer to change that */
+      instead as that is the next element in the DOM so is layered on top. Explicitly set z-index for the header and
+      footer to change that */
     z-index: 1;
   }
-  
+
   .body {
     /* we don't want the header/footer and the body double up on padding. But we also can't use gap because we want to
     use border to show a dividing line between the tap areas */
     padding-top: 0;
     padding-bottom: 0;
   }
-  
+
   .body,
   .spacer {
     &:not(.col-left) {
       border-left: var(--border);
     }
-    
+
     &.row-middle {
       justify-content: flex-start;
     }
-    
+
     &.col-left {
       padding-left: calc(var(--cell-padding) + var(--safe-inset-left));
     }
-    
+
     &.col-right {
       padding-right: calc(var(--cell-padding) + var(--safe-inset-right));
     }
-    
+
     span {
       max-width: 15rem;
     }
@@ -3134,24 +3181,24 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   .footer {
     flex-direction: row;
     justify-content: space-between;
-    padding: 
+    padding:
       var(--cell-padding)
       calc(var(--cell-padding) + var(--safe-inset-right))
       calc(var(--cell-padding) + var(--safe-inset-bottom))
       calc(var(--cell-padding) + var(--safe-inset-left));
     gap: calc(var(--cell-padding) * 2);
-    
+
     @media (max-width: 600px) {
       flex-direction: column;
     }
-    
+
     .actions {
       display: flex;
       gap: 1rem;
       justify-content: center;
       align-items: center;
       align-self: end;
-      
+
       .accessInstructions {
         font-size: 0.9rem;
         opacity: 0.8;
@@ -13669,6 +13716,9 @@ html.force-landscape body {
 body {
   padding: 0;
   overflow-x: initial;
+  /* iOS 26.1 seems to remove the ability to push content the status bar and instead shows a solid strip of colour there
+  that is the background colour of the body. Annoying but until there's another option black looks less conspicuous. */
+  background-color: black;
 }
 
 kbd {
