@@ -158,15 +158,6 @@
 .MediaSlide .ScenePlayer ~ * {
   -webkit-transform: translateZ(0);
 }
-.MediaSlide .toggleable-ui {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap-reverse;
-  justify-content: center;
-  transition: opacity ease-in-out;
-  max-height: calc(var(--y-unit-small) * 100 - 100px);
-}
 .MediaSlide .toggleable-ui-button {
   transition: opacity ease-in-out;
 }
@@ -185,20 +176,18 @@
 .MediaSlide .ScenePlayer .video-wrapper {
   height: 100%;
 }
-.MediaSlide.hide-controls .SceneInfo,
-.MediaSlide.hide-controls .toggleable-ui,
-.MediaSlide.hide-controls .toggleable-ui-button,
+.MediaSlide.hide-controls .hide-on-ui-hide,
+.MediaSlide.hide-controls .dim-on-ui-hide,
 .MediaSlide.hide-controls .video-js.vjs-user-inactive .vjs-control-bar,
 .MediaSlide.hide-controls .video-js .vjs-control-bar {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.15s ease-in-out, visibility 0s linear 0.15s; /* delay visibility change until after opacity fades */
 }
-.MediaSlide.hide-controls .SceneInfo.toggleable-ui-button,
-.MediaSlide.hide-controls .toggleable-ui.toggleable-ui-button,
-.MediaSlide.hide-controls .toggleable-ui-button.toggleable-ui-button,
-.MediaSlide.hide-controls .video-js.vjs-user-inactive .vjs-control-bar.toggleable-ui-button,
-.MediaSlide.hide-controls .video-js .vjs-control-bar.toggleable-ui-button {
+.MediaSlide.hide-controls .hide-on-ui-hide.dim-on-ui-hide,
+.MediaSlide.hide-controls .dim-on-ui-hide.dim-on-ui-hide,
+.MediaSlide.hide-controls .video-js.vjs-user-inactive .vjs-control-bar.dim-on-ui-hide,
+.MediaSlide.hide-controls .video-js .vjs-control-bar.dim-on-ui-hide {
   opacity: 0.35;
   visibility: unset;
 }
@@ -207,7 +196,7 @@
   visibility: hidden;
   transition: opacity 0.15s ease-in-out, visibility 0s linear 0.15s; /* delay visibility change until after opacity fades */
 }
-.MediaSlide .SceneInfo, .MediaSlide .toggleable-ui, .MediaSlide .toggleable-ui-button, .MediaSlide .vjs-control-bar {
+.MediaSlide .hide-on-ui-hide, .MediaSlide .dim-on-ui-hide, .MediaSlide .vjs-control-bar {
   transition: opacity 0.15s ease-in-out, visibility 0s linear 0s; /* immediate visibility */
 }.vjs-marker-dot {
   position: absolute;
@@ -2721,8 +2710,7 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 48px;
-  /* slightly smaller height as a hack to fit all icons on iPhone screen in landscape */
+  height: 50px;
   width: 50px;
 
   background-color: transparent;
@@ -2731,6 +2719,11 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
 
   svg {
     height: 1em;
+    /* Buttons will flex shrink as needed up to the size of the svg + any svg margin. We add a bit of margin to ensure
+    they don't get too close to each other. */
+    --flex-margin: 7px;
+    margin-top: var(--flex-margin);
+    margin-bottom: var(--flex-margin);
     --shadow-layer-opacity: 0.1;
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, var(--shadow-layer-opacity))) drop-shadow(-5px -5px 10px rgba(0, 0, 0, var(--shadow-layer-opacity))) drop-shadow(5px -5px 10px rgba(0, 0, 0, var(--shadow-layer-opacity))) drop-shadow(-5px 5px 10px rgba(0, 0, 0, var(--shadow-layer-opacity)));
 
@@ -2741,8 +2734,10 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   }
 }
 .ActionButtons {
+  --bottom-offset: 1em;
+  --top-offset: 1em;
   position: absolute;
-  bottom: calc(var(--y-dynamic-diff) + 1em);
+  bottom: calc(var(--y-dynamic-diff) + var(--bottom-offset));
   padding-top: var(--safe-inset-top);
   padding-right: var(--safe-inset-right);
   right: 3px;
@@ -2753,8 +2748,63 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   align-items: end;
   z-index: 2;
   pointer-events: none;
+  max-height: calc(var(--y-unit-small) * 100 - var(--bottom-offset));
 
-  >* {
+
+  .stack {
+    position: relative;
+    display: flex;
+    /* We reverse the order so that we start from the bottom when scrollable */
+    flex-direction: column-reverse;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    --fade-height: 4em;
+    --top-fade-height: var(--fade-height);
+    --bottom-fade-height: var(--fade-height);
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      black var(--top-fade-height, 0),
+      black calc(100% - var(--bottom-fade-height, 0)),
+      transparent 100%
+    );
+    transition: --top-fade-height 1s, --bottom-fade-height 1s;
+    mask-size: 100% calc(100% + ( var(--fade-height) * 2 ));
+    mask-position: center;
+    transition: mask-position 0.3s ease, mask-size 0.3s ease;
+    padding-top: var(--top-offset);
+
+    &.top-overflowing {
+      /* animation: fade-top 2.5s ease infinite; */
+      mask-position: top;
+    }
+
+    &.bottom-overflowing {
+      /* animation: fade-bottom 2.5s ease infinite; */
+      mask-position: bottom;
+    }
+
+    &.top-overflowing.bottom-overflowing {
+      mask-size: 100% 100%;
+      mask-position: center;
+    }
+
+    /* Not sure why but on firefox scrollbars take up space but in this case they don't cause the element's width to
+    expand. Chrome's scroll bars also take up space but they do grow. This is a dirty hack to deal with that situation
+    so the buttons aren't cut off. */
+    &.scroll-width-hack {
+      width: calc(100% + 16px);
+    }
+
+    /* gap: 2em; */
+
+    > * {
+      /* flex: 0 0 auto; */
+    }
+  }
+
+  > * {
     pointer-events: initial;
   }
 
@@ -2823,33 +2873,6 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   }
 }
 .Select {
-  .react-select__menu {
-    margin-top: 2px;
-    z-index: 10;
-
-    .react-select__option--is-selected {
-      background-color: var(--theme-colors-primary);
-    }
-
-    .react-select__group {
-      padding-bottom: 0;
-      padding-top: 0;
-      margin-bottom: 8px;
-      margin-top: 8px;
-
-      .react-select__group-heading {
-        font-size: 1.1em;
-        text-transform: unset;
-        color: inherit;
-        background-color: var(--textfield-bg);
-        padding-top: 0.4em;
-        padding-bottom: 0.4em;
-        display: flex;
-        gap: 0.5em;
-        align-items: center;
-      }
-    }
-  }
 
   .react-select__control {
     min-height: 1lh;
@@ -2879,6 +2902,47 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   &:hover {
     .react-select__indicator {
       color: var(--text-color);
+    }
+  }
+}
+
+/* Rendered in portal outside of Select component */
+.react-select__menu-portal {
+  .react-select__menu {
+    z-index: 10;
+
+    &.menu-below {
+      margin-top: 2px;
+    }
+    &.menu-above {
+      margin-bottom: 2px;
+    }
+
+    .react-select__menu-list {
+      overscroll-behavior: contain;
+    }
+
+    .react-select__option--is-selected {
+      background-color: var(--theme-colors-primary);
+    }
+
+    .react-select__group {
+      padding-bottom: 0;
+      padding-top: 0;
+      margin-bottom: 8px;
+      margin-top: 8px;
+
+      .react-select__group-heading {
+        font-size: 1.1em;
+        text-transform: unset;
+        color: inherit;
+        background-color: var(--textfield-bg);
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+      }
     }
   }
 }
@@ -3213,6 +3277,67 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
     }
   }
 }
+html {
+  --x-unit-small: 1svw;
+  --y-unit-small: 1svh;
+  --x-unit-large: 1lvw;
+  --y-unit-large: 1lvh;
+  --x-unit-dynamic: 1dvw;
+  --y-unit-dynamic: 1dvh;
+  --y-dynamic-diff: calc((100 * var(--y-unit-large)) - (100 * var(--y-unit-dynamic)));
+  /* This is disabled until it becomes possible to have 100lvh stretch across the whole screen again on iOS */
+  --y-dynamic-diff: 0px;
+  --safe-inset-top: env(safe-area-inset-top, 0);
+  --safe-inset-right: env(safe-area-inset-right, 0);
+  --safe-inset-bottom: env(safe-area-inset-bottom, 0);
+  --safe-inset-left: env(safe-area-inset-left, 0);
+  scroll-snap-type: y mandatory;
+  scroll-behavior: auto;
+  container: viewport/size;
+
+  &.force-landscape {
+    /*
+    When in force landscape mode it shouldn't be possible to scroll up and down
+    the viewport, instead scrolling should occur horizontally inside the rotated
+    root element. Even though we make the root element not bigger than the viewport
+    to avoid scrolling mobile browsers sometimes still have a "rubber band" effect
+    when attempting to scroll passed the top or bottom. This breaks the illusion
+    that we're in a true landscape orientation so we disable it.
+    */
+    overscroll-behavior-y: none;
+
+    --x-unit-small: 1svh;
+    --y-unit-small: 1svw;
+    --x-unit-large: 1lvh;
+    --y-unit-large: 1lvw;
+    --x-unit-dynamic: 1dvh;
+    --y-unit-dynamic: 1dvw;
+    --safe-inset-top: env(safe-area-inset-left, 0);
+    --safe-inset-right: env(safe-area-inset-top, 0);
+    --safe-inset-bottom: env(safe-area-inset-right, 0);
+    --safe-inset-left: env(safe-area-inset-bottom, 0);
+
+    scroll-snap-type: unset; /* When the root is rotated scroll snapping doesn't seem to work on the root so we set it on a child instead */
+    position: absolute;
+    left: 50%;
+    top: calc(50% + (env(safe-area-inset-top)/2));
+    transform: translate(-50%, -50%) rotate(-90deg);
+    transform-origin: center center 0px;
+    overflow: hidden;
+
+    body {
+      /* Required so that body is scrollable */
+      overflow-y: auto;
+    }
+  }
+
+  &.force-landscape,
+  &.force-landscape body {
+    height: 100svw;
+    width: calc(100svh + env(safe-area-inset-top));
+  }
+}
+
 
 .fib,.fi{background-size:contain;background-position:50%;background-repeat:no-repeat}
 .fi{position:relative;display:inline-block;width:1.333333em;line-height:1em}
@@ -13654,67 +13779,19 @@ select {
 }
 
 /*# sourceMappingURL=theme.css.map */html {
-  --x-unit-small: 1svw;
-  --y-unit-small: 1svh;
-  --x-unit-large: 1lvw;
-  --y-unit-large: 1lvh;
-  --x-unit-dynamic: 1dvw;
-  --y-unit-dynamic: 1dvh;
-  --y-dynamic-diff: calc((100 * var(--y-unit-large)) - (100 * var(--y-unit-dynamic)));
-  --safe-inset-top: env(safe-area-inset-top, 0);
-  --safe-inset-right: env(safe-area-inset-right, 0);
-  --safe-inset-bottom: env(safe-area-inset-bottom, 0);
-  --safe-inset-left: env(safe-area-inset-left, 0);
   scroll-snap-type: y mandatory;
   scroll-behavior: auto;
   container: viewport/size;
 }
-
 html.force-landscape {
-  /*
-  When in force landscape mode it shouldn't be possible to scroll up and down
-  the viewport, instead scrolling should occur horizontally inside the rotated
-  root element. Even though we make the root element not bigger than the viewport
-  to avoid scrolling mobile browsers sometimes still have a "rubber band" effect
-  when attempting to scroll passed the top or bottom. This breaks the illusion
-  that we're in a true landscape orientation so we disable it.
-  */
-  overscroll-behavior-y: none;
-  --x-unit-small: 1svh;
-  --y-unit-small: 1svw;
-  --x-unit-large: 1lvh;
-  --y-unit-large: 1lvw;
-  --x-unit-dynamic: 1dvh;
-  --y-unit-dynamic: 1dvw;
-  --safe-inset-top: env(safe-area-inset-left, 0);
-  --safe-inset-right: env(safe-area-inset-top, 0);
-  --safe-inset-bottom: env(safe-area-inset-right, 0);
-  --safe-inset-left: env(safe-area-inset-bottom, 0);
   scroll-snap-type: unset; /* When the root is rotated scroll snapping doesn't seem to work on the root so we set it on a child instead */
-  position: absolute;
-  left: 50%;
-  top: calc(50% + env(safe-area-inset-top) / 2);
-  transform: translate(-50%, -50%) rotate(-90deg);
-  transform-origin: center center 0px;
-  overflow: hidden;
 }
-
-html.force-landscape,
 html.force-landscape body {
-  height: 100svw;
-  width: calc(100svh + env(safe-area-inset-top));
-}
-
-html.force-landscape body {
-  overflow-y: scroll;
-  /* Prevent SettingsTab from causing horizontal scroll */
-  overflow-x: hidden;
   scroll-snap-type: y mandatory;
-  position: relative;
 }
-
-body {
+html body {
   padding: 0;
+  /* Overrides value set in Stash's CSS */
   overflow-x: initial;
   /* iOS 26.1 seems to remove the ability to push content the status bar and instead shows a solid strip of colour there
   that is the background colour of the body. Annoying but until there's another option black looks less conspicuous. */

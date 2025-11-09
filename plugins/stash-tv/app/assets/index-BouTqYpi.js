@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-EDih00tr.js"(exports, module) {
+  "assets/index-BouTqYpi.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -168853,128 +168853,150 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           );
         }
       }).find((c) => !!c) : null;
+      const [stackScrollClasses, setStackScrollClasses] = React$1.useState([]);
+      const stackElmRef = React$1.useRef(null);
+      function handleStackScroll(event2) {
+        const target = event2.currentTarget;
+        updateStackScrollClasses(target);
+      }
+      reactExports.useEffect(() => {
+        if (!stackElmRef.current) return;
+        const observer = new ResizeObserver(() => {
+          if (!stackElmRef.current) return;
+          updateStackScrollClasses(stackElmRef.current);
+        });
+        observer.observe(stackElmRef.current);
+        return () => {
+          observer.disconnect();
+        };
+      }, [stackElmRef.current]);
+      function updateStackScrollClasses(element) {
+        const isScrollable = element.scrollHeight !== element.offsetHeight;
+        const scrollPercent = Math.abs(element.scrollTop) / (element.scrollHeight - element.offsetHeight);
+        const scrollClasses = [];
+        if (isScrollable) {
+          if (element.scrollWidth !== element.clientWidth || element.classList.contains("scroll-width-hack")) {
+            scrollClasses.push("scroll-width-hack");
+          }
+          if (scrollPercent <= 0) {
+            scrollClasses.push("top-overflowing");
+          } else if (scrollPercent >= 1) {
+            scrollClasses.push("bottom-overflowing");
+          } else {
+            scrollClasses.push("top-overflowing", "bottom-overflowing");
+          }
+        }
+        setStackScrollClasses(scrollClasses);
+      }
       return /* @__PURE__ */ React$1.createElement(
         "div",
         {
-          className: "ActionButtons"
+          className: cx("ActionButtons", { "active": uiVisible }),
+          "data-testid": "MediaSlide--toggleableUi"
         },
-        /* @__PURE__ */ React$1.createElement(
-          "div",
+        /* @__PURE__ */ React$1.createElement("div", { className: cx("stack hide-on-ui-hide", ...stackScrollClasses), onScroll: handleStackScroll, ref: stackElmRef }, /* @__PURE__ */ React$1.createElement(
+          ActionButton,
           {
-            className: cx("toggleable-ui", { "active": uiVisible }),
-            "data-testid": "MediaSlide--toggleableUi"
-          },
-          /* @__PURE__ */ React$1.createElement(
-            ActionButton,
-            {
-              className: "mute",
-              active: !audioMuted,
-              activeIcon: faVolumeHigh,
-              activeText: "Mute",
-              "data-testid": "MediaSlide--muteButton",
-              inactiveIcon: SvgVolumeMuteOutline,
-              inactiveText: "Unmute",
-              onClick: () => setAppSetting("audioMuted", (prev2) => !prev2)
-            }
-          ),
-          captionSources && /* @__PURE__ */ React$1.createElement(
-            ActionButton,
-            {
-              active: !!captionSources && showSubtitles,
-              activeIcon: faClosedCaptioning,
-              activeText: "Hide subtitles",
-              "data-testid": "MediaSlide--subtitlesButton",
-              inactiveIcon: faClosedCaptioning,
-              inactiveText: "Show subtitles",
-              onClick: () => setAppSetting("showSubtitles", (prev2) => !prev2)
-            }
-          ),
-          "exitFullscreen" in document && /* @__PURE__ */ React$1.createElement(
-            ActionButton,
-            {
-              className: "fullscreen",
-              active: fullscreen,
-              activeIcon: faExpand,
-              activeText: "Close fullscreen",
-              "data-testid": "MediaSlide--fullscreenButton",
-              inactiveIcon: SvgExpandOutline,
-              inactiveText: "Open fullscreen",
-              onClick: () => setAppSetting("fullscreen", (prev2) => !prev2)
-            }
-          ),
-          /* @__PURE__ */ React$1.createElement(
-            ActionButton,
-            {
-              className: "letterboxing",
-              active: !letterboxing,
-              activeIcon: SvgCoverOutline,
-              activeText: "Constrain to screen",
-              "data-testid": "MediaSlide--letterboxButton",
-              inactiveIcon: SvgContain,
-              inactiveText: "Fill screen",
-              onClick: () => setAppSetting("letterboxing", (prev2) => !prev2)
-            }
-          ),
-          /* @__PURE__ */ React$1.createElement(
-            ActionButton,
-            {
-              className: "force-landscape",
-              active: !forceLandscape,
-              activeIcon: SvgPortraitRotationOutline,
-              activeText: "Landscape",
-              "data-testid": "MediaSlide--forceLandscapeButton",
-              inactiveIcon: SvgLandscapeRotation,
-              inactiveText: "Portrait",
-              onClick: () => setAppSetting("forceLandscape", (prev2) => !prev2)
-            }
-          ),
-          /* @__PURE__ */ React$1.createElement(
-            ActionButton,
-            {
-              className: "loop",
-              active: looping,
-              activeIcon: faRepeat,
-              activeText: "Stop looping scene",
-              "data-testid": "MediaSlide--loopButton",
-              inactiveIcon: SvgLoopOutline,
-              inactiveText: "Loop scene",
-              onClick: () => setAppSetting("looping", (prev2) => !prev2)
-            }
-          ),
-          sceneInfoDataAvailable && /* @__PURE__ */ React$1.createElement(
-            ActionButton,
-            {
-              className: "show-scene-info",
-              active: sceneInfoOpen,
-              activeIcon: faCircleInfo,
-              activeText: "Close scene info",
-              "data-testid": "MediaSlide--infoButton",
-              inactiveIcon: SvgInfoOutline,
-              inactiveText: "Show scene info",
-              onClick: () => setSceneInfoOpen(!sceneInfoOpen)
-            }
-          ),
-          /* @__PURE__ */ React$1.createElement(
-            ActionButton,
-            {
-              className: "settings",
-              active: showSettings,
-              activeIcon: faGear,
-              activeText: "Close settings",
-              "data-testid": "MediaSlide--settingsButton",
-              inactiveIcon: SvgCogOutline,
-              inactiveText: "Show settings",
-              onClick: () => setAppSetting("showSettings", (prev2) => !prev2)
-            }
-          )
-        ),
+            className: "settings",
+            active: showSettings,
+            activeIcon: faGear,
+            activeText: "Close settings",
+            "data-testid": "MediaSlide--settingsButton",
+            inactiveIcon: SvgCogOutline,
+            inactiveText: "Show settings",
+            onClick: () => setAppSetting("showSettings", (prev2) => !prev2)
+          }
+        ), sceneInfoDataAvailable && /* @__PURE__ */ React$1.createElement(
+          ActionButton,
+          {
+            className: "show-scene-info",
+            active: sceneInfoOpen,
+            activeIcon: faCircleInfo,
+            activeText: "Close scene info",
+            "data-testid": "MediaSlide--infoButton",
+            inactiveIcon: SvgInfoOutline,
+            inactiveText: "Show scene info",
+            onClick: () => setSceneInfoOpen(!sceneInfoOpen)
+          }
+        ), /* @__PURE__ */ React$1.createElement(
+          ActionButton,
+          {
+            className: "loop",
+            active: looping,
+            activeIcon: faRepeat,
+            activeText: "Stop looping scene",
+            "data-testid": "MediaSlide--loopButton",
+            inactiveIcon: SvgLoopOutline,
+            inactiveText: "Loop scene",
+            onClick: () => setAppSetting("looping", (prev2) => !prev2)
+          }
+        ), /* @__PURE__ */ React$1.createElement(
+          ActionButton,
+          {
+            className: "force-landscape",
+            active: !forceLandscape,
+            activeIcon: SvgPortraitRotationOutline,
+            activeText: "Landscape",
+            "data-testid": "MediaSlide--forceLandscapeButton",
+            inactiveIcon: SvgLandscapeRotation,
+            inactiveText: "Portrait",
+            onClick: () => setAppSetting("forceLandscape", (prev2) => !prev2)
+          }
+        ), /* @__PURE__ */ React$1.createElement(
+          ActionButton,
+          {
+            className: "letterboxing",
+            active: !letterboxing,
+            activeIcon: SvgCoverOutline,
+            activeText: "Constrain to screen",
+            "data-testid": "MediaSlide--letterboxButton",
+            inactiveIcon: SvgContain,
+            inactiveText: "Fill screen",
+            onClick: () => setAppSetting("letterboxing", (prev2) => !prev2)
+          }
+        ), "exitFullscreen" in document && /* @__PURE__ */ React$1.createElement(
+          ActionButton,
+          {
+            className: "fullscreen",
+            active: fullscreen,
+            activeIcon: faExpand,
+            activeText: "Close fullscreen",
+            "data-testid": "MediaSlide--fullscreenButton",
+            inactiveIcon: SvgExpandOutline,
+            inactiveText: "Open fullscreen",
+            onClick: () => setAppSetting("fullscreen", (prev2) => !prev2)
+          }
+        ), captionSources && /* @__PURE__ */ React$1.createElement(
+          ActionButton,
+          {
+            active: !!captionSources && showSubtitles,
+            activeIcon: faClosedCaptioning,
+            activeText: "Hide subtitles",
+            "data-testid": "MediaSlide--subtitlesButton",
+            inactiveIcon: faClosedCaptioning,
+            inactiveText: "Show subtitles",
+            onClick: () => setAppSetting("showSubtitles", (prev2) => !prev2)
+          }
+        ), /* @__PURE__ */ React$1.createElement(
+          ActionButton,
+          {
+            className: "mute",
+            active: !audioMuted,
+            activeIcon: faVolumeHigh,
+            activeText: "Mute",
+            "data-testid": "MediaSlide--muteButton",
+            inactiveIcon: SvgVolumeMuteOutline,
+            inactiveText: "Unmute",
+            onClick: () => setAppSetting("audioMuted", (prev2) => !prev2)
+          }
+        )),
         /* @__PURE__ */ React$1.createElement(
           ActionButton,
           {
             active: uiVisible,
             activeIcon: faEllipsisVertical,
             activeText: "Hide UI",
-            className: cx("toggleable-ui-button", { "active": uiVisible }),
+            className: cx("dim-on-ui-hide", { "active": uiVisible }),
             "data-testid": "MediaSlide--showActionButton",
             inactiveIcon: SvgVerticalEllipsisOutline,
             inactiveText: "Show UI",
@@ -169007,7 +169029,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         return /* @__PURE__ */ React$1.createElement(
           "div",
           {
-            className: cx("SceneInfo", className),
+            className: cx("SceneInfo", "hide-on-ui-hide", className),
             "data-testid": "MediaSlide--sceneInfo",
             style: style2,
             ref,
@@ -173822,13 +173844,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       return state;
     };
     function useWindowSize() {
-      const { forceLandscape } = useAppStateStore();
       let { width, height } = useWindowSize$1();
-      if (forceLandscape) {
-        const oldHeight = height;
-        height = width;
-        width = oldHeight;
-      }
       let orientation = "square";
       if (width > height) orientation = "landscape";
       if (height > width) orientation = "portrait";
@@ -174247,7 +174263,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         mediaItemsNeverLoaded: neverLoaded
       };
     }
-    const mediaSlideHeight = "calc(var(--y-unit-large) * 100)";
+    const mediaSlideHeight = "calc(var(--y-unit-small) * 100)";
     const itemBufferEitherSide = 1;
     const VideoScroller = () => {
       const { forceLandscape: isForceLandscape, onlyShowMatchingOrientation, debugMode, set: setAppSetting } = useAppStateStore();
@@ -179667,6 +179683,11 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           className: cx("Select", "react-select", className),
           classNamePrefix: "react-select",
           isSearchable,
+          classNames: {
+            menu: (state) => state.placement === "top" ? "menu-above" : "menu-below"
+          },
+          menuPortalTarget: document.body,
+          menuPosition: "fixed",
           ...otherProps
         }
       );
@@ -183242,7 +183263,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onClick: () => window.location.reload()
           },
           "Reload Page"
-        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.8.1")))))
+        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.9.0")))))
       );
     }
     const AccordionToggle = (props) => {
@@ -183278,10 +183299,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     };
     const FeedPage = ({ className }) => {
       const { showSettings, fullscreen, showGuideOverlay, set: setAppSetting } = useAppStateStore();
-      const { mediaItemFiltersLoading, mediaItemFiltersError } = useMediaItemFilters();
-      const { mediaItems, mediaItemsLoading, mediaItemsNeverLoaded, mediaItemsError } = useMediaItems();
-      const isFirstLoad = mediaItemsNeverLoaded && !mediaItemFiltersError && !mediaItemsError;
-      const loadedButNoScenes = !isFirstLoad && mediaItems.length === 0;
+      const { mediaItemFiltersLoading } = useMediaItemFilters();
+      const { mediaItems, mediaItemsLoading, mediaItemsNeverLoaded } = useMediaItems();
+      const loadedButNoScenes = !mediaItemsNeverLoaded && !mediaItemsLoading && mediaItems.length === 0;
       if (loadedButNoScenes && !showSettings) {
         setAppSetting("showSettings", true);
       }
@@ -183301,65 +183321,49 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           document.exitFullscreen?.();
         }
       }, [fullscreen]);
-      return /* @__PURE__ */ React$1.createElement("main", { "data-testid": "FeedPage", className }, (mediaItemFiltersLoading || mediaItemsLoading) && /* @__PURE__ */ React$1.createElement(Loading, { heading: "Fetching media..." }), mediaItems.length > 0 && /* @__PURE__ */ React$1.createElement(VideoScroller, null), loadedButNoScenes && /* @__PURE__ */ React$1.createElement("div", null, "No Media Found"), showGuideOverlay && /* @__PURE__ */ React$1.createElement(GuideOverlay, { onClose: () => setAppSetting("showGuideOverlay", false) }), /* @__PURE__ */ React$1.createElement(SettingsTab, null));
+      return /* @__PURE__ */ React$1.createElement("main", { "data-testid": "FeedPage", className }, (mediaItemsNeverLoaded || mediaItemFiltersLoading || mediaItemsLoading) && /* @__PURE__ */ React$1.createElement(Loading, { heading: "Fetching media..." }), mediaItems.length > 0 && /* @__PURE__ */ React$1.createElement(VideoScroller, null), loadedButNoScenes && /* @__PURE__ */ React$1.createElement("div", null, "No Media Found"), showGuideOverlay && /* @__PURE__ */ React$1.createElement(GuideOverlay, { onClose: () => setAppSetting("showGuideOverlay", false) }), /* @__PURE__ */ React$1.createElement(SettingsTab, null));
     };
-    const App = () => {
-      const { forceLandscape } = useAppStateStore();
-      const stashConfig = useConfigurationQuery();
-      const modifiedStashConfig = {
-        ...stashConfig.data?.configuration,
-        interface: {
-          ...stashConfig.data?.configuration?.interface,
-          // Stash TV has it's own autoplay setting so we don't want to have that overridden by Stash settings
-          autostartVideo: false
-        }
-      };
-      document.documentElement.className = cx({ "force-landscape": forceLandscape });
+    function useEffectKeen(effect, deps) {
+      const isFirstMount = useFirstMountState();
+      const firstRunResult = isFirstMount ? effect() : void 0;
       reactExports.useEffect(() => {
-        if (!forceLandscape) return;
-        function remapTouchEventForLandscapeMode(event2) {
-          function remapTouch(touch) {
-            const effectiveClientX = window.innerHeight - touch.clientY;
-            const effectiveClientY = touch.clientX;
-            return new Touch({
-              ..."altitudeAngle" in touch && typeof touch.altitudeAngle === "number" ? { altitudeAngle: touch.altitudeAngle } : {},
-              ..."azimuthAngle" in touch && typeof touch.azimuthAngle === "number" ? { azimuthAngle: touch.azimuthAngle } : {},
-              clientX: effectiveClientX,
-              clientY: effectiveClientY,
-              force: touch.force,
-              identifier: touch.identifier,
-              pageX: effectiveClientX,
-              pageY: effectiveClientY,
-              radiusX: touch.radiusX,
-              radiusY: touch.radiusY,
-              rotationAngle: touch.rotationAngle,
-              screenX: effectiveClientX,
-              screenY: effectiveClientY,
-              target: touch.target,
-              ..."touchType" in touch ? { touchType: touch.touchType } : {}
-            });
-          }
-          if ("pageX" in event2 && typeof event2.pageX === "number" && "pageY" in event2 && typeof event2.pageY === "number") {
-            const effectivePageX = window.innerHeight - event2.pageY;
-            const effectivePageY = event2.pageX;
-            updateReadOnlyProps(event2, {
-              pageX: effectivePageX,
-              pageY: effectivePageY
-            });
-          }
-          const newTouchEvent = new TouchEvent("touchstart", {
-            touches: Array.from(event2.touches).map(remapTouch),
-            targetTouches: Array.from(event2.targetTouches).map(remapTouch),
-            changedTouches: Array.from(event2.changedTouches).map(remapTouch)
-          });
-          updateReadOnlyProps(event2, {
-            touches: newTouchEvent.touches,
-            changedTouches: newTouchEvent.changedTouches,
-            targetTouches: newTouchEvent.targetTouches
-          });
+        if (isFirstMount) {
+          return firstRunResult;
+        } else {
+          return effect();
         }
+      }, deps);
+    }
+    function useViewportRotate(rotationEnabled) {
+      const isFirstMount = useFirstMountState();
+      document.documentElement.className = cx({ "force-landscape": rotationEnabled });
+      useEffectKeen(() => {
+        if (!rotationEnabled) return;
+        const originalDescriptorInnerHeight = Object.getOwnPropertyDescriptor(window, "innerHeight");
+        const originalDescriptorInnerWidth = Object.getOwnPropertyDescriptor(window, "innerWidth");
+        Object.defineProperty(window, "innerHeight", {
+          get() {
+            return originalDescriptorInnerWidth?.get?.call(window);
+          },
+          configurable: true
+        });
+        Object.defineProperty(window, "innerWidth", {
+          get() {
+            return originalDescriptorInnerHeight?.get?.call(window);
+          },
+          configurable: true
+        });
+        return () => {
+          if (originalDescriptorInnerHeight)
+            Object.defineProperty(window, "innerHeight", originalDescriptorInnerHeight);
+          if (originalDescriptorInnerWidth)
+            Object.defineProperty(window, "innerWidth", originalDescriptorInnerWidth);
+        };
+      }, [rotationEnabled]);
+      useEffectKeen(() => {
+        if (!rotationEnabled) return;
         function remapMouseEventForLandscapeMode(event2) {
-          const effectiveClientX = window.innerHeight - event2.clientY;
+          const effectiveClientX = window.innerWidth - event2.clientY;
           const effectiveClientY = event2.clientX;
           const effectiveMovementX = -event2.movementY;
           const effectiveMovementY = event2.movementX;
@@ -183380,9 +183384,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         window.addEventListener("mousedown", remapMouseEventForLandscapeMode, { capture: true });
         window.addEventListener("mousemove", remapMouseEventForLandscapeMode, { capture: true });
         window.addEventListener("mouseup", remapMouseEventForLandscapeMode, { capture: true });
-        window.addEventListener("touchstart", remapTouchEventForLandscapeMode, { capture: true });
-        window.addEventListener("touchmove", remapTouchEventForLandscapeMode, { capture: true });
-        window.addEventListener("touchend", remapTouchEventForLandscapeMode, { capture: true });
+        window.addEventListener("click", remapMouseEventForLandscapeMode, { capture: true });
         return () => {
           window.removeEventListener("pointerdown", remapMouseEventForLandscapeMode, { capture: true });
           window.removeEventListener("pointermove", remapMouseEventForLandscapeMode, { capture: true });
@@ -183390,11 +183392,95 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           window.removeEventListener("mousedown", remapMouseEventForLandscapeMode, { capture: true });
           window.removeEventListener("mousemove", remapMouseEventForLandscapeMode, { capture: true });
           window.removeEventListener("mouseup", remapMouseEventForLandscapeMode, { capture: true });
+          window.removeEventListener("click", remapMouseEventForLandscapeMode, { capture: true });
+        };
+      }, [rotationEnabled]);
+      useEffectKeen(() => {
+        if (!rotationEnabled) return;
+        function remapTouchEventForLandscapeMode(event2) {
+          function remapTouch(touch) {
+            const effectiveClientX = window.innerWidth - touch.clientY;
+            const effectiveClientY = touch.clientX;
+            return new Touch({
+              ..."altitudeAngle" in touch && typeof touch.altitudeAngle === "number" ? { altitudeAngle: touch.altitudeAngle } : {},
+              ..."azimuthAngle" in touch && typeof touch.azimuthAngle === "number" ? { azimuthAngle: touch.azimuthAngle } : {},
+              clientX: effectiveClientX,
+              clientY: effectiveClientY,
+              force: touch.force,
+              identifier: touch.identifier,
+              pageX: effectiveClientX,
+              pageY: effectiveClientY,
+              radiusX: touch.radiusX,
+              radiusY: touch.radiusY,
+              rotationAngle: touch.rotationAngle,
+              screenX: effectiveClientX,
+              screenY: effectiveClientY,
+              target: touch.target,
+              ..."touchType" in touch ? { touchType: touch.touchType } : {}
+            });
+          }
+          if ("pageX" in event2 && typeof event2.pageX === "number" && "pageY" in event2 && typeof event2.pageY === "number") {
+            const effectivePageX = window.innerWidth - event2.pageY;
+            const effectivePageY = event2.pageX;
+            updateReadOnlyProps(event2, {
+              pageX: effectivePageX,
+              pageY: effectivePageY
+            });
+          }
+          const newTouchEvent = new TouchEvent("touchstart", {
+            touches: Array.from(event2.touches).map(remapTouch),
+            targetTouches: Array.from(event2.targetTouches).map(remapTouch),
+            changedTouches: Array.from(event2.changedTouches).map(remapTouch)
+          });
+          updateReadOnlyProps(event2, {
+            touches: newTouchEvent.touches,
+            changedTouches: newTouchEvent.changedTouches,
+            targetTouches: newTouchEvent.targetTouches
+          });
+        }
+        window.addEventListener("touchstart", remapTouchEventForLandscapeMode, { capture: true });
+        window.addEventListener("touchmove", remapTouchEventForLandscapeMode, { capture: true });
+        window.addEventListener("touchend", remapTouchEventForLandscapeMode, { capture: true });
+        return () => {
           window.removeEventListener("touchstart", remapTouchEventForLandscapeMode, { capture: true });
           window.removeEventListener("touchmove", remapTouchEventForLandscapeMode, { capture: true });
           window.removeEventListener("touchend", remapTouchEventForLandscapeMode, { capture: true });
         };
-      }, [forceLandscape]);
+      }, [rotationEnabled]);
+      useEffectKeen(() => {
+        if (!rotationEnabled) return;
+        const originalGetBoundingClientRectFunc = Element.prototype.getBoundingClientRect;
+        Element.prototype.getBoundingClientRect = function(...args) {
+          const viewportRect = originalGetBoundingClientRectFunc.apply(document.documentElement, args);
+          const elementRect = originalGetBoundingClientRectFunc.apply(this, args);
+          return new DOMRect(
+            viewportRect.height + viewportRect.y - (elementRect.y + elementRect.height),
+            elementRect.x,
+            elementRect.height,
+            elementRect.width
+          );
+        };
+        return () => {
+          Element.prototype.getBoundingClientRect = originalGetBoundingClientRectFunc;
+        };
+      }, [rotationEnabled]);
+      reactExports.useEffect(() => {
+        if (isFirstMount) return;
+        window.dispatchEvent(new Event("resize"));
+      }, [rotationEnabled]);
+    }
+    const App = () => {
+      const { forceLandscape } = useAppStateStore();
+      const stashConfig = useConfigurationQuery();
+      const modifiedStashConfig = {
+        ...stashConfig.data?.configuration,
+        interface: {
+          ...stashConfig.data?.configuration?.interface,
+          // Stash TV has it's own autoplay setting so we don't want to have that overridden by Stash settings
+          autostartVideo: false
+        }
+      };
+      useViewportRotate(forceLandscape);
       return /* @__PURE__ */ React$1.createElement(
         ConfigurationProvider,
         {
@@ -183495,4 +183581,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-EDih00tr.js.map
+//# sourceMappingURL=index-BouTqYpi.js.map
