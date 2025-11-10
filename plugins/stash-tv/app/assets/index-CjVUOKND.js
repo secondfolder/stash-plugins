@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-BHHguZQ4.js"(exports, module) {
+  "assets/index-CjVUOKND.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -151046,6 +151046,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       name
     }
   }
+  tags {
+    name
+  }
 }
     `;
     gql`
@@ -183271,7 +183274,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onClick: () => window.location.reload()
           },
           "Reload Page"
-        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.9.1")))))
+        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.9.2")))))
       );
     }
     const AccordionToggle = (props) => {
@@ -183589,4 +183592,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BHHguZQ4.js.map
+//# sourceMappingURL=index-CjVUOKND.js.map
