@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-BouTqYpi.js"(exports, module) {
+  "assets/index-BHHguZQ4.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -166703,6 +166703,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       hideControls,
       hideProgressBar,
       onClick,
+      onPointerUp,
       onEnded,
       onVideojsPlayerReady,
       optionsToMerge,
@@ -166926,6 +166927,13 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           videojsPlayer.off("click", onClick);
         };
       }, [videojsPlayer, onClick]);
+      reactExports.useEffect(() => {
+        if (!videojsPlayer || !onPointerUp) return;
+        videojsPlayer.on("pointerup", onPointerUp);
+        return () => {
+          videojsPlayer.off("pointerup", onPointerUp);
+        };
+      }, [videojsPlayer, onPointerUp]);
       return /* @__PURE__ */ React$1.createElement(
         "div",
         {
@@ -169133,11 +169141,11 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           videojsPlayerRef.current?.pause();
         }
       }, [props.index, props.currentIndex, autoplay]);
-      const handleClick = reactExports.useCallback((event2) => {
+      const handlePointerUp = reactExports.useCallback((event2) => {
         const { currentTarget: videoElm } = event2;
         if (!videoElm || !(videoElm instanceof HTMLElement)) return;
         const videoElmWidth = videoElm.clientWidth;
-        if (debugMode) console.log(`Click at X=${event2.clientX} (video width: ${videoElmWidth})`, videoElm);
+        if (debugMode) console.log(`Pointer up at X=${event2.clientX} (video width: ${videoElmWidth})`, videoElm);
         if (event2.clientX < videoElmWidth / 3) {
           seekBackwards();
         } else if (event2.clientX < videoElmWidth / 3 * 2) {
@@ -169357,7 +169365,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             },
             refVideo: videoRef,
             onEnded: handleOnEnded,
-            onClick: handleClick,
+            onPointerUp: handlePointerUp,
             onVideojsPlayerReady: handleVideojsPlayerReady,
             trackActivity: !scenePreviewOnly && props.mediaItem.entityType !== "marker",
             scrubberThumbnail: !scenePreviewOnly && props.mediaItem.entityType !== "marker",
@@ -183263,7 +183271,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onClick: () => window.location.reload()
           },
           "Reload Page"
-        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.9.0")))))
+        )), /* @__PURE__ */ React$1.createElement("div", { className: "item" }, "1.9.1")))))
       );
     }
     const AccordionToggle = (props) => {
@@ -183581,4 +183589,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BouTqYpi.js.map
+//# sourceMappingURL=index-BHHguZQ4.js.map
