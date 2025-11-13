@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-Ds4qRiE3.js"(exports, module) {
+  "assets/index-Dq0-HUus.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -173154,27 +173154,31 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           debugMode && console.log(`Unmounted ScenePlayer sceneId=${otherProps.scene.id}`);
         };
       }, []);
-      const [videoJsEventsToLogAttached, setVideoJsEventsToLogAttached] = reactExports.useState([]);
+      const videoJsEventsToLogAttached = reactExports.useRef({});
       const logVideoJsEvent = reactExports.useCallback((event2) => {
         console.groupCollapsed(`ScenePlayer [id=${id}] event: ${event2.type}`);
         console.info(event2);
+        if (event2.type === "timeupdate") {
+          console.info("currentTime:", videojsPlayerRef.current?.currentTime());
+        }
         console.groupEnd();
       }, []);
       reactExports.useEffect(() => {
         for (const eventName of videoJsEventsToLog) {
-          if (!videoJsEventsToLogAttached.includes(eventName)) {
+          if (!videoJsEventsToLogAttached.current[eventName]) {
             const player = videojsPlayerRef.current;
             if (!player) continue;
             player.on(eventName, logVideoJsEvent);
-            setVideoJsEventsToLogAttached((prev2) => [...prev2, eventName]);
+            videoJsEventsToLogAttached.current[eventName] = true;
           }
         }
-        for (const eventName of videoJsEventsToLogAttached) {
+        const attachedEvents = Object.entries(videoJsEventsToLogAttached.current).filter(([, attached]) => attached).map(([eventName]) => eventName);
+        for (const eventName of attachedEvents) {
           if (!videoJsEventsToLog.includes(eventName)) {
             const player = videojsPlayerRef.current;
             if (!player) continue;
             player.off(eventName, logVideoJsEvent);
-            setVideoJsEventsToLogAttached((prev2) => prev2.filter((e) => e !== eventName));
+            videoJsEventsToLogAttached.current[eventName] = false;
           }
         }
       }, [videoJsEventsToLog, videoJsEventsToLogAttached]);
@@ -173236,7 +173240,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       videoJsSetupCallbacks[playerId] = (player) => {
         for (const eventName of videoJsEventsToLog) {
           player.on(eventName, logVideoJsEvent);
-          setVideoJsEventsToLogAttached((prev2) => [...prev2, eventName]);
+          videoJsEventsToLogAttached.current[eventName] = true;
         }
         if (loop2 !== void 0) {
           setTimeout(() => !player.isDisposed() && player.loop(loop2), 100);
@@ -178052,7 +178056,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     function useMediaItems() {
       const { lastLoadedCurrentMediaItemFilter } = useMediaItemFilters();
       const { debugMode, maxMedia, scenePreviewOnly, markerPreviewOnly } = useAppStateStore();
-      const previewOnly = scenePreviewOnly || markerPreviewOnly;
+      const previewOnly = lastLoadedCurrentMediaItemFilter?.entityType === "scene" && scenePreviewOnly || lastLoadedCurrentMediaItemFilter?.entityType === "marker" && markerPreviewOnly;
       const [neverLoaded, setNeverLoaded] = reactExports.useState(true);
       let response;
       let mediaItems;
@@ -178210,12 +178214,12 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           if (typeof maxMedia === "number") {
             modifiedMediaItems = modifiedMediaItems.slice(0, maxMedia);
           }
-          if (lastLoadedCurrentMediaItemFilter?.entityType === "scene" && scenePreviewOnly || lastLoadedCurrentMediaItemFilter?.entityType === "marker" && markerPreviewOnly) {
+          if (previewOnly) {
             modifiedMediaItems = modifiedMediaItems.map(makeMediaItemPreviewOnly);
           }
           return modifiedMediaItems;
         },
-        [mediaItems, scenePreviewOnly, markerPreviewOnly, maxMedia, hashObject(previewLengths)]
+        [mediaItems, previewOnly, maxMedia, hashObject(previewLengths)]
       );
       return {
         mediaItems,
@@ -187043,13 +187047,20 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           ref: itemRef,
           style: props.style
         },
-        /* @__PURE__ */ React$1.createElement(CrtEffect, { enabled: crtEffect }, debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, props.index, " - ", scene2.id, " ", loadingDeferred ? "(Loading deferred)" : "", " ", props.mediaItem.entityType === "marker" ? `(Marker: ${props.mediaItem.entity.primary_tag.name})` : ""), debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "loadingDeferredDebugBackground" }), /* @__PURE__ */ React$1.createElement("img", { className: "loadingDeferredPreview", src: scene2.paths.screenshot || "" }), !loadingDeferred && /* @__PURE__ */ React$1.createElement(
+        /* @__PURE__ */ React$1.createElement(CrtEffect, { enabled: crtEffect }, debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, props.index, " - ", scene2.id, " ", loadingDeferred ? "(Loading deferred)" : "", " ", props.mediaItem.entityType === "marker" ? `(Marker: ${props.mediaItem.entity.primary_tag.name})` : ""), debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "loadingDeferredDebugBackground" }), loadingDeferred && scene2.paths.screenshot && /* @__PURE__ */ React$1.createElement("img", { className: "loadingDeferredPreview", src: scene2.paths.screenshot }), !loadingDeferred && /* @__PURE__ */ React$1.createElement(
           ScenePlayer,
           {
             id: `scene-player-${props.mediaItem.id}`,
             key: JSON.stringify([scene2.id, hashObject(scene2.sceneStreams)]),
             onTimeUpdate: handleOnTimeUpdate,
-            scene: scene2,
+            scene: {
+              ...scene2,
+              paths: {
+                ...scene2.paths,
+                // We avoid showing the poster if we are auto-playing to prevent a flash of the poster before playback starts
+                ...globalAutoPlay ? { screenshot: null } : {}
+              }
+            },
             hideScrubberOverride: true,
             muted: audioMuted,
             autoplay,
@@ -188191,7 +188202,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }, [isForceLandscape, setCurrentIndex]);
       reactExports.useEffect(() => {
         const handleKeyDown = (e) => {
-          if (e.key === "c" && !e.ctrlKey && !e.metaKey && !e.altKey && !e.shiftKey) {
+          if (e.key === "c" && !e.ctrlKey && !e.metaKey && !e.altKey && !e.shiftKey && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
             setAppSetting("crtEffect", (prev2) => !prev2);
           }
         };
@@ -197062,7 +197073,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onClick: () => window.location.reload()
           },
           "Reload Page"
-        )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, "1.11.0")))))
+        )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, "1.11.1")))))
       );
     }
     const AccordionToggle = (props) => {
@@ -198031,4 +198042,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-Ds4qRiE3.js.map
+//# sourceMappingURL=index-Dq0-HUus.js.map
