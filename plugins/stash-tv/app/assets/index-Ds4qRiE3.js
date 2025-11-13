@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-BKaOmVUL.js"(exports, module) {
+  "assets/index-Ds4qRiE3.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -172323,15 +172323,15 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }
       return false;
     }
-    function getSceneIdForVideoJsPlayer(videoElm) {
+    function getMediaItemIdForVideoJsPlayer(videoElm) {
       let node2 = videoElm;
       while (node2 !== null) {
         if (node2 instanceof HTMLElement && "sceneId" in node2.dataset && node2.dataset.sceneId) {
-          return node2.dataset.sceneId;
+          return node2.id.replace(/^scene-player-/, "");
         }
         node2 = node2.parentElement;
       }
-      throw new Error("Could not find sceneId for Video.js player");
+      throw new Error("Could not find mediaItemId for Video.js player");
     }
     function getPlayerIdForVideoJsPlayer(videoElm) {
       let node2 = videoElm;
@@ -172912,9 +172912,11 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           isRandomised: false,
           crtEffect: false,
           scenePreviewOnly: false,
+          markerPreviewOnly: false,
           onlyShowMatchingOrientation: false,
           showDevOptions: false,
           debugMode: false,
+          videoJsEventsToLog: [],
           maxMedia: void 0,
           autoPlay: true,
           startPosition: "resume",
@@ -173109,6 +173111,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     allowPluginRemoval(videojs);
     ScenePlayer$1.displayName = "ScenePlayerOriginal";
     const ScenePlayer = reactExports.forwardRef(({
+      id,
       className,
       onTimeUpdate,
       hideControls,
@@ -173144,13 +173147,37 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           }
         }
       }, []);
-      const { debugMode } = useAppStateStore();
+      const { debugMode, videoJsEventsToLog } = useAppStateStore();
       reactExports.useEffect(() => {
         debugMode && console.log(`Mounted ScenePlayer sceneId=${otherProps.scene.id}`);
         return () => {
           debugMode && console.log(`Unmounted ScenePlayer sceneId=${otherProps.scene.id}`);
         };
       }, []);
+      const [videoJsEventsToLogAttached, setVideoJsEventsToLogAttached] = reactExports.useState([]);
+      const logVideoJsEvent = reactExports.useCallback((event2) => {
+        console.groupCollapsed(`ScenePlayer [id=${id}] event: ${event2.type}`);
+        console.info(event2);
+        console.groupEnd();
+      }, []);
+      reactExports.useEffect(() => {
+        for (const eventName of videoJsEventsToLog) {
+          if (!videoJsEventsToLogAttached.includes(eventName)) {
+            const player = videojsPlayerRef.current;
+            if (!player) continue;
+            player.on(eventName, logVideoJsEvent);
+            setVideoJsEventsToLogAttached((prev2) => [...prev2, eventName]);
+          }
+        }
+        for (const eventName of videoJsEventsToLogAttached) {
+          if (!videoJsEventsToLog.includes(eventName)) {
+            const player = videojsPlayerRef.current;
+            if (!player) continue;
+            player.off(eventName, logVideoJsEvent);
+            setVideoJsEventsToLogAttached((prev2) => prev2.filter((e) => e !== eventName));
+          }
+        }
+      }, [videoJsEventsToLog, videoJsEventsToLogAttached]);
       const [videoElm, setVideoElm] = reactExports.useState(null);
       const [videojsPlayer, setVideojsPlayer] = reactExports.useState(null);
       const videojsPlayerRef = reactExports.useRef(null);
@@ -173207,6 +173234,10 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         return () => player.off("ended", onEnded);
       }, [onEnded]);
       videoJsSetupCallbacks[playerId] = (player) => {
+        for (const eventName of videoJsEventsToLog) {
+          player.on(eventName, logVideoJsEvent);
+          setVideoJsEventsToLogAttached((prev2) => [...prev2, eventName]);
+        }
         if (loop2 !== void 0) {
           setTimeout(() => !player.isDisposed() && player.loop(loop2), 100);
         }
@@ -173351,7 +173382,8 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           className: cx(["ScenePlayer", className, { "hide-controls": hideControls, "hide-progress-bar": hideProgressBar }]),
           ref: containerRef,
           "data-scene-id": otherProps.scene?.id,
-          "data-player-id": playerId
+          "data-player-id": playerId,
+          id
         },
         /* @__PURE__ */ React$1.createElement(
           ScenePlayer$1,
@@ -178019,7 +178051,8 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     const defaultMarkerLength = 20;
     function useMediaItems() {
       const { lastLoadedCurrentMediaItemFilter } = useMediaItemFilters();
-      const { debugMode, maxMedia, scenePreviewOnly: previewOnly } = useAppStateStore();
+      const { debugMode, maxMedia, scenePreviewOnly, markerPreviewOnly } = useAppStateStore();
+      const previewOnly = scenePreviewOnly || markerPreviewOnly;
       const [neverLoaded, setNeverLoaded] = reactExports.useState(true);
       let response;
       let mediaItems;
@@ -178094,15 +178127,16 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           if (!(event2?.target instanceof HTMLVideoElement)) return;
           const videoElm = event2.target;
           try {
-            const sceneId = getSceneIdForVideoJsPlayer(videoElm);
+            const mediaItemId = getMediaItemIdForVideoJsPlayer(videoElm);
+            debugMode && console.log("Saving preview length for media item", mediaItemId, "duration", videoElm.duration);
             setPreviewLengths(
               (prev2) => ({
                 ...prev2,
-                [sceneId]: videoElm.duration
+                [mediaItemId]: videoElm.duration
               })
             );
           } catch (error) {
-            console.warn("Failed to get scene ID for video element", error);
+            console.warn("Failed to get media item ID for video element", error);
           }
         };
         window.addEventListener("loadedmetadata", saveDurationOnceMetadataLoaded, { capture: true });
@@ -178124,12 +178158,14 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           return mediaItem;
         }
         const scene2 = "scene" in mediaItem.entity ? mediaItem.entity.scene : mediaItem.entity;
-        let duration2;
+        let estimatedDuration;
         if (mediaItem.entityType === "marker") {
-          duration2 = mediaItem.entity.duration;
+          estimatedDuration = Math.min(defaultMarkerLength, scene2.files[0].duration);
         } else {
-          duration2 = scene2.id in previewLengths ? previewLengths[scene2.id] : Math.min(9.2, scene2.files[0].duration);
+          estimatedDuration = Math.min(9.2, scene2.files[0].duration);
         }
+        debugMode && mediaItem.id in previewLengths && console.log("Duration cached", mediaItem.id, previewLengths[mediaItem.id]);
+        const duration2 = mediaItem.id in previewLengths ? previewLengths[mediaItem.id] : estimatedDuration;
         const updatedScene = {
           ...scene2,
           sceneStreams: [
@@ -178174,12 +178210,12 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           if (typeof maxMedia === "number") {
             modifiedMediaItems = modifiedMediaItems.slice(0, maxMedia);
           }
-          if (previewOnly) {
+          if (lastLoadedCurrentMediaItemFilter?.entityType === "scene" && scenePreviewOnly || lastLoadedCurrentMediaItemFilter?.entityType === "marker" && markerPreviewOnly) {
             modifiedMediaItems = modifiedMediaItems.map(makeMediaItemPreviewOnly);
           }
           return modifiedMediaItems;
         },
-        [mediaItems, previewOnly, maxMedia, hashObject(previewLengths)]
+        [mediaItems, scenePreviewOnly, markerPreviewOnly, maxMedia, hashObject(previewLengths)]
       );
       return {
         mediaItems,
@@ -186663,6 +186699,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         showSubtitles,
         crtEffect,
         scenePreviewOnly,
+        markerPreviewOnly,
         showDevOptions,
         debugMode,
         autoPlay: globalAutoPlay,
@@ -186737,8 +186774,8 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           firstDurationChangeRef.current = false;
           return;
         }
-        videojsPlayerRef.current?.duration(scene2.files?.[0]?.duration);
-      }, [scene2.files?.[0]?.duration]);
+        videojsPlayerRef.current?.duration(getMediaItemDuration());
+      }, [getMediaItemDuration()]);
       reactExports.useEffect(() => {
         if (!looping || props.mediaItem.entityType !== "marker" || !videojsPlayerRef.current) return;
         const handleEnded = () => {
@@ -186910,7 +186947,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         return props.mediaItem.entity.resume_time ?? void 0;
       }, [props.mediaItem.entityType === "marker" || startPosition, getMediaItemDuration()]);
       const endTimestamp = reactExports.useMemo(() => {
-        if (props.mediaItem.entityType === "marker") return void 0;
+        if (props.mediaItem.entityType === "marker" || props.mediaItem.entityType === "scene" && scenePreviewOnly) return void 0;
         const duration2 = props.mediaItem.entity.files[0]?.duration;
         const lengthRemaining = duration2 - (initialTimestamp ?? 0);
         if (endPosition === "fixed-length") {
@@ -186933,7 +186970,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           return (initialTimestamp || 0) + Math.floor(Math.random() * (effectiveMaxPlayLength - effectiveMinPlayLength + 1)) + effectiveMinPlayLength;
         }
         return void 0;
-      }, [endPosition, initialTimestamp, minPlayLength, maxPlayLength, playLength, getMediaItemDuration()]);
+      }, [endPosition, initialTimestamp, minPlayLength, maxPlayLength, playLength, getMediaItemDuration(), scenePreviewOnly]);
       const findCurrentlyPlayingMarkers = (currentTime) => {
         if (props.mediaItem.entityType === "marker") {
           return [props.mediaItem.entity];
@@ -186985,6 +187022,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         const currentTime = videojsPlayerRef.current?.currentTime();
         if (currentTime === void 0) return;
         if (endTimestamp !== void 0 && currentTime >= endTimestamp && currentTime <= endTimestamp + 3) {
+          debugMode && console.log(`End timestamp reached at ${currentTime}s (end: ${endTimestamp}s)`);
           videojsPlayerRef.current?.pause();
           goToItem("next");
         }
@@ -187008,6 +187046,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         /* @__PURE__ */ React$1.createElement(CrtEffect, { enabled: crtEffect }, debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, props.index, " - ", scene2.id, " ", loadingDeferred ? "(Loading deferred)" : "", " ", props.mediaItem.entityType === "marker" ? `(Marker: ${props.mediaItem.entity.primary_tag.name})` : ""), debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "loadingDeferredDebugBackground" }), /* @__PURE__ */ React$1.createElement("img", { className: "loadingDeferredPreview", src: scene2.paths.screenshot || "" }), !loadingDeferred && /* @__PURE__ */ React$1.createElement(
           ScenePlayer,
           {
+            id: `scene-player-${props.mediaItem.id}`,
             key: JSON.stringify([scene2.id, hashObject(scene2.sceneStreams)]),
             onTimeUpdate: handleOnTimeUpdate,
             scene: scene2,
@@ -187032,7 +187071,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             optionsToMerge: {
               plugins: {
                 styledBigPlayButton: {},
-                ...props.mediaItem.entityType === "marker" && !scenePreviewOnly ? {
+                ...props.mediaItem.entityType === "marker" && !markerPreviewOnly ? {
                   offset: {
                     start: props.mediaItem.entity.seconds,
                     end: props.mediaItem.entity.seconds + props.mediaItem.entity.duration,
@@ -187996,7 +188035,14 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     const mediaSlideHeight = "calc(var(--y-unit-small) * 100)";
     const itemBufferEitherSide = 1;
     const VideoScroller = () => {
-      const { forceLandscape: isForceLandscape, onlyShowMatchingOrientation, debugMode, set: setAppSetting } = useAppStateStore();
+      const {
+        forceLandscape: isForceLandscape,
+        onlyShowMatchingOrientation,
+        debugMode,
+        scenePreviewOnly,
+        markerPreviewOnly,
+        set: setAppSetting
+      } = useAppStateStore();
       const { orientation: orientation2 } = useWindowSize();
       const rootElmRef = reactExports.useRef(null);
       const { mediaItems, loadMoreMediaItems } = useMediaItems();
@@ -188145,7 +188191,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }, [isForceLandscape, setCurrentIndex]);
       reactExports.useEffect(() => {
         const handleKeyDown = (e) => {
-          if (e.key === "c") {
+          if (e.key === "c" && !e.ctrlKey && !e.metaKey && !e.altKey && !e.shiftKey) {
             setAppSetting("crtEffect", (prev2) => !prev2);
           }
         };
@@ -188294,7 +188340,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
                 },
                 currentIndex,
                 index: i2,
-                key: mediaItem.id,
+                key: hashObject([mediaItem.id, scenePreviewOnly, markerPreviewOnly]),
                 mediaItem,
                 style: style2,
                 currentlyScrolling: rowVirtualizer.isScrolling
@@ -196697,8 +196743,10 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         isRandomised,
         crtEffect,
         scenePreviewOnly,
+        markerPreviewOnly,
         onlyShowMatchingOrientation,
         showDevOptions,
+        videoJsEventsToLog,
         debugMode,
         autoPlay,
         startPosition,
@@ -196853,7 +196901,23 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             checked: autoPlay,
             onChange: (event2) => setAppSetting("autoPlay", event2.target.checked)
           }
-        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Automatically play scenes.")), selectedFilter?.filterType === "scene" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "start-position" }, "Start Point"), /* @__PURE__ */ React$1.createElement(
+        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Automatically play scenes.")), selectedFilter?.filterType === "scene" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+          Switch,
+          {
+            id: "scene-preview-only",
+            label: "Scene Preview Only",
+            checked: scenePreviewOnly,
+            onChange: (event2) => setAppSetting("scenePreviewOnly", event2.target.checked)
+          }
+        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Play a short preview rather than the full scene. (Requires the preview files to have been generated in Stash for a scene otherwise the full scene will be shown.)")), selectedFilter?.filterType === "marker" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+          Switch,
+          {
+            id: "marker-preview-only",
+            label: "Play Low-res Preview",
+            checked: markerPreviewOnly,
+            onChange: (event2) => setAppSetting("markerPreviewOnly", event2.target.checked)
+          }
+        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Play the low-resolution maker preview which can be useful for low bandwidth situations. (Requires the preview files to have been generated in Stash for a marker otherwise the full-quality video will be shown.)")), selectedFilter?.filterType === "scene" && !scenePreviewOnly && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "start-position" }, "Start Point"), /* @__PURE__ */ React$1.createElement(
           Select,
           {
             inputId: "start-position",
@@ -196861,7 +196925,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onChange: (newValue) => newValue && setAppSetting("startPosition", newValue.value),
             options: startPositionOptions
           }
-        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The point in the scene to start playback from.")), selectedFilter?.filterType === "scene" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "end-position" }, "End Point"), /* @__PURE__ */ React$1.createElement(
+        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The point in the scene to start playback from.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "end-position" }, "End Point"), /* @__PURE__ */ React$1.createElement(
           Select,
           {
             inputId: "end-position",
@@ -196869,7 +196933,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onChange: (newValue) => newValue && setAppSetting("endPosition", newValue.value),
             options: endPositionOptions
           }
-        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The point in the scene to end playback."), selectedFilter?.filterType === "scene" && endPosition === "fixed-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "play-length" }, "Play Length"), /* @__PURE__ */ React$1.createElement(
+        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The point in the scene to end playback."), endPosition === "fixed-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "play-length" }, "Play Length"), /* @__PURE__ */ React$1.createElement(
           NumberField,
           {
             id: "play-length",
@@ -196880,7 +196944,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
               event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
             )
           }
-        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The length to play the scene for. Will play the full scene if not set.")), selectedFilter?.filterType === "scene" && endPosition === "random-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", null, "Random Play Length Range"), /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "min-play-length", className: "sr-only" }, "Random Length Minimum"), /* @__PURE__ */ React$1.createElement(
+        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The length to play the scene for. Will play the full scene if not set.")), endPosition === "random-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", null, "Random Play Length Range"), /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "min-play-length", className: "sr-only" }, "Random Length Minimum"), /* @__PURE__ */ React$1.createElement(
           NumberField,
           {
             id: "min-play-length",
@@ -196904,15 +196968,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
               event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
             )
           }
-        )), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Sets the minimum and maximum length to randomly play the scene for."))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
-          Switch,
-          {
-            id: "scene-preview-only",
-            label: "Scene Preview Only",
-            checked: scenePreviewOnly,
-            onChange: (event2) => setAppSetting("scenePreviewOnly", event2.target.checked)
-          }
-        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Play a short preview rather than the full scene. (Requires the preview files to have been generated in Stash for a scene otherwise the full scene will be shown.)")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "subtitle-language" }, "Subtitle language"), /* @__PURE__ */ React$1.createElement(
+        )), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Sets the minimum and maximum length to randomly play the scene for.")))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "subtitle-language" }, "Subtitle language"), /* @__PURE__ */ React$1.createElement(
           Select,
           {
             inputId: "subtitle-language",
@@ -196980,13 +197036,33 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
               event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
             )
           }
-        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Limit the number of media items that are shown (loading amount is unaffected).")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Limit the number of media items that are shown (loading amount is unaffected).")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "video-js-events-to-log" }, "Video.js Events To Log"), /* @__PURE__ */ React$1.createElement(
+          Select,
+          {
+            inputId: "video-js-events-to-log",
+            value: videoJsEventsToLog.map((eventName) => ({
+              label: eventName,
+              value: eventName
+            })),
+            onChange: (newValue) => setAppSetting(
+              "videoJsEventsToLog",
+              newValue.some((item) => item.value === "all") ? videoJsEvents : newValue.map((item) => item.value)
+            ),
+            options: ["all", ...videoJsEvents].map((eventName) => ({
+              label: eventName,
+              value: eventName
+            })),
+            placeholder: "Select video.js events to log",
+            isMulti: true,
+            closeMenuOnSelect: false
+          }
+        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Which video.js events to log to the console.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
           Button,
           {
             onClick: () => window.location.reload()
           },
           "Reload Page"
-        )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, "1.10.0")))))
+        )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, "1.11.0")))))
       );
     }
     const AccordionToggle = (props) => {
@@ -196995,6 +197071,63 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       const open = contextEventKey === eventKey;
       return /* @__PURE__ */ React$1.createElement(Accordion.Toggle, { className: cx(className, open ? "open" : ""), as: Button, variant: "link", eventKey, ...otherProps }, /* @__PURE__ */ React$1.createElement("h3", null, /* @__PURE__ */ React$1.createElement("span", null, children), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faChevronLeft })));
     };
+    const videoJsEvents = [.../* @__PURE__ */ new Set([
+      // HTMLMediaElement events
+      "abort",
+      "canplay",
+      "canplaythrough",
+      "durationchange",
+      "emptied",
+      "ended",
+      "error",
+      "loadeddata",
+      "loadedmetadata",
+      "loadstart",
+      "pause",
+      "play",
+      "playing",
+      "progress",
+      "ratechange",
+      "seeked",
+      "seeking",
+      "stalled",
+      "suspend",
+      "timeupdate",
+      "volumechange",
+      "waiting",
+      // HTMLVideoElement events
+      "enterpictureinpicture",
+      "leavepictureinpicture",
+      // Element events
+      "fullscreenchange",
+      "resize",
+      // video.js events
+      "audioonlymodechange",
+      "audiopostermodechange",
+      "controlsdisabled",
+      "controlsenabled",
+      "debugon",
+      "debugoff",
+      "disablepictureinpicturechanged",
+      "dispose",
+      "enterFullWindow",
+      "error",
+      "exitFullWindow",
+      "firstplay",
+      "fullscreenerror",
+      "languagechange",
+      "loadedmetadata",
+      "loadstart",
+      "playerreset",
+      "playerresize",
+      "posterchange",
+      "ready",
+      "textdata",
+      "useractive",
+      "userinactive",
+      "usingcustomcontrols",
+      "usingnativecontrols"
+    ])];
     const Loading = (props) => {
       const smallText = props.text ?? null;
       return /* @__PURE__ */ React$1.createElement("div", { className: "Loading", "data-testid": "Loader" }, /* @__PURE__ */ React$1.createElement("h2", null, props.heading), smallText, /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true })));
@@ -197898,4 +198031,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BKaOmVUL.js.map
+//# sourceMappingURL=index-Ds4qRiE3.js.map
