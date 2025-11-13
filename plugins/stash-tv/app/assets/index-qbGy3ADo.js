@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-Dq0-HUus.js"(exports, module) {
+  "assets/index-qbGy3ADo.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -196944,7 +196944,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onChange: (newValue) => newValue && setAppSetting("endPosition", newValue.value),
             options: endPositionOptions
           }
-        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The point in the scene to end playback."), endPosition === "fixed-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "play-length" }, "Play Length"), /* @__PURE__ */ React$1.createElement(
+        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The point in the scene to end playback."), endPosition === "fixed-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "play-length" }, "Play Length (Seconds)"), /* @__PURE__ */ React$1.createElement(
           NumberField,
           {
             id: "play-length",
@@ -196955,7 +196955,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
               event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
             )
           }
-        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The length to play the scene for. Will play the full scene if not set.")), endPosition === "random-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", null, "Random Play Length Range"), /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "min-play-length", className: "sr-only" }, "Random Length Minimum"), /* @__PURE__ */ React$1.createElement(
+        ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The length to play the scene for. Will play the full scene if not set.")), endPosition === "random-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", null, "Random Play Length Range (Seconds)"), /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "min-play-length", className: "sr-only" }, "Random Length Minimum"), /* @__PURE__ */ React$1.createElement(
           NumberField,
           {
             id: "min-play-length",
@@ -197073,7 +197073,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onClick: () => window.location.reload()
           },
           "Reload Page"
-        )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, "1.11.1")))))
+        )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, "1.12.0")))))
       );
     }
     const AccordionToggle = (props) => {
@@ -198042,4 +198042,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-Dq0-HUus.js.map
+//# sourceMappingURL=index-qbGy3ADo.js.map
