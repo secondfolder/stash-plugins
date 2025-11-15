@@ -1,4 +1,22 @@
-@charset "UTF-8";.VideoScroller {
+@charset "UTF-8";.FeedPage:has(.status-info) {
+  min-height: calc(var(--y-unit-small) * 100);
+  min-width: calc(var(--x-unit-small) * 95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.FeedPage:has(.status-info) .status-info {
+  translate: 0 calc((var(--y-unit-small) * 100 - 100%) * -0.05);
+}
+.FeedPage:has(.status-info) .status-info .LoadingIndicator {
+  padding-top: 0;
+}
+.FeedPage:has(.status-info) > .ActionButton.settings {
+  position: absolute;
+  bottom: 3em;
+  right: 1em;
+}.VideoScroller {
   position: relative;
 }
 .VideoScroller .debugStats {
@@ -2317,9 +2335,7 @@ video::-webkit-media-text-track-display {
     flex: 0 0 calc(100% - 15px);
     max-width: calc(100% - 15px);
   }
-}
-
-/*# sourceMappingURL=styles.css.map */.ScenePlayer .VideoPlayer {
+}.ScenePlayer .VideoPlayer {
   max-height: initial;
   padding-bottom: initial;
 }
@@ -4171,16 +4187,602 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     }
   }
 }
-.Loading {
-  height: calc(var(--y-unit-small) * 100);
-  width: 100%;
-  padding: 2em;
-  text-align: center;
+
+.LoadingIndicator {
+  animation: fadeInAnimation ease 200ms;
+  animation-delay: 200ms;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  opacity: 0;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.LoadingIndicator {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+}
+.LoadingIndicator:not(.card-based) {
+  padding-top: 2rem;
+}
+.LoadingIndicator-message {
+  margin-top: 1rem;
+}
+.LoadingIndicator .spinner-border {
+  height: 3rem;
+  width: 3rem;
+}
+.LoadingIndicator.inline {
+  display: inline;
+  height: auto;
+  margin-left: 0.5rem;
+}
+.LoadingIndicator.small .spinner-border {
+  height: 1rem;
+  width: 1rem;
+}
+
+.details-edit {
+  /*
+    The penultimate button should be wrapped in an unstyled div.
+    This allows the div to expand, to right-justify the last (save / delete) button.
+  */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  padding: 0;
+  row-gap: 0.5rem;
+}
+.details-edit .btn {
+  margin-right: 0.5rem;
+  white-space: nowrap;
+}
+
+.col-md-8 .details-edit div:nth-last-child(2),
+.detail-header.edit .details-edit div:nth-last-child(2) {
+  flex: 1;
+  max-width: 100%;
+}
+
+.select-suggest:hover {
+  cursor: text;
+}
+
+.duration-input .duration-control,
+.duration-input .percent-control,
+.percent-input .duration-control,
+.percent-input .percent-control {
+  min-width: 3rem;
+}
+.duration-input .duration-button,
+.duration-input .percent-button,
+.percent-input .duration-button,
+.percent-input .percent-button {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  line-height: 10px;
+  padding: 1px 7px;
+}
+.duration-input .btn + .btn,
+.percent-input .btn + .btn {
+  margin-left: 0;
+}
+
+.multi-set .btn-group > button.btn {
+  z-index: auto;
+}
+
+.folder-item button {
+  padding: 0;
+}
+
+.folder-list {
+  list-style-type: none;
+  margin: 0;
+  max-height: 30vw;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  padding-top: 1rem;
+}
+.folder-list-item {
+  white-space: nowrap;
+}
+.folder-list-item .btn {
+  border: none;
+  color: white;
+  font-weight: 400;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+}
+.folder-list-item:last-child .btn span::before {
+  content: "└ 📁";
+}
+.folder-list-item .btn span::before {
+  content: "├ 📁";
+  display: inline-block;
+  padding-right: 1rem;
+  transform: scale(1.5);
+}
+.folder-list-parent .btn span::before {
+  visibility: hidden;
+}
+.folder-list-parent .btn-link {
+  font-weight: 500;
+}
+
+.scrape-dialog .modal-content .dialog-container {
+  max-height: calc(100vh - 14rem);
+  overflow-y: auto;
+  padding-right: 15px;
+}
+.scrape-dialog .image-selection-parent {
+  min-width: 100%;
+}
+.scrape-dialog .image-selection .select-buttons {
   align-items: center;
-  font-size: 200%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.scrape-dialog .image-selection .select-buttons .image-index {
+  flex-grow: 1;
+  text-align: center;
+}
+.scrape-dialog .image-selection .loading {
+  opacity: 0.5;
+}
+.scrape-dialog .image-selection .LoadingIndicator {
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+
+button.collapse-button.btn-primary:not(:disabled):not(.disabled):hover,
+button.collapse-button.btn-primary:not(:disabled):not(.disabled):focus,
+button.collapse-button.btn-primary:not(:disabled):not(.disabled):active {
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: #f5f8fa;
+  text-align: left;
+}
+
+button.collapse-button {
+  padding-left: 0;
+}
+button.collapse-button .fa-icon {
+  margin-left: 0;
+}
+
+.hover-popover-content {
+  max-width: 32rem;
+  text-align: center;
+}
+
+.ErrorMessage {
+  align-items: center;
+  height: 20rem;
+  justify-content: center;
+}
+.ErrorMessage-content {
+  display: inline-block;
+}
+
+.grid-card a .card-section-title {
+  color: #f5f8fa;
+  text-decoration: none;
+}
+.grid-card .progress-bar {
+  background-color: rgba(115, 133, 159, 0.5019607843);
+  bottom: 5px;
+  display: block;
+  height: 5px;
+  position: absolute;
+  width: 100%;
+}
+.grid-card .progress-indicator {
+  background-color: #137cbd;
+  height: 5px;
+}
+.grid-card .card-controls {
+  align-items: center;
+  display: flex;
+  left: 0.5rem;
+  position: absolute;
+  top: 0.7rem;
+  z-index: 1;
+}
+.grid-card .card-check,
+.grid-card .card-drag-handle {
+  height: 1.2rem;
+  opacity: 0;
+  width: 1.2rem;
+}
+@media (hover: none), (pointer: coarse) {
+  .grid-card .card-check,
+  .grid-card .card-drag-handle {
+    opacity: 0.25;
+  }
+}
+.grid-card .card-drag-handle {
+  cursor: move;
+}
+.grid-card .card-check {
+  padding-left: 15px;
+}
+.grid-card .card-check:checked {
+  opacity: 0.75;
+}
+@media (hover: none), (pointer: coarse) {
+  .grid-card .card-check {
+    width: 1.5rem;
+  }
+}
+.grid-card:hover .card-check, .grid-card:hover .card-drag-handle {
+  opacity: 0.75;
+  transition: opacity 0.5s;
+}
+
+.TruncatedText {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: pre-line;
+}
+.TruncatedText-tooltip .tooltip-inner {
+  max-width: 300px;
+  white-space: pre-line;
+}
+.file-info-panel a > .TruncatedText {
+  word-break: break-all;
+}
+
+.RatingStars-unfilled path {
+  fill: white;
+}
+.RatingStars-filled path {
+  fill: gold;
+}
+
+.three-state-checkbox {
+  align-items: center;
+  display: flex;
+}
+.three-state-checkbox button.btn {
+  font-size: 12.67px;
+  margin-left: -0.2em;
+  margin-right: 0.25rem;
+  padding: 0;
+}
+.three-state-checkbox button.btn:not(:disabled):active, .three-state-checkbox button.btn:not(:disabled):active:focus, .three-state-checkbox button.btn:not(:disabled):hover, .three-state-checkbox button.btn:not(:disabled):not(:hover) {
+  background-color: initial;
+  box-shadow: none;
+}
+.three-state-checkbox.unset .label {
+  color: #bfccd6;
+  text-decoration: line-through;
+}
+.three-state-checkbox.checked svg {
+  color: #0f9960;
+}
+.three-state-checkbox.not-checked svg {
+  color: #db3737;
+}
+
+.input-group-prepend .btn {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.ModalComponent .modal-footer {
+  justify-content: space-between;
+}
+
+.scrape-url-button:disabled {
+  opacity: 0.5;
+}
+
+.string-list-input .input-group {
+  margin-bottom: 0.35rem;
+}
+
+.bulk-update-text-input button {
+  background-color: #394b59;
+  color: #bfccd6;
+  font-size: 0.875rem;
+  margin: 0.375rem 0.75rem;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  z-index: 4;
+}
+.bulk-update-text-input button:hover, .bulk-update-text-input button:focus, .bulk-update-text-input button:active, .bulk-update-text-input button:not(:disabled):not(.disabled):active, .bulk-update-text-input button:not(:disabled):not(.disabled):active:focus {
+  background-color: #394b59;
+  border-color: transparent;
+  box-shadow: none;
+}
+.bulk-update-text-input.unset button {
+  visibility: hidden;
+}
+
+.date-input.form-control:focus {
+  z-index: inherit;
+}
+
+/* stylelint-disable */
+div.react-datepicker {
+  background-color: #202b33;
+  border-color: #30404d;
+  color: #f5f8fa;
+}
+div.react-datepicker .react-datepicker__header,
+div.react-datepicker .react-datepicker-time__header {
+  background-color: #394b59;
+  color: #f5f8fa;
+  padding-top: 0.4rem;
+}
+div.react-datepicker .react-datepicker__navigation {
+  top: 0.4rem;
+}
+div.react-datepicker .react-datepicker__day {
+  color: #f5f8fa;
+}
+div.react-datepicker .react-datepicker__day.react-datepicker__day--disabled {
+  color: #bfccd6;
+}
+div.react-datepicker .react-datepicker__day:hover {
+  background: rgba(138, 155, 168, 0.15);
+}
+div.react-datepicker div.react-datepicker__time-container div.react-datepicker__time {
+  background-color: #202b33;
+  color: #f5f8fa;
+}
+div.react-datepicker div.react-datepicker__time-container div.react-datepicker__time ul.react-datepicker__time-list li.react-datepicker__time-list-item:hover {
+  background-color: rgba(138, 155, 168, 0.15);
+}
+div.react-datepicker .react-datepicker__day-name {
+  color: #f5f8fa;
+}
+div.react-datepicker .react-datepicker__current-month {
+  display: none;
+}
+div.react-datepicker .react-datepicker__triangle {
+  display: none;
+}
+div.react-datepicker .react-datepicker__month-dropdown-container {
+  margin-left: 0;
+  margin-right: 0.1rem;
+}
+div.react-datepicker .react-datepicker__year-dropdown-container {
+  margin-left: 0.1rem;
+  margin-right: 0;
+}
+div.react-datepicker .react-datepicker__month-dropdown-container .react-datepicker__month-read-view,
+div.react-datepicker .react-datepicker__year-dropdown-container .react-datepicker__year-read-view {
+  font-weight: bold;
+  font-size: 0.944rem;
+  visibility: visible !important;
+}
+div.react-datepicker .react-datepicker__month-dropdown-container .react-datepicker__month-read-view--down-arrow,
+div.react-datepicker .react-datepicker__year-dropdown-container .react-datepicker__year-read-view--down-arrow {
+  display: none;
+}
+div.react-datepicker .react-datepicker__year-dropdown,
+div.react-datepicker .react-datepicker__month-dropdown {
+  background-color: #202b33;
+}
+div.react-datepicker .react-datepicker__year-dropdown .react-datepicker__year-option:hover,
+div.react-datepicker .react-datepicker__year-dropdown .react-datepicker__month-option:hover,
+div.react-datepicker .react-datepicker__month-dropdown .react-datepicker__year-option:hover,
+div.react-datepicker .react-datepicker__month-dropdown .react-datepicker__month-option:hover {
+  background-color: rgba(138, 155, 168, 0.1490196078);
+}
+
+/* stylelint-enable */
+#date-picker-portal .react-datepicker-popper {
+  z-index: 1600;
+}
+
+.clearable-input-group {
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.clearable-text-field,
+.clearable-text-field:active,
+.clearable-text-field:focus {
+  background-color: #394b59;
+  border: 0;
+  border-color: #394b59;
+  color: #fff;
+}
+
+.clearable-text-field-clear {
+  background-color: #394b59;
+  bottom: 0;
+  color: #bfccd6;
+  font-size: 0.875rem;
+  margin: 0.375rem 0.75rem;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 4;
+}
+.clearable-text-field-clear:hover, .clearable-text-field-clear:focus, .clearable-text-field-clear:active, .clearable-text-field-clear:not(:disabled):not(.disabled):active, .clearable-text-field-clear:not(:disabled):not(.disabled):active:focus {
+  background-color: #394b59;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.string-list-row .input-group {
+  flex-wrap: nowrap;
+}
+
+.stash-id-pill {
+  display: inline-block;
+  font-size: 90%;
+  font-weight: 700;
+  line-height: 1;
+  padding-bottom: 0.25em;
+  padding-top: 0.25em;
+  text-align: center;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+.stash-id-pill span,
+.stash-id-pill a {
+  display: inline-block;
+  padding: 0.25em 0.6em;
+}
+.stash-id-pill span {
+  background-color: #007bff;
+  border-radius: 0.25rem 0 0 0.25rem;
+  min-width: 5em;
+}
+.stash-id-pill a {
+  background-color: #394b59;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.react-select-image-option {
+  align-items: baseline;
+  display: flex;
+}
+
+button.btn.favorite-button {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+button.btn.favorite-button.not-favorite {
+  color: rgba(191, 204, 214, 0.5);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
+}
+button.btn.favorite-button.not-favorite.hide-not-favorite {
+  opacity: 0;
+}
+button.btn.favorite-button.favorite {
+  color: #ff7373;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
+}
+button.btn.favorite-button:hover, button.btn.favorite-button:active, button.btn.favorite-button:focus, button.btn.favorite-button:active:focus {
+  background: none;
+  box-shadow: none;
+}
+
+.count-button {
+  border-radius: 5px;
+}
+.count-button:hover {
+  background: rgba(138, 155, 168, 0.15);
+  color: #f5f8fa;
+}
+.count-button .count-icon {
+  padding-left: 0.5rem;
+  padding-right: 0.25rem;
+}
+.count-button .count-value {
+  padding-left: 0.25rem;
+  padding-right: 0.5rem;
+}
+.count-button button.count-icon:hover, .count-button.increment-only button.count-value:hover {
+  background: none;
+  color: #f5f8fa;
+}
+.count-button button.btn-secondary.count-icon:focus,
+.count-button button.btn-secondary.count-value:focus {
+  border: none;
+  box-shadow: none;
+  color: #f5f8fa;
+}
+.count-button button.btn-secondary.count-icon:focus:not(:hover),
+.count-button button.btn-secondary.count-value:focus:not(:hover) {
+  background: none;
+}
+
+.external-links-button {
+  display: inline-block;
+}
+
+.scraper-menu .dropdown-menu {
+  min-width: 250px;
+  padding-top: 0;
+}
+.scraper-menu .dropdown-menu .dropdown-divider {
+  border-top-color: rgba(16, 22, 26, 0.3);
+  margin: 0;
+}
+.scraper-menu .dropdown-menu .scraper-filter-container {
+  background-color: #394b59;
+  border-bottom: solid 1px rgba(16, 22, 26, 0.3);
+  padding: 5px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.scraper-menu .dropdown-menu .scraper-filter-container .btn-group {
+  border: solid 1px rgba(16, 22, 26, 0.3);
+  border-radius: 5px;
+  width: 100%;
+}
+.scraper-menu .dropdown-menu .scraper-filter-container .clearable-text-field {
+  background-color: rgba(16, 22, 26, 0.3);
+}
+.scraper-menu .dropdown-menu .scraper-filter-container .clearable-text-field-clear {
+  background-color: unset;
+  border: unset;
+}
+.scraper-menu .dropdown-menu .scraper-filter-container .reload-button.btn {
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.custom-fields .detail-item .detail-item-title {
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.custom-fields-input > .collapse-button {
+  font-weight: 700;
+}
+
+.custom-fields-row {
+  align-items: center;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.875rem;
+}
+.custom-fields-row .form-label {
+  margin-bottom: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.custom-fields-row div.custom-fields-field label.form-label {
+  cursor: inherit;
+  text-decoration: inherit;
+}
+.custom-fields-row .form-control,
+.custom-fields-row .btn {
+  font-size: 0.875rem;
+}
+.custom-fields-row.custom-fields-new > div:not(:last-child) {
+  padding-right: 0;
 }.GuideOverlay {
   position: fixed;
   top: 0;
@@ -4380,6 +4982,13 @@ html {
 }
 
 
+/* Blueprint dark theme */
+/*!
+ * Bootstrap v4.6.2 (https://getbootstrap.com/)
+ * Copyright 2011-2022 The Bootstrap Authors
+ * Copyright 2011-2022 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
 .fib,.fi{background-size:contain;background-position:50%;background-repeat:no-repeat}
 .fi{position:relative;display:inline-block;width:1.333333em;line-height:1em}
 .fi:before{content:" "}
@@ -4924,43 +5533,6 @@ html {
 .fi-un.fis{background-image:url(./un-CJoUS1_J.svg)}
 .fi-xk{background-image:url(./xk-BOGoRkzZ.svg)}
 .fi-xk.fis{background-image:url(./xk-BftLirx4.svg)}
-:root {
-  --secondary: #394b59;
-  --muted-gray: #bfccd6;
-  --success: #0f9960;
-  --warning: #d9822b;
-  --danger: #db3737;
-  --theme-colors-primary: #137cbd;
-  --theme-colors-secondary: #394b59;
-  --theme-colors-success: #0f9960;
-  --theme-colors-warning: #d9822b;
-  --theme-colors-danger: #db3737;
-  --theme-colors-dark: #394b59;
-  --body-bg: #202b33;
-  --text-muted: #bfccd6;
-  --link-color: #48aff0;
-  --link-hover-color: #48aff0;
-  --text-color: #f5f8fa;
-  --pre-color: #f5f8fa;
-  --navbar-dark-color: rgb(245, 248, 250);
-  --popover-bg: #394b59;
-  --dark-text: #182026;
-  --textfield-bg: rgba(16, 22, 26, 0.3);
-  --card-bg: #30404d;
-  --card-cap-bg: rgba(0, 0, 0, 0.03);
-  --red1: #a82a2a;
-  --orange1: #a66321;
-  --sepia1: #63411e;
-  --dark-gray2: #202b33;
-  --dark-gray5: #394b59;
-}
-/* Blueprint dark theme */
-/*!
- * Bootstrap v4.6.2 (https://getbootstrap.com/)
- * Copyright 2011-2022 The Bootstrap Authors
- * Copyright 2011-2022 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -10786,6 +11358,18 @@ button.bg-dark:focus {
 .embed-responsive-1by1::before {
   padding-top: 100%;
 }
+.embed-responsive-21by9::before {
+  padding-top: 42.85714286%;
+}
+.embed-responsive-16by9::before {
+  padding-top: 56.25%;
+}
+.embed-responsive-4by3::before {
+  padding-top: 75%;
+}
+.embed-responsive-1by1::before {
+  padding-top: 100%;
+}
 .flex-row {
   flex-direction: row !important;
 }
@@ -14817,9 +15401,36 @@ select {
   max-height: calc(100vh - 12rem);
   overflow-y: auto;
   padding-right: 1.5rem;
-}
-
-/*# sourceMappingURL=theme.css.map */html {
+}:root {
+  --secondary: #394b59;
+  --muted-gray: #bfccd6;
+  --success: #0f9960;
+  --warning: #d9822b;
+  --danger: #db3737;
+  --theme-colors-primary: #137cbd;
+  --theme-colors-secondary: #394b59;
+  --theme-colors-success: #0f9960;
+  --theme-colors-warning: #d9822b;
+  --theme-colors-danger: #db3737;
+  --theme-colors-dark: #394b59;
+  --body-bg: #202b33;
+  --text-muted: #bfccd6;
+  --link-color: #48aff0;
+  --link-hover-color: #48aff0;
+  --text-color: #f5f8fa;
+  --pre-color: #f5f8fa;
+  --navbar-dark-color: rgb(245, 248, 250);
+  --popover-bg: #394b59;
+  --dark-text: #182026;
+  --textfield-bg: rgba(16, 22, 26, 0.3);
+  --card-bg: #30404d;
+  --card-cap-bg: rgba(0, 0, 0, 0.03);
+  --red1: #a82a2a;
+  --orange1: #a66321;
+  --sepia1: #63411e;
+  --dark-gray2: #202b33;
+  --dark-gray5: #394b59;
+}html {
   scroll-snap-type: y mandatory;
   scroll-behavior: auto;
   container: viewport/size;

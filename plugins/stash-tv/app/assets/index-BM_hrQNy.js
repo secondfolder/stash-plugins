@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-qbGy3ADo.js"(exports, module) {
+  "assets/index-BM_hrQNy.js"(exports, module) {
     function _mergeNamespaces(n, m) {
       for (var i2 = 0; i2 < m.length; i2++) {
         const e = m[i2];
@@ -153965,7 +153965,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     var SelectableContext = /* @__PURE__ */ React$1.createContext(null);
     var context = /* @__PURE__ */ React$1.createContext(null);
     context.displayName = "AccordionContext";
-    var _excluded$y = ["as", "children", "eventKey", "onClick"];
+    var _excluded$z = ["as", "children", "eventKey", "onClick"];
     function useAccordionToggle(eventKey, onClick) {
       var contextEventKey = reactExports.useContext(context);
       var onSelect = reactExports.useContext(SelectableContext);
@@ -153976,7 +153976,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       };
     }
     var AccordionToggle$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "button" : _ref$as, children = _ref3.children, eventKey = _ref3.eventKey, onClick = _ref3.onClick, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$y);
+      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "button" : _ref$as, children = _ref3.children, eventKey = _ref3.eventKey, onClick = _ref3.onClick, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$z);
       var accordionOnClick = useAccordionToggle(eventKey, onClick);
       if (Component2 === "button") {
         props.type = "button";
@@ -154490,7 +154490,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     function triggerBrowserReflow(node2) {
       node2.offsetHeight;
     }
-    var _excluded$x = ["onEnter", "onEntering", "onEntered", "onExit", "onExiting", "className", "children", "dimension", "getDimensionValue"];
+    var _excluded$y = ["onEnter", "onEntering", "onEntered", "onExit", "onExiting", "className", "children", "dimension", "getDimensionValue"];
     var _collapseStyles;
     var MARGINS = {
       height: ["marginTop", "marginBottom"],
@@ -154514,7 +154514,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       getDimensionValue: getDefaultDimensionValue
     };
     var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, className = _ref3.className, children = _ref3.children, _ref$dimension = _ref3.dimension, dimension = _ref$dimension === void 0 ? "height" : _ref$dimension, _ref$getDimensionValu = _ref3.getDimensionValue, getDimensionValue = _ref$getDimensionValu === void 0 ? getDefaultDimensionValue : _ref$getDimensionValu, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$x);
+      var onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, className = _ref3.className, children = _ref3.children, _ref$dimension = _ref3.dimension, dimension = _ref$dimension === void 0 ? "height" : _ref$dimension, _ref$getDimensionValu = _ref3.getDimensionValue, getDimensionValue = _ref$getDimensionValu === void 0 ? getDefaultDimensionValue : _ref$getDimensionValu, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$y);
       var computedDimension = typeof dimension === "function" ? dimension() : dimension;
       var handleEnter = reactExports.useMemo(function() {
         return createChainedFunction(function(elem) {
@@ -154564,9 +154564,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       );
     });
     Collapse.defaultProps = defaultProps$9;
-    var _excluded$w = ["children", "eventKey"];
+    var _excluded$x = ["children", "eventKey"];
     var AccordionCollapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var children = _ref3.children, eventKey = _ref3.eventKey, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$w);
+      var children = _ref3.children, eventKey = _ref3.eventKey, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$x);
       var contextEventKey = reactExports.useContext(context);
       return /* @__PURE__ */ React$1.createElement(SelectableContext.Provider, {
         value: null
@@ -154576,11 +154576,11 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }, props), /* @__PURE__ */ React$1.createElement("div", null, React$1.Children.only(children))));
     });
     AccordionCollapse.displayName = "AccordionCollapse";
-    var _excluded$v = ["as", "activeKey", "bsPrefix", "children", "className", "onSelect"];
+    var _excluded$w = ["as", "activeKey", "bsPrefix", "children", "className", "onSelect"];
     var Accordion = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
       var _useUncontrolled = useUncontrolled(props, {
         activeKey: "onSelect"
-      }), _useUncontrolled$as = _useUncontrolled.as, Component2 = _useUncontrolled$as === void 0 ? "div" : _useUncontrolled$as, activeKey = _useUncontrolled.activeKey, bsPrefix = _useUncontrolled.bsPrefix, children = _useUncontrolled.children, className = _useUncontrolled.className, onSelect = _useUncontrolled.onSelect, controlledProps = _objectWithoutPropertiesLoose$2(_useUncontrolled, _excluded$v);
+      }), _useUncontrolled$as = _useUncontrolled.as, Component2 = _useUncontrolled$as === void 0 ? "div" : _useUncontrolled$as, activeKey = _useUncontrolled.activeKey, bsPrefix = _useUncontrolled.bsPrefix, children = _useUncontrolled.children, className = _useUncontrolled.className, onSelect = _useUncontrolled.onSelect, controlledProps = _objectWithoutPropertiesLoose$2(_useUncontrolled, _excluded$w);
       var finalClassName = cx(className, useBootstrapPrefix(bsPrefix, "accordion"));
       return /* @__PURE__ */ React$1.createElement(context.Provider, {
         value: activeKey || null
@@ -154608,7 +154608,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         return ref.current && ref.current(...args);
       }, [ref]);
     }
-    var _excluded$u = ["className", "children"];
+    var _excluded$v = ["className", "children"];
     var _fadeStyles;
     var defaultProps$8 = {
       in: false,
@@ -154619,7 +154619,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     };
     var fadeStyles = (_fadeStyles = {}, _fadeStyles[ENTERING] = "show", _fadeStyles[ENTERED] = "show", _fadeStyles);
     var Fade = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$u);
+      var className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$v);
       var handleEnter = reactExports.useCallback(function(node2) {
         triggerBrowserReflow(node2);
         if (props.onEnter) props.onEnter(node2);
@@ -154643,14 +154643,14 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         return chr.toUpperCase();
       });
     }
-    var _excluded$t = ["className", "bsPrefix", "as"];
+    var _excluded$u = ["className", "bsPrefix", "as"];
     var pascalCase = function pascalCase2(str) {
       return str[0].toUpperCase() + camelize$1(str).slice(1);
     };
     function createWithBsPrefix(prefix2, _temp) {
       var _ref3 = _temp === void 0 ? {} : _temp, _ref$displayName = _ref3.displayName, displayName = _ref$displayName === void 0 ? pascalCase(prefix2) : _ref$displayName, Component2 = _ref3.Component, defaultProps2 = _ref3.defaultProps;
       var BsComponent = /* @__PURE__ */ React$1.forwardRef(function(_ref22, ref) {
-        var className = _ref22.className, bsPrefix = _ref22.bsPrefix, _ref2$as = _ref22.as, Tag = _ref2$as === void 0 ? Component2 || "div" : _ref2$as, props = _objectWithoutPropertiesLoose$2(_ref22, _excluded$t);
+        var className = _ref22.className, bsPrefix = _ref22.bsPrefix, _ref2$as = _ref22.as, Tag = _ref2$as === void 0 ? Component2 || "div" : _ref2$as, props = _objectWithoutPropertiesLoose$2(_ref22, _excluded$u);
         var resolvedPrefix = useBootstrapPrefix(bsPrefix, prefix2);
         return /* @__PURE__ */ React$1.createElement(Tag, _extends$1({
           ref,
@@ -154661,12 +154661,12 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       BsComponent.displayName = displayName;
       return BsComponent;
     }
-    var _excluded$s = ["as", "disabled", "onKeyDown"];
+    var _excluded$t = ["as", "disabled", "onKeyDown"];
     function isTrivialHref(href) {
       return !href || href.trim() === "#";
     }
     var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "a" : _ref$as, disabled2 = _ref3.disabled, onKeyDown = _ref3.onKeyDown, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$s);
+      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "a" : _ref$as, disabled2 = _ref3.disabled, onKeyDown = _ref3.onKeyDown, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$t);
       var handleClick = function handleClick2(event2) {
         var href = props.href, onClick = props.onClick;
         if (disabled2 || isTrivialHref(href)) {
@@ -154702,14 +154702,14 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }));
     });
     SafeAnchor.displayName = "SafeAnchor";
-    var _excluded$r = ["bsPrefix", "variant", "size", "active", "className", "block", "type", "as"];
+    var _excluded$s = ["bsPrefix", "variant", "size", "active", "className", "block", "type", "as"];
     var defaultProps$7 = {
       variant: "primary",
       active: false,
       disabled: false
     };
     var Button = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, size = _ref3.size, active = _ref3.active, className = _ref3.className, block2 = _ref3.block, type2 = _ref3.type, as = _ref3.as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$r);
+      var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, size = _ref3.size, active = _ref3.active, className = _ref3.className, block2 = _ref3.block, type2 = _ref3.type, as = _ref3.as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$s);
       var prefix2 = useBootstrapPrefix(bsPrefix, "btn");
       var classes = cx(className, prefix2, active && "active", variant && prefix2 + "-" + variant, block2 && prefix2 + "-block", size && prefix2 + "-" + size);
       if (props.href) {
@@ -154781,12 +154781,12 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         };
       }, []);
     }
-    var _excluded$q = ["bsPrefix", "className", "as"];
+    var _excluded$r = ["bsPrefix", "className", "as"];
     var DEVICE_SIZES = ["xl", "lg", "md", "sm", "xs"];
     var Col = /* @__PURE__ */ React$1.forwardRef(
       // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       function(_ref3, ref) {
-        var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$q);
+        var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$r);
         var prefix2 = useBootstrapPrefix(bsPrefix, "col");
         var spans = [];
         var classes = [];
@@ -156604,7 +156604,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       return all$1.exports;
     }
     requireAll();
-    var _excluded$p = ["as", "className", "type", "tooltip"];
+    var _excluded$q = ["as", "className", "type", "tooltip"];
     var propTypes = {
       /**
        * Specify whether the feedback is for valid or invalid fields
@@ -156619,7 +156619,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     var Feedback = /* @__PURE__ */ React$1.forwardRef(
       // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       function(_ref3, ref) {
-        var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, _ref$type = _ref3.type, type2 = _ref$type === void 0 ? "valid" : _ref$type, _ref$tooltip = _ref3.tooltip, tooltip = _ref$tooltip === void 0 ? false : _ref$tooltip, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$p);
+        var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, _ref$type = _ref3.type, type2 = _ref$type === void 0 ? "valid" : _ref$type, _ref$tooltip = _ref3.tooltip, tooltip = _ref$tooltip === void 0 ? false : _ref$tooltip, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$q);
         return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({}, props, {
           ref,
           className: cx(className, type2 + "-" + (tooltip ? "tooltip" : "feedback"))
@@ -156631,9 +156631,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     var FormContext = /* @__PURE__ */ React$1.createContext({
       controlId: void 0
     });
-    var _excluded$o = ["id", "bsPrefix", "bsCustomPrefix", "className", "type", "isValid", "isInvalid", "isStatic", "as"];
+    var _excluded$p = ["id", "bsPrefix", "bsCustomPrefix", "className", "type", "isValid", "isInvalid", "isStatic", "as"];
     var FormCheckInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, _ref$type = _ref3.type, type2 = _ref$type === void 0 ? "checkbox" : _ref$type, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, isStatic = _ref3.isStatic, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$o);
+      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, _ref$type = _ref3.type, type2 = _ref$type === void 0 ? "checkbox" : _ref$type, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, isStatic = _ref3.isStatic, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$p);
       var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
       var _ref22 = custom2 ? [bsCustomPrefix, "custom-control-input"] : [bsPrefix, "form-check-input"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
       bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -156645,9 +156645,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }));
     });
     FormCheckInput.displayName = "FormCheckInput";
-    var _excluded$n = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
+    var _excluded$o = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
     var FormCheckLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$n);
+      var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$o);
       var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
       var _ref22 = custom2 ? [bsCustomPrefix, "custom-control-label"] : [bsPrefix, "form-check-label"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
       bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -156658,9 +156658,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }));
     });
     FormCheckLabel.displayName = "FormCheckLabel";
-    var _excluded$m = ["id", "bsPrefix", "bsCustomPrefix", "inline", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "title", "type", "label", "children", "custom", "as"];
+    var _excluded$n = ["id", "bsPrefix", "bsCustomPrefix", "inline", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "title", "type", "label", "children", "custom", "as"];
     var FormCheck = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$inline = _ref3.inline, inline = _ref$inline === void 0 ? false : _ref$inline, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? "" : _ref$title, _ref$type = _ref3.type, type2 = _ref$type === void 0 ? "checkbox" : _ref$type, label = _ref3.label, children = _ref3.children, propCustom = _ref3.custom, _ref$as = _ref3.as, as = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$m);
+      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$inline = _ref3.inline, inline = _ref$inline === void 0 ? false : _ref$inline, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? "" : _ref$title, _ref$type = _ref3.type, type2 = _ref$type === void 0 ? "checkbox" : _ref$type, label = _ref3.label, children = _ref3.children, propCustom = _ref3.custom, _ref$as = _ref3.as, as = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$n);
       var custom2 = type2 === "switch" ? true : propCustom;
       var _ref22 = custom2 ? [bsCustomPrefix, "custom-control"] : [bsPrefix, "form-check"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
       bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -156696,9 +156696,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     FormCheck.displayName = "FormCheck";
     FormCheck.Input = FormCheckInput;
     FormCheck.Label = FormCheckLabel;
-    var _excluded$l = ["id", "bsPrefix", "bsCustomPrefix", "className", "isValid", "isInvalid", "lang", "as"];
+    var _excluded$m = ["id", "bsPrefix", "bsCustomPrefix", "className", "isValid", "isInvalid", "lang", "as"];
     var FormFileInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, isValid2 = _ref3.isValid, isInvalid = _ref3.isInvalid, lang = _ref3.lang, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$l);
+      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, isValid2 = _ref3.isValid, isInvalid = _ref3.isInvalid, lang = _ref3.lang, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$m);
       var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
       var type2 = "file";
       var _ref22 = custom2 ? [bsCustomPrefix, "custom-file-input"] : [bsPrefix, "form-control-file"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
@@ -156712,9 +156712,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }));
     });
     FormFileInput.displayName = "FormFileInput";
-    var _excluded$k = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
+    var _excluded$l = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
     var FormFileLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$k);
+      var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$l);
       var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
       var _ref22 = custom2 ? [bsCustomPrefix, "custom-file-label"] : [bsPrefix, "form-file-label"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
       bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -156726,9 +156726,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }));
     });
     FormFileLabel.displayName = "FormFileLabel";
-    var _excluded$j = ["id", "bsPrefix", "bsCustomPrefix", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "label", "children", "custom", "lang", "data-browse", "as", "inputAs"];
+    var _excluded$k = ["id", "bsPrefix", "bsCustomPrefix", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "label", "children", "custom", "lang", "data-browse", "as", "inputAs"];
     var FormFile = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, label = _ref3.label, children = _ref3.children, custom2 = _ref3.custom, lang = _ref3.lang, dataBrowse = _ref3["data-browse"], _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, _ref$inputAs = _ref3.inputAs, inputAs = _ref$inputAs === void 0 ? "input" : _ref$inputAs, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$j);
+      var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, label = _ref3.label, children = _ref3.children, custom2 = _ref3.custom, lang = _ref3.lang, dataBrowse = _ref3["data-browse"], _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, _ref$inputAs = _ref3.inputAs, inputAs = _ref$inputAs === void 0 ? "input" : _ref$inputAs, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$k);
       var _ref22 = custom2 ? [bsCustomPrefix, "custom"] : [bsPrefix, "form-file"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
       bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
       var type2 = "file";
@@ -156763,9 +156763,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     FormFile.displayName = "FormFile";
     FormFile.Input = FormFileInput;
     FormFile.Label = FormFileLabel;
-    var _excluded$i = ["bsPrefix", "bsCustomPrefix", "type", "size", "htmlSize", "id", "className", "isValid", "isInvalid", "plaintext", "readOnly", "custom", "as"];
+    var _excluded$j = ["bsPrefix", "bsCustomPrefix", "type", "size", "htmlSize", "id", "className", "isValid", "isInvalid", "plaintext", "readOnly", "custom", "as"];
     var FormControl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, type2 = _ref3.type, size = _ref3.size, htmlSize = _ref3.htmlSize, id = _ref3.id, className = _ref3.className, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, plaintext = _ref3.plaintext, readOnly = _ref3.readOnly, custom2 = _ref3.custom, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$i);
+      var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, type2 = _ref3.type, size = _ref3.size, htmlSize = _ref3.htmlSize, id = _ref3.id, className = _ref3.className, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, plaintext = _ref3.plaintext, readOnly = _ref3.readOnly, custom2 = _ref3.custom, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$j);
       var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId;
       var _ref22 = custom2 ? [bsCustomPrefix, "custom"] : [bsPrefix, "form-control"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
       bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -156799,9 +156799,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     const FormControl$1 = Object.assign(FormControl, {
       Feedback
     });
-    var _excluded$h = ["bsPrefix", "className", "children", "controlId", "as"];
+    var _excluded$i = ["bsPrefix", "className", "children", "controlId", "as"];
     var FormGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, controlId = _ref3.controlId, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$h);
+      var bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, controlId = _ref3.controlId, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$i);
       bsPrefix = useBootstrapPrefix(bsPrefix, "form-group");
       var context2 = reactExports.useMemo(function() {
         return {
@@ -156816,13 +156816,13 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }), children));
     });
     FormGroup.displayName = "FormGroup";
-    var _excluded$g = ["as", "bsPrefix", "column", "srOnly", "className", "htmlFor"];
+    var _excluded$h = ["as", "bsPrefix", "column", "srOnly", "className", "htmlFor"];
     var defaultProps$6 = {
       column: false,
       srOnly: false
     };
     var FormLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "label" : _ref$as, bsPrefix = _ref3.bsPrefix, column2 = _ref3.column, srOnly = _ref3.srOnly, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$g);
+      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "label" : _ref$as, bsPrefix = _ref3.bsPrefix, column2 = _ref3.column, srOnly = _ref3.srOnly, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$h);
       var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId;
       bsPrefix = useBootstrapPrefix(bsPrefix, "form-label");
       var columnClass = "col-form-label";
@@ -156846,11 +156846,11 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     });
     FormLabel.displayName = "FormLabel";
     FormLabel.defaultProps = defaultProps$6;
-    var _excluded$f = ["bsPrefix", "className", "as", "muted"];
+    var _excluded$g = ["bsPrefix", "className", "as", "muted"];
     var FormText = /* @__PURE__ */ React$1.forwardRef(
       // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       function(_ref3, ref) {
-        var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "small" : _ref$as, muted = _ref3.muted, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$f);
+        var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "small" : _ref$as, muted = _ref3.muted, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$g);
         bsPrefix = useBootstrapPrefix(bsPrefix, "form-text");
         return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({}, props, {
           ref,
@@ -156868,13 +156868,13 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     Switch$1.displayName = "Switch";
     Switch$1.Input = FormCheck.Input;
     Switch$1.Label = FormCheck.Label;
-    var _excluded$e = ["bsPrefix", "inline", "className", "validated", "as"];
+    var _excluded$f = ["bsPrefix", "inline", "className", "validated", "as"];
     var FormRow = createWithBsPrefix("form-row");
     var defaultProps$5 = {
       inline: false
     };
     var FormImpl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var bsPrefix = _ref3.bsPrefix, inline = _ref3.inline, className = _ref3.className, validated = _ref3.validated, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "form" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$e);
+      var bsPrefix = _ref3.bsPrefix, inline = _ref3.inline, className = _ref3.className, validated = _ref3.validated, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "form" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$f);
       bsPrefix = useBootstrapPrefix(bsPrefix, "form");
       return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({}, props, {
         ref,
@@ -156891,7 +156891,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     FormImpl.Switch = Switch$1;
     FormImpl.Label = FormLabel;
     FormImpl.Text = FormText;
-    var _excluded$d = ["bsPrefix", "size", "hasValidation", "className", "as"];
+    var _excluded$e = ["bsPrefix", "size", "hasValidation", "className", "as"];
     var InputGroupAppend = createWithBsPrefix("input-group-append");
     var InputGroupPrepend = createWithBsPrefix("input-group-prepend");
     var InputGroupText = createWithBsPrefix("input-group-text", {
@@ -156908,7 +156908,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }, props)));
     };
     var InputGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var bsPrefix = _ref3.bsPrefix, size = _ref3.size, hasValidation = _ref3.hasValidation, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$d);
+      var bsPrefix = _ref3.bsPrefix, size = _ref3.size, hasValidation = _ref3.hasValidation, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$e);
       bsPrefix = useBootstrapPrefix(bsPrefix, "input-group");
       return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({
         ref
@@ -157127,7 +157127,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
        */
       onExited: PropTypes.func
     };
-    var _excluded$c = ["children", "transition", "popperConfig"], _excluded2$2 = ["props", "arrowProps", "show", "update", "forceUpdate", "placement", "state"];
+    var _excluded$d = ["children", "transition", "popperConfig"], _excluded2$2 = ["props", "arrowProps", "show", "update", "forceUpdate", "placement", "state"];
     var defaultProps$4 = {
       transition: Fade,
       rootClose: false,
@@ -157145,7 +157145,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       });
     }
     function Overlay(_ref3) {
-      var overlay = _ref3.children, transition = _ref3.transition, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, outerProps = _objectWithoutPropertiesLoose$2(_ref3, _excluded$c);
+      var overlay = _ref3.children, transition = _ref3.transition, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, outerProps = _objectWithoutPropertiesLoose$2(_ref3, _excluded$d);
       var popperRef = reactExports.useRef({});
       var _usePopperMarginModif = usePopperMarginModifiers(), ref = _usePopperMarginModif[0], marginModifiers = _usePopperMarginModif[1];
       var actualTransition = transition === true ? Fade : transition || null;
@@ -157186,7 +157186,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       });
     }
     Overlay.defaultProps = defaultProps$4;
-    var _excluded$b = ["trigger", "overlay", "children", "popperConfig", "show", "defaultShow", "onToggle", "delay", "placement", "flip"];
+    var _excluded$c = ["trigger", "overlay", "children", "popperConfig", "show", "defaultShow", "onToggle", "delay", "placement", "flip"];
     var RefHolder = /* @__PURE__ */ (function(_React$Component) {
       _inheritsLoose$2(RefHolder2, _React$Component);
       function RefHolder2() {
@@ -157217,7 +157217,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       trigger: ["hover", "focus"]
     };
     function OverlayTrigger(_ref3) {
-      var trigger2 = _ref3.trigger, overlay = _ref3.overlay, children = _ref3.children, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, propsShow = _ref3.show, _ref$defaultShow = _ref3.defaultShow, defaultShow = _ref$defaultShow === void 0 ? false : _ref$defaultShow, onToggle = _ref3.onToggle, propsDelay = _ref3.delay, placement = _ref3.placement, _ref$flip = _ref3.flip, flip2 = _ref$flip === void 0 ? placement && placement.indexOf("auto") !== -1 : _ref$flip, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$b);
+      var trigger2 = _ref3.trigger, overlay = _ref3.overlay, children = _ref3.children, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, propsShow = _ref3.show, _ref$defaultShow = _ref3.defaultShow, defaultShow = _ref$defaultShow === void 0 ? false : _ref$defaultShow, onToggle = _ref3.onToggle, propsDelay = _ref3.delay, placement = _ref3.placement, _ref$flip = _ref3.flip, flip2 = _ref$flip === void 0 ? placement && placement.indexOf("auto") !== -1 : _ref$flip, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$c);
       var triggerNodeRef = reactExports.useRef(null);
       var timeout = useTimeout();
       var hoverStateRef = reactExports.useRef("");
@@ -157306,9 +157306,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }), overlay));
     }
     OverlayTrigger.defaultProps = defaultProps$3;
-    var _excluded$a = ["as", "bsPrefix", "className", "children"];
+    var _excluded$b = ["as", "bsPrefix", "className", "children"];
     var PopoverTitle = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$a);
+      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$b);
       bsPrefix = useBootstrapPrefix(bsPrefix, "popover-header");
       return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({
         ref
@@ -157316,9 +157316,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         className: cx(bsPrefix, className)
       }), children);
     });
-    var _excluded$9 = ["as", "bsPrefix", "className", "children"];
+    var _excluded$a = ["as", "bsPrefix", "className", "children"];
     var PopoverContent = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$9);
+      var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$a);
       bsPrefix = useBootstrapPrefix(bsPrefix, "popover-body");
       return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({
         ref
@@ -157326,7 +157326,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         className: cx(className, bsPrefix)
       }), children);
     });
-    var _excluded$8 = ["bsPrefix", "placement", "className", "style", "children", "content", "arrowProps", "popper", "show"];
+    var _excluded$9 = ["bsPrefix", "placement", "className", "style", "children", "content", "arrowProps", "popper", "show"];
     var defaultProps$2 = {
       placement: "right"
     };
@@ -157334,7 +157334,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       var bsPrefix = _ref3.bsPrefix, placement = _ref3.placement, className = _ref3.className, style2 = _ref3.style, children = _ref3.children, content = _ref3.content, arrowProps = _ref3.arrowProps;
       _ref3.popper;
       _ref3.show;
-      var props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$8);
+      var props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$9);
       var decoratedBsPrefix = useBootstrapPrefix(bsPrefix, "popover");
       var _ref22 = (placement == null ? void 0 : placement.split("-")) || [], primaryPlacement = _ref22[0];
       return /* @__PURE__ */ React$1.createElement("div", _extends$1({
@@ -157350,6 +157350,18 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     Popover.defaultProps = defaultProps$2;
     Popover.Title = PopoverTitle;
     Popover.Content = PopoverContent;
+    var _excluded$8 = ["bsPrefix", "variant", "animation", "size", "children", "as", "className"];
+    var Spinner = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
+      var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, animation = _ref3.animation, size = _ref3.size, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$8);
+      bsPrefix = useBootstrapPrefix(bsPrefix, "spinner");
+      var bsSpinnerPrefix = bsPrefix + "-" + animation;
+      return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({
+        ref
+      }, props, {
+        className: cx(className, bsSpinnerPrefix, size && bsSpinnerPrefix + "-" + size, variant && "text-" + variant)
+      }), children);
+    });
+    Spinner.displayName = "Spinner";
     const Units = [
       "byte",
       "kibibyte",
@@ -172914,14 +172926,15 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           scenePreviewOnly: false,
           markerPreviewOnly: false,
           onlyShowMatchingOrientation: false,
-          showDevOptions: false,
-          debugMode: false,
-          videoJsEventsToLog: [],
           maxMedia: void 0,
           autoPlay: true,
           startPosition: "resume",
           endPosition: "video-end",
           showGuideOverlay: true,
+          showDevOptions: false,
+          debugMode: false,
+          enableRenderDebugging: JSON.parse(localStorage.getItem("enableRenderDebugging") || "false"),
+          videoJsEventsToLog: [],
           set: (propName, value) => {
             set2((state) => ({
               [propName]: typeof value === "function" ? value(state[propName]) : value
@@ -172933,7 +172946,8 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           partialize: (state) => Object.fromEntries(
             Object.entries(state).filter(([key]) => ![
               "showSettings",
-              "fullscreen"
+              "fullscreen",
+              "enableRenderDebugging"
             ].includes(key))
           )
         }
@@ -177047,7 +177061,6 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       };
     }
     const useGlobalFilterState = create(() => ({
-      neverLoaded: true,
       loadingResponsibilityClaimed: false,
       currentSavedFilter: void 0,
       loading: false,
@@ -177056,7 +177069,6 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     }));
     function useMediaItemFilters() {
       const {
-        neverLoaded,
         currentSavedFilter,
         loading: mediaItemFiltersLoading,
         error: mediaItemFiltersError,
@@ -177082,7 +177094,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         loading: loadingAvailableSavedMarkerFilters
       } = useFindSavedFilters(FilterMode.SceneMarkers);
       const { data: { defaultFilterId: stashTvDefaultFilterId } } = useStashTvConfig();
-      const stashDataLoading = stashConfigurationLoading || loadingAvailableSavedSceneFilters || loadingAvailableSavedMarkerFilters;
+      const loadingDataRequiredBeforeLoadingCurrentFilter = stashConfigurationLoading || loadingAvailableSavedSceneFilters || loadingAvailableSavedMarkerFilters;
       const { isRandomised, onlyShowMatchingOrientation } = useAppStateStore();
       const { orientation: orientation2 } = useWindowSize();
       let limitOrientation = void 0;
@@ -177096,10 +177108,10 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       const lastLoadedCurrentMediaItemFilter = useConditionalMemo(
         () => currentSearchableFilter,
         [currentSearchableFilter],
-        !mediaItemFiltersLoading
+        !loadingDataRequiredBeforeLoadingCurrentFilter && !mediaItemFiltersLoading
       );
       reactExports.useEffect(() => {
-        if (useGlobalFilterState.getState().loadingResponsibilityClaimed || stashDataLoading) return;
+        if (useGlobalFilterState.getState().loadingResponsibilityClaimed || loadingDataRequiredBeforeLoadingCurrentFilter) return;
         useGlobalFilterState.setState({ loadingResponsibilityClaimed: true, loading: true });
         async function setCurrentMediaItemFilterOnInitialLoad() {
           try {
@@ -177131,7 +177143,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           useGlobalFilterState.setState({ loading: false });
         }
         setCurrentMediaItemFilterOnInitialLoad();
-      }, [neverLoaded, stashDataLoading, stashTvDefaultFilterId, stashDefaultScenesFilter]);
+      }, [loadingDataRequiredBeforeLoadingCurrentFilter, stashTvDefaultFilterId, stashDefaultScenesFilter]);
       async function setCurrentMediaItemFilterById(id) {
         useGlobalFilterState.setState({ loading: true });
         const { name: name2, entityType } = availableSavedFilters.find((f) => f.id === id) || {};
@@ -177247,8 +177259,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         [availableSavedSceneFilters, availableSavedMarkerFilters, stashTvDefaultFilterId]
       );
       return {
-        mediaItemFiltersLoading,
-        mediaItemFiltersNeverLoaded: neverLoaded,
+        mediaItemFiltersLoading: loadingDataRequiredBeforeLoadingCurrentFilter || mediaItemFiltersLoading,
         mediaItemFiltersError,
         currentMediaItemFilter: currentSearchableFilter,
         lastLoadedCurrentMediaItemFilter,
@@ -178248,7 +178259,8 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         },
         mediaItemsError,
         mediaItemsLoading,
-        mediaItemsNeverLoaded: neverLoaded
+        mediaItemsNeverLoaded: neverLoaded,
+        waitingForMediaItemsFilter: !lastLoadedCurrentMediaItemFilter
       };
     }
     function useGetterRef(getter, initialValue, dependencies) {
@@ -178400,14 +178412,6 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       strokeLinejoin: "round",
       strokeMiterlimit: 2
     }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M15.2,272C6.4,271.5 -0.4,264 0,255.2L0.4,247.2C5.1,153.5 82.4,80 176.2,80L320,80L320,35.6C320,20.3 332.3,8     347.6,8C354.4,8 361,10.5 366,15.1L442.7,84.1C446.1,87.1 448,91.5 448,96C448,100.5 446.1,104.9     442.7,107.9L366,176.9C360.9,181.5 354.4,184 347.6,184C332.4,184 320,171.7 320,156.4L320,112L176.2,112C99.5,112     36.2,172.2 32.4,248.8L32,256.8C31.6,265.6 24,272.4     15.2,272ZM352,146.5L408.1,96L352,45.5L352,146.5ZM496.8,240C505.6,240.4 512.4,248 512,256.8L511.6,264.8C506.9,358.5     429.6,432 335.8,432L192,432L192,476.4C192,491.6 179.7,504 164.4,504C157.6,504 151,501.5     146,496.9L69.3,427.9C65.9,424.9 64,420.5 64,416C64,411.5 65.9,407.1 69.3,404.1L146,335.1C151.1,330.5 157.6,328     164.4,328C179.6,328 192,340.3 192,355.6L192,400L335.8,400C412.5,400 475.8,339.8 479.6,263.2L480,255.2C480.4,246.4     488,239.6 496.8,240ZM160,365.5L103.9,416L160,466.5L160,365.5Z", style: {
-      fillRule: "nonzero"
-    }, fill: "currentColor" }));
-    const SvgCogOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      strokeLinejoin: "round",
-      strokeMiterlimit: 2
-    }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M223.3,37.8C223.7,36.3 224.6,35 225.7,34C235.6,32.7 245.7,32 256,32C266.3,32 276.4,32.7 286.3,34C287.4,35     288.2,36.3 288.7,37.8L302.4,85.5C305.9,97.6 314.6,106.6 324.9,111.6C332.5,115.2 339.7,119.4 346.6,124.1C356,130.6     368.3,133.6 380.5,130.6L428.7,118.6C430.2,118.2 431.7,118.3 433.1,118.8C438.5,125.7 443.5,133     448,140.6L452.3,148C456.5,155.5 460.2,163.3 463.5,171.3C463.2,172.8 462.5,174.2 461.4,175.3L426.8,211C418.1,220     414.6,232.1 415.5,243.5C415.8,247.6 416,251.8 416,256C416,260.2 415.8,264.4 415.5,268.5C414.6,279.9 418.1,292     426.8,301L461.3,336.7C462.4,337.8 463.1,339.2 463.4,340.7C460.1,348.7 456.4,356.5 452.2,364.1L448,371.4C443.4,379     438.4,386.2 433.1,393.2C431.7,393.7 430.2,393.7 428.7,393.4L380.5,381.4C368.3,378.4 356.1,381.4     346.6,387.9C339.7,392.6 332.5,396.8 324.9,400.4C314.6,405.3 305.8,414.4 302.4,426.5L288.7,474.2C288.3,475.7     287.4,477 286.3,478C276.4,479.3 266.3,480 256,480C245.7,480 235.6,479.3 225.7,478C224.6,477 223.8,475.7     223.3,474.2L209.6,426.5C206.1,414.4 197.4,405.4 187.1,400.4C179.5,396.8 172.3,392.6 165.4,387.9C156,381.4     143.7,378.4 131.5,381.4L83.3,393.4C81.8,393.8 80.3,393.7 78.9,393.2C73.5,386.2 68.5,379     63.9,371.4L59.7,364.1C55.5,356.6 51.8,348.8 48.5,340.7C48.8,339.2 49.5,337.8 50.6,336.7L85.2,301C93.9,292 97.4,279.9     96.5,268.5C96.2,264.4 96,260.2 96,256C96,251.8 96.2,247.6 96.5,243.5C97.4,232.1 93.9,220     85.2,211L50.7,175.2C49.6,174.1 48.9,172.7 48.6,171.2C51.9,163.2 55.6,155.4 59.8,147.8L64,140.5C68.6,132.9 73.6,125.7     79,118.7C80.4,118.2 81.9,118.2 83.4,118.5L131.6,130.5C143.8,133.5 156,130.5 165.5,124C172.4,119.3 179.6,115.1     187.2,111.5C197.5,106.6 206.3,97.5 209.7,85.4L223.4,37.7L223.3,37.8ZM256,0C243,0 230.1,1 217.6,2.9C215.9,3.2     214.2,3.7 212.6,4.5C203.1,9.4 195.7,18.1 192.6,29L178.9,76.7C178.3,78.9 176.4,81.2 173.3,82.7C164.2,87 155.5,92.1     147.3,97.7C144.5,99.6 141.5,100.1 139.3,99.5L91.1,87.5C80.2,84.8 69,86.9 60,92.6C58.5,93.5 57.2,94.7     56.1,96.1C49,105 42.4,114.3 36.5,124.1L36.4,124.4L32,132L31.9,132.3C26.5,142.1 21.7,152.2 17.6,162.7C17,164.3     16.6,166 16.5,167.7C16,178.5 19.8,189.3 27.7,197.5L62.2,233.2C63.8,234.9 64.9,237.6 64.6,241C64.2,246 64,251     64,256C64,261 64.2,266.1 64.6,271C64.9,274.4 63.8,277.2 62.2,278.8L27.7,314.6C19.8,322.8 16,333.6     16.5,344.4C16.6,346.1 17,347.8 17.6,349.4C21.7,359.9 26.5,370 31.9,379.8L32,380.1L36.4,387.7L36.5,388C42.4,397.8     48.9,407.2 56.1,416.1C57.2,417.5 58.5,418.7 60,419.6C69,425.3 80.2,427.4 91.1,424.7L139.3,412.7C141.5,412.1     144.5,412.6 147.3,414.5C155.5,420.2 164.2,425.2 173.3,429.5C176.4,431 178.2,433.3 178.9,435.5L192.6,483C195.7,493.8     203.1,502.5 212.6,507.5C214.2,508.3 215.8,508.9 217.6,509.1C230.1,511 243,512 256,512C269,512 281.9,511     294.4,509.1C296.1,508.8 297.8,508.3 299.4,507.5C308.9,502.6 316.3,493.9 319.4,483L333.1,435.3C333.7,433.1     335.6,430.8 338.7,429.3C347.8,425 356.5,419.9 364.7,414.3C367.5,412.4 370.5,411.9     372.7,412.5L420.9,424.5C431.8,427.2 443,425.2 452,419.4C453.5,418.5 454.8,417.3 455.9,415.9C463,407 469.5,397.7     475.4,387.9L475.6,387.6L480,380L480.1,379.7C485.5,370 490.3,359.8 494.4,349.3C495,347.7 495.4,346     495.5,344.3C496,333.5 492.2,322.7 484.3,314.5L449.8,278.8C448.2,277.1 447.1,274.4 447.4,271C447.8,266 448,261     448,256C448,251 447.8,245.9 447.4,241C447.1,237.6 448.2,234.8 449.8,233.2L484.3,197.5C492.2,189.3 496,178.5     495.5,167.7C495.4,166 495,164.3 494.4,162.7C490.3,152.2 485.5,142.1     480.1,132.3L480,132L475.6,124.4L475.4,124.1C469.5,114.3 463,104.9 455.9,96.1C454.8,94.7 453.5,93.5 452,92.6C443,86.9     431.8,84.8 420.9,87.5L372.7,99.5C370.5,100.1 367.5,99.6 364.7,97.7C356.5,92 347.8,87 338.7,82.7C335.6,81.2     333.8,78.9 333.1,76.7L319.4,29C316.3,18.2 308.9,9.5 299.4,4.5C297.8,3.7 296.2,3.1 294.4,2.9C281.9,1 269,0     256,0ZM200,256C200,225.279 225.279,200 256,200C286.721,200 312,225.279 312,256C312,286.721 286.721,312     256,312C225.279,312 200,286.721 200,256ZM344,256C344,207.725 304.275,168 256,168C207.725,168 168,207.725     168,256C168,304.275 207.725,344 256,344C304.275,344 344,304.275 344,256Z", style: {
       fillRule: "nonzero"
     }, fill: "currentColor" }));
     const SvgInfoOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
@@ -186436,6 +186440,30 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         return jsxRuntimeExports.jsx(RatingNumber, { value: (_d = props.value) !== null && _d !== void 0 ? _d : null, onSetRating: props.onSetRating, disabled: props.disabled, clickToRate: props.clickToRate, withoutContext: props.withoutContext });
       }
     };
+    const SvgCogOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      strokeLinejoin: "round",
+      strokeMiterlimit: 2
+    }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M223.3,37.8C223.7,36.3 224.6,35 225.7,34C235.6,32.7 245.7,32 256,32C266.3,32 276.4,32.7 286.3,34C287.4,35     288.2,36.3 288.7,37.8L302.4,85.5C305.9,97.6 314.6,106.6 324.9,111.6C332.5,115.2 339.7,119.4 346.6,124.1C356,130.6     368.3,133.6 380.5,130.6L428.7,118.6C430.2,118.2 431.7,118.3 433.1,118.8C438.5,125.7 443.5,133     448,140.6L452.3,148C456.5,155.5 460.2,163.3 463.5,171.3C463.2,172.8 462.5,174.2 461.4,175.3L426.8,211C418.1,220     414.6,232.1 415.5,243.5C415.8,247.6 416,251.8 416,256C416,260.2 415.8,264.4 415.5,268.5C414.6,279.9 418.1,292     426.8,301L461.3,336.7C462.4,337.8 463.1,339.2 463.4,340.7C460.1,348.7 456.4,356.5 452.2,364.1L448,371.4C443.4,379     438.4,386.2 433.1,393.2C431.7,393.7 430.2,393.7 428.7,393.4L380.5,381.4C368.3,378.4 356.1,381.4     346.6,387.9C339.7,392.6 332.5,396.8 324.9,400.4C314.6,405.3 305.8,414.4 302.4,426.5L288.7,474.2C288.3,475.7     287.4,477 286.3,478C276.4,479.3 266.3,480 256,480C245.7,480 235.6,479.3 225.7,478C224.6,477 223.8,475.7     223.3,474.2L209.6,426.5C206.1,414.4 197.4,405.4 187.1,400.4C179.5,396.8 172.3,392.6 165.4,387.9C156,381.4     143.7,378.4 131.5,381.4L83.3,393.4C81.8,393.8 80.3,393.7 78.9,393.2C73.5,386.2 68.5,379     63.9,371.4L59.7,364.1C55.5,356.6 51.8,348.8 48.5,340.7C48.8,339.2 49.5,337.8 50.6,336.7L85.2,301C93.9,292 97.4,279.9     96.5,268.5C96.2,264.4 96,260.2 96,256C96,251.8 96.2,247.6 96.5,243.5C97.4,232.1 93.9,220     85.2,211L50.7,175.2C49.6,174.1 48.9,172.7 48.6,171.2C51.9,163.2 55.6,155.4 59.8,147.8L64,140.5C68.6,132.9 73.6,125.7     79,118.7C80.4,118.2 81.9,118.2 83.4,118.5L131.6,130.5C143.8,133.5 156,130.5 165.5,124C172.4,119.3 179.6,115.1     187.2,111.5C197.5,106.6 206.3,97.5 209.7,85.4L223.4,37.7L223.3,37.8ZM256,0C243,0 230.1,1 217.6,2.9C215.9,3.2     214.2,3.7 212.6,4.5C203.1,9.4 195.7,18.1 192.6,29L178.9,76.7C178.3,78.9 176.4,81.2 173.3,82.7C164.2,87 155.5,92.1     147.3,97.7C144.5,99.6 141.5,100.1 139.3,99.5L91.1,87.5C80.2,84.8 69,86.9 60,92.6C58.5,93.5 57.2,94.7     56.1,96.1C49,105 42.4,114.3 36.5,124.1L36.4,124.4L32,132L31.9,132.3C26.5,142.1 21.7,152.2 17.6,162.7C17,164.3     16.6,166 16.5,167.7C16,178.5 19.8,189.3 27.7,197.5L62.2,233.2C63.8,234.9 64.9,237.6 64.6,241C64.2,246 64,251     64,256C64,261 64.2,266.1 64.6,271C64.9,274.4 63.8,277.2 62.2,278.8L27.7,314.6C19.8,322.8 16,333.6     16.5,344.4C16.6,346.1 17,347.8 17.6,349.4C21.7,359.9 26.5,370 31.9,379.8L32,380.1L36.4,387.7L36.5,388C42.4,397.8     48.9,407.2 56.1,416.1C57.2,417.5 58.5,418.7 60,419.6C69,425.3 80.2,427.4 91.1,424.7L139.3,412.7C141.5,412.1     144.5,412.6 147.3,414.5C155.5,420.2 164.2,425.2 173.3,429.5C176.4,431 178.2,433.3 178.9,435.5L192.6,483C195.7,493.8     203.1,502.5 212.6,507.5C214.2,508.3 215.8,508.9 217.6,509.1C230.1,511 243,512 256,512C269,512 281.9,511     294.4,509.1C296.1,508.8 297.8,508.3 299.4,507.5C308.9,502.6 316.3,493.9 319.4,483L333.1,435.3C333.7,433.1     335.6,430.8 338.7,429.3C347.8,425 356.5,419.9 364.7,414.3C367.5,412.4 370.5,411.9     372.7,412.5L420.9,424.5C431.8,427.2 443,425.2 452,419.4C453.5,418.5 454.8,417.3 455.9,415.9C463,407 469.5,397.7     475.4,387.9L475.6,387.6L480,380L480.1,379.7C485.5,370 490.3,359.8 494.4,349.3C495,347.7 495.4,346     495.5,344.3C496,333.5 492.2,322.7 484.3,314.5L449.8,278.8C448.2,277.1 447.1,274.4 447.4,271C447.8,266 448,261     448,256C448,251 447.8,245.9 447.4,241C447.1,237.6 448.2,234.8 449.8,233.2L484.3,197.5C492.2,189.3 496,178.5     495.5,167.7C495.4,166 495,164.3 494.4,162.7C490.3,152.2 485.5,142.1     480.1,132.3L480,132L475.6,124.4L475.4,124.1C469.5,114.3 463,104.9 455.9,96.1C454.8,94.7 453.5,93.5 452,92.6C443,86.9     431.8,84.8 420.9,87.5L372.7,99.5C370.5,100.1 367.5,99.6 364.7,97.7C356.5,92 347.8,87 338.7,82.7C335.6,81.2     333.8,78.9 333.1,76.7L319.4,29C316.3,18.2 308.9,9.5 299.4,4.5C297.8,3.7 296.2,3.1 294.4,2.9C281.9,1 269,0     256,0ZM200,256C200,225.279 225.279,200 256,200C286.721,200 312,225.279 312,256C312,286.721 286.721,312     256,312C225.279,312 200,286.721 200,256ZM344,256C344,207.725 304.275,168 256,168C207.725,168 168,207.725     168,256C168,304.275 207.725,344 256,344C304.275,344 344,304.275 344,256Z", style: {
+      fillRule: "nonzero"
+    }, fill: "currentColor" }));
+    function SettingsButton() {
+      const { showSettings, set: setAppSetting } = useAppStateStore();
+      return /* @__PURE__ */ React$1.createElement(
+        ActionButton,
+        {
+          className: "settings",
+          active: showSettings,
+          activeIcon: faGear,
+          activeText: "Close settings",
+          "data-testid": "MediaSlide--settingsButton",
+          inactiveIcon: SvgCogOutline,
+          inactiveText: "Show settings",
+          onClick: () => setAppSetting("showSettings", (prev2) => !prev2)
+        }
+      );
+    }
     function ActionButtons({ scene: scene2, sceneInfoOpen, setSceneInfoOpen }) {
       const {
         showSettings,
@@ -186508,19 +186536,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           className: cx("ActionButtons", { "active": uiVisible }),
           "data-testid": "MediaSlide--toggleableUi"
         },
-        /* @__PURE__ */ React$1.createElement("div", { className: cx("stack hide-on-ui-hide", ...stackScrollClasses), ref: stackElmRef }, /* @__PURE__ */ React$1.createElement(
-          ActionButton,
-          {
-            className: "settings",
-            active: showSettings,
-            activeIcon: faGear,
-            activeText: "Close settings",
-            "data-testid": "MediaSlide--settingsButton",
-            inactiveIcon: SvgCogOutline,
-            inactiveText: "Show settings",
-            onClick: () => setAppSetting("showSettings", (prev2) => !prev2)
-          }
-        ), sceneInfoDataAvailable && /* @__PURE__ */ React$1.createElement(
+        /* @__PURE__ */ React$1.createElement("div", { className: cx("stack hide-on-ui-hide", ...stackScrollClasses), ref: stackElmRef }, /* @__PURE__ */ React$1.createElement(SettingsButton, null), sceneInfoDataAvailable && /* @__PURE__ */ React$1.createElement(
           ActionButton,
           {
             className: "show-scene-info",
@@ -186694,7 +186710,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     );
     videojs.registerPlugin("styledBigPlayButton", styledBigPlayButton);
     const noAnimateDurationThreshold = 30;
+    const mountCount = /* @__PURE__ */ new Map();
     const MediaSlide = (props) => {
+      const { isCurrentVideo } = props;
       const {
         letterboxing,
         forceLandscape,
@@ -186706,6 +186724,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         markerPreviewOnly,
         showDevOptions,
         debugMode,
+        enableRenderDebugging,
         autoPlay: globalAutoPlay,
         startPosition,
         endPosition,
@@ -186716,6 +186735,15 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         uiVisible,
         set: setAppSetting
       } = useAppStateStore();
+      reactExports.useMemo(() => {
+        if (!enableRenderDebugging) return;
+        const timesMounted = mountCount.get(props.mediaItem.id) || 0;
+        console.log("🔜 MediaSlide mounting:", props.mediaItem.id, ...timesMounted ? [`(count: ${timesMounted})`] : []);
+        mountCount.set(props.mediaItem.id, timesMounted + 1);
+      }, []);
+      reactExports.useEffect(() => () => {
+        enableRenderDebugging && console.log("🔚 MediaSlide unmount:", props.mediaItem.id);
+      }, []);
       const scene2 = props.mediaItem.entityType === "scene" ? props.mediaItem.entity : props.mediaItem.entity.scene;
       reactExports.useEffect(() => {
         debugMode && console.log(`Mounted MediaSlide index=${props.index} sceneId=${scene2.id}`);
@@ -186736,7 +186764,6 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           setLoadingDeferred(props.currentlyScrolling);
         }
       }, [loadingDeferred, props.currentlyScrolling]);
-      const isCurrentVideo = props.index === props.currentIndex;
       const autoplay = globalAutoPlay && isCurrentVideo && !showGuideOverlay;
       function handleVideojsPlayerReady(player) {
         videojsPlayerRef.current = player;
@@ -186794,13 +186821,13 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }, [looping]);
       reactExports.useEffect(() => {
         if (!videojsPlayerRef.current) return;
-        if (props.index === props.currentIndex) {
+        if (isCurrentVideo) {
           if (!autoplay) return;
           videojsPlayerRef.current?.play();
         } else {
           videojsPlayerRef.current?.pause();
         }
-      }, [props.index, props.currentIndex, autoplay]);
+      }, [isCurrentVideo, autoplay]);
       const handlePointerUp = reactExports.useCallback((event2) => {
         const { target: videoElm } = event2;
         if (!(videoElm instanceof HTMLVideoElement)) return;
@@ -188045,17 +188072,22 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
     const throttle = /* @__PURE__ */ getDefaultExportFromCjs(throttleitExports);
     const mediaSlideHeight = "calc(var(--y-unit-small) * 100)";
     const itemBufferEitherSide = 1;
-    const VideoScroller = () => {
+    const VideoScroller = reactExports.memo(() => {
       const {
         forceLandscape: isForceLandscape,
         onlyShowMatchingOrientation,
         debugMode,
+        enableRenderDebugging,
         scenePreviewOnly,
         markerPreviewOnly,
         set: setAppSetting
       } = useAppStateStore();
       const { orientation: orientation2 } = useWindowSize();
       const rootElmRef = reactExports.useRef(null);
+      reactExports.useMemo(() => enableRenderDebugging && console.log("🔜 VideoScroller mounting"), []);
+      reactExports.useEffect(() => () => {
+        enableRenderDebugging && console.log("🔚 VideoScroller unmounting");
+      }, []);
       const { mediaItems, loadMoreMediaItems } = useMediaItems();
       const estimateSizeTesterElement = reactExports.useRef(null);
       reactExports.useEffect(() => {
@@ -188318,18 +188350,13 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         previousItemIndexesToRenderRef.current = newItemIndexesToRender;
         return newItemIndexesToRender;
       }, [rowVirtualizer.getVirtualItems(), itemsToRenderFrozen]);
-      return /* @__PURE__ */ React$1.createElement(
-        "div",
-        {
-          className: cx("VideoScroller", { scrollSnappingEnabled: scrollSnappingEnabled() }),
-          "data-testid": "VideoScroller--container",
-          tabIndex: 0,
-          ref: rootElmRef,
-          style: { height: rowVirtualizer.getTotalSize() }
-        },
-        debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, rowVirtualizer.isScrolling ? "Scrolling" : "Not Scrolling", " ", "(", mediaItems.length, " media loaded)", onlyShowMatchingOrientation && ` limiting to ${orientation2} orientation`),
-        mediaItems.map((mediaItem, i2) => {
-          const style2 = {
+      const changeItemHandler = reactExports.useCallback((newIndex, scrollOptions) => {
+        scrollToIndex(newIndex, scrollOptions);
+        setCurrentIndex(newIndex);
+      }, [scrollToIndex, setCurrentIndex]);
+      const mediaSlidePositioningStyles = reactExports.useMemo(
+        () => mediaItems.map((mediaItem, i2) => {
+          return {
             position: "absolute",
             top: 0,
             left: 0,
@@ -188341,26 +188368,46 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
               border: `10px ${i2 === currentIndex ? "black" : "transparent"} dashed`
             } : {}
           };
+        }),
+        [mediaItems, mediaSlideHeight, debugMode]
+      );
+      return /* @__PURE__ */ React$1.createElement(
+        "div",
+        {
+          className: cx("VideoScroller", { scrollSnappingEnabled: scrollSnappingEnabled() }),
+          "data-testid": "VideoScroller--container",
+          tabIndex: 0,
+          ref: rootElmRef,
+          style: { height: rowVirtualizer.getTotalSize() }
+        },
+        debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, rowVirtualizer.isScrolling ? "Scrolling" : "Not Scrolling", " ", "(", mediaItems.length, " media loaded)", onlyShowMatchingOrientation && ` limiting to ${orientation2} orientation`),
+        mediaItems.map((mediaItem, i2) => {
           if (itemIndexesToRender.includes(i2)) {
             return /* @__PURE__ */ React$1.createElement(
               MediaSlide$1,
               {
-                changeItemHandler: (newIndex, scrollOptions) => {
-                  scrollToIndex(newIndex, scrollOptions);
-                  setCurrentIndex(newIndex);
-                },
-                currentIndex,
+                changeItemHandler,
+                isCurrentVideo: i2 === currentIndex,
                 index: i2,
                 key: hashObject([mediaItem.id, scenePreviewOnly, markerPreviewOnly]),
                 mediaItem,
-                style: style2,
+                style: mediaSlidePositioningStyles[i2],
                 currentlyScrolling: rowVirtualizer.isScrolling
               }
             );
-          } else return /* @__PURE__ */ React$1.createElement("div", { key: mediaItem.id, className: "dummy-video-item", style: style2 });
+          }
+          return /* @__PURE__ */ React$1.createElement(
+            "div",
+            {
+              key: mediaItem.id,
+              className: "dummy-video-item",
+              style: mediaSlidePositioningStyles[i2]
+            }
+          );
         })
       );
-    };
+    });
+    VideoScroller.displayName = "VideoScroller";
     function ownKeys(e, r2) {
       var t2 = Object.keys(e);
       if (Object.getOwnPropertySymbols) {
@@ -190708,7 +190755,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         }, "", "")
       });
     };
-    var LoadingIndicator = function LoadingIndicator2(_ref7) {
+    var LoadingIndicator$1 = function LoadingIndicator2(_ref7) {
       var innerProps = _ref7.innerProps, isRtl = _ref7.isRtl, _ref7$size = _ref7.size, size = _ref7$size === void 0 ? 4 : _ref7$size, restProps = _objectWithoutProperties(_ref7, _excluded2);
       return jsx("div", _extends$1({}, getStyleProps(_objectSpread2(_objectSpread2({}, restProps), {}, {
         innerProps,
@@ -191041,7 +191088,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       IndicatorsContainer,
       IndicatorSeparator,
       Input: Input$1,
-      LoadingIndicator,
+      LoadingIndicator: LoadingIndicator$1,
       Menu: Menu$1,
       MenuList,
       MenuPortal,
@@ -193388,6 +193435,9 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }, baseSelectProps));
     });
     var StateManagedSelect$1 = StateManagedSelect;
+    StateManagedSelect$1.whyDidYouRender = {
+      customName: "ReactSelect"
+    };
     const Select = (props) => {
       const { className, ...otherProps } = props;
       const hasTouchScreen = useMedia("(pointer: coarse)");
@@ -196619,6 +196669,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       getComponentProps: ({ scrollTop, scrollLeft, ...props }) => props
     });
     var animated = host.animated;
+    const AnimatedDivPure = reactExports.memo(animated.div);
     function SideDrawer({ children, title: title2, closeDisabled, className }) {
       const ref = reactExports.useRef(null);
       const bodyRef = reactExports.useRef(null);
@@ -196681,7 +196732,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           onRest: () => setAppSetting("showSettings", true)
         });
       };
-      const close = ({ immediate } = { immediate: false }) => {
+      const close = reactExports.useCallback(({ immediate } = { immediate: false }) => {
         if (closeDisabled) {
           open();
           return;
@@ -196692,7 +196743,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           config: { ...config$1.stiff },
           onRest: () => setAppSetting("showSettings", false)
         });
-      };
+      }, [api2, closeDisabled]);
       const overlayOpacity = x2.to((px2) => Math.min(sidebarWidth, px2 / sidebarWidth));
       const overlayDisplay = x2.to((px2) => px2 > 0 ? "block" : "none");
       let closeButton = null;
@@ -196713,20 +196764,20 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       }
       const bodyScrollClasses = useOverflowIndicators(bodyRef);
       return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
-        animated.div,
+        AnimatedDivPure,
         {
           className: "settings-overlay",
-          style: { display: overlayDisplay, opacity: overlayOpacity },
-          onClick: () => close(),
+          style: reactExports.useMemo(() => ({ display: overlayDisplay, opacity: overlayOpacity }), [overlayDisplay.get(), overlayOpacity.get()]),
+          onClick: reactExports.useCallback(() => close(), []),
           ref: overlayRef
         }
       ), /* @__PURE__ */ React$1.createElement(
-        animated.div,
+        AnimatedDivPure,
         {
           className: cx("SideDrawer", className),
           "data-testid": "SideDrawer",
           ref,
-          style: { right: x2.to((px2) => `calc(100% - ${px2}px)`) }
+          style: reactExports.useMemo(() => ({ right: x2.to((px2) => `calc(100% - ${px2}px)`) }), [x2.get()])
         },
         /* @__PURE__ */ React$1.createElement("div", { className: "content" }, /* @__PURE__ */ React$1.createElement("div", { className: cx("body", bodyScrollClasses), ref: bodyRef }, children), /* @__PURE__ */ React$1.createElement("div", { className: "footer" }, /* @__PURE__ */ React$1.createElement("h2", null, title2), closeButton))
       ));
@@ -196741,7 +196792,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         }
       );
     };
-    function SettingsTab() {
+    const SettingsTab = reactExports.memo(() => {
       const { data: { subtitleLanguage }, update: updateStashTvConfig } = useStashTvConfig();
       const {
         mediaItemFiltersLoading,
@@ -196853,7 +196904,7 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       return /* @__PURE__ */ React$1.createElement(
         SideDrawer,
         {
-          title: /* @__PURE__ */ React$1.createElement("span", { ref: titleRef }, "Settings"),
+          title: reactExports.useMemo(() => /* @__PURE__ */ React$1.createElement("span", { ref: titleRef }, "Settings"), []),
           closeDisabled: disableClose,
           className: "SettingsTab"
         },
@@ -197073,9 +197124,10 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
             onClick: () => window.location.reload()
           },
           "Reload Page"
-        )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, "1.12.0")))))
+        )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, "1.13.0")))))
       );
-    }
+    });
+    SettingsTab.displayName = "SettingsTab";
     const AccordionToggle = (props) => {
       const { children, className, as, variant, eventKey, ...otherProps } = props;
       const contextEventKey = reactExports.useContext(context);
@@ -197139,10 +197191,13 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       "usingcustomcontrols",
       "usingnativecontrols"
     ])];
-    const Loading = (props) => {
-      const smallText = props.text ?? null;
-      return /* @__PURE__ */ React$1.createElement("div", { className: "Loading", "data-testid": "Loader" }, /* @__PURE__ */ React$1.createElement("h2", null, props.heading), smallText, /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faSpinner, pulse: true })));
-    };
+    const CLASSNAME = "LoadingIndicator";
+    const CLASSNAME_MESSAGE = `${CLASSNAME}-message`;
+    const LoadingIndicator = PatchComponent("LoadingIndicator", ({ message, inline = false, small = false, card = false }) => {
+      const intl = useIntl();
+      const text = intl.formatMessage({ id: "loading.generic" });
+      return jsxRuntimeExports.jsxs("div", { className: cx(CLASSNAME, { inline, small, "card-based": card }), children: [jsxRuntimeExports.jsx(Spinner, { animation: "border", role: "status", size: small ? "sm" : void 0, children: jsxRuntimeExports.jsx("span", { className: "sr-only", children: text }) }), message !== "" && jsxRuntimeExports.jsx("h4", { className: CLASSNAME_MESSAGE, children: message !== null && message !== void 0 ? message : text })] });
+    });
     const GuideOverlay = (props) => {
       return /* @__PURE__ */ React$1.createElement(
         "dialog",
@@ -197164,10 +197219,22 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
         /* @__PURE__ */ React$1.createElement("div", { className: "footer" }, /* @__PURE__ */ React$1.createElement("span", null, "Swipe up or down or press the ", /* @__PURE__ */ React$1.createElement("kbd", null, "↑"), " or ", /* @__PURE__ */ React$1.createElement("kbd", null, "↓"), " keys to scroll between videos. "), /* @__PURE__ */ React$1.createElement("div", { className: "actions" }, /* @__PURE__ */ React$1.createElement("span", { className: "accessInstructions" }, "You can view this guide again in the Settings."), /* @__PURE__ */ React$1.createElement(Button, { onClick: props.onClose }, "Done")))
       );
     };
-    const FeedPage = ({ className }) => {
-      const { showSettings, fullscreen, showGuideOverlay, set: setAppSetting } = useAppStateStore();
-      const { mediaItemFiltersLoading } = useMediaItemFilters();
-      const { mediaItems, mediaItemsLoading, mediaItemsNeverLoaded } = useMediaItems();
+    const ErrorMessage = ({ error }) => jsxRuntimeExports.jsx("div", { className: "row ErrorMessage", children: jsxRuntimeExports.jsxs("h2", { className: "ErrorMessage-content", children: ["Error: ", error] }) });
+    const FeedPage = reactExports.memo(({ className }) => {
+      const { showSettings, fullscreen, debugMode, showGuideOverlay, set: setAppSetting } = useAppStateStore();
+      const {
+        currentMediaItemFilter,
+        mediaItemFiltersLoading,
+        lastLoadedCurrentMediaItemFilter,
+        mediaItemFiltersError
+      } = useMediaItemFilters();
+      const {
+        mediaItems,
+        mediaItemsLoading,
+        mediaItemsNeverLoaded,
+        mediaItemsError,
+        waitingForMediaItemsFilter
+      } = useMediaItems();
       const loadedButNoScenes = !mediaItemsNeverLoaded && !mediaItemsLoading && mediaItems.length === 0;
       if (loadedButNoScenes && !showSettings) {
         setAppSetting("showSettings", true);
@@ -197188,8 +197255,56 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
           document.exitFullscreen?.();
         }
       }, [fullscreen]);
-      return /* @__PURE__ */ React$1.createElement("main", { "data-testid": "FeedPage", className }, (mediaItemsNeverLoaded || mediaItemFiltersLoading || mediaItemsLoading) && /* @__PURE__ */ React$1.createElement(Loading, { heading: "Fetching media..." }), mediaItems.length > 0 && /* @__PURE__ */ React$1.createElement(VideoScroller, null), loadedButNoScenes && /* @__PURE__ */ React$1.createElement("div", null, "No Media Found"), showGuideOverlay && /* @__PURE__ */ React$1.createElement(GuideOverlay, { onClose: () => setAppSetting("showGuideOverlay", false) }), /* @__PURE__ */ React$1.createElement(SettingsTab, null));
-    };
+      const statusInfo = () => {
+        if (mediaItemFiltersLoading || waitingForMediaItemsFilter && !mediaItemFiltersError) return /* @__PURE__ */ React$1.createElement(LoadingIndicator, { message: "Loading media filters..." });
+        if (mediaItemsLoading) return /* @__PURE__ */ React$1.createElement(LoadingIndicator, { message: "Loading filters..." });
+        if (mediaItemFiltersError || mediaItemsError) {
+          let message2;
+          if (mediaItemFiltersError) {
+            message2 = typeof mediaItemFiltersError === "object" && "message" in mediaItemFiltersError ? mediaItemFiltersError.message : mediaItemFiltersError;
+          } else {
+            message2 = typeof mediaItemsError === "object" && "message" in mediaItemsError ? mediaItemsError.message : mediaItemsError;
+          }
+          console.error("Error loading media items:", message2);
+          return /* @__PURE__ */ React$1.createElement(ErrorMessage, { error: message2 });
+        }
+        const message = currentMediaItemFilter ? `No media found for ${currentMediaItemFilter.entityType} filter ${currentMediaItemFilter.savedFilter?.name}.` : "No media filter selected or loaded.";
+        console.error("Error:", message);
+        console.info({
+          mediaItemFilters: {
+            loading: mediaItemFiltersLoading,
+            error: mediaItemFiltersError,
+            current: currentMediaItemFilter,
+            lastLoaded: lastLoadedCurrentMediaItemFilter
+          },
+          mediaItems: {
+            waitingForFilters: waitingForMediaItemsFilter,
+            loading: mediaItemsLoading,
+            neverLoaded: mediaItemsNeverLoaded,
+            count: mediaItems.length,
+            error: mediaItemsError
+          }
+        });
+        return /* @__PURE__ */ React$1.createElement(ErrorMessage, { error: message });
+      };
+      return /* @__PURE__ */ React$1.createElement("main", { "data-testid": "FeedPage", className: cx("FeedPage", className) }, mediaItems.length === 0 ? /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "status-info" }, statusInfo(), debugMode && /* @__PURE__ */ React$1.createElement("pre", null, JSON.stringify({
+        mediaItemFilters: {
+          loading: mediaItemFiltersLoading,
+          error: mediaItemFiltersError,
+          current: currentMediaItemFilter?.savedFilter?.name || currentMediaItemFilter,
+          lastLoaded: lastLoadedCurrentMediaItemFilter?.savedFilter?.name || lastLoadedCurrentMediaItemFilter
+        },
+        mediaItems: {
+          waitingForFilters: waitingForMediaItemsFilter,
+          loading: mediaItemsLoading,
+          neverLoaded: mediaItemsNeverLoaded,
+          count: mediaItems.length,
+          error: mediaItemsError
+        },
+        showSettings
+      }, null, 2))), /* @__PURE__ */ React$1.createElement(SettingsButton, null)) : /* @__PURE__ */ React$1.createElement(VideoScroller, null), /* @__PURE__ */ React$1.createElement(SettingsTab, null), showGuideOverlay && /* @__PURE__ */ React$1.createElement(GuideOverlay, { onClose: () => setAppSetting("showGuideOverlay", false) }));
+    });
+    FeedPage.displayName = "FeedPage";
     function useEffectKeen(effect2, deps) {
       const isFirstMount = useFirstMountState();
       const firstRunResult = isFirstMount ? effect2() : void 0;
@@ -197927,13 +198042,16 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
       };
       useViewportRotate(forceLandscape);
       const defaultLocale = "en-GB";
-      const messages = flattenMessages(englishMessages);
+      const messages = reactExports.useMemo(
+        () => flattenMessages(englishMessages),
+        [englishMessages]
+      );
       const language = stashConfig.data?.configuration?.interface?.language ?? defaultLocale;
-      const intlFormats = {
+      const intlFormats = reactExports.useMemo(() => ({
         date: {
           long: { year: "numeric", month: "long", day: "numeric" }
         }
-      };
+      }), []);
       return /* @__PURE__ */ React$1.createElement(
         IntlProvider,
         {
@@ -198042,4 +198160,4 @@ ${ScrapedSceneGroupDataFragmentDoc}`;
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-qbGy3ADo.js.map
+//# sourceMappingURL=index-BM_hrQNy.js.map
