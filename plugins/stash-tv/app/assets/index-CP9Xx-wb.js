@@ -187794,6 +187794,7 @@ const MediaSlide = (props) => {
     []
   );
   const videoRef = reactExports.useRef(null);
+  const [metadataLoaded, setMetadataLoaded] = reactExports.useState(false);
   const [loadingDeferred, setLoadingDeferred] = reactExports.useState(props.currentlyScrolling);
   reactExports.useEffect(() => {
     if (loadingDeferred) {
@@ -187815,6 +187816,9 @@ const MediaSlide = (props) => {
       event.stopPropagation();
     });
     updatePlayableClass();
+    player.one("loadedmetadata", () => {
+      setMetadataLoaded(true);
+    });
   }
   const currentMediaItemPendingChangeRef = reactExports.useRef();
   reactExports.useEffect(() => {
@@ -198189,7 +198193,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => window.location.reload()
       },
       "Reload Page"
-    )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, "1.13.1")))))
+    )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, "1.13.2")))))
   );
 });
 SettingsTab.displayName = "SettingsTab";
@@ -199248,4 +199252,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-CTTVdOqj.js.map
+//# sourceMappingURL=index-CP9Xx-wb.js.map
