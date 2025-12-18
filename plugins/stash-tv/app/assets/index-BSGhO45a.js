@@ -581,13 +581,13 @@ function requireScheduler_production_min() {
     function U(a4) {
       S4 = false;
       T2(a4);
-      if (!R2) if (null !== J(L3)) R2 = true, f(V);
+      if (!R2) if (null !== J(L3)) R2 = true, f(V2);
       else {
         var b2 = J(M3);
         null !== b2 && g2(U, b2.startTime - a4);
       }
     }
-    function V(a4, b2) {
+    function V2(a4, b2) {
       R2 = false;
       S4 && (S4 = false, h3());
       Q2 = true;
@@ -628,7 +628,7 @@ function requireScheduler_production_min() {
       a4.callback = null;
     };
     exports.unstable_continueExecution = function() {
-      R2 || Q2 || (R2 = true, f(V));
+      R2 || Q2 || (R2 = true, f(V2));
     };
     exports.unstable_getCurrentPriorityLevel = function() {
       return P2;
@@ -697,7 +697,7 @@ function requireScheduler_production_min() {
       }
       e2 = c2 + e2;
       a4 = { id: N++, callback: b2, priorityLevel: a4, startTime: c2, expirationTime: e2, sortIndex: -1 };
-      c2 > d4 ? (a4.sortIndex = c2, H3(M3, a4), null === J(L3) && a4 === J(M3) && (S4 ? h3() : S4 = true, g2(U, c2 - d4))) : (a4.sortIndex = e2, H3(L3, a4), R2 || Q2 || (R2 = true, f(V)));
+      c2 > d4 ? (a4.sortIndex = c2, H3(M3, a4), null === J(L3) && a4 === J(M3) && (S4 ? h3() : S4 = true, g2(U, c2 - d4))) : (a4.sortIndex = e2, H3(L3, a4), R2 || Q2 || (R2 = true, f(V2)));
       return a4;
     };
     exports.unstable_wrapCallback = function(a4) {
@@ -4430,9 +4430,9 @@ function requireReactDom_production_min() {
         d4 = null !== d4;
         c2 = false;
         null === a4 ? void 0 !== b2.memoizedProps.fallback && rh(b2) : c2 = null !== a4.memoizedState;
-        if (d4 && !c2 && 0 !== (b2.mode & 2)) if (null === a4 && true !== b2.memoizedProps.unstable_avoidThisFallback || 0 !== (P2.current & 1)) 0 === V && (V = 3);
+        if (d4 && !c2 && 0 !== (b2.mode & 2)) if (null === a4 && true !== b2.memoizedProps.unstable_avoidThisFallback || 0 !== (P2.current & 1)) 0 === V2 && (V2 = 3);
         else {
-          if (0 === V || 3 === V) V = 4;
+          if (0 === V2 || 3 === V2) V2 = 4;
           null === U || 0 === (Dg & 134217727) && 0 === (Hi & 134217727) || Ii(U, W);
         }
         if (d4 || c2) b2.flags |= 4;
@@ -4451,7 +4451,7 @@ function requireReactDom_production_min() {
         g2 = d4.rendering;
         if (null === g2) if (f) Fi(d4, false);
         else {
-          if (0 !== V || null !== a4 && 0 !== (a4.flags & 64)) for (a4 = b2.child; null !== a4; ) {
+          if (0 !== V2 || null !== a4 && 0 !== (a4.flags & 64)) for (a4 = b2.child; null !== a4; ) {
             g2 = ih(a4);
             if (null !== g2) {
               b2.flags |= 64;
@@ -4975,7 +4975,7 @@ function requireReactDom_production_min() {
   function mj(a4, b2) {
     return null !== a4 && (a4 = a4.memoizedState, null === a4 || null !== a4.dehydrated) ? (b2 = b2.memoizedState, null !== b2 && null === b2.dehydrated) : false;
   }
-  var nj = Math.ceil, oj = ra.ReactCurrentDispatcher, pj = ra.ReactCurrentOwner, X2 = 0, U = null, Y2 = null, W = 0, qj = 0, rj = Bf(0), V = 0, sj = null, tj = 0, Dg = 0, Hi = 0, uj = 0, vj = null, jj = 0, Ji = Infinity;
+  var nj = Math.ceil, oj = ra.ReactCurrentDispatcher, pj = ra.ReactCurrentOwner, X2 = 0, U = null, Y2 = null, W = 0, qj = 0, rj = Bf(0), V2 = 0, sj = null, tj = 0, Dg = 0, Hi = 0, uj = 0, vj = null, jj = 0, Ji = Infinity;
   function wj() {
     Ji = O2() + 500;
   }
@@ -5005,7 +5005,7 @@ function requireReactDom_production_min() {
     a4 = Kj(a4, b2);
     if (null === a4) return null;
     $c(a4, b2, c2);
-    a4 === U && (Hi |= b2, 4 === V && Ii(a4, W));
+    a4 === U && (Hi |= b2, 4 === V2 && Ii(a4, W));
     var d4 = eg();
     1 === b2 ? 0 !== (X2 & 8) && 0 === (X2 & 48) ? Lj(a4) : (Mj(a4, c2), 0 === X2 && (wj(), ig())) : (0 === (X2 & 4) || 98 !== d4 && 99 !== d4 || (null === Cj ? Cj = /* @__PURE__ */ new Set([a4]) : Cj.add(a4)), Mj(a4, c2));
     vj = a4;
@@ -5068,7 +5068,7 @@ function requireReactDom_production_min() {
     qg();
     oj.current = f;
     X2 = e2;
-    null !== Y2 ? d4 = 0 : (U = null, W = 0, d4 = V);
+    null !== Y2 ? d4 = 0 : (U = null, W = 0, d4 = V2);
     if (0 !== (tj & Hi)) Qj(a4, 0);
     else if (0 !== d4) {
       2 === d4 && (X2 |= 64, a4.hydrate && (a4.hydrate = false, qf(a4.containerInfo)), c2 = Wc(a4), 0 !== c2 && (d4 = Tj(a4, c2)));
@@ -5235,7 +5235,7 @@ function requireReactDom_production_min() {
     U = a4;
     Y2 = Tg(a4.current, null);
     W = qj = tj = b2;
-    V = 0;
+    V2 = 0;
     sj = null;
     uj = Hi = Dg = 0;
   }
@@ -5258,7 +5258,7 @@ function requireReactDom_production_min() {
         zh = false;
         pj.current = null;
         if (null === c2 || null === c2.return) {
-          V = 1;
+          V2 = 1;
           sj = b2;
           Y2 = null;
           break;
@@ -5322,7 +5322,7 @@ function requireReactDom_production_min() {
             } while (null !== p2);
             k2 = Error((Ra(h3.type) || "A React component") + " suspended while rendering, but no fallback UI was specified.\n\nAdd a <Suspense fallback=...> component higher in the tree to provide a loading indicator or placeholder to display.");
           }
-          5 !== V && (V = 2);
+          5 !== V2 && (V2 = 2);
           k2 = Mi(k2, h3);
           p2 = g2;
           do {
@@ -5383,7 +5383,7 @@ function requireReactDom_production_min() {
     if (null !== Y2) throw Error(y3(261));
     U = null;
     W = 0;
-    return V;
+    return V2;
   }
   function ak() {
     for (; null !== Y2; ) bk(Y2);
@@ -5430,7 +5430,7 @@ function requireReactDom_production_min() {
       }
       Y2 = b2 = a4;
     } while (null !== b2);
-    0 === V && (V = 5);
+    0 === V2 && (V2 = 5);
   }
   function Uj(a4) {
     var b2 = eg();
@@ -5745,7 +5745,7 @@ function requireReactDom_production_min() {
     null !== d4 && d4.delete(b2);
     b2 = Hg();
     a4.pingedLanes |= a4.suspendedLanes & c2;
-    U === a4 && (W & c2) === c2 && (4 === V || 3 === V && (W & 62914560) === W && 500 > O2() - jj ? Qj(a4, 0) : uj |= c2);
+    U === a4 && (W & c2) === c2 && (4 === V2 || 3 === V2 && (W & 62914560) === W && 500 > O2() - jj ? Qj(a4, 0) : uj |= c2);
     Mj(a4, b2);
   }
   function lj(a4, b2) {
@@ -16171,7 +16171,7 @@ var parseUTCTimingScheme = function parseUTCTimingScheme2(mpd) {
   }
   return attributes;
 };
-var parse$5 = function parse(manifestString, options2) {
+var parse$6 = function parse(manifestString, options2) {
   if (options2 === void 0) {
     options2 = {};
   }
@@ -22120,7 +22120,7 @@ var SeekToLive = /* @__PURE__ */ (function(_Button) {
 })(Button$3);
 SeekToLive.prototype.controlText_ = "Seek to live, currently playing live";
 Component$1$1.registerComponent("SeekToLive", SeekToLive);
-var clamp$1 = function clamp(number, min2, max2) {
+var clamp$2 = function clamp(number, min2, max2) {
   number = Number(number);
   return Math.min(max2, Math.max(min2, isNaN(number) ? min2 : number));
 };
@@ -22260,7 +22260,7 @@ var Slider = /* @__PURE__ */ (function(_Component) {
     return progress;
   };
   _proto.getProgress = function getProgress() {
-    return Number(clamp$1(this.getPercent(), 0, 1).toFixed(4));
+    return Number(clamp$2(this.getPercent(), 0, 1).toFixed(4));
   };
   _proto.calculateDistance = function calculateDistance(event) {
     var position2 = getPointerPosition(this.el_, event);
@@ -22301,7 +22301,7 @@ var Slider = /* @__PURE__ */ (function(_Component) {
 })(Component$1$1);
 Component$1$1.registerComponent("Slider", Slider);
 var percentify = function percentify2(time2, end2) {
-  return clamp$1(time2 / end2 * 100, 0, 100).toFixed(2) + "%";
+  return clamp$2(time2 / end2 * 100, 0, 100).toFixed(2) + "%";
 };
 var LoadProgressBar = /* @__PURE__ */ (function(_Component) {
   _inheritsLoose$2(LoadProgressBar2, _Component);
@@ -22812,7 +22812,7 @@ var ProgressControl = /* @__PURE__ */ (function(_Component) {
     var seekBarEl = seekBar.el();
     var seekBarRect = findPosition(seekBarEl);
     var seekBarPoint = getPointerPosition(seekBarEl, event).x;
-    seekBarPoint = clamp$1(seekBarPoint, 0, 1);
+    seekBarPoint = clamp$2(seekBarPoint, 0, 1);
     if (mouseTimeDisplay) {
       mouseTimeDisplay.update(seekBarRect, seekBarPoint);
     }
@@ -23138,7 +23138,7 @@ var VolumeBar = /* @__PURE__ */ (function(_Slider) {
       var vertical = this.vertical();
       var volumeBarPoint = getPointerPosition(volumeBarEl, event);
       volumeBarPoint = vertical ? volumeBarPoint.y : volumeBarPoint.x;
-      volumeBarPoint = clamp$1(volumeBarPoint, 0, 1);
+      volumeBarPoint = clamp$2(volumeBarPoint, 0, 1);
       mouseVolumeLevelDisplay.update(volumeBarRect, volumeBarPoint, vertical);
     }
     if (!isSingleLeftClick(event)) {
@@ -29648,7 +29648,7 @@ var resolveManifestRedirect = function resolveManifestRedirect2(handleManifestRe
   }
   return url2;
 };
-var logger = function logger2(source2) {
+var logger$1 = function logger(source2) {
   if (videojs.log.debug) {
     return videojs.log.debug.bind(videojs, "VHS:", source2 + " >");
   }
@@ -30632,7 +30632,7 @@ var PlaylistLoader = /* @__PURE__ */ (function(_EventTarget) {
     if (!src2) {
       throw new Error("A non-empty playlist URL or object is required");
     }
-    _this.logger_ = logger("PlaylistLoader");
+    _this.logger_ = logger$1("PlaylistLoader");
     var _options = options2, _options$withCredenti = _options.withCredentials, withCredentials = _options$withCredenti === void 0 ? false : _options$withCredenti, _options$handleManife = _options.handleManifestRedirects, handleManifestRedirects = _options$handleManife === void 0 ? false : _options$handleManife;
     _this.src = src2;
     _this.vhs_ = vhs;
@@ -31411,7 +31411,7 @@ var dashGroupId = function dashGroupId2(type3, group2, label, playlist) {
 };
 var parseMasterXml = function parseMasterXml2(_ref3) {
   var masterXml = _ref3.masterXml, srcUrl = _ref3.srcUrl, clientOffset = _ref3.clientOffset, sidxMapping = _ref3.sidxMapping, previousManifest = _ref3.previousManifest;
-  var manifest = parse$5(masterXml, {
+  var manifest = parse$6(masterXml, {
     manifestUri: srcUrl,
     clientOffset,
     sidxMapping,
@@ -31533,7 +31533,7 @@ var DashPlaylistLoader = /* @__PURE__ */ (function(_EventTarget) {
     });
     _this.state = "HAVE_NOTHING";
     _this.loadedPlaylists_ = {};
-    _this.logger_ = logger("DashPlaylistLoader");
+    _this.logger_ = logger$1("DashPlaylistLoader");
     if (_this.isMaster_) {
       _this.masterPlaylistLoader_.srcUrl = srcUrlOrPlaylist;
       _this.masterPlaylistLoader_.sidxMapping_ = {};
@@ -38932,7 +38932,7 @@ var mediaSegmentRequest = function mediaSegmentRequest2(_ref12) {
     return abortAll(activeXhrs);
   };
 };
-var logFn$1 = logger("CodecUtils");
+var logFn$1 = logger$1("CodecUtils");
 var getCodecs = function getCodecs2(media) {
   var mediaAttributes = media.attributes || {};
   if (mediaAttributes.CODECS) {
@@ -38996,7 +38996,7 @@ var codecsForPlaylist = function codecsForPlaylist2(master, media) {
   }
   return codecInfo;
 };
-var logFn = logger("PlaylistSelector");
+var logFn = logger$1("PlaylistSelector");
 var representationToString = function representationToString2(representation) {
   if (!representation || !representation.playlist) {
     return;
@@ -39770,7 +39770,7 @@ var SegmentLoader = /* @__PURE__ */ (function(_videojs$EventTarget) {
       }
     });
     _this.fetchAtBuffer_ = false;
-    _this.logger_ = logger("SegmentLoader[" + _this.loaderType_ + "]");
+    _this.logger_ = logger$1("SegmentLoader[" + _this.loaderType_ + "]");
     Object.defineProperty(_assertThisInitialized$2(_this), "state", {
       get: function get7() {
         return this.state_;
@@ -41288,7 +41288,7 @@ var SegmentLoader = /* @__PURE__ */ (function(_videojs$EventTarget) {
   };
   return SegmentLoader2;
 })(videojs.EventTarget);
-function noop$7() {
+function noop$8() {
 }
 var toTitleCase2 = function toTitleCase3(string) {
   if (typeof string !== "string") {
@@ -41534,7 +41534,7 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
       return shiftQueue("mediaSource", _assertThisInitialized$2(_this));
     };
     _this.mediaSource.addEventListener("sourceopen", _this.sourceopenListener_);
-    _this.logger_ = logger("SourceUpdater");
+    _this.logger_ = logger$1("SourceUpdater");
     _this.audioTimestampOffset_ = 0;
     _this.videoTimestampOffset_ = 0;
     _this.queue = [];
@@ -41708,7 +41708,7 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
   };
   _proto.setDuration = function setDuration(duration5, doneFn) {
     if (doneFn === void 0) {
-      doneFn = noop$7;
+      doneFn = noop$8;
     }
     pushQueue({
       type: "mediaSource",
@@ -41723,7 +41723,7 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
       error = null;
     }
     if (doneFn === void 0) {
-      doneFn = noop$7;
+      doneFn = noop$8;
     }
     if (typeof error !== "string") {
       error = void 0;
@@ -41738,7 +41738,7 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
   };
   _proto.removeAudio = function removeAudio(start3, end2, done) {
     if (done === void 0) {
-      done = noop$7;
+      done = noop$8;
     }
     if (!this.audioBuffered().length || this.audioBuffered().end(0) === 0) {
       done();
@@ -41754,7 +41754,7 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
   };
   _proto.removeVideo = function removeVideo(start3, end2, done) {
     if (done === void 0) {
-      done = noop$7;
+      done = noop$8;
     }
     if (!this.videoBuffered().length || this.videoBuffered().end(0) === 0) {
       done();
@@ -42328,7 +42328,7 @@ var SyncController = /* @__PURE__ */ (function(_videojs$EventTarget) {
     _this.timelines = [];
     _this.discontinuities = [];
     _this.timelineToDatetimeMappings = {};
-    _this.logger_ = logger("SyncController");
+    _this.logger_ = logger$1("SyncController");
     return _this;
   }
   var _proto = SyncController2.prototype;
@@ -43526,13 +43526,13 @@ var createMediaTypes = function createMediaTypes2() {
       groups: {},
       tracks: {},
       activePlaylistLoader: null,
-      activeGroup: noop$7,
-      activeTrack: noop$7,
-      getActiveGroup: noop$7,
-      onGroupChanged: noop$7,
-      onTrackChanged: noop$7,
+      activeGroup: noop$8,
+      activeTrack: noop$8,
+      getActiveGroup: noop$8,
+      onGroupChanged: noop$8,
+      onTrackChanged: noop$8,
       lastTrack_: null,
-      logger_: logger("MediaGroups[" + type3 + "]")
+      logger_: logger$1("MediaGroups[" + type3 + "]")
     };
   });
   return mediaTypes2;
@@ -43722,7 +43722,7 @@ var MasterPlaylistController = /* @__PURE__ */ (function(_videojs$EventTarget) {
     loaderStats.forEach(function(stat) {
       _this[stat + "_"] = sumLoaderStat.bind(_assertThisInitialized$2(_this), stat);
     });
-    _this.logger_ = logger("MPC");
+    _this.logger_ = logger$1("MPC");
     _this.triggeredFmp4Usage = false;
     if (_this.tech_.preload() === "none") {
       _this.loadOnPlay_ = function() {
@@ -44859,7 +44859,7 @@ var PlaybackWatcher = /* @__PURE__ */ (function() {
     this.lastRecordedTime = null;
     this.timer_ = null;
     this.checkCurrentTimeTimeout_ = null;
-    this.logger_ = logger("PlaybackWatcher");
+    this.logger_ = logger$1("PlaybackWatcher");
     this.logger_("initialize");
     var playHandler = function playHandler2() {
       return _this.monitorCurrentTime_();
@@ -45543,7 +45543,7 @@ var VhsHandler = /* @__PURE__ */ (function(_Component) {
     if (typeof options2.initialBandwidth === "number") {
       _this.options_.bandwidth = options2.initialBandwidth;
     }
-    _this.logger_ = logger("VhsHandler");
+    _this.logger_ = logger$1("VhsHandler");
     if (tech.options_ && tech.options_.playerId) {
       var _player = videojs(tech.options_.playerId);
       if (!_player.hasOwnProperty("hls")) {
@@ -86568,21 +86568,21 @@ var dash_all_debug = createCommonjsModule(function(module2, exports) {
                     if (lastthroughput < 1) {
                       lastthroughput = 1;
                     }
-                    var V = l2AState.lastSegmentDurationS;
+                    var V2 = l2AState.lastSegmentDurationS;
                     var sign = 1;
                     for (var _i = 0; _i < bitrateCount; ++_i) {
                       bitrates[_i] = bitrates[_i] / 1e3;
                       if (currentPlaybackRate * bitrates[_i] > lastthroughput) {
                         sign = -1;
                       }
-                      l2AParameter.w[_i] = l2AParameter.prev_w[_i] + sign * (V / (2 * alpha)) * ((l2AParameter.Q + vl) * (currentPlaybackRate * bitrates[_i] / lastthroughput));
+                      l2AParameter.w[_i] = l2AParameter.prev_w[_i] + sign * (V2 / (2 * alpha)) * ((l2AParameter.Q + vl) * (currentPlaybackRate * bitrates[_i] / lastthroughput));
                     }
                     l2AParameter.w = euclideanProjection(l2AParameter.w);
                     for (var _i2 = 0; _i2 < bitrateCount; ++_i2) {
                       diff1[_i2] = l2AParameter.w[_i2] - l2AParameter.prev_w[_i2];
                       l2AParameter.prev_w[_i2] = l2AParameter.w[_i2];
                     }
-                    l2AParameter.Q = Math.max(0, l2AParameter.Q - V + V * currentPlaybackRate * ((_dotmultiplication(bitrates, l2AParameter.prev_w) + _dotmultiplication(bitrates, diff1)) / lastthroughput));
+                    l2AParameter.Q = Math.max(0, l2AParameter.Q - V2 + V2 * currentPlaybackRate * ((_dotmultiplication(bitrates, l2AParameter.prev_w) + _dotmultiplication(bitrates, diff1)) / lastthroughput));
                     var temp = [];
                     for (var _i3 = 0; _i3 < bitrateCount; ++_i3) {
                       temp[_i3] = Math.abs(bitrates[_i3] - _dotmultiplication(l2AParameter.w, bitrates));
@@ -95206,13 +95206,13 @@ function requireUaParser() {
           [NAME, VERSION]
         ]
       };
-      var UAParser = function(ua2, extensions) {
+      var UAParser2 = function(ua2, extensions) {
         if (typeof ua2 === OBJ_TYPE) {
           extensions = ua2;
           ua2 = undefined$1;
         }
-        if (!(this instanceof UAParser)) {
-          return new UAParser(ua2, extensions).getResult();
+        if (!(this instanceof UAParser2)) {
+          return new UAParser2(ua2, extensions).getResult();
         }
         var _navigator = typeof window2 !== UNDEF_TYPE && window2.navigator ? window2.navigator : undefined$1;
         var _ua = ua2 || (_navigator && _navigator.userAgent ? _navigator.userAgent : EMPTY);
@@ -95288,20 +95288,20 @@ function requireUaParser() {
         this.setUA(_ua);
         return this;
       };
-      UAParser.VERSION = LIBVERSION;
-      UAParser.BROWSER = enumerize([NAME, VERSION, MAJOR]);
-      UAParser.CPU = enumerize([ARCHITECTURE]);
-      UAParser.DEVICE = enumerize([MODEL, VENDOR, TYPE2, CONSOLE, MOBILE, SMARTTV, TABLET, WEARABLE, EMBEDDED]);
-      UAParser.ENGINE = UAParser.OS = enumerize([NAME, VERSION]);
+      UAParser2.VERSION = LIBVERSION;
+      UAParser2.BROWSER = enumerize([NAME, VERSION, MAJOR]);
+      UAParser2.CPU = enumerize([ARCHITECTURE]);
+      UAParser2.DEVICE = enumerize([MODEL, VENDOR, TYPE2, CONSOLE, MOBILE, SMARTTV, TABLET, WEARABLE, EMBEDDED]);
+      UAParser2.ENGINE = UAParser2.OS = enumerize([NAME, VERSION]);
       {
         if (module2.exports) {
-          exports = module2.exports = UAParser;
+          exports = module2.exports = UAParser2;
         }
-        exports.UAParser = UAParser;
+        exports.UAParser = UAParser2;
       }
       var $2 = typeof window2 !== UNDEF_TYPE && (window2.jQuery || window2.Zepto);
       if ($2 && !$2.ua) {
-        var parser3 = new UAParser();
+        var parser3 = new UAParser2();
         $2.ua = parser3.getResult();
         $2.ua.get = function() {
           return parser3.getUA();
@@ -95319,6 +95319,7 @@ function requireUaParser() {
   return uaParser$1.exports;
 }
 var uaParserExports = requireUaParser();
+const UAParser = /* @__PURE__ */ getDefaultExportFromCjs(uaParserExports);
 var freeGlobal = typeof global == "object" && global && global.Object === Object && global;
 var freeSelf = typeof self == "object" && self && self.Object === Object && self;
 var root$1 = freeGlobal || freeSelf || Function("return this")();
@@ -137860,7 +137861,7 @@ class Source {
 function isSource(source2) {
   return instanceOf(source2, Source);
 }
-function parse$4(source2, options2) {
+function parse$5(source2, options2) {
   const parser3 = new Parser$2(source2, options2);
   const document2 = parser3.parseDocument();
   Object.defineProperty(document2, "tokenCount", {
@@ -140006,17 +140007,17 @@ class StrongCache {
     return false;
   }
 }
-function noop$6() {
+function noop$7() {
 }
-const defaultDispose = noop$6;
+const defaultDispose = noop$7;
 const _WeakRef = typeof WeakRef !== "undefined" ? WeakRef : function(value) {
   return { deref: () => value };
 };
 const _WeakMap = typeof WeakMap !== "undefined" ? WeakMap : Map;
 const _FinalizationRegistry = typeof FinalizationRegistry !== "undefined" ? FinalizationRegistry : function() {
   return {
-    register: noop$6,
-    unregister: noop$6
+    register: noop$7,
+    unregister: noop$7
   };
 };
 const finalizationBatchSize = 10024;
@@ -141030,7 +141031,7 @@ function wrap$1(originalFunction, { max: max2 = Math.pow(2, 16), keyArgs, makeCa
   } : makeCacheKey;
   return Object.freeze(optimistic);
 }
-function identity$1(document2) {
+function identity$2(document2) {
   return document2;
 }
 var DocumentTransform = (
@@ -141052,7 +141053,7 @@ var DocumentTransform = (
       return [document2];
     };
     DocumentTransform2.identity = function() {
-      return new DocumentTransform2(identity$1, { cache: false });
+      return new DocumentTransform2(identity$2, { cache: false });
     };
     DocumentTransform2.split = function(predicate, left2, right2) {
       if (right2 === void 0) {
@@ -148736,7 +148737,7 @@ function stripLoc(doc) {
 function parseDocument(source2) {
   var cacheKey2 = normalize(source2);
   if (!docCache.has(cacheKey2)) {
-    var parsed = parse$4(source2, {
+    var parsed = parse$5(source2, {
       experimentalFragmentVariables,
       allowLegacyFragmentVariables: experimentalFragmentVariables
     });
@@ -148999,7 +149000,7 @@ function wrapHook(hookName, useHook, clientOrObsQuery) {
   return wrapper ? wrapper(useHook) : useHook;
 }
 var hasOwnProperty = Object.prototype.hasOwnProperty;
-function noop$5() {
+function noop$6() {
 }
 var lastWatchOptions = Symbol();
 function useQuery(query, options2) {
@@ -149090,8 +149091,8 @@ function useQueryInternals(query, options2) {
   }, [observable]);
   useRegisterSSRObservable(observable, renderPromises, ssrAllowed);
   var result = useObservableSubscriptionResult(resultData, observable, client2, options2, watchQueryOptions, disableNetworkFetches, partialRefetch, isSyncSSR, {
-    onCompleted: options2.onCompleted || noop$5,
-    onError: options2.onError || noop$5
+    onCompleted: options2.onCompleted || noop$6,
+    onError: options2.onError || noop$6
   });
   return {
     result,
@@ -153894,7 +153895,7 @@ const useSceneIncrementPlayCount = () => useSceneAddPlayMutation({
     ]);
   }
 });
-function _objectWithoutPropertiesLoose$2(r3, e2) {
+function _objectWithoutPropertiesLoose$3(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -153906,11 +153907,11 @@ function _objectWithoutPropertiesLoose$2(r3, e2) {
 function defaultKey(key) {
   return "default" + key.charAt(0).toUpperCase() + key.substr(1);
 }
-function _toPropertyKey$2(arg) {
-  var key = _toPrimitive$2(arg, "string");
+function _toPropertyKey$3(arg) {
+  var key = _toPrimitive$3(arg, "string");
   return typeof key === "symbol" ? key : String(key);
 }
-function _toPrimitive$2(input, hint) {
+function _toPrimitive$3(input, hint) {
   if (typeof input !== "object" || input === null) return input;
   var prim = input[Symbol.toPrimitive];
   if (prim !== void 0) {
@@ -153940,7 +153941,7 @@ function useUncontrolledProp(propValue, defaultValue, handler) {
 function useUncontrolled(props, config2) {
   return Object.keys(config2).reduce(function(result, fieldName) {
     var _extends2;
-    var _ref3 = result, defaultValue = _ref3[defaultKey(fieldName)], propsValue = _ref3[fieldName], rest = _objectWithoutPropertiesLoose$2(_ref3, [defaultKey(fieldName), fieldName].map(_toPropertyKey$2));
+    var _ref3 = result, defaultValue = _ref3[defaultKey(fieldName)], propsValue = _ref3[fieldName], rest = _objectWithoutPropertiesLoose$3(_ref3, [defaultKey(fieldName), fieldName].map(_toPropertyKey$3));
     var handlerName = config2[fieldName];
     var _useUncontrolledProp = useUncontrolledProp(propsValue, defaultValue, props[handlerName]), value = _useUncontrolledProp[0], handler = _useUncontrolledProp[1];
     return _extends$1({}, rest, (_extends2 = {}, _extends2[fieldName] = value, _extends2[handlerName] = handler, _extends2));
@@ -153956,7 +153957,7 @@ function useBootstrapPrefix(prefix2, defaultPrefix) {
 var SelectableContext = /* @__PURE__ */ React$1.createContext(null);
 var context = /* @__PURE__ */ React$1.createContext(null);
 context.displayName = "AccordionContext";
-var _excluded$z = ["as", "children", "eventKey", "onClick"];
+var _excluded$A = ["as", "children", "eventKey", "onClick"];
 function useAccordionToggle(eventKey, onClick) {
   var contextEventKey = reactExports.useContext(context);
   var onSelect = reactExports.useContext(SelectableContext);
@@ -153967,7 +153968,7 @@ function useAccordionToggle(eventKey, onClick) {
   };
 }
 var AccordionToggle$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "button" : _ref$as, children = _ref3.children, eventKey = _ref3.eventKey, onClick = _ref3.onClick, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$z);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "button" : _ref$as, children = _ref3.children, eventKey = _ref3.eventKey, onClick = _ref3.onClick, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$A);
   var accordionOnClick = useAccordionToggle(eventKey, onClick);
   if (Component2 === "button") {
     props.type = "button";
@@ -154322,7 +154323,7 @@ var Transition = /* @__PURE__ */ (function(_React$Component) {
     _this$props.onExiting;
     _this$props.onExited;
     _this$props.nodeRef;
-    var childProps = _objectWithoutPropertiesLoose$2(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
+    var childProps = _objectWithoutPropertiesLoose$3(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
     return (
       // allows for nested Transitions
       /* @__PURE__ */ React$1.createElement(TransitionGroupContext.Provider, {
@@ -154334,7 +154335,7 @@ var Transition = /* @__PURE__ */ (function(_React$Component) {
 })(React$1.Component);
 Transition.contextType = TransitionGroupContext;
 Transition.propTypes = {};
-function noop$4() {
+function noop$5() {
 }
 Transition.defaultProps = {
   in: false,
@@ -154343,12 +154344,12 @@ Transition.defaultProps = {
   appear: false,
   enter: true,
   exit: true,
-  onEnter: noop$4,
-  onEntering: noop$4,
-  onEntered: noop$4,
-  onExit: noop$4,
-  onExiting: noop$4,
-  onExited: noop$4
+  onEnter: noop$5,
+  onEntering: noop$5,
+  onEntered: noop$5,
+  onExit: noop$5,
+  onExiting: noop$5,
+  onExited: noop$5
 };
 Transition.UNMOUNTED = UNMOUNTED;
 Transition.EXITED = EXITED;
@@ -154481,7 +154482,7 @@ function createChainedFunction() {
 function triggerBrowserReflow(node2) {
   node2.offsetHeight;
 }
-var _excluded$y = ["onEnter", "onEntering", "onEntered", "onExit", "onExiting", "className", "children", "dimension", "getDimensionValue"];
+var _excluded$z = ["onEnter", "onEntering", "onEntered", "onExit", "onExiting", "className", "children", "dimension", "getDimensionValue"];
 var _collapseStyles;
 var MARGINS = {
   height: ["marginTop", "marginBottom"],
@@ -154505,7 +154506,7 @@ var defaultProps$9 = {
   getDimensionValue: getDefaultDimensionValue
 };
 var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, className = _ref3.className, children = _ref3.children, _ref$dimension = _ref3.dimension, dimension = _ref$dimension === void 0 ? "height" : _ref$dimension, _ref$getDimensionValu = _ref3.getDimensionValue, getDimensionValue = _ref$getDimensionValu === void 0 ? getDefaultDimensionValue : _ref$getDimensionValu, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$y);
+  var onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, className = _ref3.className, children = _ref3.children, _ref$dimension = _ref3.dimension, dimension = _ref$dimension === void 0 ? "height" : _ref$dimension, _ref$getDimensionValu = _ref3.getDimensionValue, getDimensionValue = _ref$getDimensionValu === void 0 ? getDefaultDimensionValue : _ref$getDimensionValu, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$z);
   var computedDimension = typeof dimension === "function" ? dimension() : dimension;
   var handleEnter = reactExports.useMemo(function() {
     return createChainedFunction(function(elem) {
@@ -154555,9 +154556,9 @@ var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   );
 });
 Collapse.defaultProps = defaultProps$9;
-var _excluded$x = ["children", "eventKey"];
+var _excluded$y = ["children", "eventKey"];
 var AccordionCollapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var children = _ref3.children, eventKey = _ref3.eventKey, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$x);
+  var children = _ref3.children, eventKey = _ref3.eventKey, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$y);
   var contextEventKey = reactExports.useContext(context);
   return /* @__PURE__ */ React$1.createElement(SelectableContext.Provider, {
     value: null
@@ -154567,11 +154568,11 @@ var AccordionCollapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) 
   }, props), /* @__PURE__ */ React$1.createElement("div", null, React$1.Children.only(children))));
 });
 AccordionCollapse.displayName = "AccordionCollapse";
-var _excluded$w = ["as", "activeKey", "bsPrefix", "children", "className", "onSelect"];
+var _excluded$x = ["as", "activeKey", "bsPrefix", "children", "className", "onSelect"];
 var Accordion = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
   var _useUncontrolled = useUncontrolled(props, {
     activeKey: "onSelect"
-  }), _useUncontrolled$as = _useUncontrolled.as, Component2 = _useUncontrolled$as === void 0 ? "div" : _useUncontrolled$as, activeKey = _useUncontrolled.activeKey, bsPrefix = _useUncontrolled.bsPrefix, children = _useUncontrolled.children, className = _useUncontrolled.className, onSelect = _useUncontrolled.onSelect, controlledProps = _objectWithoutPropertiesLoose$2(_useUncontrolled, _excluded$w);
+  }), _useUncontrolled$as = _useUncontrolled.as, Component2 = _useUncontrolled$as === void 0 ? "div" : _useUncontrolled$as, activeKey = _useUncontrolled.activeKey, bsPrefix = _useUncontrolled.bsPrefix, children = _useUncontrolled.children, className = _useUncontrolled.className, onSelect = _useUncontrolled.onSelect, controlledProps = _objectWithoutPropertiesLoose$3(_useUncontrolled, _excluded$x);
   var finalClassName = cx(className, useBootstrapPrefix(bsPrefix, "accordion"));
   return /* @__PURE__ */ React$1.createElement(context.Provider, {
     value: activeKey || null
@@ -154599,7 +154600,7 @@ function useEventCallback(fn3) {
     return ref.current && ref.current(...args);
   }, [ref]);
 }
-var _excluded$v = ["className", "children"];
+var _excluded$w = ["className", "children"];
 var _fadeStyles;
 var defaultProps$8 = {
   in: false,
@@ -154610,7 +154611,7 @@ var defaultProps$8 = {
 };
 var fadeStyles = (_fadeStyles = {}, _fadeStyles[ENTERING] = "show", _fadeStyles[ENTERED] = "show", _fadeStyles);
 var Fade = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$v);
+  var className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$w);
   var handleEnter = reactExports.useCallback(function(node2) {
     triggerBrowserReflow(node2);
     if (props.onEnter) props.onEnter(node2);
@@ -154634,14 +154635,14 @@ function camelize$1(string) {
     return chr.toUpperCase();
   });
 }
-var _excluded$u = ["className", "bsPrefix", "as"];
+var _excluded$v = ["className", "bsPrefix", "as"];
 var pascalCase = function pascalCase2(str) {
   return str[0].toUpperCase() + camelize$1(str).slice(1);
 };
 function createWithBsPrefix(prefix2, _temp) {
   var _ref3 = _temp === void 0 ? {} : _temp, _ref$displayName = _ref3.displayName, displayName = _ref$displayName === void 0 ? pascalCase(prefix2) : _ref$displayName, Component2 = _ref3.Component, defaultProps2 = _ref3.defaultProps;
   var BsComponent = /* @__PURE__ */ React$1.forwardRef(function(_ref22, ref) {
-    var className = _ref22.className, bsPrefix = _ref22.bsPrefix, _ref2$as = _ref22.as, Tag = _ref2$as === void 0 ? Component2 || "div" : _ref2$as, props = _objectWithoutPropertiesLoose$2(_ref22, _excluded$u);
+    var className = _ref22.className, bsPrefix = _ref22.bsPrefix, _ref2$as = _ref22.as, Tag = _ref2$as === void 0 ? Component2 || "div" : _ref2$as, props = _objectWithoutPropertiesLoose$3(_ref22, _excluded$v);
     var resolvedPrefix = useBootstrapPrefix(bsPrefix, prefix2);
     return /* @__PURE__ */ React$1.createElement(Tag, _extends$1({
       ref,
@@ -154652,12 +154653,12 @@ function createWithBsPrefix(prefix2, _temp) {
   BsComponent.displayName = displayName;
   return BsComponent;
 }
-var _excluded$t = ["as", "disabled", "onKeyDown"];
+var _excluded$u = ["as", "disabled", "onKeyDown"];
 function isTrivialHref(href) {
   return !href || href.trim() === "#";
 }
 var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "a" : _ref$as, disabled2 = _ref3.disabled, onKeyDown = _ref3.onKeyDown, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$t);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "a" : _ref$as, disabled2 = _ref3.disabled, onKeyDown = _ref3.onKeyDown, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$u);
   var handleClick = function handleClick2(event) {
     var href = props.href, onClick = props.onClick;
     if (disabled2 || isTrivialHref(href)) {
@@ -154693,14 +154694,14 @@ var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 SafeAnchor.displayName = "SafeAnchor";
-var _excluded$s = ["bsPrefix", "variant", "size", "active", "className", "block", "type", "as"];
+var _excluded$t = ["bsPrefix", "variant", "size", "active", "className", "block", "type", "as"];
 var defaultProps$7 = {
   variant: "primary",
   active: false,
   disabled: false
 };
 var Button = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, size = _ref3.size, active = _ref3.active, className = _ref3.className, block2 = _ref3.block, type3 = _ref3.type, as = _ref3.as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$s);
+  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, size = _ref3.size, active = _ref3.active, className = _ref3.className, block2 = _ref3.block, type3 = _ref3.type, as = _ref3.as, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$t);
   var prefix2 = useBootstrapPrefix(bsPrefix, "btn");
   var classes = cx(className, prefix2, active && "active", variant && prefix2 + "-" + variant, block2 && prefix2 + "-block", size && prefix2 + "-" + size);
   if (props.href) {
@@ -154772,12 +154773,12 @@ function useTimeout() {
     };
   }, []);
 }
-var _excluded$r = ["bsPrefix", "className", "as"];
+var _excluded$s = ["bsPrefix", "className", "as"];
 var DEVICE_SIZES = ["xl", "lg", "md", "sm", "xs"];
 var Col = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$r);
+    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$s);
     var prefix2 = useBootstrapPrefix(bsPrefix, "col");
     var spans = [];
     var classes = [];
@@ -156145,7 +156146,7 @@ var ariaDescribedByModifier = {
 };
 var EMPTY_MODIFIERS$2 = [];
 function usePopper$1(referenceElement, popperElement, _temp) {
-  var _ref3 = _temp === void 0 ? {} : _temp, _ref3$enabled = _ref3.enabled, enabled = _ref3$enabled === void 0 ? true : _ref3$enabled, _ref3$placement = _ref3.placement, placement = _ref3$placement === void 0 ? "bottom" : _ref3$placement, _ref3$strategy = _ref3.strategy, strategy = _ref3$strategy === void 0 ? "absolute" : _ref3$strategy, _ref3$modifiers = _ref3.modifiers, modifiers = _ref3$modifiers === void 0 ? EMPTY_MODIFIERS$2 : _ref3$modifiers, config2 = _objectWithoutPropertiesLoose$2(_ref3, ["enabled", "placement", "strategy", "modifiers"]);
+  var _ref3 = _temp === void 0 ? {} : _temp, _ref3$enabled = _ref3.enabled, enabled = _ref3$enabled === void 0 ? true : _ref3$enabled, _ref3$placement = _ref3.placement, placement = _ref3$placement === void 0 ? "bottom" : _ref3$placement, _ref3$strategy = _ref3.strategy, strategy = _ref3$strategy === void 0 ? "absolute" : _ref3$strategy, _ref3$modifiers = _ref3.modifiers, modifiers = _ref3$modifiers === void 0 ? EMPTY_MODIFIERS$2 : _ref3$modifiers, config2 = _objectWithoutPropertiesLoose$3(_ref3, ["enabled", "placement", "strategy", "modifiers"]);
   var popperInstanceRef = reactExports.useRef();
   var update2 = reactExports.useCallback(function() {
     var _popperInstanceRef$cu;
@@ -156250,7 +156251,7 @@ const ownerDocument = (function(componentOrElement) {
   return ownerDocument$1(safeFindDOMNode(componentOrElement));
 });
 var escapeKeyCode = 27;
-var noop$3 = function noop() {
+var noop$4 = function noop() {
 };
 function isLeftClickEvent(event) {
   return event.button === 0;
@@ -156264,7 +156265,7 @@ var getRefTarget = function getRefTarget2(ref) {
 function useRootClose(ref, onRootClose, _temp) {
   var _ref3 = _temp === void 0 ? {} : _temp, disabled2 = _ref3.disabled, _ref$clickTrigger = _ref3.clickTrigger, clickTrigger = _ref$clickTrigger === void 0 ? "click" : _ref$clickTrigger;
   var preventMouseRootCloseRef = reactExports.useRef(false);
-  var onClose = onRootClose || noop$3;
+  var onClose = onRootClose || noop$4;
   var handleMouseCapture = reactExports.useCallback(function(e2) {
     var _e$composedPath$;
     var currentTarget = getRefTarget(ref);
@@ -156303,7 +156304,7 @@ function useRootClose(ref, onRootClose, _temp) {
     var mobileSafariHackListeners = [];
     if ("ontouchstart" in doc.documentElement) {
       mobileSafariHackListeners = [].slice.call(doc.body.children).map(function(el) {
-        return listen2(el, "mousemove", noop$3);
+        return listen2(el, "mousemove", noop$4);
       });
     }
     return function() {
@@ -156595,7 +156596,7 @@ function requireAll() {
   return all$1.exports;
 }
 requireAll();
-var _excluded$q = ["as", "className", "type", "tooltip"];
+var _excluded$r = ["as", "className", "type", "tooltip"];
 var propTypes = {
   /**
    * Specify whether the feedback is for valid or invalid fields
@@ -156610,7 +156611,7 @@ var propTypes = {
 var Feedback = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "valid" : _ref$type, _ref$tooltip = _ref3.tooltip, tooltip = _ref$tooltip === void 0 ? false : _ref$tooltip, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$q);
+    var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "valid" : _ref$type, _ref$tooltip = _ref3.tooltip, tooltip = _ref$tooltip === void 0 ? false : _ref$tooltip, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$r);
     return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({}, props, {
       ref,
       className: cx(className, type3 + "-" + (tooltip ? "tooltip" : "feedback"))
@@ -156622,9 +156623,9 @@ Feedback.propTypes = propTypes;
 var FormContext = /* @__PURE__ */ React$1.createContext({
   controlId: void 0
 });
-var _excluded$p = ["id", "bsPrefix", "bsCustomPrefix", "className", "type", "isValid", "isInvalid", "isStatic", "as"];
+var _excluded$q = ["id", "bsPrefix", "bsCustomPrefix", "className", "type", "isValid", "isInvalid", "isStatic", "as"];
 var FormCheckInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, isStatic = _ref3.isStatic, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$p);
+  var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, isStatic = _ref3.isStatic, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$q);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-control-input"] : [bsPrefix, "form-check-input"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -156636,9 +156637,9 @@ var FormCheckInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 FormCheckInput.displayName = "FormCheckInput";
-var _excluded$o = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
+var _excluded$p = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
 var FormCheckLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$o);
+  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$p);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-control-label"] : [bsPrefix, "form-check-label"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -156649,9 +156650,9 @@ var FormCheckLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 FormCheckLabel.displayName = "FormCheckLabel";
-var _excluded$n = ["id", "bsPrefix", "bsCustomPrefix", "inline", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "title", "type", "label", "children", "custom", "as"];
+var _excluded$o = ["id", "bsPrefix", "bsCustomPrefix", "inline", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "title", "type", "label", "children", "custom", "as"];
 var FormCheck = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$inline = _ref3.inline, inline = _ref$inline === void 0 ? false : _ref$inline, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? "" : _ref$title, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, label = _ref3.label, children = _ref3.children, propCustom = _ref3.custom, _ref$as = _ref3.as, as = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$n);
+  var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$inline = _ref3.inline, inline = _ref$inline === void 0 ? false : _ref$inline, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? "" : _ref$title, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, label = _ref3.label, children = _ref3.children, propCustom = _ref3.custom, _ref$as = _ref3.as, as = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$o);
   var custom2 = type3 === "switch" ? true : propCustom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-control"] : [bsPrefix, "form-check"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -156687,9 +156688,9 @@ var FormCheck = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 FormCheck.displayName = "FormCheck";
 FormCheck.Input = FormCheckInput;
 FormCheck.Label = FormCheckLabel;
-var _excluded$m = ["id", "bsPrefix", "bsCustomPrefix", "className", "isValid", "isInvalid", "lang", "as"];
+var _excluded$n = ["id", "bsPrefix", "bsCustomPrefix", "className", "isValid", "isInvalid", "lang", "as"];
 var FormFileInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, isValid2 = _ref3.isValid, isInvalid = _ref3.isInvalid, lang = _ref3.lang, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$m);
+  var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, isValid2 = _ref3.isValid, isInvalid = _ref3.isInvalid, lang = _ref3.lang, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$n);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var type3 = "file";
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-file-input"] : [bsPrefix, "form-control-file"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
@@ -156703,9 +156704,9 @@ var FormFileInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 FormFileInput.displayName = "FormFileInput";
-var _excluded$l = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
+var _excluded$m = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
 var FormFileLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$l);
+  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$m);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-file-label"] : [bsPrefix, "form-file-label"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -156717,9 +156718,9 @@ var FormFileLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 FormFileLabel.displayName = "FormFileLabel";
-var _excluded$k = ["id", "bsPrefix", "bsCustomPrefix", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "label", "children", "custom", "lang", "data-browse", "as", "inputAs"];
+var _excluded$l = ["id", "bsPrefix", "bsCustomPrefix", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "label", "children", "custom", "lang", "data-browse", "as", "inputAs"];
 var FormFile = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, label = _ref3.label, children = _ref3.children, custom2 = _ref3.custom, lang = _ref3.lang, dataBrowse = _ref3["data-browse"], _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, _ref$inputAs = _ref3.inputAs, inputAs = _ref$inputAs === void 0 ? "input" : _ref$inputAs, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$k);
+  var id = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, label = _ref3.label, children = _ref3.children, custom2 = _ref3.custom, lang = _ref3.lang, dataBrowse = _ref3["data-browse"], _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, _ref$inputAs = _ref3.inputAs, inputAs = _ref$inputAs === void 0 ? "input" : _ref$inputAs, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$l);
   var _ref22 = custom2 ? [bsCustomPrefix, "custom"] : [bsPrefix, "form-file"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
   var type3 = "file";
@@ -156754,9 +156755,9 @@ var FormFile = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 FormFile.displayName = "FormFile";
 FormFile.Input = FormFileInput;
 FormFile.Label = FormFileLabel;
-var _excluded$j = ["bsPrefix", "bsCustomPrefix", "type", "size", "htmlSize", "id", "className", "isValid", "isInvalid", "plaintext", "readOnly", "custom", "as"];
+var _excluded$k = ["bsPrefix", "bsCustomPrefix", "type", "size", "htmlSize", "id", "className", "isValid", "isInvalid", "plaintext", "readOnly", "custom", "as"];
 var FormControl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, type3 = _ref3.type, size = _ref3.size, htmlSize = _ref3.htmlSize, id = _ref3.id, className = _ref3.className, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, plaintext = _ref3.plaintext, readOnly = _ref3.readOnly, custom2 = _ref3.custom, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$j);
+  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, type3 = _ref3.type, size = _ref3.size, htmlSize = _ref3.htmlSize, id = _ref3.id, className = _ref3.className, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, plaintext = _ref3.plaintext, readOnly = _ref3.readOnly, custom2 = _ref3.custom, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$k);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom"] : [bsPrefix, "form-control"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -156790,9 +156791,9 @@ FormControl.displayName = "FormControl";
 const FormControl$1 = Object.assign(FormControl, {
   Feedback
 });
-var _excluded$i = ["bsPrefix", "className", "children", "controlId", "as"];
+var _excluded$j = ["bsPrefix", "className", "children", "controlId", "as"];
 var FormGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, controlId = _ref3.controlId, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$i);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, controlId = _ref3.controlId, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$j);
   bsPrefix = useBootstrapPrefix(bsPrefix, "form-group");
   var context2 = reactExports.useMemo(function() {
     return {
@@ -156807,13 +156808,13 @@ var FormGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }), children));
 });
 FormGroup.displayName = "FormGroup";
-var _excluded$h = ["as", "bsPrefix", "column", "srOnly", "className", "htmlFor"];
+var _excluded$i = ["as", "bsPrefix", "column", "srOnly", "className", "htmlFor"];
 var defaultProps$6 = {
   column: false,
   srOnly: false
 };
 var FormLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "label" : _ref$as, bsPrefix = _ref3.bsPrefix, column2 = _ref3.column, srOnly = _ref3.srOnly, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$h);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "label" : _ref$as, bsPrefix = _ref3.bsPrefix, column2 = _ref3.column, srOnly = _ref3.srOnly, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$i);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId;
   bsPrefix = useBootstrapPrefix(bsPrefix, "form-label");
   var columnClass = "col-form-label";
@@ -156837,11 +156838,11 @@ var FormLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 });
 FormLabel.displayName = "FormLabel";
 FormLabel.defaultProps = defaultProps$6;
-var _excluded$g = ["bsPrefix", "className", "as", "muted"];
+var _excluded$h = ["bsPrefix", "className", "as", "muted"];
 var FormText = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "small" : _ref$as, muted = _ref3.muted, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$g);
+    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "small" : _ref$as, muted = _ref3.muted, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$h);
     bsPrefix = useBootstrapPrefix(bsPrefix, "form-text");
     return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({}, props, {
       ref,
@@ -156859,13 +156860,13 @@ var Switch$1 = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
 Switch$1.displayName = "Switch";
 Switch$1.Input = FormCheck.Input;
 Switch$1.Label = FormCheck.Label;
-var _excluded$f = ["bsPrefix", "inline", "className", "validated", "as"];
+var _excluded$g = ["bsPrefix", "inline", "className", "validated", "as"];
 var FormRow = createWithBsPrefix("form-row");
 var defaultProps$5 = {
   inline: false
 };
 var FormImpl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, inline = _ref3.inline, className = _ref3.className, validated = _ref3.validated, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "form" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$f);
+  var bsPrefix = _ref3.bsPrefix, inline = _ref3.inline, className = _ref3.className, validated = _ref3.validated, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "form" : _ref$as, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$g);
   bsPrefix = useBootstrapPrefix(bsPrefix, "form");
   return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({}, props, {
     ref,
@@ -156882,7 +156883,7 @@ FormImpl.File = FormFile;
 FormImpl.Switch = Switch$1;
 FormImpl.Label = FormLabel;
 FormImpl.Text = FormText;
-var _excluded$e = ["bsPrefix", "size", "hasValidation", "className", "as"];
+var _excluded$f = ["bsPrefix", "size", "hasValidation", "className", "as"];
 var InputGroupAppend = createWithBsPrefix("input-group-append");
 var InputGroupPrepend = createWithBsPrefix("input-group-prepend");
 var InputGroupText = createWithBsPrefix("input-group-text", {
@@ -156899,7 +156900,7 @@ var InputGroupRadio = function InputGroupRadio2(props) {
   }, props)));
 };
 var InputGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, size = _ref3.size, hasValidation = _ref3.hasValidation, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$e);
+  var bsPrefix = _ref3.bsPrefix, size = _ref3.size, hasValidation = _ref3.hasValidation, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$f);
   bsPrefix = useBootstrapPrefix(bsPrefix, "input-group");
   return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({
     ref
@@ -156956,7 +156957,7 @@ var Overlay$1 = /* @__PURE__ */ React$1.forwardRef(function(props, outerRef) {
     offset: offset3,
     arrowElement,
     popperConfig
-  })), styles2 = _usePopper.styles, attributes = _usePopper.attributes, popper2 = _objectWithoutPropertiesLoose$2(_usePopper, ["styles", "attributes"]);
+  })), styles2 = _usePopper.styles, attributes = _usePopper.attributes, popper2 = _objectWithoutPropertiesLoose$3(_usePopper, ["styles", "attributes"]);
   if (props.show) {
     if (exited) setExited(false);
   } else if (!props.transition && !exited) {
@@ -157118,7 +157119,7 @@ Overlay$1.propTypes = {
    */
   onExited: PropTypes.func
 };
-var _excluded$d = ["children", "transition", "popperConfig"], _excluded2$2 = ["props", "arrowProps", "show", "update", "forceUpdate", "placement", "state"];
+var _excluded$e = ["children", "transition", "popperConfig"], _excluded2$2 = ["props", "arrowProps", "show", "update", "forceUpdate", "placement", "state"];
 var defaultProps$4 = {
   transition: Fade,
   rootClose: false,
@@ -157136,7 +157137,7 @@ function wrapRefs(props, arrowProps) {
   });
 }
 function Overlay(_ref3) {
-  var overlay = _ref3.children, transition = _ref3.transition, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, outerProps = _objectWithoutPropertiesLoose$2(_ref3, _excluded$d);
+  var overlay = _ref3.children, transition = _ref3.transition, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, outerProps = _objectWithoutPropertiesLoose$3(_ref3, _excluded$e);
   var popperRef = reactExports.useRef({});
   var _usePopperMarginModif = usePopperMarginModifiers(), ref = _usePopperMarginModif[0], marginModifiers = _usePopperMarginModif[1];
   var actualTransition = transition === true ? Fade : transition || null;
@@ -157150,7 +157151,7 @@ function Overlay(_ref3) {
     var _state$modifiersData$;
     var overlayProps = _ref22.props, arrowProps = _ref22.arrowProps, show = _ref22.show, update2 = _ref22.update;
     _ref22.forceUpdate;
-    var placement = _ref22.placement, state = _ref22.state, props = _objectWithoutPropertiesLoose$2(_ref22, _excluded2$2);
+    var placement = _ref22.placement, state = _ref22.state, props = _objectWithoutPropertiesLoose$3(_ref22, _excluded2$2);
     wrapRefs(overlayProps, arrowProps);
     var popper2 = Object.assign(popperRef.current, {
       state,
@@ -157177,7 +157178,7 @@ function Overlay(_ref3) {
   });
 }
 Overlay.defaultProps = defaultProps$4;
-var _excluded$c = ["trigger", "overlay", "children", "popperConfig", "show", "defaultShow", "onToggle", "delay", "placement", "flip"];
+var _excluded$d = ["trigger", "overlay", "children", "popperConfig", "show", "defaultShow", "onToggle", "delay", "placement", "flip"];
 var RefHolder = /* @__PURE__ */ (function(_React$Component) {
   _inheritsLoose$2(RefHolder2, _React$Component);
   function RefHolder2() {
@@ -157208,7 +157209,7 @@ var defaultProps$3 = {
   trigger: ["hover", "focus"]
 };
 function OverlayTrigger(_ref3) {
-  var trigger2 = _ref3.trigger, overlay = _ref3.overlay, children = _ref3.children, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, propsShow = _ref3.show, _ref$defaultShow = _ref3.defaultShow, defaultShow = _ref$defaultShow === void 0 ? false : _ref$defaultShow, onToggle = _ref3.onToggle, propsDelay = _ref3.delay, placement = _ref3.placement, _ref$flip = _ref3.flip, flip2 = _ref$flip === void 0 ? placement && placement.indexOf("auto") !== -1 : _ref$flip, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$c);
+  var trigger2 = _ref3.trigger, overlay = _ref3.overlay, children = _ref3.children, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, propsShow = _ref3.show, _ref$defaultShow = _ref3.defaultShow, defaultShow = _ref$defaultShow === void 0 ? false : _ref$defaultShow, onToggle = _ref3.onToggle, propsDelay = _ref3.delay, placement = _ref3.placement, _ref$flip = _ref3.flip, flip2 = _ref$flip === void 0 ? placement && placement.indexOf("auto") !== -1 : _ref$flip, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$d);
   var triggerNodeRef = reactExports.useRef(null);
   var timeout = useTimeout();
   var hoverStateRef = reactExports.useRef("");
@@ -157297,9 +157298,9 @@ function OverlayTrigger(_ref3) {
   }), overlay));
 }
 OverlayTrigger.defaultProps = defaultProps$3;
-var _excluded$b = ["as", "bsPrefix", "className", "children"];
+var _excluded$c = ["as", "bsPrefix", "className", "children"];
 var PopoverTitle = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$b);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$c);
   bsPrefix = useBootstrapPrefix(bsPrefix, "popover-header");
   return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({
     ref
@@ -157307,9 +157308,9 @@ var PopoverTitle = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     className: cx(bsPrefix, className)
   }), children);
 });
-var _excluded$a = ["as", "bsPrefix", "className", "children"];
+var _excluded$b = ["as", "bsPrefix", "className", "children"];
 var PopoverContent = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$a);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$b);
   bsPrefix = useBootstrapPrefix(bsPrefix, "popover-body");
   return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({
     ref
@@ -157317,7 +157318,7 @@ var PopoverContent = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     className: cx(className, bsPrefix)
   }), children);
 });
-var _excluded$9 = ["bsPrefix", "placement", "className", "style", "children", "content", "arrowProps", "popper", "show"];
+var _excluded$a = ["bsPrefix", "placement", "className", "style", "children", "content", "arrowProps", "popper", "show"];
 var defaultProps$2 = {
   placement: "right"
 };
@@ -157325,7 +157326,7 @@ var Popover = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   var bsPrefix = _ref3.bsPrefix, placement = _ref3.placement, className = _ref3.className, style2 = _ref3.style, children = _ref3.children, content = _ref3.content, arrowProps = _ref3.arrowProps;
   _ref3.popper;
   _ref3.show;
-  var props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$9);
+  var props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$a);
   var decoratedBsPrefix = useBootstrapPrefix(bsPrefix, "popover");
   var _ref22 = (placement == null ? void 0 : placement.split("-")) || [], primaryPlacement = _ref22[0];
   return /* @__PURE__ */ React$1.createElement("div", _extends$1({
@@ -157341,9 +157342,9 @@ var Popover = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 Popover.defaultProps = defaultProps$2;
 Popover.Title = PopoverTitle;
 Popover.Content = PopoverContent;
-var _excluded$8 = ["bsPrefix", "variant", "animation", "size", "children", "as", "className"];
+var _excluded$9 = ["bsPrefix", "variant", "animation", "size", "children", "as", "className"];
 var Spinner = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, animation = _ref3.animation, size = _ref3.size, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, props = _objectWithoutPropertiesLoose$2(_ref3, _excluded$8);
+  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, animation = _ref3.animation, size = _ref3.size, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, props = _objectWithoutPropertiesLoose$3(_ref3, _excluded$9);
   bsPrefix = useBootstrapPrefix(bsPrefix, "spinner");
   var bsSpinnerPrefix = bsPrefix + "-" + animation;
   return /* @__PURE__ */ React$1.createElement(Component2, _extends$1({
@@ -157813,15 +157814,15 @@ const TextUtils = {
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  * Copyright 2024 Fonticons, Inc.
  */
-function _defineProperty$2(e2, r22, t22) {
-  return (r22 = _toPropertyKey$1(r22)) in e2 ? Object.defineProperty(e2, r22, {
+function _defineProperty$3(e2, r22, t22) {
+  return (r22 = _toPropertyKey$2(r22)) in e2 ? Object.defineProperty(e2, r22, {
     value: t22,
     enumerable: true,
     configurable: true,
     writable: true
   }) : e2[r22] = t22, e2;
 }
-function ownKeys$2(e2, r22) {
+function ownKeys$3(e2, r22) {
   var t22 = Object.keys(e2);
   if (Object.getOwnPropertySymbols) {
     var o2 = Object.getOwnPropertySymbols(e2);
@@ -157831,18 +157832,18 @@ function ownKeys$2(e2, r22) {
   }
   return t22;
 }
-function _objectSpread2$2(e2) {
+function _objectSpread2$3(e2) {
   for (var r22 = 1; r22 < arguments.length; r22++) {
     var t22 = null != arguments[r22] ? arguments[r22] : {};
-    r22 % 2 ? ownKeys$2(Object(t22), true).forEach(function(r3) {
-      _defineProperty$2(e2, r3, t22[r3]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t22)) : ownKeys$2(Object(t22)).forEach(function(r3) {
+    r22 % 2 ? ownKeys$3(Object(t22), true).forEach(function(r3) {
+      _defineProperty$3(e2, r3, t22[r3]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t22)) : ownKeys$3(Object(t22)).forEach(function(r3) {
       Object.defineProperty(e2, r3, Object.getOwnPropertyDescriptor(t22, r3));
     });
   }
   return e2;
 }
-function _toPrimitive$1(t22, r22) {
+function _toPrimitive$2(t22, r22) {
   if ("object" != typeof t22 || !t22) return t22;
   var e2 = t22[Symbol.toPrimitive];
   if (void 0 !== e2) {
@@ -157852,18 +157853,18 @@ function _toPrimitive$1(t22, r22) {
   }
   return ("string" === r22 ? String : Number)(t22);
 }
-function _toPropertyKey$1(t22) {
-  var i2 = _toPrimitive$1(t22, "string");
+function _toPropertyKey$2(t22) {
+  var i2 = _toPrimitive$2(t22, "string");
   return "symbol" == typeof i2 ? i2 : i2 + "";
 }
-const noop$2 = () => {
+const noop$3 = () => {
 };
 let _WINDOW = {};
 let _DOCUMENT = {};
 let _MUTATION_OBSERVER = null;
 let _PERFORMANCE = {
-  mark: noop$2,
-  measure: noop$2
+  mark: noop$3,
+  measure: noop$3
 };
 try {
   if (typeof window !== "undefined") _WINDOW = window;
@@ -158201,26 +158202,26 @@ function familyProxy(obj) {
     }
   });
 }
-const _PREFIX_TO_STYLE = _objectSpread2$2({}, S);
-_PREFIX_TO_STYLE[s$1] = _objectSpread2$2(_objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, {
+const _PREFIX_TO_STYLE = _objectSpread2$3({}, S);
+_PREFIX_TO_STYLE[s$1] = _objectSpread2$3(_objectSpread2$3(_objectSpread2$3(_objectSpread2$3({}, {
   "fa-duotone": "duotone"
 }), S[s$1]), St$1["kit"]), St$1["kit-duotone"]);
 const PREFIX_TO_STYLE = familyProxy(_PREFIX_TO_STYLE);
-const _STYLE_TO_PREFIX = _objectSpread2$2({}, xt$1);
-_STYLE_TO_PREFIX[s$1] = _objectSpread2$2(_objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, {
+const _STYLE_TO_PREFIX = _objectSpread2$3({}, xt$1);
+_STYLE_TO_PREFIX[s$1] = _objectSpread2$3(_objectSpread2$3(_objectSpread2$3(_objectSpread2$3({}, {
   duotone: "fad"
 }), _STYLE_TO_PREFIX[s$1]), Et$1["kit"]), Et$1["kit-duotone"]);
 const STYLE_TO_PREFIX = familyProxy(_STYLE_TO_PREFIX);
-const _PREFIX_TO_LONG_STYLE = _objectSpread2$2({}, ga);
-_PREFIX_TO_LONG_STYLE[s$1] = _objectSpread2$2(_objectSpread2$2({}, _PREFIX_TO_LONG_STYLE[s$1]), Wt$1["kit"]);
+const _PREFIX_TO_LONG_STYLE = _objectSpread2$3({}, ga);
+_PREFIX_TO_LONG_STYLE[s$1] = _objectSpread2$3(_objectSpread2$3({}, _PREFIX_TO_LONG_STYLE[s$1]), Wt$1["kit"]);
 const PREFIX_TO_LONG_STYLE = familyProxy(_PREFIX_TO_LONG_STYLE);
-const _LONG_STYLE_TO_PREFIX = _objectSpread2$2({}, ua);
-_LONG_STYLE_TO_PREFIX[s$1] = _objectSpread2$2(_objectSpread2$2({}, _LONG_STYLE_TO_PREFIX[s$1]), Ct$1["kit"]);
+const _LONG_STYLE_TO_PREFIX = _objectSpread2$3({}, ua);
+_LONG_STYLE_TO_PREFIX[s$1] = _objectSpread2$3(_objectSpread2$3({}, _LONG_STYLE_TO_PREFIX[s$1]), Ct$1["kit"]);
 familyProxy(_LONG_STYLE_TO_PREFIX);
 const ICON_SELECTION_SYNTAX_PATTERN = p;
 const LAYERS_TEXT_CLASSNAME = "fa-layers-text";
 const FONT_FAMILY_PATTERN = g;
-const _FONT_WEIGHT_TO_PREFIX = _objectSpread2$2({}, G);
+const _FONT_WEIGHT_TO_PREFIX = _objectSpread2$3({}, G);
 familyProxy(_FONT_WEIGHT_TO_PREFIX);
 const ATTRIBUTES_WATCHED_FOR_MUTATION = ["class", "data-prefix", "data-icon", "data-fa-transform", "data-fa-mask"];
 const DUOTONE_CLASSES = A;
@@ -158266,7 +158267,7 @@ const _default = {
 if (initial.familyPrefix) {
   initial.cssPrefix = initial.familyPrefix;
 }
-const _config = _objectSpread2$2(_objectSpread2$2({}, _default), initial);
+const _config = _objectSpread2$3(_objectSpread2$3({}, _default), initial);
 if (!_config.autoReplaceSvg) _config.observeMutations = false;
 const config$2 = {};
 Object.keys(_default).forEach((key) => {
@@ -158565,7 +158566,7 @@ function defineIcons(prefix2, icons) {
   if (typeof namespace.hooks.addPack === "function" && !skipHooks) {
     namespace.hooks.addPack(prefix2, normalizeIcons(icons));
   } else {
-    namespace.styles[prefix2] = _objectSpread2$2(_objectSpread2$2({}, namespace.styles[prefix2] || {}), normalized);
+    namespace.styles[prefix2] = _objectSpread2$3(_objectSpread2$3({}, namespace.styles[prefix2] || {}), normalized);
   }
   if (prefix2 === "fas") {
     defineIcons("fa", icons);
@@ -158776,12 +158777,12 @@ function getCanonicalIcon(values3) {
   });
   const [styleFromValues = null] = faStyles;
   const family = getFamilyId(faStyleOrFamilyClasses);
-  const canonical = _objectSpread2$2(_objectSpread2$2({}, moveNonFaClassesToRest(nonStyleOrFamilyClasses)), {}, {
+  const canonical = _objectSpread2$3(_objectSpread2$3({}, moveNonFaClassesToRest(nonStyleOrFamilyClasses)), {}, {
     prefix: getCanonicalPrefix(styleFromValues, {
       family
     })
   });
-  return _objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, canonical), getDefaultCanonicalPrefix({
+  return _objectSpread2$3(_objectSpread2$3(_objectSpread2$3({}, canonical), getDefaultCanonicalPrefix({
     values: values3,
     family,
     styles,
@@ -158859,7 +158860,7 @@ class Library {
     }
     const additions = definitions.reduce(this._pullDefinitions, {});
     Object.keys(additions).forEach((key) => {
-      this.definitions[key] = _objectSpread2$2(_objectSpread2$2({}, this.definitions[key] || {}), additions[key]);
+      this.definitions[key] = _objectSpread2$3(_objectSpread2$3({}, this.definitions[key] || {}), additions[key]);
       defineIcons(key, additions[key]);
       const longPrefix = PREFIX_TO_LONG_STYLE[s$1][key];
       if (longPrefix) defineIcons(longPrefix, additions[key]);
@@ -159009,7 +159010,7 @@ const dom = {
     });
   }
 };
-const parse$3 = {
+const parse$4 = {
   icon: (icon2) => {
     if (icon2 === null) {
       return null;
@@ -159050,7 +159051,7 @@ const api = {
   noAuto,
   config: config$2,
   dom,
-  parse: parse$3,
+  parse: parse$4,
   library: library$1,
   findIconDefinition,
   toHtml
@@ -159101,7 +159102,7 @@ function asIcon(_ref3) {
       x: width2 / height3 / 2,
       y: 0.5
     };
-    attributes["style"] = joinStyles(_objectSpread2$2(_objectSpread2$2({}, styles2), {}, {
+    attributes["style"] = joinStyles(_objectSpread2$3(_objectSpread2$3({}, styles2), {}, {
       "transform-origin": "".concat(offset3.x + transform3.x / 16, "em ").concat(offset3.y + transform3.y / 16, "em")
     }));
   }
@@ -159127,7 +159128,7 @@ function asSymbol(_ref3) {
     },
     children: [{
       tag: "symbol",
-      attributes: _objectSpread2$2(_objectSpread2$2({}, attributes), {}, {
+      attributes: _objectSpread2$3(_objectSpread2$3({}, attributes), {}, {
         id
       }),
       children
@@ -159158,7 +159159,7 @@ function makeInlineSvgAbstract(params) {
   const attrClass = [config$2.replacementClass, iconName ? "".concat(config$2.cssPrefix, "-").concat(iconName) : ""].filter((c$$1) => extra.classes.indexOf(c$$1) === -1).filter((c$$1) => c$$1 !== "" || !!c$$1).concat(extra.classes).join(" ");
   let content = {
     children: [],
-    attributes: _objectSpread2$2(_objectSpread2$2({}, extra.attributes), {}, {
+    attributes: _objectSpread2$3(_objectSpread2$3({}, extra.attributes), {}, {
       "data-prefix": prefix2,
       "data-icon": iconName,
       "class": attrClass,
@@ -159183,7 +159184,7 @@ function makeInlineSvgAbstract(params) {
     });
     delete content.attributes.title;
   }
-  const args = _objectSpread2$2(_objectSpread2$2({}, content), {}, {
+  const args = _objectSpread2$3(_objectSpread2$3({}, content), {}, {
     prefix: prefix2,
     iconName,
     main: main2,
@@ -159191,7 +159192,7 @@ function makeInlineSvgAbstract(params) {
     maskId,
     transform: transform3,
     symbol,
-    styles: _objectSpread2$2(_objectSpread2$2({}, uploadedIconWidthStyle), extra.styles)
+    styles: _objectSpread2$3(_objectSpread2$3({}, uploadedIconWidthStyle), extra.styles)
   });
   const {
     children,
@@ -159221,7 +159222,7 @@ function makeLayersTextAbstract(params) {
     extra,
     watchable = false
   } = params;
-  const attributes = _objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, extra.attributes), title2 ? {
+  const attributes = _objectSpread2$3(_objectSpread2$3(_objectSpread2$3({}, extra.attributes), title2 ? {
     "title": title2
   } : {}), {}, {
     "class": extra.classes.join(" ")
@@ -159229,7 +159230,7 @@ function makeLayersTextAbstract(params) {
   if (watchable) {
     attributes[DATA_FA_I2SVG] = "";
   }
-  const styles2 = _objectSpread2$2({}, extra.styles);
+  const styles2 = _objectSpread2$3({}, extra.styles);
   if (transformIsMeaningful(transform3)) {
     styles2["transform"] = transformForCss({
       transform: transform3,
@@ -159266,7 +159267,7 @@ function makeLayersCounterAbstract(params) {
     title: title2,
     extra
   } = params;
-  const attributes = _objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, extra.attributes), title2 ? {
+  const attributes = _objectSpread2$3(_objectSpread2$3(_objectSpread2$3({}, extra.attributes), title2 ? {
     "title": title2
   } : {}), {}, {
     "class": extra.classes.join(" ")
@@ -159364,7 +159365,7 @@ function findIcon(iconName, prefix2) {
       return resolve(asFoundIcon(icon2));
     }
     maybeNotifyMissing(iconName, prefix2);
-    resolve(_objectSpread2$2(_objectSpread2$2({}, missingIconResolutionMixin), {}, {
+    resolve(_objectSpread2$3(_objectSpread2$3({}, missingIconResolutionMixin), {}, {
       icon: config$2.showMissingIcons && iconName ? callProvided("missingIconAbstract") || {} : {}
     }));
   });
@@ -159659,7 +159660,7 @@ function parseMeta(node2) {
   const extraAttributes = attributesParser(node2);
   const pluginMeta = chainHooks("parseNodeAttributes", {}, node2);
   let extraStyles = parser3.styleParser ? styleParser(node2) : [];
-  return _objectSpread2$2({
+  return _objectSpread2$3({
     iconName,
     title: node2.getAttribute("title"),
     titleId: node2.getAttribute("data-fa-title-id"),
@@ -159770,7 +159771,7 @@ function resolveIcons(next2) {
     if (mask) {
       mask = (mask || {}).icon ? mask : findIconDefinition(mask || {});
     }
-    return next2(iconDefinition, _objectSpread2$2(_objectSpread2$2({}, params), {}, {
+    return next2(iconDefinition, _objectSpread2$3(_objectSpread2$3({}, params), {}, {
       mask
     }));
   };
@@ -159794,7 +159795,7 @@ const render = function(iconDefinition) {
     iconName,
     icon: icon2
   } = iconDefinition;
-  return domVariants(_objectSpread2$2({
+  return domVariants(_objectSpread2$3({
     type: "icon"
   }, iconDefinition), () => {
     callHooks("beforeDOMElementCreation", {
@@ -159821,7 +159822,7 @@ const render = function(iconDefinition) {
       },
       prefix: prefix2,
       iconName,
-      transform: _objectSpread2$2(_objectSpread2$2({}, meaninglessTransform), transform3),
+      transform: _objectSpread2$3(_objectSpread2$3({}, meaninglessTransform), transform3),
       symbol,
       title: title2,
       maskId,
@@ -160013,7 +160014,7 @@ var LayersText = {
           });
           return makeLayersTextAbstract({
             content,
-            transform: _objectSpread2$2(_objectSpread2$2({}, meaninglessTransform), transform3),
+            transform: _objectSpread2$3(_objectSpread2$3({}, meaninglessTransform), transform3),
             title: title2,
             extra: {
               attributes,
@@ -160057,7 +160058,7 @@ var LayersText = {
 };
 const CLEAN_CONTENT_PATTERN = new RegExp('"', "ug");
 const SECONDARY_UNICODE_RANGE = [1105920, 1112319];
-const _FONT_FAMILY_WEIGHT_TO_PREFIX = _objectSpread2$2(_objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, {
+const _FONT_FAMILY_WEIGHT_TO_PREFIX = _objectSpread2$3(_objectSpread2$3(_objectSpread2$3(_objectSpread2$3({}, {
   FontAwesome: {
     normal: "fas",
     400: "fas"
@@ -160132,7 +160133,7 @@ function replaceForPosition(node2, position2) {
         } = meta;
         extra.attributes[DATA_FA_PSEUDO_ELEMENT] = position2;
         findIcon(iconName, prefix2).then((main2) => {
-          const abstract = makeInlineSvgAbstract(_objectSpread2$2(_objectSpread2$2({}, meta), {}, {
+          const abstract = makeInlineSvgAbstract(_objectSpread2$3(_objectSpread2$3({}, meta), {}, {
             icons: {
               main: main2,
               mask: emptyCanonicalIcon()
@@ -160337,14 +160338,14 @@ var PowerTransforms = {
       };
       return {
         tag: "g",
-        attributes: _objectSpread2$2({}, operations2.outer),
+        attributes: _objectSpread2$3({}, operations2.outer),
         children: [{
           tag: "g",
-          attributes: _objectSpread2$2({}, operations2.inner),
+          attributes: _objectSpread2$3({}, operations2.inner),
           children: [{
             tag: main2.icon.tag,
             children: main2.icon.children,
-            attributes: _objectSpread2$2(_objectSpread2$2({}, main2.icon.attributes), operations2.path)
+            attributes: _objectSpread2$3(_objectSpread2$3({}, main2.icon.attributes), operations2.path)
           }]
         }]
       };
@@ -160411,7 +160412,7 @@ var Masks = {
       });
       const maskRect = {
         tag: "rect",
-        attributes: _objectSpread2$2(_objectSpread2$2({}, ALL_SPACE), {}, {
+        attributes: _objectSpread2$3(_objectSpread2$3({}, ALL_SPACE), {}, {
           fill: "white"
         })
       };
@@ -160420,22 +160421,22 @@ var Masks = {
       } : {};
       const maskInnerGroup = {
         tag: "g",
-        attributes: _objectSpread2$2({}, trans.inner),
-        children: [fillBlack(_objectSpread2$2({
+        attributes: _objectSpread2$3({}, trans.inner),
+        children: [fillBlack(_objectSpread2$3({
           tag: mainPath.tag,
-          attributes: _objectSpread2$2(_objectSpread2$2({}, mainPath.attributes), trans.path)
+          attributes: _objectSpread2$3(_objectSpread2$3({}, mainPath.attributes), trans.path)
         }, maskInnerGroupChildrenMixin))]
       };
       const maskOuterGroup = {
         tag: "g",
-        attributes: _objectSpread2$2({}, trans.outer),
+        attributes: _objectSpread2$3({}, trans.outer),
         children: [maskInnerGroup]
       };
       const maskId = "mask-".concat(explicitMaskId || nextUniqueId());
       const clipId = "clip-".concat(explicitMaskId || nextUniqueId());
       const maskTag = {
         tag: "mask",
-        attributes: _objectSpread2$2(_objectSpread2$2({}, ALL_SPACE), {}, {
+        attributes: _objectSpread2$3(_objectSpread2$3({}, ALL_SPACE), {}, {
           id: maskId,
           maskUnits: "userSpaceOnUse",
           maskContentUnits: "userSpaceOnUse"
@@ -160454,7 +160455,7 @@ var Masks = {
       };
       children.push(defs, {
         tag: "rect",
-        attributes: _objectSpread2$2({
+        attributes: _objectSpread2$3({
           fill: "currentColor",
           "clip-path": "url(#".concat(clipId, ")"),
           mask: "url(#".concat(maskId, ")")
@@ -160485,16 +160486,16 @@ var MissingIconIndicator = {
       };
       gChildren.push({
         tag: "path",
-        attributes: _objectSpread2$2(_objectSpread2$2({}, FILL), {}, {
+        attributes: _objectSpread2$3(_objectSpread2$3({}, FILL), {}, {
           d: "M156.5,447.7l-12.6,29.5c-18.7-9.5-35.9-21.2-51.5-34.9l22.7-22.7C127.6,430.5,141.5,440,156.5,447.7z M40.6,272H8.5 c1.4,21.2,5.4,41.7,11.7,61.1L50,321.2C45.1,305.5,41.8,289,40.6,272z M40.6,240c1.4-18.8,5.2-37,11.1-54.1l-29.5-12.6 C14.7,194.3,10,216.7,8.5,240H40.6z M64.3,156.5c7.8-14.9,17.2-28.8,28.1-41.5L69.7,92.3c-13.7,15.6-25.5,32.8-34.9,51.5 L64.3,156.5z M397,419.6c-13.9,12-29.4,22.3-46.1,30.4l11.9,29.8c20.7-9.9,39.8-22.6,56.9-37.6L397,419.6z M115,92.4 c13.9-12,29.4-22.3,46.1-30.4l-11.9-29.8c-20.7,9.9-39.8,22.6-56.8,37.6L115,92.4z M447.7,355.5c-7.8,14.9-17.2,28.8-28.1,41.5 l22.7,22.7c13.7-15.6,25.5-32.9,34.9-51.5L447.7,355.5z M471.4,272c-1.4,18.8-5.2,37-11.1,54.1l29.5,12.6 c7.5-21.1,12.2-43.5,13.6-66.8H471.4z M321.2,462c-15.7,5-32.2,8.2-49.2,9.4v32.1c21.2-1.4,41.7-5.4,61.1-11.7L321.2,462z M240,471.4c-18.8-1.4-37-5.2-54.1-11.1l-12.6,29.5c21.1,7.5,43.5,12.2,66.8,13.6V471.4z M462,190.8c5,15.7,8.2,32.2,9.4,49.2h32.1 c-1.4-21.2-5.4-41.7-11.7-61.1L462,190.8z M92.4,397c-12-13.9-22.3-29.4-30.4-46.1l-29.8,11.9c9.9,20.7,22.6,39.8,37.6,56.9 L92.4,397z M272,40.6c18.8,1.4,36.9,5.2,54.1,11.1l12.6-29.5C317.7,14.7,295.3,10,272,8.5V40.6z M190.8,50 c15.7-5,32.2-8.2,49.2-9.4V8.5c-21.2,1.4-41.7,5.4-61.1,11.7L190.8,50z M442.3,92.3L419.6,115c12,13.9,22.3,29.4,30.5,46.1 l29.8-11.9C470,128.5,457.3,109.4,442.3,92.3z M397,92.4l22.7-22.7c-15.6-13.7-32.8-25.5-51.5-34.9l-12.6,29.5 C370.4,72.1,384.4,81.5,397,92.4z"
         })
       });
-      const OPACITY_ANIMATE = _objectSpread2$2(_objectSpread2$2({}, ANIMATION_BASE), {}, {
+      const OPACITY_ANIMATE = _objectSpread2$3(_objectSpread2$3({}, ANIMATION_BASE), {}, {
         attributeName: "opacity"
       });
       const dot = {
         tag: "circle",
-        attributes: _objectSpread2$2(_objectSpread2$2({}, FILL), {}, {
+        attributes: _objectSpread2$3(_objectSpread2$3({}, FILL), {}, {
           cx: "256",
           cy: "364",
           r: "28"
@@ -160504,13 +160505,13 @@ var MissingIconIndicator = {
       if (!reduceMotion) {
         dot.children.push({
           tag: "animate",
-          attributes: _objectSpread2$2(_objectSpread2$2({}, ANIMATION_BASE), {}, {
+          attributes: _objectSpread2$3(_objectSpread2$3({}, ANIMATION_BASE), {}, {
             attributeName: "r",
             values: "28;14;28;28;14;28;"
           })
         }, {
           tag: "animate",
-          attributes: _objectSpread2$2(_objectSpread2$2({}, OPACITY_ANIMATE), {}, {
+          attributes: _objectSpread2$3(_objectSpread2$3({}, OPACITY_ANIMATE), {}, {
             values: "1;0;1;1;0;1;"
           })
         });
@@ -160518,13 +160519,13 @@ var MissingIconIndicator = {
       gChildren.push(dot);
       gChildren.push({
         tag: "path",
-        attributes: _objectSpread2$2(_objectSpread2$2({}, FILL), {}, {
+        attributes: _objectSpread2$3(_objectSpread2$3({}, FILL), {}, {
           opacity: "1",
           d: "M263.7,312h-16c-6.6,0-12-5.4-12-12c0-71,77.4-63.9,77.4-107.8c0-20-17.8-40.2-57.4-40.2c-29.1,0-44.3,9.6-59.2,28.7 c-3.9,5-11.1,6-16.2,2.4l-13.1-9.2c-5.6-3.9-6.9-11.8-2.6-17.2c21.2-27.2,46.4-44.7,91.2-44.7c52.3,0,97.4,29.8,97.4,80.2 c0,67.6-77.4,63.5-77.4,107.8C275.7,306.6,270.3,312,263.7,312z"
         }),
         children: reduceMotion ? [] : [{
           tag: "animate",
-          attributes: _objectSpread2$2(_objectSpread2$2({}, OPACITY_ANIMATE), {}, {
+          attributes: _objectSpread2$3(_objectSpread2$3({}, OPACITY_ANIMATE), {}, {
             values: "1;0;0;0;0;1;"
           })
         }]
@@ -160532,13 +160533,13 @@ var MissingIconIndicator = {
       if (!reduceMotion) {
         gChildren.push({
           tag: "path",
-          attributes: _objectSpread2$2(_objectSpread2$2({}, FILL), {}, {
+          attributes: _objectSpread2$3(_objectSpread2$3({}, FILL), {}, {
             opacity: "0",
             d: "M232.5,134.5l7,168c0.3,6.4,5.6,11.5,12,11.5h9c6.4,0,11.7-5.1,12-11.5l7-168c0.3-6.8-5.2-12.5-12-12.5h-23 C237.7,122,232.2,127.7,232.5,134.5z"
           }),
           children: [{
             tag: "animate",
-            attributes: _objectSpread2$2(_objectSpread2$2({}, OPACITY_ANIMATE), {}, {
+            attributes: _objectSpread2$3(_objectSpread2$3({}, OPACITY_ANIMATE), {}, {
               values: "0;0;1;1;0;0;"
             })
           }]
@@ -160593,8 +160594,8 @@ function _arrayWithHoles$1(r3) {
 function _arrayWithoutHoles$1(r3) {
   if (Array.isArray(r3)) return _arrayLikeToArray$1(r3);
 }
-function _defineProperty$1(e2, r3, t4) {
-  return (r3 = _toPropertyKey(r3)) in e2 ? Object.defineProperty(e2, r3, {
+function _defineProperty$2(e2, r3, t4) {
+  return (r3 = _toPropertyKey$1(r3)) in e2 ? Object.defineProperty(e2, r3, {
     value: t4,
     enumerable: true,
     configurable: true,
@@ -160629,7 +160630,7 @@ function _nonIterableRest$1() {
 function _nonIterableSpread$1() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function ownKeys$1(e2, r3) {
+function ownKeys$2(e2, r3) {
   var t4 = Object.keys(e2);
   if (Object.getOwnPropertySymbols) {
     var o2 = Object.getOwnPropertySymbols(e2);
@@ -160639,27 +160640,27 @@ function ownKeys$1(e2, r3) {
   }
   return t4;
 }
-function _objectSpread2$1(e2) {
+function _objectSpread2$2(e2) {
   for (var r3 = 1; r3 < arguments.length; r3++) {
     var t4 = null != arguments[r3] ? arguments[r3] : {};
-    r3 % 2 ? ownKeys$1(Object(t4), true).forEach(function(r22) {
-      _defineProperty$1(e2, r22, t4[r22]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t4)) : ownKeys$1(Object(t4)).forEach(function(r22) {
+    r3 % 2 ? ownKeys$2(Object(t4), true).forEach(function(r22) {
+      _defineProperty$2(e2, r22, t4[r22]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t4)) : ownKeys$2(Object(t4)).forEach(function(r22) {
       Object.defineProperty(e2, r22, Object.getOwnPropertyDescriptor(t4, r22));
     });
   }
   return e2;
 }
-function _objectWithoutProperties$1(e2, t4) {
+function _objectWithoutProperties$2(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$1(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$2(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$1(r3, e2) {
+function _objectWithoutPropertiesLoose$2(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -160674,7 +160675,7 @@ function _slicedToArray$1(r3, e2) {
 function _toConsumableArray$1(r3) {
   return _arrayWithoutHoles$1(r3) || _iterableToArray$1(r3) || _unsupportedIterableToArray$1(r3) || _nonIterableSpread$1();
 }
-function _toPrimitive(t4, r3) {
+function _toPrimitive$1(t4, r3) {
   if ("object" != typeof t4 || !t4) return t4;
   var e2 = t4[Symbol.toPrimitive];
   if (void 0 !== e2) {
@@ -160684,8 +160685,8 @@ function _toPrimitive(t4, r3) {
   }
   return ("string" === r3 ? String : Number)(t4);
 }
-function _toPropertyKey(t4) {
-  var i2 = _toPrimitive(t4, "string");
+function _toPropertyKey$1(t4) {
+  var i2 = _toPrimitive$1(t4, "string");
   return "symbol" == typeof i2 ? i2 : i2 + "";
 }
 function _typeof$1(o2) {
@@ -160714,7 +160715,7 @@ try {
 function classList(props) {
   var beat = props.beat, fade = props.fade, beatFade = props.beatFade, bounce = props.bounce, shake = props.shake, flash = props.flash, spin = props.spin, spinPulse = props.spinPulse, spinReverse = props.spinReverse, pulse = props.pulse, fixedWidth = props.fixedWidth, inverse = props.inverse, border = props.border, listItem = props.listItem, flip2 = props.flip, size = props.size, rotation = props.rotation, pull = props.pull, swapOpacity = props.swapOpacity, rotateBy = props.rotateBy, widthAuto = props.widthAuto;
   var isVersion7OrLater = versionCheckGte(SVG_CORE_VERSION, ICON_PACKS_STARTING_VERSION);
-  var classes = _defineProperty$1(_defineProperty$1(_defineProperty$1(_defineProperty$1(_defineProperty$1(_defineProperty$1({
+  var classes = _defineProperty$2(_defineProperty$2(_defineProperty$2(_defineProperty$2(_defineProperty$2(_defineProperty$2({
     "fa-beat": beat,
     "fa-fade": fade,
     "fa-beat-fade": beatFade,
@@ -160779,8 +160780,8 @@ function camelize(string) {
   });
   return string.substr(0, 1).toLowerCase() + string.substr(1);
 }
-var _excluded$7 = ["style"];
-function capitalize(val) {
+var _excluded$8 = ["style"];
+function capitalize$1(val) {
   return val.charAt(0).toUpperCase() + val.slice(1);
 }
 function styleToObject(style2) {
@@ -160792,7 +160793,7 @@ function styleToObject(style2) {
     var i2 = pair.indexOf(":");
     var prop = camelize(pair.slice(0, i2));
     var value = pair.slice(i2 + 1).trim();
-    prop.startsWith("webkit") ? acc[capitalize(prop)] = value : acc[prop] = value;
+    prop.startsWith("webkit") ? acc[capitalize$1(prop)] = value : acc[prop] = value;
     return acc;
   }, {});
 }
@@ -160825,9 +160826,9 @@ function convert(createElement2, element) {
   }, {
     attrs: {}
   });
-  var _extraProps$style = extraProps.style, existingStyle = _extraProps$style === void 0 ? {} : _extraProps$style, remaining = _objectWithoutProperties$1(extraProps, _excluded$7);
-  mixins.attrs["style"] = _objectSpread2$1(_objectSpread2$1({}, mixins.attrs["style"]), existingStyle);
-  return createElement2.apply(void 0, [element.tag, _objectSpread2$1(_objectSpread2$1({}, mixins.attrs), remaining)].concat(_toConsumableArray$1(children)));
+  var _extraProps$style = extraProps.style, existingStyle = _extraProps$style === void 0 ? {} : _extraProps$style, remaining = _objectWithoutProperties$2(extraProps, _excluded$8);
+  mixins.attrs["style"] = _objectSpread2$2(_objectSpread2$2({}, mixins.attrs["style"]), existingStyle);
+  return createElement2.apply(void 0, [element.tag, _objectSpread2$2(_objectSpread2$2({}, mixins.attrs), remaining)].concat(_toConsumableArray$1(children)));
 }
 var PRODUCTION = false;
 try {
@@ -160867,7 +160868,7 @@ function normalizeIconArgs(icon2) {
   }
 }
 function objectWithKey(key, value) {
-  return Array.isArray(value) && value.length > 0 || !Array.isArray(value) && value ? _defineProperty$1({}, key, value) : {};
+  return Array.isArray(value) && value.length > 0 || !Array.isArray(value) && value ? _defineProperty$2({}, key, value) : {};
 }
 var defaultProps$1 = {
   border: false,
@@ -160901,13 +160902,13 @@ var defaultProps$1 = {
   widthAuto: false
 };
 var FontAwesomeIcon = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
-  var allProps = _objectSpread2$1(_objectSpread2$1({}, defaultProps$1), props);
+  var allProps = _objectSpread2$2(_objectSpread2$2({}, defaultProps$1), props);
   var iconArgs = allProps.icon, maskArgs = allProps.mask, symbol = allProps.symbol, className = allProps.className, title2 = allProps.title, titleId = allProps.titleId, maskId = allProps.maskId;
   var iconLookup = normalizeIconArgs(iconArgs);
   var classes = objectWithKey("classes", [].concat(_toConsumableArray$1(classList(allProps)), _toConsumableArray$1((className || "").split(" "))));
   var transform3 = objectWithKey("transform", typeof allProps.transform === "string" ? parse$1$1.transform(allProps.transform) : allProps.transform);
   var mask = objectWithKey("mask", normalizeIconArgs(maskArgs));
-  var renderedIcon = icon(iconLookup, _objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1({}, classes), transform3), mask), {}, {
+  var renderedIcon = icon(iconLookup, _objectSpread2$2(_objectSpread2$2(_objectSpread2$2(_objectSpread2$2({}, classes), transform3), mask), {}, {
     symbol,
     title: title2,
     titleId,
@@ -161029,6 +161030,11 @@ const faPencil = {
   iconName: "pencil",
   icon: [512, 512, [9999, 61504, "pencil-alt"], "f303", "M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1 0 32c0 8.8 7.2 16 16 16l32 0zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"]
 };
+const faBackward = {
+  prefix: "fas",
+  iconName: "backward",
+  icon: [512, 512, [9194], "f04a", "M459.5 440.6c9.5 7.9 22.8 9.7 34.1 4.4s18.4-16.6 18.4-29l0-320c0-12.4-7.2-23.7-18.4-29s-24.5-3.6-34.1 4.4L288 214.3l0 41.7 0 41.7L459.5 440.6zM256 352l0-96 0-128 0-32c0-12.4-7.2-23.7-18.4-29s-24.5-3.6-34.1 4.4l-192 160C4.2 237.5 0 246.5 0 256s4.2 18.5 11.5 24.6l192 160c9.5 7.9 22.8 9.7 34.1 4.4s18.4-16.6 18.4-29l0-64z"]
+};
 const faStar$1 = {
   prefix: "fas",
   iconName: "star",
@@ -161043,6 +161049,11 @@ const faCirclePlay = {
   prefix: "fas",
   iconName: "circle-play",
   icon: [512, 512, [61469, "play-circle"], "f144", "M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9l0 176c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z"]
+};
+const faPause = {
+  prefix: "fas",
+  iconName: "pause",
+  icon: [320, 512, [9208], "f04c", "M48 64C21.5 64 0 85.5 0 112L0 400c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48L48 64zm192 0c-26.5 0-48 21.5-48 48l0 288c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48l-32 0z"]
 };
 const faCircle = {
   prefix: "fas",
@@ -161078,6 +161089,11 @@ const faClosedCaptioning = {
   prefix: "fas",
   iconName: "closed-captioning",
   icon: [576, 512, [], "f20a", "M0 96C0 60.7 28.7 32 64 32l448 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM200 208c14.2 0 27 6.1 35.8 16c8.8 9.9 24 10.7 33.9 1.9s10.7-24 1.9-33.9c-17.5-19.6-43.1-32-71.5-32c-53 0-96 43-96 96s43 96 96 96c28.4 0 54-12.4 71.5-32c8.8-9.9 8-25-1.9-33.9s-25-8-33.9 1.9c-8.8 9.9-21.6 16-35.8 16c-26.5 0-48-21.5-48-48s21.5-48 48-48zm144 48c0-26.5 21.5-48 48-48c14.2 0 27 6.1 35.8 16c8.8 9.9 24 10.7 33.9 1.9s10.7-24 1.9-33.9c-17.5-19.6-43.1-32-71.5-32c-53 0-96 43-96 96s43 96 96 96c28.4 0 54-12.4 71.5-32c8.8-9.9 8-25-1.9-33.9s-25-8-33.9 1.9c-8.8 9.9-21.6 16-35.8 16c-26.5 0-48-21.5-48-48z"]
+};
+const faForward = {
+  prefix: "fas",
+  iconName: "forward",
+  icon: [512, 512, [9193], "f04e", "M52.5 440.6c-9.5 7.9-22.8 9.7-34.1 4.4S0 428.4 0 416L0 96C0 83.6 7.2 72.3 18.4 67s24.5-3.6 34.1 4.4L224 214.3l0 41.7 0 41.7L52.5 440.6zM256 352l0-96 0-128 0-32c0-12.4 7.2-23.7 18.4-29s24.5-3.6 34.1 4.4l192 160c7.3 6.1 11.5 15.1 11.5 24.6s-4.2 18.5-11.5 24.6l-192 160c-9.5 7.9-22.8 9.7-34.1 4.4s-18.4-16.6-18.4-29l0-64z"]
 };
 const faLocationDot = {
   prefix: "fas",
@@ -165479,7 +165495,7 @@ function pruneLocation(els) {
     }
   });
 }
-function parse$2(message, opts) {
+function parse$3(message, opts) {
   if (opts === void 0) {
     opts = {};
   }
@@ -165846,7 +165862,7 @@ var IntlMessageFormat = (
       }
       return new Intl.Locale(typeof locales === "string" ? locales : locales[0]);
     };
-    IntlMessageFormat2.__parse = parse$2;
+    IntlMessageFormat2.__parse = parse$3;
     IntlMessageFormat2.formats = {
       number: {
         integer: {
@@ -171483,10 +171499,10 @@ function requireVideojsAbloop() {
 var videojsAbloopExports = requireVideojsAbloop();
 const abLoopPlugin = /* @__PURE__ */ getDefaultExportFromCjs(videojsAbloopExports);
 const isMobile = () => window.matchMedia("only screen and (max-width: 576px)").matches;
-const isTouch = () => window.matchMedia("(pointer: coarse)").matches;
+const isTouch$1 = () => window.matchMedia("(pointer: coarse)").matches;
 const ScreenUtils = {
   isMobile,
-  isTouch
+  isTouch: isTouch$1
 };
 airplay(videojs);
 chromecast(videojs);
@@ -172304,7 +172320,7 @@ const GENDERS = [
   "INTERSEX",
   "NON_BINARY"
 ];
-function clamp2(min2, num, max2) {
+function clamp$1(min2, num, max2) {
   return Math.min(Math.max(num, min2), max2);
 }
 function updateReadOnlyProp(obj, prop, value) {
@@ -172343,6 +172359,13 @@ function getPlayerIdForVideoJsPlayer(videoElm) {
     node2 = node2.parentElement;
   }
   throw new Error("Could not find playerId for Video.js player");
+}
+function roundTo(num, decimals = 0) {
+  const factor = Math.pow(10, decimals);
+  return Math.round(num * factor) / factor;
+}
+function roundToNearest(num, nearest = 1) {
+  return Math.round(num / nearest) * nearest;
 }
 const __vite_import_meta_env__$2 = {};
 const createStoreImpl = (createState) => {
@@ -172531,8 +172554,8 @@ const __vite_import_meta_env__$1 = {};
 const { useDebugValue } = React$1;
 const { useSyncExternalStoreWithSelector } = useSyncExternalStoreExports;
 let didWarnAboutEqualityFn = false;
-const identity = (arg) => arg;
-function useStore(api2, selector = identity, equalityFn) {
+const identity$1 = (arg) => arg;
+function useStore(api2, selector = identity$1, equalityFn) {
   if ((__vite_import_meta_env__$1 ? "production" : void 0) !== "production" && equalityFn && !didWarnAboutEqualityFn) {
     console.warn(
       "[DEPRECATED] Use `createWithEqualityFn` instead of `create` or use `useStoreWithEqualityFn` instead of `useStore`. They can be imported from 'zustand/traditional'. https://github.com/pmndrs/zustand/discussions/1937"
@@ -172896,149 +172919,6 @@ const persistImpl = (config2, baseOptions) => {
   return newImpl(config2, baseOptions);
 };
 const persist = persistImpl;
-const useAppStateStore = create2()(
-  persist(
-    (set4, get7) => ({
-      selectedSavedFilterId: void 0,
-      sceneFilter: void 0,
-      sceneFilterLoading: true,
-      showSettings: false,
-      audioMuted: true,
-      showSubtitles: false,
-      fullscreen: false,
-      letterboxing: false,
-      forceLandscape: false,
-      looping: false,
-      uiVisible: true,
-      isRandomised: false,
-      crtEffect: false,
-      scenePreviewOnly: false,
-      markerPreviewOnly: false,
-      onlyShowMatchingOrientation: false,
-      maxMedia: void 0,
-      autoPlay: true,
-      startPosition: "resume",
-      endPosition: "video-end",
-      showGuideOverlay: true,
-      showDevOptions: false,
-      debugMode: false,
-      enableRenderDebugging: JSON.parse(localStorage.getItem("enableRenderDebugging") || "false"),
-      videoJsEventsToLog: [],
-      set: (propName, value) => {
-        set4((state) => ({
-          [propName]: typeof value === "function" ? value(state[propName]) : value
-        }));
-      }
-    }),
-    {
-      name: "app-state",
-      partialize: (state) => Object.fromEntries(
-        Object.entries(state).filter(([key]) => ![
-          "showSettings",
-          "fullscreen",
-          "enableRenderDebugging"
-        ].includes(key))
-      )
-    }
-  )
-);
-/*! @name videojs-offset @version 2.1.3 @license MIT */
-var version = "2.1.3";
-var defaults$1 = {};
-var registerPlugin = videojs.registerPlugin || videojs.plugin;
-var onPlayerTimeUpdate = function onPlayerTimeUpdate2() {
-  var _this = this;
-  var curr = this.currentTime();
-  if (curr < 0) {
-    this.currentTime(0);
-    this.play();
-  }
-  if (this._offsetEnd > 0 && curr > this._offsetEnd - this._offsetStart) {
-    this.off("timeupdate", onPlayerTimeUpdate2);
-    this.pause();
-    this.trigger("ended");
-    this.one("play", function() {
-      _this.on("timeupdate", onPlayerTimeUpdate2);
-    });
-    if (!this._restartBeginning) {
-      this.currentTime(this._offsetEnd - this._offsetStart);
-    } else {
-      this.trigger("loadstart");
-      this.currentTime(0);
-    }
-  }
-};
-var onPlayerReady3 = function onPlayerReady4(player, options2) {
-  player.one("play", function() {
-    player.on("timeupdate", onPlayerTimeUpdate);
-  });
-};
-var offset = function offset2(options2) {
-  var _this2 = this;
-  options2 = options2 || {};
-  var Player2 = this.constructor;
-  this._offsetStart = parseFloat(options2.start || "0");
-  this._offsetEnd = parseFloat(options2.end || "0");
-  this._restartBeginning = options2.restart_beginning || false;
-  if (!Player2.__super__ || !Player2.__super__.__offsetInit) {
-    Player2.__super__ = {
-      __offsetInit: true,
-      duration: Player2.prototype.duration,
-      currentTime: Player2.prototype.currentTime,
-      bufferedPercent: Player2.prototype.bufferedPercent,
-      remainingTime: Player2.prototype.remainingTime,
-      buffered: Player2.prototype.buffered
-    };
-    Player2.prototype.duration = function() {
-      if (this._offsetEnd !== void 0 && this._offsetStart !== void 0) {
-        if (this._offsetEnd > 0) {
-          return this._offsetEnd - this._offsetStart;
-        }
-        return Player2.__super__.duration.apply(this, arguments) - this._offsetStart;
-      }
-      return Player2.__super__.duration.apply(this, arguments);
-    };
-    Player2.prototype.currentTime = function(seconds2) {
-      if (seconds2 !== void 0) {
-        if (this._offsetStart !== void 0) {
-          return Player2.__super__.currentTime.call(this, seconds2 + this._offsetStart);
-        }
-        return Player2.__super__.currentTime.call(this, seconds2);
-      }
-      if (this._offsetStart !== void 0) {
-        var t4 = Player2.__super__.currentTime.apply(this) - this._offsetStart;
-        this.getCache().currentTime = t4;
-        return t4;
-      }
-      return Player2.__super__.currentTime.apply(this);
-    };
-    Player2.prototype.remainingTime = function() {
-      return this.duration() - this.currentTime();
-    };
-    Player2.prototype.startOffset = function() {
-      return this._offsetStart;
-    };
-    Player2.prototype.endOffset = function() {
-      if (this._offsetEnd > 0) {
-        return this._offsetEnd;
-      }
-      return this.duration();
-    };
-    Player2.prototype.buffered = function() {
-      var buff = Player2.__super__.buffered.call(this);
-      var ranges = [];
-      for (var i2 = 0; i2 < buff.length; i2++) {
-        ranges[i2] = [Math.max(0, buff.start(i2) - this._offsetStart), Math.min(Math.max(0, buff.end(i2) - this._offsetStart), this.duration())];
-      }
-      return videojs.createTimeRanges(ranges);
-    };
-  }
-  this.ready(function() {
-    onPlayerReady3(_this2, videojs.mergeOptions(defaults$1, options2));
-  });
-};
-registerPlugin("offset", offset);
-offset.VERSION = version;
 function toFilter(filter2) {
   if (typeof filter2 === "function") return filter2;
   return getLevelFilter(filter2);
@@ -174054,6 +173934,219 @@ var ConfigError = class extends Error {
     this.name = "ConfigureError";
   }
 };
+const consoleSink = getConsoleSink();
+const defaultLogLevel = "warning";
+const setupLogging = async ({ logLevel = defaultLogLevel, logCategoriesToShow = [], logCategoriesToHide = [] } = {}) => {
+  await configure({
+    reset: true,
+    // Allows us to call this whenever logLevel changes and rewrite any existing config
+    sinks: {
+      console: consoleSink
+    },
+    filters: {
+      categoryFilter: (logRecord) => {
+        for (let i2 = 0; i2 < logRecord.category.length; i2++) {
+          const category = logRecord.category.slice(0, logRecord.category.length - i2);
+          if (logCategoriesToHide.some((hideCategory) => category.length === hideCategory.length && category.every(
+            (part, index2) => part === hideCategory[index2]
+          ))) {
+            return false;
+          }
+          if (logCategoriesToShow.some((showCategory) => category.length === showCategory.length && category.every(
+            (part, index2) => part === showCategory[index2]
+          ))) {
+            return true;
+          }
+        }
+        return logCategoriesToShow.length === 0;
+      }
+    },
+    loggers: [
+      { category: "stash-tv", lowestLevel: logLevel, sinks: ["console"], filters: ["categoryFilter"] },
+      // Disables notification from logtape suggesting to set an additional chanel for logging logger failures. Since
+      // we're only really using logging in the development stage we don't really care enough about log fails in
+      // production to worry about this.
+      { category: ["logtape", "meta"], lowestLevel: "warning", sinks: ["console"] }
+    ]
+  });
+};
+function getLoggers(rootLogger) {
+  if (!rootLogger) {
+    const globalSymbol = Object.getOwnPropertySymbols(window).find((sym) => sym.description === "logtape.rootLogger");
+    if (typeof globalSymbol !== "symbol") {
+      throw new Error("No logtape root logger symbol found on window");
+    }
+    const globalLogger = window[globalSymbol];
+    if (!globalLogger) {
+      throw new Error("No logtape root logger found on window");
+    }
+    rootLogger = globalLogger;
+  }
+  let loggers = [rootLogger];
+  const children = Object.values(rootLogger.children).map((weakRef) => weakRef.deref()).filter(Boolean);
+  for (const child of children) {
+    loggers.push(...getLoggers(child));
+  }
+  return loggers;
+}
+const useAppStateStore = create2()(
+  persist(
+    (set4, get7) => ({
+      selectedSavedFilterId: void 0,
+      sceneFilter: void 0,
+      sceneFilterLoading: true,
+      showSettings: false,
+      audioMuted: true,
+      showSubtitles: false,
+      fullscreen: false,
+      letterboxing: false,
+      forceLandscape: false,
+      looping: false,
+      uiVisible: true,
+      isRandomised: false,
+      crtEffect: false,
+      scenePreviewOnly: false,
+      markerPreviewOnly: false,
+      onlyShowMatchingOrientation: false,
+      maxMedia: void 0,
+      autoPlay: true,
+      startPosition: "resume",
+      endPosition: "video-end",
+      showGuideOverlay: true,
+      showDevOptions: false,
+      logLevel: defaultLogLevel,
+      loggersToShow: [],
+      loggersToHide: [],
+      showDebuggingInfo: [],
+      videoJsEventsToLog: [],
+      set: (propName, value) => {
+        set4((state) => {
+          const resolvedValue = typeof value === "function" ? value(state[propName]) : value;
+          if (propName === "showDebuggingInfo") {
+            const enableRenderDebugging = resolvedValue.includes("render-debugging");
+            const previousEnableRenderDebugging = localStorage.getItem("enableRenderDebugging") === "true";
+            if (previousEnableRenderDebugging !== enableRenderDebugging) {
+              setTimeout(() => {
+                localStorage.setItem("enableRenderDebugging", JSON.stringify(enableRenderDebugging));
+                window.location.reload();
+              }, 30);
+            }
+          }
+          return {
+            [propName]: resolvedValue
+          };
+        });
+      }
+    }),
+    {
+      name: "app-state",
+      partialize: (state) => Object.fromEntries(
+        Object.entries(state).filter(([key]) => ![
+          "showSettings",
+          "fullscreen",
+          "enableRenderDebugging"
+        ].includes(key))
+      )
+    }
+  )
+);
+/*! @name videojs-offset @version 2.1.3 @license MIT */
+var version = "2.1.3";
+var defaults$1 = {};
+var registerPlugin = videojs.registerPlugin || videojs.plugin;
+var onPlayerTimeUpdate = function onPlayerTimeUpdate2() {
+  var _this = this;
+  var curr = this.currentTime();
+  if (curr < 0) {
+    this.currentTime(0);
+    this.play();
+  }
+  if (this._offsetEnd > 0 && curr > this._offsetEnd - this._offsetStart) {
+    this.off("timeupdate", onPlayerTimeUpdate2);
+    this.pause();
+    this.trigger("ended");
+    this.one("play", function() {
+      _this.on("timeupdate", onPlayerTimeUpdate2);
+    });
+    if (!this._restartBeginning) {
+      this.currentTime(this._offsetEnd - this._offsetStart);
+    } else {
+      this.trigger("loadstart");
+      this.currentTime(0);
+    }
+  }
+};
+var onPlayerReady3 = function onPlayerReady4(player, options2) {
+  player.one("play", function() {
+    player.on("timeupdate", onPlayerTimeUpdate);
+  });
+};
+var offset = function offset2(options2) {
+  var _this2 = this;
+  options2 = options2 || {};
+  var Player2 = this.constructor;
+  this._offsetStart = parseFloat(options2.start || "0");
+  this._offsetEnd = parseFloat(options2.end || "0");
+  this._restartBeginning = options2.restart_beginning || false;
+  if (!Player2.__super__ || !Player2.__super__.__offsetInit) {
+    Player2.__super__ = {
+      __offsetInit: true,
+      duration: Player2.prototype.duration,
+      currentTime: Player2.prototype.currentTime,
+      bufferedPercent: Player2.prototype.bufferedPercent,
+      remainingTime: Player2.prototype.remainingTime,
+      buffered: Player2.prototype.buffered
+    };
+    Player2.prototype.duration = function() {
+      if (this._offsetEnd !== void 0 && this._offsetStart !== void 0) {
+        if (this._offsetEnd > 0) {
+          return this._offsetEnd - this._offsetStart;
+        }
+        return Player2.__super__.duration.apply(this, arguments) - this._offsetStart;
+      }
+      return Player2.__super__.duration.apply(this, arguments);
+    };
+    Player2.prototype.currentTime = function(seconds2) {
+      if (seconds2 !== void 0) {
+        if (this._offsetStart !== void 0) {
+          return Player2.__super__.currentTime.call(this, seconds2 + this._offsetStart);
+        }
+        return Player2.__super__.currentTime.call(this, seconds2);
+      }
+      if (this._offsetStart !== void 0) {
+        var t4 = Player2.__super__.currentTime.apply(this) - this._offsetStart;
+        this.getCache().currentTime = t4;
+        return t4;
+      }
+      return Player2.__super__.currentTime.apply(this);
+    };
+    Player2.prototype.remainingTime = function() {
+      return this.duration() - this.currentTime();
+    };
+    Player2.prototype.startOffset = function() {
+      return this._offsetStart;
+    };
+    Player2.prototype.endOffset = function() {
+      if (this._offsetEnd > 0) {
+        return this._offsetEnd;
+      }
+      return this.duration();
+    };
+    Player2.prototype.buffered = function() {
+      var buff = Player2.__super__.buffered.call(this);
+      var ranges = [];
+      for (var i2 = 0; i2 < buff.length; i2++) {
+        ranges[i2] = [Math.max(0, buff.start(i2) - this._offsetStart), Math.min(Math.max(0, buff.end(i2) - this._offsetStart), this.duration())];
+      }
+      return videojs.createTimeRanges(ranges);
+    };
+  }
+  this.ready(function() {
+    onPlayerReady3(_this2, videojs.mergeOptions(defaults$1, options2));
+  });
+};
+registerPlugin("offset", offset);
+offset.VERSION = version;
 const mountCount$1 = /* @__PURE__ */ new Map();
 const videoJsOptionsOverride = {};
 const videoJsSetupCallbacks = {};
@@ -174171,16 +174264,16 @@ const ScenePlayer = reactExports.forwardRef(({
   initialTimestamp,
   ...otherProps
 }, ref) => {
-  const logger3 = getLogger(["stash-tv", "ScenePlayer", otherProps.scene.id]);
-  const { debugMode, videoJsEventsToLog, enableRenderDebugging } = useAppStateStore();
+  getLogger(["stash-tv", "ScenePlayer", otherProps.scene.id]);
+  const { videoJsEventsToLog, showDebuggingInfo } = useAppStateStore();
   reactExports.useMemo(() => {
-    if (!enableRenderDebugging) return;
+    if (!showDebuggingInfo.includes("render-debugging")) return;
     const timesMounted = mountCount$1.get(otherProps.scene.id) || 0;
-    logger3.debug(`🔜 ScenePlayer mounting${timesMounted ? ` (count: ${timesMounted})` : ""}`);
+    console.log(`🔜 ScenePlayer (scene id ${otherProps.scene.id}) mounting${timesMounted ? ` (count: ${timesMounted})` : ""}`);
     mountCount$1.set(otherProps.scene.id, timesMounted + 1);
   }, []);
   reactExports.useEffect(() => () => {
-    enableRenderDebugging && logger3.debug(`🔚 ScenePlayer unmounting`);
+    showDebuggingInfo.includes("render-debugging") && console.log(`🔚 ScenePlayer (scene id ${otherProps.scene.id}) unmounting`);
   }, []);
   const containerRef = reactExports.useRef(null);
   reactExports.useEffect(() => {
@@ -174196,12 +174289,6 @@ const ScenePlayer = reactExports.forwardRef(({
         ref.current = rootElm;
       }
     }
-  }, []);
-  reactExports.useEffect(() => {
-    debugMode && console.log(`Mounted ScenePlayer sceneId=${otherProps.scene.id}`);
-    return () => {
-      debugMode && console.log(`Unmounted ScenePlayer sceneId=${otherProps.scene.id}`);
-    };
   }, []);
   const videoJsEventsToLogAttached = reactExports.useRef({});
   const logVideoJsEvent = reactExports.useCallback((event) => {
@@ -174299,7 +174386,6 @@ const ScenePlayer = reactExports.forwardRef(({
     onVideojsPlayerReady?.(player);
     videojsPlayerRef.current = player;
     setVideojsPlayer(player);
-    handleInitialTimestamp();
     const videoElm2 = player.el()?.querySelector("video");
     if (!videoElm2) {
       console.warn("ScenePlayer: No video element found in container");
@@ -174311,6 +174397,7 @@ const ScenePlayer = reactExports.forwardRef(({
     if (!initialTimestamp) return;
     videojsPlayerRef.current?.currentTime(initialTimestamp);
   }
+  reactExports.useEffect(handleInitialTimestamp, [initialTimestamp]);
   videoJsOptionsOverride[playerId] = {
     muted,
     loop: loop2,
@@ -174385,7 +174472,7 @@ const ScenePlayer = reactExports.forwardRef(({
   const scene2 = reactExports.useMemo(() => {
     let scene22 = JSON.parse(JSON.stringify(otherProps.scene));
     if (initialTimestamp !== void 0) {
-      scene22.resume_time = otherProps.scene.files?.[0]?.duration;
+      scene22.resume_time = Infinity;
     }
     return scene22;
   }, [otherProps.scene, initialTimestamp]);
@@ -177947,12 +178034,12 @@ function off(obj) {
     obj.removeEventListener.apply(obj, args);
   }
 }
-var isBrowser$1 = typeof window !== "undefined";
+var isBrowser$2 = typeof window !== "undefined";
 var useEffectOnce = function(effect3) {
   reactExports.useEffect(effect3, []);
 };
 var getInitialState = function(query, defaultState) {
-  if (isBrowser$1) {
+  if (isBrowser$2) {
     return window.matchMedia(query).matches;
   }
   return false;
@@ -178000,14 +178087,21 @@ var useRafState = function(initialState) {
   });
   return [state, setRafState];
 };
+function usePrevious(state) {
+  var ref = reactExports.useRef();
+  reactExports.useEffect(function() {
+    ref.current = state;
+  });
+  return ref.current;
+}
 var useWindowSize$1 = function(_a2) {
   var _b2 = {}, _c = _b2.initialWidth, initialWidth = _c === void 0 ? Infinity : _c, _d = _b2.initialHeight, initialHeight = _d === void 0 ? Infinity : _d, onChange3 = _b2.onChange;
   var _e2 = useRafState({
-    width: isBrowser$1 ? window.innerWidth : initialWidth,
-    height: isBrowser$1 ? window.innerHeight : initialHeight
+    width: isBrowser$2 ? window.innerWidth : initialWidth,
+    height: isBrowser$2 ? window.innerHeight : initialHeight
   }), state = _e2[0], setState2 = _e2[1];
   reactExports.useEffect(function() {
-    if (isBrowser$1) {
+    if (isBrowser$2) {
       var handler_1 = function() {
         var width2 = window.innerWidth;
         var height3 = window.innerHeight;
@@ -179100,8 +179194,9 @@ const hashObject = /* @__PURE__ */ getDefaultExportFromCjs(object_hashExports);
 const mediaItemsPerPage = 20;
 const defaultMarkerLength = 20;
 function useMediaItems() {
+  const logger3 = getLogger(["stash-tv", "useMediaItems"]);
   const { lastLoadedCurrentMediaItemFilter } = useMediaItemFilters();
-  const { debugMode, maxMedia, scenePreviewOnly, markerPreviewOnly } = useAppStateStore();
+  const { maxMedia, scenePreviewOnly, markerPreviewOnly } = useAppStateStore();
   const previewOnly = lastLoadedCurrentMediaItemFilter?.entityType === "scene" && scenePreviewOnly || lastLoadedCurrentMediaItemFilter?.entityType === "marker" && markerPreviewOnly;
   const [neverLoaded, setNeverLoaded] = reactExports.useState(true);
   let response;
@@ -179156,11 +179251,11 @@ function useMediaItems() {
     );
     response = markersResponse;
   } else {
-    console.info("lastLoadedCurrentMediaItemFilter:", lastLoadedCurrentMediaItemFilter);
+    logger3.debug("lastLoadedCurrentMediaItemFilter:", lastLoadedCurrentMediaItemFilter);
     throw new Error("Unsupported media item filter entity type");
   }
   reactExports.useEffect(() => {
-    useAppStateStore.getState().debugMode && console.log("lastLoadedCurrentMediaItemFilter changed, resetting media items", lastLoadedCurrentMediaItemFilter);
+    logger3.debug(`lastLoadedCurrentMediaItemFilter changed to "${lastLoadedCurrentMediaItemFilter?.savedFilter?.name}", resetting media items`);
   }, [lastLoadedCurrentMediaItemFilter]);
   const {
     fetchMore,
@@ -179178,7 +179273,7 @@ function useMediaItems() {
       const videoElm = event.target;
       try {
         const mediaItemId = getMediaItemIdForVideoJsPlayer(videoElm);
-        debugMode && console.log("Saving preview length for media item", mediaItemId, "duration", videoElm.duration);
+        logger3.debug("Saving preview length for media item {*}", { mediaItemId, duration: videoElm.duration });
         setPreviewLengths(
           (prev2) => ({
             ...prev2,
@@ -179214,7 +179309,7 @@ function useMediaItems() {
     } else {
       estimatedDuration = Math.min(9.2, scene2.files[0].duration);
     }
-    debugMode && mediaItem.id in previewLengths && console.log("Duration cached", mediaItem.id, previewLengths[mediaItem.id]);
+    mediaItem.id in previewLengths && logger3.debug("Duration cached for media item {*}", { mediaItemId: mediaItem.id, duration: previewLengths[mediaItem.id] });
     const duration5 = mediaItem.id in previewLengths ? previewLengths[mediaItem.id] : estimatedDuration;
     const updatedScene = {
       ...scene2,
@@ -179271,7 +179366,7 @@ function useMediaItems() {
     mediaItems,
     loadMoreMediaItems: () => {
       const nextPage = mediaItems.length ? Math.ceil(mediaItems.length / mediaItemsPerPage) + 1 : 1;
-      debugMode && console.log("Fetch next media page:", nextPage);
+      logger3.debug("Fetch next media page: {*}", { nextPage });
       let entityFilterKey;
       if (lastLoadedCurrentMediaItemFilter?.entityType === "scene") {
         entityFilterKey = "scene_filter";
@@ -180334,7 +180429,7 @@ const ActionButton = reactExports.forwardRef((props, ref) => {
         type: "button",
         ref
       },
-      "icon" in Icon2 ? /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: Icon2 }) : /* @__PURE__ */ React$1.createElement(Icon2, { className: "icon" }),
+      "icon" in Icon2 ? /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: Icon2 }) : /* @__PURE__ */ React$1.createElement(Icon2, { className: cx("icon", `icon-${className}`) }),
       /* @__PURE__ */ React$1.createElement("span", { className: "sr-only" }, active ? activeText : inactiveText)
     ))
   );
@@ -182520,7 +182615,7 @@ function _createClass(e2, r3, t4) {
     writable: false
   }), e2;
 }
-function _defineProperty(e2, r3, t4) {
+function _defineProperty$1(e2, r3, t4) {
   return (r3 = toPropertyKey(r3)) in e2 ? Object.defineProperty(e2, r3, {
     value: t4,
     enumerable: true,
@@ -182532,8 +182627,8 @@ var TIMEZONE_UNIT_PRIORITY = 10;
 var Setter = /* @__PURE__ */ (function() {
   function Setter2() {
     _classCallCheck(this, Setter2);
-    _defineProperty(this, "priority", void 0);
-    _defineProperty(this, "subPriority", 0);
+    _defineProperty$1(this, "priority", void 0);
+    _defineProperty$1(this, "subPriority", 0);
   }
   _createClass(Setter2, [{
     key: "validate",
@@ -182582,8 +182677,8 @@ var DateToSystemTimezoneSetter = /* @__PURE__ */ (function(_Setter2) {
       args[_key] = arguments[_key];
     }
     _this2 = _super2.call.apply(_super2, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this2), "priority", TIMEZONE_UNIT_PRIORITY);
-    _defineProperty(_assertThisInitialized$2(_this2), "subPriority", -1);
+    _defineProperty$1(_assertThisInitialized$2(_this2), "priority", TIMEZONE_UNIT_PRIORITY);
+    _defineProperty$1(_assertThisInitialized$2(_this2), "subPriority", -1);
     return _this2;
   }
   _createClass(DateToSystemTimezoneSetter2, [{
@@ -182603,9 +182698,9 @@ var DateToSystemTimezoneSetter = /* @__PURE__ */ (function(_Setter2) {
 var Parser2 = /* @__PURE__ */ (function() {
   function Parser3() {
     _classCallCheck(this, Parser3);
-    _defineProperty(this, "incompatibleTokens", void 0);
-    _defineProperty(this, "priority", void 0);
-    _defineProperty(this, "subPriority", void 0);
+    _defineProperty$1(this, "incompatibleTokens", void 0);
+    _defineProperty$1(this, "priority", void 0);
+    _defineProperty$1(this, "subPriority", void 0);
   }
   _createClass(Parser3, [{
     key: "run",
@@ -182637,8 +182732,8 @@ var EraParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 140);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["R", "u", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 140);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["R", "u", "t", "T"]);
     return _this;
   }
   _createClass(EraParser2, [{
@@ -182845,8 +182940,8 @@ var YearParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 130);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["Y", "R", "u", "w", "I", "i", "e", "c", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 130);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["Y", "R", "u", "w", "I", "i", "e", "c", "t", "T"]);
     return _this;
   }
   _createClass(YearParser2, [{
@@ -182902,8 +182997,8 @@ var LocalWeekYearParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 130);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["y", "R", "u", "Q", "q", "M", "L", "I", "d", "D", "i", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 130);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["y", "R", "u", "Q", "q", "M", "L", "I", "d", "D", "i", "t", "T"]);
     return _this;
   }
   _createClass(LocalWeekYearParser2, [{
@@ -182959,8 +183054,8 @@ var ISOWeekYearParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 130);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["G", "y", "Y", "u", "Q", "q", "M", "L", "w", "d", "D", "e", "c", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 130);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["G", "y", "Y", "u", "Q", "q", "M", "L", "w", "d", "D", "e", "c", "t", "T"]);
     return _this;
   }
   _createClass(ISOWeekYearParser2, [{
@@ -182992,8 +183087,8 @@ var ExtendedYearParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 130);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["G", "y", "Y", "R", "w", "I", "i", "e", "c", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 130);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["G", "y", "Y", "R", "w", "I", "i", "e", "c", "t", "T"]);
     return _this;
   }
   _createClass(ExtendedYearParser2, [{
@@ -183024,8 +183119,8 @@ var QuarterParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 120);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["Y", "R", "q", "M", "L", "w", "I", "d", "D", "i", "e", "c", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 120);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["Y", "R", "q", "M", "L", "w", "I", "d", "D", "i", "e", "c", "t", "T"]);
     return _this;
   }
   _createClass(QuarterParser2, [{
@@ -183096,8 +183191,8 @@ var StandAloneQuarterParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 120);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["Y", "R", "Q", "M", "L", "w", "I", "d", "D", "i", "e", "c", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 120);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["Y", "R", "Q", "M", "L", "w", "I", "d", "D", "i", "e", "c", "t", "T"]);
     return _this;
   }
   _createClass(StandAloneQuarterParser2, [{
@@ -183168,8 +183263,8 @@ var MonthParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["Y", "R", "q", "Q", "L", "w", "I", "D", "i", "e", "c", "t", "T"]);
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 110);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["Y", "R", "q", "Q", "L", "w", "I", "D", "i", "e", "c", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 110);
     return _this;
   }
   _createClass(MonthParser2, [{
@@ -183245,8 +183340,8 @@ var StandAloneMonthParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 110);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["Y", "R", "q", "Q", "M", "w", "I", "D", "i", "e", "c", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 110);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["Y", "R", "q", "Q", "M", "w", "I", "D", "i", "e", "c", "t", "T"]);
     return _this;
   }
   _createClass(StandAloneMonthParser2, [{
@@ -183330,8 +183425,8 @@ var LocalWeekParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 100);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["y", "R", "u", "q", "Q", "M", "L", "I", "d", "D", "i", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 100);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["y", "R", "u", "q", "Q", "M", "L", "I", "d", "D", "i", "t", "T"]);
     return _this;
   }
   _createClass(LocalWeekParser2, [{
@@ -183379,8 +183474,8 @@ var ISOWeekParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 100);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["y", "Y", "u", "q", "Q", "M", "L", "w", "d", "D", "e", "c", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 100);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["y", "Y", "u", "q", "Q", "M", "L", "w", "d", "D", "e", "c", "t", "T"]);
     return _this;
   }
   _createClass(ISOWeekParser2, [{
@@ -183422,9 +183517,9 @@ var DateParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 90);
-    _defineProperty(_assertThisInitialized$2(_this), "subPriority", 1);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["Y", "R", "q", "Q", "w", "I", "D", "i", "e", "c", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 90);
+    _defineProperty$1(_assertThisInitialized$2(_this), "subPriority", 1);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["Y", "R", "q", "Q", "w", "I", "D", "i", "e", "c", "t", "T"]);
     return _this;
   }
   _createClass(DateParser2, [{
@@ -183473,9 +183568,9 @@ var DayOfYearParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 90);
-    _defineProperty(_assertThisInitialized$2(_this), "subpriority", 1);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["Y", "R", "q", "Q", "M", "L", "w", "I", "d", "E", "i", "e", "c", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 90);
+    _defineProperty$1(_assertThisInitialized$2(_this), "subpriority", 1);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["Y", "R", "q", "Q", "M", "L", "w", "I", "d", "E", "i", "e", "c", "t", "T"]);
     return _this;
   }
   _createClass(DayOfYearParser2, [{
@@ -183541,8 +183636,8 @@ var DayParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 90);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["D", "i", "e", "c", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 90);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["D", "i", "e", "c", "t", "T"]);
     return _this;
   }
   _createClass(DayParser2, [{
@@ -183621,8 +183716,8 @@ var LocalDayParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 90);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["y", "R", "u", "q", "Q", "M", "L", "I", "d", "D", "E", "i", "c", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 90);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["y", "R", "u", "q", "Q", "M", "L", "I", "d", "D", "E", "i", "c", "t", "T"]);
     return _this;
   }
   _createClass(LocalDayParser2, [{
@@ -183712,8 +183807,8 @@ var StandAloneLocalDayParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 90);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["y", "R", "u", "q", "Q", "M", "L", "I", "d", "D", "E", "i", "e", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 90);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["y", "R", "u", "q", "Q", "M", "L", "I", "d", "D", "E", "i", "e", "t", "T"]);
     return _this;
   }
   _createClass(StandAloneLocalDayParser2, [{
@@ -183818,8 +183913,8 @@ var ISODayParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 90);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["y", "Y", "u", "q", "Q", "M", "L", "w", "d", "D", "E", "e", "c", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 90);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["y", "Y", "u", "q", "Q", "M", "L", "w", "d", "D", "E", "e", "c", "t", "T"]);
     return _this;
   }
   _createClass(ISODayParser2, [{
@@ -183911,8 +184006,8 @@ var AMPMParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 80);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["b", "B", "H", "k", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 80);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["b", "B", "H", "k", "t", "T"]);
     return _this;
   }
   _createClass(AMPMParser2, [{
@@ -183967,8 +184062,8 @@ var AMPMMidnightParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 80);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["a", "B", "H", "k", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 80);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["a", "B", "H", "k", "t", "T"]);
     return _this;
   }
   _createClass(AMPMMidnightParser2, [{
@@ -184023,8 +184118,8 @@ var DayPeriodParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 80);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["a", "b", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 80);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["a", "b", "t", "T"]);
     return _this;
   }
   _createClass(DayPeriodParser2, [{
@@ -184079,8 +184174,8 @@ var Hour1to12Parser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 70);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["H", "K", "k", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 70);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["H", "K", "k", "t", "T"]);
     return _this;
   }
   _createClass(Hour1to12Parser2, [{
@@ -184128,8 +184223,8 @@ var Hour0to23Parser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 70);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["a", "b", "h", "K", "k", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 70);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["a", "b", "h", "K", "k", "t", "T"]);
     return _this;
   }
   _createClass(Hour0to23Parser2, [{
@@ -184170,8 +184265,8 @@ var Hour0To11Parser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 70);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["h", "H", "k", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 70);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["h", "H", "k", "t", "T"]);
     return _this;
   }
   _createClass(Hour0To11Parser2, [{
@@ -184217,8 +184312,8 @@ var Hour1To24Parser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 70);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["a", "b", "h", "H", "K", "t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 70);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["a", "b", "h", "H", "K", "t", "T"]);
     return _this;
   }
   _createClass(Hour1To24Parser2, [{
@@ -184260,8 +184355,8 @@ var MinuteParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 60);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 60);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["t", "T"]);
     return _this;
   }
   _createClass(MinuteParser2, [{
@@ -184302,8 +184397,8 @@ var SecondParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 50);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 50);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["t", "T"]);
     return _this;
   }
   _createClass(SecondParser2, [{
@@ -184344,8 +184439,8 @@ var FractionOfSecondParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 30);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["t", "T"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 30);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["t", "T"]);
     return _this;
   }
   _createClass(FractionOfSecondParser2, [{
@@ -184375,8 +184470,8 @@ var ISOTimezoneWithZParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 10);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["t", "T", "x"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 10);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["t", "T", "x"]);
     return _this;
   }
   _createClass(ISOTimezoneWithZParser2, [{
@@ -184417,8 +184512,8 @@ var ISOTimezoneParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 10);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", ["t", "T", "X"]);
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 10);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", ["t", "T", "X"]);
     return _this;
   }
   _createClass(ISOTimezoneParser2, [{
@@ -184459,8 +184554,8 @@ var TimestampSecondsParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 40);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", "*");
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 40);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", "*");
     return _this;
   }
   _createClass(TimestampSecondsParser2, [{
@@ -184488,8 +184583,8 @@ var TimestampMillisecondsParser = /* @__PURE__ */ (function(_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized$2(_this), "priority", 20);
-    _defineProperty(_assertThisInitialized$2(_this), "incompatibleTokens", "*");
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 20);
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", "*");
     return _this;
   }
   _createClass(TimestampMillisecondsParser2, [{
@@ -184546,7 +184641,7 @@ var escapedStringRegExp = /^'([^]*?)'?$/;
 var doubleQuoteRegExp = /''/g;
 var notWhitespaceRegExp = /\S/;
 var unescapedLatinCharacterRegExp = /[a-zA-Z]/;
-function parse$1(dirtyDateString, dirtyFormatString, dirtyReferenceDate, options2) {
+function parse$2(dirtyDateString, dirtyFormatString, dirtyReferenceDate, options2) {
   var _ref3, _options$locale, _ref22, _ref32, _ref4, _options$firstWeekCon, _options$locale2, _options$locale2$opti, _defaultOptions$local, _defaultOptions$local2, _ref5, _ref6, _ref7, _options$weekStartsOn, _options$locale3, _options$locale3$opti, _defaultOptions$local3, _defaultOptions$local4;
   requiredArgs(3, arguments);
   var dateString = String(dirtyDateString);
@@ -184885,7 +184980,7 @@ function _setPrototypeOf(o2, p2) {
   };
   return _setPrototypeOf(o2, p2);
 }
-function _objectWithoutPropertiesLoose(source2, excluded) {
+function _objectWithoutPropertiesLoose$1(source2, excluded) {
   if (source2 == null) return {};
   var target = {};
   var sourceKeys = Object.keys(source2);
@@ -185075,7 +185170,7 @@ function onClickOutsideHOC(WrappedComponent, config2) {
     _proto.render = function render2() {
       var _this$props = this.props;
       _this$props.excludeScrollbar;
-      var props = _objectWithoutPropertiesLoose(_this$props, ["excludeScrollbar"]);
+      var props = _objectWithoutPropertiesLoose$1(_this$props, ["excludeScrollbar"]);
       if (WrappedComponent.prototype && WrappedComponent.prototype.isReactComponent) {
         props.ref = this.getRef;
       } else {
@@ -187022,12 +187117,12 @@ var Zt = "Date input not valid.", er = (function(t4) {
       if (!i2.props.onChangeRaw || (i2.props.onChangeRaw.apply(we(i2), t6), "function" == typeof n.isDefaultPrevented && !n.isDefaultPrevented())) {
         i2.setState({ inputValue: n.target.value, lastPreSelectChange: tr });
         var o2, a5, s5, p2, c2, l, d4, u2, h3 = (o2 = n.target.value, a5 = i2.props.dateFormat, s5 = i2.props.locale, p2 = i2.props.strictParsing, c2 = i2.props.minDate, l = null, d4 = Ge(s5) || Ge($e()), u2 = true, Array.isArray(a5) ? (a5.forEach((function(e3) {
-          var t7 = parse$1(o2, e3, /* @__PURE__ */ new Date(), { locale: d4 });
+          var t7 = parse$2(o2, e3, /* @__PURE__ */ new Date(), { locale: d4 });
           p2 && (u2 = Te(t7, c2) && o2 === Ie(t7, e3, s5)), Te(t7, c2) && u2 && (l = t7);
-        })), l) : (l = parse$1(o2, a5, /* @__PURE__ */ new Date(), { locale: d4 }), p2 ? u2 = Te(l) && o2 === Ie(l, a5, s5) : Te(l) || (a5 = a5.match(xe).map((function(e3) {
+        })), l) : (l = parse$2(o2, a5, /* @__PURE__ */ new Date(), { locale: d4 }), p2 ? u2 = Te(l) && o2 === Ie(l, a5, s5) : Te(l) || (a5 = a5.match(xe).map((function(e3) {
           var t7 = e3[0];
           return "p" === t7 || "P" === t7 ? d4 ? (0, Ee[t7])(e3, d4.formatLong) : t7 : e3;
-        })).join(""), o2.length > 0 && (l = parse$1(o2, a5.slice(0, o2.length), /* @__PURE__ */ new Date())), Te(l) || (l = new Date(o2))), Te(l) && u2 ? l : null));
+        })).join(""), o2.length > 0 && (l = parse$2(o2, a5.slice(0, o2.length), /* @__PURE__ */ new Date())), Te(l) || (l = new Date(o2))), Te(l) && u2 ? l : null));
         i2.props.showTimeSelectOnly && i2.props.selected && h3 && !je(h3, i2.props.selected) && (h3 = set3(i2.props.selected, { hours: getHours(h3), minutes: getMinutes(h3), seconds: getSeconds(h3) })), !h3 && n.target.value || (i2.props.showWeekPicker && (h3 = Le(h3, i2.props.locale, i2.props.calendarStartDay)), i2.setSelected(h3, n, true));
       }
     })), ye(we(i2), "handleSelect", (function(e2, t6, r3) {
@@ -187241,11 +187336,6 @@ function useStopWheelScroll(ref) {
     };
   });
 }
-const NumberField = (props) => {
-  const inputRef = reactExports.useRef(null);
-  useStopWheelScroll(inputRef);
-  return jsxRuntimeExports.jsx(FormImpl.Control, { ...props, type: "number", ref: inputRef });
-};
 const RatingNumber = (props) => {
   const [editing, setEditing] = reactExports.useState(false);
   const [valueStage, setValueStage] = reactExports.useState(props.value);
@@ -187705,7 +187795,7 @@ function ActionButtons({ scene: scene2, sceneInfoOpen, setSceneInfoOpen }) {
   );
 }
 const SceneInfo = reactExports.forwardRef(
-  ({ scene: scene2, className, style: style2 }, ref) => {
+  ({ scene: scene2, className, style: style2, onExternalLinkClick }, ref) => {
     const date2 = scene2.date ? /* @__PURE__ */ React$1.createElement("span", { className: "date" }, scene2.date) : null;
     const sortedPerformers = sortPerformers(scene2.performers);
     const totalPerformers = sortedPerformers.length;
@@ -187737,12 +187827,1792 @@ const SceneInfo = reactExports.forwardRef(
         }
       },
       studio2,
-      /* @__PURE__ */ React$1.createElement("a", { href: sceneUrl || "", target: "_blank" }, title2),
+      /* @__PURE__ */ React$1.createElement("a", { href: sceneUrl || "", target: "_blank", onClick: onExternalLinkClick }, title2),
       performers2,
       date2
     );
   }
 );
+const ClipTimestamp = reactExports.memo(({ type: type3, progressPercentage }) => {
+  return /* @__PURE__ */ React$1.createElement(
+    "div",
+    {
+      className: `ClipTimestamp vjs-control ${type3}-timestamp`,
+      style: { left: `${progressPercentage}%` }
+    }
+  );
+});
+function clamp2(v, min2, max2) {
+  return Math.max(min2, Math.min(v, max2));
+}
+const V = {
+  toVector(v, fallback) {
+    if (v === void 0) v = fallback;
+    return Array.isArray(v) ? v : [v, v];
+  },
+  add(v1, v2) {
+    return [v1[0] + v2[0], v1[1] + v2[1]];
+  },
+  sub(v1, v2) {
+    return [v1[0] - v2[0], v1[1] - v2[1]];
+  },
+  addTo(v1, v2) {
+    v1[0] += v2[0];
+    v1[1] += v2[1];
+  },
+  subTo(v1, v2) {
+    v1[0] -= v2[0];
+    v1[1] -= v2[1];
+  }
+};
+function rubberband(distance2, dimension, constant) {
+  if (dimension === 0 || Math.abs(dimension) === Infinity) return Math.pow(distance2, constant * 5);
+  return distance2 * dimension * constant / (dimension + constant * distance2);
+}
+function rubberbandIfOutOfBounds(position2, min2, max2, constant = 0.15) {
+  if (constant === 0) return clamp2(position2, min2, max2);
+  if (position2 < min2) return -rubberband(min2 - position2, max2 - min2, constant) + min2;
+  if (position2 > max2) return +rubberband(position2 - max2, max2 - min2, constant) + max2;
+  return position2;
+}
+function computeRubberband(bounds, [Vx, Vy], [Rx, Ry]) {
+  const [[X0, X1], [Y0, Y1]] = bounds;
+  return [rubberbandIfOutOfBounds(Vx, X0, X1, Rx), rubberbandIfOutOfBounds(Vy, Y0, Y1, Ry)];
+}
+function _toPrimitive(input, hint) {
+  if (typeof input !== "object" || input === null) return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint);
+    if (typeof res !== "object") return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+  return typeof key === "symbol" ? key : String(key);
+}
+function _defineProperty(obj, key, value) {
+  key = _toPropertyKey(key);
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+function ownKeys$1(e2, r3) {
+  var t4 = Object.keys(e2);
+  if (Object.getOwnPropertySymbols) {
+    var o2 = Object.getOwnPropertySymbols(e2);
+    r3 && (o2 = o2.filter(function(r22) {
+      return Object.getOwnPropertyDescriptor(e2, r22).enumerable;
+    })), t4.push.apply(t4, o2);
+  }
+  return t4;
+}
+function _objectSpread2$1(e2) {
+  for (var r3 = 1; r3 < arguments.length; r3++) {
+    var t4 = null != arguments[r3] ? arguments[r3] : {};
+    r3 % 2 ? ownKeys$1(Object(t4), true).forEach(function(r22) {
+      _defineProperty(e2, r22, t4[r22]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t4)) : ownKeys$1(Object(t4)).forEach(function(r22) {
+      Object.defineProperty(e2, r22, Object.getOwnPropertyDescriptor(t4, r22));
+    });
+  }
+  return e2;
+}
+const EVENT_TYPE_MAP = {
+  pointer: {
+    start: "down",
+    change: "move",
+    end: "up"
+  },
+  mouse: {
+    start: "down",
+    change: "move",
+    end: "up"
+  },
+  touch: {
+    start: "start",
+    change: "move",
+    end: "end"
+  },
+  gesture: {
+    start: "start",
+    change: "change",
+    end: "end"
+  }
+};
+function capitalize(string) {
+  if (!string) return "";
+  return string[0].toUpperCase() + string.slice(1);
+}
+const actionsWithoutCaptureSupported = ["enter", "leave"];
+function hasCapture(capture = false, actionKey) {
+  return capture && !actionsWithoutCaptureSupported.includes(actionKey);
+}
+function toHandlerProp(device, action = "", capture = false) {
+  const deviceProps = EVENT_TYPE_MAP[device];
+  const actionKey = deviceProps ? deviceProps[action] || action : action;
+  return "on" + capitalize(device) + capitalize(actionKey) + (hasCapture(capture, actionKey) ? "Capture" : "");
+}
+const pointerCaptureEvents = ["gotpointercapture", "lostpointercapture"];
+function parseProp(prop) {
+  let eventKey = prop.substring(2).toLowerCase();
+  const passive2 = !!~eventKey.indexOf("passive");
+  if (passive2) eventKey = eventKey.replace("passive", "");
+  const captureKey = pointerCaptureEvents.includes(eventKey) ? "capturecapture" : "capture";
+  const capture = !!~eventKey.indexOf(captureKey);
+  if (capture) eventKey = eventKey.replace("capture", "");
+  return {
+    device: eventKey,
+    capture,
+    passive: passive2
+  };
+}
+function toDomEventType(device, action = "") {
+  const deviceProps = EVENT_TYPE_MAP[device];
+  const actionKey = deviceProps ? deviceProps[action] || action : action;
+  return device + actionKey;
+}
+function isTouch(event) {
+  return "touches" in event;
+}
+function getPointerType(event) {
+  if (isTouch(event)) return "touch";
+  if ("pointerType" in event) return event.pointerType;
+  return "mouse";
+}
+function getCurrentTargetTouchList(event) {
+  return Array.from(event.touches).filter((e2) => {
+    var _event$currentTarget, _event$currentTarget$;
+    return e2.target === event.currentTarget || ((_event$currentTarget = event.currentTarget) === null || _event$currentTarget === void 0 || (_event$currentTarget$ = _event$currentTarget.contains) === null || _event$currentTarget$ === void 0 ? void 0 : _event$currentTarget$.call(_event$currentTarget, e2.target));
+  });
+}
+function getTouchList(event) {
+  return event.type === "touchend" || event.type === "touchcancel" ? event.changedTouches : event.targetTouches;
+}
+function getValueEvent(event) {
+  return isTouch(event) ? getTouchList(event)[0] : event;
+}
+function distanceAngle(P1, P2) {
+  try {
+    const dx = P2.clientX - P1.clientX;
+    const dy = P2.clientY - P1.clientY;
+    const cx2 = (P2.clientX + P1.clientX) / 2;
+    const cy = (P2.clientY + P1.clientY) / 2;
+    const distance2 = Math.hypot(dx, dy);
+    const angle = -(Math.atan2(dx, dy) * 180) / Math.PI;
+    const origin = [cx2, cy];
+    return {
+      angle,
+      distance: distance2,
+      origin
+    };
+  } catch (_unused) {
+  }
+  return null;
+}
+function touchIds(event) {
+  return getCurrentTargetTouchList(event).map((touch) => touch.identifier);
+}
+function touchDistanceAngle(event, ids) {
+  const [P1, P2] = Array.from(event.touches).filter((touch) => ids.includes(touch.identifier));
+  return distanceAngle(P1, P2);
+}
+function pointerId(event) {
+  const valueEvent = getValueEvent(event);
+  return isTouch(event) ? valueEvent.identifier : valueEvent.pointerId;
+}
+function pointerValues(event) {
+  const valueEvent = getValueEvent(event);
+  return [valueEvent.clientX, valueEvent.clientY];
+}
+const LINE_HEIGHT = 40;
+const PAGE_HEIGHT = 800;
+function wheelValues(event) {
+  let {
+    deltaX,
+    deltaY,
+    deltaMode
+  } = event;
+  if (deltaMode === 1) {
+    deltaX *= LINE_HEIGHT;
+    deltaY *= LINE_HEIGHT;
+  } else if (deltaMode === 2) {
+    deltaX *= PAGE_HEIGHT;
+    deltaY *= PAGE_HEIGHT;
+  }
+  return [deltaX, deltaY];
+}
+function scrollValues(event) {
+  var _ref3, _ref22;
+  const {
+    scrollX,
+    scrollY,
+    scrollLeft,
+    scrollTop
+  } = event.currentTarget;
+  return [(_ref3 = scrollX !== null && scrollX !== void 0 ? scrollX : scrollLeft) !== null && _ref3 !== void 0 ? _ref3 : 0, (_ref22 = scrollY !== null && scrollY !== void 0 ? scrollY : scrollTop) !== null && _ref22 !== void 0 ? _ref22 : 0];
+}
+function getEventDetails(event) {
+  const payload = {};
+  if ("buttons" in event) payload.buttons = event.buttons;
+  if ("shiftKey" in event) {
+    const {
+      shiftKey,
+      altKey,
+      metaKey,
+      ctrlKey
+    } = event;
+    Object.assign(payload, {
+      shiftKey,
+      altKey,
+      metaKey,
+      ctrlKey
+    });
+  }
+  return payload;
+}
+function call$1(v, ...args) {
+  if (typeof v === "function") {
+    return v(...args);
+  } else {
+    return v;
+  }
+}
+function noop$2() {
+}
+function chain(...fns) {
+  if (fns.length === 0) return noop$2;
+  if (fns.length === 1) return fns[0];
+  return function() {
+    let result;
+    for (const fn3 of fns) {
+      result = fn3.apply(this, arguments) || result;
+    }
+    return result;
+  };
+}
+function assignDefault(value, fallback) {
+  return Object.assign({}, fallback, value || {});
+}
+const BEFORE_LAST_KINEMATICS_DELAY = 32;
+class Engine {
+  constructor(ctrl, args, key) {
+    this.ctrl = ctrl;
+    this.args = args;
+    this.key = key;
+    if (!this.state) {
+      this.state = {};
+      this.computeValues([0, 0]);
+      this.computeInitial();
+      if (this.init) this.init();
+      this.reset();
+    }
+  }
+  get state() {
+    return this.ctrl.state[this.key];
+  }
+  set state(state) {
+    this.ctrl.state[this.key] = state;
+  }
+  get shared() {
+    return this.ctrl.state.shared;
+  }
+  get eventStore() {
+    return this.ctrl.gestureEventStores[this.key];
+  }
+  get timeoutStore() {
+    return this.ctrl.gestureTimeoutStores[this.key];
+  }
+  get config() {
+    return this.ctrl.config[this.key];
+  }
+  get sharedConfig() {
+    return this.ctrl.config.shared;
+  }
+  get handler() {
+    return this.ctrl.handlers[this.key];
+  }
+  reset() {
+    const {
+      state,
+      shared,
+      ingKey,
+      args
+    } = this;
+    shared[ingKey] = state._active = state.active = state._blocked = state._force = false;
+    state._step = [false, false];
+    state.intentional = false;
+    state._movement = [0, 0];
+    state._distance = [0, 0];
+    state._direction = [0, 0];
+    state._delta = [0, 0];
+    state._bounds = [[-Infinity, Infinity], [-Infinity, Infinity]];
+    state.args = args;
+    state.axis = void 0;
+    state.memo = void 0;
+    state.elapsedTime = state.timeDelta = 0;
+    state.direction = [0, 0];
+    state.distance = [0, 0];
+    state.overflow = [0, 0];
+    state._movementBound = [false, false];
+    state.velocity = [0, 0];
+    state.movement = [0, 0];
+    state.delta = [0, 0];
+    state.timeStamp = 0;
+  }
+  start(event) {
+    const state = this.state;
+    const config2 = this.config;
+    if (!state._active) {
+      this.reset();
+      this.computeInitial();
+      state._active = true;
+      state.target = event.target;
+      state.currentTarget = event.currentTarget;
+      state.lastOffset = config2.from ? call$1(config2.from, state) : state.offset;
+      state.offset = state.lastOffset;
+      state.startTime = state.timeStamp = event.timeStamp;
+    }
+  }
+  computeValues(values3) {
+    const state = this.state;
+    state._values = values3;
+    state.values = this.config.transform(values3);
+  }
+  computeInitial() {
+    const state = this.state;
+    state._initial = state._values;
+    state.initial = state.values;
+  }
+  compute(event) {
+    const {
+      state,
+      config: config2,
+      shared
+    } = this;
+    state.args = this.args;
+    let dt2 = 0;
+    if (event) {
+      state.event = event;
+      if (config2.preventDefault && event.cancelable) state.event.preventDefault();
+      state.type = event.type;
+      shared.touches = this.ctrl.pointerIds.size || this.ctrl.touchIds.size;
+      shared.locked = !!document.pointerLockElement;
+      Object.assign(shared, getEventDetails(event));
+      shared.down = shared.pressed = shared.buttons % 2 === 1 || shared.touches > 0;
+      dt2 = event.timeStamp - state.timeStamp;
+      state.timeStamp = event.timeStamp;
+      state.elapsedTime = state.timeStamp - state.startTime;
+    }
+    if (state._active) {
+      const _absoluteDelta = state._delta.map(Math.abs);
+      V.addTo(state._distance, _absoluteDelta);
+    }
+    if (this.axisIntent) this.axisIntent(event);
+    const [_m0, _m1] = state._movement;
+    const [t0, t1] = config2.threshold;
+    const {
+      _step,
+      values: values3
+    } = state;
+    if (config2.hasCustomTransform) {
+      if (_step[0] === false) _step[0] = Math.abs(_m0) >= t0 && values3[0];
+      if (_step[1] === false) _step[1] = Math.abs(_m1) >= t1 && values3[1];
+    } else {
+      if (_step[0] === false) _step[0] = Math.abs(_m0) >= t0 && Math.sign(_m0) * t0;
+      if (_step[1] === false) _step[1] = Math.abs(_m1) >= t1 && Math.sign(_m1) * t1;
+    }
+    state.intentional = _step[0] !== false || _step[1] !== false;
+    if (!state.intentional) return;
+    const movement = [0, 0];
+    if (config2.hasCustomTransform) {
+      const [v0, v1] = values3;
+      movement[0] = _step[0] !== false ? v0 - _step[0] : 0;
+      movement[1] = _step[1] !== false ? v1 - _step[1] : 0;
+    } else {
+      movement[0] = _step[0] !== false ? _m0 - _step[0] : 0;
+      movement[1] = _step[1] !== false ? _m1 - _step[1] : 0;
+    }
+    if (this.restrictToAxis && !state._blocked) this.restrictToAxis(movement);
+    const previousOffset = state.offset;
+    const gestureIsActive = state._active && !state._blocked || state.active;
+    if (gestureIsActive) {
+      state.first = state._active && !state.active;
+      state.last = !state._active && state.active;
+      state.active = shared[this.ingKey] = state._active;
+      if (event) {
+        if (state.first) {
+          if ("bounds" in config2) state._bounds = call$1(config2.bounds, state);
+          if (this.setup) this.setup();
+        }
+        state.movement = movement;
+        this.computeOffset();
+      }
+    }
+    const [ox, oy] = state.offset;
+    const [[x0, x1], [y0, y1]] = state._bounds;
+    state.overflow = [ox < x0 ? -1 : ox > x1 ? 1 : 0, oy < y0 ? -1 : oy > y1 ? 1 : 0];
+    state._movementBound[0] = state.overflow[0] ? state._movementBound[0] === false ? state._movement[0] : state._movementBound[0] : false;
+    state._movementBound[1] = state.overflow[1] ? state._movementBound[1] === false ? state._movement[1] : state._movementBound[1] : false;
+    const rubberband2 = state._active ? config2.rubberband || [0, 0] : [0, 0];
+    state.offset = computeRubberband(state._bounds, state.offset, rubberband2);
+    state.delta = V.sub(state.offset, previousOffset);
+    this.computeMovement();
+    if (gestureIsActive && (!state.last || dt2 > BEFORE_LAST_KINEMATICS_DELAY)) {
+      state.delta = V.sub(state.offset, previousOffset);
+      const absoluteDelta = state.delta.map(Math.abs);
+      V.addTo(state.distance, absoluteDelta);
+      state.direction = state.delta.map(Math.sign);
+      state._direction = state._delta.map(Math.sign);
+      if (!state.first && dt2 > 0) {
+        state.velocity = [absoluteDelta[0] / dt2, absoluteDelta[1] / dt2];
+        state.timeDelta = dt2;
+      }
+    }
+  }
+  emit() {
+    const state = this.state;
+    const shared = this.shared;
+    const config2 = this.config;
+    if (!state._active) this.clean();
+    if ((state._blocked || !state.intentional) && !state._force && !config2.triggerAllEvents) return;
+    const memo2 = this.handler(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1({}, shared), state), {}, {
+      [this.aliasKey]: state.values
+    }));
+    if (memo2 !== void 0) state.memo = memo2;
+  }
+  clean() {
+    this.eventStore.clean();
+    this.timeoutStore.clean();
+  }
+}
+function selectAxis([dx, dy], threshold) {
+  const absDx = Math.abs(dx);
+  const absDy = Math.abs(dy);
+  if (absDx > absDy && absDx > threshold) {
+    return "x";
+  }
+  if (absDy > absDx && absDy > threshold) {
+    return "y";
+  }
+  return void 0;
+}
+class CoordinatesEngine extends Engine {
+  constructor(...args) {
+    super(...args);
+    _defineProperty(this, "aliasKey", "xy");
+  }
+  reset() {
+    super.reset();
+    this.state.axis = void 0;
+  }
+  init() {
+    this.state.offset = [0, 0];
+    this.state.lastOffset = [0, 0];
+  }
+  computeOffset() {
+    this.state.offset = V.add(this.state.lastOffset, this.state.movement);
+  }
+  computeMovement() {
+    this.state.movement = V.sub(this.state.offset, this.state.lastOffset);
+  }
+  axisIntent(event) {
+    const state = this.state;
+    const config2 = this.config;
+    if (!state.axis && event) {
+      const threshold = typeof config2.axisThreshold === "object" ? config2.axisThreshold[getPointerType(event)] : config2.axisThreshold;
+      state.axis = selectAxis(state._movement, threshold);
+    }
+    state._blocked = (config2.lockDirection || !!config2.axis) && !state.axis || !!config2.axis && config2.axis !== state.axis;
+  }
+  restrictToAxis(v) {
+    if (this.config.axis || this.config.lockDirection) {
+      switch (this.state.axis) {
+        case "x":
+          v[1] = 0;
+          break;
+        case "y":
+          v[0] = 0;
+          break;
+      }
+    }
+  }
+}
+const identity = (v) => v;
+const DEFAULT_RUBBERBAND = 0.15;
+const commonConfigResolver = {
+  enabled(value = true) {
+    return value;
+  },
+  eventOptions(value, _k, config2) {
+    return _objectSpread2$1(_objectSpread2$1({}, config2.shared.eventOptions), value);
+  },
+  preventDefault(value = false) {
+    return value;
+  },
+  triggerAllEvents(value = false) {
+    return value;
+  },
+  rubberband(value = 0) {
+    switch (value) {
+      case true:
+        return [DEFAULT_RUBBERBAND, DEFAULT_RUBBERBAND];
+      case false:
+        return [0, 0];
+      default:
+        return V.toVector(value);
+    }
+  },
+  from(value) {
+    if (typeof value === "function") return value;
+    if (value != null) return V.toVector(value);
+  },
+  transform(value, _k, config2) {
+    const transform3 = value || config2.shared.transform;
+    this.hasCustomTransform = !!transform3;
+    return transform3 || identity;
+  },
+  threshold(value) {
+    return V.toVector(value, 0);
+  }
+};
+const DEFAULT_AXIS_THRESHOLD = 0;
+const coordinatesConfigResolver = _objectSpread2$1(_objectSpread2$1({}, commonConfigResolver), {}, {
+  axis(_v, _k, {
+    axis
+  }) {
+    this.lockDirection = axis === "lock";
+    if (!this.lockDirection) return axis;
+  },
+  axisThreshold(value = DEFAULT_AXIS_THRESHOLD) {
+    return value;
+  },
+  bounds(value = {}) {
+    if (typeof value === "function") {
+      return (state) => coordinatesConfigResolver.bounds(value(state));
+    }
+    if ("current" in value) {
+      return () => value.current;
+    }
+    if (typeof HTMLElement === "function" && value instanceof HTMLElement) {
+      return value;
+    }
+    const {
+      left: left2 = -Infinity,
+      right: right2 = Infinity,
+      top: top2 = -Infinity,
+      bottom: bottom2 = Infinity
+    } = value;
+    return [[left2, right2], [top2, bottom2]];
+  }
+});
+const KEYS_DELTA_MAP = {
+  ArrowRight: (displacement, factor = 1) => [displacement * factor, 0],
+  ArrowLeft: (displacement, factor = 1) => [-1 * displacement * factor, 0],
+  ArrowUp: (displacement, factor = 1) => [0, -1 * displacement * factor],
+  ArrowDown: (displacement, factor = 1) => [0, displacement * factor]
+};
+class DragEngine extends CoordinatesEngine {
+  constructor(...args) {
+    super(...args);
+    _defineProperty(this, "ingKey", "dragging");
+  }
+  reset() {
+    super.reset();
+    const state = this.state;
+    state._pointerId = void 0;
+    state._pointerActive = false;
+    state._keyboardActive = false;
+    state._preventScroll = false;
+    state._delayed = false;
+    state.swipe = [0, 0];
+    state.tap = false;
+    state.canceled = false;
+    state.cancel = this.cancel.bind(this);
+  }
+  setup() {
+    const state = this.state;
+    if (state._bounds instanceof HTMLElement) {
+      const boundRect = state._bounds.getBoundingClientRect();
+      const targetRect = state.currentTarget.getBoundingClientRect();
+      const _bounds = {
+        left: boundRect.left - targetRect.left + state.offset[0],
+        right: boundRect.right - targetRect.right + state.offset[0],
+        top: boundRect.top - targetRect.top + state.offset[1],
+        bottom: boundRect.bottom - targetRect.bottom + state.offset[1]
+      };
+      state._bounds = coordinatesConfigResolver.bounds(_bounds);
+    }
+  }
+  cancel() {
+    const state = this.state;
+    if (state.canceled) return;
+    state.canceled = true;
+    state._active = false;
+    setTimeout(() => {
+      this.compute();
+      this.emit();
+    }, 0);
+  }
+  setActive() {
+    this.state._active = this.state._pointerActive || this.state._keyboardActive;
+  }
+  clean() {
+    this.pointerClean();
+    this.state._pointerActive = false;
+    this.state._keyboardActive = false;
+    super.clean();
+  }
+  pointerDown(event) {
+    const config2 = this.config;
+    const state = this.state;
+    if (event.buttons != null && (Array.isArray(config2.pointerButtons) ? !config2.pointerButtons.includes(event.buttons) : config2.pointerButtons !== -1 && config2.pointerButtons !== event.buttons)) return;
+    const ctrlIds = this.ctrl.setEventIds(event);
+    if (config2.pointerCapture) {
+      event.target.setPointerCapture(event.pointerId);
+    }
+    if (ctrlIds && ctrlIds.size > 1 && state._pointerActive) return;
+    this.start(event);
+    this.setupPointer(event);
+    state._pointerId = pointerId(event);
+    state._pointerActive = true;
+    this.computeValues(pointerValues(event));
+    this.computeInitial();
+    if (config2.preventScrollAxis && getPointerType(event) !== "mouse") {
+      state._active = false;
+      this.setupScrollPrevention(event);
+    } else if (config2.delay > 0) {
+      this.setupDelayTrigger(event);
+      if (config2.triggerAllEvents) {
+        this.compute(event);
+        this.emit();
+      }
+    } else {
+      this.startPointerDrag(event);
+    }
+  }
+  startPointerDrag(event) {
+    const state = this.state;
+    state._active = true;
+    state._preventScroll = true;
+    state._delayed = false;
+    this.compute(event);
+    this.emit();
+  }
+  pointerMove(event) {
+    const state = this.state;
+    const config2 = this.config;
+    if (!state._pointerActive) return;
+    const id = pointerId(event);
+    if (state._pointerId !== void 0 && id !== state._pointerId) return;
+    const _values = pointerValues(event);
+    if (document.pointerLockElement === event.target) {
+      state._delta = [event.movementX, event.movementY];
+    } else {
+      state._delta = V.sub(_values, state._values);
+      this.computeValues(_values);
+    }
+    V.addTo(state._movement, state._delta);
+    this.compute(event);
+    if (state._delayed && state.intentional) {
+      this.timeoutStore.remove("dragDelay");
+      state.active = false;
+      this.startPointerDrag(event);
+      return;
+    }
+    if (config2.preventScrollAxis && !state._preventScroll) {
+      if (state.axis) {
+        if (state.axis === config2.preventScrollAxis || config2.preventScrollAxis === "xy") {
+          state._active = false;
+          this.clean();
+          return;
+        } else {
+          this.timeoutStore.remove("startPointerDrag");
+          this.startPointerDrag(event);
+          return;
+        }
+      } else {
+        return;
+      }
+    }
+    this.emit();
+  }
+  pointerUp(event) {
+    this.ctrl.setEventIds(event);
+    try {
+      if (this.config.pointerCapture && event.target.hasPointerCapture(event.pointerId)) {
+        ;
+        event.target.releasePointerCapture(event.pointerId);
+      }
+    } catch (_unused) {
+    }
+    const state = this.state;
+    const config2 = this.config;
+    if (!state._active || !state._pointerActive) return;
+    const id = pointerId(event);
+    if (state._pointerId !== void 0 && id !== state._pointerId) return;
+    this.state._pointerActive = false;
+    this.setActive();
+    this.compute(event);
+    const [dx, dy] = state._distance;
+    state.tap = dx <= config2.tapsThreshold && dy <= config2.tapsThreshold;
+    if (state.tap && config2.filterTaps) {
+      state._force = true;
+    } else {
+      const [_dx, _dy] = state._delta;
+      const [_mx, _my] = state._movement;
+      const [svx, svy] = config2.swipe.velocity;
+      const [sx, sy] = config2.swipe.distance;
+      const sdt = config2.swipe.duration;
+      if (state.elapsedTime < sdt) {
+        const _vx = Math.abs(_dx / state.timeDelta);
+        const _vy = Math.abs(_dy / state.timeDelta);
+        if (_vx > svx && Math.abs(_mx) > sx) state.swipe[0] = Math.sign(_dx);
+        if (_vy > svy && Math.abs(_my) > sy) state.swipe[1] = Math.sign(_dy);
+      }
+    }
+    this.emit();
+  }
+  pointerClick(event) {
+    if (!this.state.tap && event.detail > 0) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  }
+  setupPointer(event) {
+    const config2 = this.config;
+    const device = config2.device;
+    if (config2.pointerLock) {
+      event.currentTarget.requestPointerLock();
+    }
+    if (!config2.pointerCapture) {
+      this.eventStore.add(this.sharedConfig.window, device, "change", this.pointerMove.bind(this));
+      this.eventStore.add(this.sharedConfig.window, device, "end", this.pointerUp.bind(this));
+      this.eventStore.add(this.sharedConfig.window, device, "cancel", this.pointerUp.bind(this));
+    }
+  }
+  pointerClean() {
+    if (this.config.pointerLock && document.pointerLockElement === this.state.currentTarget) {
+      document.exitPointerLock();
+    }
+  }
+  preventScroll(event) {
+    if (this.state._preventScroll && event.cancelable) {
+      event.preventDefault();
+    }
+  }
+  setupScrollPrevention(event) {
+    this.state._preventScroll = false;
+    persistEvent(event);
+    const remove2 = this.eventStore.add(this.sharedConfig.window, "touch", "change", this.preventScroll.bind(this), {
+      passive: false
+    });
+    this.eventStore.add(this.sharedConfig.window, "touch", "end", remove2);
+    this.eventStore.add(this.sharedConfig.window, "touch", "cancel", remove2);
+    this.timeoutStore.add("startPointerDrag", this.startPointerDrag.bind(this), this.config.preventScrollDelay, event);
+  }
+  setupDelayTrigger(event) {
+    this.state._delayed = true;
+    this.timeoutStore.add("dragDelay", () => {
+      this.state._step = [0, 0];
+      this.startPointerDrag(event);
+    }, this.config.delay);
+  }
+  keyDown(event) {
+    const deltaFn = KEYS_DELTA_MAP[event.key];
+    if (deltaFn) {
+      const state = this.state;
+      const factor = event.shiftKey ? 10 : event.altKey ? 0.1 : 1;
+      this.start(event);
+      state._delta = deltaFn(this.config.keyboardDisplacement, factor);
+      state._keyboardActive = true;
+      V.addTo(state._movement, state._delta);
+      this.compute(event);
+      this.emit();
+    }
+  }
+  keyUp(event) {
+    if (!(event.key in KEYS_DELTA_MAP)) return;
+    this.state._keyboardActive = false;
+    this.setActive();
+    this.compute(event);
+    this.emit();
+  }
+  bind(bindFunction) {
+    const device = this.config.device;
+    bindFunction(device, "start", this.pointerDown.bind(this));
+    if (this.config.pointerCapture) {
+      bindFunction(device, "change", this.pointerMove.bind(this));
+      bindFunction(device, "end", this.pointerUp.bind(this));
+      bindFunction(device, "cancel", this.pointerUp.bind(this));
+      bindFunction("lostPointerCapture", "", this.pointerUp.bind(this));
+    }
+    if (this.config.keys) {
+      bindFunction("key", "down", this.keyDown.bind(this));
+      bindFunction("key", "up", this.keyUp.bind(this));
+    }
+    if (this.config.filterTaps) {
+      bindFunction("click", "", this.pointerClick.bind(this), {
+        capture: true,
+        passive: false
+      });
+    }
+  }
+}
+function persistEvent(event) {
+  "persist" in event && typeof event.persist === "function" && event.persist();
+}
+const isBrowser$1 = typeof window !== "undefined" && window.document && window.document.createElement;
+function supportsTouchEvents() {
+  return isBrowser$1 && "ontouchstart" in window;
+}
+function isTouchScreen() {
+  return supportsTouchEvents() || isBrowser$1 && window.navigator.maxTouchPoints > 1;
+}
+function supportsPointerEvents() {
+  return isBrowser$1 && "onpointerdown" in window;
+}
+function supportsPointerLock() {
+  return isBrowser$1 && "exitPointerLock" in window.document;
+}
+function supportsGestureEvents() {
+  try {
+    return "constructor" in GestureEvent;
+  } catch (e2) {
+    return false;
+  }
+}
+const SUPPORT = {
+  isBrowser: isBrowser$1,
+  gesture: supportsGestureEvents(),
+  touch: supportsTouchEvents(),
+  touchscreen: isTouchScreen(),
+  pointer: supportsPointerEvents(),
+  pointerLock: supportsPointerLock()
+};
+const DEFAULT_PREVENT_SCROLL_DELAY = 250;
+const DEFAULT_DRAG_DELAY = 180;
+const DEFAULT_SWIPE_VELOCITY = 0.5;
+const DEFAULT_SWIPE_DISTANCE = 50;
+const DEFAULT_SWIPE_DURATION = 250;
+const DEFAULT_KEYBOARD_DISPLACEMENT = 10;
+const DEFAULT_DRAG_AXIS_THRESHOLD = {
+  mouse: 0,
+  touch: 0,
+  pen: 8
+};
+const dragConfigResolver = _objectSpread2$1(_objectSpread2$1({}, coordinatesConfigResolver), {}, {
+  device(_v, _k, {
+    pointer: {
+      touch = false,
+      lock = false,
+      mouse = false
+    } = {}
+  }) {
+    this.pointerLock = lock && SUPPORT.pointerLock;
+    if (SUPPORT.touch && touch) return "touch";
+    if (this.pointerLock) return "mouse";
+    if (SUPPORT.pointer && !mouse) return "pointer";
+    if (SUPPORT.touch) return "touch";
+    return "mouse";
+  },
+  preventScrollAxis(value, _k, {
+    preventScroll
+  }) {
+    this.preventScrollDelay = typeof preventScroll === "number" ? preventScroll : preventScroll || preventScroll === void 0 && value ? DEFAULT_PREVENT_SCROLL_DELAY : void 0;
+    if (!SUPPORT.touchscreen || preventScroll === false) return void 0;
+    return value ? value : preventScroll !== void 0 ? "y" : void 0;
+  },
+  pointerCapture(_v, _k, {
+    pointer: {
+      capture = true,
+      buttons = 1,
+      keys: keys3 = true
+    } = {}
+  }) {
+    this.pointerButtons = buttons;
+    this.keys = keys3;
+    return !this.pointerLock && this.device === "pointer" && capture;
+  },
+  threshold(value, _k, {
+    filterTaps = false,
+    tapsThreshold = 3,
+    axis = void 0
+  }) {
+    const threshold = V.toVector(value, filterTaps ? tapsThreshold : axis ? 1 : 0);
+    this.filterTaps = filterTaps;
+    this.tapsThreshold = tapsThreshold;
+    return threshold;
+  },
+  swipe({
+    velocity = DEFAULT_SWIPE_VELOCITY,
+    distance: distance2 = DEFAULT_SWIPE_DISTANCE,
+    duration: duration5 = DEFAULT_SWIPE_DURATION
+  } = {}) {
+    return {
+      velocity: this.transform(V.toVector(velocity)),
+      distance: this.transform(V.toVector(distance2)),
+      duration: duration5
+    };
+  },
+  delay(value = 0) {
+    switch (value) {
+      case true:
+        return DEFAULT_DRAG_DELAY;
+      case false:
+        return 0;
+      default:
+        return value;
+    }
+  },
+  axisThreshold(value) {
+    if (!value) return DEFAULT_DRAG_AXIS_THRESHOLD;
+    return _objectSpread2$1(_objectSpread2$1({}, DEFAULT_DRAG_AXIS_THRESHOLD), value);
+  },
+  keyboardDisplacement(value = DEFAULT_KEYBOARD_DISPLACEMENT) {
+    return value;
+  }
+});
+function clampStateInternalMovementToBounds(state) {
+  const [ox, oy] = state.overflow;
+  const [dx, dy] = state._delta;
+  const [dirx, diry] = state._direction;
+  if (ox < 0 && dx > 0 && dirx < 0 || ox > 0 && dx < 0 && dirx > 0) {
+    state._movement[0] = state._movementBound[0];
+  }
+  if (oy < 0 && dy > 0 && diry < 0 || oy > 0 && dy < 0 && diry > 0) {
+    state._movement[1] = state._movementBound[1];
+  }
+}
+const SCALE_ANGLE_RATIO_INTENT_DEG = 30;
+const PINCH_WHEEL_RATIO = 100;
+class PinchEngine extends Engine {
+  constructor(...args) {
+    super(...args);
+    _defineProperty(this, "ingKey", "pinching");
+    _defineProperty(this, "aliasKey", "da");
+  }
+  init() {
+    this.state.offset = [1, 0];
+    this.state.lastOffset = [1, 0];
+    this.state._pointerEvents = /* @__PURE__ */ new Map();
+  }
+  reset() {
+    super.reset();
+    const state = this.state;
+    state._touchIds = [];
+    state.canceled = false;
+    state.cancel = this.cancel.bind(this);
+    state.turns = 0;
+  }
+  computeOffset() {
+    const {
+      type: type3,
+      movement,
+      lastOffset
+    } = this.state;
+    if (type3 === "wheel") {
+      this.state.offset = V.add(movement, lastOffset);
+    } else {
+      this.state.offset = [(1 + movement[0]) * lastOffset[0], movement[1] + lastOffset[1]];
+    }
+  }
+  computeMovement() {
+    const {
+      offset: offset3,
+      lastOffset
+    } = this.state;
+    this.state.movement = [offset3[0] / lastOffset[0], offset3[1] - lastOffset[1]];
+  }
+  axisIntent() {
+    const state = this.state;
+    const [_m0, _m1] = state._movement;
+    if (!state.axis) {
+      const axisMovementDifference = Math.abs(_m0) * SCALE_ANGLE_RATIO_INTENT_DEG - Math.abs(_m1);
+      if (axisMovementDifference < 0) state.axis = "angle";
+      else if (axisMovementDifference > 0) state.axis = "scale";
+    }
+  }
+  restrictToAxis(v) {
+    if (this.config.lockDirection) {
+      if (this.state.axis === "scale") v[1] = 0;
+      else if (this.state.axis === "angle") v[0] = 0;
+    }
+  }
+  cancel() {
+    const state = this.state;
+    if (state.canceled) return;
+    setTimeout(() => {
+      state.canceled = true;
+      state._active = false;
+      this.compute();
+      this.emit();
+    }, 0);
+  }
+  touchStart(event) {
+    this.ctrl.setEventIds(event);
+    const state = this.state;
+    const ctrlTouchIds = this.ctrl.touchIds;
+    if (state._active) {
+      if (state._touchIds.every((id) => ctrlTouchIds.has(id))) return;
+    }
+    if (ctrlTouchIds.size < 2) return;
+    this.start(event);
+    state._touchIds = Array.from(ctrlTouchIds).slice(0, 2);
+    const payload = touchDistanceAngle(event, state._touchIds);
+    if (!payload) return;
+    this.pinchStart(event, payload);
+  }
+  pointerStart(event) {
+    if (event.buttons != null && event.buttons % 2 !== 1) return;
+    this.ctrl.setEventIds(event);
+    event.target.setPointerCapture(event.pointerId);
+    const state = this.state;
+    const _pointerEvents = state._pointerEvents;
+    const ctrlPointerIds = this.ctrl.pointerIds;
+    if (state._active) {
+      if (Array.from(_pointerEvents.keys()).every((id) => ctrlPointerIds.has(id))) return;
+    }
+    if (_pointerEvents.size < 2) {
+      _pointerEvents.set(event.pointerId, event);
+    }
+    if (state._pointerEvents.size < 2) return;
+    this.start(event);
+    const payload = distanceAngle(...Array.from(_pointerEvents.values()));
+    if (!payload) return;
+    this.pinchStart(event, payload);
+  }
+  pinchStart(event, payload) {
+    const state = this.state;
+    state.origin = payload.origin;
+    this.computeValues([payload.distance, payload.angle]);
+    this.computeInitial();
+    this.compute(event);
+    this.emit();
+  }
+  touchMove(event) {
+    if (!this.state._active) return;
+    const payload = touchDistanceAngle(event, this.state._touchIds);
+    if (!payload) return;
+    this.pinchMove(event, payload);
+  }
+  pointerMove(event) {
+    const _pointerEvents = this.state._pointerEvents;
+    if (_pointerEvents.has(event.pointerId)) {
+      _pointerEvents.set(event.pointerId, event);
+    }
+    if (!this.state._active) return;
+    const payload = distanceAngle(...Array.from(_pointerEvents.values()));
+    if (!payload) return;
+    this.pinchMove(event, payload);
+  }
+  pinchMove(event, payload) {
+    const state = this.state;
+    const prev_a = state._values[1];
+    const delta_a = payload.angle - prev_a;
+    let delta_turns = 0;
+    if (Math.abs(delta_a) > 270) delta_turns += Math.sign(delta_a);
+    this.computeValues([payload.distance, payload.angle - 360 * delta_turns]);
+    state.origin = payload.origin;
+    state.turns = delta_turns;
+    state._movement = [state._values[0] / state._initial[0] - 1, state._values[1] - state._initial[1]];
+    this.compute(event);
+    this.emit();
+  }
+  touchEnd(event) {
+    this.ctrl.setEventIds(event);
+    if (!this.state._active) return;
+    if (this.state._touchIds.some((id) => !this.ctrl.touchIds.has(id))) {
+      this.state._active = false;
+      this.compute(event);
+      this.emit();
+    }
+  }
+  pointerEnd(event) {
+    const state = this.state;
+    this.ctrl.setEventIds(event);
+    try {
+      event.target.releasePointerCapture(event.pointerId);
+    } catch (_unused) {
+    }
+    if (state._pointerEvents.has(event.pointerId)) {
+      state._pointerEvents.delete(event.pointerId);
+    }
+    if (!state._active) return;
+    if (state._pointerEvents.size < 2) {
+      state._active = false;
+      this.compute(event);
+      this.emit();
+    }
+  }
+  gestureStart(event) {
+    if (event.cancelable) event.preventDefault();
+    const state = this.state;
+    if (state._active) return;
+    this.start(event);
+    this.computeValues([event.scale, event.rotation]);
+    state.origin = [event.clientX, event.clientY];
+    this.compute(event);
+    this.emit();
+  }
+  gestureMove(event) {
+    if (event.cancelable) event.preventDefault();
+    if (!this.state._active) return;
+    const state = this.state;
+    this.computeValues([event.scale, event.rotation]);
+    state.origin = [event.clientX, event.clientY];
+    const _previousMovement = state._movement;
+    state._movement = [event.scale - 1, event.rotation];
+    state._delta = V.sub(state._movement, _previousMovement);
+    this.compute(event);
+    this.emit();
+  }
+  gestureEnd(event) {
+    if (!this.state._active) return;
+    this.state._active = false;
+    this.compute(event);
+    this.emit();
+  }
+  wheel(event) {
+    const modifierKey = this.config.modifierKey;
+    if (modifierKey && (Array.isArray(modifierKey) ? !modifierKey.find((k2) => event[k2]) : !event[modifierKey])) return;
+    if (!this.state._active) this.wheelStart(event);
+    else this.wheelChange(event);
+    this.timeoutStore.add("wheelEnd", this.wheelEnd.bind(this));
+  }
+  wheelStart(event) {
+    this.start(event);
+    this.wheelChange(event);
+  }
+  wheelChange(event) {
+    const isR3f = "uv" in event;
+    if (!isR3f) {
+      if (event.cancelable) {
+        event.preventDefault();
+      }
+    }
+    const state = this.state;
+    state._delta = [-wheelValues(event)[1] / PINCH_WHEEL_RATIO * state.offset[0], 0];
+    V.addTo(state._movement, state._delta);
+    clampStateInternalMovementToBounds(state);
+    this.state.origin = [event.clientX, event.clientY];
+    this.compute(event);
+    this.emit();
+  }
+  wheelEnd() {
+    if (!this.state._active) return;
+    this.state._active = false;
+    this.compute();
+    this.emit();
+  }
+  bind(bindFunction) {
+    const device = this.config.device;
+    if (!!device) {
+      bindFunction(device, "start", this[device + "Start"].bind(this));
+      bindFunction(device, "change", this[device + "Move"].bind(this));
+      bindFunction(device, "end", this[device + "End"].bind(this));
+      bindFunction(device, "cancel", this[device + "End"].bind(this));
+      bindFunction("lostPointerCapture", "", this[device + "End"].bind(this));
+    }
+    if (this.config.pinchOnWheel) {
+      bindFunction("wheel", "", this.wheel.bind(this), {
+        passive: false
+      });
+    }
+  }
+}
+const pinchConfigResolver = _objectSpread2$1(_objectSpread2$1({}, commonConfigResolver), {}, {
+  device(_v, _k, {
+    shared,
+    pointer: {
+      touch = false
+    } = {}
+  }) {
+    const sharedConfig = shared;
+    if (sharedConfig.target && !SUPPORT.touch && SUPPORT.gesture) return "gesture";
+    if (SUPPORT.touch && touch) return "touch";
+    if (SUPPORT.touchscreen) {
+      if (SUPPORT.pointer) return "pointer";
+      if (SUPPORT.touch) return "touch";
+    }
+  },
+  bounds(_v, _k, {
+    scaleBounds = {},
+    angleBounds = {}
+  }) {
+    const _scaleBounds = (state) => {
+      const D2 = assignDefault(call$1(scaleBounds, state), {
+        min: -Infinity,
+        max: Infinity
+      });
+      return [D2.min, D2.max];
+    };
+    const _angleBounds = (state) => {
+      const A2 = assignDefault(call$1(angleBounds, state), {
+        min: -Infinity,
+        max: Infinity
+      });
+      return [A2.min, A2.max];
+    };
+    if (typeof scaleBounds !== "function" && typeof angleBounds !== "function") return [_scaleBounds(), _angleBounds()];
+    return (state) => [_scaleBounds(state), _angleBounds(state)];
+  },
+  threshold(value, _k, config2) {
+    this.lockDirection = config2.axis === "lock";
+    const threshold = V.toVector(value, this.lockDirection ? [0.1, 3] : 0);
+    return threshold;
+  },
+  modifierKey(value) {
+    if (value === void 0) return "ctrlKey";
+    return value;
+  },
+  pinchOnWheel(value = true) {
+    return value;
+  }
+});
+class MoveEngine extends CoordinatesEngine {
+  constructor(...args) {
+    super(...args);
+    _defineProperty(this, "ingKey", "moving");
+  }
+  move(event) {
+    if (this.config.mouseOnly && event.pointerType !== "mouse") return;
+    if (!this.state._active) this.moveStart(event);
+    else this.moveChange(event);
+    this.timeoutStore.add("moveEnd", this.moveEnd.bind(this));
+  }
+  moveStart(event) {
+    this.start(event);
+    this.computeValues(pointerValues(event));
+    this.compute(event);
+    this.computeInitial();
+    this.emit();
+  }
+  moveChange(event) {
+    if (!this.state._active) return;
+    const values3 = pointerValues(event);
+    const state = this.state;
+    state._delta = V.sub(values3, state._values);
+    V.addTo(state._movement, state._delta);
+    this.computeValues(values3);
+    this.compute(event);
+    this.emit();
+  }
+  moveEnd(event) {
+    if (!this.state._active) return;
+    this.state._active = false;
+    this.compute(event);
+    this.emit();
+  }
+  bind(bindFunction) {
+    bindFunction("pointer", "change", this.move.bind(this));
+    bindFunction("pointer", "leave", this.moveEnd.bind(this));
+  }
+}
+const moveConfigResolver = _objectSpread2$1(_objectSpread2$1({}, coordinatesConfigResolver), {}, {
+  mouseOnly: (value = true) => value
+});
+class ScrollEngine extends CoordinatesEngine {
+  constructor(...args) {
+    super(...args);
+    _defineProperty(this, "ingKey", "scrolling");
+  }
+  scroll(event) {
+    if (!this.state._active) this.start(event);
+    this.scrollChange(event);
+    this.timeoutStore.add("scrollEnd", this.scrollEnd.bind(this));
+  }
+  scrollChange(event) {
+    if (event.cancelable) event.preventDefault();
+    const state = this.state;
+    const values3 = scrollValues(event);
+    state._delta = V.sub(values3, state._values);
+    V.addTo(state._movement, state._delta);
+    this.computeValues(values3);
+    this.compute(event);
+    this.emit();
+  }
+  scrollEnd() {
+    if (!this.state._active) return;
+    this.state._active = false;
+    this.compute();
+    this.emit();
+  }
+  bind(bindFunction) {
+    bindFunction("scroll", "", this.scroll.bind(this));
+  }
+}
+const scrollConfigResolver = coordinatesConfigResolver;
+class WheelEngine extends CoordinatesEngine {
+  constructor(...args) {
+    super(...args);
+    _defineProperty(this, "ingKey", "wheeling");
+  }
+  wheel(event) {
+    if (!this.state._active) this.start(event);
+    this.wheelChange(event);
+    this.timeoutStore.add("wheelEnd", this.wheelEnd.bind(this));
+  }
+  wheelChange(event) {
+    const state = this.state;
+    state._delta = wheelValues(event);
+    V.addTo(state._movement, state._delta);
+    clampStateInternalMovementToBounds(state);
+    this.compute(event);
+    this.emit();
+  }
+  wheelEnd() {
+    if (!this.state._active) return;
+    this.state._active = false;
+    this.compute();
+    this.emit();
+  }
+  bind(bindFunction) {
+    bindFunction("wheel", "", this.wheel.bind(this));
+  }
+}
+const wheelConfigResolver = coordinatesConfigResolver;
+class HoverEngine extends CoordinatesEngine {
+  constructor(...args) {
+    super(...args);
+    _defineProperty(this, "ingKey", "hovering");
+  }
+  enter(event) {
+    if (this.config.mouseOnly && event.pointerType !== "mouse") return;
+    this.start(event);
+    this.computeValues(pointerValues(event));
+    this.compute(event);
+    this.emit();
+  }
+  leave(event) {
+    if (this.config.mouseOnly && event.pointerType !== "mouse") return;
+    const state = this.state;
+    if (!state._active) return;
+    state._active = false;
+    const values3 = pointerValues(event);
+    state._movement = state._delta = V.sub(values3, state._values);
+    this.computeValues(values3);
+    this.compute(event);
+    state.delta = state.movement;
+    this.emit();
+  }
+  bind(bindFunction) {
+    bindFunction("pointer", "enter", this.enter.bind(this));
+    bindFunction("pointer", "leave", this.leave.bind(this));
+  }
+}
+const hoverConfigResolver = _objectSpread2$1(_objectSpread2$1({}, coordinatesConfigResolver), {}, {
+  mouseOnly: (value = true) => value
+});
+const EngineMap = /* @__PURE__ */ new Map();
+const ConfigResolverMap = /* @__PURE__ */ new Map();
+function registerAction(action) {
+  EngineMap.set(action.key, action.engine);
+  ConfigResolverMap.set(action.key, action.resolver);
+}
+const dragAction = {
+  key: "drag",
+  engine: DragEngine,
+  resolver: dragConfigResolver
+};
+const hoverAction = {
+  key: "hover",
+  engine: HoverEngine,
+  resolver: hoverConfigResolver
+};
+const moveAction = {
+  key: "move",
+  engine: MoveEngine,
+  resolver: moveConfigResolver
+};
+const pinchAction = {
+  key: "pinch",
+  engine: PinchEngine,
+  resolver: pinchConfigResolver
+};
+const scrollAction = {
+  key: "scroll",
+  engine: ScrollEngine,
+  resolver: scrollConfigResolver
+};
+const wheelAction = {
+  key: "wheel",
+  engine: WheelEngine,
+  resolver: wheelConfigResolver
+};
+function _objectWithoutPropertiesLoose(source2, excluded) {
+  if (source2 == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source2);
+  var key, i2;
+  for (i2 = 0; i2 < sourceKeys.length; i2++) {
+    key = sourceKeys[i2];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source2[key];
+  }
+  return target;
+}
+function _objectWithoutProperties$1(source2, excluded) {
+  if (source2 == null) return {};
+  var target = _objectWithoutPropertiesLoose(source2, excluded);
+  var key, i2;
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source2);
+    for (i2 = 0; i2 < sourceSymbolKeys.length; i2++) {
+      key = sourceSymbolKeys[i2];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source2, key)) continue;
+      target[key] = source2[key];
+    }
+  }
+  return target;
+}
+const sharedConfigResolver = {
+  target(value) {
+    if (value) {
+      return () => "current" in value ? value.current : value;
+    }
+    return void 0;
+  },
+  enabled(value = true) {
+    return value;
+  },
+  window(value = SUPPORT.isBrowser ? window : void 0) {
+    return value;
+  },
+  eventOptions({
+    passive: passive2 = true,
+    capture = false
+  } = {}) {
+    return {
+      passive: passive2,
+      capture
+    };
+  },
+  transform(value) {
+    return value;
+  }
+};
+const _excluded$7 = ["target", "eventOptions", "window", "enabled", "transform"];
+function resolveWith(config2 = {}, resolvers) {
+  const result = {};
+  for (const [key, resolver] of Object.entries(resolvers)) {
+    switch (typeof resolver) {
+      case "function":
+        {
+          result[key] = resolver.call(result, config2[key], key, config2);
+        }
+        break;
+      case "object":
+        result[key] = resolveWith(config2[key], resolver);
+        break;
+      case "boolean":
+        if (resolver) result[key] = config2[key];
+        break;
+    }
+  }
+  return result;
+}
+function parse$1(newConfig, gestureKey, _config2 = {}) {
+  const _ref3 = newConfig, {
+    target,
+    eventOptions,
+    window: window2,
+    enabled,
+    transform: transform3
+  } = _ref3, rest = _objectWithoutProperties$1(_ref3, _excluded$7);
+  _config2.shared = resolveWith({
+    target,
+    eventOptions,
+    window: window2,
+    enabled,
+    transform: transform3
+  }, sharedConfigResolver);
+  if (gestureKey) {
+    const resolver = ConfigResolverMap.get(gestureKey);
+    _config2[gestureKey] = resolveWith(_objectSpread2$1({
+      shared: _config2.shared
+    }, rest), resolver);
+  } else {
+    for (const key in rest) {
+      const resolver = ConfigResolverMap.get(key);
+      if (resolver) {
+        _config2[key] = resolveWith(_objectSpread2$1({
+          shared: _config2.shared
+        }, rest[key]), resolver);
+      }
+    }
+  }
+  return _config2;
+}
+class EventStore {
+  constructor(ctrl, gestureKey) {
+    _defineProperty(this, "_listeners", /* @__PURE__ */ new Set());
+    this._ctrl = ctrl;
+    this._gestureKey = gestureKey;
+  }
+  add(element, device, action, handler, options2) {
+    const listeners = this._listeners;
+    const type3 = toDomEventType(device, action);
+    const _options = this._gestureKey ? this._ctrl.config[this._gestureKey].eventOptions : {};
+    const eventOptions = _objectSpread2$1(_objectSpread2$1({}, _options), options2);
+    element.addEventListener(type3, handler, eventOptions);
+    const remove2 = () => {
+      element.removeEventListener(type3, handler, eventOptions);
+      listeners.delete(remove2);
+    };
+    listeners.add(remove2);
+    return remove2;
+  }
+  clean() {
+    this._listeners.forEach((remove2) => remove2());
+    this._listeners.clear();
+  }
+}
+class TimeoutStore {
+  constructor() {
+    _defineProperty(this, "_timeouts", /* @__PURE__ */ new Map());
+  }
+  add(key, callback2, ms = 140, ...args) {
+    this.remove(key);
+    this._timeouts.set(key, window.setTimeout(callback2, ms, ...args));
+  }
+  remove(key) {
+    const timeout = this._timeouts.get(key);
+    if (timeout) window.clearTimeout(timeout);
+  }
+  clean() {
+    this._timeouts.forEach((timeout) => void window.clearTimeout(timeout));
+    this._timeouts.clear();
+  }
+}
+let Controller$1 = class Controller {
+  constructor(handlers) {
+    _defineProperty(this, "gestures", /* @__PURE__ */ new Set());
+    _defineProperty(this, "_targetEventStore", new EventStore(this));
+    _defineProperty(this, "gestureEventStores", {});
+    _defineProperty(this, "gestureTimeoutStores", {});
+    _defineProperty(this, "handlers", {});
+    _defineProperty(this, "config", {});
+    _defineProperty(this, "pointerIds", /* @__PURE__ */ new Set());
+    _defineProperty(this, "touchIds", /* @__PURE__ */ new Set());
+    _defineProperty(this, "state", {
+      shared: {
+        shiftKey: false,
+        metaKey: false,
+        ctrlKey: false,
+        altKey: false
+      }
+    });
+    resolveGestures(this, handlers);
+  }
+  setEventIds(event) {
+    if (isTouch(event)) {
+      this.touchIds = new Set(touchIds(event));
+      return this.touchIds;
+    } else if ("pointerId" in event) {
+      if (event.type === "pointerup" || event.type === "pointercancel") this.pointerIds.delete(event.pointerId);
+      else if (event.type === "pointerdown") this.pointerIds.add(event.pointerId);
+      return this.pointerIds;
+    }
+  }
+  applyHandlers(handlers, nativeHandlers) {
+    this.handlers = handlers;
+    this.nativeHandlers = nativeHandlers;
+  }
+  applyConfig(config2, gestureKey) {
+    this.config = parse$1(config2, gestureKey, this.config);
+  }
+  clean() {
+    this._targetEventStore.clean();
+    for (const key of this.gestures) {
+      this.gestureEventStores[key].clean();
+      this.gestureTimeoutStores[key].clean();
+    }
+  }
+  effect() {
+    if (this.config.shared.target) this.bind();
+    return () => this._targetEventStore.clean();
+  }
+  bind(...args) {
+    const sharedConfig = this.config.shared;
+    const props = {};
+    let target;
+    if (sharedConfig.target) {
+      target = sharedConfig.target();
+      if (!target) return;
+    }
+    if (sharedConfig.enabled) {
+      for (const gestureKey of this.gestures) {
+        const gestureConfig = this.config[gestureKey];
+        const bindFunction = bindToProps(props, gestureConfig.eventOptions, !!target);
+        if (gestureConfig.enabled) {
+          const Engine2 = EngineMap.get(gestureKey);
+          new Engine2(this, args, gestureKey).bind(bindFunction);
+        }
+      }
+      const nativeBindFunction = bindToProps(props, sharedConfig.eventOptions, !!target);
+      for (const eventKey in this.nativeHandlers) {
+        nativeBindFunction(eventKey, "", (event) => this.nativeHandlers[eventKey](_objectSpread2$1(_objectSpread2$1({}, this.state.shared), {}, {
+          event,
+          args
+        })), void 0, true);
+      }
+    }
+    for (const handlerProp in props) {
+      props[handlerProp] = chain(...props[handlerProp]);
+    }
+    if (!target) return props;
+    for (const handlerProp in props) {
+      const {
+        device,
+        capture,
+        passive: passive2
+      } = parseProp(handlerProp);
+      this._targetEventStore.add(target, device, "", props[handlerProp], {
+        capture,
+        passive: passive2
+      });
+    }
+  }
+};
+function setupGesture(ctrl, gestureKey) {
+  ctrl.gestures.add(gestureKey);
+  ctrl.gestureEventStores[gestureKey] = new EventStore(ctrl, gestureKey);
+  ctrl.gestureTimeoutStores[gestureKey] = new TimeoutStore();
+}
+function resolveGestures(ctrl, internalHandlers) {
+  if (internalHandlers.drag) setupGesture(ctrl, "drag");
+  if (internalHandlers.wheel) setupGesture(ctrl, "wheel");
+  if (internalHandlers.scroll) setupGesture(ctrl, "scroll");
+  if (internalHandlers.move) setupGesture(ctrl, "move");
+  if (internalHandlers.pinch) setupGesture(ctrl, "pinch");
+  if (internalHandlers.hover) setupGesture(ctrl, "hover");
+}
+const bindToProps = (props, eventOptions, withPassiveOption) => (device, action, handler, options2 = {}, isNative = false) => {
+  var _options$capture, _options$passive;
+  const capture = (_options$capture = options2.capture) !== null && _options$capture !== void 0 ? _options$capture : eventOptions.capture;
+  const passive2 = (_options$passive = options2.passive) !== null && _options$passive !== void 0 ? _options$passive : eventOptions.passive;
+  let handlerProp = isNative ? device : toHandlerProp(device, action, capture);
+  if (withPassiveOption && passive2) handlerProp += "Passive";
+  props[handlerProp] = props[handlerProp] || [];
+  props[handlerProp].push(handler);
+};
+const RE_NOT_NATIVE = /^on(Drag|Wheel|Scroll|Move|Pinch|Hover)/;
+function sortHandlers(_handlers) {
+  const native = {};
+  const handlers = {};
+  const actions2 = /* @__PURE__ */ new Set();
+  for (let key in _handlers) {
+    if (RE_NOT_NATIVE.test(key)) {
+      actions2.add(RegExp.lastMatch);
+      handlers[key] = _handlers[key];
+    } else {
+      native[key] = _handlers[key];
+    }
+  }
+  return [handlers, native, actions2];
+}
+function registerGesture(actions2, handlers, handlerKey, key, internalHandlers, config2) {
+  if (!actions2.has(handlerKey)) return;
+  if (!EngineMap.has(key)) {
+    return;
+  }
+  const startKey = handlerKey + "Start";
+  const endKey = handlerKey + "End";
+  const fn3 = (state) => {
+    let memo2 = void 0;
+    if (state.first && startKey in handlers) handlers[startKey](state);
+    if (handlerKey in handlers) memo2 = handlers[handlerKey](state);
+    if (state.last && endKey in handlers) handlers[endKey](state);
+    return memo2;
+  };
+  internalHandlers[key] = fn3;
+  config2[key] = config2[key] || {};
+}
+function parseMergedHandlers(mergedHandlers, mergedConfig) {
+  const [handlers, nativeHandlers, actions2] = sortHandlers(mergedHandlers);
+  const internalHandlers = {};
+  registerGesture(actions2, handlers, "onDrag", "drag", internalHandlers, mergedConfig);
+  registerGesture(actions2, handlers, "onWheel", "wheel", internalHandlers, mergedConfig);
+  registerGesture(actions2, handlers, "onScroll", "scroll", internalHandlers, mergedConfig);
+  registerGesture(actions2, handlers, "onPinch", "pinch", internalHandlers, mergedConfig);
+  registerGesture(actions2, handlers, "onMove", "move", internalHandlers, mergedConfig);
+  registerGesture(actions2, handlers, "onHover", "hover", internalHandlers, mergedConfig);
+  return {
+    handlers: internalHandlers,
+    config: mergedConfig,
+    nativeHandlers
+  };
+}
+function useRecognizers(handlers, config2 = {}, gestureKey, nativeHandlers) {
+  const ctrl = React$1.useMemo(() => new Controller$1(handlers), []);
+  ctrl.applyHandlers(handlers, nativeHandlers);
+  ctrl.applyConfig(config2, gestureKey);
+  React$1.useEffect(ctrl.effect.bind(ctrl));
+  React$1.useEffect(() => {
+    return ctrl.clean.bind(ctrl);
+  }, []);
+  if (config2.target === void 0) {
+    return ctrl.bind.bind(ctrl);
+  }
+  return void 0;
+}
+function createUseGesture(actions2) {
+  actions2.forEach(registerAction);
+  return function useGesture2(_handlers, _config2) {
+    const {
+      handlers,
+      nativeHandlers,
+      config: config2
+    } = parseMergedHandlers(_handlers, _config2 || {});
+    return useRecognizers(handlers, config2, void 0, nativeHandlers);
+  };
+}
+function useGesture(handlers, config2) {
+  const hook3 = createUseGesture([dragAction, pinchAction, scrollAction, wheelAction, moveAction, hoverAction]);
+  return hook3(handlers, config2 || {});
+}
+const displayDuration = 1e3;
+const logger2 = getLogger(["stash-tv", "FeedbackOverlay"]);
+const useFeedback = create2((set4, get7) => ({
+  contents: null,
+  fade: true,
+  icon: null,
+  setFeedback: (contents, { hold, fade = true, icon: icon2 } = {}) => {
+    if (get7().displayCountdown) {
+      clearTimeout(get7().displayCountdown);
+    }
+    const displayCountdown = hold || !contents ? void 0 : setTimeout(() => {
+      logger2.debug("Clearing feedback");
+      set4({ contents: null, displayCountdown: void 0, icon: icon2 ?? null });
+    }, displayDuration);
+    if (get7().contents !== contents || get7().displayCountdown !== displayCountdown || get7().fade !== fade) {
+      logger2.debug("Setting feedback{*}", { contents, hold, fade });
+      set4({ contents, displayCountdown, fade, icon: icon2 ?? null });
+    }
+  }
+}));
+const FeedbackOverlay = reactExports.memo(() => {
+  const { uiVisible } = useAppStateStore();
+  const { contents, icon: icon2, fade } = useFeedback();
+  const previousContents = usePrevious(contents);
+  const previousIcon = usePrevious(icon2);
+  const displayedContents = !contents ? previousContents : contents;
+  const displayedIcon = !contents ? previousIcon : icon2;
+  if (!displayedContents || !contents && !fade) return null;
+  return /* @__PURE__ */ React$1.createElement("div", { className: cx("FeedbackOverlay", { "fade-out": !contents && fade, "muted": !uiVisible }) }, /* @__PURE__ */ React$1.createElement("div", { className: "contents-container" }, displayedIcon, displayedContents));
+});
 videojs.registerPlugin("styledBigPlayButton", styledBigPlayButton);
 const noAnimateDurationThreshold = 30;
 const mountCount = /* @__PURE__ */ new Map();
@@ -187758,8 +189628,7 @@ const MediaSlide = (props) => {
     scenePreviewOnly,
     markerPreviewOnly,
     showDevOptions,
-    debugMode,
-    enableRenderDebugging,
+    showDebuggingInfo,
     autoPlay: globalAutoPlay,
     startPosition,
     endPosition,
@@ -187772,21 +189641,15 @@ const MediaSlide = (props) => {
   } = useAppStateStore();
   const logger3 = getLogger(["stash-tv", "MediaSlide", props.mediaItem.id]);
   reactExports.useMemo(() => {
-    if (!enableRenderDebugging) return;
+    if (!showDebuggingInfo.includes("render-debugging")) return;
     const timesMounted = mountCount.get(props.mediaItem.id) || 0;
-    console.log("🔜 MediaSlide mounting:", props.mediaItem.id, ...timesMounted ? [`(count: ${timesMounted})`] : []);
+    console.log(`🔜 MediaSlide (media id ${props.mediaItem.id}) mounting${timesMounted ? ` (count: ${timesMounted})` : ""}`);
     mountCount.set(props.mediaItem.id, timesMounted + 1);
   }, []);
   reactExports.useEffect(() => () => {
-    enableRenderDebugging && console.log("🔚 MediaSlide unmount:", props.mediaItem.id);
+    showDebuggingInfo.includes("render-debugging") && console.log(`🔚 MediaSlide (media id ${props.mediaItem.id}) unmounting`);
   }, []);
   const scene2 = props.mediaItem.entityType === "scene" ? props.mediaItem.entity : props.mediaItem.entity.scene;
-  reactExports.useEffect(() => {
-    debugMode && console.log(`Mounted MediaSlide index=${props.index} sceneId=${scene2.id}`);
-    return () => {
-      debugMode && console.log(`Unmounted MediaSlide index=${props.index} sceneId=${scene2.id}`);
-    };
-  }, []);
   const getMediaItemDuration = () => props.mediaItem.entityType === "marker" ? props.mediaItem.entity.duration : props.mediaItem.entity.files[0]?.duration;
   const videojsPlayerRef = useGetterRef(
     (player) => player?.isDisposed() ? null : player,
@@ -187795,6 +189658,7 @@ const MediaSlide = (props) => {
   );
   const videoRef = reactExports.useRef(null);
   const [metadataLoaded, setMetadataLoaded] = reactExports.useState(false);
+  const [playerReady, setPlayerReady] = reactExports.useState(false);
   const [loadingDeferred, setLoadingDeferred] = reactExports.useState(props.currentlyScrolling);
   reactExports.useEffect(() => {
     if (loadingDeferred) {
@@ -187805,11 +189669,11 @@ const MediaSlide = (props) => {
   function handleVideojsPlayerReady(player) {
     videojsPlayerRef.current = player;
     player.on("volumechange", () => {
-      debugMode && console.log(`Video.js player volumechange event - player ${player.muted() ? "" : "not"} muted`);
+      logger3.info(`Video.js player volumechange event - player ${player.muted() ? "" : "not"} muted`);
       setAppSetting("audioMuted", player.muted());
     });
     if (audioMuted !== player.muted()) {
-      debugMode && console.log(`Video.js player loaded - player ${player.muted() ? "" : "not"} muted`);
+      logger3.info(`Video.js player loaded - volume player ${player.muted() ? "" : "not"} muted`);
       setAppSetting("audioMuted", player.muted());
     }
     player.getChild("ControlBar")?.progressControl?.el().addEventListener("pointermove", (event) => {
@@ -187819,6 +189683,7 @@ const MediaSlide = (props) => {
     player.one("loadedmetadata", () => {
       setMetadataLoaded(true);
     });
+    setPlayerReady(true);
   }
   const currentMediaItemPendingChangeRef = reactExports.useRef();
   reactExports.useEffect(() => {
@@ -187836,16 +189701,17 @@ const MediaSlide = (props) => {
     }
     logger3.debug(`Going to ${direction} item from index ${props.index} {*}`, { totalPlayedLength, noAnimateDurationThreshold, isCurrentVideo });
     const shouldSkipAnimation = totalPlayedLength < noAnimateDurationThreshold;
+    seek(null);
     props.changeItemHandler(
       (currentIndex) => Math.max(currentIndex + (direction === "next" ? 1 : -1), 0),
       { ...shouldSkipAnimation ? { behavior: "instant" } : {} }
     );
-  }, [debugMode, noAnimateDurationThreshold, props.changeItemHandler, props.index, isCurrentVideo]);
+  }, [noAnimateDurationThreshold, props.changeItemHandler, props.index, isCurrentVideo]);
   reactExports.useEffect(() => {
-    if (!showDevOptions || !isCurrentVideo || !videojsPlayerRef.current) return;
-    window.tvCurrentPlayer = videojsPlayerRef.current;
-    window.tvCurrentMediaItem = props.mediaItem;
-  }, [isCurrentVideo, showDevOptions]);
+    if (!isCurrentVideo || !videojsPlayerRef.current) return;
+    window.tvCurrentPlayer = showDevOptions ? videojsPlayerRef.current : void 0;
+    window.tvCurrentMediaItem = showDevOptions ? props.mediaItem : void 0;
+  }, [isCurrentVideo, showDevOptions, playerReady]);
   const firstDurationChangeRef = reactExports.useRef(true);
   reactExports.useEffect(() => {
     if (!videojsPlayerRef.current) return;
@@ -187861,6 +189727,7 @@ const MediaSlide = (props) => {
       videojsPlayerRef.current?.one("loadstart", () => {
         videojsPlayerRef.current?.play();
       });
+      seek(null);
     };
     videojsPlayerRef.current?.on("ended", handleEnded);
     return () => {
@@ -187876,166 +189743,6 @@ const MediaSlide = (props) => {
       videojsPlayerRef.current?.pause();
     }
   }, [isCurrentVideo, autoplay]);
-  const handlePointerUp = reactExports.useCallback((event) => {
-    const { target: videoElm } = event;
-    if (!(videoElm instanceof HTMLVideoElement)) return;
-    const videoElmWidth = videoElm.clientWidth;
-    if (debugMode) console.log(`Pointer up at X=${event.clientX} (video width: ${videoElmWidth})`, videoElm);
-    if (event.clientX < videoElmWidth / 3) {
-      seekBackwards();
-    } else if (event.clientX < videoElmWidth / 3 * 2) {
-      if (videojsPlayerRef.current?.paused()) {
-        videojsPlayerRef.current?.play();
-      } else {
-        videojsPlayerRef.current?.pause();
-      }
-    } else {
-      seekForwards();
-    }
-  }, [debugMode]);
-  reactExports.useEffect(() => {
-    if (!isCurrentVideo) return;
-    const handleKeyDown = (e2) => {
-      const seekBackwardsKey = forceLandscape ? "ArrowDown" : "ArrowLeft";
-      const seekForwardsKey = forceLandscape ? "ArrowUp" : "ArrowRight";
-      debugMode && (e2.key === seekBackwardsKey || e2.key === seekForwardsKey) && console.log(`MediaSlide ${props.index} Keydown`, e2.key, { seekBackwardsKey, seekForwardsKey });
-      if (e2.key === seekBackwardsKey) {
-        seekBackwards();
-        e2.preventDefault();
-        e2.stopPropagation();
-      } else if (e2.key === seekForwardsKey) {
-        seekForwards();
-        e2.preventDefault();
-        e2.stopPropagation();
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown, { capture: true });
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown, { capture: true });
-    };
-  }, [forceLandscape, isCurrentVideo]);
-  reactExports.useEffect(() => {
-    if (!showGuideOverlay) return;
-    videojsPlayerRef.current?.pause();
-  }, [showGuideOverlay]);
-  function getSkipTime(direction) {
-    const duration5 = videojsPlayerRef.current?.duration();
-    const currentTime = videojsPlayerRef.current?.currentTime();
-    if (!duration5 || currentTime === void 0) {
-      return null;
-    }
-    let skipPercent;
-    if (duration5 > 1 * 60 * 60) {
-      skipPercent = 0.05;
-    } else if (duration5 > 10 * 60) {
-      skipPercent = 0.1;
-    } else if (duration5 > 1 * 60) {
-      skipPercent = 0.2;
-    } else {
-      skipPercent = 0.33;
-    }
-    let skipTimeAmount = duration5 * skipPercent;
-    const newCurrentTime = currentTime + (direction === "forwards" ? skipTimeAmount : -skipTimeAmount);
-    const markerSearchStartTime = direction === "forwards" ? currentTime : newCurrentTime - skipTimeAmount * 0.5;
-    const markerSearchEndTime = direction === "forwards" ? newCurrentTime + skipTimeAmount * 0.5 : currentTime - 2;
-    const markersToSearch = direction === "forwards" ? scene2.scene_markers : scene2.scene_markers.slice().reverse();
-    const marker = markersToSearch.find(
-      (marker2) => marker2.seconds >= markerSearchStartTime && marker2.seconds <= markerSearchEndTime
-    );
-    if (marker) {
-      debugMode && console.log(`Skipping to marker ${marker.title ?? marker.primary_tag.name} at ${marker.seconds}s`, { marker, markersToSearch });
-      skipTimeAmount = Math.abs(marker.seconds - currentTime);
-    }
-    return skipTimeAmount;
-  }
-  function seekForwards() {
-    if (!videojsPlayerRef.current) return null;
-    const duration5 = videojsPlayerRef.current?.duration();
-    if (duration5 === void 0) return;
-    const skipAmount = getSkipTime("forwards");
-    if (skipAmount === null || typeof duration5 !== "number") {
-      return null;
-    }
-    const currentTime = videojsPlayerRef.current?.currentTime();
-    const nextSkipAheadTime = currentTime + skipAmount;
-    debugMode && console.log("Seeking forwards", { skipAmount, duration: duration5, nextSkipAheadTime });
-    if (nextSkipAheadTime > duration5) {
-      goToItem("next");
-      return;
-    }
-    if (endTimestamp !== void 0 && currentTime <= endTimestamp && nextSkipAheadTime >= endTimestamp) {
-      videojsPlayerRef.current?.pause();
-      goToItem("next");
-      return;
-    }
-    videojsPlayerRef.current?.currentTime(nextSkipAheadTime);
-    setCurrentlyPlayingMarkers(findCurrentlyPlayingMarkers(nextSkipAheadTime));
-    videojsPlayerRef.current?.play();
-  }
-  function seekBackwards() {
-    if (!videojsPlayerRef.current) return null;
-    const duration5 = videojsPlayerRef.current?.duration();
-    const skipAmount = getSkipTime("backwards");
-    if (skipAmount === null || typeof duration5 !== "number") {
-      return null;
-    }
-    let nextSkipBackTime = videojsPlayerRef.current?.currentTime() - skipAmount;
-    debugMode && console.log("Seeking backwards", { skipAmount, duration: duration5, nextSkipBackTime });
-    if (nextSkipBackTime <= 0) {
-      if (props.index === 0) {
-        nextSkipBackTime = 0;
-      } else {
-        goToItem("previous");
-        return;
-      }
-    }
-    videojsPlayerRef.current?.currentTime(nextSkipBackTime);
-    setCurrentlyPlayingMarkers(findCurrentlyPlayingMarkers(nextSkipBackTime));
-    videojsPlayerRef.current?.play();
-  }
-  const updatePlayableClass = reactExports.useCallback(() => {
-    const className = "playable";
-    let timeoutId;
-    if (globalAutoPlay) {
-      timeoutId = setTimeout(() => {
-        if (isCurrentVideo) {
-          videojsPlayerRef.current?.addClass(className);
-        } else {
-          videojsPlayerRef.current?.removeClass(className);
-        }
-      }, 100);
-    } else {
-      videojsPlayerRef.current?.addClass(className);
-    }
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId);
-    };
-  }, [isCurrentVideo, globalAutoPlay]);
-  reactExports.useEffect(updatePlayableClass, [updatePlayableClass]);
-  const itemRef = reactExports.useRef(null);
-  const handleOnEnded = () => {
-    if (!looping && isCurrentVideo) goToItem("next");
-  };
-  const [sceneInfoOpen, setSceneInfoOpen] = reactExports.useState(false);
-  const sceneInfoPanelRef = reactExports.useRef(null);
-  reactExports.useEffect(() => {
-    if (!isCurrentVideo) setSceneInfoOpen(false);
-  }, [isCurrentVideo]);
-  reactExports.useEffect(() => {
-    if (videoRef.current && videoRef.current.textTracks.length)
-      videoRef.current.textTracks[0].mode = showSubtitles ? "showing" : "disabled";
-  }, [showSubtitles]);
-  function getRandomPointInScene(scene22) {
-    if (scene22.scene_markers.length) {
-      const randomMarker = scene22.scene_markers[Math.floor(Math.random() * scene22.scene_markers.length)];
-      return randomMarker.seconds;
-    }
-    const duration5 = scene22.files?.[0]?.duration || 0;
-    const min2 = duration5 * 0.05;
-    const max2 = duration5 * 0.95;
-    const randomPoint = Math.random() * (max2 - min2) + min2;
-    return Math.floor(randomPoint);
-  }
   const initialTimestamp = reactExports.useMemo(() => {
     if (props.mediaItem.entityType === "marker" || startPosition === "beginning") {
       return 0;
@@ -188066,9 +189773,262 @@ const MediaSlide = (props) => {
         )
       );
       return (initialTimestamp || 0) + Math.floor(Math.random() * (effectiveMaxPlayLength - effectiveMinPlayLength + 1)) + effectiveMinPlayLength;
+    } else if (endPosition === "video-end") {
+      return looping ? duration5 : void 0;
+    } else {
+      return void 0;
     }
-    return void 0;
-  }, [endPosition, initialTimestamp, minPlayLength, maxPlayLength, playLength, getMediaItemDuration(), scenePreviewOnly]);
+  }, [endPosition, initialTimestamp, minPlayLength, maxPlayLength, playLength, getMediaItemDuration(), scenePreviewOnly, looping]);
+  reactExports.useEffect(() => {
+    if (!showGuideOverlay) return;
+    videojsPlayerRef.current?.pause();
+  }, [showGuideOverlay]);
+  const getSkipTime = reactExports.useCallback((direction) => {
+    const duration5 = videojsPlayerRef.current?.duration();
+    const currentTime = videojsPlayerRef.current?.currentTime();
+    if (!duration5 || currentTime === void 0) {
+      return null;
+    }
+    let skipPercent;
+    if (duration5 > 1 * 60 * 60) {
+      skipPercent = 0.05;
+    } else if (duration5 > 10 * 60) {
+      skipPercent = 0.1;
+    } else if (duration5 > 1 * 60) {
+      skipPercent = 0.2;
+    } else {
+      skipPercent = 0.33;
+    }
+    let skipTimeAmount = duration5 * skipPercent;
+    const newCurrentTime = currentTime + (direction === "forwards" ? skipTimeAmount : -skipTimeAmount);
+    const markerSearchStartTime = direction === "forwards" ? currentTime : newCurrentTime - skipTimeAmount * 0.5;
+    const markerSearchEndTime = direction === "forwards" ? newCurrentTime + skipTimeAmount * 0.5 : currentTime - 2;
+    const markersToSearch = direction === "forwards" ? scene2.scene_markers : scene2.scene_markers.slice().reverse();
+    const marker = markersToSearch.find(
+      (marker2) => marker2.seconds >= markerSearchStartTime && marker2.seconds <= markerSearchEndTime
+    );
+    if (marker) {
+      logger3.debug(`Skipping to marker ${marker.title ?? marker.primary_tag.name} at ${marker.seconds}s{*}`, { marker, markersToSearch });
+      skipTimeAmount = Math.abs(marker.seconds - currentTime);
+    }
+    return skipTimeAmount;
+  }, [scene2.scene_markers]);
+  const seekForwards = reactExports.useCallback(() => {
+    if (!videojsPlayerRef.current) return null;
+    const duration5 = videojsPlayerRef.current?.duration();
+    if (duration5 === void 0) return;
+    const skipAmount = getSkipTime("forwards");
+    if (skipAmount === null || typeof duration5 !== "number") {
+      return null;
+    }
+    const currentTime = videojsPlayerRef.current?.currentTime();
+    let nextSkipAheadTime = currentTime + skipAmount;
+    logger3.info("Seeking forwards{*}", { skipAmount, duration: duration5, nextSkipAheadTime });
+    if (
+      // Go to next item if the next jump goes to or past the end of the entire video
+      nextSkipAheadTime >= duration5 || // Go to next item if we'd be jumping over the end timestamp
+      endTimestamp !== void 0 && currentTime <= endTimestamp && nextSkipAheadTime >= endTimestamp
+    ) {
+      if (looping) {
+        nextSkipAheadTime = initialTimestamp || 0;
+      } else {
+        videojsPlayerRef.current?.trigger("ended");
+        return;
+      }
+    }
+    videojsPlayerRef.current?.currentTime(nextSkipAheadTime);
+    setCurrentlyPlayingMarkers(findCurrentlyPlayingMarkers(nextSkipAheadTime));
+    videojsPlayerRef.current?.play();
+  }, [getSkipTime, initialTimestamp, endTimestamp, looping]);
+  const seekBackwards = reactExports.useCallback(() => {
+    if (!videojsPlayerRef.current) return null;
+    const duration5 = videojsPlayerRef.current?.duration();
+    const skipAmount = getSkipTime("backwards");
+    if (skipAmount === null || typeof duration5 !== "number") {
+      return null;
+    }
+    const currentTime = videojsPlayerRef.current?.currentTime();
+    let nextSkipBackTime = currentTime - skipAmount;
+    logger3.info("Seeking backwards{*}", { skipAmount, duration: duration5, nextSkipBackTime });
+    if (looping && initialTimestamp !== void 0 && currentTime >= initialTimestamp && nextSkipBackTime < initialTimestamp) {
+      nextSkipBackTime = initialTimestamp || 0;
+    } else if (nextSkipBackTime < 0) {
+      if (looping || currentTime > 2) {
+        nextSkipBackTime = 0;
+      } else if (props.index === 0) {
+        nextSkipBackTime = 0;
+      } else {
+        goToItem("previous");
+        return;
+      }
+    }
+    videojsPlayerRef.current?.currentTime(nextSkipBackTime);
+    setCurrentlyPlayingMarkers(findCurrentlyPlayingMarkers(nextSkipBackTime));
+    videojsPlayerRef.current?.play();
+  }, [getSkipTime, props.index, goToItem, looping]);
+  const { textSelectionWorkaroundElm, seek, toDiscreteSeekSpeed } = useGestureControls({
+    videoRef,
+    videojsPlayerRef,
+    seekForwards,
+    seekBackwards,
+    logger: logger3,
+    looping,
+    initialTimestamp,
+    endTimestamp
+  });
+  reactExports.useEffect(() => {
+    if (!isCurrentVideo) return;
+    let keyHoldTimer = null;
+    let seekSpeed = null;
+    const seekBackwardsKey = forceLandscape ? "ArrowDown" : "ArrowLeft";
+    const seekForwardsKey = forceLandscape ? "ArrowUp" : "ArrowRight";
+    const seekSpeedUpKey = forceLandscape ? "ArrowLeft" : "ArrowUp";
+    const seekSlowDownKey = forceLandscape ? "ArrowRight" : "ArrowDown";
+    const handleKeyDown = (e2) => {
+      if (e2.key === seekBackwardsKey || e2.key === seekForwardsKey) {
+        if (keyHoldTimer) {
+          clearInterval(keyHoldTimer);
+          keyHoldTimer = null;
+        }
+      }
+      if (e2.key === seekBackwardsKey) {
+        if (!e2.repeat) {
+          keyHoldTimer = setTimeout(() => {
+            keyHoldTimer = null;
+            seekSpeed = -2;
+            seek(seekSpeed);
+          }, 300);
+        }
+        e2.preventDefault();
+        e2.stopPropagation();
+      } else if (e2.key === seekForwardsKey) {
+        if (!e2.repeat) {
+          keyHoldTimer = setTimeout(() => {
+            keyHoldTimer = null;
+            seekSpeed = 2;
+            seek(seekSpeed);
+          }, 300);
+        }
+        e2.preventDefault();
+        e2.stopPropagation();
+      } else if (e2.key === seekSpeedUpKey && seekSpeed !== null) {
+        if (e2.repeat) {
+          seekSpeed += 1;
+        } else {
+          seekSpeed = toDiscreteSeekSpeed(seekSpeed).faster;
+        }
+        seek(seekSpeed);
+        e2.preventDefault();
+        e2.stopPropagation();
+      } else if (e2.key === seekSlowDownKey && seekSpeed !== null) {
+        if (e2.repeat) {
+          seekSpeed -= 1;
+        } else {
+          seekSpeed = toDiscreteSeekSpeed(seekSpeed).slower;
+        }
+        seek(seekSpeed);
+        e2.preventDefault();
+        e2.stopPropagation();
+      } else if (e2.key === " " || e2.key === "Spacebar") {
+        videojsPlayerRef.current?.paused() ? videojsPlayerRef.current?.play() : videojsPlayerRef.current?.pause();
+        e2.preventDefault();
+        e2.stopPropagation();
+      }
+    };
+    const handleKeyUp = (e2) => {
+      if (!keyHoldTimer && (e2.key === seekBackwardsKey || e2.key === seekForwardsKey)) {
+        seekSpeed = null;
+        seek(seekSpeed);
+        e2.preventDefault();
+        e2.stopPropagation();
+      } else if (e2.key === seekBackwardsKey) {
+        if (keyHoldTimer) {
+          clearInterval(keyHoldTimer);
+          keyHoldTimer = null;
+        }
+        seekBackwards();
+        e2.preventDefault();
+        e2.stopPropagation();
+      } else if (e2.key === seekForwardsKey) {
+        if (keyHoldTimer) {
+          clearInterval(keyHoldTimer);
+          keyHoldTimer = null;
+        }
+        seekForwards();
+        e2.preventDefault();
+        e2.stopPropagation();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown, { capture: true });
+    window.addEventListener("keyup", handleKeyUp, { capture: true });
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown, { capture: true });
+      window.removeEventListener("keyup", handleKeyUp, { capture: true });
+    };
+  }, [forceLandscape, isCurrentVideo, seekBackwards, seekForwards, props.index]);
+  const updatePlayableClass = reactExports.useCallback(() => {
+    const className = "playable";
+    let timeoutId;
+    if (globalAutoPlay) {
+      timeoutId = setTimeout(() => {
+        if (isCurrentVideo) {
+          videojsPlayerRef.current?.addClass(className);
+        } else {
+          videojsPlayerRef.current?.removeClass(className);
+        }
+      }, 100);
+    } else {
+      videojsPlayerRef.current?.addClass(className);
+    }
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [isCurrentVideo, globalAutoPlay]);
+  reactExports.useEffect(updatePlayableClass, [updatePlayableClass]);
+  const itemRef = reactExports.useRef(null);
+  const handleOnEnded = () => {
+    if (looping) return;
+    videojsPlayerRef.current?.pause();
+    if (isCurrentVideo) {
+      videojsPlayerRef.current?.currentTime(initialTimestamp || 0);
+      goToItem("next");
+    }
+  };
+  const [sceneInfoOpen, setSceneInfoOpen] = reactExports.useState(false);
+  const sceneInfoPanelRef = reactExports.useRef(null);
+  reactExports.useEffect(() => {
+    if (!isCurrentVideo) setSceneInfoOpen(false);
+  }, [isCurrentVideo]);
+  reactExports.useEffect(() => {
+    if (videoRef.current && videoRef.current.textTracks.length)
+      videoRef.current.textTracks[0].mode = showSubtitles ? "showing" : "disabled";
+  }, [showSubtitles]);
+  function getRandomPointInScene(scene22) {
+    if (scene22.scene_markers.length) {
+      const randomMarker = scene22.scene_markers[Math.floor(Math.random() * scene22.scene_markers.length)];
+      return randomMarker.seconds;
+    }
+    const duration5 = scene22.files?.[0]?.duration || 0;
+    const min2 = duration5 * 0.05;
+    const max2 = duration5 * 0.95;
+    const randomPoint = Math.random() * (max2 - min2) + min2;
+    return Math.floor(randomPoint);
+  }
+  reactExports.useEffect(() => {
+    if (!playerReady) return;
+    let options2 = {
+      loopIfBeforeStart: true,
+      loopIfAfterEnd: true,
+      pauseAfterLooping: false,
+      pauseBeforeLooping: false,
+      ...videojsPlayerRef.current?.abLoopPlugin.getOptions(),
+      enabled: looping,
+      start: initialTimestamp ?? false,
+      end: endTimestamp ?? false
+    };
+    logger3.debug(`Setting AB loop plugin options{*}`, { options: options2 });
+    videojsPlayerRef.current?.abLoopPlugin.setOptions(options2);
+  }, [looping, playerReady, initialTimestamp, endTimestamp]);
   const findCurrentlyPlayingMarkers = (currentTime) => {
     if (props.mediaItem.entityType === "marker") {
       return [props.mediaItem.entity];
@@ -188119,18 +190079,15 @@ const MediaSlide = (props) => {
   const handleOnTimeUpdate = reactExports.useCallback(() => {
     const currentTime = videojsPlayerRef.current?.currentTime();
     if (currentTime === void 0) return;
-    if (endTimestamp !== void 0 && currentTime >= endTimestamp && currentTime <= endTimestamp + 3) {
+    if (endTimestamp !== void 0 && currentTime >= endTimestamp && currentTime <= endTimestamp + 3 && !videojsPlayerRef.current?.scrubbing()) {
       logger3.debug(`End timestamp reached at ${currentTime}s (end: ${endTimestamp}s)`);
-      videojsPlayerRef.current?.one("ended", () => {
-        videojsPlayerRef.current?.pause();
-      });
       videojsPlayerRef.current?.trigger("ended");
     }
     const markers2 = findCurrentlyPlayingMarkers(currentTime);
     if (markers2.length === currentlyPlayingMarkers.length && markers2.every((marker) => currentlyPlayingMarkers.includes(marker))) return;
     logger3.debug(`Marker playback update{*}`, { currentTime, markers: markers2 });
     setCurrentlyPlayingMarkers(markers2);
-  }, [endTimestamp, currentlyPlayingMarkers, debugMode, goToItem]);
+  }, [endTimestamp, currentlyPlayingMarkers, goToItem]);
   const videoJsControlBarElm = videojsPlayerRef.current?.getChild("ControlBar")?.el();
   const videoJsProgressControlElm = videojsPlayerRef.current?.getChild("ControlBar")?.getChild("ProgressControl")?.el();
   return /* @__PURE__ */ React$1.createElement(
@@ -188143,7 +190100,7 @@ const MediaSlide = (props) => {
       ref: itemRef,
       style: props.style
     },
-    /* @__PURE__ */ React$1.createElement(CrtEffect, { enabled: crtEffect }, debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, props.index, " - ", scene2.id, " ", loadingDeferred ? "(Loading deferred)" : "", " ", props.mediaItem.entityType === "marker" ? `(Marker: ${props.mediaItem.entity.primary_tag.name})` : ""), debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "loadingDeferredDebugBackground" }), loadingDeferred && scene2.paths.screenshot && /* @__PURE__ */ React$1.createElement("img", { className: "loadingDeferredPreview", src: scene2.paths.screenshot }), !loadingDeferred && /* @__PURE__ */ React$1.createElement(
+    /* @__PURE__ */ React$1.createElement(CrtEffect, { enabled: crtEffect }, showDebuggingInfo.includes("onscreen-info") && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, props.index, " - ", scene2.id, " ", loadingDeferred ? "(Loading deferred)" : "", " ", props.mediaItem.entityType === "marker" ? `(Marker: ${props.mediaItem.entity.primary_tag.name})` : ""), /* @__PURE__ */ React$1.createElement("div", { className: "loadingDeferredDebugBackground" })), loadingDeferred && scene2.paths.screenshot && /* @__PURE__ */ React$1.createElement("img", { className: "loadingDeferredPreview", src: scene2.paths.screenshot }), !loadingDeferred && /* @__PURE__ */ React$1.createElement(
       ScenePlayer,
       {
         id: `scene-player-${props.mediaItem.id}`,
@@ -188170,7 +190127,6 @@ const MediaSlide = (props) => {
         },
         refVideo: videoRef,
         onEnded: handleOnEnded,
-        onPointerUp: handlePointerUp,
         onVideojsPlayerReady: handleVideojsPlayerReady,
         trackActivity: !scenePreviewOnly && props.mediaItem.entityType !== "marker",
         scrubberThumbnail: !scenePreviewOnly && props.mediaItem.entityType !== "marker",
@@ -188186,33 +190142,514 @@ const MediaSlide = (props) => {
                 // true so we handle that ourselves in an onEnded handler
                 restart_beginning: true
               }
-            } : {}
+            } : {},
+            abLoopPlugin: {
+              createButtons: false
+            }
           }
         }
       }
     ), currentlyPlayingMarkers.length > 0 && videoJsControlBarElm && reactDomExports.createPortal(
       /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "vjs-control currently-playing-marker" }, currentlyPlayingMarkersDisplayName), /* @__PURE__ */ React$1.createElement("div", { className: "vjs-custom-control-spacer vjs-spacer" }, " ")),
       videoJsControlBarElm
+    ), videojsPlayerRef.current?.el() && reactDomExports.createPortal(
+      textSelectionWorkaroundElm,
+      videojsPlayerRef.current?.el()
+    ), looping && initialTimestamp !== void 0 && videoJsProgressControlElm && reactDomExports.createPortal(
+      /* @__PURE__ */ React$1.createElement(ClipTimestamp, { type: "start", progressPercentage: initialTimestamp / (videojsPlayerRef.current?.duration() || 1) * 100 }),
+      videoJsProgressControlElm
     ), endTimestamp !== void 0 && videoJsProgressControlElm && reactDomExports.createPortal(
-      /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
-        "div",
-        {
-          className: "vjs-control end-timestamp",
-          style: { left: `${endTimestamp / (videojsPlayerRef.current?.duration() || 1) * 100}%` }
-        }
-      )),
+      /* @__PURE__ */ React$1.createElement(ClipTimestamp, { type: "end", progressPercentage: endTimestamp / (videojsPlayerRef.current?.duration() || 1) * 100 }),
       videoJsProgressControlElm
     ), /* @__PURE__ */ React$1.createElement(
       SceneInfo,
       {
         ref: sceneInfoPanelRef,
         scene: scene2,
-        className: cx({ active: sceneInfoOpen })
+        className: cx({ active: sceneInfoOpen }),
+        onExternalLinkClick: () => videojsPlayerRef.current?.pause()
       }
     ), /* @__PURE__ */ React$1.createElement(ActionButtons, { scene: scene2, sceneInfoOpen, setSceneInfoOpen }))
   );
 };
 const MediaSlide$1 = React$1.memo(MediaSlide);
+function useGestureControls({ videoRef, videojsPlayerRef, seekForwards, seekBackwards, logger: logger3, looping, initialTimestamp, endTimestamp }) {
+  logger3 = logger3.getChild("useGestureControls");
+  const { setFeedback } = useFeedback();
+  const waitForClickTimeoutRef = reactExports.useRef(void 0);
+  const gestureStateRef = reactExports.useRef(null);
+  const seekStateRef = reactExports.useRef(null);
+  function showThumbnail() {
+    const vttThumbnails = videojsPlayerRef.current?.vttThumbnails();
+    if (!vttThumbnails) return;
+    videojsPlayerRef.current?.userActive(true);
+    vttThumbnails.showThumbnailHolder();
+    const duration5 = videojsPlayerRef.current?.duration();
+    const currentTime = videojsPlayerRef.current?.currentTime();
+    const progressBarWidth = videojsPlayerRef.current?.getChild("ControlBar")?.getChild("ProgressControl")?.el().clientWidth;
+    if (!videojsPlayerRef.current || !duration5 || currentTime === void 0 || !progressBarWidth) return;
+    vttThumbnails.updateThumbnailStyle(
+      currentTime / duration5,
+      progressBarWidth
+    );
+  }
+  function hideThumbnail() {
+    const vttThumbnails = videojsPlayerRef.current?.vttThumbnails();
+    if (!vttThumbnails) return;
+    vttThumbnails.hideThumbnailHolder();
+  }
+  function setupThumbnailUpdate() {
+    if (!seekStateRef.current) return;
+    seekStateRef.current.thumbnailTimeUpdateHandler = showThumbnail;
+    videojsPlayerRef.current?.on("timeupdate", showThumbnail);
+    videojsPlayerRef.current?.on("seeking", showThumbnail);
+    videojsPlayerRef.current?.on("progress", showThumbnail);
+    videojsPlayerRef.current?.on("durationchange", showThumbnail);
+  }
+  function teardownThumbnailUpdate() {
+    if (!seekStateRef.current?.thumbnailTimeUpdateHandler) return;
+    videojsPlayerRef.current?.off("timeupdate", seekStateRef.current.thumbnailTimeUpdateHandler);
+    videojsPlayerRef.current?.off("seeking", seekStateRef.current.thumbnailTimeUpdateHandler);
+    videojsPlayerRef.current?.off("progress", seekStateRef.current.thumbnailTimeUpdateHandler);
+    videojsPlayerRef.current?.off("durationchange", seekStateRef.current.thumbnailTimeUpdateHandler);
+    seekStateRef.current.thumbnailTimeUpdateHandler = null;
+    hideThumbnail();
+  }
+  let textSelectionWorkaroundElmRef = null;
+  let textSelectionWorkaroundElm = null;
+  if (UAParser().os.name?.includes("iOS")) {
+    textSelectionWorkaroundElmRef = reactExports.useRef(null);
+    textSelectionWorkaroundElm = /* @__PURE__ */ React$1.createElement(
+      "div",
+      {
+        ref: textSelectionWorkaroundElmRef,
+        className: "text-selection-on-gesture-workaround"
+      }
+    );
+  }
+  const gestureElmRef = textSelectionWorkaroundElmRef ?? videoRef;
+  const blockOutsideMuteChangeFunction = reactExports.useRef(null);
+  const lockedMuteState = reactExports.useRef(null);
+  function mute(mute2, { hold } = {}) {
+    const muteLogger = logger3.getChild("mute");
+    if (!videoRef.current) return;
+    if (hold) {
+      lockedMuteState.current = mute2;
+    }
+    if (hold && !blockOutsideMuteChangeFunction.current) {
+      muteLogger.debug("Adding mute change block");
+      const handler = (event) => {
+        if (videoRef.current && videoRef.current.muted !== lockedMuteState.current) {
+          muteLogger.debug("Mute change blocked");
+        }
+        event.stopPropagation();
+      };
+      videoRef.current?.addEventListener("volumechange", handler, { capture: true });
+      blockOutsideMuteChangeFunction.current = handler;
+    }
+    if (videoRef.current.muted !== mute2) {
+      muteLogger.debug(`${mute2 ? "Muting" : "Unmuting"} media`);
+      videoRef.current.muted = mute2;
+    }
+    if (!hold && blockOutsideMuteChangeFunction.current) {
+      muteLogger.debug("Removing mute change block");
+      videoRef.current?.removeEventListener("volumechange", blockOutsideMuteChangeFunction.current, { capture: true });
+      blockOutsideMuteChangeFunction.current = null;
+    }
+  }
+  const blockOutsidePausedChange = reactExports.useRef(null);
+  const lockedPausedState = reactExports.useRef(null);
+  function pause(pause2, { hold } = {}) {
+    const pauseLogger = logger3.getChild("pause");
+    if (!videoRef.current) return;
+    if (hold) {
+      lockedPausedState.current = pause2;
+    }
+    if (hold && !blockOutsidePausedChange.current) {
+      const handler = (event) => {
+        if (videoRef.current && videoRef.current.paused !== lockedPausedState.current) {
+          pauseLogger.debug("Pause change blocked");
+          if (lockedPausedState.current) {
+            videoRef.current.pause();
+          } else {
+            videoRef.current.play();
+          }
+        }
+        event.stopPropagation();
+      };
+      videoRef.current?.addEventListener("pause", handler, { capture: true });
+      blockOutsidePausedChange.current = handler;
+    }
+    if (videoRef.current.paused !== pause2) {
+      if (pause2) {
+        pauseLogger.debug(`Pausing media`);
+        videoRef.current.pause();
+      } else {
+        pauseLogger.debug(`Playing media`);
+        videoRef.current.play();
+      }
+    }
+    if (!hold && blockOutsidePausedChange.current) {
+      pauseLogger.debug("Removing pause block");
+      videoRef.current?.removeEventListener("pause", blockOutsidePausedChange.current, { capture: true });
+      blockOutsidePausedChange.current = null;
+      if (pause2) {
+        videojsPlayerRef.current?.handleTechPause_();
+      } else {
+        videojsPlayerRef.current?.handleTechPlay_();
+      }
+    }
+  }
+  function getClickArea(event) {
+    if (!(event.target instanceof HTMLElement)) {
+      throw new Error("No event target");
+    }
+    let x3;
+    if (event instanceof PointerEvent || event instanceof MouseEvent) {
+      x3 = event.offsetX;
+    } else if (event instanceof TouchEvent) {
+      const touch = event.touches[0];
+      const rect = event.target.getBoundingClientRect();
+      x3 = touch.pageX - (rect.left + window.scrollX);
+    } else {
+      throw new Error("Unknown event type");
+    }
+    const elementWidth = event.target.clientWidth;
+    if (x3 / elementWidth < 1 / 3) {
+      return { area: "left", elementWidth };
+    } else if (x3 / elementWidth > 2 / 3) {
+      return { area: "right", elementWidth };
+    } else {
+      return { area: "middle", elementWidth };
+    }
+  }
+  function handleDrag({ offsetX }) {
+    if (!gestureElmRef.current) {
+      logger3.warn("No gesture element ref");
+      return;
+    }
+    if (!gestureStateRef.current) {
+      logger3.warn("Not setup correctly");
+      return;
+    }
+    if (!videojsPlayerRef.current?.scrubbing()) {
+      videojsPlayerRef.current?.scrubbing(true);
+    }
+    const { clickArea, elementWidth } = gestureStateRef.current;
+    let initialRate;
+    switch (clickArea) {
+      case "left":
+        initialRate = -1.5;
+        break;
+      case "right":
+        initialRate = 1.5;
+        break;
+      case "middle":
+        initialRate = 0;
+    }
+    const playbackRateDragAdjustment = clamp$1(
+      (videojsPlayerRef.current?.duration() ?? 0) / -3,
+      (offsetX / elementWidth * 10) ** 6 * (offsetX > 0 ? 1 : -1),
+      (videojsPlayerRef.current?.duration() ?? 0) / 3
+    );
+    const playbackRate = initialRate + playbackRateDragAdjustment;
+    seek(playbackRate);
+  }
+  function toDiscreteSeekSpeed(seekSpeed) {
+    const absSpeed = Math.abs(seekSpeed);
+    let discrete;
+    let faster;
+    let slower;
+    if (absSpeed > 120) {
+      discrete = roundToNearest(seekSpeed, 60);
+      faster = discrete + 60;
+      slower = discrete - 60;
+    } else if (absSpeed > 60) {
+      discrete = roundToNearest(seekSpeed, 30);
+      faster = discrete < 120 ? discrete + 30 : 240;
+      slower = discrete > -120 ? discrete - 30 : -240;
+    } else if (absSpeed > 15) {
+      discrete = roundToNearest(seekSpeed, 15);
+      faster = discrete < 60 ? discrete + 15 : 120;
+      slower = discrete > -60 ? discrete - 15 : -120;
+    } else if (absSpeed > 5) {
+      discrete = roundToNearest(seekSpeed, 5);
+      faster = discrete < 15 ? discrete + 5 : 30;
+      slower = discrete > -15 ? discrete - 5 : -30;
+    } else if (seekSpeed > 2 || seekSpeed < -1) {
+      discrete = roundTo(seekSpeed, 0);
+      faster = discrete < 5 ? discrete + 1 : 10;
+      slower = discrete > -5 ? discrete - 1 : -10;
+    } else {
+      discrete = roundTo(seekSpeed, 1);
+      faster = discrete < 2 ? discrete + 0.1 : 3;
+      slower = discrete > -1 ? discrete - 0.1 : -2;
+    }
+    return { discrete, faster, slower };
+  }
+  function seek(playbackRate) {
+    console.log("Seek called with rate:", playbackRate);
+    if (playbackRate === null) {
+      cleanupSeek();
+      return;
+    }
+    const discretePlaybackRate = toDiscreteSeekSpeed(playbackRate).discrete;
+    let seekState = seekStateRef.current;
+    if (seekState?.discretePlaybackRate === discretePlaybackRate) {
+      return;
+    }
+    const initialMuteState = seekState?.initialMuteState ?? videojsPlayerRef.current?.muted();
+    const initialPausedState = seekState?.initialPausedState ?? videojsPlayerRef.current?.paused();
+    if (initialMuteState === void 0 || initialPausedState === void 0) {
+      logger3.warn("Failed to get video state");
+      return;
+    }
+    if (!seekState) {
+      logger3.debug(`Initial mute state: ${initialMuteState}, initial paused state: ${initialPausedState}`);
+    }
+    const maxRate = 5;
+    if (seekState) {
+      seekState.discretePlaybackRate = discretePlaybackRate;
+    }
+    if (discretePlaybackRate >= 0.1 && discretePlaybackRate < maxRate) {
+      if (seekState?.type !== "playback-rate") {
+        if (seekState) {
+          logger3.info(`Switching to playback rate-based approach`);
+        }
+        seekState = {
+          type: "playback-rate",
+          discretePlaybackRate,
+          initialMuteState,
+          initialPausedState,
+          thumbnailTimeUpdateHandler: null
+        };
+        seekStateRef.current = seekState;
+      }
+      if (discretePlaybackRate) {
+        setFeedback(
+          `${discretePlaybackRate}x`,
+          { hold: true, icon: /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPlay }) }
+        );
+      } else {
+        setFeedback(null);
+      }
+      if (discretePlaybackRate) {
+        videojsPlayerRef.current?.playbackRate(discretePlaybackRate);
+        pause(false, { hold: true });
+      } else {
+        pause(true, { hold: true });
+      }
+    } else {
+      if (seekState?.type !== "time-skip") {
+        if (seekState) {
+          logger3.info(`Switching to seek-based approach`);
+        }
+        seekState = {
+          type: "time-skip",
+          discretePlaybackRate,
+          seekTimeout: null,
+          desiredTimeDelta: 0,
+          initialMuteState,
+          initialPausedState,
+          thumbnailTimeUpdateHandler: null
+        };
+        seekStateRef.current = seekState;
+      }
+      pause(true, { hold: true });
+      if (videojsPlayerRef.current && videojsPlayerRef.current.playbackRate() !== 1) {
+        videojsPlayerRef.current?.playbackRate(1);
+      }
+      const currentTime = videojsPlayerRef.current?.currentTime();
+      if (currentTime !== void 0) {
+        const hitTimeBounds = discretePlaybackRate < 0 && currentTime <= (initialTimestamp || 0) || discretePlaybackRate > 0 && currentTime >= (endTimestamp ?? Infinity);
+        if (!looping || !hitTimeBounds) {
+          if (discretePlaybackRate) {
+            const minutes = Math.floor(Math.abs(discretePlaybackRate) / 60);
+            const seconds2 = Math.abs(discretePlaybackRate) % 60;
+            setFeedback(
+              [minutes && `${minutes}m`, seconds2 && `${seconds2}s`].filter(Boolean).join(" "),
+              {
+                hold: true,
+                icon: /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: discretePlaybackRate > 0 ? faForward : faBackward })
+              }
+            );
+          } else {
+            setFeedback(/* @__PURE__ */ React$1.createElement(React$1.Fragment, null), { hold: true, icon: /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPause }) });
+          }
+        }
+      }
+      const updateFrequency = 100;
+      if (!seekState.seekTimeout) {
+        const tick = () => {
+          const seekState2 = seekStateRef.current;
+          if (!seekState2 || seekState2.type !== "time-skip") {
+            return;
+          }
+          let desiredTimeDelta = seekState2.desiredTimeDelta;
+          const maxAccumulatedTimeDelta = Math.abs(seekState2.discretePlaybackRate) * 2;
+          if (Math.abs(desiredTimeDelta) < maxAccumulatedTimeDelta) {
+            desiredTimeDelta += seekState2.discretePlaybackRate * (updateFrequency / 1e3);
+          }
+          const currentTime2 = videojsPlayerRef.current?.currentTime();
+          if (currentTime2 !== void 0) {
+            const newTime = currentTime2 + desiredTimeDelta;
+            if (looping && newTime < currentTime2 && newTime <= (initialTimestamp || 0)) {
+              setFeedback(
+                "Start of loop reached",
+                { hold: true }
+              );
+              videojsPlayerRef.current?.currentTime(initialTimestamp || 0);
+            } else if (looping && newTime > currentTime2 && newTime >= (endTimestamp ?? Infinity)) {
+              setFeedback(
+                "End of loop reached",
+                { hold: true }
+              );
+              videojsPlayerRef.current?.currentTime(endTimestamp ?? Infinity);
+            } else if (desiredTimeDelta) {
+              videojsPlayerRef.current?.currentTime(newTime);
+              seekState2.desiredTimeDelta = 0;
+            } else {
+              seekState2.desiredTimeDelta = desiredTimeDelta;
+            }
+          }
+          seekState2.seekTimeout = setTimeout(tick, updateFrequency);
+        };
+        seekState.seekTimeout = setTimeout(tick, updateFrequency);
+      }
+    }
+    const shouldShowThumbnail = discretePlaybackRate > 5 || discretePlaybackRate < -2;
+    if (shouldShowThumbnail && !seekState.thumbnailTimeUpdateHandler) {
+      setupThumbnailUpdate();
+    } else if (!shouldShowThumbnail && seekState.thumbnailTimeUpdateHandler) {
+      teardownThumbnailUpdate();
+    }
+  }
+  useGesture({
+    onPointerDown: (state) => {
+      logger3.debug("⬇️ Pointer down");
+      const { area: area2, elementWidth } = getClickArea(state.event);
+      if (gestureStateRef.current !== null) {
+        logger3.warn("Gesture state not cleaned up properly before new gesture");
+      }
+      gestureStateRef.current = {
+        clickArea: area2,
+        elementWidth
+      };
+      waitForClickTimeoutRef.current = setTimeout(() => {
+        logger3.debug("Holding down{*}", state);
+        handleDrag({ offsetX: 0 });
+        waitForClickTimeoutRef.current = void 0;
+      }, 250);
+    },
+    // Video.js disables click events from firing on touch devices so we listen to pointerup to detect a click instead
+    onPointerUp: reactExports.useCallback((state) => {
+      logger3.debug("⬆️ Pointer up");
+      if (!waitForClickTimeoutRef.current) return;
+      clearTimeout(waitForClickTimeoutRef.current);
+      waitForClickTimeoutRef.current = void 0;
+      logger3.debug("Pointer up - treating as click");
+      if (!gestureStateRef.current) {
+        logger3.warn("Not setup correctly");
+        return;
+      }
+      const { clickArea } = gestureStateRef.current;
+      switch (clickArea) {
+        case "left":
+          seekBackwards();
+          break;
+        case "middle":
+          if (videojsPlayerRef.current?.paused()) {
+            videojsPlayerRef.current?.play();
+          } else {
+            videojsPlayerRef.current?.pause();
+          }
+          break;
+        case "right":
+          seekForwards();
+          break;
+      }
+      gestureStateRef.current = null;
+    }, [seekBackwards, seekForwards]),
+    onDrag: (state) => {
+      if (waitForClickTimeoutRef.current) return;
+      if (!gestureStateRef.current) {
+        logger3.warn("Not setup correctly");
+        return;
+      }
+      const last = state.last ?? true;
+      const first = state.first ?? true;
+      if (first) logger3.debug("Drag started");
+      const { offset: [offsetX] } = state;
+      if (!last) {
+        handleDrag({ offsetX });
+      } else {
+        handleDragEnd();
+      }
+    },
+    onPointerOut: (state) => {
+      if (state.event.target !== gestureElmRef.current) return;
+      logger3.debug("↗️ Pointer out");
+      handleDragEnd();
+    }
+  }, {
+    target: gestureElmRef,
+    drag: {
+      from: [0, 0],
+      // Reset offset to 0 on each gesture start
+      filterTaps: true,
+      preventScroll: true,
+      pointer: {
+        keys: false
+        // The drag event can be trigger by a keyboard but that doesn't make sense for our use case
+        // since we care about the area of the video that user clicks on.
+      }
+    }
+  });
+  reactExports.useEffect(() => {
+    window.addEventListener("click", (event) => {
+      Object.defineProperty(event, "detail", { value: 0, writable: true });
+    }, { capture: true });
+  }, []);
+  reactExports.useEffect(() => {
+    const handler = () => {
+      clearTimeout(waitForClickTimeoutRef.current);
+      waitForClickTimeoutRef.current = void 0;
+    };
+    window.addEventListener("scroll", handler, { capture: true });
+    return () => {
+      window.removeEventListener("scroll", handler, { capture: true });
+    };
+  }, []);
+  function handleDragEnd() {
+    if (!gestureStateRef.current) {
+      return;
+    }
+    logger3.info("Drag ended");
+    gestureStateRef.current = null;
+    seek(null);
+  }
+  function cleanupSeek() {
+    logger3.info("Cleaning up seek");
+    if (!seekStateRef.current) {
+      logger3.warn("Seeking already cleaned up");
+      return;
+    }
+    teardownThumbnailUpdate();
+    const { initialMuteState, initialPausedState } = seekStateRef.current;
+    seekStateRef.current = null;
+    videojsPlayerRef.current?.playbackRate(1);
+    videojsPlayerRef.current?.scrubbing(false);
+    setFeedback(null, { fade: false });
+    mute(initialMuteState);
+    pause(initialPausedState);
+    logger3.debug(`Reset mute state to ${initialMuteState} and restored paused state to ${initialPausedState}`);
+  }
+  return {
+    textSelectionWorkaroundElm,
+    seek,
+    toDiscreteSeekSpeed
+  };
+}
 function memo(getDeps, fn3, opts) {
   let deps = opts.initialDeps ?? [];
   let result;
@@ -189139,23 +191576,23 @@ function requireThrottleit() {
 }
 var throttleitExports = /* @__PURE__ */ requireThrottleit();
 const throttle2 = /* @__PURE__ */ getDefaultExportFromCjs(throttleitExports);
-const mediaSlideHeight = "calc(var(--y-unit-small) * 100)";
-const itemBufferEitherSide = 1;
+const mediaSlideHeight = "calc(var(--y-unit-large) * 100)";
+const itemBufferEitherSide = 2;
 const VideoScroller = reactExports.memo(() => {
   const {
     forceLandscape: isForceLandscape,
     onlyShowMatchingOrientation,
-    debugMode,
-    enableRenderDebugging,
+    showDebuggingInfo,
     scenePreviewOnly,
     markerPreviewOnly,
     set: setAppSetting
   } = useAppStateStore();
   const { orientation: orientation2 } = useWindowSize();
   const rootElmRef = reactExports.useRef(null);
-  reactExports.useMemo(() => enableRenderDebugging && console.log("🔜 VideoScroller mounting"), []);
+  const logger3 = getLogger(["stash-tv", "VideoScroller"]);
+  reactExports.useMemo(() => showDebuggingInfo.includes("render-debugging") && console.log("🔜 VideoScroller mounting"), []);
   reactExports.useEffect(() => () => {
-    enableRenderDebugging && console.log("🔚 VideoScroller unmounting");
+    showDebuggingInfo.includes("render-debugging") && console.log("🔚 VideoScroller unmounting");
   }, []);
   const { mediaItems, loadMoreMediaItems } = useMediaItems();
   const estimateSizeTesterElement = reactExports.useRef(null);
@@ -189167,6 +191604,7 @@ const VideoScroller = reactExports.memo(() => {
       }
     };
   }, []);
+  const previousEstimatedSizeRef = reactExports.useRef(null);
   const sharedOptions = {
     count: mediaItems.length,
     estimateSize: () => {
@@ -189180,7 +191618,10 @@ const VideoScroller = reactExports.memo(() => {
         estimateSizeTesterElement.current = el;
       }
       const itemHeight = estimateSizeTesterElement.current.offsetHeight;
-      debugMode && console.log("Estimated item height:", itemHeight);
+      if (previousEstimatedSizeRef.current !== itemHeight) {
+        logger3.debug(`Updated estimated item height from ${previousEstimatedSizeRef.current} to ${itemHeight}`);
+        previousEstimatedSizeRef.current = itemHeight;
+      }
       return itemHeight;
     },
     overscan: itemBufferEitherSide
@@ -189189,7 +191630,7 @@ const VideoScroller = reactExports.memo(() => {
     ...sharedOptions,
     enabled: !isForceLandscape,
     scrollToFn: (...args) => {
-      debugMode && console.log("Window virtualizer scrolling to height:", args[0]);
+      logger3.debug(`Window virtualizer scrolling to height: ${args[0]}`);
       return windowScroll(...args);
     }
   });
@@ -189198,7 +191639,7 @@ const VideoScroller = reactExports.memo(() => {
     enabled: isForceLandscape,
     getScrollElement: () => document.querySelector("body"),
     scrollToFn: (...args) => {
-      debugMode && console.log("Element virtualizer scrolling to height:", args[0]);
+      logger3.debug(`Element virtualizer scrolling to height: ${args[0]}`);
       return elementScroll(...args);
     }
   });
@@ -189206,7 +191647,7 @@ const VideoScroller = reactExports.memo(() => {
   const [currentIndex, _setCurrentIndex] = reactExports.useReducer(
     (currentState, newState) => {
       newState = typeof newState === "function" ? newState(currentState) : newState;
-      return clamp2(0, newState, mediaItems.length ? mediaItems.length - 1 : 0);
+      return clamp$1(0, newState, mediaItems.length ? mediaItems.length - 1 : 0);
     },
     0
   );
@@ -189214,11 +191655,11 @@ const VideoScroller = reactExports.memo(() => {
   const setCurrentIndex = reactExports.useMemo(
     () => {
       const throttledSetCurrentIndex = throttle2((newIndex) => {
-        debugMode && console.log("setCurrentIndex received:", newIndex);
+        logger3.debug(`setCurrentIndex received: ${newIndex}`);
         _setCurrentIndex(newIndex);
       }, 100);
       return ((newIndex) => {
-        currentIndexRef.current = clamp2(
+        currentIndexRef.current = clamp$1(
           0,
           typeof newIndex === "function" ? newIndex(currentIndexRef.current) : newIndex,
           mediaItems.length ? mediaItems.length - 1 : 0
@@ -189244,7 +191685,7 @@ const VideoScroller = reactExports.memo(() => {
       getScrollSnappingReenableHandler(),
       scrollSnappingReenableTimeoutMs
     );
-    debugMode && console.log("Temporarily disabling scroll snapping");
+    logger3.debug("Temporarily disabling scroll snapping");
     rootElmRef.current?.classList.remove("scrollSnappingEnabled");
   }
   reactExports.useEffect(() => {
@@ -189268,37 +191709,47 @@ const VideoScroller = reactExports.memo(() => {
       const itemHeight = rowVirtualizer.getVirtualItems()[0]?.size || 0;
       const newScrollTop = index2 * itemHeight;
       temporarilyDisableScrollSnapping();
-      debugMode && console.log(`Scrolling to index ${index2} at height ${newScrollTop}`);
+      logger3.debug(`Scrolling to index ${index2} at height ${newScrollTop}`);
       rowVirtualizer.scrollElement?.scrollTo({ top: newScrollTop, behavior: "smooth", ...options2 });
     },
     [rowVirtualizer]
   );
   reactExports.useEffect(() => {
-    debugMode && console.log("currentIndex changed to", currentIndex);
+    logger3.debug(`currentIndex changed to ${currentIndex}`);
     if (currentIndex >= mediaItems.length - 5) {
       loadMoreMediaItems();
     }
   }, [currentIndex, mediaItems.length]);
+  const [keysDown] = reactExports.useState(/* @__PURE__ */ new Set());
   reactExports.useEffect(() => {
     const handleKeyDown = (e2) => {
+      keysDown.add(e2.key);
       const nextKey = isForceLandscape ? "ArrowRight" : "ArrowDown";
       const previousKey = isForceLandscape ? "ArrowLeft" : "ArrowUp";
-      debugMode && (e2.key === previousKey || e2.key === nextKey) && console.log("VideoScroller Keydown", e2.key, { nextKey, previousKey });
-      if (e2.key === previousKey) {
+      const leftKey = isForceLandscape ? "ArrowUp" : "ArrowLeft";
+      const rightKey = isForceLandscape ? "ArrowDown" : "ArrowRight";
+      logger3.debug(`VideoScroller Keydown; key=${e2.key} nextKey=${nextKey} previousKey=${previousKey}`);
+      const leftOrRightKeyPressed = keysDown.has(leftKey) || keysDown.has(rightKey);
+      if (e2.key === previousKey && !leftOrRightKeyPressed) {
         const newIndex = (prevIndex) => prevIndex - 1;
         scrollToIndex(newIndex, { behavior: "instant" });
         setCurrentIndex(newIndex);
         e2.preventDefault();
-      } else if (e2.key === nextKey) {
+      } else if (e2.key === nextKey && !leftOrRightKeyPressed) {
         const newIndex = (prevIndex) => prevIndex + 1;
         scrollToIndex(newIndex, { behavior: "instant" });
         setCurrentIndex(newIndex);
         e2.preventDefault();
       }
     };
+    const handleKeyUp = (e2) => {
+      keysDown.delete(e2.key);
+    };
     window.addEventListener("keydown", handleKeyDown, { capture: true });
+    window.addEventListener("keyup", handleKeyUp, { capture: true });
     return () => {
       window.removeEventListener("keydown", handleKeyDown, { capture: true });
+      window.removeEventListener("keyup", handleKeyUp, { capture: true });
     };
   }, [isForceLandscape, setCurrentIndex]);
   reactExports.useEffect(() => {
@@ -189432,13 +191883,13 @@ const VideoScroller = reactExports.memo(() => {
         width: "100%",
         height: mediaSlideHeight,
         transform: `translateY(calc(${mediaSlideHeight} * ${i2}))`,
-        ...debugMode ? {
+        ...showDebuggingInfo.includes("onscreen-info") ? {
           "backgroundColor": `hsl(${i2 * 37 % 360}, 70%, 50%)`,
           border: `10px ${i2 === currentIndex ? "black" : "transparent"} dashed`
         } : {}
       };
     }),
-    [mediaItems, mediaSlideHeight, debugMode]
+    [mediaItems, mediaSlideHeight, showDebuggingInfo.includes("onscreen-info")]
   );
   return /* @__PURE__ */ React$1.createElement(
     "div",
@@ -189449,7 +191900,7 @@ const VideoScroller = reactExports.memo(() => {
       ref: rootElmRef,
       style: { height: rowVirtualizer.getTotalSize() }
     },
-    debugMode && /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, rowVirtualizer.isScrolling ? "Scrolling" : "Not Scrolling", " ", "(", mediaItems.length, " media loaded)", onlyShowMatchingOrientation && ` limiting to ${orientation2} orientation`),
+    showDebuggingInfo.includes("onscreen-info") && /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, rowVirtualizer.isScrolling ? "Scrolling" : "Not Scrolling", " ", "(", mediaItems.length, " media loaded)", onlyShowMatchingOrientation && ` limiting to ${orientation2} orientation`),
     mediaItems.map((mediaItem, i2) => {
       if (itemIndexesToRender.includes(i2)) {
         return /* @__PURE__ */ React$1.createElement(
@@ -189491,7 +191942,7 @@ function _objectSpread2(e2) {
   for (var r3 = 1; r3 < arguments.length; r3++) {
     var t4 = null != arguments[r3] ? arguments[r3] : {};
     r3 % 2 ? ownKeys(Object(t4), true).forEach(function(r4) {
-      _defineProperty(e2, r4, t4[r4]);
+      _defineProperty$1(e2, r4, t4[r4]);
     }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t4)) : ownKeys(Object(t4)).forEach(function(r4) {
       Object.defineProperty(e2, r4, Object.getOwnPropertyDescriptor(t4, r4));
     });
@@ -189530,7 +191981,7 @@ function _slicedToArray(r3, e2) {
 }
 function _objectWithoutProperties(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$2(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$3(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
@@ -191487,7 +193938,7 @@ var menuCSS = function menuCSS2(_ref22, unstyled) {
   var placement = _ref22.placement, _ref2$theme = _ref22.theme, borderRadius2 = _ref2$theme.borderRadius, spacing2 = _ref2$theme.spacing, colors3 = _ref2$theme.colors;
   return _objectSpread2((_objectSpread2$12 = {
     label: "menu"
-  }, _defineProperty(_objectSpread2$12, alignToControl(placement), "100%"), _defineProperty(_objectSpread2$12, "position", "absolute"), _defineProperty(_objectSpread2$12, "width", "100%"), _defineProperty(_objectSpread2$12, "zIndex", 1), _objectSpread2$12), unstyled ? {} : {
+  }, _defineProperty$1(_objectSpread2$12, alignToControl(placement), "100%"), _defineProperty$1(_objectSpread2$12, "position", "absolute"), _defineProperty$1(_objectSpread2$12, "width", "100%"), _defineProperty$1(_objectSpread2$12, "zIndex", 1), _objectSpread2$12), unstyled ? {} : {
     backgroundColor: colors3.neutral0,
     borderRadius: borderRadius2,
     boxShadow: "0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 11px hsla(0, 0%, 0%, 0.1)",
@@ -194508,13 +196959,20 @@ StateManagedSelect$1.whyDidYouRender = {
   customName: "ReactSelect"
 };
 const Select = (props) => {
-  const { className, ...otherProps } = props;
+  const { className, expandWidthToFit, ...otherProps } = props;
   const hasTouchScreen = useMedia("(pointer: coarse)");
   const isSearchable = props.isSearchable !== void 0 ? props.isSearchable : !hasTouchScreen;
   return /* @__PURE__ */ React$1.createElement(
     StateManagedSelect$1,
     {
       className: cx("Select", "react-select", className),
+      styles: {
+        menu: (provided) => ({
+          ...provided,
+          "maxWidth": "calc(var(--x-unit-small) * 90)",
+          "minWidth": "max-content"
+        })
+      },
       classNamePrefix: "react-select",
       isSearchable,
       classNames: {
@@ -196794,7 +199252,7 @@ function sendEvent(target, type3, ...args) {
 }
 var BATCHED_EVENTS = ["onStart", "onChange", "onRest"];
 var nextId2 = 1;
-var Controller = class {
+var Controller2 = class {
   constructor(props, flush3) {
     this.id = nextId2++;
     this.springs = {};
@@ -197226,7 +199684,7 @@ function useSprings(length2, props, deps) {
   }, deps);
   function declareUpdates(startIndex, endIndex) {
     for (let i2 = startIndex; i2 < endIndex; i2++) {
-      const ctrl = ctrls.current[i2] || (ctrls.current[i2] = new Controller(null, state.flush));
+      const ctrl = ctrls.current[i2] || (ctrls.current[i2] = new Controller2(null, state.flush));
       const update2 = propsFn ? propsFn(i2, ctrl) : props[i2];
       if (update2) {
         updates.current[i2] = declareUpdate(update2);
@@ -197878,7 +200336,10 @@ const SettingsTab = reactExports.memo(() => {
     onlyShowMatchingOrientation,
     showDevOptions,
     videoJsEventsToLog,
-    debugMode,
+    logLevel,
+    loggersToShow,
+    loggersToHide,
+    showDebuggingInfo,
     autoPlay,
     startPosition,
     endPosition,
@@ -197970,6 +200431,50 @@ const SettingsTab = reactExports.memo(() => {
     { value: "fixed-length", label: "After a fixed length of time" },
     { value: "random-length", label: "After a random length of time" }
   ];
+  const logLevelOptions = reactExports.useMemo(() => Object.entries(
+    {
+      "trace": "Trace (most verbose)",
+      "debug": "Debug",
+      "info": "Info",
+      "warning": "Warning",
+      "error": "Error",
+      "fatal": "Fatal (least verbose)"
+    }
+  ).map(([value, label]) => ({
+    value,
+    label
+  })), []);
+  const [loggers, setLoggers] = React$1.useState(getLoggers());
+  reactExports.useEffect(() => {
+    const interval = setInterval(() => {
+      const newLoggers = getLoggers().filter((newLogger) => !loggers.includes(newLogger));
+      if (newLoggers.length === 0) return;
+      setLoggers([
+        ...loggers,
+        ...newLoggers
+      ]);
+    }, 1e3);
+    return () => clearInterval(interval);
+  }, [loggers]);
+  const loggerOptions = reactExports.useMemo(
+    () => loggers.map((logger3) => logger3.category).filter(
+      (category) => category.length && category[0] !== "logtape" && (category.length !== 1 || category[0] !== "stash-tv")
+      // Exclude root stash-tv logger
+    ).map((category) => ({
+      value: category,
+      label: category.join(" / ").replace(/^stash-tv \/ /, "")
+    })).toSorted((a4, b2) => a4.label.localeCompare(b2.label)),
+    [loggers]
+  );
+  const showDebuggingInfoOptions = reactExports.useMemo(() => Object.entries(
+    {
+      "render-debugging": "Render Debugging",
+      "onscreen-info": "On-screen Info"
+    }
+  ).map(([value, label]) => ({
+    value,
+    label
+  })), []);
   return /* @__PURE__ */ React$1.createElement(
     SideDrawer,
     {
@@ -198065,8 +200570,9 @@ const SettingsTab = reactExports.memo(() => {
         options: endPositionOptions
       }
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The point in the scene to end playback."), endPosition === "fixed-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "play-length" }, "Play Length (Seconds)"), /* @__PURE__ */ React$1.createElement(
-      NumberField,
+      FormImpl.Control,
       {
+        type: "number",
         id: "play-length",
         className: "text-input",
         value: playLength ?? "",
@@ -198075,9 +200581,10 @@ const SettingsTab = reactExports.memo(() => {
           event.currentTarget.value ? Number.parseInt(event.currentTarget.value) : void 0
         )
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The length to play the scene for. Will play the full scene if not set.")), endPosition === "random-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", null, "Random Play Length Range (Seconds)"), /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "min-play-length", className: "sr-only" }, "Random Length Minimum"), /* @__PURE__ */ React$1.createElement(
-      NumberField,
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The length to play the scene for after the start point. Will play the full scene if not set.")), endPosition === "random-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", null, "Random Play Length Range (Seconds)"), /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "min-play-length", className: "sr-only" }, "Random Length Minimum"), /* @__PURE__ */ React$1.createElement(
+      FormImpl.Control,
       {
+        type: "number",
         id: "min-play-length",
         className: "text-input",
         placeholder: "Min",
@@ -198088,8 +200595,9 @@ const SettingsTab = reactExports.memo(() => {
         )
       }
     ), /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-play-length", className: "sr-only" }, "Random Length Maximum"), /* @__PURE__ */ React$1.createElement(
-      NumberField,
+      FormImpl.Control,
       {
+        type: "number",
         id: "max-play-length",
         className: "text-input",
         value: maxPlayLength ?? "",
@@ -198137,28 +200645,62 @@ const SettingsTab = reactExports.memo(() => {
         checked: showDevOptions,
         onChange: (event) => setAppSetting("showDevOptions", false)
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Hide developer options.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
-      Switch,
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Hide developer options.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "log-level" }, "Log Level to Show"), /* @__PURE__ */ React$1.createElement(
+      Select,
       {
-        id: "debug-mode",
-        label: "Debug Mode",
-        checked: debugMode,
-        onChange: (event) => setAppSetting("debugMode", event.target.checked)
+        inputId: "log-level",
+        value: logLevelOptions.find((option) => option.value === logLevel) ?? null,
+        onChange: (newValue) => newValue?.value && setAppSetting("logLevel", newValue.value),
+        options: logLevelOptions
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Enable debug mode for additional logging and information.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
-      Switch,
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The level of logging detail.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "loggers-to-show" }, "Loggers to Show"), /* @__PURE__ */ React$1.createElement(
+      Select,
       {
-        id: "enable-render-debugging",
-        label: "Enable Render Debugging",
-        checked: JSON.parse(localStorage.getItem("enableRenderDebugging") || "false"),
-        onChange: (event) => {
-          localStorage.setItem("enableRenderDebugging", JSON.stringify(event.target.checked));
-          window.location.reload();
-        }
+        inputId: "loggers-to-show",
+        expandWidthToFit: true,
+        options: loggerOptions,
+        value: loggerOptions.filter(
+          ({ value: category }) => loggersToShow.some(
+            (shownCategory) => category.length === shownCategory.length && category.every(
+              (part, index2) => part === shownCategory[index2]
+            )
+          )
+        ),
+        onChange: (newValues) => setAppSetting("loggersToShow", newValues.map((option) => option.value)),
+        isMulti: true,
+        closeMenuOnSelect: false
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Enable render debugging.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Media Limit"), /* @__PURE__ */ React$1.createElement(
-      NumberField,
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Loggers to show logs from. An empty list will show any that aren't otherwise hidden.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "loggers-to-hide" }, "Loggers to Hide"), /* @__PURE__ */ React$1.createElement(
+      Select,
       {
+        inputId: "loggers-to-hide",
+        options: loggerOptions,
+        value: loggerOptions.filter(
+          ({ value: category }) => loggersToHide.some(
+            (hiddenCategory) => category.length === hiddenCategory.length && category.every(
+              (part, index2) => part === hiddenCategory[index2]
+            )
+          )
+        ),
+        placeholder: "All loggers",
+        onChange: (newValues) => setAppSetting("loggersToHide", newValues.map((option) => option.value)),
+        isMulti: true,
+        closeMenuOnSelect: false
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Loggers to hide logs from.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "show-debugging-info" }, "Additional Debugging Info"), /* @__PURE__ */ React$1.createElement(
+      Select,
+      {
+        inputId: "show-debugging-info",
+        value: showDebuggingInfoOptions.filter((option) => showDebuggingInfo.includes(option.value)),
+        onChange: (newValues) => setAppSetting("showDebuggingInfo", newValues.map((option) => option.value)),
+        options: showDebuggingInfoOptions,
+        isMulti: true,
+        closeMenuOnSelect: false
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Additional debugging information.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Media Limit"), /* @__PURE__ */ React$1.createElement(
+      FormImpl.Control,
+      {
+        type: "number",
         id: "max-media",
         className: "text-input",
         value: maxMedia ?? "",
@@ -198193,7 +200735,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => window.location.reload()
       },
       "Reload Page"
-    )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, "1.13.2")))))
+    )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, "2.0.0")))))
   );
 });
 SettingsTab.displayName = "SettingsTab";
@@ -198290,7 +200832,7 @@ const GuideOverlay = (props) => {
 };
 const ErrorMessage = ({ error }) => jsxRuntimeExports.jsx("div", { className: "row ErrorMessage", children: jsxRuntimeExports.jsxs("h2", { className: "ErrorMessage-content", children: ["Error: ", error] }) });
 const FeedPage = reactExports.memo(({ className }) => {
-  const { showSettings, fullscreen, debugMode, showGuideOverlay, set: setAppSetting } = useAppStateStore();
+  const { showSettings, fullscreen, showDebuggingInfo, showGuideOverlay, set: setAppSetting } = useAppStateStore();
   const {
     currentMediaItemFilter,
     mediaItemFiltersLoading,
@@ -198356,7 +200898,7 @@ const FeedPage = reactExports.memo(({ className }) => {
     });
     return /* @__PURE__ */ React$1.createElement(ErrorMessage, { error: message });
   };
-  return /* @__PURE__ */ React$1.createElement("main", { "data-testid": "FeedPage", className: cx("FeedPage", className) }, mediaItems.length === 0 ? /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "status-info" }, statusInfo(), debugMode && /* @__PURE__ */ React$1.createElement("pre", null, JSON.stringify({
+  return /* @__PURE__ */ React$1.createElement("main", { "data-testid": "FeedPage", className: cx("FeedPage", className) }, mediaItems.length === 0 ? /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "status-info" }, statusInfo(), showDebuggingInfo.includes("onscreen-info") && /* @__PURE__ */ React$1.createElement("pre", null, JSON.stringify({
     mediaItemFilters: {
       loading: mediaItemFiltersLoading,
       error: mediaItemFiltersError,
@@ -199098,34 +201640,12 @@ const flattenMessages = (nestedMessages, prefix2 = "") => {
     return messages;
   }, {});
 };
-const consoleSink = getConsoleSink();
-const setupLogging = async ({ debugMode } = {}) => {
-  await configure({
-    reset: true,
-    // Allows us to call this whenever debugMode changes and rewrite any existing config
-    sinks: {
-      console(logRecord) {
-        if (Object.keys(logRecord.properties).length) {
-          logRecord = {
-            ...logRecord,
-            message: [...logRecord.message.slice(0, logRecord.message.length - 1), [logRecord.message.at(-1), JSON.stringify(logRecord.properties, null, 2)].filter(Boolean).join(" | ")]
-          };
-        }
-        return consoleSink(logRecord);
-      }
-    },
-    loggers: [
-      { category: "stash-tv", lowestLevel: debugMode ? "debug" : "warning", sinks: ["console"] },
-      { category: ["logtape", "meta"], lowestLevel: "warning", sinks: ["console"] }
-    ]
-  });
-};
 await setupLogging();
 const App = () => {
-  const { forceLandscape, debugMode } = useAppStateStore();
+  const { forceLandscape, logLevel, loggersToShow, loggersToHide } = useAppStateStore();
   reactExports.useEffect(() => {
-    setupLogging({ debugMode });
-  }, [debugMode]);
+    setupLogging({ logLevel, logCategoriesToShow: loggersToShow, logCategoriesToHide: loggersToHide });
+  }, [logLevel, loggersToShow, loggersToHide]);
   const stashConfig = useConfigurationQuery();
   const modifiedStashConfig = {
     ...stashConfig.data?.configuration,
@@ -199160,6 +201680,7 @@ const App = () => {
         configuration: modifiedStashConfig,
         loading: stashConfig.loading
       },
+      /* @__PURE__ */ React$1.createElement(FeedbackOverlay, null),
       /* @__PURE__ */ React$1.createElement(FeedPage, null)
     ))
   );
@@ -199252,4 +201773,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-CP9Xx-wb.js.map
+//# sourceMappingURL=index-BSGhO45a.js.map
