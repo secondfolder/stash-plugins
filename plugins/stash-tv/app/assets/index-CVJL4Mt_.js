@@ -200735,7 +200735,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => window.location.reload()
       },
       "Reload Page"
-    )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, "2.0.0")))))
+    )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, "2.0.1")))))
   );
 });
 SettingsTab.displayName = "SettingsTab";
@@ -201773,4 +201773,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-BSGhO45a.js.map
+//# sourceMappingURL=index-CVJL4Mt_.js.map
