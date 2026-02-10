@@ -79,6 +79,10 @@
   padding: 2px 5px;
   max-width: fit-content;
 }
+.MediaSlide.left-handed .video-js .vjs-control-bar {
+  padding-left: calc(var(--safe-inset-right) + 50px);
+  padding-right: unset;
+}
 .MediaSlide .video-js {
   background-color: unset;
 }
@@ -89,6 +93,10 @@
   flex-wrap: wrap;
   column-gap: 1em;
   align-items: center;
+}
+.MediaSlide .video-js .vjs-control-bar::before {
+  left: 0;
+  right: 0;
 }
 .MediaSlide .video-js .vjs-control-bar .vjs-control {
   width: unset;
@@ -2756,6 +2764,23 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   /* Height is defined in root container to allow flex shrinking */
   height: 50px;
 
+  &.left-handed {
+    justify-content: start;
+    flex-direction: row-reverse;
+  }
+
+  &.size-auto {
+    height: unset;
+    justify-content: center;
+
+    .button {
+      width: unset;
+
+      svg {
+        margin: unset;
+      }
+    }
+  }
 
   .side-info {
     transition: opacity 0.2s ease-in-out;
@@ -2768,11 +2793,7 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
     opacity: 0;
   }
 
-  button {
-    appearance: none;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
+  .button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2780,10 +2801,21 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
     background-color: transparent;
     width: 40px;
     transition: scale 0.1s ease-in-out;
+    color: inherit;
 
-    &:hover {
-      svg {
-        scale: 1.1;
+    button& {
+      appearance: none;
+      border: 0;
+      padding: 0;
+    }
+
+    &:not([disabled]) {
+      cursor: pointer;
+
+      &:hover {
+        svg {
+          scale: 1.1;
+        }
       }
     }
 
@@ -2804,11 +2836,6 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
         drop-shadow(calc(var(--shadow-offset) * 1)  calc(var(--shadow-offset) * -1) var(--shadow-blur) rgba(0, 0, 0, var(--shadow-layer-opacity)))
         drop-shadow(calc(var(--shadow-offset) * -1) calc(var(--shadow-offset) * 1)  var(--shadow-blur) rgba(0, 0, 0,
         var(--shadow-layer-opacity)));
-
-      path {
-        stroke: white;
-        color: white;
-      }
     }
   }
 }
@@ -2869,12 +2896,17 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   z-index: 3;
   max-height: calc(var(--y-unit-small) * 100 - var(--bottom-offset));
 
+  &.left-handed {
+    right: unset;
+    left: 0.6em;
+    padding-right: unset;
+    padding-left: var(--safe-inset-left);
+    align-items: start;
+  }
+
   .stack {
     position: relative;
-    display: flex;
     padding-top: 10px;
-    /* We reverse the order so that we start from the bottom when scrollable */
-    flex-direction: column-reverse;
     overflow-y: auto;
     /* Firefox will automatically make overflow-x visible if overflow-y is set to auto even if we try to explicitly set
 overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appearing. */
@@ -2886,6 +2918,18 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     translate: 0.6em 0;
 
     --additional-transitions: var(--overflow-indicators-transition);
+  }
+
+  .stack, .pinned {
+    display: flex;
+    /* We reverse the order so that we start from the bottom when scrollable */
+    flex-direction: column-reverse;
+  }
+
+  &.left-handed .stack {
+    translate: -0.6em 0;
+    padding-right: unset;
+    padding-left: 0.6em;
   }
 
   .toggle-ui {
@@ -2955,9 +2999,11 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   }
 
   .star-rating-number {
+    font-size: unset;
+  }
+  &:not(.left-handed) .star-rating-number {
     order: -1;
     margin-left: 0;
-    font-size: unset;
   }
 
   svg {
@@ -4161,9 +4207,27 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 .SettingsTab .accordion > button + div.collapse:not(.show) {
   display: none;
 }
+.SettingsTab .inline {
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+  align-items: center;
+}
+.SettingsTab .inline.text {
+  align-items: baseline;
+}
 .SettingsTab .form-group {
   /* We use gap to space out items rather than margin */
   margin-bottom: 0;
+}
+.SettingsTab .form-group.inline {
+  margin-top: 0.5em;
+}
+.SettingsTab .form-group.inline button {
+  flex: 0 0 auto;
+}
+.SettingsTab .form-group .form-subgroup {
+  margin: 1em auto;
 }
 .SettingsTab label {
   font-size: 1.3rem;
@@ -4174,18 +4238,62 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 .SettingsTab .form-group .form-group label {
   font-size: 1rem;
 }
-.SettingsTab .inline {
-  display: flex;
-  gap: 1em;
+.SettingsTab .draggable-list {
+  --item-padding: 0.3em;
+  margin: calc(var(--item-padding) * -1) 0;
 }
-.SettingsTab .form-group.button-description-inline {
+.SettingsTab .draggable-list .draggable-list-item {
   display: flex;
-  gap: 1em;
-  margin-top: 0.5em;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--item-padding) 0;
+}
+.SettingsTab .draggable-list .draggable-list-item .drag-handle {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  padding-left: 1.5em;
+  margin-left: -1em;
+}
+.SettingsTab .draggable-list .draggable-list-item .controls button {
+  font-size: 1.3em;
+  padding: 0.1em;
+}
+.SettingsTab .draggable-list .draggable-list-item .inline {
+  gap: 0.5em;
   align-items: center;
 }
-.SettingsTab .form-group.button-description-inline button {
-  flex: 0 0 auto;
+.SettingsTab .draggable-list .draggable-list-item.muted {
+  opacity: 0.5;
+}
+.SettingsTab .action-button-icon {
+  width: 2em;
+  height: 2em;
+  padding: 0.1em;
+}
+.SettingsTab .add-action-button {
+  padding-left: 0.2em;
+}
+.SettingsTab .add-action-button .info {
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.SettingsTab button {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+.SettingsTab button.btn-link:hover {
+  color: var(--link-hover-color);
+}
+.SettingsTab button.muted {
+  opacity: 0.5;
+}
+.SettingsTab button:not(:hover).muted {
+  color: var(--text-color);
 }
 .SettingsTab .error,
 .SettingsTab .warning {
@@ -4209,18 +4317,34 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   height: calc(var(--y-unit-dynamic) * 100);
   position: fixed;
   top: var(--safe-inset-top);
-  width: min(300px, 80%);
+  --safe-inset-draw-side: var(--safe-inset-right);
+  width: min(300px + var(--safe-inset-draw-side), 80%);
+  --content-padding: 1.5em;
+  --side-padding: max(
+    0px,
+    calc(var(--safe-inset-draw-side) - var(--content-padding) * 0.75)
+  );
+  padding-inline-end: var(--side-padding);
   background-color: var(--body-bg);
   max-height: 100%;
+}
+.SideDrawer.left-handed {
+  --safe-inset-draw-side: var(--safe-inset-left);
+  padding-inline-end: unset;
+  padding-inline-start: var(--side-padding);
 }
 .SideDrawer::before {
   content: "";
   position: absolute;
   top: -50%;
-  right: 0;
+  left: 0;
   width: calc(var(--x-unit-large) * 120);
   height: 200%;
   background-color: inherit;
+}
+.SideDrawer.left-handed::before {
+  left: unset;
+  right: 0;
 }
 .SideDrawer .content {
   background: inherit;
@@ -4231,26 +4355,26 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   display: flex;
   flex-direction: column;
 }
-.SideDrawer .body,
-.SideDrawer .footer {
-  padding: 1.5em;
+.SideDrawer .content .body,
+.SideDrawer .content .footer {
+  padding: var(--content-padding);
 }
-.SideDrawer .body {
+.SideDrawer .content .body {
   padding-bottom: 0;
   flex: 1 1 auto;
   grid-row: main-top/main-bottom;
   overflow-y: auto;
 }
-.SideDrawer .footer {
+.SideDrawer .content .footer {
   display: flex;
   align-items: center;
   grid-row: footer-top/footer-bottom;
 }
-.SideDrawer .footer h2 {
+.SideDrawer .content .footer h2 {
   margin-right: auto;
   margin-bottom: 0;
 }
-.SideDrawer .footer > .action {
+.SideDrawer .content .footer > .action {
   appearance: none;
   border: 0;
   padding: 0;
@@ -4309,6 +4433,161 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
         top: unset;
         left: var(--width);
         z-index: 2;
+      }
+    }
+  }
+}
+.DraggableList {
+  ul& {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .draggable {
+    cursor: grab;
+    touch-action: none;
+  }
+}
+.tag-list-row {
+  margin: 0.5rem 0;
+}
+.tag-list-button {
+  margin: 0 0.5rem;
+  width: 8rem;
+}
+.tag-list-anchor {
+  color: #f5f8fa;
+}
+.tag-list-count {
+  display: inline-block;
+  margin: 0 0.5rem;
+  min-width: 6rem;
+}
+
+.tag-card {
+  padding: 0.5rem;
+}
+@media (max-width: 576px) {
+  .tag-card {
+    width: 100%;
+  }
+}
+.tag-card-image {
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+.tag-card button.btn.favorite-button {
+  opacity: 1;
+  padding: 0;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  transition: opacity 0.5s;
+}
+.tag-card button.btn.favorite-button svg.fa-icon {
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+}
+.tag-card button.btn.favorite-button.not-favorite {
+  color: rgba(191, 204, 214, 0.5);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
+  opacity: 0;
+}
+.tag-card button.btn.favorite-button.favorite {
+  color: #ff7373;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
+}
+.tag-card button.btn.favorite-button:hover, .tag-card button.btn.favorite-button:active, .tag-card button.btn.favorite-button:focus, .tag-card button.btn.favorite-button:active:focus {
+  background: none;
+  box-shadow: none;
+}
+.tag-card:hover button.btn.favorite-button.not-favorite {
+  opacity: 1;
+}
+
+#tag-page .tag-head .name-icons .not-favorite {
+  color: rgba(191, 204, 214, 0.5);
+}
+#tag-page .tag-head .name-icons .favorite {
+  color: #ff7373;
+}
+
+.tag-details .logo {
+  max-height: 50vh;
+  max-width: 100%;
+}
+.tag-details .logo-container {
+  margin-bottom: 4rem;
+}
+
+#tag-merge-menu .dropdown-item {
+  align-items: center;
+}
+
+.tag-card .tag-description + div {
+  margin-top: 1rem;
+}
+
+.tag-popover-card-placeholder {
+  display: flex;
+  max-width: 240px;
+  min-height: 314px;
+  width: calc(100vw - 2rem);
+}
+
+.tag-popover-card {
+  padding: 0.5rem;
+  text-align: left;
+}
+.tag-popover-card .card {
+  background: transparent;
+  box-shadow: none;
+  max-width: calc(100vw - 2rem);
+  padding: 0;
+  width: 240px;
+}
+
+.tag-item .icon-wrapper {
+  color: #202b33;
+  opacity: 0.5;
+  padding-left: 6px;
+}
+
+.tag-item .tag-icon {
+  color: #202b33;
+  margin: 0;
+  opacity: 0.5;
+  padding-left: 3px;
+  transform: scale(0.7);
+}
+
+.tag-select .alias {
+  font-weight: bold;
+  white-space: pre;
+}
+
+.tag-select-image {
+  height: 25px;
+  margin-right: 0.5em;
+  width: 25px;
+}.ActionButtonSettingsModal {
+  .modal-dialog {
+    top: var(--safe-inset-top);
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 0.5em;
+    }
+
+    .modal-body {
+      overflow: initial;
+
+      #filter {
+        caret-color: transparent;
       }
     }
   }
@@ -9752,7 +10031,7 @@ input[type=button].btn-block {
 }
 .page-link:hover {
   z-index: 2;
-  color: #48aff0;
+  color: #96d1f6;
   text-decoration: none;
   background-color: #e9ecef;
   border-color: #dee2e6;
@@ -15540,7 +15819,7 @@ select {
   --body-bg: #202b33;
   --text-muted: #bfccd6;
   --link-color: #48aff0;
-  --link-hover-color: #48aff0;
+  --link-hover-color: #96d1f6;
   --text-color: #f5f8fa;
   --pre-color: #f5f8fa;
   --navbar-dark-color: rgb(245, 248, 250);
