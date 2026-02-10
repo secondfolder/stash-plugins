@@ -176081,8 +176081,7 @@ const defaults$2 = {
 const nonPersistentKeys = [
   "storeLoaded",
   "showSettings",
-  "fullscreen",
-  "showDebuggingInfo"
+  "fullscreen"
 ];
 const useAppStateStore = create2()(
   persist(
@@ -176237,46 +176236,9 @@ offset.VERSION = version;
 const mountCount$1 = /* @__PURE__ */ new Map();
 const videoJsOptionsOverride = {};
 const videoJsSetupCallbacks = {};
-function wrapPlayerFunction(player, functionName, wrapper) {
-  const originalFunction = player[functionName].bind(player);
-  player[functionName] = ((...args) => {
-    return wrapper.call(player, originalFunction, ...args);
-  });
-}
 videojs.hook("setup", (player) => {
   player.focus = () => {
   };
-  wrapPlayerFunction(player, "currentTime", ((originalDurationFunction2, ...args) => {
-    if (args.length) {
-      if (player.readyState() >= 1) {
-        return originalDurationFunction2(...args);
-      } else {
-        player.one("loadedmetadata", () => {
-          originalDurationFunction2(...args);
-        });
-        return;
-      }
-    } else {
-      return originalDurationFunction2(...args);
-    }
-  }));
-  const originalDurationFunction = player.duration.bind(player);
-  const usingOffsetPlugin = !!player.toJSON().plugins.offset;
-  function modifiedDurationFunction(newDuration) {
-    if (usingOffsetPlugin) {
-      return newDuration === void 0 ? originalDurationFunction() : originalDurationFunction(newDuration);
-    }
-    const scene2 = "_scene" in player ? player._scene : void 0;
-    const duration5 = scene2?.files[0]?.duration;
-    if (duration5 === void 0) {
-      return originalDurationFunction();
-    }
-    if (newDuration !== void 0) {
-      return originalDurationFunction(duration5);
-    }
-    return duration5;
-  }
-  player.duration = modifiedDurationFunction;
 });
 videojs.hook("setup", function(player) {
   let playerId;
@@ -176423,13 +176385,13 @@ const ScenePlayer = reactExports.forwardRef(({
     player.sourceSelector = function(...args) {
       const sourceSelector = originalSourceSelector.apply(this, args);
       const originalSetSources = sourceSelector.setSources;
-      sourceSelector.setSources = function(sources) {
+      sourceSelector.setSources = function(sources, ...otherArgs) {
         sources.forEach((source2) => {
           if (source2.src) {
             source2.src = source2.src.replace(/\/preview\/stream$/, "/preview");
           }
         });
-        originalSetSources.call(this, sources);
+        originalSetSources.apply(this, [sources, ...otherArgs]);
       };
       return sourceSelector;
     };
@@ -176486,6 +176448,7 @@ const ScenePlayer = reactExports.forwardRef(({
   }
   reactExports.useEffect(handleInitialTimestamp, [initialTimestamp]);
   videoJsOptionsOverride[playerId] = {
+    id: `videojs-${playerId}`,
     muted,
     loop: loop2,
     // Unfortunately this doesn't seem to work since the stash ScenePlayer component seems immediately set
@@ -176515,19 +176478,6 @@ const ScenePlayer = reactExports.forwardRef(({
         videojsPlayer2.on("dispose", () => {
           videojsPlayer2.markers = () => ({
             clearMarkers: () => {
-            },
-            add: () => {
-            },
-            getMarkers: () => [],
-            remove: () => {
-            },
-            removeAll: () => {
-            },
-            updateTime: () => {
-            },
-            reset: () => {
-            },
-            destroy: () => {
             }
           });
         });
@@ -180498,7 +180448,13 @@ function useMediaItems() {
       }
     });
     mediaItems = reactExports.useMemo(
-      () => markersResponse.data?.findSceneMarkers.scene_markers.map((marker) => ({
+      () => markersResponse.data?.findSceneMarkers.scene_markers.filter((marker) => {
+        if (marker.seconds > marker.scene.files[0].duration) {
+          logger3.warn(`Marker with ID ${marker.id} has start time (${marker.seconds}s) greater than scene duration (${marker.scene.files[0].duration}s). This marker will be skipped.`, { marker });
+          return false;
+        }
+        return true;
+      }).map((marker) => ({
         id: `marker:${marker.id}`,
         entityType: "marker",
         entity: {
@@ -195039,6 +194995,9 @@ const MediaSlide = (props) => {
   reactExports.useEffect(() => () => {
     showDebuggingInfo.includes("render-debugging") && console.log(`🔚 MediaSlide (media id ${props.mediaItem.id}) unmounting`);
   }, []);
+  reactExports.useEffect(() => {
+    if (isCurrentVideo) logger3.info(`Current video set to ${props.mediaItem.id} {*}`, { mediaItem: props.mediaItem });
+  }, [isCurrentVideo, props.mediaItem.id]);
   const scene2 = props.mediaItem.entityType === "scene" ? props.mediaItem.entity : props.mediaItem.entity.scene;
   const getMediaItemDuration = () => props.mediaItem.entityType === "marker" ? props.mediaItem.entity.duration : props.mediaItem.entity.files[0]?.duration;
   const videojsPlayerRef = useGetterRef(
@@ -195099,7 +195058,9 @@ const MediaSlide = (props) => {
   }, [noAnimateDurationThreshold, props.changeItemHandler, props.index, isCurrentVideo]);
   reactExports.useEffect(() => {
     if (!isCurrentVideo || !videojsPlayerRef.current) return;
+    window.videojs = videojs;
     window.tvCurrentPlayer = showDevOptions ? videojsPlayerRef.current : void 0;
+    window.tvAllPlayers = showDevOptions ? videojs.getAllPlayers() : void 0;
     window.tvCurrentMediaItem = showDevOptions ? props.mediaItem : void 0;
   }, [isCurrentVideo, showDevOptions, playerReady]);
   const firstDurationChangeRef = reactExports.useRef(true);
@@ -195169,6 +195130,9 @@ const MediaSlide = (props) => {
       return void 0;
     }
   }, [endPosition, initialTimestamp, minPlayLength, maxPlayLength, playLength, getMediaItemDuration(), scenePreviewOnly, looping]);
+  reactExports.useEffect(() => {
+    logger3.info(`Initial timestamp: ${initialTimestamp}, End timestamp: ${endTimestamp}`, { initialTimestamp, endTimestamp });
+  }, [initialTimestamp, endTimestamp]);
   reactExports.useEffect(() => {
     if (!showGuideOverlay) return;
     videojsPlayerRef.current?.pause();
@@ -195409,15 +195373,15 @@ const MediaSlide = (props) => {
     let options2 = {
       loopIfBeforeStart: true,
       loopIfAfterEnd: true,
-      pauseAfterLoop: false,
-      pauseBeforeLoop: false,
+      pauseAfterLooping: false,
+      pauseBeforeLooping: false,
       ...videojsPlayerRef.current?.abLoopPlugin?.getOptions() ?? {},
       enabled: looping,
-      start: initialTimestamp || void 0,
-      end: endTimestamp || void 0
+      start: initialTimestamp ?? false,
+      end: endTimestamp ?? false
     };
     logger3.debug(`Setting AB loop plugin options{*}`, { options: options2 });
-    videojsPlayerRef.current?.abLoopPlugin?.setOptions(options2);
+    videojsPlayerRef.current?.abLoopPlugin.setOptions(options2);
   }, [looping, playerReady, initialTimestamp, endTimestamp]);
   const findCurrentlyPlayingMarkers = (currentTime) => {
     if (props.mediaItem.entityType === "marker") {
@@ -195490,7 +195454,7 @@ const MediaSlide = (props) => {
       ref: itemRef,
       style: props.style
     },
-    /* @__PURE__ */ React$1.createElement(CrtEffect, { enabled: crtEffect }, showDebuggingInfo.includes("onscreen-info") && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, props.index, " - ", scene2.id, " ", loadingDeferred ? "(Loading deferred)" : "", " ", props.mediaItem.entityType === "marker" ? `(Marker: ${props.mediaItem.entity.primary_tag.name})` : ""), /* @__PURE__ */ React$1.createElement("div", { className: "loadingDeferredDebugBackground" })), loadingDeferred && scene2.paths.screenshot && /* @__PURE__ */ React$1.createElement("img", { className: "loadingDeferredPreview", src: scene2.paths.screenshot }), !loadingDeferred && /* @__PURE__ */ React$1.createElement(
+    /* @__PURE__ */ React$1.createElement(CrtEffect, { enabled: crtEffect }, showDebuggingInfo.includes("onscreen-info") && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, props.index, " - ", scene2.id, " ", loadingDeferred ? "(Loading deferred)" : "", " ", props.mediaItem.entityType === "marker" ? `(Marker: ${props.mediaItem.entity.primary_tag.name})` : "", " ", "(duration: ", roundTo(videojsPlayerRef.current?.duration() || 0, 2), "s, current time: ", roundTo(videojsPlayerRef.current?.currentTime() || 0, 2), "s)"), /* @__PURE__ */ React$1.createElement("div", { className: "loadingDeferredDebugBackground" })), loadingDeferred && scene2.paths.screenshot && /* @__PURE__ */ React$1.createElement("img", { className: "loadingDeferredPreview", src: scene2.paths.screenshot }), !loadingDeferred && /* @__PURE__ */ React$1.createElement(
       ScenePlayer,
       {
         id: `scene-player-${props.mediaItem.id}`,
@@ -216106,7 +216070,7 @@ const SettingsTab = reactExports.memo(() => {
           SingleValue: (props) => /* @__PURE__ */ React$1.createElement(components.SingleValue, { ...props }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: props.data.filterType === "scene" ? faCirclePlay : faLocationDot }), props.data.label)
         }
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Choose a scene filter from Stash to use as your Stash TV filter"), mediaItemFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, currentMediaItemFilter?.savedFilter?.find_filter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Choose a filter from Stash to use as your Stash TV filter. If you don't have any filters create a new", " ", /* @__PURE__ */ React$1.createElement("a", { href: new URL("/scenes", void 0).toString() }, "scene filter"), " or", " ", /* @__PURE__ */ React$1.createElement("a", { href: new URL("/scenes/markers", void 0).toString() }, "marker filter"), " in Stash and it will appear here."), mediaItemFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, currentMediaItemFilter?.savedFilter?.find_filter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "randomise-filter",
@@ -216336,7 +216300,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setAppSetting("showGuideOverlay", true)
       },
       "Show Guide"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.1.0"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.1.1"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -217401,4 +217365,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-uFZDpnZl.js.map
+//# sourceMappingURL=index-Bh2I1h3d.js.map

@@ -17561,8 +17561,7 @@ const Be = "app-state", bi = {
 }, ov = [
   "storeLoaded",
   "showSettings",
-  "fullscreen",
-  "showDebuggingInfo"
+  "fullscreen"
 ];
 Mp()(
   Bp(
