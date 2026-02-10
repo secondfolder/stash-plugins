@@ -215812,6 +215812,7 @@ const ActionButtonSettingsModal = ({ actionButtonConfig, onUpdate, onClose, onSa
   )))), /* @__PURE__ */ React$1.createElement(Modal.Footer, null, /* @__PURE__ */ React$1.createElement(Button, { variant: "secondary", onClick: () => onClose() }, "Cancel"), /* @__PURE__ */ React$1.createElement(Button, { variant: "success", onClick: () => onSave(actionButtonConfig) }, operation === "add" ? "Add" : "Save")));
 };
 const objectKeys = Object.keys;
+const getStashOrigin = () => location.origin;
 const SettingsTab = reactExports.memo(() => {
   const { data: { subtitleLanguage }, update: updateStashTvConfig } = useStashTvConfig();
   const {
@@ -216070,7 +216071,7 @@ const SettingsTab = reactExports.memo(() => {
           SingleValue: (props) => /* @__PURE__ */ React$1.createElement(components.SingleValue, { ...props }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: props.data.filterType === "scene" ? faCirclePlay : faLocationDot }), props.data.label)
         }
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Choose a filter from Stash to use as your Stash TV filter. If you don't have any filters create a new", " ", /* @__PURE__ */ React$1.createElement("a", { href: new URL("/scenes", void 0).toString() }, "scene filter"), " or", " ", /* @__PURE__ */ React$1.createElement("a", { href: new URL("/scenes/markers", void 0).toString() }, "marker filter"), " in Stash and it will appear here."), mediaItemFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, currentMediaItemFilter?.savedFilter?.find_filter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Choose a filter from Stash to use as your Stash TV filter. If you don't have any filters create a new", " ", /* @__PURE__ */ React$1.createElement("a", { href: new URL("/scenes", getStashOrigin()).toString() }, "scene filter"), " or", " ", /* @__PURE__ */ React$1.createElement("a", { href: new URL("/scenes/markers", getStashOrigin()).toString() }, "marker filter"), " in Stash and it will appear here."), mediaItemFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, currentMediaItemFilter?.savedFilter?.find_filter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "randomise-filter",
@@ -216300,7 +216301,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setAppSetting("showGuideOverlay", true)
       },
       "Show Guide"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.1.1"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.1.2"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -217365,4 +217366,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-Bh2I1h3d.js.map
+//# sourceMappingURL=index-Bhz0qBvF.js.map
