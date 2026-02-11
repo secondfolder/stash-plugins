@@ -29648,7 +29648,7 @@ var resolveManifestRedirect = function resolveManifestRedirect2(handleManifestRe
   }
   return url2;
 };
-var logger$1 = function logger(source2) {
+var logger$2 = function logger(source2) {
   if (videojs.log.debug) {
     return videojs.log.debug.bind(videojs, "VHS:", source2 + " >");
   }
@@ -30632,7 +30632,7 @@ var PlaylistLoader = /* @__PURE__ */ (function(_EventTarget) {
     if (!src2) {
       throw new Error("A non-empty playlist URL or object is required");
     }
-    _this.logger_ = logger$1("PlaylistLoader");
+    _this.logger_ = logger$2("PlaylistLoader");
     var _options = options2, _options$withCredenti = _options.withCredentials, withCredentials = _options$withCredenti === void 0 ? false : _options$withCredenti, _options$handleManife = _options.handleManifestRedirects, handleManifestRedirects = _options$handleManife === void 0 ? false : _options$handleManife;
     _this.src = src2;
     _this.vhs_ = vhs;
@@ -31533,7 +31533,7 @@ var DashPlaylistLoader = /* @__PURE__ */ (function(_EventTarget) {
     });
     _this.state = "HAVE_NOTHING";
     _this.loadedPlaylists_ = {};
-    _this.logger_ = logger$1("DashPlaylistLoader");
+    _this.logger_ = logger$2("DashPlaylistLoader");
     if (_this.isMaster_) {
       _this.masterPlaylistLoader_.srcUrl = srcUrlOrPlaylist;
       _this.masterPlaylistLoader_.sidxMapping_ = {};
@@ -38932,7 +38932,7 @@ var mediaSegmentRequest = function mediaSegmentRequest2(_ref12) {
     return abortAll(activeXhrs);
   };
 };
-var logFn$1 = logger$1("CodecUtils");
+var logFn$1 = logger$2("CodecUtils");
 var getCodecs = function getCodecs2(media) {
   var mediaAttributes = media.attributes || {};
   if (mediaAttributes.CODECS) {
@@ -38996,7 +38996,7 @@ var codecsForPlaylist = function codecsForPlaylist2(master, media) {
   }
   return codecInfo;
 };
-var logFn = logger$1("PlaylistSelector");
+var logFn = logger$2("PlaylistSelector");
 var representationToString = function representationToString2(representation) {
   if (!representation || !representation.playlist) {
     return;
@@ -39770,7 +39770,7 @@ var SegmentLoader = /* @__PURE__ */ (function(_videojs$EventTarget) {
       }
     });
     _this.fetchAtBuffer_ = false;
-    _this.logger_ = logger$1("SegmentLoader[" + _this.loaderType_ + "]");
+    _this.logger_ = logger$2("SegmentLoader[" + _this.loaderType_ + "]");
     Object.defineProperty(_assertThisInitialized$2(_this), "state", {
       get: function get7() {
         return this.state_;
@@ -41534,7 +41534,7 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
       return shiftQueue("mediaSource", _assertThisInitialized$2(_this));
     };
     _this.mediaSource.addEventListener("sourceopen", _this.sourceopenListener_);
-    _this.logger_ = logger$1("SourceUpdater");
+    _this.logger_ = logger$2("SourceUpdater");
     _this.audioTimestampOffset_ = 0;
     _this.videoTimestampOffset_ = 0;
     _this.queue = [];
@@ -42328,7 +42328,7 @@ var SyncController = /* @__PURE__ */ (function(_videojs$EventTarget) {
     _this.timelines = [];
     _this.discontinuities = [];
     _this.timelineToDatetimeMappings = {};
-    _this.logger_ = logger$1("SyncController");
+    _this.logger_ = logger$2("SyncController");
     return _this;
   }
   var _proto = SyncController2.prototype;
@@ -43532,7 +43532,7 @@ var createMediaTypes = function createMediaTypes2() {
       onGroupChanged: noop$9,
       onTrackChanged: noop$9,
       lastTrack_: null,
-      logger_: logger$1("MediaGroups[" + type3 + "]")
+      logger_: logger$2("MediaGroups[" + type3 + "]")
     };
   });
   return mediaTypes2;
@@ -43722,7 +43722,7 @@ var MasterPlaylistController = /* @__PURE__ */ (function(_videojs$EventTarget) {
     loaderStats.forEach(function(stat) {
       _this[stat + "_"] = sumLoaderStat.bind(_assertThisInitialized$2(_this), stat);
     });
-    _this.logger_ = logger$1("MPC");
+    _this.logger_ = logger$2("MPC");
     _this.triggeredFmp4Usage = false;
     if (_this.tech_.preload() === "none") {
       _this.loadOnPlay_ = function() {
@@ -44859,7 +44859,7 @@ var PlaybackWatcher = /* @__PURE__ */ (function() {
     this.lastRecordedTime = null;
     this.timer_ = null;
     this.checkCurrentTimeTimeout_ = null;
-    this.logger_ = logger$1("PlaybackWatcher");
+    this.logger_ = logger$2("PlaybackWatcher");
     this.logger_("initialize");
     var playHandler = function playHandler2() {
       return _this.monitorCurrentTime_();
@@ -45543,7 +45543,7 @@ var VhsHandler = /* @__PURE__ */ (function(_Component) {
     if (typeof options2.initialBandwidth === "number") {
       _this.options_.bandwidth = options2.initialBandwidth;
     }
-    _this.logger_ = logger$1("VhsHandler");
+    _this.logger_ = logger$2("VhsHandler");
     if (tech.options_ && tech.options_.playerId) {
       var _player = videojs(tech.options_.playerId);
       if (!_player.hasOwnProperty("hls")) {
@@ -182369,12 +182369,6 @@ const styledBigPlayButton = function(options2) {
     if (!button) return;
     button.innerHTML = "";
     button.insertAdjacentElement("beforeend", faPlayIcon.node[0]);
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-    });
-    button.addEventListener("touchend", (event) => {
-      event.stopPropagation();
-    });
   });
 };
 var data;
@@ -183196,16 +183190,19 @@ const ActionButton = (props) => {
       className: cx("ActionButton", className, { active, "left-handed": leftHandedUi, [`size-${size2}`]: size2 })
     },
     sideInfo && /* @__PURE__ */ React$1.createElement("div", { className: "side-info" }, sideInfo),
-    /* @__PURE__ */ React$1.createElement(SidePanel, { content: sidePanel, onSidePanelToggle }, /* @__PURE__ */ React$1.createElement(
-      ButtonElement,
-      {
-        className: cx("button"),
-        type: "button",
-        onClick: displayOnly ? void 0 : onClick
-      },
-      "icon" in Icon2 ? /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: Icon2 }) : /* @__PURE__ */ React$1.createElement(Icon2, { className: cx("icon", `icon-${className}`) }),
-      /* @__PURE__ */ React$1.createElement("span", { className: "sr-only" }, displayText)
-    ))
+    /* @__PURE__ */ React$1.createElement(SidePanel, { content: sidePanel, onSidePanelToggle }, ({ onClick: sidePanelClick, ref }) => {
+      return /* @__PURE__ */ React$1.createElement(
+        ButtonElement,
+        {
+          className: cx("button"),
+          type: "button",
+          onClick: displayOnly ? void 0 : onClick || sidePanelClick,
+          ref
+        },
+        /* @__PURE__ */ React$1.createElement(Icon2, null),
+        /* @__PURE__ */ React$1.createElement("span", { className: "sr-only" }, displayText)
+      );
+    })
   );
 };
 const SidePanel = ({ content, children, onSidePanelToggle }) => {
@@ -183228,15 +183225,8 @@ const SidePanel = ({ content, children, onSidePanelToggle }) => {
       if (timeout) clearTimeout(timeout);
     };
   }, [isOpen]);
-  if (!content) return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, children);
-  const popover = /* @__PURE__ */ React$1.createElement(
-    Popover,
-    {
-      className: cx("action-button-side-panel", { "left-handed": leftHandedUi }),
-      id: id2
-    },
-    /* @__PURE__ */ React$1.createElement("div", { className: "contents" }, isOpenDelayedClose && (typeof content === "function" ? content({ isOpen, close: () => useCurrentOpenPopover.setState(null) }) : content))
-  );
+  if (!content) return children({ onClick: () => {
+  }, ref: null });
   const safeInsetPadding = reactExports.useMemo(() => {
     const style2 = getComputedStyle(document.documentElement);
     const additionalPadding = parseInt(style2.getPropertyValue("--overlay-edge-margin")) ?? 0;
@@ -183247,17 +183237,47 @@ const SidePanel = ({ content, children, onSidePanelToggle }) => {
       bottom: (parseInt(style2.getPropertyValue("--safe-inset-bottom")) || 0) + additionalPadding
     };
   }, [forceLandscape]);
+  const processedClickEvents = reactExports.useMemo(() => /* @__PURE__ */ new WeakSet(), []);
+  reactExports.useEffect(() => {
+    if (!isOpen) return;
+    function handleClick(event) {
+      processedClickEvents.add(event);
+    }
+    window.addEventListener("click", handleClick, { capture: true });
+    return () => {
+      window.removeEventListener("click", handleClick, { capture: true });
+    };
+  }, [isOpen]);
+  const renderChildren = ({ onClick, ref }) => children({
+    onClick: (event) => {
+      if (processedClickEvents.has(event.nativeEvent) || isOpen) return;
+      onClick?.(event);
+    },
+    ref
+  });
   return /* @__PURE__ */ React$1.createElement(
     OverlayTrigger,
     {
       trigger: "click",
       placement: leftHandedUi ? "right" : "left",
-      overlay: popover,
+      overlay: /* @__PURE__ */ React$1.createElement(
+        Popover,
+        {
+          className: cx("action-button-side-panel", { "left-handed": leftHandedUi }),
+          id: id2
+        },
+        /* @__PURE__ */ React$1.createElement("div", { className: "contents" }, isOpenDelayedClose && (typeof content === "function" ? content({ isOpen, close: () => useCurrentOpenPopover.setState(null) }) : content))
+      ),
       show: isOpen,
       rootClose: true,
-      rootCloseEvent: "mousedown",
-      onToggle: () => {
-        useCurrentOpenPopover.setState(id2 === currentOpenPopover ? null : id2);
+      rootCloseEvent: "click",
+      onToggle: (shouldOpen) => {
+        const currentlyOpen = id2 === useCurrentOpenPopover.getState();
+        if (shouldOpen && !currentlyOpen) {
+          useCurrentOpenPopover.setState(id2);
+        } else if (!shouldOpen && currentlyOpen) {
+          useCurrentOpenPopover.setState(null);
+        }
       },
       popperConfig: {
         modifiers: [
@@ -183270,7 +183290,8 @@ const SidePanel = ({ content, children, onSidePanelToggle }) => {
         ]
       }
     },
-    children
+    // OverlayTrigger's children appear to be typed wrong
+    renderChildren
   );
 };
 function useStashTvConfig() {
@@ -194856,12 +194877,20 @@ const actionButtonsDetails = {
     inactiveText: "Create marker"
   }
 };
+const logger$1 = getLogger(["stash-tv", "getActionButtonDetails"]);
 function getActionButtonDetails(config2, options2) {
-  if (!actionButtonsDetails[config2.type]) {
-    throw new Error(`No details found for action button type: ${config2.type}`);
+  let partialDetails = actionButtonsDetails[config2.type];
+  if (!partialDetails) {
+    logger$1.error(`No details found for action button type: ${config2.type}`);
+    partialDetails = {
+      activeIcon: () => /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, "?"),
+      inactiveIcon: () => /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, "?"),
+      activeText: "?",
+      inactiveText: "?"
+    };
   }
   const details2 = {
-    ...actionButtonsDetails[config2.type],
+    ...partialDetails,
     get props() {
       return {
         activeIcon: this.activeIcon,
@@ -222642,7 +222671,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setAppSetting("showGuideOverlay", true)
       },
       "Show Guide"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.2.0"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.2.1"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -223707,4 +223736,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-CtB5KfKs.js.map
+//# sourceMappingURL=index-dUn88tir.js.map
