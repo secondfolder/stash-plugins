@@ -157,11 +157,11 @@
 .MediaSlide .vjs-control-bar {
   transition: opacity 0.6s;
 }
-.MediaSlide:not(.inViewport):not(.currentlyScrolling) {
+.MediaSlide:not(.current-video):not(.currentlyScrolling) {
   filter: brightness(0.7);
   transition: filter 1s;
 }
-.MediaSlide:not(.inViewport):not(.currentlyScrolling) .vjs-control-bar {
+.MediaSlide:not(.current-video):not(.currentlyScrolling) .vjs-control-bar {
   opacity: 0 !important;
   pointer-events: none !important;
   transition: opacity 1s;
@@ -2867,7 +2867,23 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   border: 0;
   border-radius: 0.5em;
   font-size: unset;
-  translate: calc(var(--safe-inset-right) * -1) 0 !important;
+  &:not(.left-handed) {
+    translate: calc(var(--safe-inset-right) * -1) 0 !important;
+  }
+  .left-handed {
+    translate: calc(var(--safe-inset-left) * 1) 0 !important;
+  }
+  max-width: calc(
+    ( var(--x-unit-dynamic) * 100 )
+    -
+    ( 65px + var(--safe-inset-left) + var(--safe-inset-right) + var(--overlay-edge-margin) * 2 )
+  );
+  max-height: calc(
+    ( var(--y-unit-dynamic) * 100 )
+    -
+    ( var(--safe-inset-top) + var(--safe-inset-bottom) + var(--overlay-edge-margin) * 2 )
+  );
+  display: flex;
 
   > .arrow::after {
     border-left-color: var(--body-bg);
@@ -2879,6 +2895,11 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
 
   &:not(.show) {
     animation: fadeOut 0.1s ease-out forwards;
+  }
+
+  > .contents {
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 }
 .ActionButtons {
@@ -2974,7 +2995,10 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   }
 }
 
-/* These live inside the popover element which is rendered as a child of body */
+/* These live inside popover elements which are rendered as children of body */
+.action-button-create-marker {
+  margin: 0.5em;
+}
 .action-button-rating-stars {
   display: flex;
 
@@ -3970,7 +3994,22 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 .rating-number.disabled {
   align-items: center;
   display: inline-flex;
-}.SceneInfo {
+}.SceneMarkerForm {
+  form > * {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    .input-group {
+      .invalid-feedback {
+        white-space: normal;
+        flex: 1 1 100%;
+        width: 0;
+        max-width: 100%;
+      }
+    }
+  }
+}
+.SceneInfo {
   position: absolute;
   bottom: calc(5em + var(--y-dynamic-diff));
   left: 0;
@@ -15837,6 +15876,7 @@ select {
   scroll-snap-type: y mandatory;
   scroll-behavior: auto;
   container: viewport/size;
+  --overlay-edge-margin: 10px;
 }
 html.force-landscape {
   scroll-snap-type: unset; /* When the root is rotated scroll snapping doesn't seem to work on the root so we set it on a child instead */
