@@ -152098,6 +152098,7 @@ const TvSceneDataFragmentDoc = gql`
   rating100
   o_counter
   o_history
+  organized
   resume_time
   scene_markers {
     id
@@ -197752,6 +197753,12 @@ const actionButtonsDetails = {
     inactiveIcon: actionButtonIcons["trash"].inactive,
     activeText: "Delete scene/marker",
     inactiveText: "Delete scene/marker"
+  },
+  "set-organized": {
+    activeIcon: actionButtonIcons["archive"].active,
+    inactiveIcon: actionButtonIcons["archive"].inactive,
+    activeText: "Mark as unorganized",
+    inactiveText: "Mark as organized"
   }
 };
 const logger$4 = getLogger(["stash-tv", "getActionButtonDetails"]);
@@ -208805,6 +208812,9 @@ const createMarkerActionButtonSchema = sharedActionButtonSchema.shape({
 sharedActionButtonSchema.shape({
   type: create$6().oneOf(["delete-media-item"]).required()
 });
+sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["set-organized"]).required()
+});
 const createNewActionButtonConfig = (type3, options2) => {
   const sharedDefaults = {
     id: `${Date.now()}-${Math.random().toString().slice(2)}`,
@@ -208884,6 +208894,8 @@ function ActionButtons({ mediaItem, sceneInfoOpen, setSceneInfoOpen, playerRef }
         return /* @__PURE__ */ React$1.createElement(CreateMarkerActionButton, { mediaItem, buttonConfig, playerRef });
       case "delete-media-item":
         return /* @__PURE__ */ React$1.createElement(DeleteMediaItemActionButton, { mediaItem, buttonConfig });
+      case "set-organized":
+        return /* @__PURE__ */ React$1.createElement(SetOrganizedActionButton, { mediaItem, buttonConfig });
       default:
         logger$1.error(`Unknown action button type: ${type3}`);
         return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, "?");
@@ -209267,6 +209279,29 @@ function DeleteMediaItemActionButton({ buttonConfig, mediaItem }) {
       onClick: handleClick
     }
   ));
+}
+function SetOrganizedActionButton({ buttonConfig, mediaItem }) {
+  const [updateScene] = useSceneUpdate();
+  function setOrganized(newOrganized) {
+    updateScene({
+      variables: {
+        input: {
+          id: scene2.id,
+          organized: newOrganized
+        }
+      }
+    });
+  }
+  if (mediaItem.entityType !== "scene") return null;
+  const scene2 = mediaItem.entity;
+  return /* @__PURE__ */ React$1.createElement(
+    ActionButton,
+    {
+      ...getActionButtonDetails(buttonConfig).props,
+      active: scene2.organized,
+      onClick: () => setOrganized(!scene2.organized)
+    }
+  );
 }
 const SceneInfo = reactExports.forwardRef(
   ({ scene: scene2, className, style: style2, onExternalLinkClick }, ref) => {
@@ -223857,7 +223892,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setAppSetting("showGuideOverlay", true)
       },
       "Show Guide"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.6.1"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.7.0"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -224937,4 +224972,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-oLxGUWmy.js.map
+//# sourceMappingURL=index-B5EdP7s4.js.map
