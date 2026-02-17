@@ -223857,7 +223857,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setAppSetting("showGuideOverlay", true)
       },
       "Show Guide"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.6.0"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.6.1"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -224937,4 +224937,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-BLq3fUpM.js.map
+//# sourceMappingURL=index-oLxGUWmy.js.map
