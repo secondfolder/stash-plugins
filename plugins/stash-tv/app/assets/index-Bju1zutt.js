@@ -177882,6 +177882,58 @@ const nonPersistentKeys = [
   "showSettings",
   "fullscreen"
 ];
+const localStorageKeys = [
+  "forceLandscape"
+];
+const createHybridStorage = () => {
+  const stashStorage = stashConfigStorage;
+  const browserStorage = localStorage;
+  return {
+    getItem: async (name2) => {
+      const [stashData, localData] = await Promise.all([
+        stashStorage.getItem(name2),
+        Promise.resolve(browserStorage.getItem(`${name2}-local`))
+      ]);
+      if (!stashData && !localData) return null;
+      const stashState = stashData ? JSON.parse(stashData).state : {};
+      const localState = localData ? JSON.parse(localData).state : {};
+      return JSON.stringify({
+        state: { ...stashState, ...localState },
+        version: stashState?.version ?? localState?.version ?? 0
+      });
+    },
+    setItem: async (name2, value) => {
+      const parsed = JSON.parse(value);
+      const state = parsed.state;
+      const stashState = {};
+      const localState = {};
+      for (const [key, val] of Object.entries(state)) {
+        if (localStorageKeys.includes(key)) {
+          localState[key] = val;
+        } else if (nonPersistentKeys.includes(key)) ;
+        else {
+          stashState[key] = val;
+        }
+      }
+      const promises = [];
+      if (Object.keys(stashState).length > 0) {
+        promises.push(stashStorage.setItem(name2, JSON.stringify({ ...parsed, state: stashState })));
+      }
+      if (Object.keys(localState).length > 0) {
+        promises.push(Promise.resolve(
+          browserStorage.setItem(`${name2}-local`, JSON.stringify({ ...parsed, state: localState }))
+        ));
+      }
+      await Promise.all(promises);
+    },
+    removeItem: async (name2) => {
+      await Promise.all([
+        stashStorage.removeItem(name2),
+        Promise.resolve(browserStorage.removeItem(`${name2}-local`))
+      ]);
+    }
+  };
+};
 const useAppStateStore = create2()(
   persist(
     (set4, get7) => ({
@@ -177925,10 +177977,7 @@ const useAppStateStore = create2()(
     }),
     {
       name: appStateStorageKey,
-      storage: createJSONStorage(() => stashConfigStorage),
-      partialize: (state) => Object.fromEntries(
-        Object.entries(state).filter(([key]) => !nonPersistentKeys.includes(key))
-      ),
+      storage: createJSONStorage(() => createHybridStorage()),
       onRehydrateStorage: (state) => {
         return () => state.set("storeLoaded", true);
       }
@@ -182207,7 +182256,7 @@ function useMediaItemFilters() {
 function getRandomSeed() {
   return Math.round(Math.random() * 1e6);
 }
-const mediaItemsPerPage = 20;
+const mediaItemsPerPage = 10;
 const defaultMarkerLength = 20;
 function useMediaItems() {
   const logger3 = getLogger(["stash-tv", "useMediaItems"]);
@@ -223892,7 +223941,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setAppSetting("showGuideOverlay", true)
       },
       "Show Guide"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.7.0"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "0.0.0-version-set-when-releasing"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -224972,4 +225021,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-B5EdP7s4.js.map
+//# sourceMappingURL=index-Bju1zutt.js.map
