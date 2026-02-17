@@ -197690,13 +197690,7 @@ const actionButtonsDetails = {
     activeIcon: actionButtonIcons["add-marker"].active,
     inactiveIcon: actionButtonIcons["add-marker"].inactive,
     activeText: "Create marker",
-    inactiveText: "Create marker"
-  },
-  "quick-create-marker": {
-    activeIcon: actionButtonIcons["add-marker"].active,
-    inactiveIcon: actionButtonIcons["add-marker"].inactive,
-    activeText: "Create preset marker",
-    inactiveText: "Create preset marker",
+    inactiveText: "Create marker",
     hasSettings: true,
     repeatable: true
   }
@@ -197733,6 +197727,15 @@ function getActionButtonDetails(config2, options2) {
     if (options2?.tagName) {
       details2.activeText = `Remove "${options2.tagName}" from scene`;
       details2.inactiveText = `Add "${options2.tagName}" to scene`;
+    }
+  }
+  if (config2.type === "create-marker" && config2.markerDefaults) {
+    if (options2?.tagName) {
+      details2.activeText = `Edit "${options2.tagName}" marker`;
+      details2.inactiveText = `Create "${options2.tagName}" marker`;
+    } else {
+      details2.activeText = `Edit marker`;
+      details2.inactiveText = `Create marker with defaults`;
     }
   }
   return details2;
@@ -208606,17 +208609,16 @@ const editTagsActionButtonSchema = sharedActionButtonSchema.shape({
   type: create$6().oneOf(["edit-tags"]).required(),
   pinnedTagIds: create$2().of(create$6().required()).required()
 });
-sharedActionButtonSchema.shape({
-  type: create$6().oneOf(["create-marker"]).required()
-});
-const quickCreateMarkerActionButtonSchema = sharedActionButtonSchema.shape({
-  type: create$6().oneOf(["quick-create-marker"]).required(),
+const createMarkerActionButtonSchema = sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["create-marker"]).required(),
   iconId: create$6().required(),
-  title: create$6(),
-  primaryTagId: create$6().required(),
-  tagIds: create$2().of(create$6().required()).required()
+  markerDefaults: create$3({
+    title: create$6(),
+    primaryTagId: create$6().required(),
+    tagIds: create$2().of(create$6().required()).required()
+  }).nullable()
 });
-const createNewActionButtonConfig = (type3) => {
+const createNewActionButtonConfig = (type3, options2) => {
   const sharedDefaults = {
     id: `${Date.now()}-${Math.random().toString().slice(2)}`,
     pinned: false
@@ -208635,14 +208637,16 @@ const createNewActionButtonConfig = (type3) => {
         iconId: "add-tag",
         tagId: ""
       };
-    case "quick-create-marker":
+    case "create-marker":
       return {
         ...sharedDefaults,
         type: type3,
-        iconId: "add-marker",
-        title: "",
-        primaryTagId: "",
-        tagIds: []
+        iconId: !options2?.includeMarkerDefaults ? "add-marker" : "bookmark",
+        markerDefaults: options2?.includeMarkerDefaults ? {
+          title: "",
+          primaryTagId: "",
+          tagIds: []
+        } : null
       };
     default:
       return {
@@ -208690,9 +208694,7 @@ function ActionButtons({ mediaItem, sceneInfoOpen, setSceneInfoOpen, playerRef }
       case "edit-tags":
         return /* @__PURE__ */ React$1.createElement(EditTagsActionButton, { mediaItem, buttonConfig });
       case "create-marker":
-        return /* @__PURE__ */ React$1.createElement(CreateMarkerActionButton, { mediaItem, buttonConfig });
-      case "quick-create-marker":
-        return /* @__PURE__ */ React$1.createElement(QuickCreateMarkerActionButton, { mediaItem, buttonConfig, playerRef });
+        return /* @__PURE__ */ React$1.createElement(CreateMarkerActionButton, { mediaItem, buttonConfig, playerRef });
       default:
         logger$1.error(`Unknown action button type: ${type3}`);
         return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, "?");
@@ -208975,37 +208977,16 @@ function EditTagsActionButton({ buttonConfig, mediaItem }) {
     }
   );
 }
-function CreateMarkerActionButton({ buttonConfig, mediaItem }) {
-  if (mediaItem.entityType !== "scene") return null;
-  return /* @__PURE__ */ React$1.createElement(
-    ActionButton,
-    {
-      ...getActionButtonDetails(buttonConfig).props,
-      className: cx("hide-on-ui-hide"),
-      active: false,
-      sidePanel: ({ close }) => /* @__PURE__ */ React$1.createElement(
-        SceneMarkerForm,
-        {
-          className: "action-button-create-marker",
-          sceneID: mediaItem.entity.id,
-          onClose: close,
-          marker: void 0
-        }
-      ),
-      "data-testid": "MediaSlide--createMarkerButton"
-    }
-  );
-}
-function QuickCreateMarkerActionButton({ buttonConfig, mediaItem, playerRef }) {
+function CreateMarkerActionButton({ buttonConfig, mediaItem, playerRef }) {
   if (mediaItem.entityType !== "scene") return null;
   const scene2 = mediaItem.entity;
   const existingMarker = reactExports.useMemo(
-    () => mediaItem.entity.scene_markers.find((m3) => m3.primary_tag.id === buttonConfig.primaryTagId && m3.title === buttonConfig.title),
-    [mediaItem.entity.scene_markers, buttonConfig.primaryTagId, buttonConfig.title]
+    () => buttonConfig.markerDefaults && mediaItem.entity.scene_markers.find((m3) => m3.primary_tag.id === buttonConfig.markerDefaults?.primaryTagId && m3.title === buttonConfig.markerDefaults?.title),
+    [mediaItem.entity.scene_markers, buttonConfig.markerDefaults?.primaryTagId, buttonConfig.markerDefaults?.title]
   );
   const [sceneMarkerCreate] = useSceneMarkerCreate();
   const handleClick = () => {
-    if (existingMarker) return;
+    if (existingMarker || !buttonConfig.markerDefaults) return;
     const currentTime = playerRef.current?.currentTime();
     if (currentTime === void 0) {
       logger$1.error("Player current time is undefined when creating quick marker", { sceneId: scene2.id });
@@ -209014,14 +208995,34 @@ function QuickCreateMarkerActionButton({ buttonConfig, mediaItem, playerRef }) {
     sceneMarkerCreate({
       variables: {
         scene_id: scene2.id,
-        title: buttonConfig.title ?? "",
-        primary_tag_id: buttonConfig.primaryTagId,
-        tag_ids: buttonConfig.tagIds,
+        title: buttonConfig.markerDefaults.title ?? "",
+        primary_tag_id: buttonConfig.markerDefaults.primaryTagId,
+        tag_ids: buttonConfig.markerDefaults.tagIds,
         seconds: currentTime,
         end_seconds: null
       }
     });
   };
+  if (!buttonConfig.markerDefaults) {
+    return /* @__PURE__ */ React$1.createElement(
+      ActionButton,
+      {
+        ...getActionButtonDetails(buttonConfig).props,
+        className: cx("hide-on-ui-hide"),
+        active: false,
+        sidePanel: ({ close }) => /* @__PURE__ */ React$1.createElement(
+          SceneMarkerForm,
+          {
+            className: "action-button-create-marker",
+            sceneID: mediaItem.entity.id,
+            onClose: close,
+            marker: void 0
+          }
+        ),
+        "data-testid": "MediaSlide--createMarkerButton"
+      }
+    );
+  }
   const renderSidePanel = existingMarker ? ({ close }) => /* @__PURE__ */ React$1.createElement(
     SceneMarkerForm,
     {
@@ -223035,14 +223036,14 @@ const ActionButtonSettingsModal = ({ initialActionButtonConfig, onClose, onSave 
       onSubmit: (values3) => onSave(editTagsActionButtonSchema.cast(values3))
     });
     form = /* @__PURE__ */ React$1.createElement(EditTagsForm, { formik });
-  } else if (initialActionButtonConfig.type === "quick-create-marker") {
+  } else if (initialActionButtonConfig.type === "create-marker") {
     formik = useFormik({
       initialValues: initialActionButtonConfig,
       enableReinitialize: true,
-      validate: yupFormikValidate(quickCreateMarkerActionButtonSchema),
-      onSubmit: (values3) => onSave(quickCreateMarkerActionButtonSchema.cast(values3))
+      validate: yupFormikValidate(createMarkerActionButtonSchema),
+      onSubmit: (values3) => onSave(createMarkerActionButtonSchema.cast(values3))
     });
-    form = /* @__PURE__ */ React$1.createElement(QuickCreateMarkerForm, { formik });
+    form = /* @__PURE__ */ React$1.createElement(CreateMarkerForm, { formik });
   } else {
     throw new Error(`Unknown action button type: ${initialActionButtonConfig.type}`);
   }
@@ -223100,34 +223101,53 @@ function EditTagsForm({ formik }) {
     }
   ), formik.touched.pinnedTagIds && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, pinnedTagIdsError), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Pinned tags allow you to quickly add your most used tags.")), Object.keys(otherErrors).length > 0 && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, /* @__PURE__ */ React$1.createElement("ul", null, Object.entries(otherErrors).map(([key, error]) => /* @__PURE__ */ React$1.createElement("li", { key }, error)))));
 }
-function QuickCreateMarkerForm({ formik }) {
+function CreateMarkerForm({ formik }) {
+  const { markerDefaults: markerDefaultsError, iconId: iconIdError, ...otherErrors } = formik.errors;
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    Switch,
+    {
+      id: "quick-add",
+      checked: Boolean(formik.values.markerDefaults),
+      label: "Create with defaults",
+      onChange: (event) => formik.setFieldValue(
+        "markerDefaults",
+        event.target.checked ? createNewActionButtonConfig("create-marker", { includeMarkerDefaults: true }).markerDefaults : null
+      )
+    }
+  ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Create a marker immediately when clicked with pre-defined details.")), formik.values.markerDefaults && /* @__PURE__ */ React$1.createElement(CreateMarkerQuickAddForm, { formik }), Object.keys(otherErrors).length > 0 && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, /* @__PURE__ */ React$1.createElement("ul", null, Object.entries(otherErrors).map(([key, error]) => /* @__PURE__ */ React$1.createElement("li", { key }, error)))));
+}
+function CreateMarkerQuickAddForm({ formik }) {
   const customQuickCreateMarkerIcons = Object.entries(actionButtonIcons).filter(([key, icon2]) => icon2.category.includes("marker") || icon2.category.includes("general")).map(([key, icon2]) => ({
     value: key,
     label: icon2.inactive
   }));
-  const { title: titleError, primaryTagId: primaryTagIdError, iconId: iconIdError, ...otherErrors } = formik.errors;
+  const { markerDefaults } = formik.values;
+  if (!markerDefaults) return null;
+  const { iconId: iconIdError } = formik.errors;
+  const { title: titleError, primaryTagId: primaryTagIdError, tags: tagsError, ...otherErrors } = formik.errors.markerDefaults || {};
+  const touched = formik.touched.markerDefaults || {};
   return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "title" }, "Title (optional)"), /* @__PURE__ */ React$1.createElement(
     MarkerTitleSuggest,
     {
-      initialMarkerTitle: formik.values.title,
-      onChange: (v) => formik.setFieldValue("title", v)
+      initialMarkerTitle: markerDefaults.title || "",
+      onChange: (v) => formik.setFieldValue("markerDefaults.title", v)
     }
-  ), formik.touched.title && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, titleError)), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "primary-tag" }, "Primary Tag (required)"), /* @__PURE__ */ React$1.createElement(
+  ), touched.title && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, titleError)), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "primary-tag" }, "Primary Tag (required)"), /* @__PURE__ */ React$1.createElement(
     TagIdSelect,
     {
       inputId: "primary-tag",
-      ids: formik.values.primaryTagId ? [formik.values.primaryTagId] : [],
-      onSelect: (tags2) => formik.setFieldValue("primaryTagId", tags2[0]?.id),
+      ids: formik.values.markerDefaults?.primaryTagId ? [formik.values.markerDefaults.primaryTagId] : [],
+      onSelect: (tags2) => formik.setFieldValue("markerDefaults.primaryTagId", tags2[0]?.id),
       isClearable: false,
       hoverPlacement: "right"
     }
-  ), formik.touched.primaryTagId && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, primaryTagIdError)), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "tags" }, "Tags (optional)"), /* @__PURE__ */ React$1.createElement(
+  ), touched.primaryTagId && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, primaryTagIdError)), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "tags" }, "Tags (optional)"), /* @__PURE__ */ React$1.createElement(
     TagIdSelect,
     {
       isMulti: true,
       inputId: "tags",
-      ids: formik.values.tagIds || [],
-      onSelect: (tags2) => formik.setFieldValue("tagIds", tags2.map((t4) => t4.id)),
+      ids: formik.values.markerDefaults?.tagIds || [],
+      onSelect: (tags2) => formik.setFieldValue("markerDefaults.tagIds", tags2.map((t4) => t4.id)),
       hoverPlacement: "right"
     }
   )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "button-icon" }, "Action Button Icon"), /* @__PURE__ */ React$1.createElement(
@@ -223337,7 +223357,13 @@ const SettingsTab = reactExports.memo(() => {
         createNewActionButtonConfig(type3)
       ),
       add() {
-        const config2 = createNewActionButtonConfig(type3);
+        const options2 = {
+          includeMarkerDefaults: false
+        };
+        if (type3 === "create-marker" && actionButtonsConfig.some((config22) => config22.type === "create-marker")) {
+          options2.includeMarkerDefaults = true;
+        }
+        const config2 = createNewActionButtonConfig(type3, options2);
         if (getActionButtonDetails(config2).hasSettings) {
           setActionButtonDraft(config2);
         } else {
@@ -223607,7 +223633,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setAppSetting("showGuideOverlay", true)
       },
       "Show Guide"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.4.0"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.5.0"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -224687,4 +224713,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-CHFGQdgM.js.map
+//# sourceMappingURL=index-BDO7YoGU.js.map
