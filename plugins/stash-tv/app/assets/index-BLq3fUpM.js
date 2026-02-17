@@ -197750,8 +197750,8 @@ const actionButtonsDetails = {
   "delete-media-item": {
     activeIcon: actionButtonIcons["trash"].active,
     inactiveIcon: actionButtonIcons["trash"].inactive,
-    activeText: "Delete media item",
-    inactiveText: "Delete media item"
+    activeText: "Delete scene/marker",
+    inactiveText: "Delete scene/marker"
   }
 };
 const logger$4 = getLogger(["stash-tv", "getActionButtonDetails"]);
@@ -224937,4 +224937,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-BhNukhbg.js.map
+//# sourceMappingURL=index-BLq3fUpM.js.map
