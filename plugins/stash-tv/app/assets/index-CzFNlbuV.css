@@ -5451,6 +5451,10 @@ html {
   scroll-behavior: auto;
   container: viewport/size;
 
+  body {
+    min-height: calc(100 * var(--y-unit-large));
+  }
+
   &.force-landscape {
     /*
     When in force landscape mode it shouldn't be possible to scroll up and down
@@ -15972,6 +15976,10 @@ kbd {
 html:has(dialog[open]):not(.force-landscape), html:has(dialog[open]).force-landscape body {
   overflow: hidden;
   scrollbar-gutter: stable;
+}
+
+.ErrorMessage {
+  margin: 1em;
 }
 
 /* -------------------------------------------------------------------------- */

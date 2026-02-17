@@ -152596,11 +152596,15 @@ function useSceneMarkerDestroyMutation(baseOptions) {
   const options2 = { ...defaultOptions$1, ...baseOptions };
   return useMutation(SceneMarkerDestroyDocument, options2);
 }
-gql`
+const SceneMarkersDestroyDocument = gql`
     mutation SceneMarkersDestroy($ids: [ID!]!) {
   sceneMarkersDestroy(ids: $ids)
 }
     `;
+function useSceneMarkersDestroyMutation(baseOptions) {
+  const options2 = { ...defaultOptions$1, ...baseOptions };
+  return useMutation(SceneMarkersDestroyDocument, options2);
+}
 gql`
     mutation SceneCreate($input: SceneCreateInput!) {
   sceneCreate(input: $input) {
@@ -152716,13 +152720,17 @@ gql`
   )
 }
     `;
-gql`
+const ScenesDestroyDocument = gql`
     mutation ScenesDestroy($ids: [ID!]!, $delete_file: Boolean, $delete_generated: Boolean) {
   scenesDestroy(
     input: {ids: $ids, delete_file: $delete_file, delete_generated: $delete_generated}
   )
 }
     `;
+function useScenesDestroyMutation(baseOptions) {
+  const options2 = { ...defaultOptions$1, ...baseOptions };
+  return useMutation(ScenesDestroyDocument, options2);
+}
 gql`
     mutation SceneGenerateScreenshot($id: ID!, $at: Float) {
   sceneGenerateScreenshot(id: $id, at: $at)
@@ -152986,7 +152994,7 @@ function useMarkerStringsQuery(baseOptions) {
   const options2 = { ...defaultOptions$1, ...baseOptions };
   return useQuery(MarkerStringsDocument, options2);
 }
-gql`
+const StatsDocument = gql`
     query Stats {
   stats {
     scene_count
@@ -153203,7 +153211,7 @@ gql`
   }
 }
     ${SlimSceneDataFragmentDoc}`;
-gql`
+const FindSceneDocument = gql`
     query FindScene($id: ID!, $checksum: String) {
   findScene(id: $id, checksum: $checksum) {
     ...SceneData
@@ -154797,6 +154805,18 @@ function evictTypeFields(cache2, input, ignore) {
     }
   }
 }
+function deleteObject(cache2, obj, query) {
+  const field = getQueryDefinition(query).selectionSet.selections[0];
+  if (!isField(field))
+    return;
+  const keyName = field.name.value;
+  cache2.writeQuery({
+    query,
+    variables: { id: obj.id },
+    data: { [keyName]: null }
+  });
+  cache2.evict({ id: cache2.identify(obj) });
+}
 const queryFindScenesForSelect = (filter2) => client.query({
   query: FindScenesForSelectDocument,
   variables: {
@@ -154934,6 +154954,25 @@ const useSceneUpdate = () => useSceneUpdateMutation({
       return;
     evictTypeFields(cache2, sceneMutationImpactedTypeFields);
     evictQueries(cache2, sceneMutationImpactedQueries);
+  }
+});
+const useScenesDestroy = (input) => useScenesDestroyMutation({
+  variables: input,
+  update(cache2, result) {
+    var _a2;
+    if (!((_a2 = result.data) === null || _a2 === void 0 ? void 0 : _a2.scenesDestroy))
+      return;
+    for (const id2 of input.ids) {
+      const obj = { __typename: "Scene", id: id2 };
+      deleteObject(cache2, obj, FindSceneDocument);
+    }
+    evictTypeFields(cache2, sceneMutationImpactedTypeFields);
+    evictQueries(cache2, [
+      ...sceneMutationImpactedQueries,
+      FindSceneMarkersDocument,
+      StatsDocument
+      // scenes size, scene count, etc
+    ]);
   }
 });
 const useSceneIncrementO = (id2) => useSceneAddOMutation({
@@ -155158,6 +155197,20 @@ const useSceneMarkerDestroy = () => useSceneMarkerDestroyMutation({
       return;
     const obj = { __typename: "SceneMarker", id: variables.id };
     cache2.evict({ id: cache2.identify(obj) });
+    evictTypeFields(cache2, sceneMarkerMutationImpactedTypeFields);
+    evictQueries(cache2, sceneMarkerMutationImpactedQueries);
+  }
+});
+const useSceneMarkersDestroy = (input) => useSceneMarkersDestroyMutation({
+  variables: input,
+  update(cache2, result) {
+    var _a2;
+    if (!((_a2 = result.data) === null || _a2 === void 0 ? void 0 : _a2.sceneMarkersDestroy))
+      return;
+    for (const id2 of input.ids) {
+      const obj = { __typename: "SceneMarker", id: id2 };
+      cache2.evict({ id: cache2.identify(obj) });
+    }
     evictTypeFields(cache2, sceneMarkerMutationImpactedTypeFields);
     evictQueries(cache2, sceneMarkerMutationImpactedQueries);
   }
@@ -197693,6 +197746,12 @@ const actionButtonsDetails = {
     inactiveText: "Create marker",
     hasSettings: true,
     repeatable: true
+  },
+  "delete-media-item": {
+    activeIcon: actionButtonIcons["trash"].active,
+    inactiveIcon: actionButtonIcons["trash"].inactive,
+    activeText: "Delete media item",
+    inactiveText: "Delete media item"
   }
 };
 const logger$4 = getLogger(["stash-tv", "getActionButtonDetails"]);
@@ -203861,6 +203920,12 @@ function objectTitle(s4) {
   }
   return "";
 }
+function objectPath(s4) {
+  if (s4.files && s4.files.length > 0) {
+    return s4.files[0].path;
+  }
+  return "";
+}
 const defaultMaxOptionsShown = 200;
 function useDebounce(fn3, wait, options2) {
   const func = reactExports.useRef(fn3);
@@ -203977,6 +204042,12 @@ var AsyncCreatableSelect = /* @__PURE__ */ reactExports.forwardRef(function(prop
   }, selectProps));
 });
 var AsyncCreatableSelect$1 = AsyncCreatableSelect;
+const defaultOnHide = () => {
+};
+const ModalComponent = ({ children, show, icon: icon2, header, cancel, accept, onHide: onHide3, isRunning, disabled: disabled2, modalProps, dialogClassName, footerButtons, leftFooterButtons }) => {
+  var _a2, _b2, _c, _d;
+  return jsxRuntimeExports.jsxs(Modal, { className: "ModalComponent", keyboard: false, onHide: onHide3 !== null && onHide3 !== void 0 ? onHide3 : defaultOnHide, show, dialogClassName, ...modalProps, children: [jsxRuntimeExports.jsxs(Modal.Header, { children: [icon2 ? jsxRuntimeExports.jsx(Icon, { icon: icon2 }) : "", jsxRuntimeExports.jsx("span", { children: header !== null && header !== void 0 ? header : "" })] }), jsxRuntimeExports.jsx(Modal.Body, { children }), jsxRuntimeExports.jsxs(Modal.Footer, { className: "ModalFooter", children: [jsxRuntimeExports.jsx("div", { children: leftFooterButtons }), jsxRuntimeExports.jsxs("div", { children: [footerButtons, cancel ? jsxRuntimeExports.jsx(Button, { disabled: isRunning, variant: (_a2 = cancel.variant) !== null && _a2 !== void 0 ? _a2 : "primary", onClick: cancel.onClick, className: "ml-2", children: (_b2 = cancel.text) !== null && _b2 !== void 0 ? _b2 : jsxRuntimeExports.jsx(MemoizedFormattedMessage, { id: "actions.cancel", defaultMessage: "Cancel", description: "Cancels the current action and dismisses the modal." }) }) : "", jsxRuntimeExports.jsx(Button, { disabled: isRunning || disabled2, variant: (_c = accept === null || accept === void 0 ? void 0 : accept.variant) !== null && _c !== void 0 ? _c : "primary", onClick: accept === null || accept === void 0 ? void 0 : accept.onClick, className: "ml-2", children: isRunning ? jsxRuntimeExports.jsx(Spinner, { animation: "border", role: "status", size: "sm" }) : (_d = accept === null || accept === void 0 ? void 0 : accept.text) !== null && _d !== void 0 ? _d : jsxRuntimeExports.jsx(MemoizedFormattedMessage, { id: "actions.close", defaultMessage: "Close", description: "Closes the current modal." }) })] })] })] });
+};
 function errorToString(error) {
   let message;
   if (error instanceof Error) {
@@ -208562,6 +208633,119 @@ function useMediaItemTags(mediaItem) {
     setTags
   };
 }
+const DeleteScenesDialog = (props) => {
+  var _a2, _b2;
+  const intl = useIntl();
+  const singularEntity = intl.formatMessage({ id: "scene" });
+  const pluralEntity = intl.formatMessage({ id: "scenes" });
+  const header = intl.formatMessage({ id: "dialogs.delete_entity_title" }, { count: props.selected.length, singularEntity, pluralEntity });
+  const toastMessage = intl.formatMessage({ id: "toast.delete_past_tense" }, { count: props.selected.length, singularEntity, pluralEntity });
+  const message = intl.formatMessage({ id: "dialogs.delete_entity_desc" }, { count: props.selected.length, singularEntity, pluralEntity });
+  const { configuration: config2 } = React$1.useContext(ConfigurationContext);
+  const [deleteFile, setDeleteFile] = reactExports.useState((_a2 = config2 === null || config2 === void 0 ? void 0 : config2.defaults.deleteFile) !== null && _a2 !== void 0 ? _a2 : false);
+  const [deleteGenerated, setDeleteGenerated] = reactExports.useState((_b2 = config2 === null || config2 === void 0 ? void 0 : config2.defaults.deleteGenerated) !== null && _b2 !== void 0 ? _b2 : true);
+  const Toast = useToast();
+  const [deleteScene] = useScenesDestroy(getScenesDeleteInput());
+  const [isDeleting, setIsDeleting] = reactExports.useState(false);
+  function getScenesDeleteInput() {
+    return {
+      ids: props.selected.map((scene2) => scene2.id),
+      delete_file: deleteFile,
+      delete_generated: deleteGenerated
+    };
+  }
+  async function onDelete() {
+    setIsDeleting(true);
+    try {
+      await deleteScene();
+      Toast.success(toastMessage);
+      props.onClose(true);
+    } catch (e2) {
+      Toast.error(e2);
+      props.onClose(false);
+    }
+    setIsDeleting(false);
+  }
+  function funscriptPath(sp) {
+    const extIndex = sp.lastIndexOf(".");
+    if (extIndex !== -1) {
+      return sp.substring(0, extIndex + 1) + "funscript";
+    }
+    return sp;
+  }
+  function maybeRenderDeleteFileAlert() {
+    if (!deleteFile) {
+      return;
+    }
+    const deletedFiles = [];
+    props.selected.forEach((s4) => {
+      const paths = s4.files.map((f) => f.path);
+      deletedFiles.push(...paths);
+      if (s4.interactive && s4.files.length) {
+        deletedFiles.push(funscriptPath(objectPath(s4)));
+      }
+    });
+    return jsxRuntimeExports.jsxs("div", { className: "delete-dialog alert alert-danger text-break", children: [jsxRuntimeExports.jsx("p", { className: "font-weight-bold", children: jsxRuntimeExports.jsx(MemoizedFormattedMessage, { values: {
+      count: deletedFiles.length,
+      singularEntity: intl.formatMessage({ id: "file" }),
+      pluralEntity: intl.formatMessage({ id: "files" })
+    }, id: "dialogs.delete_alert" }) }), jsxRuntimeExports.jsxs("ul", { children: [deletedFiles.slice(0, 5).map((s4) => jsxRuntimeExports.jsx("li", { children: s4 }, s4)), deletedFiles.length > 5 && jsxRuntimeExports.jsx(MemoizedFormattedMessage, { values: {
+      count: deletedFiles.length - 5,
+      singularEntity: intl.formatMessage({ id: "file" }),
+      pluralEntity: intl.formatMessage({ id: "files" })
+    }, id: "dialogs.delete_object_overflow" })] })] });
+  }
+  return jsxRuntimeExports.jsxs(ModalComponent, { show: true, icon: faTrashAlt, header, accept: {
+    variant: "danger",
+    onClick: onDelete,
+    text: intl.formatMessage({ id: "actions.delete" })
+  }, cancel: {
+    onClick: () => props.onClose(false),
+    text: intl.formatMessage({ id: "actions.cancel" }),
+    variant: "secondary"
+  }, isRunning: isDeleting, children: [jsxRuntimeExports.jsx("p", { children: message }), maybeRenderDeleteFileAlert(), jsxRuntimeExports.jsxs(FormImpl, { children: [jsxRuntimeExports.jsx(FormImpl.Check, { id: "delete-file", checked: deleteFile, label: intl.formatMessage({
+    id: "actions.delete_file_and_funscript"
+  }), onChange: () => setDeleteFile(!deleteFile) }), jsxRuntimeExports.jsx(FormImpl.Check, { id: "delete-generated", checked: deleteGenerated, label: intl.formatMessage({
+    id: "actions.delete_generated_supporting_files"
+  }), onChange: () => setDeleteGenerated(!deleteGenerated) })] })] });
+};
+const DeleteSceneMarkersDialog = (props) => {
+  const intl = useIntl();
+  const singularEntity = intl.formatMessage({ id: "marker" });
+  const pluralEntity = intl.formatMessage({ id: "markers" });
+  const header = intl.formatMessage({ id: "dialogs.delete_object_title" }, { count: props.selected.length, singularEntity, pluralEntity });
+  const toastMessage = intl.formatMessage({ id: "toast.delete_past_tense" }, { count: props.selected.length, singularEntity, pluralEntity });
+  const message = intl.formatMessage({ id: "dialogs.delete_object_desc" }, { count: props.selected.length, singularEntity, pluralEntity });
+  const Toast = useToast();
+  const [deleteSceneMarkers] = useSceneMarkersDestroy(getSceneMarkersDeleteInput());
+  const [isDeleting, setIsDeleting] = reactExports.useState(false);
+  function getSceneMarkersDeleteInput() {
+    return {
+      ids: props.selected.map((marker) => marker.id)
+    };
+  }
+  async function onDelete() {
+    setIsDeleting(true);
+    try {
+      await deleteSceneMarkers();
+      Toast.success(toastMessage);
+      props.onClose(true);
+    } catch (e2) {
+      Toast.error(e2);
+      props.onClose(false);
+    }
+    setIsDeleting(false);
+  }
+  return jsxRuntimeExports.jsx(ModalComponent, { show: true, icon: faTrashAlt, header, accept: {
+    variant: "danger",
+    onClick: onDelete,
+    text: intl.formatMessage({ id: "actions.delete" })
+  }, cancel: {
+    onClick: () => props.onClose(false),
+    text: intl.formatMessage({ id: "actions.cancel" }),
+    variant: "secondary"
+  }, isRunning: isDeleting, children: jsxRuntimeExports.jsx("p", { children: message }) });
+};
 const logger$1 = getLogger(["stash-tv", "ActionButtons"]);
 const sharedActionButtonSchema = create$3({
   id: create$6().required(),
@@ -208617,6 +208801,9 @@ const createMarkerActionButtonSchema = sharedActionButtonSchema.shape({
     primaryTagId: create$6().required(),
     tagIds: create$2().of(create$6().required()).required()
   }).nullable()
+});
+sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["delete-media-item"]).required()
 });
 const createNewActionButtonConfig = (type3, options2) => {
   const sharedDefaults = {
@@ -208695,6 +208882,8 @@ function ActionButtons({ mediaItem, sceneInfoOpen, setSceneInfoOpen, playerRef }
         return /* @__PURE__ */ React$1.createElement(EditTagsActionButton, { mediaItem, buttonConfig });
       case "create-marker":
         return /* @__PURE__ */ React$1.createElement(CreateMarkerActionButton, { mediaItem, buttonConfig, playerRef });
+      case "delete-media-item":
+        return /* @__PURE__ */ React$1.createElement(DeleteMediaItemActionButton, { mediaItem, buttonConfig });
       default:
         logger$1.error(`Unknown action button type: ${type3}`);
         return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, "?");
@@ -209043,6 +209232,41 @@ function CreateMarkerActionButton({ buttonConfig, mediaItem, playerRef }) {
       "data-testid": "MediaSlide--quickCreateMarkerButton"
     }
   );
+}
+function DeleteMediaItemActionButton({ buttonConfig, mediaItem }) {
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = reactExports.useState(false);
+  const handleClick = () => {
+    setShowDeleteConfirmation(true);
+  };
+  let renderDialog;
+  if (mediaItem.entityType === "scene") {
+    renderDialog = () => /* @__PURE__ */ React$1.createElement(
+      DeleteScenesDialog,
+      {
+        selected: [mediaItem.entity],
+        onClose: () => setShowDeleteConfirmation(false)
+      }
+    );
+  } else if (mediaItem.entityType === "marker") {
+    renderDialog = () => /* @__PURE__ */ React$1.createElement(
+      DeleteSceneMarkersDialog,
+      {
+        selected: [mediaItem.entity],
+        onClose: () => setShowDeleteConfirmation(false)
+      }
+    );
+  } else {
+    logger$1.error("DeleteMediaItemActionButton rendered for unsupported media item type", { mediaItem });
+    return null;
+  }
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, showDeleteConfirmation && renderDialog(), /* @__PURE__ */ React$1.createElement(
+    ActionButton,
+    {
+      ...getActionButtonDetails(buttonConfig).props,
+      active: false,
+      onClick: handleClick
+    }
+  ));
 }
 const SceneInfo = reactExports.forwardRef(
   ({ scene: scene2, className, style: style2, onExternalLinkClick }, ref) => {
@@ -223633,7 +223857,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setAppSetting("showGuideOverlay", true)
       },
       "Show Guide"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.5.0"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.6.0"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -224713,4 +224937,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-BDO7YoGU.js.map
+//# sourceMappingURL=index-BhNukhbg.js.map
