@@ -15720,9 +15720,11 @@ w`
       end_seconds
       stream
       primary_tag {
+        id
         name
       }
       tags {
+        id
         name
       }
       scene {
@@ -17507,7 +17509,7 @@ function ov() {
   }, n;
 }
 const Yl = ov(), sv = {
-  getItem: async (e) => await Hl().then((t) => t[e] || localStorage.getItem(e)).catch(console.error),
+  getItem: async (e) => await Hl().then((t) => t?.[e] || localStorage.getItem(e) || null).catch(console.error),
   setItem: async (e, t) => await yu((r) => ({ ...r, [e]: t })).catch(console.error),
   removeItem: async (e) => {
     await yu(

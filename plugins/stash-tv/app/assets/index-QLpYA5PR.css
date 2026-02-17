@@ -2888,10 +2888,6 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   );
   display: flex;
 
-  > .arrow::after {
-    border-left-color: var(--body-bg);
-  }
-
   &.show {
     animation: slideInFromRight 0.1s ease-out forwards;
   }
@@ -2900,9 +2896,17 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
     animation: fadeOut 0.1s ease-out forwards;
   }
 
+  > .arrow::after {
+    border-left-color: var(--body-bg);
+  }
+
+  > .arrow[data-hide] {
+    display: none;
+  }
+
+  /* Including contents in it's own element allows us to check for overflow without including the arrow */
   > .contents {
-    overflow-y: auto;
-    overflow-x: hidden;
+    width: 100%;
   }
 }
 .ActionButtons {
@@ -2999,6 +3003,15 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 }
 
 /* These live inside popover elements which are rendered as children of body */
+.action-button-side-panel-edit-tags {
+  width: 650px;
+
+  .primary-tag-note {
+    margin-top: 0.5em;
+    opacity: 0.8;
+    font-style: italic;
+  }
+}
 .action-button-create-marker {
   margin: 0.5em;
 }
@@ -4012,6 +4025,183 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     }
   }
 }
+.EditTagSelectionForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  .main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+
+    .actions {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
+    }
+
+    .tag-select {
+      flex: 1 1 min-content;
+    }
+  }
+}
+.tag-list-row {
+  margin: 0.5rem 0;
+}
+.tag-list-button {
+  margin: 0 0.5rem;
+  width: 8rem;
+}
+.tag-list-anchor {
+  color: #f5f8fa;
+}
+.tag-list-count {
+  display: inline-block;
+  margin: 0 0.5rem;
+  min-width: 6rem;
+}
+
+.tag-card {
+  padding: 0.5rem;
+}
+@media (max-width: 576px) {
+  .tag-card {
+    width: 100%;
+  }
+}
+.tag-card-image {
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+.tag-card button.btn.favorite-button {
+  opacity: 1;
+  padding: 0;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  transition: opacity 0.5s;
+}
+.tag-card button.btn.favorite-button svg.fa-icon {
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+}
+.tag-card button.btn.favorite-button.not-favorite {
+  color: rgba(191, 204, 214, 0.5);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
+  opacity: 0;
+}
+.tag-card button.btn.favorite-button.favorite {
+  color: #ff7373;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
+}
+.tag-card button.btn.favorite-button:hover, .tag-card button.btn.favorite-button:active, .tag-card button.btn.favorite-button:focus, .tag-card button.btn.favorite-button:active:focus {
+  background: none;
+  box-shadow: none;
+}
+.tag-card:hover button.btn.favorite-button.not-favorite {
+  opacity: 1;
+}
+
+#tag-page .tag-head .name-icons .not-favorite {
+  color: rgba(191, 204, 214, 0.5);
+}
+#tag-page .tag-head .name-icons .favorite {
+  color: #ff7373;
+}
+
+.tag-details .logo {
+  max-height: 50vh;
+  max-width: 100%;
+}
+.tag-details .logo-container {
+  margin-bottom: 4rem;
+}
+
+#tag-merge-menu .dropdown-item {
+  align-items: center;
+}
+
+.tag-card .tag-description + div {
+  margin-top: 1rem;
+}
+
+.tag-popover-card-placeholder {
+  display: flex;
+  max-width: 240px;
+  min-height: 314px;
+  width: calc(100vw - 2rem);
+}
+
+.tag-popover-card {
+  padding: 0.5rem;
+  text-align: left;
+}
+.tag-popover-card .card {
+  background: transparent;
+  box-shadow: none;
+  max-width: calc(100vw - 2rem);
+  padding: 0;
+  width: 240px;
+}
+
+.tag-item .icon-wrapper {
+  color: #202b33;
+  opacity: 0.5;
+  padding-left: 6px;
+}
+
+.tag-item .tag-icon {
+  color: #202b33;
+  margin: 0;
+  opacity: 0.5;
+  padding-left: 3px;
+  transform: scale(0.7);
+}
+
+.tag-select .alias {
+  font-weight: bold;
+  white-space: pre;
+}
+
+.tag-select-image {
+  height: 25px;
+  margin-right: 0.5em;
+  width: 25px;
+}.Tag {
+  button& {
+    margin: 0;
+    padding: 0;
+
+    &:hover:not(:disabled) {
+      .add-icon {
+        color: var(--text-color);
+        cursor: pointer;
+      }
+    }
+  }
+
+  &.tag-item:hover {
+    cursor: unset;
+  }
+
+  .add-icon {
+    background: none;
+    border: none;
+    color: var(--body-bg);
+    font-size: 12px;
+    line-height: 1rem;
+    padding: 0 0.2rem 0 0.4rem ;
+    position: relative;
+  }
+}
 .SceneInfo {
   position: absolute;
   bottom: calc(5em + var(--y-dynamic-diff));
@@ -4286,7 +4476,7 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 }
 .SettingsTab .draggable-list .draggable-list-item {
   display: flex;
-  gap: 2rem;
+  gap: 0.5rem;
   justify-content: space-between;
   align-items: center;
   padding: var(--item-padding) 0;
@@ -4316,6 +4506,7 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 }
 .SettingsTab .add-action-button {
   padding-left: 0.2em;
+  text-align: left;
 }
 .SettingsTab .add-action-button .info {
   color: var(--text-color);
@@ -4491,130 +4682,7 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     touch-action: none;
   }
 }
-.tag-list-row {
-  margin: 0.5rem 0;
-}
-.tag-list-button {
-  margin: 0 0.5rem;
-  width: 8rem;
-}
-.tag-list-anchor {
-  color: #f5f8fa;
-}
-.tag-list-count {
-  display: inline-block;
-  margin: 0 0.5rem;
-  min-width: 6rem;
-}
-
-.tag-card {
-  padding: 0.5rem;
-}
-@media (max-width: 576px) {
-  .tag-card {
-    width: 100%;
-  }
-}
-.tag-card-image {
-  display: block;
-  margin: 0 auto;
-  object-fit: contain;
-}
-.tag-card button.btn.favorite-button {
-  opacity: 1;
-  padding: 0;
-  position: absolute;
-  right: 5px;
-  top: 10px;
-  transition: opacity 0.5s;
-}
-.tag-card button.btn.favorite-button svg.fa-icon {
-  margin-left: 0.4rem;
-  margin-right: 0.4rem;
-}
-.tag-card button.btn.favorite-button.not-favorite {
-  color: rgba(191, 204, 214, 0.5);
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
-  opacity: 0;
-}
-.tag-card button.btn.favorite-button.favorite {
-  color: #ff7373;
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
-}
-.tag-card button.btn.favorite-button:hover, .tag-card button.btn.favorite-button:active, .tag-card button.btn.favorite-button:focus, .tag-card button.btn.favorite-button:active:focus {
-  background: none;
-  box-shadow: none;
-}
-.tag-card:hover button.btn.favorite-button.not-favorite {
-  opacity: 1;
-}
-
-#tag-page .tag-head .name-icons .not-favorite {
-  color: rgba(191, 204, 214, 0.5);
-}
-#tag-page .tag-head .name-icons .favorite {
-  color: #ff7373;
-}
-
-.tag-details .logo {
-  max-height: 50vh;
-  max-width: 100%;
-}
-.tag-details .logo-container {
-  margin-bottom: 4rem;
-}
-
-#tag-merge-menu .dropdown-item {
-  align-items: center;
-}
-
-.tag-card .tag-description + div {
-  margin-top: 1rem;
-}
-
-.tag-popover-card-placeholder {
-  display: flex;
-  max-width: 240px;
-  min-height: 314px;
-  width: calc(100vw - 2rem);
-}
-
-.tag-popover-card {
-  padding: 0.5rem;
-  text-align: left;
-}
-.tag-popover-card .card {
-  background: transparent;
-  box-shadow: none;
-  max-width: calc(100vw - 2rem);
-  padding: 0;
-  width: 240px;
-}
-
-.tag-item .icon-wrapper {
-  color: #202b33;
-  opacity: 0.5;
-  padding-left: 6px;
-}
-
-.tag-item .tag-icon {
-  color: #202b33;
-  margin: 0;
-  opacity: 0.5;
-  padding-left: 3px;
-  transform: scale(0.7);
-}
-
-.tag-select .alias {
-  font-weight: bold;
-  white-space: pre;
-}
-
-.tag-select-image {
-  height: 25px;
-  margin-right: 0.5em;
-  width: 25px;
-}.ActionButtonSettingsModal {
+.ActionButtonSettingsModal {
   .modal-dialog {
     top: var(--safe-inset-top);
 
