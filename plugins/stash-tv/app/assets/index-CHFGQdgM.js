@@ -49325,10 +49325,10 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 return objectToString2(re) === "[object RegExp]";
               }
               exports22.isRegExp = isRegExp;
-              function isObject4(arg) {
+              function isObject3(arg) {
                 return typeof arg === "object" && arg !== null;
               }
-              exports22.isObject = isObject4;
+              exports22.isObject = isObject3;
               function isDate2(d4) {
                 return objectToString2(d4) === "[object Date]";
               }
@@ -152100,13 +152100,16 @@ const TvSceneDataFragmentDoc = gql`
   o_history
   resume_time
   scene_markers {
+    id
     title
     seconds
     end_seconds
     primary_tag {
+      id
       name
     }
     tags {
+      id
       name
     }
   }
@@ -182388,6 +182391,2397 @@ const styledBigPlayButton = function(options2) {
     button.insertAdjacentElement("beforeend", faPlayIcon.node[0]);
   });
 };
+var propertyExpr;
+var hasRequiredPropertyExpr;
+function requirePropertyExpr() {
+  if (hasRequiredPropertyExpr) return propertyExpr;
+  hasRequiredPropertyExpr = 1;
+  function Cache2(maxSize) {
+    this._maxSize = maxSize;
+    this.clear();
+  }
+  Cache2.prototype.clear = function() {
+    this._size = 0;
+    this._values = /* @__PURE__ */ Object.create(null);
+  };
+  Cache2.prototype.get = function(key) {
+    return this._values[key];
+  };
+  Cache2.prototype.set = function(key, value) {
+    this._size >= this._maxSize && this.clear();
+    if (!(key in this._values)) this._size++;
+    return this._values[key] = value;
+  };
+  var SPLIT_REGEX = /[^.^\]^[]+|(?=\[\]|\.\.)/g, DIGIT_REGEX = /^\d+$/, LEAD_DIGIT_REGEX = /^\d/, SPEC_CHAR_REGEX = /[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g, CLEAN_QUOTES_REGEX = /^\s*(['"]?)(.*?)(\1)\s*$/, MAX_CACHE_SIZE = 512;
+  var pathCache = new Cache2(MAX_CACHE_SIZE), setCache = new Cache2(MAX_CACHE_SIZE), getCache = new Cache2(MAX_CACHE_SIZE);
+  propertyExpr = {
+    Cache: Cache2,
+    split: split2,
+    normalizePath: normalizePath4,
+    setter: function(path2) {
+      var parts = normalizePath4(path2);
+      return setCache.get(path2) || setCache.set(path2, function setter(obj, value) {
+        var index2 = 0;
+        var len = parts.length;
+        var data2 = obj;
+        while (index2 < len - 1) {
+          var part = parts[index2];
+          if (part === "__proto__" || part === "constructor" || part === "prototype") {
+            return obj;
+          }
+          data2 = data2[parts[index2++]];
+        }
+        data2[parts[index2]] = value;
+      });
+    },
+    getter: function(path2, safe) {
+      var parts = normalizePath4(path2);
+      return getCache.get(path2) || getCache.set(path2, function getter(data2) {
+        var index2 = 0, len = parts.length;
+        while (index2 < len) {
+          if (data2 != null || !safe) data2 = data2[parts[index2++]];
+          else return;
+        }
+        return data2;
+      });
+    },
+    join: function(segments) {
+      return segments.reduce(function(path2, part) {
+        return path2 + (isQuoted(part) || DIGIT_REGEX.test(part) ? "[" + part + "]" : (path2 ? "." : "") + part);
+      }, "");
+    },
+    forEach: function(path2, cb2, thisArg) {
+      forEach2(Array.isArray(path2) ? path2 : split2(path2), cb2, thisArg);
+    }
+  };
+  function normalizePath4(path2) {
+    return pathCache.get(path2) || pathCache.set(
+      path2,
+      split2(path2).map(function(part) {
+        return part.replace(CLEAN_QUOTES_REGEX, "$2");
+      })
+    );
+  }
+  function split2(path2) {
+    return path2.match(SPLIT_REGEX) || [""];
+  }
+  function forEach2(parts, iter, thisArg) {
+    var len = parts.length, part, idx, isArray2, isBracket;
+    for (idx = 0; idx < len; idx++) {
+      part = parts[idx];
+      if (part) {
+        if (shouldBeQuoted(part)) {
+          part = '"' + part + '"';
+        }
+        isBracket = isQuoted(part);
+        isArray2 = !isBracket && /^\d+$/.test(part);
+        iter.call(thisArg, part, isBracket, isArray2, idx, parts);
+      }
+    }
+  }
+  function isQuoted(str) {
+    return typeof str === "string" && str && ["'", '"'].indexOf(str.charAt(0)) !== -1;
+  }
+  function hasLeadingNumber(part) {
+    return part.match(LEAD_DIGIT_REGEX) && !part.match(DIGIT_REGEX);
+  }
+  function hasSpecialChars(part) {
+    return SPEC_CHAR_REGEX.test(part);
+  }
+  function shouldBeQuoted(part) {
+    return !isQuoted(part) && (hasLeadingNumber(part) || hasSpecialChars(part));
+  }
+  return propertyExpr;
+}
+var propertyExprExports = requirePropertyExpr();
+var tinyCase;
+var hasRequiredTinyCase;
+function requireTinyCase() {
+  if (hasRequiredTinyCase) return tinyCase;
+  hasRequiredTinyCase = 1;
+  const reWords = /[A-Z\xc0-\xd6\xd8-\xde]?[a-z\xdf-\xf6\xf8-\xff]+(?:['’](?:d|ll|m|re|s|t|ve))?(?=[\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000]|[A-Z\xc0-\xd6\xd8-\xde]|$)|(?:[A-Z\xc0-\xd6\xd8-\xde]|[^\ud800-\udfff\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\d+\u2700-\u27bfa-z\xdf-\xf6\xf8-\xffA-Z\xc0-\xd6\xd8-\xde])+(?:['’](?:D|LL|M|RE|S|T|VE))?(?=[\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000]|[A-Z\xc0-\xd6\xd8-\xde](?:[a-z\xdf-\xf6\xf8-\xff]|[^\ud800-\udfff\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\d+\u2700-\u27bfa-z\xdf-\xf6\xf8-\xffA-Z\xc0-\xd6\xd8-\xde])|$)|[A-Z\xc0-\xd6\xd8-\xde]?(?:[a-z\xdf-\xf6\xf8-\xff]|[^\ud800-\udfff\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\d+\u2700-\u27bfa-z\xdf-\xf6\xf8-\xffA-Z\xc0-\xd6\xd8-\xde])+(?:['’](?:d|ll|m|re|s|t|ve))?|[A-Z\xc0-\xd6\xd8-\xde]+(?:['’](?:D|LL|M|RE|S|T|VE))?|\d*(?:1ST|2ND|3RD|(?![123])\dTH)(?=\b|[a-z_])|\d*(?:1st|2nd|3rd|(?![123])\dth)(?=\b|[A-Z_])|\d+|(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe2f\u20d0-\u20ff]|\ud83c[\udffb-\udfff])?(?:\u200d(?:[^\ud800-\udfff]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe2f\u20d0-\u20ff]|\ud83c[\udffb-\udfff])?)*/g;
+  const words = (str) => str.match(reWords) || [];
+  const upperFirst = (str) => str[0].toUpperCase() + str.slice(1);
+  const join2 = (str, d4) => words(str).join(d4).toLowerCase();
+  const camelCase3 = (str) => words(str).reduce(
+    (acc, next2) => `${acc}${!acc ? next2.toLowerCase() : next2[0].toUpperCase() + next2.slice(1).toLowerCase()}`,
+    ""
+  );
+  const pascalCase3 = (str) => upperFirst(camelCase3(str));
+  const snakeCase = (str) => join2(str, "_");
+  const kebabCase = (str) => join2(str, "-");
+  const sentenceCase = (str) => upperFirst(join2(str, " "));
+  const titleCase = (str) => words(str).map(upperFirst).join(" ");
+  tinyCase = {
+    words,
+    upperFirst,
+    camelCase: camelCase3,
+    pascalCase: pascalCase3,
+    snakeCase,
+    kebabCase,
+    sentenceCase,
+    titleCase
+  };
+  return tinyCase;
+}
+var tinyCaseExports = requireTinyCase();
+var toposort$1 = { exports: {} };
+var hasRequiredToposort;
+function requireToposort() {
+  if (hasRequiredToposort) return toposort$1.exports;
+  hasRequiredToposort = 1;
+  toposort$1.exports = function(edges) {
+    return toposort2(uniqueNodes(edges), edges);
+  };
+  toposort$1.exports.array = toposort2;
+  function toposort2(nodes, edges) {
+    var cursor2 = nodes.length, sorted = new Array(cursor2), visited = {}, i2 = cursor2, outgoingEdges = makeOutgoingEdges(edges), nodesHash = makeNodesHash(nodes);
+    edges.forEach(function(edge) {
+      if (!nodesHash.has(edge[0]) || !nodesHash.has(edge[1])) {
+        throw new Error("Unknown node. There is an unknown node in the supplied edges.");
+      }
+    });
+    while (i2--) {
+      if (!visited[i2]) visit2(nodes[i2], i2, /* @__PURE__ */ new Set());
+    }
+    return sorted;
+    function visit2(node2, i3, predecessors) {
+      if (predecessors.has(node2)) {
+        var nodeRep;
+        try {
+          nodeRep = ", node was:" + JSON.stringify(node2);
+        } catch (e2) {
+          nodeRep = "";
+        }
+        throw new Error("Cyclic dependency" + nodeRep);
+      }
+      if (!nodesHash.has(node2)) {
+        throw new Error("Found unknown node. Make sure to provided all involved nodes. Unknown node: " + JSON.stringify(node2));
+      }
+      if (visited[i3]) return;
+      visited[i3] = true;
+      var outgoing = outgoingEdges.get(node2) || /* @__PURE__ */ new Set();
+      outgoing = Array.from(outgoing);
+      if (i3 = outgoing.length) {
+        predecessors.add(node2);
+        do {
+          var child = outgoing[--i3];
+          visit2(child, nodesHash.get(child), predecessors);
+        } while (i3);
+        predecessors.delete(node2);
+      }
+      sorted[--cursor2] = node2;
+    }
+  }
+  function uniqueNodes(arr) {
+    var res = /* @__PURE__ */ new Set();
+    for (var i2 = 0, len = arr.length; i2 < len; i2++) {
+      var edge = arr[i2];
+      res.add(edge[0]);
+      res.add(edge[1]);
+    }
+    return Array.from(res);
+  }
+  function makeOutgoingEdges(arr) {
+    var edges = /* @__PURE__ */ new Map();
+    for (var i2 = 0, len = arr.length; i2 < len; i2++) {
+      var edge = arr[i2];
+      if (!edges.has(edge[0])) edges.set(edge[0], /* @__PURE__ */ new Set());
+      if (!edges.has(edge[1])) edges.set(edge[1], /* @__PURE__ */ new Set());
+      edges.get(edge[0]).add(edge[1]);
+    }
+    return edges;
+  }
+  function makeNodesHash(arr) {
+    var res = /* @__PURE__ */ new Map();
+    for (var i2 = 0, len = arr.length; i2 < len; i2++) {
+      res.set(arr[i2], i2);
+    }
+    return res;
+  }
+  return toposort$1.exports;
+}
+var toposortExports = requireToposort();
+const toposort = /* @__PURE__ */ getDefaultExportFromCjs(toposortExports);
+const toString = Object.prototype.toString;
+const errorToString$1 = Error.prototype.toString;
+const regExpToString = RegExp.prototype.toString;
+const symbolToString = typeof Symbol !== "undefined" ? Symbol.prototype.toString : () => "";
+const SYMBOL_REGEXP = /^Symbol\((.*)\)(.*)$/;
+function printNumber(val) {
+  if (val != +val) return "NaN";
+  const isNegativeZero = val === 0 && 1 / val < 0;
+  return isNegativeZero ? "-0" : "" + val;
+}
+function printSimpleValue(val, quoteStrings = false) {
+  if (val == null || val === true || val === false) return "" + val;
+  const typeOf = typeof val;
+  if (typeOf === "number") return printNumber(val);
+  if (typeOf === "string") return quoteStrings ? `"${val}"` : val;
+  if (typeOf === "function") return "[Function " + (val.name || "anonymous") + "]";
+  if (typeOf === "symbol") return symbolToString.call(val).replace(SYMBOL_REGEXP, "Symbol($1)");
+  const tag2 = toString.call(val).slice(8, -1);
+  if (tag2 === "Date") return isNaN(val.getTime()) ? "" + val : val.toISOString(val);
+  if (tag2 === "Error" || val instanceof Error) return "[" + errorToString$1.call(val) + "]";
+  if (tag2 === "RegExp") return regExpToString.call(val);
+  return null;
+}
+function printValue(value, quoteStrings) {
+  let result = printSimpleValue(value, quoteStrings);
+  if (result !== null) return result;
+  return JSON.stringify(value, function(key, value2) {
+    let result2 = printSimpleValue(this[key], quoteStrings);
+    if (result2 !== null) return result2;
+    return value2;
+  }, 2);
+}
+function toArray$1(value) {
+  return value == null ? [] : [].concat(value);
+}
+let _Symbol$toStringTag, _Symbol$hasInstance, _Symbol$toStringTag2;
+let strReg = /\$\{\s*(\w+)\s*\}/g;
+_Symbol$toStringTag = Symbol.toStringTag;
+class ValidationErrorNoStack {
+  constructor(errorOrErrors, value, field, type3) {
+    this.name = void 0;
+    this.message = void 0;
+    this.value = void 0;
+    this.path = void 0;
+    this.type = void 0;
+    this.params = void 0;
+    this.errors = void 0;
+    this.inner = void 0;
+    this[_Symbol$toStringTag] = "Error";
+    this.name = "ValidationError";
+    this.value = value;
+    this.path = field;
+    this.type = type3;
+    this.errors = [];
+    this.inner = [];
+    toArray$1(errorOrErrors).forEach((err) => {
+      if (ValidationError.isError(err)) {
+        this.errors.push(...err.errors);
+        const innerErrors = err.inner.length ? err.inner : [err];
+        this.inner.push(...innerErrors);
+      } else {
+        this.errors.push(err);
+      }
+    });
+    this.message = this.errors.length > 1 ? `${this.errors.length} errors occurred` : this.errors[0];
+  }
+}
+_Symbol$hasInstance = Symbol.hasInstance;
+_Symbol$toStringTag2 = Symbol.toStringTag;
+class ValidationError extends Error {
+  static formatError(message, params) {
+    const path2 = params.label || params.path || "this";
+    params = Object.assign({}, params, {
+      path: path2,
+      originalPath: params.path
+    });
+    if (typeof message === "string") return message.replace(strReg, (_, key) => printValue(params[key]));
+    if (typeof message === "function") return message(params);
+    return message;
+  }
+  static isError(err) {
+    return err && err.name === "ValidationError";
+  }
+  constructor(errorOrErrors, value, field, type3, disableStack) {
+    const errorNoStack = new ValidationErrorNoStack(errorOrErrors, value, field, type3);
+    if (disableStack) {
+      return errorNoStack;
+    }
+    super();
+    this.value = void 0;
+    this.path = void 0;
+    this.type = void 0;
+    this.params = void 0;
+    this.errors = [];
+    this.inner = [];
+    this[_Symbol$toStringTag2] = "Error";
+    this.name = errorNoStack.name;
+    this.message = errorNoStack.message;
+    this.type = errorNoStack.type;
+    this.value = errorNoStack.value;
+    this.path = errorNoStack.path;
+    this.errors = errorNoStack.errors;
+    this.inner = errorNoStack.inner;
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, ValidationError);
+    }
+  }
+  static [_Symbol$hasInstance](inst) {
+    return ValidationErrorNoStack[Symbol.hasInstance](inst) || super[Symbol.hasInstance](inst);
+  }
+}
+let mixed = {
+  default: "${path} is invalid",
+  required: "${path} is a required field",
+  defined: "${path} must be defined",
+  notNull: "${path} cannot be null",
+  oneOf: "${path} must be one of the following values: ${values}",
+  notOneOf: "${path} must not be one of the following values: ${values}",
+  notType: ({
+    path: path2,
+    type: type3,
+    value,
+    originalValue
+  }) => {
+    const castMsg = originalValue != null && originalValue !== value ? ` (cast from the value \`${printValue(originalValue, true)}\`).` : ".";
+    return type3 !== "mixed" ? `${path2} must be a \`${type3}\` type, but the final value was: \`${printValue(value, true)}\`` + castMsg : `${path2} must match the configured type. The validated value was: \`${printValue(value, true)}\`` + castMsg;
+  }
+};
+let string = {
+  length: "${path} must be exactly ${length} characters",
+  min: "${path} must be at least ${min} characters",
+  max: "${path} must be at most ${max} characters",
+  matches: '${path} must match the following: "${regex}"',
+  email: "${path} must be a valid email",
+  url: "${path} must be a valid URL",
+  uuid: "${path} must be a valid UUID",
+  datetime: "${path} must be a valid ISO date-time",
+  datetime_precision: "${path} must be a valid ISO date-time with a sub-second precision of exactly ${precision} digits",
+  datetime_offset: '${path} must be a valid ISO date-time with UTC "Z" timezone',
+  trim: "${path} must be a trimmed string",
+  lowercase: "${path} must be a lowercase string",
+  uppercase: "${path} must be a upper case string"
+};
+let number$1 = {
+  min: "${path} must be greater than or equal to ${min}",
+  max: "${path} must be less than or equal to ${max}",
+  lessThan: "${path} must be less than ${less}",
+  moreThan: "${path} must be greater than ${more}",
+  positive: "${path} must be a positive number",
+  negative: "${path} must be a negative number",
+  integer: "${path} must be an integer"
+};
+let date$1 = {
+  min: "${path} field must be later than ${min}",
+  max: "${path} field must be at earlier than ${max}"
+};
+let boolean = {
+  isValue: "${path} field must be ${value}"
+};
+let object = {
+  noUnknown: "${path} field has unspecified keys: ${unknown}",
+  exact: "${path} object contains unknown properties: ${properties}"
+};
+let array = {
+  min: "${path} field must have at least ${min} items",
+  max: "${path} field must have less than or equal to ${max} items",
+  length: "${path} must have ${length} items"
+};
+let tuple = {
+  notType: (params) => {
+    const {
+      path: path2,
+      value,
+      spec
+    } = params;
+    const typeLen = spec.types.length;
+    if (Array.isArray(value)) {
+      if (value.length < typeLen) return `${path2} tuple value has too few items, expected a length of ${typeLen} but got ${value.length} for value: \`${printValue(value, true)}\``;
+      if (value.length > typeLen) return `${path2} tuple value has too many items, expected a length of ${typeLen} but got ${value.length} for value: \`${printValue(value, true)}\``;
+    }
+    return ValidationError.formatError(mixed.notType, params);
+  }
+};
+Object.assign(/* @__PURE__ */ Object.create(null), {
+  mixed,
+  string,
+  number: number$1,
+  date: date$1,
+  object,
+  array,
+  boolean,
+  tuple
+});
+const isSchema = (obj) => obj && obj.__isYupSchema__;
+class Condition {
+  static fromOptions(refs, config2) {
+    if (!config2.then && !config2.otherwise) throw new TypeError("either `then:` or `otherwise:` is required for `when()` conditions");
+    let {
+      is: is2,
+      then,
+      otherwise
+    } = config2;
+    let check2 = typeof is2 === "function" ? is2 : (...values3) => values3.every((value) => value === is2);
+    return new Condition(refs, (values3, schema) => {
+      var _branch;
+      let branch = check2(...values3) ? then : otherwise;
+      return (_branch = branch == null ? void 0 : branch(schema)) != null ? _branch : schema;
+    });
+  }
+  constructor(refs, builder) {
+    this.fn = void 0;
+    this.refs = refs;
+    this.refs = refs;
+    this.fn = builder;
+  }
+  resolve(base, options2) {
+    let values3 = this.refs.map((ref) => (
+      // TODO: ? operator here?
+      ref.getValue(options2 == null ? void 0 : options2.value, options2 == null ? void 0 : options2.parent, options2 == null ? void 0 : options2.context)
+    ));
+    let schema = this.fn(values3, base, options2);
+    if (schema === void 0 || // @ts-ignore this can be base
+    schema === base) {
+      return base;
+    }
+    if (!isSchema(schema)) throw new TypeError("conditions must return a schema object");
+    return schema.resolve(options2);
+  }
+}
+const prefixes$1 = {
+  context: "$",
+  value: "."
+};
+let Reference$1 = class Reference {
+  constructor(key, options2 = {}) {
+    this.key = void 0;
+    this.isContext = void 0;
+    this.isValue = void 0;
+    this.isSibling = void 0;
+    this.path = void 0;
+    this.getter = void 0;
+    this.map = void 0;
+    if (typeof key !== "string") throw new TypeError("ref must be a string, got: " + key);
+    this.key = key.trim();
+    if (key === "") throw new TypeError("ref must be a non-empty string");
+    this.isContext = this.key[0] === prefixes$1.context;
+    this.isValue = this.key[0] === prefixes$1.value;
+    this.isSibling = !this.isContext && !this.isValue;
+    let prefix2 = this.isContext ? prefixes$1.context : this.isValue ? prefixes$1.value : "";
+    this.path = this.key.slice(prefix2.length);
+    this.getter = this.path && propertyExprExports.getter(this.path, true);
+    this.map = options2.map;
+  }
+  getValue(value, parent, context2) {
+    let result = this.isContext ? context2 : this.isValue ? value : parent;
+    if (this.getter) result = this.getter(result || {});
+    if (this.map) result = this.map(result);
+    return result;
+  }
+  /**
+   *
+   * @param {*} value
+   * @param {Object} options
+   * @param {Object=} options.context
+   * @param {Object=} options.parent
+   */
+  cast(value, options2) {
+    return this.getValue(value, options2 == null ? void 0 : options2.parent, options2 == null ? void 0 : options2.context);
+  }
+  resolve() {
+    return this;
+  }
+  describe() {
+    return {
+      type: "ref",
+      key: this.key
+    };
+  }
+  toString() {
+    return `Ref(${this.key})`;
+  }
+  static isRef(value) {
+    return value && value.__isYupRef;
+  }
+};
+Reference$1.prototype.__isYupRef = true;
+const isAbsent = (value) => value == null;
+function createValidation(config2) {
+  function validate({
+    value,
+    path: path2 = "",
+    options: options2,
+    originalValue,
+    schema
+  }, panic, next2) {
+    const {
+      name: name2,
+      test: test2,
+      params,
+      message,
+      skipAbsent
+    } = config2;
+    let {
+      parent,
+      context: context2,
+      abortEarly = schema.spec.abortEarly,
+      disableStackTrace = schema.spec.disableStackTrace
+    } = options2;
+    const resolveOptions = {
+      value,
+      parent,
+      context: context2
+    };
+    function createError(overrides = {}) {
+      const nextParams = resolveParams(Object.assign({
+        value,
+        originalValue,
+        label: schema.spec.label,
+        path: overrides.path || path2,
+        spec: schema.spec,
+        disableStackTrace: overrides.disableStackTrace || disableStackTrace
+      }, params, overrides.params), resolveOptions);
+      const error = new ValidationError(ValidationError.formatError(overrides.message || message, nextParams), value, nextParams.path, overrides.type || name2, nextParams.disableStackTrace);
+      error.params = nextParams;
+      return error;
+    }
+    const invalid = abortEarly ? panic : next2;
+    let ctx = {
+      path: path2,
+      parent,
+      type: name2,
+      from: options2.from,
+      createError,
+      resolve(item) {
+        return resolveMaybeRef(item, resolveOptions);
+      },
+      options: options2,
+      originalValue,
+      schema
+    };
+    const handleResult = (validOrError) => {
+      if (ValidationError.isError(validOrError)) invalid(validOrError);
+      else if (!validOrError) invalid(createError());
+      else next2(null);
+    };
+    const handleError2 = (err) => {
+      if (ValidationError.isError(err)) invalid(err);
+      else panic(err);
+    };
+    const shouldSkip = skipAbsent && isAbsent(value);
+    if (shouldSkip) {
+      return handleResult(true);
+    }
+    let result;
+    try {
+      var _result;
+      result = test2.call(ctx, value, ctx);
+      if (typeof ((_result = result) == null ? void 0 : _result.then) === "function") {
+        if (options2.sync) {
+          throw new Error(`Validation test of type: "${ctx.type}" returned a Promise during a synchronous validate. This test will finish after the validate call has returned`);
+        }
+        return Promise.resolve(result).then(handleResult, handleError2);
+      }
+    } catch (err) {
+      handleError2(err);
+      return;
+    }
+    handleResult(result);
+  }
+  validate.OPTIONS = config2;
+  return validate;
+}
+function resolveParams(params, options2) {
+  if (!params) return params;
+  for (const key of Object.keys(params)) {
+    params[key] = resolveMaybeRef(params[key], options2);
+  }
+  return params;
+}
+function resolveMaybeRef(item, options2) {
+  return Reference$1.isRef(item) ? item.getValue(options2.value, options2.parent, options2.context) : item;
+}
+function getIn$1(schema, path2, value, context2 = value) {
+  let parent, lastPart, lastPartDebug;
+  if (!path2) return {
+    parent,
+    parentPath: path2,
+    schema
+  };
+  propertyExprExports.forEach(path2, (_part, isBracket, isArray2) => {
+    let part = isBracket ? _part.slice(1, _part.length - 1) : _part;
+    schema = schema.resolve({
+      context: context2,
+      parent,
+      value
+    });
+    let isTuple = schema.type === "tuple";
+    let idx = isArray2 ? parseInt(part, 10) : 0;
+    if (schema.innerType || isTuple) {
+      if (isTuple && !isArray2) throw new Error(`Yup.reach cannot implicitly index into a tuple type. the path part "${lastPartDebug}" must contain an index to the tuple element, e.g. "${lastPartDebug}[0]"`);
+      if (value && idx >= value.length) {
+        throw new Error(`Yup.reach cannot resolve an array item at index: ${_part}, in the path: ${path2}. because there is no value at that index. `);
+      }
+      parent = value;
+      value = value && value[idx];
+      schema = isTuple ? schema.spec.types[idx] : schema.innerType;
+    }
+    if (!isArray2) {
+      if (!schema.fields || !schema.fields[part]) throw new Error(`The schema does not contain the path: ${path2}. (failed at: ${lastPartDebug} which is a type: "${schema.type}")`);
+      parent = value;
+      value = value && value[part];
+      schema = schema.fields[part];
+    }
+    lastPart = part;
+    lastPartDebug = isBracket ? "[" + _part + "]" : "." + _part;
+  });
+  return {
+    schema,
+    parent,
+    parentPath: lastPart
+  };
+}
+class ReferenceSet extends Set {
+  describe() {
+    const description2 = [];
+    for (const item of this.values()) {
+      description2.push(Reference$1.isRef(item) ? item.describe() : item);
+    }
+    return description2;
+  }
+  resolveAll(resolve) {
+    let result = [];
+    for (const item of this.values()) {
+      result.push(resolve(item));
+    }
+    return result;
+  }
+  clone() {
+    return new ReferenceSet(this.values());
+  }
+  merge(newItems, removeItems) {
+    const next2 = this.clone();
+    newItems.forEach((value) => next2.add(value));
+    removeItems.forEach((value) => next2.delete(value));
+    return next2;
+  }
+}
+function clone(src2, seen = /* @__PURE__ */ new Map()) {
+  if (isSchema(src2) || !src2 || typeof src2 !== "object") return src2;
+  if (seen.has(src2)) return seen.get(src2);
+  let copy2;
+  if (src2 instanceof Date) {
+    copy2 = new Date(src2.getTime());
+    seen.set(src2, copy2);
+  } else if (src2 instanceof RegExp) {
+    copy2 = new RegExp(src2);
+    seen.set(src2, copy2);
+  } else if (Array.isArray(src2)) {
+    copy2 = new Array(src2.length);
+    seen.set(src2, copy2);
+    for (let i2 = 0; i2 < src2.length; i2++) copy2[i2] = clone(src2[i2], seen);
+  } else if (src2 instanceof Map) {
+    copy2 = /* @__PURE__ */ new Map();
+    seen.set(src2, copy2);
+    for (const [k2, v] of src2.entries()) copy2.set(k2, clone(v, seen));
+  } else if (src2 instanceof Set) {
+    copy2 = /* @__PURE__ */ new Set();
+    seen.set(src2, copy2);
+    for (const v of src2) copy2.add(clone(v, seen));
+  } else if (src2 instanceof Object) {
+    copy2 = {};
+    seen.set(src2, copy2);
+    for (const [k2, v] of Object.entries(src2)) copy2[k2] = clone(v, seen);
+  } else {
+    throw Error(`Unable to clone ${src2}`);
+  }
+  return copy2;
+}
+function createStandardPath(path2) {
+  if (!(path2 != null && path2.length)) {
+    return void 0;
+  }
+  const segments = [];
+  let currentSegment = "";
+  let inBrackets = false;
+  let inQuotes = false;
+  for (let i2 = 0; i2 < path2.length; i2++) {
+    const char2 = path2[i2];
+    if (char2 === "[" && !inQuotes) {
+      if (currentSegment) {
+        segments.push(...currentSegment.split(".").filter(Boolean));
+        currentSegment = "";
+      }
+      inBrackets = true;
+      continue;
+    }
+    if (char2 === "]" && !inQuotes) {
+      if (currentSegment) {
+        if (/^\d+$/.test(currentSegment)) {
+          segments.push(currentSegment);
+        } else {
+          segments.push(currentSegment.replace(/^"|"$/g, ""));
+        }
+        currentSegment = "";
+      }
+      inBrackets = false;
+      continue;
+    }
+    if (char2 === '"') {
+      inQuotes = !inQuotes;
+      continue;
+    }
+    if (char2 === "." && !inBrackets && !inQuotes) {
+      if (currentSegment) {
+        segments.push(currentSegment);
+        currentSegment = "";
+      }
+      continue;
+    }
+    currentSegment += char2;
+  }
+  if (currentSegment) {
+    segments.push(...currentSegment.split(".").filter(Boolean));
+  }
+  return segments;
+}
+function createStandardIssues(error, parentPath) {
+  const path2 = parentPath ? `${parentPath}.${error.path}` : error.path;
+  return error.errors.map((err) => ({
+    message: err,
+    path: createStandardPath(path2)
+  }));
+}
+function issuesFromValidationError(error, parentPath) {
+  var _error$inner;
+  if (!((_error$inner = error.inner) != null && _error$inner.length) && error.errors.length) {
+    return createStandardIssues(error, parentPath);
+  }
+  const path2 = parentPath ? `${parentPath}.${error.path}` : error.path;
+  return error.inner.flatMap((err) => issuesFromValidationError(err, path2));
+}
+class Schema {
+  constructor(options2) {
+    this.type = void 0;
+    this.deps = [];
+    this.tests = void 0;
+    this.transforms = void 0;
+    this.conditions = [];
+    this._mutate = void 0;
+    this.internalTests = {};
+    this._whitelist = new ReferenceSet();
+    this._blacklist = new ReferenceSet();
+    this.exclusiveTests = /* @__PURE__ */ Object.create(null);
+    this._typeCheck = void 0;
+    this.spec = void 0;
+    this.tests = [];
+    this.transforms = [];
+    this.withMutation(() => {
+      this.typeError(mixed.notType);
+    });
+    this.type = options2.type;
+    this._typeCheck = options2.check;
+    this.spec = Object.assign({
+      strip: false,
+      strict: false,
+      abortEarly: true,
+      recursive: true,
+      disableStackTrace: false,
+      nullable: false,
+      optional: true,
+      coerce: true
+    }, options2 == null ? void 0 : options2.spec);
+    this.withMutation((s4) => {
+      s4.nonNullable();
+    });
+  }
+  // TODO: remove
+  get _type() {
+    return this.type;
+  }
+  clone(spec) {
+    if (this._mutate) {
+      if (spec) Object.assign(this.spec, spec);
+      return this;
+    }
+    const next2 = Object.create(Object.getPrototypeOf(this));
+    next2.type = this.type;
+    next2._typeCheck = this._typeCheck;
+    next2._whitelist = this._whitelist.clone();
+    next2._blacklist = this._blacklist.clone();
+    next2.internalTests = Object.assign({}, this.internalTests);
+    next2.exclusiveTests = Object.assign({}, this.exclusiveTests);
+    next2.deps = [...this.deps];
+    next2.conditions = [...this.conditions];
+    next2.tests = [...this.tests];
+    next2.transforms = [...this.transforms];
+    next2.spec = clone(Object.assign({}, this.spec, spec));
+    return next2;
+  }
+  label(label) {
+    let next2 = this.clone();
+    next2.spec.label = label;
+    return next2;
+  }
+  meta(...args) {
+    if (args.length === 0) return this.spec.meta;
+    let next2 = this.clone();
+    next2.spec.meta = Object.assign(next2.spec.meta || {}, args[0]);
+    return next2;
+  }
+  withMutation(fn3) {
+    let before = this._mutate;
+    this._mutate = true;
+    let result = fn3(this);
+    this._mutate = before;
+    return result;
+  }
+  concat(schema) {
+    if (!schema || schema === this) return this;
+    if (schema.type !== this.type && this.type !== "mixed") throw new TypeError(`You cannot \`concat()\` schema's of different types: ${this.type} and ${schema.type}`);
+    let base = this;
+    let combined = schema.clone();
+    const mergedSpec = Object.assign({}, base.spec, combined.spec);
+    combined.spec = mergedSpec;
+    combined.internalTests = Object.assign({}, base.internalTests, combined.internalTests);
+    combined._whitelist = base._whitelist.merge(schema._whitelist, schema._blacklist);
+    combined._blacklist = base._blacklist.merge(schema._blacklist, schema._whitelist);
+    combined.tests = base.tests;
+    combined.exclusiveTests = base.exclusiveTests;
+    combined.withMutation((next2) => {
+      schema.tests.forEach((fn3) => {
+        next2.test(fn3.OPTIONS);
+      });
+    });
+    combined.transforms = [...base.transforms, ...combined.transforms];
+    return combined;
+  }
+  isType(v) {
+    if (v == null) {
+      if (this.spec.nullable && v === null) return true;
+      if (this.spec.optional && v === void 0) return true;
+      return false;
+    }
+    return this._typeCheck(v);
+  }
+  resolve(options2) {
+    let schema = this;
+    if (schema.conditions.length) {
+      let conditions = schema.conditions;
+      schema = schema.clone();
+      schema.conditions = [];
+      schema = conditions.reduce((prevSchema, condition) => condition.resolve(prevSchema, options2), schema);
+      schema = schema.resolve(options2);
+    }
+    return schema;
+  }
+  resolveOptions(options2) {
+    var _options$strict, _options$abortEarly, _options$recursive, _options$disableStack;
+    return Object.assign({}, options2, {
+      from: options2.from || [],
+      strict: (_options$strict = options2.strict) != null ? _options$strict : this.spec.strict,
+      abortEarly: (_options$abortEarly = options2.abortEarly) != null ? _options$abortEarly : this.spec.abortEarly,
+      recursive: (_options$recursive = options2.recursive) != null ? _options$recursive : this.spec.recursive,
+      disableStackTrace: (_options$disableStack = options2.disableStackTrace) != null ? _options$disableStack : this.spec.disableStackTrace
+    });
+  }
+  /**
+   * Run the configured transform pipeline over an input value.
+   */
+  cast(value, options2 = {}) {
+    let resolvedSchema = this.resolve(Object.assign({
+      value
+    }, options2));
+    let allowOptionality = options2.assert === "ignore-optionality";
+    let result = resolvedSchema._cast(value, options2);
+    if (options2.assert !== false && !resolvedSchema.isType(result)) {
+      if (allowOptionality && isAbsent(result)) {
+        return result;
+      }
+      let formattedValue = printValue(value);
+      let formattedResult = printValue(result);
+      throw new TypeError(`The value of ${options2.path || "field"} could not be cast to a value that satisfies the schema type: "${resolvedSchema.type}". 
+
+attempted value: ${formattedValue} 
+` + (formattedResult !== formattedValue ? `result of cast: ${formattedResult}` : ""));
+    }
+    return result;
+  }
+  _cast(rawValue, options2) {
+    let value = rawValue === void 0 ? rawValue : this.transforms.reduce((prevValue, fn3) => fn3.call(this, prevValue, rawValue, this), rawValue);
+    if (value === void 0) {
+      value = this.getDefault(options2);
+    }
+    return value;
+  }
+  _validate(_value, options2 = {}, panic, next2) {
+    let {
+      path: path2,
+      originalValue = _value,
+      strict = this.spec.strict
+    } = options2;
+    let value = _value;
+    if (!strict) {
+      value = this._cast(value, Object.assign({
+        assert: false
+      }, options2));
+    }
+    let initialTests = [];
+    for (let test2 of Object.values(this.internalTests)) {
+      if (test2) initialTests.push(test2);
+    }
+    this.runTests({
+      path: path2,
+      value,
+      originalValue,
+      options: options2,
+      tests: initialTests
+    }, panic, (initialErrors) => {
+      if (initialErrors.length) {
+        return next2(initialErrors, value);
+      }
+      this.runTests({
+        path: path2,
+        value,
+        originalValue,
+        options: options2,
+        tests: this.tests
+      }, panic, next2);
+    });
+  }
+  /**
+   * Executes a set of validations, either schema, produced Tests or a nested
+   * schema validate result.
+   */
+  runTests(runOptions, panic, next2) {
+    let fired = false;
+    let {
+      tests,
+      value,
+      originalValue,
+      path: path2,
+      options: options2
+    } = runOptions;
+    let panicOnce = (arg) => {
+      if (fired) return;
+      fired = true;
+      panic(arg, value);
+    };
+    let nextOnce = (arg) => {
+      if (fired) return;
+      fired = true;
+      next2(arg, value);
+    };
+    let count2 = tests.length;
+    let nestedErrors = [];
+    if (!count2) return nextOnce([]);
+    let args = {
+      value,
+      originalValue,
+      path: path2,
+      options: options2,
+      schema: this
+    };
+    for (let i2 = 0; i2 < tests.length; i2++) {
+      const test2 = tests[i2];
+      test2(args, panicOnce, function finishTestRun(err) {
+        if (err) {
+          Array.isArray(err) ? nestedErrors.push(...err) : nestedErrors.push(err);
+        }
+        if (--count2 <= 0) {
+          nextOnce(nestedErrors);
+        }
+      });
+    }
+  }
+  asNestedTest({
+    key,
+    index: index2,
+    parent,
+    parentPath,
+    originalParent,
+    options: options2
+  }) {
+    const k2 = key != null ? key : index2;
+    if (k2 == null) {
+      throw TypeError("Must include `key` or `index` for nested validations");
+    }
+    const isIndex2 = typeof k2 === "number";
+    let value = parent[k2];
+    const testOptions = Object.assign({}, options2, {
+      // Nested validations fields are always strict:
+      //    1. parent isn't strict so the casting will also have cast inner values
+      //    2. parent is strict in which case the nested values weren't cast either
+      strict: true,
+      parent,
+      value,
+      originalValue: originalParent[k2],
+      // FIXME: tests depend on `index` being passed around deeply,
+      //   we should not let the options.key/index bleed through
+      key: void 0,
+      // index: undefined,
+      [isIndex2 ? "index" : "key"]: k2,
+      path: isIndex2 || k2.includes(".") ? `${parentPath || ""}[${isIndex2 ? k2 : `"${k2}"`}]` : (parentPath ? `${parentPath}.` : "") + key
+    });
+    return (_, panic, next2) => this.resolve(testOptions)._validate(value, testOptions, panic, next2);
+  }
+  validate(value, options2) {
+    var _options$disableStack2;
+    let schema = this.resolve(Object.assign({}, options2, {
+      value
+    }));
+    let disableStackTrace = (_options$disableStack2 = options2 == null ? void 0 : options2.disableStackTrace) != null ? _options$disableStack2 : schema.spec.disableStackTrace;
+    return new Promise((resolve, reject) => schema._validate(value, options2, (error, parsed) => {
+      if (ValidationError.isError(error)) error.value = parsed;
+      reject(error);
+    }, (errors2, validated) => {
+      if (errors2.length) reject(new ValidationError(errors2, validated, void 0, void 0, disableStackTrace));
+      else resolve(validated);
+    }));
+  }
+  validateSync(value, options2) {
+    var _options$disableStack3;
+    let schema = this.resolve(Object.assign({}, options2, {
+      value
+    }));
+    let result;
+    let disableStackTrace = (_options$disableStack3 = options2 == null ? void 0 : options2.disableStackTrace) != null ? _options$disableStack3 : schema.spec.disableStackTrace;
+    schema._validate(value, Object.assign({}, options2, {
+      sync: true
+    }), (error, parsed) => {
+      if (ValidationError.isError(error)) error.value = parsed;
+      throw error;
+    }, (errors2, validated) => {
+      if (errors2.length) throw new ValidationError(errors2, value, void 0, void 0, disableStackTrace);
+      result = validated;
+    });
+    return result;
+  }
+  isValid(value, options2) {
+    return this.validate(value, options2).then(() => true, (err) => {
+      if (ValidationError.isError(err)) return false;
+      throw err;
+    });
+  }
+  isValidSync(value, options2) {
+    try {
+      this.validateSync(value, options2);
+      return true;
+    } catch (err) {
+      if (ValidationError.isError(err)) return false;
+      throw err;
+    }
+  }
+  _getDefault(options2) {
+    let defaultValue = this.spec.default;
+    if (defaultValue == null) {
+      return defaultValue;
+    }
+    return typeof defaultValue === "function" ? defaultValue.call(this, options2) : clone(defaultValue);
+  }
+  getDefault(options2) {
+    let schema = this.resolve(options2 || {});
+    return schema._getDefault(options2);
+  }
+  default(def) {
+    if (arguments.length === 0) {
+      return this._getDefault();
+    }
+    let next2 = this.clone({
+      default: def
+    });
+    return next2;
+  }
+  strict(isStrict = true) {
+    return this.clone({
+      strict: isStrict
+    });
+  }
+  nullability(nullable, message) {
+    const next2 = this.clone({
+      nullable
+    });
+    next2.internalTests.nullable = createValidation({
+      message,
+      name: "nullable",
+      test(value) {
+        return value === null ? this.schema.spec.nullable : true;
+      }
+    });
+    return next2;
+  }
+  optionality(optional, message) {
+    const next2 = this.clone({
+      optional
+    });
+    next2.internalTests.optionality = createValidation({
+      message,
+      name: "optionality",
+      test(value) {
+        return value === void 0 ? this.schema.spec.optional : true;
+      }
+    });
+    return next2;
+  }
+  optional() {
+    return this.optionality(true);
+  }
+  defined(message = mixed.defined) {
+    return this.optionality(false, message);
+  }
+  nullable() {
+    return this.nullability(true);
+  }
+  nonNullable(message = mixed.notNull) {
+    return this.nullability(false, message);
+  }
+  required(message = mixed.required) {
+    return this.clone().withMutation((next2) => next2.nonNullable(message).defined(message));
+  }
+  notRequired() {
+    return this.clone().withMutation((next2) => next2.nullable().optional());
+  }
+  transform(fn3) {
+    let next2 = this.clone();
+    next2.transforms.push(fn3);
+    return next2;
+  }
+  /**
+   * Adds a test function to the schema's queue of tests.
+   * tests can be exclusive or non-exclusive.
+   *
+   * - exclusive tests, will replace any existing tests of the same name.
+   * - non-exclusive: can be stacked
+   *
+   * If a non-exclusive test is added to a schema with an exclusive test of the same name
+   * the exclusive test is removed and further tests of the same name will be stacked.
+   *
+   * If an exclusive test is added to a schema with non-exclusive tests of the same name
+   * the previous tests are removed and further tests of the same name will replace each other.
+   */
+  test(...args) {
+    let opts;
+    if (args.length === 1) {
+      if (typeof args[0] === "function") {
+        opts = {
+          test: args[0]
+        };
+      } else {
+        opts = args[0];
+      }
+    } else if (args.length === 2) {
+      opts = {
+        name: args[0],
+        test: args[1]
+      };
+    } else {
+      opts = {
+        name: args[0],
+        message: args[1],
+        test: args[2]
+      };
+    }
+    if (opts.message === void 0) opts.message = mixed.default;
+    if (typeof opts.test !== "function") throw new TypeError("`test` is a required parameters");
+    let next2 = this.clone();
+    let validate = createValidation(opts);
+    let isExclusive = opts.exclusive || opts.name && next2.exclusiveTests[opts.name] === true;
+    if (opts.exclusive) {
+      if (!opts.name) throw new TypeError("Exclusive tests must provide a unique `name` identifying the test");
+    }
+    if (opts.name) next2.exclusiveTests[opts.name] = !!opts.exclusive;
+    next2.tests = next2.tests.filter((fn3) => {
+      if (fn3.OPTIONS.name === opts.name) {
+        if (isExclusive) return false;
+        if (fn3.OPTIONS.test === validate.OPTIONS.test) return false;
+      }
+      return true;
+    });
+    next2.tests.push(validate);
+    return next2;
+  }
+  when(keys3, options2) {
+    if (!Array.isArray(keys3) && typeof keys3 !== "string") {
+      options2 = keys3;
+      keys3 = ".";
+    }
+    let next2 = this.clone();
+    let deps = toArray$1(keys3).map((key) => new Reference$1(key));
+    deps.forEach((dep2) => {
+      if (dep2.isSibling) next2.deps.push(dep2.key);
+    });
+    next2.conditions.push(typeof options2 === "function" ? new Condition(deps, options2) : Condition.fromOptions(deps, options2));
+    return next2;
+  }
+  typeError(message) {
+    let next2 = this.clone();
+    next2.internalTests.typeError = createValidation({
+      message,
+      name: "typeError",
+      skipAbsent: true,
+      test(value) {
+        if (!this.schema._typeCheck(value)) return this.createError({
+          params: {
+            type: this.schema.type
+          }
+        });
+        return true;
+      }
+    });
+    return next2;
+  }
+  oneOf(enums, message = mixed.oneOf) {
+    let next2 = this.clone();
+    enums.forEach((val) => {
+      next2._whitelist.add(val);
+      next2._blacklist.delete(val);
+    });
+    next2.internalTests.whiteList = createValidation({
+      message,
+      name: "oneOf",
+      skipAbsent: true,
+      test(value) {
+        let valids = this.schema._whitelist;
+        let resolved = valids.resolveAll(this.resolve);
+        return resolved.includes(value) ? true : this.createError({
+          params: {
+            values: Array.from(valids).join(", "),
+            resolved
+          }
+        });
+      }
+    });
+    return next2;
+  }
+  notOneOf(enums, message = mixed.notOneOf) {
+    let next2 = this.clone();
+    enums.forEach((val) => {
+      next2._blacklist.add(val);
+      next2._whitelist.delete(val);
+    });
+    next2.internalTests.blacklist = createValidation({
+      message,
+      name: "notOneOf",
+      test(value) {
+        let invalids = this.schema._blacklist;
+        let resolved = invalids.resolveAll(this.resolve);
+        if (resolved.includes(value)) return this.createError({
+          params: {
+            values: Array.from(invalids).join(", "),
+            resolved
+          }
+        });
+        return true;
+      }
+    });
+    return next2;
+  }
+  strip(strip = true) {
+    let next2 = this.clone();
+    next2.spec.strip = strip;
+    return next2;
+  }
+  /**
+   * Return a serialized description of the schema including validations, flags, types etc.
+   *
+   * @param options Provide any needed context for resolving runtime schema alterations (lazy, when conditions, etc).
+   */
+  describe(options2) {
+    const next2 = (options2 ? this.resolve(options2) : this).clone();
+    const {
+      label,
+      meta,
+      optional,
+      nullable
+    } = next2.spec;
+    const description2 = {
+      meta,
+      label,
+      optional,
+      nullable,
+      default: next2.getDefault(options2),
+      type: next2.type,
+      oneOf: next2._whitelist.describe(),
+      notOneOf: next2._blacklist.describe(),
+      tests: next2.tests.filter((n, idx, list) => list.findIndex((c3) => c3.OPTIONS.name === n.OPTIONS.name) === idx).map((fn3) => {
+        const params = fn3.OPTIONS.params && options2 ? resolveParams(Object.assign({}, fn3.OPTIONS.params), options2) : fn3.OPTIONS.params;
+        return {
+          name: fn3.OPTIONS.name,
+          params
+        };
+      })
+    };
+    return description2;
+  }
+  get ["~standard"]() {
+    const schema = this;
+    const standard = {
+      version: 1,
+      vendor: "yup",
+      async validate(value) {
+        try {
+          const result = await schema.validate(value, {
+            abortEarly: false
+          });
+          return {
+            value: result
+          };
+        } catch (err) {
+          if (err instanceof ValidationError) {
+            return {
+              issues: issuesFromValidationError(err)
+            };
+          }
+          throw err;
+        }
+      }
+    };
+    return standard;
+  }
+}
+Schema.prototype.__isYupSchema__ = true;
+for (const method of ["validate", "validateSync"]) Schema.prototype[`${method}At`] = function(path2, value, options2 = {}) {
+  const {
+    parent,
+    parentPath,
+    schema
+  } = getIn$1(this, path2, value, options2.context);
+  return schema[method](parent && parent[parentPath], Object.assign({}, options2, {
+    parent,
+    path: path2
+  }));
+};
+for (const alias of ["equals", "is"]) Schema.prototype[alias] = Schema.prototype.oneOf;
+for (const alias of ["not", "nope"]) Schema.prototype[alias] = Schema.prototype.notOneOf;
+function create$7() {
+  return new BooleanSchema();
+}
+class BooleanSchema extends Schema {
+  constructor() {
+    super({
+      type: "boolean",
+      check(v) {
+        if (v instanceof Boolean) v = v.valueOf();
+        return typeof v === "boolean";
+      }
+    });
+    this.withMutation(() => {
+      this.transform((value, _raw, ctx) => {
+        if (ctx.spec.coerce && !ctx.isType(value)) {
+          if (/^(true|1)$/i.test(String(value))) return true;
+          if (/^(false|0)$/i.test(String(value))) return false;
+        }
+        return value;
+      });
+    });
+  }
+  isTrue(message = boolean.isValue) {
+    return this.test({
+      message,
+      name: "is-value",
+      exclusive: true,
+      params: {
+        value: "true"
+      },
+      test(value) {
+        return isAbsent(value) || value === true;
+      }
+    });
+  }
+  isFalse(message = boolean.isValue) {
+    return this.test({
+      message,
+      name: "is-value",
+      exclusive: true,
+      params: {
+        value: "false"
+      },
+      test(value) {
+        return isAbsent(value) || value === false;
+      }
+    });
+  }
+  default(def) {
+    return super.default(def);
+  }
+  defined(msg) {
+    return super.defined(msg);
+  }
+  optional() {
+    return super.optional();
+  }
+  required(msg) {
+    return super.required(msg);
+  }
+  notRequired() {
+    return super.notRequired();
+  }
+  nullable() {
+    return super.nullable();
+  }
+  nonNullable(msg) {
+    return super.nonNullable(msg);
+  }
+  strip(v) {
+    return super.strip(v);
+  }
+}
+create$7.prototype = BooleanSchema.prototype;
+const isoReg = /^(\d{4}|[+-]\d{6})(?:-?(\d{2})(?:-?(\d{2}))?)?(?:[ T]?(\d{2}):?(\d{2})(?::?(\d{2})(?:[,.](\d{1,}))?)?(?:(Z)|([+-])(\d{2})(?::?(\d{2}))?)?)?$/;
+function parseIsoDate(date2) {
+  const struct = parseDateStruct(date2);
+  if (!struct) return Date.parse ? Date.parse(date2) : Number.NaN;
+  if (struct.z === void 0 && struct.plusMinus === void 0) {
+    return new Date(struct.year, struct.month, struct.day, struct.hour, struct.minute, struct.second, struct.millisecond).valueOf();
+  }
+  let totalMinutesOffset = 0;
+  if (struct.z !== "Z" && struct.plusMinus !== void 0) {
+    totalMinutesOffset = struct.hourOffset * 60 + struct.minuteOffset;
+    if (struct.plusMinus === "+") totalMinutesOffset = 0 - totalMinutesOffset;
+  }
+  return Date.UTC(struct.year, struct.month, struct.day, struct.hour, struct.minute + totalMinutesOffset, struct.second, struct.millisecond);
+}
+function parseDateStruct(date2) {
+  var _regexResult$7$length, _regexResult$;
+  const regexResult = isoReg.exec(date2);
+  if (!regexResult) return null;
+  return {
+    year: toNumber(regexResult[1]),
+    month: toNumber(regexResult[2], 1) - 1,
+    day: toNumber(regexResult[3], 1),
+    hour: toNumber(regexResult[4]),
+    minute: toNumber(regexResult[5]),
+    second: toNumber(regexResult[6]),
+    millisecond: regexResult[7] ? (
+      // allow arbitrary sub-second precision beyond milliseconds
+      toNumber(regexResult[7].substring(0, 3))
+    ) : 0,
+    precision: (_regexResult$7$length = (_regexResult$ = regexResult[7]) == null ? void 0 : _regexResult$.length) != null ? _regexResult$7$length : void 0,
+    z: regexResult[8] || void 0,
+    plusMinus: regexResult[9] || void 0,
+    hourOffset: toNumber(regexResult[10]),
+    minuteOffset: toNumber(regexResult[11])
+  };
+}
+function toNumber(str, defaultValue = 0) {
+  return Number(str) || defaultValue;
+}
+let rEmail = (
+  // eslint-disable-next-line
+  /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+);
+let rUrl = (
+  // eslint-disable-next-line
+  /^((https?|ftp):)?\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i
+);
+let rUUID = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
+let yearMonthDay = "^\\d{4}-\\d{2}-\\d{2}";
+let hourMinuteSecond = "\\d{2}:\\d{2}:\\d{2}";
+let zOrOffset = "(([+-]\\d{2}(:?\\d{2})?)|Z)";
+let rIsoDateTime = new RegExp(`${yearMonthDay}T${hourMinuteSecond}(\\.\\d+)?${zOrOffset}$`);
+let isTrimmed = (value) => isAbsent(value) || value === value.trim();
+let objStringTag = {}.toString();
+function create$6() {
+  return new StringSchema();
+}
+class StringSchema extends Schema {
+  constructor() {
+    super({
+      type: "string",
+      check(value) {
+        if (value instanceof String) value = value.valueOf();
+        return typeof value === "string";
+      }
+    });
+    this.withMutation(() => {
+      this.transform((value, _raw, ctx) => {
+        if (!ctx.spec.coerce || ctx.isType(value)) return value;
+        if (Array.isArray(value)) return value;
+        const strValue = value != null && value.toString ? value.toString() : value;
+        if (strValue === objStringTag) return value;
+        return strValue;
+      });
+    });
+  }
+  required(message) {
+    return super.required(message).withMutation((schema) => schema.test({
+      message: message || mixed.required,
+      name: "required",
+      skipAbsent: true,
+      test: (value) => !!value.length
+    }));
+  }
+  notRequired() {
+    return super.notRequired().withMutation((schema) => {
+      schema.tests = schema.tests.filter((t4) => t4.OPTIONS.name !== "required");
+      return schema;
+    });
+  }
+  length(length2, message = string.length) {
+    return this.test({
+      message,
+      name: "length",
+      exclusive: true,
+      params: {
+        length: length2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value.length === this.resolve(length2);
+      }
+    });
+  }
+  min(min2, message = string.min) {
+    return this.test({
+      message,
+      name: "min",
+      exclusive: true,
+      params: {
+        min: min2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value.length >= this.resolve(min2);
+      }
+    });
+  }
+  max(max2, message = string.max) {
+    return this.test({
+      name: "max",
+      exclusive: true,
+      message,
+      params: {
+        max: max2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value.length <= this.resolve(max2);
+      }
+    });
+  }
+  matches(regex, options2) {
+    let excludeEmptyString = false;
+    let message;
+    let name2;
+    if (options2) {
+      if (typeof options2 === "object") {
+        ({
+          excludeEmptyString = false,
+          message,
+          name: name2
+        } = options2);
+      } else {
+        message = options2;
+      }
+    }
+    return this.test({
+      name: name2 || "matches",
+      message: message || string.matches,
+      params: {
+        regex
+      },
+      skipAbsent: true,
+      test: (value) => value === "" && excludeEmptyString || value.search(regex) !== -1
+    });
+  }
+  email(message = string.email) {
+    return this.matches(rEmail, {
+      name: "email",
+      message,
+      excludeEmptyString: true
+    });
+  }
+  url(message = string.url) {
+    return this.matches(rUrl, {
+      name: "url",
+      message,
+      excludeEmptyString: true
+    });
+  }
+  uuid(message = string.uuid) {
+    return this.matches(rUUID, {
+      name: "uuid",
+      message,
+      excludeEmptyString: false
+    });
+  }
+  datetime(options2) {
+    let message = "";
+    let allowOffset;
+    let precision;
+    if (options2) {
+      if (typeof options2 === "object") {
+        ({
+          message = "",
+          allowOffset = false,
+          precision = void 0
+        } = options2);
+      } else {
+        message = options2;
+      }
+    }
+    return this.matches(rIsoDateTime, {
+      name: "datetime",
+      message: message || string.datetime,
+      excludeEmptyString: true
+    }).test({
+      name: "datetime_offset",
+      message: message || string.datetime_offset,
+      params: {
+        allowOffset
+      },
+      skipAbsent: true,
+      test: (value) => {
+        if (!value || allowOffset) return true;
+        const struct = parseDateStruct(value);
+        if (!struct) return false;
+        return !!struct.z;
+      }
+    }).test({
+      name: "datetime_precision",
+      message: message || string.datetime_precision,
+      params: {
+        precision
+      },
+      skipAbsent: true,
+      test: (value) => {
+        if (!value || precision == void 0) return true;
+        const struct = parseDateStruct(value);
+        if (!struct) return false;
+        return struct.precision === precision;
+      }
+    });
+  }
+  //-- transforms --
+  ensure() {
+    return this.default("").transform((val) => val === null ? "" : val);
+  }
+  trim(message = string.trim) {
+    return this.transform((val) => val != null ? val.trim() : val).test({
+      message,
+      name: "trim",
+      test: isTrimmed
+    });
+  }
+  lowercase(message = string.lowercase) {
+    return this.transform((value) => !isAbsent(value) ? value.toLowerCase() : value).test({
+      message,
+      name: "string_case",
+      exclusive: true,
+      skipAbsent: true,
+      test: (value) => isAbsent(value) || value === value.toLowerCase()
+    });
+  }
+  uppercase(message = string.uppercase) {
+    return this.transform((value) => !isAbsent(value) ? value.toUpperCase() : value).test({
+      message,
+      name: "string_case",
+      exclusive: true,
+      skipAbsent: true,
+      test: (value) => isAbsent(value) || value === value.toUpperCase()
+    });
+  }
+}
+create$6.prototype = StringSchema.prototype;
+let isNaN$1 = (value) => value != +value;
+function create$5() {
+  return new NumberSchema();
+}
+class NumberSchema extends Schema {
+  constructor() {
+    super({
+      type: "number",
+      check(value) {
+        if (value instanceof Number) value = value.valueOf();
+        return typeof value === "number" && !isNaN$1(value);
+      }
+    });
+    this.withMutation(() => {
+      this.transform((value, _raw, ctx) => {
+        if (!ctx.spec.coerce) return value;
+        let parsed = value;
+        if (typeof parsed === "string") {
+          parsed = parsed.replace(/\s/g, "");
+          if (parsed === "") return NaN;
+          parsed = +parsed;
+        }
+        if (ctx.isType(parsed) || parsed === null) return parsed;
+        return parseFloat(parsed);
+      });
+    });
+  }
+  min(min2, message = number$1.min) {
+    return this.test({
+      message,
+      name: "min",
+      exclusive: true,
+      params: {
+        min: min2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value >= this.resolve(min2);
+      }
+    });
+  }
+  max(max2, message = number$1.max) {
+    return this.test({
+      message,
+      name: "max",
+      exclusive: true,
+      params: {
+        max: max2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value <= this.resolve(max2);
+      }
+    });
+  }
+  lessThan(less, message = number$1.lessThan) {
+    return this.test({
+      message,
+      name: "max",
+      exclusive: true,
+      params: {
+        less
+      },
+      skipAbsent: true,
+      test(value) {
+        return value < this.resolve(less);
+      }
+    });
+  }
+  moreThan(more, message = number$1.moreThan) {
+    return this.test({
+      message,
+      name: "min",
+      exclusive: true,
+      params: {
+        more
+      },
+      skipAbsent: true,
+      test(value) {
+        return value > this.resolve(more);
+      }
+    });
+  }
+  positive(msg = number$1.positive) {
+    return this.moreThan(0, msg);
+  }
+  negative(msg = number$1.negative) {
+    return this.lessThan(0, msg);
+  }
+  integer(message = number$1.integer) {
+    return this.test({
+      name: "integer",
+      message,
+      skipAbsent: true,
+      test: (val) => Number.isInteger(val)
+    });
+  }
+  truncate() {
+    return this.transform((value) => !isAbsent(value) ? value | 0 : value);
+  }
+  round(method) {
+    var _method;
+    let avail = ["ceil", "floor", "round", "trunc"];
+    method = ((_method = method) == null ? void 0 : _method.toLowerCase()) || "round";
+    if (method === "trunc") return this.truncate();
+    if (avail.indexOf(method.toLowerCase()) === -1) throw new TypeError("Only valid options for round() are: " + avail.join(", "));
+    return this.transform((value) => !isAbsent(value) ? Math[method](value) : value);
+  }
+}
+create$5.prototype = NumberSchema.prototype;
+let invalidDate = /* @__PURE__ */ new Date("");
+let isDate$1 = (obj) => Object.prototype.toString.call(obj) === "[object Date]";
+class DateSchema extends Schema {
+  constructor() {
+    super({
+      type: "date",
+      check(v) {
+        return isDate$1(v) && !isNaN(v.getTime());
+      }
+    });
+    this.withMutation(() => {
+      this.transform((value, _raw, ctx) => {
+        if (!ctx.spec.coerce || ctx.isType(value) || value === null) return value;
+        value = parseIsoDate(value);
+        return !isNaN(value) ? new Date(value) : DateSchema.INVALID_DATE;
+      });
+    });
+  }
+  prepareParam(ref, name2) {
+    let param;
+    if (!Reference$1.isRef(ref)) {
+      let cast2 = this.cast(ref);
+      if (!this._typeCheck(cast2)) throw new TypeError(`\`${name2}\` must be a Date or a value that can be \`cast()\` to a Date`);
+      param = cast2;
+    } else {
+      param = ref;
+    }
+    return param;
+  }
+  min(min2, message = date$1.min) {
+    let limit = this.prepareParam(min2, "min");
+    return this.test({
+      message,
+      name: "min",
+      exclusive: true,
+      params: {
+        min: min2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value >= this.resolve(limit);
+      }
+    });
+  }
+  max(max2, message = date$1.max) {
+    let limit = this.prepareParam(max2, "max");
+    return this.test({
+      message,
+      name: "max",
+      exclusive: true,
+      params: {
+        max: max2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value <= this.resolve(limit);
+      }
+    });
+  }
+}
+DateSchema.INVALID_DATE = invalidDate;
+function sortFields(fields, excludedEdges = []) {
+  let edges = [];
+  let nodes = /* @__PURE__ */ new Set();
+  let excludes = new Set(excludedEdges.map(([a4, b3]) => `${a4}-${b3}`));
+  function addNode(depPath, key) {
+    let node2 = propertyExprExports.split(depPath)[0];
+    nodes.add(node2);
+    if (!excludes.has(`${key}-${node2}`)) edges.push([key, node2]);
+  }
+  for (const key of Object.keys(fields)) {
+    let value = fields[key];
+    nodes.add(key);
+    if (Reference$1.isRef(value) && value.isSibling) addNode(value.path, key);
+    else if (isSchema(value) && "deps" in value) value.deps.forEach((path2) => addNode(path2, key));
+  }
+  return toposort.array(Array.from(nodes), edges).reverse();
+}
+function findIndex$2(arr, err) {
+  let idx = Infinity;
+  arr.some((key, ii) => {
+    var _err$path;
+    if ((_err$path = err.path) != null && _err$path.includes(key)) {
+      idx = ii;
+      return true;
+    }
+  });
+  return idx;
+}
+function sortByKeyOrder(keys3) {
+  return (a4, b3) => {
+    return findIndex$2(keys3, a4) - findIndex$2(keys3, b3);
+  };
+}
+const parseJson = (value, _, ctx) => {
+  if (typeof value !== "string") {
+    return value;
+  }
+  let parsed = value;
+  try {
+    parsed = JSON.parse(value);
+  } catch (err) {
+  }
+  return ctx.isType(parsed) ? parsed : value;
+};
+function deepPartial(schema) {
+  if ("fields" in schema) {
+    const partial = {};
+    for (const [key, fieldSchema] of Object.entries(schema.fields)) {
+      partial[key] = deepPartial(fieldSchema);
+    }
+    return schema.setFields(partial);
+  }
+  if (schema.type === "array") {
+    const nextArray = schema.optional();
+    if (nextArray.innerType) nextArray.innerType = deepPartial(nextArray.innerType);
+    return nextArray;
+  }
+  if (schema.type === "tuple") {
+    return schema.optional().clone({
+      types: schema.spec.types.map(deepPartial)
+    });
+  }
+  if ("optional" in schema) {
+    return schema.optional();
+  }
+  return schema;
+}
+const deepHas = (obj, p2) => {
+  const path2 = [...propertyExprExports.normalizePath(p2)];
+  if (path2.length === 1) return path2[0] in obj;
+  let last = path2.pop();
+  let parent = propertyExprExports.getter(propertyExprExports.join(path2), true)(obj);
+  return !!(parent && last in parent);
+};
+let isObject$1 = (obj) => Object.prototype.toString.call(obj) === "[object Object]";
+function unknown(ctx, value) {
+  let known = Object.keys(ctx.fields);
+  return Object.keys(value).filter((key) => known.indexOf(key) === -1);
+}
+const defaultSort = sortByKeyOrder([]);
+function create$3(spec) {
+  return new ObjectSchema(spec);
+}
+class ObjectSchema extends Schema {
+  constructor(spec) {
+    super({
+      type: "object",
+      check(value) {
+        return isObject$1(value) || typeof value === "function";
+      }
+    });
+    this.fields = /* @__PURE__ */ Object.create(null);
+    this._sortErrors = defaultSort;
+    this._nodes = [];
+    this._excludedEdges = [];
+    this.withMutation(() => {
+      if (spec) {
+        this.shape(spec);
+      }
+    });
+  }
+  _cast(_value, options2 = {}) {
+    var _options$stripUnknown;
+    let value = super._cast(_value, options2);
+    if (value === void 0) return this.getDefault(options2);
+    if (!this._typeCheck(value)) return value;
+    let fields = this.fields;
+    let strip = (_options$stripUnknown = options2.stripUnknown) != null ? _options$stripUnknown : this.spec.noUnknown;
+    let props = [].concat(this._nodes, Object.keys(value).filter((v) => !this._nodes.includes(v)));
+    let intermediateValue = {};
+    let innerOptions = Object.assign({}, options2, {
+      parent: intermediateValue,
+      __validating: options2.__validating || false
+    });
+    let isChanged = false;
+    for (const prop of props) {
+      let field = fields[prop];
+      let exists = prop in value;
+      if (field) {
+        let fieldValue;
+        let inputValue = value[prop];
+        innerOptions.path = (options2.path ? `${options2.path}.` : "") + prop;
+        field = field.resolve({
+          value: inputValue,
+          context: options2.context,
+          parent: intermediateValue
+        });
+        let fieldSpec = field instanceof Schema ? field.spec : void 0;
+        let strict = fieldSpec == null ? void 0 : fieldSpec.strict;
+        if (fieldSpec != null && fieldSpec.strip) {
+          isChanged = isChanged || prop in value;
+          continue;
+        }
+        fieldValue = !options2.__validating || !strict ? (
+          // TODO: use _cast, this is double resolving
+          field.cast(value[prop], innerOptions)
+        ) : value[prop];
+        if (fieldValue !== void 0) {
+          intermediateValue[prop] = fieldValue;
+        }
+      } else if (exists && !strip) {
+        intermediateValue[prop] = value[prop];
+      }
+      if (exists !== prop in intermediateValue || intermediateValue[prop] !== value[prop]) {
+        isChanged = true;
+      }
+    }
+    return isChanged ? intermediateValue : value;
+  }
+  _validate(_value, options2 = {}, panic, next2) {
+    let {
+      from: from3 = [],
+      originalValue = _value,
+      recursive = this.spec.recursive
+    } = options2;
+    options2.from = [{
+      schema: this,
+      value: originalValue
+    }, ...from3];
+    options2.__validating = true;
+    options2.originalValue = originalValue;
+    super._validate(_value, options2, panic, (objectErrors, value) => {
+      if (!recursive || !isObject$1(value)) {
+        next2(objectErrors, value);
+        return;
+      }
+      originalValue = originalValue || value;
+      let tests = [];
+      for (let key of this._nodes) {
+        let field = this.fields[key];
+        if (!field || Reference$1.isRef(field)) {
+          continue;
+        }
+        tests.push(field.asNestedTest({
+          options: options2,
+          key,
+          parent: value,
+          parentPath: options2.path,
+          originalParent: originalValue
+        }));
+      }
+      this.runTests({
+        tests,
+        value,
+        originalValue,
+        options: options2
+      }, panic, (fieldErrors) => {
+        next2(fieldErrors.sort(this._sortErrors).concat(objectErrors), value);
+      });
+    });
+  }
+  clone(spec) {
+    const next2 = super.clone(spec);
+    next2.fields = Object.assign({}, this.fields);
+    next2._nodes = this._nodes;
+    next2._excludedEdges = this._excludedEdges;
+    next2._sortErrors = this._sortErrors;
+    return next2;
+  }
+  concat(schema) {
+    let next2 = super.concat(schema);
+    let nextFields = next2.fields;
+    for (let [field, schemaOrRef] of Object.entries(this.fields)) {
+      const target = nextFields[field];
+      nextFields[field] = target === void 0 ? schemaOrRef : target;
+    }
+    return next2.withMutation((s4) => (
+      // XXX: excludes here is wrong
+      s4.setFields(nextFields, [...this._excludedEdges, ...schema._excludedEdges])
+    ));
+  }
+  _getDefault(options2) {
+    if ("default" in this.spec) {
+      return super._getDefault(options2);
+    }
+    if (!this._nodes.length) {
+      return void 0;
+    }
+    let dft = {};
+    this._nodes.forEach((key) => {
+      var _innerOptions;
+      const field = this.fields[key];
+      let innerOptions = options2;
+      if ((_innerOptions = innerOptions) != null && _innerOptions.value) {
+        innerOptions = Object.assign({}, innerOptions, {
+          parent: innerOptions.value,
+          value: innerOptions.value[key]
+        });
+      }
+      dft[key] = field && "getDefault" in field ? field.getDefault(innerOptions) : void 0;
+    });
+    return dft;
+  }
+  setFields(shape, excludedEdges) {
+    let next2 = this.clone();
+    next2.fields = shape;
+    next2._nodes = sortFields(shape, excludedEdges);
+    next2._sortErrors = sortByKeyOrder(Object.keys(shape));
+    if (excludedEdges) next2._excludedEdges = excludedEdges;
+    return next2;
+  }
+  shape(additions, excludes = []) {
+    return this.clone().withMutation((next2) => {
+      let edges = next2._excludedEdges;
+      if (excludes.length) {
+        if (!Array.isArray(excludes[0])) excludes = [excludes];
+        edges = [...next2._excludedEdges, ...excludes];
+      }
+      return next2.setFields(Object.assign(next2.fields, additions), edges);
+    });
+  }
+  partial() {
+    const partial = {};
+    for (const [key, schema] of Object.entries(this.fields)) {
+      partial[key] = "optional" in schema && schema.optional instanceof Function ? schema.optional() : schema;
+    }
+    return this.setFields(partial);
+  }
+  deepPartial() {
+    const next2 = deepPartial(this);
+    return next2;
+  }
+  pick(keys3) {
+    const picked = {};
+    for (const key of keys3) {
+      if (this.fields[key]) picked[key] = this.fields[key];
+    }
+    return this.setFields(picked, this._excludedEdges.filter(([a4, b3]) => keys3.includes(a4) && keys3.includes(b3)));
+  }
+  omit(keys3) {
+    const remaining = [];
+    for (const key of Object.keys(this.fields)) {
+      if (keys3.includes(key)) continue;
+      remaining.push(key);
+    }
+    return this.pick(remaining);
+  }
+  from(from3, to2, alias) {
+    let fromGetter = propertyExprExports.getter(from3, true);
+    return this.transform((obj) => {
+      if (!obj) return obj;
+      let newObj = obj;
+      if (deepHas(obj, from3)) {
+        newObj = Object.assign({}, obj);
+        if (!alias) delete newObj[from3];
+        newObj[to2] = fromGetter(obj);
+      }
+      return newObj;
+    });
+  }
+  /** Parse an input JSON string to an object */
+  json() {
+    return this.transform(parseJson);
+  }
+  /**
+   * Similar to `noUnknown` but only validates that an object is the right shape without stripping the unknown keys
+   */
+  exact(message) {
+    return this.test({
+      name: "exact",
+      exclusive: true,
+      message: message || object.exact,
+      test(value) {
+        if (value == null) return true;
+        const unknownKeys = unknown(this.schema, value);
+        return unknownKeys.length === 0 || this.createError({
+          params: {
+            properties: unknownKeys.join(", ")
+          }
+        });
+      }
+    });
+  }
+  stripUnknown() {
+    return this.clone({
+      noUnknown: true
+    });
+  }
+  noUnknown(noAllow = true, message = object.noUnknown) {
+    if (typeof noAllow !== "boolean") {
+      message = noAllow;
+      noAllow = true;
+    }
+    let next2 = this.test({
+      name: "noUnknown",
+      exclusive: true,
+      message,
+      test(value) {
+        if (value == null) return true;
+        const unknownKeys = unknown(this.schema, value);
+        return !noAllow || unknownKeys.length === 0 || this.createError({
+          params: {
+            unknown: unknownKeys.join(", ")
+          }
+        });
+      }
+    });
+    next2.spec.noUnknown = noAllow;
+    return next2;
+  }
+  unknown(allow = true, message = object.noUnknown) {
+    return this.noUnknown(!allow, message);
+  }
+  transformKeys(fn3) {
+    return this.transform((obj) => {
+      if (!obj) return obj;
+      const result = {};
+      for (const key of Object.keys(obj)) result[fn3(key)] = obj[key];
+      return result;
+    });
+  }
+  camelCase() {
+    return this.transformKeys(tinyCaseExports.camelCase);
+  }
+  snakeCase() {
+    return this.transformKeys(tinyCaseExports.snakeCase);
+  }
+  constantCase() {
+    return this.transformKeys((key) => tinyCaseExports.snakeCase(key).toUpperCase());
+  }
+  describe(options2) {
+    const next2 = (options2 ? this.resolve(options2) : this).clone();
+    const base = super.describe(options2);
+    base.fields = {};
+    for (const [key, value] of Object.entries(next2.fields)) {
+      var _innerOptions2;
+      let innerOptions = options2;
+      if ((_innerOptions2 = innerOptions) != null && _innerOptions2.value) {
+        innerOptions = Object.assign({}, innerOptions, {
+          parent: innerOptions.value,
+          value: innerOptions.value[key]
+        });
+      }
+      base.fields[key] = value.describe(innerOptions);
+    }
+    return base;
+  }
+}
+create$3.prototype = ObjectSchema.prototype;
+function create$2(type3) {
+  return new ArraySchema(type3);
+}
+class ArraySchema extends Schema {
+  constructor(type3) {
+    super({
+      type: "array",
+      spec: {
+        types: type3
+      },
+      check(v) {
+        return Array.isArray(v);
+      }
+    });
+    this.innerType = void 0;
+    this.innerType = type3;
+  }
+  _cast(_value, _opts) {
+    const value = super._cast(_value, _opts);
+    if (!this._typeCheck(value) || !this.innerType) {
+      return value;
+    }
+    let isChanged = false;
+    const castArray = value.map((v, idx) => {
+      const castElement = this.innerType.cast(v, Object.assign({}, _opts, {
+        path: `${_opts.path || ""}[${idx}]`
+      }));
+      if (castElement !== v) {
+        isChanged = true;
+      }
+      return castElement;
+    });
+    return isChanged ? castArray : value;
+  }
+  _validate(_value, options2 = {}, panic, next2) {
+    var _options$recursive;
+    let innerType = this.innerType;
+    let recursive = (_options$recursive = options2.recursive) != null ? _options$recursive : this.spec.recursive;
+    options2.originalValue != null ? options2.originalValue : _value;
+    super._validate(_value, options2, panic, (arrayErrors, value) => {
+      var _options$originalValu2;
+      if (!recursive || !innerType || !this._typeCheck(value)) {
+        next2(arrayErrors, value);
+        return;
+      }
+      let tests = new Array(value.length);
+      for (let index2 = 0; index2 < value.length; index2++) {
+        var _options$originalValu;
+        tests[index2] = innerType.asNestedTest({
+          options: options2,
+          index: index2,
+          parent: value,
+          parentPath: options2.path,
+          originalParent: (_options$originalValu = options2.originalValue) != null ? _options$originalValu : _value
+        });
+      }
+      this.runTests({
+        value,
+        tests,
+        originalValue: (_options$originalValu2 = options2.originalValue) != null ? _options$originalValu2 : _value,
+        options: options2
+      }, panic, (innerTypeErrors) => next2(innerTypeErrors.concat(arrayErrors), value));
+    });
+  }
+  clone(spec) {
+    const next2 = super.clone(spec);
+    next2.innerType = this.innerType;
+    return next2;
+  }
+  /** Parse an input JSON string to an object */
+  json() {
+    return this.transform(parseJson);
+  }
+  concat(schema) {
+    let next2 = super.concat(schema);
+    next2.innerType = this.innerType;
+    if (schema.innerType)
+      next2.innerType = next2.innerType ? (
+        // @ts-expect-error Lazy doesn't have concat and will break
+        next2.innerType.concat(schema.innerType)
+      ) : schema.innerType;
+    return next2;
+  }
+  of(schema) {
+    let next2 = this.clone();
+    if (!isSchema(schema)) throw new TypeError("`array.of()` sub-schema must be a valid yup schema not: " + printValue(schema));
+    next2.innerType = schema;
+    next2.spec = Object.assign({}, next2.spec, {
+      types: schema
+    });
+    return next2;
+  }
+  length(length2, message = array.length) {
+    return this.test({
+      message,
+      name: "length",
+      exclusive: true,
+      params: {
+        length: length2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value.length === this.resolve(length2);
+      }
+    });
+  }
+  min(min2, message) {
+    message = message || array.min;
+    return this.test({
+      message,
+      name: "min",
+      exclusive: true,
+      params: {
+        min: min2
+      },
+      skipAbsent: true,
+      // FIXME(ts): Array<typeof T>
+      test(value) {
+        return value.length >= this.resolve(min2);
+      }
+    });
+  }
+  max(max2, message) {
+    message = message || array.max;
+    return this.test({
+      message,
+      name: "max",
+      exclusive: true,
+      params: {
+        max: max2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value.length <= this.resolve(max2);
+      }
+    });
+  }
+  ensure() {
+    return this.default(() => []).transform((val, original) => {
+      if (this._typeCheck(val)) return val;
+      return original == null ? [] : [].concat(original);
+    });
+  }
+  compact(rejector) {
+    let reject = !rejector ? (v) => !!v : (v, i2, a4) => !rejector(v, i2, a4);
+    return this.transform((values3) => values3 != null ? values3.filter(reject) : values3);
+  }
+  describe(options2) {
+    const next2 = (options2 ? this.resolve(options2) : this).clone();
+    const base = super.describe(options2);
+    if (next2.innerType) {
+      var _innerOptions;
+      let innerOptions = options2;
+      if ((_innerOptions = innerOptions) != null && _innerOptions.value) {
+        innerOptions = Object.assign({}, innerOptions, {
+          parent: innerOptions.value,
+          value: innerOptions.value[0]
+        });
+      }
+      base.innerType = next2.innerType.describe(innerOptions);
+    }
+    return base;
+  }
+}
+create$2.prototype = ArraySchema.prototype;
 var data;
 var hasRequiredData;
 function requireData() {
@@ -183592,7 +185986,7 @@ function requiredArgs(required, args) {
     throw new TypeError(required + " argument" + (required > 1 ? "s" : "") + " required, but only " + args.length + " present");
   }
 }
-function isDate$1(value) {
+function isDate(value) {
   requiredArgs(1, arguments);
   return value instanceof Date || _typeof(value) === "object" && Object.prototype.toString.call(value) === "[object Date]";
 }
@@ -183613,7 +186007,7 @@ function toDate(argument) {
 }
 function isValid(dirtyDate) {
   requiredArgs(1, arguments);
-  if (!isDate$1(dirtyDate) && typeof dirtyDate !== "number") {
+  if (!isDate(dirtyDate) && typeof dirtyDate !== "number") {
     return false;
   }
   var date2 = toDate(dirtyDate);
@@ -184918,7 +187312,7 @@ function buildMatchFn(args) {
     }
     var matchedString = matchResult[0];
     var parsePatterns = width2 && args.parsePatterns[width2] || args.parsePatterns[args.defaultParseWidth];
-    var key = Array.isArray(parsePatterns) ? findIndex$2(parsePatterns, function(pattern) {
+    var key = Array.isArray(parsePatterns) ? findIndex$1(parsePatterns, function(pattern) {
       return pattern.test(matchedString);
     }) : findKey(parsePatterns, function(pattern) {
       return pattern.test(matchedString);
@@ -184941,7 +187335,7 @@ function findKey(object2, predicate) {
   }
   return void 0;
 }
-function findIndex$2(array2, predicate) {
+function findIndex$1(array2, predicate) {
   for (var key = 0; key < array2.length; key++) {
     if (predicate(array2[key])) {
       return key;
@@ -188597,7 +190991,7 @@ function Popper(_ref3) {
   }, [setPopperElement, setArrowElement, placement, state, styles2, update2, forceUpdate]);
   return unwrapArray(children)(childrenProps);
 }
-function Reference$1(_ref3) {
+function Reference2(_ref3) {
   var children = _ref3.children, innerRef = _ref3.innerRef;
   var setReferenceNode = reactExports.useContext(ManagerReferenceNodeSetterContext);
   var refHandler = reactExports.useCallback(function(node2) {
@@ -189024,7 +191418,7 @@ function yt(e2) {
 function vt() {
   for (var e2 = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : [], t4 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "react-datepicker__day--highlighted", r3 = /* @__PURE__ */ new Map(), o2 = 0, a4 = e2.length; o2 < a4; o2++) {
     var s4 = e2[o2];
-    if (isDate$1(s4)) {
+    if (isDate(s4)) {
       var i2 = Ie(s4, "MM.dd.yyyy"), p2 = r3.get(i2) || [];
       p2.includes(t4) || (p2.push(t4), r3.set(i2, p2));
     } else if ("object" === ue(s4)) {
@@ -189041,7 +191435,7 @@ function Dt() {
   var e2 = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : [], t4 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "react-datepicker__day--holidays", r3 = /* @__PURE__ */ new Map();
   return e2.forEach((function(e3) {
     var o2 = e3.date, a4 = e3.holidayName;
-    if (isDate$1(o2)) {
+    if (isDate(o2)) {
       var s4 = Ie(o2, "MM.dd.yyyy"), i2 = r3.get(s4) || {};
       if (!("className" in i2) || i2.className !== t4 || (p2 = i2.holidayNames, c3 = [a4], p2.length !== c3.length || !p2.every((function(e4, t5) {
         return e4 === c3[t5];
@@ -190119,7 +192513,7 @@ var jt = ["react-datepicker__year-select", "react-datepicker__month-select", "re
     }
     this.props.popperContainer && (t5 = React$1.createElement(this.props.popperContainer, {}, t5)), m3 && !s4 && (t5 = React$1.createElement(Ut, { portalId: m3, portalHost: f }, t5));
     var v = cx("react-datepicker-wrapper", a4);
-    return React$1.createElement(Manager, { className: "react-datepicker-manager" }, React$1.createElement(Reference$1, null, (function(t6) {
+    return React$1.createElement(Manager, { className: "react-datepicker-manager" }, React$1.createElement(Reference2, null, (function(t6) {
       var r3 = t6.ref;
       return React$1.createElement("div", { ref: r3, className: v }, d4);
     })), t5);
@@ -190159,7 +192553,7 @@ var Zt = "Date input not valid.", er = (function(t4) {
         }));
       }));
     })), ye(we(i2), "inputOk", (function() {
-      return isDate$1(i2.state.preSelection);
+      return isDate(i2.state.preSelection);
     })), ye(we(i2), "isCalendarOpen", (function() {
       return void 0 === i2.props.open ? i2.state.open && !i2.props.disabled && !i2.props.readOnly : i2.props.open;
     })), ye(we(i2), "handleFocus", (function(e2) {
@@ -194997,172 +197391,219 @@ function renderIcon(Icon2, { className, size: size2 }) {
     return /* @__PURE__ */ React$1.createElement(Icon2, { className: cx("icon", `icon-${className}`), ...props });
   }
 }
-const actionButtonCustomIcons = {
+const _actionButtonIcons = {
   "heart": {
     active: (props) => renderIcon(HeartFill, props),
-    inactive: (props) => renderIcon(Heart, props)
+    inactive: (props) => renderIcon(Heart, props),
+    category: ["general"]
   },
   "bookmark": {
     active: (props) => renderIcon(BookmarkFill, props),
-    inactive: (props) => renderIcon(Bookmark, props)
+    inactive: (props) => renderIcon(Bookmark, props),
+    category: ["general"]
   },
   "pin": {
     active: (props) => renderIcon(PinFill, props),
-    inactive: (props) => renderIcon(Pin, props)
+    inactive: (props) => renderIcon(Pin, props),
+    category: ["general"]
   },
   "list": {
     active: (props) => renderIcon(CardList, props),
-    inactive: (props) => renderIcon(ListUl, props)
+    inactive: (props) => renderIcon(ListUl, props),
+    category: ["general"]
   },
   "star": {
     active: (props) => renderIcon(StarFill, props),
-    inactive: (props) => renderIcon(Star, props)
+    inactive: (props) => renderIcon(Star, props),
+    category: ["general"]
   },
   "add-tag": {
     active: (props) => renderIcon(faTag, props),
-    inactive: (props) => renderIcon(SvgAddTagOutline, props)
+    inactive: (props) => renderIcon(SvgAddTagOutline, props),
+    category: ["tag"]
   },
   "tag": {
     active: (props) => renderIcon(TagFill, props),
-    inactive: (props) => renderIcon(Tag$1, props)
+    inactive: (props) => renderIcon(Tag$1, props),
+    category: ["tag"]
   },
   "tags": {
     active: (props) => renderIcon(TagsFill, props),
-    inactive: (props) => renderIcon(Tags, props)
+    inactive: (props) => renderIcon(Tags, props),
+    category: ["tag"]
   },
   "thumbs-up": {
     active: (props) => renderIcon(HandThumbsUpFill, props),
-    inactive: (props) => renderIcon(HandThumbsUp, props)
+    inactive: (props) => renderIcon(HandThumbsUp, props),
+    category: ["general"]
   },
   "thumbs-down": {
     active: (props) => renderIcon(HandThumbsDownFill, props),
-    inactive: (props) => renderIcon(HandThumbsDown, props)
+    inactive: (props) => renderIcon(HandThumbsDown, props),
+    category: ["general"]
   },
   "0-circle": {
     active: (props) => renderIcon(Icon0CircleFill, props),
-    inactive: (props) => renderIcon(Icon0Circle, props)
+    inactive: (props) => renderIcon(Icon0Circle, props),
+    category: ["general"]
   },
   "1-circle": {
     active: (props) => renderIcon(Icon1CircleFill, props),
-    inactive: (props) => renderIcon(Icon1Circle, props)
+    inactive: (props) => renderIcon(Icon1Circle, props),
+    category: ["general"]
   },
   "2-circle": {
     active: (props) => renderIcon(Icon2CircleFill, props),
-    inactive: (props) => renderIcon(Icon2Circle, props)
+    inactive: (props) => renderIcon(Icon2Circle, props),
+    category: ["general"]
   },
   "3-circle": {
     active: (props) => renderIcon(Icon3CircleFill, props),
-    inactive: (props) => renderIcon(Icon3Circle, props)
+    inactive: (props) => renderIcon(Icon3Circle, props),
+    category: ["general"]
   },
   "4-circle": {
     active: (props) => renderIcon(Icon4CircleFill, props),
-    inactive: (props) => renderIcon(Icon4Circle, props)
+    inactive: (props) => renderIcon(Icon4Circle, props),
+    category: ["general"]
   },
   "5-circle": {
     active: (props) => renderIcon(Icon5CircleFill, props),
-    inactive: (props) => renderIcon(Icon5Circle, props)
+    inactive: (props) => renderIcon(Icon5Circle, props),
+    category: ["general"]
   },
   "6-circle": {
     active: (props) => renderIcon(Icon6CircleFill, props),
-    inactive: (props) => renderIcon(Icon6Circle, props)
+    inactive: (props) => renderIcon(Icon6Circle, props),
+    category: ["general"]
   },
   "7-circle": {
     active: (props) => renderIcon(Icon7CircleFill, props),
-    inactive: (props) => renderIcon(Icon7Circle, props)
+    inactive: (props) => renderIcon(Icon7Circle, props),
+    category: ["general"]
   },
   "8-circle": {
     active: (props) => renderIcon(Icon8CircleFill, props),
-    inactive: (props) => renderIcon(Icon8Circle, props)
+    inactive: (props) => renderIcon(Icon8Circle, props),
+    category: ["general"]
   },
   "9-circle": {
     active: (props) => renderIcon(Icon9CircleFill, props),
-    inactive: (props) => renderIcon(Icon9Circle, props)
+    inactive: (props) => renderIcon(Icon9Circle, props),
+    category: ["general"]
   },
   "archive": {
     active: (props) => renderIcon(ArchiveFill, props),
-    inactive: (props) => renderIcon(Archive, props)
+    inactive: (props) => renderIcon(Archive, props),
+    category: ["general"]
   },
   "backpack": {
     active: (props) => renderIcon(Backpack3Fill, props),
-    inactive: (props) => renderIcon(Backpack3, props)
+    inactive: (props) => renderIcon(Backpack3, props),
+    category: ["general"]
   },
   "bag": {
     active: (props) => renderIcon(BagFill, props),
-    inactive: (props) => renderIcon(Bag, props)
+    inactive: (props) => renderIcon(Bag, props),
+    category: ["general"]
   },
   "basket": {
     active: (props) => renderIcon(Basket2Fill, props),
-    inactive: (props) => renderIcon(Basket2, props)
+    inactive: (props) => renderIcon(Basket2, props),
+    category: ["general"]
   },
   "bell": {
     active: (props) => renderIcon(BellFill, props),
-    inactive: (props) => renderIcon(Bell, props)
+    inactive: (props) => renderIcon(Bell, props),
+    category: ["general"]
   },
   "check": {
     active: (props) => renderIcon(CheckCircleFill, props),
-    inactive: (props) => renderIcon(CheckCircle, props)
+    inactive: (props) => renderIcon(CheckCircle, props),
+    category: ["general"]
   },
   "circle": {
     active: (props) => renderIcon(CircleFill, props),
-    inactive: (props) => renderIcon(Circle, props)
+    inactive: (props) => renderIcon(Circle, props),
+    category: ["general"]
   },
   "clipboard": {
     active: (props) => renderIcon(ClipboardFill, props),
-    inactive: (props) => renderIcon(Clipboard, props)
+    inactive: (props) => renderIcon(Clipboard, props),
+    category: ["general"]
   },
   "clock": {
     active: (props) => renderIcon(ClockFill, props),
-    inactive: (props) => renderIcon(Clock, props)
+    inactive: (props) => renderIcon(Clock, props),
+    category: ["general"]
   },
   "collection": {
     active: (props) => renderIcon(CollectionFill, props),
-    inactive: (props) => renderIcon(Collection, props)
+    inactive: (props) => renderIcon(Collection, props),
+    category: ["general"]
   },
   "collection-play": {
     active: (props) => renderIcon(CollectionPlayFill, props),
-    inactive: (props) => renderIcon(CollectionPlay, props)
+    inactive: (props) => renderIcon(CollectionPlay, props),
+    category: ["general"]
   },
   "droplet": {
     active: (props) => renderIcon(DropletFill, props),
-    inactive: (props) => renderIcon(Droplet, props)
+    inactive: (props) => renderIcon(Droplet, props),
+    category: ["general"]
   },
   "flag": {
     active: (props) => renderIcon(FlagFill, props),
-    inactive: (props) => renderIcon(Flag, props)
+    inactive: (props) => renderIcon(Flag, props),
+    category: ["general"]
   },
   "floppy": {
     active: (props) => renderIcon(FloppyFill, props),
-    inactive: (props) => renderIcon(Floppy, props)
+    inactive: (props) => renderIcon(Floppy, props),
+    category: ["general"]
   },
   "folder": {
     active: (props) => renderIcon(FolderFill, props),
-    inactive: (props) => renderIcon(Folder, props)
+    inactive: (props) => renderIcon(Folder, props),
+    category: ["general"]
   },
   "inbox": {
     active: (props) => renderIcon(InboxFill, props),
-    inactive: (props) => renderIcon(Inbox, props)
+    inactive: (props) => renderIcon(Inbox, props),
+    category: ["general"]
   },
   "lightbulb": {
     active: (props) => renderIcon(LightbulbFill, props),
-    inactive: (props) => renderIcon(Lightbulb, props)
+    inactive: (props) => renderIcon(Lightbulb, props),
+    category: ["general"]
   },
   "lock": {
     active: (props) => renderIcon(LockFill, props),
-    inactive: (props) => renderIcon(Lock, props)
+    inactive: (props) => renderIcon(Lock, props),
+    category: ["general"]
   },
   "suit-club": {
     active: (props) => renderIcon(SuitClubFill, props),
-    inactive: (props) => renderIcon(SuitClub, props)
+    inactive: (props) => renderIcon(SuitClub, props),
+    category: ["general"]
   },
   "telephone": {
     active: (props) => renderIcon(TelephoneFill, props),
-    inactive: (props) => renderIcon(Telephone, props)
+    inactive: (props) => renderIcon(Telephone, props),
+    category: ["general"]
   },
   "trash": {
     active: (props) => renderIcon(Trash3Fill, props),
-    inactive: (props) => renderIcon(Trash3, props)
+    inactive: (props) => renderIcon(Trash3, props),
+    category: ["general"]
+  },
+  "add-marker": {
+    active: (props) => renderIcon(faLocationDot, props),
+    inactive: (props) => renderIcon(SvgAddMarkerOutline, props),
+    category: ["marker"]
   }
 };
+const actionButtonIcons = _actionButtonIcons;
 const actionButtonsDetails = {
   "ui-visibility": {
     activeIcon: (props) => renderIcon(faEllipsisVertical, props),
@@ -195231,25 +197672,33 @@ const actionButtonsDetails = {
     inactiveText: "Show subtitles"
   },
   "quick-tag": {
-    activeIcon: actionButtonCustomIcons["add-tag"].active,
-    inactiveIcon: actionButtonCustomIcons["add-tag"].inactive,
+    activeIcon: actionButtonIcons["add-tag"].active,
+    inactiveIcon: actionButtonIcons["add-tag"].inactive,
     activeText: "Remove single tag",
     inactiveText: "Add single tag",
     repeatable: true,
     hasSettings: true
   },
   "edit-tags": {
-    activeIcon: actionButtonCustomIcons["tags"].active,
-    inactiveIcon: actionButtonCustomIcons["tags"].inactive,
+    activeIcon: actionButtonIcons["tags"].active,
+    inactiveIcon: actionButtonIcons["tags"].inactive,
     activeText: "Edit tags",
     inactiveText: "Edit tags",
     hasSettings: true
   },
   "create-marker": {
-    activeIcon: (props) => renderIcon(faLocationDot, props),
-    inactiveIcon: (props) => renderIcon(SvgAddMarkerOutline, props),
+    activeIcon: actionButtonIcons["add-marker"].active,
+    inactiveIcon: actionButtonIcons["add-marker"].inactive,
     activeText: "Create marker",
     inactiveText: "Create marker"
+  },
+  "quick-create-marker": {
+    activeIcon: actionButtonIcons["add-marker"].active,
+    inactiveIcon: actionButtonIcons["add-marker"].inactive,
+    activeText: "Create preset marker",
+    inactiveText: "Create preset marker",
+    hasSettings: true,
+    repeatable: true
   }
 };
 const logger$4 = getLogger(["stash-tv", "getActionButtonDetails"]);
@@ -195275,15 +197724,15 @@ function getActionButtonDetails(config2, options2) {
       };
     }
   };
-  const customIcon = "iconId" in config2 && config2.iconId ? actionButtonCustomIcons[config2.iconId] : void 0;
+  if ("iconId" in config2 && config2.iconId && config2.iconId in actionButtonIcons) {
+    const iconDetails = actionButtonIcons[config2.iconId];
+    details2.activeIcon = iconDetails.active;
+    details2.inactiveIcon = iconDetails.inactive;
+  }
   if (config2.type === "quick-tag") {
     if (options2?.tagName) {
       details2.activeText = `Remove "${options2.tagName}" from scene`;
       details2.inactiveText = `Add "${options2.tagName}" to scene`;
-    }
-    if (customIcon) {
-      details2.activeIcon = customIcon.active;
-      details2.inactiveIcon = customIcon.inactive;
     }
   }
   return details2;
@@ -195453,7 +197902,7 @@ function useFormikContext() {
 var isFunction = function isFunction2(obj) {
   return typeof obj === "function";
 };
-var isObject$1 = function isObject2(obj) {
+var isObject2 = function isObject22(obj) {
   return obj !== null && typeof obj === "object";
 };
 var isInteger = function isInteger2(obj) {
@@ -195463,9 +197912,9 @@ var isString$1 = function isString2(obj) {
   return Object.prototype.toString.call(obj) === "[object String]";
 };
 var isPromise = function isPromise2(value) {
-  return isObject$1(value) && isFunction(value.then);
+  return isObject2(value) && isFunction(value.then);
 };
-function getIn$1(obj, key, def, p2) {
+function getIn(obj, key, def, p2) {
   if (p2 === void 0) {
     p2 = 0;
   }
@@ -195485,8 +197934,8 @@ function setIn(obj, path2, value) {
   var pathArray = toPath(path2);
   for (; i2 < pathArray.length - 1; i2++) {
     var currentPath = pathArray[i2];
-    var currentObj = getIn$1(obj, pathArray.slice(0, i2 + 1));
-    if (currentObj && (isObject$1(currentObj) || Array.isArray(currentObj))) {
+    var currentObj = getIn(obj, pathArray.slice(0, i2 + 1));
+    if (currentObj && (isObject2(currentObj) || Array.isArray(currentObj))) {
       resVal = resVal[currentPath] = clone$1(currentObj);
     } else {
       var nextPath = pathArray[i2 + 1];
@@ -195516,7 +197965,7 @@ function setNestedObjectValues(object2, value, visited, response) {
   for (var _i = 0, _Object$keys = Object.keys(object2); _i < _Object$keys.length; _i++) {
     var k2 = _Object$keys[_i];
     var val = object2[k2];
-    if (isObject$1(val)) {
+    if (isObject2(val)) {
       if (!visited.get(val)) {
         visited.set(val, true);
         response[k2] = Array.isArray(val) ? [] : {};
@@ -195673,7 +198122,7 @@ function useFormik(_ref3) {
       return isFunction(fieldRegistry.current[f].validate);
     });
     var fieldValidations = fieldKeysWithValidation.length > 0 ? fieldKeysWithValidation.map(function(f) {
-      return runSingleFieldLevelValidation(f, getIn$1(values3, f));
+      return runSingleFieldLevelValidation(f, getIn(values3, f));
     }) : [Promise.resolve("DO_NOT_DELETE_YOU_WILL_BE_FIRED")];
     return Promise.all(fieldValidations).then(function(fieldErrorsList) {
       return fieldErrorsList.reduce(function(prev2, curr, index2) {
@@ -195797,7 +198246,7 @@ function useFormik(_ref3) {
   }, [enableReinitialize, props.initialStatus, props.initialTouched]);
   var validateField = useEventCallback(function(name2) {
     if (fieldRegistry.current[name2] && isFunction(fieldRegistry.current[name2].validate)) {
-      var value = getIn$1(state.values, name2);
+      var value = getIn(state.values, name2);
       var maybePromise = fieldRegistry.current[name2].validate(value);
       if (isPromise(maybePromise)) {
         dispatch({
@@ -195841,7 +198290,7 @@ function useFormik(_ref3) {
           type: "SET_FIELD_ERROR",
           payload: {
             field: name2,
-            value: getIn$1(error, name2)
+            value: getIn(error, name2)
           }
         });
         dispatch({
@@ -195917,7 +198366,7 @@ function useFormik(_ref3) {
       target.outerHTML;
       var options2 = target.options, multiple = target.multiple;
       field = maybePath ? maybePath : name2 ? name2 : id2;
-      val = /number|range/.test(type3) ? (parsed = parseFloat(value), isNaN(parsed) ? "" : parsed) : /checkbox/.test(type3) ? getValueForCheckbox(getIn$1(state.values, field), checked, value) : options2 && multiple ? getSelectedValues(options2) : value;
+      val = /number|range/.test(type3) ? (parsed = parseFloat(value), isNaN(parsed) ? "" : parsed) : /checkbox/.test(type3) ? getValueForCheckbox(getIn(state.values, field), checked, value) : options2 && multiple ? getSelectedValues(options2) : value;
     }
     if (field) {
       setFieldValue(field, val);
@@ -196074,12 +198523,12 @@ function useFormik(_ref3) {
   });
   var getFieldMeta = reactExports.useCallback(function(name2) {
     return {
-      value: getIn$1(state.values, name2),
-      error: getIn$1(state.errors, name2),
-      touched: !!getIn$1(state.touched, name2),
-      initialValue: getIn$1(initialValues.current, name2),
-      initialTouched: !!getIn$1(initialTouched.current, name2),
-      initialError: getIn$1(initialErrors.current, name2)
+      value: getIn(state.values, name2),
+      error: getIn(state.errors, name2),
+      touched: !!getIn(state.touched, name2),
+      initialValue: getIn(initialValues.current, name2),
+      initialTouched: !!getIn(initialTouched.current, name2),
+      initialError: getIn(initialErrors.current, name2)
     };
   }, [state.errors, state.touched, state.values]);
   var getFieldHelpers = reactExports.useCallback(function(name2) {
@@ -196096,9 +198545,9 @@ function useFormik(_ref3) {
     };
   }, [setFieldValue, setFieldTouched, setFieldError]);
   var getFieldProps = reactExports.useCallback(function(nameOrOptions) {
-    var isAnObject = isObject$1(nameOrOptions);
+    var isAnObject = isObject2(nameOrOptions);
     var name2 = isAnObject ? nameOrOptions.name : nameOrOptions;
-    var valueState = getIn$1(state.values, name2);
+    var valueState = getIn(state.values, name2);
     var field = {
       name: name2,
       value: valueState,
@@ -196182,7 +198631,7 @@ function yupToFormErrors(yupError) {
         _ref5 = _i.value;
       }
       var err = _ref5;
-      if (!getIn$1(errors2, err.path)) {
+      if (!getIn(errors2, err.path)) {
         errors2 = setIn(errors2, err.path, err.message);
       }
     }
@@ -196292,2323 +198741,6 @@ var Form = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   }, rest));
 });
 Form.displayName = "Form";
-var propertyExpr;
-var hasRequiredPropertyExpr;
-function requirePropertyExpr() {
-  if (hasRequiredPropertyExpr) return propertyExpr;
-  hasRequiredPropertyExpr = 1;
-  function Cache2(maxSize) {
-    this._maxSize = maxSize;
-    this.clear();
-  }
-  Cache2.prototype.clear = function() {
-    this._size = 0;
-    this._values = /* @__PURE__ */ Object.create(null);
-  };
-  Cache2.prototype.get = function(key) {
-    return this._values[key];
-  };
-  Cache2.prototype.set = function(key, value) {
-    this._size >= this._maxSize && this.clear();
-    if (!(key in this._values)) this._size++;
-    return this._values[key] = value;
-  };
-  var SPLIT_REGEX = /[^.^\]^[]+|(?=\[\]|\.\.)/g, DIGIT_REGEX = /^\d+$/, LEAD_DIGIT_REGEX = /^\d/, SPEC_CHAR_REGEX = /[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g, CLEAN_QUOTES_REGEX = /^\s*(['"]?)(.*?)(\1)\s*$/, MAX_CACHE_SIZE = 512;
-  var pathCache = new Cache2(MAX_CACHE_SIZE), setCache = new Cache2(MAX_CACHE_SIZE), getCache = new Cache2(MAX_CACHE_SIZE);
-  propertyExpr = {
-    Cache: Cache2,
-    split: split2,
-    normalizePath: normalizePath4,
-    setter: function(path2) {
-      var parts = normalizePath4(path2);
-      return setCache.get(path2) || setCache.set(path2, function setter(obj, value) {
-        var index2 = 0;
-        var len = parts.length;
-        var data2 = obj;
-        while (index2 < len - 1) {
-          var part = parts[index2];
-          if (part === "__proto__" || part === "constructor" || part === "prototype") {
-            return obj;
-          }
-          data2 = data2[parts[index2++]];
-        }
-        data2[parts[index2]] = value;
-      });
-    },
-    getter: function(path2, safe) {
-      var parts = normalizePath4(path2);
-      return getCache.get(path2) || getCache.set(path2, function getter(data2) {
-        var index2 = 0, len = parts.length;
-        while (index2 < len) {
-          if (data2 != null || !safe) data2 = data2[parts[index2++]];
-          else return;
-        }
-        return data2;
-      });
-    },
-    join: function(segments) {
-      return segments.reduce(function(path2, part) {
-        return path2 + (isQuoted(part) || DIGIT_REGEX.test(part) ? "[" + part + "]" : (path2 ? "." : "") + part);
-      }, "");
-    },
-    forEach: function(path2, cb2, thisArg) {
-      forEach2(Array.isArray(path2) ? path2 : split2(path2), cb2, thisArg);
-    }
-  };
-  function normalizePath4(path2) {
-    return pathCache.get(path2) || pathCache.set(
-      path2,
-      split2(path2).map(function(part) {
-        return part.replace(CLEAN_QUOTES_REGEX, "$2");
-      })
-    );
-  }
-  function split2(path2) {
-    return path2.match(SPLIT_REGEX) || [""];
-  }
-  function forEach2(parts, iter, thisArg) {
-    var len = parts.length, part, idx, isArray2, isBracket;
-    for (idx = 0; idx < len; idx++) {
-      part = parts[idx];
-      if (part) {
-        if (shouldBeQuoted(part)) {
-          part = '"' + part + '"';
-        }
-        isBracket = isQuoted(part);
-        isArray2 = !isBracket && /^\d+$/.test(part);
-        iter.call(thisArg, part, isBracket, isArray2, idx, parts);
-      }
-    }
-  }
-  function isQuoted(str) {
-    return typeof str === "string" && str && ["'", '"'].indexOf(str.charAt(0)) !== -1;
-  }
-  function hasLeadingNumber(part) {
-    return part.match(LEAD_DIGIT_REGEX) && !part.match(DIGIT_REGEX);
-  }
-  function hasSpecialChars(part) {
-    return SPEC_CHAR_REGEX.test(part);
-  }
-  function shouldBeQuoted(part) {
-    return !isQuoted(part) && (hasLeadingNumber(part) || hasSpecialChars(part));
-  }
-  return propertyExpr;
-}
-var propertyExprExports = requirePropertyExpr();
-var tinyCase;
-var hasRequiredTinyCase;
-function requireTinyCase() {
-  if (hasRequiredTinyCase) return tinyCase;
-  hasRequiredTinyCase = 1;
-  const reWords = /[A-Z\xc0-\xd6\xd8-\xde]?[a-z\xdf-\xf6\xf8-\xff]+(?:['’](?:d|ll|m|re|s|t|ve))?(?=[\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000]|[A-Z\xc0-\xd6\xd8-\xde]|$)|(?:[A-Z\xc0-\xd6\xd8-\xde]|[^\ud800-\udfff\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\d+\u2700-\u27bfa-z\xdf-\xf6\xf8-\xffA-Z\xc0-\xd6\xd8-\xde])+(?:['’](?:D|LL|M|RE|S|T|VE))?(?=[\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000]|[A-Z\xc0-\xd6\xd8-\xde](?:[a-z\xdf-\xf6\xf8-\xff]|[^\ud800-\udfff\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\d+\u2700-\u27bfa-z\xdf-\xf6\xf8-\xffA-Z\xc0-\xd6\xd8-\xde])|$)|[A-Z\xc0-\xd6\xd8-\xde]?(?:[a-z\xdf-\xf6\xf8-\xff]|[^\ud800-\udfff\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\d+\u2700-\u27bfa-z\xdf-\xf6\xf8-\xffA-Z\xc0-\xd6\xd8-\xde])+(?:['’](?:d|ll|m|re|s|t|ve))?|[A-Z\xc0-\xd6\xd8-\xde]+(?:['’](?:D|LL|M|RE|S|T|VE))?|\d*(?:1ST|2ND|3RD|(?![123])\dTH)(?=\b|[a-z_])|\d*(?:1st|2nd|3rd|(?![123])\dth)(?=\b|[A-Z_])|\d+|(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe2f\u20d0-\u20ff]|\ud83c[\udffb-\udfff])?(?:\u200d(?:[^\ud800-\udfff]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe2f\u20d0-\u20ff]|\ud83c[\udffb-\udfff])?)*/g;
-  const words = (str) => str.match(reWords) || [];
-  const upperFirst = (str) => str[0].toUpperCase() + str.slice(1);
-  const join2 = (str, d4) => words(str).join(d4).toLowerCase();
-  const camelCase3 = (str) => words(str).reduce(
-    (acc, next2) => `${acc}${!acc ? next2.toLowerCase() : next2[0].toUpperCase() + next2.slice(1).toLowerCase()}`,
-    ""
-  );
-  const pascalCase3 = (str) => upperFirst(camelCase3(str));
-  const snakeCase = (str) => join2(str, "_");
-  const kebabCase = (str) => join2(str, "-");
-  const sentenceCase = (str) => upperFirst(join2(str, " "));
-  const titleCase = (str) => words(str).map(upperFirst).join(" ");
-  tinyCase = {
-    words,
-    upperFirst,
-    camelCase: camelCase3,
-    pascalCase: pascalCase3,
-    snakeCase,
-    kebabCase,
-    sentenceCase,
-    titleCase
-  };
-  return tinyCase;
-}
-var tinyCaseExports = requireTinyCase();
-var toposort$1 = { exports: {} };
-var hasRequiredToposort;
-function requireToposort() {
-  if (hasRequiredToposort) return toposort$1.exports;
-  hasRequiredToposort = 1;
-  toposort$1.exports = function(edges) {
-    return toposort2(uniqueNodes(edges), edges);
-  };
-  toposort$1.exports.array = toposort2;
-  function toposort2(nodes, edges) {
-    var cursor2 = nodes.length, sorted = new Array(cursor2), visited = {}, i2 = cursor2, outgoingEdges = makeOutgoingEdges(edges), nodesHash = makeNodesHash(nodes);
-    edges.forEach(function(edge) {
-      if (!nodesHash.has(edge[0]) || !nodesHash.has(edge[1])) {
-        throw new Error("Unknown node. There is an unknown node in the supplied edges.");
-      }
-    });
-    while (i2--) {
-      if (!visited[i2]) visit2(nodes[i2], i2, /* @__PURE__ */ new Set());
-    }
-    return sorted;
-    function visit2(node2, i3, predecessors) {
-      if (predecessors.has(node2)) {
-        var nodeRep;
-        try {
-          nodeRep = ", node was:" + JSON.stringify(node2);
-        } catch (e2) {
-          nodeRep = "";
-        }
-        throw new Error("Cyclic dependency" + nodeRep);
-      }
-      if (!nodesHash.has(node2)) {
-        throw new Error("Found unknown node. Make sure to provided all involved nodes. Unknown node: " + JSON.stringify(node2));
-      }
-      if (visited[i3]) return;
-      visited[i3] = true;
-      var outgoing = outgoingEdges.get(node2) || /* @__PURE__ */ new Set();
-      outgoing = Array.from(outgoing);
-      if (i3 = outgoing.length) {
-        predecessors.add(node2);
-        do {
-          var child = outgoing[--i3];
-          visit2(child, nodesHash.get(child), predecessors);
-        } while (i3);
-        predecessors.delete(node2);
-      }
-      sorted[--cursor2] = node2;
-    }
-  }
-  function uniqueNodes(arr) {
-    var res = /* @__PURE__ */ new Set();
-    for (var i2 = 0, len = arr.length; i2 < len; i2++) {
-      var edge = arr[i2];
-      res.add(edge[0]);
-      res.add(edge[1]);
-    }
-    return Array.from(res);
-  }
-  function makeOutgoingEdges(arr) {
-    var edges = /* @__PURE__ */ new Map();
-    for (var i2 = 0, len = arr.length; i2 < len; i2++) {
-      var edge = arr[i2];
-      if (!edges.has(edge[0])) edges.set(edge[0], /* @__PURE__ */ new Set());
-      if (!edges.has(edge[1])) edges.set(edge[1], /* @__PURE__ */ new Set());
-      edges.get(edge[0]).add(edge[1]);
-    }
-    return edges;
-  }
-  function makeNodesHash(arr) {
-    var res = /* @__PURE__ */ new Map();
-    for (var i2 = 0, len = arr.length; i2 < len; i2++) {
-      res.set(arr[i2], i2);
-    }
-    return res;
-  }
-  return toposort$1.exports;
-}
-var toposortExports = requireToposort();
-const toposort = /* @__PURE__ */ getDefaultExportFromCjs(toposortExports);
-const toString = Object.prototype.toString;
-const errorToString$1 = Error.prototype.toString;
-const regExpToString = RegExp.prototype.toString;
-const symbolToString = typeof Symbol !== "undefined" ? Symbol.prototype.toString : () => "";
-const SYMBOL_REGEXP = /^Symbol\((.*)\)(.*)$/;
-function printNumber(val) {
-  if (val != +val) return "NaN";
-  const isNegativeZero = val === 0 && 1 / val < 0;
-  return isNegativeZero ? "-0" : "" + val;
-}
-function printSimpleValue(val, quoteStrings = false) {
-  if (val == null || val === true || val === false) return "" + val;
-  const typeOf = typeof val;
-  if (typeOf === "number") return printNumber(val);
-  if (typeOf === "string") return quoteStrings ? `"${val}"` : val;
-  if (typeOf === "function") return "[Function " + (val.name || "anonymous") + "]";
-  if (typeOf === "symbol") return symbolToString.call(val).replace(SYMBOL_REGEXP, "Symbol($1)");
-  const tag2 = toString.call(val).slice(8, -1);
-  if (tag2 === "Date") return isNaN(val.getTime()) ? "" + val : val.toISOString(val);
-  if (tag2 === "Error" || val instanceof Error) return "[" + errorToString$1.call(val) + "]";
-  if (tag2 === "RegExp") return regExpToString.call(val);
-  return null;
-}
-function printValue(value, quoteStrings) {
-  let result = printSimpleValue(value, quoteStrings);
-  if (result !== null) return result;
-  return JSON.stringify(value, function(key, value2) {
-    let result2 = printSimpleValue(this[key], quoteStrings);
-    if (result2 !== null) return result2;
-    return value2;
-  }, 2);
-}
-function toArray$1(value) {
-  return value == null ? [] : [].concat(value);
-}
-let _Symbol$toStringTag, _Symbol$hasInstance, _Symbol$toStringTag2;
-let strReg = /\$\{\s*(\w+)\s*\}/g;
-_Symbol$toStringTag = Symbol.toStringTag;
-class ValidationErrorNoStack {
-  constructor(errorOrErrors, value, field, type3) {
-    this.name = void 0;
-    this.message = void 0;
-    this.value = void 0;
-    this.path = void 0;
-    this.type = void 0;
-    this.params = void 0;
-    this.errors = void 0;
-    this.inner = void 0;
-    this[_Symbol$toStringTag] = "Error";
-    this.name = "ValidationError";
-    this.value = value;
-    this.path = field;
-    this.type = type3;
-    this.errors = [];
-    this.inner = [];
-    toArray$1(errorOrErrors).forEach((err) => {
-      if (ValidationError.isError(err)) {
-        this.errors.push(...err.errors);
-        const innerErrors = err.inner.length ? err.inner : [err];
-        this.inner.push(...innerErrors);
-      } else {
-        this.errors.push(err);
-      }
-    });
-    this.message = this.errors.length > 1 ? `${this.errors.length} errors occurred` : this.errors[0];
-  }
-}
-_Symbol$hasInstance = Symbol.hasInstance;
-_Symbol$toStringTag2 = Symbol.toStringTag;
-class ValidationError extends Error {
-  static formatError(message, params) {
-    const path2 = params.label || params.path || "this";
-    params = Object.assign({}, params, {
-      path: path2,
-      originalPath: params.path
-    });
-    if (typeof message === "string") return message.replace(strReg, (_, key) => printValue(params[key]));
-    if (typeof message === "function") return message(params);
-    return message;
-  }
-  static isError(err) {
-    return err && err.name === "ValidationError";
-  }
-  constructor(errorOrErrors, value, field, type3, disableStack) {
-    const errorNoStack = new ValidationErrorNoStack(errorOrErrors, value, field, type3);
-    if (disableStack) {
-      return errorNoStack;
-    }
-    super();
-    this.value = void 0;
-    this.path = void 0;
-    this.type = void 0;
-    this.params = void 0;
-    this.errors = [];
-    this.inner = [];
-    this[_Symbol$toStringTag2] = "Error";
-    this.name = errorNoStack.name;
-    this.message = errorNoStack.message;
-    this.type = errorNoStack.type;
-    this.value = errorNoStack.value;
-    this.path = errorNoStack.path;
-    this.errors = errorNoStack.errors;
-    this.inner = errorNoStack.inner;
-    if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, ValidationError);
-    }
-  }
-  static [_Symbol$hasInstance](inst) {
-    return ValidationErrorNoStack[Symbol.hasInstance](inst) || super[Symbol.hasInstance](inst);
-  }
-}
-let mixed = {
-  default: "${path} is invalid",
-  required: "${path} is a required field",
-  defined: "${path} must be defined",
-  notNull: "${path} cannot be null",
-  oneOf: "${path} must be one of the following values: ${values}",
-  notOneOf: "${path} must not be one of the following values: ${values}",
-  notType: ({
-    path: path2,
-    type: type3,
-    value,
-    originalValue
-  }) => {
-    const castMsg = originalValue != null && originalValue !== value ? ` (cast from the value \`${printValue(originalValue, true)}\`).` : ".";
-    return type3 !== "mixed" ? `${path2} must be a \`${type3}\` type, but the final value was: \`${printValue(value, true)}\`` + castMsg : `${path2} must match the configured type. The validated value was: \`${printValue(value, true)}\`` + castMsg;
-  }
-};
-let string = {
-  length: "${path} must be exactly ${length} characters",
-  min: "${path} must be at least ${min} characters",
-  max: "${path} must be at most ${max} characters",
-  matches: '${path} must match the following: "${regex}"',
-  email: "${path} must be a valid email",
-  url: "${path} must be a valid URL",
-  uuid: "${path} must be a valid UUID",
-  datetime: "${path} must be a valid ISO date-time",
-  datetime_precision: "${path} must be a valid ISO date-time with a sub-second precision of exactly ${precision} digits",
-  datetime_offset: '${path} must be a valid ISO date-time with UTC "Z" timezone',
-  trim: "${path} must be a trimmed string",
-  lowercase: "${path} must be a lowercase string",
-  uppercase: "${path} must be a upper case string"
-};
-let number$1 = {
-  min: "${path} must be greater than or equal to ${min}",
-  max: "${path} must be less than or equal to ${max}",
-  lessThan: "${path} must be less than ${less}",
-  moreThan: "${path} must be greater than ${more}",
-  positive: "${path} must be a positive number",
-  negative: "${path} must be a negative number",
-  integer: "${path} must be an integer"
-};
-let date$1 = {
-  min: "${path} field must be later than ${min}",
-  max: "${path} field must be at earlier than ${max}"
-};
-let boolean = {
-  isValue: "${path} field must be ${value}"
-};
-let object = {
-  noUnknown: "${path} field has unspecified keys: ${unknown}",
-  exact: "${path} object contains unknown properties: ${properties}"
-};
-let array = {
-  min: "${path} field must have at least ${min} items",
-  max: "${path} field must have less than or equal to ${max} items",
-  length: "${path} must have ${length} items"
-};
-let tuple = {
-  notType: (params) => {
-    const {
-      path: path2,
-      value,
-      spec
-    } = params;
-    const typeLen = spec.types.length;
-    if (Array.isArray(value)) {
-      if (value.length < typeLen) return `${path2} tuple value has too few items, expected a length of ${typeLen} but got ${value.length} for value: \`${printValue(value, true)}\``;
-      if (value.length > typeLen) return `${path2} tuple value has too many items, expected a length of ${typeLen} but got ${value.length} for value: \`${printValue(value, true)}\``;
-    }
-    return ValidationError.formatError(mixed.notType, params);
-  }
-};
-Object.assign(/* @__PURE__ */ Object.create(null), {
-  mixed,
-  string,
-  number: number$1,
-  date: date$1,
-  object,
-  array,
-  boolean,
-  tuple
-});
-const isSchema = (obj) => obj && obj.__isYupSchema__;
-class Condition {
-  static fromOptions(refs, config2) {
-    if (!config2.then && !config2.otherwise) throw new TypeError("either `then:` or `otherwise:` is required for `when()` conditions");
-    let {
-      is: is2,
-      then,
-      otherwise
-    } = config2;
-    let check2 = typeof is2 === "function" ? is2 : (...values3) => values3.every((value) => value === is2);
-    return new Condition(refs, (values3, schema) => {
-      var _branch;
-      let branch = check2(...values3) ? then : otherwise;
-      return (_branch = branch == null ? void 0 : branch(schema)) != null ? _branch : schema;
-    });
-  }
-  constructor(refs, builder) {
-    this.fn = void 0;
-    this.refs = refs;
-    this.refs = refs;
-    this.fn = builder;
-  }
-  resolve(base, options2) {
-    let values3 = this.refs.map((ref) => (
-      // TODO: ? operator here?
-      ref.getValue(options2 == null ? void 0 : options2.value, options2 == null ? void 0 : options2.parent, options2 == null ? void 0 : options2.context)
-    ));
-    let schema = this.fn(values3, base, options2);
-    if (schema === void 0 || // @ts-ignore this can be base
-    schema === base) {
-      return base;
-    }
-    if (!isSchema(schema)) throw new TypeError("conditions must return a schema object");
-    return schema.resolve(options2);
-  }
-}
-const prefixes$1 = {
-  context: "$",
-  value: "."
-};
-class Reference {
-  constructor(key, options2 = {}) {
-    this.key = void 0;
-    this.isContext = void 0;
-    this.isValue = void 0;
-    this.isSibling = void 0;
-    this.path = void 0;
-    this.getter = void 0;
-    this.map = void 0;
-    if (typeof key !== "string") throw new TypeError("ref must be a string, got: " + key);
-    this.key = key.trim();
-    if (key === "") throw new TypeError("ref must be a non-empty string");
-    this.isContext = this.key[0] === prefixes$1.context;
-    this.isValue = this.key[0] === prefixes$1.value;
-    this.isSibling = !this.isContext && !this.isValue;
-    let prefix2 = this.isContext ? prefixes$1.context : this.isValue ? prefixes$1.value : "";
-    this.path = this.key.slice(prefix2.length);
-    this.getter = this.path && propertyExprExports.getter(this.path, true);
-    this.map = options2.map;
-  }
-  getValue(value, parent, context2) {
-    let result = this.isContext ? context2 : this.isValue ? value : parent;
-    if (this.getter) result = this.getter(result || {});
-    if (this.map) result = this.map(result);
-    return result;
-  }
-  /**
-   *
-   * @param {*} value
-   * @param {Object} options
-   * @param {Object=} options.context
-   * @param {Object=} options.parent
-   */
-  cast(value, options2) {
-    return this.getValue(value, options2 == null ? void 0 : options2.parent, options2 == null ? void 0 : options2.context);
-  }
-  resolve() {
-    return this;
-  }
-  describe() {
-    return {
-      type: "ref",
-      key: this.key
-    };
-  }
-  toString() {
-    return `Ref(${this.key})`;
-  }
-  static isRef(value) {
-    return value && value.__isYupRef;
-  }
-}
-Reference.prototype.__isYupRef = true;
-const isAbsent = (value) => value == null;
-function createValidation(config2) {
-  function validate({
-    value,
-    path: path2 = "",
-    options: options2,
-    originalValue,
-    schema
-  }, panic, next2) {
-    const {
-      name: name2,
-      test: test2,
-      params,
-      message,
-      skipAbsent
-    } = config2;
-    let {
-      parent,
-      context: context2,
-      abortEarly = schema.spec.abortEarly,
-      disableStackTrace = schema.spec.disableStackTrace
-    } = options2;
-    const resolveOptions = {
-      value,
-      parent,
-      context: context2
-    };
-    function createError(overrides = {}) {
-      const nextParams = resolveParams(Object.assign({
-        value,
-        originalValue,
-        label: schema.spec.label,
-        path: overrides.path || path2,
-        spec: schema.spec,
-        disableStackTrace: overrides.disableStackTrace || disableStackTrace
-      }, params, overrides.params), resolveOptions);
-      const error = new ValidationError(ValidationError.formatError(overrides.message || message, nextParams), value, nextParams.path, overrides.type || name2, nextParams.disableStackTrace);
-      error.params = nextParams;
-      return error;
-    }
-    const invalid = abortEarly ? panic : next2;
-    let ctx = {
-      path: path2,
-      parent,
-      type: name2,
-      from: options2.from,
-      createError,
-      resolve(item) {
-        return resolveMaybeRef(item, resolveOptions);
-      },
-      options: options2,
-      originalValue,
-      schema
-    };
-    const handleResult = (validOrError) => {
-      if (ValidationError.isError(validOrError)) invalid(validOrError);
-      else if (!validOrError) invalid(createError());
-      else next2(null);
-    };
-    const handleError2 = (err) => {
-      if (ValidationError.isError(err)) invalid(err);
-      else panic(err);
-    };
-    const shouldSkip = skipAbsent && isAbsent(value);
-    if (shouldSkip) {
-      return handleResult(true);
-    }
-    let result;
-    try {
-      var _result;
-      result = test2.call(ctx, value, ctx);
-      if (typeof ((_result = result) == null ? void 0 : _result.then) === "function") {
-        if (options2.sync) {
-          throw new Error(`Validation test of type: "${ctx.type}" returned a Promise during a synchronous validate. This test will finish after the validate call has returned`);
-        }
-        return Promise.resolve(result).then(handleResult, handleError2);
-      }
-    } catch (err) {
-      handleError2(err);
-      return;
-    }
-    handleResult(result);
-  }
-  validate.OPTIONS = config2;
-  return validate;
-}
-function resolveParams(params, options2) {
-  if (!params) return params;
-  for (const key of Object.keys(params)) {
-    params[key] = resolveMaybeRef(params[key], options2);
-  }
-  return params;
-}
-function resolveMaybeRef(item, options2) {
-  return Reference.isRef(item) ? item.getValue(options2.value, options2.parent, options2.context) : item;
-}
-function getIn(schema, path2, value, context2 = value) {
-  let parent, lastPart, lastPartDebug;
-  if (!path2) return {
-    parent,
-    parentPath: path2,
-    schema
-  };
-  propertyExprExports.forEach(path2, (_part, isBracket, isArray2) => {
-    let part = isBracket ? _part.slice(1, _part.length - 1) : _part;
-    schema = schema.resolve({
-      context: context2,
-      parent,
-      value
-    });
-    let isTuple = schema.type === "tuple";
-    let idx = isArray2 ? parseInt(part, 10) : 0;
-    if (schema.innerType || isTuple) {
-      if (isTuple && !isArray2) throw new Error(`Yup.reach cannot implicitly index into a tuple type. the path part "${lastPartDebug}" must contain an index to the tuple element, e.g. "${lastPartDebug}[0]"`);
-      if (value && idx >= value.length) {
-        throw new Error(`Yup.reach cannot resolve an array item at index: ${_part}, in the path: ${path2}. because there is no value at that index. `);
-      }
-      parent = value;
-      value = value && value[idx];
-      schema = isTuple ? schema.spec.types[idx] : schema.innerType;
-    }
-    if (!isArray2) {
-      if (!schema.fields || !schema.fields[part]) throw new Error(`The schema does not contain the path: ${path2}. (failed at: ${lastPartDebug} which is a type: "${schema.type}")`);
-      parent = value;
-      value = value && value[part];
-      schema = schema.fields[part];
-    }
-    lastPart = part;
-    lastPartDebug = isBracket ? "[" + _part + "]" : "." + _part;
-  });
-  return {
-    schema,
-    parent,
-    parentPath: lastPart
-  };
-}
-class ReferenceSet extends Set {
-  describe() {
-    const description2 = [];
-    for (const item of this.values()) {
-      description2.push(Reference.isRef(item) ? item.describe() : item);
-    }
-    return description2;
-  }
-  resolveAll(resolve) {
-    let result = [];
-    for (const item of this.values()) {
-      result.push(resolve(item));
-    }
-    return result;
-  }
-  clone() {
-    return new ReferenceSet(this.values());
-  }
-  merge(newItems, removeItems) {
-    const next2 = this.clone();
-    newItems.forEach((value) => next2.add(value));
-    removeItems.forEach((value) => next2.delete(value));
-    return next2;
-  }
-}
-function clone(src2, seen = /* @__PURE__ */ new Map()) {
-  if (isSchema(src2) || !src2 || typeof src2 !== "object") return src2;
-  if (seen.has(src2)) return seen.get(src2);
-  let copy2;
-  if (src2 instanceof Date) {
-    copy2 = new Date(src2.getTime());
-    seen.set(src2, copy2);
-  } else if (src2 instanceof RegExp) {
-    copy2 = new RegExp(src2);
-    seen.set(src2, copy2);
-  } else if (Array.isArray(src2)) {
-    copy2 = new Array(src2.length);
-    seen.set(src2, copy2);
-    for (let i2 = 0; i2 < src2.length; i2++) copy2[i2] = clone(src2[i2], seen);
-  } else if (src2 instanceof Map) {
-    copy2 = /* @__PURE__ */ new Map();
-    seen.set(src2, copy2);
-    for (const [k2, v] of src2.entries()) copy2.set(k2, clone(v, seen));
-  } else if (src2 instanceof Set) {
-    copy2 = /* @__PURE__ */ new Set();
-    seen.set(src2, copy2);
-    for (const v of src2) copy2.add(clone(v, seen));
-  } else if (src2 instanceof Object) {
-    copy2 = {};
-    seen.set(src2, copy2);
-    for (const [k2, v] of Object.entries(src2)) copy2[k2] = clone(v, seen);
-  } else {
-    throw Error(`Unable to clone ${src2}`);
-  }
-  return copy2;
-}
-function createStandardPath(path2) {
-  if (!(path2 != null && path2.length)) {
-    return void 0;
-  }
-  const segments = [];
-  let currentSegment = "";
-  let inBrackets = false;
-  let inQuotes = false;
-  for (let i2 = 0; i2 < path2.length; i2++) {
-    const char2 = path2[i2];
-    if (char2 === "[" && !inQuotes) {
-      if (currentSegment) {
-        segments.push(...currentSegment.split(".").filter(Boolean));
-        currentSegment = "";
-      }
-      inBrackets = true;
-      continue;
-    }
-    if (char2 === "]" && !inQuotes) {
-      if (currentSegment) {
-        if (/^\d+$/.test(currentSegment)) {
-          segments.push(currentSegment);
-        } else {
-          segments.push(currentSegment.replace(/^"|"$/g, ""));
-        }
-        currentSegment = "";
-      }
-      inBrackets = false;
-      continue;
-    }
-    if (char2 === '"') {
-      inQuotes = !inQuotes;
-      continue;
-    }
-    if (char2 === "." && !inBrackets && !inQuotes) {
-      if (currentSegment) {
-        segments.push(currentSegment);
-        currentSegment = "";
-      }
-      continue;
-    }
-    currentSegment += char2;
-  }
-  if (currentSegment) {
-    segments.push(...currentSegment.split(".").filter(Boolean));
-  }
-  return segments;
-}
-function createStandardIssues(error, parentPath) {
-  const path2 = parentPath ? `${parentPath}.${error.path}` : error.path;
-  return error.errors.map((err) => ({
-    message: err,
-    path: createStandardPath(path2)
-  }));
-}
-function issuesFromValidationError(error, parentPath) {
-  var _error$inner;
-  if (!((_error$inner = error.inner) != null && _error$inner.length) && error.errors.length) {
-    return createStandardIssues(error, parentPath);
-  }
-  const path2 = parentPath ? `${parentPath}.${error.path}` : error.path;
-  return error.inner.flatMap((err) => issuesFromValidationError(err, path2));
-}
-class Schema {
-  constructor(options2) {
-    this.type = void 0;
-    this.deps = [];
-    this.tests = void 0;
-    this.transforms = void 0;
-    this.conditions = [];
-    this._mutate = void 0;
-    this.internalTests = {};
-    this._whitelist = new ReferenceSet();
-    this._blacklist = new ReferenceSet();
-    this.exclusiveTests = /* @__PURE__ */ Object.create(null);
-    this._typeCheck = void 0;
-    this.spec = void 0;
-    this.tests = [];
-    this.transforms = [];
-    this.withMutation(() => {
-      this.typeError(mixed.notType);
-    });
-    this.type = options2.type;
-    this._typeCheck = options2.check;
-    this.spec = Object.assign({
-      strip: false,
-      strict: false,
-      abortEarly: true,
-      recursive: true,
-      disableStackTrace: false,
-      nullable: false,
-      optional: true,
-      coerce: true
-    }, options2 == null ? void 0 : options2.spec);
-    this.withMutation((s4) => {
-      s4.nonNullable();
-    });
-  }
-  // TODO: remove
-  get _type() {
-    return this.type;
-  }
-  clone(spec) {
-    if (this._mutate) {
-      if (spec) Object.assign(this.spec, spec);
-      return this;
-    }
-    const next2 = Object.create(Object.getPrototypeOf(this));
-    next2.type = this.type;
-    next2._typeCheck = this._typeCheck;
-    next2._whitelist = this._whitelist.clone();
-    next2._blacklist = this._blacklist.clone();
-    next2.internalTests = Object.assign({}, this.internalTests);
-    next2.exclusiveTests = Object.assign({}, this.exclusiveTests);
-    next2.deps = [...this.deps];
-    next2.conditions = [...this.conditions];
-    next2.tests = [...this.tests];
-    next2.transforms = [...this.transforms];
-    next2.spec = clone(Object.assign({}, this.spec, spec));
-    return next2;
-  }
-  label(label) {
-    let next2 = this.clone();
-    next2.spec.label = label;
-    return next2;
-  }
-  meta(...args) {
-    if (args.length === 0) return this.spec.meta;
-    let next2 = this.clone();
-    next2.spec.meta = Object.assign(next2.spec.meta || {}, args[0]);
-    return next2;
-  }
-  withMutation(fn3) {
-    let before = this._mutate;
-    this._mutate = true;
-    let result = fn3(this);
-    this._mutate = before;
-    return result;
-  }
-  concat(schema) {
-    if (!schema || schema === this) return this;
-    if (schema.type !== this.type && this.type !== "mixed") throw new TypeError(`You cannot \`concat()\` schema's of different types: ${this.type} and ${schema.type}`);
-    let base = this;
-    let combined = schema.clone();
-    const mergedSpec = Object.assign({}, base.spec, combined.spec);
-    combined.spec = mergedSpec;
-    combined.internalTests = Object.assign({}, base.internalTests, combined.internalTests);
-    combined._whitelist = base._whitelist.merge(schema._whitelist, schema._blacklist);
-    combined._blacklist = base._blacklist.merge(schema._blacklist, schema._whitelist);
-    combined.tests = base.tests;
-    combined.exclusiveTests = base.exclusiveTests;
-    combined.withMutation((next2) => {
-      schema.tests.forEach((fn3) => {
-        next2.test(fn3.OPTIONS);
-      });
-    });
-    combined.transforms = [...base.transforms, ...combined.transforms];
-    return combined;
-  }
-  isType(v) {
-    if (v == null) {
-      if (this.spec.nullable && v === null) return true;
-      if (this.spec.optional && v === void 0) return true;
-      return false;
-    }
-    return this._typeCheck(v);
-  }
-  resolve(options2) {
-    let schema = this;
-    if (schema.conditions.length) {
-      let conditions = schema.conditions;
-      schema = schema.clone();
-      schema.conditions = [];
-      schema = conditions.reduce((prevSchema, condition) => condition.resolve(prevSchema, options2), schema);
-      schema = schema.resolve(options2);
-    }
-    return schema;
-  }
-  resolveOptions(options2) {
-    var _options$strict, _options$abortEarly, _options$recursive, _options$disableStack;
-    return Object.assign({}, options2, {
-      from: options2.from || [],
-      strict: (_options$strict = options2.strict) != null ? _options$strict : this.spec.strict,
-      abortEarly: (_options$abortEarly = options2.abortEarly) != null ? _options$abortEarly : this.spec.abortEarly,
-      recursive: (_options$recursive = options2.recursive) != null ? _options$recursive : this.spec.recursive,
-      disableStackTrace: (_options$disableStack = options2.disableStackTrace) != null ? _options$disableStack : this.spec.disableStackTrace
-    });
-  }
-  /**
-   * Run the configured transform pipeline over an input value.
-   */
-  cast(value, options2 = {}) {
-    let resolvedSchema = this.resolve(Object.assign({
-      value
-    }, options2));
-    let allowOptionality = options2.assert === "ignore-optionality";
-    let result = resolvedSchema._cast(value, options2);
-    if (options2.assert !== false && !resolvedSchema.isType(result)) {
-      if (allowOptionality && isAbsent(result)) {
-        return result;
-      }
-      let formattedValue = printValue(value);
-      let formattedResult = printValue(result);
-      throw new TypeError(`The value of ${options2.path || "field"} could not be cast to a value that satisfies the schema type: "${resolvedSchema.type}". 
-
-attempted value: ${formattedValue} 
-` + (formattedResult !== formattedValue ? `result of cast: ${formattedResult}` : ""));
-    }
-    return result;
-  }
-  _cast(rawValue, options2) {
-    let value = rawValue === void 0 ? rawValue : this.transforms.reduce((prevValue, fn3) => fn3.call(this, prevValue, rawValue, this), rawValue);
-    if (value === void 0) {
-      value = this.getDefault(options2);
-    }
-    return value;
-  }
-  _validate(_value, options2 = {}, panic, next2) {
-    let {
-      path: path2,
-      originalValue = _value,
-      strict = this.spec.strict
-    } = options2;
-    let value = _value;
-    if (!strict) {
-      value = this._cast(value, Object.assign({
-        assert: false
-      }, options2));
-    }
-    let initialTests = [];
-    for (let test2 of Object.values(this.internalTests)) {
-      if (test2) initialTests.push(test2);
-    }
-    this.runTests({
-      path: path2,
-      value,
-      originalValue,
-      options: options2,
-      tests: initialTests
-    }, panic, (initialErrors) => {
-      if (initialErrors.length) {
-        return next2(initialErrors, value);
-      }
-      this.runTests({
-        path: path2,
-        value,
-        originalValue,
-        options: options2,
-        tests: this.tests
-      }, panic, next2);
-    });
-  }
-  /**
-   * Executes a set of validations, either schema, produced Tests or a nested
-   * schema validate result.
-   */
-  runTests(runOptions, panic, next2) {
-    let fired = false;
-    let {
-      tests,
-      value,
-      originalValue,
-      path: path2,
-      options: options2
-    } = runOptions;
-    let panicOnce = (arg) => {
-      if (fired) return;
-      fired = true;
-      panic(arg, value);
-    };
-    let nextOnce = (arg) => {
-      if (fired) return;
-      fired = true;
-      next2(arg, value);
-    };
-    let count2 = tests.length;
-    let nestedErrors = [];
-    if (!count2) return nextOnce([]);
-    let args = {
-      value,
-      originalValue,
-      path: path2,
-      options: options2,
-      schema: this
-    };
-    for (let i2 = 0; i2 < tests.length; i2++) {
-      const test2 = tests[i2];
-      test2(args, panicOnce, function finishTestRun(err) {
-        if (err) {
-          Array.isArray(err) ? nestedErrors.push(...err) : nestedErrors.push(err);
-        }
-        if (--count2 <= 0) {
-          nextOnce(nestedErrors);
-        }
-      });
-    }
-  }
-  asNestedTest({
-    key,
-    index: index2,
-    parent,
-    parentPath,
-    originalParent,
-    options: options2
-  }) {
-    const k2 = key != null ? key : index2;
-    if (k2 == null) {
-      throw TypeError("Must include `key` or `index` for nested validations");
-    }
-    const isIndex2 = typeof k2 === "number";
-    let value = parent[k2];
-    const testOptions = Object.assign({}, options2, {
-      // Nested validations fields are always strict:
-      //    1. parent isn't strict so the casting will also have cast inner values
-      //    2. parent is strict in which case the nested values weren't cast either
-      strict: true,
-      parent,
-      value,
-      originalValue: originalParent[k2],
-      // FIXME: tests depend on `index` being passed around deeply,
-      //   we should not let the options.key/index bleed through
-      key: void 0,
-      // index: undefined,
-      [isIndex2 ? "index" : "key"]: k2,
-      path: isIndex2 || k2.includes(".") ? `${parentPath || ""}[${isIndex2 ? k2 : `"${k2}"`}]` : (parentPath ? `${parentPath}.` : "") + key
-    });
-    return (_, panic, next2) => this.resolve(testOptions)._validate(value, testOptions, panic, next2);
-  }
-  validate(value, options2) {
-    var _options$disableStack2;
-    let schema = this.resolve(Object.assign({}, options2, {
-      value
-    }));
-    let disableStackTrace = (_options$disableStack2 = options2 == null ? void 0 : options2.disableStackTrace) != null ? _options$disableStack2 : schema.spec.disableStackTrace;
-    return new Promise((resolve, reject) => schema._validate(value, options2, (error, parsed) => {
-      if (ValidationError.isError(error)) error.value = parsed;
-      reject(error);
-    }, (errors2, validated) => {
-      if (errors2.length) reject(new ValidationError(errors2, validated, void 0, void 0, disableStackTrace));
-      else resolve(validated);
-    }));
-  }
-  validateSync(value, options2) {
-    var _options$disableStack3;
-    let schema = this.resolve(Object.assign({}, options2, {
-      value
-    }));
-    let result;
-    let disableStackTrace = (_options$disableStack3 = options2 == null ? void 0 : options2.disableStackTrace) != null ? _options$disableStack3 : schema.spec.disableStackTrace;
-    schema._validate(value, Object.assign({}, options2, {
-      sync: true
-    }), (error, parsed) => {
-      if (ValidationError.isError(error)) error.value = parsed;
-      throw error;
-    }, (errors2, validated) => {
-      if (errors2.length) throw new ValidationError(errors2, value, void 0, void 0, disableStackTrace);
-      result = validated;
-    });
-    return result;
-  }
-  isValid(value, options2) {
-    return this.validate(value, options2).then(() => true, (err) => {
-      if (ValidationError.isError(err)) return false;
-      throw err;
-    });
-  }
-  isValidSync(value, options2) {
-    try {
-      this.validateSync(value, options2);
-      return true;
-    } catch (err) {
-      if (ValidationError.isError(err)) return false;
-      throw err;
-    }
-  }
-  _getDefault(options2) {
-    let defaultValue = this.spec.default;
-    if (defaultValue == null) {
-      return defaultValue;
-    }
-    return typeof defaultValue === "function" ? defaultValue.call(this, options2) : clone(defaultValue);
-  }
-  getDefault(options2) {
-    let schema = this.resolve(options2 || {});
-    return schema._getDefault(options2);
-  }
-  default(def) {
-    if (arguments.length === 0) {
-      return this._getDefault();
-    }
-    let next2 = this.clone({
-      default: def
-    });
-    return next2;
-  }
-  strict(isStrict = true) {
-    return this.clone({
-      strict: isStrict
-    });
-  }
-  nullability(nullable, message) {
-    const next2 = this.clone({
-      nullable
-    });
-    next2.internalTests.nullable = createValidation({
-      message,
-      name: "nullable",
-      test(value) {
-        return value === null ? this.schema.spec.nullable : true;
-      }
-    });
-    return next2;
-  }
-  optionality(optional, message) {
-    const next2 = this.clone({
-      optional
-    });
-    next2.internalTests.optionality = createValidation({
-      message,
-      name: "optionality",
-      test(value) {
-        return value === void 0 ? this.schema.spec.optional : true;
-      }
-    });
-    return next2;
-  }
-  optional() {
-    return this.optionality(true);
-  }
-  defined(message = mixed.defined) {
-    return this.optionality(false, message);
-  }
-  nullable() {
-    return this.nullability(true);
-  }
-  nonNullable(message = mixed.notNull) {
-    return this.nullability(false, message);
-  }
-  required(message = mixed.required) {
-    return this.clone().withMutation((next2) => next2.nonNullable(message).defined(message));
-  }
-  notRequired() {
-    return this.clone().withMutation((next2) => next2.nullable().optional());
-  }
-  transform(fn3) {
-    let next2 = this.clone();
-    next2.transforms.push(fn3);
-    return next2;
-  }
-  /**
-   * Adds a test function to the schema's queue of tests.
-   * tests can be exclusive or non-exclusive.
-   *
-   * - exclusive tests, will replace any existing tests of the same name.
-   * - non-exclusive: can be stacked
-   *
-   * If a non-exclusive test is added to a schema with an exclusive test of the same name
-   * the exclusive test is removed and further tests of the same name will be stacked.
-   *
-   * If an exclusive test is added to a schema with non-exclusive tests of the same name
-   * the previous tests are removed and further tests of the same name will replace each other.
-   */
-  test(...args) {
-    let opts;
-    if (args.length === 1) {
-      if (typeof args[0] === "function") {
-        opts = {
-          test: args[0]
-        };
-      } else {
-        opts = args[0];
-      }
-    } else if (args.length === 2) {
-      opts = {
-        name: args[0],
-        test: args[1]
-      };
-    } else {
-      opts = {
-        name: args[0],
-        message: args[1],
-        test: args[2]
-      };
-    }
-    if (opts.message === void 0) opts.message = mixed.default;
-    if (typeof opts.test !== "function") throw new TypeError("`test` is a required parameters");
-    let next2 = this.clone();
-    let validate = createValidation(opts);
-    let isExclusive = opts.exclusive || opts.name && next2.exclusiveTests[opts.name] === true;
-    if (opts.exclusive) {
-      if (!opts.name) throw new TypeError("Exclusive tests must provide a unique `name` identifying the test");
-    }
-    if (opts.name) next2.exclusiveTests[opts.name] = !!opts.exclusive;
-    next2.tests = next2.tests.filter((fn3) => {
-      if (fn3.OPTIONS.name === opts.name) {
-        if (isExclusive) return false;
-        if (fn3.OPTIONS.test === validate.OPTIONS.test) return false;
-      }
-      return true;
-    });
-    next2.tests.push(validate);
-    return next2;
-  }
-  when(keys3, options2) {
-    if (!Array.isArray(keys3) && typeof keys3 !== "string") {
-      options2 = keys3;
-      keys3 = ".";
-    }
-    let next2 = this.clone();
-    let deps = toArray$1(keys3).map((key) => new Reference(key));
-    deps.forEach((dep2) => {
-      if (dep2.isSibling) next2.deps.push(dep2.key);
-    });
-    next2.conditions.push(typeof options2 === "function" ? new Condition(deps, options2) : Condition.fromOptions(deps, options2));
-    return next2;
-  }
-  typeError(message) {
-    let next2 = this.clone();
-    next2.internalTests.typeError = createValidation({
-      message,
-      name: "typeError",
-      skipAbsent: true,
-      test(value) {
-        if (!this.schema._typeCheck(value)) return this.createError({
-          params: {
-            type: this.schema.type
-          }
-        });
-        return true;
-      }
-    });
-    return next2;
-  }
-  oneOf(enums, message = mixed.oneOf) {
-    let next2 = this.clone();
-    enums.forEach((val) => {
-      next2._whitelist.add(val);
-      next2._blacklist.delete(val);
-    });
-    next2.internalTests.whiteList = createValidation({
-      message,
-      name: "oneOf",
-      skipAbsent: true,
-      test(value) {
-        let valids = this.schema._whitelist;
-        let resolved = valids.resolveAll(this.resolve);
-        return resolved.includes(value) ? true : this.createError({
-          params: {
-            values: Array.from(valids).join(", "),
-            resolved
-          }
-        });
-      }
-    });
-    return next2;
-  }
-  notOneOf(enums, message = mixed.notOneOf) {
-    let next2 = this.clone();
-    enums.forEach((val) => {
-      next2._blacklist.add(val);
-      next2._whitelist.delete(val);
-    });
-    next2.internalTests.blacklist = createValidation({
-      message,
-      name: "notOneOf",
-      test(value) {
-        let invalids = this.schema._blacklist;
-        let resolved = invalids.resolveAll(this.resolve);
-        if (resolved.includes(value)) return this.createError({
-          params: {
-            values: Array.from(invalids).join(", "),
-            resolved
-          }
-        });
-        return true;
-      }
-    });
-    return next2;
-  }
-  strip(strip = true) {
-    let next2 = this.clone();
-    next2.spec.strip = strip;
-    return next2;
-  }
-  /**
-   * Return a serialized description of the schema including validations, flags, types etc.
-   *
-   * @param options Provide any needed context for resolving runtime schema alterations (lazy, when conditions, etc).
-   */
-  describe(options2) {
-    const next2 = (options2 ? this.resolve(options2) : this).clone();
-    const {
-      label,
-      meta,
-      optional,
-      nullable
-    } = next2.spec;
-    const description2 = {
-      meta,
-      label,
-      optional,
-      nullable,
-      default: next2.getDefault(options2),
-      type: next2.type,
-      oneOf: next2._whitelist.describe(),
-      notOneOf: next2._blacklist.describe(),
-      tests: next2.tests.filter((n, idx, list) => list.findIndex((c3) => c3.OPTIONS.name === n.OPTIONS.name) === idx).map((fn3) => {
-        const params = fn3.OPTIONS.params && options2 ? resolveParams(Object.assign({}, fn3.OPTIONS.params), options2) : fn3.OPTIONS.params;
-        return {
-          name: fn3.OPTIONS.name,
-          params
-        };
-      })
-    };
-    return description2;
-  }
-  get ["~standard"]() {
-    const schema = this;
-    const standard = {
-      version: 1,
-      vendor: "yup",
-      async validate(value) {
-        try {
-          const result = await schema.validate(value, {
-            abortEarly: false
-          });
-          return {
-            value: result
-          };
-        } catch (err) {
-          if (err instanceof ValidationError) {
-            return {
-              issues: issuesFromValidationError(err)
-            };
-          }
-          throw err;
-        }
-      }
-    };
-    return standard;
-  }
-}
-Schema.prototype.__isYupSchema__ = true;
-for (const method of ["validate", "validateSync"]) Schema.prototype[`${method}At`] = function(path2, value, options2 = {}) {
-  const {
-    parent,
-    parentPath,
-    schema
-  } = getIn(this, path2, value, options2.context);
-  return schema[method](parent && parent[parentPath], Object.assign({}, options2, {
-    parent,
-    path: path2
-  }));
-};
-for (const alias of ["equals", "is"]) Schema.prototype[alias] = Schema.prototype.oneOf;
-for (const alias of ["not", "nope"]) Schema.prototype[alias] = Schema.prototype.notOneOf;
-const isoReg = /^(\d{4}|[+-]\d{6})(?:-?(\d{2})(?:-?(\d{2}))?)?(?:[ T]?(\d{2}):?(\d{2})(?::?(\d{2})(?:[,.](\d{1,}))?)?(?:(Z)|([+-])(\d{2})(?::?(\d{2}))?)?)?$/;
-function parseIsoDate(date2) {
-  const struct = parseDateStruct(date2);
-  if (!struct) return Date.parse ? Date.parse(date2) : Number.NaN;
-  if (struct.z === void 0 && struct.plusMinus === void 0) {
-    return new Date(struct.year, struct.month, struct.day, struct.hour, struct.minute, struct.second, struct.millisecond).valueOf();
-  }
-  let totalMinutesOffset = 0;
-  if (struct.z !== "Z" && struct.plusMinus !== void 0) {
-    totalMinutesOffset = struct.hourOffset * 60 + struct.minuteOffset;
-    if (struct.plusMinus === "+") totalMinutesOffset = 0 - totalMinutesOffset;
-  }
-  return Date.UTC(struct.year, struct.month, struct.day, struct.hour, struct.minute + totalMinutesOffset, struct.second, struct.millisecond);
-}
-function parseDateStruct(date2) {
-  var _regexResult$7$length, _regexResult$;
-  const regexResult = isoReg.exec(date2);
-  if (!regexResult) return null;
-  return {
-    year: toNumber(regexResult[1]),
-    month: toNumber(regexResult[2], 1) - 1,
-    day: toNumber(regexResult[3], 1),
-    hour: toNumber(regexResult[4]),
-    minute: toNumber(regexResult[5]),
-    second: toNumber(regexResult[6]),
-    millisecond: regexResult[7] ? (
-      // allow arbitrary sub-second precision beyond milliseconds
-      toNumber(regexResult[7].substring(0, 3))
-    ) : 0,
-    precision: (_regexResult$7$length = (_regexResult$ = regexResult[7]) == null ? void 0 : _regexResult$.length) != null ? _regexResult$7$length : void 0,
-    z: regexResult[8] || void 0,
-    plusMinus: regexResult[9] || void 0,
-    hourOffset: toNumber(regexResult[10]),
-    minuteOffset: toNumber(regexResult[11])
-  };
-}
-function toNumber(str, defaultValue = 0) {
-  return Number(str) || defaultValue;
-}
-let rEmail = (
-  // eslint-disable-next-line
-  /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
-);
-let rUrl = (
-  // eslint-disable-next-line
-  /^((https?|ftp):)?\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i
-);
-let rUUID = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
-let yearMonthDay = "^\\d{4}-\\d{2}-\\d{2}";
-let hourMinuteSecond = "\\d{2}:\\d{2}:\\d{2}";
-let zOrOffset = "(([+-]\\d{2}(:?\\d{2})?)|Z)";
-let rIsoDateTime = new RegExp(`${yearMonthDay}T${hourMinuteSecond}(\\.\\d+)?${zOrOffset}$`);
-let isTrimmed = (value) => isAbsent(value) || value === value.trim();
-let objStringTag = {}.toString();
-function create$6() {
-  return new StringSchema();
-}
-class StringSchema extends Schema {
-  constructor() {
-    super({
-      type: "string",
-      check(value) {
-        if (value instanceof String) value = value.valueOf();
-        return typeof value === "string";
-      }
-    });
-    this.withMutation(() => {
-      this.transform((value, _raw, ctx) => {
-        if (!ctx.spec.coerce || ctx.isType(value)) return value;
-        if (Array.isArray(value)) return value;
-        const strValue = value != null && value.toString ? value.toString() : value;
-        if (strValue === objStringTag) return value;
-        return strValue;
-      });
-    });
-  }
-  required(message) {
-    return super.required(message).withMutation((schema) => schema.test({
-      message: message || mixed.required,
-      name: "required",
-      skipAbsent: true,
-      test: (value) => !!value.length
-    }));
-  }
-  notRequired() {
-    return super.notRequired().withMutation((schema) => {
-      schema.tests = schema.tests.filter((t4) => t4.OPTIONS.name !== "required");
-      return schema;
-    });
-  }
-  length(length2, message = string.length) {
-    return this.test({
-      message,
-      name: "length",
-      exclusive: true,
-      params: {
-        length: length2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value.length === this.resolve(length2);
-      }
-    });
-  }
-  min(min2, message = string.min) {
-    return this.test({
-      message,
-      name: "min",
-      exclusive: true,
-      params: {
-        min: min2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value.length >= this.resolve(min2);
-      }
-    });
-  }
-  max(max2, message = string.max) {
-    return this.test({
-      name: "max",
-      exclusive: true,
-      message,
-      params: {
-        max: max2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value.length <= this.resolve(max2);
-      }
-    });
-  }
-  matches(regex, options2) {
-    let excludeEmptyString = false;
-    let message;
-    let name2;
-    if (options2) {
-      if (typeof options2 === "object") {
-        ({
-          excludeEmptyString = false,
-          message,
-          name: name2
-        } = options2);
-      } else {
-        message = options2;
-      }
-    }
-    return this.test({
-      name: name2 || "matches",
-      message: message || string.matches,
-      params: {
-        regex
-      },
-      skipAbsent: true,
-      test: (value) => value === "" && excludeEmptyString || value.search(regex) !== -1
-    });
-  }
-  email(message = string.email) {
-    return this.matches(rEmail, {
-      name: "email",
-      message,
-      excludeEmptyString: true
-    });
-  }
-  url(message = string.url) {
-    return this.matches(rUrl, {
-      name: "url",
-      message,
-      excludeEmptyString: true
-    });
-  }
-  uuid(message = string.uuid) {
-    return this.matches(rUUID, {
-      name: "uuid",
-      message,
-      excludeEmptyString: false
-    });
-  }
-  datetime(options2) {
-    let message = "";
-    let allowOffset;
-    let precision;
-    if (options2) {
-      if (typeof options2 === "object") {
-        ({
-          message = "",
-          allowOffset = false,
-          precision = void 0
-        } = options2);
-      } else {
-        message = options2;
-      }
-    }
-    return this.matches(rIsoDateTime, {
-      name: "datetime",
-      message: message || string.datetime,
-      excludeEmptyString: true
-    }).test({
-      name: "datetime_offset",
-      message: message || string.datetime_offset,
-      params: {
-        allowOffset
-      },
-      skipAbsent: true,
-      test: (value) => {
-        if (!value || allowOffset) return true;
-        const struct = parseDateStruct(value);
-        if (!struct) return false;
-        return !!struct.z;
-      }
-    }).test({
-      name: "datetime_precision",
-      message: message || string.datetime_precision,
-      params: {
-        precision
-      },
-      skipAbsent: true,
-      test: (value) => {
-        if (!value || precision == void 0) return true;
-        const struct = parseDateStruct(value);
-        if (!struct) return false;
-        return struct.precision === precision;
-      }
-    });
-  }
-  //-- transforms --
-  ensure() {
-    return this.default("").transform((val) => val === null ? "" : val);
-  }
-  trim(message = string.trim) {
-    return this.transform((val) => val != null ? val.trim() : val).test({
-      message,
-      name: "trim",
-      test: isTrimmed
-    });
-  }
-  lowercase(message = string.lowercase) {
-    return this.transform((value) => !isAbsent(value) ? value.toLowerCase() : value).test({
-      message,
-      name: "string_case",
-      exclusive: true,
-      skipAbsent: true,
-      test: (value) => isAbsent(value) || value === value.toLowerCase()
-    });
-  }
-  uppercase(message = string.uppercase) {
-    return this.transform((value) => !isAbsent(value) ? value.toUpperCase() : value).test({
-      message,
-      name: "string_case",
-      exclusive: true,
-      skipAbsent: true,
-      test: (value) => isAbsent(value) || value === value.toUpperCase()
-    });
-  }
-}
-create$6.prototype = StringSchema.prototype;
-let isNaN$1 = (value) => value != +value;
-function create$5() {
-  return new NumberSchema();
-}
-class NumberSchema extends Schema {
-  constructor() {
-    super({
-      type: "number",
-      check(value) {
-        if (value instanceof Number) value = value.valueOf();
-        return typeof value === "number" && !isNaN$1(value);
-      }
-    });
-    this.withMutation(() => {
-      this.transform((value, _raw, ctx) => {
-        if (!ctx.spec.coerce) return value;
-        let parsed = value;
-        if (typeof parsed === "string") {
-          parsed = parsed.replace(/\s/g, "");
-          if (parsed === "") return NaN;
-          parsed = +parsed;
-        }
-        if (ctx.isType(parsed) || parsed === null) return parsed;
-        return parseFloat(parsed);
-      });
-    });
-  }
-  min(min2, message = number$1.min) {
-    return this.test({
-      message,
-      name: "min",
-      exclusive: true,
-      params: {
-        min: min2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value >= this.resolve(min2);
-      }
-    });
-  }
-  max(max2, message = number$1.max) {
-    return this.test({
-      message,
-      name: "max",
-      exclusive: true,
-      params: {
-        max: max2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value <= this.resolve(max2);
-      }
-    });
-  }
-  lessThan(less, message = number$1.lessThan) {
-    return this.test({
-      message,
-      name: "max",
-      exclusive: true,
-      params: {
-        less
-      },
-      skipAbsent: true,
-      test(value) {
-        return value < this.resolve(less);
-      }
-    });
-  }
-  moreThan(more, message = number$1.moreThan) {
-    return this.test({
-      message,
-      name: "min",
-      exclusive: true,
-      params: {
-        more
-      },
-      skipAbsent: true,
-      test(value) {
-        return value > this.resolve(more);
-      }
-    });
-  }
-  positive(msg = number$1.positive) {
-    return this.moreThan(0, msg);
-  }
-  negative(msg = number$1.negative) {
-    return this.lessThan(0, msg);
-  }
-  integer(message = number$1.integer) {
-    return this.test({
-      name: "integer",
-      message,
-      skipAbsent: true,
-      test: (val) => Number.isInteger(val)
-    });
-  }
-  truncate() {
-    return this.transform((value) => !isAbsent(value) ? value | 0 : value);
-  }
-  round(method) {
-    var _method;
-    let avail = ["ceil", "floor", "round", "trunc"];
-    method = ((_method = method) == null ? void 0 : _method.toLowerCase()) || "round";
-    if (method === "trunc") return this.truncate();
-    if (avail.indexOf(method.toLowerCase()) === -1) throw new TypeError("Only valid options for round() are: " + avail.join(", "));
-    return this.transform((value) => !isAbsent(value) ? Math[method](value) : value);
-  }
-}
-create$5.prototype = NumberSchema.prototype;
-let invalidDate = /* @__PURE__ */ new Date("");
-let isDate = (obj) => Object.prototype.toString.call(obj) === "[object Date]";
-class DateSchema extends Schema {
-  constructor() {
-    super({
-      type: "date",
-      check(v) {
-        return isDate(v) && !isNaN(v.getTime());
-      }
-    });
-    this.withMutation(() => {
-      this.transform((value, _raw, ctx) => {
-        if (!ctx.spec.coerce || ctx.isType(value) || value === null) return value;
-        value = parseIsoDate(value);
-        return !isNaN(value) ? new Date(value) : DateSchema.INVALID_DATE;
-      });
-    });
-  }
-  prepareParam(ref, name2) {
-    let param;
-    if (!Reference.isRef(ref)) {
-      let cast2 = this.cast(ref);
-      if (!this._typeCheck(cast2)) throw new TypeError(`\`${name2}\` must be a Date or a value that can be \`cast()\` to a Date`);
-      param = cast2;
-    } else {
-      param = ref;
-    }
-    return param;
-  }
-  min(min2, message = date$1.min) {
-    let limit = this.prepareParam(min2, "min");
-    return this.test({
-      message,
-      name: "min",
-      exclusive: true,
-      params: {
-        min: min2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value >= this.resolve(limit);
-      }
-    });
-  }
-  max(max2, message = date$1.max) {
-    let limit = this.prepareParam(max2, "max");
-    return this.test({
-      message,
-      name: "max",
-      exclusive: true,
-      params: {
-        max: max2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value <= this.resolve(limit);
-      }
-    });
-  }
-}
-DateSchema.INVALID_DATE = invalidDate;
-function sortFields(fields, excludedEdges = []) {
-  let edges = [];
-  let nodes = /* @__PURE__ */ new Set();
-  let excludes = new Set(excludedEdges.map(([a4, b3]) => `${a4}-${b3}`));
-  function addNode(depPath, key) {
-    let node2 = propertyExprExports.split(depPath)[0];
-    nodes.add(node2);
-    if (!excludes.has(`${key}-${node2}`)) edges.push([key, node2]);
-  }
-  for (const key of Object.keys(fields)) {
-    let value = fields[key];
-    nodes.add(key);
-    if (Reference.isRef(value) && value.isSibling) addNode(value.path, key);
-    else if (isSchema(value) && "deps" in value) value.deps.forEach((path2) => addNode(path2, key));
-  }
-  return toposort.array(Array.from(nodes), edges).reverse();
-}
-function findIndex$1(arr, err) {
-  let idx = Infinity;
-  arr.some((key, ii) => {
-    var _err$path;
-    if ((_err$path = err.path) != null && _err$path.includes(key)) {
-      idx = ii;
-      return true;
-    }
-  });
-  return idx;
-}
-function sortByKeyOrder(keys3) {
-  return (a4, b3) => {
-    return findIndex$1(keys3, a4) - findIndex$1(keys3, b3);
-  };
-}
-const parseJson = (value, _, ctx) => {
-  if (typeof value !== "string") {
-    return value;
-  }
-  let parsed = value;
-  try {
-    parsed = JSON.parse(value);
-  } catch (err) {
-  }
-  return ctx.isType(parsed) ? parsed : value;
-};
-function deepPartial(schema) {
-  if ("fields" in schema) {
-    const partial = {};
-    for (const [key, fieldSchema] of Object.entries(schema.fields)) {
-      partial[key] = deepPartial(fieldSchema);
-    }
-    return schema.setFields(partial);
-  }
-  if (schema.type === "array") {
-    const nextArray = schema.optional();
-    if (nextArray.innerType) nextArray.innerType = deepPartial(nextArray.innerType);
-    return nextArray;
-  }
-  if (schema.type === "tuple") {
-    return schema.optional().clone({
-      types: schema.spec.types.map(deepPartial)
-    });
-  }
-  if ("optional" in schema) {
-    return schema.optional();
-  }
-  return schema;
-}
-const deepHas = (obj, p2) => {
-  const path2 = [...propertyExprExports.normalizePath(p2)];
-  if (path2.length === 1) return path2[0] in obj;
-  let last = path2.pop();
-  let parent = propertyExprExports.getter(propertyExprExports.join(path2), true)(obj);
-  return !!(parent && last in parent);
-};
-let isObject3 = (obj) => Object.prototype.toString.call(obj) === "[object Object]";
-function unknown(ctx, value) {
-  let known = Object.keys(ctx.fields);
-  return Object.keys(value).filter((key) => known.indexOf(key) === -1);
-}
-const defaultSort = sortByKeyOrder([]);
-function create$3(spec) {
-  return new ObjectSchema(spec);
-}
-class ObjectSchema extends Schema {
-  constructor(spec) {
-    super({
-      type: "object",
-      check(value) {
-        return isObject3(value) || typeof value === "function";
-      }
-    });
-    this.fields = /* @__PURE__ */ Object.create(null);
-    this._sortErrors = defaultSort;
-    this._nodes = [];
-    this._excludedEdges = [];
-    this.withMutation(() => {
-      if (spec) {
-        this.shape(spec);
-      }
-    });
-  }
-  _cast(_value, options2 = {}) {
-    var _options$stripUnknown;
-    let value = super._cast(_value, options2);
-    if (value === void 0) return this.getDefault(options2);
-    if (!this._typeCheck(value)) return value;
-    let fields = this.fields;
-    let strip = (_options$stripUnknown = options2.stripUnknown) != null ? _options$stripUnknown : this.spec.noUnknown;
-    let props = [].concat(this._nodes, Object.keys(value).filter((v) => !this._nodes.includes(v)));
-    let intermediateValue = {};
-    let innerOptions = Object.assign({}, options2, {
-      parent: intermediateValue,
-      __validating: options2.__validating || false
-    });
-    let isChanged = false;
-    for (const prop of props) {
-      let field = fields[prop];
-      let exists = prop in value;
-      if (field) {
-        let fieldValue;
-        let inputValue = value[prop];
-        innerOptions.path = (options2.path ? `${options2.path}.` : "") + prop;
-        field = field.resolve({
-          value: inputValue,
-          context: options2.context,
-          parent: intermediateValue
-        });
-        let fieldSpec = field instanceof Schema ? field.spec : void 0;
-        let strict = fieldSpec == null ? void 0 : fieldSpec.strict;
-        if (fieldSpec != null && fieldSpec.strip) {
-          isChanged = isChanged || prop in value;
-          continue;
-        }
-        fieldValue = !options2.__validating || !strict ? (
-          // TODO: use _cast, this is double resolving
-          field.cast(value[prop], innerOptions)
-        ) : value[prop];
-        if (fieldValue !== void 0) {
-          intermediateValue[prop] = fieldValue;
-        }
-      } else if (exists && !strip) {
-        intermediateValue[prop] = value[prop];
-      }
-      if (exists !== prop in intermediateValue || intermediateValue[prop] !== value[prop]) {
-        isChanged = true;
-      }
-    }
-    return isChanged ? intermediateValue : value;
-  }
-  _validate(_value, options2 = {}, panic, next2) {
-    let {
-      from: from3 = [],
-      originalValue = _value,
-      recursive = this.spec.recursive
-    } = options2;
-    options2.from = [{
-      schema: this,
-      value: originalValue
-    }, ...from3];
-    options2.__validating = true;
-    options2.originalValue = originalValue;
-    super._validate(_value, options2, panic, (objectErrors, value) => {
-      if (!recursive || !isObject3(value)) {
-        next2(objectErrors, value);
-        return;
-      }
-      originalValue = originalValue || value;
-      let tests = [];
-      for (let key of this._nodes) {
-        let field = this.fields[key];
-        if (!field || Reference.isRef(field)) {
-          continue;
-        }
-        tests.push(field.asNestedTest({
-          options: options2,
-          key,
-          parent: value,
-          parentPath: options2.path,
-          originalParent: originalValue
-        }));
-      }
-      this.runTests({
-        tests,
-        value,
-        originalValue,
-        options: options2
-      }, panic, (fieldErrors) => {
-        next2(fieldErrors.sort(this._sortErrors).concat(objectErrors), value);
-      });
-    });
-  }
-  clone(spec) {
-    const next2 = super.clone(spec);
-    next2.fields = Object.assign({}, this.fields);
-    next2._nodes = this._nodes;
-    next2._excludedEdges = this._excludedEdges;
-    next2._sortErrors = this._sortErrors;
-    return next2;
-  }
-  concat(schema) {
-    let next2 = super.concat(schema);
-    let nextFields = next2.fields;
-    for (let [field, schemaOrRef] of Object.entries(this.fields)) {
-      const target = nextFields[field];
-      nextFields[field] = target === void 0 ? schemaOrRef : target;
-    }
-    return next2.withMutation((s4) => (
-      // XXX: excludes here is wrong
-      s4.setFields(nextFields, [...this._excludedEdges, ...schema._excludedEdges])
-    ));
-  }
-  _getDefault(options2) {
-    if ("default" in this.spec) {
-      return super._getDefault(options2);
-    }
-    if (!this._nodes.length) {
-      return void 0;
-    }
-    let dft = {};
-    this._nodes.forEach((key) => {
-      var _innerOptions;
-      const field = this.fields[key];
-      let innerOptions = options2;
-      if ((_innerOptions = innerOptions) != null && _innerOptions.value) {
-        innerOptions = Object.assign({}, innerOptions, {
-          parent: innerOptions.value,
-          value: innerOptions.value[key]
-        });
-      }
-      dft[key] = field && "getDefault" in field ? field.getDefault(innerOptions) : void 0;
-    });
-    return dft;
-  }
-  setFields(shape, excludedEdges) {
-    let next2 = this.clone();
-    next2.fields = shape;
-    next2._nodes = sortFields(shape, excludedEdges);
-    next2._sortErrors = sortByKeyOrder(Object.keys(shape));
-    if (excludedEdges) next2._excludedEdges = excludedEdges;
-    return next2;
-  }
-  shape(additions, excludes = []) {
-    return this.clone().withMutation((next2) => {
-      let edges = next2._excludedEdges;
-      if (excludes.length) {
-        if (!Array.isArray(excludes[0])) excludes = [excludes];
-        edges = [...next2._excludedEdges, ...excludes];
-      }
-      return next2.setFields(Object.assign(next2.fields, additions), edges);
-    });
-  }
-  partial() {
-    const partial = {};
-    for (const [key, schema] of Object.entries(this.fields)) {
-      partial[key] = "optional" in schema && schema.optional instanceof Function ? schema.optional() : schema;
-    }
-    return this.setFields(partial);
-  }
-  deepPartial() {
-    const next2 = deepPartial(this);
-    return next2;
-  }
-  pick(keys3) {
-    const picked = {};
-    for (const key of keys3) {
-      if (this.fields[key]) picked[key] = this.fields[key];
-    }
-    return this.setFields(picked, this._excludedEdges.filter(([a4, b3]) => keys3.includes(a4) && keys3.includes(b3)));
-  }
-  omit(keys3) {
-    const remaining = [];
-    for (const key of Object.keys(this.fields)) {
-      if (keys3.includes(key)) continue;
-      remaining.push(key);
-    }
-    return this.pick(remaining);
-  }
-  from(from3, to2, alias) {
-    let fromGetter = propertyExprExports.getter(from3, true);
-    return this.transform((obj) => {
-      if (!obj) return obj;
-      let newObj = obj;
-      if (deepHas(obj, from3)) {
-        newObj = Object.assign({}, obj);
-        if (!alias) delete newObj[from3];
-        newObj[to2] = fromGetter(obj);
-      }
-      return newObj;
-    });
-  }
-  /** Parse an input JSON string to an object */
-  json() {
-    return this.transform(parseJson);
-  }
-  /**
-   * Similar to `noUnknown` but only validates that an object is the right shape without stripping the unknown keys
-   */
-  exact(message) {
-    return this.test({
-      name: "exact",
-      exclusive: true,
-      message: message || object.exact,
-      test(value) {
-        if (value == null) return true;
-        const unknownKeys = unknown(this.schema, value);
-        return unknownKeys.length === 0 || this.createError({
-          params: {
-            properties: unknownKeys.join(", ")
-          }
-        });
-      }
-    });
-  }
-  stripUnknown() {
-    return this.clone({
-      noUnknown: true
-    });
-  }
-  noUnknown(noAllow = true, message = object.noUnknown) {
-    if (typeof noAllow !== "boolean") {
-      message = noAllow;
-      noAllow = true;
-    }
-    let next2 = this.test({
-      name: "noUnknown",
-      exclusive: true,
-      message,
-      test(value) {
-        if (value == null) return true;
-        const unknownKeys = unknown(this.schema, value);
-        return !noAllow || unknownKeys.length === 0 || this.createError({
-          params: {
-            unknown: unknownKeys.join(", ")
-          }
-        });
-      }
-    });
-    next2.spec.noUnknown = noAllow;
-    return next2;
-  }
-  unknown(allow = true, message = object.noUnknown) {
-    return this.noUnknown(!allow, message);
-  }
-  transformKeys(fn3) {
-    return this.transform((obj) => {
-      if (!obj) return obj;
-      const result = {};
-      for (const key of Object.keys(obj)) result[fn3(key)] = obj[key];
-      return result;
-    });
-  }
-  camelCase() {
-    return this.transformKeys(tinyCaseExports.camelCase);
-  }
-  snakeCase() {
-    return this.transformKeys(tinyCaseExports.snakeCase);
-  }
-  constantCase() {
-    return this.transformKeys((key) => tinyCaseExports.snakeCase(key).toUpperCase());
-  }
-  describe(options2) {
-    const next2 = (options2 ? this.resolve(options2) : this).clone();
-    const base = super.describe(options2);
-    base.fields = {};
-    for (const [key, value] of Object.entries(next2.fields)) {
-      var _innerOptions2;
-      let innerOptions = options2;
-      if ((_innerOptions2 = innerOptions) != null && _innerOptions2.value) {
-        innerOptions = Object.assign({}, innerOptions, {
-          parent: innerOptions.value,
-          value: innerOptions.value[key]
-        });
-      }
-      base.fields[key] = value.describe(innerOptions);
-    }
-    return base;
-  }
-}
-create$3.prototype = ObjectSchema.prototype;
-function create$2(type3) {
-  return new ArraySchema(type3);
-}
-class ArraySchema extends Schema {
-  constructor(type3) {
-    super({
-      type: "array",
-      spec: {
-        types: type3
-      },
-      check(v) {
-        return Array.isArray(v);
-      }
-    });
-    this.innerType = void 0;
-    this.innerType = type3;
-  }
-  _cast(_value, _opts) {
-    const value = super._cast(_value, _opts);
-    if (!this._typeCheck(value) || !this.innerType) {
-      return value;
-    }
-    let isChanged = false;
-    const castArray = value.map((v, idx) => {
-      const castElement = this.innerType.cast(v, Object.assign({}, _opts, {
-        path: `${_opts.path || ""}[${idx}]`
-      }));
-      if (castElement !== v) {
-        isChanged = true;
-      }
-      return castElement;
-    });
-    return isChanged ? castArray : value;
-  }
-  _validate(_value, options2 = {}, panic, next2) {
-    var _options$recursive;
-    let innerType = this.innerType;
-    let recursive = (_options$recursive = options2.recursive) != null ? _options$recursive : this.spec.recursive;
-    options2.originalValue != null ? options2.originalValue : _value;
-    super._validate(_value, options2, panic, (arrayErrors, value) => {
-      var _options$originalValu2;
-      if (!recursive || !innerType || !this._typeCheck(value)) {
-        next2(arrayErrors, value);
-        return;
-      }
-      let tests = new Array(value.length);
-      for (let index2 = 0; index2 < value.length; index2++) {
-        var _options$originalValu;
-        tests[index2] = innerType.asNestedTest({
-          options: options2,
-          index: index2,
-          parent: value,
-          parentPath: options2.path,
-          originalParent: (_options$originalValu = options2.originalValue) != null ? _options$originalValu : _value
-        });
-      }
-      this.runTests({
-        value,
-        tests,
-        originalValue: (_options$originalValu2 = options2.originalValue) != null ? _options$originalValu2 : _value,
-        options: options2
-      }, panic, (innerTypeErrors) => next2(innerTypeErrors.concat(arrayErrors), value));
-    });
-  }
-  clone(spec) {
-    const next2 = super.clone(spec);
-    next2.innerType = this.innerType;
-    return next2;
-  }
-  /** Parse an input JSON string to an object */
-  json() {
-    return this.transform(parseJson);
-  }
-  concat(schema) {
-    let next2 = super.concat(schema);
-    next2.innerType = this.innerType;
-    if (schema.innerType)
-      next2.innerType = next2.innerType ? (
-        // @ts-expect-error Lazy doesn't have concat and will break
-        next2.innerType.concat(schema.innerType)
-      ) : schema.innerType;
-    return next2;
-  }
-  of(schema) {
-    let next2 = this.clone();
-    if (!isSchema(schema)) throw new TypeError("`array.of()` sub-schema must be a valid yup schema not: " + printValue(schema));
-    next2.innerType = schema;
-    next2.spec = Object.assign({}, next2.spec, {
-      types: schema
-    });
-    return next2;
-  }
-  length(length2, message = array.length) {
-    return this.test({
-      message,
-      name: "length",
-      exclusive: true,
-      params: {
-        length: length2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value.length === this.resolve(length2);
-      }
-    });
-  }
-  min(min2, message) {
-    message = message || array.min;
-    return this.test({
-      message,
-      name: "min",
-      exclusive: true,
-      params: {
-        min: min2
-      },
-      skipAbsent: true,
-      // FIXME(ts): Array<typeof T>
-      test(value) {
-        return value.length >= this.resolve(min2);
-      }
-    });
-  }
-  max(max2, message) {
-    message = message || array.max;
-    return this.test({
-      message,
-      name: "max",
-      exclusive: true,
-      params: {
-        max: max2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value.length <= this.resolve(max2);
-      }
-    });
-  }
-  ensure() {
-    return this.default(() => []).transform((val, original) => {
-      if (this._typeCheck(val)) return val;
-      return original == null ? [] : [].concat(original);
-    });
-  }
-  compact(rejector) {
-    let reject = !rejector ? (v) => !!v : (v, i2, a4) => !rejector(v, i2, a4);
-    return this.transform((values3) => values3 != null ? values3.filter(reject) : values3);
-  }
-  describe(options2) {
-    const next2 = (options2 ? this.resolve(options2) : this).clone();
-    const base = super.describe(options2);
-    if (next2.innerType) {
-      var _innerOptions;
-      let innerOptions = options2;
-      if ((_innerOptions = innerOptions) != null && _innerOptions.value) {
-        innerOptions = Object.assign({}, innerOptions, {
-          parent: innerOptions.value,
-          value: innerOptions.value[0]
-        });
-      }
-      base.innerType = next2.innerType.describe(innerOptions);
-    }
-    return base;
-  }
-}
-create$2.prototype = ArraySchema.prototype;
 function ownKeys$1(e2, r3) {
   var t4 = Object.keys(e2);
   if (Object.getOwnPropertySymbols) {
@@ -208227,9 +208359,15 @@ const SceneMarkerForm$1 = ({ sceneID, marker, onClose }) => {
   }
   return jsxRuntimeExports.jsxs(FormImpl, { noValidate: true, onSubmit: formik.handleSubmit, children: [jsxRuntimeExports.jsxs("div", { className: "form-container px-3", children: [renderTitleField(), renderPrimaryTagField(), renderTimeField(), renderEndTimeField(), renderTagsField()] }), jsxRuntimeExports.jsx("div", { className: "buttons-container px-3", children: jsxRuntimeExports.jsxs("div", { className: "d-flex", children: [jsxRuntimeExports.jsx(Button, { variant: "primary", disabled: !isNew && !formik.dirty || !isEqual$5(formik.errors, {}), onClick: () => formik.submitForm(), children: jsxRuntimeExports.jsx(MemoizedFormattedMessage, { id: "actions.save" }) }), jsxRuntimeExports.jsx(Button, { variant: "secondary", type: "button", onClick: onClose, className: "ml-2", children: jsxRuntimeExports.jsx(MemoizedFormattedMessage, { id: "actions.cancel" }) }), !isNew && jsxRuntimeExports.jsx(Button, { variant: "danger", className: "ml-auto", onClick: () => onDelete(), children: jsxRuntimeExports.jsx(MemoizedFormattedMessage, { id: "actions.delete" }) })] }) })] });
 };
-const SceneMarkerForm = function({ className, ...originalSceneMarkerFormProps }) {
+const SceneMarkerForm = function({ className, marker, ...originalSceneMarkerFormProps }) {
   const history2 = reactExports.useMemo(() => createBrowserHistory(), []);
-  return /* @__PURE__ */ React$1.createElement(Router, { history: history2 }, /* @__PURE__ */ React$1.createElement("div", { className: cx("SceneMarkerForm", className) }, /* @__PURE__ */ React$1.createElement(SceneMarkerForm$1, { ...originalSceneMarkerFormProps })));
+  return /* @__PURE__ */ React$1.createElement(Router, { history: history2 }, /* @__PURE__ */ React$1.createElement("div", { className: cx("SceneMarkerForm", className) }, /* @__PURE__ */ React$1.createElement(
+    SceneMarkerForm$1,
+    {
+      marker,
+      ...originalSceneMarkerFormProps
+    }
+  )));
 };
 function TagSelect(props) {
   const history2 = reactExports.useMemo(() => createBrowserHistory(), []);
@@ -208422,6 +208560,97 @@ function useMediaItemTags(mediaItem) {
   };
 }
 const logger$1 = getLogger(["stash-tv", "ActionButtons"]);
+const sharedActionButtonSchema = create$3({
+  id: create$6().required(),
+  pinned: create$7().required()
+});
+sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["ui-visibility"]).required()
+});
+sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["settings"]).required()
+});
+sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["show-scene-info"]).required()
+});
+sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["rate-scene"]).required()
+});
+sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["o-counter"]).required()
+});
+sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["force-landscape"]).required()
+});
+sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["fullscreen"]).required()
+});
+sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["mute"]).required()
+});
+sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["letterboxing"]).required()
+});
+sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["loop"]).required()
+});
+sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["subtitles"]).required()
+});
+const quickTagActionButtonSchema = sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["quick-tag"]).required(),
+  iconId: create$6().required(),
+  tagId: create$6().required()
+});
+const editTagsActionButtonSchema = sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["edit-tags"]).required(),
+  pinnedTagIds: create$2().of(create$6().required()).required()
+});
+sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["create-marker"]).required()
+});
+const quickCreateMarkerActionButtonSchema = sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["quick-create-marker"]).required(),
+  iconId: create$6().required(),
+  title: create$6(),
+  primaryTagId: create$6().required(),
+  tagIds: create$2().of(create$6().required()).required()
+});
+const createNewActionButtonConfig = (type3) => {
+  const sharedDefaults = {
+    id: `${Date.now()}-${Math.random().toString().slice(2)}`,
+    pinned: false
+  };
+  switch (type3) {
+    case "edit-tags":
+      return {
+        ...sharedDefaults,
+        type: type3,
+        pinnedTagIds: []
+      };
+    case "quick-tag":
+      return {
+        ...sharedDefaults,
+        type: type3,
+        iconId: "add-tag",
+        tagId: ""
+      };
+    case "quick-create-marker":
+      return {
+        ...sharedDefaults,
+        type: type3,
+        iconId: "add-marker",
+        title: "",
+        primaryTagId: "",
+        tagIds: []
+      };
+    default:
+      return {
+        ...sharedDefaults,
+        type: type3
+      };
+  }
+};
 function ActionButtons({ mediaItem, sceneInfoOpen, setSceneInfoOpen, playerRef }) {
   const {
     uiVisible,
@@ -208462,6 +208691,8 @@ function ActionButtons({ mediaItem, sceneInfoOpen, setSceneInfoOpen, playerRef }
         return /* @__PURE__ */ React$1.createElement(EditTagsActionButton, { mediaItem, buttonConfig });
       case "create-marker":
         return /* @__PURE__ */ React$1.createElement(CreateMarkerActionButton, { mediaItem, buttonConfig });
+      case "quick-create-marker":
+        return /* @__PURE__ */ React$1.createElement(QuickCreateMarkerActionButton, { mediaItem, buttonConfig, playerRef });
       default:
         logger$1.error(`Unknown action button type: ${type3}`);
         return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, "?");
@@ -208762,6 +208993,53 @@ function CreateMarkerActionButton({ buttonConfig, mediaItem }) {
         }
       ),
       "data-testid": "MediaSlide--createMarkerButton"
+    }
+  );
+}
+function QuickCreateMarkerActionButton({ buttonConfig, mediaItem, playerRef }) {
+  if (mediaItem.entityType !== "scene") return null;
+  const scene2 = mediaItem.entity;
+  const existingMarker = reactExports.useMemo(
+    () => mediaItem.entity.scene_markers.find((m3) => m3.primary_tag.id === buttonConfig.primaryTagId && m3.title === buttonConfig.title),
+    [mediaItem.entity.scene_markers, buttonConfig.primaryTagId, buttonConfig.title]
+  );
+  const [sceneMarkerCreate] = useSceneMarkerCreate();
+  const handleClick = () => {
+    if (existingMarker) return;
+    const currentTime = playerRef.current?.currentTime();
+    if (currentTime === void 0) {
+      logger$1.error("Player current time is undefined when creating quick marker", { sceneId: scene2.id });
+      return;
+    }
+    sceneMarkerCreate({
+      variables: {
+        scene_id: scene2.id,
+        title: buttonConfig.title ?? "",
+        primary_tag_id: buttonConfig.primaryTagId,
+        tag_ids: buttonConfig.tagIds,
+        seconds: currentTime,
+        end_seconds: null
+      }
+    });
+  };
+  const renderSidePanel = existingMarker ? ({ close }) => /* @__PURE__ */ React$1.createElement(
+    SceneMarkerForm,
+    {
+      className: "action-button-create-marker",
+      sceneID: mediaItem.entity.id,
+      onClose: close,
+      marker: existingMarker
+    }
+  ) : null;
+  return /* @__PURE__ */ React$1.createElement(
+    ActionButton,
+    {
+      ...getActionButtonDetails(buttonConfig).props,
+      className: cx("hide-on-ui-hide"),
+      active: Boolean(existingMarker),
+      sidePanel: renderSidePanel,
+      onClick: handleClick,
+      "data-testid": "MediaSlide--quickCreateMarkerButton"
     }
   );
 }
@@ -222694,11 +222972,40 @@ function TagIdSelect(props) {
     }
   ));
 }
+const IconSelect = (props) => {
+  const GridMenuList = (props2) => {
+    return /* @__PURE__ */ React$1.createElement(components.MenuList, { ...props2 }, /* @__PURE__ */ React$1.createElement("div", { style: {
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, minmax(50px, 1fr))",
+      gap: "8px",
+      padding: "8px"
+    } }, props2.children));
+  };
+  const GridOption = (props2) => {
+    return /* @__PURE__ */ React$1.createElement(components.Option, { ...props2 }, /* @__PURE__ */ React$1.createElement(props2.data.label, { size: "100%" }));
+  };
+  const GridSingleValue = (props2) => {
+    return /* @__PURE__ */ React$1.createElement(components.SingleValue, { ...props2 }, /* @__PURE__ */ React$1.createElement("div", { style: { display: "flex", alignItems: "center", margin: "0.5em 0" } }, /* @__PURE__ */ React$1.createElement(props2.data.label, { size: 40 })));
+  };
+  return /* @__PURE__ */ React$1.createElement(
+    Select,
+    {
+      ...props,
+      inputId: "button-icon",
+      components: {
+        MenuList: GridMenuList,
+        Option: GridOption,
+        SingleValue: GridSingleValue,
+        ...props.components
+      }
+    }
+  );
+};
 getLogger(["stash-tv", "ActionButtonSettingsModal"]);
-const ActionButtonSettingsModal = ({ actionButtonConfig, onUpdate, onClose, onSave }) => {
-  const operation = actionButtonConfig.id ? "edit" : "add";
+const ActionButtonSettingsModal = ({ initialActionButtonConfig, onClose, onSave }) => {
+  const operation = initialActionButtonConfig.id ? "edit" : "add";
   const [tag2, setTag2] = reactExports.useState();
-  const initialConfig = reactExports.useMemo(() => ({ ...actionButtonConfig }), []);
+  const initialConfig = initialActionButtonConfig;
   const [initialTagName, setInitialTagName] = reactExports.useState();
   reactExports.useEffect(() => {
     if (!initialTagName && "tagId" in initialConfig && tag2 && initialConfig.tagId === tag2?.id) {
@@ -222706,73 +223013,133 @@ const ActionButtonSettingsModal = ({ actionButtonConfig, onUpdate, onClose, onSa
     }
   }, [initialTagName, initialConfig, tag2]);
   const initialDetails = reactExports.useMemo(
-    () => getActionButtonDetails(actionButtonConfig, { tagName: initialTagName }),
+    () => getActionButtonDetails(initialConfig, { tagName: initialTagName }),
     [initialConfig.id, initialTagName]
   );
-  reactExports.useEffect(() => {
-    if (!("tagId" in actionButtonConfig) || !actionButtonConfig.tagId) return;
-    queryFindTagsByIDForSelect(actionButtonConfig.tagId ? [actionButtonConfig.tagId] : []).then((result) => setTag2(result.data.findTags.tags[0]));
-  }, ["tagId" in actionButtonConfig ? actionButtonConfig.tagId : null]);
   const ModalHeader2 = Modal.Header;
-  const customIcons = Object.entries(actionButtonCustomIcons).map(([key, icon2]) => ({
-    value: key,
-    label: icon2
-  }));
-  const GridMenuList = (props) => {
-    return /* @__PURE__ */ React$1.createElement(components.MenuList, { ...props }, /* @__PURE__ */ React$1.createElement("div", { style: {
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fill, minmax(50px, 1fr))",
-      gap: "8px",
-      padding: "8px"
-    } }, props.children));
-  };
-  const GridOption = (props) => {
-    return /* @__PURE__ */ React$1.createElement(components.Option, { ...props }, /* @__PURE__ */ React$1.createElement(props.data.label.inactive, { size: "100%" }));
-  };
-  const GridSingleValue = (props) => {
-    return /* @__PURE__ */ React$1.createElement(components.SingleValue, { ...props }, /* @__PURE__ */ React$1.createElement("div", { style: { display: "flex", alignItems: "center", margin: "0.5em 0" } }, /* @__PURE__ */ React$1.createElement(props.data.label.inactive, { size: 40 })));
-  };
+  let formik;
+  let form;
+  if (initialActionButtonConfig.type === "quick-tag") {
+    formik = useFormik({
+      initialValues: initialActionButtonConfig,
+      enableReinitialize: true,
+      validate: yupFormikValidate(quickTagActionButtonSchema),
+      onSubmit: (values3) => onSave(quickTagActionButtonSchema.cast(values3))
+    });
+    form = /* @__PURE__ */ React$1.createElement(QuickTagForm, { formik });
+  } else if (initialActionButtonConfig.type === "edit-tags") {
+    formik = useFormik({
+      initialValues: initialActionButtonConfig,
+      enableReinitialize: true,
+      validate: yupFormikValidate(editTagsActionButtonSchema),
+      onSubmit: (values3) => onSave(editTagsActionButtonSchema.cast(values3))
+    });
+    form = /* @__PURE__ */ React$1.createElement(EditTagsForm, { formik });
+  } else if (initialActionButtonConfig.type === "quick-create-marker") {
+    formik = useFormik({
+      initialValues: initialActionButtonConfig,
+      enableReinitialize: true,
+      validate: yupFormikValidate(quickCreateMarkerActionButtonSchema),
+      onSubmit: (values3) => onSave(quickCreateMarkerActionButtonSchema.cast(values3))
+    });
+    form = /* @__PURE__ */ React$1.createElement(QuickCreateMarkerForm, { formik });
+  } else {
+    throw new Error(`Unknown action button type: ${initialActionButtonConfig.type}`);
+  }
+  reactExports.useEffect(() => {
+    if (!("tagId" in formik.values) || !formik.values.tagId) return;
+    queryFindTagsByIDForSelect(formik.values.tagId ? [formik.values.tagId] : []).then((result) => setTag2(result.data.findTags.tags[0]));
+  }, ["tagId" in formik.values ? formik.values.tagId : null]);
   return /* @__PURE__ */ React$1.createElement(Modal, { show: true, onHide: () => onClose(), title: "", className: "ActionButtonSettingsModal" }, /* @__PURE__ */ React$1.createElement(ModalHeader2, null, /* @__PURE__ */ React$1.createElement(
     ActionButton,
     {
       ...initialDetails.props,
       active: false,
-      key: actionButtonConfig.id,
       size: "auto",
       displayOnly: true
     }
-  ), /* @__PURE__ */ React$1.createElement("span", null, operation === "add" ? "Add" : "Edit", " ", /* @__PURE__ */ React$1.createElement("em", null, initialDetails.inactiveText), " ", "Action Button")), /* @__PURE__ */ React$1.createElement(Modal.Body, null, /* @__PURE__ */ React$1.createElement("div", { className: "dialog-content" }, actionButtonConfig.type === "quick-tag" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "tag-id" }, "Tag to add (required)"), /* @__PURE__ */ React$1.createElement(
-    TagSelect,
+  ), /* @__PURE__ */ React$1.createElement("span", null, operation === "add" ? "Add" : "Edit", " ", /* @__PURE__ */ React$1.createElement("em", null, initialDetails.inactiveText), " ", "Action Button")), /* @__PURE__ */ React$1.createElement(Modal.Body, null, /* @__PURE__ */ React$1.createElement("div", { className: "dialog-content" }, form)), /* @__PURE__ */ React$1.createElement(Modal.Footer, null, /* @__PURE__ */ React$1.createElement(Button, { variant: "secondary", onClick: () => onClose() }, "Cancel"), /* @__PURE__ */ React$1.createElement(Button, { variant: "primary", onClick: () => formik.submitForm() }, operation === "add" ? "Add" : "Save")));
+};
+function QuickTagForm({ formik }) {
+  const customQuickTagIcons = Object.entries(actionButtonIcons).filter(([key, icon2]) => icon2.category.includes("tag") || icon2.category.includes("general")).map(([key, icon2]) => ({
+    value: key,
+    label: icon2.inactive
+  }));
+  const { tagId: tagIdError, iconId: iconIdError, ...otherErrors } = formik.errors;
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "tag-id" }, "Tag to add (required)"), /* @__PURE__ */ React$1.createElement(
+    TagIdSelect,
     {
       inputId: "tag-id",
       onSelect: (tags2) => {
-        const tag22 = tags2[0];
-        setTag2(tag22);
-        onUpdate({ ...actionButtonConfig, tagId: tag22?.id });
+        const tag2 = tags2[0];
+        formik.setFieldValue("tagId", tag2?.id);
       },
-      values: tag2 ? [tag2] : [],
+      ids: formik.values.tagId ? [formik.values.tagId] : [],
       hoverPlacement: "right"
     }
-  )), actionButtonConfig.type === "quick-tag" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "filter" }, "Action Button Icon"), /* @__PURE__ */ React$1.createElement(
-    Select,
+  ), formik.touched.tagId && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, tagIdError)), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "button-icon" }, "Action Button Icon"), /* @__PURE__ */ React$1.createElement(
+    IconSelect,
     {
-      inputId: "filter",
-      value: customIcons.find((icon2) => icon2.value === actionButtonConfig.iconId),
-      options: customIcons,
-      onChange: (newValue) => onUpdate({ ...actionButtonConfig, iconId: newValue && "value" in newValue ? newValue.value : "tag" }),
-      components: { MenuList: GridMenuList, Option: GridOption, SingleValue: GridSingleValue }
+      inputId: "button-icon",
+      value: customQuickTagIcons.find((icon2) => icon2.value === formik.values.iconId),
+      options: customQuickTagIcons,
+      onChange: (newValue) => formik.setFieldValue("iconId", newValue && "value" in newValue ? newValue.value : "add-tag")
     }
-  )), actionButtonConfig.type === "edit-tags" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "pinned-tags" }, "Pinned Tags (optional)"), /* @__PURE__ */ React$1.createElement(
+  ), formik.touched.iconId && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, iconIdError)), Object.keys(otherErrors).length > 0 && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, /* @__PURE__ */ React$1.createElement("ul", null, Object.entries(otherErrors).map(([key, error]) => /* @__PURE__ */ React$1.createElement("li", { key }, error)))));
+}
+function EditTagsForm({ formik }) {
+  const { pinnedTagIds: pinnedTagIdsError, ...otherErrors } = formik.errors;
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "pinned-tags" }, "Pinned Tags (optional)"), /* @__PURE__ */ React$1.createElement(
     TagIdSelect,
     {
       isMulti: true,
       inputId: "pinned-tags",
-      ids: actionButtonConfig.pinnedTagIds || [],
-      onSelect: (tags2) => onUpdate({ ...actionButtonConfig, pinnedTagIds: tags2.map((t4) => t4.id) }),
+      ids: formik.values.pinnedTagIds || [],
+      onSelect: (tags2) => formik.setFieldValue("pinnedTagIds", tags2.map((t4) => t4.id)),
       hoverPlacement: "right"
     }
-  ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Pinned tags allow you to quickly add your most used tags.")))), /* @__PURE__ */ React$1.createElement(Modal.Footer, null, /* @__PURE__ */ React$1.createElement(Button, { variant: "secondary", onClick: () => onClose() }, "Cancel"), /* @__PURE__ */ React$1.createElement(Button, { variant: "primary", onClick: () => onSave(actionButtonConfig) }, operation === "add" ? "Add" : "Save")));
-};
+  ), formik.touched.pinnedTagIds && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, pinnedTagIdsError), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Pinned tags allow you to quickly add your most used tags.")), Object.keys(otherErrors).length > 0 && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, /* @__PURE__ */ React$1.createElement("ul", null, Object.entries(otherErrors).map(([key, error]) => /* @__PURE__ */ React$1.createElement("li", { key }, error)))));
+}
+function QuickCreateMarkerForm({ formik }) {
+  const customQuickCreateMarkerIcons = Object.entries(actionButtonIcons).filter(([key, icon2]) => icon2.category.includes("marker") || icon2.category.includes("general")).map(([key, icon2]) => ({
+    value: key,
+    label: icon2.inactive
+  }));
+  const { title: titleError, primaryTagId: primaryTagIdError, iconId: iconIdError, ...otherErrors } = formik.errors;
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "title" }, "Title (optional)"), /* @__PURE__ */ React$1.createElement(
+    MarkerTitleSuggest,
+    {
+      initialMarkerTitle: formik.values.title,
+      onChange: (v) => formik.setFieldValue("title", v)
+    }
+  ), formik.touched.title && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, titleError)), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "primary-tag" }, "Primary Tag (required)"), /* @__PURE__ */ React$1.createElement(
+    TagIdSelect,
+    {
+      inputId: "primary-tag",
+      ids: formik.values.primaryTagId ? [formik.values.primaryTagId] : [],
+      onSelect: (tags2) => formik.setFieldValue("primaryTagId", tags2[0]?.id),
+      isClearable: false,
+      hoverPlacement: "right"
+    }
+  ), formik.touched.primaryTagId && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, primaryTagIdError)), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "tags" }, "Tags (optional)"), /* @__PURE__ */ React$1.createElement(
+    TagIdSelect,
+    {
+      isMulti: true,
+      inputId: "tags",
+      ids: formik.values.tagIds || [],
+      onSelect: (tags2) => formik.setFieldValue("tagIds", tags2.map((t4) => t4.id)),
+      hoverPlacement: "right"
+    }
+  )), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "button-icon" }, "Action Button Icon"), /* @__PURE__ */ React$1.createElement(
+    IconSelect,
+    {
+      inputId: "button-icon",
+      value: customQuickCreateMarkerIcons.find((icon2) => icon2.value === formik.values.iconId),
+      options: customQuickCreateMarkerIcons,
+      onChange: (newValue) => formik.setFieldValue("iconId", newValue && "value" in newValue ? newValue.value : "add-marker")
+    }
+  ), formik.touched.iconId && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, iconIdError)), Object.keys(otherErrors).length > 0 && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, /* @__PURE__ */ React$1.createElement("ul", null, Object.entries(otherErrors).map(([key, error]) => /* @__PURE__ */ React$1.createElement("li", { key }, error)))));
+}
 const objectKeys = Object.keys;
 const getStashOrigin = () => location.origin;
 const SettingsTab = reactExports.memo(() => {
@@ -222964,47 +223331,17 @@ const SettingsTab = reactExports.memo(() => {
     });
   }, [objectHash(tagIds)]);
   const addableActionButtons = objectKeys(actionButtonsDetails).map((type3) => {
-    let config2;
-    const configBase = {
-      id: "",
-      pinned: false
-    };
-    if (type3 === "edit-tags") {
-      config2 = {
-        ...configBase,
-        type: type3,
-        pinnedTagIds: []
-      };
-    } else if (type3 === "quick-tag") {
-      config2 = {
-        ...configBase,
-        type: type3,
-        iconId: "add-tag",
-        tagId: ""
-      };
-    } else {
-      config2 = {
-        ...configBase,
-        type: type3
-      };
-    }
     return {
       type: type3,
-      details: getActionButtonDetails(config2),
+      details: getActionButtonDetails(
+        createNewActionButtonConfig(type3)
+      ),
       add() {
+        const config2 = createNewActionButtonConfig(type3);
         if (getActionButtonDetails(config2).hasSettings) {
           setActionButtonDraft(config2);
         } else {
-          setAppSetting(
-            "actionButtonsConfig",
-            [
-              ...actionButtonsConfig,
-              {
-                ...config2,
-                id: (/* @__PURE__ */ new Date()).getTime().toString() + Math.random().toString()
-              }
-            ]
-          );
+          setAppSetting("actionButtonsConfig", [...actionButtonsConfig, config2]);
         }
       }
     };
@@ -223021,8 +223358,7 @@ const SettingsTab = reactExports.memo(() => {
     actionButtonDraft && /* @__PURE__ */ React$1.createElement(
       ActionButtonSettingsModal,
       {
-        actionButtonConfig: actionButtonDraft,
-        onUpdate: setActionButtonDraft,
+        initialActionButtonConfig: actionButtonDraft,
         onClose: () => setActionButtonDraft(null),
         onSave: (config2) => {
           saveActionButtonDraft(config2);
@@ -223271,7 +223607,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setAppSetting("showGuideOverlay", true)
       },
       "Show Guide"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.3.0"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.4.0"))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -224351,4 +224687,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-C_CA4bjv.js.map
+//# sourceMappingURL=index-CHFGQdgM.js.map
