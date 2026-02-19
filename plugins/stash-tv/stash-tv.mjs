@@ -17576,7 +17576,8 @@ const Be = "app-state", Si = {
     { id: "9", type: "letterboxing", pinned: !1 },
     { id: "10", type: "loop", pinned: !1 },
     { id: "11", type: "subtitles", pinned: !1 }
-  ]
+  ],
+  playbackRate: 1
 }, uv = [
   "storeLoaded",
   "showSettings",
