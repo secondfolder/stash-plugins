@@ -17540,7 +17540,7 @@ async function yu(e) {
 }
 const Be = "app-state", Si = {
   showSettings: !1,
-  audioMuted: !0,
+  volume: 0,
   showSubtitles: !1,
   fullscreen: !1,
   letterboxing: !1,
@@ -17572,7 +17572,7 @@ const Be = "app-state", Si = {
     { id: "5", type: "o-counter", pinned: !1 },
     { id: "6", type: "force-landscape", pinned: !1 },
     { id: "7", type: "fullscreen", pinned: !1 },
-    { id: "8", type: "mute", pinned: !1 },
+    { id: "8", type: "volume", pinned: !1 },
     { id: "9", type: "letterboxing", pinned: !1 },
     { id: "10", type: "loop", pinned: !1 },
     { id: "11", type: "subtitles", pinned: !1 }
@@ -17651,7 +17651,14 @@ jp()(
     {
       name: Be,
       storage: rc(() => lv()),
-      onRehydrateStorage: (e) => () => e.set("storeLoaded", !0)
+      onRehydrateStorage: (e) => () => e.set("storeLoaded", !0),
+      version: 1,
+      migrate: (e, t) => {
+        if (t === 0 && e && typeof e == "object" && ("audioMuted" in e && (e.volume = e.audioMuted ? 0 : 1, delete e.audioMuted), "actionButtonsConfig" in e && Array.isArray(e.actionButtonsConfig)))
+          for (const r of e.actionButtonsConfig)
+            r.type === "mute" && (r.type = "volume");
+        return e;
+      }
     }
   )
 );

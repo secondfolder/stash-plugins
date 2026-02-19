@@ -19764,7 +19764,7 @@ var TextTrackMode = {
   hidden: "hidden",
   showing: "showing"
 };
-var Track = /* @__PURE__ */ (function(_EventTarget) {
+var Track$1 = /* @__PURE__ */ (function(_EventTarget) {
   _inheritsLoose$2(Track2, _EventTarget);
   function Track2(options2) {
     var _this;
@@ -20143,7 +20143,7 @@ var TextTrack = /* @__PURE__ */ (function(_Track) {
     }
   };
   return TextTrack2;
-})(Track);
+})(Track$1);
 TextTrack.prototype.allowedEvents_ = {
   cuechange: "cuechange"
 };
@@ -20178,7 +20178,7 @@ var AudioTrack = /* @__PURE__ */ (function(_Track) {
     return _this;
   }
   return AudioTrack2;
-})(Track);
+})(Track$1);
 var VideoTrack = /* @__PURE__ */ (function(_Track) {
   _inheritsLoose$2(VideoTrack2, _Track);
   function VideoTrack2(options2) {
@@ -20209,7 +20209,7 @@ var VideoTrack = /* @__PURE__ */ (function(_Track) {
     return _this;
   }
   return VideoTrack2;
-})(Track);
+})(Track$1);
 var NONE = 0;
 var LOADING = 1;
 var LOADED = 2;
@@ -22120,11 +22120,11 @@ var SeekToLive = /* @__PURE__ */ (function(_Button) {
 })(Button$3);
 SeekToLive.prototype.controlText_ = "Seek to live, currently playing live";
 Component$1$1.registerComponent("SeekToLive", SeekToLive);
-var clamp$5 = function clamp(number2, min2, max2) {
+var clamp$6 = function clamp(number2, min2, max2) {
   number2 = Number(number2);
   return Math.min(max2, Math.max(min2, isNaN(number2) ? min2 : number2));
 };
-var Slider = /* @__PURE__ */ (function(_Component) {
+var Slider$2 = /* @__PURE__ */ (function(_Component) {
   _inheritsLoose$2(Slider2, _Component);
   function Slider2(player, options2) {
     var _this;
@@ -22260,7 +22260,7 @@ var Slider = /* @__PURE__ */ (function(_Component) {
     return progress2;
   };
   _proto.getProgress = function getProgress() {
-    return Number(clamp$5(this.getPercent(), 0, 1).toFixed(4));
+    return Number(clamp$6(this.getPercent(), 0, 1).toFixed(4));
   };
   _proto.calculateDistance = function calculateDistance(event) {
     var position2 = getPointerPosition(this.el_, event);
@@ -22299,9 +22299,9 @@ var Slider = /* @__PURE__ */ (function(_Component) {
   };
   return Slider2;
 })(Component$1$1);
-Component$1$1.registerComponent("Slider", Slider);
+Component$1$1.registerComponent("Slider", Slider$2);
 var percentify = function percentify2(time2, end2) {
-  return clamp$5(time2 / end2 * 100, 0, 100).toFixed(2) + "%";
+  return clamp$6(time2 / end2 * 100, 0, 100).toFixed(2) + "%";
 };
 var LoadProgressBar = /* @__PURE__ */ (function(_Component) {
   _inheritsLoose$2(LoadProgressBar2, _Component);
@@ -22768,7 +22768,7 @@ var SeekBar = /* @__PURE__ */ (function(_Slider) {
     _Slider.prototype.dispose.call(this);
   };
   return SeekBar2;
-})(Slider);
+})(Slider$2);
 SeekBar.prototype.options_ = {
   children: ["loadProgressBar", "playProgressBar"],
   barName: "playProgressBar"
@@ -22812,7 +22812,7 @@ var ProgressControl = /* @__PURE__ */ (function(_Component) {
     var seekBarEl = seekBar.el();
     var seekBarRect = findPosition(seekBarEl);
     var seekBarPoint = getPointerPosition(seekBarEl, event).x;
-    seekBarPoint = clamp$5(seekBarPoint, 0, 1);
+    seekBarPoint = clamp$6(seekBarPoint, 0, 1);
     if (mouseTimeDisplay) {
       mouseTimeDisplay.update(seekBarRect, seekBarPoint);
     }
@@ -23138,7 +23138,7 @@ var VolumeBar = /* @__PURE__ */ (function(_Slider) {
       var vertical = this.vertical();
       var volumeBarPoint = getPointerPosition(volumeBarEl, event);
       volumeBarPoint = vertical ? volumeBarPoint.y : volumeBarPoint.x;
-      volumeBarPoint = clamp$5(volumeBarPoint, 0, 1);
+      volumeBarPoint = clamp$6(volumeBarPoint, 0, 1);
       mouseVolumeLevelDisplay.update(volumeBarRect, volumeBarPoint, vertical);
     }
     if (!isSingleLeftClick(event)) {
@@ -23184,7 +23184,7 @@ var VolumeBar = /* @__PURE__ */ (function(_Slider) {
     });
   };
   return VolumeBar2;
-})(Slider);
+})(Slider$2);
 VolumeBar.prototype.options_ = {
   children: ["volumeLevel"],
   barName: "volumeLevel"
@@ -77979,13 +77979,13 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 throw new TypeError("Cannot call a class as a function");
               }
             }
-            var Range = function Range2() {
-              _classCallCheck2(this, Range2);
+            var Range2 = function Range22() {
+              _classCallCheck2(this, Range22);
               this.starttime = 0;
               this.duration = Infinity;
               this._useWallClockTime = false;
             };
-            __webpack_exports__["default"] = Range;
+            __webpack_exports__["default"] = Range2;
           })
         ),
         /***/
@@ -95426,7 +95426,7 @@ function toNumber$1(value) {
   return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
 }
 var asyncTag = "[object AsyncFunction]", funcTag$2 = "[object Function]", genTag$1 = "[object GeneratorFunction]", proxyTag = "[object Proxy]";
-function isFunction$1(value) {
+function isFunction$2(value) {
   if (!isObject$3(value)) {
     return false;
   }
@@ -95468,7 +95468,7 @@ function baseIsNative(value) {
   if (!isObject$3(value) || isMasked(value)) {
     return false;
   }
-  var pattern = isFunction$1(value) ? reIsNative : reIsHostCtor;
+  var pattern = isFunction$2(value) ? reIsNative : reIsHostCtor;
   return pattern.test(toSource(value));
 }
 function getValue$1(object2, key) {
@@ -95574,7 +95574,7 @@ function isLength(value) {
   return typeof value == "number" && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
 }
 function isArrayLike(value) {
-  return value != null && isLength(value.length) && !isFunction$1(value);
+  return value != null && isLength(value.length) && !isFunction$2(value);
 }
 var objectProto$b = Object.prototype;
 function isPrototype(value) {
@@ -145314,11 +145314,11 @@ function maybeDependOnExistenceOfEntity(store, entityId) {
   }
 }
 (function(EntityStore2) {
-  var Root = (
+  var Root2 = (
     /** @class */
     (function(_super) {
-      __extends(Root2, _super);
-      function Root2(_a2) {
+      __extends(Root3, _super);
+      function Root3(_a2) {
         var policies = _a2.policies, _b2 = _a2.resultCaching, resultCaching = _b2 === void 0 ? true : _b2, seed = _a2.seed;
         var _this = _super.call(this, policies, new CacheGroup(resultCaching)) || this;
         _this.stump = new Stump(_this);
@@ -145327,19 +145327,19 @@ function maybeDependOnExistenceOfEntity(store, entityId) {
           _this.replace(seed);
         return _this;
       }
-      Root2.prototype.addLayer = function(layerId, replay) {
+      Root3.prototype.addLayer = function(layerId, replay) {
         return this.stump.addLayer(layerId, replay);
       };
-      Root2.prototype.removeLayer = function() {
+      Root3.prototype.removeLayer = function() {
         return this;
       };
-      Root2.prototype.getStorage = function() {
+      Root3.prototype.getStorage = function() {
         return this.storageTrie.lookupArray(arguments);
       };
-      return Root2;
+      return Root3;
     })(EntityStore2)
   );
-  EntityStore2.Root = Root;
+  EntityStore2.Root = Root2;
 })(EntityStore || (EntityStore = {}));
 var Layer = (
   /** @class */
@@ -156357,7 +156357,7 @@ var toArray$3 = Function.prototype.bind.call(Function.prototype.call, [].slice);
 function qsa(element, selector) {
   return toArray$3(element.querySelectorAll(selector));
 }
-function usePrevious$2(value) {
+function usePrevious$3(value) {
   const ref = reactExports.useRef(null);
   reactExports.useEffect(() => {
     ref.current = value;
@@ -158742,7 +158742,7 @@ var Modal$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var container2 = useWaitForDOMRef(containerRef);
   var modal = useModalManager(providedManager);
   var isMounted = useMounted();
-  var prevShow = usePrevious$2(show);
+  var prevShow = usePrevious$3(show);
   var _useState = reactExports.useState(!show), exited = _useState[0], setExited = _useState[1];
   var lastFocusRef = reactExports.useRef(null);
   reactExports.useImperativeHandle(ref, function() {
@@ -174913,7 +174913,7 @@ const GENDERS = [
   "INTERSEX",
   "NON_BINARY"
 ];
-function clamp$4(min2, num, max2) {
+function clamp$5(min2, num, max2) {
   return Math.min(Math.max(num, min2), max2);
 }
 function updateReadOnlyProp(obj, prop, value) {
@@ -177839,7 +177839,7 @@ async function updateTvConfig(configUpdate) {
 const appStateStorageKey = "app-state";
 const defaults$2 = {
   showSettings: false,
-  audioMuted: true,
+  volume: 0,
   showSubtitles: false,
   fullscreen: false,
   letterboxing: false,
@@ -177871,7 +177871,7 @@ const defaults$2 = {
     { id: "5", type: "o-counter", pinned: false },
     { id: "6", type: "force-landscape", pinned: false },
     { id: "7", type: "fullscreen", pinned: false },
-    { id: "8", type: "mute", pinned: false },
+    { id: "8", type: "volume", pinned: false },
     { id: "9", type: "letterboxing", pinned: false },
     { id: "10", type: "loop", pinned: false },
     { id: "11", type: "subtitles", pinned: false }
@@ -177980,6 +177980,23 @@ const useAppStateStore = create2()(
       storage: createJSONStorage(() => createHybridStorage()),
       onRehydrateStorage: (state) => {
         return () => state.set("storeLoaded", true);
+      },
+      version: 1,
+      migrate: (persistedState, version2) => {
+        if (version2 === 0 && persistedState && typeof persistedState === "object") {
+          if ("audioMuted" in persistedState) {
+            persistedState.volume = persistedState.audioMuted ? 0 : 1;
+            delete persistedState.audioMuted;
+          }
+          if ("actionButtonsConfig" in persistedState && Array.isArray(persistedState.actionButtonsConfig)) {
+            for (const button of persistedState.actionButtonsConfig) {
+              if (button.type === "mute") {
+                button.type = "volume";
+              }
+            }
+          }
+        }
+        return persistedState;
       }
     }
   )
@@ -178151,6 +178168,7 @@ const ScenePlayer = reactExports.forwardRef(({
   onVideojsPlayerReady,
   optionsToMerge,
   muted,
+  volume,
   loop: loop2,
   trackActivity = true,
   scrubberThumbnail = true,
@@ -178271,6 +178289,7 @@ const ScenePlayer = reactExports.forwardRef(({
     return () => player.off("ended", onEnded);
   }, [onEnded]);
   videoJsSetupCallbacks[playerId] = (player) => {
+    if (volume !== void 0) player.volume(volume);
     for (const eventName of videoJsEventsToLog) {
       player.on(eventName, logVideoJsEvent);
       videoJsEventsToLogAttached.current[eventName] = true;
@@ -178314,6 +178333,11 @@ const ScenePlayer = reactExports.forwardRef(({
     if (muted === void 0 || !player || player.isDisposed()) return;
     player.muted(muted);
   }, [muted]);
+  reactExports.useEffect(() => {
+    const player = videojsPlayerRef.current;
+    if (volume === void 0 || !player || player.isDisposed()) return;
+    player.volume(volume);
+  }, [volume]);
   reactExports.useEffect(() => {
     const player = videojsPlayerRef.current;
     if (loop2 === void 0 || !player || player.isDisposed()) return;
@@ -181990,7 +182014,7 @@ var useRafState = function(initialState) {
   });
   return [state, setRafState];
 };
-function usePrevious$1(state) {
+function usePrevious$2(state) {
   var ref = reactExports.useRef();
   reactExports.useEffect(function() {
     ref.current = state;
@@ -190792,7 +190816,7 @@ var safeInvoke = function safeInvoke2(fn3) {
     return fn3.apply(void 0, args);
   }
 };
-var setRef = function setRef2(ref, node2) {
+var setRef$1 = function setRef(ref, node2) {
   if (typeof ref === "function") {
     return safeInvoke(ref, node2);
   } else if (ref != null) {
@@ -191060,7 +191084,7 @@ function Popper(_ref3) {
   var _React$useState = reactExports.useState(null), popperElement = _React$useState[0], setPopperElement = _React$useState[1];
   var _React$useState2 = reactExports.useState(null), arrowElement = _React$useState2[0], setArrowElement = _React$useState2[1];
   reactExports.useEffect(function() {
-    setRef(innerRef, popperElement);
+    setRef$1(innerRef, popperElement);
   }, [innerRef, popperElement]);
   var options2 = reactExports.useMemo(function() {
     return {
@@ -191098,12 +191122,12 @@ function Reference2(_ref3) {
   var children = _ref3.children, innerRef = _ref3.innerRef;
   var setReferenceNode = reactExports.useContext(ManagerReferenceNodeSetterContext);
   var refHandler = reactExports.useCallback(function(node2) {
-    setRef(innerRef, node2);
+    setRef$1(innerRef, node2);
     safeInvoke(setReferenceNode, node2);
   }, [innerRef, setReferenceNode]);
   reactExports.useEffect(function() {
     return function() {
-      return setRef(innerRef, null);
+      return setRef$1(innerRef, null);
     };
   }, []);
   reactExports.useEffect(function() {
@@ -195764,7 +195788,7 @@ function _objectWithoutPropertiesLoose$B(r3, e2) {
   }
   return t4;
 }
-var Collection = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Collection$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$B(_ref3, _excluded$G);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$A({
     ref,
@@ -195778,7 +195802,7 @@ var Collection = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     d: "M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"
   }));
 });
-Collection.propTypes = {
+Collection$1.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197642,7 +197666,7 @@ const _actionButtonIcons = {
   },
   "collection": {
     active: (props) => renderIcon(CollectionFill, props),
-    inactive: (props) => renderIcon(Collection, props),
+    inactive: (props) => renderIcon(Collection$1, props),
     category: ["general"]
   },
   "collection-play": {
@@ -197750,11 +197774,12 @@ const actionButtonsDetails = {
     activeText: "Close fullscreen",
     inactiveText: "Open fullscreen"
   },
-  "mute": {
+  "volume": {
     activeIcon: (props) => renderIcon(faVolumeHigh, props),
     inactiveIcon: (props) => renderIcon(SvgVolumeMuteOutline, props),
-    activeText: "Mute",
-    inactiveText: "Unmute"
+    activeText: "Volume",
+    inactiveText: "Volume",
+    hasSettings: true
   },
   "letterboxing": {
     activeIcon: (props) => renderIcon(SvgContain, props),
@@ -198017,7 +198042,7 @@ function useFormikContext() {
   var formik = reactExports.useContext(FormikContext);
   return formik;
 }
-var isFunction = function isFunction2(obj) {
+var isFunction$1 = function isFunction2(obj) {
   return typeof obj === "function";
 };
 var isObject2 = function isObject22(obj) {
@@ -198030,7 +198055,7 @@ var isString$1 = function isString2(obj) {
   return Object.prototype.toString.call(obj) === "[object String]";
 };
 var isPromise = function isPromise2(value) {
-  return isObject2(value) && isFunction(value.then);
+  return isObject2(value) && isFunction$1(value.then);
 };
 function getIn(obj, key, def, p2) {
   if (p2 === void 0) {
@@ -198216,7 +198241,7 @@ function useFormik(_ref3) {
   }, [props.validate]);
   var runValidationSchema = reactExports.useCallback(function(values3, field) {
     var validationSchema = props.validationSchema;
-    var schema = isFunction(validationSchema) ? validationSchema(field) : validationSchema;
+    var schema = isFunction$1(validationSchema) ? validationSchema(field) : validationSchema;
     var promise = field && schema.validateAt ? schema.validateAt(field, values3) : validateYupSchema(values3, schema);
     return new Promise(function(resolve, reject) {
       promise.then(function() {
@@ -198237,7 +198262,7 @@ function useFormik(_ref3) {
   }, []);
   var runFieldLevelValidations = reactExports.useCallback(function(values3) {
     var fieldKeysWithValidation = Object.keys(fieldRegistry.current).filter(function(f) {
-      return isFunction(fieldRegistry.current[f].validate);
+      return isFunction$1(fieldRegistry.current[f].validate);
     });
     var fieldValidations = fieldKeysWithValidation.length > 0 ? fieldKeysWithValidation.map(function(f) {
       return runSingleFieldLevelValidation(f, getIn(values3, f));
@@ -198363,7 +198388,7 @@ function useFormik(_ref3) {
     }
   }, [enableReinitialize, props.initialStatus, props.initialTouched]);
   var validateField = useEventCallback(function(name2) {
-    if (fieldRegistry.current[name2] && isFunction(fieldRegistry.current[name2].validate)) {
+    if (fieldRegistry.current[name2] && isFunction$1(fieldRegistry.current[name2].validate)) {
       var value = getIn(state.values, name2);
       var maybePromise = fieldRegistry.current[name2].validate(value);
       if (isPromise(maybePromise)) {
@@ -198443,7 +198468,7 @@ function useFormik(_ref3) {
     });
   }, []);
   var setValues = useEventCallback(function(values3, shouldValidate) {
-    var resolvedValues = isFunction(values3) ? values3(state.values) : values3;
+    var resolvedValues = isFunction$1(values3) ? values3(state.values) : values3;
     dispatch({
       type: "SET_VALUES",
       payload: resolvedValues
@@ -198532,7 +198557,7 @@ function useFormik(_ref3) {
     }
   });
   var setFormikState = reactExports.useCallback(function(stateOrCb) {
-    if (isFunction(stateOrCb)) {
+    if (isFunction$1(stateOrCb)) {
       dispatch({
         type: "SET_FORMIK_STATE",
         payload: stateOrCb
@@ -198602,10 +198627,10 @@ function useFormik(_ref3) {
     });
   });
   var handleSubmit = useEventCallback(function(e2) {
-    if (e2 && e2.preventDefault && isFunction(e2.preventDefault)) {
+    if (e2 && e2.preventDefault && isFunction$1(e2.preventDefault)) {
       e2.preventDefault();
     }
-    if (e2 && e2.stopPropagation && isFunction(e2.stopPropagation)) {
+    if (e2 && e2.stopPropagation && isFunction$1(e2.stopPropagation)) {
       e2.stopPropagation();
     }
     submitForm()["catch"](function(reason) {
@@ -198631,10 +198656,10 @@ function useFormik(_ref3) {
     return onSubmit(state.values, imperativeMethods);
   });
   var handleReset = useEventCallback(function(e2) {
-    if (e2 && e2.preventDefault && isFunction(e2.preventDefault)) {
+    if (e2 && e2.preventDefault && isFunction$1(e2.preventDefault)) {
       e2.preventDefault();
     }
-    if (e2 && e2.stopPropagation && isFunction(e2.stopPropagation)) {
+    if (e2 && e2.stopPropagation && isFunction$1(e2.stopPropagation)) {
       e2.stopPropagation();
     }
     resetForm();
@@ -198695,7 +198720,7 @@ function useFormik(_ref3) {
     return !isEqual$2(initialValues.current, state.values);
   }, [initialValues.current, state.values]);
   var isValid2 = reactExports.useMemo(function() {
-    return typeof isInitialValid !== "undefined" ? dirty ? state.errors && Object.keys(state.errors).length === 0 : isInitialValid !== false && isFunction(isInitialValid) ? isInitialValid(props) : isInitialValid : state.errors && Object.keys(state.errors).length === 0;
+    return typeof isInitialValid !== "undefined" ? dirty ? state.errors && Object.keys(state.errors).length === 0 : isInitialValid !== false && isFunction$1(isInitialValid) ? isInitialValid(props) : isInitialValid : state.errors && Object.keys(state.errors).length === 0;
   }, [isInitialValid, dirty, state.errors, props]);
   var ctx = _extends({}, state, {
     initialValues: initialValues.current,
@@ -200047,8 +200072,8 @@ function serializeStyles(args, registered, mergedProps) {
 var syncFallback = function syncFallback2(create3) {
   return create3();
 };
-var useInsertionEffect = React$2["useInsertionEffect"] ? React$2["useInsertionEffect"] : false;
-var useInsertionEffectAlwaysWithSyncFallback = useInsertionEffect || syncFallback;
+var useInsertionEffect$1 = React$2["useInsertionEffect"] ? React$2["useInsertionEffect"] : false;
+var useInsertionEffectAlwaysWithSyncFallback = useInsertionEffect$1 || syncFallback;
 var EmotionCacheContext = /* @__PURE__ */ reactExports.createContext(
   // we're doing this to avoid preconstruct's dead code elimination in this one case
   // because this module is primarily intended for the browser and node
@@ -204244,10 +204269,10 @@ const FilterSelectComponent = (props) => {
   return jsxRuntimeExports.jsx(SelectComponent$1, { ...props, loadOptions: debounceLoadOptions, isLoading: props.isLoading || loading2, onChange: onChange3, selectedOptions, onCreateOption: onCreate, getNewOptionData: getNewOptionData2, isValidNewOption: validNewOption });
 };
 function useCompare(val) {
-  const prevVal = usePrevious(val);
+  const prevVal = usePrevious$1(val);
   return prevVal !== val;
 }
-function usePrevious(value) {
+function usePrevious$1(value) {
   const ref = React$1.useRef();
   React$1.useEffect(() => {
     ref.current = value;
@@ -204881,7 +204906,7 @@ function createHashHistory(props) {
   };
   return history2;
 }
-function clamp$3(n, lowerBound, upperBound) {
+function clamp$4(n, lowerBound, upperBound) {
   return Math.min(Math.max(n, lowerBound), upperBound);
 }
 function createMemoryHistory(props) {
@@ -204898,7 +204923,7 @@ function createMemoryHistory(props) {
   function createKey() {
     return Math.random().toString(36).substr(2, keyLength);
   }
-  var index2 = clamp$3(initialIndex, 0, initialEntries.length - 1);
+  var index2 = clamp$4(initialIndex, 0, initialEntries.length - 1);
   var entries = initialEntries.map(function(entry) {
     return typeof entry === "string" ? createLocation(entry, void 0, createKey()) : createLocation(entry, void 0, entry.key || createKey());
   });
@@ -204937,7 +204962,7 @@ function createMemoryHistory(props) {
     });
   }
   function go(n) {
-    var nextIndex = clamp$3(history2.index + n, 0, history2.entries.length - 1);
+    var nextIndex = clamp$4(history2.index + n, 0, history2.entries.length - 1);
     var action = "POP";
     var location2 = history2.entries[nextIndex];
     transitionManager.confirmTransitionTo(location2, action, getUserConfirmation, function(ok) {
@@ -208802,6 +208827,939 @@ const DeleteSceneMarkersDialog = (props) => {
     variant: "secondary"
   }, isRunning: isDeleting, children: jsxRuntimeExports.jsx("p", { children: message }) });
 };
+function clamp$3(value, [min2, max2]) {
+  return Math.min(max2, Math.max(min2, value));
+}
+function composeEventHandlers(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
+  return function handleEvent(event) {
+    originalEventHandler?.(event);
+    if (checkForDefaultPrevented === false || !event.defaultPrevented) {
+      return ourEventHandler?.(event);
+    }
+  };
+}
+function setRef2(ref, value) {
+  if (typeof ref === "function") {
+    return ref(value);
+  } else if (ref !== null && ref !== void 0) {
+    ref.current = value;
+  }
+}
+function composeRefs(...refs) {
+  return (node2) => {
+    let hasCleanup = false;
+    const cleanups = refs.map((ref) => {
+      const cleanup = setRef2(ref, node2);
+      if (!hasCleanup && typeof cleanup == "function") {
+        hasCleanup = true;
+      }
+      return cleanup;
+    });
+    if (hasCleanup) {
+      return () => {
+        for (let i2 = 0; i2 < cleanups.length; i2++) {
+          const cleanup = cleanups[i2];
+          if (typeof cleanup == "function") {
+            cleanup();
+          } else {
+            setRef2(refs[i2], null);
+          }
+        }
+      };
+    }
+  };
+}
+function useComposedRefs(...refs) {
+  return reactExports.useCallback(composeRefs(...refs), refs);
+}
+function createContextScope(scopeName, createContextScopeDeps = []) {
+  let defaultContexts = [];
+  function createContext3(rootComponentName, defaultContext) {
+    const BaseContext = reactExports.createContext(defaultContext);
+    const index2 = defaultContexts.length;
+    defaultContexts = [...defaultContexts, defaultContext];
+    const Provider2 = (props) => {
+      const { scope, children, ...context2 } = props;
+      const Context2 = scope?.[scopeName]?.[index2] || BaseContext;
+      const value = reactExports.useMemo(() => context2, Object.values(context2));
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(Context2.Provider, { value, children });
+    };
+    Provider2.displayName = rootComponentName + "Provider";
+    function useContext2(consumerName, scope) {
+      const Context2 = scope?.[scopeName]?.[index2] || BaseContext;
+      const context2 = reactExports.useContext(Context2);
+      if (context2) return context2;
+      if (defaultContext !== void 0) return defaultContext;
+      throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
+    }
+    return [Provider2, useContext2];
+  }
+  const createScope = () => {
+    const scopeContexts = defaultContexts.map((defaultContext) => {
+      return reactExports.createContext(defaultContext);
+    });
+    return function useScope(scope) {
+      const contexts = scope?.[scopeName] || scopeContexts;
+      return reactExports.useMemo(
+        () => ({ [`__scope${scopeName}`]: { ...scope, [scopeName]: contexts } }),
+        [scope, contexts]
+      );
+    };
+  };
+  createScope.scopeName = scopeName;
+  return [createContext3, composeContextScopes(createScope, ...createContextScopeDeps)];
+}
+function composeContextScopes(...scopes) {
+  const baseScope = scopes[0];
+  if (scopes.length === 1) return baseScope;
+  const createScope = () => {
+    const scopeHooks = scopes.map((createScope2) => ({
+      useScope: createScope2(),
+      scopeName: createScope2.scopeName
+    }));
+    return function useComposedScopes(overrideScopes) {
+      const nextScopes = scopeHooks.reduce((nextScopes2, { useScope, scopeName }) => {
+        const scopeProps = useScope(overrideScopes);
+        const currentScope = scopeProps[`__scope${scopeName}`];
+        return { ...nextScopes2, ...currentScope };
+      }, {});
+      return reactExports.useMemo(() => ({ [`__scope${baseScope.scopeName}`]: nextScopes }), [nextScopes]);
+    };
+  };
+  createScope.scopeName = baseScope.scopeName;
+  return createScope;
+}
+var useLayoutEffect2 = globalThis?.document ? reactExports.useLayoutEffect : () => {
+};
+var useInsertionEffect = React$2[" useInsertionEffect ".trim().toString()] || useLayoutEffect2;
+function useControllableState({
+  prop,
+  defaultProp,
+  onChange: onChange3 = () => {
+  },
+  caller
+}) {
+  const [uncontrolledProp, setUncontrolledProp, onChangeRef] = useUncontrolledState({
+    defaultProp,
+    onChange: onChange3
+  });
+  const isControlled = prop !== void 0;
+  const value = isControlled ? prop : uncontrolledProp;
+  {
+    const isControlledRef = reactExports.useRef(prop !== void 0);
+    reactExports.useEffect(() => {
+      const wasControlled = isControlledRef.current;
+      if (wasControlled !== isControlled) {
+        const from3 = wasControlled ? "controlled" : "uncontrolled";
+        const to2 = isControlled ? "controlled" : "uncontrolled";
+        console.warn(
+          `${caller} is changing from ${from3} to ${to2}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`
+        );
+      }
+      isControlledRef.current = isControlled;
+    }, [isControlled, caller]);
+  }
+  const setValue = reactExports.useCallback(
+    (nextValue) => {
+      if (isControlled) {
+        const value2 = isFunction(nextValue) ? nextValue(prop) : nextValue;
+        if (value2 !== prop) {
+          onChangeRef.current?.(value2);
+        }
+      } else {
+        setUncontrolledProp(nextValue);
+      }
+    },
+    [isControlled, prop, setUncontrolledProp, onChangeRef]
+  );
+  return [value, setValue];
+}
+function useUncontrolledState({
+  defaultProp,
+  onChange: onChange3
+}) {
+  const [value, setValue] = reactExports.useState(defaultProp);
+  const prevValueRef = reactExports.useRef(value);
+  const onChangeRef = reactExports.useRef(onChange3);
+  useInsertionEffect(() => {
+    onChangeRef.current = onChange3;
+  }, [onChange3]);
+  reactExports.useEffect(() => {
+    if (prevValueRef.current !== value) {
+      onChangeRef.current?.(value);
+      prevValueRef.current = value;
+    }
+  }, [value, prevValueRef]);
+  return [value, setValue, onChangeRef];
+}
+function isFunction(value) {
+  return typeof value === "function";
+}
+var DirectionContext = reactExports.createContext(void 0);
+function useDirection(localDir) {
+  const globalDir = reactExports.useContext(DirectionContext);
+  return localDir || globalDir || "ltr";
+}
+function usePrevious(value) {
+  const ref = reactExports.useRef({ value, previous: value });
+  return reactExports.useMemo(() => {
+    if (ref.current.value !== value) {
+      ref.current.previous = ref.current.value;
+      ref.current.value = value;
+    }
+    return ref.current.previous;
+  }, [value]);
+}
+function useSize(element) {
+  const [size2, setSize] = reactExports.useState(void 0);
+  useLayoutEffect2(() => {
+    if (element) {
+      setSize({ width: element.offsetWidth, height: element.offsetHeight });
+      const resizeObserver = new ResizeObserver((entries) => {
+        if (!Array.isArray(entries)) {
+          return;
+        }
+        if (!entries.length) {
+          return;
+        }
+        const entry = entries[0];
+        let width2;
+        let height3;
+        if ("borderBoxSize" in entry) {
+          const borderSizeEntry = entry["borderBoxSize"];
+          const borderSize = Array.isArray(borderSizeEntry) ? borderSizeEntry[0] : borderSizeEntry;
+          width2 = borderSize["inlineSize"];
+          height3 = borderSize["blockSize"];
+        } else {
+          width2 = element.offsetWidth;
+          height3 = element.offsetHeight;
+        }
+        setSize({ width: width2, height: height3 });
+      });
+      resizeObserver.observe(element, { box: "border-box" });
+      return () => resizeObserver.unobserve(element);
+    } else {
+      setSize(void 0);
+    }
+  }, [element]);
+  return size2;
+}
+// @__NO_SIDE_EFFECTS__
+function createSlot(ownerName) {
+  const SlotClone = /* @__PURE__ */ createSlotClone(ownerName);
+  const Slot2 = reactExports.forwardRef((props, forwardedRef) => {
+    const { children, ...slotProps } = props;
+    const childrenArray = reactExports.Children.toArray(children);
+    const slottable = childrenArray.find(isSlottable);
+    if (slottable) {
+      const newElement = slottable.props.children;
+      const newChildren = childrenArray.map((child) => {
+        if (child === slottable) {
+          if (reactExports.Children.count(newElement) > 1) return reactExports.Children.only(null);
+          return reactExports.isValidElement(newElement) ? newElement.props.children : null;
+        } else {
+          return child;
+        }
+      });
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(SlotClone, { ...slotProps, ref: forwardedRef, children: reactExports.isValidElement(newElement) ? reactExports.cloneElement(newElement, void 0, newChildren) : null });
+    }
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(SlotClone, { ...slotProps, ref: forwardedRef, children });
+  });
+  Slot2.displayName = `${ownerName}.Slot`;
+  return Slot2;
+}
+// @__NO_SIDE_EFFECTS__
+function createSlotClone(ownerName) {
+  const SlotClone = reactExports.forwardRef((props, forwardedRef) => {
+    const { children, ...slotProps } = props;
+    if (reactExports.isValidElement(children)) {
+      const childrenRef = getElementRef(children);
+      const props2 = mergeProps(slotProps, children.props);
+      if (children.type !== reactExports.Fragment) {
+        props2.ref = forwardedRef ? composeRefs(forwardedRef, childrenRef) : childrenRef;
+      }
+      return reactExports.cloneElement(children, props2);
+    }
+    return reactExports.Children.count(children) > 1 ? reactExports.Children.only(null) : null;
+  });
+  SlotClone.displayName = `${ownerName}.SlotClone`;
+  return SlotClone;
+}
+var SLOTTABLE_IDENTIFIER = Symbol("radix.slottable");
+function isSlottable(child) {
+  return reactExports.isValidElement(child) && typeof child.type === "function" && "__radixId" in child.type && child.type.__radixId === SLOTTABLE_IDENTIFIER;
+}
+function mergeProps(slotProps, childProps) {
+  const overrideProps = { ...childProps };
+  for (const propName in childProps) {
+    const slotPropValue = slotProps[propName];
+    const childPropValue = childProps[propName];
+    const isHandler = /^on[A-Z]/.test(propName);
+    if (isHandler) {
+      if (slotPropValue && childPropValue) {
+        overrideProps[propName] = (...args) => {
+          const result = childPropValue(...args);
+          slotPropValue(...args);
+          return result;
+        };
+      } else if (slotPropValue) {
+        overrideProps[propName] = slotPropValue;
+      }
+    } else if (propName === "style") {
+      overrideProps[propName] = { ...slotPropValue, ...childPropValue };
+    } else if (propName === "className") {
+      overrideProps[propName] = [slotPropValue, childPropValue].filter(Boolean).join(" ");
+    }
+  }
+  return { ...slotProps, ...overrideProps };
+}
+function getElementRef(element) {
+  let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
+  let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
+  if (mayWarn) {
+    return element.ref;
+  }
+  getter = Object.getOwnPropertyDescriptor(element, "ref")?.get;
+  mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
+  if (mayWarn) {
+    return element.props.ref;
+  }
+  return element.props.ref || element.ref;
+}
+var NODES = [
+  "a",
+  "button",
+  "div",
+  "form",
+  "h2",
+  "h3",
+  "img",
+  "input",
+  "label",
+  "li",
+  "nav",
+  "ol",
+  "p",
+  "select",
+  "span",
+  "svg",
+  "ul"
+];
+var Primitive = NODES.reduce((primitive, node2) => {
+  const Slot2 = /* @__PURE__ */ createSlot(`Primitive.${node2}`);
+  const Node2 = reactExports.forwardRef((props, forwardedRef) => {
+    const { asChild, ...primitiveProps } = props;
+    const Comp = asChild ? Slot2 : node2;
+    if (typeof window !== "undefined") {
+      window[Symbol.for("radix-ui")] = true;
+    }
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Comp, { ...primitiveProps, ref: forwardedRef });
+  });
+  Node2.displayName = `Primitive.${node2}`;
+  return { ...primitive, [node2]: Node2 };
+}, {});
+function createCollection(name2) {
+  const PROVIDER_NAME = name2 + "CollectionProvider";
+  const [createCollectionContext, createCollectionScope2] = createContextScope(PROVIDER_NAME);
+  const [CollectionProviderImpl, useCollectionContext] = createCollectionContext(
+    PROVIDER_NAME,
+    { collectionRef: { current: null }, itemMap: /* @__PURE__ */ new Map() }
+  );
+  const CollectionProvider = (props) => {
+    const { scope, children } = props;
+    const ref = React$1.useRef(null);
+    const itemMap = React$1.useRef(/* @__PURE__ */ new Map()).current;
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(CollectionProviderImpl, { scope, itemMap, collectionRef: ref, children });
+  };
+  CollectionProvider.displayName = PROVIDER_NAME;
+  const COLLECTION_SLOT_NAME = name2 + "CollectionSlot";
+  const CollectionSlotImpl = /* @__PURE__ */ createSlot(COLLECTION_SLOT_NAME);
+  const CollectionSlot = React$1.forwardRef(
+    (props, forwardedRef) => {
+      const { scope, children } = props;
+      const context2 = useCollectionContext(COLLECTION_SLOT_NAME, scope);
+      const composedRefs = useComposedRefs(forwardedRef, context2.collectionRef);
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(CollectionSlotImpl, { ref: composedRefs, children });
+    }
+  );
+  CollectionSlot.displayName = COLLECTION_SLOT_NAME;
+  const ITEM_SLOT_NAME = name2 + "CollectionItemSlot";
+  const ITEM_DATA_ATTR = "data-radix-collection-item";
+  const CollectionItemSlotImpl = /* @__PURE__ */ createSlot(ITEM_SLOT_NAME);
+  const CollectionItemSlot = React$1.forwardRef(
+    (props, forwardedRef) => {
+      const { scope, children, ...itemData } = props;
+      const ref = React$1.useRef(null);
+      const composedRefs = useComposedRefs(forwardedRef, ref);
+      const context2 = useCollectionContext(ITEM_SLOT_NAME, scope);
+      React$1.useEffect(() => {
+        context2.itemMap.set(ref, { ref, ...itemData });
+        return () => void context2.itemMap.delete(ref);
+      });
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(CollectionItemSlotImpl, { ...{ [ITEM_DATA_ATTR]: "" }, ref: composedRefs, children });
+    }
+  );
+  CollectionItemSlot.displayName = ITEM_SLOT_NAME;
+  function useCollection2(scope) {
+    const context2 = useCollectionContext(name2 + "CollectionConsumer", scope);
+    const getItems = React$1.useCallback(() => {
+      const collectionNode = context2.collectionRef.current;
+      if (!collectionNode) return [];
+      const orderedNodes = Array.from(collectionNode.querySelectorAll(`[${ITEM_DATA_ATTR}]`));
+      const items = Array.from(context2.itemMap.values());
+      const orderedItems = items.sort(
+        (a4, b3) => orderedNodes.indexOf(a4.ref.current) - orderedNodes.indexOf(b3.ref.current)
+      );
+      return orderedItems;
+    }, [context2.collectionRef, context2.itemMap]);
+    return getItems;
+  }
+  return [
+    { Provider: CollectionProvider, Slot: CollectionSlot, ItemSlot: CollectionItemSlot },
+    useCollection2,
+    createCollectionScope2
+  ];
+}
+var PAGE_KEYS = ["PageUp", "PageDown"];
+var ARROW_KEYS = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
+var BACK_KEYS = {
+  "from-left": ["Home", "PageDown", "ArrowDown", "ArrowLeft"],
+  "from-right": ["Home", "PageDown", "ArrowDown", "ArrowRight"],
+  "from-bottom": ["Home", "PageDown", "ArrowDown", "ArrowLeft"],
+  "from-top": ["Home", "PageDown", "ArrowUp", "ArrowLeft"]
+};
+var SLIDER_NAME = "Slider";
+var [Collection, useCollection, createCollectionScope] = createCollection(SLIDER_NAME);
+var [createSliderContext, createSliderScope] = createContextScope(SLIDER_NAME, [
+  createCollectionScope
+]);
+var [SliderProvider, useSliderContext] = createSliderContext(SLIDER_NAME);
+var Slider$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const {
+      name: name2,
+      min: min2 = 0,
+      max: max2 = 100,
+      step = 1,
+      orientation: orientation2 = "horizontal",
+      disabled: disabled2 = false,
+      minStepsBetweenThumbs = 0,
+      defaultValue = [min2],
+      value,
+      onValueChange = () => {
+      },
+      onValueCommit = () => {
+      },
+      inverted = false,
+      form,
+      ...sliderProps
+    } = props;
+    const thumbRefs = reactExports.useRef(/* @__PURE__ */ new Set());
+    const valueIndexToChangeRef = reactExports.useRef(0);
+    const isHorizontal = orientation2 === "horizontal";
+    const SliderOrientation = isHorizontal ? SliderHorizontal : SliderVertical;
+    const [values3 = [], setValues] = useControllableState({
+      prop: value,
+      defaultProp: defaultValue,
+      onChange: (value2) => {
+        const thumbs = [...thumbRefs.current];
+        thumbs[valueIndexToChangeRef.current]?.focus();
+        onValueChange(value2);
+      }
+    });
+    const valuesBeforeSlideStartRef = reactExports.useRef(values3);
+    function handleSlideStart(value2) {
+      const closestIndex = getClosestValueIndex(values3, value2);
+      updateValues(value2, closestIndex);
+    }
+    function handleSlideMove(value2) {
+      updateValues(value2, valueIndexToChangeRef.current);
+    }
+    function handleSlideEnd() {
+      const prevValue = valuesBeforeSlideStartRef.current[valueIndexToChangeRef.current];
+      const nextValue = values3[valueIndexToChangeRef.current];
+      const hasChanged = nextValue !== prevValue;
+      if (hasChanged) onValueCommit(values3);
+    }
+    function updateValues(value2, atIndex, { commit } = { commit: false }) {
+      const decimalCount = getDecimalCount(step);
+      const snapToStep = roundValue(Math.round((value2 - min2) / step) * step + min2, decimalCount);
+      const nextValue = clamp$3(snapToStep, [min2, max2]);
+      setValues((prevValues = []) => {
+        const nextValues = getNextSortedValues(prevValues, nextValue, atIndex);
+        if (hasMinStepsBetweenValues(nextValues, minStepsBetweenThumbs * step)) {
+          valueIndexToChangeRef.current = nextValues.indexOf(nextValue);
+          const hasChanged = String(nextValues) !== String(prevValues);
+          if (hasChanged && commit) onValueCommit(nextValues);
+          return hasChanged ? nextValues : prevValues;
+        } else {
+          return prevValues;
+        }
+      });
+    }
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      SliderProvider,
+      {
+        scope: props.__scopeSlider,
+        name: name2,
+        disabled: disabled2,
+        min: min2,
+        max: max2,
+        valueIndexToChangeRef,
+        thumbs: thumbRefs.current,
+        values: values3,
+        orientation: orientation2,
+        form,
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(Collection.Provider, { scope: props.__scopeSlider, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Collection.Slot, { scope: props.__scopeSlider, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          SliderOrientation,
+          {
+            "aria-disabled": disabled2,
+            "data-disabled": disabled2 ? "" : void 0,
+            ...sliderProps,
+            ref: forwardedRef,
+            onPointerDown: composeEventHandlers(sliderProps.onPointerDown, () => {
+              if (!disabled2) valuesBeforeSlideStartRef.current = values3;
+            }),
+            min: min2,
+            max: max2,
+            inverted,
+            onSlideStart: disabled2 ? void 0 : handleSlideStart,
+            onSlideMove: disabled2 ? void 0 : handleSlideMove,
+            onSlideEnd: disabled2 ? void 0 : handleSlideEnd,
+            onHomeKeyDown: () => !disabled2 && updateValues(min2, 0, { commit: true }),
+            onEndKeyDown: () => !disabled2 && updateValues(max2, values3.length - 1, { commit: true }),
+            onStepKeyDown: ({ event, direction: stepDirection }) => {
+              if (!disabled2) {
+                const isPageKey = PAGE_KEYS.includes(event.key);
+                const isSkipKey = isPageKey || event.shiftKey && ARROW_KEYS.includes(event.key);
+                const multiplier = isSkipKey ? 10 : 1;
+                const atIndex = valueIndexToChangeRef.current;
+                const value2 = values3[atIndex];
+                const stepInDirection = step * multiplier * stepDirection;
+                updateValues(value2 + stepInDirection, atIndex, { commit: true });
+              }
+            }
+          }
+        ) }) })
+      }
+    );
+  }
+);
+Slider$1.displayName = SLIDER_NAME;
+var [SliderOrientationProvider, useSliderOrientationContext] = createSliderContext(SLIDER_NAME, {
+  startEdge: "left",
+  endEdge: "right",
+  size: "width",
+  direction: 1
+});
+var SliderHorizontal = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const {
+      min: min2,
+      max: max2,
+      dir,
+      inverted,
+      onSlideStart,
+      onSlideMove,
+      onSlideEnd,
+      onStepKeyDown,
+      ...sliderProps
+    } = props;
+    const [slider, setSlider] = reactExports.useState(null);
+    const composedRefs = useComposedRefs(forwardedRef, (node2) => setSlider(node2));
+    const rectRef = reactExports.useRef(void 0);
+    const direction = useDirection(dir);
+    const isDirectionLTR = direction === "ltr";
+    const isSlidingFromLeft = isDirectionLTR && !inverted || !isDirectionLTR && inverted;
+    function getValueFromPointer(pointerPosition) {
+      const rect = rectRef.current || slider.getBoundingClientRect();
+      const input = [0, rect.width];
+      const output = isSlidingFromLeft ? [min2, max2] : [max2, min2];
+      const value = linearScale(input, output);
+      rectRef.current = rect;
+      return value(pointerPosition - rect.left);
+    }
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      SliderOrientationProvider,
+      {
+        scope: props.__scopeSlider,
+        startEdge: isSlidingFromLeft ? "left" : "right",
+        endEdge: isSlidingFromLeft ? "right" : "left",
+        direction: isSlidingFromLeft ? 1 : -1,
+        size: "width",
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          SliderImpl,
+          {
+            dir: direction,
+            "data-orientation": "horizontal",
+            ...sliderProps,
+            ref: composedRefs,
+            style: {
+              ...sliderProps.style,
+              ["--radix-slider-thumb-transform"]: "translateX(-50%)"
+            },
+            onSlideStart: (event) => {
+              const value = getValueFromPointer(event.clientX);
+              onSlideStart?.(value);
+            },
+            onSlideMove: (event) => {
+              const value = getValueFromPointer(event.clientX);
+              onSlideMove?.(value);
+            },
+            onSlideEnd: () => {
+              rectRef.current = void 0;
+              onSlideEnd?.();
+            },
+            onStepKeyDown: (event) => {
+              const slideDirection = isSlidingFromLeft ? "from-left" : "from-right";
+              const isBackKey = BACK_KEYS[slideDirection].includes(event.key);
+              onStepKeyDown?.({ event, direction: isBackKey ? -1 : 1 });
+            }
+          }
+        )
+      }
+    );
+  }
+);
+var SliderVertical = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const {
+      min: min2,
+      max: max2,
+      inverted,
+      onSlideStart,
+      onSlideMove,
+      onSlideEnd,
+      onStepKeyDown,
+      ...sliderProps
+    } = props;
+    const sliderRef = reactExports.useRef(null);
+    const ref = useComposedRefs(forwardedRef, sliderRef);
+    const rectRef = reactExports.useRef(void 0);
+    const isSlidingFromBottom = !inverted;
+    function getValueFromPointer(pointerPosition) {
+      const rect = rectRef.current || sliderRef.current.getBoundingClientRect();
+      const input = [0, rect.height];
+      const output = isSlidingFromBottom ? [max2, min2] : [min2, max2];
+      const value = linearScale(input, output);
+      rectRef.current = rect;
+      return value(pointerPosition - rect.top);
+    }
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      SliderOrientationProvider,
+      {
+        scope: props.__scopeSlider,
+        startEdge: isSlidingFromBottom ? "bottom" : "top",
+        endEdge: isSlidingFromBottom ? "top" : "bottom",
+        size: "height",
+        direction: isSlidingFromBottom ? 1 : -1,
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          SliderImpl,
+          {
+            "data-orientation": "vertical",
+            ...sliderProps,
+            ref,
+            style: {
+              ...sliderProps.style,
+              ["--radix-slider-thumb-transform"]: "translateY(50%)"
+            },
+            onSlideStart: (event) => {
+              const value = getValueFromPointer(event.clientY);
+              onSlideStart?.(value);
+            },
+            onSlideMove: (event) => {
+              const value = getValueFromPointer(event.clientY);
+              onSlideMove?.(value);
+            },
+            onSlideEnd: () => {
+              rectRef.current = void 0;
+              onSlideEnd?.();
+            },
+            onStepKeyDown: (event) => {
+              const slideDirection = isSlidingFromBottom ? "from-bottom" : "from-top";
+              const isBackKey = BACK_KEYS[slideDirection].includes(event.key);
+              onStepKeyDown?.({ event, direction: isBackKey ? -1 : 1 });
+            }
+          }
+        )
+      }
+    );
+  }
+);
+var SliderImpl = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const {
+      __scopeSlider,
+      onSlideStart,
+      onSlideMove,
+      onSlideEnd,
+      onHomeKeyDown,
+      onEndKeyDown,
+      onStepKeyDown,
+      ...sliderProps
+    } = props;
+    const context2 = useSliderContext(SLIDER_NAME, __scopeSlider);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive.span,
+      {
+        ...sliderProps,
+        ref: forwardedRef,
+        onKeyDown: composeEventHandlers(props.onKeyDown, (event) => {
+          if (event.key === "Home") {
+            onHomeKeyDown(event);
+            event.preventDefault();
+          } else if (event.key === "End") {
+            onEndKeyDown(event);
+            event.preventDefault();
+          } else if (PAGE_KEYS.concat(ARROW_KEYS).includes(event.key)) {
+            onStepKeyDown(event);
+            event.preventDefault();
+          }
+        }),
+        onPointerDown: composeEventHandlers(props.onPointerDown, (event) => {
+          const target = event.target;
+          target.setPointerCapture(event.pointerId);
+          event.preventDefault();
+          if (context2.thumbs.has(target)) {
+            target.focus();
+          } else {
+            onSlideStart(event);
+          }
+        }),
+        onPointerMove: composeEventHandlers(props.onPointerMove, (event) => {
+          const target = event.target;
+          if (target.hasPointerCapture(event.pointerId)) onSlideMove(event);
+        }),
+        onPointerUp: composeEventHandlers(props.onPointerUp, (event) => {
+          const target = event.target;
+          if (target.hasPointerCapture(event.pointerId)) {
+            target.releasePointerCapture(event.pointerId);
+            onSlideEnd(event);
+          }
+        })
+      }
+    );
+  }
+);
+var TRACK_NAME = "SliderTrack";
+var SliderTrack = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeSlider, ...trackProps } = props;
+    const context2 = useSliderContext(TRACK_NAME, __scopeSlider);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive.span,
+      {
+        "data-disabled": context2.disabled ? "" : void 0,
+        "data-orientation": context2.orientation,
+        ...trackProps,
+        ref: forwardedRef
+      }
+    );
+  }
+);
+SliderTrack.displayName = TRACK_NAME;
+var RANGE_NAME = "SliderRange";
+var SliderRange = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeSlider, ...rangeProps } = props;
+    const context2 = useSliderContext(RANGE_NAME, __scopeSlider);
+    const orientation2 = useSliderOrientationContext(RANGE_NAME, __scopeSlider);
+    const ref = reactExports.useRef(null);
+    const composedRefs = useComposedRefs(forwardedRef, ref);
+    const valuesCount = context2.values.length;
+    const percentages = context2.values.map(
+      (value) => convertValueToPercentage(value, context2.min, context2.max)
+    );
+    const offsetStart = valuesCount > 1 ? Math.min(...percentages) : 0;
+    const offsetEnd = 100 - Math.max(...percentages);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive.span,
+      {
+        "data-orientation": context2.orientation,
+        "data-disabled": context2.disabled ? "" : void 0,
+        ...rangeProps,
+        ref: composedRefs,
+        style: {
+          ...props.style,
+          [orientation2.startEdge]: offsetStart + "%",
+          [orientation2.endEdge]: offsetEnd + "%"
+        }
+      }
+    );
+  }
+);
+SliderRange.displayName = RANGE_NAME;
+var THUMB_NAME = "SliderThumb";
+var SliderThumb = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const getItems = useCollection(props.__scopeSlider);
+    const [thumb, setThumb] = reactExports.useState(null);
+    const composedRefs = useComposedRefs(forwardedRef, (node2) => setThumb(node2));
+    const index2 = reactExports.useMemo(
+      () => thumb ? getItems().findIndex((item) => item.ref.current === thumb) : -1,
+      [getItems, thumb]
+    );
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(SliderThumbImpl, { ...props, ref: composedRefs, index: index2 });
+  }
+);
+var SliderThumbImpl = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeSlider, index: index2, name: name2, ...thumbProps } = props;
+    const context2 = useSliderContext(THUMB_NAME, __scopeSlider);
+    const orientation2 = useSliderOrientationContext(THUMB_NAME, __scopeSlider);
+    const [thumb, setThumb] = reactExports.useState(null);
+    const composedRefs = useComposedRefs(forwardedRef, (node2) => setThumb(node2));
+    const isFormControl = thumb ? context2.form || !!thumb.closest("form") : true;
+    const size2 = useSize(thumb);
+    const value = context2.values[index2];
+    const percent2 = value === void 0 ? 0 : convertValueToPercentage(value, context2.min, context2.max);
+    const label = getLabel(index2, context2.values.length);
+    const orientationSize = size2?.[orientation2.size];
+    const thumbInBoundsOffset = orientationSize ? getThumbInBoundsOffset(orientationSize, percent2, orientation2.direction) : 0;
+    reactExports.useEffect(() => {
+      if (thumb) {
+        context2.thumbs.add(thumb);
+        return () => {
+          context2.thumbs.delete(thumb);
+        };
+      }
+    }, [thumb, context2.thumbs]);
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "span",
+      {
+        style: {
+          transform: "var(--radix-slider-thumb-transform)",
+          position: "absolute",
+          [orientation2.startEdge]: `calc(${percent2}% + ${thumbInBoundsOffset}px)`
+        },
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Collection.ItemSlot, { scope: props.__scopeSlider, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            Primitive.span,
+            {
+              role: "slider",
+              "aria-label": props["aria-label"] || label,
+              "aria-valuemin": context2.min,
+              "aria-valuenow": value,
+              "aria-valuemax": context2.max,
+              "aria-orientation": context2.orientation,
+              "data-orientation": context2.orientation,
+              "data-disabled": context2.disabled ? "" : void 0,
+              tabIndex: context2.disabled ? void 0 : 0,
+              ...thumbProps,
+              ref: composedRefs,
+              style: value === void 0 ? { display: "none" } : props.style,
+              onFocus: composeEventHandlers(props.onFocus, () => {
+                context2.valueIndexToChangeRef.current = index2;
+              })
+            }
+          ) }),
+          isFormControl && /* @__PURE__ */ jsxRuntimeExports.jsx(
+            SliderBubbleInput,
+            {
+              name: name2 ?? (context2.name ? context2.name + (context2.values.length > 1 ? "[]" : "") : void 0),
+              form: context2.form,
+              value
+            },
+            index2
+          )
+        ]
+      }
+    );
+  }
+);
+SliderThumb.displayName = THUMB_NAME;
+var BUBBLE_INPUT_NAME = "RadioBubbleInput";
+var SliderBubbleInput = reactExports.forwardRef(
+  ({ __scopeSlider, value, ...props }, forwardedRef) => {
+    const ref = reactExports.useRef(null);
+    const composedRefs = useComposedRefs(ref, forwardedRef);
+    const prevValue = usePrevious(value);
+    reactExports.useEffect(() => {
+      const input = ref.current;
+      if (!input) return;
+      const inputProto = window.HTMLInputElement.prototype;
+      const descriptor = Object.getOwnPropertyDescriptor(inputProto, "value");
+      const setValue = descriptor.set;
+      if (prevValue !== value && setValue) {
+        const event = new Event("input", { bubbles: true });
+        setValue.call(input, value);
+        input.dispatchEvent(event);
+      }
+    }, [prevValue, value]);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive.input,
+      {
+        style: { display: "none" },
+        ...props,
+        ref: composedRefs,
+        defaultValue: value
+      }
+    );
+  }
+);
+SliderBubbleInput.displayName = BUBBLE_INPUT_NAME;
+function getNextSortedValues(prevValues = [], nextValue, atIndex) {
+  const nextValues = [...prevValues];
+  nextValues[atIndex] = nextValue;
+  return nextValues.sort((a4, b3) => a4 - b3);
+}
+function convertValueToPercentage(value, min2, max2) {
+  const maxSteps = max2 - min2;
+  const percentPerStep = 100 / maxSteps;
+  const percentage = percentPerStep * (value - min2);
+  return clamp$3(percentage, [0, 100]);
+}
+function getLabel(index2, totalValues) {
+  if (totalValues > 2) {
+    return `Value ${index2 + 1} of ${totalValues}`;
+  } else if (totalValues === 2) {
+    return ["Minimum", "Maximum"][index2];
+  } else {
+    return void 0;
+  }
+}
+function getClosestValueIndex(values3, nextValue) {
+  if (values3.length === 1) return 0;
+  const distances = values3.map((value) => Math.abs(value - nextValue));
+  const closestDistance = Math.min(...distances);
+  return distances.indexOf(closestDistance);
+}
+function getThumbInBoundsOffset(width2, left2, direction) {
+  const halfWidth = width2 / 2;
+  const halfPercent = 50;
+  const offset3 = linearScale([0, halfPercent], [0, halfWidth]);
+  return (halfWidth - offset3(left2) * direction) * direction;
+}
+function getStepsBetweenValues(values3) {
+  return values3.slice(0, -1).map((value, index2) => values3[index2 + 1] - value);
+}
+function hasMinStepsBetweenValues(values3, minStepsBetweenValues) {
+  if (minStepsBetweenValues > 0) {
+    const stepsBetweenValues = getStepsBetweenValues(values3);
+    const actualMinStepsBetweenValues = Math.min(...stepsBetweenValues);
+    return actualMinStepsBetweenValues >= minStepsBetweenValues;
+  }
+  return true;
+}
+function linearScale(input, output) {
+  return (value) => {
+    if (input[0] === input[1] || output[0] === output[1]) return output[0];
+    const ratio = (output[1] - output[0]) / (input[1] - input[0]);
+    return output[0] + ratio * (value - input[0]);
+  };
+}
+function getDecimalCount(value) {
+  return (String(value).split(".")[1] || "").length;
+}
+function roundValue(value, decimalCount) {
+  const rounder = Math.pow(10, decimalCount);
+  return Math.round(value * rounder) / rounder;
+}
+var Root = Slider$1;
+var Track = SliderTrack;
+var Range = SliderRange;
+var Thumb = SliderThumb;
+const Slider = (props) => /* @__PURE__ */ reactExports.createElement(Root, { className: "Slider", defaultValue: [50], max: 100, step: 1, ...props }, /* @__PURE__ */ reactExports.createElement(Track, { className: "track" }, /* @__PURE__ */ reactExports.createElement(Range, { className: "range" })), /* @__PURE__ */ reactExports.createElement(Thumb, { className: "thumb", "aria-label": "Volume" }));
 const logger$1 = getLogger(["stash-tv", "ActionButtons"]);
 const sharedActionButtonSchema = create$3({
   id: create$6().required(),
@@ -208828,8 +209786,9 @@ sharedActionButtonSchema.shape({
 sharedActionButtonSchema.shape({
   type: create$6().oneOf(["fullscreen"]).required()
 });
-sharedActionButtonSchema.shape({
-  type: create$6().oneOf(["mute"]).required()
+const volumeActionButtonSchema = sharedActionButtonSchema.shape({
+  type: create$6().oneOf(["volume"]).required(),
+  fullControl: create$7().optional()
 });
 sharedActionButtonSchema.shape({
   type: create$6().oneOf(["letterboxing"]).required()
@@ -208925,8 +209884,8 @@ function ActionButtons({ mediaItem, sceneInfoOpen, setSceneInfoOpen, playerRef }
         return /* @__PURE__ */ React$1.createElement(ForceLandscapeActionButton, { buttonConfig });
       case "fullscreen":
         return /* @__PURE__ */ React$1.createElement(FullscreenActionButton, { buttonConfig });
-      case "mute":
-        return /* @__PURE__ */ React$1.createElement(MuteActionButton, { buttonConfig });
+      case "volume":
+        return /* @__PURE__ */ React$1.createElement(VolumeActionButton, { buttonConfig });
       case "letterboxing":
         return /* @__PURE__ */ React$1.createElement(LetterboxingActionButton, { buttonConfig });
       case "loop":
@@ -209087,16 +210046,34 @@ function FullscreenActionButton({ buttonConfig }) {
     }
   );
 }
-function MuteActionButton({ buttonConfig }) {
-  const { audioMuted, set: setAppSetting } = useAppStateStore();
+function VolumeActionButton({ buttonConfig }) {
+  const { volume, set: setAppSetting } = useAppStateStore();
+  let clickHandler;
+  let sidePanel;
+  if (buttonConfig.fullControl && !uaParserExports.UAParser().os.name?.includes("iOS")) {
+    sidePanel = /* @__PURE__ */ React$1.createElement(
+      Slider,
+      {
+        min: 0,
+        max: 100,
+        value: [volume * 100],
+        onValueChange: (e2) => setAppSetting("volume", Number(e2[0]) / 100)
+      }
+    );
+    clickHandler = void 0;
+  } else {
+    sidePanel = void 0;
+    clickHandler = () => setAppSetting("volume", (prev2) => prev2 ? 0 : 1);
+  }
   return /* @__PURE__ */ React$1.createElement(
     ActionButton,
     {
       ...getActionButtonDetails(buttonConfig).props,
       className: "mute hide-on-ui-hide",
-      active: !audioMuted,
+      active: Boolean(volume),
       "data-testid": "MediaSlide--muteButton",
-      onClick: () => setAppSetting("audioMuted", (prev2) => !prev2)
+      onClick: clickHandler,
+      sidePanel
     }
   );
 }
@@ -211164,8 +212141,8 @@ const useFeedback = create2((set4, get7) => ({
 const FeedbackOverlay = reactExports.memo(() => {
   const { uiVisible } = useAppStateStore();
   const { contents, icon: icon2, fade } = useFeedback();
-  const previousContents = usePrevious$1(contents);
-  const previousIcon = usePrevious$1(icon2);
+  const previousContents = usePrevious$2(contents);
+  const previousIcon = usePrevious$2(icon2);
   const displayedContents = !contents ? previousContents : contents;
   const displayedIcon = !contents ? previousIcon : icon2;
   if (!displayedContents || !contents && !fade) return null;
@@ -211179,7 +212156,7 @@ const MediaSlide = (props) => {
   const {
     letterboxing,
     forceLandscape,
-    audioMuted,
+    volume,
     looping,
     showSubtitles,
     crtEffect,
@@ -211230,13 +212207,14 @@ const MediaSlide = (props) => {
   const autoplay = globalAutoPlay && isCurrentVideo && !showGuideOverlay;
   function handleVideojsPlayerReady(player) {
     videojsPlayerRef.current = player;
+    const getPlayerVolume = () => videojsPlayerRef.current?.muted() ? 0 : videojsPlayerRef.current?.volume() || 0;
     player.on("volumechange", () => {
-      logger3.info(`Video.js player volumechange event - player ${player.muted() ? "" : "not"} muted`);
-      setAppSetting("audioMuted", player.muted());
+      logger3.info(`Video.js player volumechange event - player volume is ${getPlayerVolume() * 100}%`);
+      setAppSetting("volume", getPlayerVolume());
     });
-    if (audioMuted !== player.muted()) {
-      logger3.info(`Video.js player loaded - volume player ${player.muted() ? "" : "not"} muted`);
-      setAppSetting("audioMuted", player.muted());
+    if (volume !== getPlayerVolume()) {
+      logger3.info(`Video.js player loaded - player volume is ${getPlayerVolume() * 100}%`);
+      setAppSetting("volume", getPlayerVolume());
     }
     player.getChild("ControlBar")?.progressControl?.el().addEventListener("pointermove", (event) => {
       event.stopPropagation();
@@ -211682,7 +212660,8 @@ const MediaSlide = (props) => {
           }
         },
         hideScrubberOverride: true,
-        muted: audioMuted,
+        muted: !volume,
+        volume,
         autoplay,
         loop: looping,
         initialTimestamp,
@@ -211914,7 +212893,7 @@ function useGestureControls({ videoRef, videojsPlayerRef, seekForwards, seekBack
       case "middle":
         initialRate = 0;
     }
-    const playbackRateDragAdjustment = clamp$4(
+    const playbackRateDragAdjustment = clamp$5(
       (videojsPlayerRef.current?.duration() ?? 0) / -3,
       (offsetX / elementWidth * 10) ** 6 * (offsetX > 0 ? 1 : -1),
       (videojsPlayerRef.current?.duration() ?? 0) / 3
@@ -213220,7 +214199,7 @@ const VideoScroller = reactExports.memo(() => {
   const [currentIndex, _setCurrentIndex] = reactExports.useReducer(
     (currentState, newState) => {
       newState = typeof newState === "function" ? newState(currentState) : newState;
-      return clamp$4(0, newState, mediaItems.length ? mediaItems.length - 1 : 0);
+      return clamp$5(0, newState, mediaItems.length ? mediaItems.length - 1 : 0);
     },
     0
   );
@@ -213232,7 +214211,7 @@ const VideoScroller = reactExports.memo(() => {
         _setCurrentIndex(newIndex);
       }, 100);
       return ((newIndex) => {
-        currentIndexRef.current = clamp$4(
+        currentIndexRef.current = clamp$5(
           0,
           typeof newIndex === "function" ? newIndex(currentIndexRef.current) : newIndex,
           mediaItems.length ? mediaItems.length - 1 : 0
@@ -223352,6 +224331,14 @@ const ActionButtonSettingsModal = ({ initialActionButtonConfig, onClose, onSave 
       onSubmit: (values3) => onSave(createMarkerActionButtonSchema.cast(values3))
     });
     form = /* @__PURE__ */ React$1.createElement(CreateMarkerForm, { formik });
+  } else if (initialActionButtonConfig.type === "volume") {
+    formik = useFormik({
+      initialValues: initialActionButtonConfig,
+      enableReinitialize: true,
+      validate: yupFormikValidate(volumeActionButtonSchema),
+      onSubmit: (values3) => onSave(volumeActionButtonSchema.cast(values3))
+    });
+    form = /* @__PURE__ */ React$1.createElement(VolumeForm, { formik });
   } else {
     throw new Error(`Unknown action button type: ${initialActionButtonConfig.type}`);
   }
@@ -223467,6 +224454,18 @@ function CreateMarkerQuickAddForm({ formik }) {
       onChange: (newValue) => formik.setFieldValue("iconId", newValue && "value" in newValue ? newValue.value : "add-marker")
     }
   ), formik.touched.iconId && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, iconIdError)), Object.keys(otherErrors).length > 0 && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, /* @__PURE__ */ React$1.createElement("ul", null, Object.entries(otherErrors).map(([key, error]) => /* @__PURE__ */ React$1.createElement("li", { key }, error)))));
+}
+function VolumeForm({ formik }) {
+  const { fullControl: fullControlError, ...otherErrors } = formik.errors;
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    Switch,
+    {
+      id: "full-control",
+      checked: Boolean(formik.values.fullControl),
+      label: "Full volume control",
+      onChange: (event) => formik.setFieldValue("fullControl", event.target.checked)
+    }
+  ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Enable full volume control rather than just mute/unmute. Note that this does not work on iOS devices due to platform limitations."), formik.touched.fullControl && fullControlError && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, fullControlError)), Object.keys(otherErrors).length > 0 && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, /* @__PURE__ */ React$1.createElement("ul", null, Object.entries(otherErrors).map(([key, error]) => /* @__PURE__ */ React$1.createElement("li", { key }, error)))));
 }
 const objectKeys = Object.keys;
 const getStashOrigin = () => location.origin;
@@ -225021,4 +226020,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-Bju1zutt.js.map
+//# sourceMappingURL=index-BL3jO47u.js.map
