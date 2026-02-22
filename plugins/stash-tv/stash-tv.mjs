@@ -17549,6 +17549,7 @@ const Be = "app-state", Si = {
   uiVisible: !0,
   isRandomised: !1,
   crtEffect: !1,
+  crtEffectStrength: 1,
   scenePreviewOnly: !1,
   markerPreviewOnly: !1,
   onlyShowMatchingOrientation: !1,
@@ -17647,7 +17648,8 @@ jp()(
           [r]: Si[r]
         }));
       },
-      getDefault: (r) => Si[r]
+      getDefault: (r) => Si[r],
+      get: (r) => t()[r]
     }),
     {
       name: Be,
