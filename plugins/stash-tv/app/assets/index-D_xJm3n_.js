@@ -200835,10 +200835,6 @@ const Slider = (props) => {
 };
 const RatingNumber = ({ onSetRating, value, disabled: disabled2 }) => {
   const textRatingRef = React$1.useRef(null);
-  reactExports.useEffect(() => {
-    if (!textRatingRef.current) return;
-    textRatingRef.current.focus();
-  }, []);
   const [draftRating, setDraftRating] = React$1.useState(value ?? null);
   reactExports.useEffect(() => setDraftRating(value ?? null), [value]);
   const hasRating = reactExports.useMemo(
@@ -216725,6 +216721,15 @@ function RateSceneActionButton({ scene: scene2, buttonConfig }) {
           clickToRate: false
         }
       )),
+      onSidePanelToggle: (isOpen) => {
+        if (!isOpen) return;
+        setTimeout(() => {
+          const inputElm = document.querySelector(".action-button-rating-stars input");
+          if (inputElm instanceof HTMLInputElement) {
+            inputElm.focus();
+          }
+        }, 10);
+      },
       sideInfo: sceneRatingFormatted
     }
   );
@@ -226560,4 +226565,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-6CnIrJJX.js.map
+//# sourceMappingURL=index-D_xJm3n_.js.map
