@@ -192366,9 +192366,11 @@ const SidePanel = ({ content, children, onSidePanelToggle, sidePanelClassName })
   const { leftHandedUi, forceLandscape } = useAppStateStore();
   const id2 = `action-button-side-panel-${useUID()}`;
   const isOpen = id2 === currentOpenPopover;
+  const onSidePanelToggleRef = React$1.useRef(onSidePanelToggle);
+  onSidePanelToggleRef.current = onSidePanelToggle;
   reactExports.useEffect(() => {
-    onSidePanelToggle?.(isOpen);
-  }, [isOpen, onSidePanelToggle]);
+    onSidePanelToggleRef.current?.(isOpen);
+  }, [isOpen]);
   const [isOpenDelayedClose, setIsOpenDelayedClose] = React$1.useState(isOpen);
   reactExports.useEffect(() => {
     let timeout;
@@ -226565,4 +226567,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-D_xJm3n_.js.map
+//# sourceMappingURL=index-BxBiIBc3.js.map
