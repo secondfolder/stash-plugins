@@ -4065,7 +4065,133 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 .rating-number.disabled {
   align-items: center;
   display: inline-flex;
-}.SceneMarkerForm {
+}.rating-system {
+  &.decimal {
+    .text-rating {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      align-items: center;
+      justify-content: center;
+
+      .rating-number {
+        &:not(.disabled) {
+          margin-right: 0.5rem;
+        }
+
+        input {
+          width: 4.5em;
+          padding: 0 0.4rem 0 0.4rem;
+        }
+      }
+
+      .clear-rating {
+        padding: 0 0.4rem;
+        margin-left: 0.5em;
+      }
+    }
+  }
+
+}
+.Slider {
+	position: relative;
+	display: flex;
+  flex-direction: column;
+	align-items: center;
+	user-select: none;
+	touch-action: none;
+	width: 200px;
+  --thumb-size: 16px;
+
+  .slider-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    min-height: var(--thumb-size);
+
+    .track {
+      --border-width: 1px;
+      position: relative;
+      flex-grow: 1;
+      border-radius: 9999px;
+      height: 6px;
+      border: color-mix(in oklab, var(--muted-gray), transparent 50%) solid var(--border-width);
+
+      .range {
+        position: absolute;
+        background-color: var(--primary);
+        outline: var(--primary) solid var(--border-width);
+        border-radius: 9999px;
+        height: 100%;
+      }
+    }
+    .thumb {
+      display: block;
+      height: var(--thumb-size);
+      width: var(--thumb-size);
+      background-color: var(--secondary);
+      box-shadow: 0 2px 10px var(--secondary);
+      border-radius: 10px;
+      border: color-mix(in oklab, var(--secondary), white 60%) solid 1px;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 5px var(--secondary);
+    }
+  }
+  .marks {
+    position: absolute;
+    display: flex;;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 calc(var(--thumb-size) / 2 - 1px) 0;
+
+    .mark {
+      padding: 4px 0 0 0;
+      border-left: color-mix(in oklab, var(--secondary), white 30%) solid 1px;
+      opacity: 0.8;
+    }
+  }
+}
+.extended-rating-number {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0.4em;
+
+  .text-rating {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    > span {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .out-of {
+      font-size: 1rem;
+    }
+
+    .clear-rating {
+      padding: 0 0.4rem;
+    }
+
+    input {
+      width: 3.8em;
+      padding: 0 0.4rem 0 0.4rem;
+      height: 1.2lh;
+    }
+  }
+}
+.SceneMarkerForm {
   form > * {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -4257,68 +4383,6 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     position: relative;
   }
 }
-.Slider {
-	position: relative;
-	display: flex;
-  flex-direction: column;
-	align-items: center;
-	user-select: none;
-	touch-action: none;
-	width: 200px;
-  --thumb-size: 16px;
-
-  .slider-body {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    min-height: var(--thumb-size);
-
-    .track {
-      --border-width: 1px;
-      position: relative;
-      flex-grow: 1;
-      border-radius: 9999px;
-      height: 6px;
-      border: color-mix(in oklab, var(--muted-gray), transparent 50%) solid var(--border-width);
-
-      .range {
-        position: absolute;
-        background-color: var(--primary);
-        outline: var(--primary) solid var(--border-width);
-        border-radius: 9999px;
-        height: 100%;
-      }
-    }
-    .thumb {
-      display: block;
-      height: var(--thumb-size);
-      width: var(--thumb-size);
-      background-color: var(--secondary);
-      box-shadow: 0 2px 10px var(--secondary);
-      border-radius: 10px;
-      border: color-mix(in oklab, var(--secondary), white 60%) solid 1px;
-    }
-
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 0 5px var(--secondary);
-    }
-  }
-  .marks {
-    position: absolute;
-    display: flex;;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0 calc(var(--thumb-size) / 2 - 1px) 0;
-
-    .mark {
-      padding: 4px 0 0 0;
-      border-left: color-mix(in oklab, var(--secondary), white 30%) solid 1px;
-      opacity: 0.8;
-    }
-  }
-}
 .SceneInfo {
   position: absolute;
   bottom: calc(5em + var(--y-dynamic-diff));
@@ -4352,6 +4416,14 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 
   .studio {
     font-size: 0.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+
+    .separator {
+      color: var(--text-muted)
+    }
   }
 }
 /* Nest in .video-js to increase specificity */
@@ -4619,6 +4691,9 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 .SettingsTab .draggable-list .draggable-list-item.muted {
   opacity: 0.5;
 }
+.SettingsTab .accent-icon {
+  color: var(--link-color);
+}
 .SettingsTab .action-button-icon {
   width: 2em;
   height: 2em;
@@ -4803,7 +4878,7 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     touch-action: none;
   }
 }
-.ActionButtonSettingsModal {
+.Modal {
   .modal-dialog {
     top: var(--safe-inset-top);
 
@@ -4816,7 +4891,12 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 
     .modal-body {
       overflow: initial;
-
+    }
+  }
+}
+.ActionButtonSettingsModal {
+  .modal-dialog {
+    .modal-body {
       #filter {
         caret-color: transparent;
       }
