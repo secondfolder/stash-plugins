@@ -217115,7 +217115,7 @@ const SceneInfo = reactExports.forwardRef(
       return /* @__PURE__ */ React$1.createElement(React$1.Fragment, { key: pf.id }, /* @__PURE__ */ React$1.createElement(
         "a",
         {
-          href: new URL(`/performers/${pf.id}`, void 0).toString(),
+          href: getStashUrl(`/performers/${pf.id}`),
           target: "_blank"
         },
         pf.name
@@ -217151,7 +217151,7 @@ const SceneInfo = reactExports.forwardRef(
         "a",
         {
           key: studio22.id,
-          href: new URL(`/studios/${studio22.id}`, void 0).toString(),
+          href: getStashUrl(`/studios/${studio22.id}`),
           target: "_blank"
         },
         studio22.name
@@ -217188,6 +217188,9 @@ const SceneInfo = reactExports.forwardRef(
     );
   }
 );
+const getStashUrl = (path2) => {
+  return path2;
+};
 const ClipTimestamp = reactExports.memo(({ type: type3, progressPercentage: progressPercentage2 }) => {
   return /* @__PURE__ */ React$1.createElement(
     "div",
@@ -226557,4 +226560,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-7zYb8cyq.js.map
+//# sourceMappingURL=index-6CnIrJJX.js.map
