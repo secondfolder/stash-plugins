@@ -6557,10 +6557,10 @@ const __viteBrowserExternal$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Ob
 }, Symbol.toStringTag, { value: "Module" }));
 const require$$0$1 = /* @__PURE__ */ getAugmentedNamespace(__viteBrowserExternal$1);
 var document_1;
-var hasRequiredDocument;
-function requireDocument() {
-  if (hasRequiredDocument) return document_1;
-  hasRequiredDocument = 1;
+var hasRequiredDocument$1;
+function requireDocument$1() {
+  if (hasRequiredDocument$1) return document_1;
+  hasRequiredDocument$1 = 1;
   var topLevel = typeof commonjsGlobal$1 !== "undefined" ? commonjsGlobal$1 : typeof window !== "undefined" ? window : {};
   var minDoc = require$$0$1;
   var doccy;
@@ -6575,16 +6575,16 @@ function requireDocument() {
   document_1 = doccy;
   return document_1;
 }
-var documentExports = requireDocument();
-const document$1 = /* @__PURE__ */ getDefaultExportFromCjs(documentExports);
-function _extends$1k() {
-  return _extends$1k = Object.assign ? Object.assign.bind() : function(n) {
+var documentExports = requireDocument$1();
+const document$1$1 = /* @__PURE__ */ getDefaultExportFromCjs(documentExports);
+function _extends$1l() {
+  return _extends$1l = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$1k.apply(null, arguments);
+  }, _extends$1l.apply(null, arguments);
 }
 var keycode$1 = { exports: {} };
 var hasRequiredKeycode;
@@ -6744,11 +6744,11 @@ function requireTuple() {
 }
 var tupleExports = requireTuple();
 const safeParseTuple = /* @__PURE__ */ getDefaultExportFromCjs(tupleExports);
-var lib$2 = { exports: {} };
-var _extends$1j = { exports: {} };
+var lib$4 = { exports: {} };
+var _extends$1k = { exports: {} };
 var hasRequired_extends;
 function require_extends() {
-  if (hasRequired_extends) return _extends$1j.exports;
+  if (hasRequired_extends) return _extends$1k.exports;
   hasRequired_extends = 1;
   (function(module2) {
     function _extends2() {
@@ -6761,8 +6761,8 @@ function require_extends() {
       }, module2.exports.__esModule = true, module2.exports["default"] = module2.exports, _extends2.apply(null, arguments);
     }
     module2.exports = _extends2, module2.exports.__esModule = true, module2.exports["default"] = module2.exports;
-  })(_extends$1j);
-  return _extends$1j.exports;
+  })(_extends$1k);
+  return _extends$1k.exports;
 }
 var isFunction_1;
 var hasRequiredIsFunction;
@@ -6832,10 +6832,10 @@ function requireHttpHandler() {
   httpHandler = httpResponseHandler;
   return httpHandler;
 }
-var hasRequiredLib$2;
-function requireLib$2() {
-  if (hasRequiredLib$2) return lib$2.exports;
-  hasRequiredLib$2 = 1;
+var hasRequiredLib$4;
+function requireLib$4() {
+  if (hasRequiredLib$4) return lib$4.exports;
+  hasRequiredLib$4 = 1;
   var window2 = requireWindow();
   var _extends2 = require_extends();
   var isFunction3 = requireIsFunction();
@@ -6866,8 +6866,8 @@ function requireLib$2() {
     });
     return result;
   };
-  lib$2.exports = createXHR;
-  lib$2.exports.default = createXHR;
+  lib$4.exports = createXHR;
+  lib$4.exports.default = createXHR;
   createXHR.XMLHttpRequest = window2.XMLHttpRequest || noop4;
   createXHR.XDomainRequest = "withCredentials" in new createXHR.XMLHttpRequest() ? createXHR.XMLHttpRequest : window2.XDomainRequest;
   forEachArray(["get", "put", "post", "patch", "head", "delete"], function(method) {
@@ -7065,9 +7065,9 @@ function requireLib$2() {
   }
   function noop4() {
   }
-  return lib$2.exports;
+  return lib$4.exports;
 }
-var libExports$2 = requireLib$2();
+var libExports$2 = requireLib$4();
 const XHR = /* @__PURE__ */ getDefaultExportFromCjs(libExports$2);
 var browserIndex = { exports: {} };
 var vtt$1;
@@ -7075,7 +7075,7 @@ var hasRequiredVtt;
 function requireVtt() {
   if (hasRequiredVtt) return vtt$1;
   hasRequiredVtt = 1;
-  var document2 = requireDocument();
+  var document2 = requireDocument$1();
   var _objCreate = Object.create || /* @__PURE__ */ (function() {
     function F() {
     }
@@ -7520,7 +7520,7 @@ function requireVtt() {
     return false;
   }
   function determineBidi(cueDiv) {
-    var nodeStack = [], text = "", charCode;
+    var nodeStack = [], text2 = "", charCode;
     if (!cueDiv || !cueDiv.childNodes) {
       return "ltr";
     }
@@ -7533,14 +7533,14 @@ function requireVtt() {
       if (!nodeStack2 || !nodeStack2.length) {
         return null;
       }
-      var node2 = nodeStack2.pop(), text2 = node2.textContent || node2.innerText;
-      if (text2) {
-        var m3 = text2.match(/^.*(\n|\r)/);
+      var node2 = nodeStack2.pop(), text3 = node2.textContent || node2.innerText;
+      if (text3) {
+        var m3 = text3.match(/^.*(\n|\r)/);
         if (m3) {
           nodeStack2.length = 0;
           return m3[0];
         }
-        return text2;
+        return text3;
       }
       if (node2.tagName === "ruby") {
         return nextTextNode(nodeStack2);
@@ -7551,9 +7551,9 @@ function requireVtt() {
       }
     }
     pushNodes(nodeStack, cueDiv);
-    while (text = nextTextNode(nodeStack)) {
-      for (var i2 = 0; i2 < text.length; i2++) {
-        charCode = text.charCodeAt(i2);
+    while (text2 = nextTextNode(nodeStack)) {
+      for (var i2 = 0; i2 < text2.length; i2++) {
+        charCode = text2.charCodeAt(i2);
         if (isStrongRTLChar(charCode)) {
           return "rtl";
         }
@@ -8183,13 +8183,13 @@ function requireVttcue() {
     var align = alignSetting[value.toLowerCase()];
     return align ? value.toLowerCase() : false;
   }
-  function VTTCue(startTime, endTime, text) {
+  function VTTCue(startTime, endTime, text2) {
     this.hasBeenReset = false;
     var _id = "";
     var _pauseOnExit = false;
     var _startTime = startTime;
     var _endTime = endTime;
-    var _text = text;
+    var _text = text2;
     var _region = null;
     var _vertical = "";
     var _snapToLines = true;
@@ -8954,7 +8954,7 @@ var ParseStream = /* @__PURE__ */ (function(_Stream) {
       }
       match2 = /^#EXT-X-BYTERANGE:?(.*)?$/.exec(newLine);
       if (match2) {
-        event = _extends$1k(parseByterange(match2[1]), {
+        event = _extends$1l(parseByterange(match2[1]), {
           type: "tag",
           tagType: "byterange"
         });
@@ -9578,7 +9578,7 @@ var Parser$3 = /* @__PURE__ */ (function(_Stream) {
               if (!currentUri.attributes) {
                 currentUri.attributes = {};
               }
-              _extends$1k(currentUri.attributes, entry.attributes);
+              _extends$1l(currentUri.attributes, entry.attributes);
             },
             media: function media() {
               this.manifest.mediaGroups = this.manifest.mediaGroups || defaultMediaGroups;
@@ -10113,7 +10113,7 @@ var forEachMediaGroup$1 = function forEachMediaGroup(master, groups2, callback2)
     }
   });
 };
-var lib$1 = {};
+var lib$3 = {};
 var dom$2 = {};
 var conventions = {};
 var hasRequiredConventions;
@@ -11277,13 +11277,13 @@ function requireDom() {
     substringData: function(offset3, count2) {
       return this.data.substring(offset3, offset3 + count2);
     },
-    appendData: function(text) {
-      text = this.data + text;
-      this.nodeValue = this.data = text;
-      this.length = text.length;
+    appendData: function(text2) {
+      text2 = this.data + text2;
+      this.nodeValue = this.data = text2;
+      this.length = text2.length;
     },
-    insertData: function(offset3, text) {
-      this.replaceData(offset3, 0, text);
+    insertData: function(offset3, text2) {
+      this.replaceData(offset3, 0, text2);
     },
     appendChild: function(newChild) {
       throw new Error(ExceptionMessage[HIERARCHY_REQUEST_ERR]);
@@ -11291,12 +11291,12 @@ function requireDom() {
     deleteData: function(offset3, count2) {
       this.replaceData(offset3, count2, "");
     },
-    replaceData: function(offset3, count2, text) {
+    replaceData: function(offset3, count2, text2) {
       var start3 = this.data.substring(0, offset3);
       var end2 = this.data.substring(offset3 + count2);
-      text = start3 + text + end2;
-      this.nodeValue = this.data = text;
-      this.length = text.length;
+      text2 = start3 + text2 + end2;
+      this.nodeValue = this.data = text2;
+      this.length = text2.length;
     }
   };
   _extends2(CharacterData, Node2);
@@ -11306,11 +11306,11 @@ function requireDom() {
     nodeName: "#text",
     nodeType: TEXT_NODE,
     splitText: function(offset3) {
-      var text = this.data;
-      var newText = text.substring(offset3);
-      text = text.substring(0, offset3);
-      this.data = this.nodeValue = text;
-      this.length = text.length;
+      var text2 = this.data;
+      var newText = text2.substring(offset3);
+      text2 = text2.substring(0, offset3);
+      this.data = this.nodeValue = text2;
+      this.length = text2.length;
       var newNode = this.ownerDocument.createTextNode(newText);
       if (this.parentNode) {
         this.parentNode.insertBefore(newNode, this.nextSibling);
@@ -13920,9 +13920,9 @@ function requireSax() {
         if (tagStart < 0) {
           if (!source2.substr(start3).match(/^\s*$/)) {
             var doc = domBuilder.doc;
-            var text = doc.createTextNode(source2.substr(start3));
-            doc.appendChild(text);
-            domBuilder.currentElement = text;
+            var text2 = doc.createTextNode(source2.substr(start3));
+            doc.appendChild(text2);
+            domBuilder.currentElement = text2;
           }
           return;
         }
@@ -14269,14 +14269,14 @@ function requireSax() {
   function parseHtmlSpecialContent(source2, elStartEnd, tagName, entityReplacer, domBuilder) {
     if (/^(?:script|textarea)$/i.test(tagName)) {
       var elEndStart = source2.indexOf("</" + tagName + ">", elStartEnd);
-      var text = source2.substring(elStartEnd + 1, elEndStart);
-      if (/[&<]/.test(text)) {
+      var text2 = source2.substring(elStartEnd + 1, elEndStart);
+      if (/[&<]/.test(text2)) {
         if (/^script$/i.test(tagName)) {
-          domBuilder.characters(text, 0, text.length);
+          domBuilder.characters(text2, 0, text2.length);
           return elEndStart;
         }
-        text = text.replace(/&#?\w+;/g, entityReplacer);
-        domBuilder.characters(text, 0, text.length);
+        text2 = text2.replace(/&#?\w+;/g, entityReplacer);
+        domBuilder.characters(text2, 0, text2.length);
         return elEndStart;
       }
     }
@@ -14635,17 +14635,17 @@ function requireDomParser() {
   domParser.DOMParser = DOMParser2;
   return domParser;
 }
-var hasRequiredLib$1;
-function requireLib$1() {
-  if (hasRequiredLib$1) return lib$1;
-  hasRequiredLib$1 = 1;
+var hasRequiredLib$3;
+function requireLib$3() {
+  if (hasRequiredLib$3) return lib$3;
+  hasRequiredLib$3 = 1;
   var dom2 = requireDom();
-  lib$1.DOMImplementation = dom2.DOMImplementation;
-  lib$1.XMLSerializer = dom2.XMLSerializer;
-  lib$1.DOMParser = requireDomParser().DOMParser;
-  return lib$1;
+  lib$3.DOMImplementation = dom2.DOMImplementation;
+  lib$3.XMLSerializer = dom2.XMLSerializer;
+  lib$3.DOMParser = requireDomParser().DOMParser;
+  return lib$3;
 }
-var libExports$1 = requireLib$1();
+var libExports$1 = requireLib$3();
 /*! @name mpd-parser @version 0.22.1 @license Apache-2.0 */
 var isObject$5 = function isObject(obj) {
   return !!obj && typeof obj === "object";
@@ -16129,11 +16129,11 @@ var stringToMpdXml = function stringToMpdXml2(manifestString) {
     throw new Error(errors$2.DASH_EMPTY_MANIFEST);
   }
   var parser3 = new libExports$1.DOMParser();
-  var xml;
+  var xml2;
   var mpd;
   try {
-    xml = parser3.parseFromString(manifestString, "application/xml");
-    mpd = xml && xml.documentElement.tagName === "MPD" ? xml.documentElement : null;
+    xml2 = parser3.parseFromString(manifestString, "application/xml");
+    mpd = xml2 && xml2.documentElement.tagName === "MPD" ? xml2.documentElement : null;
   } catch (e2) {
   }
   if (!mpd || mpd && mpd.getElementsByTagName("parsererror").length > 0) {
@@ -16483,7 +16483,7 @@ var discardEmulationPreventionBytes = function discardEmulationPreventionBytes2(
   }
   return newData;
 };
-var findNal = function findNal2(bytes, dataType, types2, nalLimit) {
+var findNal = function findNal2(bytes, dataType2, types2, nalLimit) {
   bytes = toUint8(bytes);
   types2 = [].concat(types2);
   var i2 = 0;
@@ -16505,15 +16505,15 @@ var findNal = function findNal2(bytes, dataType, types2, nalLimit) {
       return discardEmulationPreventionBytes(bytes.subarray(nalStart, i2));
     }
     var nalType = void 0;
-    if (dataType === "h264") {
+    if (dataType2 === "h264") {
       nalType = bytes[i2 + nalOffset] & 31;
-    } else if (dataType === "h265") {
+    } else if (dataType2 === "h265") {
       nalType = bytes[i2 + nalOffset] >> 1 & 63;
     }
     if (types2.indexOf(nalType) !== -1) {
       nalStart = i2 + nalOffset;
     }
-    i2 += nalOffset + (dataType === "h264" ? 1 : 2);
+    i2 += nalOffset + (dataType2 === "h264" ? 1 : 2);
   }
   return bytes.subarray(0, 0);
 };
@@ -16804,7 +16804,7 @@ var apiMap = [
 var specApi = apiMap[0];
 var browserApi;
 for (var i$1 = 0; i$1 < apiMap.length; i$1++) {
-  if (apiMap[i$1][1] in document$1) {
+  if (apiMap[i$1][1] in document$1$1) {
     browserApi = apiMap[i$1];
     break;
   }
@@ -16941,7 +16941,7 @@ function assign$4(target) {
     sources[_key - 1] = arguments[_key];
   }
   if (Object.assign) {
-    return _extends$1k.apply(void 0, [target].concat(sources));
+    return _extends$1l.apply(void 0, [target].concat(sources));
   }
   sources.forEach(function(source2) {
     if (!source2) {
@@ -17058,7 +17058,7 @@ function classRegExp(className) {
   return new RegExp("(^|\\s)" + className + "($|\\s)");
 }
 function isReal() {
-  return document$1 === window$1.document;
+  return document$1$1 === window$1.document;
 }
 function isEl(value) {
   return isObject$4(value) && value.nodeType === 1;
@@ -17073,16 +17073,16 @@ function isInFrame() {
 function createQuerier(method) {
   return function(selector, context2) {
     if (!isNonBlankString(selector)) {
-      return document$1[method](null);
+      return document$1$1[method](null);
     }
     if (isNonBlankString(context2)) {
-      context2 = document$1.querySelector(context2);
+      context2 = document$1$1.querySelector(context2);
     }
-    var ctx = isEl(context2) ? context2 : document$1;
+    var ctx = isEl(context2) ? context2 : document$1$1;
     return ctx[method] && ctx[method](selector);
   };
 }
-function createEl(tagName, properties, attributes, content) {
+function createEl(tagName, properties, attributes, content2) {
   if (tagName === void 0) {
     tagName = "div";
   }
@@ -17092,7 +17092,7 @@ function createEl(tagName, properties, attributes, content) {
   if (attributes === void 0) {
     attributes = {};
   }
-  var el = document$1.createElement(tagName);
+  var el = document$1$1.createElement(tagName);
   Object.getOwnPropertyNames(properties).forEach(function(propName) {
     var val = properties[propName];
     if (propName.indexOf("aria-") !== -1 || propName === "role" || propName === "type") {
@@ -17107,16 +17107,16 @@ function createEl(tagName, properties, attributes, content) {
   Object.getOwnPropertyNames(attributes).forEach(function(attrName) {
     el.setAttribute(attrName, attributes[attrName]);
   });
-  if (content) {
-    appendContent(el, content);
+  if (content2) {
+    appendContent(el, content2);
   }
   return el;
 }
-function textContent(el, text) {
+function textContent(el, text2) {
   if (typeof el.textContent === "undefined") {
-    el.innerText = text;
+    el.innerText = text2;
   } else {
-    el.textContent = text;
+    el.textContent = text2;
   }
   return el;
 }
@@ -17211,13 +17211,13 @@ function removeAttribute(el, attribute) {
   el.removeAttribute(attribute);
 }
 function blockTextSelection() {
-  document$1.body.focus();
-  document$1.onselectstart = function() {
+  document$1$1.body.focus();
+  document$1$1.onselectstart = function() {
     return false;
   };
 }
 function unblockTextSelection() {
-  document$1.onselectstart = function() {
+  document$1$1.onselectstart = function() {
     return true;
   };
 }
@@ -17252,7 +17252,7 @@ function findPosition(el) {
   var height3 = el.offsetHeight;
   var left2 = 0;
   var top2 = 0;
-  while (el.offsetParent && el !== document$1[FullscreenApi.fullscreenElement]) {
+  while (el.offsetParent && el !== document$1$1[FullscreenApi.fullscreenElement]) {
     left2 += el.offsetLeft;
     top2 += el.offsetTop;
     el = el.offsetParent;
@@ -17313,11 +17313,11 @@ function emptyEl(el) {
   }
   return el;
 }
-function normalizeContent(content) {
-  if (typeof content === "function") {
-    content = content();
+function normalizeContent(content2) {
+  if (typeof content2 === "function") {
+    content2 = content2();
   }
-  return (Array.isArray(content) ? content : [content]).map(function(value) {
+  return (Array.isArray(content2) ? content2 : [content2]).map(function(value) {
     if (typeof value === "function") {
       value = value();
     }
@@ -17325,20 +17325,20 @@ function normalizeContent(content) {
       return value;
     }
     if (typeof value === "string" && /\S/.test(value)) {
-      return document$1.createTextNode(value);
+      return document$1$1.createTextNode(value);
     }
   }).filter(function(value) {
     return value;
   });
 }
-function appendContent(el, content) {
-  normalizeContent(content).forEach(function(node2) {
+function appendContent(el, content2) {
+  normalizeContent(content2).forEach(function(node2) {
     return el.appendChild(node2);
   });
   return el;
 }
-function insertContent(el, content) {
-  return appendContent(emptyEl(el), content);
+function insertContent(el, content2) {
+  return appendContent(emptyEl(el), content2);
 }
 function isSingleLeftClick(event) {
   if (event.button === void 0 && event.buttons === void 0) {
@@ -17394,9 +17394,9 @@ var autoSetup = function autoSetup2() {
   if (videojs$1.options.autoSetup === false) {
     return;
   }
-  var vids = Array.prototype.slice.call(document$1.getElementsByTagName("video"));
-  var audios = Array.prototype.slice.call(document$1.getElementsByTagName("audio"));
-  var divs = Array.prototype.slice.call(document$1.getElementsByTagName("video-js"));
+  var vids = Array.prototype.slice.call(document$1$1.getElementsByTagName("video"));
+  var audios = Array.prototype.slice.call(document$1$1.getElementsByTagName("audio"));
+  var divs = Array.prototype.slice.call(document$1$1.getElementsByTagName("video-js"));
   var mediaEls = vids.concat(audios, divs);
   if (mediaEls && mediaEls.length > 0) {
     for (var i2 = 0, e2 = mediaEls.length; i2 < e2; i2++) {
@@ -17431,22 +17431,22 @@ function setWindowLoaded() {
   window$1.removeEventListener("load", setWindowLoaded);
 }
 if (isReal()) {
-  if (document$1.readyState === "complete") {
+  if (document$1$1.readyState === "complete") {
     setWindowLoaded();
   } else {
     window$1.addEventListener("load", setWindowLoaded);
   }
 }
 var createStyleElement$1 = function createStyleElement(className) {
-  var style2 = document$1.createElement("style");
+  var style2 = document$1$1.createElement("style");
   style2.className = className;
   return style2;
 };
-var setTextContent = function setTextContent2(el, content) {
+var setTextContent = function setTextContent2(el, content2) {
   if (el.styleSheet) {
-    el.styleSheet.cssText = content;
+    el.styleSheet.cssText = content2;
   } else {
-    el.textContent = content;
+    el.textContent = content2;
   }
 };
 var _initialGuid = 3;
@@ -17482,7 +17482,7 @@ if (!window$1.WeakMap) {
       var access = key[this.vdata];
       return access in this.data;
     };
-    _proto["delete"] = function _delete(key) {
+    _proto["delete"] = function _delete2(key) {
       var access = key[this.vdata];
       if (access) {
         delete this.data[access];
@@ -17541,7 +17541,7 @@ function fixEvent(event) {
       }
     }
     if (!event.target) {
-      event.target = event.srcElement || document$1;
+      event.target = event.srcElement || document$1$1;
     }
     if (!event.relatedTarget) {
       event.relatedTarget = event.fromElement === event.target ? event.toElement : event.fromElement;
@@ -17573,8 +17573,8 @@ function fixEvent(event) {
     };
     event.isImmediatePropagationStopped = returnFalse;
     if (event.clientX !== null && event.clientX !== void 0) {
-      var doc = document$1.documentElement;
-      var body = document$1.body;
+      var doc = document$1$1.documentElement;
+      var body = document$1$1.body;
       event.pageX = event.clientX + (doc && doc.scrollLeft || body && body.scrollLeft || 0) - (doc && doc.clientLeft || body && body.clientLeft || 0);
       event.pageY = event.clientY + (doc && doc.scrollTop || body && body.scrollTop || 0) - (doc && doc.clientTop || body && body.clientTop || 0);
     }
@@ -17629,9 +17629,9 @@ function on$1(elem, type3, fn3) {
         return;
       }
       event = fixEvent(event);
-      var handlers = data2.handlers[event.type];
-      if (handlers) {
-        var handlersCopy = handlers.slice(0);
+      var handlers2 = data2.handlers[event.type];
+      if (handlers2) {
+        var handlersCopy = handlers2.slice(0);
         for (var m3 = 0, n = handlersCopy.length; m3 < n; m3++) {
           if (event.isImmediatePropagationStopped()) {
             break;
@@ -17683,8 +17683,8 @@ function off$1(elem, type3, fn3) {
     }
     return;
   }
-  var handlers = data2.handlers[type3];
-  if (!handlers) {
+  var handlers2 = data2.handlers[type3];
+  if (!handlers2) {
     return;
   }
   if (!fn3) {
@@ -17692,9 +17692,9 @@ function off$1(elem, type3, fn3) {
     return;
   }
   if (fn3.guid) {
-    for (var n = 0; n < handlers.length; n++) {
-      if (handlers[n].guid === fn3.guid) {
-        handlers.splice(n--, 1);
+    for (var n = 0; n < handlers2.length; n++) {
+      if (handlers2[n].guid === fn3.guid) {
+        handlers2.splice(n--, 1);
       }
     }
   }
@@ -18294,7 +18294,7 @@ var MapSham = /* @__PURE__ */ (function() {
   _proto.has = function has(key) {
     return key in this.map_;
   };
-  _proto["delete"] = function _delete(key) {
+  _proto["delete"] = function _delete2(key) {
     var has = this.has(key);
     delete this.map_[key];
     return has;
@@ -18319,7 +18319,7 @@ var SetSham = /* @__PURE__ */ (function() {
   _proto.has = function has(key) {
     return key in this.set_;
   };
-  _proto["delete"] = function _delete(key) {
+  _proto["delete"] = function _delete2(key) {
     var has = this.has(key);
     delete this.set_[key];
     return has;
@@ -19295,7 +19295,7 @@ var ModalDialog$1 = /* @__PURE__ */ (function(_Component) {
   _proto.fill = function fill() {
     this.fillWith(this.content());
   };
-  _proto.fillWith = function fillWith(content) {
+  _proto.fillWith = function fillWith(content2) {
     var contentEl = this.contentEl();
     var parentEl = contentEl.parentNode;
     var nextSiblingEl = contentEl.nextSibling;
@@ -19303,7 +19303,7 @@ var ModalDialog$1 = /* @__PURE__ */ (function(_Component) {
     this.hasBeenFilled_ = true;
     parentEl.removeChild(contentEl);
     this.empty();
-    insertContent(contentEl, content);
+    insertContent(contentEl, content2);
     this.trigger("modalfill");
     if (nextSiblingEl) {
       parentEl.insertBefore(contentEl, nextSiblingEl);
@@ -19320,14 +19320,14 @@ var ModalDialog$1 = /* @__PURE__ */ (function(_Component) {
     emptyEl(this.contentEl());
     this.trigger("modalempty");
   };
-  _proto.content = function content(value) {
+  _proto.content = function content2(value) {
     if (typeof value !== "undefined") {
       this.content_ = value;
     }
     return this.content_;
   };
   _proto.conditionalFocus_ = function conditionalFocus_() {
-    var activeEl = document$1.activeElement;
+    var activeEl = document$1$1.activeElement;
     var playerEl = this.player_.el_;
     this.previouslyActiveEl_ = null;
     if (playerEl.contains(activeEl) || playerEl === activeEl) {
@@ -19360,7 +19360,7 @@ var ModalDialog$1 = /* @__PURE__ */ (function(_Component) {
         break;
       }
     }
-    if (document$1.activeElement === this.el_) {
+    if (document$1$1.activeElement === this.el_) {
       focusIndex = 0;
     }
     if (event.shiftKey && focusIndex === 0) {
@@ -19807,7 +19807,7 @@ var Track$1 = /* @__PURE__ */ (function(_EventTarget) {
 })(EventTarget$2);
 var parseUrl = function parseUrl2(url2) {
   var props = ["protocol", "hostname", "port", "pathname", "search", "hash", "host"];
-  var a4 = document$1.createElement("a");
+  var a4 = document$1$1.createElement("a");
   a4.href = url2;
   var details2 = {};
   for (var i2 = 0; i2 < props.length; i2++) {
@@ -19829,7 +19829,7 @@ var parseUrl = function parseUrl2(url2) {
 };
 var getAbsoluteURL = function getAbsoluteURL2(url2) {
   if (!url2.match(/^https?:\/\//)) {
-    var a4 = document$1.createElement("a");
+    var a4 = document$1$1.createElement("a");
     a4.href = url2;
     url2 = a4.href;
   }
@@ -20310,7 +20310,7 @@ var REMOTE = {
     privateName: "remoteTextTrackEls_"
   }
 };
-var ALL = _extends$1k({}, NORMAL, REMOTE);
+var ALL = _extends$1l({}, NORMAL, REMOTE);
 REMOTE.names = Object.keys(REMOTE);
 NORMAL.names = Object.keys(NORMAL);
 ALL.names = [].concat(REMOTE.names).concat(NORMAL.names);
@@ -20572,12 +20572,12 @@ var Tech = /* @__PURE__ */ (function(_Component) {
     if (window$1.WebVTT) {
       return;
     }
-    if (document$1.body.contains(this.el())) {
+    if (document$1$1.body.contains(this.el())) {
       if (!this.options_["vtt.js"] && isPlain(vtt) && Object.keys(vtt).length > 0) {
         this.trigger("vttjsloaded");
         return;
       }
-      var script = document$1.createElement("script");
+      var script = document$1$1.createElement("script");
       script.src = this.options_["vtt.js"] || "https://vjs.zencdn.net/vttjs/0.14.1/vtt.min.js";
       script.onload = function() {
         _this5.trigger("vttjsloaded");
@@ -20787,20 +20787,20 @@ Tech.prototype.featuresNativeTextTracks = false;
 Tech.prototype.featuresVideoFrameCallback = false;
 Tech.withSourceHandlers = function(_Tech) {
   _Tech.registerSourceHandler = function(handler, index2) {
-    var handlers = _Tech.sourceHandlers;
-    if (!handlers) {
-      handlers = _Tech.sourceHandlers = [];
+    var handlers2 = _Tech.sourceHandlers;
+    if (!handlers2) {
+      handlers2 = _Tech.sourceHandlers = [];
     }
     if (index2 === void 0) {
-      index2 = handlers.length;
+      index2 = handlers2.length;
     }
-    handlers.splice(index2, 0, handler);
+    handlers2.splice(index2, 0, handler);
   };
   _Tech.canPlayType = function(type3) {
-    var handlers = _Tech.sourceHandlers || [];
+    var handlers2 = _Tech.sourceHandlers || [];
     var can;
-    for (var i2 = 0; i2 < handlers.length; i2++) {
-      can = handlers[i2].canPlayType(type3);
+    for (var i2 = 0; i2 < handlers2.length; i2++) {
+      can = handlers2[i2].canPlayType(type3);
       if (can) {
         return can;
       }
@@ -20808,12 +20808,12 @@ Tech.withSourceHandlers = function(_Tech) {
     return "";
   };
   _Tech.selectSourceHandler = function(source2, options2) {
-    var handlers = _Tech.sourceHandlers || [];
+    var handlers2 = _Tech.sourceHandlers || [];
     var can;
-    for (var i2 = 0; i2 < handlers.length; i2++) {
-      can = handlers[i2].canHandleSource(source2, options2);
+    for (var i2 = 0; i2 < handlers2.length; i2++) {
+      can = handlers2[i2].canHandleSource(source2, options2);
       if (can) {
-        return handlers[i2];
+        return handlers2[i2];
       }
     }
     return null;
@@ -21191,15 +21191,15 @@ var ClickableComponent = /* @__PURE__ */ (function(_Component) {
     this.controlText(this.controlText_, el);
     return this.controlTextEl_;
   };
-  _proto.controlText = function controlText(text, el) {
+  _proto.controlText = function controlText(text2, el) {
     if (el === void 0) {
       el = this.el();
     }
-    if (text === void 0) {
+    if (text2 === void 0) {
       return this.controlText_ || "Need Text";
     }
-    var localizedText = this.localize(text);
-    this.controlText_ = text;
+    var localizedText = this.localize(text2);
+    this.controlText_ = text2;
     textContent(this.controlTextEl_, localizedText);
     if (!this.nonIconControl && !this.player_.options_.noUITitleAttributes) {
       el.setAttribute("title", localizedText);
@@ -21889,7 +21889,7 @@ var TimeDisplay = /* @__PURE__ */ (function(_Component) {
         oldNode = null;
         log$1.warn("TimeDisplay#updateTextnode_: Prevented replacement of text node element since it was no longer a child of this node. Appending a new node instead.");
       }
-      _this2.textNode_ = document$1.createTextNode(_this2.formattedTime_);
+      _this2.textNode_ = document$1$1.createTextNode(_this2.formattedTime_);
       if (!_this2.textNode_) {
         return;
       }
@@ -22049,7 +22049,7 @@ var LiveDisplay = /* @__PURE__ */ (function(_Component) {
       className: "vjs-control-text",
       textContent: this.localize("Stream Type") + " "
     }));
-    this.contentEl_.appendChild(document$1.createTextNode(this.localize("LIVE")));
+    this.contentEl_.appendChild(document$1$1.createTextNode(this.localize("LIVE")));
     el.appendChild(this.contentEl_);
     return el;
   };
@@ -22325,7 +22325,7 @@ var LoadProgressBar = /* @__PURE__ */ (function(_Component) {
     var loadedText = createEl("span", {
       textContent: this.localize("Loaded")
     });
-    var separator = document$1.createTextNode(": ");
+    var separator = document$1$1.createTextNode(": ");
     this.percentageEl_ = createEl("span", {
       className: "vjs-control-text-loaded-percentage",
       textContent: "0%"
@@ -22396,7 +22396,7 @@ var TimeTooltip = /* @__PURE__ */ (function(_Component) {
       "aria-hidden": "true"
     });
   };
-  _proto.update = function update2(seekBarRect, seekBarPoint, content) {
+  _proto.update = function update2(seekBarRect, seekBarPoint, content2) {
     var tooltipRect = findPosition(this.el_);
     var playerRect = getBoundingClientRect$2(this.player_.el());
     var seekBarPointPx = seekBarRect.width * seekBarPoint;
@@ -22418,24 +22418,24 @@ var TimeTooltip = /* @__PURE__ */ (function(_Component) {
     }
     pullTooltipBy = Math.round(pullTooltipBy);
     this.el_.style.right = "-" + pullTooltipBy + "px";
-    this.write(content);
+    this.write(content2);
   };
-  _proto.write = function write2(content) {
-    textContent(this.el_, content);
+  _proto.write = function write2(content2) {
+    textContent(this.el_, content2);
   };
   _proto.updateTime = function updateTime(seekBarRect, seekBarPoint, time2, cb2) {
     var _this2 = this;
     this.requestNamedAnimationFrame("TimeTooltip#updateTime", function() {
-      var content;
+      var content2;
       var duration5 = _this2.player_.duration();
       if (_this2.player_.liveTracker && _this2.player_.liveTracker.isLive()) {
         var liveWindow = _this2.player_.liveTracker.liveWindow();
         var secondsBehind = liveWindow - seekBarPoint * liveWindow;
-        content = (secondsBehind < 1 ? "" : "-") + formatTime$1(secondsBehind, liveWindow);
+        content2 = (secondsBehind < 1 ? "" : "-") + formatTime$1(secondsBehind, liveWindow);
       } else {
-        content = formatTime$1(time2, duration5);
+        content2 = formatTime$1(time2, duration5);
       }
-      _this2.update(seekBarRect, seekBarPoint, content);
+      _this2.update(seekBarRect, seekBarPoint, content2);
       if (cb2) {
         cb2();
       }
@@ -22532,12 +22532,12 @@ var SeekBar = /* @__PURE__ */ (function(_Slider) {
     };
     this.on(this.player_, ["playing"], this.enableIntervalHandler_);
     this.on(this.player_, ["ended", "pause", "waiting"], this.disableIntervalHandler_);
-    if ("hidden" in document$1 && "visibilityState" in document$1) {
-      this.on(document$1, "visibilitychange", this.toggleVisibility_);
+    if ("hidden" in document$1$1 && "visibilityState" in document$1$1) {
+      this.on(document$1$1, "visibilitychange", this.toggleVisibility_);
     }
   };
   _proto.toggleVisibility_ = function toggleVisibility_(e2) {
-    if (document$1.visibilityState === "hidden") {
+    if (document$1$1.visibilityState === "hidden") {
       this.cancelNamedAnimationFrame("SeekBar#update");
       this.cancelNamedAnimationFrame("Slider#update");
       this.disableInterval_(e2);
@@ -22573,7 +22573,7 @@ var SeekBar = /* @__PURE__ */ (function(_Slider) {
   };
   _proto.update = function update2(event) {
     var _this3 = this;
-    if (document$1.visibilityState === "hidden") {
+    if (document$1$1.visibilityState === "hidden") {
       return;
     }
     var percent2 = _Slider.prototype.update.call(this);
@@ -22762,8 +22762,8 @@ var SeekBar = /* @__PURE__ */ (function(_Slider) {
     }
     this.off(this.player_, ["playing"], this.enableIntervalHandler_);
     this.off(this.player_, ["ended", "pause", "waiting"], this.disableIntervalHandler_);
-    if ("hidden" in document$1 && "visibilityState" in document$1) {
-      this.off(document$1, "visibilitychange", this.toggleVisibility_);
+    if ("hidden" in document$1$1 && "visibilityState" in document$1$1) {
+      this.off(document$1$1, "visibilitychange", this.toggleVisibility_);
     }
     _Slider.prototype.dispose.call(this);
   };
@@ -22922,7 +22922,7 @@ var PictureInPictureToggle = /* @__PURE__ */ (function(_Button) {
     return "vjs-picture-in-picture-control " + _Button.prototype.buildCSSClass.call(this);
   };
   _proto.handlePictureInPictureEnabledChange = function handlePictureInPictureEnabledChange() {
-    if (document$1.pictureInPictureEnabled && this.player_.disablePictureInPicture() === false) {
+    if (document$1$1.pictureInPictureEnabled && this.player_.disablePictureInPicture() === false) {
       this.enable();
     } else {
       this.disable();
@@ -22955,7 +22955,7 @@ var FullscreenToggle = /* @__PURE__ */ (function(_Button) {
     _this.on(player, "fullscreenchange", function(e2) {
       return _this.handleFullscreenChange(e2);
     });
-    if (document$1[player.fsApi_.fullscreenEnabled] === false) {
+    if (document$1$1[player.fsApi_.fullscreenEnabled] === false) {
       _this.disable();
     }
     return _this;
@@ -23028,7 +23028,7 @@ var VolumeLevelTooltip = /* @__PURE__ */ (function(_Component) {
       "aria-hidden": "true"
     });
   };
-  _proto.update = function update2(rangeBarRect, rangeBarPoint, vertical, content) {
+  _proto.update = function update2(rangeBarRect, rangeBarPoint, vertical, content2) {
     if (!vertical) {
       var tooltipRect = getBoundingClientRect$2(this.el_);
       var playerRect = getBoundingClientRect$2(this.player_.el());
@@ -23051,10 +23051,10 @@ var VolumeLevelTooltip = /* @__PURE__ */ (function(_Component) {
       }
       this.el_.style.right = "-" + pullTooltipBy + "px";
     }
-    this.write(content + "%");
+    this.write(content2 + "%");
   };
-  _proto.write = function write2(content) {
-    textContent(this.el_, content);
+  _proto.write = function write2(content2) {
+    textContent(this.el_, content2);
   };
   _proto.updateVolume = function updateVolume(rangeBarRect, rangeBarPoint, vertical, volume, cb2) {
     var _this2 = this;
@@ -23328,9 +23328,9 @@ var MuteToggle = /* @__PURE__ */ (function(_Button) {
   };
   _proto.updateControlText_ = function updateControlText_() {
     var soundOff = this.player_.muted() || this.player_.volume() === 0;
-    var text = soundOff ? "Unmute" : "Mute";
-    if (this.controlText() !== text) {
-      this.controlText(text);
+    var text2 = soundOff ? "Unmute" : "Mute";
+    if (this.controlText() !== text2) {
+      this.controlText(text2);
     }
   };
   return MuteToggle2;
@@ -23414,11 +23414,11 @@ var VolumePanel = /* @__PURE__ */ (function(_Component) {
   };
   _proto.handleMouseOver = function handleMouseOver(event) {
     this.addClass("vjs-hover");
-    on$1(document$1, "keyup", this.handleKeyPressHandler_);
+    on$1(document$1$1, "keyup", this.handleKeyPressHandler_);
   };
   _proto.handleMouseOut = function handleMouseOut(event) {
     this.removeClass("vjs-hover");
-    off$1(document$1, "keyup", this.handleKeyPressHandler_);
+    off$1(document$1$1, "keyup", this.handleKeyPressHandler_);
   };
   _proto.handleKeyPress = function handleKeyPress(event) {
     if (keycode.isEventKey(event, "Esc")) {
@@ -23503,7 +23503,7 @@ var Menu$2 = /* @__PURE__ */ (function(_Component) {
     _Component.prototype.dispose.call(this);
   };
   _proto.handleBlur = function handleBlur(event) {
-    var relatedTarget = event.relatedTarget || document$1.activeElement;
+    var relatedTarget = event.relatedTarget || document$1$1.activeElement;
     if (!this.children().some(function(element) {
       return element.el() === relatedTarget;
     })) {
@@ -23609,7 +23609,7 @@ var MenuButton = /* @__PURE__ */ (function(_Component) {
     _this.on(_this.menuButton_, "mouseenter", function() {
       _this.addClass("vjs-hover");
       _this.menu.show();
-      on$1(document$1, "keyup", _this.handleMenuKeyUp_);
+      on$1(document$1$1, "keyup", _this.handleMenuKeyUp_);
     });
     _this.on("mouseleave", function(e2) {
       return _this.handleMouseLeave(e2);
@@ -23688,11 +23688,11 @@ var MenuButton = /* @__PURE__ */ (function(_Component) {
     }
     return "vjs-menu-button " + menuButtonClass + " " + _Component.prototype.buildCSSClass.call(this);
   };
-  _proto.controlText = function controlText(text, el) {
+  _proto.controlText = function controlText(text2, el) {
     if (el === void 0) {
       el = this.menuButton_.el();
     }
-    return this.menuButton_.controlText(text, el);
+    return this.menuButton_.controlText(text2, el);
   };
   _proto.dispose = function dispose2() {
     this.handleMouseLeave();
@@ -23707,7 +23707,7 @@ var MenuButton = /* @__PURE__ */ (function(_Component) {
   };
   _proto.handleMouseLeave = function handleMouseLeave(event) {
     this.removeClass("vjs-hover");
-    off$1(document$1, "keyup", this.handleMenuKeyUp_);
+    off$1(document$1$1, "keyup", this.handleMenuKeyUp_);
   };
   _proto.focus = function focus() {
     this.menuButton_.focus();
@@ -23914,7 +23914,7 @@ var TextTrackMenuItem = /* @__PURE__ */ (function(_MenuItem) {
           }
         }
         if (!event) {
-          event = document$1.createEvent("Event");
+          event = document$1$1.createEvent("Event");
           event.initEvent("change", true, true);
         }
         tracks.dispatchEvent(event);
@@ -24660,7 +24660,7 @@ var ControlBar = /* @__PURE__ */ (function(_Component) {
 ControlBar.prototype.options_ = {
   children: ["playToggle", "volumePanel", "currentTimeDisplay", "timeDivider", "durationDisplay", "progressControl", "liveDisplay", "seekToLive", "remainingTimeDisplay", "customControlSpacer", "playbackRateMenuButton", "chaptersButton", "descriptionsButton", "subsCapsButton", "audioTrackButton", "fullscreenToggle"]
 };
-if ("exitPictureInPicture" in document$1) {
+if ("exitPictureInPicture" in document$1$1) {
   ControlBar.prototype.options_.children.splice(ControlBar.prototype.options_.children.length - 1, 0, "pictureInPictureToggle");
 }
 Component$1$1.registerComponent("ControlBar", ControlBar);
@@ -24678,13 +24678,13 @@ var ErrorDisplay = /* @__PURE__ */ (function(_ModalDialog) {
   _proto.buildCSSClass = function buildCSSClass() {
     return "vjs-error-display " + _ModalDialog.prototype.buildCSSClass.call(this);
   };
-  _proto.content = function content() {
+  _proto.content = function content2() {
     var error = this.player().error();
     return error ? this.localize(error.message) : "";
   };
   return ErrorDisplay2;
 })(ModalDialog$1);
-ErrorDisplay.prototype.options_ = _extends$1k({}, ModalDialog$1.prototype.options_, {
+ErrorDisplay.prototype.options_ = _extends$1l({}, ModalDialog$1.prototype.options_, {
   pauseOnOpen: false,
   fillAlways: true,
   temporary: false,
@@ -24874,7 +24874,7 @@ var TextTrackSettings = /* @__PURE__ */ (function(_ModalDialog) {
       innerHTML: ['<button type="button" class="vjs-default-button" title="' + defaultsDescription + '">', this.localize("Reset"), '<span class="vjs-control-text"> ' + defaultsDescription + "</span>", "</button>", '<button type="button" class="vjs-done-button">' + this.localize("Done") + "</button>"].join("")
     });
   };
-  _proto.content = function content() {
+  _proto.content = function content2() {
     return [this.createElColors_(), this.createElFont_(), this.createElControls_()];
   };
   _proto.label = function label() {
@@ -25073,8 +25073,8 @@ var LiveTracker = /* @__PURE__ */ (function(_Component) {
     _this.on(_this.player_, "canplay", function() {
       return _this.toggleTracking();
     });
-    if (IE_VERSION && "hidden" in document$1 && "visibilityState" in document$1) {
-      _this.on(document$1, "visibilitychange", _this.handleVisibilityChange_);
+    if (IE_VERSION && "hidden" in document$1$1 && "visibilityState" in document$1$1) {
+      _this.on(document$1$1, "visibilitychange", _this.handleVisibilityChange_);
     }
     return _this;
   }
@@ -25083,7 +25083,7 @@ var LiveTracker = /* @__PURE__ */ (function(_Component) {
     if (this.player_.duration() !== Infinity) {
       return;
     }
-    if (document$1.hidden) {
+    if (document$1$1.hidden) {
       this.stopTracking();
     } else {
       this.startTracking();
@@ -25236,7 +25236,7 @@ var LiveTracker = /* @__PURE__ */ (function(_Component) {
     this.player_.currentTime(this.liveCurrentTime());
   };
   _proto.dispose = function dispose2() {
-    this.off(document$1, "visibilitychange", this.handleVisibilityChange_);
+    this.off(document$1$1, "visibilitychange", this.handleVisibilityChange_);
     this.stopTracking();
     _Component.prototype.dispose.call(this);
   };
@@ -25275,9 +25275,9 @@ var innerHTMLDescriptorPolyfill = Object.defineProperty({}, "innerHTML", {
     return this.cloneNode(true).innerHTML;
   },
   set: function set(v) {
-    var dummy = document$1.createElement(this.nodeName.toLowerCase());
+    var dummy = document$1$1.createElement(this.nodeName.toLowerCase());
     dummy.innerHTML = v;
-    var docFrag = document$1.createDocumentFragment();
+    var docFrag = document$1$1.createDocumentFragment();
     while (dummy.childNodes.length) {
       docFrag.appendChild(dummy.childNodes[0]);
     }
@@ -25628,7 +25628,7 @@ var Html5 = /* @__PURE__ */ (function(_Tech) {
         Html52.disposeMediaElement(el);
         el = clone2;
       } else {
-        el = document$1.createElement("video");
+        el = document$1$1.createElement("video");
         var tagAttributes = this.options_.tag && getAttributes(this.options_.tag);
         var attributes = mergeOptions$3({}, tagAttributes);
         if (!TOUCH_ENABLED || this.options_.nativeControlsForTouch !== true) {
@@ -25852,7 +25852,7 @@ var Html5 = /* @__PURE__ */ (function(_Tech) {
     if (!this.featuresNativeTextTracks) {
       return _Tech.prototype.createRemoteTextTrack.call(this, options2);
     }
-    var htmlTrackElement = document$1.createElement("track");
+    var htmlTrackElement = document$1$1.createElement("track");
     if (options2.kind) {
       htmlTrackElement.kind = options2.kind;
     }
@@ -25914,8 +25914,8 @@ defineLazyProperty(Html5, "TEST_VID", function() {
   if (!isReal()) {
     return;
   }
-  var video = document$1.createElement("video");
-  var track = document$1.createElement("track");
+  var video = document$1$1.createElement("video");
+  var track = document$1$1.createElement("track");
   track.kind = "captions";
   track.srclang = "en";
   track.label = "English";
@@ -25984,19 +25984,19 @@ Html5.canOverrideAttributes = function() {
   try {
     var noop4 = function noop5() {
     };
-    Object.defineProperty(document$1.createElement("video"), "src", {
+    Object.defineProperty(document$1$1.createElement("video"), "src", {
       get: noop4,
       set: noop4
     });
-    Object.defineProperty(document$1.createElement("audio"), "src", {
+    Object.defineProperty(document$1$1.createElement("audio"), "src", {
       get: noop4,
       set: noop4
     });
-    Object.defineProperty(document$1.createElement("video"), "innerHTML", {
+    Object.defineProperty(document$1$1.createElement("video"), "innerHTML", {
       get: noop4,
       set: noop4
     });
-    Object.defineProperty(document$1.createElement("audio"), "innerHTML", {
+    Object.defineProperty(document$1$1.createElement("audio"), "innerHTML", {
       get: noop4,
       set: noop4
     });
@@ -26985,7 +26985,7 @@ var Player = /* @__PURE__ */ (function(_Component) {
       eventBusKey: "el_"
     });
     if (_this.fsApi_.requestFullscreen) {
-      on$1(document$1, _this.fsApi_.fullscreenchange, _this.boundDocumentFullscreenChange_);
+      on$1(document$1$1, _this.fsApi_.fullscreenchange, _this.boundDocumentFullscreenChange_);
       _this.on(_this.fsApi_.fullscreenchange, _this.boundDocumentFullscreenChange_);
     }
     if (_this.fluid_) {
@@ -27058,8 +27058,8 @@ var Player = /* @__PURE__ */ (function(_Component) {
     var _this2 = this;
     this.trigger("dispose");
     this.off("dispose");
-    off$1(document$1, this.fsApi_.fullscreenchange, this.boundDocumentFullscreenChange_);
-    off$1(document$1, "keydown", this.boundFullWindowOnEscKey_);
+    off$1(document$1$1, this.fsApi_.fullscreenchange, this.boundDocumentFullscreenChange_);
+    off$1(document$1$1, "keydown", this.boundFullWindowOnEscKey_);
     if (this.styleEl_ && this.styleEl_.parentNode) {
       this.styleEl_.parentNode.removeChild(this.styleEl_);
       this.styleEl_ = null;
@@ -27107,7 +27107,7 @@ var Player = /* @__PURE__ */ (function(_Component) {
     var attrs = getAttributes(tag2);
     if (divEmbed) {
       el = this.el_ = tag2;
-      tag2 = this.tag = document$1.createElement("video");
+      tag2 = this.tag = document$1$1.createElement("video");
       while (el.children.length) {
         tag2.appendChild(el.firstChild);
       }
@@ -27785,7 +27785,7 @@ var Player = /* @__PURE__ */ (function(_Component) {
       return;
     }
     var el = this.el();
-    var isFs = document$1[this.fsApi_.fullscreenElement] === el;
+    var isFs = document$1$1[this.fsApi_.fullscreenElement] === el;
     if (!isFs && el.matches) {
       isFs = el.matches(":" + this.fsApi_.fullscreen);
     } else if (!isFs && el.msMatchesSelector) {
@@ -28175,7 +28175,7 @@ var Player = /* @__PURE__ */ (function(_Component) {
   _proto.exitFullscreenHelper_ = function exitFullscreenHelper_() {
     var _this13 = this;
     if (this.fsApi_.requestFullscreen) {
-      var promise = document$1[this.fsApi_.exitFullscreen]();
+      var promise = document$1$1[this.fsApi_.exitFullscreen]();
       if (promise) {
         silencePromise(promise.then(function() {
           return _this13.isFullscreen(false);
@@ -28191,10 +28191,10 @@ var Player = /* @__PURE__ */ (function(_Component) {
   _proto.enterFullWindow = function enterFullWindow() {
     this.isFullscreen(true);
     this.isFullWindow = true;
-    this.docOrigOverflow = document$1.documentElement.style.overflow;
-    on$1(document$1, "keydown", this.boundFullWindowOnEscKey_);
-    document$1.documentElement.style.overflow = "hidden";
-    addClass$1(document$1.body, "vjs-full-window");
+    this.docOrigOverflow = document$1$1.documentElement.style.overflow;
+    on$1(document$1$1, "keydown", this.boundFullWindowOnEscKey_);
+    document$1$1.documentElement.style.overflow = "hidden";
+    addClass$1(document$1$1.body, "vjs-full-window");
     this.trigger("enterFullWindow");
   };
   _proto.fullWindowOnEscKey = function fullWindowOnEscKey(event) {
@@ -28211,9 +28211,9 @@ var Player = /* @__PURE__ */ (function(_Component) {
   _proto.exitFullWindow = function exitFullWindow() {
     this.isFullscreen(false);
     this.isFullWindow = false;
-    off$1(document$1, "keydown", this.boundFullWindowOnEscKey_);
-    document$1.documentElement.style.overflow = this.docOrigOverflow;
-    removeClass$1(document$1.body, "vjs-full-window");
+    off$1(document$1$1, "keydown", this.boundFullWindowOnEscKey_);
+    document$1$1.documentElement.style.overflow = this.docOrigOverflow;
+    removeClass$1(document$1$1.body, "vjs-full-window");
     this.trigger("exitFullWindow");
   };
   _proto.disablePictureInPicture = function disablePictureInPicture(value) {
@@ -28233,13 +28233,13 @@ var Player = /* @__PURE__ */ (function(_Component) {
     return !!this.isInPictureInPicture_;
   };
   _proto.requestPictureInPicture = function requestPictureInPicture() {
-    if ("pictureInPictureEnabled" in document$1 && this.disablePictureInPicture() === false) {
+    if ("pictureInPictureEnabled" in document$1$1 && this.disablePictureInPicture() === false) {
       return this.techGet_("requestPictureInPicture");
     }
   };
   _proto.exitPictureInPicture = function exitPictureInPicture() {
-    if ("pictureInPictureEnabled" in document$1) {
-      return document$1.exitPictureInPicture();
+    if ("pictureInPictureEnabled" in document$1$1) {
+      return document$1$1.exitPictureInPicture();
     }
   };
   _proto.handleKeyDown = function handleKeyDown(event) {
@@ -28281,7 +28281,7 @@ var Player = /* @__PURE__ */ (function(_Component) {
       event.preventDefault();
       event.stopPropagation();
       var FSToggle = Component$1$1.getComponent("FullscreenToggle");
-      if (document$1[this.fsApi_.fullscreenEnabled] !== false) {
+      if (document$1$1[this.fsApi_.fullscreenEnabled] !== false) {
         FSToggle.prototype.handleClick.call(this, event);
       }
     } else if (muteKey.call(this, event)) {
@@ -28955,10 +28955,10 @@ var Player = /* @__PURE__ */ (function(_Component) {
     }
     return options2;
   };
-  _proto.createModal = function createModal(content, options2) {
+  _proto.createModal = function createModal(content2, options2) {
     var _this22 = this;
     options2 = options2 || {};
-    options2.content = content || "";
+    options2.content = content2 || "";
     var modal = new ModalDialog$1(this, options2);
     this.addChild(modal);
     modal.on("dispose", function() {
@@ -29120,7 +29120,7 @@ var Player = /* @__PURE__ */ (function(_Component) {
     return baseOptions;
   };
   _proto.flexNotSupported_ = function flexNotSupported_() {
-    var elem = document$1.createElement("i");
+    var elem = document$1$1.createElement("i");
     return !("flexBasis" in elem.style || "webkitFlexBasis" in elem.style || "mozFlexBasis" in elem.style || "msFlexBasis" in elem.style || // IE10-specific (2012 flex spec), available for completeness
     "msFlexOrder" in elem.style);
   };
@@ -29447,7 +29447,7 @@ Player.prototype.hasPlugin = function(name2) {
   return !!pluginExists(name2);
 };
 var hasLogged = false;
-var extend = function extend2(superClass, subClassMethods) {
+var extend$1 = function extend(superClass, subClassMethods) {
   if (subClassMethods === void 0) {
     subClassMethods = {};
   }
@@ -29592,7 +29592,7 @@ Object.defineProperty(videojs.middleware, "TERMINATOR", {
 });
 videojs.browser = browser;
 videojs.TOUCH_ENABLED = TOUCH_ENABLED;
-videojs.extend = extend;
+videojs.extend = extend$1;
 videojs.mergeOptions = mergeOptions$3;
 videojs.bind = bind$1;
 videojs.registerPlugin = Plugin$1.registerPlugin;
@@ -30409,7 +30409,7 @@ var addPropertiesToMaster = function addPropertiesToMaster2(master, uri, createG
           }
         }
       }
-      properties.playlists = [_extends$1k({}, properties)];
+      properties.playlists = [_extends$1l({}, properties)];
     }
     properties.playlists.forEach(function(p3, i3) {
       var groupId = createGroupID(mediaType, groupKey, labelKey, p3);
@@ -33926,8 +33926,8 @@ var workerCode$1 = transform$1(getWorkerString(function() {
     }
     return false;
   };
-  Cea708Window.prototype.addText = function(text) {
-    this.rows[this.rowIdx] += text;
+  Cea708Window.prototype.addText = function(text2) {
+    this.rows[this.rowIdx] += text2;
   };
   Cea708Window.prototype.backspace = function() {
     if (!this.isEmpty()) {
@@ -34563,7 +34563,7 @@ var workerCode$1 = transform$1(getWorkerString(function() {
     this.setConstants();
     this.reset();
     this.push = function(packet) {
-      var data2, swap, char0, char1, text;
+      var data2, swap, char0, char1, text2;
       data2 = packet.ccData & 32639;
       if (data2 === this.lastControlCode_) {
         this.lastControlCode_ = null;
@@ -34622,8 +34622,8 @@ var workerCode$1 = transform$1(getWorkerString(function() {
         this.startPts_ = packet.pts;
       } else if (this.isSpecialCharacter(char0, char1)) {
         char0 = (char0 & 3) << 8;
-        text = getCharFromCode(char0 | char1);
-        this[this.mode_](packet.pts, text);
+        text2 = getCharFromCode(char0 | char1);
+        this[this.mode_](packet.pts, text2);
         this.column_++;
       } else if (this.isExtCharacter(char0, char1)) {
         if (this.mode_ === "popOn") {
@@ -34632,8 +34632,8 @@ var workerCode$1 = transform$1(getWorkerString(function() {
           this.displayed_[this.row_] = this.displayed_[this.row_].slice(0, -1);
         }
         char0 = (char0 & 3) << 8;
-        text = getCharFromCode(char0 | char1);
-        this[this.mode_](packet.pts, text);
+        text2 = getCharFromCode(char0 | char1);
+        this[this.mode_](packet.pts, text2);
         this.column_++;
       } else if (this.isMidRowCode(char0, char1)) {
         this.clearFormatting(packet.pts);
@@ -34674,16 +34674,16 @@ var workerCode$1 = transform$1(getWorkerString(function() {
         if (char1 === 0) {
           char1 = null;
         }
-        text = getCharFromCode(char0);
-        text += getCharFromCode(char1);
-        this[this.mode_](packet.pts, text);
-        this.column_ += text.length;
+        text2 = getCharFromCode(char0);
+        text2 += getCharFromCode(char1);
+        this[this.mode_](packet.pts, text2);
+        this.column_ += text2.length;
       }
     };
   };
   Cea608Stream.prototype = new stream();
   Cea608Stream.prototype.flushDisplayed = function(pts) {
-    var content = this.displayed_.map(function(row, index2) {
+    var content2 = this.displayed_.map(function(row, index2) {
       try {
         return row.trim();
       } catch (e2) {
@@ -34694,11 +34694,11 @@ var workerCode$1 = transform$1(getWorkerString(function() {
         return "";
       }
     }, this).join("\n").replace(/^\n+|\n+$/g, "");
-    if (content.length) {
+    if (content2.length) {
       this.trigger("data", {
         startPts: this.startPts_,
         endPts: pts,
-        text: content,
+        text: content2,
         stream: this.name_
       });
     }
@@ -34781,29 +34781,29 @@ var workerCode$1 = transform$1(getWorkerString(function() {
   };
   Cea608Stream.prototype.addFormatting = function(pts, format2) {
     this.formatting_ = this.formatting_.concat(format2);
-    var text = format2.reduce(function(text2, format3) {
-      return text2 + "<" + format3 + ">";
+    var text2 = format2.reduce(function(text3, format3) {
+      return text3 + "<" + format3 + ">";
     }, "");
-    this[this.mode_](pts, text);
+    this[this.mode_](pts, text2);
   };
   Cea608Stream.prototype.clearFormatting = function(pts) {
     if (!this.formatting_.length) {
       return;
     }
-    var text = this.formatting_.reverse().reduce(function(text2, format2) {
-      return text2 + "</" + format2 + ">";
+    var text2 = this.formatting_.reverse().reduce(function(text3, format2) {
+      return text3 + "</" + format2 + ">";
     }, "");
     this.formatting_ = [];
-    this[this.mode_](pts, text);
+    this[this.mode_](pts, text2);
   };
-  Cea608Stream.prototype.popOn = function(pts, text) {
+  Cea608Stream.prototype.popOn = function(pts, text2) {
     var baseRow = this.nonDisplayed_[this.row_];
-    baseRow += text;
+    baseRow += text2;
     this.nonDisplayed_[this.row_] = baseRow;
   };
-  Cea608Stream.prototype.rollUp = function(pts, text) {
+  Cea608Stream.prototype.rollUp = function(pts, text2) {
     var baseRow = this.displayed_[this.row_];
-    baseRow += text;
+    baseRow += text2;
     this.displayed_[this.row_] = baseRow;
   };
   Cea608Stream.prototype.shiftRowsUp_ = function() {
@@ -34819,9 +34819,9 @@ var workerCode$1 = transform$1(getWorkerString(function() {
     }
     this.displayed_[this.row_] = "";
   };
-  Cea608Stream.prototype.paintOn = function(pts, text) {
+  Cea608Stream.prototype.paintOn = function(pts, text2) {
     var baseRow = this.displayed_[this.row_];
-    baseRow += text;
+    baseRow += text2;
     this.displayed_[this.row_] = baseRow;
   };
   var captionStream = {
@@ -37729,11 +37729,11 @@ var workerCode$1 = transform$1(getWorkerString(function() {
       if (typeof audioBaseTimestamp === "undefined" || isNaN(audioBaseTimestamp)) {
         audioBaseTimestamp = segmentInfo.audio[0].dts;
       }
-      segmentInfo.audio.forEach(function(info) {
-        info.dts = handleRollover(info.dts, audioBaseTimestamp);
-        info.pts = handleRollover(info.pts, audioBaseTimestamp);
-        info.dtsTime = info.dts / ONE_SECOND_IN_TS;
-        info.ptsTime = info.pts / ONE_SECOND_IN_TS;
+      segmentInfo.audio.forEach(function(info2) {
+        info2.dts = handleRollover(info2.dts, audioBaseTimestamp);
+        info2.pts = handleRollover(info2.pts, audioBaseTimestamp);
+        info2.dtsTime = info2.dts / ONE_SECOND_IN_TS;
+        info2.ptsTime = info2.pts / ONE_SECOND_IN_TS;
       });
     }
     if (segmentInfo.video && segmentInfo.video.length) {
@@ -37741,11 +37741,11 @@ var workerCode$1 = transform$1(getWorkerString(function() {
       if (typeof videoBaseTimestamp === "undefined" || isNaN(videoBaseTimestamp)) {
         videoBaseTimestamp = segmentInfo.video[0].dts;
       }
-      segmentInfo.video.forEach(function(info) {
-        info.dts = handleRollover(info.dts, videoBaseTimestamp);
-        info.pts = handleRollover(info.pts, videoBaseTimestamp);
-        info.dtsTime = info.dts / ONE_SECOND_IN_TS;
-        info.ptsTime = info.pts / ONE_SECOND_IN_TS;
+      segmentInfo.video.forEach(function(info2) {
+        info2.dts = handleRollover(info2.dts, videoBaseTimestamp);
+        info2.pts = handleRollover(info2.pts, videoBaseTimestamp);
+        info2.dtsTime = info2.dts / ONE_SECOND_IN_TS;
+        info2.ptsTime = info2.pts / ONE_SECOND_IN_TS;
       });
       if (segmentInfo.firstKeyFrame) {
         var frame2 = segmentInfo.firstKeyFrame;
@@ -38307,7 +38307,7 @@ var workerCallback = function workerCallback2(options2) {
   var transmuxer = options2.transmuxer;
   var endAction = options2.endAction || options2.action;
   var callback2 = options2.callback;
-  var message = _extends$1k({}, options2, {
+  var message = _extends$1l({}, options2, {
     endAction: null,
     transmuxer: null,
     callback: null
@@ -40843,10 +40843,10 @@ var SegmentLoader = /* @__PURE__ */ (function(_videojs$EventTarget) {
     }
     if (!this.hasEnoughInfoToLoad_()) {
       this.loadQueue_.push(function() {
-        var options2 = _extends$1k({}, segmentInfo, {
+        var options2 = _extends$1l({}, segmentInfo, {
           forceTimestampOffset: true
         });
-        _extends$1k(segmentInfo, _this4.generateSegmentInfo_(options2));
+        _extends$1l(segmentInfo, _this4.generateSegmentInfo_(options2));
         _this4.isPendingTimestampOffset_ = false;
         _this4.updateTransmuxerAndRequestSegment_(segmentInfo);
       });
@@ -45488,10 +45488,10 @@ var expandDataUri = function expandDataUri2(dataUri) {
   return dataUri;
 };
 Vhs.supportsNativeHls = (function() {
-  if (!document$1 || !document$1.createElement) {
+  if (!document$1$1 || !document$1$1.createElement) {
     return false;
   }
-  var video = document$1.createElement("video");
+  var video = document$1$1.createElement("video");
   if (!videojs.getTech("Html5").isSupported()) {
     return false;
   }
@@ -45514,10 +45514,10 @@ Vhs.supportsNativeHls = (function() {
   });
 })();
 Vhs.supportsNativeDash = (function() {
-  if (!document$1 || !document$1.createElement || !videojs.getTech("Html5").isSupported()) {
+  if (!document$1$1 || !document$1$1.createElement || !videojs.getTech("Html5").isSupported()) {
     return false;
   }
-  return /maybe|probably/i.test(document$1.createElement("video").canPlayType("application/dash+xml"));
+  return /maybe|probably/i.test(document$1$1.createElement("video").canPlayType("application/dash+xml"));
 })();
 Vhs.supportsTypeNatively = function(type3) {
   if (type3 === "hls") {
@@ -45594,8 +45594,8 @@ var VhsHandler = /* @__PURE__ */ (function(_Component) {
     } else if (_this.options_.overrideNative && (tech.featuresNativeVideoTracks || tech.featuresNativeAudioTracks)) {
       throw new Error("Overriding native HLS requires emulated tracks. See https://git.io/vMpjB");
     }
-    _this.on(document$1, ["fullscreenchange", "webkitfullscreenchange", "mozfullscreenchange", "MSFullscreenChange"], function(event) {
-      var fullscreenElement = document$1.fullscreenElement || document$1.webkitFullscreenElement || document$1.mozFullScreenElement || document$1.msFullscreenElement;
+    _this.on(document$1$1, ["fullscreenchange", "webkitfullscreenchange", "mozfullscreenchange", "MSFullscreenChange"], function(event) {
+      var fullscreenElement = document$1$1.fullscreenElement || document$1$1.webkitFullscreenElement || document$1$1.mozFullScreenElement || document$1$1.msFullscreenElement;
       if (fullscreenElement && fullscreenElement.contains(_this.tech_.el())) {
         _this.masterPlaylistController_.fastQualityChange_();
       } else {
@@ -47063,7 +47063,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 getDisplayText: function getDisplayText(asOneRow) {
                   asOneRow = asOneRow || false;
                   var displayText = [];
-                  var text = "";
+                  var text2 = "";
                   var rowNr = -1;
                   for (var i2 = 0; i2 < NR_ROWS; i2++) {
                     var rowText = this.rows[i2].getTextString();
@@ -47078,12 +47078,12 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   }
                   if (displayText.length > 0) {
                     if (asOneRow) {
-                      text = "[" + displayText.join(" | ") + "]";
+                      text2 = "[" + displayText.join(" | ") + "]";
                     } else {
-                      text = displayText.join("\n");
+                      text2 = displayText.join("\n");
                     }
                   }
-                  return text;
+                  return text2;
                 },
                 getTextAndFormat: function getTextAndFormat() {
                   return this.rows;
@@ -50501,9 +50501,9 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
               function AnonymousSpan() {
                 ContentElement.call(this, "span");
               }
-              AnonymousSpan.prototype.initFromText = function(doc, parent, text, xmlspace, errorHandler) {
+              AnonymousSpan.prototype.initFromText = function(doc, parent, text2, xmlspace, errorHandler) {
                 TimedElement.prototype.initFromNode.call(this, doc, parent, null, errorHandler);
-                this.text = text;
+                this.text = text2;
                 this.space = xmlspace;
               };
               function Br() {
@@ -55267,7 +55267,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
               function emitReadable_(stream) {
                 debug("emit readable");
                 stream.emit("readable");
-                flow(stream);
+                flow2(stream);
               }
               function maybeReadMore(stream, state) {
                 if (!state.readingMore) {
@@ -55390,7 +55390,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   if (state.awaitDrain) state.awaitDrain--;
                   if (state.awaitDrain === 0 && EElistenerCount(src2, "data")) {
                     state.flowing = true;
-                    flow(src2);
+                    flow2(src2);
                   }
                 };
               }
@@ -55472,7 +55472,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 state.resumeScheduled = false;
                 state.awaitDrain = 0;
                 stream.emit("resume");
-                flow(stream);
+                flow2(stream);
                 if (state.flowing && !state.reading) stream.read(0);
               }
               Readable.prototype.pause = function() {
@@ -55484,7 +55484,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 }
                 return this;
               };
-              function flow(stream) {
+              function flow2(stream) {
                 var state = stream._readableState;
                 debug("flow", state.flowing);
                 while (state.flowing && stream.read() !== null) {
@@ -57193,10 +57193,10 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   if (parser3.textNode) emit(parser3, "ontext", parser3.textNode);
                   parser3.textNode = "";
                 }
-                function textopts(opt, text) {
-                  if (opt.trim) text = text.trim();
-                  if (opt.normalize) text = text.replace(/\s+/g, " ");
-                  return text;
+                function textopts(opt, text2) {
+                  if (opt.trim) text2 = text2.trim();
+                  if (opt.normalize) text2 = text2.replace(/\s+/g, " ");
+                  return text2;
                 }
                 function error(parser3, er2) {
                   closeText(parser3);
@@ -58132,16 +58132,16 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   };
                 }
                 function installReadyStateChangeImplementation() {
-                  var html = doc.documentElement;
+                  var html2 = doc.documentElement;
                   registerImmediate = function(handle) {
                     var script = doc.createElement("script");
                     script.onreadystatechange = function() {
                       runIfPresent(handle);
                       script.onreadystatechange = null;
-                      html.removeChild(script);
+                      html2.removeChild(script);
                       script = null;
                     };
-                    html.appendChild(script);
+                    html2.appendChild(script);
                   };
                 }
                 function installSetTimeoutImplementation() {
@@ -58641,7 +58641,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   fatal: fatal.bind(instance2),
                   error: error.bind(instance2),
                   warn: warn.bind(instance2),
-                  info: info.bind(instance2),
+                  info: info2.bind(instance2),
                   debug: debug.bind(instance2)
                 };
               }
@@ -58669,7 +58669,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 }
                 doLog.apply(void 0, [LOG_LEVEL_WARNING, this].concat(params));
               }
-              function info() {
+              function info2() {
                 for (var _len4 = arguments.length, params = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
                   params[_key4] = arguments[_key4];
                 }
@@ -58753,7 +58753,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
             var EVENT_PRIORITY_LOW = 0;
             var EVENT_PRIORITY_HIGH = 5e3;
             function EventBus() {
-              var handlers = {};
+              var handlers2 = {};
               function on3(type3, listener2, scope) {
                 var options2 = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : {};
                 if (!type3) {
@@ -58764,7 +58764,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 }
                 var priority2 = options2.priority || EVENT_PRIORITY_LOW;
                 if (getHandlerIdx(type3, listener2, scope) >= 0) return;
-                handlers[type3] = handlers[type3] || [];
+                handlers2[type3] = handlers2[type3] || [];
                 var handler = {
                   callback: listener2,
                   scope,
@@ -58779,26 +58779,26 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 if (options2 && options2.mode) {
                   handler.mode = options2.mode;
                 }
-                var inserted = handlers[type3].some(function(item, idx) {
+                var inserted = handlers2[type3].some(function(item, idx) {
                   if (item && priority2 > item.priority) {
-                    handlers[type3].splice(idx, 0, handler);
+                    handlers2[type3].splice(idx, 0, handler);
                     return true;
                   }
                 });
                 if (!inserted) {
-                  handlers[type3].push(handler);
+                  handlers2[type3].push(handler);
                 }
               }
               function off2(type3, listener2, scope) {
-                if (!type3 || !listener2 || !handlers[type3]) return;
+                if (!type3 || !listener2 || !handlers2[type3]) return;
                 var idx = getHandlerIdx(type3, listener2, scope);
                 if (idx < 0) return;
-                handlers[type3][idx] = null;
+                handlers2[type3][idx] = null;
               }
               function trigger2(type3) {
                 var payload = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
                 var filters2 = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
-                if (!type3 || !handlers[type3]) return;
+                if (!type3 || !handlers2[type3]) return;
                 payload = payload || {};
                 if (payload.hasOwnProperty("type")) throw new Error("'type' is a reserved word for event dispatching");
                 payload.type = type3;
@@ -58808,7 +58808,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 if (filters2.mediaType) {
                   payload.mediaType = filters2.mediaType;
                 }
-                handlers[type3].filter(function(handler) {
+                handlers2[type3].filter(function(handler) {
                   if (!handler) {
                     return false;
                   }
@@ -58828,8 +58828,8 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
               }
               function getHandlerIdx(type3, listener2, scope) {
                 var idx = -1;
-                if (!handlers[type3]) return idx;
-                handlers[type3].some(function(item, index2) {
+                if (!handlers2[type3]) return idx;
+                handlers2[type3].some(function(item, index2) {
                   if (item && item.callback === listener2 && (!scope || scope === item.scope)) {
                     idx = index2;
                     return true;
@@ -58838,7 +58838,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 return idx;
               }
               function reset3() {
-                handlers = {};
+                handlers2 = {};
               }
               var instance = {
                 on: on3,
@@ -60266,15 +60266,15 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   return null;
                 }
               }
-              function getEventsFor(info, voRepresentation) {
+              function getEventsFor(info2, voRepresentation) {
                 var events = [];
                 if (voPeriods.length > 0) {
                   var manifest = voPeriods[0].mpd.manifest;
-                  if (info instanceof _vo_StreamInfo__WEBPACK_IMPORTED_MODULE_3__["default"]) {
-                    events = dashManifestModel.getEventsForPeriod(getPeriodForStreamInfo(info, voPeriods));
-                  } else if (info instanceof _vo_MediaInfo__WEBPACK_IMPORTED_MODULE_2__["default"]) {
-                    events = dashManifestModel.getEventStreamForAdaptationSet(manifest, getAdaptationForMediaInfo(info));
-                  } else if (info instanceof _vo_RepresentationInfo__WEBPACK_IMPORTED_MODULE_1__["default"]) {
+                  if (info2 instanceof _vo_StreamInfo__WEBPACK_IMPORTED_MODULE_3__["default"]) {
+                    events = dashManifestModel.getEventsForPeriod(getPeriodForStreamInfo(info2, voPeriods));
+                  } else if (info2 instanceof _vo_MediaInfo__WEBPACK_IMPORTED_MODULE_2__["default"]) {
+                    events = dashManifestModel.getEventStreamForAdaptationSet(manifest, getAdaptationForMediaInfo(info2));
+                  } else if (info2 instanceof _vo_RepresentationInfo__WEBPACK_IMPORTED_MODULE_1__["default"]) {
                     events = dashManifestModel.getEventStreamForRepresentation(manifest, voRepresentation);
                   }
                 }
@@ -61330,7 +61330,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
               function _loadInitializationRecursively(representation, mediaType, resolve, loadingInfo) {
                 var initRange = null;
                 var baseUrl = representation ? baseURLController.resolve(representation.path) : null;
-                var info = loadingInfo || {
+                var info2 = loadingInfo || {
                   init: true,
                   url: baseUrl ? baseUrl.url : void 0,
                   range: {
@@ -61343,16 +61343,16 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   mediaType
                 };
                 logger3.debug("Start searching for initialization.");
-                var request = getFragmentRequest(info);
+                var request = getFragmentRequest(info2);
                 var onload = function onload2(response) {
-                  info.bytesLoaded = info.range.end;
+                  info2.bytesLoaded = info2.range.end;
                   initRange = boxParser.findInitRange(response);
                   if (initRange) {
                     representation.range = initRange;
                     resolve(representation);
                   } else {
-                    info.range.end = info.bytesLoaded + info.bytesToLoad;
-                    return _loadInitializationRecursively(representation, mediaType, resolve, info);
+                    info2.range.end = info2.bytesLoaded + info2.bytesToLoad;
+                    return _loadInitializationRecursively(representation, mediaType, resolve, info2);
                   }
                 };
                 var onerror = function onerror2() {
@@ -61363,7 +61363,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   success: onload,
                   error: onerror
                 });
-                logger3.debug("Perform init search: " + info.url);
+                logger3.debug("Perform init search: " + info2.url);
               }
               function loadSegments(representation, mediaType, range3) {
                 return new Promise(function(resolve) {
@@ -61383,7 +61383,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 var sidx = null;
                 var hasRange = !!range3;
                 var baseUrl = representation ? baseURLController.resolve(representation.path) : null;
-                var info = {
+                var info2 = {
                   init: false,
                   url: baseUrl ? baseUrl.url : void 0,
                   range: hasRange ? range3 : {
@@ -61395,30 +61395,30 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   bytesToLoad: 1500,
                   mediaType
                 };
-                var request = getFragmentRequest(info);
+                var request = getFragmentRequest(info2);
                 var onload = function onload2(response) {
-                  var extraBytes = info.bytesToLoad;
+                  var extraBytes = info2.bytesToLoad;
                   var loadedLength = response.byteLength;
-                  info.bytesLoaded = info.range.end - info.range.start;
+                  info2.bytesLoaded = info2.range.end - info2.range.start;
                   isoFile = boxParser.parse(response);
                   sidx = isoFile.getBox("sidx");
                   if (!sidx || !sidx.isComplete) {
                     if (sidx) {
-                      info.range.start = sidx.offset || info.range.start;
-                      info.range.end = info.range.start + (sidx.size || extraBytes);
-                    } else if (loadedLength < info.bytesLoaded) {
+                      info2.range.start = sidx.offset || info2.range.start;
+                      info2.range.end = info2.range.start + (sidx.size || extraBytes);
+                    } else if (loadedLength < info2.bytesLoaded) {
                       callback2(null, representation, resolve);
                       return;
                     } else {
                       var lastBox = isoFile.getLastBox();
                       if (lastBox && lastBox.size) {
-                        info.range.start = lastBox.offset + lastBox.size;
-                        info.range.end = info.range.start + extraBytes;
+                        info2.range.start = lastBox.offset + lastBox.size;
+                        info2.range.end = info2.range.start + extraBytes;
                       } else {
-                        info.range.end += extraBytes;
+                        info2.range.end += extraBytes;
                       }
                     }
-                    _loadSegmentsRecursively(representation, mediaType, info.range, resolve, null, info);
+                    _loadSegmentsRecursively(representation, mediaType, info2.range, resolve, null, info2);
                   } else {
                     var ref = sidx.references;
                     var loadMultiSidx, segments;
@@ -61427,11 +61427,11 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                     }
                     if (loadMultiSidx) {
                       logger3.debug("Initiate multiple SIDX load.");
-                      info.range.end = info.range.start + sidx.size;
+                      info2.range.end = info2.range.start + sidx.size;
                       var j, len, ss, se, r3;
                       var segs = [];
                       var count2 = 0;
-                      var offset3 = (sidx.offset || info.range.start) + sidx.size;
+                      var offset3 = (sidx.offset || info2.range.start) + sidx.size;
                       var tmpCallback = function tmpCallback2(result) {
                         if (result) {
                           segs = segs.concat(result);
@@ -61454,11 +61454,11 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                           start: ss,
                           end: se
                         };
-                        _loadSegmentsRecursively(representation, mediaType, r3, resolve, tmpCallback, info);
+                        _loadSegmentsRecursively(representation, mediaType, r3, resolve, tmpCallback, info2);
                       }
                     } else {
-                      logger3.debug("Parsing segments from SIDX. representation " + mediaType + " - id: " + representation.id + " for range : " + info.range.start + " - " + info.range.end);
-                      segments = getSegmentsForSidx(sidx, info);
+                      logger3.debug("Parsing segments from SIDX. representation " + mediaType + " - id: " + representation.id + " for range : " + info2.range.start + " - " + info2.range.end);
+                      segments = getSegmentsForSidx(sidx, info2);
                       callback2(segments, representation, resolve);
                     }
                   }
@@ -61471,7 +61471,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   success: onload,
                   error: onerror
                 });
-                logger3.debug("Perform SIDX load for type ".concat(mediaType, " : ").concat(info.url, " with range ").concat(info.range.start, " - ").concat(info.range.end));
+                logger3.debug("Perform SIDX load for type ".concat(mediaType, " : ").concat(info2.url, " with range ").concat(info2.range.start, " - ").concat(info2.range.end));
               }
               function onLoaded(segments, representation, resolve) {
                 resolve({
@@ -61486,12 +61486,12 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   urlLoader = null;
                 }
               }
-              function getSegmentsForSidx(sidx, info) {
+              function getSegmentsForSidx(sidx, info2) {
                 var refs = sidx.references;
                 var len = refs.length;
                 var timescale2 = sidx.timescale;
                 var time2 = sidx.earliest_presentation_time;
-                var start3 = info.range.start + sidx.offset + sidx.first_offset + sidx.size;
+                var start3 = info2.range.start + sidx.offset + sidx.first_offset + sidx.size;
                 var segments = [];
                 var segment, end2, duration5, size2;
                 for (var i2 = 0; i2 < len; i2++) {
@@ -61509,12 +61509,12 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 }
                 return segments;
               }
-              function getFragmentRequest(info) {
-                if (!info.url) {
+              function getFragmentRequest(info2) {
+                if (!info2.url) {
                   return;
                 }
                 var request = new _streaming_vo_FragmentRequest__WEBPACK_IMPORTED_MODULE_3__["default"]();
-                request.setInfo(info);
+                request.setInfo(info2);
                 return request;
               }
               instance = {
@@ -61727,7 +61727,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 var duration5, segments, segmentEnd, segmentStart;
                 var parts = theRange ? theRange.split("-") : null;
                 var request = null;
-                var info = {
+                var info2 = {
                   url: media,
                   range: {
                     start: parts ? parseFloat(parts[0]) : null,
@@ -61735,7 +61735,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   },
                   request
                 };
-                logger3.debug("Parse EBML header: " + info.url);
+                logger3.debug("Parse EBML header: " + info2.url);
                 ebmlParser.skipOverElement(WebM.EBML);
                 ebmlParser.consumeTag(WebM.Segment);
                 segmentEnd = ebmlParser.getMatroskaCodedNum();
@@ -61758,13 +61758,13 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                       break;
                   }
                 }
-                request = _getFragmentRequest(info);
+                request = _getFragmentRequest(info2);
                 var onload = function onload2(response) {
                   segments = parseSegments(response, segmentStart, segmentEnd, duration5);
                   callback2(segments);
                 };
                 var onloadend = function onloadend2() {
-                  logger3.error("Download Error: Cues " + info.url);
+                  logger3.error("Download Error: Cues " + info2.url);
                   callback2(null);
                 };
                 urlLoader.load({
@@ -61772,14 +61772,14 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   success: onload,
                   error: onloadend
                 });
-                logger3.debug("Perform cues load: " + info.url + " bytes=" + info.range.start + "-" + info.range.end);
+                logger3.debug("Perform cues load: " + info2.url + " bytes=" + info2.range.start + "-" + info2.range.end);
               }
               function loadInitialization(representation, mediaType) {
                 return new Promise(function(resolve) {
                   var request = null;
                   var baseUrl = representation ? baseURLController.resolve(representation.path) : null;
                   var initRange = representation ? representation.range.split("-") : null;
-                  var info = {
+                  var info2 = {
                     range: {
                       start: initRange ? parseFloat(initRange[0]) : null,
                       end: initRange ? parseFloat(initRange[1]) : null
@@ -61790,7 +61790,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                     mediaType
                   };
                   logger3.info("Start loading initialization.");
-                  request = _getFragmentRequest(info);
+                  request = _getFragmentRequest(info2);
                   var onload = function onload2() {
                     resolve(representation);
                   };
@@ -61802,7 +61802,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                     success: onload,
                     error: onloadend
                   });
-                  logger3.debug("Perform init load: " + info.url);
+                  logger3.debug("Perform init load: " + info2.url);
                 });
               }
               function loadSegments(representation, mediaType, theRange) {
@@ -61811,7 +61811,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   var baseUrl = representation ? baseURLController.resolve(representation.path) : null;
                   var media = baseUrl ? baseUrl.url : void 0;
                   var bytesToLoad = 8192;
-                  var info = {
+                  var info2 = {
                     bytesLoaded: 0,
                     bytesToLoad,
                     range: {
@@ -61823,7 +61823,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                     init: false,
                     mediaType
                   };
-                  request = _getFragmentRequest(info);
+                  request = _getFragmentRequest(info2);
                   logger3.debug("Parsing ebml header");
                   var onload = function onload2(response) {
                     parseEbmlHeader(response, media, theRange, function(segments) {
@@ -61847,9 +61847,9 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   });
                 });
               }
-              function _getFragmentRequest(info) {
+              function _getFragmentRequest(info2) {
                 var request = new _streaming_vo_FragmentRequest__WEBPACK_IMPORTED_MODULE_4__["default"]();
-                request.setInfo(info);
+                request.setInfo(info2);
                 return request;
               }
               function reset3() {
@@ -63309,18 +63309,18 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 entries.some(function(entry) {
                   if (entry) {
                     var baseUrl = new _vo_BaseURL__WEBPACK_IMPORTED_MODULE_8__["default"]();
-                    var text = entry.__text || entry;
-                    if (urlUtils.isRelative(text)) {
+                    var text2 = entry.__text || entry;
+                    if (urlUtils.isRelative(text2)) {
                       earlyReturn = true;
                       if (node2.baseUri) {
-                        text = urlUtils.resolve(text, node2.baseUri);
+                        text2 = urlUtils.resolve(text2, node2.baseUri);
                       }
                     }
-                    baseUrl.url = text;
+                    baseUrl.url = text2;
                     if (entry.hasOwnProperty(_constants_DashConstants__WEBPACK_IMPORTED_MODULE_1__["default"].SERVICE_LOCATION) && entry.serviceLocation.length) {
                       baseUrl.serviceLocation = entry.serviceLocation;
                     } else {
-                      baseUrl.serviceLocation = text;
+                      baseUrl.serviceLocation = text2;
                     }
                     if (entry.hasOwnProperty(_constants_DashConstants__WEBPACK_IMPORTED_MODULE_1__["default"].DVB_PRIORITY)) {
                       baseUrl.dvb_priority = entry[_constants_DashConstants__WEBPACK_IMPORTED_MODULE_1__["default"].DVB_PRIORITY];
@@ -70161,8 +70161,8 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 if (!currentTrackInfo) {
                   return;
                 }
-                var mInfo = mediaInfoArr.find(function(info) {
-                  return info.index === currentTrackInfo.index && info.lang === currentTrackInfo.lang;
+                var mInfo = mediaInfoArr.find(function(info2) {
+                  return info2.index === currentTrackInfo.index && info2.lang === currentTrackInfo.lang;
                 });
                 if (mInfo) {
                   selectMediaInfo(mInfo).then(function() {
@@ -70537,13 +70537,13 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
               });
               var instance;
               function load(url2, element, resolveObject) {
-                var report = function report2(content, resolveToZero) {
+                var report = function report2(content2, resolveToZero) {
                   element.resolved = true;
-                  element.resolvedContent = content ? content : null;
+                  element.resolvedContent = content2 ? content2 : null;
                   eventBus.trigger(_core_events_Events__WEBPACK_IMPORTED_MODULE_5__["default"].XLINK_ELEMENT_LOADED, {
                     element,
                     resolveObject,
-                    error: content || resolveToZero ? null : new _vo_DashJSError__WEBPACK_IMPORTED_MODULE_0__["default"](_core_errors_Errors__WEBPACK_IMPORTED_MODULE_7__["default"].XLINK_LOADER_LOADING_FAILURE_ERROR_CODE, _core_errors_Errors__WEBPACK_IMPORTED_MODULE_7__["default"].XLINK_LOADER_LOADING_FAILURE_ERROR_MESSAGE + url2)
+                    error: content2 || resolveToZero ? null : new _vo_DashJSError__WEBPACK_IMPORTED_MODULE_0__["default"](_core_errors_Errors__WEBPACK_IMPORTED_MODULE_7__["default"].XLINK_LOADER_LOADING_FAILURE_ERROR_CODE, _core_errors_Errors__WEBPACK_IMPORTED_MODULE_7__["default"].XLINK_LOADER_LOADING_FAILURE_ERROR_MESSAGE + url2)
                   });
                 };
                 if (url2 === RESOLVE_TO_ZERO) {
@@ -74095,9 +74095,9 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
               }
               function _onDataUpdateCompleted(e2) {
                 var representationInfo = adapter.convertRepresentationToRepresentationInfo(e2.currentRepresentation);
-                var info = representationInfo ? representationInfo.mediaInfo.streamInfo : null;
-                if (info === null || streamInfo.id !== info.id) return;
-                streamInfo = info;
+                var info2 = representationInfo ? representationInfo.mediaInfo.streamInfo : null;
+                if (info2 === null || streamInfo.id !== info2.id) return;
+                streamInfo = info2;
               }
               function _onCanPlay() {
                 eventBus.trigger(_core_events_Events__WEBPACK_IMPORTED_MODULE_3__["default"].CAN_PLAY);
@@ -75996,7 +75996,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
               var context2 = this.context;
               var eventBus = Object(_core_EventBus__WEBPACK_IMPORTED_MODULE_2__["default"])(context2).getInstance();
               var urlUtils = Object(_utils_URLUtils__WEBPACK_IMPORTED_MODULE_7__["default"])(context2).getInstance();
-              var instance, logger3, isSynchronizing, isBackgroundSynchronizing, settings2, handlers, dashMetrics, backgroundSyncTimeOffsets, timingSources, timeOfLastSync, timeOfLastBackgroundSync, lastOffset, lastTimingSource, internalTimeBetweenSyncAttempts, errHandler, baseURLController;
+              var instance, logger3, isSynchronizing, isBackgroundSynchronizing, settings2, handlers2, dashMetrics, backgroundSyncTimeOffsets, timingSources, timeOfLastSync, timeOfLastBackgroundSync, lastOffset, lastTimingSource, internalTimeBetweenSyncAttempts, errHandler, baseURLController;
               function setup2() {
                 logger3 = Object(_core_Debug__WEBPACK_IMPORTED_MODULE_6__["default"])(context2).getInstance().getLogger(instance);
                 eventBus.on(_core_events_Events__WEBPACK_IMPORTED_MODULE_3__["default"].ATTEMPT_BACKGROUND_SYNC, _onAttemptBackgroundSync, instance);
@@ -76029,7 +76029,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
               }
               function initialize2() {
                 _resetInitialSettings();
-                handlers = {
+                handlers2 = {
                   "urn:mpeg:dash:utc:http-head:2014": _httpHeadHandler,
                   "urn:mpeg:dash:utc:http-xsdate:2014": _httpHandler.bind(null, _xsdatetimeDecoder),
                   "urn:mpeg:dash:utc:http-iso:2014": _httpHandler.bind(null, _iso8601Decoder),
@@ -76081,7 +76081,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                     return;
                   }
                   var deviceTimeBeforeSync = Date.now();
-                  handlers[lastTimingSource.schemeIdUri](lastTimingSource.value, function(serverTime) {
+                  handlers2[lastTimingSource.schemeIdUri](lastTimingSource.value, function(serverTime) {
                     var deviceTimeAfterSync = Date.now();
                     var offset3 = _calculateOffset(deviceTimeBeforeSync, deviceTimeAfterSync, serverTime);
                     backgroundSyncTimeOffsets.push(offset3);
@@ -76102,9 +76102,9 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 }
                 var source2 = timingSources[index2];
                 if (source2) {
-                  if (handlers.hasOwnProperty(source2.schemeIdUri)) {
+                  if (handlers2.hasOwnProperty(source2.schemeIdUri)) {
                     var deviceTimeBeforeSync = (/* @__PURE__ */ new Date()).getTime();
-                    handlers[source2.schemeIdUri](source2.value, function(serverTime) {
+                    handlers2[source2.schemeIdUri](source2.value, function(serverTime) {
                       var deviceTimeAfterSync = (/* @__PURE__ */ new Date()).getTime();
                       var offset3 = _calculateOffset(deviceTimeBeforeSync, deviceTimeAfterSync, serverTime);
                       lastTimingSource = source2;
@@ -76921,7 +76921,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
             );
             function MetricsHandlersController(config2) {
               config2 = config2 || {};
-              var handlers = [];
+              var handlers2 = [];
               var instance;
               var context2 = this.context;
               var eventBus = config2.eventBus;
@@ -76932,7 +76932,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 metricsConstants: config2.metricsConstants
               });
               function handle(e2) {
-                handlers.forEach(function(handler) {
+                handlers2.forEach(function(handler) {
                   handler.handleNewMetric(e2.metric, e2.value, e2.mediaType);
                 });
               }
@@ -76948,7 +76948,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   }
                   handler = metricsHandlerFactory.create(m3, reportingController);
                   if (handler) {
-                    handlers.push(handler);
+                    handlers2.push(handler);
                   }
                 });
                 eventBus.on(Events2.METRIC_ADDED, handle, instance);
@@ -76957,10 +76957,10 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
               function reset3() {
                 eventBus.off(Events2.METRIC_ADDED, handle, instance);
                 eventBus.off(Events2.METRIC_UPDATED, handle, instance);
-                handlers.forEach(function(handler) {
+                handlers2.forEach(function(handler) {
                   return handler.reset();
                 });
-                handlers = [];
+                handlers2 = [];
               }
               instance = {
                 initialize: initialize2,
@@ -78533,8 +78533,8 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
               }
               function _getTopBitrateByType(mediaType) {
                 try {
-                  var info = abrController.getTopBitrateInfoFor(mediaType);
-                  return Math.round(info.bitrate / 1e3);
+                  var info2 = abrController.getTopBitrateInfoFor(mediaType);
+                  return Math.round(info2.bitrate / 1e3);
                 } catch (e2) {
                   return null;
                 }
@@ -81351,9 +81351,9 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                     var i2 = 0;
                     var licenseServer = null;
                     while (i2 < mediaInfo.length && !licenseServer) {
-                      var info = mediaInfo[i2];
-                      if (info && info.contentProtection && info.contentProtection.length > 0) {
-                        var targetProtectionData = info.contentProtection.filter(function(cp) {
+                      var info2 = mediaInfo[i2];
+                      if (info2 && info2.contentProtection && info2.contentProtection.length > 0) {
+                        var targetProtectionData = info2.contentProtection.filter(function(cp) {
                           return cp.schemeIdUri && cp.schemeIdUri === schemeIdUri;
                         });
                         if (targetProtectionData && targetProtectionData.length > 0) {
@@ -83718,8 +83718,8 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 }
                 var session = mediaKeys.createSession(ksInfo.sessionType);
                 var sessionToken = createSessionToken(session, ksInfo);
-                var dataType = keySystem.systemString === _constants_ProtectionConstants__WEBPACK_IMPORTED_MODULE_6__["default"].CLEARKEY_KEYSTEM_STRING && (ksInfo.initData || ksInfo.protData && ksInfo.protData.clearkeys) ? _constants_ProtectionConstants__WEBPACK_IMPORTED_MODULE_6__["default"].INITIALIZATION_DATA_TYPE_KEYIDS : _constants_ProtectionConstants__WEBPACK_IMPORTED_MODULE_6__["default"].INITIALIZATION_DATA_TYPE_CENC;
-                session.generateRequest(dataType, ksInfo.initData).then(function() {
+                var dataType2 = keySystem.systemString === _constants_ProtectionConstants__WEBPACK_IMPORTED_MODULE_6__["default"].CLEARKEY_KEYSTEM_STRING && (ksInfo.initData || ksInfo.protData && ksInfo.protData.clearkeys) ? _constants_ProtectionConstants__WEBPACK_IMPORTED_MODULE_6__["default"].INITIALIZATION_DATA_TYPE_KEYIDS : _constants_ProtectionConstants__WEBPACK_IMPORTED_MODULE_6__["default"].INITIALIZATION_DATA_TYPE_CENC;
+                session.generateRequest(dataType2, ksInfo.initData).then(function() {
                   logger3.debug("DRM: Session created.  SessionID = " + sessionToken.getSessionId());
                   eventBus.trigger(events.KEY_SESSION_CREATED, {
                     data: sessionToken
@@ -88700,11 +88700,11 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   if (videoModel.getTTMLRenderingDiv()) {
                     captionsArray = embeddedTextHtmlRender.createHTMLCaptionsFromScreen(videoModel.getElement(), startTime, endTime, captionScreen);
                   } else {
-                    var text = captionScreen.getDisplayText();
+                    var text2 = captionScreen.getDisplayText();
                     captionsArray = [{
                       start: startTime,
                       end: endTime,
-                      data: text,
+                      data: text2,
                       styles: {}
                     }];
                   }
@@ -89750,8 +89750,8 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                             responseType: "arraybuffer"
                           },
                           onload: function onload(e2) {
-                            var info = boxParser.getSamplesInfo(e2.target.response);
-                            var blob = new Blob([e2.target.response.slice(info.sampleList[0].offset, info.sampleList[0].offset + info.sampleList[0].size)], {
+                            var info2 = boxParser.getSamplesInfo(e2.target.response);
+                            var blob = new Blob([e2.target.response.slice(info2.sampleList[0].offset, info2.sampleList[0].offset + info2.sampleList[0].size)], {
                               type: "image/jpeg"
                             });
                             var imageUrl = window.URL.createObjectURL(blob);
@@ -91428,7 +91428,7 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 var errorMsg = "";
                 var captionArray = [];
                 var startTime, endTime, i2;
-                var content = {};
+                var content2 = {};
                 var embeddedImages = {};
                 var currentImageId = "";
                 var accumulated_image_data = "";
@@ -91466,13 +91466,13 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                   errorMsg = "no ttml data to parse";
                   throw new Error(errorMsg);
                 }
-                content.data = data2;
-                eventBus.trigger(_core_events_Events__WEBPACK_IMPORTED_MODULE_3__["default"].TTML_TO_PARSE, content);
-                var imsc1doc = Object(imsc__WEBPACK_IMPORTED_MODULE_4__["fromXML"])(content.data, function(msg) {
+                content2.data = data2;
+                eventBus.trigger(_core_events_Events__WEBPACK_IMPORTED_MODULE_3__["default"].TTML_TO_PARSE, content2);
+                var imsc1doc = Object(imsc__WEBPACK_IMPORTED_MODULE_4__["fromXML"])(content2.data, function(msg) {
                   errorMsg = msg;
                 }, metadataHandler);
                 eventBus.trigger(_core_events_Events__WEBPACK_IMPORTED_MODULE_3__["default"].TTML_PARSED, {
-                  ttmlString: content.data,
+                  ttmlString: content2.data,
                   ttmlDoc: imsc1doc
                 });
                 var mediaTimeEvents = imsc1doc.getMediaTimeEvents();
@@ -91654,16 +91654,16 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                       var attributes = parseItemAttributes(item);
                       var cuePoints = attributes.cuePoints;
                       var styles2 = attributes.styles;
-                      var text = getSublines(data2, i2 + 1);
+                      var text2 = getSublines(data2, i2 + 1);
                       var startTime = convertCuePointTimes(cuePoints[0].replace(regExWhiteSpace, ""));
                       var endTime = convertCuePointTimes(cuePoints[1].replace(regExWhiteSpace, ""));
                       if (!isNaN(startTime) && !isNaN(endTime) && startTime >= lastStartTime && endTime > startTime) {
-                        if (text !== "") {
+                        if (text2 !== "") {
                           lastStartTime = startTime;
                           captionArray.push({
                             start: startTime,
                             end: endTime,
-                            data: text,
+                            data: text2,
                             styles: styles2
                           });
                         } else {
@@ -92026,11 +92026,11 @@ var dash_all_debug = createCommonjsModule(function(module2, exports2) {
                 }
               }, {
                 key: "setInfo",
-                value: function setInfo(info) {
-                  this.type = info && info.init ? _vo_metrics_HTTPRequest__WEBPACK_IMPORTED_MODULE_0__["HTTPRequest"].INIT_SEGMENT_TYPE : _vo_metrics_HTTPRequest__WEBPACK_IMPORTED_MODULE_0__["HTTPRequest"].MEDIA_SEGMENT_TYPE;
-                  this.url = info && info.url ? info.url : null;
-                  this.range = info && info.range ? info.range.start + "-" + info.range.end : null;
-                  this.mediaType = info && info.mediaType ? info.mediaType : null;
+                value: function setInfo(info2) {
+                  this.type = info2 && info2.init ? _vo_metrics_HTTPRequest__WEBPACK_IMPORTED_MODULE_0__["HTTPRequest"].INIT_SEGMENT_TYPE : _vo_metrics_HTTPRequest__WEBPACK_IMPORTED_MODULE_0__["HTTPRequest"].MEDIA_SEGMENT_TYPE;
+                  this.url = info2 && info2.url ? info2.url : null;
+                  this.range = info2 && info2.range ? info2.range.start + "-" + info2.range.end : null;
+                  this.mediaType = info2 && info2.mediaType ? info2.mediaType : null;
                 }
               }]);
               return FragmentRequest2;
@@ -93628,7 +93628,7 @@ var canHandleKeySystems = function canHandleKeySystems2(source2) {
   Html5DashJS.hooks("updatesource").forEach(function(hook3) {
     source2 = hook3(source2);
   });
-  var videoEl = document$1.createElement("video");
+  var videoEl = document$1$1.createElement("video");
   if (source2.keySystemOptions && !(window$1.navigator.requestMediaKeySystemAccess || // IE11 Win 8.1
   videoEl.msSetMediaKeys)) {
     return false;
@@ -95325,11 +95325,11 @@ var freeSelf = typeof self == "object" && self && self.Object === Object && self
 var root$1 = freeGlobal || freeSelf || Function("return this")();
 var Symbol$1 = root$1.Symbol;
 var objectProto$f = Object.prototype;
-var hasOwnProperty$k = objectProto$f.hasOwnProperty;
+var hasOwnProperty$l = objectProto$f.hasOwnProperty;
 var nativeObjectToString$1 = objectProto$f.toString;
 var symToStringTag$1 = Symbol$1 ? Symbol$1.toStringTag : void 0;
 function getRawTag(value) {
-  var isOwn = hasOwnProperty$k.call(value, symToStringTag$1), tag2 = value[symToStringTag$1];
+  var isOwn = hasOwnProperty$l.call(value, symToStringTag$1), tag2 = value[symToStringTag$1];
   try {
     value[symToStringTag$1] = void 0;
     var unmasked = true;
@@ -95460,9 +95460,9 @@ var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
 var reIsHostCtor = /^\[object .+?Constructor\]$/;
 var funcProto$1 = Function.prototype, objectProto$d = Object.prototype;
 var funcToString$1 = funcProto$1.toString;
-var hasOwnProperty$j = objectProto$d.hasOwnProperty;
+var hasOwnProperty$k = objectProto$d.hasOwnProperty;
 var reIsNative = RegExp(
-  "^" + funcToString$1.call(hasOwnProperty$j).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
+  "^" + funcToString$1.call(hasOwnProperty$k).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
 );
 function baseIsNative(value) {
   if (!isObject$3(value) || isMasked(value)) {
@@ -95544,10 +95544,10 @@ function eq(value, other) {
   return value === other || value !== value && other !== other;
 }
 var objectProto$c = Object.prototype;
-var hasOwnProperty$i = objectProto$c.hasOwnProperty;
+var hasOwnProperty$j = objectProto$c.hasOwnProperty;
 function assignValue(object2, key, value) {
   var objValue = object2[key];
-  if (!(hasOwnProperty$i.call(object2, key) && eq(objValue, value)) || value === void 0 && !(key in object2)) {
+  if (!(hasOwnProperty$j.call(object2, key) && eq(objValue, value)) || value === void 0 && !(key in object2)) {
     baseAssignValue(object2, key, value);
   }
 }
@@ -95593,12 +95593,12 @@ function baseIsArguments(value) {
   return isObjectLike$1(value) && baseGetTag(value) == argsTag$3;
 }
 var objectProto$a = Object.prototype;
-var hasOwnProperty$h = objectProto$a.hasOwnProperty;
+var hasOwnProperty$i = objectProto$a.hasOwnProperty;
 var propertyIsEnumerable$1 = objectProto$a.propertyIsEnumerable;
 var isArguments = baseIsArguments(/* @__PURE__ */ (function() {
   return arguments;
 })()) ? baseIsArguments : function(value) {
-  return isObjectLike$1(value) && hasOwnProperty$h.call(value, "callee") && !propertyIsEnumerable$1.call(value, "callee");
+  return isObjectLike$1(value) && hasOwnProperty$i.call(value, "callee") && !propertyIsEnumerable$1.call(value, "callee");
 };
 function stubFalse() {
   return false;
@@ -95608,7 +95608,7 @@ var freeModule$2 = freeExports$2 && typeof module == "object" && module && !modu
 var moduleExports$2 = freeModule$2 && freeModule$2.exports === freeExports$2;
 var Buffer$2 = moduleExports$2 ? root$1.Buffer : void 0;
 var nativeIsBuffer = Buffer$2 ? Buffer$2.isBuffer : void 0;
-var isBuffer = nativeIsBuffer || stubFalse;
+var isBuffer$1 = nativeIsBuffer || stubFalse;
 var argsTag$2 = "[object Arguments]", arrayTag$2 = "[object Array]", boolTag$3 = "[object Boolean]", dateTag$3 = "[object Date]", errorTag$2 = "[object Error]", funcTag$1 = "[object Function]", mapTag$5 = "[object Map]", numberTag$3 = "[object Number]", objectTag$4 = "[object Object]", regexpTag$3 = "[object RegExp]", setTag$5 = "[object Set]", stringTag$3 = "[object String]", weakMapTag$2 = "[object WeakMap]";
 var arrayBufferTag$3 = "[object ArrayBuffer]", dataViewTag$4 = "[object DataView]", float32Tag$2 = "[object Float32Array]", float64Tag$2 = "[object Float64Array]", int8Tag$2 = "[object Int8Array]", int16Tag$2 = "[object Int16Array]", int32Tag$2 = "[object Int32Array]", uint8Tag$2 = "[object Uint8Array]", uint8ClampedTag$2 = "[object Uint8ClampedArray]", uint16Tag$2 = "[object Uint16Array]", uint32Tag$2 = "[object Uint32Array]";
 var typedArrayTags = {};
@@ -95639,11 +95639,11 @@ var nodeUtil = (function() {
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
 var isTypedArray2 = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
 var objectProto$9 = Object.prototype;
-var hasOwnProperty$g = objectProto$9.hasOwnProperty;
+var hasOwnProperty$h = objectProto$9.hasOwnProperty;
 function arrayLikeKeys(value, inherited) {
-  var isArr = isArray$2(value), isArg = !isArr && isArguments(value), isBuff = !isArr && !isArg && isBuffer(value), isType = !isArr && !isArg && !isBuff && isTypedArray2(value), skipIndexes = isArr || isArg || isBuff || isType, result = skipIndexes ? baseTimes(value.length, String) : [], length2 = result.length;
+  var isArr = isArray$2(value), isArg = !isArr && isArguments(value), isBuff = !isArr && !isArg && isBuffer$1(value), isType = !isArr && !isArg && !isBuff && isTypedArray2(value), skipIndexes = isArr || isArg || isBuff || isType, result = skipIndexes ? baseTimes(value.length, String) : [], length2 = result.length;
   for (var key in value) {
-    if ((inherited || hasOwnProperty$g.call(value, key)) && !(skipIndexes && // Safari 9 has enumerable `arguments.length` in strict mode.
+    if ((inherited || hasOwnProperty$h.call(value, key)) && !(skipIndexes && // Safari 9 has enumerable `arguments.length` in strict mode.
     (key == "length" || // Node.js 0.10 has enumerable non-index properties on buffers.
     isBuff && (key == "offset" || key == "parent") || // PhantomJS 2 has enumerable non-index properties on typed arrays.
     isType && (key == "buffer" || key == "byteLength" || key == "byteOffset") || // Skip index properties.
@@ -95660,14 +95660,14 @@ function overArg(func, transform3) {
 }
 var nativeKeys = overArg(Object.keys, Object);
 var objectProto$8 = Object.prototype;
-var hasOwnProperty$f = objectProto$8.hasOwnProperty;
+var hasOwnProperty$g = objectProto$8.hasOwnProperty;
 function baseKeys(object2) {
   if (!isPrototype(object2)) {
     return nativeKeys(object2);
   }
   var result = [];
   for (var key in Object(object2)) {
-    if (hasOwnProperty$f.call(object2, key) && key != "constructor") {
+    if (hasOwnProperty$g.call(object2, key) && key != "constructor") {
       result.push(key);
     }
   }
@@ -95686,14 +95686,14 @@ function nativeKeysIn(object2) {
   return result;
 }
 var objectProto$7 = Object.prototype;
-var hasOwnProperty$e = objectProto$7.hasOwnProperty;
+var hasOwnProperty$f = objectProto$7.hasOwnProperty;
 function baseKeysIn(object2) {
   if (!isObject$3(object2)) {
     return nativeKeysIn(object2);
   }
   var isProto = isPrototype(object2), result = [];
   for (var key in object2) {
-    if (!(key == "constructor" && (isProto || !hasOwnProperty$e.call(object2, key)))) {
+    if (!(key == "constructor" && (isProto || !hasOwnProperty$f.call(object2, key)))) {
       result.push(key);
     }
   }
@@ -95714,20 +95714,20 @@ function hashDelete(key) {
 }
 var HASH_UNDEFINED$2 = "__lodash_hash_undefined__";
 var objectProto$6 = Object.prototype;
-var hasOwnProperty$d = objectProto$6.hasOwnProperty;
+var hasOwnProperty$e = objectProto$6.hasOwnProperty;
 function hashGet(key) {
   var data2 = this.__data__;
   if (nativeCreate) {
     var result = data2[key];
     return result === HASH_UNDEFINED$2 ? void 0 : result;
   }
-  return hasOwnProperty$d.call(data2, key) ? data2[key] : void 0;
+  return hasOwnProperty$e.call(data2, key) ? data2[key] : void 0;
 }
 var objectProto$5 = Object.prototype;
-var hasOwnProperty$c = objectProto$5.hasOwnProperty;
+var hasOwnProperty$d = objectProto$5.hasOwnProperty;
 function hashHas(key) {
   var data2 = this.__data__;
-  return nativeCreate ? data2[key] !== void 0 : hasOwnProperty$c.call(data2, key);
+  return nativeCreate ? data2[key] !== void 0 : hasOwnProperty$d.call(data2, key);
 }
 var HASH_UNDEFINED$1 = "__lodash_hash_undefined__";
 function hashSet(key, value) {
@@ -95917,7 +95917,7 @@ var getPrototype = overArg(Object.getPrototypeOf, Object);
 var objectTag$3 = "[object Object]";
 var funcProto = Function.prototype, objectProto$4 = Object.prototype;
 var funcToString = funcProto.toString;
-var hasOwnProperty$b = objectProto$4.hasOwnProperty;
+var hasOwnProperty$c = objectProto$4.hasOwnProperty;
 var objectCtorString = funcToString.call(Object);
 function isPlainObject$1(value) {
   if (!isObjectLike$1(value) || baseGetTag(value) != objectTag$3) {
@@ -95927,7 +95927,7 @@ function isPlainObject$1(value) {
   if (proto === null) {
     return true;
   }
-  var Ctor = hasOwnProperty$b.call(proto, "constructor") && proto.constructor;
+  var Ctor = hasOwnProperty$c.call(proto, "constructor") && proto.constructor;
   return typeof Ctor == "function" && Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString;
 }
 function stackClear() {
@@ -96066,10 +96066,10 @@ if (DataView$1 && getTag(new DataView$1(new ArrayBuffer(1))) != dataViewTag$3 ||
   };
 }
 var objectProto$2 = Object.prototype;
-var hasOwnProperty$a = objectProto$2.hasOwnProperty;
+var hasOwnProperty$b = objectProto$2.hasOwnProperty;
 function initCloneArray(array2) {
   var length2 = array2.length, result = new array2.constructor(length2);
-  if (length2 && typeof array2[0] == "string" && hasOwnProperty$a.call(array2, "index")) {
+  if (length2 && typeof array2[0] == "string" && hasOwnProperty$b.call(array2, "index")) {
     result.index = array2.index;
     result.input = array2.input;
   }
@@ -96171,7 +96171,7 @@ function baseClone(value, bitmask, customizer, key, object2, stack) {
     }
   } else {
     var tag2 = getTag(value), isFunc = tag2 == funcTag || tag2 == genTag;
-    if (isBuffer(value)) {
+    if (isBuffer$1(value)) {
       return cloneBuffer(value, isDeep);
     }
     if (tag2 == objectTag$1 || tag2 == argsTag$1 || isFunc && !object2) {
@@ -96359,7 +96359,7 @@ function equalByTag(object2, other, tag2, bitmask, customizer, equalFunc, stack)
 }
 var COMPARE_PARTIAL_FLAG$1 = 1;
 var objectProto$1 = Object.prototype;
-var hasOwnProperty$9 = objectProto$1.hasOwnProperty;
+var hasOwnProperty$a = objectProto$1.hasOwnProperty;
 function equalObjects(object2, other, bitmask, customizer, equalFunc, stack) {
   var isPartial = bitmask & COMPARE_PARTIAL_FLAG$1, objProps = getAllKeys(object2), objLength = objProps.length, othProps = getAllKeys(other), othLength = othProps.length;
   if (objLength != othLength && !isPartial) {
@@ -96368,7 +96368,7 @@ function equalObjects(object2, other, bitmask, customizer, equalFunc, stack) {
   var index2 = objLength;
   while (index2--) {
     var key = objProps[index2];
-    if (!(isPartial ? key in other : hasOwnProperty$9.call(other, key))) {
+    if (!(isPartial ? key in other : hasOwnProperty$a.call(other, key))) {
       return false;
     }
   }
@@ -96406,14 +96406,14 @@ function equalObjects(object2, other, bitmask, customizer, equalFunc, stack) {
 var COMPARE_PARTIAL_FLAG = 1;
 var argsTag = "[object Arguments]", arrayTag = "[object Array]", objectTag = "[object Object]";
 var objectProto = Object.prototype;
-var hasOwnProperty$8 = objectProto.hasOwnProperty;
+var hasOwnProperty$9 = objectProto.hasOwnProperty;
 function baseIsEqualDeep(object2, other, bitmask, customizer, equalFunc, stack) {
   var objIsArr = isArray$2(object2), othIsArr = isArray$2(other), objTag = objIsArr ? arrayTag : getTag(object2), othTag = othIsArr ? arrayTag : getTag(other);
   objTag = objTag == argsTag ? objectTag : objTag;
   othTag = othTag == argsTag ? objectTag : othTag;
   var objIsObj = objTag == objectTag, othIsObj = othTag == objectTag, isSameTag = objTag == othTag;
-  if (isSameTag && isBuffer(object2)) {
-    if (!isBuffer(other)) {
+  if (isSameTag && isBuffer$1(object2)) {
+    if (!isBuffer$1(other)) {
       return false;
     }
     objIsArr = true;
@@ -96424,7 +96424,7 @@ function baseIsEqualDeep(object2, other, bitmask, customizer, equalFunc, stack) 
     return objIsArr || isTypedArray2(object2) ? equalArrays(object2, other, bitmask, customizer, equalFunc, stack) : equalByTag(object2, other, objTag, bitmask, customizer, equalFunc, stack);
   }
   if (!(bitmask & COMPARE_PARTIAL_FLAG)) {
-    var objIsWrapped = objIsObj && hasOwnProperty$8.call(object2, "__wrapped__"), othIsWrapped = othIsObj && hasOwnProperty$8.call(other, "__wrapped__");
+    var objIsWrapped = objIsObj && hasOwnProperty$9.call(object2, "__wrapped__"), othIsWrapped = othIsObj && hasOwnProperty$9.call(other, "__wrapped__");
     if (objIsWrapped || othIsWrapped) {
       var objUnwrapped = objIsWrapped ? object2.value() : object2, othUnwrapped = othIsWrapped ? other.value() : other;
       stack || (stack = new Stack());
@@ -97130,7 +97130,7 @@ function requireLocalforage() {
         var immediate = _dereq_(1);
         function INTERNAL() {
         }
-        var handlers = {};
+        var handlers2 = {};
         var REJECTED = ["REJECTED"];
         var FULFILLED = ["FULFILLED"];
         var PENDING = ["PENDING"];
@@ -97174,13 +97174,13 @@ function requireLocalforage() {
           }
         }
         QueueItem.prototype.callFulfilled = function(value) {
-          handlers.resolve(this.promise, value);
+          handlers2.resolve(this.promise, value);
         };
         QueueItem.prototype.otherCallFulfilled = function(value) {
           unwrap(this.promise, this.onFulfilled, value);
         };
         QueueItem.prototype.callRejected = function(value) {
-          handlers.reject(this.promise, value);
+          handlers2.reject(this.promise, value);
         };
         QueueItem.prototype.otherCallRejected = function(value) {
           unwrap(this.promise, this.onRejected, value);
@@ -97191,19 +97191,19 @@ function requireLocalforage() {
             try {
               returnValue = func(value);
             } catch (e2) {
-              return handlers.reject(promise, e2);
+              return handlers2.reject(promise, e2);
             }
             if (returnValue === promise) {
-              handlers.reject(promise, new TypeError("Cannot resolve promise with itself"));
+              handlers2.reject(promise, new TypeError("Cannot resolve promise with itself"));
             } else {
-              handlers.resolve(promise, returnValue);
+              handlers2.resolve(promise, returnValue);
             }
           });
         }
-        handlers.resolve = function(self2, value) {
+        handlers2.resolve = function(self2, value) {
           var result = tryCatch(getThen, value);
           if (result.status === "error") {
-            return handlers.reject(self2, result.value);
+            return handlers2.reject(self2, result.value);
           }
           var thenable = result.value;
           if (thenable) {
@@ -97219,7 +97219,7 @@ function requireLocalforage() {
           }
           return self2;
         };
-        handlers.reject = function(self2, error) {
+        handlers2.reject = function(self2, error) {
           self2.state = REJECTED;
           self2.outcome = error;
           var i2 = -1;
@@ -97244,14 +97244,14 @@ function requireLocalforage() {
               return;
             }
             called = true;
-            handlers.reject(self2, value);
+            handlers2.reject(self2, value);
           }
           function onSuccess(value) {
             if (called) {
               return;
             }
             called = true;
-            handlers.resolve(self2, value);
+            handlers2.resolve(self2, value);
           }
           function tryToUnwrap() {
             thenable(onSuccess, onError2);
@@ -97277,12 +97277,12 @@ function requireLocalforage() {
           if (value instanceof this) {
             return value;
           }
-          return handlers.resolve(new this(INTERNAL), value);
+          return handlers2.resolve(new this(INTERNAL), value);
         }
         Promise2.reject = reject;
         function reject(reason) {
           var promise = new this(INTERNAL);
-          return handlers.reject(promise, reason);
+          return handlers2.reject(promise, reason);
         }
         Promise2.all = all2;
         function all2(iterable) {
@@ -97307,14 +97307,14 @@ function requireLocalforage() {
             self2.resolve(value).then(resolveFromAll, function(error) {
               if (!called) {
                 called = true;
-                handlers.reject(promise, error);
+                handlers2.reject(promise, error);
               }
             });
             function resolveFromAll(outValue) {
               values3[i3] = outValue;
               if (++resolved === len && !called) {
                 called = true;
-                handlers.resolve(promise, values3);
+                handlers2.resolve(promise, values3);
               }
             }
           }
@@ -97340,12 +97340,12 @@ function requireLocalforage() {
             self2.resolve(value).then(function(response) {
               if (!called) {
                 called = true;
-                handlers.resolve(promise, response);
+                handlers2.resolve(promise, response);
               }
             }, function(error) {
               if (!called) {
                 called = true;
-                handlers.reject(promise, error);
+                handlers2.reject(promise, error);
               }
             });
           }
@@ -99201,18 +99201,18 @@ class PersistVolumePlugin extends videojs.getPlugin("plugin") {
 }
 videojs.registerPlugin("persistVolume", PersistVolumePlugin);
 var cryptoJs$1 = { exports: {} };
-var core$1 = { exports: {} };
-var core = core$1.exports;
-var hasRequiredCore;
-function requireCore() {
-  if (hasRequiredCore) return core$1.exports;
-  hasRequiredCore = 1;
+var core$2 = { exports: {} };
+var core$1 = core$2.exports;
+var hasRequiredCore$1;
+function requireCore$1() {
+  if (hasRequiredCore$1) return core$2.exports;
+  hasRequiredCore$1 = 1;
   (function(module2, exports2) {
     (function(root2, factory3) {
       {
         module2.exports = factory3();
       }
-    })(core, function() {
+    })(core$1, function() {
       var CryptoJS2 = CryptoJS2 || (function(Math2, undefined$1) {
         var crypto;
         if (typeof window !== "undefined" && window.crypto) {
@@ -99806,8 +99806,8 @@ function requireCore() {
       })(Math);
       return CryptoJS2;
     });
-  })(core$1);
-  return core$1.exports;
+  })(core$2);
+  return core$2.exports;
 }
 var x64Core$1 = { exports: {} };
 var x64Core = x64Core$1.exports;
@@ -99818,7 +99818,7 @@ function requireX64Core() {
   (function(module2, exports2) {
     (function(root2, factory3) {
       {
-        module2.exports = factory3(requireCore());
+        module2.exports = factory3(requireCore$1());
       }
     })(x64Core, function(CryptoJS2) {
       (function(undefined$1) {
@@ -100075,7 +100075,7 @@ function requireLibTypedarrays() {
   (function(module2, exports2) {
     (function(root2, factory3) {
       {
-        module2.exports = factory3(requireCore());
+        module2.exports = factory3(requireCore$1());
       }
     })(libTypedarrays, function(CryptoJS2) {
       (function() {
@@ -100120,7 +100120,7 @@ function requireEncUtf16() {
   (function(module2, exports2) {
     (function(root2, factory3) {
       {
-        module2.exports = factory3(requireCore());
+        module2.exports = factory3(requireCore$1());
       }
     })(encUtf16, function(CryptoJS2) {
       (function() {
@@ -100238,7 +100238,7 @@ function requireEncBase64() {
   (function(module2, exports2) {
     (function(root2, factory3) {
       {
-        module2.exports = factory3(requireCore());
+        module2.exports = factory3(requireCore$1());
       }
     })(encBase64, function(CryptoJS2) {
       (function() {
@@ -100346,7 +100346,7 @@ function requireEncBase64url() {
   (function(module2, exports2) {
     (function(root2, factory3) {
       {
-        module2.exports = factory3(requireCore());
+        module2.exports = factory3(requireCore$1());
       }
     })(encBase64url, function(CryptoJS2) {
       (function() {
@@ -100465,7 +100465,7 @@ function requireMd5() {
   (function(module2, exports2) {
     (function(root2, factory3) {
       {
-        module2.exports = factory3(requireCore());
+        module2.exports = factory3(requireCore$1());
       }
     })(md5, function(CryptoJS2) {
       (function(Math2) {
@@ -100644,7 +100644,7 @@ function requireSha1() {
   (function(module2, exports2) {
     (function(root2, factory3) {
       {
-        module2.exports = factory3(requireCore());
+        module2.exports = factory3(requireCore$1());
       }
     })(sha1, function(CryptoJS2) {
       (function() {
@@ -100735,7 +100735,7 @@ function requireSha256() {
   (function(module2, exports2) {
     (function(root2, factory3) {
       {
-        module2.exports = factory3(requireCore());
+        module2.exports = factory3(requireCore$1());
       }
     })(sha256, function(CryptoJS2) {
       (function(Math2) {
@@ -100856,7 +100856,7 @@ function requireSha224() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireSha256());
+        module2.exports = factory3(requireCore$1(), requireSha256());
       }
     })(sha224, function(CryptoJS2) {
       (function() {
@@ -100901,7 +100901,7 @@ function requireSha512() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireX64Core());
+        module2.exports = factory3(requireCore$1(), requireX64Core());
       }
     })(sha512, function(CryptoJS2) {
       (function() {
@@ -101183,7 +101183,7 @@ function requireSha384() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireX64Core(), requireSha512());
+        module2.exports = factory3(requireCore$1(), requireX64Core(), requireSha512());
       }
     })(sha384, function(CryptoJS2) {
       (function() {
@@ -101229,7 +101229,7 @@ function requireSha3() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireX64Core());
+        module2.exports = factory3(requireCore$1(), requireX64Core());
       }
     })(sha3, function(CryptoJS2) {
       (function(Math2) {
@@ -101431,7 +101431,7 @@ function requireRipemd160() {
   (function(module2, exports2) {
     (function(root2, factory3) {
       {
-        module2.exports = factory3(requireCore());
+        module2.exports = factory3(requireCore$1());
       }
     })(ripemd160, function(CryptoJS2) {
       /** @preserve
@@ -101912,7 +101912,7 @@ function requireHmac() {
   (function(module2, exports2) {
     (function(root2, factory3) {
       {
-        module2.exports = factory3(requireCore());
+        module2.exports = factory3(requireCore$1());
       }
     })(hmac, function(CryptoJS2) {
       (function() {
@@ -102019,7 +102019,7 @@ function requirePbkdf2() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireSha256(), requireHmac());
+        module2.exports = factory3(requireCore$1(), requireSha256(), requireHmac());
       }
     })(pbkdf2, function(CryptoJS2) {
       (function() {
@@ -102117,7 +102117,7 @@ function requireEvpkdf() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireSha1(), requireHmac());
+        module2.exports = factory3(requireCore$1(), requireSha1(), requireHmac());
       }
     })(evpkdf, function(CryptoJS2) {
       (function() {
@@ -102208,7 +102208,7 @@ function requireCipherCore() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireEvpkdf());
+        module2.exports = factory3(requireCore$1(), requireEvpkdf());
       }
     })(cipherCore, function(CryptoJS2) {
       CryptoJS2.lib.Cipher || (function(undefined$1) {
@@ -102852,7 +102852,7 @@ function requireModeCfb() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireCipherCore());
       }
     })(modeCfb, function(CryptoJS2) {
       CryptoJS2.mode.CFB = (function() {
@@ -102904,7 +102904,7 @@ function requireModeCtr() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireCipherCore());
       }
     })(modeCtr, function(CryptoJS2) {
       CryptoJS2.mode.CTR = (function() {
@@ -102944,7 +102944,7 @@ function requireModeCtrGladman() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireCipherCore());
       }
     })(modeCtrGladman, function(CryptoJS2) {
       /** @preserve
@@ -103024,7 +103024,7 @@ function requireModeOfb() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireCipherCore());
       }
     })(modeOfb, function(CryptoJS2) {
       CryptoJS2.mode.OFB = (function() {
@@ -103062,7 +103062,7 @@ function requireModeEcb() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireCipherCore());
       }
     })(modeEcb, function(CryptoJS2) {
       CryptoJS2.mode.ECB = (function() {
@@ -103093,7 +103093,7 @@ function requirePadAnsix923() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireCipherCore());
       }
     })(padAnsix923, function(CryptoJS2) {
       CryptoJS2.pad.AnsiX923 = {
@@ -103125,7 +103125,7 @@ function requirePadIso10126() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireCipherCore());
       }
     })(padIso10126, function(CryptoJS2) {
       CryptoJS2.pad.Iso10126 = {
@@ -103153,7 +103153,7 @@ function requirePadIso97971() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireCipherCore());
       }
     })(padIso97971, function(CryptoJS2) {
       CryptoJS2.pad.Iso97971 = {
@@ -103180,7 +103180,7 @@ function requirePadZeropadding() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireCipherCore());
       }
     })(padZeropadding, function(CryptoJS2) {
       CryptoJS2.pad.ZeroPadding = {
@@ -103214,7 +103214,7 @@ function requirePadNopadding() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireCipherCore());
       }
     })(padNopadding, function(CryptoJS2) {
       CryptoJS2.pad.NoPadding = {
@@ -103237,7 +103237,7 @@ function requireFormatHex() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireCipherCore());
       }
     })(formatHex, function(CryptoJS2) {
       (function(undefined$1) {
@@ -103297,7 +103297,7 @@ function requireAes() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
       }
     })(aes, function(CryptoJS2) {
       (function() {
@@ -103451,7 +103451,7 @@ function requireTripledes() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
       }
     })(tripledes, function(CryptoJS2) {
       (function() {
@@ -104232,7 +104232,7 @@ function requireRc4() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
       }
     })(rc4, function(CryptoJS2) {
       (function() {
@@ -104315,7 +104315,7 @@ function requireRabbit() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
       }
     })(rabbit, function(CryptoJS2) {
       (function() {
@@ -104444,7 +104444,7 @@ function requireRabbitLegacy() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
       }
     })(rabbitLegacy, function(CryptoJS2) {
       (function() {
@@ -104570,7 +104570,7 @@ function requireBlowfish() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
+        module2.exports = factory3(requireCore$1(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
       }
     })(blowfish, function(CryptoJS2) {
       (function() {
@@ -105758,7 +105758,7 @@ function requireCryptoJs() {
   (function(module2, exports2) {
     (function(root2, factory3, undef) {
       {
-        module2.exports = factory3(requireCore(), requireX64Core(), requireLibTypedarrays(), requireEncUtf16(), requireEncBase64(), requireEncBase64url(), requireMd5(), requireSha1(), requireSha256(), requireSha224(), requireSha512(), requireSha384(), requireSha3(), requireRipemd160(), requireHmac(), requirePbkdf2(), requireEvpkdf(), requireCipherCore(), requireModeCfb(), requireModeCtr(), requireModeCtrGladman(), requireModeOfb(), requireModeEcb(), requirePadAnsix923(), requirePadIso10126(), requirePadIso97971(), requirePadZeropadding(), requirePadNopadding(), requireFormatHex(), requireAes(), requireTripledes(), requireRc4(), requireRabbit(), requireRabbitLegacy(), requireBlowfish());
+        module2.exports = factory3(requireCore$1(), requireX64Core(), requireLibTypedarrays(), requireEncUtf16(), requireEncBase64(), requireEncBase64url(), requireMd5(), requireSha1(), requireSha256(), requireSha224(), requireSha512(), requireSha384(), requireSha3(), requireRipemd160(), requireHmac(), requirePbkdf2(), requireEvpkdf(), requireCipherCore(), requireModeCfb(), requireModeCtr(), requireModeCtrGladman(), requireModeOfb(), requireModeEcb(), requirePadAnsix923(), requirePadIso10126(), requirePadIso97971(), requirePadZeropadding(), requirePadNopadding(), requireFormatHex(), requireAes(), requireTripledes(), requireRc4(), requireRabbit(), requireRabbitLegacy(), requireBlowfish());
       }
     })(cryptoJs, function(CryptoJS2) {
       return CryptoJS2;
@@ -106911,8 +106911,8 @@ function requireWebvrPolyfill() {
           })();
           var MIN_TIMESTEP = 1e-3;
           var MAX_TIMESTEP = 1;
-          var dataUri = function dataUri2(mimeType, svg) {
-            return "data:" + mimeType + "," + encodeURIComponent(svg);
+          var dataUri = function dataUri2(mimeType, svg2) {
+            return "data:" + mimeType + "," + encodeURIComponent(svg2);
           };
           var lerp = function lerp2(a4, b3, t4) {
             return a4 + (b3 - a4) * t4;
@@ -108402,13 +108402,13 @@ function requireWebvrPolyfill() {
           DeviceInfo.prototype.getLeftEyeVisibleScreenRect = function(undistortedFrustum) {
             var viewer = this.viewer;
             var device = this.device;
-            var dist = viewer.screenLensDistance;
+            var dist2 = viewer.screenLensDistance;
             var eyeX = (device.widthMeters - viewer.interLensDistance) / 2;
             var eyeY = viewer.baselineLensDistance - device.bevelMeters;
-            var left2 = (undistortedFrustum[0] * dist + eyeX) / device.widthMeters;
-            var top2 = (undistortedFrustum[1] * dist + eyeY) / device.heightMeters;
-            var right2 = (undistortedFrustum[2] * dist + eyeX) / device.widthMeters;
-            var bottom2 = (undistortedFrustum[3] * dist + eyeY) / device.heightMeters;
+            var left2 = (undistortedFrustum[0] * dist2 + eyeX) / device.widthMeters;
+            var top2 = (undistortedFrustum[1] * dist2 + eyeY) / device.heightMeters;
+            var right2 = (undistortedFrustum[2] * dist2 + eyeX) / device.widthMeters;
+            var bottom2 = (undistortedFrustum[3] * dist2 + eyeY) / device.heightMeters;
             return {
               x: left2,
               y: bottom2,
@@ -109041,15 +109041,15 @@ function requireWebvrPolyfill() {
             s4.marginTop = "25%";
             s4.width = "50%";
             overlay.appendChild(img);
-            var text = document.createElement("div");
-            var s4 = text.style;
+            var text2 = document.createElement("div");
+            var s4 = text2.style;
             s4.textAlign = "center";
             s4.fontSize = "16px";
             s4.lineHeight = "24px";
             s4.margin = "24px 25%";
             s4.width = "50%";
-            text.innerHTML = "Place your phone into your Cardboard viewer.";
-            overlay.appendChild(text);
+            text2.innerHTML = "Place your phone into your Cardboard viewer.";
+            overlay.appendChild(text2);
             var snackbar = document.createElement("div");
             var s4 = snackbar.style;
             s4.backgroundColor = "#CFD8DC";
@@ -109079,7 +109079,7 @@ function requireWebvrPolyfill() {
             snackbar.appendChild(snackbarText);
             snackbar.appendChild(snackbarButton);
             this.overlay = overlay;
-            this.text = text;
+            this.text = text2;
             this.hide();
           }
           RotateInstructions.prototype.show = function(parent) {
@@ -118553,14 +118553,14 @@ function WebGLBackground(renderer, state, objects, premultipliedAlpha) {
     render: render2
   };
 }
-function WebGLBufferRenderer(gl, extensions, info) {
+function WebGLBufferRenderer(gl, extensions, info2) {
   var mode;
   function setMode(value) {
     mode = value;
   }
   function render2(start3, count2) {
     gl.drawArrays(mode, start3, count2);
-    info.update(count2, mode);
+    info2.update(count2, mode);
   }
   function renderInstances(geometry, start3, count2) {
     var extension = extensions.get("ANGLE_instanced_arrays");
@@ -118569,7 +118569,7 @@ function WebGLBufferRenderer(gl, extensions, info) {
       return;
     }
     extension.drawArraysInstancedANGLE(mode, start3, count2, geometry.maxInstancedCount);
-    info.update(count2, mode, geometry.maxInstancedCount);
+    info2.update(count2, mode, geometry.maxInstancedCount);
   }
   this.setMode = setMode;
   this.render = render2;
@@ -118741,7 +118741,7 @@ function WebGLExtensions(gl) {
     }
   };
 }
-function WebGLGeometries(gl, attributes, info) {
+function WebGLGeometries(gl, attributes, info2) {
   var geometries = {};
   var wireframeAttributes = {};
   function onGeometryDispose(event) {
@@ -118765,7 +118765,7 @@ function WebGLGeometries(gl, attributes, info) {
       attributes.remove(attribute);
       delete wireframeAttributes[buffergeometry.id];
     }
-    info.memory.geometries--;
+    info2.memory.geometries--;
   }
   function get7(object2, geometry) {
     var buffergeometry = geometries[geometry.id];
@@ -118780,7 +118780,7 @@ function WebGLGeometries(gl, attributes, info) {
       buffergeometry = geometry._bufferGeometry;
     }
     geometries[geometry.id] = buffergeometry;
-    info.memory.geometries++;
+    info2.memory.geometries++;
     return buffergeometry;
   }
   function update2(geometry) {
@@ -118834,7 +118834,7 @@ function WebGLGeometries(gl, attributes, info) {
     getWireframeAttribute
   };
 }
-function WebGLIndexedBufferRenderer(gl, extensions, info) {
+function WebGLIndexedBufferRenderer(gl, extensions, info2) {
   var mode;
   function setMode(value) {
     mode = value;
@@ -118846,7 +118846,7 @@ function WebGLIndexedBufferRenderer(gl, extensions, info) {
   }
   function render2(start3, count2) {
     gl.drawElements(mode, count2, type3, start3 * bytesPerElement);
-    info.update(count2, mode);
+    info2.update(count2, mode);
   }
   function renderInstances(geometry, start3, count2) {
     var extension = extensions.get("ANGLE_instanced_arrays");
@@ -118855,7 +118855,7 @@ function WebGLIndexedBufferRenderer(gl, extensions, info) {
       return;
     }
     extension.drawElementsInstancedANGLE(mode, count2, type3, start3 * bytesPerElement, geometry.maxInstancedCount);
-    info.update(count2, mode, geometry.maxInstancedCount);
+    info2.update(count2, mode, geometry.maxInstancedCount);
   }
   this.setMode = setMode;
   this.setIndex = setIndex;
@@ -118970,10 +118970,10 @@ function WebGLMorphtargets(gl) {
     update: update2
   };
 }
-function WebGLObjects(geometries, info) {
+function WebGLObjects(geometries, info2) {
   var updateList = {};
   function update2(object2) {
-    var frame2 = info.render.frame;
+    var frame2 = info2.render.frame;
     var geometry = object2.geometry;
     var buffergeometry = geometries.get(object2, geometry);
     if (updateList[buffergeometry.id] !== frame2) {
@@ -119433,8 +119433,8 @@ function WebGLUniforms(gl, program, renderer) {
   this.renderer = renderer;
   var n = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
   for (var i2 = 0; i2 < n; ++i2) {
-    var info = gl.getActiveUniform(program, i2), addr = gl.getUniformLocation(program, info.name);
-    parseUniform(info, addr, this);
+    var info2 = gl.getActiveUniform(program, i2), addr = gl.getUniformLocation(program, info2.name);
+    parseUniform(info2, addr, this);
   }
 }
 WebGLUniforms.prototype.setValue = function(gl, name2, value) {
@@ -119552,8 +119552,8 @@ function fetchAttributeLocations(gl, program) {
   var attributes = {};
   var n = gl.getProgramParameter(program, gl.ACTIVE_ATTRIBUTES);
   for (var i2 = 0; i2 < n; i2++) {
-    var info = gl.getActiveAttrib(program, i2);
-    var name2 = info.name;
+    var info2 = gl.getActiveAttrib(program, i2);
+    var name2 = info2.name;
     attributes[name2] = gl.getAttribLocation(program, name2);
   }
   return attributes;
@@ -121551,7 +121551,7 @@ function WebGLState(gl, extensions, utils2) {
     reset: reset3
   };
 }
-function WebGLTextures(_gl, extensions, state, properties, capabilities, utils2, info) {
+function WebGLTextures(_gl, extensions, state, properties, capabilities, utils2, info2) {
   var _isWebGL2 = typeof WebGL2RenderingContext !== "undefined" && _gl instanceof WebGL2RenderingContext;
   var _videoTextures = {};
   var _canvas;
@@ -121611,13 +121611,13 @@ function WebGLTextures(_gl, extensions, state, properties, capabilities, utils2,
     if (texture.isVideoTexture) {
       delete _videoTextures[texture.id];
     }
-    info.memory.textures--;
+    info2.memory.textures--;
   }
   function onRenderTargetDispose(event) {
     var renderTarget = event.target;
     renderTarget.removeEventListener("dispose", onRenderTargetDispose);
     deallocateRenderTarget(renderTarget);
-    info.memory.textures--;
+    info2.memory.textures--;
   }
   function deallocateTexture(texture) {
     var textureProperties = properties.get(texture);
@@ -121675,7 +121675,7 @@ function WebGLTextures(_gl, extensions, state, properties, capabilities, utils2,
         if (!textureProperties.__image__webglTextureCube) {
           texture.addEventListener("dispose", onTextureDispose);
           textureProperties.__image__webglTextureCube = _gl.createTexture();
-          info.memory.textures++;
+          info2.memory.textures++;
         }
         state.activeTexture(_gl.TEXTURE0 + slot);
         state.bindTexture(_gl.TEXTURE_CUBE_MAP, textureProperties.__image__webglTextureCube);
@@ -121769,7 +121769,7 @@ function WebGLTextures(_gl, extensions, state, properties, capabilities, utils2,
       textureProperties.__webglInit = true;
       texture.addEventListener("dispose", onTextureDispose);
       textureProperties.__webglTexture = _gl.createTexture();
-      info.memory.textures++;
+      info2.memory.textures++;
     }
     state.activeTexture(_gl.TEXTURE0 + slot);
     state.bindTexture(_gl.TEXTURE_2D, textureProperties.__webglTexture);
@@ -121922,7 +121922,7 @@ function WebGLTextures(_gl, extensions, state, properties, capabilities, utils2,
     var textureProperties = properties.get(renderTarget.texture);
     renderTarget.addEventListener("dispose", onRenderTargetDispose);
     textureProperties.__webglTexture = _gl.createTexture();
-    info.memory.textures++;
+    info2.memory.textures++;
     var isCube = renderTarget.isWebGLRenderTargetCube === true;
     var isTargetPowerOfTwo = isPowerOfTwo(renderTarget);
     if (isCube) {
@@ -121969,7 +121969,7 @@ function WebGLTextures(_gl, extensions, state, properties, capabilities, utils2,
   }
   function updateVideoTexture(texture) {
     var id2 = texture.id;
-    var frame2 = info.render.frame;
+    var frame2 = info2.render.frame;
     if (_videoTextures[id2] !== frame2) {
       _videoTextures[id2] = frame2;
       texture.update();
@@ -122520,7 +122520,7 @@ function WebGLRenderer(parameters) {
   } catch (error) {
     console.error("THREE.WebGLRenderer: " + error.message);
   }
-  var extensions, capabilities, state, info;
+  var extensions, capabilities, state, info2;
   var properties, textures, attributes, geometries, objects;
   var programCache, renderLists, renderStates;
   var background, morphtargets, bufferRenderer, indexedBufferRenderer;
@@ -122541,28 +122541,28 @@ function WebGLRenderer(parameters) {
     state = new WebGLState(_gl, extensions, utils2);
     state.scissor(_currentScissor.copy(_scissor).multiplyScalar(_pixelRatio));
     state.viewport(_currentViewport.copy(_viewport).multiplyScalar(_pixelRatio));
-    info = new WebGLInfo(_gl);
+    info2 = new WebGLInfo(_gl);
     properties = new WebGLProperties();
-    textures = new WebGLTextures(_gl, extensions, state, properties, capabilities, utils2, info);
+    textures = new WebGLTextures(_gl, extensions, state, properties, capabilities, utils2, info2);
     attributes = new WebGLAttributes(_gl);
-    geometries = new WebGLGeometries(_gl, attributes, info);
-    objects = new WebGLObjects(geometries, info);
+    geometries = new WebGLGeometries(_gl, attributes, info2);
+    objects = new WebGLObjects(geometries, info2);
     morphtargets = new WebGLMorphtargets(_gl);
     programCache = new WebGLPrograms(_this, extensions, capabilities);
     renderLists = new WebGLRenderLists();
     renderStates = new WebGLRenderStates();
     background = new WebGLBackground(_this, state, objects, _premultipliedAlpha);
-    bufferRenderer = new WebGLBufferRenderer(_gl, extensions, info);
-    indexedBufferRenderer = new WebGLIndexedBufferRenderer(_gl, extensions, info);
+    bufferRenderer = new WebGLBufferRenderer(_gl, extensions, info2);
+    indexedBufferRenderer = new WebGLIndexedBufferRenderer(_gl, extensions, info2);
     spriteRenderer = new WebGLSpriteRenderer(_this, _gl, state, textures, capabilities);
-    info.programs = programCache.programs;
+    info2.programs = programCache.programs;
     _this.context = _gl;
     _this.capabilities = capabilities;
     _this.extensions = extensions;
     _this.properties = properties;
     _this.renderLists = renderLists;
     _this.state = state;
-    _this.info = info;
+    _this.info = info2;
   }
   initGLContext();
   var vr = "xr" in navigator ? new WebXRManager(_this) : new WebVRManager(_this);
@@ -126313,26 +126313,26 @@ function toJSON(shapes, options2, data2) {
   if (options2.extrudePath !== void 0) data2.options.extrudePath = options2.extrudePath.toJSON();
   return data2;
 }
-function TextGeometry(text, parameters) {
+function TextGeometry(text2, parameters) {
   Geometry.call(this);
   this.type = "TextGeometry";
   this.parameters = {
-    text,
+    text: text2,
     parameters
   };
-  this.fromBufferGeometry(new TextBufferGeometry(text, parameters));
+  this.fromBufferGeometry(new TextBufferGeometry(text2, parameters));
   this.mergeVertices();
 }
 TextGeometry.prototype = Object.create(Geometry.prototype);
 TextGeometry.prototype.constructor = TextGeometry;
-function TextBufferGeometry(text, parameters) {
+function TextBufferGeometry(text2, parameters) {
   parameters = parameters || {};
   var font = parameters.font;
   if (!(font && font.isFont)) {
     console.error("THREE.TextGeometry: font parameter is not an instance of THREE.Font.");
     return new Geometry();
   }
-  var shapes = font.generateShapes(text, parameters.size, parameters.curveSegments);
+  var shapes = font.generateShapes(text2, parameters.size, parameters.curveSegments);
   parameters.depth = parameters.height !== void 0 ? parameters.height : 50;
   if (parameters.bevelThickness === void 0) parameters.bevelThickness = 10;
   if (parameters.bevelSize === void 0) parameters.bevelSize = 8;
@@ -129873,8 +129873,8 @@ Object.assign(MaterialLoader.prototype, {
   load: function(url2, onLoad, onProgress, onError2) {
     var scope = this;
     var loader = new FileLoader(scope.manager);
-    loader.load(url2, function(text) {
-      onLoad(scope.parse(JSON.parse(text)));
+    loader.load(url2, function(text2) {
+      onLoad(scope.parse(JSON.parse(text2)));
     }, onProgress, onError2);
   },
   setTextures: function(value) {
@@ -129973,8 +129973,8 @@ Object.assign(BufferGeometryLoader.prototype, {
   load: function(url2, onLoad, onProgress, onError2) {
     var scope = this;
     var loader = new FileLoader(scope.manager);
-    loader.load(url2, function(text) {
-      onLoad(scope.parse(JSON.parse(text)));
+    loader.load(url2, function(text2) {
+      onLoad(scope.parse(JSON.parse(text2)));
     }, onProgress, onError2);
   },
   parse: function(json) {
@@ -130028,10 +130028,10 @@ Loader.Handlers = {
     this.handlers.push(regex, loader);
   },
   get: function(file2) {
-    var handlers = this.handlers;
-    for (var i2 = 0, l = handlers.length; i2 < l; i2 += 2) {
-      var regex = handlers[i2];
-      var loader = handlers[i2 + 1];
+    var handlers2 = this.handlers;
+    for (var i2 = 0, l = handlers2.length; i2 < l; i2 += 2) {
+      var regex = handlers2[i2];
+      var loader = handlers2[i2 + 1];
       if (regex.test(file2)) {
         return loader;
       }
@@ -130292,8 +130292,8 @@ Object.assign(JSONLoader.prototype, {
     var texturePath = this.texturePath && typeof this.texturePath === "string" ? this.texturePath : LoaderUtils.extractUrlBase(url2);
     var loader = new FileLoader(this.manager);
     loader.setWithCredentials(this.withCredentials);
-    loader.load(url2, function(text) {
-      var json = JSON.parse(text);
+    loader.load(url2, function(text2) {
+      var json = JSON.parse(text2);
       var metadata2 = json.metadata;
       if (metadata2 !== void 0) {
         var type3 = metadata2.type;
@@ -130580,10 +130580,10 @@ Object.assign(ObjectLoader.prototype, {
     }
     var scope = this;
     var loader = new FileLoader(scope.manager);
-    loader.load(url2, function(text) {
+    loader.load(url2, function(text2) {
       var json = null;
       try {
-        json = JSON.parse(text);
+        json = JSON.parse(text2);
       } catch (error) {
         if (onError2 !== void 0) onError2(error);
         console.error("THREE:ObjectLoader: Can't parse " + url2 + ".", error.message);
@@ -131289,19 +131289,19 @@ function Font(data2) {
 }
 Object.assign(Font.prototype, {
   isFont: true,
-  generateShapes: function(text, size2, divisions) {
+  generateShapes: function(text2, size2, divisions) {
     if (size2 === void 0) size2 = 100;
     if (divisions === void 0) divisions = 4;
     var shapes = [];
-    var paths = createPaths(text, size2, divisions, this.data);
+    var paths = createPaths(text2, size2, divisions, this.data);
     for (var p2 = 0, pl = paths.length; p2 < pl; p2++) {
       Array.prototype.push.apply(shapes, paths[p2].toShapes());
     }
     return shapes;
   }
 });
-function createPaths(text, size2, divisions, data2) {
-  var chars = Array.from ? Array.from(text) : String(text).split("");
+function createPaths(text2, size2, divisions, data2) {
+  var chars = Array.from ? Array.from(text2) : String(text2).split("");
   var scale2 = size2 / data2.resolution;
   var line_height = (data2.boundingBox.yMax - data2.boundingBox.yMin + data2.underlineThickness) * scale2;
   var paths = [];
@@ -131368,13 +131368,13 @@ Object.assign(FontLoader.prototype, {
     var scope = this;
     var loader = new FileLoader(this.manager);
     loader.setPath(this.path);
-    loader.load(url2, function(text) {
+    loader.load(url2, function(text2) {
       var json;
       try {
-        json = JSON.parse(text);
+        json = JSON.parse(text2);
       } catch (e2) {
         console.warn("THREE.FontLoader: typeface.js support is being deprecated. Use typeface.json instead.");
-        json = JSON.parse(text.substring(65, text.length - 2));
+        json = JSON.parse(text2.substring(65, text2.length - 2));
       }
       var font = scope.parse(json);
       if (onLoad) onLoad(font);
@@ -136281,7 +136281,7 @@ var OrbitOrientationControls = /* @__PURE__ */ (function() {
   return OrbitOrientationControls2;
 })();
 var corsSupport = (function() {
-  var video = document$1.createElement("video");
+  var video = document$1$1.createElement("video");
   video.crossOrigin = "anonymous";
   return video.hasAttribute("crossorigin");
 })();
@@ -136882,7 +136882,7 @@ var VR = /* @__PURE__ */ (function(_Plugin) {
     if (this.videojsErrorsSupport_) {
       this.player_.error(errorObj);
     } else {
-      var div = document$1.createElement("div");
+      var div = document$1$1.createElement("div");
       div.innerHTML = errors$1[errorObj.code].message;
       var message = div.textContent || div.innerText || "";
       this.player_.error({
@@ -140814,7 +140814,7 @@ function getFragmentMaskMode(fragment) {
 }
 const defaultMakeData = () => /* @__PURE__ */ Object.create(null);
 const { forEach, slice: slice$1 } = Array.prototype;
-const { hasOwnProperty: hasOwnProperty$7 } = Object.prototype;
+const { hasOwnProperty: hasOwnProperty$8 } = Object.prototype;
 class Trie {
   constructor(weakness = true, makeData = defaultMakeData) {
     this.weakness = weakness;
@@ -140826,7 +140826,7 @@ class Trie {
   lookupArray(array2) {
     let node2 = this;
     forEach.call(array2, (key) => node2 = node2.getChildTrie(key));
-    return hasOwnProperty$7.call(node2, "data") ? node2.data : node2.data = this.makeData(slice$1.call(array2));
+    return hasOwnProperty$8.call(node2, "data") ? node2.data : node2.data = this.makeData(slice$1.call(array2));
   }
   peek() {
     return this.peekArray(arguments);
@@ -141754,7 +141754,7 @@ Array[globalKey] || (function(Slot2) {
 })(makeSlotClass());
 const { bind: bind2, noContext } = Slot;
 const parentEntrySlot = new Slot();
-const { hasOwnProperty: hasOwnProperty$6 } = Object.prototype;
+const { hasOwnProperty: hasOwnProperty$7 } = Object.prototype;
 const arrayFromSet = Array.from || function(set4) {
   const array2 = [];
   set4.forEach((item) => array2.push(item));
@@ -142017,7 +142017,7 @@ function dep(options2) {
   depend.dirty = function dirty(key, entryMethodName) {
     const dep2 = depsByKey.get(key);
     if (dep2) {
-      const m3 = entryMethodName && hasOwnProperty$6.call(EntryMethods, entryMethodName) ? entryMethodName : "setDirty";
+      const m3 = entryMethodName && hasOwnProperty$7.call(EntryMethods, entryMethodName) ? entryMethodName : "setDirty";
       arrayFromSet(dep2).forEach((entry) => entry[m3]());
       depsByKey.delete(key);
       maybeUnsubscribe(dep2);
@@ -142517,7 +142517,7 @@ function addNonReactiveToNamedFragments(document2) {
     }
   });
 }
-var hasOwnProperty$5 = Object.prototype.hasOwnProperty;
+var hasOwnProperty$6 = Object.prototype.hasOwnProperty;
 function mergeDeep() {
   var sources = [];
   for (var _i = 0; _i < arguments.length; _i++) {
@@ -142558,7 +142558,7 @@ var DeepMerger = (
       }
       if (isNonNullObject$1(source2) && isNonNullObject$1(target)) {
         Object.keys(source2).forEach(function(sourceKey) {
-          if (hasOwnProperty$5.call(target, sourceKey)) {
+          if (hasOwnProperty$6.call(target, sourceKey)) {
             var targetValue = target[sourceKey];
             if (source2[sourceKey] !== targetValue) {
               var result = _this.reconciler.apply(_this, __spreadArray([
@@ -143859,7 +143859,7 @@ var ApolloError = (
     return ApolloError2;
   })(Error)
 );
-var hasOwnProperty$4 = Object.prototype.hasOwnProperty;
+var hasOwnProperty$5 = Object.prototype.hasOwnProperty;
 function readMultipartBody(response, nextValue) {
   return __awaiter(this, void 0, void 0, function() {
     var decoder, contentType, delimiter2, boundaryVal, boundary, buffer, iterator, running, _a2, value, done, chunk, searchFrom, bi, message, i2, headers, contentType_1, body, result, next2;
@@ -143992,7 +143992,7 @@ function parseAndCheckHttpResponse(operations2) {
     return response.text().then(function(bodyText) {
       return parseJsonBody(response, bodyText);
     }).then(function(result) {
-      if (!Array.isArray(result) && !hasOwnProperty$4.call(result, "data") && !hasOwnProperty$4.call(result, "errors")) {
+      if (!Array.isArray(result) && !hasOwnProperty$5.call(result, "data") && !hasOwnProperty$5.call(result, "errors")) {
         throwServerError(response, result, "Server response was missing for query '".concat(Array.isArray(operations2) ? operations2.map(function(op) {
           return op.operationName;
         }) : operations2.operationName, "'."));
@@ -144289,7 +144289,7 @@ var HttpLink = (
     return HttpLink2;
   })(ApolloLink)
 );
-const { toString: toString$1, hasOwnProperty: hasOwnProperty$3 } = Object.prototype;
+const { toString: toString$1, hasOwnProperty: hasOwnProperty$4 } = Object.prototype;
 const fnToStr = Function.prototype.toString;
 const previousComparisons = /* @__PURE__ */ new Map();
 function equal(a4, b3) {
@@ -144322,7 +144322,7 @@ function check(a4, b3) {
       if (keyCount !== bKeys.length)
         return false;
       for (let k2 = 0; k2 < keyCount; ++k2) {
-        if (!hasOwnProperty$3.call(b3, aKeys[k2])) {
+        if (!hasOwnProperty$4.call(b3, aKeys[k2])) {
           return false;
         }
       }
@@ -144355,10 +144355,10 @@ function check(a4, b3) {
       const aIterator = a4.entries();
       const isMap2 = aTag === "[object Map]";
       while (true) {
-        const info = aIterator.next();
-        if (info.done)
+        const info2 = aIterator.next();
+        if (info2.done)
           break;
-        const [aKey, aValue] = info.value;
+        const [aKey, aValue] = info2.value;
         if (!b3.has(aKey)) {
           return false;
         }
@@ -145221,11 +145221,11 @@ var EntityStore = (
       });
       var idsToRemove = Object.keys(snapshot);
       if (idsToRemove.length) {
-        var root_1 = this;
-        while (root_1 instanceof Layer)
-          root_1 = root_1.parent;
+        var root_12 = this;
+        while (root_12 instanceof Layer)
+          root_12 = root_12.parent;
         idsToRemove.forEach(function(id2) {
-          return root_1.delete(id2);
+          return root_12.delete(id2);
         });
       }
       return idsToRemove;
@@ -145794,14 +145794,14 @@ function assertSelectionSetForIdValue(store, field, fieldValue) {
 var cacheSlot = new Slot();
 var cacheInfoMap = /* @__PURE__ */ new WeakMap();
 function getCacheInfo(cache2) {
-  var info = cacheInfoMap.get(cache2);
-  if (!info) {
-    cacheInfoMap.set(cache2, info = {
+  var info2 = cacheInfoMap.get(cache2);
+  if (!info2) {
+    cacheInfoMap.set(cache2, info2 = {
       vars: /* @__PURE__ */ new Set(),
       dep: dep()
     });
   }
-  return info;
+  return info2;
 }
 function forgetCache(cache2) {
   getCacheInfo(cache2).vars.forEach(function(rv) {
@@ -145866,8 +145866,8 @@ function lookupSpecifierInfo(spec) {
   return specifierInfoCache[cacheKey2] || (specifierInfoCache[cacheKey2] = /* @__PURE__ */ Object.create(null));
 }
 function keyFieldsFnFromSpecifier(specifier) {
-  var info = lookupSpecifierInfo(specifier);
-  return info.keyFieldsFn || (info.keyFieldsFn = function(object2, context2) {
+  var info2 = lookupSpecifierInfo(specifier);
+  return info2.keyFieldsFn || (info2.keyFieldsFn = function(object2, context2) {
     var extract = function(from3, key) {
       return context2.readField(key, from3);
     };
@@ -145890,8 +145890,8 @@ function keyFieldsFnFromSpecifier(specifier) {
   });
 }
 function keyArgsFnFromSpecifier(specifier) {
-  var info = lookupSpecifierInfo(specifier);
-  return info.keyArgsFn || (info.keyArgsFn = function(args, _a2) {
+  var info2 = lookupSpecifierInfo(specifier);
+  return info2.keyArgsFn || (info2.keyArgsFn = function(args, _a2) {
     var field = _a2.field, variables = _a2.variables, fieldName = _a2.fieldName;
     var collected = collectSpecifierPaths(specifier, function(keyPath) {
       var firstKey = keyPath[0];
@@ -145948,9 +145948,9 @@ function collectSpecifierPaths(specifier, extractor) {
   }, /* @__PURE__ */ Object.create(null));
 }
 function getSpecifierPaths(spec) {
-  var info = lookupSpecifierInfo(spec);
-  if (!info.paths) {
-    var paths_1 = info.paths = [];
+  var info2 = lookupSpecifierInfo(spec);
+  if (!info2.paths) {
+    var paths_1 = info2.paths = [];
     var currentPath_1 = [];
     spec.forEach(function(s4, i2) {
       if (isArray$1(s4)) {
@@ -145967,7 +145967,7 @@ function getSpecifierPaths(spec) {
       }
     });
   }
-  return info.paths;
+  return info2.paths;
 }
 function extractKey(object2, key) {
   return object2[key];
@@ -146508,9 +146508,9 @@ var StoreWriter = (
       var readField = function() {
         var options2 = normalizeReadFieldOptions(arguments, incoming, context2.variables);
         if (isReference(options2.from)) {
-          var info = context2.incomingById.get(options2.from.__ref);
-          if (info) {
-            var result_1 = policies.readField(__assign(__assign({}, options2), { from: info.storeObject }), context2);
+          var info2 = context2.incomingById.get(options2.from.__ref);
+          if (info2) {
+            var result_1 = policies.readField(__assign(__assign({}, options2), { from: info2.storeObject }), context2);
             if (result_1 !== void 0) {
               return result_1;
             }
@@ -146764,10 +146764,10 @@ function mergeMergeTrees(left2, right2) {
     return left2;
   if (!left2 || mergeTreeIsEmpty(left2))
     return right2;
-  var info = left2.info && right2.info ? __assign(__assign({}, left2.info), right2.info) : left2.info || right2.info;
+  var info2 = left2.info && right2.info ? __assign(__assign({}, left2.info), right2.info) : left2.info || right2.info;
   var needToMergeMaps = left2.map.size && right2.map.size;
   var map = needToMergeMaps ? /* @__PURE__ */ new Map() : left2.map.size ? left2.map : right2.map;
-  var merged = { info, map };
+  var merged = { info: info2, map };
   if (needToMergeMaps) {
     var remainingRightKeys_1 = new Set(right2.map.keys());
     left2.map.forEach(function(leftTree, key) {
@@ -147156,7 +147156,7 @@ var NetworkStatus;
 function isNetworkRequestInFlight(networkStatus) {
   return networkStatus ? networkStatus < 7 : false;
 }
-var assign$3 = Object.assign, hasOwnProperty$2 = Object.hasOwnProperty;
+var assign$3 = Object.assign, hasOwnProperty$3 = Object.hasOwnProperty;
 var ObservableQuery = (
   /** @class */
   (function(_super) {
@@ -147364,7 +147364,7 @@ var ObservableQuery = (
       } else {
         reobserveOptions.fetchPolicy = "network-only";
       }
-      if (globalThis.__DEV__ !== false && variables && hasOwnProperty$2.call(variables, "variables")) {
+      if (globalThis.__DEV__ !== false && variables && hasOwnProperty$3.call(variables, "variables")) {
         var queryDef = getQueryDefinition(this.query);
         var vars = queryDef.variableDefinitions;
         if (!vars || !vars.some(function(v) {
@@ -147578,8 +147578,8 @@ var ObservableQuery = (
         return;
       }
       invariant$4(pollInterval, 24);
-      var info = pollingInfo || (this.pollingInfo = {});
-      info.interval = pollInterval;
+      var info2 = pollingInfo || (this.pollingInfo = {});
+      info2.interval = pollInterval;
       var maybeFetch = function() {
         var _a3, _b2;
         if (_this.pollingInfo) {
@@ -147597,10 +147597,10 @@ var ObservableQuery = (
         }
       };
       var poll = function() {
-        var info2 = _this.pollingInfo;
-        if (info2) {
-          clearTimeout(info2.timeout);
-          info2.timeout = setTimeout(maybeFetch, info2.interval);
+        var info3 = _this.pollingInfo;
+        if (info3) {
+          clearTimeout(info3.timeout);
+          info3.timeout = setTimeout(maybeFetch, info3.interval);
         }
       };
       poll();
@@ -148068,7 +148068,7 @@ function shouldWriteResult(result, errorPolicy) {
   }
   return writeWithErrors;
 }
-var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
+var hasOwnProperty$2 = Object.prototype.hasOwnProperty;
 var IGNORE = /* @__PURE__ */ Object.create(null);
 var QueryManager = (
   /** @class */
@@ -148274,7 +148274,7 @@ var QueryManager = (
           this.queries.forEach(function(_a2, queryId) {
             var observableQuery = _a2.observableQuery;
             var queryName = observableQuery && observableQuery.queryName;
-            if (!queryName || !hasOwnProperty$1.call(updateQueries_1, queryName)) {
+            if (!queryName || !hasOwnProperty$2.call(updateQueries_1, queryName)) {
               return;
             }
             var updater = updateQueries_1[queryName];
@@ -148395,12 +148395,12 @@ var QueryManager = (
     };
     QueryManager2.prototype.getQueryStore = function() {
       var store = /* @__PURE__ */ Object.create(null);
-      this.queries.forEach(function(info, queryId) {
+      this.queries.forEach(function(info2, queryId) {
         store[queryId] = {
-          variables: info.variables,
-          networkStatus: info.networkStatus,
-          networkError: info.networkError,
-          graphQLErrors: info.graphQLErrors
+          variables: info2.variables,
+          networkStatus: info2.networkStatus,
+          networkError: info2.networkError,
+          graphQLErrors: info2.graphQLErrors
         };
       });
       return store;
@@ -148696,9 +148696,9 @@ var QueryManager = (
     QueryManager2.prototype.broadcastQueries = function() {
       if (this.onBroadcast)
         this.onBroadcast();
-      this.queries.forEach(function(info) {
+      this.queries.forEach(function(info2) {
         var _a2;
-        return (_a2 = info.observableQuery) === null || _a2 === void 0 ? void 0 : _a2["notify"]();
+        return (_a2 = info2.observableQuery) === null || _a2 === void 0 ? void 0 : _a2["notify"]();
       });
     };
     QueryManager2.prototype.getLocalState = function() {
@@ -150068,7 +150068,7 @@ function wrapHook(hookName, useHook, clientOrObsQuery) {
   var wrapper = wrappers && wrappers[hookName];
   return wrapper ? wrapper(useHook) : useHook;
 }
-var hasOwnProperty = Object.prototype.hasOwnProperty;
+var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
 function noop$7() {
 }
 var lastWatchOptions = Symbol();
@@ -150214,7 +150214,7 @@ function useObservableSubscriptionResult(resultData, observable, client2, option
     var onError2 = function(error) {
       subscription.current.unsubscribe();
       subscription.current = observable.resubscribeAfterError(onNext, onError2);
-      if (!hasOwnProperty.call(error, "graphQLErrors")) {
+      if (!hasOwnProperty$1.call(error, "graphQLErrors")) {
         throw error;
       }
       var previousResult = resultData.current;
@@ -155221,7 +155221,7 @@ const useTagUpdate = () => useTagUpdateMutation({
     evictQueries(cache2, tagMutationImpactedQueries);
   }
 });
-function _objectWithoutPropertiesLoose$1m(r3, e2) {
+function _objectWithoutPropertiesLoose$1n(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -155267,10 +155267,10 @@ function useUncontrolledProp(propValue, defaultValue, handler) {
 function useUncontrolled(props, config2) {
   return Object.keys(config2).reduce(function(result, fieldName) {
     var _extends2;
-    var _ref3 = result, defaultValue = _ref3[defaultKey(fieldName)], propsValue = _ref3[fieldName], rest = _objectWithoutPropertiesLoose$1m(_ref3, [defaultKey(fieldName), fieldName].map(_toPropertyKey$3));
+    var _ref3 = result, defaultValue = _ref3[defaultKey(fieldName)], propsValue = _ref3[fieldName], rest = _objectWithoutPropertiesLoose$1n(_ref3, [defaultKey(fieldName), fieldName].map(_toPropertyKey$3));
     var handlerName = config2[fieldName];
     var _useUncontrolledProp = useUncontrolledProp(propsValue, defaultValue, props[handlerName]), value = _useUncontrolledProp[0], handler = _useUncontrolledProp[1];
-    return _extends$1k({}, rest, (_extends2 = {}, _extends2[fieldName] = value, _extends2[handlerName] = handler, _extends2));
+    return _extends$1l({}, rest, (_extends2 = {}, _extends2[fieldName] = value, _extends2[handlerName] = handler, _extends2));
   }, props);
 }
 var ThemeContext$1 = /* @__PURE__ */ React$1.createContext({});
@@ -155294,12 +155294,12 @@ function useAccordionToggle(eventKey, onClick) {
   };
 }
 var AccordionToggle$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "button" : _ref$as, children = _ref3.children, eventKey = _ref3.eventKey, onClick = _ref3.onClick, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1$);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "button" : _ref$as, children = _ref3.children, eventKey = _ref3.eventKey, onClick = _ref3.onClick, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1$);
   var accordionOnClick = useAccordionToggle(eventKey, onClick);
   if (Component2 === "button") {
     props.type = "button";
   }
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({
     ref,
     onClick: accordionOnClick
   }, props), children);
@@ -155649,7 +155649,7 @@ var Transition = /* @__PURE__ */ (function(_React$Component) {
     _this$props.onExiting;
     _this$props.onExited;
     _this$props.nodeRef;
-    var childProps = _objectWithoutPropertiesLoose$1m(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
+    var childProps = _objectWithoutPropertiesLoose$1n(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
     return (
       // allows for nested Transitions
       /* @__PURE__ */ React$1.createElement(TransitionGroupContext.Provider, {
@@ -155832,7 +155832,7 @@ var defaultProps$i = {
   getDimensionValue: getDefaultDimensionValue
 };
 var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, className = _ref3.className, children = _ref3.children, _ref$dimension = _ref3.dimension, dimension = _ref$dimension === void 0 ? "height" : _ref$dimension, _ref$getDimensionValu = _ref3.getDimensionValue, getDimensionValue = _ref$getDimensionValu === void 0 ? getDefaultDimensionValue : _ref$getDimensionValu, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1_);
+  var onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, className = _ref3.className, children = _ref3.children, _ref$dimension = _ref3.dimension, dimension = _ref$dimension === void 0 ? "height" : _ref$dimension, _ref$getDimensionValu = _ref3.getDimensionValue, getDimensionValue = _ref$getDimensionValu === void 0 ? getDefaultDimensionValue : _ref$getDimensionValu, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1_);
   var computedDimension = typeof dimension === "function" ? dimension() : dimension;
   var handleEnter = reactExports.useMemo(function() {
     return createChainedFunction(function(elem) {
@@ -155863,7 +155863,7 @@ var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, [computedDimension, onExiting]);
   return /* @__PURE__ */ React$1.createElement(
     Transition,
-    _extends$1k({
+    _extends$1l({
       ref,
       addEndListener: transitionEndListener
     }, props, {
@@ -155875,7 +155875,7 @@ var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
       onExiting: handleExiting
     }),
     function(state, innerProps) {
-      return /* @__PURE__ */ React$1.cloneElement(children, _extends$1k({}, innerProps, {
+      return /* @__PURE__ */ React$1.cloneElement(children, _extends$1l({}, innerProps, {
         className: cx(className, children.props.className, collapseStyles[state], computedDimension === "width" && "width")
       }));
     }
@@ -155884,11 +155884,11 @@ var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 Collapse.defaultProps = defaultProps$i;
 var _excluded$1Z = ["children", "eventKey"];
 var AccordionCollapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var children = _ref3.children, eventKey = _ref3.eventKey, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1Z);
+  var children = _ref3.children, eventKey = _ref3.eventKey, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1Z);
   var contextEventKey = reactExports.useContext(context$2);
   return /* @__PURE__ */ React$1.createElement(SelectableContext.Provider, {
     value: null
-  }, /* @__PURE__ */ React$1.createElement(Collapse, _extends$1k({
+  }, /* @__PURE__ */ React$1.createElement(Collapse, _extends$1l({
     ref,
     in: contextEventKey === eventKey
   }, props), /* @__PURE__ */ React$1.createElement("div", null, React$1.Children.only(children))));
@@ -155898,13 +155898,13 @@ var _excluded$1Y = ["as", "activeKey", "bsPrefix", "children", "className", "onS
 var Accordion = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
   var _useUncontrolled = useUncontrolled(props, {
     activeKey: "onSelect"
-  }), _useUncontrolled$as = _useUncontrolled.as, Component2 = _useUncontrolled$as === void 0 ? "div" : _useUncontrolled$as, activeKey = _useUncontrolled.activeKey, bsPrefix = _useUncontrolled.bsPrefix, children = _useUncontrolled.children, className = _useUncontrolled.className, onSelect = _useUncontrolled.onSelect, controlledProps = _objectWithoutPropertiesLoose$1m(_useUncontrolled, _excluded$1Y);
+  }), _useUncontrolled$as = _useUncontrolled.as, Component2 = _useUncontrolled$as === void 0 ? "div" : _useUncontrolled$as, activeKey = _useUncontrolled.activeKey, bsPrefix = _useUncontrolled.bsPrefix, children = _useUncontrolled.children, className = _useUncontrolled.className, onSelect = _useUncontrolled.onSelect, controlledProps = _objectWithoutPropertiesLoose$1n(_useUncontrolled, _excluded$1Y);
   var finalClassName = cx(className, useBootstrapPrefix(bsPrefix, "accordion"));
   return /* @__PURE__ */ React$1.createElement(context$2.Provider, {
     value: activeKey || null
   }, /* @__PURE__ */ React$1.createElement(SelectableContext.Provider, {
     value: onSelect || null
-  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({
+  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({
     ref
   }, controlledProps, {
     className: finalClassName
@@ -155937,18 +155937,18 @@ var defaultProps$h = {
 };
 var fadeStyles = (_fadeStyles = {}, _fadeStyles[ENTERING] = "show", _fadeStyles[ENTERED] = "show", _fadeStyles);
 var Fade = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1X);
+  var className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1X);
   var handleEnter = reactExports.useCallback(function(node2) {
     triggerBrowserReflow(node2);
     if (props.onEnter) props.onEnter(node2);
   }, [props]);
-  return /* @__PURE__ */ React$1.createElement(Transition, _extends$1k({
+  return /* @__PURE__ */ React$1.createElement(Transition, _extends$1l({
     ref,
     addEndListener: transitionEndListener
   }, props, {
     onEnter: handleEnter
   }), function(status2, innerProps) {
-    return /* @__PURE__ */ React$1.cloneElement(children, _extends$1k({}, innerProps, {
+    return /* @__PURE__ */ React$1.cloneElement(children, _extends$1l({}, innerProps, {
       className: cx("fade", className, children.props.className, fadeStyles[status2])
     }));
   });
@@ -155964,8 +155964,8 @@ var defaultProps$g = {
   label: "Close"
 };
 var CloseButton = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var label = _ref3.label, onClick = _ref3.onClick, className = _ref3.className, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1W);
-  return /* @__PURE__ */ React$1.createElement("button", _extends$1k({
+  var label = _ref3.label, onClick = _ref3.onClick, className = _ref3.className, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1W);
+  return /* @__PURE__ */ React$1.createElement("button", _extends$1l({
     ref,
     type: "button",
     className: cx("close", className),
@@ -155981,7 +155981,7 @@ CloseButton.propTypes = propTypes$2;
 CloseButton.defaultProps = defaultProps$g;
 const divWithClassName = (function(className) {
   return /* @__PURE__ */ React$1.forwardRef(function(p2, ref) {
-    return /* @__PURE__ */ React$1.createElement("div", _extends$1k({}, p2, {
+    return /* @__PURE__ */ React$1.createElement("div", _extends$1l({}, p2, {
       ref,
       className: cx(p2.className, className)
     }));
@@ -156000,9 +156000,9 @@ var pascalCase = function pascalCase2(str) {
 function createWithBsPrefix(prefix2, _temp) {
   var _ref3 = _temp === void 0 ? {} : _temp, _ref$displayName = _ref3.displayName, displayName = _ref$displayName === void 0 ? pascalCase(prefix2) : _ref$displayName, Component2 = _ref3.Component, defaultProps2 = _ref3.defaultProps;
   var BsComponent = /* @__PURE__ */ React$1.forwardRef(function(_ref22, ref) {
-    var className = _ref22.className, bsPrefix = _ref22.bsPrefix, _ref2$as = _ref22.as, Tag2 = _ref2$as === void 0 ? Component2 || "div" : _ref2$as, props = _objectWithoutPropertiesLoose$1m(_ref22, _excluded$1V);
+    var className = _ref22.className, bsPrefix = _ref22.bsPrefix, _ref2$as = _ref22.as, Tag2 = _ref2$as === void 0 ? Component2 || "div" : _ref2$as, props = _objectWithoutPropertiesLoose$1n(_ref22, _excluded$1V);
     var resolvedPrefix = useBootstrapPrefix(bsPrefix, prefix2);
-    return /* @__PURE__ */ React$1.createElement(Tag2, _extends$1k({
+    return /* @__PURE__ */ React$1.createElement(Tag2, _extends$1l({
       ref,
       className: cx(className, resolvedPrefix)
     }, props));
@@ -156016,7 +156016,7 @@ function isTrivialHref(href) {
   return !href || href.trim() === "#";
 }
 var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "a" : _ref$as, disabled2 = _ref3.disabled, onKeyDown = _ref3.onKeyDown, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1U);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "a" : _ref$as, disabled2 = _ref3.disabled, onKeyDown = _ref3.onKeyDown, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1U);
   var handleClick = function handleClick2(event) {
     var href = props.href, onClick = props.onClick;
     if (disabled2 || isTrivialHref(href)) {
@@ -156044,7 +156044,7 @@ var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     props.tabIndex = -1;
     props["aria-disabled"] = true;
   }
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({
     ref
   }, props, {
     onClick: handleClick,
@@ -156057,9 +156057,9 @@ var defaultProps$f = {
   pill: false
 };
 var Badge = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, pill = _ref3.pill, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "span" : _ref$as, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1T);
+  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, pill = _ref3.pill, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "span" : _ref$as, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1T);
   var prefix2 = useBootstrapPrefix(bsPrefix, "badge");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({
     ref
   }, props, {
     className: cx(className, prefix2, pill && prefix2 + "-pill", variant && prefix2 + "-" + variant)
@@ -156074,11 +156074,11 @@ var defaultProps$e = {
   disabled: false
 };
 var Button = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, size2 = _ref3.size, active = _ref3.active, className = _ref3.className, block2 = _ref3.block, type3 = _ref3.type, as = _ref3.as, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1S);
+  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, size2 = _ref3.size, active = _ref3.active, className = _ref3.className, block2 = _ref3.block, type3 = _ref3.type, as = _ref3.as, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1S);
   var prefix2 = useBootstrapPrefix(bsPrefix, "btn");
   var classes = cx(className, prefix2, active && "active", variant && prefix2 + "-" + variant, block2 && prefix2 + "-block", size2 && prefix2 + "-" + size2);
   if (props.href) {
-    return /* @__PURE__ */ React$1.createElement(SafeAnchor, _extends$1k({}, props, {
+    return /* @__PURE__ */ React$1.createElement(SafeAnchor, _extends$1l({}, props, {
       as,
       ref,
       className: cx(classes, props.disabled && "disabled")
@@ -156093,7 +156093,7 @@ var Button = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     props.type = "button";
   }
   var Component2 = as || "button";
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({}, props, {
     className: classes
   }));
 });
@@ -156106,11 +156106,11 @@ var defaultProps$d = {
   role: "group"
 };
 var ButtonGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, toggle = _ref3.toggle, vertical = _ref3.vertical, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, rest = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1R);
+  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, toggle = _ref3.toggle, vertical = _ref3.vertical, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, rest = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1R);
   var prefix2 = useBootstrapPrefix(bsPrefix, "btn-group");
   var baseClass = prefix2;
   if (vertical) baseClass = prefix2 + "-vertical";
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({}, rest, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({}, rest, {
     ref,
     className: cx(className, baseClass, size2 && prefix2 + "-" + size2, toggle && prefix2 + "-toggle")
   }));
@@ -156126,9 +156126,9 @@ var defaultProps$c = {
 var CardImg = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, variant = _ref3.variant, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "img" : _ref$as, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1Q);
+    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, variant = _ref3.variant, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "img" : _ref$as, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1Q);
     var prefix2 = useBootstrapPrefix(bsPrefix, "card-img");
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({
       ref,
       className: cx(variant ? prefix2 + "-" + variant : prefix2, className)
     }, props));
@@ -156159,7 +156159,7 @@ var defaultProps$b = {
   body: false
 };
 var Card = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, bg = _ref3.bg, text = _ref3.text, border = _ref3.border, body = _ref3.body, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1P);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, bg = _ref3.bg, text2 = _ref3.text, border = _ref3.border, body = _ref3.body, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1P);
   var prefix2 = useBootstrapPrefix(bsPrefix, "card");
   var cardContext = reactExports.useMemo(function() {
     return {
@@ -156168,10 +156168,10 @@ var Card = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, [prefix2]);
   return /* @__PURE__ */ React$1.createElement(context$1.Provider, {
     value: cardContext
-  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({
+  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({
     ref
   }, props, {
-    className: cx(className, prefix2, bg && "bg-" + bg, text && "text-" + text, border && "border-" + border)
+    className: cx(className, prefix2, bg && "bg-" + bg, text2 && "text-" + text2, border && "border-" + border)
   }), body ? (
     // @ts-ignore
     /* @__PURE__ */ React$1.createElement(CardBody, null, children)
@@ -156240,7 +156240,7 @@ var DEVICE_SIZES$1 = ["xl", "lg", "md", "sm", "xs"];
 var Col = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1O);
+    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1O);
     var prefix2 = useBootstrapPrefix(bsPrefix, "col");
     var spans = [];
     var classes = [];
@@ -156266,7 +156266,7 @@ var Col = /* @__PURE__ */ React$1.forwardRef(
     if (!spans.length) {
       spans.push(prefix2);
     }
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({}, props, {
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({}, props, {
       ref,
       className: cx.apply(void 0, [className].concat(spans, classes))
     }));
@@ -156778,10 +156778,10 @@ function getWindowScrollBarX(element) {
 }
 function getViewportRect(element, strategy) {
   var win = getWindow$1(element);
-  var html = getDocumentElement$1(element);
+  var html2 = getDocumentElement$1(element);
   var visualViewport = win.visualViewport;
-  var width2 = html.clientWidth;
-  var height3 = html.clientHeight;
+  var width2 = html2.clientWidth;
+  var height3 = html2.clientHeight;
   var x3 = 0;
   var y3 = 0;
   if (visualViewport) {
@@ -156802,15 +156802,15 @@ function getViewportRect(element, strategy) {
 }
 function getDocumentRect(element) {
   var _element$ownerDocumen;
-  var html = getDocumentElement$1(element);
+  var html2 = getDocumentElement$1(element);
   var winScroll = getWindowScroll(element);
   var body = (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body;
-  var width2 = max$2(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
-  var height3 = max$2(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
+  var width2 = max$2(html2.scrollWidth, html2.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
+  var height3 = max$2(html2.scrollHeight, html2.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
   var x3 = -winScroll.scrollLeft + getWindowScrollBarX(element);
   var y3 = -winScroll.scrollTop;
-  if (getComputedStyle$3(body || html).direction === "rtl") {
-    x3 += max$2(html.clientWidth, body ? body.clientWidth : 0) - width2;
+  if (getComputedStyle$3(body || html2).direction === "rtl") {
+    x3 += max$2(html2.clientWidth, body ? body.clientWidth : 0) - width2;
   }
   return {
     width: width2,
@@ -157619,7 +157619,7 @@ var ariaDescribedByModifier = {
 };
 var EMPTY_MODIFIERS$2 = [];
 function usePopper$1(referenceElement, popperElement, _temp) {
-  var _ref3 = _temp === void 0 ? {} : _temp, _ref3$enabled = _ref3.enabled, enabled = _ref3$enabled === void 0 ? true : _ref3$enabled, _ref3$placement = _ref3.placement, placement = _ref3$placement === void 0 ? "bottom" : _ref3$placement, _ref3$strategy = _ref3.strategy, strategy = _ref3$strategy === void 0 ? "absolute" : _ref3$strategy, _ref3$modifiers = _ref3.modifiers, modifiers = _ref3$modifiers === void 0 ? EMPTY_MODIFIERS$2 : _ref3$modifiers, config2 = _objectWithoutPropertiesLoose$1m(_ref3, ["enabled", "placement", "strategy", "modifiers"]);
+  var _ref3 = _temp === void 0 ? {} : _temp, _ref3$enabled = _ref3.enabled, enabled = _ref3$enabled === void 0 ? true : _ref3$enabled, _ref3$placement = _ref3.placement, placement = _ref3$placement === void 0 ? "bottom" : _ref3$placement, _ref3$strategy = _ref3.strategy, strategy = _ref3$strategy === void 0 ? "absolute" : _ref3$strategy, _ref3$modifiers = _ref3.modifiers, modifiers = _ref3$modifiers === void 0 ? EMPTY_MODIFIERS$2 : _ref3$modifiers, config2 = _objectWithoutPropertiesLoose$1n(_ref3, ["enabled", "placement", "strategy", "modifiers"]);
   var popperInstanceRef = reactExports.useRef();
   var update2 = reactExports.useCallback(function() {
     var _popperInstanceRef$cu;
@@ -157676,7 +157676,7 @@ function usePopper$1(referenceElement, popperElement, _temp) {
     if (!enabled || referenceElement == null || popperElement == null) {
       return void 0;
     }
-    popperInstanceRef.current = createPopper$1(referenceElement, popperElement, _extends$1k({}, config2, {
+    popperInstanceRef.current = createPopper$1(referenceElement, popperElement, _extends$1l({}, config2, {
       placement,
       strategy,
       modifiers: [].concat(modifiers, [ariaDescribedByModifier, updateModifier])
@@ -157686,7 +157686,7 @@ function usePopper$1(referenceElement, popperElement, _temp) {
         popperInstanceRef.current.destroy();
         popperInstanceRef.current = void 0;
         setState2(function(s4) {
-          return _extends$1k({}, s4, {
+          return _extends$1l({}, s4, {
             attributes: {},
             styles: {
               popper: initialPopperStyles(strategy)
@@ -157814,31 +157814,31 @@ function mergeOptionsWithPopperConfig(_ref3) {
   var _modifiers$preventOve, _modifiers$preventOve2, _modifiers$offset, _modifiers$arrow;
   var enabled = _ref3.enabled, enableEvents = _ref3.enableEvents, placement = _ref3.placement, flip2 = _ref3.flip, offset3 = _ref3.offset, fixed = _ref3.fixed, containerPadding = _ref3.containerPadding, arrowElement = _ref3.arrowElement, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig;
   var modifiers = toModifierMap(popperConfig.modifiers);
-  return _extends$1k({}, popperConfig, {
+  return _extends$1l({}, popperConfig, {
     placement,
     enabled,
     strategy: fixed ? "fixed" : popperConfig.strategy,
-    modifiers: toModifierArray(_extends$1k({}, modifiers, {
+    modifiers: toModifierArray(_extends$1l({}, modifiers, {
       eventListeners: {
         enabled: enableEvents
       },
-      preventOverflow: _extends$1k({}, modifiers.preventOverflow, {
-        options: containerPadding ? _extends$1k({
+      preventOverflow: _extends$1l({}, modifiers.preventOverflow, {
+        options: containerPadding ? _extends$1l({
           padding: containerPadding
         }, (_modifiers$preventOve = modifiers.preventOverflow) == null ? void 0 : _modifiers$preventOve.options) : (_modifiers$preventOve2 = modifiers.preventOverflow) == null ? void 0 : _modifiers$preventOve2.options
       }),
       offset: {
-        options: _extends$1k({
+        options: _extends$1l({
           offset: offset3
         }, (_modifiers$offset = modifiers.offset) == null ? void 0 : _modifiers$offset.options)
       },
-      arrow: _extends$1k({}, modifiers.arrow, {
+      arrow: _extends$1l({}, modifiers.arrow, {
         enabled: !!arrowElement,
-        options: _extends$1k({}, (_modifiers$arrow = modifiers.arrow) == null ? void 0 : _modifiers$arrow.options, {
+        options: _extends$1l({}, (_modifiers$arrow = modifiers.arrow) == null ? void 0 : _modifiers$arrow.options, {
           element: arrowElement
         })
       }),
-      flip: _extends$1k({
+      flip: _extends$1l({
         enabled: !!flip2
       }, modifiers.flip)
     }))
@@ -158028,10 +158028,10 @@ function requireCreateChainableTypeChecker() {
   })(createChainableTypeChecker, createChainableTypeChecker.exports);
   return createChainableTypeChecker.exports;
 }
-var hasRequiredAll;
-function requireAll() {
-  if (hasRequiredAll) return all$1.exports;
-  hasRequiredAll = 1;
+var hasRequiredAll$1;
+function requireAll$1() {
+  if (hasRequiredAll$1) return all$1.exports;
+  hasRequiredAll$1 = 1;
   (function(module2, exports2) {
     Object.defineProperty(exports2, "__esModule", {
       value: true
@@ -158068,7 +158068,7 @@ function requireAll() {
   })(all$1, all$1.exports);
   return all$1.exports;
 }
-requireAll();
+requireAll$1();
 var _excluded$1N = ["as", "className", "type", "tooltip"];
 var propTypes$1 = {
   /**
@@ -158084,8 +158084,8 @@ var propTypes$1 = {
 var Feedback = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "valid" : _ref$type, _ref$tooltip = _ref3.tooltip, tooltip = _ref$tooltip === void 0 ? false : _ref$tooltip, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1N);
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({}, props, {
+    var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "valid" : _ref$type, _ref$tooltip = _ref3.tooltip, tooltip = _ref$tooltip === void 0 ? false : _ref$tooltip, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1N);
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({}, props, {
       ref,
       className: cx(className, type3 + "-" + (tooltip ? "tooltip" : "feedback"))
     }));
@@ -158098,11 +158098,11 @@ var FormContext = /* @__PURE__ */ React$1.createContext({
 });
 var _excluded$1M = ["id", "bsPrefix", "bsCustomPrefix", "className", "type", "isValid", "isInvalid", "isStatic", "as"];
 var FormCheckInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, isStatic = _ref3.isStatic, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1M);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, isStatic = _ref3.isStatic, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1M);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-control-input"] : [bsPrefix, "form-check-input"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({}, props, {
     ref,
     type: type3,
     id: id2 || controlId,
@@ -158112,11 +158112,11 @@ var FormCheckInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 FormCheckInput.displayName = "FormCheckInput";
 var _excluded$1L = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
 var FormCheckLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1L);
+  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1L);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-control-label"] : [bsPrefix, "form-check-label"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement("label", _extends$1k({}, props, {
+  return /* @__PURE__ */ React$1.createElement("label", _extends$1l({}, props, {
     ref,
     htmlFor: htmlFor || controlId,
     className: cx(className, bsPrefix)
@@ -158125,7 +158125,7 @@ var FormCheckLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 FormCheckLabel.displayName = "FormCheckLabel";
 var _excluded$1K = ["id", "bsPrefix", "bsCustomPrefix", "inline", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "title", "type", "label", "children", "custom", "as"];
 var FormCheck = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$inline = _ref3.inline, inline = _ref$inline === void 0 ? false : _ref$inline, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? "" : _ref$title, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, label = _ref3.label, children = _ref3.children, propCustom = _ref3.custom, _ref$as = _ref3.as, as = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1K);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$inline = _ref3.inline, inline = _ref$inline === void 0 ? false : _ref$inline, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? "" : _ref$title, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, label = _ref3.label, children = _ref3.children, propCustom = _ref3.custom, _ref$as = _ref3.as, as = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1K);
   var custom2 = type3 === "switch" ? true : propCustom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-control"] : [bsPrefix, "form-check"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -158137,7 +158137,7 @@ var FormCheck = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     };
   }, [controlId, custom2, id2]);
   var hasLabel = custom2 || label != null && label !== false && !children;
-  var input = /* @__PURE__ */ React$1.createElement(FormCheckInput, _extends$1k({}, props, {
+  var input = /* @__PURE__ */ React$1.createElement(FormCheckInput, _extends$1l({}, props, {
     type: type3 === "switch" ? "checkbox" : type3,
     ref,
     isValid: isValid2,
@@ -158163,12 +158163,12 @@ FormCheck.Input = FormCheckInput;
 FormCheck.Label = FormCheckLabel;
 var _excluded$1J = ["id", "bsPrefix", "bsCustomPrefix", "className", "isValid", "isInvalid", "lang", "as"];
 var FormFileInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, isValid2 = _ref3.isValid, isInvalid = _ref3.isInvalid, lang = _ref3.lang, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1J);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, isValid2 = _ref3.isValid, isInvalid = _ref3.isInvalid, lang = _ref3.lang, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1J);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var type3 = "file";
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-file-input"] : [bsPrefix, "form-control-file"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({}, props, {
     ref,
     id: id2 || controlId,
     type: type3,
@@ -158179,11 +158179,11 @@ var FormFileInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 FormFileInput.displayName = "FormFileInput";
 var _excluded$1I = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
 var FormFileLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1I);
+  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1I);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-file-label"] : [bsPrefix, "form-file-label"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement("label", _extends$1k({}, props, {
+  return /* @__PURE__ */ React$1.createElement("label", _extends$1l({}, props, {
     ref,
     htmlFor: htmlFor || controlId,
     className: cx(className, bsPrefix),
@@ -158193,7 +158193,7 @@ var FormFileLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 FormFileLabel.displayName = "FormFileLabel";
 var _excluded$1H = ["id", "bsPrefix", "bsCustomPrefix", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "label", "children", "custom", "lang", "data-browse", "as", "inputAs"];
 var FormFile = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, label = _ref3.label, children = _ref3.children, custom2 = _ref3.custom, lang = _ref3.lang, dataBrowse = _ref3["data-browse"], _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, _ref$inputAs = _ref3.inputAs, inputAs = _ref$inputAs === void 0 ? "input" : _ref$inputAs, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1H);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, label = _ref3.label, children = _ref3.children, custom2 = _ref3.custom, lang = _ref3.lang, dataBrowse = _ref3["data-browse"], _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, _ref$inputAs = _ref3.inputAs, inputAs = _ref$inputAs === void 0 ? "input" : _ref$inputAs, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1H);
   var _ref22 = custom2 ? [bsCustomPrefix, "custom"] : [bsPrefix, "form-file"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
   var type3 = "file";
@@ -158205,7 +158205,7 @@ var FormFile = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     };
   }, [controlId, custom2, id2]);
   var hasLabel = label != null && label !== false && !children;
-  var input = /* @__PURE__ */ React$1.createElement(FormFileInput, _extends$1k({}, props, {
+  var input = /* @__PURE__ */ React$1.createElement(FormFileInput, _extends$1l({}, props, {
     ref,
     isValid: isValid2,
     isInvalid,
@@ -158230,7 +158230,7 @@ FormFile.Input = FormFileInput;
 FormFile.Label = FormFileLabel;
 var _excluded$1G = ["bsPrefix", "bsCustomPrefix", "type", "size", "htmlSize", "id", "className", "isValid", "isInvalid", "plaintext", "readOnly", "custom", "as"];
 var FormControl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, type3 = _ref3.type, size2 = _ref3.size, htmlSize = _ref3.htmlSize, id2 = _ref3.id, className = _ref3.className, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, plaintext = _ref3.plaintext, readOnly = _ref3.readOnly, custom2 = _ref3.custom, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1G);
+  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, type3 = _ref3.type, size2 = _ref3.size, htmlSize = _ref3.htmlSize, id2 = _ref3.id, className = _ref3.className, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, plaintext = _ref3.plaintext, readOnly = _ref3.readOnly, custom2 = _ref3.custom, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1G);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom"] : [bsPrefix, "form-control"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -158251,7 +158251,7 @@ var FormControl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     var _classes5;
     classes = (_classes5 = {}, _classes5[bsPrefix] = true, _classes5[bsPrefix + "-" + size2] = size2, _classes5);
   }
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({}, props, {
     type: type3,
     size: htmlSize,
     ref,
@@ -158266,7 +158266,7 @@ const FormControl$1 = Object.assign(FormControl, {
 });
 var _excluded$1F = ["bsPrefix", "className", "children", "controlId", "as"];
 var FormGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, controlId = _ref3.controlId, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1F);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, controlId = _ref3.controlId, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1F);
   bsPrefix = useBootstrapPrefix(bsPrefix, "form-group");
   var context2 = reactExports.useMemo(function() {
     return {
@@ -158275,7 +158275,7 @@ var FormGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, [controlId]);
   return /* @__PURE__ */ React$1.createElement(FormContext.Provider, {
     value: context2
-  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({}, props, {
+  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({}, props, {
     ref,
     className: cx(className, bsPrefix)
   }), children));
@@ -158287,14 +158287,14 @@ var defaultProps$a = {
   srOnly: false
 };
 var FormLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "label" : _ref$as, bsPrefix = _ref3.bsPrefix, column2 = _ref3.column, srOnly = _ref3.srOnly, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1E);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "label" : _ref$as, bsPrefix = _ref3.bsPrefix, column2 = _ref3.column, srOnly = _ref3.srOnly, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1E);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId;
   bsPrefix = useBootstrapPrefix(bsPrefix, "form-label");
   var columnClass = "col-form-label";
   if (typeof column2 === "string") columnClass = columnClass + " " + columnClass + "-" + column2;
   var classes = cx(className, bsPrefix, srOnly && "sr-only", column2 && columnClass);
   htmlFor = htmlFor || controlId;
-  if (column2) return /* @__PURE__ */ React$1.createElement(Col, _extends$1k({
+  if (column2) return /* @__PURE__ */ React$1.createElement(Col, _extends$1l({
     ref,
     as: "label",
     className: classes,
@@ -158302,7 +158302,7 @@ var FormLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, props));
   return (
     // eslint-disable-next-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control
-    /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({
+    /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({
       ref,
       className: classes,
       htmlFor
@@ -158315,9 +158315,9 @@ var _excluded$1D = ["bsPrefix", "className", "as", "muted"];
 var FormText = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "small" : _ref$as, muted = _ref3.muted, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1D);
+    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "small" : _ref$as, muted = _ref3.muted, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1D);
     bsPrefix = useBootstrapPrefix(bsPrefix, "form-text");
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({}, props, {
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({}, props, {
       ref,
       className: cx(className, bsPrefix, muted && "text-muted")
     }));
@@ -158325,7 +158325,7 @@ var FormText = /* @__PURE__ */ React$1.forwardRef(
 );
 FormText.displayName = "FormText";
 var Switch$1 = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
-  return /* @__PURE__ */ React$1.createElement(FormCheck, _extends$1k({}, props, {
+  return /* @__PURE__ */ React$1.createElement(FormCheck, _extends$1l({}, props, {
     ref,
     type: "switch"
   }));
@@ -158339,9 +158339,9 @@ var defaultProps$9 = {
   inline: false
 };
 var FormImpl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, inline = _ref3.inline, className = _ref3.className, validated = _ref3.validated, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "form" : _ref$as, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1C);
+  var bsPrefix = _ref3.bsPrefix, inline = _ref3.inline, className = _ref3.className, validated = _ref3.validated, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "form" : _ref$as, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1C);
   bsPrefix = useBootstrapPrefix(bsPrefix, "form");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({}, props, {
     ref,
     className: cx(className, validated && "was-validated", inline && bsPrefix + "-inline")
   }));
@@ -158363,19 +158363,19 @@ var InputGroupText = createWithBsPrefix("input-group-text", {
   Component: "span"
 });
 var InputGroupCheckbox = function InputGroupCheckbox2(props) {
-  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1k({
+  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1l({
     type: "checkbox"
   }, props)));
 };
 var InputGroupRadio = function InputGroupRadio2(props) {
-  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1k({
+  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1l({
     type: "radio"
   }, props)));
 };
 var InputGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, hasValidation = _ref3.hasValidation, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1B);
+  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, hasValidation = _ref3.hasValidation, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1B);
   bsPrefix = useBootstrapPrefix(bsPrefix, "input-group");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({
     ref
   }, props, {
     className: cx(className, bsPrefix, size2 && bsPrefix + "-" + size2, hasValidation && "has-validation")
@@ -158658,7 +158658,7 @@ var Modal$2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$show = _ref3.show, show = _ref$show === void 0 ? false : _ref$show, _ref$role = _ref3.role, role = _ref$role === void 0 ? "dialog" : _ref$role, className = _ref3.className, style2 = _ref3.style, children = _ref3.children, _ref$backdrop = _ref3.backdrop, backdrop = _ref$backdrop === void 0 ? true : _ref$backdrop, _ref$keyboard = _ref3.keyboard, keyboard = _ref$keyboard === void 0 ? true : _ref$keyboard, onBackdropClick = _ref3.onBackdropClick, onEscapeKeyDown = _ref3.onEscapeKeyDown, transition = _ref3.transition, backdropTransition = _ref3.backdropTransition, _ref$autoFocus = _ref3.autoFocus, autoFocus = _ref$autoFocus === void 0 ? true : _ref$autoFocus, _ref$enforceFocus = _ref3.enforceFocus, enforceFocus = _ref$enforceFocus === void 0 ? true : _ref$enforceFocus, _ref$restoreFocus = _ref3.restoreFocus, restoreFocus = _ref$restoreFocus === void 0 ? true : _ref$restoreFocus, restoreFocusOptions = _ref3.restoreFocusOptions, renderDialog = _ref3.renderDialog, _ref$renderBackdrop = _ref3.renderBackdrop, renderBackdrop = _ref$renderBackdrop === void 0 ? function(props) {
     return /* @__PURE__ */ React$1.createElement("div", props);
   } : _ref$renderBackdrop, providedManager = _ref3.manager, containerRef = _ref3.container, containerClassName = _ref3.containerClassName, onShow = _ref3.onShow, _ref$onHide = _ref3.onHide, onHide3 = _ref$onHide === void 0 ? function() {
-  } : _ref$onHide, onExit = _ref3.onExit, onExited = _ref3.onExited, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, rest = _objectWithoutPropertiesLoose$1m(_ref3, ["show", "role", "className", "style", "children", "backdrop", "keyboard", "onBackdropClick", "onEscapeKeyDown", "transition", "backdropTransition", "autoFocus", "enforceFocus", "restoreFocus", "restoreFocusOptions", "renderDialog", "renderBackdrop", "manager", "container", "containerClassName", "onShow", "onHide", "onExit", "onExited", "onExiting", "onEnter", "onEntering", "onEntered"]);
+  } : _ref$onHide, onExit = _ref3.onExit, onExited = _ref3.onExited, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, rest = _objectWithoutPropertiesLoose$1n(_ref3, ["show", "role", "className", "style", "children", "backdrop", "keyboard", "onBackdropClick", "onEscapeKeyDown", "transition", "backdropTransition", "autoFocus", "enforceFocus", "restoreFocus", "restoreFocusOptions", "renderDialog", "renderBackdrop", "manager", "container", "containerClassName", "onShow", "onHide", "onExit", "onExited", "onExiting", "onEnter", "onEntering", "onEntered"]);
   var container2 = useWaitForDOMRef(containerRef);
   var modal = useModalManager(providedManager);
   var isMounted = useMounted();
@@ -158765,7 +158765,7 @@ var Modal$2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   if (!container2 || !(show || Transition2 && !exited)) {
     return null;
   }
-  var dialogProps = _extends$1k({
+  var dialogProps = _extends$1l({
     role,
     ref: modal.setDialogRef,
     // apparently only works on the dialog role element
@@ -159008,10 +159008,10 @@ var ModalContext = /* @__PURE__ */ React$1.createContext({
 });
 var _excluded$1A = ["bsPrefix", "className", "contentClassName", "centered", "size", "children", "scrollable"];
 var ModalDialog = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, contentClassName = _ref3.contentClassName, centered = _ref3.centered, size2 = _ref3.size, children = _ref3.children, scrollable = _ref3.scrollable, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1A);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, contentClassName = _ref3.contentClassName, centered = _ref3.centered, size2 = _ref3.size, children = _ref3.children, scrollable = _ref3.scrollable, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1A);
   bsPrefix = useBootstrapPrefix(bsPrefix, "modal");
   var dialogClass = bsPrefix + "-dialog";
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1k({}, props, {
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1l({}, props, {
     ref,
     className: cx(dialogClass, className, size2 && bsPrefix + "-" + size2, centered && dialogClass + "-centered", scrollable && dialogClass + "-scrollable")
   }), /* @__PURE__ */ React$1.createElement("div", {
@@ -159026,14 +159026,14 @@ var defaultProps$8 = {
   closeButton: false
 };
 var ModalHeader = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, closeLabel = _ref3.closeLabel, closeButton = _ref3.closeButton, onHide3 = _ref3.onHide, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1z);
+  var bsPrefix = _ref3.bsPrefix, closeLabel = _ref3.closeLabel, closeButton = _ref3.closeButton, onHide3 = _ref3.onHide, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1z);
   bsPrefix = useBootstrapPrefix(bsPrefix, "modal-header");
   var context2 = reactExports.useContext(ModalContext);
   var handleClick = useEventCallback$1(function() {
     if (context2) context2.onHide();
     if (onHide3) onHide3();
   });
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1k({
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1l({
     ref
   }, props, {
     className: cx(className, bsPrefix)
@@ -159061,17 +159061,17 @@ var defaultProps$7 = {
   dialogAs: ModalDialog
 };
 function DialogTransition(props) {
-  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1k({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1l({}, props, {
     timeout: null
   }));
 }
 function BackdropTransition(props) {
-  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1k({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1l({}, props, {
     timeout: null
   }));
 }
 var Modal$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, style2 = _ref3.style, dialogClassName = _ref3.dialogClassName, contentClassName = _ref3.contentClassName, children = _ref3.children, Dialog = _ref3.dialogAs, ariaLabelledby = _ref3["aria-labelledby"], ariaDescribedby = _ref3["aria-describedby"], ariaLabel = _ref3["aria-label"], show = _ref3.show, animation = _ref3.animation, backdrop = _ref3.backdrop, keyboard = _ref3.keyboard, onEscapeKeyDown = _ref3.onEscapeKeyDown, onShow = _ref3.onShow, onHide3 = _ref3.onHide, container2 = _ref3.container, autoFocus = _ref3.autoFocus, enforceFocus = _ref3.enforceFocus, restoreFocus = _ref3.restoreFocus, restoreFocusOptions = _ref3.restoreFocusOptions, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onExited = _ref3.onExited, backdropClassName = _ref3.backdropClassName, propsManager = _ref3.manager, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1y);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, style2 = _ref3.style, dialogClassName = _ref3.dialogClassName, contentClassName = _ref3.contentClassName, children = _ref3.children, Dialog = _ref3.dialogAs, ariaLabelledby = _ref3["aria-labelledby"], ariaDescribedby = _ref3["aria-describedby"], ariaLabel = _ref3["aria-label"], show = _ref3.show, animation = _ref3.animation, backdrop = _ref3.backdrop, keyboard = _ref3.keyboard, onEscapeKeyDown = _ref3.onEscapeKeyDown, onShow = _ref3.onShow, onHide3 = _ref3.onHide, container2 = _ref3.container, autoFocus = _ref3.autoFocus, enforceFocus = _ref3.enforceFocus, restoreFocus = _ref3.restoreFocus, restoreFocusOptions = _ref3.restoreFocusOptions, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onExited = _ref3.onExited, backdropClassName = _ref3.backdropClassName, propsManager = _ref3.manager, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1y);
   var _useState = reactExports.useState({}), modalStyle = _useState[0], setStyle = _useState[1];
   var _useState2 = reactExports.useState(false), animateStaticModal = _useState2[0], setAnimateStaticModal = _useState2[1];
   var waitingForMouseUpRef = reactExports.useRef(false);
@@ -159178,16 +159178,16 @@ var Modal$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     removeEventListener(window, "resize", handleWindowResize);
   };
   var renderBackdrop = reactExports.useCallback(function(backdropProps) {
-    return /* @__PURE__ */ React$1.createElement("div", _extends$1k({}, backdropProps, {
+    return /* @__PURE__ */ React$1.createElement("div", _extends$1l({}, backdropProps, {
       className: cx(bsPrefix + "-backdrop", backdropClassName, !animation && "show")
     }));
   }, [animation, backdropClassName, bsPrefix]);
-  var baseModalStyle = _extends$1k({}, style2, modalStyle);
+  var baseModalStyle = _extends$1l({}, style2, modalStyle);
   if (!animation) {
     baseModalStyle.display = "block";
   }
   var renderDialog = function renderDialog2(dialogProps) {
-    return /* @__PURE__ */ React$1.createElement("div", _extends$1k({
+    return /* @__PURE__ */ React$1.createElement("div", _extends$1l({
       role: "dialog"
     }, dialogProps, {
       style: baseModalStyle,
@@ -159197,7 +159197,7 @@ var Modal$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
       "aria-label": ariaLabel,
       "aria-labelledby": ariaLabelledby,
       "aria-describedby": ariaDescribedby
-    }), /* @__PURE__ */ React$1.createElement(Dialog, _extends$1k({}, props, {
+    }), /* @__PURE__ */ React$1.createElement(Dialog, _extends$1l({}, props, {
       onMouseDown: handleDialogMouseDown,
       className: dialogClassName,
       contentClassName
@@ -159257,7 +159257,7 @@ var Overlay$1 = /* @__PURE__ */ React$1.forwardRef(function(props, outerRef) {
     offset: offset3,
     arrowElement,
     popperConfig
-  })), styles2 = _usePopper.styles, attributes = _usePopper.attributes, popper2 = _objectWithoutPropertiesLoose$1m(_usePopper, ["styles", "attributes"]);
+  })), styles2 = _usePopper.styles, attributes = _usePopper.attributes, popper2 = _objectWithoutPropertiesLoose$1n(_usePopper, ["styles", "attributes"]);
   if (props.show) {
     if (exited) setExited(false);
   } else if (!props.transition && !exited) {
@@ -159277,13 +159277,13 @@ var Overlay$1 = /* @__PURE__ */ React$1.forwardRef(function(props, outerRef) {
   if (!mountOverlay) {
     return null;
   }
-  var child = props.children(_extends$1k({}, popper2, {
+  var child = props.children(_extends$1l({}, popper2, {
     show: !!props.show,
-    props: _extends$1k({}, attributes.popper, {
+    props: _extends$1l({}, attributes.popper, {
       style: styles2.popper,
       ref: mergedRef
     }),
-    arrowProps: _extends$1k({}, attributes.arrow, {
+    arrowProps: _extends$1l({}, attributes.arrow, {
       style: styles2.arrow,
       ref: attachArrowRef
     })
@@ -159437,13 +159437,13 @@ function wrapRefs(props, arrowProps) {
   });
 }
 function Overlay(_ref3) {
-  var overlay = _ref3.children, transition = _ref3.transition, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, outerProps = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1x);
+  var overlay = _ref3.children, transition = _ref3.transition, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, outerProps = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1x);
   var popperRef = reactExports.useRef({});
   var _usePopperMarginModif = usePopperMarginModifiers(), ref = _usePopperMarginModif[0], marginModifiers = _usePopperMarginModif[1];
   var actualTransition = transition === true ? Fade : transition || null;
-  return /* @__PURE__ */ React$1.createElement(Overlay$1, _extends$1k({}, outerProps, {
+  return /* @__PURE__ */ React$1.createElement(Overlay$1, _extends$1l({}, outerProps, {
     ref,
-    popperConfig: _extends$1k({}, popperConfig, {
+    popperConfig: _extends$1l({}, popperConfig, {
       modifiers: marginModifiers.concat(popperConfig.modifiers || [])
     }),
     transition: actualTransition
@@ -159451,7 +159451,7 @@ function Overlay(_ref3) {
     var _state$modifiersData$;
     var overlayProps = _ref22.props, arrowProps = _ref22.arrowProps, show = _ref22.show, update2 = _ref22.update;
     _ref22.forceUpdate;
-    var placement = _ref22.placement, state = _ref22.state, props = _objectWithoutPropertiesLoose$1m(_ref22, _excluded2$2);
+    var placement = _ref22.placement, state = _ref22.state, props = _objectWithoutPropertiesLoose$1n(_ref22, _excluded2$2);
     wrapRefs(overlayProps, arrowProps);
     var popper2 = Object.assign(popperRef.current, {
       state,
@@ -159459,7 +159459,7 @@ function Overlay(_ref3) {
       placement,
       outOfBoundaries: (state == null ? void 0 : (_state$modifiersData$ = state.modifiersData.hide) == null ? void 0 : _state$modifiersData$.isReferenceHidden) || false
     });
-    if (typeof overlay === "function") return overlay(_extends$1k({}, props, overlayProps, {
+    if (typeof overlay === "function") return overlay(_extends$1l({}, props, overlayProps, {
       placement,
       show
     }, !transition && show && {
@@ -159468,12 +159468,12 @@ function Overlay(_ref3) {
       popper: popper2,
       arrowProps
     }));
-    return /* @__PURE__ */ React$1.cloneElement(overlay, _extends$1k({}, props, overlayProps, {
+    return /* @__PURE__ */ React$1.cloneElement(overlay, _extends$1l({}, props, overlayProps, {
       placement,
       arrowProps,
       popper: popper2,
       className: cx(overlay.props.className, !transition && show && "show"),
-      style: _extends$1k({}, overlay.props.style, overlayProps.style)
+      style: _extends$1l({}, overlay.props.style, overlayProps.style)
     }));
   });
 }
@@ -159509,7 +159509,7 @@ var defaultProps$5 = {
   trigger: ["hover", "focus"]
 };
 function OverlayTrigger(_ref3) {
-  var trigger2 = _ref3.trigger, overlay = _ref3.overlay, children = _ref3.children, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, propsShow = _ref3.show, _ref$defaultShow = _ref3.defaultShow, defaultShow = _ref$defaultShow === void 0 ? false : _ref$defaultShow, onToggle = _ref3.onToggle, propsDelay = _ref3.delay, placement = _ref3.placement, _ref$flip = _ref3.flip, flip2 = _ref$flip === void 0 ? placement && placement.indexOf("auto") !== -1 : _ref$flip, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1w);
+  var trigger2 = _ref3.trigger, overlay = _ref3.overlay, children = _ref3.children, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, propsShow = _ref3.show, _ref$defaultShow = _ref3.defaultShow, defaultShow = _ref$defaultShow === void 0 ? false : _ref$defaultShow, onToggle = _ref3.onToggle, propsDelay = _ref3.delay, placement = _ref3.placement, _ref$flip = _ref3.flip, flip2 = _ref$flip === void 0 ? placement && placement.indexOf("auto") !== -1 : _ref$flip, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1w);
   var triggerNodeRef = reactExports.useRef(null);
   var timeout = useTimeout();
   var hoverStateRef = reactExports.useRef("");
@@ -159584,11 +159584,11 @@ function OverlayTrigger(_ref3) {
     triggerProps.onMouseOver = handleMouseOver;
     triggerProps.onMouseOut = handleMouseOut;
   }
-  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, typeof children === "function" ? children(_extends$1k({}, triggerProps, {
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, typeof children === "function" ? children(_extends$1l({}, triggerProps, {
     ref: triggerNodeRef
   })) : /* @__PURE__ */ React$1.createElement(RefHolder, {
     ref: triggerNodeRef
-  }, /* @__PURE__ */ reactExports.cloneElement(children, triggerProps)), /* @__PURE__ */ React$1.createElement(Overlay, _extends$1k({}, props, {
+  }, /* @__PURE__ */ reactExports.cloneElement(children, triggerProps)), /* @__PURE__ */ React$1.createElement(Overlay, _extends$1l({}, props, {
     show,
     onHide: handleHide,
     flip: flip2,
@@ -159600,9 +159600,9 @@ function OverlayTrigger(_ref3) {
 OverlayTrigger.defaultProps = defaultProps$5;
 var _excluded$1v = ["as", "bsPrefix", "className", "children"];
 var PopoverTitle = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1v);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1v);
   bsPrefix = useBootstrapPrefix(bsPrefix, "popover-header");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({
     ref
   }, props, {
     className: cx(bsPrefix, className)
@@ -159610,9 +159610,9 @@ var PopoverTitle = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 });
 var _excluded$1u = ["as", "bsPrefix", "className", "children"];
 var PopoverContent = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1u);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1u);
   bsPrefix = useBootstrapPrefix(bsPrefix, "popover-body");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({
     ref
   }, props, {
     className: cx(className, bsPrefix)
@@ -159623,21 +159623,21 @@ var defaultProps$4 = {
   placement: "right"
 };
 var Popover = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, placement = _ref3.placement, className = _ref3.className, style2 = _ref3.style, children = _ref3.children, content = _ref3.content, arrowProps = _ref3.arrowProps;
+  var bsPrefix = _ref3.bsPrefix, placement = _ref3.placement, className = _ref3.className, style2 = _ref3.style, children = _ref3.children, content2 = _ref3.content, arrowProps = _ref3.arrowProps;
   _ref3.popper;
   _ref3.show;
-  var props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1t);
+  var props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1t);
   var decoratedBsPrefix = useBootstrapPrefix(bsPrefix, "popover");
   var _ref22 = (placement == null ? void 0 : placement.split("-")) || [], primaryPlacement = _ref22[0];
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1k({
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1l({
     ref,
     role: "tooltip",
     style: style2,
     "x-placement": primaryPlacement,
     className: cx(className, decoratedBsPrefix, primaryPlacement && "bs-popover-" + primaryPlacement)
-  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1k({
+  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1l({
     className: "arrow"
-  }, arrowProps)), content ? /* @__PURE__ */ React$1.createElement(PopoverContent, null, children) : children);
+  }, arrowProps)), content2 ? /* @__PURE__ */ React$1.createElement(PopoverContent, null, children) : children);
 });
 Popover.defaultProps = defaultProps$4;
 Popover.Title = PopoverTitle;
@@ -159648,7 +159648,7 @@ var defaultProps$3 = {
   noGutters: false
 };
 var Row = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, noGutters = _ref3.noGutters, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1s);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, noGutters = _ref3.noGutters, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1s);
   var decoratedBsPrefix = useBootstrapPrefix(bsPrefix, "row");
   var sizePrefix = decoratedBsPrefix + "-cols";
   var classes = [];
@@ -159664,7 +159664,7 @@ var Row = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     var infix = brkPoint !== "xs" ? "-" + brkPoint : "";
     if (cols != null) classes.push("" + sizePrefix + infix + "-" + cols);
   });
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({
     ref
   }, props, {
     className: cx.apply(void 0, [className, decoratedBsPrefix, noGutters && "no-gutters"].concat(classes))
@@ -159674,10 +159674,10 @@ Row.displayName = "Row";
 Row.defaultProps = defaultProps$3;
 var _excluded$1r = ["bsPrefix", "variant", "animation", "size", "children", "as", "className"];
 var Spinner = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, animation = _ref3.animation, size2 = _ref3.size, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1r);
+  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, animation = _ref3.animation, size2 = _ref3.size, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1r);
   bsPrefix = useBootstrapPrefix(bsPrefix, "spinner");
   var bsSpinnerPrefix = bsPrefix + "-" + animation;
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1k({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1l({
     ref
   }, props, {
     className: cx(className, bsSpinnerPrefix, size2 && bsSpinnerPrefix + "-" + size2, variant && "text-" + variant)
@@ -159692,16 +159692,16 @@ var Tooltip = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   var bsPrefix = _ref3.bsPrefix, placement = _ref3.placement, className = _ref3.className, style2 = _ref3.style, children = _ref3.children, arrowProps = _ref3.arrowProps;
   _ref3.popper;
   _ref3.show;
-  var props = _objectWithoutPropertiesLoose$1m(_ref3, _excluded$1q);
+  var props = _objectWithoutPropertiesLoose$1n(_ref3, _excluded$1q);
   bsPrefix = useBootstrapPrefix(bsPrefix, "tooltip");
   var _ref22 = (placement == null ? void 0 : placement.split("-")) || [], primaryPlacement = _ref22[0];
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1k({
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1l({
     ref,
     style: style2,
     role: "tooltip",
     "x-placement": primaryPlacement,
     className: cx(className, bsPrefix, "bs-tooltip-" + primaryPlacement)
-  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1k({
+  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1l({
     className: "arrow"
   }, arrowProps)), /* @__PURE__ */ React$1.createElement("div", {
     className: bsPrefix + "-inner"
@@ -160133,12 +160133,12 @@ const abbreviateCounter = (counter2 = 0) => {
     digits
   };
 };
-const stripQuotes = (text) => {
-  if (text.startsWith('"') && text.endsWith('"'))
-    return text.slice(1, -1);
-  return text;
+const stripQuotes = (text2) => {
+  if (text2.startsWith('"') && text2.endsWith('"'))
+    return text2.slice(1, -1);
+  return text2;
 };
-const addQuotes = (text) => `"${text}"`;
+const addQuotes = (text2) => `"${text2}"`;
 const TextUtils = {
   fileSize,
   formatFileSizeUnit,
@@ -161512,7 +161512,7 @@ function makeInlineSvgAbstract(params) {
   } = mask.found ? mask : main2;
   const isUploadedIcon = Lt$1.includes(prefix2);
   const attrClass = [config$2.replacementClass, iconName ? "".concat(config$2.cssPrefix, "-").concat(iconName) : ""].filter((c$$1) => extra.classes.indexOf(c$$1) === -1).filter((c$$1) => c$$1 !== "" || !!c$$1).concat(extra.classes).join(" ");
-  let content = {
+  let content2 = {
     children: [],
     attributes: _objectSpread2$3(_objectSpread2$3({}, extra.attributes), {}, {
       "data-prefix": prefix2,
@@ -161527,19 +161527,19 @@ function makeInlineSvgAbstract(params) {
     width: "".concat(width2 / height3 * 16 * 0.0625, "em")
   } : {};
   if (watchable) {
-    content.attributes[DATA_FA_I2SVG] = "";
+    content2.attributes[DATA_FA_I2SVG] = "";
   }
   if (title2) {
-    content.children.push({
+    content2.children.push({
       tag: "title",
       attributes: {
-        id: content.attributes["aria-labelledby"] || "title-".concat(titleId || nextUniqueId())
+        id: content2.attributes["aria-labelledby"] || "title-".concat(titleId || nextUniqueId())
       },
       children: [title2]
     });
-    delete content.attributes.title;
+    delete content2.attributes.title;
   }
-  const args = _objectSpread2$3(_objectSpread2$3({}, content), {}, {
+  const args = _objectSpread2$3(_objectSpread2$3({}, content2), {}, {
     prefix: prefix2,
     iconName,
     main: main2,
@@ -161569,7 +161569,7 @@ function makeInlineSvgAbstract(params) {
 }
 function makeLayersTextAbstract(params) {
   const {
-    content,
+    content: content2,
     width: width2,
     height: height3,
     transform: transform3,
@@ -161603,7 +161603,7 @@ function makeLayersTextAbstract(params) {
   val.push({
     tag: "span",
     attributes,
-    children: [content]
+    children: [content2]
   });
   if (title2) {
     val.push({
@@ -161618,7 +161618,7 @@ function makeLayersTextAbstract(params) {
 }
 function makeLayersCounterAbstract(params) {
   const {
-    content,
+    content: content2,
     title: title2,
     extra
   } = params;
@@ -161635,7 +161635,7 @@ function makeLayersCounterAbstract(params) {
   val.push({
     tag: "span",
     attributes,
-    children: [content]
+    children: [content2]
   });
   if (title2) {
     val.push({
@@ -162317,7 +162317,7 @@ var Layers = {
 var LayersCounter = {
   mixout() {
     return {
-      counter(content) {
+      counter(content2) {
         let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
         const {
           title: title2 = null,
@@ -162327,14 +162327,14 @@ var LayersCounter = {
         } = params;
         return domVariants({
           type: "counter",
-          content
+          content: content2
         }, () => {
           callHooks("beforeDOMElementCreation", {
-            content,
+            content: content2,
             params
           });
           return makeLayersCounterAbstract({
-            content: content.toString(),
+            content: content2.toString(),
             title: title2,
             extra: {
               attributes,
@@ -162350,7 +162350,7 @@ var LayersCounter = {
 var LayersText = {
   mixout() {
     return {
-      text(content) {
+      text(content2) {
         let params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
         const {
           transform: transform3 = meaninglessTransform,
@@ -162361,14 +162361,14 @@ var LayersText = {
         } = params;
         return domVariants({
           type: "text",
-          content
+          content: content2
         }, () => {
           callHooks("beforeDOMElementCreation", {
-            content,
+            content: content2,
             params
           });
           return makeLayersTextAbstract({
-            content,
+            content: content2,
             transform: _objectSpread2$3(_objectSpread2$3({}, meaninglessTransform), transform3),
             title: title2,
             extra: {
@@ -162428,8 +162428,8 @@ const FONT_FAMILY_WEIGHT_FALLBACK = Object.keys(FONT_FAMILY_WEIGHT_TO_PREFIX).re
   acc[fontFamily] = weights[900] || [...Object.entries(weights)][0][1];
   return acc;
 }, {});
-function hexValueFromContent(content) {
-  const cleaned = content.replace(CLEAN_CONTENT_PATTERN, "");
+function hexValueFromContent(content2) {
+  const cleaned = content2.replace(CLEAN_CONTENT_PATTERN, "");
   const codePoint = codePointAt$1(cleaned, 0);
   const isPrependTen = codePoint >= SECONDARY_UNICODE_RANGE[0] && codePoint <= SECONDARY_UNICODE_RANGE[1];
   const isDoubled = cleaned.length === 2 ? cleaned[0] === cleaned[1] : false;
@@ -162456,17 +162456,17 @@ function replaceForPosition(node2, position2) {
     const fontFamily = styles2.getPropertyValue("font-family");
     const fontFamilyMatch = fontFamily.match(FONT_FAMILY_PATTERN);
     const fontWeight = styles2.getPropertyValue("font-weight");
-    const content = styles2.getPropertyValue("content");
+    const content2 = styles2.getPropertyValue("content");
     if (alreadyProcessedPseudoElement && !fontFamilyMatch) {
       node2.removeChild(alreadyProcessedPseudoElement);
       return resolve();
-    } else if (fontFamilyMatch && content !== "none" && content !== "") {
-      const content2 = styles2.getPropertyValue("content");
+    } else if (fontFamilyMatch && content2 !== "none" && content2 !== "") {
+      const content22 = styles2.getPropertyValue("content");
       let prefix2 = getPrefix$1(fontFamily, fontWeight);
       const {
         value: hexValue,
         isSecondary
-      } = hexValueFromContent(content2);
+      } = hexValueFromContent(content22);
       const isV4 = fontFamilyMatch[0].startsWith("FontAwesome");
       let iconName = byUnicode(prefix2, hexValue);
       let iconIdentifier = iconName;
@@ -163008,14 +163008,14 @@ function _objectSpread2$2(e2) {
 }
 function _objectWithoutProperties$1k(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$1l(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$1m(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$1l(r3, e2) {
+function _objectWithoutPropertiesLoose$1m(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -163139,7 +163139,7 @@ var _excluded$1p = ["style"];
 function capitalize$1(val) {
   return val.charAt(0).toUpperCase() + val.slice(1);
 }
-function styleToObject(style2) {
+function styleToObject$1(style2) {
   return style2.split(";").map(function(s4) {
     return s4.trim();
   }).filter(function(s4) {
@@ -163168,7 +163168,7 @@ function convert(createElement2, element) {
         delete element.attributes["class"];
         break;
       case "style":
-        acc.attrs["style"] = styleToObject(val);
+        acc.attrs["style"] = styleToObject$1(val);
         break;
       default:
         if (key.indexOf("aria-") === 0 || key.indexOf("data-") === 0) {
@@ -163618,8 +163618,8 @@ function useSpriteInfo(vttPath) {
         setSpriteInfo(null);
         return;
       }
-      response.text().then((text) => {
-        setSpriteInfo(getSpriteInfo(vttPath, text));
+      response.text().then((text2) => {
+        setSpriteInfo(getSpriteInfo(vttPath, text2));
       });
     });
   }, [vttPath]);
@@ -163699,11 +163699,11 @@ const ScenePlayerScrubber = ({ file: file2, scene: scene2, time: time2, onSeek, 
         setWidth(newWidth);
       }
     };
-    const content = contentEl.current;
+    const content2 = contentEl.current;
     const resizeObserver = new ResizeObserver(onResize);
-    resizeObserver.observe(content);
+    resizeObserver.observe(content2);
     return () => {
-      resizeObserver.unobserve(content);
+      resizeObserver.unobserve(content2);
     };
   }, []);
   function setLinearTransition() {
@@ -163788,13 +163788,13 @@ const ScenePlayerScrubber = ({ file: file2, scene: scene2, time: time2, onSeek, 
     lastMouseEvent.current = event;
   }, [onScroll, setPosition]);
   reactExports.useEffect(() => {
-    const content = contentEl.current;
-    content.addEventListener("mousedown", onMouseDown, false);
-    content.addEventListener("mousemove", onMouseMove, false);
+    const content2 = contentEl.current;
+    content2.addEventListener("mousedown", onMouseDown, false);
+    content2.addEventListener("mousemove", onMouseMove, false);
     window.addEventListener("mouseup", onMouseUp, false);
     return () => {
-      content.removeEventListener("mousedown", onMouseDown);
-      content.removeEventListener("mousemove", onMouseMove);
+      content2.removeEventListener("mousedown", onMouseDown);
+      content2.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseup", onMouseUp);
     };
   }, [onMouseDown, onMouseMove, onMouseUp]);
@@ -163838,13 +163838,13 @@ const ConfigurationProvider = ({ loading: loading2, configuration: configuration
     loading: loading2
   }, children });
 };
-var lib = {};
+var lib$2 = {};
 var Handy$1 = {};
-var types$1 = {};
-var hasRequiredTypes;
-function requireTypes() {
-  if (hasRequiredTypes) return types$1;
-  hasRequiredTypes = 1;
+var types$2 = {};
+var hasRequiredTypes$1;
+function requireTypes$1() {
+  if (hasRequiredTypes$1) return types$2;
+  hasRequiredTypes$1 = 1;
   (function(exports2) {
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.HandyFirmwareStatus = exports2.HsspState = exports2.HsspSetupResult = exports2.SetHdspResult = exports2.HampState = exports2.SetHampStateResult = exports2.SetModeResult = exports2.GenericResult = exports2.HandyMode = void 0;
@@ -163893,8 +163893,8 @@ function requireTypes() {
       HandyFirmwareStatus[HandyFirmwareStatus["updateRequired"] = 1] = "updateRequired";
       HandyFirmwareStatus[HandyFirmwareStatus["updateAvailable"] = 2] = "updateAvailable";
     })(exports2.HandyFirmwareStatus || (exports2.HandyFirmwareStatus = {}));
-  })(types$1);
-  return types$1;
+  })(types$2);
+  return types$2;
 }
 var hasRequiredHandy;
 function requireHandy() {
@@ -163928,7 +163928,7 @@ function requireHandy() {
     });
   };
   Object.defineProperty(Handy$1, "__esModule", { value: true });
-  const types_1 = requireTypes();
+  const types_1 = requireTypes$1();
   const baseUrl = "https://www.handyfeeling.com/api/handy/v2/";
   class Handy2 {
     constructor(verbose = false) {
@@ -164795,12 +164795,12 @@ function requireHandyLegacy() {
   HandyLegacy.default = Handy2;
   return HandyLegacy;
 }
-var hasRequiredLib;
-function requireLib() {
-  if (hasRequiredLib) return lib;
-  hasRequiredLib = 1;
+var hasRequiredLib$2;
+function requireLib$2() {
+  if (hasRequiredLib$2) return lib$2;
+  hasRequiredLib$2 = 1;
   (function(exports2) {
-    var __importDefault = lib && lib.__importDefault || function(mod) {
+    var __importDefault = lib$2 && lib$2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
     };
     Object.defineProperty(exports2, "__esModule", { value: true });
@@ -164808,7 +164808,7 @@ function requireLib() {
     const Handy_1 = __importDefault(requireHandy());
     const HandyLegacy_1 = __importDefault(requireHandyLegacy());
     exports2.HandyLegacy = HandyLegacy_1.default;
-    const types_1 = requireTypes();
+    const types_1 = requireTypes$1();
     Object.defineProperty(exports2, "GenericResult", { enumerable: true, get: function() {
       return types_1.GenericResult;
     } });
@@ -164837,12 +164837,12 @@ function requireLib() {
       return types_1.SetModeResult;
     } });
     exports2.default = Handy_1.default;
-  })(lib);
-  return lib;
+  })(lib$2);
+  return lib$2;
 }
-var libExports = requireLib();
+var libExports = requireLib$2();
 const Handy = /* @__PURE__ */ getDefaultExportFromCjs(libExports);
-var typesExports = requireTypes();
+var typesExports = requireTypes$1();
 function convertRange(value, fromLow, fromHigh, toLow, toHigh) {
   return (value - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow;
 }
@@ -164921,8 +164921,8 @@ class Interactive {
     if (!connected) {
       throw new Error("Handy not connected");
     }
-    const info = await this._handy.getInfo();
-    if (info.fwStatus === typesExports.HandyFirmwareStatus.updateRequired) {
+    const info2 = await this._handy.getInfo();
+    if (info2.fwStatus === typesExports.HandyFirmwareStatus.updateRequired) {
       throw new Error("Handy firmware update required");
     }
   }
@@ -170669,8 +170669,8 @@ function requireWebcomponentsLite() {
                 }
                 return o2;
               },
-              set: function(text) {
-                contentDoc.body.innerHTML = text;
+              set: function(text2) {
+                contentDoc.body.innerHTML = text2;
                 TemplateImpl.bootstrap(contentDoc);
                 while (this.content.firstChild) {
                   this.content.removeChild(this.content.firstChild);
@@ -170999,8 +170999,8 @@ function requireWebcomponentsLite() {
         r3 = this.replaceUrls(r3, urlObj, linkUrl, CSS_IMPORT_REGEXP);
         return r3;
       },
-      replaceUrls: function(text, urlObj, linkUrl, regexp) {
-        return text.replace(regexp, function(m3, pre, url2, post) {
+      replaceUrls: function(text2, urlObj, linkUrl, regexp) {
+        return text2.replace(regexp, function(m3, pre, url2, post) {
           var urlPath = url2.replace(/["']/g, "");
           if (linkUrl) {
             urlPath = new URL(urlPath, linkUrl).href;
@@ -173885,9 +173885,9 @@ function requireVideojsAbloop() {
         };
         var updateTextFunction = function(defaultText, textFunction) {
           return function() {
-            var text = textFunction(opts) || defaultText;
+            var text2 = textFunction(opts) || defaultText;
             var el = this.el();
-            el.textContent = text;
+            el.textContent = text2;
           };
         };
         var b3 = player2.controlBar.addChild("Button");
@@ -179749,12 +179749,12 @@ function isDragActive() {
   return false;
 }
 function createHoverEvent(visualElement2, isActive, callback2) {
-  return function(event, info) {
+  return function(event, info2) {
     var _a2;
     if (!isMouseEvent(event) || isDragActive())
       return;
     (_a2 = visualElement2.animationState) === null || _a2 === void 0 ? void 0 : _a2.setActive(AnimationType.Hover, isActive);
-    callback2 === null || callback2 === void 0 ? void 0 : callback2(event, info);
+    callback2 === null || callback2 === void 0 ? void 0 : callback2(event, info2);
   };
 }
 function useHoverGesture(_a2) {
@@ -180219,12 +180219,12 @@ function decay({ velocity = 0, from: from3 = 0, power = 0.8, timeConstant = 350,
     }
   };
 }
-const types = { keyframes: keyframes$2, spring, decay };
+const types$1 = { keyframes: keyframes$2, spring, decay };
 function detectAnimationFromOptions(config2) {
   if (Array.isArray(config2.to)) {
     return keyframes$2;
-  } else if (types[config2.type]) {
-    return types[config2.type];
+  } else if (types$1[config2.type]) {
+    return types$1[config2.type];
   }
   const keys3 = new Set(Object.keys(config2));
   if (keys3.has("ease") || keys3.has("duration") && !keys3.has("dampingRatio")) {
@@ -180564,8 +180564,8 @@ function cubicBezier(mX1, mY1, mX2, mY2) {
       intervalStart += kSampleStepSize;
     }
     --currentSample;
-    const dist = (aX - sampleValues[currentSample]) / (sampleValues[currentSample + 1] - sampleValues[currentSample]);
-    const guessForT = intervalStart + dist * kSampleStepSize;
+    const dist2 = (aX - sampleValues[currentSample]) / (sampleValues[currentSample + 1] - sampleValues[currentSample]);
+    const guessForT = intervalStart + dist2 * kSampleStepSize;
     const initialSlope = getSlope(guessForT, mX1, mX2);
     if (initialSlope >= newtonMinSlope) {
       return newtonRaphsonIterate(aX, guessForT, mX1, mX2);
@@ -180597,17 +180597,17 @@ function useTapGesture(_a2) {
     (_a3 = visualElement2.animationState) === null || _a3 === void 0 ? void 0 : _a3.setActive(AnimationType.Tap, false);
     return !isDragActive();
   }
-  function onPointerUp(event, info) {
+  function onPointerUp(event, info2) {
     if (!checkPointerEnd())
       return;
-    !isNodeOrChild(visualElement2.getInstance(), event.target) ? onTapCancel === null || onTapCancel === void 0 ? void 0 : onTapCancel(event, info) : onTap === null || onTap === void 0 ? void 0 : onTap(event, info);
+    !isNodeOrChild(visualElement2.getInstance(), event.target) ? onTapCancel === null || onTapCancel === void 0 ? void 0 : onTapCancel(event, info2) : onTap === null || onTap === void 0 ? void 0 : onTap(event, info2);
   }
-  function onPointerCancel(event, info) {
+  function onPointerCancel(event, info2) {
     if (!checkPointerEnd())
       return;
-    onTapCancel === null || onTapCancel === void 0 ? void 0 : onTapCancel(event, info);
+    onTapCancel === null || onTapCancel === void 0 ? void 0 : onTapCancel(event, info2);
   }
-  function onPointerDown(event, info) {
+  function onPointerDown(event, info2) {
     var _a3;
     removePointerEndListener();
     if (isPressing.current)
@@ -180615,7 +180615,7 @@ function useTapGesture(_a2) {
     isPressing.current = true;
     cancelPointerEndListeners.current = pipe(addPointerEvent(window, "pointerup", onPointerUp, eventOptions), addPointerEvent(window, "pointercancel", onPointerCancel, eventOptions));
     (_a3 = visualElement2.animationState) === null || _a3 === void 0 ? void 0 : _a3.setActive(AnimationType.Tap, true);
-    onTapStart === null || onTapStart === void 0 ? void 0 : onTapStart(event, info);
+    onTapStart === null || onTapStart === void 0 ? void 0 : onTapStart(event, info2);
   }
   usePointerEvent(visualElement2, "pointerdown", hasPressListeners ? onPointerDown : void 0, eventOptions);
   useUnmountEffect(removePointerEndListener);
@@ -181615,7 +181615,7 @@ var animations = {
 var PanSession = (
   /** @class */
   (function() {
-    function PanSession2(event, handlers, _a2) {
+    function PanSession2(event, handlers2, _a2) {
       var _this = this;
       var _b2 = _a2 === void 0 ? {} : _a2, transformPagePoint = _b2.transformPagePoint;
       this.startEvent = null;
@@ -181625,34 +181625,34 @@ var PanSession = (
       this.updatePoint = function() {
         if (!(_this.lastMoveEvent && _this.lastMoveEventInfo))
           return;
-        var info2 = getPanInfo(_this.lastMoveEventInfo, _this.history);
+        var info3 = getPanInfo(_this.lastMoveEventInfo, _this.history);
         var isPanStarted = _this.startEvent !== null;
-        var isDistancePastThreshold = distance$1(info2.offset, { x: 0, y: 0 }) >= 3;
+        var isDistancePastThreshold = distance$1(info3.offset, { x: 0, y: 0 }) >= 3;
         if (!isPanStarted && !isDistancePastThreshold)
           return;
-        var point2 = info2.point;
+        var point2 = info3.point;
         var timestamp2 = getFrameData().timestamp;
         _this.history.push(__assign(__assign({}, point2), { timestamp: timestamp2 }));
         var _a3 = _this.handlers, onStart = _a3.onStart, onMove = _a3.onMove;
         if (!isPanStarted) {
-          onStart && onStart(_this.lastMoveEvent, info2);
+          onStart && onStart(_this.lastMoveEvent, info3);
           _this.startEvent = _this.lastMoveEvent;
         }
-        onMove && onMove(_this.lastMoveEvent, info2);
+        onMove && onMove(_this.lastMoveEvent, info3);
       };
-      this.handlePointerMove = function(event2, info2) {
+      this.handlePointerMove = function(event2, info3) {
         _this.lastMoveEvent = event2;
-        _this.lastMoveEventInfo = transformPoint(info2, _this.transformPagePoint);
+        _this.lastMoveEventInfo = transformPoint(info3, _this.transformPagePoint);
         if (isMouseEvent(event2) && event2.buttons === 0) {
-          _this.handlePointerUp(event2, info2);
+          _this.handlePointerUp(event2, info3);
           return;
         }
         sync$1.update(_this.updatePoint, true);
       };
-      this.handlePointerUp = function(event2, info2) {
+      this.handlePointerUp = function(event2, info3) {
         _this.end();
         var _a3 = _this.handlers, onEnd = _a3.onEnd, onSessionEnd = _a3.onSessionEnd;
-        var panInfo = getPanInfo(transformPoint(info2, _this.transformPagePoint), _this.history);
+        var panInfo = getPanInfo(transformPoint(info3, _this.transformPagePoint), _this.history);
         if (_this.startEvent && onEnd) {
           onEnd(event2, panInfo);
         }
@@ -181660,19 +181660,19 @@ var PanSession = (
       };
       if (isTouchEvent(event) && event.touches.length > 1)
         return;
-      this.handlers = handlers;
+      this.handlers = handlers2;
       this.transformPagePoint = transformPagePoint;
-      var info = extractEventInfo(event);
-      var initialInfo = transformPoint(info, this.transformPagePoint);
+      var info2 = extractEventInfo(event);
+      var initialInfo = transformPoint(info2, this.transformPagePoint);
       var point = initialInfo.point;
       var timestamp = getFrameData().timestamp;
       this.history = [__assign(__assign({}, point), { timestamp })];
-      var onSessionStart = handlers.onSessionStart;
+      var onSessionStart = handlers2.onSessionStart;
       onSessionStart && onSessionStart(event, getPanInfo(initialInfo, this.history));
       this.removeListeners = pipe(addPointerEvent(window, "pointermove", this.handlePointerMove), addPointerEvent(window, "pointerup", this.handlePointerUp), addPointerEvent(window, "pointercancel", this.handlePointerUp));
     }
-    PanSession2.prototype.updateHandlers = function(handlers) {
-      this.handlers = handlers;
+    PanSession2.prototype.updateHandlers = function(handlers2) {
+      this.handlers = handlers2;
     };
     PanSession2.prototype.end = function() {
       this.removeListeners && this.removeListeners();
@@ -181681,8 +181681,8 @@ var PanSession = (
     return PanSession2;
   })()
 );
-function transformPoint(info, transformPagePoint) {
-  return transformPagePoint ? { point: transformPagePoint(info.point) } : info;
+function transformPoint(info2, transformPagePoint) {
+  return transformPagePoint ? { point: transformPagePoint(info2.point) } : info2;
 }
 function subtractPoint(a4, b3) {
   return { x: a4.x - b3.x, y: a4.y - b3.y };
@@ -182033,7 +182033,7 @@ var VisualElementDragControls = (
           _this.snapToCursor(extractEventInfo(event, "page").point);
         }
       };
-      var onStart = function(event, info) {
+      var onStart = function(event, info2) {
         var _a3;
         var _b3 = _this.getProps(), drag2 = _b3.drag, dragPropagation = _b3.dragPropagation, onDragStart = _b3.onDragStart;
         if (drag2 && !dragPropagation) {
@@ -182062,14 +182062,14 @@ var VisualElementDragControls = (
           }
           _this.originPoint[axis] = current;
         });
-        onDragStart === null || onDragStart === void 0 ? void 0 : onDragStart(event, info);
+        onDragStart === null || onDragStart === void 0 ? void 0 : onDragStart(event, info2);
         (_a3 = _this.visualElement.animationState) === null || _a3 === void 0 ? void 0 : _a3.setActive(AnimationType.Drag, true);
       };
-      var onMove = function(event, info) {
+      var onMove = function(event, info2) {
         var _a3 = _this.getProps(), dragPropagation = _a3.dragPropagation, dragDirectionLock = _a3.dragDirectionLock, onDirectionLock = _a3.onDirectionLock, onDrag = _a3.onDrag;
         if (!dragPropagation && !_this.openGlobalLock)
           return;
-        var offset3 = info.offset;
+        var offset3 = info2.offset;
         if (dragDirectionLock && _this.currentDirection === null) {
           _this.currentDirection = getCurrentDirection(offset3);
           if (_this.currentDirection !== null) {
@@ -182077,13 +182077,13 @@ var VisualElementDragControls = (
           }
           return;
         }
-        _this.updateAxis("x", info.point, offset3);
-        _this.updateAxis("y", info.point, offset3);
+        _this.updateAxis("x", info2.point, offset3);
+        _this.updateAxis("y", info2.point, offset3);
         _this.visualElement.syncRender();
-        onDrag === null || onDrag === void 0 ? void 0 : onDrag(event, info);
+        onDrag === null || onDrag === void 0 ? void 0 : onDrag(event, info2);
       };
-      var onSessionEnd = function(event, info) {
-        return _this.stop(event, info);
+      var onSessionEnd = function(event, info2) {
+        return _this.stop(event, info2);
       };
       this.panSession = new PanSession(originEvent, {
         onSessionStart,
@@ -182092,15 +182092,15 @@ var VisualElementDragControls = (
         onSessionEnd
       }, { transformPagePoint: this.visualElement.getTransformPagePoint() });
     };
-    VisualElementDragControls2.prototype.stop = function(event, info) {
+    VisualElementDragControls2.prototype.stop = function(event, info2) {
       var isDragging = this.isDragging;
       this.cancel();
       if (!isDragging)
         return;
-      var velocity = info.velocity;
+      var velocity = info2.velocity;
       this.startAnimation(velocity);
       var onDragEnd = this.getProps().onDragEnd;
-      onDragEnd === null || onDragEnd === void 0 ? void 0 : onDragEnd(event, info);
+      onDragEnd === null || onDragEnd === void 0 ? void 0 : onDragEnd(event, info2);
     };
     VisualElementDragControls2.prototype.cancel = function() {
       var _a2, _b2;
@@ -182334,22 +182334,22 @@ function usePanGesture(_a2) {
   var hasPanEvents = onPan || onPanStart || onPanEnd || onPanSessionStart;
   var panSession = reactExports.useRef(null);
   var transformPagePoint = reactExports.useContext(MotionConfigContext).transformPagePoint;
-  var handlers = {
+  var handlers2 = {
     onSessionStart: onPanSessionStart,
     onStart: onPanStart,
     onMove: onPan,
-    onEnd: function(event, info) {
+    onEnd: function(event, info2) {
       panSession.current = null;
-      onPanEnd && onPanEnd(event, info);
+      onPanEnd && onPanEnd(event, info2);
     }
   };
   reactExports.useEffect(function() {
     if (panSession.current !== null) {
-      panSession.current.updateHandlers(handlers);
+      panSession.current.updateHandlers(handlers2);
     }
   });
   function onPointerDown(event) {
-    panSession.current = new PanSession(event, handlers, {
+    panSession.current = new PanSession(event, handlers2, {
       transformPagePoint
     });
   }
@@ -189220,11 +189220,11 @@ function printNumber(val) {
 }
 function printSimpleValue(val, quoteStrings = false) {
   if (val == null || val === true || val === false) return "" + val;
-  const typeOf = typeof val;
-  if (typeOf === "number") return printNumber(val);
-  if (typeOf === "string") return quoteStrings ? `"${val}"` : val;
-  if (typeOf === "function") return "[Function " + (val.name || "anonymous") + "]";
-  if (typeOf === "symbol") return symbolToString.call(val).replace(SYMBOL_REGEXP, "Symbol($1)");
+  const typeOf2 = typeof val;
+  if (typeOf2 === "number") return printNumber(val);
+  if (typeOf2 === "string") return quoteStrings ? `"${val}"` : val;
+  if (typeOf2 === "function") return "[Function " + (val.name || "anonymous") + "]";
+  if (typeOf2 === "symbol") return symbolToString.call(val).replace(SYMBOL_REGEXP, "Symbol($1)");
   const tag2 = toString.call(val).slice(8, -1);
   if (tag2 === "Date") return isNaN(val.getTime()) ? "" + val : val.toISOString(val);
   if (tag2 === "Error" || val instanceof Error) return "[" + errorToString$1.call(val) + "]";
@@ -189411,10 +189411,10 @@ class Condition {
       otherwise
     } = config2;
     let check2 = typeof is2 === "function" ? is2 : (...values3) => values3.every((value) => value === is2);
-    return new Condition(refs, (values3, schema) => {
+    return new Condition(refs, (values3, schema2) => {
       var _branch;
       let branch = check2(...values3) ? then : otherwise;
-      return (_branch = branch == null ? void 0 : branch(schema)) != null ? _branch : schema;
+      return (_branch = branch == null ? void 0 : branch(schema2)) != null ? _branch : schema2;
     });
   }
   constructor(refs, builder) {
@@ -189428,13 +189428,13 @@ class Condition {
       // TODO: ? operator here?
       ref.getValue(options2 == null ? void 0 : options2.value, options2 == null ? void 0 : options2.parent, options2 == null ? void 0 : options2.context)
     ));
-    let schema = this.fn(values3, base, options2);
-    if (schema === void 0 || // @ts-ignore this can be base
-    schema === base) {
+    let schema2 = this.fn(values3, base, options2);
+    if (schema2 === void 0 || // @ts-ignore this can be base
+    schema2 === base) {
       return base;
     }
-    if (!isSchema(schema)) throw new TypeError("conditions must return a schema object");
-    return schema.resolve(options2);
+    if (!isSchema(schema2)) throw new TypeError("conditions must return a schema object");
+    return schema2.resolve(options2);
   }
 }
 const prefixes$1 = {
@@ -189501,7 +189501,7 @@ function createValidation(config2) {
     path: path2 = "",
     options: options2,
     originalValue,
-    schema
+    schema: schema2
   }, panic, next2) {
     const {
       name: name2,
@@ -189513,8 +189513,8 @@ function createValidation(config2) {
     let {
       parent,
       context: context2,
-      abortEarly = schema.spec.abortEarly,
-      disableStackTrace = schema.spec.disableStackTrace
+      abortEarly = schema2.spec.abortEarly,
+      disableStackTrace = schema2.spec.disableStackTrace
     } = options2;
     const resolveOptions = {
       value,
@@ -189525,9 +189525,9 @@ function createValidation(config2) {
       const nextParams = resolveParams(Object.assign({
         value,
         originalValue,
-        label: schema.spec.label,
+        label: schema2.spec.label,
         path: overrides.path || path2,
-        spec: schema.spec,
+        spec: schema2.spec,
         disableStackTrace: overrides.disableStackTrace || disableStackTrace
       }, params, overrides.params), resolveOptions);
       const error = new ValidationError(ValidationError.formatError(overrides.message || message, nextParams), value, nextParams.path, overrides.type || name2, nextParams.disableStackTrace);
@@ -189546,7 +189546,7 @@ function createValidation(config2) {
       },
       options: options2,
       originalValue,
-      schema
+      schema: schema2
     };
     const handleResult = (validOrError) => {
       if (ValidationError.isError(validOrError)) invalid(validOrError);
@@ -189590,42 +189590,42 @@ function resolveParams(params, options2) {
 function resolveMaybeRef(item, options2) {
   return Reference$1.isRef(item) ? item.getValue(options2.value, options2.parent, options2.context) : item;
 }
-function getIn$1(schema, path2, value, context2 = value) {
+function getIn$1(schema2, path2, value, context2 = value) {
   let parent, lastPart, lastPartDebug;
   if (!path2) return {
     parent,
     parentPath: path2,
-    schema
+    schema: schema2
   };
   propertyExprExports.forEach(path2, (_part, isBracket, isArray2) => {
     let part = isBracket ? _part.slice(1, _part.length - 1) : _part;
-    schema = schema.resolve({
+    schema2 = schema2.resolve({
       context: context2,
       parent,
       value
     });
-    let isTuple = schema.type === "tuple";
+    let isTuple = schema2.type === "tuple";
     let idx = isArray2 ? parseInt(part, 10) : 0;
-    if (schema.innerType || isTuple) {
+    if (schema2.innerType || isTuple) {
       if (isTuple && !isArray2) throw new Error(`Yup.reach cannot implicitly index into a tuple type. the path part "${lastPartDebug}" must contain an index to the tuple element, e.g. "${lastPartDebug}[0]"`);
       if (value && idx >= value.length) {
         throw new Error(`Yup.reach cannot resolve an array item at index: ${_part}, in the path: ${path2}. because there is no value at that index. `);
       }
       parent = value;
       value = value && value[idx];
-      schema = isTuple ? schema.spec.types[idx] : schema.innerType;
+      schema2 = isTuple ? schema2.spec.types[idx] : schema2.innerType;
     }
     if (!isArray2) {
-      if (!schema.fields || !schema.fields[part]) throw new Error(`The schema does not contain the path: ${path2}. (failed at: ${lastPartDebug} which is a type: "${schema.type}")`);
+      if (!schema2.fields || !schema2.fields[part]) throw new Error(`The schema does not contain the path: ${path2}. (failed at: ${lastPartDebug} which is a type: "${schema2.type}")`);
       parent = value;
       value = value && value[part];
-      schema = schema.fields[part];
+      schema2 = schema2.fields[part];
     }
     lastPart = part;
     lastPartDebug = isBracket ? "[" + _part + "]" : "." + _part;
   });
   return {
-    schema,
+    schema: schema2,
     parent,
     parentPath: lastPart
   };
@@ -189825,20 +189825,20 @@ class Schema {
     this._mutate = before;
     return result;
   }
-  concat(schema) {
-    if (!schema || schema === this) return this;
-    if (schema.type !== this.type && this.type !== "mixed") throw new TypeError(`You cannot \`concat()\` schema's of different types: ${this.type} and ${schema.type}`);
+  concat(schema2) {
+    if (!schema2 || schema2 === this) return this;
+    if (schema2.type !== this.type && this.type !== "mixed") throw new TypeError(`You cannot \`concat()\` schema's of different types: ${this.type} and ${schema2.type}`);
     let base = this;
-    let combined = schema.clone();
+    let combined = schema2.clone();
     const mergedSpec = Object.assign({}, base.spec, combined.spec);
     combined.spec = mergedSpec;
     combined.internalTests = Object.assign({}, base.internalTests, combined.internalTests);
-    combined._whitelist = base._whitelist.merge(schema._whitelist, schema._blacklist);
-    combined._blacklist = base._blacklist.merge(schema._blacklist, schema._whitelist);
+    combined._whitelist = base._whitelist.merge(schema2._whitelist, schema2._blacklist);
+    combined._blacklist = base._blacklist.merge(schema2._blacklist, schema2._whitelist);
     combined.tests = base.tests;
     combined.exclusiveTests = base.exclusiveTests;
     combined.withMutation((next2) => {
-      schema.tests.forEach((fn3) => {
+      schema2.tests.forEach((fn3) => {
         next2.test(fn3.OPTIONS);
       });
     });
@@ -189854,15 +189854,15 @@ class Schema {
     return this._typeCheck(v);
   }
   resolve(options2) {
-    let schema = this;
-    if (schema.conditions.length) {
-      let conditions = schema.conditions;
-      schema = schema.clone();
-      schema.conditions = [];
-      schema = conditions.reduce((prevSchema, condition) => condition.resolve(prevSchema, options2), schema);
-      schema = schema.resolve(options2);
+    let schema2 = this;
+    if (schema2.conditions.length) {
+      let conditions = schema2.conditions;
+      schema2 = schema2.clone();
+      schema2.conditions = [];
+      schema2 = conditions.reduce((prevSchema, condition) => condition.resolve(prevSchema, options2), schema2);
+      schema2 = schema2.resolve(options2);
     }
-    return schema;
+    return schema2;
   }
   resolveOptions(options2) {
     var _options$strict, _options$abortEarly, _options$recursive, _options$disableStack;
@@ -190016,11 +190016,11 @@ attempted value: ${formattedValue}
   }
   validate(value, options2) {
     var _options$disableStack2;
-    let schema = this.resolve(Object.assign({}, options2, {
+    let schema2 = this.resolve(Object.assign({}, options2, {
       value
     }));
-    let disableStackTrace = (_options$disableStack2 = options2 == null ? void 0 : options2.disableStackTrace) != null ? _options$disableStack2 : schema.spec.disableStackTrace;
-    return new Promise((resolve, reject) => schema._validate(value, options2, (error, parsed) => {
+    let disableStackTrace = (_options$disableStack2 = options2 == null ? void 0 : options2.disableStackTrace) != null ? _options$disableStack2 : schema2.spec.disableStackTrace;
+    return new Promise((resolve, reject) => schema2._validate(value, options2, (error, parsed) => {
       if (ValidationError.isError(error)) error.value = parsed;
       reject(error);
     }, (errors2, validated) => {
@@ -190030,12 +190030,12 @@ attempted value: ${formattedValue}
   }
   validateSync(value, options2) {
     var _options$disableStack3;
-    let schema = this.resolve(Object.assign({}, options2, {
+    let schema2 = this.resolve(Object.assign({}, options2, {
       value
     }));
     let result;
-    let disableStackTrace = (_options$disableStack3 = options2 == null ? void 0 : options2.disableStackTrace) != null ? _options$disableStack3 : schema.spec.disableStackTrace;
-    schema._validate(value, Object.assign({}, options2, {
+    let disableStackTrace = (_options$disableStack3 = options2 == null ? void 0 : options2.disableStackTrace) != null ? _options$disableStack3 : schema2.spec.disableStackTrace;
+    schema2._validate(value, Object.assign({}, options2, {
       sync: true
     }), (error, parsed) => {
       if (ValidationError.isError(error)) error.value = parsed;
@@ -190069,8 +190069,8 @@ attempted value: ${formattedValue}
     return typeof defaultValue === "function" ? defaultValue.call(this, options2) : clone(defaultValue);
   }
   getDefault(options2) {
-    let schema = this.resolve(options2 || {});
-    return schema._getDefault(options2);
+    let schema2 = this.resolve(options2 || {});
+    return schema2._getDefault(options2);
   }
   default(def) {
     if (arguments.length === 0) {
@@ -190303,13 +190303,13 @@ attempted value: ${formattedValue}
     return description2;
   }
   get ["~standard"]() {
-    const schema = this;
+    const schema2 = this;
     const standard = {
       version: 1,
       vendor: "yup",
       async validate(value) {
         try {
-          const result = await schema.validate(value, {
+          const result = await schema2.validate(value, {
             abortEarly: false
           });
           return {
@@ -190333,9 +190333,9 @@ for (const method of ["validate", "validateSync"]) Schema.prototype[`${method}At
   const {
     parent,
     parentPath,
-    schema
+    schema: schema2
   } = getIn$1(this, path2, value, options2.context);
-  return schema[method](parent && parent[parentPath], Object.assign({}, options2, {
+  return schema2[method](parent && parent[parentPath], Object.assign({}, options2, {
     parent,
     path: path2
   }));
@@ -190493,7 +190493,7 @@ class StringSchema extends Schema {
     });
   }
   required(message) {
-    return super.required(message).withMutation((schema) => schema.test({
+    return super.required(message).withMutation((schema2) => schema2.test({
       message: message || mixed.required,
       name: "required",
       skipAbsent: true,
@@ -190501,9 +190501,9 @@ class StringSchema extends Schema {
     }));
   }
   notRequired() {
-    return super.notRequired().withMutation((schema) => {
-      schema.tests = schema.tests.filter((t4) => t4.OPTIONS.name !== "required");
-      return schema;
+    return super.notRequired().withMutation((schema2) => {
+      schema2.tests = schema2.tests.filter((t4) => t4.OPTIONS.name !== "required");
+      return schema2;
     });
   }
   length(length2, message = string.length) {
@@ -190887,28 +190887,28 @@ const parseJson = (value, _, ctx) => {
   }
   return ctx.isType(parsed) ? parsed : value;
 };
-function deepPartial(schema) {
-  if ("fields" in schema) {
+function deepPartial(schema2) {
+  if ("fields" in schema2) {
     const partial = {};
-    for (const [key, fieldSchema] of Object.entries(schema.fields)) {
+    for (const [key, fieldSchema] of Object.entries(schema2.fields)) {
       partial[key] = deepPartial(fieldSchema);
     }
-    return schema.setFields(partial);
+    return schema2.setFields(partial);
   }
-  if (schema.type === "array") {
-    const nextArray = schema.optional();
+  if (schema2.type === "array") {
+    const nextArray = schema2.optional();
     if (nextArray.innerType) nextArray.innerType = deepPartial(nextArray.innerType);
     return nextArray;
   }
-  if (schema.type === "tuple") {
-    return schema.optional().clone({
-      types: schema.spec.types.map(deepPartial)
+  if (schema2.type === "tuple") {
+    return schema2.optional().clone({
+      types: schema2.spec.types.map(deepPartial)
     });
   }
-  if ("optional" in schema) {
-    return schema.optional();
+  if ("optional" in schema2) {
+    return schema2.optional();
   }
-  return schema;
+  return schema2;
 }
 const deepHas = (obj, p2) => {
   const path2 = [...propertyExprExports.normalizePath(p2)];
@@ -191042,8 +191042,8 @@ class ObjectSchema extends Schema {
     next2._sortErrors = this._sortErrors;
     return next2;
   }
-  concat(schema) {
-    let next2 = super.concat(schema);
+  concat(schema2) {
+    let next2 = super.concat(schema2);
     let nextFields = next2.fields;
     for (let [field, schemaOrRef] of Object.entries(this.fields)) {
       const target = nextFields[field];
@@ -191051,7 +191051,7 @@ class ObjectSchema extends Schema {
     }
     return next2.withMutation((s4) => (
       // XXX: excludes here is wrong
-      s4.setFields(nextFields, [...this._excludedEdges, ...schema._excludedEdges])
+      s4.setFields(nextFields, [...this._excludedEdges, ...schema2._excludedEdges])
     ));
   }
   _getDefault(options2) {
@@ -191096,8 +191096,8 @@ class ObjectSchema extends Schema {
   }
   partial() {
     const partial = {};
-    for (const [key, schema] of Object.entries(this.fields)) {
-      partial[key] = "optional" in schema && schema.optional instanceof Function ? schema.optional() : schema;
+    for (const [key, schema2] of Object.entries(this.fields)) {
+      partial[key] = "optional" in schema2 && schema2.optional instanceof Function ? schema2.optional() : schema2;
     }
     return this.setFields(partial);
   }
@@ -191295,22 +191295,22 @@ class ArraySchema extends Schema {
   json() {
     return this.transform(parseJson);
   }
-  concat(schema) {
-    let next2 = super.concat(schema);
+  concat(schema2) {
+    let next2 = super.concat(schema2);
     next2.innerType = this.innerType;
-    if (schema.innerType)
+    if (schema2.innerType)
       next2.innerType = next2.innerType ? (
         // @ts-expect-error Lazy doesn't have concat and will break
-        next2.innerType.concat(schema.innerType)
-      ) : schema.innerType;
+        next2.innerType.concat(schema2.innerType)
+      ) : schema2.innerType;
     return next2;
   }
-  of(schema) {
+  of(schema2) {
     let next2 = this.clone();
-    if (!isSchema(schema)) throw new TypeError("`array.of()` sub-schema must be a valid yup schema not: " + printValue(schema));
-    next2.innerType = schema;
+    if (!isSchema(schema2)) throw new TypeError("`array.of()` sub-schema must be a valid yup schema not: " + printValue(schema2));
+    next2.innerType = schema2;
     next2.spec = Object.assign({}, next2.spec, {
-      types: schema
+      types: schema2
     });
     return next2;
   }
@@ -192361,7 +192361,7 @@ const ActionButton = (props) => {
     )
   );
 };
-const SidePanel = ({ content, children, onSidePanelToggle, sidePanelClassName }) => {
+const SidePanel = ({ content: content2, children, onSidePanelToggle, sidePanelClassName }) => {
   const currentOpenPopover = useCurrentOpenPopover();
   const { leftHandedUi, forceLandscape } = useAppStateStore();
   const id2 = `action-button-side-panel-${useUID()}`;
@@ -192425,7 +192425,7 @@ const SidePanel = ({ content, children, onSidePanelToggle, sidePanelClassName })
     },
     ref
   });
-  if (!content) return children({ onClick: () => {
+  if (!content2) return children({ onClick: () => {
   }, ref: null });
   return /* @__PURE__ */ React$1.createElement(
     OverlayTrigger,
@@ -192438,7 +192438,7 @@ const SidePanel = ({ content, children, onSidePanelToggle, sidePanelClassName })
           className: cx("action-button-side-panel", sidePanelClassName, { "left-handed": leftHandedUi }),
           id: id2
         },
-        /* @__PURE__ */ React$1.createElement("div", { className: "contents" }, isOpenDelayedClose && (typeof content === "function" ? content({ isOpen, close: () => useCurrentOpenPopover.setState(null) }) : content))
+        /* @__PURE__ */ React$1.createElement("div", { className: "contents" }, isOpenDelayedClose && (typeof content2 === "function" ? content2({ isOpen, close: () => useCurrentOpenPopover.setState(null) }) : content2))
       ),
       show: isOpen,
       onToggle: (shouldOpen) => {
@@ -197064,7 +197064,7 @@ function _setPrototypeOf(o2, p2) {
   };
   return _setPrototypeOf(o2, p2);
 }
-function _objectWithoutPropertiesLoose$1k(source2, excluded) {
+function _objectWithoutPropertiesLoose$1l(source2, excluded) {
   if (source2 == null) return {};
   var target = {};
   var sourceKeys = Object.keys(source2);
@@ -197254,7 +197254,7 @@ function onClickOutsideHOC(WrappedComponent, config2) {
     _proto.render = function render2() {
       var _this$props = this.props;
       _this$props.excludeScrollbar;
-      var props = _objectWithoutPropertiesLoose$1k(_this$props, ["excludeScrollbar"]);
+      var props = _objectWithoutPropertiesLoose$1l(_this$props, ["excludeScrollbar"]);
       if (WrappedComponent.prototype && WrappedComponent.prototype.isReactComponent) {
         props.ref = this.getRef;
       } else {
@@ -199671,7 +199671,7 @@ const RatingNumber$1 = (props) => {
   const [ratingRef] = useFocusOnce(editing, true);
   useStopWheelScroll(ratingRef);
   const effectiveValue = editing ? valueStage : props.value;
-  const text = ((effectiveValue !== null && effectiveValue !== void 0 ? effectiveValue : 0) / 10).toFixed(1);
+  const text2 = ((effectiveValue !== null && effectiveValue !== void 0 ? effectiveValue : 0) / 10).toFixed(1);
   const useValidation = reactExports.useRef(true);
   function stepChange() {
     useValidation.current = false;
@@ -199698,7 +199698,7 @@ const RatingNumber$1 = (props) => {
       return;
     }
     const match2 = /(\d?)(\d?)(.?)((\d)?)/g.exec(val);
-    const matchOld = /(\d?)(\d?)(.?)((\d{0,2})?)/g.exec(text !== null && text !== void 0 ? text : "");
+    const matchOld = /(\d?)(\d?)(.?)((\d{0,2})?)/g.exec(text2 !== null && text2 !== void 0 ? text2 : "");
     if (match2 == null) {
       return;
     }
@@ -199739,7 +199739,7 @@ const RatingNumber$1 = (props) => {
   if (!showTextField) {
     return jsxRuntimeExports.jsxs("div", { className: "rating-number disabled", children: [props.withoutContext && jsxRuntimeExports.jsx(Icon, { icon: faStar$1 }), jsxRuntimeExports.jsx("span", { children: Number((effectiveValue !== null && effectiveValue !== void 0 ? effectiveValue : 0) / 10).toFixed(1) }), !props.disabled && props.clickToRate && jsxRuntimeExports.jsx(Button, { variant: "minimal", size: "sm", className: "edit-rating-button", onClick: () => setEditing(true), children: jsxRuntimeExports.jsx(Icon, { className: "text-primary", icon: faPencil }) })] });
   } else {
-    return jsxRuntimeExports.jsx("div", { className: "rating-number", children: jsxRuntimeExports.jsx("input", { ref: ratingRef, className: "text-input form-control", name: "ratingnumber", type: "number", onMouseDown: stepChange, onKeyDown: nonStepChange, onChange: handleChange, onBlur, value: text, min: "0.0", step: "0.1", max: "10", placeholder: "0.0" }) });
+    return jsxRuntimeExports.jsx("div", { className: "rating-number", children: jsxRuntimeExports.jsx("input", { ref: ratingRef, className: "text-input form-control", name: "ratingnumber", type: "number", onMouseDown: stepChange, onKeyDown: nonStepChange, onChange: handleChange, onBlur, value: text2, min: "0.0", step: "0.1", max: "10", placeholder: "0.0" }) });
   }
 };
 const RatingStars = (props) => {
@@ -201180,25 +201180,25 @@ const SvgVerticalEllipsisOutline = (props) => /* @__PURE__ */ reactExports.creat
   fillRule: "nonzero"
 }, fill: "currentColor" }));
 var _excluded$1o = ["color", "size", "title", "className"];
-function _extends$1i() {
-  return _extends$1i = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$1j() {
+  return _extends$1j = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$1i.apply(null, arguments);
+  }, _extends$1j.apply(null, arguments);
 }
 function _objectWithoutProperties$1j(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$1j(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$1k(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$1j(r3, e2) {
+function _objectWithoutPropertiesLoose$1k(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201209,7 +201209,7 @@ function _objectWithoutPropertiesLoose$1j(r3, e2) {
 }
 var Icon0CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1j(_ref3, _excluded$1o);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$1i({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1j({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201230,25 +201230,25 @@ Icon0CircleFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$1n = ["color", "size", "title", "className"];
-function _extends$1h() {
-  return _extends$1h = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$1i() {
+  return _extends$1i = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$1h.apply(null, arguments);
+  }, _extends$1i.apply(null, arguments);
 }
 function _objectWithoutProperties$1i(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$1i(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$1j(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$1i(r3, e2) {
+function _objectWithoutPropertiesLoose$1j(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201259,7 +201259,7 @@ function _objectWithoutPropertiesLoose$1i(r3, e2) {
 }
 var Icon0Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1i(_ref3, _excluded$1n);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$1h({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1i({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201280,25 +201280,25 @@ Icon0Circle.propTypes = {
   className: PropTypes.string
 };
 var _excluded$1m = ["color", "size", "title", "className"];
-function _extends$1g() {
-  return _extends$1g = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$1h() {
+  return _extends$1h = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$1g.apply(null, arguments);
+  }, _extends$1h.apply(null, arguments);
 }
 function _objectWithoutProperties$1h(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$1h(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$1i(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$1h(r3, e2) {
+function _objectWithoutPropertiesLoose$1i(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201309,7 +201309,7 @@ function _objectWithoutPropertiesLoose$1h(r3, e2) {
 }
 var Icon1CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1h(_ref3, _excluded$1m);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$1g({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1h({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201328,25 +201328,25 @@ Icon1CircleFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$1l = ["color", "size", "title", "className"];
-function _extends$1f() {
-  return _extends$1f = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$1g() {
+  return _extends$1g = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$1f.apply(null, arguments);
+  }, _extends$1g.apply(null, arguments);
 }
 function _objectWithoutProperties$1g(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$1g(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$1h(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$1g(r3, e2) {
+function _objectWithoutPropertiesLoose$1h(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201357,7 +201357,7 @@ function _objectWithoutPropertiesLoose$1g(r3, e2) {
 }
 var Icon1Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1g(_ref3, _excluded$1l);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$1f({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1g({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201376,25 +201376,25 @@ Icon1Circle.propTypes = {
   className: PropTypes.string
 };
 var _excluded$1k = ["color", "size", "title", "className"];
-function _extends$1e() {
-  return _extends$1e = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$1f() {
+  return _extends$1f = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$1e.apply(null, arguments);
+  }, _extends$1f.apply(null, arguments);
 }
 function _objectWithoutProperties$1f(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$1f(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$1g(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$1f(r3, e2) {
+function _objectWithoutPropertiesLoose$1g(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201405,7 +201405,7 @@ function _objectWithoutPropertiesLoose$1f(r3, e2) {
 }
 var Icon2CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1f(_ref3, _excluded$1k);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$1e({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1f({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201424,25 +201424,25 @@ Icon2CircleFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$1j = ["color", "size", "title", "className"];
-function _extends$1d() {
-  return _extends$1d = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$1e() {
+  return _extends$1e = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$1d.apply(null, arguments);
+  }, _extends$1e.apply(null, arguments);
 }
 function _objectWithoutProperties$1e(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$1e(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$1f(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$1e(r3, e2) {
+function _objectWithoutPropertiesLoose$1f(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201453,7 +201453,7 @@ function _objectWithoutPropertiesLoose$1e(r3, e2) {
 }
 var Icon2Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1e(_ref3, _excluded$1j);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$1d({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1e({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201472,25 +201472,25 @@ Icon2Circle.propTypes = {
   className: PropTypes.string
 };
 var _excluded$1i = ["color", "size", "title", "className"];
-function _extends$1c() {
-  return _extends$1c = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$1d() {
+  return _extends$1d = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$1c.apply(null, arguments);
+  }, _extends$1d.apply(null, arguments);
 }
 function _objectWithoutProperties$1d(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$1d(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$1e(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$1d(r3, e2) {
+function _objectWithoutPropertiesLoose$1e(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201501,7 +201501,7 @@ function _objectWithoutPropertiesLoose$1d(r3, e2) {
 }
 var Icon3CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1d(_ref3, _excluded$1i);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$1c({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1d({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201520,25 +201520,25 @@ Icon3CircleFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$1h = ["color", "size", "title", "className"];
-function _extends$1b() {
-  return _extends$1b = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$1c() {
+  return _extends$1c = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$1b.apply(null, arguments);
+  }, _extends$1c.apply(null, arguments);
 }
 function _objectWithoutProperties$1c(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$1c(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$1d(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$1c(r3, e2) {
+function _objectWithoutPropertiesLoose$1d(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201549,7 +201549,7 @@ function _objectWithoutPropertiesLoose$1c(r3, e2) {
 }
 var Icon3Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1c(_ref3, _excluded$1h);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$1b({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1c({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201570,25 +201570,25 @@ Icon3Circle.propTypes = {
   className: PropTypes.string
 };
 var _excluded$1g = ["color", "size", "title", "className"];
-function _extends$1a() {
-  return _extends$1a = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$1b() {
+  return _extends$1b = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$1a.apply(null, arguments);
+  }, _extends$1b.apply(null, arguments);
 }
 function _objectWithoutProperties$1b(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$1b(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$1c(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$1b(r3, e2) {
+function _objectWithoutPropertiesLoose$1c(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201599,7 +201599,7 @@ function _objectWithoutPropertiesLoose$1b(r3, e2) {
 }
 var Icon4CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1b(_ref3, _excluded$1g);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$1a({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1b({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201618,25 +201618,25 @@ Icon4CircleFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$1f = ["color", "size", "title", "className"];
-function _extends$19() {
-  return _extends$19 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$1a() {
+  return _extends$1a = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$19.apply(null, arguments);
+  }, _extends$1a.apply(null, arguments);
 }
 function _objectWithoutProperties$1a(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$1a(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$1b(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$1a(r3, e2) {
+function _objectWithoutPropertiesLoose$1b(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201647,7 +201647,7 @@ function _objectWithoutPropertiesLoose$1a(r3, e2) {
 }
 var Icon4Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1a(_ref3, _excluded$1f);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$19({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1a({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201668,25 +201668,25 @@ Icon4Circle.propTypes = {
   className: PropTypes.string
 };
 var _excluded$1e = ["color", "size", "title", "className"];
-function _extends$18() {
-  return _extends$18 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$19() {
+  return _extends$19 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$18.apply(null, arguments);
+  }, _extends$19.apply(null, arguments);
 }
 function _objectWithoutProperties$19(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$19(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$1a(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$19(r3, e2) {
+function _objectWithoutPropertiesLoose$1a(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201697,7 +201697,7 @@ function _objectWithoutPropertiesLoose$19(r3, e2) {
 }
 var Icon5CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$19(_ref3, _excluded$1e);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$18({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$19({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201716,25 +201716,25 @@ Icon5CircleFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$1d = ["color", "size", "title", "className"];
-function _extends$17() {
-  return _extends$17 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$18() {
+  return _extends$18 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$17.apply(null, arguments);
+  }, _extends$18.apply(null, arguments);
 }
 function _objectWithoutProperties$18(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$18(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$19(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$18(r3, e2) {
+function _objectWithoutPropertiesLoose$19(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201745,7 +201745,7 @@ function _objectWithoutPropertiesLoose$18(r3, e2) {
 }
 var Icon5Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$18(_ref3, _excluded$1d);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$17({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$18({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201764,25 +201764,25 @@ Icon5Circle.propTypes = {
   className: PropTypes.string
 };
 var _excluded$1c = ["color", "size", "title", "className"];
-function _extends$16() {
-  return _extends$16 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$17() {
+  return _extends$17 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$16.apply(null, arguments);
+  }, _extends$17.apply(null, arguments);
 }
 function _objectWithoutProperties$17(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$17(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$18(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$17(r3, e2) {
+function _objectWithoutPropertiesLoose$18(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201793,7 +201793,7 @@ function _objectWithoutPropertiesLoose$17(r3, e2) {
 }
 var Icon6CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$17(_ref3, _excluded$1c);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$16({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$17({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201812,25 +201812,25 @@ Icon6CircleFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$1b = ["color", "size", "title", "className"];
-function _extends$15() {
-  return _extends$15 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$16() {
+  return _extends$16 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$15.apply(null, arguments);
+  }, _extends$16.apply(null, arguments);
 }
 function _objectWithoutProperties$16(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$16(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$17(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$16(r3, e2) {
+function _objectWithoutPropertiesLoose$17(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201841,7 +201841,7 @@ function _objectWithoutPropertiesLoose$16(r3, e2) {
 }
 var Icon6Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$16(_ref3, _excluded$1b);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$15({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$16({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201860,25 +201860,25 @@ Icon6Circle.propTypes = {
   className: PropTypes.string
 };
 var _excluded$1a = ["color", "size", "title", "className"];
-function _extends$14() {
-  return _extends$14 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$15() {
+  return _extends$15 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$14.apply(null, arguments);
+  }, _extends$15.apply(null, arguments);
 }
 function _objectWithoutProperties$15(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$15(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$16(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$15(r3, e2) {
+function _objectWithoutPropertiesLoose$16(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201889,7 +201889,7 @@ function _objectWithoutPropertiesLoose$15(r3, e2) {
 }
 var Icon7CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$15(_ref3, _excluded$1a);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$14({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$15({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201908,25 +201908,25 @@ Icon7CircleFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$19 = ["color", "size", "title", "className"];
-function _extends$13() {
-  return _extends$13 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$14() {
+  return _extends$14 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$13.apply(null, arguments);
+  }, _extends$14.apply(null, arguments);
 }
 function _objectWithoutProperties$14(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$14(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$15(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$14(r3, e2) {
+function _objectWithoutPropertiesLoose$15(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201937,7 +201937,7 @@ function _objectWithoutPropertiesLoose$14(r3, e2) {
 }
 var Icon7Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$14(_ref3, _excluded$19);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$13({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$14({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -201956,25 +201956,25 @@ Icon7Circle.propTypes = {
   className: PropTypes.string
 };
 var _excluded$18 = ["color", "size", "title", "className"];
-function _extends$12() {
-  return _extends$12 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$13() {
+  return _extends$13 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$12.apply(null, arguments);
+  }, _extends$13.apply(null, arguments);
 }
 function _objectWithoutProperties$13(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$13(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$14(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$13(r3, e2) {
+function _objectWithoutPropertiesLoose$14(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -201985,7 +201985,7 @@ function _objectWithoutPropertiesLoose$13(r3, e2) {
 }
 var Icon8CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$13(_ref3, _excluded$18);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$12({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$13({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202004,25 +202004,25 @@ Icon8CircleFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$17 = ["color", "size", "title", "className"];
-function _extends$11() {
-  return _extends$11 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$12() {
+  return _extends$12 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$11.apply(null, arguments);
+  }, _extends$12.apply(null, arguments);
 }
 function _objectWithoutProperties$12(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$12(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$13(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$12(r3, e2) {
+function _objectWithoutPropertiesLoose$13(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202033,7 +202033,7 @@ function _objectWithoutPropertiesLoose$12(r3, e2) {
 }
 var Icon8Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$12(_ref3, _excluded$17);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$11({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$12({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202052,25 +202052,25 @@ Icon8Circle.propTypes = {
   className: PropTypes.string
 };
 var _excluded$16 = ["color", "size", "title", "className"];
-function _extends$10() {
-  return _extends$10 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$11() {
+  return _extends$11 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$10.apply(null, arguments);
+  }, _extends$11.apply(null, arguments);
 }
 function _objectWithoutProperties$11(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$11(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$12(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$11(r3, e2) {
+function _objectWithoutPropertiesLoose$12(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202081,7 +202081,7 @@ function _objectWithoutPropertiesLoose$11(r3, e2) {
 }
 var Icon9CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$11(_ref3, _excluded$16);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$10({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$11({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202100,25 +202100,25 @@ Icon9CircleFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$15 = ["color", "size", "title", "className"];
-function _extends$$() {
-  return _extends$$ = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$10() {
+  return _extends$10 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$$.apply(null, arguments);
+  }, _extends$10.apply(null, arguments);
 }
 function _objectWithoutProperties$10(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$10(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$11(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$10(r3, e2) {
+function _objectWithoutPropertiesLoose$11(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202129,7 +202129,7 @@ function _objectWithoutPropertiesLoose$10(r3, e2) {
 }
 var Icon9Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$10(_ref3, _excluded$15);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$$({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$10({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202148,25 +202148,25 @@ Icon9Circle.propTypes = {
   className: PropTypes.string
 };
 var _excluded$14 = ["color", "size", "title", "className"];
-function _extends$_() {
-  return _extends$_ = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$$() {
+  return _extends$$ = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$_.apply(null, arguments);
+  }, _extends$$.apply(null, arguments);
 }
 function _objectWithoutProperties$$(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$$(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$10(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$$(r3, e2) {
+function _objectWithoutPropertiesLoose$10(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202177,7 +202177,7 @@ function _objectWithoutPropertiesLoose$$(r3, e2) {
 }
 var ArchiveFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$$(_ref3, _excluded$14);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$_({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$$({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202196,25 +202196,25 @@ ArchiveFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$13 = ["color", "size", "title", "className"];
-function _extends$Z() {
-  return _extends$Z = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$_() {
+  return _extends$_ = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$Z.apply(null, arguments);
+  }, _extends$_.apply(null, arguments);
 }
 function _objectWithoutProperties$_(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$_(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$$(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$_(r3, e2) {
+function _objectWithoutPropertiesLoose$$(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202225,7 +202225,7 @@ function _objectWithoutPropertiesLoose$_(r3, e2) {
 }
 var Archive = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$_(_ref3, _excluded$13);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$Z({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$_({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202244,25 +202244,25 @@ Archive.propTypes = {
   className: PropTypes.string
 };
 var _excluded$12 = ["color", "size", "title", "className"];
-function _extends$Y() {
-  return _extends$Y = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$Z() {
+  return _extends$Z = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$Y.apply(null, arguments);
+  }, _extends$Z.apply(null, arguments);
 }
 function _objectWithoutProperties$Z(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$Z(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$_(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$Z(r3, e2) {
+function _objectWithoutPropertiesLoose$_(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202273,7 +202273,7 @@ function _objectWithoutPropertiesLoose$Z(r3, e2) {
 }
 var Backpack3Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$Z(_ref3, _excluded$12);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$Y({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$Z({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202294,25 +202294,25 @@ Backpack3Fill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$11 = ["color", "size", "title", "className"];
-function _extends$X() {
-  return _extends$X = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$Y() {
+  return _extends$Y = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$X.apply(null, arguments);
+  }, _extends$Y.apply(null, arguments);
 }
 function _objectWithoutProperties$Y(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$Y(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$Z(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$Y(r3, e2) {
+function _objectWithoutPropertiesLoose$Z(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202323,7 +202323,7 @@ function _objectWithoutPropertiesLoose$Y(r3, e2) {
 }
 var Backpack3 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$Y(_ref3, _excluded$11);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$X({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$Y({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202344,25 +202344,25 @@ Backpack3.propTypes = {
   className: PropTypes.string
 };
 var _excluded$10 = ["color", "size", "title", "className"];
-function _extends$W() {
-  return _extends$W = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$X() {
+  return _extends$X = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$W.apply(null, arguments);
+  }, _extends$X.apply(null, arguments);
 }
 function _objectWithoutProperties$X(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$X(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$Y(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$X(r3, e2) {
+function _objectWithoutPropertiesLoose$Y(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202373,7 +202373,7 @@ function _objectWithoutPropertiesLoose$X(r3, e2) {
 }
 var BagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$X(_ref3, _excluded$10);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$W({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$X({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202392,25 +202392,25 @@ BagFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$$ = ["color", "size", "title", "className"];
-function _extends$V() {
-  return _extends$V = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$W() {
+  return _extends$W = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$V.apply(null, arguments);
+  }, _extends$W.apply(null, arguments);
 }
 function _objectWithoutProperties$W(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$W(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$X(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$W(r3, e2) {
+function _objectWithoutPropertiesLoose$X(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202421,7 +202421,7 @@ function _objectWithoutPropertiesLoose$W(r3, e2) {
 }
 var Bag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$W(_ref3, _excluded$$);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$V({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$W({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202440,25 +202440,25 @@ Bag.propTypes = {
   className: PropTypes.string
 };
 var _excluded$_ = ["color", "size", "title", "className"];
-function _extends$U() {
-  return _extends$U = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$V() {
+  return _extends$V = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$U.apply(null, arguments);
+  }, _extends$V.apply(null, arguments);
 }
 function _objectWithoutProperties$V(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$V(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$W(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$V(r3, e2) {
+function _objectWithoutPropertiesLoose$W(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202469,7 +202469,7 @@ function _objectWithoutPropertiesLoose$V(r3, e2) {
 }
 var Basket2Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$V(_ref3, _excluded$_);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$U({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$V({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202488,25 +202488,25 @@ Basket2Fill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$Z = ["color", "size", "title", "className"];
-function _extends$T() {
-  return _extends$T = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$U() {
+  return _extends$U = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$T.apply(null, arguments);
+  }, _extends$U.apply(null, arguments);
 }
 function _objectWithoutProperties$U(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$U(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$V(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$U(r3, e2) {
+function _objectWithoutPropertiesLoose$V(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202517,7 +202517,7 @@ function _objectWithoutPropertiesLoose$U(r3, e2) {
 }
 var Basket2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$U(_ref3, _excluded$Z);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$T({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$U({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202538,25 +202538,25 @@ Basket2.propTypes = {
   className: PropTypes.string
 };
 var _excluded$Y = ["color", "size", "title", "className"];
-function _extends$S() {
-  return _extends$S = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$T() {
+  return _extends$T = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$S.apply(null, arguments);
+  }, _extends$T.apply(null, arguments);
 }
 function _objectWithoutProperties$T(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$T(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$U(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$T(r3, e2) {
+function _objectWithoutPropertiesLoose$U(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202567,7 +202567,7 @@ function _objectWithoutPropertiesLoose$T(r3, e2) {
 }
 var BellFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$T(_ref3, _excluded$Y);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$S({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$T({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202586,25 +202586,25 @@ BellFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$X = ["color", "size", "title", "className"];
-function _extends$R() {
-  return _extends$R = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$S() {
+  return _extends$S = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$R.apply(null, arguments);
+  }, _extends$S.apply(null, arguments);
 }
 function _objectWithoutProperties$S(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$S(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$T(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$S(r3, e2) {
+function _objectWithoutPropertiesLoose$T(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202615,7 +202615,7 @@ function _objectWithoutPropertiesLoose$S(r3, e2) {
 }
 var Bell = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$S(_ref3, _excluded$X);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$R({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$S({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202634,25 +202634,25 @@ Bell.propTypes = {
   className: PropTypes.string
 };
 var _excluded$W = ["color", "size", "title", "className"];
-function _extends$Q() {
-  return _extends$Q = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$R() {
+  return _extends$R = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$Q.apply(null, arguments);
+  }, _extends$R.apply(null, arguments);
 }
 function _objectWithoutProperties$R(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$R(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$S(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$R(r3, e2) {
+function _objectWithoutPropertiesLoose$S(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202663,7 +202663,7 @@ function _objectWithoutPropertiesLoose$R(r3, e2) {
 }
 var BookmarkFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$R(_ref3, _excluded$W);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$Q({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$R({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202682,25 +202682,25 @@ BookmarkFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$V = ["color", "size", "title", "className"];
-function _extends$P() {
-  return _extends$P = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$Q() {
+  return _extends$Q = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$P.apply(null, arguments);
+  }, _extends$Q.apply(null, arguments);
 }
 function _objectWithoutProperties$Q(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$Q(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$R(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$Q(r3, e2) {
+function _objectWithoutPropertiesLoose$R(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202711,7 +202711,7 @@ function _objectWithoutPropertiesLoose$Q(r3, e2) {
 }
 var Bookmark = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$Q(_ref3, _excluded$V);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$P({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$Q({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202730,25 +202730,25 @@ Bookmark.propTypes = {
   className: PropTypes.string
 };
 var _excluded$U = ["color", "size", "title", "className"];
-function _extends$O() {
-  return _extends$O = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$P() {
+  return _extends$P = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$O.apply(null, arguments);
+  }, _extends$P.apply(null, arguments);
 }
 function _objectWithoutProperties$P(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$P(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$Q(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$P(r3, e2) {
+function _objectWithoutPropertiesLoose$Q(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202759,7 +202759,7 @@ function _objectWithoutPropertiesLoose$P(r3, e2) {
 }
 var CardList = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$P(_ref3, _excluded$U);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$O({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$P({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202780,25 +202780,25 @@ CardList.propTypes = {
   className: PropTypes.string
 };
 var _excluded$T = ["color", "size", "title", "className"];
-function _extends$N() {
-  return _extends$N = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$O() {
+  return _extends$O = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$N.apply(null, arguments);
+  }, _extends$O.apply(null, arguments);
 }
 function _objectWithoutProperties$O(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$O(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$P(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$O(r3, e2) {
+function _objectWithoutPropertiesLoose$P(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202809,7 +202809,7 @@ function _objectWithoutPropertiesLoose$O(r3, e2) {
 }
 var CheckCircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$O(_ref3, _excluded$T);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$N({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$O({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202828,25 +202828,25 @@ CheckCircleFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$S = ["color", "size", "title", "className"];
-function _extends$M() {
-  return _extends$M = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$N() {
+  return _extends$N = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$M.apply(null, arguments);
+  }, _extends$N.apply(null, arguments);
 }
 function _objectWithoutProperties$N(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$N(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$O(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$N(r3, e2) {
+function _objectWithoutPropertiesLoose$O(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202857,7 +202857,7 @@ function _objectWithoutPropertiesLoose$N(r3, e2) {
 }
 var CheckCircle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$N(_ref3, _excluded$S);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$M({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$N({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202878,25 +202878,25 @@ CheckCircle.propTypes = {
   className: PropTypes.string
 };
 var _excluded$R = ["color", "size", "title", "className"];
-function _extends$L() {
-  return _extends$L = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$M() {
+  return _extends$M = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$L.apply(null, arguments);
+  }, _extends$M.apply(null, arguments);
 }
 function _objectWithoutProperties$M(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$M(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$N(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$M(r3, e2) {
+function _objectWithoutPropertiesLoose$N(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202907,7 +202907,7 @@ function _objectWithoutPropertiesLoose$M(r3, e2) {
 }
 var CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$M(_ref3, _excluded$R);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$L({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$M({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202928,25 +202928,25 @@ CircleFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$Q = ["color", "size", "title", "className"];
-function _extends$K() {
-  return _extends$K = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$L() {
+  return _extends$L = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$K.apply(null, arguments);
+  }, _extends$L.apply(null, arguments);
 }
 function _objectWithoutProperties$L(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$L(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$M(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$L(r3, e2) {
+function _objectWithoutPropertiesLoose$M(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -202957,7 +202957,7 @@ function _objectWithoutPropertiesLoose$L(r3, e2) {
 }
 var Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$L(_ref3, _excluded$Q);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$K({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$L({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -202976,25 +202976,25 @@ Circle.propTypes = {
   className: PropTypes.string
 };
 var _excluded$P = ["color", "size", "title", "className"];
-function _extends$J() {
-  return _extends$J = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$K() {
+  return _extends$K = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$J.apply(null, arguments);
+  }, _extends$K.apply(null, arguments);
 }
 function _objectWithoutProperties$K(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$K(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$L(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$K(r3, e2) {
+function _objectWithoutPropertiesLoose$L(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203005,7 +203005,7 @@ function _objectWithoutPropertiesLoose$K(r3, e2) {
 }
 var ClipboardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$K(_ref3, _excluded$P);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$J({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$K({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203025,25 +203025,25 @@ ClipboardFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$O = ["color", "size", "title", "className"];
-function _extends$I() {
-  return _extends$I = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$J() {
+  return _extends$J = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$I.apply(null, arguments);
+  }, _extends$J.apply(null, arguments);
 }
 function _objectWithoutProperties$J(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$J(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$K(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$J(r3, e2) {
+function _objectWithoutPropertiesLoose$K(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203054,7 +203054,7 @@ function _objectWithoutPropertiesLoose$J(r3, e2) {
 }
 var Clipboard = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$J(_ref3, _excluded$O);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$I({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$J({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203075,25 +203075,25 @@ Clipboard.propTypes = {
   className: PropTypes.string
 };
 var _excluded$N = ["color", "size", "title", "className"];
-function _extends$H() {
-  return _extends$H = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$I() {
+  return _extends$I = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$H.apply(null, arguments);
+  }, _extends$I.apply(null, arguments);
 }
 function _objectWithoutProperties$I(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$I(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$J(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$I(r3, e2) {
+function _objectWithoutPropertiesLoose$J(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203104,7 +203104,7 @@ function _objectWithoutPropertiesLoose$I(r3, e2) {
 }
 var ClockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$I(_ref3, _excluded$N);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$H({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$I({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203123,25 +203123,25 @@ ClockFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$M = ["color", "size", "title", "className"];
-function _extends$G() {
-  return _extends$G = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$H() {
+  return _extends$H = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$G.apply(null, arguments);
+  }, _extends$H.apply(null, arguments);
 }
 function _objectWithoutProperties$H(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$H(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$I(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$H(r3, e2) {
+function _objectWithoutPropertiesLoose$I(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203152,7 +203152,7 @@ function _objectWithoutPropertiesLoose$H(r3, e2) {
 }
 var Clock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$H(_ref3, _excluded$M);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$G({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$H({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203173,25 +203173,25 @@ Clock.propTypes = {
   className: PropTypes.string
 };
 var _excluded$L = ["color", "size", "title", "className"];
-function _extends$F() {
-  return _extends$F = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$G() {
+  return _extends$G = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$F.apply(null, arguments);
+  }, _extends$G.apply(null, arguments);
 }
 function _objectWithoutProperties$G(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$G(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$H(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$G(r3, e2) {
+function _objectWithoutPropertiesLoose$H(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203202,7 +203202,7 @@ function _objectWithoutPropertiesLoose$G(r3, e2) {
 }
 var CollectionFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$G(_ref3, _excluded$L);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$F({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$G({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203221,25 +203221,25 @@ CollectionFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$K = ["color", "size", "title", "className"];
-function _extends$E() {
-  return _extends$E = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$F() {
+  return _extends$F = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$E.apply(null, arguments);
+  }, _extends$F.apply(null, arguments);
 }
 function _objectWithoutProperties$F(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$F(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$G(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$F(r3, e2) {
+function _objectWithoutPropertiesLoose$G(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203250,7 +203250,7 @@ function _objectWithoutPropertiesLoose$F(r3, e2) {
 }
 var CollectionPlayFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$F(_ref3, _excluded$K);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$E({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$F({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203269,25 +203269,25 @@ CollectionPlayFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$J = ["color", "size", "title", "className"];
-function _extends$D() {
-  return _extends$D = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$E() {
+  return _extends$E = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$D.apply(null, arguments);
+  }, _extends$E.apply(null, arguments);
 }
 function _objectWithoutProperties$E(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$E(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$F(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$E(r3, e2) {
+function _objectWithoutPropertiesLoose$F(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203298,7 +203298,7 @@ function _objectWithoutPropertiesLoose$E(r3, e2) {
 }
 var CollectionPlay = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$E(_ref3, _excluded$J);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$D({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$E({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203319,25 +203319,25 @@ CollectionPlay.propTypes = {
   className: PropTypes.string
 };
 var _excluded$I = ["color", "size", "title", "className"];
-function _extends$C() {
-  return _extends$C = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$D() {
+  return _extends$D = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$C.apply(null, arguments);
+  }, _extends$D.apply(null, arguments);
 }
 function _objectWithoutProperties$D(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$D(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$E(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$D(r3, e2) {
+function _objectWithoutPropertiesLoose$E(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203348,7 +203348,7 @@ function _objectWithoutPropertiesLoose$D(r3, e2) {
 }
 var Collection = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$D(_ref3, _excluded$I);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$C({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$D({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203367,25 +203367,25 @@ Collection.propTypes = {
   className: PropTypes.string
 };
 var _excluded$H = ["color", "size", "title", "className"];
-function _extends$B() {
-  return _extends$B = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$C() {
+  return _extends$C = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$B.apply(null, arguments);
+  }, _extends$C.apply(null, arguments);
 }
 function _objectWithoutProperties$C(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$C(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$D(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$C(r3, e2) {
+function _objectWithoutPropertiesLoose$D(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203396,7 +203396,7 @@ function _objectWithoutPropertiesLoose$C(r3, e2) {
 }
 var DropletFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$C(_ref3, _excluded$H);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$B({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$C({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203415,25 +203415,25 @@ DropletFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$G = ["color", "size", "title", "className"];
-function _extends$A() {
-  return _extends$A = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$B() {
+  return _extends$B = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$A.apply(null, arguments);
+  }, _extends$B.apply(null, arguments);
 }
 function _objectWithoutProperties$B(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$B(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$C(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$B(r3, e2) {
+function _objectWithoutPropertiesLoose$C(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203444,7 +203444,7 @@ function _objectWithoutPropertiesLoose$B(r3, e2) {
 }
 var Droplet = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$B(_ref3, _excluded$G);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$A({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$B({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203467,25 +203467,25 @@ Droplet.propTypes = {
   className: PropTypes.string
 };
 var _excluded$F = ["color", "size", "title", "className"];
-function _extends$z() {
-  return _extends$z = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$A() {
+  return _extends$A = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$z.apply(null, arguments);
+  }, _extends$A.apply(null, arguments);
 }
 function _objectWithoutProperties$A(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$A(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$B(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$A(r3, e2) {
+function _objectWithoutPropertiesLoose$B(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203496,7 +203496,7 @@ function _objectWithoutPropertiesLoose$A(r3, e2) {
 }
 var FastForwardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$A(_ref3, _excluded$F);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$z({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$A({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203517,25 +203517,25 @@ FastForwardFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$E = ["color", "size", "title", "className"];
-function _extends$y() {
-  return _extends$y = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$z() {
+  return _extends$z = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$y.apply(null, arguments);
+  }, _extends$z.apply(null, arguments);
 }
 function _objectWithoutProperties$z(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$z(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$A(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$z(r3, e2) {
+function _objectWithoutPropertiesLoose$A(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203546,7 +203546,7 @@ function _objectWithoutPropertiesLoose$z(r3, e2) {
 }
 var FastForward = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$z(_ref3, _excluded$E);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$y({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$z({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203567,25 +203567,25 @@ FastForward.propTypes = {
   className: PropTypes.string
 };
 var _excluded$D = ["color", "size", "title", "className"];
-function _extends$x() {
-  return _extends$x = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$y() {
+  return _extends$y = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$x.apply(null, arguments);
+  }, _extends$y.apply(null, arguments);
 }
 function _objectWithoutProperties$y(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$y(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$z(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$y(r3, e2) {
+function _objectWithoutPropertiesLoose$z(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203596,7 +203596,7 @@ function _objectWithoutPropertiesLoose$y(r3, e2) {
 }
 var FlagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$y(_ref3, _excluded$D);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$x({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$y({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203615,25 +203615,25 @@ FlagFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$C = ["color", "size", "title", "className"];
-function _extends$w() {
-  return _extends$w = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$x() {
+  return _extends$x = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$w.apply(null, arguments);
+  }, _extends$x.apply(null, arguments);
 }
 function _objectWithoutProperties$x(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$x(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$y(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$x(r3, e2) {
+function _objectWithoutPropertiesLoose$y(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203644,7 +203644,7 @@ function _objectWithoutPropertiesLoose$x(r3, e2) {
 }
 var Flag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$x(_ref3, _excluded$C);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$w({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$x({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203663,25 +203663,25 @@ Flag.propTypes = {
   className: PropTypes.string
 };
 var _excluded$B = ["color", "size", "title", "className"];
-function _extends$v() {
-  return _extends$v = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$w() {
+  return _extends$w = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$v.apply(null, arguments);
+  }, _extends$w.apply(null, arguments);
 }
 function _objectWithoutProperties$w(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$w(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$x(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$w(r3, e2) {
+function _objectWithoutPropertiesLoose$x(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203692,7 +203692,7 @@ function _objectWithoutPropertiesLoose$w(r3, e2) {
 }
 var FloppyFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$w(_ref3, _excluded$B);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$v({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$w({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203713,25 +203713,25 @@ FloppyFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$A = ["color", "size", "title", "className"];
-function _extends$u() {
-  return _extends$u = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$v() {
+  return _extends$v = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$u.apply(null, arguments);
+  }, _extends$v.apply(null, arguments);
 }
 function _objectWithoutProperties$v(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$v(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$w(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$v(r3, e2) {
+function _objectWithoutPropertiesLoose$w(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203742,7 +203742,7 @@ function _objectWithoutPropertiesLoose$v(r3, e2) {
 }
 var Floppy = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$v(_ref3, _excluded$A);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$u({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$v({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203763,25 +203763,25 @@ Floppy.propTypes = {
   className: PropTypes.string
 };
 var _excluded$z = ["color", "size", "title", "className"];
-function _extends$t() {
-  return _extends$t = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$u() {
+  return _extends$u = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$t.apply(null, arguments);
+  }, _extends$u.apply(null, arguments);
 }
 function _objectWithoutProperties$u(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$u(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$v(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$u(r3, e2) {
+function _objectWithoutPropertiesLoose$v(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203792,7 +203792,7 @@ function _objectWithoutPropertiesLoose$u(r3, e2) {
 }
 var FolderFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$u(_ref3, _excluded$z);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$t({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$u({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203811,25 +203811,25 @@ FolderFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$y = ["color", "size", "title", "className"];
-function _extends$s() {
-  return _extends$s = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$t() {
+  return _extends$t = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$s.apply(null, arguments);
+  }, _extends$t.apply(null, arguments);
 }
 function _objectWithoutProperties$t(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$t(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$u(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$t(r3, e2) {
+function _objectWithoutPropertiesLoose$u(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203840,7 +203840,7 @@ function _objectWithoutPropertiesLoose$t(r3, e2) {
 }
 var Folder = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$t(_ref3, _excluded$y);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$s({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$t({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203859,25 +203859,25 @@ Folder.propTypes = {
   className: PropTypes.string
 };
 var _excluded$x = ["color", "size", "title", "className"];
-function _extends$r() {
-  return _extends$r = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$s() {
+  return _extends$s = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$r.apply(null, arguments);
+  }, _extends$s.apply(null, arguments);
 }
 function _objectWithoutProperties$s(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$s(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$t(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$s(r3, e2) {
+function _objectWithoutPropertiesLoose$t(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203888,7 +203888,7 @@ function _objectWithoutPropertiesLoose$s(r3, e2) {
 }
 var HandThumbsDownFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$s(_ref3, _excluded$x);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$r({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$s({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203907,25 +203907,25 @@ HandThumbsDownFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$w = ["color", "size", "title", "className"];
-function _extends$q() {
-  return _extends$q = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$r() {
+  return _extends$r = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$q.apply(null, arguments);
+  }, _extends$r.apply(null, arguments);
 }
 function _objectWithoutProperties$r(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$r(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$s(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$r(r3, e2) {
+function _objectWithoutPropertiesLoose$s(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203936,7 +203936,7 @@ function _objectWithoutPropertiesLoose$r(r3, e2) {
 }
 var HandThumbsDown = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$r(_ref3, _excluded$w);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$q({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$r({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -203955,25 +203955,25 @@ HandThumbsDown.propTypes = {
   className: PropTypes.string
 };
 var _excluded$v = ["color", "size", "title", "className"];
-function _extends$p() {
-  return _extends$p = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$q() {
+  return _extends$q = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$p.apply(null, arguments);
+  }, _extends$q.apply(null, arguments);
 }
 function _objectWithoutProperties$q(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$q(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$r(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$q(r3, e2) {
+function _objectWithoutPropertiesLoose$r(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -203984,7 +203984,7 @@ function _objectWithoutPropertiesLoose$q(r3, e2) {
 }
 var HandThumbsUpFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$q(_ref3, _excluded$v);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$p({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$q({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204003,25 +204003,25 @@ HandThumbsUpFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$u = ["color", "size", "title", "className"];
-function _extends$o() {
-  return _extends$o = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$p() {
+  return _extends$p = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$o.apply(null, arguments);
+  }, _extends$p.apply(null, arguments);
 }
 function _objectWithoutProperties$p(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$p(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$q(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$p(r3, e2) {
+function _objectWithoutPropertiesLoose$q(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204032,7 +204032,7 @@ function _objectWithoutPropertiesLoose$p(r3, e2) {
 }
 var HandThumbsUp = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$p(_ref3, _excluded$u);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$o({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$p({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204051,25 +204051,25 @@ HandThumbsUp.propTypes = {
   className: PropTypes.string
 };
 var _excluded$t = ["color", "size", "title", "className"];
-function _extends$n() {
-  return _extends$n = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$o() {
+  return _extends$o = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$n.apply(null, arguments);
+  }, _extends$o.apply(null, arguments);
 }
 function _objectWithoutProperties$o(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$o(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$p(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$o(r3, e2) {
+function _objectWithoutPropertiesLoose$p(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204080,7 +204080,7 @@ function _objectWithoutPropertiesLoose$o(r3, e2) {
 }
 var HeartFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$o(_ref3, _excluded$t);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$n({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$o({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204100,25 +204100,25 @@ HeartFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$s = ["color", "size", "title", "className"];
-function _extends$m() {
-  return _extends$m = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$n() {
+  return _extends$n = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$m.apply(null, arguments);
+  }, _extends$n.apply(null, arguments);
 }
 function _objectWithoutProperties$n(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$n(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$o(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$n(r3, e2) {
+function _objectWithoutPropertiesLoose$o(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204129,7 +204129,7 @@ function _objectWithoutPropertiesLoose$n(r3, e2) {
 }
 var Heart = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$n(_ref3, _excluded$s);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$m({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$n({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204148,25 +204148,25 @@ Heart.propTypes = {
   className: PropTypes.string
 };
 var _excluded$r = ["color", "size", "title", "className"];
-function _extends$l() {
-  return _extends$l = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$m() {
+  return _extends$m = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$l.apply(null, arguments);
+  }, _extends$m.apply(null, arguments);
 }
 function _objectWithoutProperties$m(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$m(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$n(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$m(r3, e2) {
+function _objectWithoutPropertiesLoose$n(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204177,7 +204177,7 @@ function _objectWithoutPropertiesLoose$m(r3, e2) {
 }
 var InboxFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$m(_ref3, _excluded$r);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$l({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$m({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204196,25 +204196,25 @@ InboxFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$q = ["color", "size", "title", "className"];
-function _extends$k() {
-  return _extends$k = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$l() {
+  return _extends$l = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$k.apply(null, arguments);
+  }, _extends$l.apply(null, arguments);
 }
 function _objectWithoutProperties$l(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$l(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$m(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$l(r3, e2) {
+function _objectWithoutPropertiesLoose$m(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204225,7 +204225,7 @@ function _objectWithoutPropertiesLoose$l(r3, e2) {
 }
 var Inbox = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$l(_ref3, _excluded$q);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$k({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$l({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204244,25 +204244,25 @@ Inbox.propTypes = {
   className: PropTypes.string
 };
 var _excluded$p = ["color", "size", "title", "className"];
-function _extends$j() {
-  return _extends$j = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$k() {
+  return _extends$k = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$j.apply(null, arguments);
+  }, _extends$k.apply(null, arguments);
 }
 function _objectWithoutProperties$k(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$k(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$l(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$k(r3, e2) {
+function _objectWithoutPropertiesLoose$l(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204273,7 +204273,7 @@ function _objectWithoutPropertiesLoose$k(r3, e2) {
 }
 var LightbulbFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$k(_ref3, _excluded$p);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$j({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$k({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204292,25 +204292,25 @@ LightbulbFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$o = ["color", "size", "title", "className"];
-function _extends$i() {
-  return _extends$i = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$j() {
+  return _extends$j = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$i.apply(null, arguments);
+  }, _extends$j.apply(null, arguments);
 }
 function _objectWithoutProperties$j(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$j(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$k(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$j(r3, e2) {
+function _objectWithoutPropertiesLoose$k(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204321,7 +204321,7 @@ function _objectWithoutPropertiesLoose$j(r3, e2) {
 }
 var Lightbulb = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$j(_ref3, _excluded$o);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$i({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$j({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204340,25 +204340,25 @@ Lightbulb.propTypes = {
   className: PropTypes.string
 };
 var _excluded$n = ["color", "size", "title", "className"];
-function _extends$h() {
-  return _extends$h = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$i() {
+  return _extends$i = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$h.apply(null, arguments);
+  }, _extends$i.apply(null, arguments);
 }
 function _objectWithoutProperties$i(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$i(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$j(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$i(r3, e2) {
+function _objectWithoutPropertiesLoose$j(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204369,7 +204369,7 @@ function _objectWithoutPropertiesLoose$i(r3, e2) {
 }
 var ListUl = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$i(_ref3, _excluded$n);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$h({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$i({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204389,25 +204389,25 @@ ListUl.propTypes = {
   className: PropTypes.string
 };
 var _excluded$m = ["color", "size", "title", "className"];
-function _extends$g() {
-  return _extends$g = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$h() {
+  return _extends$h = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$g.apply(null, arguments);
+  }, _extends$h.apply(null, arguments);
 }
 function _objectWithoutProperties$h(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$h(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$i(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$h(r3, e2) {
+function _objectWithoutPropertiesLoose$i(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204418,7 +204418,7 @@ function _objectWithoutPropertiesLoose$h(r3, e2) {
 }
 var LockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$h(_ref3, _excluded$m);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$g({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$h({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204438,25 +204438,25 @@ LockFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$l = ["color", "size", "title", "className"];
-function _extends$f() {
-  return _extends$f = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$g() {
+  return _extends$g = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$f.apply(null, arguments);
+  }, _extends$g.apply(null, arguments);
 }
 function _objectWithoutProperties$g(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$g(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$h(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$g(r3, e2) {
+function _objectWithoutPropertiesLoose$h(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204467,7 +204467,7 @@ function _objectWithoutPropertiesLoose$g(r3, e2) {
 }
 var Lock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$g(_ref3, _excluded$l);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$f({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$g({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204487,25 +204487,25 @@ Lock.propTypes = {
   className: PropTypes.string
 };
 var _excluded$k = ["color", "size", "title", "className"];
-function _extends$e() {
-  return _extends$e = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$f() {
+  return _extends$f = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$e.apply(null, arguments);
+  }, _extends$f.apply(null, arguments);
 }
 function _objectWithoutProperties$f(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$f(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$g(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$f(r3, e2) {
+function _objectWithoutPropertiesLoose$g(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204516,7 +204516,7 @@ function _objectWithoutPropertiesLoose$f(r3, e2) {
 }
 var PinFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$f(_ref3, _excluded$k);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$e({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$f({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204535,25 +204535,25 @@ PinFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$j = ["color", "size", "title", "className"];
-function _extends$d() {
-  return _extends$d = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$e() {
+  return _extends$e = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$d.apply(null, arguments);
+  }, _extends$e.apply(null, arguments);
 }
 function _objectWithoutProperties$e(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$e(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$f(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$e(r3, e2) {
+function _objectWithoutPropertiesLoose$f(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204564,7 +204564,7 @@ function _objectWithoutPropertiesLoose$e(r3, e2) {
 }
 var Pin = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$e(_ref3, _excluded$j);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$d({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$e({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204583,25 +204583,25 @@ Pin.propTypes = {
   className: PropTypes.string
 };
 var _excluded$i = ["color", "size", "title", "className"];
-function _extends$c() {
-  return _extends$c = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$d() {
+  return _extends$d = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$c.apply(null, arguments);
+  }, _extends$d.apply(null, arguments);
 }
 function _objectWithoutProperties$d(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$d(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$e(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$d(r3, e2) {
+function _objectWithoutPropertiesLoose$e(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204612,7 +204612,7 @@ function _objectWithoutPropertiesLoose$d(r3, e2) {
 }
 var StarFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$d(_ref3, _excluded$i);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$c({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$d({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204631,25 +204631,25 @@ StarFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$h = ["color", "size", "title", "className"];
-function _extends$b() {
-  return _extends$b = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$c() {
+  return _extends$c = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$b.apply(null, arguments);
+  }, _extends$c.apply(null, arguments);
 }
 function _objectWithoutProperties$c(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$c(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$d(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$c(r3, e2) {
+function _objectWithoutPropertiesLoose$d(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204660,7 +204660,7 @@ function _objectWithoutPropertiesLoose$c(r3, e2) {
 }
 var Star = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$c(_ref3, _excluded$h);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$b({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$c({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204679,25 +204679,25 @@ Star.propTypes = {
   className: PropTypes.string
 };
 var _excluded$g = ["color", "size", "title", "className"];
-function _extends$a() {
-  return _extends$a = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$b() {
+  return _extends$b = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$a.apply(null, arguments);
+  }, _extends$b.apply(null, arguments);
 }
 function _objectWithoutProperties$b(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$b(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$c(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$b(r3, e2) {
+function _objectWithoutPropertiesLoose$c(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204708,7 +204708,7 @@ function _objectWithoutPropertiesLoose$b(r3, e2) {
 }
 var SuitClubFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$b(_ref3, _excluded$g);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$a({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$b({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204727,25 +204727,25 @@ SuitClubFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$f = ["color", "size", "title", "className"];
-function _extends$9() {
-  return _extends$9 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$a() {
+  return _extends$a = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$9.apply(null, arguments);
+  }, _extends$a.apply(null, arguments);
 }
 function _objectWithoutProperties$a(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$a(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$b(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$a(r3, e2) {
+function _objectWithoutPropertiesLoose$b(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204756,7 +204756,7 @@ function _objectWithoutPropertiesLoose$a(r3, e2) {
 }
 var SuitClub = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$a(_ref3, _excluded$f);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$9({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$a({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204775,25 +204775,25 @@ SuitClub.propTypes = {
   className: PropTypes.string
 };
 var _excluded$e = ["color", "size", "title", "className"];
-function _extends$8() {
-  return _extends$8 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$9() {
+  return _extends$9 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$8.apply(null, arguments);
+  }, _extends$9.apply(null, arguments);
 }
 function _objectWithoutProperties$9(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$9(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$a(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$9(r3, e2) {
+function _objectWithoutPropertiesLoose$a(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204804,7 +204804,7 @@ function _objectWithoutPropertiesLoose$9(r3, e2) {
 }
 var TagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$9(_ref3, _excluded$e);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$8({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$9({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204823,25 +204823,25 @@ TagFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$d = ["color", "size", "title", "className"];
-function _extends$7() {
-  return _extends$7 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$8() {
+  return _extends$8 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$7.apply(null, arguments);
+  }, _extends$8.apply(null, arguments);
 }
 function _objectWithoutProperties$8(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$8(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$9(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$8(r3, e2) {
+function _objectWithoutPropertiesLoose$9(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204852,7 +204852,7 @@ function _objectWithoutPropertiesLoose$8(r3, e2) {
 }
 var Tag$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$8(_ref3, _excluded$d);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$7({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$8({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204873,25 +204873,25 @@ Tag$1.propTypes = {
   className: PropTypes.string
 };
 var _excluded$c = ["color", "size", "title", "className"];
-function _extends$6() {
-  return _extends$6 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$7() {
+  return _extends$7 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$6.apply(null, arguments);
+  }, _extends$7.apply(null, arguments);
 }
 function _objectWithoutProperties$7(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$7(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$8(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$7(r3, e2) {
+function _objectWithoutPropertiesLoose$8(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204902,7 +204902,7 @@ function _objectWithoutPropertiesLoose$7(r3, e2) {
 }
 var TagsFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$7(_ref3, _excluded$c);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$7({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204923,25 +204923,25 @@ TagsFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$b = ["color", "size", "title", "className"];
-function _extends$5() {
-  return _extends$5 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$6() {
+  return _extends$6 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$5.apply(null, arguments);
+  }, _extends$6.apply(null, arguments);
 }
 function _objectWithoutProperties$6(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$6(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$7(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$6(r3, e2) {
+function _objectWithoutPropertiesLoose$7(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -204952,7 +204952,7 @@ function _objectWithoutPropertiesLoose$6(r3, e2) {
 }
 var Tags = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$6(_ref3, _excluded$b);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$5({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -204973,25 +204973,25 @@ Tags.propTypes = {
   className: PropTypes.string
 };
 var _excluded$a = ["color", "size", "title", "className"];
-function _extends$4() {
-  return _extends$4 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$5() {
+  return _extends$5 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$4.apply(null, arguments);
+  }, _extends$5.apply(null, arguments);
 }
 function _objectWithoutProperties$5(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$5(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$6(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$5(r3, e2) {
+function _objectWithoutPropertiesLoose$6(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -205002,7 +205002,7 @@ function _objectWithoutPropertiesLoose$5(r3, e2) {
 }
 var TelephoneFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$5(_ref3, _excluded$a);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$4({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$5({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -205022,25 +205022,25 @@ TelephoneFill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$9 = ["color", "size", "title", "className"];
-function _extends$3() {
-  return _extends$3 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$4() {
+  return _extends$4 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$3.apply(null, arguments);
+  }, _extends$4.apply(null, arguments);
 }
 function _objectWithoutProperties$4(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$4(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$5(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$4(r3, e2) {
+function _objectWithoutPropertiesLoose$5(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -205051,7 +205051,7 @@ function _objectWithoutPropertiesLoose$4(r3, e2) {
 }
 var Telephone = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$4(_ref3, _excluded$9);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$3({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$4({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -205070,25 +205070,25 @@ Telephone.propTypes = {
   className: PropTypes.string
 };
 var _excluded$8 = ["color", "size", "title", "className"];
-function _extends$2() {
-  return _extends$2 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$3() {
+  return _extends$3 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$2.apply(null, arguments);
+  }, _extends$3.apply(null, arguments);
 }
 function _objectWithoutProperties$3(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$3(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$4(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$3(r3, e2) {
+function _objectWithoutPropertiesLoose$4(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -205099,7 +205099,7 @@ function _objectWithoutPropertiesLoose$3(r3, e2) {
 }
 var Trash3Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$3(_ref3, _excluded$8);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$2({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$3({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -205118,25 +205118,25 @@ Trash3Fill.propTypes = {
   className: PropTypes.string
 };
 var _excluded$7 = ["color", "size", "title", "className"];
-function _extends$1() {
-  return _extends$1 = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$2() {
+  return _extends$2 = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$1.apply(null, arguments);
+  }, _extends$2.apply(null, arguments);
 }
 function _objectWithoutProperties$2(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$2(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$3(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
   }
   return i2;
 }
-function _objectWithoutPropertiesLoose$2(r3, e2) {
+function _objectWithoutPropertiesLoose$3(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -205147,7 +205147,7 @@ function _objectWithoutPropertiesLoose$2(r3, e2) {
 }
 var Trash3 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$2(_ref3, _excluded$7);
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$1({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$2({
     ref,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 16 16",
@@ -205672,8 +205672,8 @@ function requireReactFastCompare() {
 }
 var reactFastCompareExports = requireReactFastCompare();
 const isEqual$2 = /* @__PURE__ */ getDefaultExportFromCjs(reactFastCompareExports);
-function _extends() {
-  _extends = Object.assign || function(target) {
+function _extends$1() {
+  _extends$1 = Object.assign || function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source2 = arguments[i2];
       for (var key in source2) {
@@ -205684,9 +205684,9 @@ function _extends() {
     }
     return target;
   };
-  return _extends.apply(this, arguments);
+  return _extends$1.apply(this, arguments);
 }
-function _objectWithoutPropertiesLoose$1(source2, excluded) {
+function _objectWithoutPropertiesLoose$2(source2, excluded) {
   if (source2 == null) return {};
   var target = {};
   var sourceKeys = Object.keys(source2);
@@ -205787,60 +205787,60 @@ function setNestedObjectValues(object2, value, visited, response) {
 function formikReducer(state, msg) {
   switch (msg.type) {
     case "SET_VALUES":
-      return _extends({}, state, {
+      return _extends$1({}, state, {
         values: msg.payload
       });
     case "SET_TOUCHED":
-      return _extends({}, state, {
+      return _extends$1({}, state, {
         touched: msg.payload
       });
     case "SET_ERRORS":
       if (isEqual$2(state.errors, msg.payload)) {
         return state;
       }
-      return _extends({}, state, {
+      return _extends$1({}, state, {
         errors: msg.payload
       });
     case "SET_STATUS":
-      return _extends({}, state, {
+      return _extends$1({}, state, {
         status: msg.payload
       });
     case "SET_ISSUBMITTING":
-      return _extends({}, state, {
+      return _extends$1({}, state, {
         isSubmitting: msg.payload
       });
     case "SET_ISVALIDATING":
-      return _extends({}, state, {
+      return _extends$1({}, state, {
         isValidating: msg.payload
       });
     case "SET_FIELD_VALUE":
-      return _extends({}, state, {
+      return _extends$1({}, state, {
         values: setIn(state.values, msg.payload.field, msg.payload.value)
       });
     case "SET_FIELD_TOUCHED":
-      return _extends({}, state, {
+      return _extends$1({}, state, {
         touched: setIn(state.touched, msg.payload.field, msg.payload.value)
       });
     case "SET_FIELD_ERROR":
-      return _extends({}, state, {
+      return _extends$1({}, state, {
         errors: setIn(state.errors, msg.payload.field, msg.payload.value)
       });
     case "RESET_FORM":
-      return _extends({}, state, msg.payload);
+      return _extends$1({}, state, msg.payload);
     case "SET_FORMIK_STATE":
       return msg.payload(state);
     case "SUBMIT_ATTEMPT":
-      return _extends({}, state, {
+      return _extends$1({}, state, {
         touched: setNestedObjectValues(state.values, true),
         isSubmitting: true,
         submitCount: state.submitCount + 1
       });
     case "SUBMIT_FAILURE":
-      return _extends({}, state, {
+      return _extends$1({}, state, {
         isSubmitting: false
       });
     case "SUBMIT_SUCCESS":
-      return _extends({}, state, {
+      return _extends$1({}, state, {
         isSubmitting: false
       });
     default:
@@ -205850,8 +205850,8 @@ function formikReducer(state, msg) {
 var emptyErrors = {};
 var emptyTouched = {};
 function useFormik(_ref3) {
-  var _ref$validateOnChange = _ref3.validateOnChange, validateOnChange = _ref$validateOnChange === void 0 ? true : _ref$validateOnChange, _ref$validateOnBlur = _ref3.validateOnBlur, validateOnBlur = _ref$validateOnBlur === void 0 ? true : _ref$validateOnBlur, _ref$validateOnMount = _ref3.validateOnMount, validateOnMount = _ref$validateOnMount === void 0 ? false : _ref$validateOnMount, isInitialValid = _ref3.isInitialValid, _ref$enableReinitiali = _ref3.enableReinitialize, enableReinitialize = _ref$enableReinitiali === void 0 ? false : _ref$enableReinitiali, onSubmit = _ref3.onSubmit, rest = _objectWithoutPropertiesLoose$1(_ref3, ["validateOnChange", "validateOnBlur", "validateOnMount", "isInitialValid", "enableReinitialize", "onSubmit"]);
-  var props = _extends({
+  var _ref$validateOnChange = _ref3.validateOnChange, validateOnChange = _ref$validateOnChange === void 0 ? true : _ref$validateOnChange, _ref$validateOnBlur = _ref3.validateOnBlur, validateOnBlur = _ref$validateOnBlur === void 0 ? true : _ref$validateOnBlur, _ref$validateOnMount = _ref3.validateOnMount, validateOnMount = _ref$validateOnMount === void 0 ? false : _ref$validateOnMount, isInitialValid = _ref3.isInitialValid, _ref$enableReinitiali = _ref3.enableReinitialize, enableReinitialize = _ref$enableReinitiali === void 0 ? false : _ref$enableReinitiali, onSubmit = _ref3.onSubmit, rest = _objectWithoutPropertiesLoose$2(_ref3, ["validateOnChange", "validateOnBlur", "validateOnMount", "isInitialValid", "enableReinitialize", "onSubmit"]);
+  var props = _extends$1({
     validateOnChange,
     validateOnBlur,
     validateOnMount,
@@ -205905,8 +205905,8 @@ function useFormik(_ref3) {
   }, [props.validate]);
   var runValidationSchema = reactExports.useCallback(function(values3, field) {
     var validationSchema = props.validationSchema;
-    var schema = isFunction(validationSchema) ? validationSchema(field) : validationSchema;
-    var promise = field && schema.validateAt ? schema.validateAt(field, values3) : validateYupSchema(values3, schema);
+    var schema2 = isFunction(validationSchema) ? validationSchema(field) : validationSchema;
+    var promise = field && schema2.validateAt ? schema2.validateAt(field, values3) : validateYupSchema(values3, schema2);
     return new Promise(function(resolve, reject) {
       promise.then(function() {
         resolve(emptyErrors);
@@ -206386,7 +206386,7 @@ function useFormik(_ref3) {
   var isValid2 = reactExports.useMemo(function() {
     return typeof isInitialValid !== "undefined" ? dirty ? state.errors && Object.keys(state.errors).length === 0 : isInitialValid !== false && isFunction(isInitialValid) ? isInitialValid(props) : isInitialValid : state.errors && Object.keys(state.errors).length === 0;
   }, [isInitialValid, dirty, state.errors, props]);
-  var ctx = _extends({}, state, {
+  var ctx = _extends$1({}, state, {
     initialValues: initialValues.current,
     initialErrors: initialErrors.current,
     initialTouched: initialTouched.current,
@@ -206445,12 +206445,12 @@ function yupToFormErrors(yupError) {
   }
   return errors2;
 }
-function validateYupSchema(values3, schema, sync2, context2) {
+function validateYupSchema(values3, schema2, sync2, context2) {
   if (sync2 === void 0) {
     sync2 = false;
   }
   var normalizedValues = prepareDataForValidation(values3);
-  return schema[sync2 ? "validateSync" : "validate"](normalizedValues, {
+  return schema2[sync2 ? "validateSync" : "validate"](normalizedValues, {
     abortEarly: false,
     context: normalizedValues
   });
@@ -206537,10 +206537,10 @@ function useEventCallback(fn3) {
   }, []);
 }
 var Form = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
-  var action = props.action, rest = _objectWithoutPropertiesLoose$1(props, ["action"]);
+  var action = props.action, rest = _objectWithoutPropertiesLoose$2(props, ["action"]);
   var _action = action != null ? action : "#";
   var _useFormikContext = useFormikContext(), handleReset = _useFormikContext.handleReset, handleSubmit = _useFormikContext.handleSubmit;
-  return reactExports.createElement("form", _extends({
+  return reactExports.createElement("form", _extends$1({
     onSubmit: handleSubmit,
     ref,
     onReset: handleReset,
@@ -206601,7 +206601,7 @@ function _slicedToArray(r3, e2) {
 }
 function _objectWithoutProperties$1(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i2 = _objectWithoutPropertiesLoose$1m(e2, t4);
+  var o2, r3, i2 = _objectWithoutPropertiesLoose$1n(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i2[o2] = e2[o2]);
@@ -208236,7 +208236,7 @@ function autoUpdate(reference2, floating, update2, options2) {
   };
 }
 var index = reactExports.useLayoutEffect;
-var _excluded$4 = ["className", "clearValue", "cx", "getStyles", "getClassNames", "getValue", "hasValue", "isMulti", "isRtl", "options", "selectOption", "selectProps", "setValue", "theme"];
+var _excluded$4$1 = ["className", "clearValue", "cx", "getStyles", "getClassNames", "getValue", "hasValue", "isMulti", "isRtl", "options", "selectOption", "selectProps", "setValue", "theme"];
 var noop$3 = function noop2() {
 };
 function applyPrefixToName(prefix2, name2) {
@@ -208286,7 +208286,7 @@ var cleanCommonProps = function cleanCommonProps2(props) {
   props.selectProps;
   props.setValue;
   props.theme;
-  var innerProps = _objectWithoutProperties$1(props, _excluded$4);
+  var innerProps = _objectWithoutProperties$1(props, _excluded$4$1);
   return _objectSpread2$1({}, innerProps);
 };
 var getStyleProps = function getStyleProps2(props, name2, classNamesState) {
@@ -208609,7 +208609,7 @@ var MenuPlacer = function MenuPlacer2(props) {
 };
 var Menu = function Menu2(props) {
   var children = props.children, innerRef = props.innerRef, innerProps = props.innerProps;
-  return jsx("div", _extends$1k({}, getStyleProps(props, "menu", {
+  return jsx("div", _extends$1l({}, getStyleProps(props, "menu", {
     menu: true
   }), {
     ref: innerRef
@@ -208631,7 +208631,7 @@ var menuListCSS = function menuListCSS2(_ref4, unstyled) {
 };
 var MenuList = function MenuList2(props) {
   var children = props.children, innerProps = props.innerProps, innerRef = props.innerRef, isMulti = props.isMulti;
-  return jsx("div", _extends$1k({}, getStyleProps(props, "menuList", {
+  return jsx("div", _extends$1l({}, getStyleProps(props, "menuList", {
     "menu-list": true,
     "menu-list--is-multi": isMulti
   }), {
@@ -208651,7 +208651,7 @@ var noOptionsMessageCSS = noticeCSS;
 var loadingMessageCSS = noticeCSS;
 var NoOptionsMessage = function NoOptionsMessage2(_ref6) {
   var _ref6$children = _ref6.children, children = _ref6$children === void 0 ? "No options" : _ref6$children, innerProps = _ref6.innerProps, restProps = _objectWithoutProperties$1(_ref6, _excluded$3$1);
-  return jsx("div", _extends$1k({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
+  return jsx("div", _extends$1l({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
     children,
     innerProps
   }), "noOptionsMessage", {
@@ -208661,7 +208661,7 @@ var NoOptionsMessage = function NoOptionsMessage2(_ref6) {
 };
 var LoadingMessage = function LoadingMessage2(_ref7) {
   var _ref7$children = _ref7.children, children = _ref7$children === void 0 ? "Loading..." : _ref7$children, innerProps = _ref7.innerProps, restProps = _objectWithoutProperties$1(_ref7, _excluded2$1);
-  return jsx("div", _extends$1k({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
+  return jsx("div", _extends$1l({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
     children,
     innerProps
   }), "loadingMessage", {
@@ -208724,7 +208724,7 @@ var MenuPortal = function MenuPortal2(props) {
     runAutoUpdate();
   }, [runAutoUpdate]);
   if (!appendTo && menuPosition !== "fixed" || !computedPosition) return null;
-  var menuWrapper = jsx("div", _extends$1k({
+  var menuWrapper = jsx("div", _extends$1l({
     ref: setMenuPortalElement
   }, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, props), {}, {
     offset: computedPosition.offset,
@@ -208749,7 +208749,7 @@ var containerCSS = function containerCSS2(_ref3) {
 };
 var SelectContainer = function SelectContainer2(props) {
   var children = props.children, innerProps = props.innerProps, isDisabled3 = props.isDisabled, isRtl = props.isRtl;
-  return jsx("div", _extends$1k({}, getStyleProps(props, "container", {
+  return jsx("div", _extends$1l({}, getStyleProps(props, "container", {
     "--is-disabled": isDisabled3,
     "--is-rtl": isRtl
   }), innerProps), children);
@@ -208770,7 +208770,7 @@ var valueContainerCSS = function valueContainerCSS2(_ref22, unstyled) {
 };
 var ValueContainer = function ValueContainer2(props) {
   var children = props.children, innerProps = props.innerProps, isMulti = props.isMulti, hasValue = props.hasValue;
-  return jsx("div", _extends$1k({}, getStyleProps(props, "valueContainer", {
+  return jsx("div", _extends$1l({}, getStyleProps(props, "valueContainer", {
     "value-container": true,
     "value-container--is-multi": isMulti,
     "value-container--has-value": hasValue
@@ -208786,7 +208786,7 @@ var indicatorsContainerCSS = function indicatorsContainerCSS2() {
 };
 var IndicatorsContainer = function IndicatorsContainer2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1k({}, getStyleProps(props, "indicatorsContainer", {
+  return jsx("div", _extends$1l({}, getStyleProps(props, "indicatorsContainer", {
     indicators: true
   }), innerProps), children);
 };
@@ -208798,7 +208798,7 @@ var _ref2$2 = {
 };
 var Svg = function Svg2(_ref3) {
   var size2 = _ref3.size, props = _objectWithoutProperties$1(_ref3, _excluded$2$1);
-  return jsx("svg", _extends$1k({
+  return jsx("svg", _extends$1l({
     height: size2,
     width: size2,
     viewBox: "0 0 20 20",
@@ -208808,14 +208808,14 @@ var Svg = function Svg2(_ref3) {
   }, props));
 };
 var CrossIcon = function CrossIcon2(props) {
-  return jsx(Svg, _extends$1k({
+  return jsx(Svg, _extends$1l({
     size: 20
   }, props), jsx("path", {
     d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"
   }));
 };
 var DownChevron = function DownChevron2(props) {
-  return jsx(Svg, _extends$1k({
+  return jsx(Svg, _extends$1l({
     size: 20
   }, props), jsx("path", {
     d: "M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
@@ -208838,7 +208838,7 @@ var baseCSS = function baseCSS2(_ref3, unstyled) {
 var dropdownIndicatorCSS = baseCSS;
 var DropdownIndicator = function DropdownIndicator2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1k({}, getStyleProps(props, "dropdownIndicator", {
+  return jsx("div", _extends$1l({}, getStyleProps(props, "dropdownIndicator", {
     indicator: true,
     "dropdown-indicator": true
   }), innerProps), children || jsx(DownChevron, null));
@@ -208846,7 +208846,7 @@ var DropdownIndicator = function DropdownIndicator2(props) {
 var clearIndicatorCSS = baseCSS;
 var ClearIndicator = function ClearIndicator2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1k({}, getStyleProps(props, "clearIndicator", {
+  return jsx("div", _extends$1l({}, getStyleProps(props, "clearIndicator", {
     indicator: true,
     "clear-indicator": true
   }), innerProps), children || jsx(CrossIcon, null));
@@ -208865,7 +208865,7 @@ var indicatorSeparatorCSS = function indicatorSeparatorCSS2(_ref4, unstyled) {
 };
 var IndicatorSeparator = function IndicatorSeparator2(props) {
   var innerProps = props.innerProps;
-  return jsx("span", _extends$1k({}, innerProps, getStyleProps(props, "indicatorSeparator", {
+  return jsx("span", _extends$1l({}, innerProps, getStyleProps(props, "indicatorSeparator", {
     "indicator-separator": true
   })));
 };
@@ -208904,7 +208904,7 @@ var LoadingDot = function LoadingDot2(_ref6) {
 };
 var LoadingIndicator$1 = function LoadingIndicator2(_ref7) {
   var innerProps = _ref7.innerProps, isRtl = _ref7.isRtl, _ref7$size = _ref7.size, size2 = _ref7$size === void 0 ? 4 : _ref7$size, restProps = _objectWithoutProperties$1(_ref7, _excluded2);
-  return jsx("div", _extends$1k({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
+  return jsx("div", _extends$1l({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
     innerProps,
     isRtl,
     size: size2
@@ -208949,7 +208949,7 @@ var css$1 = function css2(_ref3, unstyled) {
 };
 var Control = function Control2(props) {
   var children = props.children, isDisabled3 = props.isDisabled, isFocused = props.isFocused, innerRef = props.innerRef, innerProps = props.innerProps, menuIsOpen = props.menuIsOpen;
-  return jsx("div", _extends$1k({
+  return jsx("div", _extends$1l({
     ref: innerRef
   }, getStyleProps(props, "control", {
     control: true,
@@ -208971,9 +208971,9 @@ var groupCSS = function groupCSS2(_ref3, unstyled) {
 };
 var Group = function Group2(props) {
   var children = props.children, cx2 = props.cx, getStyles = props.getStyles, getClassNames = props.getClassNames, Heading = props.Heading, headingProps = props.headingProps, innerProps = props.innerProps, label = props.label, theme = props.theme, selectProps = props.selectProps;
-  return jsx("div", _extends$1k({}, getStyleProps(props, "group", {
+  return jsx("div", _extends$1l({}, getStyleProps(props, "group", {
     group: true
-  }), innerProps), jsx(Heading, _extends$1k({}, headingProps, {
+  }), innerProps), jsx(Heading, _extends$1l({}, headingProps, {
     selectProps,
     theme,
     getStyles,
@@ -209001,7 +209001,7 @@ var GroupHeading = function GroupHeading2(props) {
   var _cleanCommonProps = cleanCommonProps(props);
   _cleanCommonProps.data;
   var innerProps = _objectWithoutProperties$1(_cleanCommonProps, _excluded$1$1);
-  return jsx("div", _extends$1k({}, getStyleProps(props, "groupHeading", {
+  return jsx("div", _extends$1l({}, getStyleProps(props, "groupHeading", {
     "group-heading": true
   }), innerProps));
 };
@@ -209053,11 +209053,11 @@ var inputStyle = function inputStyle2(isHidden) {
 var Input = function Input2(props) {
   var cx2 = props.cx, value = props.value;
   var _cleanCommonProps = cleanCommonProps(props), innerRef = _cleanCommonProps.innerRef, isDisabled3 = _cleanCommonProps.isDisabled, isHidden = _cleanCommonProps.isHidden, inputClassName = _cleanCommonProps.inputClassName, innerProps = _objectWithoutProperties$1(_cleanCommonProps, _excluded$5);
-  return jsx("div", _extends$1k({}, getStyleProps(props, "input", {
+  return jsx("div", _extends$1l({}, getStyleProps(props, "input", {
     "input-container": true
   }), {
     "data-value": value || ""
-  }), jsx("input", _extends$1k({
+  }), jsx("input", _extends$1l({
     className: cx2({
       input: true
     }, inputClassName),
@@ -209117,7 +209117,7 @@ var MultiValueContainer = MultiValueGeneric;
 var MultiValueLabel = MultiValueGeneric;
 function MultiValueRemove(_ref5) {
   var children = _ref5.children, innerProps = _ref5.innerProps;
-  return jsx("div", _extends$1k({
+  return jsx("div", _extends$1l({
     role: "button"
   }, innerProps), children || jsx(CrossIcon, {
     size: 14
@@ -209172,7 +209172,7 @@ var optionCSS = function optionCSS2(_ref3, unstyled) {
 };
 var Option = function Option2(props) {
   var children = props.children, isDisabled3 = props.isDisabled, isFocused = props.isFocused, isSelected = props.isSelected, innerRef = props.innerRef, innerProps = props.innerProps;
-  return jsx("div", _extends$1k({}, getStyleProps(props, "option", {
+  return jsx("div", _extends$1l({}, getStyleProps(props, "option", {
     option: true,
     "option--is-disabled": isDisabled3,
     "option--is-focused": isFocused,
@@ -209196,7 +209196,7 @@ var placeholderCSS = function placeholderCSS2(_ref3, unstyled) {
 };
 var Placeholder = function Placeholder2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1k({}, getStyleProps(props, "placeholder", {
+  return jsx("div", _extends$1l({}, getStyleProps(props, "placeholder", {
     placeholder: true
   }), innerProps), children);
 };
@@ -209218,7 +209218,7 @@ var css22 = function css3(_ref3, unstyled) {
 };
 var SingleValue = function SingleValue2(props) {
   var children = props.children, isDisabled3 = props.isDisabled, innerProps = props.innerProps;
-  return jsx("div", _extends$1k({}, getStyleProps(props, "singleValue", {
+  return jsx("div", _extends$1l({}, getStyleProps(props, "singleValue", {
     "single-value": true,
     "single-value--is-disabled": isDisabled3
   }), innerProps), children);
@@ -209308,7 +209308,7 @@ var _ref = {
   styles: "label:a11yText;z-index:9999;border:0;clip:rect(1px, 1px, 1px, 1px);height:1px;width:1px;position:absolute;overflow:hidden;padding:0;white-space:nowrap"
 };
 var A11yText = function A11yText2(props) {
-  return jsx("span", _extends$1k({
+  return jsx("span", _extends$1l({
     css: _ref
   }, props));
 };
@@ -209760,11 +209760,11 @@ var createFilter = function createFilter2(config2) {
     return matchFrom === "start" ? candidate.substr(0, input.length) === input : candidate.indexOf(input) > -1;
   };
 };
-var _excluded$3 = ["innerRef"];
+var _excluded$4 = ["innerRef"];
 function DummyInput(_ref3) {
-  var innerRef = _ref3.innerRef, props = _objectWithoutProperties$1(_ref3, _excluded$3);
+  var innerRef = _ref3.innerRef, props = _objectWithoutProperties$1(_ref3, _excluded$4);
   var filteredProps = removeProps(props, "onExited", "in", "enter", "exit", "appear");
-  return jsx("input", _extends$1k({
+  return jsx("input", _extends$1l({
     ref: innerRef
   }, filteredProps, {
     css: /* @__PURE__ */ css({
@@ -211150,7 +211150,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           "aria-describedby": this.getElementId("placeholder")
         });
         if (!isSearchable) {
-          return /* @__PURE__ */ reactExports.createElement(DummyInput, _extends$1k({
+          return /* @__PURE__ */ reactExports.createElement(DummyInput, _extends$1l({
             id: id2,
             innerRef: this.getInputRef,
             onBlur: this.onInputBlur,
@@ -211163,7 +211163,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
             value: ""
           }, ariaAttributes));
         }
-        return /* @__PURE__ */ reactExports.createElement(Input3, _extends$1k({}, commonProps, {
+        return /* @__PURE__ */ reactExports.createElement(Input3, _extends$1l({}, commonProps, {
           autoCapitalize: "none",
           autoComplete: "off",
           autoCorrect: "off",
@@ -211191,7 +211191,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var _this$props9 = this.props, controlShouldRenderValue = _this$props9.controlShouldRenderValue, isDisabled3 = _this$props9.isDisabled, isMulti = _this$props9.isMulti, inputValue = _this$props9.inputValue, placeholder = _this$props9.placeholder;
       var _this$state5 = this.state, selectValue = _this$state5.selectValue, focusedValue = _this$state5.focusedValue, isFocused = _this$state5.isFocused;
       if (!this.hasValue() || !controlShouldRenderValue) {
-        return inputValue ? null : /* @__PURE__ */ reactExports.createElement(Placeholder3, _extends$1k({}, commonProps, {
+        return inputValue ? null : /* @__PURE__ */ reactExports.createElement(Placeholder3, _extends$1l({}, commonProps, {
           key: "placeholder",
           isDisabled: isDisabled3,
           isFocused,
@@ -211204,7 +211204,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         return selectValue.map(function(opt, index2) {
           var isOptionFocused = opt === focusedValue;
           var key = "".concat(_this3.getOptionLabel(opt), "-").concat(_this3.getOptionValue(opt));
-          return /* @__PURE__ */ reactExports.createElement(MultiValue3, _extends$1k({}, commonProps, {
+          return /* @__PURE__ */ reactExports.createElement(MultiValue3, _extends$1l({}, commonProps, {
             components: {
               Container: MultiValueContainer2,
               Label: MultiValueLabel2,
@@ -211233,7 +211233,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         return null;
       }
       var singleValue = selectValue[0];
-      return /* @__PURE__ */ reactExports.createElement(SingleValue3, _extends$1k({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(SingleValue3, _extends$1l({}, commonProps, {
         data: singleValue,
         isDisabled: isDisabled3
       }), this.formatOptionLabel(singleValue, "value"));
@@ -211253,7 +211253,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         onTouchEnd: this.onClearIndicatorTouchEnd,
         "aria-hidden": "true"
       };
-      return /* @__PURE__ */ reactExports.createElement(ClearIndicator3, _extends$1k({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(ClearIndicator3, _extends$1l({}, commonProps, {
         innerProps,
         isFocused
       }));
@@ -211269,7 +211269,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var innerProps = {
         "aria-hidden": "true"
       };
-      return /* @__PURE__ */ reactExports.createElement(LoadingIndicator3, _extends$1k({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(LoadingIndicator3, _extends$1l({}, commonProps, {
         innerProps,
         isDisabled: isDisabled3,
         isFocused
@@ -211283,7 +211283,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var commonProps = this.commonProps;
       var isDisabled3 = this.props.isDisabled;
       var isFocused = this.state.isFocused;
-      return /* @__PURE__ */ reactExports.createElement(IndicatorSeparator3, _extends$1k({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(IndicatorSeparator3, _extends$1l({}, commonProps, {
         isDisabled: isDisabled3,
         isFocused
       }));
@@ -211301,7 +211301,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         onTouchEnd: this.onDropdownIndicatorTouchEnd,
         "aria-hidden": "true"
       };
-      return /* @__PURE__ */ reactExports.createElement(DropdownIndicator3, _extends$1k({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(DropdownIndicator3, _extends$1l({}, commonProps, {
         innerProps,
         isDisabled: isDisabled3,
         isFocused
@@ -211336,7 +211336,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           "aria-selected": _this4.state.isAppleDevice ? void 0 : isSelected
           // is not supported on Apple devices
         };
-        return /* @__PURE__ */ reactExports.createElement(Option3, _extends$1k({}, commonProps, {
+        return /* @__PURE__ */ reactExports.createElement(Option3, _extends$1l({}, commonProps, {
           innerProps,
           data: data2,
           isDisabled: isDisabled3,
@@ -211356,7 +211356,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
             var _data = item.data, options2 = item.options, groupIndex = item.index;
             var groupId = "".concat(_this4.getElementId("group"), "-").concat(groupIndex);
             var headingId = "".concat(groupId, "-heading");
-            return /* @__PURE__ */ reactExports.createElement(Group3, _extends$1k({}, commonProps, {
+            return /* @__PURE__ */ reactExports.createElement(Group3, _extends$1l({}, commonProps, {
               key: groupId,
               data: _data,
               options: options2,
@@ -211393,9 +211393,9 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         menuPosition,
         menuShouldScrollIntoView
       };
-      var menuElement = /* @__PURE__ */ reactExports.createElement(MenuPlacer, _extends$1k({}, commonProps, menuPlacementProps), function(_ref4) {
+      var menuElement = /* @__PURE__ */ reactExports.createElement(MenuPlacer, _extends$1l({}, commonProps, menuPlacementProps), function(_ref4) {
         var ref = _ref4.ref, _ref4$placerProps = _ref4.placerProps, placement = _ref4$placerProps.placement, maxHeight = _ref4$placerProps.maxHeight;
-        return /* @__PURE__ */ reactExports.createElement(Menu3, _extends$1k({}, commonProps, menuPlacementProps, {
+        return /* @__PURE__ */ reactExports.createElement(Menu3, _extends$1l({}, commonProps, menuPlacementProps, {
           innerRef: ref,
           innerProps: {
             onMouseDown: _this4.onMenuMouseDown,
@@ -211409,7 +211409,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           onBottomArrive: onMenuScrollToBottom,
           lockEnabled: menuShouldBlockScroll
         }, function(scrollTargetRef) {
-          return /* @__PURE__ */ reactExports.createElement(MenuList3, _extends$1k({}, commonProps, {
+          return /* @__PURE__ */ reactExports.createElement(MenuList3, _extends$1l({}, commonProps, {
             innerRef: function innerRef(instance) {
               _this4.getMenuListRef(instance);
               scrollTargetRef(instance);
@@ -211425,7 +211425,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           }), menuUI);
         }));
       });
-      return menuPortalTarget || menuPosition === "fixed" ? /* @__PURE__ */ reactExports.createElement(MenuPortal3, _extends$1k({}, commonProps, {
+      return menuPortalTarget || menuPosition === "fixed" ? /* @__PURE__ */ reactExports.createElement(MenuPortal3, _extends$1l({}, commonProps, {
         appendTo: menuPortalTarget,
         controlElement: this.controlRef,
         menuPlacement,
@@ -211485,7 +211485,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var commonProps = this.commonProps;
       var _this$state6 = this.state, ariaSelection = _this$state6.ariaSelection, focusedOption = _this$state6.focusedOption, focusedValue = _this$state6.focusedValue, isFocused = _this$state6.isFocused, selectValue = _this$state6.selectValue;
       var focusableOptions = this.getFocusableOptions();
-      return /* @__PURE__ */ reactExports.createElement(LiveRegion$1, _extends$1k({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(LiveRegion$1, _extends$1l({}, commonProps, {
         id: this.getElementId("live-region"),
         ariaSelection,
         focusedOption,
@@ -211503,7 +211503,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var _this$props14 = this.props, className = _this$props14.className, id2 = _this$props14.id, isDisabled3 = _this$props14.isDisabled, menuIsOpen = _this$props14.menuIsOpen;
       var isFocused = this.state.isFocused;
       var commonProps = this.commonProps = this.getCommonProps();
-      return /* @__PURE__ */ reactExports.createElement(SelectContainer3, _extends$1k({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(SelectContainer3, _extends$1l({}, commonProps, {
         className,
         innerProps: {
           id: id2,
@@ -211511,7 +211511,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         },
         isDisabled: isDisabled3,
         isFocused
-      }), this.renderLiveRegion(), /* @__PURE__ */ reactExports.createElement(Control3, _extends$1k({}, commonProps, {
+      }), this.renderLiveRegion(), /* @__PURE__ */ reactExports.createElement(Control3, _extends$1l({}, commonProps, {
         innerRef: this.getControlRef,
         innerProps: {
           onMouseDown: this.onControlMouseDown,
@@ -211520,9 +211520,9 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         isDisabled: isDisabled3,
         isFocused,
         menuIsOpen
-      }), /* @__PURE__ */ reactExports.createElement(ValueContainer3, _extends$1k({}, commonProps, {
+      }), /* @__PURE__ */ reactExports.createElement(ValueContainer3, _extends$1l({}, commonProps, {
         isDisabled: isDisabled3
-      }), this.renderPlaceholderOrValue(), this.renderInput()), /* @__PURE__ */ reactExports.createElement(IndicatorsContainer3, _extends$1k({}, commonProps, {
+      }), this.renderPlaceholderOrValue(), this.renderInput()), /* @__PURE__ */ reactExports.createElement(IndicatorsContainer3, _extends$1l({}, commonProps, {
         isDisabled: isDisabled3
       }), this.renderClearIndicator(), this.renderLoadingIndicator(), this.renderIndicatorSeparator(), this.renderDropdownIndicator())), this.renderMenu(), this.renderFormField());
     }
@@ -211577,12 +211577,12 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
 Select$1.defaultProps = defaultProps;
 var StateManagedSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   var baseSelectProps = useStateManager(props);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1k({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1l({
     ref
   }, baseSelectProps));
 });
 var StateManagedSelect$1 = StateManagedSelect;
-var _excluded$2 = ["allowCreateWhileLoading", "createOptionPosition", "formatCreateLabel", "isValidNewOption", "getNewOptionData", "onCreateOption", "options", "onChange"];
+var _excluded$3 = ["allowCreateWhileLoading", "createOptionPosition", "formatCreateLabel", "isValidNewOption", "getNewOptionData", "onCreateOption", "options", "onChange"];
 var compareOption = function compareOption2() {
   var inputValue = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
   var option = arguments.length > 1 ? arguments[1] : void 0;
@@ -211612,7 +211612,7 @@ var builtins = {
   }
 };
 function useCreatable(_ref3) {
-  var _ref$allowCreateWhile = _ref3.allowCreateWhileLoading, allowCreateWhileLoading = _ref$allowCreateWhile === void 0 ? false : _ref$allowCreateWhile, _ref$createOptionPosi = _ref3.createOptionPosition, createOptionPosition = _ref$createOptionPosi === void 0 ? "last" : _ref$createOptionPosi, _ref$formatCreateLabe = _ref3.formatCreateLabel, formatCreateLabel2 = _ref$formatCreateLabe === void 0 ? builtins.formatCreateLabel : _ref$formatCreateLabe, _ref$isValidNewOption = _ref3.isValidNewOption, isValidNewOption2 = _ref$isValidNewOption === void 0 ? builtins.isValidNewOption : _ref$isValidNewOption, _ref$getNewOptionData = _ref3.getNewOptionData, getNewOptionData2 = _ref$getNewOptionData === void 0 ? builtins.getNewOptionData : _ref$getNewOptionData, onCreateOption = _ref3.onCreateOption, _ref$options = _ref3.options, propsOptions = _ref$options === void 0 ? [] : _ref$options, propsOnChange = _ref3.onChange, restSelectProps = _objectWithoutProperties$1(_ref3, _excluded$2);
+  var _ref$allowCreateWhile = _ref3.allowCreateWhileLoading, allowCreateWhileLoading = _ref$allowCreateWhile === void 0 ? false : _ref$allowCreateWhile, _ref$createOptionPosi = _ref3.createOptionPosition, createOptionPosition = _ref$createOptionPosi === void 0 ? "last" : _ref$createOptionPosi, _ref$formatCreateLabe = _ref3.formatCreateLabel, formatCreateLabel2 = _ref$formatCreateLabe === void 0 ? builtins.formatCreateLabel : _ref$formatCreateLabe, _ref$isValidNewOption = _ref3.isValidNewOption, isValidNewOption2 = _ref$isValidNewOption === void 0 ? builtins.isValidNewOption : _ref$isValidNewOption, _ref$getNewOptionData = _ref3.getNewOptionData, getNewOptionData2 = _ref$getNewOptionData === void 0 ? builtins.getNewOptionData : _ref$getNewOptionData, onCreateOption = _ref3.onCreateOption, _ref$options = _ref3.options, propsOptions = _ref$options === void 0 ? [] : _ref$options, propsOnChange = _ref3.onChange, restSelectProps = _objectWithoutProperties$1(_ref3, _excluded$3);
   var _restSelectProps$getO = restSelectProps.getOptionValue, getOptionValue$1$1 = _restSelectProps$getO === void 0 ? getOptionValue$1 : _restSelectProps$getO, _restSelectProps$getO2 = restSelectProps.getOptionLabel, getOptionLabel$1$1 = _restSelectProps$getO2 === void 0 ? getOptionLabel$1 : _restSelectProps$getO2, inputValue = restSelectProps.inputValue, isLoading = restSelectProps.isLoading, isMulti = restSelectProps.isMulti, value = restSelectProps.value, name2 = restSelectProps.name;
   var newOption = reactExports.useMemo(function() {
     return isValidNewOption2(inputValue, cleanValue(value), propsOptions, {
@@ -211651,7 +211651,7 @@ function useCreatable(_ref3) {
 var CreatableSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   var creatableProps = useStateManager(props);
   var selectProps = useCreatable(creatableProps);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1k({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1l({
     ref
   }, selectProps));
 });
@@ -211679,11 +211679,11 @@ function useDebounce(fn3, wait, options2) {
     return func.current.apply(this, arguments);
   }, wait, options2), [wait, void 0, void 0, void 0]);
 }
-var _excluded$1 = ["defaultOptions", "cacheOptions", "loadOptions", "options", "isLoading", "onInputChange", "filterOption"];
+var _excluded$2 = ["defaultOptions", "cacheOptions", "loadOptions", "options", "isLoading", "onInputChange", "filterOption"];
 function useAsync(_ref3) {
   var _ref$defaultOptions = _ref3.defaultOptions, propsDefaultOptions = _ref$defaultOptions === void 0 ? false : _ref$defaultOptions, _ref$cacheOptions = _ref3.cacheOptions, cacheOptions = _ref$cacheOptions === void 0 ? false : _ref$cacheOptions, propsLoadOptions = _ref3.loadOptions;
   _ref3.options;
-  var _ref$isLoading = _ref3.isLoading, propsIsLoading = _ref$isLoading === void 0 ? false : _ref$isLoading, propsOnInputChange = _ref3.onInputChange, _ref$filterOption = _ref3.filterOption, filterOption = _ref$filterOption === void 0 ? null : _ref$filterOption, restSelectProps = _objectWithoutProperties$1(_ref3, _excluded$1);
+  var _ref$isLoading = _ref3.isLoading, propsIsLoading = _ref$isLoading === void 0 ? false : _ref$isLoading, propsOnInputChange = _ref3.onInputChange, _ref$filterOption = _ref3.filterOption, filterOption = _ref$filterOption === void 0 ? null : _ref$filterOption, restSelectProps = _objectWithoutProperties$1(_ref3, _excluded$2);
   var propsInputValue = restSelectProps.inputValue;
   var lastRequest = reactExports.useRef(void 0);
   var mounted = reactExports.useRef(false);
@@ -211773,7 +211773,7 @@ function useAsync(_ref3) {
 var AsyncSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   var stateManagedProps = useAsync(props);
   var selectProps = useStateManager(stateManagedProps);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1k({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1l({
     ref
   }, selectProps));
 });
@@ -211782,7 +211782,7 @@ var AsyncCreatableSelect = /* @__PURE__ */ reactExports.forwardRef(function(prop
   var stateManagerProps = useAsync(props);
   var creatableProps = useStateManager(stateManagerProps);
   var selectProps = useCreatable(creatableProps);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1k({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1l({
     ref
   }, selectProps));
 });
@@ -212047,7 +212047,7 @@ function createLocation(path2, state, key, currentLocation) {
     location2 = parsePath(path2);
     location2.state = state;
   } else {
-    location2 = _extends$1k({}, path2);
+    location2 = _extends$1l({}, path2);
     if (location2.pathname === void 0) location2.pathname = "";
     if (location2.search) {
       if (location2.search.charAt(0) !== "?") location2.search = "?" + location2.search;
@@ -212186,7 +212186,7 @@ function createBrowserHistory(props) {
   }
   var transitionManager = createTransitionManager();
   function setState2(nextState) {
-    _extends$1k(history2, nextState);
+    _extends$1l(history2, nextState);
     history2.length = globalHistory.length;
     transitionManager.notifyListeners(history2.location, history2.action);
   }
@@ -212401,7 +212401,7 @@ function createHashHistory(props) {
   }
   var transitionManager = createTransitionManager();
   function setState2(nextState) {
-    _extends$1k(history2, nextState);
+    _extends$1l(history2, nextState);
     history2.length = globalHistory.length;
     transitionManager.notifyListeners(history2.location, history2.action);
   }
@@ -212580,7 +212580,7 @@ function createMemoryHistory(props) {
   var _props = props, getUserConfirmation = _props.getUserConfirmation, _props$initialEntries = _props.initialEntries, initialEntries = _props$initialEntries === void 0 ? ["/"] : _props$initialEntries, _props$initialIndex = _props.initialIndex, initialIndex = _props$initialIndex === void 0 ? 0 : _props$initialIndex, _props$keyLength = _props.keyLength, keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
   var transitionManager = createTransitionManager();
   function setState2(nextState) {
-    _extends$1k(history2, nextState);
+    _extends$1l(history2, nextState);
     history2.length = history2.entries.length;
     transitionManager.notifyListeners(history2.location, history2.action);
   }
@@ -212982,13 +212982,13 @@ function objectIs(x3, y3) {
   }
 }
 function createEventEmitter(value) {
-  var handlers = [];
+  var handlers2 = [];
   return {
     on: function on3(handler) {
-      handlers.push(handler);
+      handlers2.push(handler);
     },
     off: function off2(handler) {
-      handlers = handlers.filter(function(h3) {
+      handlers2 = handlers2.filter(function(h3) {
         return h3 !== handler;
       });
     },
@@ -212997,7 +212997,7 @@ function createEventEmitter(value) {
     },
     set: function set4(newValue, changedBits) {
       value = newValue;
-      handlers.forEach(function(handler) {
+      handlers2.forEach(function(handler) {
         return handler(value, changedBits);
       });
     }
@@ -213293,7 +213293,7 @@ function isEmptyChildren(children) {
       !context$12 ? invariant2() : void 0;
       var location2 = _this.props.location || context$12.location;
       var match2 = _this.props.computedMatch ? _this.props.computedMatch : _this.props.path ? matchPath(location2.pathname, _this.props) : context$12.match;
-      var props = _extends$1k({}, context$12, {
+      var props = _extends$1l({}, context$12, {
         location: location2,
         match: match2
       });
@@ -213313,7 +213313,7 @@ function addLeadingSlash(path2) {
 }
 function addBasename(basename, location2) {
   if (!basename) return location2;
-  return _extends$1k({}, location2, {
+  return _extends$1l({}, location2, {
     pathname: addLeadingSlash(basename) + location2.pathname
   });
 }
@@ -213321,7 +213321,7 @@ function stripBasename(basename, location2) {
   if (!basename) return location2;
   var base = addLeadingSlash(basename);
   if (location2.pathname.indexOf(base) !== 0) return location2;
-  return _extends$1k({}, location2, {
+  return _extends$1l({}, location2, {
     pathname: location2.pathname.substr(base.length)
   });
 }
@@ -213365,7 +213365,7 @@ function noop$2() {
     context2.url = createURL(context2.location);
   };
   _proto.render = function render2() {
-    var _this$props2 = this.props, _this$props2$basename = _this$props2.basename, basename = _this$props2$basename === void 0 ? "" : _this$props2$basename, _this$props2$context = _this$props2.context, context2 = _this$props2$context === void 0 ? {} : _this$props2$context, _this$props2$location = _this$props2.location, location2 = _this$props2$location === void 0 ? "/" : _this$props2$location, rest = _objectWithoutPropertiesLoose$1m(_this$props2, ["basename", "context", "location"]);
+    var _this$props2 = this.props, _this$props2$basename = _this$props2.basename, basename = _this$props2$basename === void 0 ? "" : _this$props2$basename, _this$props2$context = _this$props2.context, context2 = _this$props2$context === void 0 ? {} : _this$props2$context, _this$props2$location = _this$props2.location, location2 = _this$props2$location === void 0 ? "/" : _this$props2$location, rest = _objectWithoutPropertiesLoose$1n(_this$props2, ["basename", "context", "location"]);
     var history2 = {
       createHref: function createHref(path2) {
         return addLeadingSlash(basename + createURL(path2));
@@ -213380,7 +213380,7 @@ function noop$2() {
       listen: this.handleListen,
       block: this.handleBlock
     };
-    return /* @__PURE__ */ React$1.createElement(Router, _extends$1k({}, rest, {
+    return /* @__PURE__ */ React$1.createElement(Router, _extends$1l({}, rest, {
       history: history2,
       staticContext: context2
     }));
@@ -213403,7 +213403,7 @@ function noop$2() {
         if (match2 == null && /* @__PURE__ */ React$1.isValidElement(child)) {
           element = child;
           var path2 = child.props.path || child.props.from;
-          match2 = path2 ? matchPath(location2.pathname, _extends$1k({}, child.props, {
+          match2 = path2 ? matchPath(location2.pathname, _extends$1l({}, child.props, {
             path: path2
           })) : context2.match;
         }
@@ -213474,9 +213474,9 @@ function isModifiedEvent(event) {
   return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 }
 var LinkAnchor = forwardRef(function(_ref3, forwardedRef) {
-  var innerRef = _ref3.innerRef, navigate = _ref3.navigate, _onClick = _ref3.onClick, rest = _objectWithoutPropertiesLoose$1m(_ref3, ["innerRef", "navigate", "onClick"]);
+  var innerRef = _ref3.innerRef, navigate = _ref3.navigate, _onClick = _ref3.onClick, rest = _objectWithoutPropertiesLoose$1n(_ref3, ["innerRef", "navigate", "onClick"]);
   var target = rest.target;
-  var props = _extends$1k({}, rest, {
+  var props = _extends$1l({}, rest, {
     onClick: function onClick(event) {
       try {
         if (_onClick) _onClick(event);
@@ -213501,13 +213501,13 @@ var LinkAnchor = forwardRef(function(_ref3, forwardedRef) {
   return /* @__PURE__ */ React$1.createElement("a", props);
 });
 var Link = forwardRef(function(_ref22, forwardedRef) {
-  var _ref2$component = _ref22.component, component = _ref2$component === void 0 ? LinkAnchor : _ref2$component, replace2 = _ref22.replace, to2 = _ref22.to, innerRef = _ref22.innerRef, rest = _objectWithoutPropertiesLoose$1m(_ref22, ["component", "replace", "to", "innerRef"]);
+  var _ref2$component = _ref22.component, component = _ref2$component === void 0 ? LinkAnchor : _ref2$component, replace2 = _ref22.replace, to2 = _ref22.to, innerRef = _ref22.innerRef, rest = _objectWithoutPropertiesLoose$1n(_ref22, ["component", "replace", "to", "innerRef"]);
   return /* @__PURE__ */ React$1.createElement(context.Consumer, null, function(context2) {
     !context2 ? invariant2() : void 0;
     var history2 = context2.history;
     var location2 = normalizeToLocation(resolveToLocation(to2, context2.location), context2.location);
     var href = location2 ? history2.createHref(location2) : "";
-    var props = _extends$1k({}, rest, {
+    var props = _extends$1l({}, rest, {
       href,
       navigate: function navigate() {
         var location22 = resolveToLocation(to2, context2.location);
@@ -213540,7 +213540,7 @@ function joinClassnames() {
   }).join(" ");
 }
 forwardRef$1(function(_ref3, forwardedRef) {
-  var _ref$ariaCurrent = _ref3["aria-current"], ariaCurrent = _ref$ariaCurrent === void 0 ? "page" : _ref$ariaCurrent, _ref$activeClassName = _ref3.activeClassName, activeClassName = _ref$activeClassName === void 0 ? "active" : _ref$activeClassName, activeStyle = _ref3.activeStyle, classNameProp = _ref3.className, exact = _ref3.exact, isActiveProp = _ref3.isActive, locationProp = _ref3.location, sensitive = _ref3.sensitive, strict = _ref3.strict, styleProp = _ref3.style, to2 = _ref3.to, innerRef = _ref3.innerRef, rest = _objectWithoutPropertiesLoose$1m(_ref3, ["aria-current", "activeClassName", "activeStyle", "className", "exact", "isActive", "location", "sensitive", "strict", "style", "to", "innerRef"]);
+  var _ref$ariaCurrent = _ref3["aria-current"], ariaCurrent = _ref$ariaCurrent === void 0 ? "page" : _ref$ariaCurrent, _ref$activeClassName = _ref3.activeClassName, activeClassName = _ref$activeClassName === void 0 ? "active" : _ref$activeClassName, activeStyle = _ref3.activeStyle, classNameProp = _ref3.className, exact = _ref3.exact, isActiveProp = _ref3.isActive, locationProp = _ref3.location, sensitive = _ref3.sensitive, strict = _ref3.strict, styleProp = _ref3.style, to2 = _ref3.to, innerRef = _ref3.innerRef, rest = _objectWithoutPropertiesLoose$1n(_ref3, ["aria-current", "activeClassName", "activeStyle", "className", "exact", "isActive", "location", "sensitive", "strict", "style", "to", "innerRef"]);
   return /* @__PURE__ */ React$1.createElement(context.Consumer, null, function(context2) {
     !context2 ? invariant2() : void 0;
     var currentLocation = locationProp || context2.location;
@@ -213558,9 +213558,9 @@ forwardRef$1(function(_ref3, forwardedRef) {
     var style2 = typeof styleProp === "function" ? styleProp(isActive) : styleProp;
     if (isActive) {
       className = joinClassnames(className, activeClassName);
-      style2 = _extends$1k({}, style2, activeStyle);
+      style2 = _extends$1l({}, style2, activeStyle);
     }
-    var props = _extends$1k({
+    var props = _extends$1l({
       "aria-current": isActive && ariaCurrent || null,
       className,
       style: style2,
@@ -213813,11 +213813,11 @@ function sortByRelevance(query, value, getName, getAliases) {
 }
 const CLASSNAME$1 = "TruncatedText";
 const CLASSNAME_TOOLTIP = `${CLASSNAME$1}-tooltip`;
-const TruncatedText = ({ text, className, lineCount = 1, placement = "bottom", delay = 1e3 }) => {
+const TruncatedText = ({ text: text2, className, lineCount = 1, placement = "bottom", delay = 1e3 }) => {
   const [showTooltip, setShowTooltip] = reactExports.useState(false);
   const target = reactExports.useRef(null);
   const startShowingTooltip = useDebounce(() => setShowTooltip(true), delay);
-  if (!text)
+  if (!text2)
     return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
   const handleFocus = (element) => {
     if (element.offsetWidth < element.scrollWidth || element.offsetHeight + 10 < element.scrollHeight)
@@ -213827,8 +213827,8 @@ const TruncatedText = ({ text, className, lineCount = 1, placement = "bottom", d
     startShowingTooltip.cancel();
     setShowTooltip(false);
   };
-  const overlay = jsxRuntimeExports.jsx(Overlay, { target: target.current, show: showTooltip, placement, children: jsxRuntimeExports.jsx(Tooltip, { id: CLASSNAME$1, className: CLASSNAME_TOOLTIP, children: text }) });
-  return jsxRuntimeExports.jsxs("div", { className: cx(CLASSNAME$1, className), style: { WebkitLineClamp: lineCount }, ref: target, onMouseEnter: (e2) => handleFocus(e2.currentTarget), onFocus: (e2) => handleFocus(e2.currentTarget), onMouseLeave: handleBlur, onBlur: handleBlur, children: [text, overlay] });
+  const overlay = jsxRuntimeExports.jsx(Overlay, { target: target.current, show: showTooltip, placement, children: jsxRuntimeExports.jsx(Tooltip, { id: CLASSNAME$1, className: CLASSNAME_TOOLTIP, children: text2 }) });
+  return jsxRuntimeExports.jsxs("div", { className: cx(CLASSNAME$1, className), style: { WebkitLineClamp: lineCount }, ref: target, onMouseEnter: (e2) => handleFocus(e2.currentTarget), onFocus: (e2) => handleFocus(e2.currentTarget), onMouseLeave: handleBlur, onBlur: handleBlur, children: [text2, overlay] });
 };
 function sortPerformersByRelevance(input, performers2) {
   return sortByRelevance(input, performers2, (p2) => p2.name, (p2) => p2.alias_list);
@@ -213977,10 +213977,10 @@ const CLASSNAME = "LoadingIndicator";
 const CLASSNAME_MESSAGE = `${CLASSNAME}-message`;
 const LoadingIndicator = PatchComponent("LoadingIndicator", ({ message, inline = false, small = false, card = false }) => {
   const intl = useIntl();
-  const text = intl.formatMessage({ id: "loading.generic" });
-  return jsxRuntimeExports.jsxs("div", { className: cx(CLASSNAME, { inline, small, "card-based": card }), children: [jsxRuntimeExports.jsx(Spinner, { animation: "border", role: "status", size: small ? "sm" : void 0, children: jsxRuntimeExports.jsx("span", { className: "sr-only", children: text }) }), message !== "" && jsxRuntimeExports.jsx("h4", { className: CLASSNAME_MESSAGE, children: message !== null && message !== void 0 ? message : text })] });
+  const text2 = intl.formatMessage({ id: "loading.generic" });
+  return jsxRuntimeExports.jsxs("div", { className: cx(CLASSNAME, { inline, small, "card-based": card }), children: [jsxRuntimeExports.jsx(Spinner, { animation: "border", role: "status", size: small ? "sm" : void 0, children: jsxRuntimeExports.jsx("span", { className: "sr-only", children: text2 }) }), message !== "" && jsxRuntimeExports.jsx("h4", { className: CLASSNAME_MESSAGE, children: message !== null && message !== void 0 ? message : text2 })] });
 });
-const HoverPopover = PatchComponent("HoverPopover", ({ enterDelay = 200, leaveDelay = 200, content, children, className, placement = "top", onOpen, onClose, target }) => {
+const HoverPopover = PatchComponent("HoverPopover", ({ enterDelay = 200, leaveDelay = 200, content: content2, children, className, placement = "top", onOpen, onClose, target }) => {
   var _a2;
   const [show, setShow] = reactExports.useState(false);
   const triggerRef = reactExports.useRef(null);
@@ -214004,7 +214004,7 @@ const HoverPopover = PatchComponent("HoverPopover", ({ enterDelay = 200, leaveDe
     window.clearTimeout(enterTimer.current);
     window.clearTimeout(leaveTimer.current);
   }, []);
-  return jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("div", { className, onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, ref: triggerRef, children }), triggerRef.current && jsxRuntimeExports.jsx(Overlay, { show, placement, target: (_a2 = target === null || target === void 0 ? void 0 : target.current) !== null && _a2 !== void 0 ? _a2 : triggerRef.current, children: jsxRuntimeExports.jsx(Popover, { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, id: "popover", className: "hover-popover-content", children: content }) })] });
+  return jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("div", { className, onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, ref: triggerRef, children }), triggerRef.current && jsxRuntimeExports.jsx(Overlay, { show, placement, target: (_a2 = target === null || target === void 0 ? void 0 : target.current) !== null && _a2 !== void 0 ? _a2 : triggerRef.current, children: jsxRuntimeExports.jsx(Popover, { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, id: "popover", className: "hover-popover-content", children: content2 }) })] });
 });
 function galleryTitle(s4) {
   if (s4.title) {
@@ -214759,18 +214759,18 @@ function requireMousetrap() {
           self2._directMap[combination + ":" + action] = callback2;
           combination = combination.replace(/\s+/g, " ");
           var sequence = combination.split(" ");
-          var info;
+          var info2;
           if (sequence.length > 1) {
             _bindSequence(combination, sequence, callback2, action);
             return;
           }
-          info = _getKeyInfo(combination, action);
-          self2._callbacks[info.key] = self2._callbacks[info.key] || [];
-          _getMatches(info.key, info.modifiers, { type: info.action }, sequenceName, combination, level);
-          self2._callbacks[info.key][sequenceName ? "unshift" : "push"]({
+          info2 = _getKeyInfo(combination, action);
+          self2._callbacks[info2.key] = self2._callbacks[info2.key] || [];
+          _getMatches(info2.key, info2.modifiers, { type: info2.action }, sequenceName, combination, level);
+          self2._callbacks[info2.key][sequenceName ? "unshift" : "push"]({
             callback: callback2,
-            modifiers: info.modifiers,
-            action: info.action,
+            modifiers: info2.modifiers,
+            action: info2.action,
             seq: sequenceName,
             level,
             combo: combination
@@ -216020,10 +216020,10 @@ const MarkerTitleSuggest = (props) => {
   }
   return jsxRuntimeExports.jsx(SelectComponent, { isMulti: false, creatable: true, onChange: onChange3, isLoading: loading2, items, initialIds, placeholder: "Marker title...", className: "select-suggest", showDropdown: false, groupHeader: "Previously used titles..." });
 };
-function yupFormikValidate(schema) {
+function yupFormikValidate(schema2) {
   return async function(values3) {
     try {
-      await schema.validate(values3, { abortEarly: false });
+      await schema2.validate(values3, { abortEarly: false });
     } catch (err) {
       return yupToFormErrors(err);
     }
@@ -216039,7 +216039,7 @@ const SceneMarkerForm$1 = ({ sceneID, marker, onClose }) => {
   const [primaryTag, setPrimaryTag] = reactExports.useState();
   const [tags2, setTags] = reactExports.useState([]);
   const isNew = marker === void 0;
-  const schema = create$3({
+  const schema2 = create$3({
     title: create$6().ensure(),
     seconds: create$5().min(0).required(),
     end_seconds: create$5().min(0).nullable().defined().test("is-greater-than-seconds", intl.formatMessage({ id: "validation.end_time_before_start_time" }), function(value) {
@@ -216061,8 +216061,8 @@ const SceneMarkerForm$1 = ({ sceneID, marker, onClose }) => {
   const formik = useFormik({
     initialValues,
     enableReinitialize: true,
-    validate: yupFormikValidate(schema),
-    onSubmit: (values3) => onSave(schema.cast(values3))
+    validate: yupFormikValidate(schema2),
+    onSubmit: (values3) => onSave(schema2.cast(values3))
   });
   function onSetPrimaryTag(item) {
     setPrimaryTag(item);
@@ -218615,7 +218615,7 @@ const wheelAction = {
   engine: WheelEngine,
   resolver: wheelConfigResolver
 };
-function _objectWithoutPropertiesLoose(source2, excluded) {
+function _objectWithoutPropertiesLoose$1(source2, excluded) {
   if (source2 == null) return {};
   var target = {};
   var sourceKeys = Object.keys(source2);
@@ -218629,7 +218629,7 @@ function _objectWithoutPropertiesLoose(source2, excluded) {
 }
 function _objectWithoutProperties(source2, excluded) {
   if (source2 == null) return {};
-  var target = _objectWithoutPropertiesLoose(source2, excluded);
+  var target = _objectWithoutPropertiesLoose$1(source2, excluded);
   var key, i2;
   if (Object.getOwnPropertySymbols) {
     var sourceSymbolKeys = Object.getOwnPropertySymbols(source2);
@@ -218668,7 +218668,7 @@ const sharedConfigResolver = {
     return value;
   }
 };
-const _excluded = ["target", "eventOptions", "window", "enabled", "transform"];
+const _excluded$1 = ["target", "eventOptions", "window", "enabled", "transform"];
 function resolveWith(config2 = {}, resolvers) {
   const result = {};
   for (const [key, resolver] of Object.entries(resolvers)) {
@@ -218695,7 +218695,7 @@ function parse2(newConfig, gestureKey, _config2 = {}) {
     window: window2,
     enabled,
     transform: transform3
-  } = _ref3, rest = _objectWithoutProperties(_ref3, _excluded);
+  } = _ref3, rest = _objectWithoutProperties(_ref3, _excluded$1);
   _config2.shared = resolveWith({
     target,
     eventOptions,
@@ -218762,7 +218762,7 @@ class TimeoutStore {
   }
 }
 let Controller$1 = class Controller {
-  constructor(handlers) {
+  constructor(handlers2) {
     _defineProperty(this, "gestures", /* @__PURE__ */ new Set());
     _defineProperty(this, "_targetEventStore", new EventStore(this));
     _defineProperty(this, "gestureEventStores", {});
@@ -218779,7 +218779,7 @@ let Controller$1 = class Controller {
         altKey: false
       }
     });
-    resolveGestures(this, handlers);
+    resolveGestures(this, handlers2);
   }
   setEventIds(event) {
     if (isTouch(event)) {
@@ -218791,8 +218791,8 @@ let Controller$1 = class Controller {
       return this.pointerIds;
     }
   }
-  applyHandlers(handlers, nativeHandlers) {
-    this.handlers = handlers;
+  applyHandlers(handlers2, nativeHandlers) {
+    this.handlers = handlers2;
     this.nativeHandlers = nativeHandlers;
   }
   applyConfig(config2, gestureKey) {
@@ -218876,19 +218876,19 @@ const bindToProps = (props, eventOptions, withPassiveOption) => (device, action,
 const RE_NOT_NATIVE = /^on(Drag|Wheel|Scroll|Move|Pinch|Hover)/;
 function sortHandlers(_handlers) {
   const native = {};
-  const handlers = {};
+  const handlers2 = {};
   const actions2 = /* @__PURE__ */ new Set();
   for (let key in _handlers) {
     if (RE_NOT_NATIVE.test(key)) {
       actions2.add(RegExp.lastMatch);
-      handlers[key] = _handlers[key];
+      handlers2[key] = _handlers[key];
     } else {
       native[key] = _handlers[key];
     }
   }
-  return [handlers, native, actions2];
+  return [handlers2, native, actions2];
 }
-function registerGesture(actions2, handlers, handlerKey, key, internalHandlers, config2) {
+function registerGesture(actions2, handlers2, handlerKey, key, internalHandlers, config2) {
   if (!actions2.has(handlerKey)) return;
   if (!EngineMap.has(key)) {
     return;
@@ -218897,32 +218897,32 @@ function registerGesture(actions2, handlers, handlerKey, key, internalHandlers, 
   const endKey = handlerKey + "End";
   const fn3 = (state) => {
     let memo2 = void 0;
-    if (state.first && startKey in handlers) handlers[startKey](state);
-    if (handlerKey in handlers) memo2 = handlers[handlerKey](state);
-    if (state.last && endKey in handlers) handlers[endKey](state);
+    if (state.first && startKey in handlers2) handlers2[startKey](state);
+    if (handlerKey in handlers2) memo2 = handlers2[handlerKey](state);
+    if (state.last && endKey in handlers2) handlers2[endKey](state);
     return memo2;
   };
   internalHandlers[key] = fn3;
   config2[key] = config2[key] || {};
 }
 function parseMergedHandlers(mergedHandlers, mergedConfig) {
-  const [handlers, nativeHandlers, actions2] = sortHandlers(mergedHandlers);
+  const [handlers2, nativeHandlers, actions2] = sortHandlers(mergedHandlers);
   const internalHandlers = {};
-  registerGesture(actions2, handlers, "onDrag", "drag", internalHandlers, mergedConfig);
-  registerGesture(actions2, handlers, "onWheel", "wheel", internalHandlers, mergedConfig);
-  registerGesture(actions2, handlers, "onScroll", "scroll", internalHandlers, mergedConfig);
-  registerGesture(actions2, handlers, "onPinch", "pinch", internalHandlers, mergedConfig);
-  registerGesture(actions2, handlers, "onMove", "move", internalHandlers, mergedConfig);
-  registerGesture(actions2, handlers, "onHover", "hover", internalHandlers, mergedConfig);
+  registerGesture(actions2, handlers2, "onDrag", "drag", internalHandlers, mergedConfig);
+  registerGesture(actions2, handlers2, "onWheel", "wheel", internalHandlers, mergedConfig);
+  registerGesture(actions2, handlers2, "onScroll", "scroll", internalHandlers, mergedConfig);
+  registerGesture(actions2, handlers2, "onPinch", "pinch", internalHandlers, mergedConfig);
+  registerGesture(actions2, handlers2, "onMove", "move", internalHandlers, mergedConfig);
+  registerGesture(actions2, handlers2, "onHover", "hover", internalHandlers, mergedConfig);
   return {
     handlers: internalHandlers,
     config: mergedConfig,
     nativeHandlers
   };
 }
-function useRecognizers(handlers, config2 = {}, gestureKey, nativeHandlers) {
-  const ctrl = React$1.useMemo(() => new Controller$1(handlers), []);
-  ctrl.applyHandlers(handlers, nativeHandlers);
+function useRecognizers(handlers2, config2 = {}, gestureKey, nativeHandlers) {
+  const ctrl = React$1.useMemo(() => new Controller$1(handlers2), []);
+  ctrl.applyHandlers(handlers2, nativeHandlers);
   ctrl.applyConfig(config2, gestureKey);
   React$1.useEffect(ctrl.effect.bind(ctrl));
   React$1.useEffect(() => {
@@ -218937,16 +218937,16 @@ function createUseGesture(actions2) {
   actions2.forEach(registerAction);
   return function useGesture2(_handlers, _config2) {
     const {
-      handlers,
+      handlers: handlers2,
       nativeHandlers,
       config: config2
     } = parseMergedHandlers(_handlers, _config2 || {});
-    return useRecognizers(handlers, config2, void 0, nativeHandlers);
+    return useRecognizers(handlers2, config2, void 0, nativeHandlers);
   };
 }
-function useGesture(handlers, config2) {
+function useGesture(handlers2, config2) {
   const hook3 = createUseGesture([dragAction, pinchAction, scrollAction, wheelAction, moveAction, hoverAction]);
-  return hook3(handlers, config2 || {});
+  return hook3(handlers2, config2 || {});
 }
 const displayDuration = 1e3;
 const logger2 = getLogger(["stash-tv", "FeedbackOverlay"]);
@@ -224698,7 +224698,7 @@ function SideDrawer({ children, title: title2, closeDisabled, className, visible
       className: cx("SideDrawer", className, { "left-handed": leftHandedUi }),
       "data-testid": "SideDrawer",
       ref,
-      style: reactExports.useMemo(() => ({ [leftHandedUi ? "right" : "left"]: x3.to((px2) => `calc(100% - ${px2}px)`) }), [x3, leftHandedUi])
+      style: reactExports.useMemo(() => ({ [leftHandedUi ? "right" : "left"]: x3.to((px2) => `calc(100% - ${px2}px - var(--fixed-right-padding, 0px))`) }), [x3, leftHandedUi])
     },
     /* @__PURE__ */ React$1.createElement("div", { className: "content" }, /* @__PURE__ */ React$1.createElement("div", { className: cx("body", bodyScrollClasses), ref: bodyRef }, children), /* @__PURE__ */ React$1.createElement("div", { className: "footer" }, /* @__PURE__ */ React$1.createElement("h2", null, title2), closeButton))
   ));
@@ -224766,7 +224766,24 @@ function DraggableList({
     ))
   );
 }
+const getViewportScrollbarWidth = () => window.innerWidth - (window.visualViewport?.width ?? document.documentElement.clientWidth);
+let viewportScrollbarWidth = getViewportScrollbarWidth();
 const Modal = (props) => {
+  reactExports.useMemo(() => {
+    viewportScrollbarWidth = getViewportScrollbarWidth();
+  }, [props.show]);
+  reactExports.useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const modalOpen = document.body.classList.contains("modal-open");
+      const fixedRightPadding = modalOpen ? viewportScrollbarWidth : 0;
+      document.documentElement.style.setProperty("--fixed-right-padding", `${fixedRightPadding}px`);
+    });
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class"]
+    });
+    return () => observer.disconnect();
+  }, []);
   return /* @__PURE__ */ React$1.createElement(
     Modal$1,
     {
@@ -225000,6 +225017,11733 @@ function VolumeForm({ formik }) {
 }
 const objectKeys = Object.keys;
 const getStashOrigin = () => location.origin;
+var bail_1;
+var hasRequiredBail;
+function requireBail() {
+  if (hasRequiredBail) return bail_1;
+  hasRequiredBail = 1;
+  bail_1 = bail;
+  function bail(err) {
+    if (err) {
+      throw err;
+    }
+  }
+  return bail_1;
+}
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+var isBuffer;
+var hasRequiredIsBuffer;
+function requireIsBuffer() {
+  if (hasRequiredIsBuffer) return isBuffer;
+  hasRequiredIsBuffer = 1;
+  isBuffer = function isBuffer2(obj) {
+    return obj != null && obj.constructor != null && typeof obj.constructor.isBuffer === "function" && obj.constructor.isBuffer(obj);
+  };
+  return isBuffer;
+}
+var extend2;
+var hasRequiredExtend;
+function requireExtend() {
+  if (hasRequiredExtend) return extend2;
+  hasRequiredExtend = 1;
+  var hasOwn2 = Object.prototype.hasOwnProperty;
+  var toStr = Object.prototype.toString;
+  var defineProperty2 = Object.defineProperty;
+  var gOPD = Object.getOwnPropertyDescriptor;
+  var isArray2 = function isArray3(arr) {
+    if (typeof Array.isArray === "function") {
+      return Array.isArray(arr);
+    }
+    return toStr.call(arr) === "[object Array]";
+  };
+  var isPlainObject2 = function isPlainObject3(obj) {
+    if (!obj || toStr.call(obj) !== "[object Object]") {
+      return false;
+    }
+    var hasOwnConstructor = hasOwn2.call(obj, "constructor");
+    var hasIsPrototypeOf = obj.constructor && obj.constructor.prototype && hasOwn2.call(obj.constructor.prototype, "isPrototypeOf");
+    if (obj.constructor && !hasOwnConstructor && !hasIsPrototypeOf) {
+      return false;
+    }
+    var key;
+    for (key in obj) {
+    }
+    return typeof key === "undefined" || hasOwn2.call(obj, key);
+  };
+  var setProperty = function setProperty2(target, options2) {
+    if (defineProperty2 && options2.name === "__proto__") {
+      defineProperty2(target, options2.name, {
+        enumerable: true,
+        configurable: true,
+        value: options2.newValue,
+        writable: true
+      });
+    } else {
+      target[options2.name] = options2.newValue;
+    }
+  };
+  var getProperty = function getProperty2(obj, name2) {
+    if (name2 === "__proto__") {
+      if (!hasOwn2.call(obj, name2)) {
+        return void 0;
+      } else if (gOPD) {
+        return gOPD(obj, name2).value;
+      }
+    }
+    return obj[name2];
+  };
+  extend2 = function extend3() {
+    var options2, name2, src2, copy2, copyIsArray, clone2;
+    var target = arguments[0];
+    var i2 = 1;
+    var length2 = arguments.length;
+    var deep = false;
+    if (typeof target === "boolean") {
+      deep = target;
+      target = arguments[1] || {};
+      i2 = 2;
+    }
+    if (target == null || typeof target !== "object" && typeof target !== "function") {
+      target = {};
+    }
+    for (; i2 < length2; ++i2) {
+      options2 = arguments[i2];
+      if (options2 != null) {
+        for (name2 in options2) {
+          src2 = getProperty(target, name2);
+          copy2 = getProperty(options2, name2);
+          if (target !== copy2) {
+            if (deep && copy2 && (isPlainObject2(copy2) || (copyIsArray = isArray2(copy2)))) {
+              if (copyIsArray) {
+                copyIsArray = false;
+                clone2 = src2 && isArray2(src2) ? src2 : [];
+              } else {
+                clone2 = src2 && isPlainObject2(src2) ? src2 : {};
+              }
+              setProperty(target, { name: name2, newValue: extend3(deep, clone2, copy2) });
+            } else if (typeof copy2 !== "undefined") {
+              setProperty(target, { name: name2, newValue: copy2 });
+            }
+          }
+        }
+      }
+    }
+    return target;
+  };
+  return extend2;
+}
+var isPlainObj;
+var hasRequiredIsPlainObj;
+function requireIsPlainObj() {
+  if (hasRequiredIsPlainObj) return isPlainObj;
+  hasRequiredIsPlainObj = 1;
+  isPlainObj = (value) => {
+    if (Object.prototype.toString.call(value) !== "[object Object]") {
+      return false;
+    }
+    const prototype2 = Object.getPrototypeOf(value);
+    return prototype2 === null || prototype2 === Object.prototype;
+  };
+  return isPlainObj;
+}
+var wrap_1$1;
+var hasRequiredWrap$1;
+function requireWrap$1() {
+  if (hasRequiredWrap$1) return wrap_1$1;
+  hasRequiredWrap$1 = 1;
+  var slice2 = [].slice;
+  wrap_1$1 = wrap2;
+  function wrap2(fn3, callback2) {
+    var invoked;
+    return wrapped;
+    function wrapped() {
+      var params = slice2.call(arguments, 0);
+      var callback3 = fn3.length > params.length;
+      var result;
+      if (callback3) {
+        params.push(done);
+      }
+      try {
+        result = fn3.apply(null, params);
+      } catch (error) {
+        if (callback3 && invoked) {
+          throw error;
+        }
+        return done(error);
+      }
+      if (!callback3) {
+        if (result && typeof result.then === "function") {
+          result.then(then, done);
+        } else if (result instanceof Error) {
+          done(result);
+        } else {
+          then(result);
+        }
+      }
+    }
+    function done() {
+      if (!invoked) {
+        invoked = true;
+        callback2.apply(null, arguments);
+      }
+    }
+    function then(value) {
+      done(null, value);
+    }
+  }
+  return wrap_1$1;
+}
+var trough_1;
+var hasRequiredTrough;
+function requireTrough() {
+  if (hasRequiredTrough) return trough_1;
+  hasRequiredTrough = 1;
+  var wrap2 = requireWrap$1();
+  trough_1 = trough;
+  trough.wrap = wrap2;
+  var slice2 = [].slice;
+  function trough() {
+    var fns = [];
+    var middleware2 = {};
+    middleware2.run = run6;
+    middleware2.use = use2;
+    return middleware2;
+    function run6() {
+      var index2 = -1;
+      var input = slice2.call(arguments, 0, -1);
+      var done = arguments[arguments.length - 1];
+      if (typeof done !== "function") {
+        throw new Error("Expected function as last argument, not " + done);
+      }
+      next2.apply(null, [null].concat(input));
+      function next2(err) {
+        var fn3 = fns[++index2];
+        var params = slice2.call(arguments, 0);
+        var values3 = params.slice(1);
+        var length2 = input.length;
+        var pos = -1;
+        if (err) {
+          done(err);
+          return;
+        }
+        while (++pos < length2) {
+          if (values3[pos] === null || values3[pos] === void 0) {
+            values3[pos] = input[pos];
+          }
+        }
+        input = values3;
+        if (fn3) {
+          wrap2(fn3, next2).apply(null, input);
+        } else {
+          done.apply(null, [null].concat(input));
+        }
+      }
+    }
+    function use2(fn3) {
+      if (typeof fn3 !== "function") {
+        throw new Error("Expected `fn` to be a function, not " + fn3);
+      }
+      fns.push(fn3);
+      return middleware2;
+    }
+  }
+  return trough_1;
+}
+var unistUtilStringifyPosition;
+var hasRequiredUnistUtilStringifyPosition;
+function requireUnistUtilStringifyPosition() {
+  if (hasRequiredUnistUtilStringifyPosition) return unistUtilStringifyPosition;
+  hasRequiredUnistUtilStringifyPosition = 1;
+  var own = {}.hasOwnProperty;
+  unistUtilStringifyPosition = stringify2;
+  function stringify2(value) {
+    if (!value || typeof value !== "object") {
+      return "";
+    }
+    if (own.call(value, "position") || own.call(value, "type")) {
+      return position2(value.position);
+    }
+    if (own.call(value, "start") || own.call(value, "end")) {
+      return position2(value);
+    }
+    if (own.call(value, "line") || own.call(value, "column")) {
+      return point(value);
+    }
+    return "";
+  }
+  function point(point2) {
+    if (!point2 || typeof point2 !== "object") {
+      point2 = {};
+    }
+    return index2(point2.line) + ":" + index2(point2.column);
+  }
+  function position2(pos) {
+    if (!pos || typeof pos !== "object") {
+      pos = {};
+    }
+    return point(pos.start) + "-" + point(pos.end);
+  }
+  function index2(value) {
+    return value && typeof value === "number" ? value : 1;
+  }
+  return unistUtilStringifyPosition;
+}
+var vfileMessage;
+var hasRequiredVfileMessage;
+function requireVfileMessage() {
+  if (hasRequiredVfileMessage) return vfileMessage;
+  hasRequiredVfileMessage = 1;
+  var stringify2 = requireUnistUtilStringifyPosition();
+  vfileMessage = VMessage;
+  function VMessagePrototype() {
+  }
+  VMessagePrototype.prototype = Error.prototype;
+  VMessage.prototype = new VMessagePrototype();
+  var proto = VMessage.prototype;
+  proto.file = "";
+  proto.name = "";
+  proto.reason = "";
+  proto.message = "";
+  proto.stack = "";
+  proto.fatal = null;
+  proto.column = null;
+  proto.line = null;
+  function VMessage(reason, position2, origin) {
+    var parts;
+    var range3;
+    var location2;
+    if (typeof position2 === "string") {
+      origin = position2;
+      position2 = null;
+    }
+    parts = parseOrigin(origin);
+    range3 = stringify2(position2) || "1:1";
+    location2 = {
+      start: { line: null, column: null },
+      end: { line: null, column: null }
+    };
+    if (position2 && position2.position) {
+      position2 = position2.position;
+    }
+    if (position2) {
+      if (position2.start) {
+        location2 = position2;
+        position2 = position2.start;
+      } else {
+        location2.start = position2;
+      }
+    }
+    if (reason.stack) {
+      this.stack = reason.stack;
+      reason = reason.message;
+    }
+    this.message = reason;
+    this.name = range3;
+    this.reason = reason;
+    this.line = position2 ? position2.line : null;
+    this.column = position2 ? position2.column : null;
+    this.location = location2;
+    this.source = parts[0];
+    this.ruleId = parts[1];
+  }
+  function parseOrigin(origin) {
+    var result = [null, null];
+    var index2;
+    if (typeof origin === "string") {
+      index2 = origin.indexOf(":");
+      if (index2 === -1) {
+        result[1] = origin;
+      } else {
+        result[0] = origin.slice(0, index2);
+        result[1] = origin.slice(index2 + 1);
+      }
+    }
+    return result;
+  }
+  return vfileMessage;
+}
+var minpath_browser = {};
+var hasRequiredMinpath_browser;
+function requireMinpath_browser() {
+  if (hasRequiredMinpath_browser) return minpath_browser;
+  hasRequiredMinpath_browser = 1;
+  minpath_browser.basename = basename;
+  minpath_browser.dirname = dirname;
+  minpath_browser.extname = extname;
+  minpath_browser.join = join2;
+  minpath_browser.sep = "/";
+  function basename(path2, ext) {
+    var start3 = 0;
+    var end2 = -1;
+    var index2;
+    var firstNonSlashEnd;
+    var seenNonSlash;
+    var extIndex;
+    if (ext !== void 0 && typeof ext !== "string") {
+      throw new TypeError('"ext" argument must be a string');
+    }
+    assertPath(path2);
+    index2 = path2.length;
+    if (ext === void 0 || !ext.length || ext.length > path2.length) {
+      while (index2--) {
+        if (path2.charCodeAt(index2) === 47) {
+          if (seenNonSlash) {
+            start3 = index2 + 1;
+            break;
+          }
+        } else if (end2 < 0) {
+          seenNonSlash = true;
+          end2 = index2 + 1;
+        }
+      }
+      return end2 < 0 ? "" : path2.slice(start3, end2);
+    }
+    if (ext === path2) {
+      return "";
+    }
+    firstNonSlashEnd = -1;
+    extIndex = ext.length - 1;
+    while (index2--) {
+      if (path2.charCodeAt(index2) === 47) {
+        if (seenNonSlash) {
+          start3 = index2 + 1;
+          break;
+        }
+      } else {
+        if (firstNonSlashEnd < 0) {
+          seenNonSlash = true;
+          firstNonSlashEnd = index2 + 1;
+        }
+        if (extIndex > -1) {
+          if (path2.charCodeAt(index2) === ext.charCodeAt(extIndex--)) {
+            if (extIndex < 0) {
+              end2 = index2;
+            }
+          } else {
+            extIndex = -1;
+            end2 = firstNonSlashEnd;
+          }
+        }
+      }
+    }
+    if (start3 === end2) {
+      end2 = firstNonSlashEnd;
+    } else if (end2 < 0) {
+      end2 = path2.length;
+    }
+    return path2.slice(start3, end2);
+  }
+  function dirname(path2) {
+    var end2;
+    var unmatchedSlash;
+    var index2;
+    assertPath(path2);
+    if (!path2.length) {
+      return ".";
+    }
+    end2 = -1;
+    index2 = path2.length;
+    while (--index2) {
+      if (path2.charCodeAt(index2) === 47) {
+        if (unmatchedSlash) {
+          end2 = index2;
+          break;
+        }
+      } else if (!unmatchedSlash) {
+        unmatchedSlash = true;
+      }
+    }
+    return end2 < 0 ? path2.charCodeAt(0) === 47 ? "/" : "." : end2 === 1 && path2.charCodeAt(0) === 47 ? "//" : path2.slice(0, end2);
+  }
+  function extname(path2) {
+    var startDot = -1;
+    var startPart = 0;
+    var end2 = -1;
+    var preDotState = 0;
+    var unmatchedSlash;
+    var code;
+    var index2;
+    assertPath(path2);
+    index2 = path2.length;
+    while (index2--) {
+      code = path2.charCodeAt(index2);
+      if (code === 47) {
+        if (unmatchedSlash) {
+          startPart = index2 + 1;
+          break;
+        }
+        continue;
+      }
+      if (end2 < 0) {
+        unmatchedSlash = true;
+        end2 = index2 + 1;
+      }
+      if (code === 46) {
+        if (startDot < 0) {
+          startDot = index2;
+        } else if (preDotState !== 1) {
+          preDotState = 1;
+        }
+      } else if (startDot > -1) {
+        preDotState = -1;
+      }
+    }
+    if (startDot < 0 || end2 < 0 || // We saw a non-dot character immediately before the dot.
+    preDotState === 0 || // The (right-most) trimmed path component is exactly `..`.
+    preDotState === 1 && startDot === end2 - 1 && startDot === startPart + 1) {
+      return "";
+    }
+    return path2.slice(startDot, end2);
+  }
+  function join2() {
+    var index2 = -1;
+    var joined;
+    while (++index2 < arguments.length) {
+      assertPath(arguments[index2]);
+      if (arguments[index2]) {
+        joined = joined === void 0 ? arguments[index2] : joined + "/" + arguments[index2];
+      }
+    }
+    return joined === void 0 ? "." : normalize2(joined);
+  }
+  function normalize2(path2) {
+    var absolute;
+    var value;
+    assertPath(path2);
+    absolute = path2.charCodeAt(0) === 47;
+    value = normalizeString(path2, !absolute);
+    if (!value.length && !absolute) {
+      value = ".";
+    }
+    if (value.length && path2.charCodeAt(path2.length - 1) === 47) {
+      value += "/";
+    }
+    return absolute ? "/" + value : value;
+  }
+  function normalizeString(path2, allowAboveRoot) {
+    var result = "";
+    var lastSegmentLength = 0;
+    var lastSlash = -1;
+    var dots = 0;
+    var index2 = -1;
+    var code;
+    var lastSlashIndex;
+    while (++index2 <= path2.length) {
+      if (index2 < path2.length) {
+        code = path2.charCodeAt(index2);
+      } else if (code === 47) {
+        break;
+      } else {
+        code = 47;
+      }
+      if (code === 47) {
+        if (lastSlash === index2 - 1 || dots === 1) ;
+        else if (lastSlash !== index2 - 1 && dots === 2) {
+          if (result.length < 2 || lastSegmentLength !== 2 || result.charCodeAt(result.length - 1) !== 46 || result.charCodeAt(result.length - 2) !== 46) {
+            if (result.length > 2) {
+              lastSlashIndex = result.lastIndexOf("/");
+              if (lastSlashIndex !== result.length - 1) {
+                if (lastSlashIndex < 0) {
+                  result = "";
+                  lastSegmentLength = 0;
+                } else {
+                  result = result.slice(0, lastSlashIndex);
+                  lastSegmentLength = result.length - 1 - result.lastIndexOf("/");
+                }
+                lastSlash = index2;
+                dots = 0;
+                continue;
+              }
+            } else if (result.length) {
+              result = "";
+              lastSegmentLength = 0;
+              lastSlash = index2;
+              dots = 0;
+              continue;
+            }
+          }
+          if (allowAboveRoot) {
+            result = result.length ? result + "/.." : "..";
+            lastSegmentLength = 2;
+          }
+        } else {
+          if (result.length) {
+            result += "/" + path2.slice(lastSlash + 1, index2);
+          } else {
+            result = path2.slice(lastSlash + 1, index2);
+          }
+          lastSegmentLength = index2 - lastSlash - 1;
+        }
+        lastSlash = index2;
+        dots = 0;
+      } else if (code === 46 && dots > -1) {
+        dots++;
+      } else {
+        dots = -1;
+      }
+    }
+    return result;
+  }
+  function assertPath(path2) {
+    if (typeof path2 !== "string") {
+      throw new TypeError(
+        "Path must be a string. Received " + JSON.stringify(path2)
+      );
+    }
+  }
+  return minpath_browser;
+}
+var minproc_browser = {};
+var hasRequiredMinproc_browser;
+function requireMinproc_browser() {
+  if (hasRequiredMinproc_browser) return minproc_browser;
+  hasRequiredMinproc_browser = 1;
+  minproc_browser.cwd = cwd;
+  function cwd() {
+    return "/";
+  }
+  return minproc_browser;
+}
+var core;
+var hasRequiredCore;
+function requireCore() {
+  if (hasRequiredCore) return core;
+  hasRequiredCore = 1;
+  var p2 = requireMinpath_browser();
+  var proc = requireMinproc_browser();
+  var buffer = requireIsBuffer();
+  core = VFile;
+  var own = {}.hasOwnProperty;
+  var order2 = ["history", "path", "basename", "stem", "extname", "dirname"];
+  VFile.prototype.toString = toString2;
+  Object.defineProperty(VFile.prototype, "path", { get: getPath, set: setPath });
+  Object.defineProperty(VFile.prototype, "dirname", {
+    get: getDirname,
+    set: setDirname
+  });
+  Object.defineProperty(VFile.prototype, "basename", {
+    get: getBasename,
+    set: setBasename
+  });
+  Object.defineProperty(VFile.prototype, "extname", {
+    get: getExtname,
+    set: setExtname
+  });
+  Object.defineProperty(VFile.prototype, "stem", { get: getStem, set: setStem });
+  function VFile(options2) {
+    var prop;
+    var index2;
+    if (!options2) {
+      options2 = {};
+    } else if (typeof options2 === "string" || buffer(options2)) {
+      options2 = { contents: options2 };
+    } else if ("message" in options2 && "messages" in options2) {
+      return options2;
+    }
+    if (!(this instanceof VFile)) {
+      return new VFile(options2);
+    }
+    this.data = {};
+    this.messages = [];
+    this.history = [];
+    this.cwd = proc.cwd();
+    index2 = -1;
+    while (++index2 < order2.length) {
+      prop = order2[index2];
+      if (own.call(options2, prop)) {
+        this[prop] = options2[prop];
+      }
+    }
+    for (prop in options2) {
+      if (order2.indexOf(prop) < 0) {
+        this[prop] = options2[prop];
+      }
+    }
+  }
+  function getPath() {
+    return this.history[this.history.length - 1];
+  }
+  function setPath(path2) {
+    assertNonEmpty(path2, "path");
+    if (this.path !== path2) {
+      this.history.push(path2);
+    }
+  }
+  function getDirname() {
+    return typeof this.path === "string" ? p2.dirname(this.path) : void 0;
+  }
+  function setDirname(dirname) {
+    assertPath(this.path, "dirname");
+    this.path = p2.join(dirname || "", this.basename);
+  }
+  function getBasename() {
+    return typeof this.path === "string" ? p2.basename(this.path) : void 0;
+  }
+  function setBasename(basename) {
+    assertNonEmpty(basename, "basename");
+    assertPart(basename, "basename");
+    this.path = p2.join(this.dirname || "", basename);
+  }
+  function getExtname() {
+    return typeof this.path === "string" ? p2.extname(this.path) : void 0;
+  }
+  function setExtname(extname) {
+    assertPart(extname, "extname");
+    assertPath(this.path, "extname");
+    if (extname) {
+      if (extname.charCodeAt(0) !== 46) {
+        throw new Error("`extname` must start with `.`");
+      }
+      if (extname.indexOf(".", 1) > -1) {
+        throw new Error("`extname` cannot contain multiple dots");
+      }
+    }
+    this.path = p2.join(this.dirname, this.stem + (extname || ""));
+  }
+  function getStem() {
+    return typeof this.path === "string" ? p2.basename(this.path, this.extname) : void 0;
+  }
+  function setStem(stem) {
+    assertNonEmpty(stem, "stem");
+    assertPart(stem, "stem");
+    this.path = p2.join(this.dirname || "", stem + (this.extname || ""));
+  }
+  function toString2(encoding) {
+    return (this.contents || "").toString(encoding);
+  }
+  function assertPart(part, name2) {
+    if (part && part.indexOf(p2.sep) > -1) {
+      throw new Error(
+        "`" + name2 + "` cannot be a path: did not expect `" + p2.sep + "`"
+      );
+    }
+  }
+  function assertNonEmpty(part, name2) {
+    if (!part) {
+      throw new Error("`" + name2 + "` cannot be empty");
+    }
+  }
+  function assertPath(path2, name2) {
+    if (!path2) {
+      throw new Error("Setting `" + name2 + "` requires `path` to be set too");
+    }
+  }
+  return core;
+}
+var lib$1;
+var hasRequiredLib$1;
+function requireLib$1() {
+  if (hasRequiredLib$1) return lib$1;
+  hasRequiredLib$1 = 1;
+  var VMessage = requireVfileMessage();
+  var VFile = requireCore();
+  lib$1 = VFile;
+  VFile.prototype.message = message;
+  VFile.prototype.info = info2;
+  VFile.prototype.fail = fail;
+  function message(reason, position2, origin) {
+    var message2 = new VMessage(reason, position2, origin);
+    if (this.path) {
+      message2.name = this.path + ":" + message2.name;
+      message2.file = this.path;
+    }
+    message2.fatal = false;
+    this.messages.push(message2);
+    return message2;
+  }
+  function fail() {
+    var message2 = this.message.apply(this, arguments);
+    message2.fatal = true;
+    throw message2;
+  }
+  function info2() {
+    var message2 = this.message.apply(this, arguments);
+    message2.fatal = null;
+    return message2;
+  }
+  return lib$1;
+}
+var vfile;
+var hasRequiredVfile;
+function requireVfile() {
+  if (hasRequiredVfile) return vfile;
+  hasRequiredVfile = 1;
+  vfile = requireLib$1();
+  return vfile;
+}
+var unified_1;
+var hasRequiredUnified;
+function requireUnified() {
+  if (hasRequiredUnified) return unified_1;
+  hasRequiredUnified = 1;
+  var bail = requireBail();
+  var buffer = requireIsBuffer();
+  var extend3 = requireExtend();
+  var plain = requireIsPlainObj();
+  var trough = requireTrough();
+  var vfile2 = requireVfile();
+  unified_1 = unified2().freeze();
+  var slice2 = [].slice;
+  var own = {}.hasOwnProperty;
+  var pipeline = trough().use(pipelineParse).use(pipelineRun).use(pipelineStringify);
+  function pipelineParse(p2, ctx) {
+    ctx.tree = p2.parse(ctx.file);
+  }
+  function pipelineRun(p2, ctx, next2) {
+    p2.run(ctx.tree, ctx.file, done);
+    function done(error, tree, file2) {
+      if (error) {
+        next2(error);
+      } else {
+        ctx.tree = tree;
+        ctx.file = file2;
+        next2();
+      }
+    }
+  }
+  function pipelineStringify(p2, ctx) {
+    var result = p2.stringify(ctx.tree, ctx.file);
+    if (result === void 0 || result === null) ;
+    else if (typeof result === "string" || buffer(result)) {
+      if ("value" in ctx.file) {
+        ctx.file.value = result;
+      }
+      ctx.file.contents = result;
+    } else {
+      ctx.file.result = result;
+    }
+  }
+  function unified2() {
+    var attachers = [];
+    var transformers = trough();
+    var namespace2 = {};
+    var freezeIndex = -1;
+    var frozen;
+    processor.data = data2;
+    processor.freeze = freeze;
+    processor.attachers = attachers;
+    processor.use = use2;
+    processor.parse = parse3;
+    processor.stringify = stringify2;
+    processor.run = run6;
+    processor.runSync = runSync;
+    processor.process = process;
+    processor.processSync = processSync;
+    return processor;
+    function processor() {
+      var destination = unified2();
+      var index2 = -1;
+      while (++index2 < attachers.length) {
+        destination.use.apply(null, attachers[index2]);
+      }
+      destination.data(extend3(true, {}, namespace2));
+      return destination;
+    }
+    function freeze() {
+      var values3;
+      var transformer;
+      if (frozen) {
+        return processor;
+      }
+      while (++freezeIndex < attachers.length) {
+        values3 = attachers[freezeIndex];
+        if (values3[1] === false) {
+          continue;
+        }
+        if (values3[1] === true) {
+          values3[1] = void 0;
+        }
+        transformer = values3[0].apply(processor, values3.slice(1));
+        if (typeof transformer === "function") {
+          transformers.use(transformer);
+        }
+      }
+      frozen = true;
+      freezeIndex = Infinity;
+      return processor;
+    }
+    function data2(key, value) {
+      if (typeof key === "string") {
+        if (arguments.length === 2) {
+          assertUnfrozen("data", frozen);
+          namespace2[key] = value;
+          return processor;
+        }
+        return own.call(namespace2, key) && namespace2[key] || null;
+      }
+      if (key) {
+        assertUnfrozen("data", frozen);
+        namespace2 = key;
+        return processor;
+      }
+      return namespace2;
+    }
+    function use2(value) {
+      var settings2;
+      assertUnfrozen("use", frozen);
+      if (value === null || value === void 0) ;
+      else if (typeof value === "function") {
+        addPlugin.apply(null, arguments);
+      } else if (typeof value === "object") {
+        if ("length" in value) {
+          addList(value);
+        } else {
+          addPreset(value);
+        }
+      } else {
+        throw new Error("Expected usable value, not `" + value + "`");
+      }
+      if (settings2) {
+        namespace2.settings = extend3(namespace2.settings || {}, settings2);
+      }
+      return processor;
+      function addPreset(result) {
+        addList(result.plugins);
+        if (result.settings) {
+          settings2 = extend3(settings2 || {}, result.settings);
+        }
+      }
+      function add(value2) {
+        if (typeof value2 === "function") {
+          addPlugin(value2);
+        } else if (typeof value2 === "object") {
+          if ("length" in value2) {
+            addPlugin.apply(null, value2);
+          } else {
+            addPreset(value2);
+          }
+        } else {
+          throw new Error("Expected usable value, not `" + value2 + "`");
+        }
+      }
+      function addList(plugins2) {
+        var index2 = -1;
+        if (plugins2 === null || plugins2 === void 0) ;
+        else if (typeof plugins2 === "object" && "length" in plugins2) {
+          while (++index2 < plugins2.length) {
+            add(plugins2[index2]);
+          }
+        } else {
+          throw new Error("Expected a list of plugins, not `" + plugins2 + "`");
+        }
+      }
+      function addPlugin(plugin, value2) {
+        var entry = find2(plugin);
+        if (entry) {
+          if (plain(entry[1]) && plain(value2)) {
+            value2 = extend3(true, entry[1], value2);
+          }
+          entry[1] = value2;
+        } else {
+          attachers.push(slice2.call(arguments));
+        }
+      }
+    }
+    function find2(plugin) {
+      var index2 = -1;
+      while (++index2 < attachers.length) {
+        if (attachers[index2][0] === plugin) {
+          return attachers[index2];
+        }
+      }
+    }
+    function parse3(doc) {
+      var file2 = vfile2(doc);
+      var Parser3;
+      freeze();
+      Parser3 = processor.Parser;
+      assertParser("parse", Parser3);
+      if (newable(Parser3, "parse")) {
+        return new Parser3(String(file2), file2).parse();
+      }
+      return Parser3(String(file2), file2);
+    }
+    function run6(node2, file2, cb2) {
+      assertNode(node2);
+      freeze();
+      if (!cb2 && typeof file2 === "function") {
+        cb2 = file2;
+        file2 = null;
+      }
+      if (!cb2) {
+        return new Promise(executor);
+      }
+      executor(null, cb2);
+      function executor(resolve, reject) {
+        transformers.run(node2, vfile2(file2), done);
+        function done(error, tree, file3) {
+          tree = tree || node2;
+          if (error) {
+            reject(error);
+          } else if (resolve) {
+            resolve(tree);
+          } else {
+            cb2(null, tree, file3);
+          }
+        }
+      }
+    }
+    function runSync(node2, file2) {
+      var result;
+      var complete;
+      run6(node2, file2, done);
+      assertDone("runSync", "run", complete);
+      return result;
+      function done(error, tree) {
+        complete = true;
+        result = tree;
+        bail(error);
+      }
+    }
+    function stringify2(node2, doc) {
+      var file2 = vfile2(doc);
+      var Compiler;
+      freeze();
+      Compiler = processor.Compiler;
+      assertCompiler("stringify", Compiler);
+      assertNode(node2);
+      if (newable(Compiler, "compile")) {
+        return new Compiler(node2, file2).compile();
+      }
+      return Compiler(node2, file2);
+    }
+    function process(doc, cb2) {
+      freeze();
+      assertParser("process", processor.Parser);
+      assertCompiler("process", processor.Compiler);
+      if (!cb2) {
+        return new Promise(executor);
+      }
+      executor(null, cb2);
+      function executor(resolve, reject) {
+        var file2 = vfile2(doc);
+        pipeline.run(processor, { file: file2 }, done);
+        function done(error) {
+          if (error) {
+            reject(error);
+          } else if (resolve) {
+            resolve(file2);
+          } else {
+            cb2(null, file2);
+          }
+        }
+      }
+    }
+    function processSync(doc) {
+      var file2;
+      var complete;
+      freeze();
+      assertParser("processSync", processor.Parser);
+      assertCompiler("processSync", processor.Compiler);
+      file2 = vfile2(doc);
+      process(file2, done);
+      assertDone("processSync", "process", complete);
+      return file2;
+      function done(error) {
+        complete = true;
+        bail(error);
+      }
+    }
+  }
+  function newable(value, name2) {
+    return typeof value === "function" && value.prototype && // A function with keys in its prototype is probably a constructor.
+    // Classes’ prototype methods are not enumerable, so we check if some value
+    // exists in the prototype.
+    (keys3(value.prototype) || name2 in value.prototype);
+  }
+  function keys3(value) {
+    var key;
+    for (key in value) {
+      return true;
+    }
+    return false;
+  }
+  function assertParser(name2, Parser3) {
+    if (typeof Parser3 !== "function") {
+      throw new Error("Cannot `" + name2 + "` without `Parser`");
+    }
+  }
+  function assertCompiler(name2, Compiler) {
+    if (typeof Compiler !== "function") {
+      throw new Error("Cannot `" + name2 + "` without `Compiler`");
+    }
+  }
+  function assertUnfrozen(name2, frozen) {
+    if (frozen) {
+      throw new Error(
+        "Cannot invoke `" + name2 + "` on a frozen processor.\nCreate a new processor first, by invoking it: use `processor()` instead of `processor`."
+      );
+    }
+  }
+  function assertNode(node2) {
+    if (!node2 || typeof node2.type !== "string") {
+      throw new Error("Expected node, got `" + node2 + "`");
+    }
+  }
+  function assertDone(name2, asyncName, complete) {
+    if (!complete) {
+      throw new Error(
+        "`" + name2 + "` finished async. Use `" + asyncName + "` instead"
+      );
+    }
+  }
+  return unified_1;
+}
+var unifiedExports = requireUnified();
+const unified = /* @__PURE__ */ getDefaultExportFromCjs(unifiedExports);
+var mdastUtilToString;
+var hasRequiredMdastUtilToString;
+function requireMdastUtilToString() {
+  if (hasRequiredMdastUtilToString) return mdastUtilToString;
+  hasRequiredMdastUtilToString = 1;
+  mdastUtilToString = toString2;
+  function toString2(node2) {
+    return node2 && (node2.value || node2.alt || node2.title || "children" in node2 && all2(node2.children) || "length" in node2 && all2(node2)) || "";
+  }
+  function all2(values3) {
+    var result = [];
+    var index2 = -1;
+    while (++index2 < values3.length) {
+      result[index2] = toString2(values3[index2]);
+    }
+    return result.join("");
+  }
+  return mdastUtilToString;
+}
+var assign_1;
+var hasRequiredAssign;
+function requireAssign() {
+  if (hasRequiredAssign) return assign_1;
+  hasRequiredAssign = 1;
+  var assign2 = Object.assign;
+  assign_1 = assign2;
+  return assign_1;
+}
+var hasOwnProperty;
+var hasRequiredHasOwnProperty;
+function requireHasOwnProperty() {
+  if (hasRequiredHasOwnProperty) return hasOwnProperty;
+  hasRequiredHasOwnProperty = 1;
+  var own = {}.hasOwnProperty;
+  hasOwnProperty = own;
+  return hasOwnProperty;
+}
+var normalizeIdentifier_1;
+var hasRequiredNormalizeIdentifier;
+function requireNormalizeIdentifier() {
+  if (hasRequiredNormalizeIdentifier) return normalizeIdentifier_1;
+  hasRequiredNormalizeIdentifier = 1;
+  function normalizeIdentifier(value) {
+    return value.replace(/[\t\n\r ]+/g, " ").replace(/^ | $/g, "").toLowerCase().toUpperCase();
+  }
+  normalizeIdentifier_1 = normalizeIdentifier;
+  return normalizeIdentifier_1;
+}
+var fromCharCode_1;
+var hasRequiredFromCharCode;
+function requireFromCharCode() {
+  if (hasRequiredFromCharCode) return fromCharCode_1;
+  hasRequiredFromCharCode = 1;
+  var fromCharCode = String.fromCharCode;
+  fromCharCode_1 = fromCharCode;
+  return fromCharCode_1;
+}
+var safeFromInt_1;
+var hasRequiredSafeFromInt;
+function requireSafeFromInt() {
+  if (hasRequiredSafeFromInt) return safeFromInt_1;
+  hasRequiredSafeFromInt = 1;
+  var fromCharCode = requireFromCharCode();
+  function safeFromInt(value, base) {
+    var code = parseInt(value, base);
+    if (
+      // C0 except for HT, LF, FF, CR, space
+      code < 9 || code === 11 || code > 13 && code < 32 || // Control character (DEL) of the basic block and C1 controls.
+      code > 126 && code < 160 || // Lone high surrogates and low surrogates.
+      code > 55295 && code < 57344 || // Noncharacters.
+      code > 64975 && code < 65008 || (code & 65535) === 65535 || (code & 65535) === 65534 || // Out of range
+      code > 1114111
+    ) {
+      return "�";
+    }
+    return fromCharCode(code);
+  }
+  safeFromInt_1 = safeFromInt;
+  return safeFromInt_1;
+}
+var content$1 = {};
+var markdownLineEnding_1;
+var hasRequiredMarkdownLineEnding;
+function requireMarkdownLineEnding() {
+  if (hasRequiredMarkdownLineEnding) return markdownLineEnding_1;
+  hasRequiredMarkdownLineEnding = 1;
+  function markdownLineEnding(code) {
+    return code < -2;
+  }
+  markdownLineEnding_1 = markdownLineEnding;
+  return markdownLineEnding_1;
+}
+var markdownSpace_1;
+var hasRequiredMarkdownSpace;
+function requireMarkdownSpace() {
+  if (hasRequiredMarkdownSpace) return markdownSpace_1;
+  hasRequiredMarkdownSpace = 1;
+  function markdownSpace(code) {
+    return code === -2 || code === -1 || code === 32;
+  }
+  markdownSpace_1 = markdownSpace;
+  return markdownSpace_1;
+}
+var factorySpace;
+var hasRequiredFactorySpace;
+function requireFactorySpace() {
+  if (hasRequiredFactorySpace) return factorySpace;
+  hasRequiredFactorySpace = 1;
+  var markdownSpace = requireMarkdownSpace();
+  function spaceFactory(effects, ok, type3, max2) {
+    var limit = max2 ? max2 - 1 : Infinity;
+    var size2 = 0;
+    return start3;
+    function start3(code) {
+      if (markdownSpace(code)) {
+        effects.enter(type3);
+        return prefix2(code);
+      }
+      return ok(code);
+    }
+    function prefix2(code) {
+      if (markdownSpace(code) && size2++ < limit) {
+        effects.consume(code);
+        return prefix2;
+      }
+      effects.exit(type3);
+      return ok(code);
+    }
+  }
+  factorySpace = spaceFactory;
+  return factorySpace;
+}
+var hasRequiredContent$1;
+function requireContent$1() {
+  if (hasRequiredContent$1) return content$1;
+  hasRequiredContent$1 = 1;
+  Object.defineProperty(content$1, "__esModule", { value: true });
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var factorySpace2 = requireFactorySpace();
+  var tokenize = initializeContent;
+  function initializeContent(effects) {
+    var contentStart = effects.attempt(
+      this.parser.constructs.contentInitial,
+      afterContentStartConstruct,
+      paragraphInitial
+    );
+    var previous;
+    return contentStart;
+    function afterContentStartConstruct(code) {
+      if (code === null) {
+        effects.consume(code);
+        return;
+      }
+      effects.enter("lineEnding");
+      effects.consume(code);
+      effects.exit("lineEnding");
+      return factorySpace2(effects, contentStart, "linePrefix");
+    }
+    function paragraphInitial(code) {
+      effects.enter("paragraph");
+      return lineStart(code);
+    }
+    function lineStart(code) {
+      var token2 = effects.enter("chunkText", {
+        contentType: "text",
+        previous
+      });
+      if (previous) {
+        previous.next = token2;
+      }
+      previous = token2;
+      return data2(code);
+    }
+    function data2(code) {
+      if (code === null) {
+        effects.exit("chunkText");
+        effects.exit("paragraph");
+        effects.consume(code);
+        return;
+      }
+      if (markdownLineEnding(code)) {
+        effects.consume(code);
+        effects.exit("chunkText");
+        return lineStart;
+      }
+      effects.consume(code);
+      return data2;
+    }
+  }
+  content$1.tokenize = tokenize;
+  return content$1;
+}
+var document$1 = {};
+var partialBlankLine_1;
+var hasRequiredPartialBlankLine;
+function requirePartialBlankLine() {
+  if (hasRequiredPartialBlankLine) return partialBlankLine_1;
+  hasRequiredPartialBlankLine = 1;
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var factorySpace2 = requireFactorySpace();
+  var partialBlankLine = {
+    tokenize: tokenizePartialBlankLine,
+    partial: true
+  };
+  function tokenizePartialBlankLine(effects, ok, nok) {
+    return factorySpace2(effects, afterWhitespace, "linePrefix");
+    function afterWhitespace(code) {
+      return code === null || markdownLineEnding(code) ? ok(code) : nok(code);
+    }
+  }
+  partialBlankLine_1 = partialBlankLine;
+  return partialBlankLine_1;
+}
+var hasRequiredDocument;
+function requireDocument() {
+  if (hasRequiredDocument) return document$1;
+  hasRequiredDocument = 1;
+  Object.defineProperty(document$1, "__esModule", { value: true });
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var factorySpace2 = requireFactorySpace();
+  var partialBlankLine = requirePartialBlankLine();
+  var tokenize = initializeDocument;
+  var containerConstruct = {
+    tokenize: tokenizeContainer
+  };
+  var lazyFlowConstruct = {
+    tokenize: tokenizeLazyFlow
+  };
+  function initializeDocument(effects) {
+    var self2 = this;
+    var stack = [];
+    var continued = 0;
+    var inspectConstruct = {
+      tokenize: tokenizeInspect,
+      partial: true
+    };
+    var inspectResult;
+    var childFlow;
+    var childToken;
+    return start3;
+    function start3(code) {
+      if (continued < stack.length) {
+        self2.containerState = stack[continued][1];
+        return effects.attempt(
+          stack[continued][0].continuation,
+          documentContinue,
+          documentContinued
+        )(code);
+      }
+      return documentContinued(code);
+    }
+    function documentContinue(code) {
+      continued++;
+      return start3(code);
+    }
+    function documentContinued(code) {
+      if (inspectResult && inspectResult.flowContinue) {
+        return flowStart(code);
+      }
+      self2.interrupt = childFlow && childFlow.currentConstruct && childFlow.currentConstruct.interruptible;
+      self2.containerState = {};
+      return effects.attempt(
+        containerConstruct,
+        containerContinue,
+        flowStart
+      )(code);
+    }
+    function containerContinue(code) {
+      stack.push([self2.currentConstruct, self2.containerState]);
+      self2.containerState = void 0;
+      return documentContinued(code);
+    }
+    function flowStart(code) {
+      if (code === null) {
+        exitContainers(0, true);
+        effects.consume(code);
+        return;
+      }
+      childFlow = childFlow || self2.parser.flow(self2.now());
+      effects.enter("chunkFlow", {
+        contentType: "flow",
+        previous: childToken,
+        _tokenizer: childFlow
+      });
+      return flowContinue(code);
+    }
+    function flowContinue(code) {
+      if (code === null) {
+        continueFlow(effects.exit("chunkFlow"));
+        return flowStart(code);
+      }
+      if (markdownLineEnding(code)) {
+        effects.consume(code);
+        continueFlow(effects.exit("chunkFlow"));
+        return effects.check(inspectConstruct, documentAfterPeek);
+      }
+      effects.consume(code);
+      return flowContinue;
+    }
+    function documentAfterPeek(code) {
+      exitContainers(
+        inspectResult.continued,
+        inspectResult && inspectResult.flowEnd
+      );
+      continued = 0;
+      return start3(code);
+    }
+    function continueFlow(token2) {
+      if (childToken) childToken.next = token2;
+      childToken = token2;
+      childFlow.lazy = inspectResult && inspectResult.lazy;
+      childFlow.defineSkip(token2.start);
+      childFlow.write(self2.sliceStream(token2));
+    }
+    function exitContainers(size2, end2) {
+      var index2 = stack.length;
+      if (childFlow && end2) {
+        childFlow.write([null]);
+        childToken = childFlow = void 0;
+      }
+      while (index2-- > size2) {
+        self2.containerState = stack[index2][1];
+        stack[index2][0].exit.call(self2, effects);
+      }
+      stack.length = size2;
+    }
+    function tokenizeInspect(effects2, ok) {
+      var subcontinued = 0;
+      inspectResult = {};
+      return inspectStart;
+      function inspectStart(code) {
+        if (subcontinued < stack.length) {
+          self2.containerState = stack[subcontinued][1];
+          return effects2.attempt(
+            stack[subcontinued][0].continuation,
+            inspectContinue,
+            inspectLess
+          )(code);
+        }
+        if (childFlow.currentConstruct && childFlow.currentConstruct.concrete) {
+          inspectResult.flowContinue = true;
+          return inspectDone(code);
+        }
+        self2.interrupt = childFlow.currentConstruct && childFlow.currentConstruct.interruptible;
+        self2.containerState = {};
+        return effects2.attempt(
+          containerConstruct,
+          inspectFlowEnd,
+          inspectDone
+        )(code);
+      }
+      function inspectContinue(code) {
+        subcontinued++;
+        return self2.containerState._closeFlow ? inspectFlowEnd(code) : inspectStart(code);
+      }
+      function inspectLess(code) {
+        if (childFlow.currentConstruct && childFlow.currentConstruct.lazy) {
+          self2.containerState = {};
+          return effects2.attempt(
+            containerConstruct,
+            inspectFlowEnd,
+            // Maybe flow, or a blank line?
+            effects2.attempt(
+              lazyFlowConstruct,
+              inspectFlowEnd,
+              effects2.check(partialBlankLine, inspectFlowEnd, inspectLazy)
+            )
+          )(code);
+        }
+        return inspectFlowEnd(code);
+      }
+      function inspectLazy(code) {
+        subcontinued = stack.length;
+        inspectResult.lazy = true;
+        inspectResult.flowContinue = true;
+        return inspectDone(code);
+      }
+      function inspectFlowEnd(code) {
+        inspectResult.flowEnd = true;
+        return inspectDone(code);
+      }
+      function inspectDone(code) {
+        inspectResult.continued = subcontinued;
+        self2.interrupt = self2.containerState = void 0;
+        return ok(code);
+      }
+    }
+  }
+  function tokenizeContainer(effects, ok, nok) {
+    return factorySpace2(
+      effects,
+      effects.attempt(this.parser.constructs.document, ok, nok),
+      "linePrefix",
+      this.parser.constructs.disable.null.indexOf("codeIndented") > -1 ? void 0 : 4
+    );
+  }
+  function tokenizeLazyFlow(effects, ok, nok) {
+    return factorySpace2(
+      effects,
+      effects.lazy(this.parser.constructs.flow, ok, nok),
+      "linePrefix",
+      this.parser.constructs.disable.null.indexOf("codeIndented") > -1 ? void 0 : 4
+    );
+  }
+  document$1.tokenize = tokenize;
+  return document$1;
+}
+var flow = {};
+var sizeChunks_1;
+var hasRequiredSizeChunks;
+function requireSizeChunks() {
+  if (hasRequiredSizeChunks) return sizeChunks_1;
+  hasRequiredSizeChunks = 1;
+  function sizeChunks(chunks) {
+    var index2 = -1;
+    var size2 = 0;
+    while (++index2 < chunks.length) {
+      size2 += typeof chunks[index2] === "string" ? chunks[index2].length : 1;
+    }
+    return size2;
+  }
+  sizeChunks_1 = sizeChunks;
+  return sizeChunks_1;
+}
+var prefixSize_1;
+var hasRequiredPrefixSize;
+function requirePrefixSize() {
+  if (hasRequiredPrefixSize) return prefixSize_1;
+  hasRequiredPrefixSize = 1;
+  var sizeChunks = requireSizeChunks();
+  function prefixSize(events, type3) {
+    var tail = events[events.length - 1];
+    if (!tail || tail[1].type !== type3) return 0;
+    return sizeChunks(tail[2].sliceStream(tail[1]));
+  }
+  prefixSize_1 = prefixSize;
+  return prefixSize_1;
+}
+var splice_1;
+var hasRequiredSplice;
+function requireSplice() {
+  if (hasRequiredSplice) return splice_1;
+  hasRequiredSplice = 1;
+  var splice2 = [].splice;
+  splice_1 = splice2;
+  return splice_1;
+}
+var chunkedSplice_1;
+var hasRequiredChunkedSplice;
+function requireChunkedSplice() {
+  if (hasRequiredChunkedSplice) return chunkedSplice_1;
+  hasRequiredChunkedSplice = 1;
+  var splice2 = requireSplice();
+  function chunkedSplice(list, start3, remove2, items) {
+    var end2 = list.length;
+    var chunkStart = 0;
+    var parameters;
+    if (start3 < 0) {
+      start3 = -start3 > end2 ? 0 : end2 + start3;
+    } else {
+      start3 = start3 > end2 ? end2 : start3;
+    }
+    remove2 = remove2 > 0 ? remove2 : 0;
+    if (items.length < 1e4) {
+      parameters = Array.from(items);
+      parameters.unshift(start3, remove2);
+      splice2.apply(list, parameters);
+    } else {
+      if (remove2) splice2.apply(list, [start3, remove2]);
+      while (chunkStart < items.length) {
+        parameters = items.slice(chunkStart, chunkStart + 1e4);
+        parameters.unshift(start3, 0);
+        splice2.apply(list, parameters);
+        chunkStart += 1e4;
+        start3 += 1e4;
+      }
+    }
+  }
+  chunkedSplice_1 = chunkedSplice;
+  return chunkedSplice_1;
+}
+var shallow_1;
+var hasRequiredShallow;
+function requireShallow() {
+  if (hasRequiredShallow) return shallow_1;
+  hasRequiredShallow = 1;
+  var assign2 = requireAssign();
+  function shallow(object2) {
+    return assign2({}, object2);
+  }
+  shallow_1 = shallow;
+  return shallow_1;
+}
+var subtokenize_1;
+var hasRequiredSubtokenize;
+function requireSubtokenize() {
+  if (hasRequiredSubtokenize) return subtokenize_1;
+  hasRequiredSubtokenize = 1;
+  var assign2 = requireAssign();
+  var chunkedSplice = requireChunkedSplice();
+  var shallow = requireShallow();
+  function subtokenize(events) {
+    var jumps = {};
+    var index2 = -1;
+    var event;
+    var lineIndex;
+    var otherIndex;
+    var otherEvent;
+    var parameters;
+    var subevents;
+    var more;
+    while (++index2 < events.length) {
+      while (index2 in jumps) {
+        index2 = jumps[index2];
+      }
+      event = events[index2];
+      if (index2 && event[1].type === "chunkFlow" && events[index2 - 1][1].type === "listItemPrefix") {
+        subevents = event[1]._tokenizer.events;
+        otherIndex = 0;
+        if (otherIndex < subevents.length && subevents[otherIndex][1].type === "lineEndingBlank") {
+          otherIndex += 2;
+        }
+        if (otherIndex < subevents.length && subevents[otherIndex][1].type === "content") {
+          while (++otherIndex < subevents.length) {
+            if (subevents[otherIndex][1].type === "content") {
+              break;
+            }
+            if (subevents[otherIndex][1].type === "chunkText") {
+              subevents[otherIndex][1].isInFirstContentOfListItem = true;
+              otherIndex++;
+            }
+          }
+        }
+      }
+      if (event[0] === "enter") {
+        if (event[1].contentType) {
+          assign2(jumps, subcontent(events, index2));
+          index2 = jumps[index2];
+          more = true;
+        }
+      } else if (event[1]._container || event[1]._movePreviousLineEndings) {
+        otherIndex = index2;
+        lineIndex = void 0;
+        while (otherIndex--) {
+          otherEvent = events[otherIndex];
+          if (otherEvent[1].type === "lineEnding" || otherEvent[1].type === "lineEndingBlank") {
+            if (otherEvent[0] === "enter") {
+              if (lineIndex) {
+                events[lineIndex][1].type = "lineEndingBlank";
+              }
+              otherEvent[1].type = "lineEnding";
+              lineIndex = otherIndex;
+            }
+          } else {
+            break;
+          }
+        }
+        if (lineIndex) {
+          event[1].end = shallow(events[lineIndex][1].start);
+          parameters = events.slice(lineIndex, index2);
+          parameters.unshift(event);
+          chunkedSplice(events, lineIndex, index2 - lineIndex + 1, parameters);
+        }
+      }
+    }
+    return !more;
+  }
+  function subcontent(events, eventIndex) {
+    var token2 = events[eventIndex][1];
+    var context2 = events[eventIndex][2];
+    var startPosition = eventIndex - 1;
+    var startPositions = [];
+    var tokenizer = token2._tokenizer || context2.parser[token2.contentType](token2.start);
+    var childEvents = tokenizer.events;
+    var jumps = [];
+    var gaps = {};
+    var stream;
+    var previous;
+    var index2;
+    var entered;
+    var end2;
+    var adjust;
+    while (token2) {
+      while (events[++startPosition][1] !== token2) {
+      }
+      startPositions.push(startPosition);
+      if (!token2._tokenizer) {
+        stream = context2.sliceStream(token2);
+        if (!token2.next) {
+          stream.push(null);
+        }
+        if (previous) {
+          tokenizer.defineSkip(token2.start);
+        }
+        if (token2.isInFirstContentOfListItem) {
+          tokenizer._gfmTasklistFirstContentOfListItem = true;
+        }
+        tokenizer.write(stream);
+        if (token2.isInFirstContentOfListItem) {
+          tokenizer._gfmTasklistFirstContentOfListItem = void 0;
+        }
+      }
+      previous = token2;
+      token2 = token2.next;
+    }
+    token2 = previous;
+    index2 = childEvents.length;
+    while (index2--) {
+      if (childEvents[index2][0] === "enter") {
+        entered = true;
+      } else if (
+        // Find a void token that includes a break.
+        entered && childEvents[index2][1].type === childEvents[index2 - 1][1].type && childEvents[index2][1].start.line !== childEvents[index2][1].end.line
+      ) {
+        add(childEvents.slice(index2 + 1, end2));
+        token2._tokenizer = token2.next = void 0;
+        token2 = token2.previous;
+        end2 = index2 + 1;
+      }
+    }
+    tokenizer.events = token2._tokenizer = token2.next = void 0;
+    add(childEvents.slice(0, end2));
+    index2 = -1;
+    adjust = 0;
+    while (++index2 < jumps.length) {
+      gaps[adjust + jumps[index2][0]] = adjust + jumps[index2][1];
+      adjust += jumps[index2][1] - jumps[index2][0] - 1;
+    }
+    return gaps;
+    function add(slice2) {
+      var start3 = startPositions.pop();
+      jumps.unshift([start3, start3 + slice2.length - 1]);
+      chunkedSplice(events, start3, 2, slice2);
+    }
+  }
+  subtokenize_1 = subtokenize;
+  return subtokenize_1;
+}
+var content_1;
+var hasRequiredContent;
+function requireContent() {
+  if (hasRequiredContent) return content_1;
+  hasRequiredContent = 1;
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var prefixSize = requirePrefixSize();
+  var subtokenize = requireSubtokenize();
+  var factorySpace2 = requireFactorySpace();
+  var content2 = {
+    tokenize: tokenizeContent,
+    resolve: resolveContent,
+    interruptible: true,
+    lazy: true
+  };
+  var continuationConstruct = {
+    tokenize: tokenizeContinuation,
+    partial: true
+  };
+  function resolveContent(events) {
+    subtokenize(events);
+    return events;
+  }
+  function tokenizeContent(effects, ok) {
+    var previous;
+    return start3;
+    function start3(code) {
+      effects.enter("content");
+      previous = effects.enter("chunkContent", {
+        contentType: "content"
+      });
+      return data2(code);
+    }
+    function data2(code) {
+      if (code === null) {
+        return contentEnd(code);
+      }
+      if (markdownLineEnding(code)) {
+        return effects.check(
+          continuationConstruct,
+          contentContinue,
+          contentEnd
+        )(code);
+      }
+      effects.consume(code);
+      return data2;
+    }
+    function contentEnd(code) {
+      effects.exit("chunkContent");
+      effects.exit("content");
+      return ok(code);
+    }
+    function contentContinue(code) {
+      effects.consume(code);
+      effects.exit("chunkContent");
+      previous = previous.next = effects.enter("chunkContent", {
+        contentType: "content",
+        previous
+      });
+      return data2;
+    }
+  }
+  function tokenizeContinuation(effects, ok, nok) {
+    var self2 = this;
+    return startLookahead;
+    function startLookahead(code) {
+      effects.enter("lineEnding");
+      effects.consume(code);
+      effects.exit("lineEnding");
+      return factorySpace2(effects, prefixed, "linePrefix");
+    }
+    function prefixed(code) {
+      if (code === null || markdownLineEnding(code)) {
+        return nok(code);
+      }
+      if (self2.parser.constructs.disable.null.indexOf("codeIndented") > -1 || prefixSize(self2.events, "linePrefix") < 4) {
+        return effects.interrupt(self2.parser.constructs.flow, nok, ok)(code);
+      }
+      return ok(code);
+    }
+  }
+  content_1 = content2;
+  return content_1;
+}
+var hasRequiredFlow;
+function requireFlow() {
+  if (hasRequiredFlow) return flow;
+  hasRequiredFlow = 1;
+  Object.defineProperty(flow, "__esModule", { value: true });
+  var content2 = requireContent();
+  var factorySpace2 = requireFactorySpace();
+  var partialBlankLine = requirePartialBlankLine();
+  var tokenize = initializeFlow;
+  function initializeFlow(effects) {
+    var self2 = this;
+    var initial2 = effects.attempt(
+      // Try to parse a blank line.
+      partialBlankLine,
+      atBlankEnding,
+      // Try to parse initial flow (essentially, only code).
+      effects.attempt(
+        this.parser.constructs.flowInitial,
+        afterConstruct,
+        factorySpace2(
+          effects,
+          effects.attempt(
+            this.parser.constructs.flow,
+            afterConstruct,
+            effects.attempt(content2, afterConstruct)
+          ),
+          "linePrefix"
+        )
+      )
+    );
+    return initial2;
+    function atBlankEnding(code) {
+      if (code === null) {
+        effects.consume(code);
+        return;
+      }
+      effects.enter("lineEndingBlank");
+      effects.consume(code);
+      effects.exit("lineEndingBlank");
+      self2.currentConstruct = void 0;
+      return initial2;
+    }
+    function afterConstruct(code) {
+      if (code === null) {
+        effects.consume(code);
+        return;
+      }
+      effects.enter("lineEnding");
+      effects.consume(code);
+      effects.exit("lineEnding");
+      self2.currentConstruct = void 0;
+      return initial2;
+    }
+  }
+  flow.tokenize = tokenize;
+  return flow;
+}
+var text = {};
+var hasRequiredText$1;
+function requireText$1() {
+  if (hasRequiredText$1) return text;
+  hasRequiredText$1 = 1;
+  Object.defineProperty(text, "__esModule", { value: true });
+  var assign2 = requireAssign();
+  var shallow = requireShallow();
+  var text$1 = initializeFactory("text");
+  var string2 = initializeFactory("string");
+  var resolver = {
+    resolveAll: createResolver()
+  };
+  function initializeFactory(field) {
+    return {
+      tokenize: initializeText,
+      resolveAll: createResolver(
+        field === "text" ? resolveAllLineSuffixes : void 0
+      )
+    };
+    function initializeText(effects) {
+      var self2 = this;
+      var constructs2 = this.parser.constructs[field];
+      var text2 = effects.attempt(constructs2, start3, notText);
+      return start3;
+      function start3(code) {
+        return atBreak(code) ? text2(code) : notText(code);
+      }
+      function notText(code) {
+        if (code === null) {
+          effects.consume(code);
+          return;
+        }
+        effects.enter("data");
+        effects.consume(code);
+        return data2;
+      }
+      function data2(code) {
+        if (atBreak(code)) {
+          effects.exit("data");
+          return text2(code);
+        }
+        effects.consume(code);
+        return data2;
+      }
+      function atBreak(code) {
+        var list = constructs2[code];
+        var index2 = -1;
+        if (code === null) {
+          return true;
+        }
+        if (list) {
+          while (++index2 < list.length) {
+            if (!list[index2].previous || list[index2].previous.call(self2, self2.previous)) {
+              return true;
+            }
+          }
+        }
+      }
+    }
+  }
+  function createResolver(extraResolver) {
+    return resolveAllText;
+    function resolveAllText(events, context2) {
+      var index2 = -1;
+      var enter;
+      while (++index2 <= events.length) {
+        if (enter === void 0) {
+          if (events[index2] && events[index2][1].type === "data") {
+            enter = index2;
+            index2++;
+          }
+        } else if (!events[index2] || events[index2][1].type !== "data") {
+          if (index2 !== enter + 2) {
+            events[enter][1].end = events[index2 - 1][1].end;
+            events.splice(enter + 2, index2 - enter - 2);
+            index2 = enter + 2;
+          }
+          enter = void 0;
+        }
+      }
+      return extraResolver ? extraResolver(events, context2) : events;
+    }
+  }
+  function resolveAllLineSuffixes(events, context2) {
+    var eventIndex = -1;
+    var chunks;
+    var data2;
+    var chunk;
+    var index2;
+    var bufferIndex;
+    var size2;
+    var tabs;
+    var token2;
+    while (++eventIndex <= events.length) {
+      if ((eventIndex === events.length || events[eventIndex][1].type === "lineEnding") && events[eventIndex - 1][1].type === "data") {
+        data2 = events[eventIndex - 1][1];
+        chunks = context2.sliceStream(data2);
+        index2 = chunks.length;
+        bufferIndex = -1;
+        size2 = 0;
+        tabs = void 0;
+        while (index2--) {
+          chunk = chunks[index2];
+          if (typeof chunk === "string") {
+            bufferIndex = chunk.length;
+            while (chunk.charCodeAt(bufferIndex - 1) === 32) {
+              size2++;
+              bufferIndex--;
+            }
+            if (bufferIndex) break;
+            bufferIndex = -1;
+          } else if (chunk === -2) {
+            tabs = true;
+            size2++;
+          } else if (chunk === -1) ;
+          else {
+            index2++;
+            break;
+          }
+        }
+        if (size2) {
+          token2 = {
+            type: eventIndex === events.length || tabs || size2 < 2 ? "lineSuffix" : "hardBreakTrailing",
+            start: {
+              line: data2.end.line,
+              column: data2.end.column - size2,
+              offset: data2.end.offset - size2,
+              _index: data2.start._index + index2,
+              _bufferIndex: index2 ? bufferIndex : data2.start._bufferIndex + bufferIndex
+            },
+            end: shallow(data2.end)
+          };
+          data2.end = shallow(token2.start);
+          if (data2.start.offset === data2.end.offset) {
+            assign2(data2, token2);
+          } else {
+            events.splice(
+              eventIndex,
+              0,
+              ["enter", token2, context2],
+              ["exit", token2, context2]
+            );
+            eventIndex += 2;
+          }
+        }
+        eventIndex++;
+      }
+    }
+    return events;
+  }
+  text.resolver = resolver;
+  text.string = string2;
+  text.text = text$1;
+  return text;
+}
+var miniflat_1;
+var hasRequiredMiniflat;
+function requireMiniflat() {
+  if (hasRequiredMiniflat) return miniflat_1;
+  hasRequiredMiniflat = 1;
+  function miniflat(value) {
+    return value === null || value === void 0 ? [] : "length" in value ? value : [value];
+  }
+  miniflat_1 = miniflat;
+  return miniflat_1;
+}
+var combineExtensions_1;
+var hasRequiredCombineExtensions;
+function requireCombineExtensions() {
+  if (hasRequiredCombineExtensions) return combineExtensions_1;
+  hasRequiredCombineExtensions = 1;
+  var hasOwnProperty2 = requireHasOwnProperty();
+  var chunkedSplice = requireChunkedSplice();
+  var miniflat = requireMiniflat();
+  function combineExtensions(extensions) {
+    var all2 = {};
+    var index2 = -1;
+    while (++index2 < extensions.length) {
+      extension(all2, extensions[index2]);
+    }
+    return all2;
+  }
+  function extension(all2, extension2) {
+    var hook3;
+    var left2;
+    var right2;
+    var code;
+    for (hook3 in extension2) {
+      left2 = hasOwnProperty2.call(all2, hook3) ? all2[hook3] : all2[hook3] = {};
+      right2 = extension2[hook3];
+      for (code in right2) {
+        left2[code] = constructs2(
+          miniflat(right2[code]),
+          hasOwnProperty2.call(left2, code) ? left2[code] : []
+        );
+      }
+    }
+  }
+  function constructs2(list, existing) {
+    var index2 = -1;
+    var before = [];
+    while (++index2 < list.length) {
+      (list[index2].add === "after" ? existing : before).push(list[index2]);
+    }
+    chunkedSplice(existing, 0, 0, before);
+    return existing;
+  }
+  combineExtensions_1 = combineExtensions;
+  return combineExtensions_1;
+}
+var chunkedPush_1;
+var hasRequiredChunkedPush;
+function requireChunkedPush() {
+  if (hasRequiredChunkedPush) return chunkedPush_1;
+  hasRequiredChunkedPush = 1;
+  var chunkedSplice = requireChunkedSplice();
+  function chunkedPush(list, items) {
+    if (list.length) {
+      chunkedSplice(list, list.length, 0, items);
+      return list;
+    }
+    return items;
+  }
+  chunkedPush_1 = chunkedPush;
+  return chunkedPush_1;
+}
+var resolveAll_1;
+var hasRequiredResolveAll;
+function requireResolveAll() {
+  if (hasRequiredResolveAll) return resolveAll_1;
+  hasRequiredResolveAll = 1;
+  function resolveAll(constructs2, events, context2) {
+    var called = [];
+    var index2 = -1;
+    var resolve;
+    while (++index2 < constructs2.length) {
+      resolve = constructs2[index2].resolveAll;
+      if (resolve && called.indexOf(resolve) < 0) {
+        events = resolve(events, context2);
+        called.push(resolve);
+      }
+    }
+    return events;
+  }
+  resolveAll_1 = resolveAll;
+  return resolveAll_1;
+}
+var serializeChunks_1;
+var hasRequiredSerializeChunks;
+function requireSerializeChunks() {
+  if (hasRequiredSerializeChunks) return serializeChunks_1;
+  hasRequiredSerializeChunks = 1;
+  var fromCharCode = requireFromCharCode();
+  function serializeChunks(chunks) {
+    var index2 = -1;
+    var result = [];
+    var chunk;
+    var value;
+    var atTab;
+    while (++index2 < chunks.length) {
+      chunk = chunks[index2];
+      if (typeof chunk === "string") {
+        value = chunk;
+      } else if (chunk === -5) {
+        value = "\r";
+      } else if (chunk === -4) {
+        value = "\n";
+      } else if (chunk === -3) {
+        value = "\r\n";
+      } else if (chunk === -2) {
+        value = "	";
+      } else if (chunk === -1) {
+        if (atTab) continue;
+        value = " ";
+      } else {
+        value = fromCharCode(chunk);
+      }
+      atTab = chunk === -2;
+      result.push(value);
+    }
+    return result.join("");
+  }
+  serializeChunks_1 = serializeChunks;
+  return serializeChunks_1;
+}
+var sliceChunks_1;
+var hasRequiredSliceChunks;
+function requireSliceChunks() {
+  if (hasRequiredSliceChunks) return sliceChunks_1;
+  hasRequiredSliceChunks = 1;
+  function sliceChunks(chunks, token2) {
+    var startIndex = token2.start._index;
+    var startBufferIndex = token2.start._bufferIndex;
+    var endIndex = token2.end._index;
+    var endBufferIndex = token2.end._bufferIndex;
+    var view;
+    if (startIndex === endIndex) {
+      view = [chunks[startIndex].slice(startBufferIndex, endBufferIndex)];
+    } else {
+      view = chunks.slice(startIndex, endIndex);
+      if (startBufferIndex > -1) {
+        view[0] = view[0].slice(startBufferIndex);
+      }
+      if (endBufferIndex > 0) {
+        view.push(chunks[endIndex].slice(0, endBufferIndex));
+      }
+    }
+    return view;
+  }
+  sliceChunks_1 = sliceChunks;
+  return sliceChunks_1;
+}
+var createTokenizer_1;
+var hasRequiredCreateTokenizer;
+function requireCreateTokenizer() {
+  if (hasRequiredCreateTokenizer) return createTokenizer_1;
+  hasRequiredCreateTokenizer = 1;
+  var assign2 = requireAssign();
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var chunkedPush = requireChunkedPush();
+  var chunkedSplice = requireChunkedSplice();
+  var miniflat = requireMiniflat();
+  var resolveAll = requireResolveAll();
+  var serializeChunks = requireSerializeChunks();
+  var shallow = requireShallow();
+  var sliceChunks = requireSliceChunks();
+  function createTokenizer(parser3, initialize2, from3) {
+    var point = from3 ? shallow(from3) : {
+      line: 1,
+      column: 1,
+      offset: 0
+    };
+    var columnStart = {};
+    var resolveAllConstructs = [];
+    var chunks = [];
+    var stack = [];
+    var effects = {
+      consume,
+      enter,
+      exit,
+      attempt: constructFactory(onsuccessfulconstruct),
+      check: constructFactory(onsuccessfulcheck),
+      interrupt: constructFactory(onsuccessfulcheck, {
+        interrupt: true
+      }),
+      lazy: constructFactory(onsuccessfulcheck, {
+        lazy: true
+      })
+    };
+    var context2 = {
+      previous: null,
+      events: [],
+      parser: parser3,
+      sliceStream,
+      sliceSerialize,
+      now: now2,
+      defineSkip: skip,
+      write: write2
+    };
+    var state = initialize2.tokenize.call(context2, effects);
+    if (initialize2.resolveAll) {
+      resolveAllConstructs.push(initialize2);
+    }
+    point._index = 0;
+    point._bufferIndex = -1;
+    return context2;
+    function write2(slice2) {
+      chunks = chunkedPush(chunks, slice2);
+      main2();
+      if (chunks[chunks.length - 1] !== null) {
+        return [];
+      }
+      addResult(initialize2, 0);
+      context2.events = resolveAll(resolveAllConstructs, context2.events, context2);
+      return context2.events;
+    }
+    function sliceSerialize(token2) {
+      return serializeChunks(sliceStream(token2));
+    }
+    function sliceStream(token2) {
+      return sliceChunks(chunks, token2);
+    }
+    function now2() {
+      return shallow(point);
+    }
+    function skip(value) {
+      columnStart[value.line] = value.column;
+      accountForPotentialSkip();
+    }
+    function main2() {
+      var chunkIndex;
+      var chunk;
+      while (point._index < chunks.length) {
+        chunk = chunks[point._index];
+        if (typeof chunk === "string") {
+          chunkIndex = point._index;
+          if (point._bufferIndex < 0) {
+            point._bufferIndex = 0;
+          }
+          while (point._index === chunkIndex && point._bufferIndex < chunk.length) {
+            go(chunk.charCodeAt(point._bufferIndex));
+          }
+        } else {
+          go(chunk);
+        }
+      }
+    }
+    function go(code) {
+      state = state(code);
+    }
+    function consume(code) {
+      if (markdownLineEnding(code)) {
+        point.line++;
+        point.column = 1;
+        point.offset += code === -3 ? 2 : 1;
+        accountForPotentialSkip();
+      } else if (code !== -1) {
+        point.column++;
+        point.offset++;
+      }
+      if (point._bufferIndex < 0) {
+        point._index++;
+      } else {
+        point._bufferIndex++;
+        if (point._bufferIndex === chunks[point._index].length) {
+          point._bufferIndex = -1;
+          point._index++;
+        }
+      }
+      context2.previous = code;
+    }
+    function enter(type3, fields) {
+      var token2 = fields || {};
+      token2.type = type3;
+      token2.start = now2();
+      context2.events.push(["enter", token2, context2]);
+      stack.push(token2);
+      return token2;
+    }
+    function exit(type3) {
+      var token2 = stack.pop();
+      token2.end = now2();
+      context2.events.push(["exit", token2, context2]);
+      return token2;
+    }
+    function onsuccessfulconstruct(construct, info2) {
+      addResult(construct, info2.from);
+    }
+    function onsuccessfulcheck(construct, info2) {
+      info2.restore();
+    }
+    function constructFactory(onreturn, fields) {
+      return hook3;
+      function hook3(constructs2, returnState, bogusState) {
+        var listOfConstructs;
+        var constructIndex;
+        var currentConstruct;
+        var info2;
+        return constructs2.tokenize || "length" in constructs2 ? handleListOfConstructs(miniflat(constructs2)) : handleMapOfConstructs;
+        function handleMapOfConstructs(code) {
+          if (code in constructs2 || null in constructs2) {
+            return handleListOfConstructs(
+              constructs2.null ? (
+                /* c8 ignore next */
+                miniflat(constructs2[code]).concat(miniflat(constructs2.null))
+              ) : constructs2[code]
+            )(code);
+          }
+          return bogusState(code);
+        }
+        function handleListOfConstructs(list) {
+          listOfConstructs = list;
+          constructIndex = 0;
+          return handleConstruct(list[constructIndex]);
+        }
+        function handleConstruct(construct) {
+          return start3;
+          function start3(code) {
+            info2 = store();
+            currentConstruct = construct;
+            if (!construct.partial) {
+              context2.currentConstruct = construct;
+            }
+            if (construct.name && context2.parser.constructs.disable.null.indexOf(construct.name) > -1) {
+              return nok();
+            }
+            return construct.tokenize.call(
+              fields ? assign2({}, context2, fields) : context2,
+              effects,
+              ok,
+              nok
+            )(code);
+          }
+        }
+        function ok(code) {
+          onreturn(currentConstruct, info2);
+          return returnState;
+        }
+        function nok(code) {
+          info2.restore();
+          if (++constructIndex < listOfConstructs.length) {
+            return handleConstruct(listOfConstructs[constructIndex]);
+          }
+          return bogusState;
+        }
+      }
+    }
+    function addResult(construct, from4) {
+      if (construct.resolveAll && resolveAllConstructs.indexOf(construct) < 0) {
+        resolveAllConstructs.push(construct);
+      }
+      if (construct.resolve) {
+        chunkedSplice(
+          context2.events,
+          from4,
+          context2.events.length - from4,
+          construct.resolve(context2.events.slice(from4), context2)
+        );
+      }
+      if (construct.resolveTo) {
+        context2.events = construct.resolveTo(context2.events, context2);
+      }
+    }
+    function store() {
+      var startPoint = now2();
+      var startPrevious = context2.previous;
+      var startCurrentConstruct = context2.currentConstruct;
+      var startEventsIndex = context2.events.length;
+      var startStack = Array.from(stack);
+      return {
+        restore,
+        from: startEventsIndex
+      };
+      function restore() {
+        point = startPoint;
+        context2.previous = startPrevious;
+        context2.currentConstruct = startCurrentConstruct;
+        context2.events.length = startEventsIndex;
+        stack = startStack;
+        accountForPotentialSkip();
+      }
+    }
+    function accountForPotentialSkip() {
+      if (point.line in columnStart && point.column < 2) {
+        point.column = columnStart[point.line];
+        point.offset += columnStart[point.line] - 1;
+      }
+    }
+  }
+  createTokenizer_1 = createTokenizer;
+  return createTokenizer_1;
+}
+var constructs = {};
+var markdownLineEndingOrSpace_1;
+var hasRequiredMarkdownLineEndingOrSpace;
+function requireMarkdownLineEndingOrSpace() {
+  if (hasRequiredMarkdownLineEndingOrSpace) return markdownLineEndingOrSpace_1;
+  hasRequiredMarkdownLineEndingOrSpace = 1;
+  function markdownLineEndingOrSpace(code) {
+    return code < 0 || code === 32;
+  }
+  markdownLineEndingOrSpace_1 = markdownLineEndingOrSpace;
+  return markdownLineEndingOrSpace_1;
+}
+var unicodePunctuationRegex;
+var hasRequiredUnicodePunctuationRegex;
+function requireUnicodePunctuationRegex() {
+  if (hasRequiredUnicodePunctuationRegex) return unicodePunctuationRegex;
+  hasRequiredUnicodePunctuationRegex = 1;
+  var unicodePunctuation = /[!-\/:-@\[-`\{-~\xA1\xA7\xAB\xB6\xB7\xBB\xBF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061E\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u09FD\u0A76\u0AF0\u0C77\u0C84\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E4F\u2E52\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]/;
+  unicodePunctuationRegex = unicodePunctuation;
+  return unicodePunctuationRegex;
+}
+var regexCheck_1;
+var hasRequiredRegexCheck;
+function requireRegexCheck() {
+  if (hasRequiredRegexCheck) return regexCheck_1;
+  hasRequiredRegexCheck = 1;
+  var fromCharCode = requireFromCharCode();
+  function regexCheck(regex) {
+    return check2;
+    function check2(code) {
+      return regex.test(fromCharCode(code));
+    }
+  }
+  regexCheck_1 = regexCheck;
+  return regexCheck_1;
+}
+var unicodePunctuation_1;
+var hasRequiredUnicodePunctuation;
+function requireUnicodePunctuation() {
+  if (hasRequiredUnicodePunctuation) return unicodePunctuation_1;
+  hasRequiredUnicodePunctuation = 1;
+  var unicodePunctuationRegex2 = requireUnicodePunctuationRegex();
+  var regexCheck = requireRegexCheck();
+  var unicodePunctuation = regexCheck(unicodePunctuationRegex2);
+  unicodePunctuation_1 = unicodePunctuation;
+  return unicodePunctuation_1;
+}
+var unicodeWhitespace_1;
+var hasRequiredUnicodeWhitespace;
+function requireUnicodeWhitespace() {
+  if (hasRequiredUnicodeWhitespace) return unicodeWhitespace_1;
+  hasRequiredUnicodeWhitespace = 1;
+  var regexCheck = requireRegexCheck();
+  var unicodeWhitespace = regexCheck(/\s/);
+  unicodeWhitespace_1 = unicodeWhitespace;
+  return unicodeWhitespace_1;
+}
+var classifyCharacter_1;
+var hasRequiredClassifyCharacter;
+function requireClassifyCharacter() {
+  if (hasRequiredClassifyCharacter) return classifyCharacter_1;
+  hasRequiredClassifyCharacter = 1;
+  var markdownLineEndingOrSpace = requireMarkdownLineEndingOrSpace();
+  var unicodePunctuation = requireUnicodePunctuation();
+  var unicodeWhitespace = requireUnicodeWhitespace();
+  function classifyCharacter(code) {
+    if (code === null || markdownLineEndingOrSpace(code) || unicodeWhitespace(code)) {
+      return 1;
+    }
+    if (unicodePunctuation(code)) {
+      return 2;
+    }
+  }
+  classifyCharacter_1 = classifyCharacter;
+  return classifyCharacter_1;
+}
+var movePoint_1;
+var hasRequiredMovePoint;
+function requireMovePoint() {
+  if (hasRequiredMovePoint) return movePoint_1;
+  hasRequiredMovePoint = 1;
+  function movePoint(point, offset3) {
+    point.column += offset3;
+    point.offset += offset3;
+    point._bufferIndex += offset3;
+    return point;
+  }
+  movePoint_1 = movePoint;
+  return movePoint_1;
+}
+var attention_1;
+var hasRequiredAttention;
+function requireAttention() {
+  if (hasRequiredAttention) return attention_1;
+  hasRequiredAttention = 1;
+  var chunkedPush = requireChunkedPush();
+  var chunkedSplice = requireChunkedSplice();
+  var classifyCharacter = requireClassifyCharacter();
+  var movePoint = requireMovePoint();
+  var resolveAll = requireResolveAll();
+  var shallow = requireShallow();
+  var attention = {
+    name: "attention",
+    tokenize: tokenizeAttention,
+    resolveAll: resolveAllAttention
+  };
+  function resolveAllAttention(events, context2) {
+    var index2 = -1;
+    var open;
+    var group2;
+    var text2;
+    var openingSequence;
+    var closingSequence;
+    var use2;
+    var nextEvents;
+    var offset3;
+    while (++index2 < events.length) {
+      if (events[index2][0] === "enter" && events[index2][1].type === "attentionSequence" && events[index2][1]._close) {
+        open = index2;
+        while (open--) {
+          if (events[open][0] === "exit" && events[open][1].type === "attentionSequence" && events[open][1]._open && // If the markers are the same:
+          context2.sliceSerialize(events[open][1]).charCodeAt(0) === context2.sliceSerialize(events[index2][1]).charCodeAt(0)) {
+            if ((events[open][1]._close || events[index2][1]._open) && (events[index2][1].end.offset - events[index2][1].start.offset) % 3 && !((events[open][1].end.offset - events[open][1].start.offset + events[index2][1].end.offset - events[index2][1].start.offset) % 3)) {
+              continue;
+            }
+            use2 = events[open][1].end.offset - events[open][1].start.offset > 1 && events[index2][1].end.offset - events[index2][1].start.offset > 1 ? 2 : 1;
+            openingSequence = {
+              type: use2 > 1 ? "strongSequence" : "emphasisSequence",
+              start: movePoint(shallow(events[open][1].end), -use2),
+              end: shallow(events[open][1].end)
+            };
+            closingSequence = {
+              type: use2 > 1 ? "strongSequence" : "emphasisSequence",
+              start: shallow(events[index2][1].start),
+              end: movePoint(shallow(events[index2][1].start), use2)
+            };
+            text2 = {
+              type: use2 > 1 ? "strongText" : "emphasisText",
+              start: shallow(events[open][1].end),
+              end: shallow(events[index2][1].start)
+            };
+            group2 = {
+              type: use2 > 1 ? "strong" : "emphasis",
+              start: shallow(openingSequence.start),
+              end: shallow(closingSequence.end)
+            };
+            events[open][1].end = shallow(openingSequence.start);
+            events[index2][1].start = shallow(closingSequence.end);
+            nextEvents = [];
+            if (events[open][1].end.offset - events[open][1].start.offset) {
+              nextEvents = chunkedPush(nextEvents, [
+                ["enter", events[open][1], context2],
+                ["exit", events[open][1], context2]
+              ]);
+            }
+            nextEvents = chunkedPush(nextEvents, [
+              ["enter", group2, context2],
+              ["enter", openingSequence, context2],
+              ["exit", openingSequence, context2],
+              ["enter", text2, context2]
+            ]);
+            nextEvents = chunkedPush(
+              nextEvents,
+              resolveAll(
+                context2.parser.constructs.insideSpan.null,
+                events.slice(open + 1, index2),
+                context2
+              )
+            );
+            nextEvents = chunkedPush(nextEvents, [
+              ["exit", text2, context2],
+              ["enter", closingSequence, context2],
+              ["exit", closingSequence, context2],
+              ["exit", group2, context2]
+            ]);
+            if (events[index2][1].end.offset - events[index2][1].start.offset) {
+              offset3 = 2;
+              nextEvents = chunkedPush(nextEvents, [
+                ["enter", events[index2][1], context2],
+                ["exit", events[index2][1], context2]
+              ]);
+            } else {
+              offset3 = 0;
+            }
+            chunkedSplice(events, open - 1, index2 - open + 3, nextEvents);
+            index2 = open + nextEvents.length - offset3 - 2;
+            break;
+          }
+        }
+      }
+    }
+    index2 = -1;
+    while (++index2 < events.length) {
+      if (events[index2][1].type === "attentionSequence") {
+        events[index2][1].type = "data";
+      }
+    }
+    return events;
+  }
+  function tokenizeAttention(effects, ok) {
+    var before = classifyCharacter(this.previous);
+    var marker;
+    return start3;
+    function start3(code) {
+      effects.enter("attentionSequence");
+      marker = code;
+      return sequence(code);
+    }
+    function sequence(code) {
+      var token2;
+      var after;
+      var open;
+      var close;
+      if (code === marker) {
+        effects.consume(code);
+        return sequence;
+      }
+      token2 = effects.exit("attentionSequence");
+      after = classifyCharacter(code);
+      open = !after || after === 2 && before;
+      close = !before || before === 2 && after;
+      token2._open = marker === 42 ? open : open && (before || !close);
+      token2._close = marker === 42 ? close : close && (after || !open);
+      return ok(code);
+    }
+  }
+  attention_1 = attention;
+  return attention_1;
+}
+var asciiAlpha_1;
+var hasRequiredAsciiAlpha;
+function requireAsciiAlpha() {
+  if (hasRequiredAsciiAlpha) return asciiAlpha_1;
+  hasRequiredAsciiAlpha = 1;
+  var regexCheck = requireRegexCheck();
+  var asciiAlpha = regexCheck(/[A-Za-z]/);
+  asciiAlpha_1 = asciiAlpha;
+  return asciiAlpha_1;
+}
+var asciiAlphanumeric_1;
+var hasRequiredAsciiAlphanumeric;
+function requireAsciiAlphanumeric() {
+  if (hasRequiredAsciiAlphanumeric) return asciiAlphanumeric_1;
+  hasRequiredAsciiAlphanumeric = 1;
+  var regexCheck = requireRegexCheck();
+  var asciiAlphanumeric = regexCheck(/[\dA-Za-z]/);
+  asciiAlphanumeric_1 = asciiAlphanumeric;
+  return asciiAlphanumeric_1;
+}
+var asciiAtext_1;
+var hasRequiredAsciiAtext;
+function requireAsciiAtext() {
+  if (hasRequiredAsciiAtext) return asciiAtext_1;
+  hasRequiredAsciiAtext = 1;
+  var regexCheck = requireRegexCheck();
+  var asciiAtext = regexCheck(/[#-'*+\--9=?A-Z^-~]/);
+  asciiAtext_1 = asciiAtext;
+  return asciiAtext_1;
+}
+var asciiControl_1;
+var hasRequiredAsciiControl;
+function requireAsciiControl() {
+  if (hasRequiredAsciiControl) return asciiControl_1;
+  hasRequiredAsciiControl = 1;
+  function asciiControl(code) {
+    return (
+      // Special whitespace codes (which have negative values), C0 and Control
+      // character DEL
+      code < 32 || code === 127
+    );
+  }
+  asciiControl_1 = asciiControl;
+  return asciiControl_1;
+}
+var autolink_1;
+var hasRequiredAutolink;
+function requireAutolink() {
+  if (hasRequiredAutolink) return autolink_1;
+  hasRequiredAutolink = 1;
+  var asciiAlpha = requireAsciiAlpha();
+  var asciiAlphanumeric = requireAsciiAlphanumeric();
+  var asciiAtext = requireAsciiAtext();
+  var asciiControl = requireAsciiControl();
+  var autolink = {
+    name: "autolink",
+    tokenize: tokenizeAutolink
+  };
+  function tokenizeAutolink(effects, ok, nok) {
+    var size2 = 1;
+    return start3;
+    function start3(code) {
+      effects.enter("autolink");
+      effects.enter("autolinkMarker");
+      effects.consume(code);
+      effects.exit("autolinkMarker");
+      effects.enter("autolinkProtocol");
+      return open;
+    }
+    function open(code) {
+      if (asciiAlpha(code)) {
+        effects.consume(code);
+        return schemeOrEmailAtext;
+      }
+      return asciiAtext(code) ? emailAtext(code) : nok(code);
+    }
+    function schemeOrEmailAtext(code) {
+      return code === 43 || code === 45 || code === 46 || asciiAlphanumeric(code) ? schemeInsideOrEmailAtext(code) : emailAtext(code);
+    }
+    function schemeInsideOrEmailAtext(code) {
+      if (code === 58) {
+        effects.consume(code);
+        return urlInside;
+      }
+      if ((code === 43 || code === 45 || code === 46 || asciiAlphanumeric(code)) && size2++ < 32) {
+        effects.consume(code);
+        return schemeInsideOrEmailAtext;
+      }
+      return emailAtext(code);
+    }
+    function urlInside(code) {
+      if (code === 62) {
+        effects.exit("autolinkProtocol");
+        return end2(code);
+      }
+      if (code === 32 || code === 60 || asciiControl(code)) {
+        return nok(code);
+      }
+      effects.consume(code);
+      return urlInside;
+    }
+    function emailAtext(code) {
+      if (code === 64) {
+        effects.consume(code);
+        size2 = 0;
+        return emailAtSignOrDot;
+      }
+      if (asciiAtext(code)) {
+        effects.consume(code);
+        return emailAtext;
+      }
+      return nok(code);
+    }
+    function emailAtSignOrDot(code) {
+      return asciiAlphanumeric(code) ? emailLabel(code) : nok(code);
+    }
+    function emailLabel(code) {
+      if (code === 46) {
+        effects.consume(code);
+        size2 = 0;
+        return emailAtSignOrDot;
+      }
+      if (code === 62) {
+        effects.exit("autolinkProtocol").type = "autolinkEmail";
+        return end2(code);
+      }
+      return emailValue(code);
+    }
+    function emailValue(code) {
+      if ((code === 45 || asciiAlphanumeric(code)) && size2++ < 63) {
+        effects.consume(code);
+        return code === 45 ? emailValue : emailLabel;
+      }
+      return nok(code);
+    }
+    function end2(code) {
+      effects.enter("autolinkMarker");
+      effects.consume(code);
+      effects.exit("autolinkMarker");
+      effects.exit("autolink");
+      return ok;
+    }
+  }
+  autolink_1 = autolink;
+  return autolink_1;
+}
+var blockQuote_1;
+var hasRequiredBlockQuote;
+function requireBlockQuote() {
+  if (hasRequiredBlockQuote) return blockQuote_1;
+  hasRequiredBlockQuote = 1;
+  var markdownSpace = requireMarkdownSpace();
+  var factorySpace2 = requireFactorySpace();
+  var blockQuote = {
+    name: "blockQuote",
+    tokenize: tokenizeBlockQuoteStart,
+    continuation: {
+      tokenize: tokenizeBlockQuoteContinuation
+    },
+    exit
+  };
+  function tokenizeBlockQuoteStart(effects, ok, nok) {
+    var self2 = this;
+    return start3;
+    function start3(code) {
+      if (code === 62) {
+        if (!self2.containerState.open) {
+          effects.enter("blockQuote", {
+            _container: true
+          });
+          self2.containerState.open = true;
+        }
+        effects.enter("blockQuotePrefix");
+        effects.enter("blockQuoteMarker");
+        effects.consume(code);
+        effects.exit("blockQuoteMarker");
+        return after;
+      }
+      return nok(code);
+    }
+    function after(code) {
+      if (markdownSpace(code)) {
+        effects.enter("blockQuotePrefixWhitespace");
+        effects.consume(code);
+        effects.exit("blockQuotePrefixWhitespace");
+        effects.exit("blockQuotePrefix");
+        return ok;
+      }
+      effects.exit("blockQuotePrefix");
+      return ok(code);
+    }
+  }
+  function tokenizeBlockQuoteContinuation(effects, ok, nok) {
+    return factorySpace2(
+      effects,
+      effects.attempt(blockQuote, ok, nok),
+      "linePrefix",
+      this.parser.constructs.disable.null.indexOf("codeIndented") > -1 ? void 0 : 4
+    );
+  }
+  function exit(effects) {
+    effects.exit("blockQuote");
+  }
+  blockQuote_1 = blockQuote;
+  return blockQuote_1;
+}
+var asciiPunctuation_1;
+var hasRequiredAsciiPunctuation;
+function requireAsciiPunctuation() {
+  if (hasRequiredAsciiPunctuation) return asciiPunctuation_1;
+  hasRequiredAsciiPunctuation = 1;
+  var regexCheck = requireRegexCheck();
+  var asciiPunctuation = regexCheck(/[!-/:-@[-`{-~]/);
+  asciiPunctuation_1 = asciiPunctuation;
+  return asciiPunctuation_1;
+}
+var characterEscape_1;
+var hasRequiredCharacterEscape;
+function requireCharacterEscape() {
+  if (hasRequiredCharacterEscape) return characterEscape_1;
+  hasRequiredCharacterEscape = 1;
+  var asciiPunctuation = requireAsciiPunctuation();
+  var characterEscape = {
+    name: "characterEscape",
+    tokenize: tokenizeCharacterEscape
+  };
+  function tokenizeCharacterEscape(effects, ok, nok) {
+    return start3;
+    function start3(code) {
+      effects.enter("characterEscape");
+      effects.enter("escapeMarker");
+      effects.consume(code);
+      effects.exit("escapeMarker");
+      return open;
+    }
+    function open(code) {
+      if (asciiPunctuation(code)) {
+        effects.enter("characterEscapeValue");
+        effects.consume(code);
+        effects.exit("characterEscapeValue");
+        effects.exit("characterEscape");
+        return ok;
+      }
+      return nok(code);
+    }
+  }
+  characterEscape_1 = characterEscape;
+  return characterEscape_1;
+}
+var decodeEntity_browser;
+var hasRequiredDecodeEntity_browser;
+function requireDecodeEntity_browser() {
+  if (hasRequiredDecodeEntity_browser) return decodeEntity_browser;
+  hasRequiredDecodeEntity_browser = 1;
+  var el;
+  var semicolon = 59;
+  decodeEntity_browser = decodeEntity;
+  function decodeEntity(characters2) {
+    var entity = "&" + characters2 + ";";
+    var char2;
+    el = el || document.createElement("i");
+    el.innerHTML = entity;
+    char2 = el.textContent;
+    if (char2.charCodeAt(char2.length - 1) === semicolon && characters2 !== "semi") {
+      return false;
+    }
+    return char2 === entity ? false : char2;
+  }
+  return decodeEntity_browser;
+}
+var asciiDigit_1;
+var hasRequiredAsciiDigit;
+function requireAsciiDigit() {
+  if (hasRequiredAsciiDigit) return asciiDigit_1;
+  hasRequiredAsciiDigit = 1;
+  var regexCheck = requireRegexCheck();
+  var asciiDigit = regexCheck(/\d/);
+  asciiDigit_1 = asciiDigit;
+  return asciiDigit_1;
+}
+var asciiHexDigit_1;
+var hasRequiredAsciiHexDigit;
+function requireAsciiHexDigit() {
+  if (hasRequiredAsciiHexDigit) return asciiHexDigit_1;
+  hasRequiredAsciiHexDigit = 1;
+  var regexCheck = requireRegexCheck();
+  var asciiHexDigit = regexCheck(/[\dA-Fa-f]/);
+  asciiHexDigit_1 = asciiHexDigit;
+  return asciiHexDigit_1;
+}
+var characterReference_1;
+var hasRequiredCharacterReference;
+function requireCharacterReference() {
+  if (hasRequiredCharacterReference) return characterReference_1;
+  hasRequiredCharacterReference = 1;
+  var decodeEntity = requireDecodeEntity_browser();
+  var asciiAlphanumeric = requireAsciiAlphanumeric();
+  var asciiDigit = requireAsciiDigit();
+  var asciiHexDigit = requireAsciiHexDigit();
+  function _interopDefaultLegacy(e2) {
+    return e2 && typeof e2 === "object" && "default" in e2 ? e2 : { default: e2 };
+  }
+  var decodeEntity__default = /* @__PURE__ */ _interopDefaultLegacy(decodeEntity);
+  var characterReference = {
+    name: "characterReference",
+    tokenize: tokenizeCharacterReference
+  };
+  function tokenizeCharacterReference(effects, ok, nok) {
+    var self2 = this;
+    var size2 = 0;
+    var max2;
+    var test2;
+    return start3;
+    function start3(code) {
+      effects.enter("characterReference");
+      effects.enter("characterReferenceMarker");
+      effects.consume(code);
+      effects.exit("characterReferenceMarker");
+      return open;
+    }
+    function open(code) {
+      if (code === 35) {
+        effects.enter("characterReferenceMarkerNumeric");
+        effects.consume(code);
+        effects.exit("characterReferenceMarkerNumeric");
+        return numeric;
+      }
+      effects.enter("characterReferenceValue");
+      max2 = 31;
+      test2 = asciiAlphanumeric;
+      return value(code);
+    }
+    function numeric(code) {
+      if (code === 88 || code === 120) {
+        effects.enter("characterReferenceMarkerHexadecimal");
+        effects.consume(code);
+        effects.exit("characterReferenceMarkerHexadecimal");
+        effects.enter("characterReferenceValue");
+        max2 = 6;
+        test2 = asciiHexDigit;
+        return value;
+      }
+      effects.enter("characterReferenceValue");
+      max2 = 7;
+      test2 = asciiDigit;
+      return value(code);
+    }
+    function value(code) {
+      var token2;
+      if (code === 59 && size2) {
+        token2 = effects.exit("characterReferenceValue");
+        if (test2 === asciiAlphanumeric && !decodeEntity__default["default"](self2.sliceSerialize(token2))) {
+          return nok(code);
+        }
+        effects.enter("characterReferenceMarker");
+        effects.consume(code);
+        effects.exit("characterReferenceMarker");
+        effects.exit("characterReference");
+        return ok;
+      }
+      if (test2(code) && size2++ < max2) {
+        effects.consume(code);
+        return value;
+      }
+      return nok(code);
+    }
+  }
+  characterReference_1 = characterReference;
+  return characterReference_1;
+}
+var codeFenced_1;
+var hasRequiredCodeFenced;
+function requireCodeFenced() {
+  if (hasRequiredCodeFenced) return codeFenced_1;
+  hasRequiredCodeFenced = 1;
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var markdownLineEndingOrSpace = requireMarkdownLineEndingOrSpace();
+  var prefixSize = requirePrefixSize();
+  var factorySpace2 = requireFactorySpace();
+  var codeFenced = {
+    name: "codeFenced",
+    tokenize: tokenizeCodeFenced,
+    concrete: true
+  };
+  function tokenizeCodeFenced(effects, ok, nok) {
+    var self2 = this;
+    var closingFenceConstruct = {
+      tokenize: tokenizeClosingFence,
+      partial: true
+    };
+    var initialPrefix = prefixSize(this.events, "linePrefix");
+    var sizeOpen = 0;
+    var marker;
+    return start3;
+    function start3(code) {
+      effects.enter("codeFenced");
+      effects.enter("codeFencedFence");
+      effects.enter("codeFencedFenceSequence");
+      marker = code;
+      return sequenceOpen(code);
+    }
+    function sequenceOpen(code) {
+      if (code === marker) {
+        effects.consume(code);
+        sizeOpen++;
+        return sequenceOpen;
+      }
+      effects.exit("codeFencedFenceSequence");
+      return sizeOpen < 3 ? nok(code) : factorySpace2(effects, infoOpen, "whitespace")(code);
+    }
+    function infoOpen(code) {
+      if (code === null || markdownLineEnding(code)) {
+        return openAfter(code);
+      }
+      effects.enter("codeFencedFenceInfo");
+      effects.enter("chunkString", {
+        contentType: "string"
+      });
+      return info2(code);
+    }
+    function info2(code) {
+      if (code === null || markdownLineEndingOrSpace(code)) {
+        effects.exit("chunkString");
+        effects.exit("codeFencedFenceInfo");
+        return factorySpace2(effects, infoAfter, "whitespace")(code);
+      }
+      if (code === 96 && code === marker) return nok(code);
+      effects.consume(code);
+      return info2;
+    }
+    function infoAfter(code) {
+      if (code === null || markdownLineEnding(code)) {
+        return openAfter(code);
+      }
+      effects.enter("codeFencedFenceMeta");
+      effects.enter("chunkString", {
+        contentType: "string"
+      });
+      return meta(code);
+    }
+    function meta(code) {
+      if (code === null || markdownLineEnding(code)) {
+        effects.exit("chunkString");
+        effects.exit("codeFencedFenceMeta");
+        return openAfter(code);
+      }
+      if (code === 96 && code === marker) return nok(code);
+      effects.consume(code);
+      return meta;
+    }
+    function openAfter(code) {
+      effects.exit("codeFencedFence");
+      return self2.interrupt ? ok(code) : content2(code);
+    }
+    function content2(code) {
+      if (code === null) {
+        return after(code);
+      }
+      if (markdownLineEnding(code)) {
+        effects.enter("lineEnding");
+        effects.consume(code);
+        effects.exit("lineEnding");
+        return effects.attempt(
+          closingFenceConstruct,
+          after,
+          initialPrefix ? factorySpace2(effects, content2, "linePrefix", initialPrefix + 1) : content2
+        );
+      }
+      effects.enter("codeFlowValue");
+      return contentContinue(code);
+    }
+    function contentContinue(code) {
+      if (code === null || markdownLineEnding(code)) {
+        effects.exit("codeFlowValue");
+        return content2(code);
+      }
+      effects.consume(code);
+      return contentContinue;
+    }
+    function after(code) {
+      effects.exit("codeFenced");
+      return ok(code);
+    }
+    function tokenizeClosingFence(effects2, ok2, nok2) {
+      var size2 = 0;
+      return factorySpace2(
+        effects2,
+        closingSequenceStart,
+        "linePrefix",
+        this.parser.constructs.disable.null.indexOf("codeIndented") > -1 ? void 0 : 4
+      );
+      function closingSequenceStart(code) {
+        effects2.enter("codeFencedFence");
+        effects2.enter("codeFencedFenceSequence");
+        return closingSequence(code);
+      }
+      function closingSequence(code) {
+        if (code === marker) {
+          effects2.consume(code);
+          size2++;
+          return closingSequence;
+        }
+        if (size2 < sizeOpen) return nok2(code);
+        effects2.exit("codeFencedFenceSequence");
+        return factorySpace2(effects2, closingSequenceEnd, "whitespace")(code);
+      }
+      function closingSequenceEnd(code) {
+        if (code === null || markdownLineEnding(code)) {
+          effects2.exit("codeFencedFence");
+          return ok2(code);
+        }
+        return nok2(code);
+      }
+    }
+  }
+  codeFenced_1 = codeFenced;
+  return codeFenced_1;
+}
+var codeIndented_1;
+var hasRequiredCodeIndented;
+function requireCodeIndented() {
+  if (hasRequiredCodeIndented) return codeIndented_1;
+  hasRequiredCodeIndented = 1;
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var chunkedSplice = requireChunkedSplice();
+  var prefixSize = requirePrefixSize();
+  var factorySpace2 = requireFactorySpace();
+  var codeIndented = {
+    name: "codeIndented",
+    tokenize: tokenizeCodeIndented,
+    resolve: resolveCodeIndented
+  };
+  var indentedContentConstruct = {
+    tokenize: tokenizeIndentedContent,
+    partial: true
+  };
+  function resolveCodeIndented(events, context2) {
+    var code = {
+      type: "codeIndented",
+      start: events[0][1].start,
+      end: events[events.length - 1][1].end
+    };
+    chunkedSplice(events, 0, 0, [["enter", code, context2]]);
+    chunkedSplice(events, events.length, 0, [["exit", code, context2]]);
+    return events;
+  }
+  function tokenizeCodeIndented(effects, ok, nok) {
+    return effects.attempt(indentedContentConstruct, afterPrefix, nok);
+    function afterPrefix(code) {
+      if (code === null) {
+        return ok(code);
+      }
+      if (markdownLineEnding(code)) {
+        return effects.attempt(indentedContentConstruct, afterPrefix, ok)(code);
+      }
+      effects.enter("codeFlowValue");
+      return content2(code);
+    }
+    function content2(code) {
+      if (code === null || markdownLineEnding(code)) {
+        effects.exit("codeFlowValue");
+        return afterPrefix(code);
+      }
+      effects.consume(code);
+      return content2;
+    }
+  }
+  function tokenizeIndentedContent(effects, ok, nok) {
+    var self2 = this;
+    return factorySpace2(effects, afterPrefix, "linePrefix", 4 + 1);
+    function afterPrefix(code) {
+      if (markdownLineEnding(code)) {
+        effects.enter("lineEnding");
+        effects.consume(code);
+        effects.exit("lineEnding");
+        return factorySpace2(effects, afterPrefix, "linePrefix", 4 + 1);
+      }
+      return prefixSize(self2.events, "linePrefix") < 4 ? nok(code) : ok(code);
+    }
+  }
+  codeIndented_1 = codeIndented;
+  return codeIndented_1;
+}
+var codeText_1;
+var hasRequiredCodeText;
+function requireCodeText() {
+  if (hasRequiredCodeText) return codeText_1;
+  hasRequiredCodeText = 1;
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var codeText = {
+    name: "codeText",
+    tokenize: tokenizeCodeText,
+    resolve: resolveCodeText,
+    previous
+  };
+  function resolveCodeText(events) {
+    var tailExitIndex = events.length - 4;
+    var headEnterIndex = 3;
+    var index2;
+    var enter;
+    if ((events[headEnterIndex][1].type === "lineEnding" || events[headEnterIndex][1].type === "space") && (events[tailExitIndex][1].type === "lineEnding" || events[tailExitIndex][1].type === "space")) {
+      index2 = headEnterIndex;
+      while (++index2 < tailExitIndex) {
+        if (events[index2][1].type === "codeTextData") {
+          events[tailExitIndex][1].type = events[headEnterIndex][1].type = "codeTextPadding";
+          headEnterIndex += 2;
+          tailExitIndex -= 2;
+          break;
+        }
+      }
+    }
+    index2 = headEnterIndex - 1;
+    tailExitIndex++;
+    while (++index2 <= tailExitIndex) {
+      if (enter === void 0) {
+        if (index2 !== tailExitIndex && events[index2][1].type !== "lineEnding") {
+          enter = index2;
+        }
+      } else if (index2 === tailExitIndex || events[index2][1].type === "lineEnding") {
+        events[enter][1].type = "codeTextData";
+        if (index2 !== enter + 2) {
+          events[enter][1].end = events[index2 - 1][1].end;
+          events.splice(enter + 2, index2 - enter - 2);
+          tailExitIndex -= index2 - enter - 2;
+          index2 = enter + 2;
+        }
+        enter = void 0;
+      }
+    }
+    return events;
+  }
+  function previous(code) {
+    return code !== 96 || this.events[this.events.length - 1][1].type === "characterEscape";
+  }
+  function tokenizeCodeText(effects, ok, nok) {
+    var sizeOpen = 0;
+    var size2;
+    var token2;
+    return start3;
+    function start3(code) {
+      effects.enter("codeText");
+      effects.enter("codeTextSequence");
+      return openingSequence(code);
+    }
+    function openingSequence(code) {
+      if (code === 96) {
+        effects.consume(code);
+        sizeOpen++;
+        return openingSequence;
+      }
+      effects.exit("codeTextSequence");
+      return gap(code);
+    }
+    function gap(code) {
+      if (code === null) {
+        return nok(code);
+      }
+      if (code === 96) {
+        token2 = effects.enter("codeTextSequence");
+        size2 = 0;
+        return closingSequence(code);
+      }
+      if (code === 32) {
+        effects.enter("space");
+        effects.consume(code);
+        effects.exit("space");
+        return gap;
+      }
+      if (markdownLineEnding(code)) {
+        effects.enter("lineEnding");
+        effects.consume(code);
+        effects.exit("lineEnding");
+        return gap;
+      }
+      effects.enter("codeTextData");
+      return data2(code);
+    }
+    function data2(code) {
+      if (code === null || code === 32 || code === 96 || markdownLineEnding(code)) {
+        effects.exit("codeTextData");
+        return gap(code);
+      }
+      effects.consume(code);
+      return data2;
+    }
+    function closingSequence(code) {
+      if (code === 96) {
+        effects.consume(code);
+        size2++;
+        return closingSequence;
+      }
+      if (size2 === sizeOpen) {
+        effects.exit("codeTextSequence");
+        effects.exit("codeText");
+        return ok(code);
+      }
+      token2.type = "codeTextData";
+      return data2(code);
+    }
+  }
+  codeText_1 = codeText;
+  return codeText_1;
+}
+var factoryDestination;
+var hasRequiredFactoryDestination;
+function requireFactoryDestination() {
+  if (hasRequiredFactoryDestination) return factoryDestination;
+  hasRequiredFactoryDestination = 1;
+  var asciiControl = requireAsciiControl();
+  var markdownLineEndingOrSpace = requireMarkdownLineEndingOrSpace();
+  var markdownLineEnding = requireMarkdownLineEnding();
+  function destinationFactory(effects, ok, nok, type3, literalType, literalMarkerType, rawType, stringType, max2) {
+    var limit = max2 || Infinity;
+    var balance = 0;
+    return start3;
+    function start3(code) {
+      if (code === 60) {
+        effects.enter(type3);
+        effects.enter(literalType);
+        effects.enter(literalMarkerType);
+        effects.consume(code);
+        effects.exit(literalMarkerType);
+        return destinationEnclosedBefore;
+      }
+      if (asciiControl(code) || code === 41) {
+        return nok(code);
+      }
+      effects.enter(type3);
+      effects.enter(rawType);
+      effects.enter(stringType);
+      effects.enter("chunkString", {
+        contentType: "string"
+      });
+      return destinationRaw(code);
+    }
+    function destinationEnclosedBefore(code) {
+      if (code === 62) {
+        effects.enter(literalMarkerType);
+        effects.consume(code);
+        effects.exit(literalMarkerType);
+        effects.exit(literalType);
+        effects.exit(type3);
+        return ok;
+      }
+      effects.enter(stringType);
+      effects.enter("chunkString", {
+        contentType: "string"
+      });
+      return destinationEnclosed(code);
+    }
+    function destinationEnclosed(code) {
+      if (code === 62) {
+        effects.exit("chunkString");
+        effects.exit(stringType);
+        return destinationEnclosedBefore(code);
+      }
+      if (code === null || code === 60 || markdownLineEnding(code)) {
+        return nok(code);
+      }
+      effects.consume(code);
+      return code === 92 ? destinationEnclosedEscape : destinationEnclosed;
+    }
+    function destinationEnclosedEscape(code) {
+      if (code === 60 || code === 62 || code === 92) {
+        effects.consume(code);
+        return destinationEnclosed;
+      }
+      return destinationEnclosed(code);
+    }
+    function destinationRaw(code) {
+      if (code === 40) {
+        if (++balance > limit) return nok(code);
+        effects.consume(code);
+        return destinationRaw;
+      }
+      if (code === 41) {
+        if (!balance--) {
+          effects.exit("chunkString");
+          effects.exit(stringType);
+          effects.exit(rawType);
+          effects.exit(type3);
+          return ok(code);
+        }
+        effects.consume(code);
+        return destinationRaw;
+      }
+      if (code === null || markdownLineEndingOrSpace(code)) {
+        if (balance) return nok(code);
+        effects.exit("chunkString");
+        effects.exit(stringType);
+        effects.exit(rawType);
+        effects.exit(type3);
+        return ok(code);
+      }
+      if (asciiControl(code)) return nok(code);
+      effects.consume(code);
+      return code === 92 ? destinationRawEscape : destinationRaw;
+    }
+    function destinationRawEscape(code) {
+      if (code === 40 || code === 41 || code === 92) {
+        effects.consume(code);
+        return destinationRaw;
+      }
+      return destinationRaw(code);
+    }
+  }
+  factoryDestination = destinationFactory;
+  return factoryDestination;
+}
+var factoryLabel;
+var hasRequiredFactoryLabel;
+function requireFactoryLabel() {
+  if (hasRequiredFactoryLabel) return factoryLabel;
+  hasRequiredFactoryLabel = 1;
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var markdownSpace = requireMarkdownSpace();
+  function labelFactory(effects, ok, nok, type3, markerType, stringType) {
+    var self2 = this;
+    var size2 = 0;
+    var data2;
+    return start3;
+    function start3(code) {
+      effects.enter(type3);
+      effects.enter(markerType);
+      effects.consume(code);
+      effects.exit(markerType);
+      effects.enter(stringType);
+      return atBreak;
+    }
+    function atBreak(code) {
+      if (code === null || code === 91 || code === 93 && !data2 || /* c8 ignore next */
+      code === 94 && /* c8 ignore next */
+      !size2 && /* c8 ignore next */
+      "_hiddenFootnoteSupport" in self2.parser.constructs || size2 > 999) {
+        return nok(code);
+      }
+      if (code === 93) {
+        effects.exit(stringType);
+        effects.enter(markerType);
+        effects.consume(code);
+        effects.exit(markerType);
+        effects.exit(type3);
+        return ok;
+      }
+      if (markdownLineEnding(code)) {
+        effects.enter("lineEnding");
+        effects.consume(code);
+        effects.exit("lineEnding");
+        return atBreak;
+      }
+      effects.enter("chunkString", {
+        contentType: "string"
+      });
+      return label(code);
+    }
+    function label(code) {
+      if (code === null || code === 91 || code === 93 || markdownLineEnding(code) || size2++ > 999) {
+        effects.exit("chunkString");
+        return atBreak(code);
+      }
+      effects.consume(code);
+      data2 = data2 || !markdownSpace(code);
+      return code === 92 ? labelEscape : label;
+    }
+    function labelEscape(code) {
+      if (code === 91 || code === 92 || code === 93) {
+        effects.consume(code);
+        size2++;
+        return label;
+      }
+      return label(code);
+    }
+  }
+  factoryLabel = labelFactory;
+  return factoryLabel;
+}
+var factoryWhitespace;
+var hasRequiredFactoryWhitespace;
+function requireFactoryWhitespace() {
+  if (hasRequiredFactoryWhitespace) return factoryWhitespace;
+  hasRequiredFactoryWhitespace = 1;
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var markdownSpace = requireMarkdownSpace();
+  var factorySpace2 = requireFactorySpace();
+  function whitespaceFactory(effects, ok) {
+    var seen;
+    return start3;
+    function start3(code) {
+      if (markdownLineEnding(code)) {
+        effects.enter("lineEnding");
+        effects.consume(code);
+        effects.exit("lineEnding");
+        seen = true;
+        return start3;
+      }
+      if (markdownSpace(code)) {
+        return factorySpace2(
+          effects,
+          start3,
+          seen ? "linePrefix" : "lineSuffix"
+        )(code);
+      }
+      return ok(code);
+    }
+  }
+  factoryWhitespace = whitespaceFactory;
+  return factoryWhitespace;
+}
+var factoryTitle;
+var hasRequiredFactoryTitle;
+function requireFactoryTitle() {
+  if (hasRequiredFactoryTitle) return factoryTitle;
+  hasRequiredFactoryTitle = 1;
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var factorySpace2 = requireFactorySpace();
+  function titleFactory(effects, ok, nok, type3, markerType, stringType) {
+    var marker;
+    return start3;
+    function start3(code) {
+      effects.enter(type3);
+      effects.enter(markerType);
+      effects.consume(code);
+      effects.exit(markerType);
+      marker = code === 40 ? 41 : code;
+      return atFirstTitleBreak;
+    }
+    function atFirstTitleBreak(code) {
+      if (code === marker) {
+        effects.enter(markerType);
+        effects.consume(code);
+        effects.exit(markerType);
+        effects.exit(type3);
+        return ok;
+      }
+      effects.enter(stringType);
+      return atTitleBreak(code);
+    }
+    function atTitleBreak(code) {
+      if (code === marker) {
+        effects.exit(stringType);
+        return atFirstTitleBreak(marker);
+      }
+      if (code === null) {
+        return nok(code);
+      }
+      if (markdownLineEnding(code)) {
+        effects.enter("lineEnding");
+        effects.consume(code);
+        effects.exit("lineEnding");
+        return factorySpace2(effects, atTitleBreak, "linePrefix");
+      }
+      effects.enter("chunkString", {
+        contentType: "string"
+      });
+      return title2(code);
+    }
+    function title2(code) {
+      if (code === marker || code === null || markdownLineEnding(code)) {
+        effects.exit("chunkString");
+        return atTitleBreak(code);
+      }
+      effects.consume(code);
+      return code === 92 ? titleEscape : title2;
+    }
+    function titleEscape(code) {
+      if (code === marker || code === 92) {
+        effects.consume(code);
+        return title2;
+      }
+      return title2(code);
+    }
+  }
+  factoryTitle = titleFactory;
+  return factoryTitle;
+}
+var definition_1;
+var hasRequiredDefinition;
+function requireDefinition() {
+  if (hasRequiredDefinition) return definition_1;
+  hasRequiredDefinition = 1;
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var markdownLineEndingOrSpace = requireMarkdownLineEndingOrSpace();
+  var normalizeIdentifier = requireNormalizeIdentifier();
+  var factoryDestination2 = requireFactoryDestination();
+  var factoryLabel2 = requireFactoryLabel();
+  var factorySpace2 = requireFactorySpace();
+  var factoryWhitespace2 = requireFactoryWhitespace();
+  var factoryTitle2 = requireFactoryTitle();
+  var definition = {
+    name: "definition",
+    tokenize: tokenizeDefinition
+  };
+  var titleConstruct = {
+    tokenize: tokenizeTitle,
+    partial: true
+  };
+  function tokenizeDefinition(effects, ok, nok) {
+    var self2 = this;
+    var identifier2;
+    return start3;
+    function start3(code) {
+      effects.enter("definition");
+      return factoryLabel2.call(
+        self2,
+        effects,
+        labelAfter,
+        nok,
+        "definitionLabel",
+        "definitionLabelMarker",
+        "definitionLabelString"
+      )(code);
+    }
+    function labelAfter(code) {
+      identifier2 = normalizeIdentifier(
+        self2.sliceSerialize(self2.events[self2.events.length - 1][1]).slice(1, -1)
+      );
+      if (code === 58) {
+        effects.enter("definitionMarker");
+        effects.consume(code);
+        effects.exit("definitionMarker");
+        return factoryWhitespace2(
+          effects,
+          factoryDestination2(
+            effects,
+            effects.attempt(
+              titleConstruct,
+              factorySpace2(effects, after, "whitespace"),
+              factorySpace2(effects, after, "whitespace")
+            ),
+            nok,
+            "definitionDestination",
+            "definitionDestinationLiteral",
+            "definitionDestinationLiteralMarker",
+            "definitionDestinationRaw",
+            "definitionDestinationString"
+          )
+        );
+      }
+      return nok(code);
+    }
+    function after(code) {
+      if (code === null || markdownLineEnding(code)) {
+        effects.exit("definition");
+        if (self2.parser.defined.indexOf(identifier2) < 0) {
+          self2.parser.defined.push(identifier2);
+        }
+        return ok(code);
+      }
+      return nok(code);
+    }
+  }
+  function tokenizeTitle(effects, ok, nok) {
+    return start3;
+    function start3(code) {
+      return markdownLineEndingOrSpace(code) ? factoryWhitespace2(effects, before)(code) : nok(code);
+    }
+    function before(code) {
+      if (code === 34 || code === 39 || code === 40) {
+        return factoryTitle2(
+          effects,
+          factorySpace2(effects, after, "whitespace"),
+          nok,
+          "definitionTitle",
+          "definitionTitleMarker",
+          "definitionTitleString"
+        )(code);
+      }
+      return nok(code);
+    }
+    function after(code) {
+      return code === null || markdownLineEnding(code) ? ok(code) : nok(code);
+    }
+  }
+  definition_1 = definition;
+  return definition_1;
+}
+var hardBreakEscape_1;
+var hasRequiredHardBreakEscape;
+function requireHardBreakEscape() {
+  if (hasRequiredHardBreakEscape) return hardBreakEscape_1;
+  hasRequiredHardBreakEscape = 1;
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var hardBreakEscape = {
+    name: "hardBreakEscape",
+    tokenize: tokenizeHardBreakEscape
+  };
+  function tokenizeHardBreakEscape(effects, ok, nok) {
+    return start3;
+    function start3(code) {
+      effects.enter("hardBreakEscape");
+      effects.enter("escapeMarker");
+      effects.consume(code);
+      return open;
+    }
+    function open(code) {
+      if (markdownLineEnding(code)) {
+        effects.exit("escapeMarker");
+        effects.exit("hardBreakEscape");
+        return ok(code);
+      }
+      return nok(code);
+    }
+  }
+  hardBreakEscape_1 = hardBreakEscape;
+  return hardBreakEscape_1;
+}
+var headingAtx_1;
+var hasRequiredHeadingAtx;
+function requireHeadingAtx() {
+  if (hasRequiredHeadingAtx) return headingAtx_1;
+  hasRequiredHeadingAtx = 1;
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var markdownLineEndingOrSpace = requireMarkdownLineEndingOrSpace();
+  var markdownSpace = requireMarkdownSpace();
+  var chunkedSplice = requireChunkedSplice();
+  var factorySpace2 = requireFactorySpace();
+  var headingAtx = {
+    name: "headingAtx",
+    tokenize: tokenizeHeadingAtx,
+    resolve: resolveHeadingAtx
+  };
+  function resolveHeadingAtx(events, context2) {
+    var contentEnd = events.length - 2;
+    var contentStart = 3;
+    var content2;
+    var text2;
+    if (events[contentStart][1].type === "whitespace") {
+      contentStart += 2;
+    }
+    if (contentEnd - 2 > contentStart && events[contentEnd][1].type === "whitespace") {
+      contentEnd -= 2;
+    }
+    if (events[contentEnd][1].type === "atxHeadingSequence" && (contentStart === contentEnd - 1 || contentEnd - 4 > contentStart && events[contentEnd - 2][1].type === "whitespace")) {
+      contentEnd -= contentStart + 1 === contentEnd ? 2 : 4;
+    }
+    if (contentEnd > contentStart) {
+      content2 = {
+        type: "atxHeadingText",
+        start: events[contentStart][1].start,
+        end: events[contentEnd][1].end
+      };
+      text2 = {
+        type: "chunkText",
+        start: events[contentStart][1].start,
+        end: events[contentEnd][1].end,
+        contentType: "text"
+      };
+      chunkedSplice(events, contentStart, contentEnd - contentStart + 1, [
+        ["enter", content2, context2],
+        ["enter", text2, context2],
+        ["exit", text2, context2],
+        ["exit", content2, context2]
+      ]);
+    }
+    return events;
+  }
+  function tokenizeHeadingAtx(effects, ok, nok) {
+    var self2 = this;
+    var size2 = 0;
+    return start3;
+    function start3(code) {
+      effects.enter("atxHeading");
+      effects.enter("atxHeadingSequence");
+      return fenceOpenInside(code);
+    }
+    function fenceOpenInside(code) {
+      if (code === 35 && size2++ < 6) {
+        effects.consume(code);
+        return fenceOpenInside;
+      }
+      if (code === null || markdownLineEndingOrSpace(code)) {
+        effects.exit("atxHeadingSequence");
+        return self2.interrupt ? ok(code) : headingBreak(code);
+      }
+      return nok(code);
+    }
+    function headingBreak(code) {
+      if (code === 35) {
+        effects.enter("atxHeadingSequence");
+        return sequence(code);
+      }
+      if (code === null || markdownLineEnding(code)) {
+        effects.exit("atxHeading");
+        return ok(code);
+      }
+      if (markdownSpace(code)) {
+        return factorySpace2(effects, headingBreak, "whitespace")(code);
+      }
+      effects.enter("atxHeadingText");
+      return data2(code);
+    }
+    function sequence(code) {
+      if (code === 35) {
+        effects.consume(code);
+        return sequence;
+      }
+      effects.exit("atxHeadingSequence");
+      return headingBreak(code);
+    }
+    function data2(code) {
+      if (code === null || code === 35 || markdownLineEndingOrSpace(code)) {
+        effects.exit("atxHeadingText");
+        return headingBreak(code);
+      }
+      effects.consume(code);
+      return data2;
+    }
+  }
+  headingAtx_1 = headingAtx;
+  return headingAtx_1;
+}
+var htmlBlockNames;
+var hasRequiredHtmlBlockNames;
+function requireHtmlBlockNames() {
+  if (hasRequiredHtmlBlockNames) return htmlBlockNames;
+  hasRequiredHtmlBlockNames = 1;
+  var basics = [
+    "address",
+    "article",
+    "aside",
+    "base",
+    "basefont",
+    "blockquote",
+    "body",
+    "caption",
+    "center",
+    "col",
+    "colgroup",
+    "dd",
+    "details",
+    "dialog",
+    "dir",
+    "div",
+    "dl",
+    "dt",
+    "fieldset",
+    "figcaption",
+    "figure",
+    "footer",
+    "form",
+    "frame",
+    "frameset",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "head",
+    "header",
+    "hr",
+    "html",
+    "iframe",
+    "legend",
+    "li",
+    "link",
+    "main",
+    "menu",
+    "menuitem",
+    "nav",
+    "noframes",
+    "ol",
+    "optgroup",
+    "option",
+    "p",
+    "param",
+    "section",
+    "source",
+    "summary",
+    "table",
+    "tbody",
+    "td",
+    "tfoot",
+    "th",
+    "thead",
+    "title",
+    "tr",
+    "track",
+    "ul"
+  ];
+  htmlBlockNames = basics;
+  return htmlBlockNames;
+}
+var htmlRawNames;
+var hasRequiredHtmlRawNames;
+function requireHtmlRawNames() {
+  if (hasRequiredHtmlRawNames) return htmlRawNames;
+  hasRequiredHtmlRawNames = 1;
+  var raws = ["pre", "script", "style", "textarea"];
+  htmlRawNames = raws;
+  return htmlRawNames;
+}
+var htmlFlow_1;
+var hasRequiredHtmlFlow;
+function requireHtmlFlow() {
+  if (hasRequiredHtmlFlow) return htmlFlow_1;
+  hasRequiredHtmlFlow = 1;
+  var asciiAlpha = requireAsciiAlpha();
+  var asciiAlphanumeric = requireAsciiAlphanumeric();
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var markdownLineEndingOrSpace = requireMarkdownLineEndingOrSpace();
+  var markdownSpace = requireMarkdownSpace();
+  var fromCharCode = requireFromCharCode();
+  var htmlBlockNames2 = requireHtmlBlockNames();
+  var htmlRawNames2 = requireHtmlRawNames();
+  var partialBlankLine = requirePartialBlankLine();
+  var htmlFlow = {
+    name: "htmlFlow",
+    tokenize: tokenizeHtmlFlow,
+    resolveTo: resolveToHtmlFlow,
+    concrete: true
+  };
+  var nextBlankConstruct = {
+    tokenize: tokenizeNextBlank,
+    partial: true
+  };
+  function resolveToHtmlFlow(events) {
+    var index2 = events.length;
+    while (index2--) {
+      if (events[index2][0] === "enter" && events[index2][1].type === "htmlFlow") {
+        break;
+      }
+    }
+    if (index2 > 1 && events[index2 - 2][1].type === "linePrefix") {
+      events[index2][1].start = events[index2 - 2][1].start;
+      events[index2 + 1][1].start = events[index2 - 2][1].start;
+      events.splice(index2 - 2, 2);
+    }
+    return events;
+  }
+  function tokenizeHtmlFlow(effects, ok, nok) {
+    var self2 = this;
+    var kind;
+    var startTag;
+    var buffer;
+    var index2;
+    var marker;
+    return start3;
+    function start3(code) {
+      effects.enter("htmlFlow");
+      effects.enter("htmlFlowData");
+      effects.consume(code);
+      return open;
+    }
+    function open(code) {
+      if (code === 33) {
+        effects.consume(code);
+        return declarationStart;
+      }
+      if (code === 47) {
+        effects.consume(code);
+        return tagCloseStart;
+      }
+      if (code === 63) {
+        effects.consume(code);
+        kind = 3;
+        return self2.interrupt ? ok : continuationDeclarationInside;
+      }
+      if (asciiAlpha(code)) {
+        effects.consume(code);
+        buffer = fromCharCode(code);
+        startTag = true;
+        return tagName;
+      }
+      return nok(code);
+    }
+    function declarationStart(code) {
+      if (code === 45) {
+        effects.consume(code);
+        kind = 2;
+        return commentOpenInside;
+      }
+      if (code === 91) {
+        effects.consume(code);
+        kind = 5;
+        buffer = "CDATA[";
+        index2 = 0;
+        return cdataOpenInside;
+      }
+      if (asciiAlpha(code)) {
+        effects.consume(code);
+        kind = 4;
+        return self2.interrupt ? ok : continuationDeclarationInside;
+      }
+      return nok(code);
+    }
+    function commentOpenInside(code) {
+      if (code === 45) {
+        effects.consume(code);
+        return self2.interrupt ? ok : continuationDeclarationInside;
+      }
+      return nok(code);
+    }
+    function cdataOpenInside(code) {
+      if (code === buffer.charCodeAt(index2++)) {
+        effects.consume(code);
+        return index2 === buffer.length ? self2.interrupt ? ok : continuation : cdataOpenInside;
+      }
+      return nok(code);
+    }
+    function tagCloseStart(code) {
+      if (asciiAlpha(code)) {
+        effects.consume(code);
+        buffer = fromCharCode(code);
+        return tagName;
+      }
+      return nok(code);
+    }
+    function tagName(code) {
+      if (code === null || code === 47 || code === 62 || markdownLineEndingOrSpace(code)) {
+        if (code !== 47 && startTag && htmlRawNames2.indexOf(buffer.toLowerCase()) > -1) {
+          kind = 1;
+          return self2.interrupt ? ok(code) : continuation(code);
+        }
+        if (htmlBlockNames2.indexOf(buffer.toLowerCase()) > -1) {
+          kind = 6;
+          if (code === 47) {
+            effects.consume(code);
+            return basicSelfClosing;
+          }
+          return self2.interrupt ? ok(code) : continuation(code);
+        }
+        kind = 7;
+        return self2.interrupt ? nok(code) : startTag ? completeAttributeNameBefore(code) : completeClosingTagAfter(code);
+      }
+      if (code === 45 || asciiAlphanumeric(code)) {
+        effects.consume(code);
+        buffer += fromCharCode(code);
+        return tagName;
+      }
+      return nok(code);
+    }
+    function basicSelfClosing(code) {
+      if (code === 62) {
+        effects.consume(code);
+        return self2.interrupt ? ok : continuation;
+      }
+      return nok(code);
+    }
+    function completeClosingTagAfter(code) {
+      if (markdownSpace(code)) {
+        effects.consume(code);
+        return completeClosingTagAfter;
+      }
+      return completeEnd(code);
+    }
+    function completeAttributeNameBefore(code) {
+      if (code === 47) {
+        effects.consume(code);
+        return completeEnd;
+      }
+      if (code === 58 || code === 95 || asciiAlpha(code)) {
+        effects.consume(code);
+        return completeAttributeName;
+      }
+      if (markdownSpace(code)) {
+        effects.consume(code);
+        return completeAttributeNameBefore;
+      }
+      return completeEnd(code);
+    }
+    function completeAttributeName(code) {
+      if (code === 45 || code === 46 || code === 58 || code === 95 || asciiAlphanumeric(code)) {
+        effects.consume(code);
+        return completeAttributeName;
+      }
+      return completeAttributeNameAfter(code);
+    }
+    function completeAttributeNameAfter(code) {
+      if (code === 61) {
+        effects.consume(code);
+        return completeAttributeValueBefore;
+      }
+      if (markdownSpace(code)) {
+        effects.consume(code);
+        return completeAttributeNameAfter;
+      }
+      return completeAttributeNameBefore(code);
+    }
+    function completeAttributeValueBefore(code) {
+      if (code === null || code === 60 || code === 61 || code === 62 || code === 96) {
+        return nok(code);
+      }
+      if (code === 34 || code === 39) {
+        effects.consume(code);
+        marker = code;
+        return completeAttributeValueQuoted;
+      }
+      if (markdownSpace(code)) {
+        effects.consume(code);
+        return completeAttributeValueBefore;
+      }
+      marker = void 0;
+      return completeAttributeValueUnquoted(code);
+    }
+    function completeAttributeValueQuoted(code) {
+      if (code === marker) {
+        effects.consume(code);
+        return completeAttributeValueQuotedAfter;
+      }
+      if (code === null || markdownLineEnding(code)) {
+        return nok(code);
+      }
+      effects.consume(code);
+      return completeAttributeValueQuoted;
+    }
+    function completeAttributeValueUnquoted(code) {
+      if (code === null || code === 34 || code === 39 || code === 60 || code === 61 || code === 62 || code === 96 || markdownLineEndingOrSpace(code)) {
+        return completeAttributeNameAfter(code);
+      }
+      effects.consume(code);
+      return completeAttributeValueUnquoted;
+    }
+    function completeAttributeValueQuotedAfter(code) {
+      if (code === 47 || code === 62 || markdownSpace(code)) {
+        return completeAttributeNameBefore(code);
+      }
+      return nok(code);
+    }
+    function completeEnd(code) {
+      if (code === 62) {
+        effects.consume(code);
+        return completeAfter;
+      }
+      return nok(code);
+    }
+    function completeAfter(code) {
+      if (markdownSpace(code)) {
+        effects.consume(code);
+        return completeAfter;
+      }
+      return code === null || markdownLineEnding(code) ? continuation(code) : nok(code);
+    }
+    function continuation(code) {
+      if (code === 45 && kind === 2) {
+        effects.consume(code);
+        return continuationCommentInside;
+      }
+      if (code === 60 && kind === 1) {
+        effects.consume(code);
+        return continuationRawTagOpen;
+      }
+      if (code === 62 && kind === 4) {
+        effects.consume(code);
+        return continuationClose;
+      }
+      if (code === 63 && kind === 3) {
+        effects.consume(code);
+        return continuationDeclarationInside;
+      }
+      if (code === 93 && kind === 5) {
+        effects.consume(code);
+        return continuationCharacterDataInside;
+      }
+      if (markdownLineEnding(code) && (kind === 6 || kind === 7)) {
+        return effects.check(
+          nextBlankConstruct,
+          continuationClose,
+          continuationAtLineEnding
+        )(code);
+      }
+      if (code === null || markdownLineEnding(code)) {
+        return continuationAtLineEnding(code);
+      }
+      effects.consume(code);
+      return continuation;
+    }
+    function continuationAtLineEnding(code) {
+      effects.exit("htmlFlowData");
+      return htmlContinueStart(code);
+    }
+    function htmlContinueStart(code) {
+      if (code === null) {
+        return done(code);
+      }
+      if (markdownLineEnding(code)) {
+        effects.enter("lineEnding");
+        effects.consume(code);
+        effects.exit("lineEnding");
+        return htmlContinueStart;
+      }
+      effects.enter("htmlFlowData");
+      return continuation(code);
+    }
+    function continuationCommentInside(code) {
+      if (code === 45) {
+        effects.consume(code);
+        return continuationDeclarationInside;
+      }
+      return continuation(code);
+    }
+    function continuationRawTagOpen(code) {
+      if (code === 47) {
+        effects.consume(code);
+        buffer = "";
+        return continuationRawEndTag;
+      }
+      return continuation(code);
+    }
+    function continuationRawEndTag(code) {
+      if (code === 62 && htmlRawNames2.indexOf(buffer.toLowerCase()) > -1) {
+        effects.consume(code);
+        return continuationClose;
+      }
+      if (asciiAlpha(code) && buffer.length < 8) {
+        effects.consume(code);
+        buffer += fromCharCode(code);
+        return continuationRawEndTag;
+      }
+      return continuation(code);
+    }
+    function continuationCharacterDataInside(code) {
+      if (code === 93) {
+        effects.consume(code);
+        return continuationDeclarationInside;
+      }
+      return continuation(code);
+    }
+    function continuationDeclarationInside(code) {
+      if (code === 62) {
+        effects.consume(code);
+        return continuationClose;
+      }
+      return continuation(code);
+    }
+    function continuationClose(code) {
+      if (code === null || markdownLineEnding(code)) {
+        effects.exit("htmlFlowData");
+        return done(code);
+      }
+      effects.consume(code);
+      return continuationClose;
+    }
+    function done(code) {
+      effects.exit("htmlFlow");
+      return ok(code);
+    }
+  }
+  function tokenizeNextBlank(effects, ok, nok) {
+    return start3;
+    function start3(code) {
+      effects.exit("htmlFlowData");
+      effects.enter("lineEndingBlank");
+      effects.consume(code);
+      effects.exit("lineEndingBlank");
+      return effects.attempt(partialBlankLine, ok, nok);
+    }
+  }
+  htmlFlow_1 = htmlFlow;
+  return htmlFlow_1;
+}
+var htmlText_1;
+var hasRequiredHtmlText;
+function requireHtmlText() {
+  if (hasRequiredHtmlText) return htmlText_1;
+  hasRequiredHtmlText = 1;
+  var asciiAlpha = requireAsciiAlpha();
+  var asciiAlphanumeric = requireAsciiAlphanumeric();
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var markdownLineEndingOrSpace = requireMarkdownLineEndingOrSpace();
+  var markdownSpace = requireMarkdownSpace();
+  var factorySpace2 = requireFactorySpace();
+  var htmlText = {
+    name: "htmlText",
+    tokenize: tokenizeHtmlText
+  };
+  function tokenizeHtmlText(effects, ok, nok) {
+    var self2 = this;
+    var marker;
+    var buffer;
+    var index2;
+    var returnState;
+    return start3;
+    function start3(code) {
+      effects.enter("htmlText");
+      effects.enter("htmlTextData");
+      effects.consume(code);
+      return open;
+    }
+    function open(code) {
+      if (code === 33) {
+        effects.consume(code);
+        return declarationOpen;
+      }
+      if (code === 47) {
+        effects.consume(code);
+        return tagCloseStart;
+      }
+      if (code === 63) {
+        effects.consume(code);
+        return instruction;
+      }
+      if (asciiAlpha(code)) {
+        effects.consume(code);
+        return tagOpen;
+      }
+      return nok(code);
+    }
+    function declarationOpen(code) {
+      if (code === 45) {
+        effects.consume(code);
+        return commentOpen;
+      }
+      if (code === 91) {
+        effects.consume(code);
+        buffer = "CDATA[";
+        index2 = 0;
+        return cdataOpen;
+      }
+      if (asciiAlpha(code)) {
+        effects.consume(code);
+        return declaration2;
+      }
+      return nok(code);
+    }
+    function commentOpen(code) {
+      if (code === 45) {
+        effects.consume(code);
+        return commentStart;
+      }
+      return nok(code);
+    }
+    function commentStart(code) {
+      if (code === null || code === 62) {
+        return nok(code);
+      }
+      if (code === 45) {
+        effects.consume(code);
+        return commentStartDash;
+      }
+      return comment2(code);
+    }
+    function commentStartDash(code) {
+      if (code === null || code === 62) {
+        return nok(code);
+      }
+      return comment2(code);
+    }
+    function comment2(code) {
+      if (code === null) {
+        return nok(code);
+      }
+      if (code === 45) {
+        effects.consume(code);
+        return commentClose;
+      }
+      if (markdownLineEnding(code)) {
+        returnState = comment2;
+        return atLineEnding(code);
+      }
+      effects.consume(code);
+      return comment2;
+    }
+    function commentClose(code) {
+      if (code === 45) {
+        effects.consume(code);
+        return end2;
+      }
+      return comment2(code);
+    }
+    function cdataOpen(code) {
+      if (code === buffer.charCodeAt(index2++)) {
+        effects.consume(code);
+        return index2 === buffer.length ? cdata : cdataOpen;
+      }
+      return nok(code);
+    }
+    function cdata(code) {
+      if (code === null) {
+        return nok(code);
+      }
+      if (code === 93) {
+        effects.consume(code);
+        return cdataClose;
+      }
+      if (markdownLineEnding(code)) {
+        returnState = cdata;
+        return atLineEnding(code);
+      }
+      effects.consume(code);
+      return cdata;
+    }
+    function cdataClose(code) {
+      if (code === 93) {
+        effects.consume(code);
+        return cdataEnd;
+      }
+      return cdata(code);
+    }
+    function cdataEnd(code) {
+      if (code === 62) {
+        return end2(code);
+      }
+      if (code === 93) {
+        effects.consume(code);
+        return cdataEnd;
+      }
+      return cdata(code);
+    }
+    function declaration2(code) {
+      if (code === null || code === 62) {
+        return end2(code);
+      }
+      if (markdownLineEnding(code)) {
+        returnState = declaration2;
+        return atLineEnding(code);
+      }
+      effects.consume(code);
+      return declaration2;
+    }
+    function instruction(code) {
+      if (code === null) {
+        return nok(code);
+      }
+      if (code === 63) {
+        effects.consume(code);
+        return instructionClose;
+      }
+      if (markdownLineEnding(code)) {
+        returnState = instruction;
+        return atLineEnding(code);
+      }
+      effects.consume(code);
+      return instruction;
+    }
+    function instructionClose(code) {
+      return code === 62 ? end2(code) : instruction(code);
+    }
+    function tagCloseStart(code) {
+      if (asciiAlpha(code)) {
+        effects.consume(code);
+        return tagClose;
+      }
+      return nok(code);
+    }
+    function tagClose(code) {
+      if (code === 45 || asciiAlphanumeric(code)) {
+        effects.consume(code);
+        return tagClose;
+      }
+      return tagCloseBetween(code);
+    }
+    function tagCloseBetween(code) {
+      if (markdownLineEnding(code)) {
+        returnState = tagCloseBetween;
+        return atLineEnding(code);
+      }
+      if (markdownSpace(code)) {
+        effects.consume(code);
+        return tagCloseBetween;
+      }
+      return end2(code);
+    }
+    function tagOpen(code) {
+      if (code === 45 || asciiAlphanumeric(code)) {
+        effects.consume(code);
+        return tagOpen;
+      }
+      if (code === 47 || code === 62 || markdownLineEndingOrSpace(code)) {
+        return tagOpenBetween(code);
+      }
+      return nok(code);
+    }
+    function tagOpenBetween(code) {
+      if (code === 47) {
+        effects.consume(code);
+        return end2;
+      }
+      if (code === 58 || code === 95 || asciiAlpha(code)) {
+        effects.consume(code);
+        return tagOpenAttributeName;
+      }
+      if (markdownLineEnding(code)) {
+        returnState = tagOpenBetween;
+        return atLineEnding(code);
+      }
+      if (markdownSpace(code)) {
+        effects.consume(code);
+        return tagOpenBetween;
+      }
+      return end2(code);
+    }
+    function tagOpenAttributeName(code) {
+      if (code === 45 || code === 46 || code === 58 || code === 95 || asciiAlphanumeric(code)) {
+        effects.consume(code);
+        return tagOpenAttributeName;
+      }
+      return tagOpenAttributeNameAfter(code);
+    }
+    function tagOpenAttributeNameAfter(code) {
+      if (code === 61) {
+        effects.consume(code);
+        return tagOpenAttributeValueBefore;
+      }
+      if (markdownLineEnding(code)) {
+        returnState = tagOpenAttributeNameAfter;
+        return atLineEnding(code);
+      }
+      if (markdownSpace(code)) {
+        effects.consume(code);
+        return tagOpenAttributeNameAfter;
+      }
+      return tagOpenBetween(code);
+    }
+    function tagOpenAttributeValueBefore(code) {
+      if (code === null || code === 60 || code === 61 || code === 62 || code === 96) {
+        return nok(code);
+      }
+      if (code === 34 || code === 39) {
+        effects.consume(code);
+        marker = code;
+        return tagOpenAttributeValueQuoted;
+      }
+      if (markdownLineEnding(code)) {
+        returnState = tagOpenAttributeValueBefore;
+        return atLineEnding(code);
+      }
+      if (markdownSpace(code)) {
+        effects.consume(code);
+        return tagOpenAttributeValueBefore;
+      }
+      effects.consume(code);
+      marker = void 0;
+      return tagOpenAttributeValueUnquoted;
+    }
+    function tagOpenAttributeValueQuoted(code) {
+      if (code === marker) {
+        effects.consume(code);
+        return tagOpenAttributeValueQuotedAfter;
+      }
+      if (code === null) {
+        return nok(code);
+      }
+      if (markdownLineEnding(code)) {
+        returnState = tagOpenAttributeValueQuoted;
+        return atLineEnding(code);
+      }
+      effects.consume(code);
+      return tagOpenAttributeValueQuoted;
+    }
+    function tagOpenAttributeValueQuotedAfter(code) {
+      if (code === 62 || code === 47 || markdownLineEndingOrSpace(code)) {
+        return tagOpenBetween(code);
+      }
+      return nok(code);
+    }
+    function tagOpenAttributeValueUnquoted(code) {
+      if (code === null || code === 34 || code === 39 || code === 60 || code === 61 || code === 96) {
+        return nok(code);
+      }
+      if (code === 62 || markdownLineEndingOrSpace(code)) {
+        return tagOpenBetween(code);
+      }
+      effects.consume(code);
+      return tagOpenAttributeValueUnquoted;
+    }
+    function atLineEnding(code) {
+      effects.exit("htmlTextData");
+      effects.enter("lineEnding");
+      effects.consume(code);
+      effects.exit("lineEnding");
+      return factorySpace2(
+        effects,
+        afterPrefix,
+        "linePrefix",
+        self2.parser.constructs.disable.null.indexOf("codeIndented") > -1 ? void 0 : 4
+      );
+    }
+    function afterPrefix(code) {
+      effects.enter("htmlTextData");
+      return returnState(code);
+    }
+    function end2(code) {
+      if (code === 62) {
+        effects.consume(code);
+        effects.exit("htmlTextData");
+        effects.exit("htmlText");
+        return ok;
+      }
+      return nok(code);
+    }
+  }
+  htmlText_1 = htmlText;
+  return htmlText_1;
+}
+var labelEnd_1;
+var hasRequiredLabelEnd;
+function requireLabelEnd() {
+  if (hasRequiredLabelEnd) return labelEnd_1;
+  hasRequiredLabelEnd = 1;
+  var markdownLineEndingOrSpace = requireMarkdownLineEndingOrSpace();
+  var chunkedPush = requireChunkedPush();
+  var chunkedSplice = requireChunkedSplice();
+  var normalizeIdentifier = requireNormalizeIdentifier();
+  var resolveAll = requireResolveAll();
+  var shallow = requireShallow();
+  var factoryDestination2 = requireFactoryDestination();
+  var factoryLabel2 = requireFactoryLabel();
+  var factoryTitle2 = requireFactoryTitle();
+  var factoryWhitespace2 = requireFactoryWhitespace();
+  var labelEnd = {
+    name: "labelEnd",
+    tokenize: tokenizeLabelEnd,
+    resolveTo: resolveToLabelEnd,
+    resolveAll: resolveAllLabelEnd
+  };
+  var resourceConstruct = {
+    tokenize: tokenizeResource
+  };
+  var fullReferenceConstruct = {
+    tokenize: tokenizeFullReference
+  };
+  var collapsedReferenceConstruct = {
+    tokenize: tokenizeCollapsedReference
+  };
+  function resolveAllLabelEnd(events) {
+    var index2 = -1;
+    var token2;
+    while (++index2 < events.length) {
+      token2 = events[index2][1];
+      if (!token2._used && (token2.type === "labelImage" || token2.type === "labelLink" || token2.type === "labelEnd")) {
+        events.splice(index2 + 1, token2.type === "labelImage" ? 4 : 2);
+        token2.type = "data";
+        index2++;
+      }
+    }
+    return events;
+  }
+  function resolveToLabelEnd(events, context2) {
+    var index2 = events.length;
+    var offset3 = 0;
+    var group2;
+    var label;
+    var text2;
+    var token2;
+    var open;
+    var close;
+    var media;
+    while (index2--) {
+      token2 = events[index2][1];
+      if (open) {
+        if (token2.type === "link" || token2.type === "labelLink" && token2._inactive) {
+          break;
+        }
+        if (events[index2][0] === "enter" && token2.type === "labelLink") {
+          token2._inactive = true;
+        }
+      } else if (close) {
+        if (events[index2][0] === "enter" && (token2.type === "labelImage" || token2.type === "labelLink") && !token2._balanced) {
+          open = index2;
+          if (token2.type !== "labelLink") {
+            offset3 = 2;
+            break;
+          }
+        }
+      } else if (token2.type === "labelEnd") {
+        close = index2;
+      }
+    }
+    group2 = {
+      type: events[open][1].type === "labelLink" ? "link" : "image",
+      start: shallow(events[open][1].start),
+      end: shallow(events[events.length - 1][1].end)
+    };
+    label = {
+      type: "label",
+      start: shallow(events[open][1].start),
+      end: shallow(events[close][1].end)
+    };
+    text2 = {
+      type: "labelText",
+      start: shallow(events[open + offset3 + 2][1].end),
+      end: shallow(events[close - 2][1].start)
+    };
+    media = [
+      ["enter", group2, context2],
+      ["enter", label, context2]
+    ];
+    media = chunkedPush(media, events.slice(open + 1, open + offset3 + 3));
+    media = chunkedPush(media, [["enter", text2, context2]]);
+    media = chunkedPush(
+      media,
+      resolveAll(
+        context2.parser.constructs.insideSpan.null,
+        events.slice(open + offset3 + 4, close - 3),
+        context2
+      )
+    );
+    media = chunkedPush(media, [
+      ["exit", text2, context2],
+      events[close - 2],
+      events[close - 1],
+      ["exit", label, context2]
+    ]);
+    media = chunkedPush(media, events.slice(close + 1));
+    media = chunkedPush(media, [["exit", group2, context2]]);
+    chunkedSplice(events, open, events.length, media);
+    return events;
+  }
+  function tokenizeLabelEnd(effects, ok, nok) {
+    var self2 = this;
+    var index2 = self2.events.length;
+    var labelStart;
+    var defined;
+    while (index2--) {
+      if ((self2.events[index2][1].type === "labelImage" || self2.events[index2][1].type === "labelLink") && !self2.events[index2][1]._balanced) {
+        labelStart = self2.events[index2][1];
+        break;
+      }
+    }
+    return start3;
+    function start3(code) {
+      if (!labelStart) {
+        return nok(code);
+      }
+      if (labelStart._inactive) return balanced(code);
+      defined = self2.parser.defined.indexOf(
+        normalizeIdentifier(
+          self2.sliceSerialize({
+            start: labelStart.end,
+            end: self2.now()
+          })
+        )
+      ) > -1;
+      effects.enter("labelEnd");
+      effects.enter("labelMarker");
+      effects.consume(code);
+      effects.exit("labelMarker");
+      effects.exit("labelEnd");
+      return afterLabelEnd;
+    }
+    function afterLabelEnd(code) {
+      if (code === 40) {
+        return effects.attempt(
+          resourceConstruct,
+          ok,
+          defined ? ok : balanced
+        )(code);
+      }
+      if (code === 91) {
+        return effects.attempt(
+          fullReferenceConstruct,
+          ok,
+          defined ? effects.attempt(collapsedReferenceConstruct, ok, balanced) : balanced
+        )(code);
+      }
+      return defined ? ok(code) : balanced(code);
+    }
+    function balanced(code) {
+      labelStart._balanced = true;
+      return nok(code);
+    }
+  }
+  function tokenizeResource(effects, ok, nok) {
+    return start3;
+    function start3(code) {
+      effects.enter("resource");
+      effects.enter("resourceMarker");
+      effects.consume(code);
+      effects.exit("resourceMarker");
+      return factoryWhitespace2(effects, open);
+    }
+    function open(code) {
+      if (code === 41) {
+        return end2(code);
+      }
+      return factoryDestination2(
+        effects,
+        destinationAfter,
+        nok,
+        "resourceDestination",
+        "resourceDestinationLiteral",
+        "resourceDestinationLiteralMarker",
+        "resourceDestinationRaw",
+        "resourceDestinationString",
+        3
+      )(code);
+    }
+    function destinationAfter(code) {
+      return markdownLineEndingOrSpace(code) ? factoryWhitespace2(effects, between)(code) : end2(code);
+    }
+    function between(code) {
+      if (code === 34 || code === 39 || code === 40) {
+        return factoryTitle2(
+          effects,
+          factoryWhitespace2(effects, end2),
+          nok,
+          "resourceTitle",
+          "resourceTitleMarker",
+          "resourceTitleString"
+        )(code);
+      }
+      return end2(code);
+    }
+    function end2(code) {
+      if (code === 41) {
+        effects.enter("resourceMarker");
+        effects.consume(code);
+        effects.exit("resourceMarker");
+        effects.exit("resource");
+        return ok;
+      }
+      return nok(code);
+    }
+  }
+  function tokenizeFullReference(effects, ok, nok) {
+    var self2 = this;
+    return start3;
+    function start3(code) {
+      return factoryLabel2.call(
+        self2,
+        effects,
+        afterLabel,
+        nok,
+        "reference",
+        "referenceMarker",
+        "referenceString"
+      )(code);
+    }
+    function afterLabel(code) {
+      return self2.parser.defined.indexOf(
+        normalizeIdentifier(
+          self2.sliceSerialize(self2.events[self2.events.length - 1][1]).slice(1, -1)
+        )
+      ) < 0 ? nok(code) : ok(code);
+    }
+  }
+  function tokenizeCollapsedReference(effects, ok, nok) {
+    return start3;
+    function start3(code) {
+      effects.enter("reference");
+      effects.enter("referenceMarker");
+      effects.consume(code);
+      effects.exit("referenceMarker");
+      return open;
+    }
+    function open(code) {
+      if (code === 93) {
+        effects.enter("referenceMarker");
+        effects.consume(code);
+        effects.exit("referenceMarker");
+        effects.exit("reference");
+        return ok;
+      }
+      return nok(code);
+    }
+  }
+  labelEnd_1 = labelEnd;
+  return labelEnd_1;
+}
+var labelStartImage_1;
+var hasRequiredLabelStartImage;
+function requireLabelStartImage() {
+  if (hasRequiredLabelStartImage) return labelStartImage_1;
+  hasRequiredLabelStartImage = 1;
+  var labelEnd = requireLabelEnd();
+  var labelStartImage = {
+    name: "labelStartImage",
+    tokenize: tokenizeLabelStartImage,
+    resolveAll: labelEnd.resolveAll
+  };
+  function tokenizeLabelStartImage(effects, ok, nok) {
+    var self2 = this;
+    return start3;
+    function start3(code) {
+      effects.enter("labelImage");
+      effects.enter("labelImageMarker");
+      effects.consume(code);
+      effects.exit("labelImageMarker");
+      return open;
+    }
+    function open(code) {
+      if (code === 91) {
+        effects.enter("labelMarker");
+        effects.consume(code);
+        effects.exit("labelMarker");
+        effects.exit("labelImage");
+        return after;
+      }
+      return nok(code);
+    }
+    function after(code) {
+      return code === 94 && /* c8 ignore next */
+      "_hiddenFootnoteSupport" in self2.parser.constructs ? (
+        /* c8 ignore next */
+        nok(code)
+      ) : ok(code);
+    }
+  }
+  labelStartImage_1 = labelStartImage;
+  return labelStartImage_1;
+}
+var labelStartLink_1;
+var hasRequiredLabelStartLink;
+function requireLabelStartLink() {
+  if (hasRequiredLabelStartLink) return labelStartLink_1;
+  hasRequiredLabelStartLink = 1;
+  var labelEnd = requireLabelEnd();
+  var labelStartLink = {
+    name: "labelStartLink",
+    tokenize: tokenizeLabelStartLink,
+    resolveAll: labelEnd.resolveAll
+  };
+  function tokenizeLabelStartLink(effects, ok, nok) {
+    var self2 = this;
+    return start3;
+    function start3(code) {
+      effects.enter("labelLink");
+      effects.enter("labelMarker");
+      effects.consume(code);
+      effects.exit("labelMarker");
+      effects.exit("labelLink");
+      return after;
+    }
+    function after(code) {
+      return code === 94 && /* c8 ignore next */
+      "_hiddenFootnoteSupport" in self2.parser.constructs ? (
+        /* c8 ignore next */
+        nok(code)
+      ) : ok(code);
+    }
+  }
+  labelStartLink_1 = labelStartLink;
+  return labelStartLink_1;
+}
+var lineEnding_1;
+var hasRequiredLineEnding;
+function requireLineEnding() {
+  if (hasRequiredLineEnding) return lineEnding_1;
+  hasRequiredLineEnding = 1;
+  var factorySpace2 = requireFactorySpace();
+  var lineEnding = {
+    name: "lineEnding",
+    tokenize: tokenizeLineEnding
+  };
+  function tokenizeLineEnding(effects, ok) {
+    return start3;
+    function start3(code) {
+      effects.enter("lineEnding");
+      effects.consume(code);
+      effects.exit("lineEnding");
+      return factorySpace2(effects, ok, "linePrefix");
+    }
+  }
+  lineEnding_1 = lineEnding;
+  return lineEnding_1;
+}
+var thematicBreak_1$1;
+var hasRequiredThematicBreak$1;
+function requireThematicBreak$1() {
+  if (hasRequiredThematicBreak$1) return thematicBreak_1$1;
+  hasRequiredThematicBreak$1 = 1;
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var markdownSpace = requireMarkdownSpace();
+  var factorySpace2 = requireFactorySpace();
+  var thematicBreak = {
+    name: "thematicBreak",
+    tokenize: tokenizeThematicBreak
+  };
+  function tokenizeThematicBreak(effects, ok, nok) {
+    var size2 = 0;
+    var marker;
+    return start3;
+    function start3(code) {
+      effects.enter("thematicBreak");
+      marker = code;
+      return atBreak(code);
+    }
+    function atBreak(code) {
+      if (code === marker) {
+        effects.enter("thematicBreakSequence");
+        return sequence(code);
+      }
+      if (markdownSpace(code)) {
+        return factorySpace2(effects, atBreak, "whitespace")(code);
+      }
+      if (size2 < 3 || code !== null && !markdownLineEnding(code)) {
+        return nok(code);
+      }
+      effects.exit("thematicBreak");
+      return ok(code);
+    }
+    function sequence(code) {
+      if (code === marker) {
+        effects.consume(code);
+        size2++;
+        return sequence;
+      }
+      effects.exit("thematicBreakSequence");
+      return atBreak(code);
+    }
+  }
+  thematicBreak_1$1 = thematicBreak;
+  return thematicBreak_1$1;
+}
+var list_1$1;
+var hasRequiredList$1;
+function requireList$1() {
+  if (hasRequiredList$1) return list_1$1;
+  hasRequiredList$1 = 1;
+  var asciiDigit = requireAsciiDigit();
+  var markdownSpace = requireMarkdownSpace();
+  var prefixSize = requirePrefixSize();
+  var sizeChunks = requireSizeChunks();
+  var factorySpace2 = requireFactorySpace();
+  var partialBlankLine = requirePartialBlankLine();
+  var thematicBreak = requireThematicBreak$1();
+  var list = {
+    name: "list",
+    tokenize: tokenizeListStart,
+    continuation: {
+      tokenize: tokenizeListContinuation
+    },
+    exit: tokenizeListEnd
+  };
+  var listItemPrefixWhitespaceConstruct = {
+    tokenize: tokenizeListItemPrefixWhitespace,
+    partial: true
+  };
+  var indentConstruct = {
+    tokenize: tokenizeIndent,
+    partial: true
+  };
+  function tokenizeListStart(effects, ok, nok) {
+    var self2 = this;
+    var initialSize = prefixSize(self2.events, "linePrefix");
+    var size2 = 0;
+    return start3;
+    function start3(code) {
+      var kind = self2.containerState.type || (code === 42 || code === 43 || code === 45 ? "listUnordered" : "listOrdered");
+      if (kind === "listUnordered" ? !self2.containerState.marker || code === self2.containerState.marker : asciiDigit(code)) {
+        if (!self2.containerState.type) {
+          self2.containerState.type = kind;
+          effects.enter(kind, {
+            _container: true
+          });
+        }
+        if (kind === "listUnordered") {
+          effects.enter("listItemPrefix");
+          return code === 42 || code === 45 ? effects.check(thematicBreak, nok, atMarker)(code) : atMarker(code);
+        }
+        if (!self2.interrupt || code === 49) {
+          effects.enter("listItemPrefix");
+          effects.enter("listItemValue");
+          return inside(code);
+        }
+      }
+      return nok(code);
+    }
+    function inside(code) {
+      if (asciiDigit(code) && ++size2 < 10) {
+        effects.consume(code);
+        return inside;
+      }
+      if ((!self2.interrupt || size2 < 2) && (self2.containerState.marker ? code === self2.containerState.marker : code === 41 || code === 46)) {
+        effects.exit("listItemValue");
+        return atMarker(code);
+      }
+      return nok(code);
+    }
+    function atMarker(code) {
+      effects.enter("listItemMarker");
+      effects.consume(code);
+      effects.exit("listItemMarker");
+      self2.containerState.marker = self2.containerState.marker || code;
+      return effects.check(
+        partialBlankLine,
+        // Can’t be empty when interrupting.
+        self2.interrupt ? nok : onBlank,
+        effects.attempt(
+          listItemPrefixWhitespaceConstruct,
+          endOfPrefix,
+          otherPrefix
+        )
+      );
+    }
+    function onBlank(code) {
+      self2.containerState.initialBlankLine = true;
+      initialSize++;
+      return endOfPrefix(code);
+    }
+    function otherPrefix(code) {
+      if (markdownSpace(code)) {
+        effects.enter("listItemPrefixWhitespace");
+        effects.consume(code);
+        effects.exit("listItemPrefixWhitespace");
+        return endOfPrefix;
+      }
+      return nok(code);
+    }
+    function endOfPrefix(code) {
+      self2.containerState.size = initialSize + sizeChunks(self2.sliceStream(effects.exit("listItemPrefix")));
+      return ok(code);
+    }
+  }
+  function tokenizeListContinuation(effects, ok, nok) {
+    var self2 = this;
+    self2.containerState._closeFlow = void 0;
+    return effects.check(partialBlankLine, onBlank, notBlank);
+    function onBlank(code) {
+      self2.containerState.furtherBlankLines = self2.containerState.furtherBlankLines || self2.containerState.initialBlankLine;
+      return factorySpace2(
+        effects,
+        ok,
+        "listItemIndent",
+        self2.containerState.size + 1
+      )(code);
+    }
+    function notBlank(code) {
+      if (self2.containerState.furtherBlankLines || !markdownSpace(code)) {
+        self2.containerState.furtherBlankLines = self2.containerState.initialBlankLine = void 0;
+        return notInCurrentItem(code);
+      }
+      self2.containerState.furtherBlankLines = self2.containerState.initialBlankLine = void 0;
+      return effects.attempt(indentConstruct, ok, notInCurrentItem)(code);
+    }
+    function notInCurrentItem(code) {
+      self2.containerState._closeFlow = true;
+      self2.interrupt = void 0;
+      return factorySpace2(
+        effects,
+        effects.attempt(list, ok, nok),
+        "linePrefix",
+        self2.parser.constructs.disable.null.indexOf("codeIndented") > -1 ? void 0 : 4
+      )(code);
+    }
+  }
+  function tokenizeIndent(effects, ok, nok) {
+    var self2 = this;
+    return factorySpace2(
+      effects,
+      afterPrefix,
+      "listItemIndent",
+      self2.containerState.size + 1
+    );
+    function afterPrefix(code) {
+      return prefixSize(self2.events, "listItemIndent") === self2.containerState.size ? ok(code) : nok(code);
+    }
+  }
+  function tokenizeListEnd(effects) {
+    effects.exit(this.containerState.type);
+  }
+  function tokenizeListItemPrefixWhitespace(effects, ok, nok) {
+    var self2 = this;
+    return factorySpace2(
+      effects,
+      afterPrefix,
+      "listItemPrefixWhitespace",
+      self2.parser.constructs.disable.null.indexOf("codeIndented") > -1 ? void 0 : 4 + 1
+    );
+    function afterPrefix(code) {
+      return markdownSpace(code) || !prefixSize(self2.events, "listItemPrefixWhitespace") ? nok(code) : ok(code);
+    }
+  }
+  list_1$1 = list;
+  return list_1$1;
+}
+var setextUnderline_1;
+var hasRequiredSetextUnderline;
+function requireSetextUnderline() {
+  if (hasRequiredSetextUnderline) return setextUnderline_1;
+  hasRequiredSetextUnderline = 1;
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var shallow = requireShallow();
+  var factorySpace2 = requireFactorySpace();
+  var setextUnderline = {
+    name: "setextUnderline",
+    tokenize: tokenizeSetextUnderline,
+    resolveTo: resolveToSetextUnderline
+  };
+  function resolveToSetextUnderline(events, context2) {
+    var index2 = events.length;
+    var content2;
+    var text2;
+    var definition;
+    var heading;
+    while (index2--) {
+      if (events[index2][0] === "enter") {
+        if (events[index2][1].type === "content") {
+          content2 = index2;
+          break;
+        }
+        if (events[index2][1].type === "paragraph") {
+          text2 = index2;
+        }
+      } else {
+        if (events[index2][1].type === "content") {
+          events.splice(index2, 1);
+        }
+        if (!definition && events[index2][1].type === "definition") {
+          definition = index2;
+        }
+      }
+    }
+    heading = {
+      type: "setextHeading",
+      start: shallow(events[text2][1].start),
+      end: shallow(events[events.length - 1][1].end)
+    };
+    events[text2][1].type = "setextHeadingText";
+    if (definition) {
+      events.splice(text2, 0, ["enter", heading, context2]);
+      events.splice(definition + 1, 0, ["exit", events[content2][1], context2]);
+      events[content2][1].end = shallow(events[definition][1].end);
+    } else {
+      events[content2][1] = heading;
+    }
+    events.push(["exit", heading, context2]);
+    return events;
+  }
+  function tokenizeSetextUnderline(effects, ok, nok) {
+    var self2 = this;
+    var index2 = self2.events.length;
+    var marker;
+    var paragraph;
+    while (index2--) {
+      if (self2.events[index2][1].type !== "lineEnding" && self2.events[index2][1].type !== "linePrefix" && self2.events[index2][1].type !== "content") {
+        paragraph = self2.events[index2][1].type === "paragraph";
+        break;
+      }
+    }
+    return start3;
+    function start3(code) {
+      if (!self2.lazy && (self2.interrupt || paragraph)) {
+        effects.enter("setextHeadingLine");
+        effects.enter("setextHeadingLineSequence");
+        marker = code;
+        return closingSequence(code);
+      }
+      return nok(code);
+    }
+    function closingSequence(code) {
+      if (code === marker) {
+        effects.consume(code);
+        return closingSequence;
+      }
+      effects.exit("setextHeadingLineSequence");
+      return factorySpace2(effects, closingSequenceEnd, "lineSuffix")(code);
+    }
+    function closingSequenceEnd(code) {
+      if (code === null || markdownLineEnding(code)) {
+        effects.exit("setextHeadingLine");
+        return ok(code);
+      }
+      return nok(code);
+    }
+  }
+  setextUnderline_1 = setextUnderline;
+  return setextUnderline_1;
+}
+var hasRequiredConstructs;
+function requireConstructs() {
+  if (hasRequiredConstructs) return constructs;
+  hasRequiredConstructs = 1;
+  Object.defineProperty(constructs, "__esModule", { value: true });
+  var text$1 = requireText$1();
+  var attention = requireAttention();
+  var autolink = requireAutolink();
+  var blockQuote = requireBlockQuote();
+  var characterEscape = requireCharacterEscape();
+  var characterReference = requireCharacterReference();
+  var codeFenced = requireCodeFenced();
+  var codeIndented = requireCodeIndented();
+  var codeText = requireCodeText();
+  var definition = requireDefinition();
+  var hardBreakEscape = requireHardBreakEscape();
+  var headingAtx = requireHeadingAtx();
+  var htmlFlow = requireHtmlFlow();
+  var htmlText = requireHtmlText();
+  var labelEnd = requireLabelEnd();
+  var labelStartImage = requireLabelStartImage();
+  var labelStartLink = requireLabelStartLink();
+  var lineEnding = requireLineEnding();
+  var list = requireList$1();
+  var setextUnderline = requireSetextUnderline();
+  var thematicBreak = requireThematicBreak$1();
+  var document2 = {
+    42: list,
+    // Asterisk
+    43: list,
+    // Plus sign
+    45: list,
+    // Dash
+    48: list,
+    // 0
+    49: list,
+    // 1
+    50: list,
+    // 2
+    51: list,
+    // 3
+    52: list,
+    // 4
+    53: list,
+    // 5
+    54: list,
+    // 6
+    55: list,
+    // 7
+    56: list,
+    // 8
+    57: list,
+    // 9
+    62: blockQuote
+    // Greater than
+  };
+  var contentInitial = {
+    91: definition
+    // Left square bracket
+  };
+  var flowInitial = {
+    "-2": codeIndented,
+    // Horizontal tab
+    "-1": codeIndented,
+    // Virtual space
+    32: codeIndented
+    // Space
+  };
+  var flow2 = {
+    35: headingAtx,
+    // Number sign
+    42: thematicBreak,
+    // Asterisk
+    45: [setextUnderline, thematicBreak],
+    // Dash
+    60: htmlFlow,
+    // Less than
+    61: setextUnderline,
+    // Equals to
+    95: thematicBreak,
+    // Underscore
+    96: codeFenced,
+    // Grave accent
+    126: codeFenced
+    // Tilde
+  };
+  var string2 = {
+    38: characterReference,
+    // Ampersand
+    92: characterEscape
+    // Backslash
+  };
+  var text2 = {
+    "-5": lineEnding,
+    // Carriage return
+    "-4": lineEnding,
+    // Line feed
+    "-3": lineEnding,
+    // Carriage return + line feed
+    33: labelStartImage,
+    // Exclamation mark
+    38: characterReference,
+    // Ampersand
+    42: attention,
+    // Asterisk
+    60: [autolink, htmlText],
+    // Less than
+    91: labelStartLink,
+    // Left square bracket
+    92: [hardBreakEscape, characterEscape],
+    // Backslash
+    93: labelEnd,
+    // Right square bracket
+    95: attention,
+    // Underscore
+    96: codeText
+    // Grave accent
+  };
+  var insideSpan = {
+    null: [attention, text$1.resolver]
+  };
+  var disable = {
+    null: []
+  };
+  constructs.contentInitial = contentInitial;
+  constructs.disable = disable;
+  constructs.document = document2;
+  constructs.flow = flow2;
+  constructs.flowInitial = flowInitial;
+  constructs.insideSpan = insideSpan;
+  constructs.string = string2;
+  constructs.text = text2;
+  return constructs;
+}
+var parse_1;
+var hasRequiredParse;
+function requireParse() {
+  if (hasRequiredParse) return parse_1;
+  hasRequiredParse = 1;
+  var content2 = requireContent$1();
+  var document2 = requireDocument();
+  var flow2 = requireFlow();
+  var text2 = requireText$1();
+  var combineExtensions = requireCombineExtensions();
+  var createTokenizer = requireCreateTokenizer();
+  var miniflat = requireMiniflat();
+  var constructs2 = requireConstructs();
+  function parse3(options2) {
+    var settings2 = options2 || {};
+    var parser3 = {
+      defined: [],
+      constructs: combineExtensions(
+        [constructs2].concat(miniflat(settings2.extensions))
+      ),
+      content: create3(content2),
+      document: create3(document2),
+      flow: create3(flow2),
+      string: create3(text2.string),
+      text: create3(text2.text)
+    };
+    return parser3;
+    function create3(initializer) {
+      return creator;
+      function creator(from3) {
+        return createTokenizer(parser3, initializer, from3);
+      }
+    }
+  }
+  parse_1 = parse3;
+  return parse_1;
+}
+var preprocess_1;
+var hasRequiredPreprocess;
+function requirePreprocess() {
+  if (hasRequiredPreprocess) return preprocess_1;
+  hasRequiredPreprocess = 1;
+  var search = /[\0\t\n\r]/g;
+  function preprocess() {
+    var start3 = true;
+    var column2 = 1;
+    var buffer = "";
+    var atCarriageReturn;
+    return preprocessor;
+    function preprocessor(value, encoding, end2) {
+      var chunks = [];
+      var match2;
+      var next2;
+      var startPosition;
+      var endPosition;
+      var code;
+      value = buffer + value.toString(encoding);
+      startPosition = 0;
+      buffer = "";
+      if (start3) {
+        if (value.charCodeAt(0) === 65279) {
+          startPosition++;
+        }
+        start3 = void 0;
+      }
+      while (startPosition < value.length) {
+        search.lastIndex = startPosition;
+        match2 = search.exec(value);
+        endPosition = match2 ? match2.index : value.length;
+        code = value.charCodeAt(endPosition);
+        if (!match2) {
+          buffer = value.slice(startPosition);
+          break;
+        }
+        if (code === 10 && startPosition === endPosition && atCarriageReturn) {
+          chunks.push(-3);
+          atCarriageReturn = void 0;
+        } else {
+          if (atCarriageReturn) {
+            chunks.push(-5);
+            atCarriageReturn = void 0;
+          }
+          if (startPosition < endPosition) {
+            chunks.push(value.slice(startPosition, endPosition));
+            column2 += endPosition - startPosition;
+          }
+          if (code === 0) {
+            chunks.push(65533);
+            column2++;
+          } else if (code === 9) {
+            next2 = Math.ceil(column2 / 4) * 4;
+            chunks.push(-2);
+            while (column2++ < next2) chunks.push(-1);
+          } else if (code === 10) {
+            chunks.push(-4);
+            column2 = 1;
+          } else {
+            atCarriageReturn = true;
+            column2 = 1;
+          }
+        }
+        startPosition = endPosition + 1;
+      }
+      if (end2) {
+        if (atCarriageReturn) chunks.push(-5);
+        if (buffer) chunks.push(buffer);
+        chunks.push(null);
+      }
+      return chunks;
+    }
+  }
+  preprocess_1 = preprocess;
+  return preprocess_1;
+}
+var postprocess_1;
+var hasRequiredPostprocess;
+function requirePostprocess() {
+  if (hasRequiredPostprocess) return postprocess_1;
+  hasRequiredPostprocess = 1;
+  var subtokenize = requireSubtokenize();
+  function postprocess(events) {
+    while (!subtokenize(events)) {
+    }
+    return events;
+  }
+  postprocess_1 = postprocess;
+  return postprocess_1;
+}
+var dist;
+var hasRequiredDist;
+function requireDist() {
+  if (hasRequiredDist) return dist;
+  hasRequiredDist = 1;
+  dist = fromMarkdown2;
+  var toString2 = requireMdastUtilToString();
+  var assign2 = requireAssign();
+  var own = requireHasOwnProperty();
+  var normalizeIdentifier = requireNormalizeIdentifier();
+  var safeFromInt = requireSafeFromInt();
+  var parser3 = requireParse();
+  var preprocessor = requirePreprocess();
+  var postprocess = requirePostprocess();
+  var decode = requireDecodeEntity_browser();
+  var stringifyPosition = requireUnistUtilStringifyPosition();
+  function fromMarkdown2(value, encoding, options2) {
+    if (typeof encoding !== "string") {
+      options2 = encoding;
+      encoding = void 0;
+    }
+    return compiler(options2)(
+      postprocess(
+        parser3(options2).document().write(preprocessor()(value, encoding, true))
+      )
+    );
+  }
+  function compiler(options2) {
+    var settings2 = options2 || {};
+    var config2 = configure2(
+      {
+        transforms: [],
+        canContainEols: [
+          "emphasis",
+          "fragment",
+          "heading",
+          "paragraph",
+          "strong"
+        ],
+        enter: {
+          autolink: opener(link),
+          autolinkProtocol: onenterdata,
+          autolinkEmail: onenterdata,
+          atxHeading: opener(heading),
+          blockQuote: opener(blockQuote),
+          characterEscape: onenterdata,
+          characterReference: onenterdata,
+          codeFenced: opener(codeFlow),
+          codeFencedFenceInfo: buffer,
+          codeFencedFenceMeta: buffer,
+          codeIndented: opener(codeFlow, buffer),
+          codeText: opener(codeText, buffer),
+          codeTextData: onenterdata,
+          data: onenterdata,
+          codeFlowValue: onenterdata,
+          definition: opener(definition),
+          definitionDestinationString: buffer,
+          definitionLabelString: buffer,
+          definitionTitleString: buffer,
+          emphasis: opener(emphasis),
+          hardBreakEscape: opener(hardBreak),
+          hardBreakTrailing: opener(hardBreak),
+          htmlFlow: opener(html2, buffer),
+          htmlFlowData: onenterdata,
+          htmlText: opener(html2, buffer),
+          htmlTextData: onenterdata,
+          image: opener(image2),
+          label: buffer,
+          link: opener(link),
+          listItem: opener(listItem),
+          listItemValue: onenterlistitemvalue,
+          listOrdered: opener(list, onenterlistordered),
+          listUnordered: opener(list),
+          paragraph: opener(paragraph),
+          reference: onenterreference,
+          referenceString: buffer,
+          resourceDestinationString: buffer,
+          resourceTitleString: buffer,
+          setextHeading: opener(heading),
+          strong: opener(strong),
+          thematicBreak: opener(thematicBreak)
+        },
+        exit: {
+          atxHeading: closer(),
+          atxHeadingSequence: onexitatxheadingsequence,
+          autolink: closer(),
+          autolinkEmail: onexitautolinkemail,
+          autolinkProtocol: onexitautolinkprotocol,
+          blockQuote: closer(),
+          characterEscapeValue: onexitdata,
+          characterReferenceMarkerHexadecimal: onexitcharacterreferencemarker,
+          characterReferenceMarkerNumeric: onexitcharacterreferencemarker,
+          characterReferenceValue: onexitcharacterreferencevalue,
+          codeFenced: closer(onexitcodefenced),
+          codeFencedFence: onexitcodefencedfence,
+          codeFencedFenceInfo: onexitcodefencedfenceinfo,
+          codeFencedFenceMeta: onexitcodefencedfencemeta,
+          codeFlowValue: onexitdata,
+          codeIndented: closer(onexitcodeindented),
+          codeText: closer(onexitcodetext),
+          codeTextData: onexitdata,
+          data: onexitdata,
+          definition: closer(),
+          definitionDestinationString: onexitdefinitiondestinationstring,
+          definitionLabelString: onexitdefinitionlabelstring,
+          definitionTitleString: onexitdefinitiontitlestring,
+          emphasis: closer(),
+          hardBreakEscape: closer(onexithardbreak),
+          hardBreakTrailing: closer(onexithardbreak),
+          htmlFlow: closer(onexithtmlflow),
+          htmlFlowData: onexitdata,
+          htmlText: closer(onexithtmltext),
+          htmlTextData: onexitdata,
+          image: closer(onexitimage),
+          label: onexitlabel,
+          labelText: onexitlabeltext,
+          lineEnding: onexitlineending,
+          link: closer(onexitlink),
+          listItem: closer(),
+          listOrdered: closer(),
+          listUnordered: closer(),
+          paragraph: closer(),
+          referenceString: onexitreferencestring,
+          resourceDestinationString: onexitresourcedestinationstring,
+          resourceTitleString: onexitresourcetitlestring,
+          resource: onexitresource,
+          setextHeading: closer(onexitsetextheading),
+          setextHeadingLineSequence: onexitsetextheadinglinesequence,
+          setextHeadingText: onexitsetextheadingtext,
+          strong: closer(),
+          thematicBreak: closer()
+        }
+      },
+      settings2.mdastExtensions || []
+    );
+    var data2 = {};
+    return compile2;
+    function compile2(events) {
+      var tree = { type: "root", children: [] };
+      var stack = [tree];
+      var tokenStack = [];
+      var listStack = [];
+      var index2 = -1;
+      var handler;
+      var listStart;
+      var context2 = {
+        stack,
+        tokenStack,
+        config: config2,
+        enter,
+        exit,
+        buffer,
+        resume,
+        setData,
+        getData
+      };
+      while (++index2 < events.length) {
+        if (events[index2][1].type === "listOrdered" || events[index2][1].type === "listUnordered") {
+          if (events[index2][0] === "enter") {
+            listStack.push(index2);
+          } else {
+            listStart = listStack.pop(index2);
+            index2 = prepareList(events, listStart, index2);
+          }
+        }
+      }
+      index2 = -1;
+      while (++index2 < events.length) {
+        handler = config2[events[index2][0]];
+        if (own.call(handler, events[index2][1].type)) {
+          handler[events[index2][1].type].call(
+            assign2({ sliceSerialize: events[index2][2].sliceSerialize }, context2),
+            events[index2][1]
+          );
+        }
+      }
+      if (tokenStack.length) {
+        throw new Error(
+          "Cannot close document, a token (`" + tokenStack[tokenStack.length - 1].type + "`, " + stringifyPosition({
+            start: tokenStack[tokenStack.length - 1].start,
+            end: tokenStack[tokenStack.length - 1].end
+          }) + ") is still open"
+        );
+      }
+      tree.position = {
+        start: point(
+          events.length ? events[0][1].start : { line: 1, column: 1, offset: 0 }
+        ),
+        end: point(
+          events.length ? events[events.length - 2][1].end : { line: 1, column: 1, offset: 0 }
+        )
+      };
+      index2 = -1;
+      while (++index2 < config2.transforms.length) {
+        tree = config2.transforms[index2](tree) || tree;
+      }
+      return tree;
+    }
+    function prepareList(events, start3, length2) {
+      var index2 = start3 - 1;
+      var containerBalance = -1;
+      var listSpread = false;
+      var listItem2;
+      var tailIndex;
+      var lineIndex;
+      var tailEvent;
+      var event;
+      var firstBlankLineIndex;
+      var atMarker;
+      while (++index2 <= length2) {
+        event = events[index2];
+        if (event[1].type === "listUnordered" || event[1].type === "listOrdered" || event[1].type === "blockQuote") {
+          if (event[0] === "enter") {
+            containerBalance++;
+          } else {
+            containerBalance--;
+          }
+          atMarker = void 0;
+        } else if (event[1].type === "lineEndingBlank") {
+          if (event[0] === "enter") {
+            if (listItem2 && !atMarker && !containerBalance && !firstBlankLineIndex) {
+              firstBlankLineIndex = index2;
+            }
+            atMarker = void 0;
+          }
+        } else if (event[1].type === "linePrefix" || event[1].type === "listItemValue" || event[1].type === "listItemMarker" || event[1].type === "listItemPrefix" || event[1].type === "listItemPrefixWhitespace") ;
+        else {
+          atMarker = void 0;
+        }
+        if (!containerBalance && event[0] === "enter" && event[1].type === "listItemPrefix" || containerBalance === -1 && event[0] === "exit" && (event[1].type === "listUnordered" || event[1].type === "listOrdered")) {
+          if (listItem2) {
+            tailIndex = index2;
+            lineIndex = void 0;
+            while (tailIndex--) {
+              tailEvent = events[tailIndex];
+              if (tailEvent[1].type === "lineEnding" || tailEvent[1].type === "lineEndingBlank") {
+                if (tailEvent[0] === "exit") continue;
+                if (lineIndex) {
+                  events[lineIndex][1].type = "lineEndingBlank";
+                  listSpread = true;
+                }
+                tailEvent[1].type = "lineEnding";
+                lineIndex = tailIndex;
+              } else if (tailEvent[1].type === "linePrefix" || tailEvent[1].type === "blockQuotePrefix" || tailEvent[1].type === "blockQuotePrefixWhitespace" || tailEvent[1].type === "blockQuoteMarker" || tailEvent[1].type === "listItemIndent") ;
+              else {
+                break;
+              }
+            }
+            if (firstBlankLineIndex && (!lineIndex || firstBlankLineIndex < lineIndex)) {
+              listItem2._spread = true;
+            }
+            listItem2.end = point(
+              lineIndex ? events[lineIndex][1].start : event[1].end
+            );
+            events.splice(lineIndex || index2, 0, ["exit", listItem2, event[2]]);
+            index2++;
+            length2++;
+          }
+          if (event[1].type === "listItemPrefix") {
+            listItem2 = {
+              type: "listItem",
+              _spread: false,
+              start: point(event[1].start)
+            };
+            events.splice(index2, 0, ["enter", listItem2, event[2]]);
+            index2++;
+            length2++;
+            firstBlankLineIndex = void 0;
+            atMarker = true;
+          }
+        }
+      }
+      events[start3][1]._spread = listSpread;
+      return length2;
+    }
+    function setData(key, value) {
+      data2[key] = value;
+    }
+    function getData(key) {
+      return data2[key];
+    }
+    function point(d4) {
+      return { line: d4.line, column: d4.column, offset: d4.offset };
+    }
+    function opener(create3, and) {
+      return open;
+      function open(token2) {
+        enter.call(this, create3(token2), token2);
+        if (and) and.call(this, token2);
+      }
+    }
+    function buffer() {
+      this.stack.push({ type: "fragment", children: [] });
+    }
+    function enter(node2, token2) {
+      this.stack[this.stack.length - 1].children.push(node2);
+      this.stack.push(node2);
+      this.tokenStack.push(token2);
+      node2.position = { start: point(token2.start) };
+      return node2;
+    }
+    function closer(and) {
+      return close;
+      function close(token2) {
+        if (and) and.call(this, token2);
+        exit.call(this, token2);
+      }
+    }
+    function exit(token2) {
+      var node2 = this.stack.pop();
+      var open = this.tokenStack.pop();
+      if (!open) {
+        throw new Error(
+          "Cannot close `" + token2.type + "` (" + stringifyPosition({ start: token2.start, end: token2.end }) + "): it’s not open"
+        );
+      } else if (open.type !== token2.type) {
+        throw new Error(
+          "Cannot close `" + token2.type + "` (" + stringifyPosition({ start: token2.start, end: token2.end }) + "): a different token (`" + open.type + "`, " + stringifyPosition({ start: open.start, end: open.end }) + ") is open"
+        );
+      }
+      node2.position.end = point(token2.end);
+      return node2;
+    }
+    function resume() {
+      return toString2(this.stack.pop());
+    }
+    function onenterlistordered() {
+      setData("expectingFirstListItemValue", true);
+    }
+    function onenterlistitemvalue(token2) {
+      if (getData("expectingFirstListItemValue")) {
+        this.stack[this.stack.length - 2].start = parseInt(
+          this.sliceSerialize(token2),
+          10
+        );
+        setData("expectingFirstListItemValue");
+      }
+    }
+    function onexitcodefencedfenceinfo() {
+      var data3 = this.resume();
+      this.stack[this.stack.length - 1].lang = data3;
+    }
+    function onexitcodefencedfencemeta() {
+      var data3 = this.resume();
+      this.stack[this.stack.length - 1].meta = data3;
+    }
+    function onexitcodefencedfence() {
+      if (getData("flowCodeInside")) return;
+      this.buffer();
+      setData("flowCodeInside", true);
+    }
+    function onexitcodefenced() {
+      var data3 = this.resume();
+      this.stack[this.stack.length - 1].value = data3.replace(
+        /^(\r?\n|\r)|(\r?\n|\r)$/g,
+        ""
+      );
+      setData("flowCodeInside");
+    }
+    function onexitcodeindented() {
+      var data3 = this.resume();
+      this.stack[this.stack.length - 1].value = data3;
+    }
+    function onexitdefinitionlabelstring(token2) {
+      var label = this.resume();
+      this.stack[this.stack.length - 1].label = label;
+      this.stack[this.stack.length - 1].identifier = normalizeIdentifier(
+        this.sliceSerialize(token2)
+      ).toLowerCase();
+    }
+    function onexitdefinitiontitlestring() {
+      var data3 = this.resume();
+      this.stack[this.stack.length - 1].title = data3;
+    }
+    function onexitdefinitiondestinationstring() {
+      var data3 = this.resume();
+      this.stack[this.stack.length - 1].url = data3;
+    }
+    function onexitatxheadingsequence(token2) {
+      if (!this.stack[this.stack.length - 1].depth) {
+        this.stack[this.stack.length - 1].depth = this.sliceSerialize(
+          token2
+        ).length;
+      }
+    }
+    function onexitsetextheadingtext() {
+      setData("setextHeadingSlurpLineEnding", true);
+    }
+    function onexitsetextheadinglinesequence(token2) {
+      this.stack[this.stack.length - 1].depth = this.sliceSerialize(token2).charCodeAt(0) === 61 ? 1 : 2;
+    }
+    function onexitsetextheading() {
+      setData("setextHeadingSlurpLineEnding");
+    }
+    function onenterdata(token2) {
+      var siblings3 = this.stack[this.stack.length - 1].children;
+      var tail = siblings3[siblings3.length - 1];
+      if (!tail || tail.type !== "text") {
+        tail = text2();
+        tail.position = { start: point(token2.start) };
+        this.stack[this.stack.length - 1].children.push(tail);
+      }
+      this.stack.push(tail);
+    }
+    function onexitdata(token2) {
+      var tail = this.stack.pop();
+      tail.value += this.sliceSerialize(token2);
+      tail.position.end = point(token2.end);
+    }
+    function onexitlineending(token2) {
+      var context2 = this.stack[this.stack.length - 1];
+      if (getData("atHardBreak")) {
+        context2.children[context2.children.length - 1].position.end = point(
+          token2.end
+        );
+        setData("atHardBreak");
+        return;
+      }
+      if (!getData("setextHeadingSlurpLineEnding") && config2.canContainEols.indexOf(context2.type) > -1) {
+        onenterdata.call(this, token2);
+        onexitdata.call(this, token2);
+      }
+    }
+    function onexithardbreak() {
+      setData("atHardBreak", true);
+    }
+    function onexithtmlflow() {
+      var data3 = this.resume();
+      this.stack[this.stack.length - 1].value = data3;
+    }
+    function onexithtmltext() {
+      var data3 = this.resume();
+      this.stack[this.stack.length - 1].value = data3;
+    }
+    function onexitcodetext() {
+      var data3 = this.resume();
+      this.stack[this.stack.length - 1].value = data3;
+    }
+    function onexitlink() {
+      var context2 = this.stack[this.stack.length - 1];
+      if (getData("inReference")) {
+        context2.type += "Reference";
+        context2.referenceType = getData("referenceType") || "shortcut";
+        delete context2.url;
+        delete context2.title;
+      } else {
+        delete context2.identifier;
+        delete context2.label;
+        delete context2.referenceType;
+      }
+      setData("referenceType");
+    }
+    function onexitimage() {
+      var context2 = this.stack[this.stack.length - 1];
+      if (getData("inReference")) {
+        context2.type += "Reference";
+        context2.referenceType = getData("referenceType") || "shortcut";
+        delete context2.url;
+        delete context2.title;
+      } else {
+        delete context2.identifier;
+        delete context2.label;
+        delete context2.referenceType;
+      }
+      setData("referenceType");
+    }
+    function onexitlabeltext(token2) {
+      this.stack[this.stack.length - 2].identifier = normalizeIdentifier(
+        this.sliceSerialize(token2)
+      ).toLowerCase();
+    }
+    function onexitlabel() {
+      var fragment = this.stack[this.stack.length - 1];
+      var value = this.resume();
+      this.stack[this.stack.length - 1].label = value;
+      setData("inReference", true);
+      if (this.stack[this.stack.length - 1].type === "link") {
+        this.stack[this.stack.length - 1].children = fragment.children;
+      } else {
+        this.stack[this.stack.length - 1].alt = value;
+      }
+    }
+    function onexitresourcedestinationstring() {
+      var data3 = this.resume();
+      this.stack[this.stack.length - 1].url = data3;
+    }
+    function onexitresourcetitlestring() {
+      var data3 = this.resume();
+      this.stack[this.stack.length - 1].title = data3;
+    }
+    function onexitresource() {
+      setData("inReference");
+    }
+    function onenterreference() {
+      setData("referenceType", "collapsed");
+    }
+    function onexitreferencestring(token2) {
+      var label = this.resume();
+      this.stack[this.stack.length - 1].label = label;
+      this.stack[this.stack.length - 1].identifier = normalizeIdentifier(
+        this.sliceSerialize(token2)
+      ).toLowerCase();
+      setData("referenceType", "full");
+    }
+    function onexitcharacterreferencemarker(token2) {
+      setData("characterReferenceType", token2.type);
+    }
+    function onexitcharacterreferencevalue(token2) {
+      var data3 = this.sliceSerialize(token2);
+      var type3 = getData("characterReferenceType");
+      var value;
+      var tail;
+      if (type3) {
+        value = safeFromInt(
+          data3,
+          type3 === "characterReferenceMarkerNumeric" ? 10 : 16
+        );
+        setData("characterReferenceType");
+      } else {
+        value = decode(data3);
+      }
+      tail = this.stack.pop();
+      tail.value += value;
+      tail.position.end = point(token2.end);
+    }
+    function onexitautolinkprotocol(token2) {
+      onexitdata.call(this, token2);
+      this.stack[this.stack.length - 1].url = this.sliceSerialize(token2);
+    }
+    function onexitautolinkemail(token2) {
+      onexitdata.call(this, token2);
+      this.stack[this.stack.length - 1].url = "mailto:" + this.sliceSerialize(token2);
+    }
+    function blockQuote() {
+      return { type: "blockquote", children: [] };
+    }
+    function codeFlow() {
+      return { type: "code", lang: null, meta: null, value: "" };
+    }
+    function codeText() {
+      return { type: "inlineCode", value: "" };
+    }
+    function definition() {
+      return {
+        type: "definition",
+        identifier: "",
+        label: null,
+        title: null,
+        url: ""
+      };
+    }
+    function emphasis() {
+      return { type: "emphasis", children: [] };
+    }
+    function heading() {
+      return { type: "heading", depth: void 0, children: [] };
+    }
+    function hardBreak() {
+      return { type: "break" };
+    }
+    function html2() {
+      return { type: "html", value: "" };
+    }
+    function image2() {
+      return { type: "image", title: null, url: "", alt: null };
+    }
+    function link() {
+      return { type: "link", title: null, url: "", children: [] };
+    }
+    function list(token2) {
+      return {
+        type: "list",
+        ordered: token2.type === "listOrdered",
+        start: null,
+        spread: token2._spread,
+        children: []
+      };
+    }
+    function listItem(token2) {
+      return {
+        type: "listItem",
+        spread: token2._spread,
+        checked: null,
+        children: []
+      };
+    }
+    function paragraph() {
+      return { type: "paragraph", children: [] };
+    }
+    function strong() {
+      return { type: "strong", children: [] };
+    }
+    function text2() {
+      return { type: "text", value: "" };
+    }
+    function thematicBreak() {
+      return { type: "thematicBreak" };
+    }
+  }
+  function configure2(config2, extensions) {
+    var index2 = -1;
+    while (++index2 < extensions.length) {
+      extension(config2, extensions[index2]);
+    }
+    return config2;
+  }
+  function extension(config2, extension2) {
+    var key;
+    var left2;
+    for (key in extension2) {
+      left2 = own.call(config2, key) ? config2[key] : config2[key] = {};
+      if (key === "canContainEols" || key === "transforms") {
+        config2[key] = [].concat(left2, extension2[key]);
+      } else {
+        Object.assign(left2, extension2[key]);
+      }
+    }
+  }
+  return dist;
+}
+var mdastUtilFromMarkdown;
+var hasRequiredMdastUtilFromMarkdown;
+function requireMdastUtilFromMarkdown() {
+  if (hasRequiredMdastUtilFromMarkdown) return mdastUtilFromMarkdown;
+  hasRequiredMdastUtilFromMarkdown = 1;
+  mdastUtilFromMarkdown = requireDist();
+  return mdastUtilFromMarkdown;
+}
+var remarkParse$1;
+var hasRequiredRemarkParse;
+function requireRemarkParse() {
+  if (hasRequiredRemarkParse) return remarkParse$1;
+  hasRequiredRemarkParse = 1;
+  remarkParse$1 = parse3;
+  var fromMarkdown2 = requireMdastUtilFromMarkdown();
+  function parse3(options2) {
+    var self2 = this;
+    this.Parser = parse4;
+    function parse4(doc) {
+      return fromMarkdown2(
+        doc,
+        Object.assign({}, self2.data("settings"), options2, {
+          // Note: these options are not in the readme.
+          // The goal is for them to be set by plugins on `data` instead of being
+          // passed by users.
+          extensions: self2.data("micromarkExtensions") || [],
+          mdastExtensions: self2.data("fromMarkdownExtensions") || []
+        })
+      );
+    }
+  }
+  return remarkParse$1;
+}
+var remarkParseExports = requireRemarkParse();
+const remarkParse = /* @__PURE__ */ getDefaultExportFromCjs(remarkParseExports);
+var unistBuilder;
+var hasRequiredUnistBuilder;
+function requireUnistBuilder() {
+  if (hasRequiredUnistBuilder) return unistBuilder;
+  hasRequiredUnistBuilder = 1;
+  unistBuilder = u2;
+  function u2(type3, props, value) {
+    var node2;
+    if ((value === null || value === void 0) && (typeof props !== "object" || Array.isArray(props))) {
+      value = props;
+      props = {};
+    }
+    node2 = Object.assign({ type: String(type3) }, props);
+    if (Array.isArray(value)) {
+      node2.children = value;
+    } else if (value !== null && value !== void 0) {
+      node2.value = String(value);
+    }
+    return node2;
+  }
+  return unistBuilder;
+}
+var convert_1$1;
+var hasRequiredConvert$1;
+function requireConvert$1() {
+  if (hasRequiredConvert$1) return convert_1$1;
+  hasRequiredConvert$1 = 1;
+  convert_1$1 = convert2;
+  function convert2(test2) {
+    if (test2 == null) {
+      return ok;
+    }
+    if (typeof test2 === "string") {
+      return typeFactory(test2);
+    }
+    if (typeof test2 === "object") {
+      return "length" in test2 ? anyFactory(test2) : allFactory(test2);
+    }
+    if (typeof test2 === "function") {
+      return test2;
+    }
+    throw new Error("Expected function, string, or object as test");
+  }
+  function allFactory(test2) {
+    return all2;
+    function all2(node2) {
+      var key;
+      for (key in test2) {
+        if (node2[key] !== test2[key]) return false;
+      }
+      return true;
+    }
+  }
+  function anyFactory(tests) {
+    var checks = [];
+    var index2 = -1;
+    while (++index2 < tests.length) {
+      checks[index2] = convert2(tests[index2]);
+    }
+    return any3;
+    function any3() {
+      var index3 = -1;
+      while (++index3 < checks.length) {
+        if (checks[index3].apply(this, arguments)) {
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+  function typeFactory(test2) {
+    return type3;
+    function type3(node2) {
+      return Boolean(node2 && node2.type === test2);
+    }
+  }
+  function ok() {
+    return true;
+  }
+  return convert_1$1;
+}
+var color_browser;
+var hasRequiredColor_browser;
+function requireColor_browser() {
+  if (hasRequiredColor_browser) return color_browser;
+  hasRequiredColor_browser = 1;
+  color_browser = identity2;
+  function identity2(d4) {
+    return d4;
+  }
+  return color_browser;
+}
+var unistUtilVisitParents$1;
+var hasRequiredUnistUtilVisitParents$1;
+function requireUnistUtilVisitParents$1() {
+  if (hasRequiredUnistUtilVisitParents$1) return unistUtilVisitParents$1;
+  hasRequiredUnistUtilVisitParents$1 = 1;
+  unistUtilVisitParents$1 = visitParents;
+  var convert2 = requireConvert$1();
+  var color2 = requireColor_browser();
+  var CONTINUE = true;
+  var SKIP = "skip";
+  var EXIT = false;
+  visitParents.CONTINUE = CONTINUE;
+  visitParents.SKIP = SKIP;
+  visitParents.EXIT = EXIT;
+  function visitParents(tree, test2, visitor, reverse) {
+    var step;
+    var is2;
+    if (typeof test2 === "function" && typeof visitor !== "function") {
+      reverse = visitor;
+      visitor = test2;
+      test2 = null;
+    }
+    is2 = convert2(test2);
+    step = reverse ? -1 : 1;
+    factory3(tree, null, [])();
+    function factory3(node2, index2, parents) {
+      var value = typeof node2 === "object" && node2 !== null ? node2 : {};
+      var name2;
+      if (typeof value.type === "string") {
+        name2 = typeof value.tagName === "string" ? value.tagName : typeof value.name === "string" ? value.name : void 0;
+        visit2.displayName = "node (" + color2(value.type + (name2 ? "<" + name2 + ">" : "")) + ")";
+      }
+      return visit2;
+      function visit2() {
+        var grandparents = parents.concat(node2);
+        var result = [];
+        var subresult;
+        var offset3;
+        if (!test2 || is2(node2, index2, parents[parents.length - 1] || null)) {
+          result = toResult(visitor(node2, parents));
+          if (result[0] === EXIT) {
+            return result;
+          }
+        }
+        if (node2.children && result[0] !== SKIP) {
+          offset3 = (reverse ? node2.children.length : -1) + step;
+          while (offset3 > -1 && offset3 < node2.children.length) {
+            subresult = factory3(node2.children[offset3], offset3, grandparents)();
+            if (subresult[0] === EXIT) {
+              return subresult;
+            }
+            offset3 = typeof subresult[1] === "number" ? subresult[1] : offset3 + step;
+          }
+        }
+        return result;
+      }
+    }
+  }
+  function toResult(value) {
+    if (value !== null && typeof value === "object" && "length" in value) {
+      return value;
+    }
+    if (typeof value === "number") {
+      return [CONTINUE, value];
+    }
+    return [value];
+  }
+  return unistUtilVisitParents$1;
+}
+var unistUtilVisit$1;
+var hasRequiredUnistUtilVisit$1;
+function requireUnistUtilVisit$1() {
+  if (hasRequiredUnistUtilVisit$1) return unistUtilVisit$1;
+  hasRequiredUnistUtilVisit$1 = 1;
+  unistUtilVisit$1 = visit2;
+  var visitParents = requireUnistUtilVisitParents$1();
+  var CONTINUE = visitParents.CONTINUE;
+  var SKIP = visitParents.SKIP;
+  var EXIT = visitParents.EXIT;
+  visit2.CONTINUE = CONTINUE;
+  visit2.SKIP = SKIP;
+  visit2.EXIT = EXIT;
+  function visit2(tree, test2, visitor, reverse) {
+    if (typeof test2 === "function" && typeof visitor !== "function") {
+      reverse = visitor;
+      visitor = test2;
+      test2 = null;
+    }
+    visitParents(tree, test2, overload, reverse);
+    function overload(node2, parents) {
+      var parent = parents[parents.length - 1];
+      var index2 = parent ? parent.children.indexOf(node2) : null;
+      return visitor(node2, index2, parent);
+    }
+  }
+  return unistUtilVisit$1;
+}
+var unistUtilPosition;
+var hasRequiredUnistUtilPosition;
+function requireUnistUtilPosition() {
+  if (hasRequiredUnistUtilPosition) return unistUtilPosition;
+  hasRequiredUnistUtilPosition = 1;
+  var start3 = factory3("start");
+  var end2 = factory3("end");
+  unistUtilPosition = position2;
+  position2.start = start3;
+  position2.end = end2;
+  function position2(node2) {
+    return { start: start3(node2), end: end2(node2) };
+  }
+  function factory3(type3) {
+    point.displayName = type3;
+    return point;
+    function point(node2) {
+      var point2 = node2 && node2.position && node2.position[type3] || {};
+      return {
+        line: point2.line || null,
+        column: point2.column || null,
+        offset: isNaN(point2.offset) ? null : point2.offset
+      };
+    }
+  }
+  return unistUtilPosition;
+}
+var unistUtilGenerated;
+var hasRequiredUnistUtilGenerated;
+function requireUnistUtilGenerated() {
+  if (hasRequiredUnistUtilGenerated) return unistUtilGenerated;
+  hasRequiredUnistUtilGenerated = 1;
+  unistUtilGenerated = generated;
+  function generated(node2) {
+    return !node2 || !node2.position || !node2.position.start || !node2.position.start.line || !node2.position.start.column || !node2.position.end || !node2.position.end.line || !node2.position.end.column;
+  }
+  return unistUtilGenerated;
+}
+var mdastUtilDefinitions;
+var hasRequiredMdastUtilDefinitions;
+function requireMdastUtilDefinitions() {
+  if (hasRequiredMdastUtilDefinitions) return mdastUtilDefinitions;
+  hasRequiredMdastUtilDefinitions = 1;
+  var visit2 = requireUnistUtilVisit$1();
+  mdastUtilDefinitions = getDefinitionFactory;
+  var own = {}.hasOwnProperty;
+  function getDefinitionFactory(node2, options2) {
+    return getterFactory(gather(node2));
+  }
+  function gather(node2) {
+    var cache2 = {};
+    if (!node2 || !node2.type) {
+      throw new Error("mdast-util-definitions expected node");
+    }
+    visit2(node2, "definition", ondefinition);
+    return cache2;
+    function ondefinition(definition) {
+      var id2 = normalise(definition.identifier);
+      if (!own.call(cache2, id2)) {
+        cache2[id2] = definition;
+      }
+    }
+  }
+  function getterFactory(cache2) {
+    return getter;
+    function getter(identifier2) {
+      var id2 = identifier2 && normalise(identifier2);
+      return id2 && own.call(cache2, id2) ? cache2[id2] : null;
+    }
+  }
+  function normalise(identifier2) {
+    return identifier2.toUpperCase();
+  }
+  return mdastUtilDefinitions;
+}
+var all_1;
+var hasRequiredAll;
+function requireAll() {
+  if (hasRequiredAll) return all_1;
+  hasRequiredAll = 1;
+  all_1 = all2;
+  var one3 = requireOne();
+  function all2(h3, parent) {
+    var nodes = parent.children || [];
+    var length2 = nodes.length;
+    var values3 = [];
+    var index2 = -1;
+    var result;
+    var head;
+    while (++index2 < length2) {
+      result = one3(h3, nodes[index2], parent);
+      if (result) {
+        if (index2 && nodes[index2 - 1].type === "break") {
+          if (result.value) {
+            result.value = result.value.replace(/^\s+/, "");
+          }
+          head = result.children && result.children[0];
+          if (head && head.value) {
+            head.value = head.value.replace(/^\s+/, "");
+          }
+        }
+        values3 = values3.concat(result);
+      }
+    }
+    return values3;
+  }
+  return all_1;
+}
+var one_1;
+var hasRequiredOne;
+function requireOne() {
+  if (hasRequiredOne) return one_1;
+  hasRequiredOne = 1;
+  one_1 = one3;
+  var u2 = requireUnistBuilder();
+  var all2 = requireAll();
+  var own = {}.hasOwnProperty;
+  function unknown2(h3, node2) {
+    if (text2(node2)) {
+      return h3.augment(node2, u2("text", node2.value));
+    }
+    return h3(node2, "div", all2(h3, node2));
+  }
+  function one3(h3, node2, parent) {
+    var type3 = node2 && node2.type;
+    var fn3;
+    if (!type3) {
+      throw new Error("Expected node, got `" + node2 + "`");
+    }
+    if (own.call(h3.handlers, type3)) {
+      fn3 = h3.handlers[type3];
+    } else if (h3.passThrough && h3.passThrough.indexOf(type3) > -1) {
+      fn3 = returnNode;
+    } else {
+      fn3 = h3.unknownHandler;
+    }
+    return (typeof fn3 === "function" ? fn3 : unknown2)(h3, node2, parent);
+  }
+  function text2(node2) {
+    var data2 = node2.data || {};
+    if (own.call(data2, "hName") || own.call(data2, "hProperties") || own.call(data2, "hChildren")) {
+      return false;
+    }
+    return "value" in node2;
+  }
+  function returnNode(h3, node2) {
+    var clone2;
+    if (node2.children) {
+      clone2 = Object.assign({}, node2);
+      clone2.children = all2(h3, node2);
+      return clone2;
+    }
+    return node2;
+  }
+  return one_1;
+}
+var thematicBreak_1;
+var hasRequiredThematicBreak;
+function requireThematicBreak() {
+  if (hasRequiredThematicBreak) return thematicBreak_1;
+  hasRequiredThematicBreak = 1;
+  thematicBreak_1 = thematicBreak;
+  function thematicBreak(h3, node2) {
+    return h3(node2, "hr");
+  }
+  return thematicBreak_1;
+}
+var wrap_1;
+var hasRequiredWrap;
+function requireWrap() {
+  if (hasRequiredWrap) return wrap_1;
+  hasRequiredWrap = 1;
+  wrap_1 = wrap2;
+  var u2 = requireUnistBuilder();
+  function wrap2(nodes, loose) {
+    var result = [];
+    var index2 = -1;
+    var length2 = nodes.length;
+    if (loose) {
+      result.push(u2("text", "\n"));
+    }
+    while (++index2 < length2) {
+      if (index2) {
+        result.push(u2("text", "\n"));
+      }
+      result.push(nodes[index2]);
+    }
+    if (loose && nodes.length > 0) {
+      result.push(u2("text", "\n"));
+    }
+    return result;
+  }
+  return wrap_1;
+}
+var list_1;
+var hasRequiredList;
+function requireList() {
+  if (hasRequiredList) return list_1;
+  hasRequiredList = 1;
+  list_1 = list;
+  var wrap2 = requireWrap();
+  var all2 = requireAll();
+  function list(h3, node2) {
+    var props = {};
+    var name2 = node2.ordered ? "ol" : "ul";
+    var items;
+    var index2 = -1;
+    var length2;
+    if (typeof node2.start === "number" && node2.start !== 1) {
+      props.start = node2.start;
+    }
+    items = all2(h3, node2);
+    length2 = items.length;
+    while (++index2 < length2) {
+      if (items[index2].properties.className && items[index2].properties.className.indexOf("task-list-item") !== -1) {
+        props.className = ["contains-task-list"];
+        break;
+      }
+    }
+    return h3(node2, name2, props, wrap2(items, true));
+  }
+  return list_1;
+}
+var footer;
+var hasRequiredFooter;
+function requireFooter() {
+  if (hasRequiredFooter) return footer;
+  hasRequiredFooter = 1;
+  footer = generateFootnotes;
+  var thematicBreak = requireThematicBreak();
+  var list = requireList();
+  var wrap2 = requireWrap();
+  function generateFootnotes(h3) {
+    var footnoteById = h3.footnoteById;
+    var footnoteOrder = h3.footnoteOrder;
+    var length2 = footnoteOrder.length;
+    var index2 = -1;
+    var listItems = [];
+    var def;
+    var backReference;
+    var content2;
+    var tail;
+    while (++index2 < length2) {
+      def = footnoteById[footnoteOrder[index2].toUpperCase()];
+      if (!def) {
+        continue;
+      }
+      content2 = def.children.concat();
+      tail = content2[content2.length - 1];
+      backReference = {
+        type: "link",
+        url: "#fnref-" + def.identifier,
+        data: { hProperties: { className: ["footnote-backref"] } },
+        children: [{ type: "text", value: "↩" }]
+      };
+      if (!tail || tail.type !== "paragraph") {
+        tail = { type: "paragraph", children: [] };
+        content2.push(tail);
+      }
+      tail.children.push(backReference);
+      listItems.push({
+        type: "listItem",
+        data: { hProperties: { id: "fn-" + def.identifier } },
+        children: content2,
+        position: def.position
+      });
+    }
+    if (listItems.length === 0) {
+      return null;
+    }
+    return h3(
+      null,
+      "div",
+      { className: ["footnotes"] },
+      wrap2(
+        [
+          thematicBreak(h3),
+          list(h3, { type: "list", ordered: true, children: listItems })
+        ],
+        true
+      )
+    );
+  }
+  return footer;
+}
+var blockquote_1;
+var hasRequiredBlockquote;
+function requireBlockquote() {
+  if (hasRequiredBlockquote) return blockquote_1;
+  hasRequiredBlockquote = 1;
+  blockquote_1 = blockquote;
+  var wrap2 = requireWrap();
+  var all2 = requireAll();
+  function blockquote(h3, node2) {
+    return h3(node2, "blockquote", wrap2(all2(h3, node2), true));
+  }
+  return blockquote_1;
+}
+var _break;
+var hasRequired_break;
+function require_break() {
+  if (hasRequired_break) return _break;
+  hasRequired_break = 1;
+  _break = hardBreak;
+  var u2 = requireUnistBuilder();
+  function hardBreak(h3, node2) {
+    return [h3(node2, "br"), u2("text", "\n")];
+  }
+  return _break;
+}
+var code_1;
+var hasRequiredCode;
+function requireCode() {
+  if (hasRequiredCode) return code_1;
+  hasRequiredCode = 1;
+  code_1 = code;
+  var u2 = requireUnistBuilder();
+  function code(h3, node2) {
+    var value = node2.value ? node2.value + "\n" : "";
+    var lang = node2.lang && node2.lang.match(/^[^ \t]+(?=[ \t]|$)/);
+    var props = {};
+    var code2;
+    if (lang) {
+      props.className = ["language-" + lang];
+    }
+    code2 = h3(node2, "code", props, [u2("text", value)]);
+    if (node2.meta) {
+      code2.data = { meta: node2.meta };
+    }
+    return h3(node2.position, "pre", [code2]);
+  }
+  return code_1;
+}
+var _delete;
+var hasRequired_delete;
+function require_delete() {
+  if (hasRequired_delete) return _delete;
+  hasRequired_delete = 1;
+  _delete = strikethrough;
+  var all2 = requireAll();
+  function strikethrough(h3, node2) {
+    return h3(node2, "del", all2(h3, node2));
+  }
+  return _delete;
+}
+var emphasis_1;
+var hasRequiredEmphasis;
+function requireEmphasis() {
+  if (hasRequiredEmphasis) return emphasis_1;
+  hasRequiredEmphasis = 1;
+  emphasis_1 = emphasis;
+  var all2 = requireAll();
+  function emphasis(h3, node2) {
+    return h3(node2, "em", all2(h3, node2));
+  }
+  return emphasis_1;
+}
+var footnoteReference_1;
+var hasRequiredFootnoteReference;
+function requireFootnoteReference() {
+  if (hasRequiredFootnoteReference) return footnoteReference_1;
+  hasRequiredFootnoteReference = 1;
+  footnoteReference_1 = footnoteReference;
+  var u2 = requireUnistBuilder();
+  function footnoteReference(h3, node2) {
+    var footnoteOrder = h3.footnoteOrder;
+    var identifier2 = String(node2.identifier);
+    if (footnoteOrder.indexOf(identifier2) === -1) {
+      footnoteOrder.push(identifier2);
+    }
+    return h3(node2.position, "sup", { id: "fnref-" + identifier2 }, [
+      h3(node2, "a", { href: "#fn-" + identifier2, className: ["footnote-ref"] }, [
+        u2("text", node2.label || identifier2)
+      ])
+    ]);
+  }
+  return footnoteReference_1;
+}
+var footnote_1;
+var hasRequiredFootnote;
+function requireFootnote() {
+  if (hasRequiredFootnote) return footnote_1;
+  hasRequiredFootnote = 1;
+  footnote_1 = footnote;
+  var footnoteReference = requireFootnoteReference();
+  function footnote(h3, node2) {
+    var footnoteById = h3.footnoteById;
+    var footnoteOrder = h3.footnoteOrder;
+    var identifier2 = 1;
+    while (identifier2 in footnoteById) {
+      identifier2++;
+    }
+    identifier2 = String(identifier2);
+    footnoteOrder.push(identifier2);
+    footnoteById[identifier2] = {
+      type: "footnoteDefinition",
+      identifier: identifier2,
+      children: [{ type: "paragraph", children: node2.children }],
+      position: node2.position
+    };
+    return footnoteReference(h3, {
+      type: "footnoteReference",
+      identifier: identifier2,
+      position: node2.position
+    });
+  }
+  return footnote_1;
+}
+var heading_1;
+var hasRequiredHeading;
+function requireHeading() {
+  if (hasRequiredHeading) return heading_1;
+  hasRequiredHeading = 1;
+  heading_1 = heading;
+  var all2 = requireAll();
+  function heading(h3, node2) {
+    return h3(node2, "h" + node2.depth, all2(h3, node2));
+  }
+  return heading_1;
+}
+var html_1$1;
+var hasRequiredHtml$2;
+function requireHtml$2() {
+  if (hasRequiredHtml$2) return html_1$1;
+  hasRequiredHtml$2 = 1;
+  html_1$1 = html2;
+  var u2 = requireUnistBuilder();
+  function html2(h3, node2) {
+    return h3.dangerous ? h3.augment(node2, u2("raw", node2.value)) : null;
+  }
+  return html_1$1;
+}
+var encode_1;
+var hasRequiredEncode;
+function requireEncode() {
+  if (hasRequiredEncode) return encode_1;
+  hasRequiredEncode = 1;
+  var encodeCache = {};
+  function getEncodeCache(exclude) {
+    var i2, ch, cache2 = encodeCache[exclude];
+    if (cache2) {
+      return cache2;
+    }
+    cache2 = encodeCache[exclude] = [];
+    for (i2 = 0; i2 < 128; i2++) {
+      ch = String.fromCharCode(i2);
+      if (/^[0-9a-z]$/i.test(ch)) {
+        cache2.push(ch);
+      } else {
+        cache2.push("%" + ("0" + i2.toString(16).toUpperCase()).slice(-2));
+      }
+    }
+    for (i2 = 0; i2 < exclude.length; i2++) {
+      cache2[exclude.charCodeAt(i2)] = exclude[i2];
+    }
+    return cache2;
+  }
+  function encode(string2, exclude, keepEscaped) {
+    var i2, l, code, nextCode, cache2, result = "";
+    if (typeof exclude !== "string") {
+      keepEscaped = exclude;
+      exclude = encode.defaultChars;
+    }
+    if (typeof keepEscaped === "undefined") {
+      keepEscaped = true;
+    }
+    cache2 = getEncodeCache(exclude);
+    for (i2 = 0, l = string2.length; i2 < l; i2++) {
+      code = string2.charCodeAt(i2);
+      if (keepEscaped && code === 37 && i2 + 2 < l) {
+        if (/^[0-9a-f]{2}$/i.test(string2.slice(i2 + 1, i2 + 3))) {
+          result += string2.slice(i2, i2 + 3);
+          i2 += 2;
+          continue;
+        }
+      }
+      if (code < 128) {
+        result += cache2[code];
+        continue;
+      }
+      if (code >= 55296 && code <= 57343) {
+        if (code >= 55296 && code <= 56319 && i2 + 1 < l) {
+          nextCode = string2.charCodeAt(i2 + 1);
+          if (nextCode >= 56320 && nextCode <= 57343) {
+            result += encodeURIComponent(string2[i2] + string2[i2 + 1]);
+            i2++;
+            continue;
+          }
+        }
+        result += "%EF%BF%BD";
+        continue;
+      }
+      result += encodeURIComponent(string2[i2]);
+    }
+    return result;
+  }
+  encode.defaultChars = ";/?:@&=+$,-_.!~*'()#";
+  encode.componentChars = "-_.!~*'()";
+  encode_1 = encode;
+  return encode_1;
+}
+var revert_1;
+var hasRequiredRevert;
+function requireRevert() {
+  if (hasRequiredRevert) return revert_1;
+  hasRequiredRevert = 1;
+  revert_1 = revert;
+  var u2 = requireUnistBuilder();
+  var all2 = requireAll();
+  function revert(h3, node2) {
+    var subtype = node2.referenceType;
+    var suffix = "]";
+    var contents;
+    var head;
+    var tail;
+    if (subtype === "collapsed") {
+      suffix += "[]";
+    } else if (subtype === "full") {
+      suffix += "[" + (node2.label || node2.identifier) + "]";
+    }
+    if (node2.type === "imageReference") {
+      return u2("text", "![" + node2.alt + suffix);
+    }
+    contents = all2(h3, node2);
+    head = contents[0];
+    if (head && head.type === "text") {
+      head.value = "[" + head.value;
+    } else {
+      contents.unshift(u2("text", "["));
+    }
+    tail = contents[contents.length - 1];
+    if (tail && tail.type === "text") {
+      tail.value += suffix;
+    } else {
+      contents.push(u2("text", suffix));
+    }
+    return contents;
+  }
+  return revert_1;
+}
+var imageReference_1;
+var hasRequiredImageReference;
+function requireImageReference() {
+  if (hasRequiredImageReference) return imageReference_1;
+  hasRequiredImageReference = 1;
+  imageReference_1 = imageReference;
+  var normalize2 = requireEncode();
+  var revert = requireRevert();
+  function imageReference(h3, node2) {
+    var def = h3.definition(node2.identifier);
+    var props;
+    if (!def) {
+      return revert(h3, node2);
+    }
+    props = { src: normalize2(def.url || ""), alt: node2.alt };
+    if (def.title !== null && def.title !== void 0) {
+      props.title = def.title;
+    }
+    return h3(node2, "img", props);
+  }
+  return imageReference_1;
+}
+var image_1;
+var hasRequiredImage;
+function requireImage() {
+  if (hasRequiredImage) return image_1;
+  hasRequiredImage = 1;
+  var normalize2 = requireEncode();
+  image_1 = image2;
+  function image2(h3, node2) {
+    var props = { src: normalize2(node2.url), alt: node2.alt };
+    if (node2.title !== null && node2.title !== void 0) {
+      props.title = node2.title;
+    }
+    return h3(node2, "img", props);
+  }
+  return image_1;
+}
+var inlineCode_1$1;
+var hasRequiredInlineCode$1;
+function requireInlineCode$1() {
+  if (hasRequiredInlineCode$1) return inlineCode_1$1;
+  hasRequiredInlineCode$1 = 1;
+  inlineCode_1$1 = inlineCode;
+  var u2 = requireUnistBuilder();
+  function inlineCode(h3, node2) {
+    var value = node2.value.replace(/\r?\n|\r/g, " ");
+    return h3(node2, "code", [u2("text", value)]);
+  }
+  return inlineCode_1$1;
+}
+var linkReference_1;
+var hasRequiredLinkReference;
+function requireLinkReference() {
+  if (hasRequiredLinkReference) return linkReference_1;
+  hasRequiredLinkReference = 1;
+  linkReference_1 = linkReference;
+  var normalize2 = requireEncode();
+  var revert = requireRevert();
+  var all2 = requireAll();
+  function linkReference(h3, node2) {
+    var def = h3.definition(node2.identifier);
+    var props;
+    if (!def) {
+      return revert(h3, node2);
+    }
+    props = { href: normalize2(def.url || "") };
+    if (def.title !== null && def.title !== void 0) {
+      props.title = def.title;
+    }
+    return h3(node2, "a", props, all2(h3, node2));
+  }
+  return linkReference_1;
+}
+var link_1;
+var hasRequiredLink;
+function requireLink() {
+  if (hasRequiredLink) return link_1;
+  hasRequiredLink = 1;
+  var normalize2 = requireEncode();
+  var all2 = requireAll();
+  link_1 = link;
+  function link(h3, node2) {
+    var props = { href: normalize2(node2.url) };
+    if (node2.title !== null && node2.title !== void 0) {
+      props.title = node2.title;
+    }
+    return h3(node2, "a", props, all2(h3, node2));
+  }
+  return link_1;
+}
+var listItem_1$1;
+var hasRequiredListItem$1;
+function requireListItem$1() {
+  if (hasRequiredListItem$1) return listItem_1$1;
+  hasRequiredListItem$1 = 1;
+  listItem_1$1 = listItem;
+  var u2 = requireUnistBuilder();
+  var all2 = requireAll();
+  function listItem(h3, node2, parent) {
+    var result = all2(h3, node2);
+    var head = result[0];
+    var loose = parent ? listLoose(parent) : listItemLoose(node2);
+    var props = {};
+    var wrapped = [];
+    var length2;
+    var index2;
+    var child;
+    if (typeof node2.checked === "boolean") {
+      if (!head || head.tagName !== "p") {
+        head = h3(null, "p", []);
+        result.unshift(head);
+      }
+      if (head.children.length > 0) {
+        head.children.unshift(u2("text", " "));
+      }
+      head.children.unshift(
+        h3(null, "input", {
+          type: "checkbox",
+          checked: node2.checked,
+          disabled: true
+        })
+      );
+      props.className = ["task-list-item"];
+    }
+    length2 = result.length;
+    index2 = -1;
+    while (++index2 < length2) {
+      child = result[index2];
+      if (loose || index2 !== 0 || child.tagName !== "p") {
+        wrapped.push(u2("text", "\n"));
+      }
+      if (child.tagName === "p" && !loose) {
+        wrapped = wrapped.concat(child.children);
+      } else {
+        wrapped.push(child);
+      }
+    }
+    if (length2 && (loose || child.tagName !== "p")) {
+      wrapped.push(u2("text", "\n"));
+    }
+    return h3(node2, "li", props, wrapped);
+  }
+  function listLoose(node2) {
+    var loose = node2.spread;
+    var children = node2.children;
+    var length2 = children.length;
+    var index2 = -1;
+    while (!loose && ++index2 < length2) {
+      loose = listItemLoose(children[index2]);
+    }
+    return loose;
+  }
+  function listItemLoose(node2) {
+    var spread = node2.spread;
+    return spread === void 0 || spread === null ? node2.children.length > 1 : spread;
+  }
+  return listItem_1$1;
+}
+var paragraph_1;
+var hasRequiredParagraph;
+function requireParagraph() {
+  if (hasRequiredParagraph) return paragraph_1;
+  hasRequiredParagraph = 1;
+  paragraph_1 = paragraph;
+  var all2 = requireAll();
+  function paragraph(h3, node2) {
+    return h3(node2, "p", all2(h3, node2));
+  }
+  return paragraph_1;
+}
+var root_1;
+var hasRequiredRoot;
+function requireRoot() {
+  if (hasRequiredRoot) return root_1;
+  hasRequiredRoot = 1;
+  root_1 = root2;
+  var u2 = requireUnistBuilder();
+  var wrap2 = requireWrap();
+  var all2 = requireAll();
+  function root2(h3, node2) {
+    return h3.augment(node2, u2("root", wrap2(all2(h3, node2))));
+  }
+  return root_1;
+}
+var strong_1;
+var hasRequiredStrong;
+function requireStrong() {
+  if (hasRequiredStrong) return strong_1;
+  hasRequiredStrong = 1;
+  strong_1 = strong;
+  var all2 = requireAll();
+  function strong(h3, node2) {
+    return h3(node2, "strong", all2(h3, node2));
+  }
+  return strong_1;
+}
+var table_1;
+var hasRequiredTable;
+function requireTable() {
+  if (hasRequiredTable) return table_1;
+  hasRequiredTable = 1;
+  table_1 = table;
+  var position2 = requireUnistUtilPosition();
+  var wrap2 = requireWrap();
+  var all2 = requireAll();
+  function table(h3, node2) {
+    var rows = node2.children;
+    var index2 = rows.length;
+    var align = node2.align || [];
+    var alignLength = align.length;
+    var result = [];
+    var pos;
+    var row;
+    var out;
+    var name2;
+    var cell;
+    while (index2--) {
+      row = rows[index2].children;
+      name2 = index2 === 0 ? "th" : "td";
+      pos = alignLength || row.length;
+      out = [];
+      while (pos--) {
+        cell = row[pos];
+        out[pos] = h3(cell, name2, { align: align[pos] }, cell ? all2(h3, cell) : []);
+      }
+      result[index2] = h3(rows[index2], "tr", wrap2(out, true));
+    }
+    return h3(
+      node2,
+      "table",
+      wrap2(
+        [h3(result[0].position, "thead", wrap2([result[0]], true))].concat(
+          result[1] ? h3(
+            {
+              start: position2.start(result[1]),
+              end: position2.end(result[result.length - 1])
+            },
+            "tbody",
+            wrap2(result.slice(1), true)
+          ) : []
+        ),
+        true
+      )
+    );
+  }
+  return table_1;
+}
+var text_1;
+var hasRequiredText;
+function requireText() {
+  if (hasRequiredText) return text_1;
+  hasRequiredText = 1;
+  text_1 = text2;
+  var u2 = requireUnistBuilder();
+  function text2(h3, node2) {
+    return h3.augment(
+      node2,
+      u2("text", String(node2.value).replace(/[ \t]*(\r?\n|\r)[ \t]*/g, "$1"))
+    );
+  }
+  return text_1;
+}
+var handlers;
+var hasRequiredHandlers;
+function requireHandlers() {
+  if (hasRequiredHandlers) return handlers;
+  hasRequiredHandlers = 1;
+  handlers = {
+    blockquote: requireBlockquote(),
+    break: require_break(),
+    code: requireCode(),
+    delete: require_delete(),
+    emphasis: requireEmphasis(),
+    footnoteReference: requireFootnoteReference(),
+    footnote: requireFootnote(),
+    heading: requireHeading(),
+    html: requireHtml$2(),
+    imageReference: requireImageReference(),
+    image: requireImage(),
+    inlineCode: requireInlineCode$1(),
+    linkReference: requireLinkReference(),
+    link: requireLink(),
+    listItem: requireListItem$1(),
+    list: requireList(),
+    paragraph: requireParagraph(),
+    root: requireRoot(),
+    strong: requireStrong(),
+    table: requireTable(),
+    text: requireText(),
+    thematicBreak: requireThematicBreak(),
+    toml: ignore,
+    yaml: ignore,
+    definition: ignore,
+    footnoteDefinition: ignore
+  };
+  function ignore() {
+    return null;
+  }
+  return handlers;
+}
+var lib;
+var hasRequiredLib;
+function requireLib() {
+  if (hasRequiredLib) return lib;
+  hasRequiredLib = 1;
+  lib = toHast;
+  var u2 = requireUnistBuilder();
+  var visit2 = requireUnistUtilVisit$1();
+  var position2 = requireUnistUtilPosition();
+  var generated = requireUnistUtilGenerated();
+  var definitions = requireMdastUtilDefinitions();
+  var one3 = requireOne();
+  var footer2 = requireFooter();
+  var handlers2 = requireHandlers();
+  var own = {}.hasOwnProperty;
+  var deprecationWarningIssued = false;
+  function factory3(tree, options2) {
+    var settings2 = options2 || {};
+    if (settings2.allowDangerousHTML !== void 0 && !deprecationWarningIssued) {
+      deprecationWarningIssued = true;
+      console.warn(
+        "mdast-util-to-hast: deprecation: `allowDangerousHTML` is nonstandard, use `allowDangerousHtml` instead"
+      );
+    }
+    var dangerous = settings2.allowDangerousHtml || settings2.allowDangerousHTML;
+    var footnoteById = {};
+    h3.dangerous = dangerous;
+    h3.definition = definitions(tree);
+    h3.footnoteById = footnoteById;
+    h3.footnoteOrder = [];
+    h3.augment = augment;
+    h3.handlers = Object.assign({}, handlers2, settings2.handlers);
+    h3.unknownHandler = settings2.unknownHandler;
+    h3.passThrough = settings2.passThrough;
+    visit2(tree, "footnoteDefinition", onfootnotedefinition);
+    return h3;
+    function augment(left2, right2) {
+      var data2;
+      var ctx;
+      if (left2 && left2.data) {
+        data2 = left2.data;
+        if (data2.hName) {
+          if (right2.type !== "element") {
+            right2 = {
+              type: "element",
+              tagName: "",
+              properties: {},
+              children: []
+            };
+          }
+          right2.tagName = data2.hName;
+        }
+        if (right2.type === "element" && data2.hProperties) {
+          right2.properties = Object.assign({}, right2.properties, data2.hProperties);
+        }
+        if (right2.children && data2.hChildren) {
+          right2.children = data2.hChildren;
+        }
+      }
+      ctx = left2 && left2.position ? left2 : { position: left2 };
+      if (!generated(ctx)) {
+        right2.position = {
+          start: position2.start(ctx),
+          end: position2.end(ctx)
+        };
+      }
+      return right2;
+    }
+    function h3(node2, tagName, props, children) {
+      if ((children === void 0 || children === null) && typeof props === "object" && "length" in props) {
+        children = props;
+        props = {};
+      }
+      return augment(node2, {
+        type: "element",
+        tagName,
+        properties: props || {},
+        children: children || []
+      });
+    }
+    function onfootnotedefinition(definition) {
+      var id2 = String(definition.identifier).toUpperCase();
+      if (!own.call(footnoteById, id2)) {
+        footnoteById[id2] = definition;
+      }
+    }
+  }
+  function toHast(tree, options2) {
+    var h3 = factory3(tree, options2);
+    var node2 = one3(h3, tree);
+    var foot = footer2(h3);
+    if (foot) {
+      node2.children = node2.children.concat(u2("text", "\n"), foot);
+    }
+    return node2;
+  }
+  return lib;
+}
+var mdastUtilToHast;
+var hasRequiredMdastUtilToHast;
+function requireMdastUtilToHast() {
+  if (hasRequiredMdastUtilToHast) return mdastUtilToHast;
+  hasRequiredMdastUtilToHast = 1;
+  mdastUtilToHast = requireLib();
+  return mdastUtilToHast;
+}
+var remarkRehype;
+var hasRequiredRemarkRehype;
+function requireRemarkRehype() {
+  if (hasRequiredRemarkRehype) return remarkRehype;
+  hasRequiredRemarkRehype = 1;
+  var mdast2hast = requireMdastUtilToHast();
+  remarkRehype = remark2rehype;
+  function remark2rehype(destination, options2) {
+    if (destination && !destination.process) {
+      options2 = destination;
+      destination = null;
+    }
+    return destination ? bridge(destination, options2) : mutate(options2);
+  }
+  function bridge(destination, options2) {
+    return transformer;
+    function transformer(node2, file2, next2) {
+      destination.run(mdast2hast(node2, options2), file2, done);
+      function done(error) {
+        next2(error);
+      }
+    }
+  }
+  function mutate(options2) {
+    return transformer;
+    function transformer(node2) {
+      return mdast2hast(node2, options2);
+    }
+  }
+  return remarkRehype;
+}
+var remarkRehypeExports = requireRemarkRehype();
+const remarkToRehype = /* @__PURE__ */ getDefaultExportFromCjs(remarkRehypeExports);
+var immutable;
+var hasRequiredImmutable;
+function requireImmutable() {
+  if (hasRequiredImmutable) return immutable;
+  hasRequiredImmutable = 1;
+  immutable = extend3;
+  var hasOwnProperty2 = Object.prototype.hasOwnProperty;
+  function extend3() {
+    var target = {};
+    for (var i2 = 0; i2 < arguments.length; i2++) {
+      var source2 = arguments[i2];
+      for (var key in source2) {
+        if (hasOwnProperty2.call(source2, key)) {
+          target[key] = source2[key];
+        }
+      }
+    }
+    return target;
+  }
+  return immutable;
+}
+var schema;
+var hasRequiredSchema;
+function requireSchema() {
+  if (hasRequiredSchema) return schema;
+  hasRequiredSchema = 1;
+  schema = Schema2;
+  var proto = Schema2.prototype;
+  proto.space = null;
+  proto.normal = {};
+  proto.property = {};
+  function Schema2(property, normal, space) {
+    this.property = property;
+    this.normal = normal;
+    if (space) {
+      this.space = space;
+    }
+  }
+  return schema;
+}
+var merge_1;
+var hasRequiredMerge;
+function requireMerge() {
+  if (hasRequiredMerge) return merge_1;
+  hasRequiredMerge = 1;
+  var xtend = requireImmutable();
+  var Schema2 = requireSchema();
+  merge_1 = merge3;
+  function merge3(definitions) {
+    var length2 = definitions.length;
+    var property = [];
+    var normal = [];
+    var index2 = -1;
+    var info2;
+    var space;
+    while (++index2 < length2) {
+      info2 = definitions[index2];
+      property.push(info2.property);
+      normal.push(info2.normal);
+      space = info2.space;
+    }
+    return new Schema2(
+      xtend.apply(null, property),
+      xtend.apply(null, normal),
+      space
+    );
+  }
+  return merge_1;
+}
+var normalize_1;
+var hasRequiredNormalize;
+function requireNormalize() {
+  if (hasRequiredNormalize) return normalize_1;
+  hasRequiredNormalize = 1;
+  normalize_1 = normalize2;
+  function normalize2(value) {
+    return value.toLowerCase();
+  }
+  return normalize_1;
+}
+var info;
+var hasRequiredInfo;
+function requireInfo() {
+  if (hasRequiredInfo) return info;
+  hasRequiredInfo = 1;
+  info = Info;
+  var proto = Info.prototype;
+  proto.space = null;
+  proto.attribute = null;
+  proto.property = null;
+  proto.boolean = false;
+  proto.booleanish = false;
+  proto.overloadedBoolean = false;
+  proto.number = false;
+  proto.commaSeparated = false;
+  proto.spaceSeparated = false;
+  proto.commaOrSpaceSeparated = false;
+  proto.mustUseProperty = false;
+  proto.defined = false;
+  function Info(property, attribute) {
+    this.property = property;
+    this.attribute = attribute;
+  }
+  return info;
+}
+var types = {};
+var hasRequiredTypes;
+function requireTypes() {
+  if (hasRequiredTypes) return types;
+  hasRequiredTypes = 1;
+  var powers = 0;
+  types.boolean = increment();
+  types.booleanish = increment();
+  types.overloadedBoolean = increment();
+  types.number = increment();
+  types.spaceSeparated = increment();
+  types.commaSeparated = increment();
+  types.commaOrSpaceSeparated = increment();
+  function increment() {
+    return Math.pow(2, ++powers);
+  }
+  return types;
+}
+var definedInfo;
+var hasRequiredDefinedInfo;
+function requireDefinedInfo() {
+  if (hasRequiredDefinedInfo) return definedInfo;
+  hasRequiredDefinedInfo = 1;
+  var Info = requireInfo();
+  var types2 = requireTypes();
+  definedInfo = DefinedInfo;
+  DefinedInfo.prototype = new Info();
+  DefinedInfo.prototype.defined = true;
+  var checks = [
+    "boolean",
+    "booleanish",
+    "overloadedBoolean",
+    "number",
+    "commaSeparated",
+    "spaceSeparated",
+    "commaOrSpaceSeparated"
+  ];
+  var checksLength = checks.length;
+  function DefinedInfo(property, attribute, mask, space) {
+    var index2 = -1;
+    var check2;
+    mark(this, "space", space);
+    Info.call(this, property, attribute);
+    while (++index2 < checksLength) {
+      check2 = checks[index2];
+      mark(this, check2, (mask & types2[check2]) === types2[check2]);
+    }
+  }
+  function mark(values3, key, value) {
+    if (value) {
+      values3[key] = value;
+    }
+  }
+  return definedInfo;
+}
+var create_1;
+var hasRequiredCreate;
+function requireCreate() {
+  if (hasRequiredCreate) return create_1;
+  hasRequiredCreate = 1;
+  var normalize2 = requireNormalize();
+  var Schema2 = requireSchema();
+  var DefinedInfo = requireDefinedInfo();
+  create_1 = create3;
+  function create3(definition) {
+    var space = definition.space;
+    var mustUseProperty = definition.mustUseProperty || [];
+    var attributes = definition.attributes || {};
+    var props = definition.properties;
+    var transform3 = definition.transform;
+    var property = {};
+    var normal = {};
+    var prop;
+    var info2;
+    for (prop in props) {
+      info2 = new DefinedInfo(
+        prop,
+        transform3(attributes, prop),
+        props[prop],
+        space
+      );
+      if (mustUseProperty.indexOf(prop) !== -1) {
+        info2.mustUseProperty = true;
+      }
+      property[prop] = info2;
+      normal[normalize2(prop)] = prop;
+      normal[normalize2(info2.attribute)] = prop;
+    }
+    return new Schema2(property, normal, space);
+  }
+  return create_1;
+}
+var xlink$1;
+var hasRequiredXlink;
+function requireXlink() {
+  if (hasRequiredXlink) return xlink$1;
+  hasRequiredXlink = 1;
+  var create3 = requireCreate();
+  xlink$1 = create3({
+    space: "xlink",
+    transform: xlinkTransform,
+    properties: {
+      xLinkActuate: null,
+      xLinkArcRole: null,
+      xLinkHref: null,
+      xLinkRole: null,
+      xLinkShow: null,
+      xLinkTitle: null,
+      xLinkType: null
+    }
+  });
+  function xlinkTransform(_, prop) {
+    return "xlink:" + prop.slice(5).toLowerCase();
+  }
+  return xlink$1;
+}
+var xml$1;
+var hasRequiredXml;
+function requireXml() {
+  if (hasRequiredXml) return xml$1;
+  hasRequiredXml = 1;
+  var create3 = requireCreate();
+  xml$1 = create3({
+    space: "xml",
+    transform: xmlTransform,
+    properties: {
+      xmlLang: null,
+      xmlBase: null,
+      xmlSpace: null
+    }
+  });
+  function xmlTransform(_, prop) {
+    return "xml:" + prop.slice(3).toLowerCase();
+  }
+  return xml$1;
+}
+var caseSensitiveTransform_1;
+var hasRequiredCaseSensitiveTransform;
+function requireCaseSensitiveTransform() {
+  if (hasRequiredCaseSensitiveTransform) return caseSensitiveTransform_1;
+  hasRequiredCaseSensitiveTransform = 1;
+  caseSensitiveTransform_1 = caseSensitiveTransform;
+  function caseSensitiveTransform(attributes, attribute) {
+    return attribute in attributes ? attributes[attribute] : attribute;
+  }
+  return caseSensitiveTransform_1;
+}
+var caseInsensitiveTransform_1;
+var hasRequiredCaseInsensitiveTransform;
+function requireCaseInsensitiveTransform() {
+  if (hasRequiredCaseInsensitiveTransform) return caseInsensitiveTransform_1;
+  hasRequiredCaseInsensitiveTransform = 1;
+  var caseSensitiveTransform = requireCaseSensitiveTransform();
+  caseInsensitiveTransform_1 = caseInsensitiveTransform;
+  function caseInsensitiveTransform(attributes, property) {
+    return caseSensitiveTransform(attributes, property.toLowerCase());
+  }
+  return caseInsensitiveTransform_1;
+}
+var xmlns$1;
+var hasRequiredXmlns;
+function requireXmlns() {
+  if (hasRequiredXmlns) return xmlns$1;
+  hasRequiredXmlns = 1;
+  var create3 = requireCreate();
+  var caseInsensitiveTransform = requireCaseInsensitiveTransform();
+  xmlns$1 = create3({
+    space: "xmlns",
+    attributes: {
+      xmlnsxlink: "xmlns:xlink"
+    },
+    transform: caseInsensitiveTransform,
+    properties: {
+      xmlns: null,
+      xmlnsXLink: null
+    }
+  });
+  return xmlns$1;
+}
+var aria;
+var hasRequiredAria;
+function requireAria() {
+  if (hasRequiredAria) return aria;
+  hasRequiredAria = 1;
+  var types2 = requireTypes();
+  var create3 = requireCreate();
+  var booleanish = types2.booleanish;
+  var number2 = types2.number;
+  var spaceSeparated = types2.spaceSeparated;
+  aria = create3({
+    transform: ariaTransform,
+    properties: {
+      ariaActiveDescendant: null,
+      ariaAtomic: booleanish,
+      ariaAutoComplete: null,
+      ariaBusy: booleanish,
+      ariaChecked: booleanish,
+      ariaColCount: number2,
+      ariaColIndex: number2,
+      ariaColSpan: number2,
+      ariaControls: spaceSeparated,
+      ariaCurrent: null,
+      ariaDescribedBy: spaceSeparated,
+      ariaDetails: null,
+      ariaDisabled: booleanish,
+      ariaDropEffect: spaceSeparated,
+      ariaErrorMessage: null,
+      ariaExpanded: booleanish,
+      ariaFlowTo: spaceSeparated,
+      ariaGrabbed: booleanish,
+      ariaHasPopup: null,
+      ariaHidden: booleanish,
+      ariaInvalid: null,
+      ariaKeyShortcuts: null,
+      ariaLabel: null,
+      ariaLabelledBy: spaceSeparated,
+      ariaLevel: number2,
+      ariaLive: null,
+      ariaModal: booleanish,
+      ariaMultiLine: booleanish,
+      ariaMultiSelectable: booleanish,
+      ariaOrientation: null,
+      ariaOwns: spaceSeparated,
+      ariaPlaceholder: null,
+      ariaPosInSet: number2,
+      ariaPressed: booleanish,
+      ariaReadOnly: booleanish,
+      ariaRelevant: null,
+      ariaRequired: booleanish,
+      ariaRoleDescription: spaceSeparated,
+      ariaRowCount: number2,
+      ariaRowIndex: number2,
+      ariaRowSpan: number2,
+      ariaSelected: booleanish,
+      ariaSetSize: number2,
+      ariaSort: null,
+      ariaValueMax: number2,
+      ariaValueMin: number2,
+      ariaValueNow: number2,
+      ariaValueText: null,
+      role: null
+    }
+  });
+  function ariaTransform(_, prop) {
+    return prop === "role" ? prop : "aria-" + prop.slice(4).toLowerCase();
+  }
+  return aria;
+}
+var html$1;
+var hasRequiredHtml$1;
+function requireHtml$1() {
+  if (hasRequiredHtml$1) return html$1;
+  hasRequiredHtml$1 = 1;
+  var types2 = requireTypes();
+  var create3 = requireCreate();
+  var caseInsensitiveTransform = requireCaseInsensitiveTransform();
+  var boolean2 = types2.boolean;
+  var overloadedBoolean = types2.overloadedBoolean;
+  var booleanish = types2.booleanish;
+  var number2 = types2.number;
+  var spaceSeparated = types2.spaceSeparated;
+  var commaSeparated = types2.commaSeparated;
+  html$1 = create3({
+    space: "html",
+    attributes: {
+      acceptcharset: "accept-charset",
+      classname: "class",
+      htmlfor: "for",
+      httpequiv: "http-equiv"
+    },
+    transform: caseInsensitiveTransform,
+    mustUseProperty: ["checked", "multiple", "muted", "selected"],
+    properties: {
+      // Standard Properties.
+      abbr: null,
+      accept: commaSeparated,
+      acceptCharset: spaceSeparated,
+      accessKey: spaceSeparated,
+      action: null,
+      allow: null,
+      allowFullScreen: boolean2,
+      allowPaymentRequest: boolean2,
+      allowUserMedia: boolean2,
+      alt: null,
+      as: null,
+      async: boolean2,
+      autoCapitalize: null,
+      autoComplete: spaceSeparated,
+      autoFocus: boolean2,
+      autoPlay: boolean2,
+      capture: boolean2,
+      charSet: null,
+      checked: boolean2,
+      cite: null,
+      className: spaceSeparated,
+      cols: number2,
+      colSpan: null,
+      content: null,
+      contentEditable: booleanish,
+      controls: boolean2,
+      controlsList: spaceSeparated,
+      coords: number2 | commaSeparated,
+      crossOrigin: null,
+      data: null,
+      dateTime: null,
+      decoding: null,
+      default: boolean2,
+      defer: boolean2,
+      dir: null,
+      dirName: null,
+      disabled: boolean2,
+      download: overloadedBoolean,
+      draggable: booleanish,
+      encType: null,
+      enterKeyHint: null,
+      form: null,
+      formAction: null,
+      formEncType: null,
+      formMethod: null,
+      formNoValidate: boolean2,
+      formTarget: null,
+      headers: spaceSeparated,
+      height: number2,
+      hidden: boolean2,
+      high: number2,
+      href: null,
+      hrefLang: null,
+      htmlFor: spaceSeparated,
+      httpEquiv: spaceSeparated,
+      id: null,
+      imageSizes: null,
+      imageSrcSet: commaSeparated,
+      inputMode: null,
+      integrity: null,
+      is: null,
+      isMap: boolean2,
+      itemId: null,
+      itemProp: spaceSeparated,
+      itemRef: spaceSeparated,
+      itemScope: boolean2,
+      itemType: spaceSeparated,
+      kind: null,
+      label: null,
+      lang: null,
+      language: null,
+      list: null,
+      loading: null,
+      loop: boolean2,
+      low: number2,
+      manifest: null,
+      max: null,
+      maxLength: number2,
+      media: null,
+      method: null,
+      min: null,
+      minLength: number2,
+      multiple: boolean2,
+      muted: boolean2,
+      name: null,
+      nonce: null,
+      noModule: boolean2,
+      noValidate: boolean2,
+      onAbort: null,
+      onAfterPrint: null,
+      onAuxClick: null,
+      onBeforePrint: null,
+      onBeforeUnload: null,
+      onBlur: null,
+      onCancel: null,
+      onCanPlay: null,
+      onCanPlayThrough: null,
+      onChange: null,
+      onClick: null,
+      onClose: null,
+      onContextMenu: null,
+      onCopy: null,
+      onCueChange: null,
+      onCut: null,
+      onDblClick: null,
+      onDrag: null,
+      onDragEnd: null,
+      onDragEnter: null,
+      onDragExit: null,
+      onDragLeave: null,
+      onDragOver: null,
+      onDragStart: null,
+      onDrop: null,
+      onDurationChange: null,
+      onEmptied: null,
+      onEnded: null,
+      onError: null,
+      onFocus: null,
+      onFormData: null,
+      onHashChange: null,
+      onInput: null,
+      onInvalid: null,
+      onKeyDown: null,
+      onKeyPress: null,
+      onKeyUp: null,
+      onLanguageChange: null,
+      onLoad: null,
+      onLoadedData: null,
+      onLoadedMetadata: null,
+      onLoadEnd: null,
+      onLoadStart: null,
+      onMessage: null,
+      onMessageError: null,
+      onMouseDown: null,
+      onMouseEnter: null,
+      onMouseLeave: null,
+      onMouseMove: null,
+      onMouseOut: null,
+      onMouseOver: null,
+      onMouseUp: null,
+      onOffline: null,
+      onOnline: null,
+      onPageHide: null,
+      onPageShow: null,
+      onPaste: null,
+      onPause: null,
+      onPlay: null,
+      onPlaying: null,
+      onPopState: null,
+      onProgress: null,
+      onRateChange: null,
+      onRejectionHandled: null,
+      onReset: null,
+      onResize: null,
+      onScroll: null,
+      onSecurityPolicyViolation: null,
+      onSeeked: null,
+      onSeeking: null,
+      onSelect: null,
+      onSlotChange: null,
+      onStalled: null,
+      onStorage: null,
+      onSubmit: null,
+      onSuspend: null,
+      onTimeUpdate: null,
+      onToggle: null,
+      onUnhandledRejection: null,
+      onUnload: null,
+      onVolumeChange: null,
+      onWaiting: null,
+      onWheel: null,
+      open: boolean2,
+      optimum: number2,
+      pattern: null,
+      ping: spaceSeparated,
+      placeholder: null,
+      playsInline: boolean2,
+      poster: null,
+      preload: null,
+      readOnly: boolean2,
+      referrerPolicy: null,
+      rel: spaceSeparated,
+      required: boolean2,
+      reversed: boolean2,
+      rows: number2,
+      rowSpan: number2,
+      sandbox: spaceSeparated,
+      scope: null,
+      scoped: boolean2,
+      seamless: boolean2,
+      selected: boolean2,
+      shape: null,
+      size: number2,
+      sizes: null,
+      slot: null,
+      span: number2,
+      spellCheck: booleanish,
+      src: null,
+      srcDoc: null,
+      srcLang: null,
+      srcSet: commaSeparated,
+      start: number2,
+      step: null,
+      style: null,
+      tabIndex: number2,
+      target: null,
+      title: null,
+      translate: null,
+      type: null,
+      typeMustMatch: boolean2,
+      useMap: null,
+      value: booleanish,
+      width: number2,
+      wrap: null,
+      // Legacy.
+      // See: https://html.spec.whatwg.org/#other-elements,-attributes-and-apis
+      align: null,
+      // Several. Use CSS `text-align` instead,
+      aLink: null,
+      // `<body>`. Use CSS `a:active {color}` instead
+      archive: spaceSeparated,
+      // `<object>`. List of URIs to archives
+      axis: null,
+      // `<td>` and `<th>`. Use `scope` on `<th>`
+      background: null,
+      // `<body>`. Use CSS `background-image` instead
+      bgColor: null,
+      // `<body>` and table elements. Use CSS `background-color` instead
+      border: number2,
+      // `<table>`. Use CSS `border-width` instead,
+      borderColor: null,
+      // `<table>`. Use CSS `border-color` instead,
+      bottomMargin: number2,
+      // `<body>`
+      cellPadding: null,
+      // `<table>`
+      cellSpacing: null,
+      // `<table>`
+      char: null,
+      // Several table elements. When `align=char`, sets the character to align on
+      charOff: null,
+      // Several table elements. When `char`, offsets the alignment
+      classId: null,
+      // `<object>`
+      clear: null,
+      // `<br>`. Use CSS `clear` instead
+      code: null,
+      // `<object>`
+      codeBase: null,
+      // `<object>`
+      codeType: null,
+      // `<object>`
+      color: null,
+      // `<font>` and `<hr>`. Use CSS instead
+      compact: boolean2,
+      // Lists. Use CSS to reduce space between items instead
+      declare: boolean2,
+      // `<object>`
+      event: null,
+      // `<script>`
+      face: null,
+      // `<font>`. Use CSS instead
+      frame: null,
+      // `<table>`
+      frameBorder: null,
+      // `<iframe>`. Use CSS `border` instead
+      hSpace: number2,
+      // `<img>` and `<object>`
+      leftMargin: number2,
+      // `<body>`
+      link: null,
+      // `<body>`. Use CSS `a:link {color: *}` instead
+      longDesc: null,
+      // `<frame>`, `<iframe>`, and `<img>`. Use an `<a>`
+      lowSrc: null,
+      // `<img>`. Use a `<picture>`
+      marginHeight: number2,
+      // `<body>`
+      marginWidth: number2,
+      // `<body>`
+      noResize: boolean2,
+      // `<frame>`
+      noHref: boolean2,
+      // `<area>`. Use no href instead of an explicit `nohref`
+      noShade: boolean2,
+      // `<hr>`. Use background-color and height instead of borders
+      noWrap: boolean2,
+      // `<td>` and `<th>`
+      object: null,
+      // `<applet>`
+      profile: null,
+      // `<head>`
+      prompt: null,
+      // `<isindex>`
+      rev: null,
+      // `<link>`
+      rightMargin: number2,
+      // `<body>`
+      rules: null,
+      // `<table>`
+      scheme: null,
+      // `<meta>`
+      scrolling: booleanish,
+      // `<frame>`. Use overflow in the child context
+      standby: null,
+      // `<object>`
+      summary: null,
+      // `<table>`
+      text: null,
+      // `<body>`. Use CSS `color` instead
+      topMargin: number2,
+      // `<body>`
+      valueType: null,
+      // `<param>`
+      version: null,
+      // `<html>`. Use a doctype.
+      vAlign: null,
+      // Several. Use CSS `vertical-align` instead
+      vLink: null,
+      // `<body>`. Use CSS `a:visited {color}` instead
+      vSpace: number2,
+      // `<img>` and `<object>`
+      // Non-standard Properties.
+      allowTransparency: null,
+      autoCorrect: null,
+      autoSave: null,
+      disablePictureInPicture: boolean2,
+      disableRemotePlayback: boolean2,
+      prefix: null,
+      property: null,
+      results: number2,
+      security: null,
+      unselectable: null
+    }
+  });
+  return html$1;
+}
+var html_1;
+var hasRequiredHtml;
+function requireHtml() {
+  if (hasRequiredHtml) return html_1;
+  hasRequiredHtml = 1;
+  var merge3 = requireMerge();
+  var xlink2 = requireXlink();
+  var xml2 = requireXml();
+  var xmlns2 = requireXmlns();
+  var aria2 = requireAria();
+  var html2 = requireHtml$1();
+  html_1 = merge3([xml2, xlink2, xmlns2, aria2, html2]);
+  return html_1;
+}
+var svg$1;
+var hasRequiredSvg$1;
+function requireSvg$1() {
+  if (hasRequiredSvg$1) return svg$1;
+  hasRequiredSvg$1 = 1;
+  var types2 = requireTypes();
+  var create3 = requireCreate();
+  var caseSensitiveTransform = requireCaseSensitiveTransform();
+  var boolean2 = types2.boolean;
+  var number2 = types2.number;
+  var spaceSeparated = types2.spaceSeparated;
+  var commaSeparated = types2.commaSeparated;
+  var commaOrSpaceSeparated = types2.commaOrSpaceSeparated;
+  svg$1 = create3({
+    space: "svg",
+    attributes: {
+      accentHeight: "accent-height",
+      alignmentBaseline: "alignment-baseline",
+      arabicForm: "arabic-form",
+      baselineShift: "baseline-shift",
+      capHeight: "cap-height",
+      className: "class",
+      clipPath: "clip-path",
+      clipRule: "clip-rule",
+      colorInterpolation: "color-interpolation",
+      colorInterpolationFilters: "color-interpolation-filters",
+      colorProfile: "color-profile",
+      colorRendering: "color-rendering",
+      crossOrigin: "crossorigin",
+      dataType: "datatype",
+      dominantBaseline: "dominant-baseline",
+      enableBackground: "enable-background",
+      fillOpacity: "fill-opacity",
+      fillRule: "fill-rule",
+      floodColor: "flood-color",
+      floodOpacity: "flood-opacity",
+      fontFamily: "font-family",
+      fontSize: "font-size",
+      fontSizeAdjust: "font-size-adjust",
+      fontStretch: "font-stretch",
+      fontStyle: "font-style",
+      fontVariant: "font-variant",
+      fontWeight: "font-weight",
+      glyphName: "glyph-name",
+      glyphOrientationHorizontal: "glyph-orientation-horizontal",
+      glyphOrientationVertical: "glyph-orientation-vertical",
+      hrefLang: "hreflang",
+      horizAdvX: "horiz-adv-x",
+      horizOriginX: "horiz-origin-x",
+      horizOriginY: "horiz-origin-y",
+      imageRendering: "image-rendering",
+      letterSpacing: "letter-spacing",
+      lightingColor: "lighting-color",
+      markerEnd: "marker-end",
+      markerMid: "marker-mid",
+      markerStart: "marker-start",
+      navDown: "nav-down",
+      navDownLeft: "nav-down-left",
+      navDownRight: "nav-down-right",
+      navLeft: "nav-left",
+      navNext: "nav-next",
+      navPrev: "nav-prev",
+      navRight: "nav-right",
+      navUp: "nav-up",
+      navUpLeft: "nav-up-left",
+      navUpRight: "nav-up-right",
+      onAbort: "onabort",
+      onActivate: "onactivate",
+      onAfterPrint: "onafterprint",
+      onBeforePrint: "onbeforeprint",
+      onBegin: "onbegin",
+      onCancel: "oncancel",
+      onCanPlay: "oncanplay",
+      onCanPlayThrough: "oncanplaythrough",
+      onChange: "onchange",
+      onClick: "onclick",
+      onClose: "onclose",
+      onCopy: "oncopy",
+      onCueChange: "oncuechange",
+      onCut: "oncut",
+      onDblClick: "ondblclick",
+      onDrag: "ondrag",
+      onDragEnd: "ondragend",
+      onDragEnter: "ondragenter",
+      onDragExit: "ondragexit",
+      onDragLeave: "ondragleave",
+      onDragOver: "ondragover",
+      onDragStart: "ondragstart",
+      onDrop: "ondrop",
+      onDurationChange: "ondurationchange",
+      onEmptied: "onemptied",
+      onEnd: "onend",
+      onEnded: "onended",
+      onError: "onerror",
+      onFocus: "onfocus",
+      onFocusIn: "onfocusin",
+      onFocusOut: "onfocusout",
+      onHashChange: "onhashchange",
+      onInput: "oninput",
+      onInvalid: "oninvalid",
+      onKeyDown: "onkeydown",
+      onKeyPress: "onkeypress",
+      onKeyUp: "onkeyup",
+      onLoad: "onload",
+      onLoadedData: "onloadeddata",
+      onLoadedMetadata: "onloadedmetadata",
+      onLoadStart: "onloadstart",
+      onMessage: "onmessage",
+      onMouseDown: "onmousedown",
+      onMouseEnter: "onmouseenter",
+      onMouseLeave: "onmouseleave",
+      onMouseMove: "onmousemove",
+      onMouseOut: "onmouseout",
+      onMouseOver: "onmouseover",
+      onMouseUp: "onmouseup",
+      onMouseWheel: "onmousewheel",
+      onOffline: "onoffline",
+      onOnline: "ononline",
+      onPageHide: "onpagehide",
+      onPageShow: "onpageshow",
+      onPaste: "onpaste",
+      onPause: "onpause",
+      onPlay: "onplay",
+      onPlaying: "onplaying",
+      onPopState: "onpopstate",
+      onProgress: "onprogress",
+      onRateChange: "onratechange",
+      onRepeat: "onrepeat",
+      onReset: "onreset",
+      onResize: "onresize",
+      onScroll: "onscroll",
+      onSeeked: "onseeked",
+      onSeeking: "onseeking",
+      onSelect: "onselect",
+      onShow: "onshow",
+      onStalled: "onstalled",
+      onStorage: "onstorage",
+      onSubmit: "onsubmit",
+      onSuspend: "onsuspend",
+      onTimeUpdate: "ontimeupdate",
+      onToggle: "ontoggle",
+      onUnload: "onunload",
+      onVolumeChange: "onvolumechange",
+      onWaiting: "onwaiting",
+      onZoom: "onzoom",
+      overlinePosition: "overline-position",
+      overlineThickness: "overline-thickness",
+      paintOrder: "paint-order",
+      panose1: "panose-1",
+      pointerEvents: "pointer-events",
+      referrerPolicy: "referrerpolicy",
+      renderingIntent: "rendering-intent",
+      shapeRendering: "shape-rendering",
+      stopColor: "stop-color",
+      stopOpacity: "stop-opacity",
+      strikethroughPosition: "strikethrough-position",
+      strikethroughThickness: "strikethrough-thickness",
+      strokeDashArray: "stroke-dasharray",
+      strokeDashOffset: "stroke-dashoffset",
+      strokeLineCap: "stroke-linecap",
+      strokeLineJoin: "stroke-linejoin",
+      strokeMiterLimit: "stroke-miterlimit",
+      strokeOpacity: "stroke-opacity",
+      strokeWidth: "stroke-width",
+      tabIndex: "tabindex",
+      textAnchor: "text-anchor",
+      textDecoration: "text-decoration",
+      textRendering: "text-rendering",
+      typeOf: "typeof",
+      underlinePosition: "underline-position",
+      underlineThickness: "underline-thickness",
+      unicodeBidi: "unicode-bidi",
+      unicodeRange: "unicode-range",
+      unitsPerEm: "units-per-em",
+      vAlphabetic: "v-alphabetic",
+      vHanging: "v-hanging",
+      vIdeographic: "v-ideographic",
+      vMathematical: "v-mathematical",
+      vectorEffect: "vector-effect",
+      vertAdvY: "vert-adv-y",
+      vertOriginX: "vert-origin-x",
+      vertOriginY: "vert-origin-y",
+      wordSpacing: "word-spacing",
+      writingMode: "writing-mode",
+      xHeight: "x-height",
+      // These were camelcased in Tiny. Now lowercased in SVG 2
+      playbackOrder: "playbackorder",
+      timelineBegin: "timelinebegin"
+    },
+    transform: caseSensitiveTransform,
+    properties: {
+      about: commaOrSpaceSeparated,
+      accentHeight: number2,
+      accumulate: null,
+      additive: null,
+      alignmentBaseline: null,
+      alphabetic: number2,
+      amplitude: number2,
+      arabicForm: null,
+      ascent: number2,
+      attributeName: null,
+      attributeType: null,
+      azimuth: number2,
+      bandwidth: null,
+      baselineShift: null,
+      baseFrequency: null,
+      baseProfile: null,
+      bbox: null,
+      begin: null,
+      bias: number2,
+      by: null,
+      calcMode: null,
+      capHeight: number2,
+      className: spaceSeparated,
+      clip: null,
+      clipPath: null,
+      clipPathUnits: null,
+      clipRule: null,
+      color: null,
+      colorInterpolation: null,
+      colorInterpolationFilters: null,
+      colorProfile: null,
+      colorRendering: null,
+      content: null,
+      contentScriptType: null,
+      contentStyleType: null,
+      crossOrigin: null,
+      cursor: null,
+      cx: null,
+      cy: null,
+      d: null,
+      dataType: null,
+      defaultAction: null,
+      descent: number2,
+      diffuseConstant: number2,
+      direction: null,
+      display: null,
+      dur: null,
+      divisor: number2,
+      dominantBaseline: null,
+      download: boolean2,
+      dx: null,
+      dy: null,
+      edgeMode: null,
+      editable: null,
+      elevation: number2,
+      enableBackground: null,
+      end: null,
+      event: null,
+      exponent: number2,
+      externalResourcesRequired: null,
+      fill: null,
+      fillOpacity: number2,
+      fillRule: null,
+      filter: null,
+      filterRes: null,
+      filterUnits: null,
+      floodColor: null,
+      floodOpacity: null,
+      focusable: null,
+      focusHighlight: null,
+      fontFamily: null,
+      fontSize: null,
+      fontSizeAdjust: null,
+      fontStretch: null,
+      fontStyle: null,
+      fontVariant: null,
+      fontWeight: null,
+      format: null,
+      fr: null,
+      from: null,
+      fx: null,
+      fy: null,
+      g1: commaSeparated,
+      g2: commaSeparated,
+      glyphName: commaSeparated,
+      glyphOrientationHorizontal: null,
+      glyphOrientationVertical: null,
+      glyphRef: null,
+      gradientTransform: null,
+      gradientUnits: null,
+      handler: null,
+      hanging: number2,
+      hatchContentUnits: null,
+      hatchUnits: null,
+      height: null,
+      href: null,
+      hrefLang: null,
+      horizAdvX: number2,
+      horizOriginX: number2,
+      horizOriginY: number2,
+      id: null,
+      ideographic: number2,
+      imageRendering: null,
+      initialVisibility: null,
+      in: null,
+      in2: null,
+      intercept: number2,
+      k: number2,
+      k1: number2,
+      k2: number2,
+      k3: number2,
+      k4: number2,
+      kernelMatrix: commaOrSpaceSeparated,
+      kernelUnitLength: null,
+      keyPoints: null,
+      // SEMI_COLON_SEPARATED
+      keySplines: null,
+      // SEMI_COLON_SEPARATED
+      keyTimes: null,
+      // SEMI_COLON_SEPARATED
+      kerning: null,
+      lang: null,
+      lengthAdjust: null,
+      letterSpacing: null,
+      lightingColor: null,
+      limitingConeAngle: number2,
+      local: null,
+      markerEnd: null,
+      markerMid: null,
+      markerStart: null,
+      markerHeight: null,
+      markerUnits: null,
+      markerWidth: null,
+      mask: null,
+      maskContentUnits: null,
+      maskUnits: null,
+      mathematical: null,
+      max: null,
+      media: null,
+      mediaCharacterEncoding: null,
+      mediaContentEncodings: null,
+      mediaSize: number2,
+      mediaTime: null,
+      method: null,
+      min: null,
+      mode: null,
+      name: null,
+      navDown: null,
+      navDownLeft: null,
+      navDownRight: null,
+      navLeft: null,
+      navNext: null,
+      navPrev: null,
+      navRight: null,
+      navUp: null,
+      navUpLeft: null,
+      navUpRight: null,
+      numOctaves: null,
+      observer: null,
+      offset: null,
+      onAbort: null,
+      onActivate: null,
+      onAfterPrint: null,
+      onBeforePrint: null,
+      onBegin: null,
+      onCancel: null,
+      onCanPlay: null,
+      onCanPlayThrough: null,
+      onChange: null,
+      onClick: null,
+      onClose: null,
+      onCopy: null,
+      onCueChange: null,
+      onCut: null,
+      onDblClick: null,
+      onDrag: null,
+      onDragEnd: null,
+      onDragEnter: null,
+      onDragExit: null,
+      onDragLeave: null,
+      onDragOver: null,
+      onDragStart: null,
+      onDrop: null,
+      onDurationChange: null,
+      onEmptied: null,
+      onEnd: null,
+      onEnded: null,
+      onError: null,
+      onFocus: null,
+      onFocusIn: null,
+      onFocusOut: null,
+      onHashChange: null,
+      onInput: null,
+      onInvalid: null,
+      onKeyDown: null,
+      onKeyPress: null,
+      onKeyUp: null,
+      onLoad: null,
+      onLoadedData: null,
+      onLoadedMetadata: null,
+      onLoadStart: null,
+      onMessage: null,
+      onMouseDown: null,
+      onMouseEnter: null,
+      onMouseLeave: null,
+      onMouseMove: null,
+      onMouseOut: null,
+      onMouseOver: null,
+      onMouseUp: null,
+      onMouseWheel: null,
+      onOffline: null,
+      onOnline: null,
+      onPageHide: null,
+      onPageShow: null,
+      onPaste: null,
+      onPause: null,
+      onPlay: null,
+      onPlaying: null,
+      onPopState: null,
+      onProgress: null,
+      onRateChange: null,
+      onRepeat: null,
+      onReset: null,
+      onResize: null,
+      onScroll: null,
+      onSeeked: null,
+      onSeeking: null,
+      onSelect: null,
+      onShow: null,
+      onStalled: null,
+      onStorage: null,
+      onSubmit: null,
+      onSuspend: null,
+      onTimeUpdate: null,
+      onToggle: null,
+      onUnload: null,
+      onVolumeChange: null,
+      onWaiting: null,
+      onZoom: null,
+      opacity: null,
+      operator: null,
+      order: null,
+      orient: null,
+      orientation: null,
+      origin: null,
+      overflow: null,
+      overlay: null,
+      overlinePosition: number2,
+      overlineThickness: number2,
+      paintOrder: null,
+      panose1: null,
+      path: null,
+      pathLength: number2,
+      patternContentUnits: null,
+      patternTransform: null,
+      patternUnits: null,
+      phase: null,
+      ping: spaceSeparated,
+      pitch: null,
+      playbackOrder: null,
+      pointerEvents: null,
+      points: null,
+      pointsAtX: number2,
+      pointsAtY: number2,
+      pointsAtZ: number2,
+      preserveAlpha: null,
+      preserveAspectRatio: null,
+      primitiveUnits: null,
+      propagate: null,
+      property: commaOrSpaceSeparated,
+      r: null,
+      radius: null,
+      referrerPolicy: null,
+      refX: null,
+      refY: null,
+      rel: commaOrSpaceSeparated,
+      rev: commaOrSpaceSeparated,
+      renderingIntent: null,
+      repeatCount: null,
+      repeatDur: null,
+      requiredExtensions: commaOrSpaceSeparated,
+      requiredFeatures: commaOrSpaceSeparated,
+      requiredFonts: commaOrSpaceSeparated,
+      requiredFormats: commaOrSpaceSeparated,
+      resource: null,
+      restart: null,
+      result: null,
+      rotate: null,
+      rx: null,
+      ry: null,
+      scale: null,
+      seed: null,
+      shapeRendering: null,
+      side: null,
+      slope: null,
+      snapshotTime: null,
+      specularConstant: number2,
+      specularExponent: number2,
+      spreadMethod: null,
+      spacing: null,
+      startOffset: null,
+      stdDeviation: null,
+      stemh: null,
+      stemv: null,
+      stitchTiles: null,
+      stopColor: null,
+      stopOpacity: null,
+      strikethroughPosition: number2,
+      strikethroughThickness: number2,
+      string: null,
+      stroke: null,
+      strokeDashArray: commaOrSpaceSeparated,
+      strokeDashOffset: null,
+      strokeLineCap: null,
+      strokeLineJoin: null,
+      strokeMiterLimit: number2,
+      strokeOpacity: number2,
+      strokeWidth: null,
+      style: null,
+      surfaceScale: number2,
+      syncBehavior: null,
+      syncBehaviorDefault: null,
+      syncMaster: null,
+      syncTolerance: null,
+      syncToleranceDefault: null,
+      systemLanguage: commaOrSpaceSeparated,
+      tabIndex: number2,
+      tableValues: null,
+      target: null,
+      targetX: number2,
+      targetY: number2,
+      textAnchor: null,
+      textDecoration: null,
+      textRendering: null,
+      textLength: null,
+      timelineBegin: null,
+      title: null,
+      transformBehavior: null,
+      type: null,
+      typeOf: commaOrSpaceSeparated,
+      to: null,
+      transform: null,
+      u1: null,
+      u2: null,
+      underlinePosition: number2,
+      underlineThickness: number2,
+      unicode: null,
+      unicodeBidi: null,
+      unicodeRange: null,
+      unitsPerEm: number2,
+      values: null,
+      vAlphabetic: number2,
+      vMathematical: number2,
+      vectorEffect: null,
+      vHanging: number2,
+      vIdeographic: number2,
+      version: null,
+      vertAdvY: number2,
+      vertOriginX: number2,
+      vertOriginY: number2,
+      viewBox: null,
+      viewTarget: null,
+      visibility: null,
+      width: null,
+      widths: null,
+      wordSpacing: null,
+      writingMode: null,
+      x: null,
+      x1: null,
+      x2: null,
+      xChannelSelector: null,
+      xHeight: number2,
+      y: null,
+      y1: null,
+      y2: null,
+      yChannelSelector: null,
+      z: null,
+      zoomAndPan: null
+    }
+  });
+  return svg$1;
+}
+var svg_1;
+var hasRequiredSvg;
+function requireSvg() {
+  if (hasRequiredSvg) return svg_1;
+  hasRequiredSvg = 1;
+  var merge3 = requireMerge();
+  var xlink2 = requireXlink();
+  var xml2 = requireXml();
+  var xmlns2 = requireXmlns();
+  var aria2 = requireAria();
+  var svg2 = requireSvg$1();
+  svg_1 = merge3([xml2, xlink2, xmlns2, aria2, svg2]);
+  return svg_1;
+}
+var find_1;
+var hasRequiredFind;
+function requireFind() {
+  if (hasRequiredFind) return find_1;
+  hasRequiredFind = 1;
+  var normalize2 = requireNormalize();
+  var DefinedInfo = requireDefinedInfo();
+  var Info = requireInfo();
+  var data2 = "data";
+  find_1 = find2;
+  var valid = /^data[-\w.:]+$/i;
+  var dash = /-[a-z]/g;
+  var cap = /[A-Z]/g;
+  function find2(schema2, value) {
+    var normal = normalize2(value);
+    var prop = value;
+    var Type = Info;
+    if (normal in schema2.normal) {
+      return schema2.property[schema2.normal[normal]];
+    }
+    if (normal.length > 4 && normal.slice(0, 4) === data2 && valid.test(value)) {
+      if (value.charAt(4) === "-") {
+        prop = datasetToProperty(value);
+      } else {
+        value = datasetToAttribute(value);
+      }
+      Type = DefinedInfo;
+    }
+    return new Type(prop, value);
+  }
+  function datasetToProperty(attribute) {
+    var value = attribute.slice(5).replace(dash, camelcase);
+    return data2 + value.charAt(0).toUpperCase() + value.slice(1);
+  }
+  function datasetToAttribute(property) {
+    var value = property.slice(4);
+    if (dash.test(value)) {
+      return property;
+    }
+    value = value.replace(cap, kebab);
+    if (value.charAt(0) !== "-") {
+      value = "-" + value;
+    }
+    return data2 + value;
+  }
+  function kebab($0) {
+    return "-" + $0.toLowerCase();
+  }
+  function camelcase($0) {
+    return $0.charAt(1).toUpperCase();
+  }
+  return find_1;
+}
+const classId = "classID";
+const dataType = "datatype";
+const itemId = "itemID";
+const strokeDashArray = "strokeDasharray";
+const strokeDashOffset = "strokeDashoffset";
+const strokeLineCap = "strokeLinecap";
+const strokeLineJoin = "strokeLinejoin";
+const strokeMiterLimit = "strokeMiterlimit";
+const typeOf = "typeof";
+const xLinkActuate = "xlinkActuate";
+const xLinkArcRole = "xlinkArcrole";
+const xLinkHref = "xlinkHref";
+const xLinkRole = "xlinkRole";
+const xLinkShow = "xlinkShow";
+const xLinkTitle = "xlinkTitle";
+const xLinkType = "xlinkType";
+const xmlnsXLink = "xmlnsXlink";
+const require$$3 = {
+  classId,
+  dataType,
+  itemId,
+  strokeDashArray,
+  strokeDashOffset,
+  strokeLineCap,
+  strokeLineJoin,
+  strokeMiterLimit,
+  typeOf,
+  xLinkActuate,
+  xLinkArcRole,
+  xLinkHref,
+  xLinkRole,
+  xLinkShow,
+  xLinkTitle,
+  xLinkType,
+  xmlnsXLink
+};
+var spaceSeparatedTokens = {};
+var hasRequiredSpaceSeparatedTokens;
+function requireSpaceSeparatedTokens() {
+  if (hasRequiredSpaceSeparatedTokens) return spaceSeparatedTokens;
+  hasRequiredSpaceSeparatedTokens = 1;
+  spaceSeparatedTokens.parse = parse3;
+  spaceSeparatedTokens.stringify = stringify2;
+  var empty = "";
+  var space = " ";
+  var whiteSpace = /[ \t\n\r\f]+/g;
+  function parse3(value) {
+    var input = String(value || empty).trim();
+    return input === empty ? [] : input.split(whiteSpace);
+  }
+  function stringify2(values3) {
+    return values3.join(space).trim();
+  }
+  return spaceSeparatedTokens;
+}
+var commaSeparatedTokens = {};
+var hasRequiredCommaSeparatedTokens;
+function requireCommaSeparatedTokens() {
+  if (hasRequiredCommaSeparatedTokens) return commaSeparatedTokens;
+  hasRequiredCommaSeparatedTokens = 1;
+  commaSeparatedTokens.parse = parse3;
+  commaSeparatedTokens.stringify = stringify2;
+  var comma = ",";
+  var space = " ";
+  var empty = "";
+  function parse3(value) {
+    var values3 = [];
+    var input = String(value || empty);
+    var index2 = input.indexOf(comma);
+    var lastIndex = 0;
+    var end2 = false;
+    var val;
+    while (!end2) {
+      if (index2 === -1) {
+        index2 = input.length;
+        end2 = true;
+      }
+      val = input.slice(lastIndex, index2).trim();
+      if (val || !end2) {
+        values3.push(val);
+      }
+      lastIndex = index2 + 1;
+      index2 = input.indexOf(comma, lastIndex);
+    }
+    return values3;
+  }
+  function stringify2(values3, options2) {
+    var settings2 = options2 || {};
+    var left2 = settings2.padLeft === false ? empty : space;
+    var right2 = settings2.padRight ? space : empty;
+    if (values3[values3.length - 1] === empty) {
+      values3 = values3.concat(empty);
+    }
+    return values3.join(right2 + comma + left2).trim();
+  }
+  return commaSeparatedTokens;
+}
+var inlineStyleParser;
+var hasRequiredInlineStyleParser;
+function requireInlineStyleParser() {
+  if (hasRequiredInlineStyleParser) return inlineStyleParser;
+  hasRequiredInlineStyleParser = 1;
+  var COMMENT_REGEX = /\/\*[^*]*\*+([^/*][^*]*\*+)*\//g;
+  var NEWLINE_REGEX = /\n/g;
+  var WHITESPACE_REGEX = /^\s*/;
+  var PROPERTY_REGEX = /^(\*?[-#/*\\\w]+(\[[0-9a-z_-]+\])?)\s*/;
+  var COLON_REGEX = /^:\s*/;
+  var VALUE_REGEX = /^((?:'(?:\\'|.)*?'|"(?:\\"|.)*?"|\([^)]*?\)|[^};])+)/;
+  var SEMICOLON_REGEX = /^[;\s]*/;
+  var TRIM_REGEX = /^\s+|\s+$/g;
+  var NEWLINE = "\n";
+  var FORWARD_SLASH = "/";
+  var ASTERISK = "*";
+  var EMPTY_STRING = "";
+  var TYPE_COMMENT = "comment";
+  var TYPE_DECLARATION = "declaration";
+  inlineStyleParser = function(style2, options2) {
+    if (typeof style2 !== "string") {
+      throw new TypeError("First argument must be a string");
+    }
+    if (!style2) return [];
+    options2 = options2 || {};
+    var lineno = 1;
+    var column2 = 1;
+    function updatePosition(str) {
+      var lines = str.match(NEWLINE_REGEX);
+      if (lines) lineno += lines.length;
+      var i2 = str.lastIndexOf(NEWLINE);
+      column2 = ~i2 ? str.length - i2 : column2 + str.length;
+    }
+    function position2() {
+      var start3 = { line: lineno, column: column2 };
+      return function(node2) {
+        node2.position = new Position(start3);
+        whitespace2();
+        return node2;
+      };
+    }
+    function Position(start3) {
+      this.start = start3;
+      this.end = { line: lineno, column: column2 };
+      this.source = options2.source;
+    }
+    Position.prototype.content = style2;
+    function error(msg) {
+      var err = new Error(
+        options2.source + ":" + lineno + ":" + column2 + ": " + msg
+      );
+      err.reason = msg;
+      err.filename = options2.source;
+      err.line = lineno;
+      err.column = column2;
+      err.source = style2;
+      if (options2.silent) ;
+      else {
+        throw err;
+      }
+    }
+    function match2(re) {
+      var m3 = re.exec(style2);
+      if (!m3) return;
+      var str = m3[0];
+      updatePosition(str);
+      style2 = style2.slice(str.length);
+      return m3;
+    }
+    function whitespace2() {
+      match2(WHITESPACE_REGEX);
+    }
+    function comments(rules) {
+      var c3;
+      rules = rules || [];
+      while (c3 = comment2()) {
+        if (c3 !== false) {
+          rules.push(c3);
+        }
+      }
+      return rules;
+    }
+    function comment2() {
+      var pos = position2();
+      if (FORWARD_SLASH != style2.charAt(0) || ASTERISK != style2.charAt(1)) return;
+      var i2 = 2;
+      while (EMPTY_STRING != style2.charAt(i2) && (ASTERISK != style2.charAt(i2) || FORWARD_SLASH != style2.charAt(i2 + 1))) {
+        ++i2;
+      }
+      i2 += 2;
+      if (EMPTY_STRING === style2.charAt(i2 - 1)) {
+        return error("End of comment missing");
+      }
+      var str = style2.slice(2, i2 - 2);
+      column2 += 2;
+      updatePosition(str);
+      style2 = style2.slice(i2);
+      column2 += 2;
+      return pos({
+        type: TYPE_COMMENT,
+        comment: str
+      });
+    }
+    function declaration2() {
+      var pos = position2();
+      var prop = match2(PROPERTY_REGEX);
+      if (!prop) return;
+      comment2();
+      if (!match2(COLON_REGEX)) return error("property missing ':'");
+      var val = match2(VALUE_REGEX);
+      var ret = pos({
+        type: TYPE_DECLARATION,
+        property: trim2(prop[0].replace(COMMENT_REGEX, EMPTY_STRING)),
+        value: val ? trim2(val[0].replace(COMMENT_REGEX, EMPTY_STRING)) : EMPTY_STRING
+      });
+      match2(SEMICOLON_REGEX);
+      return ret;
+    }
+    function declarations() {
+      var decls = [];
+      comments(decls);
+      var decl;
+      while (decl = declaration2()) {
+        if (decl !== false) {
+          decls.push(decl);
+          comments(decls);
+        }
+      }
+      return decls;
+    }
+    whitespace2();
+    return declarations();
+  };
+  function trim2(str) {
+    return str ? str.replace(TRIM_REGEX, EMPTY_STRING) : EMPTY_STRING;
+  }
+  return inlineStyleParser;
+}
+var styleToObject;
+var hasRequiredStyleToObject;
+function requireStyleToObject() {
+  if (hasRequiredStyleToObject) return styleToObject;
+  hasRequiredStyleToObject = 1;
+  var parse3 = requireInlineStyleParser();
+  function StyleToObject(style2, iterator) {
+    var output = null;
+    if (!style2 || typeof style2 !== "string") {
+      return output;
+    }
+    var declaration2;
+    var declarations = parse3(style2);
+    var hasIterator = typeof iterator === "function";
+    var property;
+    var value;
+    for (var i2 = 0, len = declarations.length; i2 < len; i2++) {
+      declaration2 = declarations[i2];
+      property = declaration2.property;
+      value = declaration2.value;
+      if (hasIterator) {
+        iterator(property, value, declaration2);
+      } else if (value) {
+        output || (output = {});
+        output[property] = value;
+      }
+    }
+    return output;
+  }
+  styleToObject = StyleToObject;
+  return styleToObject;
+}
+const html = "http://www.w3.org/1999/xhtml";
+const mathml = "http://www.w3.org/1998/Math/MathML";
+const svg = "http://www.w3.org/2000/svg";
+const xlink = "http://www.w3.org/1999/xlink";
+const xml = "http://www.w3.org/XML/1998/namespace";
+const xmlns = "http://www.w3.org/2000/xmlns/";
+const require$$7 = {
+  html,
+  mathml,
+  svg,
+  xlink,
+  xml,
+  xmlns
+};
+var hastToHyperscript;
+var hasRequiredHastToHyperscript;
+function requireHastToHyperscript() {
+  if (hasRequiredHastToHyperscript) return hastToHyperscript;
+  hasRequiredHastToHyperscript = 1;
+  var html2 = requireHtml();
+  var svg2 = requireSvg();
+  var find2 = requireFind();
+  var hastToReact = require$$3;
+  var spaces = requireSpaceSeparatedTokens();
+  var commas = requireCommaSeparatedTokens();
+  var style2 = requireStyleToObject();
+  var ns = require$$7;
+  var convert2 = requireConvert$1();
+  var root2 = convert2("root");
+  var element = convert2("element");
+  var text2 = convert2("text");
+  hastToHyperscript = wrapper;
+  function wrapper(h3, node2, options2) {
+    var settings2 = options2 || {};
+    var r3 = react2(h3);
+    var v = vue(h3);
+    var vd = vdom(h3);
+    var prefix2;
+    if (typeof h3 !== "function") {
+      throw new Error("h is not a function");
+    }
+    if (typeof settings2 === "string" || typeof settings2 === "boolean") {
+      prefix2 = settings2;
+      settings2 = {};
+    } else {
+      prefix2 = settings2.prefix;
+    }
+    if (root2(node2)) {
+      node2 = node2.children.length === 1 && element(node2.children[0]) ? node2.children[0] : {
+        type: "element",
+        tagName: "div",
+        properties: {},
+        children: node2.children
+      };
+    } else if (!element(node2)) {
+      throw new Error(
+        "Expected root or element, not `" + (node2 && node2.type || node2) + "`"
+      );
+    }
+    return toH(h3, node2, {
+      schema: settings2.space === "svg" ? svg2 : html2,
+      prefix: prefix2 == null ? r3 || v || vd ? "h-" : null : prefix2,
+      key: 0,
+      react: r3,
+      vue: v,
+      vdom: vd,
+      hyperscript: hyperscript(h3)
+    });
+  }
+  function toH(h3, node2, ctx) {
+    var parentSchema = ctx.schema;
+    var schema2 = parentSchema;
+    var name2 = node2.tagName;
+    var attributes = {};
+    var nodes = [];
+    var index2 = -1;
+    var key;
+    var value;
+    if (parentSchema.space === "html" && name2.toLowerCase() === "svg") {
+      schema2 = svg2;
+      ctx.schema = schema2;
+    }
+    for (key in node2.properties) {
+      addAttribute(attributes, key, node2.properties[key], ctx, name2);
+    }
+    if (ctx.vdom) {
+      if (schema2.space === "html") {
+        name2 = name2.toUpperCase();
+      } else {
+        attributes.namespace = ns[schema2.space];
+      }
+    }
+    if (ctx.prefix) {
+      ctx.key++;
+      attributes.key = ctx.prefix + ctx.key;
+    }
+    if (node2.children) {
+      while (++index2 < node2.children.length) {
+        value = node2.children[index2];
+        if (element(value)) {
+          nodes.push(toH(h3, value, ctx));
+        } else if (text2(value)) {
+          nodes.push(value.value);
+        }
+      }
+    }
+    ctx.schema = parentSchema;
+    return nodes.length ? h3.call(node2, name2, attributes, nodes) : h3.call(node2, name2, attributes);
+  }
+  function addAttribute(props, prop, value, ctx, name2) {
+    var info2 = find2(ctx.schema, prop);
+    var subprop;
+    if (value == null || value !== value || value === false && (ctx.vue || ctx.vdom || ctx.hyperscript) || !value && info2.boolean && (ctx.vue || ctx.vdom || ctx.hyperscript)) {
+      return;
+    }
+    if (value && typeof value === "object" && "length" in value) {
+      value = (info2.commaSeparated ? commas : spaces).stringify(value);
+    }
+    if (info2.boolean && ctx.hyperscript) {
+      value = "";
+    }
+    if (info2.property === "style" && typeof value === "string" && (ctx.react || ctx.vue || ctx.vdom)) {
+      value = parseStyle(value, name2);
+    }
+    if (ctx.vue) {
+      if (info2.property !== "style") subprop = "attrs";
+    } else if (!info2.mustUseProperty) {
+      if (ctx.vdom) {
+        if (info2.property !== "style") subprop = "attributes";
+      } else if (ctx.hyperscript) {
+        subprop = "attrs";
+      }
+    }
+    if (subprop) {
+      if (!props[subprop]) props[subprop] = {};
+      props[subprop][info2.attribute] = value;
+    } else if (info2.space && ctx.react) {
+      props[hastToReact[info2.property] || info2.property] = value;
+    } else {
+      props[info2.attribute] = value;
+    }
+  }
+  function react2(h3) {
+    var node2 = h3 && h3("div");
+    return Boolean(
+      node2 && ("_owner" in node2 || "_store" in node2) && node2.key == null
+    );
+  }
+  function hyperscript(h3) {
+    return Boolean(h3 && h3.context && h3.cleanup);
+  }
+  function vdom(h3) {
+    return h3 && h3("div").type === "VirtualNode";
+  }
+  function vue(h3) {
+    var node2 = h3 && h3("div");
+    return Boolean(node2 && node2.context && node2.context._isVue);
+  }
+  function parseStyle(value, tagName) {
+    var result = {};
+    try {
+      style2(value, iterator);
+    } catch (error) {
+      error.message = tagName + "[style]" + error.message.slice("undefined".length);
+      throw error;
+    }
+    return result;
+    function iterator(name2, value2) {
+      if (name2.slice(0, 4) === "-ms-") name2 = "ms-" + name2.slice(4);
+      result[name2.replace(/-([a-z])/g, styleReplacer)] = value2;
+    }
+  }
+  function styleReplacer($0, $1) {
+    return $1.toUpperCase();
+  }
+  return hastToHyperscript;
+}
+var convert_1;
+var hasRequiredConvert;
+function requireConvert() {
+  if (hasRequiredConvert) return convert_1;
+  hasRequiredConvert = 1;
+  convert_1 = convert2;
+  function convert2(test2) {
+    if (typeof test2 === "string") {
+      return typeFactory(test2);
+    }
+    if (test2 === null || test2 === void 0) {
+      return ok;
+    }
+    if (typeof test2 === "object") {
+      return ("length" in test2 ? anyFactory : matchesFactory)(test2);
+    }
+    if (typeof test2 === "function") {
+      return test2;
+    }
+    throw new Error("Expected function, string, or object as test");
+  }
+  function convertAll(tests) {
+    var results = [];
+    var length2 = tests.length;
+    var index2 = -1;
+    while (++index2 < length2) {
+      results[index2] = convert2(tests[index2]);
+    }
+    return results;
+  }
+  function matchesFactory(test2) {
+    return matches;
+    function matches(node2) {
+      var key;
+      for (key in test2) {
+        if (node2[key] !== test2[key]) {
+          return false;
+        }
+      }
+      return true;
+    }
+  }
+  function anyFactory(tests) {
+    var checks = convertAll(tests);
+    var length2 = checks.length;
+    return matches;
+    function matches() {
+      var index2 = -1;
+      while (++index2 < length2) {
+        if (checks[index2].apply(this, arguments)) {
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+  function typeFactory(test2) {
+    return type3;
+    function type3(node2) {
+      return Boolean(node2 && node2.type === test2);
+    }
+  }
+  function ok() {
+    return true;
+  }
+  return convert_1;
+}
+var unistUtilVisitParents;
+var hasRequiredUnistUtilVisitParents;
+function requireUnistUtilVisitParents() {
+  if (hasRequiredUnistUtilVisitParents) return unistUtilVisitParents;
+  hasRequiredUnistUtilVisitParents = 1;
+  unistUtilVisitParents = visitParents;
+  var convert2 = requireConvert();
+  var CONTINUE = true;
+  var SKIP = "skip";
+  var EXIT = false;
+  visitParents.CONTINUE = CONTINUE;
+  visitParents.SKIP = SKIP;
+  visitParents.EXIT = EXIT;
+  function visitParents(tree, test2, visitor, reverse) {
+    var is2;
+    if (typeof test2 === "function" && typeof visitor !== "function") {
+      reverse = visitor;
+      visitor = test2;
+      test2 = null;
+    }
+    is2 = convert2(test2);
+    one3(tree, null, []);
+    function one3(node2, index2, parents) {
+      var result = [];
+      var subresult;
+      if (!test2 || is2(node2, index2, parents[parents.length - 1] || null)) {
+        result = toResult(visitor(node2, parents));
+        if (result[0] === EXIT) {
+          return result;
+        }
+      }
+      if (node2.children && result[0] !== SKIP) {
+        subresult = toResult(all2(node2.children, parents.concat(node2)));
+        return subresult[0] === EXIT ? subresult : result;
+      }
+      return result;
+    }
+    function all2(children, parents) {
+      var min2 = -1;
+      var step = reverse ? -1 : 1;
+      var index2 = (reverse ? children.length : min2) + step;
+      var result;
+      while (index2 > min2 && index2 < children.length) {
+        result = one3(children[index2], index2, parents);
+        if (result[0] === EXIT) {
+          return result;
+        }
+        index2 = typeof result[1] === "number" ? result[1] : index2 + step;
+      }
+    }
+  }
+  function toResult(value) {
+    if (value !== null && typeof value === "object" && "length" in value) {
+      return value;
+    }
+    if (typeof value === "number") {
+      return [CONTINUE, value];
+    }
+    return [value];
+  }
+  return unistUtilVisitParents;
+}
+var unistUtilVisit;
+var hasRequiredUnistUtilVisit;
+function requireUnistUtilVisit() {
+  if (hasRequiredUnistUtilVisit) return unistUtilVisit;
+  hasRequiredUnistUtilVisit = 1;
+  unistUtilVisit = visit2;
+  var visitParents = requireUnistUtilVisitParents();
+  var CONTINUE = visitParents.CONTINUE;
+  var SKIP = visitParents.SKIP;
+  var EXIT = visitParents.EXIT;
+  visit2.CONTINUE = CONTINUE;
+  visit2.SKIP = SKIP;
+  visit2.EXIT = EXIT;
+  function visit2(tree, test2, visitor, reverse) {
+    if (typeof test2 === "function" && typeof visitor !== "function") {
+      reverse = visitor;
+      visitor = test2;
+      test2 = null;
+    }
+    visitParents(tree, test2, overload, reverse);
+    function overload(node2, parents) {
+      var parent = parents[parents.length - 1];
+      var index2 = parent ? parent.children.indexOf(node2) : null;
+      return visitor(node2, index2, parent);
+    }
+  }
+  return unistUtilVisit;
+}
+var hastUtilTableCellStyle;
+var hasRequiredHastUtilTableCellStyle;
+function requireHastUtilTableCellStyle() {
+  if (hasRequiredHastUtilTableCellStyle) return hastUtilTableCellStyle;
+  hasRequiredHastUtilTableCellStyle = 1;
+  var visit2 = requireUnistUtilVisit();
+  var hasOwnProperty2 = Object.prototype.hasOwnProperty;
+  var hastCssPropertyMap = {
+    align: "text-align",
+    valign: "vertical-align",
+    height: "height",
+    width: "width"
+  };
+  hastUtilTableCellStyle = function tableCellStyle(node2) {
+    visit2(node2, "element", visitor);
+    return node2;
+  };
+  function visitor(node2) {
+    if (node2.tagName !== "tr" && node2.tagName !== "td" && node2.tagName !== "th") {
+      return;
+    }
+    var hastName;
+    var cssName;
+    for (hastName in hastCssPropertyMap) {
+      if (!hasOwnProperty2.call(hastCssPropertyMap, hastName) || node2.properties[hastName] === void 0) {
+        continue;
+      }
+      cssName = hastCssPropertyMap[hastName];
+      appendStyle(node2, cssName, node2.properties[hastName]);
+      delete node2.properties[hastName];
+    }
+  }
+  function appendStyle(node2, property, value) {
+    var prevStyle = (node2.properties.style || "").trim();
+    if (prevStyle && !/;\s*/.test(prevStyle)) {
+      prevStyle += ";";
+    }
+    if (prevStyle) {
+      prevStyle += " ";
+    }
+    var nextStyle = prevStyle + property + ": " + value + ";";
+    node2.properties.style = nextStyle;
+  }
+  return hastUtilTableCellStyle;
+}
+var rehypeReact_1;
+var hasRequiredRehypeReact;
+function requireRehypeReact() {
+  if (hasRequiredRehypeReact) return rehypeReact_1;
+  hasRequiredRehypeReact = 1;
+  var toH = requireHastToHyperscript();
+  var tableCellStyle = requireHastUtilTableCellStyle();
+  rehypeReact_1 = rehypeReact2;
+  var own = {}.hasOwnProperty;
+  var tableElements = /* @__PURE__ */ new Set([
+    "table",
+    "thead",
+    "tbody",
+    "tfoot",
+    "tr",
+    "th",
+    "td"
+  ]);
+  function rehypeReact2(options2) {
+    var settings2 = options2 || {};
+    var createElement2 = settings2.createElement;
+    this.Compiler = compiler;
+    function compiler(node2) {
+      var result = toH(h3, tableCellStyle(node2), settings2.prefix);
+      if (node2.type === "root") {
+        result = result.type === "div" && (node2.children.length !== 1 || node2.children[0].type !== "element") ? result.props.children : [result];
+        return createElement2(settings2.Fragment || "div", {}, result);
+      }
+      return result;
+    }
+    function h3(name2, props, children) {
+      var component = name2;
+      if (children && tableElements.has(name2)) {
+        children = children.filter(function(child) {
+          return child !== "\n";
+        });
+      }
+      if (settings2.components && own.call(settings2.components, name2)) {
+        component = settings2.components[name2];
+        if (settings2.passNode) {
+          props.node = this;
+        }
+      }
+      return createElement2(component, props, children);
+    }
+  }
+  return rehypeReact_1;
+}
+var rehypeReactExports = requireRehypeReact();
+const rehypeReact = /* @__PURE__ */ getDefaultExportFromCjs(rehypeReactExports);
+function _extends() {
+  _extends = Object.assign || function(target) {
+    for (var i2 = 1; i2 < arguments.length; i2++) {
+      var source2 = arguments[i2];
+      for (var key in source2) {
+        if (Object.prototype.hasOwnProperty.call(source2, key)) {
+          target[key] = source2[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends.apply(this, arguments);
+}
+function _objectWithoutPropertiesLoose(source2, excluded) {
+  if (source2 == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source2);
+  var key, i2;
+  for (i2 = 0; i2 < sourceKeys.length; i2++) {
+    key = sourceKeys[i2];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source2[key];
+  }
+  return target;
+}
+var _excluded = ["children"];
+var useRemark = function useRemark2(_temp2) {
+  var _ref22 = _temp2 === void 0 ? {} : _temp2, remarkParseOptions = _ref22.remarkParseOptions, remarkToRehypeOptions = _ref22.remarkToRehypeOptions, rehypeReactOptions = _ref22.rehypeReactOptions, _ref2$remarkPlugins = _ref22.remarkPlugins, remarkPlugins = _ref2$remarkPlugins === void 0 ? [] : _ref2$remarkPlugins, _ref2$rehypePlugins = _ref22.rehypePlugins, rehypePlugins = _ref2$rehypePlugins === void 0 ? [] : _ref2$rehypePlugins, _ref2$onError = _ref22.onError, onError2 = _ref2$onError === void 0 ? function() {
+  } : _ref2$onError;
+  var _useState = reactExports.useState(null), reactContent = _useState[0], setReactContent = _useState[1];
+  var setMarkdownSource = reactExports.useCallback(function(source2) {
+    unified().use(remarkParse, remarkParseOptions).use(remarkPlugins).use(remarkToRehype, remarkToRehypeOptions).use(rehypePlugins).use(rehypeReact, _extends({
+      createElement: reactExports.createElement,
+      Fragment: reactExports.Fragment
+    }, rehypeReactOptions)).process(source2).then(function(vfile2) {
+      return setReactContent(vfile2.result);
+    })["catch"](onError2);
+  }, []);
+  return [reactContent, setMarkdownSource];
+};
+var Remark = function Remark2(_ref3) {
+  var children = _ref3.children, useRemarkOptions = _objectWithoutPropertiesLoose(_ref3, _excluded);
+  var _useRemark = useRemark(useRemarkOptions), reactContent = _useRemark[0], setMarkdownSource = _useRemark[1];
+  reactExports.useEffect(function() {
+    setMarkdownSource(children);
+  }, [children, setMarkdownSource]);
+  return reactContent;
+};
+var syntax$3 = {};
+var hasRequiredSyntax$3;
+function requireSyntax$3() {
+  if (hasRequiredSyntax$3) return syntax$3;
+  hasRequiredSyntax$3 = 1;
+  var asciiAlpha = requireAsciiAlpha();
+  var asciiAlphanumeric = requireAsciiAlphanumeric();
+  var asciiControl = requireAsciiControl();
+  var markdownLineEnding = requireMarkdownLineEnding();
+  var unicodePunctuation = requireUnicodePunctuation();
+  var unicodeWhitespace = requireUnicodeWhitespace();
+  var www = { tokenize: tokenizeWww, partial: true };
+  var domain = { tokenize: tokenizeDomain, partial: true };
+  var path2 = { tokenize: tokenizePath, partial: true };
+  var punctuation = { tokenize: tokenizePunctuation, partial: true };
+  var namedCharacterReference = {
+    tokenize: tokenizeNamedCharacterReference,
+    partial: true
+  };
+  var wwwAutolink = { tokenize: tokenizeWwwAutolink, previous: previousWww };
+  var httpAutolink = { tokenize: tokenizeHttpAutolink, previous: previousHttp };
+  var emailAutolink = { tokenize: tokenizeEmailAutolink, previous: previousEmail };
+  var text2 = {};
+  syntax$3.text = text2;
+  var code = 48;
+  while (code < 123) {
+    text2[code] = emailAutolink;
+    code++;
+    if (code === 58) code = 65;
+    else if (code === 91) code = 97;
+  }
+  text2[43] = emailAutolink;
+  text2[45] = emailAutolink;
+  text2[46] = emailAutolink;
+  text2[95] = emailAutolink;
+  text2[72] = [emailAutolink, httpAutolink];
+  text2[104] = [emailAutolink, httpAutolink];
+  text2[87] = [emailAutolink, wwwAutolink];
+  text2[119] = [emailAutolink, wwwAutolink];
+  function tokenizeEmailAutolink(effects, ok, nok) {
+    var self2 = this;
+    var hasDot;
+    return start3;
+    function start3(code2) {
+      if (!gfmAtext(code2) || !previousEmail(self2.previous) || previous(self2.events)) {
+        return nok(code2);
+      }
+      effects.enter("literalAutolink");
+      effects.enter("literalAutolinkEmail");
+      return atext(code2);
+    }
+    function atext(code2) {
+      if (gfmAtext(code2)) {
+        effects.consume(code2);
+        return atext;
+      }
+      if (code2 === 64) {
+        effects.consume(code2);
+        return label;
+      }
+      return nok(code2);
+    }
+    function label(code2) {
+      if (code2 === 46) {
+        return effects.check(punctuation, done, dotContinuation)(code2);
+      }
+      if (
+        // `-`
+        code2 === 45 || // `_`
+        code2 === 95
+      ) {
+        return effects.check(punctuation, nok, dashOrUnderscoreContinuation)(code2);
+      }
+      if (asciiAlphanumeric(code2)) {
+        effects.consume(code2);
+        return label;
+      }
+      return done(code2);
+    }
+    function dotContinuation(code2) {
+      effects.consume(code2);
+      hasDot = true;
+      return label;
+    }
+    function dashOrUnderscoreContinuation(code2) {
+      effects.consume(code2);
+      return afterDashOrUnderscore;
+    }
+    function afterDashOrUnderscore(code2) {
+      if (code2 === 46) {
+        return effects.check(punctuation, nok, dotContinuation)(code2);
+      }
+      return label(code2);
+    }
+    function done(code2) {
+      if (hasDot) {
+        effects.exit("literalAutolinkEmail");
+        effects.exit("literalAutolink");
+        return ok(code2);
+      }
+      return nok(code2);
+    }
+  }
+  function tokenizeWwwAutolink(effects, ok, nok) {
+    var self2 = this;
+    return start3;
+    function start3(code2) {
+      if (code2 !== 87 && code2 - 32 !== 87 || !previousWww(self2.previous) || previous(self2.events)) {
+        return nok(code2);
+      }
+      effects.enter("literalAutolink");
+      effects.enter("literalAutolinkWww");
+      return effects.check(
+        www,
+        effects.attempt(domain, effects.attempt(path2, done), nok),
+        nok
+      )(code2);
+    }
+    function done(code2) {
+      effects.exit("literalAutolinkWww");
+      effects.exit("literalAutolink");
+      return ok(code2);
+    }
+  }
+  function tokenizeHttpAutolink(effects, ok, nok) {
+    var self2 = this;
+    return start3;
+    function start3(code2) {
+      if (code2 !== 72 && code2 - 32 !== 72 || !previousHttp(self2.previous) || previous(self2.events)) {
+        return nok(code2);
+      }
+      effects.enter("literalAutolink");
+      effects.enter("literalAutolinkHttp");
+      effects.consume(code2);
+      return t1;
+    }
+    function t1(code2) {
+      if (code2 === 84 || code2 - 32 === 84) {
+        effects.consume(code2);
+        return t22;
+      }
+      return nok(code2);
+    }
+    function t22(code2) {
+      if (code2 === 84 || code2 - 32 === 84) {
+        effects.consume(code2);
+        return p2;
+      }
+      return nok(code2);
+    }
+    function p2(code2) {
+      if (code2 === 80 || code2 - 32 === 80) {
+        effects.consume(code2);
+        return s4;
+      }
+      return nok(code2);
+    }
+    function s4(code2) {
+      if (code2 === 83 || code2 - 32 === 83) {
+        effects.consume(code2);
+        return colon;
+      }
+      return colon(code2);
+    }
+    function colon(code2) {
+      if (code2 === 58) {
+        effects.consume(code2);
+        return slash1;
+      }
+      return nok(code2);
+    }
+    function slash1(code2) {
+      if (code2 === 47) {
+        effects.consume(code2);
+        return slash2;
+      }
+      return nok(code2);
+    }
+    function slash2(code2) {
+      if (code2 === 47) {
+        effects.consume(code2);
+        return after;
+      }
+      return nok(code2);
+    }
+    function after(code2) {
+      return asciiControl(code2) || unicodeWhitespace(code2) || unicodePunctuation(code2) ? nok(code2) : effects.attempt(domain, effects.attempt(path2, done), nok)(code2);
+    }
+    function done(code2) {
+      effects.exit("literalAutolinkHttp");
+      effects.exit("literalAutolink");
+      return ok(code2);
+    }
+  }
+  function tokenizeWww(effects, ok, nok) {
+    return start3;
+    function start3(code2) {
+      effects.consume(code2);
+      return w22;
+    }
+    function w22(code2) {
+      if (code2 === 87 || code2 - 32 === 87) {
+        effects.consume(code2);
+        return w3;
+      }
+      return nok(code2);
+    }
+    function w3(code2) {
+      if (code2 === 87 || code2 - 32 === 87) {
+        effects.consume(code2);
+        return dot;
+      }
+      return nok(code2);
+    }
+    function dot(code2) {
+      if (code2 === 46) {
+        effects.consume(code2);
+        return after;
+      }
+      return nok(code2);
+    }
+    function after(code2) {
+      return code2 === null || markdownLineEnding(code2) ? nok(code2) : ok(code2);
+    }
+  }
+  function tokenizeDomain(effects, ok, nok) {
+    var hasUnderscoreInLastSegment;
+    var hasUnderscoreInLastLastSegment;
+    return domain2;
+    function domain2(code2) {
+      if (code2 === 38) {
+        return effects.check(
+          namedCharacterReference,
+          done,
+          punctuationContinuation
+        )(code2);
+      }
+      if (code2 === 46 || code2 === 95) {
+        return effects.check(punctuation, done, punctuationContinuation)(code2);
+      }
+      if (asciiControl(code2) || unicodeWhitespace(code2) || code2 !== 45 && unicodePunctuation(code2)) {
+        return done(code2);
+      }
+      effects.consume(code2);
+      return domain2;
+    }
+    function punctuationContinuation(code2) {
+      if (code2 === 46) {
+        hasUnderscoreInLastLastSegment = hasUnderscoreInLastSegment;
+        hasUnderscoreInLastSegment = void 0;
+        effects.consume(code2);
+        return domain2;
+      }
+      if (code2 === 95) hasUnderscoreInLastSegment = true;
+      effects.consume(code2);
+      return domain2;
+    }
+    function done(code2) {
+      if (!hasUnderscoreInLastLastSegment && !hasUnderscoreInLastSegment) {
+        return ok(code2);
+      }
+      return nok(code2);
+    }
+  }
+  function tokenizePath(effects, ok) {
+    var balance = 0;
+    return inPath;
+    function inPath(code2) {
+      if (code2 === 38) {
+        return effects.check(
+          namedCharacterReference,
+          ok,
+          continuedPunctuation
+        )(code2);
+      }
+      if (code2 === 40) {
+        balance++;
+      }
+      if (code2 === 41) {
+        return effects.check(
+          punctuation,
+          parenAtPathEnd,
+          continuedPunctuation
+        )(code2);
+      }
+      if (pathEnd(code2)) {
+        return ok(code2);
+      }
+      if (trailingPunctuation(code2)) {
+        return effects.check(punctuation, ok, continuedPunctuation)(code2);
+      }
+      effects.consume(code2);
+      return inPath;
+    }
+    function continuedPunctuation(code2) {
+      effects.consume(code2);
+      return inPath;
+    }
+    function parenAtPathEnd(code2) {
+      balance--;
+      return balance < 0 ? ok(code2) : continuedPunctuation(code2);
+    }
+  }
+  function tokenizeNamedCharacterReference(effects, ok, nok) {
+    return start3;
+    function start3(code2) {
+      effects.consume(code2);
+      return inside;
+    }
+    function inside(code2) {
+      if (asciiAlpha(code2)) {
+        effects.consume(code2);
+        return inside;
+      }
+      if (code2 === 59) {
+        effects.consume(code2);
+        return after;
+      }
+      return nok(code2);
+    }
+    function after(code2) {
+      return pathEnd(code2) ? ok(code2) : nok(code2);
+    }
+  }
+  function tokenizePunctuation(effects, ok, nok) {
+    return start3;
+    function start3(code2) {
+      effects.consume(code2);
+      return after;
+    }
+    function after(code2) {
+      if (trailingPunctuation(code2)) {
+        effects.consume(code2);
+        return after;
+      }
+      return pathEnd(code2) ? ok(code2) : nok(code2);
+    }
+  }
+  function trailingPunctuation(code2) {
+    return (
+      // `!`
+      code2 === 33 || // `"`
+      code2 === 34 || // `'`
+      code2 === 39 || // `)`
+      code2 === 41 || // `*`
+      code2 === 42 || // `,`
+      code2 === 44 || // `.`
+      code2 === 46 || // `:`
+      code2 === 58 || // `;`
+      code2 === 59 || // `<`
+      code2 === 60 || // `?`
+      code2 === 63 || // `_`.
+      code2 === 95 || // `~`
+      code2 === 126
+    );
+  }
+  function pathEnd(code2) {
+    return (
+      // EOF.
+      code2 === null || // CR, LF, CRLF, HT, VS.
+      code2 < 0 || // Space.
+      code2 === 32 || // `<`
+      code2 === 60
+    );
+  }
+  function gfmAtext(code2) {
+    return code2 === 43 || code2 === 45 || code2 === 46 || code2 === 95 || asciiAlphanumeric(code2);
+  }
+  function previousWww(code2) {
+    return code2 === null || code2 < 0 || code2 === 32 || code2 === 40 || code2 === 42 || code2 === 95 || code2 === 126;
+  }
+  function previousHttp(code2) {
+    return code2 === null || !asciiAlpha(code2);
+  }
+  function previousEmail(code2) {
+    return code2 !== 47 && previousHttp(code2);
+  }
+  function previous(events) {
+    var index2 = events.length;
+    while (index2--) {
+      if ((events[index2][1].type === "labelLink" || events[index2][1].type === "labelImage") && !events[index2][1]._balanced) {
+        return true;
+      }
+    }
+  }
+  return syntax$3;
+}
+var micromarkExtensionGfmAutolinkLiteral;
+var hasRequiredMicromarkExtensionGfmAutolinkLiteral;
+function requireMicromarkExtensionGfmAutolinkLiteral() {
+  if (hasRequiredMicromarkExtensionGfmAutolinkLiteral) return micromarkExtensionGfmAutolinkLiteral;
+  hasRequiredMicromarkExtensionGfmAutolinkLiteral = 1;
+  micromarkExtensionGfmAutolinkLiteral = requireSyntax$3();
+  return micromarkExtensionGfmAutolinkLiteral;
+}
+var micromarkExtensionGfmStrikethrough;
+var hasRequiredMicromarkExtensionGfmStrikethrough;
+function requireMicromarkExtensionGfmStrikethrough() {
+  if (hasRequiredMicromarkExtensionGfmStrikethrough) return micromarkExtensionGfmStrikethrough;
+  hasRequiredMicromarkExtensionGfmStrikethrough = 1;
+  micromarkExtensionGfmStrikethrough = create3;
+  var classifyCharacter = requireClassifyCharacter();
+  var chunkedSplice = requireChunkedSplice();
+  var resolveAll = requireResolveAll();
+  var shallow = requireShallow();
+  function create3(options2) {
+    var settings2 = options2 || {};
+    var single = settings2.singleTilde;
+    var tokenizer = {
+      tokenize: tokenizeStrikethrough,
+      resolveAll: resolveAllStrikethrough
+    };
+    if (single === null || single === void 0) {
+      single = true;
+    }
+    return { text: { 126: tokenizer }, insideSpan: { null: tokenizer } };
+    function resolveAllStrikethrough(events, context2) {
+      var index2 = -1;
+      var strikethrough;
+      var text2;
+      var open;
+      var nextEvents;
+      while (++index2 < events.length) {
+        if (events[index2][0] === "enter" && events[index2][1].type === "strikethroughSequenceTemporary" && events[index2][1]._close) {
+          open = index2;
+          while (open--) {
+            if (events[open][0] === "exit" && events[open][1].type === "strikethroughSequenceTemporary" && events[open][1]._open && // If the sizes are the same:
+            events[index2][1].end.offset - events[index2][1].start.offset === events[open][1].end.offset - events[open][1].start.offset) {
+              events[index2][1].type = "strikethroughSequence";
+              events[open][1].type = "strikethroughSequence";
+              strikethrough = {
+                type: "strikethrough",
+                start: shallow(events[open][1].start),
+                end: shallow(events[index2][1].end)
+              };
+              text2 = {
+                type: "strikethroughText",
+                start: shallow(events[open][1].end),
+                end: shallow(events[index2][1].start)
+              };
+              nextEvents = [
+                ["enter", strikethrough, context2],
+                ["enter", events[open][1], context2],
+                ["exit", events[open][1], context2],
+                ["enter", text2, context2]
+              ];
+              chunkedSplice(
+                nextEvents,
+                nextEvents.length,
+                0,
+                resolveAll(
+                  context2.parser.constructs.insideSpan.null,
+                  events.slice(open + 1, index2),
+                  context2
+                )
+              );
+              chunkedSplice(nextEvents, nextEvents.length, 0, [
+                ["exit", text2, context2],
+                ["enter", events[index2][1], context2],
+                ["exit", events[index2][1], context2],
+                ["exit", strikethrough, context2]
+              ]);
+              chunkedSplice(events, open - 1, index2 - open + 3, nextEvents);
+              index2 = open + nextEvents.length - 2;
+              break;
+            }
+          }
+        }
+      }
+      return removeRemainingSequences(events);
+    }
+    function removeRemainingSequences(events) {
+      var index2 = -1;
+      var length2 = events.length;
+      while (++index2 < length2) {
+        if (events[index2][1].type === "strikethroughSequenceTemporary") {
+          events[index2][1].type = "data";
+        }
+      }
+      return events;
+    }
+    function tokenizeStrikethrough(effects, ok, nok) {
+      var previous = this.previous;
+      var events = this.events;
+      var size2 = 0;
+      return start3;
+      function start3(code) {
+        if (code !== 126 || previous === 126 && events[events.length - 1][1].type !== "characterEscape") {
+          return nok(code);
+        }
+        effects.enter("strikethroughSequenceTemporary");
+        return more(code);
+      }
+      function more(code) {
+        var before = classifyCharacter(previous);
+        var token2;
+        var after;
+        if (code === 126) {
+          if (size2 > 1) return nok(code);
+          effects.consume(code);
+          size2++;
+          return more;
+        }
+        if (size2 < 2 && !single) return nok(code);
+        token2 = effects.exit("strikethroughSequenceTemporary");
+        after = classifyCharacter(code);
+        token2._open = !after || after === 2 && before;
+        token2._close = !before || before === 2 && after;
+        return ok(code);
+      }
+    }
+  }
+  return micromarkExtensionGfmStrikethrough;
+}
+var syntax$2 = {};
+var hasRequiredSyntax$2;
+function requireSyntax$2() {
+  if (hasRequiredSyntax$2) return syntax$2;
+  hasRequiredSyntax$2 = 1;
+  syntax$2.flow = {
+    null: { tokenize: tokenizeTable, resolve: resolveTable, interruptible: true }
+  };
+  var createSpace = requireFactorySpace();
+  var setextUnderlineMini = { tokenize: tokenizeSetextUnderlineMini, partial: true };
+  var nextPrefixedOrBlank = { tokenize: tokenizeNextPrefixedOrBlank, partial: true };
+  function resolveTable(events, context2) {
+    var length2 = events.length;
+    var index2 = -1;
+    var token2;
+    var inHead;
+    var inDelimiterRow;
+    var inRow;
+    var cell;
+    var content2;
+    var text2;
+    var contentStart;
+    var contentEnd;
+    var cellStart;
+    while (++index2 < length2) {
+      token2 = events[index2][1];
+      if (inRow) {
+        if (token2.type === "temporaryTableCellContent") {
+          contentStart = contentStart || index2;
+          contentEnd = index2;
+        }
+        if (
+          // Combine separate content parts into one.
+          (token2.type === "tableCellDivider" || token2.type === "tableRow") && contentEnd
+        ) {
+          content2 = {
+            type: "tableContent",
+            start: events[contentStart][1].start,
+            end: events[contentEnd][1].end
+          };
+          text2 = {
+            type: "chunkText",
+            start: content2.start,
+            end: content2.end,
+            contentType: "text"
+          };
+          events.splice(
+            contentStart,
+            contentEnd - contentStart + 1,
+            ["enter", content2, context2],
+            ["enter", text2, context2],
+            ["exit", text2, context2],
+            ["exit", content2, context2]
+          );
+          index2 -= contentEnd - contentStart - 3;
+          length2 = events.length;
+          contentStart = void 0;
+          contentEnd = void 0;
+        }
+      }
+      if (events[index2][0] === "exit" && cellStart && cellStart + 1 < index2 && (token2.type === "tableCellDivider" || token2.type === "tableRow" && (cellStart + 3 < index2 || events[cellStart][1].type !== "whitespace"))) {
+        cell = {
+          type: inDelimiterRow ? "tableDelimiter" : inHead ? "tableHeader" : "tableData",
+          start: events[cellStart][1].start,
+          end: events[index2][1].end
+        };
+        events.splice(index2 + (token2.type === "tableCellDivider" ? 1 : 0), 0, [
+          "exit",
+          cell,
+          context2
+        ]);
+        events.splice(cellStart, 0, ["enter", cell, context2]);
+        index2 += 2;
+        length2 = events.length;
+        cellStart = index2 + 1;
+      }
+      if (token2.type === "tableRow") {
+        inRow = events[index2][0] === "enter";
+        if (inRow) {
+          cellStart = index2 + 1;
+        }
+      }
+      if (token2.type === "tableDelimiterRow") {
+        inDelimiterRow = events[index2][0] === "enter";
+        if (inDelimiterRow) {
+          cellStart = index2 + 1;
+        }
+      }
+      if (token2.type === "tableHead") {
+        inHead = events[index2][0] === "enter";
+      }
+    }
+    return events;
+  }
+  function tokenizeTable(effects, ok, nok) {
+    var align = [];
+    var tableHeaderCount = 0;
+    var seenDelimiter;
+    var hasDash;
+    return start3;
+    function start3(code) {
+      if (code === null || code === -5 || code === -4 || code === -3) {
+        return nok(code);
+      }
+      effects.enter("table")._align = align;
+      effects.enter("tableHead");
+      effects.enter("tableRow");
+      if (code === 124) {
+        return cellDividerHead(code);
+      }
+      tableHeaderCount++;
+      effects.enter("temporaryTableCellContent");
+      return inCellContentHead(code);
+    }
+    function cellDividerHead(code) {
+      effects.enter("tableCellDivider");
+      effects.consume(code);
+      effects.exit("tableCellDivider");
+      seenDelimiter = true;
+      return cellBreakHead;
+    }
+    function cellBreakHead(code) {
+      if (code === null || code === -5 || code === -4 || code === -3) {
+        return atRowEndHead(code);
+      }
+      if (code === -2 || code === -1 || code === 32) {
+        effects.enter("whitespace");
+        effects.consume(code);
+        return inWhitespaceHead;
+      }
+      if (seenDelimiter) {
+        seenDelimiter = void 0;
+        tableHeaderCount++;
+      }
+      if (code === 124) {
+        return cellDividerHead(code);
+      }
+      effects.enter("temporaryTableCellContent");
+      return inCellContentHead(code);
+    }
+    function inWhitespaceHead(code) {
+      if (code === -2 || code === -1 || code === 32) {
+        effects.consume(code);
+        return inWhitespaceHead;
+      }
+      effects.exit("whitespace");
+      return cellBreakHead(code);
+    }
+    function inCellContentHead(code) {
+      if (code === null || code < 0 || code === 32 || code === 124) {
+        effects.exit("temporaryTableCellContent");
+        return cellBreakHead(code);
+      }
+      effects.consume(code);
+      return code === 92 ? inCellContentEscapeHead : inCellContentHead;
+    }
+    function inCellContentEscapeHead(code) {
+      if (code === 92 || code === 124) {
+        effects.consume(code);
+        return inCellContentHead;
+      }
+      return inCellContentHead(code);
+    }
+    function atRowEndHead(code) {
+      if (code === null) {
+        return nok(code);
+      }
+      effects.exit("tableRow");
+      effects.exit("tableHead");
+      effects.enter("lineEnding");
+      effects.consume(code);
+      effects.exit("lineEnding");
+      return effects.check(
+        setextUnderlineMini,
+        nok,
+        // Support an indent before the delimiter row.
+        createSpace(effects, rowStartDelimiter, "linePrefix", 4)
+      );
+    }
+    function rowStartDelimiter(code) {
+      if (code === null || code < 0 || code === 32) {
+        return nok(code);
+      }
+      effects.enter("tableDelimiterRow");
+      return atDelimiterRowBreak(code);
+    }
+    function atDelimiterRowBreak(code) {
+      if (code === null || code === -5 || code === -4 || code === -3) {
+        return rowEndDelimiter(code);
+      }
+      if (code === -2 || code === -1 || code === 32) {
+        effects.enter("whitespace");
+        effects.consume(code);
+        return inWhitespaceDelimiter;
+      }
+      if (code === 45) {
+        effects.enter("tableDelimiterFiller");
+        effects.consume(code);
+        hasDash = true;
+        align.push(null);
+        return inFillerDelimiter;
+      }
+      if (code === 58) {
+        effects.enter("tableDelimiterAlignment");
+        effects.consume(code);
+        effects.exit("tableDelimiterAlignment");
+        align.push("left");
+        return afterLeftAlignment;
+      }
+      if (code === 124) {
+        effects.enter("tableCellDivider");
+        effects.consume(code);
+        effects.exit("tableCellDivider");
+        return atDelimiterRowBreak;
+      }
+      return nok(code);
+    }
+    function inWhitespaceDelimiter(code) {
+      if (code === -2 || code === -1 || code === 32) {
+        effects.consume(code);
+        return inWhitespaceDelimiter;
+      }
+      effects.exit("whitespace");
+      return atDelimiterRowBreak(code);
+    }
+    function inFillerDelimiter(code) {
+      if (code === 45) {
+        effects.consume(code);
+        return inFillerDelimiter;
+      }
+      effects.exit("tableDelimiterFiller");
+      if (code === 58) {
+        effects.enter("tableDelimiterAlignment");
+        effects.consume(code);
+        effects.exit("tableDelimiterAlignment");
+        align[align.length - 1] = align[align.length - 1] === "left" ? "center" : "right";
+        return afterRightAlignment;
+      }
+      return atDelimiterRowBreak(code);
+    }
+    function afterLeftAlignment(code) {
+      if (code === 45) {
+        effects.enter("tableDelimiterFiller");
+        effects.consume(code);
+        hasDash = true;
+        return inFillerDelimiter;
+      }
+      return nok(code);
+    }
+    function afterRightAlignment(code) {
+      if (code === null || code === -5 || code === -4 || code === -3) {
+        return rowEndDelimiter(code);
+      }
+      if (code === -2 || code === -1 || code === 32) {
+        effects.enter("whitespace");
+        effects.consume(code);
+        return inWhitespaceDelimiter;
+      }
+      if (code === 124) {
+        effects.enter("tableCellDivider");
+        effects.consume(code);
+        effects.exit("tableCellDivider");
+        return atDelimiterRowBreak;
+      }
+      return nok(code);
+    }
+    function rowEndDelimiter(code) {
+      effects.exit("tableDelimiterRow");
+      if (!hasDash || tableHeaderCount !== align.length) {
+        return nok(code);
+      }
+      if (code === null) {
+        return tableClose(code);
+      }
+      return effects.check(nextPrefixedOrBlank, tableClose, tableContinue)(code);
+    }
+    function tableClose(code) {
+      effects.exit("table");
+      return ok(code);
+    }
+    function tableContinue(code) {
+      effects.enter("lineEnding");
+      effects.consume(code);
+      effects.exit("lineEnding");
+      return createSpace(effects, bodyStart, "linePrefix", 4);
+    }
+    function bodyStart(code) {
+      effects.enter("tableBody");
+      return rowStartBody(code);
+    }
+    function rowStartBody(code) {
+      effects.enter("tableRow");
+      if (code === 124) {
+        return cellDividerBody(code);
+      }
+      effects.enter("temporaryTableCellContent");
+      return inCellContentBody(code);
+    }
+    function cellDividerBody(code) {
+      effects.enter("tableCellDivider");
+      effects.consume(code);
+      effects.exit("tableCellDivider");
+      return cellBreakBody;
+    }
+    function cellBreakBody(code) {
+      if (code === null || code === -5 || code === -4 || code === -3) {
+        return atRowEndBody(code);
+      }
+      if (code === -2 || code === -1 || code === 32) {
+        effects.enter("whitespace");
+        effects.consume(code);
+        return inWhitespaceBody;
+      }
+      if (code === 124) {
+        return cellDividerBody(code);
+      }
+      effects.enter("temporaryTableCellContent");
+      return inCellContentBody(code);
+    }
+    function inWhitespaceBody(code) {
+      if (code === -2 || code === -1 || code === 32) {
+        effects.consume(code);
+        return inWhitespaceBody;
+      }
+      effects.exit("whitespace");
+      return cellBreakBody(code);
+    }
+    function inCellContentBody(code) {
+      if (code === null || code < 0 || code === 32 || code === 124) {
+        effects.exit("temporaryTableCellContent");
+        return cellBreakBody(code);
+      }
+      effects.consume(code);
+      return code === 92 ? inCellContentEscapeBody : inCellContentBody;
+    }
+    function inCellContentEscapeBody(code) {
+      if (code === 92 || code === 124) {
+        effects.consume(code);
+        return inCellContentBody;
+      }
+      return inCellContentBody(code);
+    }
+    function atRowEndBody(code) {
+      effects.exit("tableRow");
+      if (code === null) {
+        return tableBodyClose(code);
+      }
+      return effects.check(
+        nextPrefixedOrBlank,
+        tableBodyClose,
+        tableBodyContinue
+      )(code);
+    }
+    function tableBodyClose(code) {
+      effects.exit("tableBody");
+      return tableClose(code);
+    }
+    function tableBodyContinue(code) {
+      effects.enter("lineEnding");
+      effects.consume(code);
+      effects.exit("lineEnding");
+      return createSpace(effects, rowStartBody, "linePrefix", 4);
+    }
+  }
+  function tokenizeSetextUnderlineMini(effects, ok, nok) {
+    return start3;
+    function start3(code) {
+      if (code !== 45) {
+        return nok(code);
+      }
+      effects.enter("setextUnderline");
+      return sequence(code);
+    }
+    function sequence(code) {
+      if (code === 45) {
+        effects.consume(code);
+        return sequence;
+      }
+      return whitespace2(code);
+    }
+    function whitespace2(code) {
+      if (code === -2 || code === -1 || code === 32) {
+        effects.consume(code);
+        return whitespace2;
+      }
+      if (code === null || code === -5 || code === -4 || code === -3) {
+        return ok(code);
+      }
+      return nok(code);
+    }
+  }
+  function tokenizeNextPrefixedOrBlank(effects, ok, nok) {
+    var size2 = 0;
+    return start3;
+    function start3(code) {
+      effects.enter("check");
+      effects.consume(code);
+      return whitespace2;
+    }
+    function whitespace2(code) {
+      if (code === -1 || code === 32) {
+        effects.consume(code);
+        size2++;
+        return size2 === 4 ? ok : whitespace2;
+      }
+      if (code === null || code < 0) {
+        return ok(code);
+      }
+      return nok(code);
+    }
+  }
+  return syntax$2;
+}
+var micromarkExtensionGfmTable;
+var hasRequiredMicromarkExtensionGfmTable;
+function requireMicromarkExtensionGfmTable() {
+  if (hasRequiredMicromarkExtensionGfmTable) return micromarkExtensionGfmTable;
+  hasRequiredMicromarkExtensionGfmTable = 1;
+  micromarkExtensionGfmTable = requireSyntax$2();
+  return micromarkExtensionGfmTable;
+}
+var syntax$1 = {};
+var hasRequiredSyntax$1;
+function requireSyntax$1() {
+  if (hasRequiredSyntax$1) return syntax$1;
+  hasRequiredSyntax$1 = 1;
+  var markdownLineEndingOrSpace = requireMarkdownLineEndingOrSpace();
+  var spaceFactory = requireFactorySpace();
+  var prefixSize = requirePrefixSize();
+  var tasklistCheck = { tokenize: tokenizeTasklistCheck };
+  syntax$1.text = { 91: tasklistCheck };
+  function tokenizeTasklistCheck(effects, ok, nok) {
+    var self2 = this;
+    return open;
+    function open(code) {
+      if (
+        // Exit if not `[`.
+        code !== 91 || // Exit if there’s stuff before.
+        self2.previous !== null || // Exit if not in the first content that is the first child of a list
+        // item.
+        !self2._gfmTasklistFirstContentOfListItem
+      ) {
+        return nok(code);
+      }
+      effects.enter("taskListCheck");
+      effects.enter("taskListCheckMarker");
+      effects.consume(code);
+      effects.exit("taskListCheckMarker");
+      return inside;
+    }
+    function inside(code) {
+      if (code === -2 || code === 32) {
+        effects.enter("taskListCheckValueUnchecked");
+        effects.consume(code);
+        effects.exit("taskListCheckValueUnchecked");
+        return close;
+      }
+      if (code === 88 || code === 120) {
+        effects.enter("taskListCheckValueChecked");
+        effects.consume(code);
+        effects.exit("taskListCheckValueChecked");
+        return close;
+      }
+      return nok(code);
+    }
+    function close(code) {
+      if (code === 93) {
+        effects.enter("taskListCheckMarker");
+        effects.consume(code);
+        effects.exit("taskListCheckMarker");
+        effects.exit("taskListCheck");
+        return effects.check({ tokenize: spaceThenNonSpace }, ok, nok);
+      }
+      return nok(code);
+    }
+  }
+  function spaceThenNonSpace(effects, ok, nok) {
+    var self2 = this;
+    return spaceFactory(effects, after, "whitespace");
+    function after(code) {
+      return prefixSize(self2.events, "whitespace") && code !== null && !markdownLineEndingOrSpace(code) ? ok(code) : nok(code);
+    }
+  }
+  return syntax$1;
+}
+var micromarkExtensionGfmTaskListItem;
+var hasRequiredMicromarkExtensionGfmTaskListItem;
+function requireMicromarkExtensionGfmTaskListItem() {
+  if (hasRequiredMicromarkExtensionGfmTaskListItem) return micromarkExtensionGfmTaskListItem;
+  hasRequiredMicromarkExtensionGfmTaskListItem = 1;
+  micromarkExtensionGfmTaskListItem = requireSyntax$1();
+  return micromarkExtensionGfmTaskListItem;
+}
+var syntax;
+var hasRequiredSyntax;
+function requireSyntax() {
+  if (hasRequiredSyntax) return syntax;
+  hasRequiredSyntax = 1;
+  var combine2 = requireCombineExtensions();
+  var autolink = requireMicromarkExtensionGfmAutolinkLiteral();
+  var strikethrough = requireMicromarkExtensionGfmStrikethrough();
+  var table = requireMicromarkExtensionGfmTable();
+  var tasklist = requireMicromarkExtensionGfmTaskListItem();
+  syntax = create3;
+  function create3(options2) {
+    return combine2([autolink, strikethrough(options2), table, tasklist]);
+  }
+  return syntax;
+}
+var micromarkExtensionGfm;
+var hasRequiredMicromarkExtensionGfm;
+function requireMicromarkExtensionGfm() {
+  if (hasRequiredMicromarkExtensionGfm) return micromarkExtensionGfm;
+  hasRequiredMicromarkExtensionGfm = 1;
+  micromarkExtensionGfm = requireSyntax();
+  return micromarkExtensionGfm;
+}
+var fromMarkdown$4 = {};
+var ccount_1;
+var hasRequiredCcount;
+function requireCcount() {
+  if (hasRequiredCcount) return ccount_1;
+  hasRequiredCcount = 1;
+  ccount_1 = ccount;
+  function ccount(source2, character2) {
+    var value = String(source2);
+    var count2 = 0;
+    var index2;
+    if (typeof character2 !== "string") {
+      throw new Error("Expected character");
+    }
+    index2 = value.indexOf(character2);
+    while (index2 !== -1) {
+      count2++;
+      index2 = value.indexOf(character2, index2 + character2.length);
+    }
+    return count2;
+  }
+  return ccount_1;
+}
+var escapeStringRegexp;
+var hasRequiredEscapeStringRegexp;
+function requireEscapeStringRegexp() {
+  if (hasRequiredEscapeStringRegexp) return escapeStringRegexp;
+  hasRequiredEscapeStringRegexp = 1;
+  escapeStringRegexp = (string2) => {
+    if (typeof string2 !== "string") {
+      throw new TypeError("Expected a string");
+    }
+    return string2.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&").replace(/-/g, "\\x2d");
+  };
+  return escapeStringRegexp;
+}
+var mdastUtilFindAndReplace;
+var hasRequiredMdastUtilFindAndReplace;
+function requireMdastUtilFindAndReplace() {
+  if (hasRequiredMdastUtilFindAndReplace) return mdastUtilFindAndReplace;
+  hasRequiredMdastUtilFindAndReplace = 1;
+  mdastUtilFindAndReplace = findAndReplace;
+  var visit2 = requireUnistUtilVisitParents$1();
+  var convert2 = requireConvert$1();
+  var escape2 = requireEscapeStringRegexp();
+  var splice2 = [].splice;
+  function findAndReplace(tree, find2, replace2, options2) {
+    var settings2;
+    var schema2;
+    if (typeof find2 === "string" || find2 && typeof find2.exec === "function") {
+      schema2 = [[find2, replace2]];
+    } else {
+      schema2 = find2;
+      options2 = replace2;
+    }
+    settings2 = options2 || {};
+    search(tree, settings2, handlerFactory(toPairs(schema2)));
+    return tree;
+    function handlerFactory(pairs) {
+      var pair = pairs[0];
+      return handler;
+      function handler(node2, parent) {
+        var find3 = pair[0];
+        var replace3 = pair[1];
+        var nodes = [];
+        var start3 = 0;
+        var index2 = parent.children.indexOf(node2);
+        var position2;
+        var match2;
+        var subhandler;
+        var value;
+        find3.lastIndex = 0;
+        match2 = find3.exec(node2.value);
+        while (match2) {
+          position2 = match2.index;
+          value = replace3.apply(
+            null,
+            [].concat(match2, { index: match2.index, input: match2.input })
+          );
+          if (value !== false) {
+            if (start3 !== position2) {
+              nodes.push({ type: "text", value: node2.value.slice(start3, position2) });
+            }
+            if (typeof value === "string" && value.length > 0) {
+              value = { type: "text", value };
+            }
+            if (value) {
+              nodes = [].concat(nodes, value);
+            }
+            start3 = position2 + match2[0].length;
+          }
+          if (!find3.global) {
+            break;
+          }
+          match2 = find3.exec(node2.value);
+        }
+        if (position2 === void 0) {
+          nodes = [node2];
+          index2--;
+        } else {
+          if (start3 < node2.value.length) {
+            nodes.push({ type: "text", value: node2.value.slice(start3) });
+          }
+          nodes.unshift(index2, 1);
+          splice2.apply(parent.children, nodes);
+        }
+        if (pairs.length > 1) {
+          subhandler = handlerFactory(pairs.slice(1));
+          position2 = -1;
+          while (++position2 < nodes.length) {
+            node2 = nodes[position2];
+            if (node2.type === "text") {
+              subhandler(node2, parent);
+            } else {
+              search(node2, settings2, subhandler);
+            }
+          }
+        }
+        return index2 + nodes.length + 1;
+      }
+    }
+  }
+  function search(tree, settings2, handler) {
+    var ignored = convert2(settings2.ignore || []);
+    var result = [];
+    visit2(tree, "text", visitor);
+    return result;
+    function visitor(node2, parents) {
+      var index2 = -1;
+      var parent;
+      var grandparent;
+      while (++index2 < parents.length) {
+        parent = parents[index2];
+        if (ignored(
+          parent,
+          grandparent ? grandparent.children.indexOf(parent) : void 0,
+          grandparent
+        )) {
+          return;
+        }
+        grandparent = parent;
+      }
+      return handler(node2, grandparent);
+    }
+  }
+  function toPairs(schema2) {
+    var result = [];
+    var key;
+    var index2;
+    if (typeof schema2 !== "object") {
+      throw new Error("Expected array or object as schema");
+    }
+    if ("length" in schema2) {
+      index2 = -1;
+      while (++index2 < schema2.length) {
+        result.push([
+          toExpression(schema2[index2][0]),
+          toFunction(schema2[index2][1])
+        ]);
+      }
+    } else {
+      for (key in schema2) {
+        result.push([toExpression(key), toFunction(schema2[key])]);
+      }
+    }
+    return result;
+  }
+  function toExpression(find2) {
+    return typeof find2 === "string" ? new RegExp(escape2(find2), "g") : find2;
+  }
+  function toFunction(replace2) {
+    return typeof replace2 === "function" ? replace2 : returner;
+    function returner() {
+      return replace2;
+    }
+  }
+  return mdastUtilFindAndReplace;
+}
+var hasRequiredFromMarkdown$4;
+function requireFromMarkdown$4() {
+  if (hasRequiredFromMarkdown$4) return fromMarkdown$4;
+  hasRequiredFromMarkdown$4 = 1;
+  var ccount = requireCcount();
+  var findAndReplace = requireMdastUtilFindAndReplace();
+  var unicodePunctuation = requireUnicodePunctuation();
+  var unicodeWhitespace = requireUnicodeWhitespace();
+  fromMarkdown$4.transforms = [transformGfmAutolinkLiterals];
+  fromMarkdown$4.enter = {
+    literalAutolink: enterLiteralAutolink,
+    literalAutolinkEmail: enterLiteralAutolinkValue,
+    literalAutolinkHttp: enterLiteralAutolinkValue,
+    literalAutolinkWww: enterLiteralAutolinkValue
+  };
+  fromMarkdown$4.exit = {
+    literalAutolink: exitLiteralAutolink,
+    literalAutolinkEmail: exitLiteralAutolinkEmail,
+    literalAutolinkHttp: exitLiteralAutolinkHttp,
+    literalAutolinkWww: exitLiteralAutolinkWww
+  };
+  function enterLiteralAutolink(token2) {
+    this.enter({ type: "link", title: null, url: "", children: [] }, token2);
+  }
+  function enterLiteralAutolinkValue(token2) {
+    this.config.enter.autolinkProtocol.call(this, token2);
+  }
+  function exitLiteralAutolinkHttp(token2) {
+    this.config.exit.autolinkProtocol.call(this, token2);
+  }
+  function exitLiteralAutolinkWww(token2) {
+    this.config.exit.data.call(this, token2);
+    this.stack[this.stack.length - 1].url = "http://" + this.sliceSerialize(token2);
+  }
+  function exitLiteralAutolinkEmail(token2) {
+    this.config.exit.autolinkEmail.call(this, token2);
+  }
+  function exitLiteralAutolink(token2) {
+    this.exit(token2);
+  }
+  function transformGfmAutolinkLiterals(tree) {
+    findAndReplace(
+      tree,
+      [
+        [/(https?:\/\/|www(?=\.))([-.\w]+)([^ \t\r\n]*)/i, findUrl],
+        [/([-.\w+]+)@([-\w]+(?:\.[-\w]+)+)/, findEmail]
+      ],
+      { ignore: ["link", "linkReference"] }
+    );
+  }
+  function findUrl($0, protocol, domain, path2, match2) {
+    var prefix2 = "";
+    var parts;
+    var result;
+    if (!previous(match2)) {
+      return false;
+    }
+    if (/^w/i.test(protocol)) {
+      domain = protocol + domain;
+      protocol = "";
+      prefix2 = "http://";
+    }
+    if (!isCorrectDomain(domain)) {
+      return false;
+    }
+    parts = splitUrl(domain + path2);
+    if (!parts[0]) return false;
+    result = {
+      type: "link",
+      title: null,
+      url: prefix2 + protocol + parts[0],
+      children: [{ type: "text", value: protocol + parts[0] }]
+    };
+    if (parts[1]) {
+      result = [result, { type: "text", value: parts[1] }];
+    }
+    return result;
+  }
+  function findEmail($0, atext, label, match2) {
+    if (!previous(match2, true) || /[_-]$/.test(label)) {
+      return false;
+    }
+    return {
+      type: "link",
+      title: null,
+      url: "mailto:" + atext + "@" + label,
+      children: [{ type: "text", value: atext + "@" + label }]
+    };
+  }
+  function isCorrectDomain(domain) {
+    var parts = domain.split(".");
+    if (parts.length < 2 || parts[parts.length - 1] && (/_/.test(parts[parts.length - 1]) || !/[a-zA-Z\d]/.test(parts[parts.length - 1])) || parts[parts.length - 2] && (/_/.test(parts[parts.length - 2]) || !/[a-zA-Z\d]/.test(parts[parts.length - 2]))) {
+      return false;
+    }
+    return true;
+  }
+  function splitUrl(url2) {
+    var trail = /[!"&'),.:;<>?\]}]+$/.exec(url2);
+    var closingParenIndex;
+    var openingParens;
+    var closingParens;
+    if (trail) {
+      url2 = url2.slice(0, trail.index);
+      trail = trail[0];
+      closingParenIndex = trail.indexOf(")");
+      openingParens = ccount(url2, "(");
+      closingParens = ccount(url2, ")");
+      while (closingParenIndex !== -1 && openingParens > closingParens) {
+        url2 += trail.slice(0, closingParenIndex + 1);
+        trail = trail.slice(closingParenIndex + 1);
+        closingParenIndex = trail.indexOf(")");
+        closingParens++;
+      }
+    }
+    return [url2, trail];
+  }
+  function previous(match2, email) {
+    var code = match2.input.charCodeAt(match2.index - 1);
+    return (code !== code || unicodeWhitespace(code) || unicodePunctuation(code)) && (!email || code !== 47);
+  }
+  return fromMarkdown$4;
+}
+var fromMarkdown$3 = {};
+var hasRequiredFromMarkdown$3;
+function requireFromMarkdown$3() {
+  if (hasRequiredFromMarkdown$3) return fromMarkdown$3;
+  hasRequiredFromMarkdown$3 = 1;
+  fromMarkdown$3.canContainEols = ["delete"];
+  fromMarkdown$3.enter = { strikethrough: enterStrikethrough };
+  fromMarkdown$3.exit = { strikethrough: exitStrikethrough };
+  function enterStrikethrough(token2) {
+    this.enter({ type: "delete", children: [] }, token2);
+  }
+  function exitStrikethrough(token2) {
+    this.exit(token2);
+  }
+  return fromMarkdown$3;
+}
+var fromMarkdown$2 = {};
+var hasRequiredFromMarkdown$2;
+function requireFromMarkdown$2() {
+  if (hasRequiredFromMarkdown$2) return fromMarkdown$2;
+  hasRequiredFromMarkdown$2 = 1;
+  fromMarkdown$2.enter = {
+    table: enterTable,
+    tableData: enterCell,
+    tableHeader: enterCell,
+    tableRow: enterRow
+  };
+  fromMarkdown$2.exit = {
+    codeText: exitCodeText,
+    table: exitTable,
+    tableData: exit,
+    tableHeader: exit,
+    tableRow: exit
+  };
+  function enterTable(token2) {
+    this.enter({ type: "table", align: token2._align, children: [] }, token2);
+    this.setData("inTable", true);
+  }
+  function exitTable(token2) {
+    this.exit(token2);
+    this.setData("inTable");
+  }
+  function enterRow(token2) {
+    this.enter({ type: "tableRow", children: [] }, token2);
+  }
+  function exit(token2) {
+    this.exit(token2);
+  }
+  function enterCell(token2) {
+    this.enter({ type: "tableCell", children: [] }, token2);
+  }
+  function exitCodeText(token2) {
+    var value = this.resume();
+    if (this.getData("inTable")) {
+      value = value.replace(/\\([\\|])/g, replace2);
+    }
+    this.stack[this.stack.length - 1].value = value;
+    this.exit(token2);
+  }
+  function replace2($0, $1) {
+    return $1 === "|" ? $1 : $0;
+  }
+  return fromMarkdown$2;
+}
+var fromMarkdown$1 = {};
+var hasRequiredFromMarkdown$1;
+function requireFromMarkdown$1() {
+  if (hasRequiredFromMarkdown$1) return fromMarkdown$1;
+  hasRequiredFromMarkdown$1 = 1;
+  fromMarkdown$1.exit = {
+    taskListCheckValueChecked: exitCheck,
+    taskListCheckValueUnchecked: exitCheck,
+    paragraph: exitParagraphWithTaskListItem
+  };
+  function exitCheck(token2) {
+    this.stack[this.stack.length - 2].checked = token2.type === "taskListCheckValueChecked";
+  }
+  function exitParagraphWithTaskListItem(token2) {
+    var parent = this.stack[this.stack.length - 2];
+    var node2 = this.stack[this.stack.length - 1];
+    var siblings3 = parent.children;
+    var head = node2.children[0];
+    var index2 = -1;
+    var firstParaghraph;
+    if (parent && parent.type === "listItem" && typeof parent.checked === "boolean" && head && head.type === "text") {
+      while (++index2 < siblings3.length) {
+        if (siblings3[index2].type === "paragraph") {
+          firstParaghraph = siblings3[index2];
+          break;
+        }
+      }
+      if (firstParaghraph === node2) {
+        head.value = head.value.slice(1);
+        if (head.value.length === 0) {
+          node2.children.shift();
+        } else {
+          head.position.start.column++;
+          head.position.start.offset++;
+          node2.position.start = Object.assign({}, head.position.start);
+        }
+      }
+    }
+    this.exit(token2);
+  }
+  return fromMarkdown$1;
+}
+var fromMarkdown;
+var hasRequiredFromMarkdown;
+function requireFromMarkdown() {
+  if (hasRequiredFromMarkdown) return fromMarkdown;
+  hasRequiredFromMarkdown = 1;
+  var autolinkLiteral = requireFromMarkdown$4();
+  var strikethrough = requireFromMarkdown$3();
+  var table = requireFromMarkdown$2();
+  var taskListItem = requireFromMarkdown$1();
+  var own = {}.hasOwnProperty;
+  fromMarkdown = configure2([
+    autolinkLiteral,
+    strikethrough,
+    table,
+    taskListItem
+  ]);
+  function configure2(extensions) {
+    var config2 = { transforms: [], canContainEols: [] };
+    var length2 = extensions.length;
+    var index2 = -1;
+    while (++index2 < length2) {
+      extension(config2, extensions[index2]);
+    }
+    return config2;
+  }
+  function extension(config2, extension2) {
+    var key;
+    var left2;
+    var right2;
+    for (key in extension2) {
+      left2 = own.call(config2, key) ? config2[key] : config2[key] = {};
+      right2 = extension2[key];
+      if (key === "canContainEols" || key === "transforms") {
+        config2[key] = [].concat(left2, right2);
+      } else {
+        Object.assign(left2, right2);
+      }
+    }
+  }
+  return fromMarkdown;
+}
+var toMarkdown$2 = {};
+var hasRequiredToMarkdown$4;
+function requireToMarkdown$4() {
+  if (hasRequiredToMarkdown$4) return toMarkdown$2;
+  hasRequiredToMarkdown$4 = 1;
+  var inConstruct = "phrasing";
+  var notInConstruct = ["autolink", "link", "image", "label"];
+  toMarkdown$2.unsafe = [
+    {
+      character: "@",
+      before: "[+\\-.\\w]",
+      after: "[\\-.\\w]",
+      inConstruct,
+      notInConstruct
+    },
+    {
+      character: ".",
+      before: "[Ww]",
+      after: "[\\-.\\w]",
+      inConstruct,
+      notInConstruct
+    },
+    {
+      character: ":",
+      before: "[ps]",
+      after: "\\/",
+      inConstruct,
+      notInConstruct
+    }
+  ];
+  return toMarkdown$2;
+}
+var toMarkdown$1 = {};
+var containerPhrasing;
+var hasRequiredContainerPhrasing;
+function requireContainerPhrasing() {
+  if (hasRequiredContainerPhrasing) return containerPhrasing;
+  hasRequiredContainerPhrasing = 1;
+  containerPhrasing = phrasing;
+  function phrasing(parent, context2, safeOptions) {
+    var children = parent.children || [];
+    var results = [];
+    var index2 = -1;
+    var before = safeOptions.before;
+    var after;
+    var handle;
+    var child;
+    while (++index2 < children.length) {
+      child = children[index2];
+      if (index2 + 1 < children.length) {
+        handle = context2.handle.handlers[children[index2 + 1].type];
+        if (handle && handle.peek) handle = handle.peek;
+        after = handle ? handle(children[index2 + 1], parent, context2, {
+          before: "",
+          after: ""
+        }).charAt(0) : "";
+      } else {
+        after = safeOptions.after;
+      }
+      if (results.length > 0 && (before === "\r" || before === "\n") && child.type === "html") {
+        results[results.length - 1] = results[results.length - 1].replace(
+          /(\r?\n|\r)$/,
+          " "
+        );
+        before = " ";
+      }
+      results.push(
+        context2.handle(child, parent, context2, {
+          before,
+          after
+        })
+      );
+      before = results[results.length - 1].slice(-1);
+    }
+    return results.join("");
+  }
+  return containerPhrasing;
+}
+var hasRequiredToMarkdown$3;
+function requireToMarkdown$3() {
+  if (hasRequiredToMarkdown$3) return toMarkdown$1;
+  hasRequiredToMarkdown$3 = 1;
+  var phrasing = requireContainerPhrasing();
+  toMarkdown$1.unsafe = [{ character: "~", inConstruct: "phrasing" }];
+  toMarkdown$1.handlers = { delete: handleDelete };
+  handleDelete.peek = peekDelete;
+  function handleDelete(node2, _, context2) {
+    var exit = context2.enter("emphasis");
+    var value = phrasing(node2, context2, { before: "~", after: "~" });
+    exit();
+    return "~~" + value + "~~";
+  }
+  function peekDelete() {
+    return "~";
+  }
+  return toMarkdown$1;
+}
+var patternCompile_1;
+var hasRequiredPatternCompile;
+function requirePatternCompile() {
+  if (hasRequiredPatternCompile) return patternCompile_1;
+  hasRequiredPatternCompile = 1;
+  patternCompile_1 = patternCompile;
+  function patternCompile(pattern) {
+    var before;
+    var after;
+    if (!pattern._compiled) {
+      before = pattern.before ? "(?:" + pattern.before + ")" : "";
+      after = pattern.after ? "(?:" + pattern.after + ")" : "";
+      if (pattern.atBreak) {
+        before = "[\\r\\n][\\t ]*" + before;
+      }
+      pattern._compiled = new RegExp(
+        (before ? "(" + before + ")" : "") + (/[|\\{}()[\]^$+*?.-]/.test(pattern.character) ? "\\" : "") + pattern.character + (after || ""),
+        "g"
+      );
+    }
+    return pattern._compiled;
+  }
+  return patternCompile_1;
+}
+var inlineCode_1;
+var hasRequiredInlineCode;
+function requireInlineCode() {
+  if (hasRequiredInlineCode) return inlineCode_1;
+  hasRequiredInlineCode = 1;
+  inlineCode_1 = inlineCode;
+  inlineCode.peek = inlineCodePeek;
+  var patternCompile = requirePatternCompile();
+  function inlineCode(node2, parent, context2) {
+    var value = node2.value || "";
+    var sequence = "`";
+    var index2 = -1;
+    var pattern;
+    var expression;
+    var match2;
+    var position2;
+    while (new RegExp("(^|[^`])" + sequence + "([^`]|$)").test(value)) {
+      sequence += "`";
+    }
+    if (/[^ \r\n]/.test(value) && (/[ \r\n`]/.test(value.charAt(0)) || /[ \r\n`]/.test(value.charAt(value.length - 1)))) {
+      value = " " + value + " ";
+    }
+    while (++index2 < context2.unsafe.length) {
+      pattern = context2.unsafe[index2];
+      if (!pattern.atBreak) continue;
+      expression = patternCompile(pattern);
+      while (match2 = expression.exec(value)) {
+        position2 = match2.index;
+        if (value.charCodeAt(position2) === 10 && value.charCodeAt(position2 - 1) === 13) {
+          position2--;
+        }
+        value = value.slice(0, position2) + " " + value.slice(match2.index + 1);
+      }
+    }
+    return sequence + value + sequence;
+  }
+  function inlineCodePeek() {
+    return "`";
+  }
+  return inlineCode_1;
+}
+/*!
+ * repeat-string <https://github.com/jonschlinkert/repeat-string>
+ *
+ * Copyright (c) 2014-2015, Jon Schlinkert.
+ * Licensed under the MIT License.
+ */
+var repeatString;
+var hasRequiredRepeatString;
+function requireRepeatString() {
+  if (hasRequiredRepeatString) return repeatString;
+  hasRequiredRepeatString = 1;
+  var res = "";
+  var cache2;
+  repeatString = repeat;
+  function repeat(str, num) {
+    if (typeof str !== "string") {
+      throw new TypeError("expected a string");
+    }
+    if (num === 1) return str;
+    if (num === 2) return str + str;
+    var max2 = str.length * num;
+    if (cache2 !== str || typeof cache2 === "undefined") {
+      cache2 = str;
+      res = "";
+    } else if (res.length >= max2) {
+      return res.substr(0, max2);
+    }
+    while (max2 > res.length && num > 1) {
+      if (num & 1) {
+        res += str;
+      }
+      num >>= 1;
+      str += str;
+    }
+    res += str;
+    res = res.substr(0, max2);
+    return res;
+  }
+  return repeatString;
+}
+var markdownTable_1;
+var hasRequiredMarkdownTable;
+function requireMarkdownTable() {
+  if (hasRequiredMarkdownTable) return markdownTable_1;
+  hasRequiredMarkdownTable = 1;
+  var repeat = requireRepeatString();
+  markdownTable_1 = markdownTable;
+  var trailingWhitespace = / +$/;
+  var space = " ";
+  var lineFeed = "\n";
+  var dash = "-";
+  var colon = ":";
+  var verticalBar = "|";
+  var x3 = 0;
+  var C = 67;
+  var L3 = 76;
+  var R2 = 82;
+  var c3 = 99;
+  var l = 108;
+  var r3 = 114;
+  function markdownTable(table, options2) {
+    var settings2 = options2 || {};
+    var padding = settings2.padding !== false;
+    var start3 = settings2.delimiterStart !== false;
+    var end2 = settings2.delimiterEnd !== false;
+    var align = (settings2.align || []).concat();
+    var alignDelimiters = settings2.alignDelimiters !== false;
+    var alignments = [];
+    var stringLength = settings2.stringLength || defaultStringLength;
+    var rowIndex = -1;
+    var rowLength = table.length;
+    var cellMatrix = [];
+    var sizeMatrix = [];
+    var row = [];
+    var sizes = [];
+    var longestCellByColumn = [];
+    var mostCellsPerRow = 0;
+    var cells;
+    var columnIndex;
+    var columnLength;
+    var largest;
+    var size2;
+    var cell;
+    var lines;
+    var line2;
+    var before;
+    var after;
+    var code;
+    while (++rowIndex < rowLength) {
+      cells = table[rowIndex];
+      columnIndex = -1;
+      columnLength = cells.length;
+      row = [];
+      sizes = [];
+      if (columnLength > mostCellsPerRow) {
+        mostCellsPerRow = columnLength;
+      }
+      while (++columnIndex < columnLength) {
+        cell = serialize2(cells[columnIndex]);
+        if (alignDelimiters === true) {
+          size2 = stringLength(cell);
+          sizes[columnIndex] = size2;
+          largest = longestCellByColumn[columnIndex];
+          if (largest === void 0 || size2 > largest) {
+            longestCellByColumn[columnIndex] = size2;
+          }
+        }
+        row.push(cell);
+      }
+      cellMatrix[rowIndex] = row;
+      sizeMatrix[rowIndex] = sizes;
+    }
+    columnIndex = -1;
+    columnLength = mostCellsPerRow;
+    if (typeof align === "object" && "length" in align) {
+      while (++columnIndex < columnLength) {
+        alignments[columnIndex] = toAlignment(align[columnIndex]);
+      }
+    } else {
+      code = toAlignment(align);
+      while (++columnIndex < columnLength) {
+        alignments[columnIndex] = code;
+      }
+    }
+    columnIndex = -1;
+    columnLength = mostCellsPerRow;
+    row = [];
+    sizes = [];
+    while (++columnIndex < columnLength) {
+      code = alignments[columnIndex];
+      before = "";
+      after = "";
+      if (code === l) {
+        before = colon;
+      } else if (code === r3) {
+        after = colon;
+      } else if (code === c3) {
+        before = colon;
+        after = colon;
+      }
+      size2 = alignDelimiters ? Math.max(
+        1,
+        longestCellByColumn[columnIndex] - before.length - after.length
+      ) : 1;
+      cell = before + repeat(dash, size2) + after;
+      if (alignDelimiters === true) {
+        size2 = before.length + size2 + after.length;
+        if (size2 > longestCellByColumn[columnIndex]) {
+          longestCellByColumn[columnIndex] = size2;
+        }
+        sizes[columnIndex] = size2;
+      }
+      row[columnIndex] = cell;
+    }
+    cellMatrix.splice(1, 0, row);
+    sizeMatrix.splice(1, 0, sizes);
+    rowIndex = -1;
+    rowLength = cellMatrix.length;
+    lines = [];
+    while (++rowIndex < rowLength) {
+      row = cellMatrix[rowIndex];
+      sizes = sizeMatrix[rowIndex];
+      columnIndex = -1;
+      columnLength = mostCellsPerRow;
+      line2 = [];
+      while (++columnIndex < columnLength) {
+        cell = row[columnIndex] || "";
+        before = "";
+        after = "";
+        if (alignDelimiters === true) {
+          size2 = longestCellByColumn[columnIndex] - (sizes[columnIndex] || 0);
+          code = alignments[columnIndex];
+          if (code === r3) {
+            before = repeat(space, size2);
+          } else if (code === c3) {
+            if (size2 % 2 === 0) {
+              before = repeat(space, size2 / 2);
+              after = before;
+            } else {
+              before = repeat(space, size2 / 2 + 0.5);
+              after = repeat(space, size2 / 2 - 0.5);
+            }
+          } else {
+            after = repeat(space, size2);
+          }
+        }
+        if (start3 === true && columnIndex === 0) {
+          line2.push(verticalBar);
+        }
+        if (padding === true && // Don’t add the opening space if we’re not aligning and the cell is
+        // empty: there will be a closing space.
+        !(alignDelimiters === false && cell === "") && (start3 === true || columnIndex !== 0)) {
+          line2.push(space);
+        }
+        if (alignDelimiters === true) {
+          line2.push(before);
+        }
+        line2.push(cell);
+        if (alignDelimiters === true) {
+          line2.push(after);
+        }
+        if (padding === true) {
+          line2.push(space);
+        }
+        if (end2 === true || columnIndex !== columnLength - 1) {
+          line2.push(verticalBar);
+        }
+      }
+      line2 = line2.join("");
+      if (end2 === false) {
+        line2 = line2.replace(trailingWhitespace, "");
+      }
+      lines.push(line2);
+    }
+    return lines.join(lineFeed);
+  }
+  function serialize2(value) {
+    return value === null || value === void 0 ? "" : String(value);
+  }
+  function defaultStringLength(value) {
+    return value.length;
+  }
+  function toAlignment(value) {
+    var code = typeof value === "string" ? value.charCodeAt(0) : x3;
+    return code === L3 || code === l ? l : code === R2 || code === r3 ? r3 : code === C || code === c3 ? c3 : x3;
+  }
+  return markdownTable_1;
+}
+var toMarkdown_1$1;
+var hasRequiredToMarkdown$2;
+function requireToMarkdown$2() {
+  if (hasRequiredToMarkdown$2) return toMarkdown_1$1;
+  hasRequiredToMarkdown$2 = 1;
+  var phrasing = requireContainerPhrasing();
+  var defaultInlineCode = requireInlineCode();
+  var markdownTable = requireMarkdownTable();
+  toMarkdown_1$1 = toMarkdown2;
+  function toMarkdown2(options2) {
+    var settings2 = options2 || {};
+    var padding = settings2.tableCellPadding;
+    var alignDelimiters = settings2.tablePipeAlign;
+    var stringLength = settings2.stringLength;
+    var around = padding ? " " : "|";
+    return {
+      unsafe: [
+        { character: "\r", inConstruct: "tableCell" },
+        { character: "\n", inConstruct: "tableCell" },
+        // A pipe, when followed by a tab or space (padding), or a dash or colon
+        // (unpadded delimiter row), could result in a table.
+        { atBreak: true, character: "|", after: "[	 :-]" },
+        // A pipe in a cell must be encoded.
+        { character: "|", inConstruct: "tableCell" },
+        // A colon must be followed by a dash, in which case it could start a
+        // delimiter row.
+        { atBreak: true, character: ":", after: "-" },
+        // A delimiter row can also start with a dash, when followed by more
+        // dashes, a colon, or a pipe.
+        // This is a stricter version than the built in check for lists, thematic
+        // breaks, and setex heading underlines though:
+        // <https://github.com/syntax-tree/mdast-util-to-markdown/blob/51a2038/lib/unsafe.js#L57>
+        { atBreak: true, character: "-", after: "[:|-]" }
+      ],
+      handlers: {
+        table: handleTable,
+        tableRow: handleTableRow,
+        tableCell: handleTableCell,
+        inlineCode: inlineCodeWithTable
+      }
+    };
+    function handleTable(node2, _, context2) {
+      return serializeData(handleTableAsData(node2, context2), node2.align);
+    }
+    function handleTableRow(node2, _, context2) {
+      var row = handleTableRowAsData(node2, context2);
+      var value = serializeData([row]);
+      return value.slice(0, value.indexOf("\n"));
+    }
+    function handleTableCell(node2, _, context2) {
+      var exit = context2.enter("tableCell");
+      var value = phrasing(node2, context2, { before: around, after: around });
+      exit();
+      return value;
+    }
+    function serializeData(matrix, align) {
+      return markdownTable(matrix, {
+        align,
+        alignDelimiters,
+        padding,
+        stringLength
+      });
+    }
+    function handleTableAsData(node2, context2) {
+      var children = node2.children;
+      var index2 = -1;
+      var length2 = children.length;
+      var result = [];
+      var subexit = context2.enter("table");
+      while (++index2 < length2) {
+        result[index2] = handleTableRowAsData(children[index2], context2);
+      }
+      subexit();
+      return result;
+    }
+    function handleTableRowAsData(node2, context2) {
+      var children = node2.children;
+      var index2 = -1;
+      var length2 = children.length;
+      var result = [];
+      var subexit = context2.enter("tableRow");
+      while (++index2 < length2) {
+        result[index2] = handleTableCell(children[index2], node2, context2);
+      }
+      subexit();
+      return result;
+    }
+    function inlineCodeWithTable(node2, parent, context2) {
+      var value = defaultInlineCode(node2, parent, context2);
+      if (context2.stack.indexOf("tableCell") !== -1) {
+        value = value.replace(/\|/g, "\\$&");
+      }
+      return value;
+    }
+  }
+  return toMarkdown_1$1;
+}
+var toMarkdown = {};
+var checkBullet_1;
+var hasRequiredCheckBullet;
+function requireCheckBullet() {
+  if (hasRequiredCheckBullet) return checkBullet_1;
+  hasRequiredCheckBullet = 1;
+  checkBullet_1 = checkBullet;
+  function checkBullet(context2) {
+    var marker = context2.options.bullet || "*";
+    if (marker !== "*" && marker !== "+" && marker !== "-") {
+      throw new Error(
+        "Cannot serialize items with `" + marker + "` for `options.bullet`, expected `*`, `+`, or `-`"
+      );
+    }
+    return marker;
+  }
+  return checkBullet_1;
+}
+var checkListItemIndent_1;
+var hasRequiredCheckListItemIndent;
+function requireCheckListItemIndent() {
+  if (hasRequiredCheckListItemIndent) return checkListItemIndent_1;
+  hasRequiredCheckListItemIndent = 1;
+  checkListItemIndent_1 = checkListItemIndent;
+  function checkListItemIndent(context2) {
+    var style2 = context2.options.listItemIndent || "tab";
+    if (style2 === 1 || style2 === "1") {
+      return "one";
+    }
+    if (style2 !== "tab" && style2 !== "one" && style2 !== "mixed") {
+      throw new Error(
+        "Cannot serialize items with `" + style2 + "` for `options.listItemIndent`, expected `tab`, `one`, or `mixed`"
+      );
+    }
+    return style2;
+  }
+  return checkListItemIndent_1;
+}
+var containerFlow;
+var hasRequiredContainerFlow;
+function requireContainerFlow() {
+  if (hasRequiredContainerFlow) return containerFlow;
+  hasRequiredContainerFlow = 1;
+  containerFlow = flow2;
+  var repeat = requireRepeatString();
+  function flow2(parent, context2) {
+    var children = parent.children || [];
+    var results = [];
+    var index2 = -1;
+    var child;
+    while (++index2 < children.length) {
+      child = children[index2];
+      results.push(
+        context2.handle(child, parent, context2, { before: "\n", after: "\n" })
+      );
+      if (index2 + 1 < children.length) {
+        results.push(between(child, children[index2 + 1]));
+      }
+    }
+    return results.join("");
+    function between(left2, right2) {
+      var index3 = -1;
+      var result;
+      while (++index3 < context2.join.length) {
+        result = context2.join[index3](left2, right2, parent, context2);
+        if (result === true || result === 1) {
+          break;
+        }
+        if (typeof result === "number") {
+          return repeat("\n", 1 + Number(result));
+        }
+        if (result === false) {
+          return "\n\n<!---->\n\n";
+        }
+      }
+      return "\n\n";
+    }
+  }
+  return containerFlow;
+}
+var indentLines_1;
+var hasRequiredIndentLines;
+function requireIndentLines() {
+  if (hasRequiredIndentLines) return indentLines_1;
+  hasRequiredIndentLines = 1;
+  indentLines_1 = indentLines;
+  var eol = /\r?\n|\r/g;
+  function indentLines(value, map) {
+    var result = [];
+    var start3 = 0;
+    var line2 = 0;
+    var match2;
+    while (match2 = eol.exec(value)) {
+      one3(value.slice(start3, match2.index));
+      result.push(match2[0]);
+      start3 = match2.index + match2[0].length;
+      line2++;
+    }
+    one3(value.slice(start3));
+    return result.join("");
+    function one3(value2) {
+      result.push(map(value2, line2, !value2));
+    }
+  }
+  return indentLines_1;
+}
+var listItem_1;
+var hasRequiredListItem;
+function requireListItem() {
+  if (hasRequiredListItem) return listItem_1;
+  hasRequiredListItem = 1;
+  listItem_1 = listItem;
+  var repeat = requireRepeatString();
+  var checkBullet = requireCheckBullet();
+  var checkListItemIndent = requireCheckListItemIndent();
+  var flow2 = requireContainerFlow();
+  var indentLines = requireIndentLines();
+  function listItem(node2, parent, context2) {
+    var bullet = checkBullet(context2);
+    var listItemIndent = checkListItemIndent(context2);
+    var size2;
+    var value;
+    var exit;
+    if (parent && parent.ordered) {
+      bullet = (parent.start > -1 ? parent.start : 1) + (context2.options.incrementListMarker === false ? 0 : parent.children.indexOf(node2)) + ".";
+    }
+    size2 = bullet.length + 1;
+    if (listItemIndent === "tab" || listItemIndent === "mixed" && (parent && parent.spread || node2.spread)) {
+      size2 = Math.ceil(size2 / 4) * 4;
+    }
+    exit = context2.enter("listItem");
+    value = indentLines(flow2(node2, context2), map);
+    exit();
+    return value;
+    function map(line2, index2, blank) {
+      if (index2) {
+        return (blank ? "" : repeat(" ", size2)) + line2;
+      }
+      return (blank ? bullet : bullet + repeat(" ", size2 - bullet.length)) + line2;
+    }
+  }
+  return listItem_1;
+}
+var hasRequiredToMarkdown$1;
+function requireToMarkdown$1() {
+  if (hasRequiredToMarkdown$1) return toMarkdown;
+  hasRequiredToMarkdown$1 = 1;
+  var defaultListItem = requireListItem();
+  toMarkdown.unsafe = [{ atBreak: true, character: "-", after: "[:|-]" }];
+  toMarkdown.handlers = {
+    listItem: listItemWithTaskListItem
+  };
+  function listItemWithTaskListItem(node2, parent, context2) {
+    var value = defaultListItem(node2, parent, context2);
+    var head = node2.children[0];
+    if (typeof node2.checked === "boolean" && head && head.type === "paragraph") {
+      value = value.replace(/^(?:[*+-]|\d+\.)([\r\n]| {1,3})/, check2);
+    }
+    return value;
+    function check2($0) {
+      return $0 + "[" + (node2.checked ? "x" : " ") + "] ";
+    }
+  }
+  return toMarkdown;
+}
+var configure_1;
+var hasRequiredConfigure;
+function requireConfigure() {
+  if (hasRequiredConfigure) return configure_1;
+  hasRequiredConfigure = 1;
+  configure_1 = configure2;
+  function configure2(base, extension) {
+    var index2 = -1;
+    var key;
+    if (extension.extensions) {
+      while (++index2 < extension.extensions.length) {
+        configure2(base, extension.extensions[index2]);
+      }
+    }
+    for (key in extension) {
+      if (key === "extensions") ;
+      else if (key === "unsafe" || key === "join") {
+        base[key] = base[key].concat(extension[key] || []);
+      } else if (key === "handlers") {
+        base[key] = Object.assign(base[key], extension[key] || {});
+      } else {
+        base.options[key] = extension[key];
+      }
+    }
+    return base;
+  }
+  return configure_1;
+}
+var toMarkdown_1;
+var hasRequiredToMarkdown;
+function requireToMarkdown() {
+  if (hasRequiredToMarkdown) return toMarkdown_1;
+  hasRequiredToMarkdown = 1;
+  var autolinkLiteral = requireToMarkdown$4();
+  var strikethrough = requireToMarkdown$3();
+  var table = requireToMarkdown$2();
+  var taskListItem = requireToMarkdown$1();
+  var configure2 = requireConfigure();
+  toMarkdown_1 = toMarkdown2;
+  function toMarkdown2(options2) {
+    var config2 = configure2(
+      { handlers: {}, join: [], unsafe: [], options: {} },
+      {
+        extensions: [autolinkLiteral, strikethrough, table(options2), taskListItem]
+      }
+    );
+    return Object.assign(config2.options, {
+      handlers: config2.handlers,
+      join: config2.join,
+      unsafe: config2.unsafe
+    });
+  }
+  return toMarkdown_1;
+}
+var remarkGfm$1;
+var hasRequiredRemarkGfm;
+function requireRemarkGfm() {
+  if (hasRequiredRemarkGfm) return remarkGfm$1;
+  hasRequiredRemarkGfm = 1;
+  var syntax2 = requireMicromarkExtensionGfm();
+  var fromMarkdown2 = requireFromMarkdown();
+  var toMarkdown2 = requireToMarkdown();
+  var warningIssued;
+  remarkGfm$1 = gfm;
+  function gfm(options2) {
+    var data2 = this.data();
+    if (!warningIssued && (this.Parser && this.Parser.prototype && this.Parser.prototype.blockTokenizers || this.Compiler && this.Compiler.prototype && this.Compiler.prototype.visitors)) {
+      warningIssued = true;
+      console.warn(
+        "[remark-gfm] Warning: please upgrade to remark 13 to use this plugin"
+      );
+    }
+    add("micromarkExtensions", syntax2(options2));
+    add("fromMarkdownExtensions", fromMarkdown2);
+    add("toMarkdownExtensions", toMarkdown2(options2));
+    function add(field, value) {
+      if (data2[field]) data2[field].push(value);
+      else data2[field] = [value];
+    }
+  }
+  return remarkGfm$1;
+}
+var remarkGfmExports = requireRemarkGfm();
+const remarkGfm = /* @__PURE__ */ getDefaultExportFromCjs(remarkGfmExports);
+const MarkdownPage = ({ page }) => {
+  const [markdown, setMarkdown] = reactExports.useState("");
+  reactExports.useEffect(() => {
+    if (!markdown) {
+      fetch(page).then((res) => res.text()).then((text2) => setMarkdown(text2));
+    }
+  }, [page, markdown]);
+  return jsxRuntimeExports.jsx("div", { className: "markdown", children: jsxRuntimeExports.jsx(Remark, { remarkPlugins: [remarkGfm], children: markdown }) });
+};
+const content = "data:text/markdown;base64,fCBLZXlib2FyZCBzZXF1ZW5jZSB8IEFjdGlvbiB8CnwgLS0tLS0tLS0tLS0tLS0tLS0gfCAtLS0tLS0gfAp8IGBTcGFjZWAgfCBQbGF5L3BhdXNlIHBsYXllciB8CnwgYOKGkGAgb3IgYOKGkmAgfCBKdW1wIGZvcndhcmRzL2JhY2t3YXJkLiBUaGUganVtcCBhbW91bnQgaXMgZGVwZW5kYW50IG9uIHRoZSBsZW5ndGggb2YgdGhlIHZpZGVvIGFuZCBpdCB3aWxsIHRyeSB0byBhbGlnbiBqdW1wcyB3aXRoIG5lYXJseSBieSBtYXJrZXJzIGlmIHRoZXJlIGFyZSBhbnkuIHwKfCBIb2xkIGRvd24gYOKGkGAgb3IgYOKGkmAgfCBQbGF5L3Jld2luZCBhdCAyeCBzcGVlZCB8CnwgSG9sZCBkb3duIGDihpBgIG9yIGDihpJgIHRoZW4gdGFwIGDihpFgIG9yIGDihpNgIHwgSW5jcmVhc2Ugb3IgZGVjcmVhc2UgdGhlIHBsYXkvcmV3aW5kIHNwZWVkIHwKfCBg4oaTYCBvciBg4oaRYCB8IEdvIHRvIG5leHQvcHJldmlvdXMgbWVkaWEgfAp8IGBjYCB8IFRvZ2dsZSBDUlQgZWZmZWN0IHwK";
+const KeyboardShortcutsInfo = ({ show, onHide: onHide3 }) => {
+  return /* @__PURE__ */ React$1.createElement(
+    Modal,
+    {
+      show,
+      onHide: onHide3,
+      className: "KeyboardShortcutsInfo"
+    },
+    /* @__PURE__ */ React$1.createElement(Modal.Header, { closeButton: true }, /* @__PURE__ */ React$1.createElement(Modal.Title, null, "Keyboard Shortcuts")),
+    /* @__PURE__ */ React$1.createElement(Modal.Body, null, /* @__PURE__ */ React$1.createElement(MarkdownPage, { page: content }))
+  );
+};
 const SettingsTab = reactExports.memo(() => {
   const logger3 = getLogger(["stash-tv", "SettingsTab"]);
   const { data: { subtitleLanguage }, update: updateStashTvConfig } = useStashTvConfig();
@@ -225042,6 +236786,7 @@ const SettingsTab = reactExports.memo(() => {
     const hashOptions = { excludeKeys: (key) => ["id"].includes(key) };
     return objectHash(actionButtonsConfig, hashOptions) === objectHash(defaultConfig2, hashOptions);
   }, [getDefaultAppSetting, actionButtonsConfig]);
+  const [displayedModal, setDisplayedModal] = reactExports.useState(null);
   const allFilters = reactExports.useMemo(
     () => availableSavedFilters.map((filter2) => ({
       value: filter2.id,
@@ -225167,6 +236912,7 @@ const SettingsTab = reactExports.memo(() => {
     label
   })), []);
   const [actionButtonDraft, setActionButtonDraft] = React$1.useState(null);
+  reactExports.useEffect(() => setDisplayedModal(actionButtonDraft ? "action-button-settings" : null), [actionButtonDraft]);
   const saveActionButtonDraft = (actionButton) => {
     const existingButtonIndex = actionButtonsConfig.findIndex((button) => button.id === actionButton.id);
     if (existingButtonIndex !== -1) {
@@ -225220,7 +236966,7 @@ const SettingsTab = reactExports.memo(() => {
       closeDisabled: disableClose,
       className: "SettingsTab"
     },
-    actionButtonDraft && /* @__PURE__ */ React$1.createElement(
+    displayedModal === "action-button-settings" && actionButtonDraft && /* @__PURE__ */ React$1.createElement(
       ActionButtonSettingsModal,
       {
         initialActionButtonConfig: actionButtonDraft,
@@ -225229,6 +236975,13 @@ const SettingsTab = reactExports.memo(() => {
           saveActionButtonDraft(config2);
           setActionButtonDraft(null);
         }
+      }
+    ),
+    /* @__PURE__ */ React$1.createElement(
+      KeyboardShortcutsInfo,
+      {
+        show: displayedModal === "keyboard-shortcuts",
+        onHide: () => setDisplayedModal(null)
       }
     ),
     /* @__PURE__ */ React$1.createElement(Accordion, { defaultActiveKey: "0" }, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "0" }, "Media Feed"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "0" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "filter" }, "Media Filter"), /* @__PURE__ */ React$1.createElement(
@@ -225483,7 +237236,13 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setAppSetting("showGuideOverlay", true)
       },
       "Show Guide"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "0.0.0-version-set-when-releasing"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("div", null, "What to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement(
+      Button,
+      {
+        onClick: () => setDisplayedModal("keyboard-shortcuts")
+      },
+      "Show Keyboard Shortcuts"
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "0.0.0-version-set-when-releasing"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "What to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -226567,4 +238326,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-BxBiIBc3.js.map
+//# sourceMappingURL=index-BU6OgYVd.js.map
