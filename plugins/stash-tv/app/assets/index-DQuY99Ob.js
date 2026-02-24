@@ -177733,7 +177733,7 @@ function getApolloClient() {
 }
 const graphqlClient = getApolloClient();
 const stashConfigStorage = {
-  getItem: async (key) => await getStashTvConfig().then((config2) => config2?.[key] || localStorage.getItem(key) || null).catch(console.error),
+  getItem: async (key) => await getStashTvConfig().then((config2) => config2?.[key] || null).catch(console.error),
   setItem: async (key, value) => await updateTvConfig((config2) => ({ ...config2, [key]: value })).catch(console.error),
   removeItem: async (key) => {
     await updateTvConfig(
@@ -184783,15 +184783,25 @@ function CrtEffect({ strength = 1, infoText = "AV-1", ...props }) {
   reactExports.useEffect(() => {
     if (enabled) {
       if (tvState !== "on") {
-        setTvState("turning-on");
-        const timeoutId = setTimeout(() => setTvState("on"), 1e3);
-        return () => clearTimeout(timeoutId);
+        const transitionTime = 1e3 * strength;
+        if (transitionTime) {
+          setTvState("turning-on");
+          const timeoutId = setTimeout(() => setTvState("on"), transitionTime);
+          return () => clearTimeout(timeoutId);
+        } else {
+          setTvState("on");
+        }
       }
     } else {
       if (tvState !== "off") {
-        setTvState("turning-off");
-        const timeoutId = setTimeout(() => setTvState("off"), 750);
-        return () => clearTimeout(timeoutId);
+        const transitionTime = 750 * strength;
+        if (transitionTime) {
+          setTvState("turning-off");
+          const timeoutId = setTimeout(() => setTvState("off"), transitionTime);
+          return () => clearTimeout(timeoutId);
+        } else {
+          setTvState("off");
+        }
       }
     }
   }, [props.enabled]);
@@ -205475,8 +205485,8 @@ const actionButtonsDetails = {
   "create-marker": {
     activeIcon: actionButtonIcons["add-marker"].active,
     inactiveIcon: actionButtonIcons["add-marker"].inactive,
-    activeText: "Create marker",
-    inactiveText: "Create marker",
+    activeText: "Create marker for scene",
+    inactiveText: "Create marker for scene",
     hasSettings: true,
     repeatable: true
   },
@@ -237038,7 +237048,7 @@ const SettingsTab = reactExports.memo(() => {
         checked: markerPreviewOnly,
         onChange: (event) => setAppSetting("markerPreviewOnly", event.target.checked)
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Play the low-resolution maker preview which can be useful for low bandwidth situations. (Requires the preview files to have been generated in Stash for a marker otherwise the full-quality video will be shown.)")), selectedFilter?.filterType === "scene" && !scenePreviewOnly && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "start-position" }, "Start Point"), /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Play the low-resolution marker preview which can be useful for low bandwidth situations. (Requires the preview files to have been generated in Stash for a marker otherwise the full-quality video will be shown.)")), (!selectedFilter || selectedFilter.filterType === "scene") && !scenePreviewOnly && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "start-position" }, "Start Point"), /* @__PURE__ */ React$1.createElement(
       Select,
       {
         inputId: "start-position",
@@ -237242,7 +237252,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setDisplayedModal("keyboard-shortcuts")
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.13.3"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.13.4"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -238326,4 +238336,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-AresoAYC.js.map
+//# sourceMappingURL=index-DQuY99Ob.js.map
