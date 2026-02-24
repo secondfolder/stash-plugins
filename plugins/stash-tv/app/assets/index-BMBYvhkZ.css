@@ -13346,7 +13346,7 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
     opacity: 0;
   }
 
-  .button {
+  .icon-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13360,17 +13360,18 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
       appearance: none;
       border: 0;
       padding: 0;
-    }
 
-    &:not([disabled]) {
-      cursor: pointer;
+      &:not([disabled]) {
+        cursor: pointer;
 
-      &:hover {
-        svg {
-          scale: 1.1;
+        &:hover {
+          svg {
+            scale: 1.1;
+          }
         }
       }
     }
+
 
     svg {
       height: 28px;
@@ -15175,10 +15176,12 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   --item-padding: 0.3em;
   margin: calc(var(--item-padding) * -1 + 0.3em) 0;
 }
-.SettingsTab .draggable-list li:nth-child(odd) {
-  background: rgba(0, 0, 0, 0.15);
+.SettingsTab .draggable-list li {
   margin: 0 calc(var(--content-padding) * -1);
   padding: 0 var(--content-padding);
+}
+.SettingsTab .draggable-list li:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.15);
 }
 .SettingsTab .draggable-list .draggable-list-item {
   display: flex;
@@ -15390,6 +15393,7 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   .draggable {
     cursor: grab;
     touch-action: none;
+    user-select: none;
   }
 }
 .Modal {
