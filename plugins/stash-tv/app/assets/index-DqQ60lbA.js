@@ -205460,16 +205460,16 @@ const actionButtonsDetails = {
   "quick-tag": {
     activeIcon: actionButtonIcons["add-tag"].active,
     inactiveIcon: actionButtonIcons["add-tag"].inactive,
-    activeText: "Remove single tag",
-    inactiveText: "Add single tag",
+    activeText: "Remove tag from scene/marker",
+    inactiveText: "Add tag to scene/marker",
     repeatable: true,
     hasSettings: true
   },
   "edit-tags": {
     activeIcon: actionButtonIcons["tags"].active,
     inactiveIcon: actionButtonIcons["tags"].inactive,
-    activeText: "Edit tags",
-    inactiveText: "Edit tags",
+    activeText: "Edit scene/marker tags",
+    inactiveText: "Edit scene/marker tags",
     hasSettings: true
   },
   "create-marker": {
@@ -205529,8 +205529,8 @@ function getActionButtonDetails(config2, options2) {
   }
   if (config2.type === "quick-tag") {
     if (options2?.tagName) {
-      details2.activeText = `Remove "${options2.tagName}" from scene`;
-      details2.inactiveText = `Add "${options2.tagName}" to scene`;
+      details2.activeText = `Remove "${options2.tagName}" from scene/marker`;
+      details2.inactiveText = `Add "${options2.tagName}" to scene/marker`;
     }
   }
   if (config2.type === "create-marker" && config2.markerDefaults) {
@@ -237242,7 +237242,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setDisplayedModal("keyboard-shortcuts")
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.13.1"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "What to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.13.2"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -238326,4 +238326,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-lARKBK0w.js.map
+//# sourceMappingURL=index-DqQ60lbA.js.map

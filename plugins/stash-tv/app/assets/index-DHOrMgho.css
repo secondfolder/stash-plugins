@@ -15132,7 +15132,6 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   gap: 0.4em 1em;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 .SettingsTab .inline.text {
   align-items: baseline;
@@ -15151,6 +15150,7 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   margin-bottom: 0;
 }
 .SettingsTab .form-group.inline {
+  flex-wrap: wrap;
   margin-top: 0.5em;
 }
 .SettingsTab .form-group.inline button {
@@ -15173,7 +15173,12 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 }
 .SettingsTab .draggable-list {
   --item-padding: 0.3em;
-  margin: calc(var(--item-padding) * -1) 0;
+  margin: calc(var(--item-padding) * -1 + 0.3em) 0;
+}
+.SettingsTab .draggable-list li:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.15);
+  margin: 0 calc(var(--content-padding) * -1);
+  padding: 0 var(--content-padding);
 }
 .SettingsTab .draggable-list .draggable-list-item {
   display: flex;
@@ -15255,7 +15260,7 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   position: fixed;
   top: var(--safe-inset-top);
   --safe-inset-draw-side: var(--safe-inset-right);
-  width: min(300px + var(--safe-inset-draw-side), 80%);
+  width: min(400px + var(--safe-inset-draw-side), 80%);
   --content-padding: 1.5em;
   --side-padding: max(
     0px,
