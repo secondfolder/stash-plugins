@@ -237325,7 +237325,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setDisplayedModal("keyboard-shortcuts")
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.14.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.14.1"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -237399,7 +237399,7 @@ const SettingsTab = reactExports.memo(() => {
           setAppSetting("pageSize", newSize);
         }
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "(Reload page to take effect.) Load this many media at a time. Default is ", getDefaultAppSetting("pageSize"), ".")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Media Loading Limit"), /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "(Reload page to take effect.) Load this many media at a time. Default is ", getDefaultAppSetting("pageSize"), ".")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Media To Show Limit"), /* @__PURE__ */ React$1.createElement(
       FormImpl.Control,
       {
         type: "number",
@@ -237411,7 +237411,7 @@ const SettingsTab = reactExports.memo(() => {
           event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
         )
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Stop loading more media once this limit has been reached.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "media-items-modifier-function" }, "Media Items Modifier Function"), /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Stop showing any more media once this limit has been reached.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "media-items-modifier-function" }, "Media Items Modifier Function"), /* @__PURE__ */ React$1.createElement(
       FormImpl.Control,
       {
         as: "textarea",
@@ -238435,4 +238435,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-BrFFepTP.js.map
+//# sourceMappingURL=index-5QJ3QVj9.js.map
