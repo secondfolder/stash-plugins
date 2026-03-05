@@ -17486,6 +17486,7 @@ const Be = "app-state", Si = {
   showGuideOverlay: !0,
   showDevOptions: !1,
   logLevel: Kp,
+  pageSize: 5,
   loggersToShow: [],
   loggersToHide: [],
   showDebuggingInfo: [],
