@@ -14647,7 +14647,7 @@ function requireLib$3() {
 }
 var libExports$1 = requireLib$3();
 /*! @name mpd-parser @version 0.22.1 @license Apache-2.0 */
-var isObject$5 = function isObject2(obj) {
+var isObject$6 = function isObject2(obj) {
   return !!obj && typeof obj === "object";
 };
 var merge = function merge2() {
@@ -14661,7 +14661,7 @@ var merge = function merge2() {
     Object.keys(source2).forEach(function(key) {
       if (Array.isArray(result[key]) && Array.isArray(source2[key])) {
         result[key] = result[key].concat(source2[key]);
-      } else if (isObject$5(result[key]) && isObject$5(source2[key])) {
+      } else if (isObject$6(result[key]) && isObject$6(source2[key])) {
         result[key] = merge2(result[key], source2[key]);
       } else {
         result[key] = source2[key];
@@ -16921,7 +16921,7 @@ var log$1 = createLogger$1("VIDEOJS");
 var createLogger = log$1.createLogger;
 var toString$4 = Object.prototype.toString;
 var keys$1 = function keys2(object2) {
-  return isObject$4(object2) ? Object.keys(object2) : [];
+  return isObject$5(object2) ? Object.keys(object2) : [];
 };
 function each$1(object2, fn3) {
   keys$1(object2).forEach(function(key) {
@@ -16953,11 +16953,11 @@ function assign$4(target) {
   });
   return target;
 }
-function isObject$4(value) {
+function isObject$5(value) {
   return !!value && typeof value === "object";
 }
 function isPlain(value) {
-  return isObject$4(value) && toString$4.call(value) === "[object Object]" && value.constructor === Object;
+  return isObject$5(value) && toString$4.call(value) === "[object Object]" && value.constructor === Object;
 }
 function computedStyle(el, prop) {
   if (!el || !prop) {
@@ -17061,7 +17061,7 @@ function isReal() {
   return document$1$1 === window$1.document;
 }
 function isEl(value) {
-  return isObject$4(value) && value.nodeType === 1;
+  return isObject$5(value) && value.nodeType === 1;
 }
 function isInFrame() {
   try {
@@ -17305,7 +17305,7 @@ function getPointerPosition(el, event2) {
   return position2;
 }
 function isTextNode(value) {
-  return isObject$4(value) && value.nodeType === 3;
+  return isObject$5(value) && value.nodeType === 3;
 }
 function emptyEl(el) {
   while (el.firstChild) {
@@ -19077,7 +19077,7 @@ function MediaError$1(value) {
     this.code = value;
   } else if (typeof value === "string") {
     this.message = value;
-  } else if (isObject$4(value)) {
+  } else if (isObject$5(value)) {
     if (typeof value.code === "number") {
       this.code = value.code;
     }
@@ -21066,7 +21066,7 @@ var filterSource = function filterSource2(src2) {
       srcobj = filterSource2(srcobj);
       if (Array.isArray(srcobj)) {
         newsrc = newsrc.concat(srcobj);
-      } else if (isObject$4(srcobj)) {
+      } else if (isObject$5(srcobj)) {
         newsrc.push(srcobj);
       }
     });
@@ -21075,7 +21075,7 @@ var filterSource = function filterSource2(src2) {
     src2 = [fixSource({
       src: src2
     })];
-  } else if (isObject$4(src2) && typeof src2.src === "string" && src2.src && src2.src.trim()) {
+  } else if (isObject$5(src2) && typeof src2.src === "string" && src2.src && src2.src.trim()) {
     src2 = [fixSource(src2)];
   } else {
     src2 = [];
@@ -28640,7 +28640,7 @@ var Player = /* @__PURE__ */ (function(_Component) {
     }
     hooks("beforeerror").forEach(function(hookFunction) {
       var newErr = hookFunction(_this18, err);
-      if (!(isObject$4(newErr) && !Array.isArray(newErr) || typeof newErr === "string" || typeof newErr === "number" || newErr === null)) {
+      if (!(isObject$5(newErr) && !Array.isArray(newErr) || typeof newErr === "string" || typeof newErr === "number" || newErr === null)) {
         _this18.log.error("please return a value that MediaError expects in beforeerror hooks");
         return;
       }
@@ -29505,7 +29505,7 @@ function videojs(id2, options2, ready) {
   }
   hooks("beforesetup").forEach(function(hookFunction) {
     var opts = hookFunction(el, mergeOptions$3(options2));
-    if (!isObject$4(opts) || Array.isArray(opts)) {
+    if (!isObject$5(opts) || Array.isArray(opts)) {
       log$1.error("please return an object in beforesetup hooks");
       return;
     }
@@ -29648,7 +29648,7 @@ var resolveManifestRedirect = function resolveManifestRedirect2(handleManifestRe
   }
   return url2;
 };
-var logger$6 = function logger2(source2) {
+var logger$7 = function logger2(source2) {
   if (videojs.log.debug) {
     return videojs.log.debug.bind(videojs, "VHS:", source2 + " >");
   }
@@ -30632,7 +30632,7 @@ var PlaylistLoader = /* @__PURE__ */ (function(_EventTarget) {
     if (!src2) {
       throw new Error("A non-empty playlist URL or object is required");
     }
-    _this.logger_ = logger$6("PlaylistLoader");
+    _this.logger_ = logger$7("PlaylistLoader");
     var _options = options2, _options$withCredenti = _options.withCredentials, withCredentials = _options$withCredenti === void 0 ? false : _options$withCredenti, _options$handleManife = _options.handleManifestRedirects, handleManifestRedirects = _options$handleManife === void 0 ? false : _options$handleManife;
     _this.src = src2;
     _this.vhs_ = vhs;
@@ -31533,7 +31533,7 @@ var DashPlaylistLoader = /* @__PURE__ */ (function(_EventTarget) {
     });
     _this.state = "HAVE_NOTHING";
     _this.loadedPlaylists_ = {};
-    _this.logger_ = logger$6("DashPlaylistLoader");
+    _this.logger_ = logger$7("DashPlaylistLoader");
     if (_this.isMaster_) {
       _this.masterPlaylistLoader_.srcUrl = srcUrlOrPlaylist;
       _this.masterPlaylistLoader_.sidxMapping_ = {};
@@ -38932,7 +38932,7 @@ var mediaSegmentRequest = function mediaSegmentRequest2(_ref12) {
     return abortAll(activeXhrs);
   };
 };
-var logFn$1 = logger$6("CodecUtils");
+var logFn$1 = logger$7("CodecUtils");
 var getCodecs = function getCodecs2(media) {
   var mediaAttributes = media.attributes || {};
   if (mediaAttributes.CODECS) {
@@ -38996,7 +38996,7 @@ var codecsForPlaylist = function codecsForPlaylist2(master, media) {
   }
   return codecInfo;
 };
-var logFn = logger$6("PlaylistSelector");
+var logFn = logger$7("PlaylistSelector");
 var representationToString = function representationToString2(representation) {
   if (!representation || !representation.playlist) {
     return;
@@ -39770,7 +39770,7 @@ var SegmentLoader = /* @__PURE__ */ (function(_videojs$EventTarget) {
       }
     });
     _this.fetchAtBuffer_ = false;
-    _this.logger_ = logger$6("SegmentLoader[" + _this.loaderType_ + "]");
+    _this.logger_ = logger$7("SegmentLoader[" + _this.loaderType_ + "]");
     Object.defineProperty(_assertThisInitialized$2(_this), "state", {
       get: function get7() {
         return this.state_;
@@ -41534,7 +41534,7 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
       return shiftQueue("mediaSource", _assertThisInitialized$2(_this));
     };
     _this.mediaSource.addEventListener("sourceopen", _this.sourceopenListener_);
-    _this.logger_ = logger$6("SourceUpdater");
+    _this.logger_ = logger$7("SourceUpdater");
     _this.audioTimestampOffset_ = 0;
     _this.videoTimestampOffset_ = 0;
     _this.queue = [];
@@ -42328,7 +42328,7 @@ var SyncController = /* @__PURE__ */ (function(_videojs$EventTarget) {
     _this.timelines = [];
     _this.discontinuities = [];
     _this.timelineToDatetimeMappings = {};
-    _this.logger_ = logger$6("SyncController");
+    _this.logger_ = logger$7("SyncController");
     return _this;
   }
   var _proto = SyncController2.prototype;
@@ -43532,7 +43532,7 @@ var createMediaTypes = function createMediaTypes2() {
       onGroupChanged: noop$9,
       onTrackChanged: noop$9,
       lastTrack_: null,
-      logger_: logger$6("MediaGroups[" + type3 + "]")
+      logger_: logger$7("MediaGroups[" + type3 + "]")
     };
   });
   return mediaTypes2;
@@ -43722,7 +43722,7 @@ var MasterPlaylistController = /* @__PURE__ */ (function(_videojs$EventTarget) {
     loaderStats.forEach(function(stat) {
       _this[stat + "_"] = sumLoaderStat.bind(_assertThisInitialized$2(_this), stat);
     });
-    _this.logger_ = logger$6("MPC");
+    _this.logger_ = logger$7("MPC");
     _this.triggeredFmp4Usage = false;
     if (_this.tech_.preload() === "none") {
       _this.loadOnPlay_ = function() {
@@ -44859,7 +44859,7 @@ var PlaybackWatcher = /* @__PURE__ */ (function() {
     this.lastRecordedTime = null;
     this.timer_ = null;
     this.checkCurrentTimeTimeout_ = null;
-    this.logger_ = logger$6("PlaybackWatcher");
+    this.logger_ = logger$7("PlaybackWatcher");
     this.logger_("initialize");
     var playHandler = function playHandler2() {
       return _this.monitorCurrentTime_();
@@ -45543,7 +45543,7 @@ var VhsHandler = /* @__PURE__ */ (function(_Component) {
     if (typeof options2.initialBandwidth === "number") {
       _this.options_.bandwidth = options2.initialBandwidth;
     }
-    _this.logger_ = logger$6("VhsHandler");
+    _this.logger_ = logger$7("VhsHandler");
     if (tech.options_ && tech.options_.playerId) {
       var _player = videojs(tech.options_.playerId);
       if (!_player.hasOwnProperty("hls")) {
@@ -95398,7 +95398,7 @@ var reTrimStart = /^\s+/;
 function baseTrim(string2) {
   return string2 ? string2.slice(0, trimmedEndIndex(string2) + 1).replace(reTrimStart, "") : string2;
 }
-function isObject$3(value) {
+function isObject$4(value) {
   var type3 = typeof value;
   return value != null && (type3 == "object" || type3 == "function");
 }
@@ -95414,9 +95414,9 @@ function toNumber$1(value) {
   if (isSymbol(value)) {
     return NAN;
   }
-  if (isObject$3(value)) {
+  if (isObject$4(value)) {
     var other = typeof value.valueOf == "function" ? value.valueOf() : value;
-    value = isObject$3(other) ? other + "" : other;
+    value = isObject$4(other) ? other + "" : other;
   }
   if (typeof value != "string") {
     return value === 0 ? value : +value;
@@ -95427,7 +95427,7 @@ function toNumber$1(value) {
 }
 var asyncTag = "[object AsyncFunction]", funcTag$2 = "[object Function]", genTag$1 = "[object GeneratorFunction]", proxyTag = "[object Proxy]";
 function isFunction$2(value) {
-  if (!isObject$3(value)) {
+  if (!isObject$4(value)) {
     return false;
   }
   var tag2 = baseGetTag(value);
@@ -95465,7 +95465,7 @@ var reIsNative = RegExp(
   "^" + funcToString$1.call(hasOwnProperty$k).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
 );
 function baseIsNative(value) {
-  if (!isObject$3(value) || isMasked(value)) {
+  if (!isObject$4(value) || isMasked(value)) {
     return false;
   }
   var pattern = isFunction$2(value) ? reIsNative : reIsHostCtor;
@@ -95484,7 +95484,7 @@ var baseCreate = /* @__PURE__ */ (function() {
   function object2() {
   }
   return function(proto) {
-    if (!isObject$3(proto)) {
+    if (!isObject$4(proto)) {
       return {};
     }
     if (objectCreate) {
@@ -95688,7 +95688,7 @@ function nativeKeysIn(object2) {
 var objectProto$7 = Object.prototype;
 var hasOwnProperty$f = objectProto$7.hasOwnProperty;
 function baseKeysIn(object2) {
-  if (!isObject$3(object2)) {
+  if (!isObject$4(object2)) {
     return nativeKeysIn(object2);
   }
   var isProto = isPrototype(object2), result = [];
@@ -96160,7 +96160,7 @@ function baseClone(value, bitmask, customizer, key, object2, stack) {
   if (result !== void 0) {
     return result;
   }
-  if (!isObject$3(value)) {
+  if (!isObject$4(value)) {
     return value;
   }
   var isArr = isArray$2(value);
@@ -96457,7 +96457,7 @@ function debounce$2(func, wait, options2) {
     throw new TypeError(FUNC_ERROR_TEXT);
   }
   wait = toNumber$1(wait) || 0;
-  if (isObject$3(options2)) {
+  if (isObject$4(options2)) {
     leading = !!options2.leading;
     maxing = "maxWait" in options2;
     maxWait = maxing ? nativeMax(toNumber$1(options2.maxWait) || 0, wait) : maxWait;
@@ -153623,7 +153623,7 @@ function extendedTypeof(val) {
   }
   return typeof val;
 }
-function isObject$2(val) {
+function isObject$3(val) {
   return extendedTypeof(val) === "object";
 }
 function areGraphQLErrors(obj) {
@@ -153661,7 +153661,7 @@ var MessageType;
   MessageType2["Complete"] = "complete";
 })(MessageType || (MessageType = {}));
 function validateMessage(val) {
-  if (!isObject$2(val)) {
+  if (!isObject$3(val)) {
     throw new Error(`Message is expected to be an object, but got ${extendedTypeof(val)}`);
   }
   if (!val.type) {
@@ -153675,7 +153675,7 @@ function validateMessage(val) {
     case MessageType.ConnectionAck:
     case MessageType.Ping:
     case MessageType.Pong: {
-      if (val.payload != null && !isObject$2(val.payload)) {
+      if (val.payload != null && !isObject$3(val.payload)) {
         throw new Error(`"${val.type}" message expects the 'payload' property to be an object or nullish or missing, but got "${val.payload}"`);
       }
       break;
@@ -153687,19 +153687,19 @@ function validateMessage(val) {
       if (!val.id) {
         throw new Error(`"${val.type}" message requires a non-empty 'id' property`);
       }
-      if (!isObject$2(val.payload)) {
+      if (!isObject$3(val.payload)) {
         throw new Error(`"${val.type}" message expects the 'payload' property to be an object, but got ${extendedTypeof(val.payload)}`);
       }
       if (typeof val.payload.query !== "string") {
         throw new Error(`"${val.type}" message payload expects the 'query' property to be a string, but got ${extendedTypeof(val.payload.query)}`);
       }
-      if (val.payload.variables != null && !isObject$2(val.payload.variables)) {
+      if (val.payload.variables != null && !isObject$3(val.payload.variables)) {
         throw new Error(`"${val.type}" message payload expects the 'variables' property to be a an object or nullish or missing, but got ${extendedTypeof(val.payload.variables)}`);
       }
       if (val.payload.operationName != null && extendedTypeof(val.payload.operationName) !== "string") {
         throw new Error(`"${val.type}" message payload expects the 'operationName' property to be a string or nullish or missing, but got ${extendedTypeof(val.payload.operationName)}`);
       }
-      if (val.payload.extensions != null && !isObject$2(val.payload.extensions)) {
+      if (val.payload.extensions != null && !isObject$3(val.payload.extensions)) {
         throw new Error(`"${val.type}" message payload expects the 'extensions' property to be a an object or nullish or missing, but got ${extendedTypeof(val.payload.extensions)}`);
       }
       break;
@@ -153711,7 +153711,7 @@ function validateMessage(val) {
       if (!val.id) {
         throw new Error(`"${val.type}" message requires a non-empty 'id' property`);
       }
-      if (!isObject$2(val.payload)) {
+      if (!isObject$3(val.payload)) {
         throw new Error(`"${val.type}" message expects the 'payload' property to be an object, but got ${extendedTypeof(val.payload)}`);
       }
       break;
@@ -154233,7 +154233,7 @@ class TerminatedCloseEvent extends Error {
   }
 }
 function isLikeCloseEvent(val) {
-  return isObject$2(val) && "code" in val && "reason" in val;
+  return isObject$3(val) && "code" in val && "reason" in val;
 }
 function isFatalInternalCloseCode(code) {
   if ([
@@ -174692,60 +174692,6 @@ const ScenePlayer$1 = PatchComponent("ScenePlayer", ({ scene: scene2, hideScrubb
     "no-file": !file2
   }), onKeyDownCapture: onKeyDown, children: [jsxRuntimeExports.jsx("div", { className: "video-wrapper", ref: videoRef }), scene2.interactive && (interactiveState !== ConnectionState.Ready || ((_e2 = getPlayer()) === null || _e2 === void 0 ? void 0 : _e2.paused())) && jsxRuntimeExports.jsx(SceneInteractiveStatus, {}), file2 && showScrubber && jsxRuntimeExports.jsx(ScenePlayerScrubber, { file: file2, scene: scene2, time: time2, onSeek: onScrubberSeek, onScroll: onScrubberScroll })] });
 });
-var generateUID$1 = function() {
-  var counter2 = 1;
-  var map = /* @__PURE__ */ new WeakMap();
-  var uid2 = function(item, index2) {
-    if (typeof item === "number" || typeof item === "string") {
-      return index2 ? "idx-".concat(index2) : "val-".concat(item);
-    }
-    if (!map.has(item)) {
-      map.set(item, counter2++);
-      return uid2(item);
-    }
-    return "uid" + map.get(item);
-  };
-  return uid2;
-};
-var createSource = function(prefix2) {
-  if (prefix2 === void 0) {
-    prefix2 = "";
-  }
-  return {
-    value: 1,
-    prefix: prefix2,
-    uid: generateUID$1()
-  };
-};
-var counter$1 = createSource();
-var source = reactExports.createContext(createSource());
-var getId = function(source2) {
-  return source2.value++;
-};
-var getPrefix = function(source2) {
-  return source2 ? source2.prefix : "";
-};
-var generateUID = function(context2) {
-  var quartz = context2 || counter$1;
-  var prefix2 = getPrefix(quartz);
-  var id2 = getId(quartz);
-  var uid2 = prefix2 + id2;
-  var gen = function(item) {
-    return uid2 + quartz.uid(item);
-  };
-  return { uid: uid2, gen };
-};
-var useUIDState = function() {
-  var context2 = reactExports.useContext(source);
-  var uid2 = reactExports.useState(function() {
-    return generateUID(context2);
-  })[0];
-  return uid2;
-};
-var useUID = function() {
-  var uid2 = useUIDState().uid;
-  return uid2;
-};
 function allowPluginRemoval(videojs2) {
   videojs2.hook("beforesetup", function(videoEl, options2) {
     return {
@@ -174817,73 +174763,6 @@ function allowPluginRemoval(videojs2) {
       });
     }
   });
-}
-function sortPerformers(performers2) {
-  const ret = performers2.slice();
-  ret.sort((a4, b3) => {
-    if (a4.gender === b3.gender) {
-      return (a4.name ?? "").localeCompare(b3.name ?? "");
-    }
-    const aIndex = a4.gender ? GENDERS.indexOf(a4.gender) : GENDERS.length;
-    const bIndex = b3.gender ? GENDERS.indexOf(b3.gender) : GENDERS.length;
-    return aIndex - bIndex;
-  });
-  return ret;
-}
-const GENDERS = [
-  "FEMALE",
-  "TRANSGENDER_FEMALE",
-  "MALE",
-  "TRANSGENDER_MALE",
-  "INTERSEX",
-  "NON_BINARY"
-];
-function clamp$5(min2, num, max2) {
-  return Math.min(Math.max(num, min2), max2);
-}
-function updateReadOnlyProp(obj, prop, value) {
-  Object.defineProperty(obj, prop, { value, writable: true, enumerable: isEnumerableIncludingInherited(obj, prop) });
-}
-function updateReadOnlyProps(obj, props) {
-  for (const [prop, value] of Object.entries(props)) {
-    updateReadOnlyProp(obj, prop, value);
-  }
-}
-function isEnumerableIncludingInherited(obj, prop) {
-  let current = obj;
-  while (current) {
-    const desc = Object.getOwnPropertyDescriptor(current, prop);
-    if (desc) return !!desc.enumerable;
-    current = Object.getPrototypeOf(current);
-  }
-  return false;
-}
-function getMediaItemIdForVideoJsPlayer(videoElm) {
-  let node2 = videoElm;
-  while (node2 !== null) {
-    if (node2 instanceof HTMLElement && "sceneId" in node2.dataset && node2.dataset.sceneId) {
-      return node2.id.replace(/^scene-player-/, "");
-    }
-    node2 = node2.parentElement;
-  }
-  throw new Error("Could not find mediaItemId for Video.js player");
-}
-function getPlayerIdForVideoJsPlayer(videoElm) {
-  let node2 = videoElm;
-  while (node2 !== null) {
-    if (node2 instanceof HTMLElement && "playerId" in node2.dataset && node2.dataset.playerId) {
-      return node2.dataset.playerId;
-    }
-    node2 = node2.parentElement;
-  }
-  throw new Error("Could not find playerId for Video.js player");
-}
-function roundTo(num, decimals = 0) {
-  const factor = Math.pow(10, decimals);
-  return Math.round(num * factor) / factor;
-}
-function roundToNearest(num, nearest = 1) {
-  return Math.round(num / nearest) * nearest;
 }
 const __vite_import_meta_env__$2 = {};
 const createStoreImpl = (createState2) => {
@@ -178029,13 +177908,262 @@ var offset = function offset2(options2) {
 };
 registerPlugin("offset", offset);
 offset.VERSION = version;
-const mountCount$1 = /* @__PURE__ */ new Map();
-const videoJsOptionsOverride = {};
-const videoJsSetupCallbacks = {};
-videojs.hook("setup", (player) => {
-  player.focus = () => {
+const testVideo = "data:video/mp4;base64,AAAAHGZ0eXBpc29tAAACAGlzb21pc28ybXA0MQAAAAhmcmVlAAAAH21kYXQAAAATKAGvHYD3z4D/8cwfyl4XM5WvHwAADGhtb292AAAAbG12aGQAAAAAAAAAAAAAAAAAAAPoAAAAKAABAAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAALk3RyYWsAAABcdGtoZAAAAAMAAAAAAAAAAAAAAAEAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAQAAAAEAAAAAAACRlZHRzAAAAHGVsc3QAAAAAAAAAAQAAACgAAAAAAAEAAAAACwttZGlhAAAAIG1kaGQAAAAAAAAAAAAAAAAAADIAAAACAFXEAAAAAAAtaGRscgAAAAAAAAAAdmlkZQAAAAAAAAAAAAAAAFZpZGVvSGFuZGxlcgAAAAq2bWluZgAAABR2bWhkAAAAAQAAAAAAAAAAAAAAJGRpbmYAAAAcZHJlZgAAAAAAAAABAAAADHVybCAAAAABAAAKdnN0YmwAAAoSc3RzZAAAAAAAAAABAAAKAmhldjEAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAQABAAEgAAABIAAAAAAAAAAEVTGF2YzYxLjE5LjEwMSBsaWJ4MjY1AAAAAAAAAAAAAAAY//8AAAl+aHZjQwECIAAAAJAAAAAAAB7wAPz9+voAAA8EIAABABhAAQwB//8CIAAAAwCQAAADAAADAB6VmAkhAAEAKkIBAQIgAAADAJAAAAMAAAMAHqAggQTZZWaSTK8BaAgAAAMACAAAAwDIQCIAAQAHRAHBcrQiQCcAAQkCTgEF///////////9LKLeCbUXR9u7VaT+f8L8TngyNjUgKGJ1aWxkIDIxNSkgLSA0LjErMS0xZDExN2JlOltNYWMgT1MgWF1bY2xhbmcgMTYuMC4wXVs2NCBiaXRdIDEwYml0IC0gSC4yNjUvSEVWQyBjb2RlYyAtIENvcHlyaWdodCAyMDEzLTIwMTggKGMpIE11bHRpY29yZXdhcmUsIEluYyAtIGh0dHA6Ly94MjY1Lm9yZyAtIG9wdGlvbnM6IGNwdWlkPTM0IGZyYW1lLXRocmVhZHM9MSBuby13cHAgbm8tcG1vZGUgbm8tcG1lIG5vLXBzbnIgbm8tc3NpbSBsb2ctbGV2ZWw9MiBiaXRkZXB0aD0xMCBpbnB1dC1jc3A9MSBmcHM9MjUvMSBpbnB1dC1yZXM9NjR4NjQgaW50ZXJsYWNlPTAgdG90YWwtZnJhbWVzPTAgbGV2ZWwtaWRjPTAgaGlnaC10aWVyPTEgdWhkLWJkPTAgcmVmPTMgbm8tYWxsb3ctbm9uLWNvbmZvcm1hbmNlIG5vLXJlcGVhdC1oZWFkZXJzIGFubmV4YiBuby1hdWQgbm8tZW9iIG5vLWVvcyBuby1ocmQgaW5mbyBoYXNoPTAgdGVtcG9yYWwtbGF5ZXJzPTAgb3Blbi1nb3AgbWluLWtleWludD0yNSBrZXlpbnQ9MjUwIGdvcC1sb29rYWhlYWQ9MCBiZnJhbWVzPTQgYi1hZGFwdD0yIGItcHlyYW1pZCBiZnJhbWUtYmlhcz0wIHJjLWxvb2thaGVhZD0yMCBsb29rYWhlYWQtc2xpY2VzPTAgc2NlbmVjdXQ9NDAgbm8taGlzdC1zY2VuZWN1dCByYWRsPTAgbm8tc3BsaWNlIG5vLWludHJhLXJlZnJlc2ggY3R1PTY0IG1pbi1jdS1zaXplPTggbm8tcmVjdCBuby1hbXAgbWF4LXR1LXNpemU9MzIgdHUtaW50ZXItZGVwdGg9MSB0dS1pbnRyYS1kZXB0aD0xIGxpbWl0LXR1PTAgcmRvcS1sZXZlbD0wIGR5bmFtaWMtcmQ9MC4wMCBuby1zc2ltLXJkIHNpZ25oaWRlIG5vLXRza2lwIG5yLWludHJhPTAgbnItaW50ZXI9MCBuby1jb25zdHJhaW5lZC1pbnRyYSBzdHJvbmctaW50cmEtc21vb3RoaW5nIG1heC1tZXJnZT0zIGxpbWl0LXJlZnM9MSBuby1saW1pdC1tb2RlcyBtZT0xIHN1Ym1lPTIgbWVyYW5nZT01NyB0ZW1wb3JhbC1tdnAgbm8tZnJhbWUtZHVwIG5vLWhtZSB3ZWlnaHRwIG5vLXdlaWdodGIgbm8tYW5hbHl6ZS1zcmMtcGljcyBkZWJsb2NrPTA6MCBzYW8gbm8tc2FvLW5vbi1kZWJsb2NrIHJkPTMgc2VsZWN0aXZlLXNhbz00IGVhcmx5LXNraXAgcnNraXAgbm8tZmFzdC1pbnRyYSBuby10c2tpcC1mYXN0IG5vLWN1LWxvc3NsZXNzIGItaW50cmEgbm8tc3BsaXRyZC1za2lwIHJkcGVuYWx0eT0wIHBzeS1yZD0yLjAwIHBzeS1yZG9xPTAuMDAgbm8tcmQtcmVmaW5lIG5vLWxvc3NsZXNzIGNicXBvZmZzPTAgY3JxcG9mZnM9MCByYz1jcmYgY3JmPTI4LjAgcWNvbXA9MC42MCBxcHN0ZXA9NCBzdGF0cy13cml0ZT0wIHN0YXRzLXJlYWQ9MCBpcHJhdGlvPTEuNDAgcGJyYXRpbz0xLjMwIGFxLW1vZGU9MiBhcS1zdHJlbmd0aD0xLjAwIGN1dHJlZSB6b25lLWNvdW50PTAgbm8tc3RyaWN0LWNiciBxZy1zaXplPTMyIG5vLXJjLWdyYWluIHFwbWF4PTY5IHFwbWluPTAgbm8tY29uc3QtdmJ2IHNhcj0xIG92ZXJzY2FuPTAgdmlkZW9mb3JtYXQ9NSByYW5nZT0wIGNvbG9ycHJpbT0yIHRyYW5zZmVyPTIgY29sb3JtYXRyaXg9MiBjaHJvbWFsb2M9MCBkaXNwbGF5LXdpbmRvdz0wIGNsbD0wLDAgbWluLWx1bWE9MCBtYXgtbHVtYT0xMDIzIGxvZzItbWF4LXBvYy1sc2I9OCB2dWktdGltaW5nLWluZm8gdnVpLWhyZC1pbmZvIHNsaWNlcz0xIG5vLW9wdC1xcC1wcHMgbm8tb3B0LXJlZi1saXN0LWxlbmd0aC1wcHMgbm8tbXVsdGktcGFzcy1vcHQtcnBzIHNjZW5lY3V0LWJpYXM9MC4wNSBuby1vcHQtY3UtZGVsdGEtcXAgbm8tYXEtbW90aW9uIG5vLWhkcjEwIG5vLWhkcjEwLW9wdCBuby1kaGRyMTAtb3B0IG5vLWlkci1yZWNvdmVyeS1zZWkgYW5hbHlzaXMtcmV1c2UtbGV2ZWw9MCBhbmFseXNpcy1zYXZlLXJldXNlLWxldmVsPTAgYW5hbHlzaXMtbG9hZC1yZXVzZS1sZXZlbD0wIHNjYWxlLWZhY3Rvcj0wIHJlZmluZS1pbnRyYT0wIHJlZmluZS1pbnRlcj0wIHJlZmluZS1tdj0xIHJlZmluZS1jdHUtZGlzdG9ydGlvbj0wIG5vLWxpbWl0LXNhbyBjdHUtaW5mbz0wIG5vLWxvd3Bhc3MtZGN0IHJlZmluZS1hbmFseXNpcy10eXBlPTAgY29weS1waWM9MSBtYXgtYXVzaXplLWZhY3Rvcj0xLjAgbm8tZHluYW1pYy1yZWZpbmUgbm8tc2luZ2xlLXNlaSBuby1oZXZjLWFxIG5vLXN2dCBuby1maWVsZCBxcC1hZGFwdGF0aW9uLXJhbmdlPTEuMDAgc2NlbmVjdXQtYXdhcmUtcXA9MGNvbmZvcm1hbmNlLXdpbmRvdy1vZmZzZXRzIHJpZ2h0PTAgYm90dG9tPTAgZGVjb2Rlci1tYXgtcmF0ZT0wIG5vLXZidi1saXZlLW11bHRpLXBhc3Mgbm8tbWNzdGYgbm8tc2JyYyBuby1mcmFtZS1yY4AAAAAKZmllbAEAAAAAEHBhc3AAAAABAAAAAQAAABRidHJ0AAAAAAAAEfgAAAAAAAAAGHN0dHMAAAAAAAAAAQAAAAEAAAIAAAAAHHN0c2MAAAAAAAAAAQAAAAEAAAABAAAAAQAAABRzdHN6AAAAAAAAABcAAAABAAAAFHN0Y28AAAAAAAAAAQAAACwAAABhdWR0YQAAAFltZXRhAAAAAAAAACFoZGxyAAAAAAAAAABtZGlyYXBwbAAAAAAAAAAAAAAAACxpbHN0AAAAJKl0b28AAAAcZGF0YQAAAAEAAAAATGF2ZjYxLjcuMTAw";
+let supports10BitVideos = void 0;
+const logger$6 = getLogger(["stash-tv", "pause-loading-plugin"]);
+class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
+  constructor(player) {
+    super(player);
+    let unloadedSource = null;
+    let unloadedPoster = null;
+    let pausedStateOnUnload = player.paused();
+    let _loadingCanceled = false;
+    player.loadingCanceled = () => _loadingCanceled;
+    async function getVideoFrameBlob(video) {
+      const canvas = document.createElement("canvas");
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) {
+        throw new Error("Failed to get canvas");
+      }
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      return new Promise((resolve) => {
+        canvas.toBlob(resolve, "image/png");
+      });
+    }
+    async function setPosterToCurrentFrame() {
+      if (player.isDisposed()) return;
+      const videoElm = player.tech(true).el();
+      if (!(videoElm instanceof HTMLVideoElement)) {
+        logger$6.error(`Unexpected element {*}`, { videoElm });
+        return;
+      }
+      if (videoElm.readyState < 2) {
+        return;
+      }
+      const posterElement = player.getChild("posterImage")?.el();
+      const frame2 = await getVideoFrameBlob(videoElm);
+      if (frame2) {
+        const frameUrl = URL.createObjectURL(frame2);
+        if (posterElement && posterElement instanceof HTMLElement) {
+          posterElement.style.opacity = "0";
+          posterElement.style.display = "block";
+        }
+        player.poster(frameUrl);
+        await new Promise((resolve) => setTimeout(resolve, 200));
+        const fadeToPosterTime = 0.5;
+        if (posterElement && posterElement instanceof HTMLElement) {
+          posterElement.style.opacity = "1";
+          posterElement.style.transition = `opacity ${fadeToPosterTime}s`;
+        }
+        player.one("playing", () => {
+          if (posterElement && posterElement instanceof HTMLElement) {
+            posterElement.style.opacity = "";
+            posterElement.style.display = "";
+            posterElement.style.transition = "";
+            setTimeout(() => {
+              if (typeof unloadedPoster === "string") {
+                player.poster(unloadedPoster);
+                unloadedPoster = null;
+              }
+            }, 500);
+          }
+        });
+        await new Promise((resolve) => setTimeout(resolve, fadeToPosterTime * 1e3));
+      } else {
+        logger$6.warn(`Failed to set video frame as poster`);
+      }
+    }
+    player.cancelLoading = function() {
+      _loadingCanceled = true;
+      const videoElm = player.tech(true).el();
+      if (!(videoElm instanceof HTMLVideoElement)) {
+        logger$6.error(`Unexpected element {*}`, { videoElm });
+        return;
+      }
+      unloadedSource = videoElm.src;
+      unloadedPoster = player.poster();
+      async function unloadAfterPaused() {
+        if (player.isDisposed()) return;
+        if (await supports10BitVideos === void 0) {
+          supports10BitVideos = testFor10BitSupport();
+        }
+        await supports10BitVideos || true;
+        {
+          await setPosterToCurrentFrame();
+        }
+        if (player.isDisposed()) return;
+        const currentTime = videoElm.currentTime;
+        videoElm.src = "";
+        videoElm.load();
+        videoElm.currentTime = currentTime;
+        player.trigger("loadingCanceled", { currentTime });
+        logger$6.debug("Loading canceled.");
+      }
+      pausedStateOnUnload = player.paused();
+      if (!player.paused()) {
+        videoElm.addEventListener("pause", unloadAfterPaused, { once: true });
+        player.pause();
+      } else {
+        unloadAfterPaused();
+      }
+    };
+    player.enableLoading = function() {
+      if (!unloadedSource) {
+        throw Error("unloadedSource not set");
+      }
+      const videoElm = player.tech(true).el();
+      if (!(videoElm instanceof HTMLVideoElement)) {
+        logger$6.error(`Unexpected element {*}`, { videoElm });
+        return;
+      }
+      _loadingCanceled = false;
+      if (player.isDisposed()) return;
+      const currentTime = videoElm.currentTime;
+      videoElm.src = unloadedSource;
+      videoElm.load();
+      videoElm.currentTime = currentTime;
+      unloadedSource = null;
+      if (!pausedStateOnUnload) {
+        player.play();
+      }
+      unloadedSource = null;
+      logger$6.debug("Video loading resumed, sources restored.");
+    };
+  }
+}
+videojs.registerPlugin("pauseLoading", PauseLoadingPlugin);
+function pauseLoadingMiddleware(player) {
+  let currentTimeWhenLoadingCanceled = void 0;
+  player.on("loadingCanceled", (event2, data2) => {
+    currentTimeWhenLoadingCanceled = data2.currentTime;
+  });
+  function enableLoadingIfCanceled() {
+    if (currentTimeWhenLoadingCanceled !== void 0) {
+      currentTimeWhenLoadingCanceled = void 0;
+      player.enableLoading();
+    }
+  }
+  return {
+    setSource: function(srcObj, next2) {
+      next2(null, srcObj);
+    },
+    callPlay: function() {
+      enableLoadingIfCanceled();
+    },
+    setCurrentTime: function(time2) {
+      enableLoadingIfCanceled();
+      return time2;
+    }
   };
+}
+videojs.use("*", pauseLoadingMiddleware);
+videojs.hooks("beforeerror", ((player, error) => {
+  if (player.loadingCanceled?.() && typeof error === "object" && error !== null && "code" in error && error.code === 4) {
+    return null;
+  }
+  return error;
+}));
+function testFor10BitSupport() {
+  return new Promise((resolve, reject) => {
+    const video = document.createElement("video");
+    video.src = testVideo;
+    video.load();
+    video.requestVideoFrameCallback(() => {
+      const canvas = document.createElement("canvas");
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) {
+        throw new Error("Failed to get canvas");
+      }
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const centerX = Math.floor(canvas.width / 2);
+      const centerY = Math.floor(canvas.height / 2);
+      const pixelData = ctx.getImageData(centerX, centerY, 1, 1).data;
+      const [r3, g2, b3, a4] = pixelData;
+      resolve(r3 > 200 && g2 < 50 && b3 < 50);
+    });
+  });
+}
+const mediaItemPlayerCounter = {};
+const beforeSetupHooks = {};
+const setupHooks = {};
+function usePlayerManager({ mediaItem }) {
+  const mediaItemPlayerCount = reactExports.useMemo(() => {
+    const count2 = mediaItemPlayerCounter[mediaItem.id] ?? 0;
+    mediaItemPlayerCounter[mediaItem.id] = count2 + 1;
+    return count2;
+  }, []);
+  const playerId = `player-${mediaItem.id.replace(":", "-")}-${mediaItemPlayerCount}`;
+  beforeSetupHooks[playerId] = [];
+  setupHooks[playerId] = [];
+  const scene2 = mediaItem.entityType === "scene" ? mediaItem.entity : mediaItem.entity.scene;
+  function playerBeforeSetupHook(callback2) {
+    beforeSetupHooks[playerId].push(callback2);
+  }
+  function playerSetupHook(callback2) {
+    setupHooks[playerId].push(callback2);
+  }
+  function modifyPlayerSetupOptions(options2) {
+    playerBeforeSetupHook(() => options2);
+  }
+  modifyPlayerSetupOptions({
+    id: playerId
+  });
+  const playerRef = reactExports.useRef(null);
+  playerSetupHook((player) => {
+    playerRef.current = player;
+    player.on("dispose", () => {
+      playerRef.current = null;
+    });
+  });
+  const updateMediaItemInfo = (player) => {
+    player.mediaItem = mediaItem;
+    player.scene = scene2;
+  };
+  playerSetupHook(updateMediaItemInfo);
+  reactExports.useEffect(() => {
+    if (!playerRef.current) return;
+    updateMediaItemInfo(playerRef.current);
+  }, [mediaItem, scene2]);
+  const playerParentProps = {
+    // Video.js's beforesetup and setup hooks run we need some way to map a newly created player by Stash's ScenePlayer back to a particular instance of our
+    // ScenePlayer. The only way I can see to do that is by traversing up the DOM from the player's video element till we hit something to
+    // that tells us what instance of tv's ScenePlayer it's a child of.
+    "data-player-id": playerId
+  };
+  return {
+    playerRef,
+    playerBeforeSetupHook,
+    playerSetupHook,
+    modifyPlayerSetupOptions,
+    playerId,
+    playerParentProps
+  };
+}
+videojs.hook("beforesetup", function(videoEl, options2) {
+  let playerId;
+  try {
+    playerId = getPlayerIdForVideoJsPlayer(videoEl);
+  } catch (error) {
+    console.error(error);
+    return {};
+  }
+  for (const hook3 of beforeSetupHooks[playerId] || []) {
+    const opts = hook3(videoEl, videojs.mergeOptions(options2));
+    if (!isObject$2(opts) || Array.isArray(opts)) {
+      console.error("please return an object in beforesetup hooks");
+      return;
+    }
+    options2 = videojs.mergeOptions(options2, opts);
+  }
+  return options2;
 });
+function isObject$2(value) {
+  return !!value && typeof value === "object";
+}
 videojs.hook("setup", function(player) {
   let playerId;
   try {
@@ -178044,7 +178172,24 @@ videojs.hook("setup", function(player) {
     console.error(error);
     return;
   }
-  videoJsSetupCallbacks[playerId]?.(player);
+  for (const hook3 of setupHooks[playerId] || []) {
+    hook3(player);
+  }
+});
+function getPlayerIdForVideoJsPlayer(videoElm) {
+  let node2 = videoElm;
+  while (node2 !== null) {
+    if (node2 instanceof HTMLElement && "playerId" in node2.dataset && node2.dataset.playerId) {
+      return node2.dataset.playerId;
+    }
+    node2 = node2.parentElement;
+  }
+  throw new Error("Could not find playerId for Video.js player");
+}
+const mountCount$1 = /* @__PURE__ */ new Map();
+videojs.hook("setup", (player) => {
+  player.focus = () => {
+  };
 });
 videojs.hook("beforesetup", function(videoEl, options2) {
   return {
@@ -178075,16 +178220,6 @@ videojs.hook("beforesetup", function(videoEl, options2) {
     }
   };
 });
-videojs.hook("beforesetup", function(videoEl, options2) {
-  let playerId;
-  try {
-    playerId = getPlayerIdForVideoJsPlayer(videoEl);
-  } catch (error) {
-    console.error(error);
-    return {};
-  }
-  return videoJsOptionsOverride[playerId] || {};
-});
 allowPluginRemoval(videojs);
 ScenePlayer$1.displayName = "ScenePlayerOriginal";
 const ScenePlayer = reactExports.forwardRef(({
@@ -178101,6 +178236,7 @@ const ScenePlayer = reactExports.forwardRef(({
   muted,
   volume,
   playbackRate,
+  showPoster = true,
   loop: loop2,
   trackActivity = true,
   scrubberThumbnail = true,
@@ -178109,6 +178245,7 @@ const ScenePlayer = reactExports.forwardRef(({
   onPlay,
   onPause,
   initialTimestamp,
+  mediaItem,
   ...otherProps
 }, ref) => {
   getLogger(["stash-tv", "ScenePlayer", otherProps.scene.id]);
@@ -178122,6 +178259,12 @@ const ScenePlayer = reactExports.forwardRef(({
   reactExports.useEffect(() => () => {
     showDebuggingInfo.includes("render-debugging") && console.log(`🔚 ScenePlayer (scene id ${otherProps.scene.id}) unmounting`);
   }, []);
+  const {
+    playerRef,
+    modifyPlayerSetupOptions,
+    playerSetupHook,
+    playerParentProps
+  } = usePlayerManager({ mediaItem });
   const containerRef = reactExports.useRef(null);
   reactExports.useEffect(() => {
     const rootElm = containerRef.current;
@@ -178142,14 +178285,14 @@ const ScenePlayer = reactExports.forwardRef(({
     console.groupCollapsed(`ScenePlayer [id=${id2}] event: ${event2.type}`);
     console.info(event2);
     if (event2.type === "timeupdate") {
-      console.info("currentTime:", videojsPlayerRef.current?.currentTime());
+      console.info("currentTime:", playerRef.current?.currentTime());
     }
     console.groupEnd();
   }, []);
   reactExports.useEffect(() => {
     for (const eventName of videoJsEventsToLog) {
       if (!videoJsEventsToLogAttached.current[eventName]) {
-        const player = videojsPlayerRef.current;
+        const player = playerRef.current;
         if (!player) continue;
         player.on(eventName, logVideoJsEvent);
         videoJsEventsToLogAttached.current[eventName] = true;
@@ -178158,7 +178301,7 @@ const ScenePlayer = reactExports.forwardRef(({
     const attachedEvents = Object.entries(videoJsEventsToLogAttached.current).filter(([, attached]) => attached).map(([eventName]) => eventName);
     for (const eventName of attachedEvents) {
       if (!videoJsEventsToLog.includes(eventName)) {
-        const player = videojsPlayerRef.current;
+        const player = playerRef.current;
         if (!player) continue;
         player.off(eventName, logVideoJsEvent);
         videoJsEventsToLogAttached.current[eventName] = false;
@@ -178167,8 +178310,6 @@ const ScenePlayer = reactExports.forwardRef(({
   }, [videoJsEventsToLog, videoJsEventsToLogAttached]);
   const [videoElm, setVideoElm] = reactExports.useState(null);
   const [videojsPlayer, setVideojsPlayer] = reactExports.useState(null);
-  const videojsPlayerRef = reactExports.useRef(null);
-  const playerId = useUID();
   otherProps.scene = {
     ...otherProps.scene,
     sceneStreams: otherProps.scene.sceneStreams.map(
@@ -178215,12 +178356,12 @@ const ScenePlayer = reactExports.forwardRef(({
   function stubOnComplete() {
   }
   reactExports.useEffect(() => {
-    const player = videojsPlayerRef.current;
+    const player = playerRef.current;
     if (!onEnded || !player || player.isDisposed()) return;
     player.on("ended", onEnded);
     return () => player.off("ended", onEnded);
   }, [onEnded]);
-  videoJsSetupCallbacks[playerId] = (player) => {
+  playerSetupHook((player) => {
     if (volume !== void 0) player.volume(volume);
     if (playbackRate !== void 0) {
       player.defaultPlaybackRate(playbackRate);
@@ -178236,7 +178377,6 @@ const ScenePlayer = reactExports.forwardRef(({
     addWrapperToRevertPreviewUrlChange(player);
     disableBuggyOnEndHandling(player);
     onVideojsPlayerCreated?.(player);
-    videojsPlayerRef.current = player;
     setVideojsPlayer(player);
     const videoElm2 = player.el()?.querySelector("video");
     if (!videoElm2) {
@@ -178244,49 +178384,49 @@ const ScenePlayer = reactExports.forwardRef(({
       return;
     }
     setVideoElm(videoElm2);
-  };
+  });
   function handleInitialTimestamp() {
     if (!initialTimestamp) return;
-    videojsPlayerRef.current?.currentTime(initialTimestamp);
+    playerRef.current?.currentTime(initialTimestamp);
   }
   reactExports.useEffect(handleInitialTimestamp, [initialTimestamp]);
-  videoJsOptionsOverride[playerId] = {
-    id: `videojs-${playerId}`,
+  modifyPlayerSetupOptions({
     muted,
     loop: loop2,
     // Unfortunately this doesn't seem to work since the stash ScenePlayer component seems immediately set
     // the loop value itself after initialization so we have to set it the player ready callback
     ...optionsToMerge,
     plugins: {
+      pauseLoading: {},
       ...!trackActivity ? { trackActivity: void 0 } : {},
       ...!scrubberThumbnail ? { vttThumbnails: void 0 } : {},
       ...!markers2 ? { markers: void 0 } : {},
       ...optionsToMerge?.plugins
     }
-  };
+  });
   reactExports.useEffect(() => {
-    const player = videojsPlayerRef.current;
+    const player = playerRef.current;
     if (muted === void 0 || !player || player.isDisposed() || muted === player.muted()) return;
     player.muted(muted);
   }, [muted]);
   reactExports.useEffect(() => {
-    const player = videojsPlayerRef.current;
+    const player = playerRef.current;
     if (volume === void 0 || !player || player.isDisposed() || volume === player.volume()) return;
     player.volume(volume);
   }, [volume]);
   reactExports.useEffect(() => {
-    const player = videojsPlayerRef.current;
+    const player = playerRef.current;
     if (playbackRate === void 0 || !player || player.isDisposed() || playbackRate === player.playbackRate()) return;
     player.playbackRate(playbackRate);
   }, [playbackRate]);
   reactExports.useEffect(() => {
-    const player = videojsPlayerRef.current;
+    const player = playerRef.current;
     if (loop2 === void 0 || !player || player.isDisposed() || loop2 === player.loop()) return;
     player.loop(loop2);
   }, [loop2]);
   reactExports.useEffect(() => {
     return () => {
-      const videojsPlayer2 = videojsPlayerRef.current;
+      const videojsPlayer2 = playerRef.current;
       if (videojsPlayer2) {
         const vttThumbnailsPlugin = videojsPlayer2.vttThumbnails();
         videojsPlayer2.on("dispose", () => {
@@ -178384,13 +178524,30 @@ const ScenePlayer = reactExports.forwardRef(({
       videojsPlayer.off("pointerup", onPointerUp);
     };
   }, [videojsPlayer, onPointerUp]);
+  const originalPosterFunction = playerRef.current?.poster;
+  if (playerRef.current) {
+    playerRef.current.poster = ((src2) => {
+      if (!src2) return "";
+    });
+  }
+  reactExports.useEffect(() => {
+    if (!playerRef.current || !originalPosterFunction) return;
+    playerRef.current.poster = originalPosterFunction;
+  }, [Date.now()]);
+  reactExports.useEffect(() => {
+    if (!playerRef.current) return;
+    const newPoster = showPoster ? scene2.paths.screenshot ?? "" : "";
+    if (playerRef.current.poster() !== newPoster) {
+      playerRef.current.poster(newPoster);
+    }
+  }, [scene2.paths.screenshot, showPoster]);
   return /* @__PURE__ */ React$1.createElement(
     "div",
     {
       className: cx(["ScenePlayer", className, { "hide-controls": hideControls, "hide-progress-bar": hideProgressBar }]),
       ref: containerRef,
       "data-scene-id": otherProps.scene?.id,
-      "data-player-id": playerId,
+      ...playerParentProps,
       id: id2
     },
     /* @__PURE__ */ React$1.createElement(
@@ -178910,7 +179067,7 @@ function isCSSVariable$1(key) {
 var getValueAsType = function(value, type3) {
   return type3 && typeof value === "number" ? type3.transform(value) : value;
 };
-const clamp$4 = (min2, max2) => (v) => Math.max(Math.min(v, max2), min2);
+const clamp$5 = (min2, max2) => (v) => Math.max(Math.min(v, max2), min2);
 const sanitize = (v) => v % 1 ? Number(v.toFixed(5)) : v;
 const floatRegex = /(-)?([\d]*\.?[\d])+/g;
 const colorRegex$1 = /(#[0-9a-f]{6}|#[0-9a-f]{3}|#(?:[0-9a-f]{2}){2,4}|(rgb|hsl)a?\((-?[\d\.]+%?[,\s]+){2,3}\s*\/*\s*[\d\.]+%?\))/gi;
@@ -178923,7 +179080,7 @@ const number$1 = {
   parse: parseFloat,
   transform: (v) => v
 };
-const alpha = Object.assign(Object.assign({}, number$1), { transform: clamp$4(0, 1) });
+const alpha = Object.assign(Object.assign({}, number$1), { transform: clamp$5(0, 1) });
 const scale = Object.assign(Object.assign({}, number$1), { default: 1 });
 const createUnitType = (unit) => ({
   test: (v) => isString$1(v) && v.endsWith(unit) && v.split(" ").length === 1,
@@ -178957,7 +179114,7 @@ const hsla$1 = {
     return "hsla(" + Math.round(hue) + ", " + percent.transform(sanitize(saturation)) + ", " + percent.transform(sanitize(lightness)) + ", " + sanitize(alpha.transform(alpha$1)) + ")";
   }
 };
-const clampRgbUnit = clamp$4(0, 255);
+const clampRgbUnit = clamp$5(0, 255);
 const rgbUnit = Object.assign(Object.assign({}, number$1), { transform: (v) => Math.round(clampRgbUnit(v)) });
 const rgba$1 = {
   test: isColorString("rgb", "red"),
@@ -179779,7 +179936,7 @@ function useUnmountEffect(callback2) {
     };
   }, []);
 }
-const clamp$3 = (min2, max2, v) => Math.min(Math.max(v, min2), max2);
+const clamp$4 = (min2, max2, v) => Math.min(Math.max(v, min2), max2);
 const safeMin = 1e-3;
 const minDuration = 0.01;
 const maxDuration = 10;
@@ -179789,8 +179946,8 @@ function findSpring({ duration: duration5 = 800, bounce = 0.25, velocity = 0, ma
   let envelope;
   let derivative;
   let dampingRatio = 1 - bounce;
-  dampingRatio = clamp$3(minDamping, maxDamping, dampingRatio);
-  duration5 = clamp$3(minDuration, maxDuration, duration5 / 1e3);
+  dampingRatio = clamp$4(minDamping, maxDamping, dampingRatio);
+  duration5 = clamp$4(minDuration, maxDuration, duration5 / 1e3);
   if (dampingRatio < 1) {
     envelope = (undampedFreq2) => {
       const exponentialDecay = undampedFreq2 * dampingRatio;
@@ -180134,7 +180291,7 @@ function interpolate$1(input, output, { clamp: isClamp = true, ease, mixer } = {
   }
   const mixers = createMixers(output, ease, mixer);
   const interpolator = inputLength === 2 ? fastInterpolate(input, mixers) : slowInterpolate(input, mixers);
-  return isClamp ? (v) => interpolator(clamp$3(input[0], input[inputLength - 1], v)) : interpolator;
+  return isClamp ? (v) => interpolator(clamp$4(input[0], input[inputLength - 1], v)) : interpolator;
 }
 const reverseEasing = (easing) => (p2) => 1 - easing(1 - p2);
 const mirrorEasing = (easing) => (p2) => p2 <= 0.5 ? easing(2 * p2) / 2 : (2 - easing(2 * (1 - p2))) / 2;
@@ -180723,9 +180880,9 @@ var gestureAnimations = {
   focus: makeRenderlessComponent(useFocusGesture),
   hover: makeRenderlessComponent(useHoverGesture)
 };
-var counter = 0;
+var counter$1 = 0;
 var incrementId = function() {
-  return counter++;
+  return counter$1++;
 };
 var useId = function() {
   return useConstant(incrementId);
@@ -181827,7 +181984,7 @@ function calcOrigin(source2, target) {
   } else if (sourceLength > targetLength) {
     origin = progress(source2.min, source2.max - targetLength, target.min);
   }
-  return clamp$3(0, 1, origin);
+  return clamp$4(0, 1, origin);
 }
 function rebaseAxisConstraints(layout, constraints) {
   var relativeConstraints = {};
@@ -188769,6 +188926,63 @@ function useMediaItemFilters() {
 function getRandomSeed() {
   return Math.round(Math.random() * 1e6);
 }
+function sortPerformers(performers2) {
+  const ret = performers2.slice();
+  ret.sort((a4, b3) => {
+    if (a4.gender === b3.gender) {
+      return (a4.name ?? "").localeCompare(b3.name ?? "");
+    }
+    const aIndex = a4.gender ? GENDERS.indexOf(a4.gender) : GENDERS.length;
+    const bIndex = b3.gender ? GENDERS.indexOf(b3.gender) : GENDERS.length;
+    return aIndex - bIndex;
+  });
+  return ret;
+}
+const GENDERS = [
+  "FEMALE",
+  "TRANSGENDER_FEMALE",
+  "MALE",
+  "TRANSGENDER_MALE",
+  "INTERSEX",
+  "NON_BINARY"
+];
+function clamp$3(min2, num, max2) {
+  return Math.min(Math.max(num, min2), max2);
+}
+function updateReadOnlyProp(obj, prop, value) {
+  Object.defineProperty(obj, prop, { value, writable: true, enumerable: isEnumerableIncludingInherited(obj, prop) });
+}
+function updateReadOnlyProps(obj, props) {
+  for (const [prop, value] of Object.entries(props)) {
+    updateReadOnlyProp(obj, prop, value);
+  }
+}
+function isEnumerableIncludingInherited(obj, prop) {
+  let current = obj;
+  while (current) {
+    const desc = Object.getOwnPropertyDescriptor(current, prop);
+    if (desc) return !!desc.enumerable;
+    current = Object.getPrototypeOf(current);
+  }
+  return false;
+}
+function getMediaItemIdForVideoJsPlayer(videoElm) {
+  let node2 = videoElm;
+  while (node2 !== null) {
+    if (node2 instanceof HTMLElement && "sceneId" in node2.dataset && node2.dataset.sceneId) {
+      return node2.id.replace(/^scene-player-/, "");
+    }
+    node2 = node2.parentElement;
+  }
+  throw new Error("Could not find mediaItemId for Video.js player");
+}
+function roundTo(num, decimals = 0) {
+  const factor = Math.pow(10, decimals);
+  return Math.round(num * factor) / factor;
+}
+function roundToNearest(num, nearest = 1) {
+  return Math.round(num / nearest) * nearest;
+}
 function getFunctionFromString(functionString) {
   if (!functionString?.trim()) return null;
   try {
@@ -192237,6 +192451,60 @@ function requireSrc() {
 }
 var srcExports = requireSrc();
 const ISO6391 = /* @__PURE__ */ getDefaultExportFromCjs(srcExports);
+var generateUID$1 = function() {
+  var counter2 = 1;
+  var map = /* @__PURE__ */ new WeakMap();
+  var uid2 = function(item, index2) {
+    if (typeof item === "number" || typeof item === "string") {
+      return index2 ? "idx-".concat(index2) : "val-".concat(item);
+    }
+    if (!map.has(item)) {
+      map.set(item, counter2++);
+      return uid2(item);
+    }
+    return "uid" + map.get(item);
+  };
+  return uid2;
+};
+var createSource = function(prefix2) {
+  if (prefix2 === void 0) {
+    prefix2 = "";
+  }
+  return {
+    value: 1,
+    prefix: prefix2,
+    uid: generateUID$1()
+  };
+};
+var counter = createSource();
+var source = reactExports.createContext(createSource());
+var getId = function(source2) {
+  return source2.value++;
+};
+var getPrefix = function(source2) {
+  return source2 ? source2.prefix : "";
+};
+var generateUID = function(context2) {
+  var quartz = context2 || counter;
+  var prefix2 = getPrefix(quartz);
+  var id2 = getId(quartz);
+  var uid2 = prefix2 + id2;
+  var gen = function(item) {
+    return uid2 + quartz.uid(item);
+  };
+  return { uid: uid2, gen };
+};
+var useUIDState = function() {
+  var context2 = reactExports.useContext(source);
+  var uid2 = reactExports.useState(function() {
+    return generateUID(context2);
+  })[0];
+  return uid2;
+};
+var useUID = function() {
+  var uid2 = useUIDState().uid;
+  return uid2;
+};
 const preventMisclickOnMoveModifier = {
   name: "preventMisclickOnMove",
   phase: "main",
@@ -219170,13 +219438,15 @@ const MediaSlide = (props) => {
       videojsPlayerRef.current?.off("ended", handleEnded);
     };
   }, [looping]);
+  const isFirstMount = useFirstMountState();
   reactExports.useEffect(() => {
     if (!videojsPlayerRef.current) return;
     if (isCurrentVideo) {
       if (!autoplay) return;
       videojsPlayerRef.current?.play();
-    } else {
+    } else if (!isFirstMount) {
       videojsPlayerRef.current?.pause();
+      videojsPlayerRef.current?.cancelLoading?.();
     }
   }, [isCurrentVideo, autoplay]);
   const initialTimestamp = reactExports.useMemo(() => {
@@ -219564,14 +219834,9 @@ const MediaSlide = (props) => {
           id: `scene-player-${props.mediaItem.id}`,
           key: JSON.stringify([scene2.id, objectHash(scene2.sceneStreams)]),
           onTimeUpdate: handleOnTimeUpdate,
-          scene: {
-            ...scene2,
-            paths: {
-              ...scene2.paths,
-              // We avoid showing the poster if we are auto-playing to prevent a flash of the poster before playback starts
-              ...globalAutoPlay ? { screenshot: null } : {}
-            }
-          },
+          mediaItem: props.mediaItem,
+          scene: scene2,
+          showPoster: !globalAutoPlay,
           hideScrubberOverride: true,
           muted: !volume,
           volume,
@@ -219814,7 +220079,7 @@ function useGestureControls({ videoRef, videojsPlayerRef, seekForwards, seekBack
       case "middle":
         initialRate = 0;
     }
-    const playbackRateDragAdjustment = clamp$5(
+    const playbackRateDragAdjustment = clamp$3(
       (videojsPlayerRef.current?.duration() ?? 0) / -3,
       (offsetX / elementWidth * 10) ** 6 * (offsetX > 0 ? 1 : -1),
       (videojsPlayerRef.current?.duration() ?? 0) / 3
@@ -221120,7 +221385,7 @@ const VideoScroller = reactExports.memo(() => {
   const [currentIndex, _setCurrentIndex] = reactExports.useReducer(
     (currentState, newState) => {
       newState = typeof newState === "function" ? newState(currentState) : newState;
-      return clamp$5(0, newState, mediaItems.length ? mediaItems.length - 1 : 0);
+      return clamp$3(0, newState, mediaItems.length ? mediaItems.length - 1 : 0);
     },
     0
   );
@@ -221132,7 +221397,7 @@ const VideoScroller = reactExports.memo(() => {
         _setCurrentIndex(newIndex);
       }, 100);
       return ((newIndex) => {
-        currentIndexRef.current = clamp$5(
+        currentIndexRef.current = clamp$3(
           0,
           typeof newIndex === "function" ? newIndex(currentIndexRef.current) : newIndex,
           mediaItems.length ? mediaItems.length - 1 : 0
@@ -237325,7 +237590,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setDisplayedModal("keyboard-shortcuts")
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.14.1"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.14.2"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -238435,4 +238700,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-5QJ3QVj9.js.map
+//# sourceMappingURL=index-C-OEJqt3.js.map
