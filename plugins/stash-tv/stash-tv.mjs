@@ -17490,6 +17490,7 @@ const Be = "app-state", Si = {
   loggersToShow: [],
   loggersToHide: [],
   showDebuggingInfo: [],
+  renderedMediaItemsBuffer: 2,
   videoJsEventsToLog: [],
   storeLoaded: !1,
   actionButtonsConfig: [

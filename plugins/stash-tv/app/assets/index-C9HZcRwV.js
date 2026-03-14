@@ -177667,6 +177667,7 @@ const defaults$2 = {
   loggersToShow: [],
   loggersToHide: [],
   showDebuggingInfo: [],
+  renderedMediaItemsBuffer: 2,
   videoJsEventsToLog: [],
   storeLoaded: false,
   actionButtonsConfig: [
@@ -221309,7 +221310,6 @@ function requireThrottleit() {
 var throttleitExports = /* @__PURE__ */ requireThrottleit();
 const throttle = /* @__PURE__ */ getDefaultExportFromCjs(throttleitExports);
 const mediaSlideHeight = "calc(var(--y-unit-large) * 100)";
-const itemBufferEitherSide = 2;
 const VideoScroller = reactExports.memo(() => {
   const {
     forceLandscape: isForceLandscape,
@@ -221317,6 +221317,7 @@ const VideoScroller = reactExports.memo(() => {
     showDebuggingInfo,
     scenePreviewOnly,
     markerPreviewOnly,
+    renderedMediaItemsBuffer,
     set: setAppSetting
   } = useAppStateStore();
   const { orientation: orientation2 } = useWindowSize();
@@ -221362,7 +221363,7 @@ const VideoScroller = reactExports.memo(() => {
       }
       return itemHeight;
     },
-    overscan: itemBufferEitherSide
+    overscan: renderedMediaItemsBuffer
   };
   const windowRowVirtualizer = useWindowVirtualizer({
     ...sharedOptions,
@@ -237108,6 +237109,7 @@ const SettingsTab = reactExports.memo(() => {
     leftHandedUi,
     actionButtonsConfig,
     mediaItemsModifierFunction,
+    renderedMediaItemsBuffer,
     set: setAppSetting,
     setToDefault: setDefaultAppSetting,
     getDefault: getDefaultAppSetting
@@ -237590,7 +237592,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setDisplayedModal("keyboard-shortcuts")
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.14.2"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.14.3"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -237664,7 +237666,7 @@ const SettingsTab = reactExports.memo(() => {
           setAppSetting("pageSize", newSize);
         }
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "(Reload page to take effect.) Load this many media at a time. Default is ", getDefaultAppSetting("pageSize"), ".")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Media To Show Limit"), /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "(Reload page to take effect.) Load this many media at a time. Default is ", getDefaultAppSetting("pageSize"), ". Changing this can impact performance.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Limit of Media to Show"), /* @__PURE__ */ React$1.createElement(
       FormImpl.Control,
       {
         type: "number",
@@ -237676,7 +237678,19 @@ const SettingsTab = reactExports.memo(() => {
           event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
         )
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Stop showing any more media once this limit has been reached.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "media-items-modifier-function" }, "Media Items Modifier Function"), /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Stop showing any more media once this limit has been reached. This does not just impact performance but will actually effect what media will get shown.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Upcoming media to render at a time"), /* @__PURE__ */ React$1.createElement(
+      FormImpl.Control,
+      {
+        type: "number",
+        id: "max-media",
+        className: "text-input",
+        value: renderedMediaItemsBuffer,
+        onChange: (event2) => setAppSetting(
+          "renderedMediaItemsBuffer",
+          event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : 0
+        )
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The maximum number of media upcoming media to be rendered off screen. Default is ", getDefaultAppSetting("renderedMediaItemsBuffer"), ". Changing this can impact performance.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "media-items-modifier-function" }, "Media Items Modifier Function"), /* @__PURE__ */ React$1.createElement(
       FormImpl.Control,
       {
         as: "textarea",
@@ -238700,4 +238714,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-C-OEJqt3.js.map
+//# sourceMappingURL=index-C9HZcRwV.js.map
