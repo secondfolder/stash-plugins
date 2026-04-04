@@ -25036,7 +25036,7 @@ var ResizeManager = /* @__PURE__ */ (function(_Component) {
   return ResizeManager2;
 })(Component$1$1);
 Component$1$1.registerComponent("ResizeManager", ResizeManager);
-var defaults$6 = {
+var defaults$7 = {
   trackingThreshold: 20,
   liveTolerance: 15
 };
@@ -25044,7 +25044,7 @@ var LiveTracker = /* @__PURE__ */ (function(_Component) {
   _inheritsLoose$2(LiveTracker2, _Component);
   function LiveTracker2(player, options2) {
     var _this;
-    var options_ = mergeOptions$3(defaults$6, options2, {
+    var options_ = mergeOptions$3(defaults$7, options2, {
       createEl: false
     });
     _this = _Component.call(this, player, options_) || this;
@@ -93751,7 +93751,7 @@ var TouchOverlay = /* @__PURE__ */ (function(_Component) {
   return TouchOverlay2;
 })(Component$1);
 Component$1.registerComponent("TouchOverlay", TouchOverlay);
-var defaults$5 = {
+var defaults$6 = {
   fullscreen: {
     enterOnRotate: true,
     exitOnRotate: true,
@@ -93872,7 +93872,7 @@ var mobileUi = function mobileUi2(options2) {
   }
   if (options2.forceForTesting || videojs.browser.IS_ANDROID || videojs.browser.IS_IOS) {
     this.ready(function() {
-      onPlayerReady$2(_this, videojs.mergeOptions(defaults$5, options2));
+      onPlayerReady$2(_this, videojs.mergeOptions(defaults$6, options2));
     });
   }
 };
@@ -93881,7 +93881,7 @@ mobileUi.VERSION = version$4;
 /*! @name videojs-seek-buttons @version 3.0.1 @license Apache-2.0 */
 var version$3 = "3.0.1";
 var Button$2 = videojs.getComponent("Button");
-var defaults$4 = {
+var defaults$5 = {
   forwardIndex: 1,
   backIndex: 1
 };
@@ -93903,7 +93903,7 @@ var onPlayerReady$1 = function onPlayerReady3(player, options2) {
 var seekButtons = function seekButtons2(options2) {
   var _this = this;
   this.ready(function() {
-    onPlayerReady$1(_this, videojs.mergeOptions(defaults$4, options2));
+    onPlayerReady$1(_this, videojs.mergeOptions(defaults$5, options2));
   });
 };
 seekButtons.VERSION = version$3;
@@ -136554,7 +136554,7 @@ function _arrayLikeToArray$3(arr, len) {
   }
   return arr2;
 }
-var defaults$3 = {
+var defaults$4 = {
   debug: false,
   omnitone: false,
   forceCardboard: false,
@@ -136586,7 +136586,7 @@ var VR = /* @__PURE__ */ (function(_Plugin) {
   _inheritsLoose$2(VR2, _Plugin);
   function VR2(player, options2) {
     var _this;
-    var settings2 = videojs.mergeOptions(defaults$3, options2);
+    var settings2 = videojs.mergeOptions(defaults$4, options2);
     _this = _Plugin.call(this, player, settings2) || this;
     _this.options_ = settings2;
     _this.player_ = player;
@@ -163401,6 +163401,11 @@ const faFilm = {
   iconName: "film",
   icon: [512, 512, [127902], "f008", "M0 96C0 60.7 28.7 32 64 32l384 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM48 368l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM48 240l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM48 112l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16L64 96c-8.8 0-16 7.2-16 16zM416 96c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM160 128l0 64c0 17.7 14.3 32 32 32l128 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32L192 96c-17.7 0-32 14.3-32 32zm32 160c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l128 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-128 0z"]
 };
+const faGamepad = {
+  prefix: "fas",
+  iconName: "gamepad",
+  icon: [640, 512, [], "f11b", "M192 64C86 64 0 150 0 256S86 448 192 448l256 0c106 0 192-86 192-192s-86-192-192-192L192 64zM496 168a40 40 0 1 1 0 80 40 40 0 1 1 0-80zM392 304a40 40 0 1 1 80 0 40 40 0 1 1 -80 0zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24l0 32 32 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-32 0 0 32c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-32-32 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l32 0 0-32z"]
+};
 const faPenToSquare = {
   prefix: "fas",
   iconName: "pen-to-square",
@@ -177640,12 +177645,49 @@ async function updateTvConfig(configUpdate) {
     });
   });
 }
-const appStateStorageKey = "app-state";
-const defaults$2 = {
+const defaults$3 = {
   showSettings: false,
+  fullscreen: false,
+  tvConfigLoaded: false
+};
+const useGlobalState = create()(
+  (set4, get7) => ({
+    ...defaults$3,
+    set: (propName, value) => {
+      if (!get7().tvConfigLoaded && propName !== "tvConfigLoaded") {
+        console.warn(`Tried to set ${propName} to "${value}" before store was loaded`);
+        return;
+      }
+      set4((state) => {
+        const resolvedValue = typeof value === "function" ? value(state[propName]) : value;
+        return {
+          [propName]: resolvedValue
+        };
+      });
+    },
+    setToDefault: (propName) => {
+      if (!get7().tvConfigLoaded) {
+        console.warn(`Tried to set ${propName} to default before store was loaded`);
+        return;
+      }
+      set4((state) => {
+        return {
+          [propName]: defaults$3[propName]
+        };
+      });
+    },
+    getDefault: (propName) => {
+      return defaults$3[propName];
+    },
+    get: (propName) => {
+      return get7()[propName];
+    }
+  })
+);
+const tvConfigStorageKey = "app-state";
+const defaults$2 = {
   volume: 0,
   showSubtitles: false,
-  fullscreen: false,
   letterboxing: false,
   forceLandscape: false,
   looping: false,
@@ -177669,7 +177711,6 @@ const defaults$2 = {
   showDebuggingInfo: [],
   renderedMediaItemsBuffer: 2,
   videoJsEventsToLog: [],
-  storeLoaded: false,
   actionButtonsConfig: [
     { id: "1", type: "ui-visibility", pinned: true },
     { id: "2", type: "settings", pinned: false },
@@ -177685,11 +177726,6 @@ const defaults$2 = {
   ],
   playbackRate: 1
 };
-const nonPersistentKeys = [
-  "storeLoaded",
-  "showSettings",
-  "fullscreen"
-];
 const localStorageKeys = [
   "forceLandscape"
 ];
@@ -177718,8 +177754,7 @@ const createHybridStorage = () => {
       for (const [key, val] of Object.entries(state)) {
         if (localStorageKeys.includes(key)) {
           localState[key] = val;
-        } else if (nonPersistentKeys.includes(key)) ;
-        else {
+        } else {
           stashState[key] = val;
         }
       }
@@ -177742,13 +177777,13 @@ const createHybridStorage = () => {
     }
   };
 };
-const useAppStateStore = create()(
+const useTvConfig = create()(
   persist(
     (set4, get7) => ({
       ...defaults$2,
       set: (propName, value) => {
-        if (!get7().storeLoaded && propName !== "storeLoaded") {
-          console.warn(`Tried to set ${propName} to "${value}" before store was loaded`);
+        if (!useGlobalState.getState().tvConfigLoaded) {
+          console.warn(`Tried to set ${propName} to "${value}" before config was loaded`);
           return;
         }
         set4((state) => {
@@ -177769,7 +177804,7 @@ const useAppStateStore = create()(
         });
       },
       setToDefault: (propName) => {
-        if (!get7().storeLoaded) {
+        if (!useGlobalState.getState().tvConfigLoaded) {
           console.warn(`Tried to set ${propName} to default before store was loaded`);
           return;
         }
@@ -177787,10 +177822,10 @@ const useAppStateStore = create()(
       }
     }),
     {
-      name: appStateStorageKey,
+      name: tvConfigStorageKey,
       storage: createJSONStorage(() => createHybridStorage()),
       onRehydrateStorage: (state) => {
-        return () => state.set("storeLoaded", true);
+        return () => useGlobalState.setState({ tvConfigLoaded: true });
       },
       version: 1,
       migrate: (persistedState, version2) => {
@@ -178250,7 +178285,7 @@ const ScenePlayer = reactExports.forwardRef(({
   ...otherProps
 }, ref) => {
   getLogger(["stash-tv", "ScenePlayer", otherProps.scene.id]);
-  const { videoJsEventsToLog, showDebuggingInfo } = useAppStateStore();
+  const { videoJsEventsToLog, showDebuggingInfo } = useTvConfig();
   reactExports.useMemo(() => {
     if (!showDebuggingInfo.includes("render-debugging")) return;
     const timesMounted = mountCount$1.get(otherProps.scene.id) || 0;
@@ -188746,7 +188781,7 @@ function useMediaItemFilters() {
     loading: loadingAvailableSavedMarkerFilters
   } = useFindSavedFilters(FilterMode.SceneMarkers);
   const loadingDataRequiredBeforeLoadingCurrentFilter = stashConfigurationLoading || loadingAvailableSavedSceneFilters || loadingAvailableSavedMarkerFilters;
-  const { isRandomised, onlyShowMatchingOrientation, currentFilterId } = useAppStateStore();
+  const { isRandomised, onlyShowMatchingOrientation, currentFilterId } = useTvConfig();
   const { orientation: orientation2 } = useWindowSize();
   let limitOrientation = void 0;
   if (onlyShowMatchingOrientation && orientation2 !== "square") {
@@ -189007,7 +189042,7 @@ function useMediaItems() {
     pageSize: mediaItemsPerPage,
     showDevOptions,
     mediaItemsModifierFunction
-  } = useAppStateStore();
+  } = useTvConfig();
   const { configuration: stashConfig } = reactExports.useContext(ConfigurationContext);
   const previewOnly = lastLoadedCurrentMediaItemFilter?.entityType === "scene" && scenePreviewOnly || lastLoadedCurrentMediaItemFilter?.entityType === "marker" && markerPreviewOnly;
   const hydratedMediaItemsModifierFunction = getFunctionFromString(mediaItemsModifierFunction);
@@ -192649,7 +192684,7 @@ const ActionButton = (props) => {
   } = props;
   const Icon2 = active ? activeIcon : inactiveIcon;
   const ButtonElement = displayOnly ? "div" : "button";
-  const { leftHandedUi } = useAppStateStore();
+  const { leftHandedUi } = useTvConfig();
   const displayText = active ? activeText : inactiveText;
   const getOnClickHandler = (sidePanelClick) => {
     if (displayOnly) return;
@@ -192689,7 +192724,7 @@ const ActionButton = (props) => {
 };
 const SidePanel = ({ content: content2, children, onSidePanelToggle, sidePanelClassName }) => {
   const currentOpenPopover = useCurrentOpenPopover();
-  const { leftHandedUi, forceLandscape } = useAppStateStore();
+  const { leftHandedUi, forceLandscape } = useTvConfig();
   const id2 = `action-button-side-panel-${useUID()}`;
   const isOpen = id2 === currentOpenPopover;
   const onSidePanelToggleRef = React$1.useRef(onSidePanelToggle);
@@ -216924,7 +216959,7 @@ function ActionButtons({ mediaItem, sceneInfoOpen, setSceneInfoOpen, playerRef }
     uiVisible,
     leftHandedUi,
     actionButtonsConfig
-  } = useAppStateStore();
+  } = useTvConfig();
   const scene2 = mediaItem.entityType === "scene" ? mediaItem.entity : mediaItem.entity.scene;
   const stackElmRef = reactExports.useRef(null);
   const stackScrollClasses = useOverflowIndicators(stackElmRef);
@@ -216981,7 +217016,8 @@ function ActionButtons({ mediaItem, sceneInfoOpen, setSceneInfoOpen, playerRef }
   );
 }
 function SettingsActionButton({ buttonConfig }) {
-  const { showSettings, actionButtonsConfig, set: setAppSetting } = useAppStateStore();
+  const { actionButtonsConfig } = useTvConfig();
+  const { showSettings, set: setGlobalState } = useGlobalState();
   if (!buttonConfig) {
     buttonConfig = actionButtonsConfig.find((config2) => config2.type === "settings");
     if (!buttonConfig) {
@@ -216995,7 +217031,7 @@ function SettingsActionButton({ buttonConfig }) {
       className: "settings hide-on-ui-hide",
       active: showSettings,
       "data-testid": "MediaSlide--settingsButton",
-      onClick: () => setAppSetting("showSettings", (prev2) => !prev2)
+      onClick: () => setGlobalState("showSettings", (prev2) => !prev2)
     }
   );
 }
@@ -217013,7 +217049,7 @@ function ShowSceneInfoActionButton({ sceneInfoOpen, setSceneInfoOpen, buttonConf
 }
 function RateSceneActionButton({ scene: scene2, buttonConfig }) {
   const { configuration: config2 } = React$1.useContext(ConfigurationContext);
-  const { leftHandedUi } = useAppStateStore();
+  const { leftHandedUi } = useTvConfig();
   const ratingSystemOptions = config2?.ui.ratingSystemOptions ?? defaultRatingSystemOptions;
   let sceneRatingFormatted;
   if (typeof scene2.rating100 === "number") {
@@ -217089,7 +217125,7 @@ function OCounterActionButton({ scene: scene2, buttonConfig }) {
   );
 }
 function ForceLandscapeActionButton({ buttonConfig }) {
-  const { forceLandscape, set: setAppSetting } = useAppStateStore();
+  const { forceLandscape, set: setTvConfig } = useTvConfig();
   return /* @__PURE__ */ React$1.createElement(
     ActionButton,
     {
@@ -217097,12 +217133,12 @@ function ForceLandscapeActionButton({ buttonConfig }) {
       className: "force-landscape hide-on-ui-hide",
       active: forceLandscape,
       "data-testid": "MediaSlide--forceLandscapeButton",
-      onClick: () => setAppSetting("forceLandscape", (prev2) => !prev2)
+      onClick: () => setTvConfig("forceLandscape", (prev2) => !prev2)
     }
   );
 }
 function FullscreenActionButton({ buttonConfig }) {
-  const { fullscreen, set: setAppSetting } = useAppStateStore();
+  const { fullscreen, set: setTvConfig } = useGlobalState();
   if (!("exitFullscreen" in document)) return null;
   return /* @__PURE__ */ React$1.createElement(
     ActionButton,
@@ -217111,12 +217147,12 @@ function FullscreenActionButton({ buttonConfig }) {
       className: "fullscreen hide-on-ui-hide",
       active: fullscreen,
       "data-testid": "MediaSlide--fullscreenButton",
-      onClick: () => setAppSetting("fullscreen", (prev2) => !prev2)
+      onClick: () => setTvConfig("fullscreen", (prev2) => !prev2)
     }
   );
 }
 function VolumeActionButton({ buttonConfig }) {
-  const { volume, set: setAppSetting } = useAppStateStore();
+  const { volume, set: setTvConfig } = useTvConfig();
   let clickHandler;
   let sidePanel;
   if (buttonConfig.fullControl && !uaParserExports.UAParser().os.name?.includes("iOS")) {
@@ -217126,13 +217162,13 @@ function VolumeActionButton({ buttonConfig }) {
         min: 0,
         max: 100,
         value: [volume * 100],
-        onValueChange: (e2) => setAppSetting("volume", Number(e2[0]) / 100)
+        onValueChange: (e2) => setTvConfig("volume", Number(e2[0]) / 100)
       }
     );
     clickHandler = void 0;
   } else {
     sidePanel = void 0;
-    clickHandler = () => setAppSetting("volume", (prev2) => prev2 ? 0 : 1);
+    clickHandler = () => setTvConfig("volume", (prev2) => prev2 ? 0 : 1);
   }
   return /* @__PURE__ */ React$1.createElement(
     ActionButton,
@@ -217147,7 +217183,7 @@ function VolumeActionButton({ buttonConfig }) {
   );
 }
 function LetterboxingActionButton({ buttonConfig }) {
-  const { letterboxing, set: setAppSetting } = useAppStateStore();
+  const { letterboxing, set: setTvConfig } = useTvConfig();
   return /* @__PURE__ */ React$1.createElement(
     ActionButton,
     {
@@ -217155,12 +217191,12 @@ function LetterboxingActionButton({ buttonConfig }) {
       className: "letterboxing hide-on-ui-hide",
       active: letterboxing,
       "data-testid": "MediaSlide--letterboxButton",
-      onClick: () => setAppSetting("letterboxing", (prev2) => !prev2)
+      onClick: () => setTvConfig("letterboxing", (prev2) => !prev2)
     }
   );
 }
 function LoopActionButton({ buttonConfig }) {
-  const { looping, set: setAppSetting } = useAppStateStore();
+  const { looping, set: setTvConfig } = useTvConfig();
   return /* @__PURE__ */ React$1.createElement(
     ActionButton,
     {
@@ -217168,12 +217204,12 @@ function LoopActionButton({ buttonConfig }) {
       className: "loop hide-on-ui-hide",
       active: looping,
       "data-testid": "MediaSlide--loopButton",
-      onClick: () => setAppSetting("looping", (prev2) => !prev2)
+      onClick: () => setTvConfig("looping", (prev2) => !prev2)
     }
   );
 }
 function SubtitlesActionButton({ scene: scene2, buttonConfig }) {
-  const { showSubtitles, set: setAppSetting } = useAppStateStore();
+  const { showSubtitles, set: setTvConfig } = useTvConfig();
   const { data: { subtitleLanguage } } = useStashTvConfig();
   const captionSources = scene2.captions && subtitleLanguage ? scene2.captions.map((cap, i3) => {
     if (cap.language_code === subtitleLanguage) {
@@ -217199,12 +217235,12 @@ function SubtitlesActionButton({ scene: scene2, buttonConfig }) {
       className: "subtitles hide-on-ui-hide",
       active: !!captionSources && showSubtitles,
       "data-testid": "MediaSlide--subtitlesButton",
-      onClick: () => setAppSetting("showSubtitles", (prev2) => !prev2)
+      onClick: () => setTvConfig("showSubtitles", (prev2) => !prev2)
     }
   );
 }
 function UiVisibilityActionButton({ buttonConfig }) {
-  const { uiVisible, set: setAppSetting } = useAppStateStore();
+  const { uiVisible, set: setTvConfig } = useTvConfig();
   return /* @__PURE__ */ React$1.createElement(
     ActionButton,
     {
@@ -217212,7 +217248,7 @@ function UiVisibilityActionButton({ buttonConfig }) {
       active: uiVisible,
       className: cx("toggle-ui", "dim-on-ui-hide", { "active": uiVisible }),
       "data-testid": "MediaSlide--showActionButton",
-      onClick: () => setAppSetting("uiVisible", (prev2) => !prev2)
+      onClick: () => setTvConfig("uiVisible", (prev2) => !prev2)
     }
   );
 }
@@ -217399,7 +217435,7 @@ function SetOrganizedActionButton({ buttonConfig, mediaItem }) {
   );
 }
 function PlaybackRateActionButton({ buttonConfig, playerRef }) {
-  const { playbackRate: desiredPlaybackRate } = useAppStateStore();
+  const { playbackRate: desiredPlaybackRate } = useTvConfig();
   const [playbackRate, setPlaybackRate] = reactExports.useState(desiredPlaybackRate);
   const active = reactExports.useMemo(() => playbackRate !== 1, [playbackRate]);
   reactExports.useEffect(() => {
@@ -219295,7 +219331,7 @@ const useFeedback = create((set4, get7) => ({
   }
 }));
 const FeedbackOverlay = reactExports.memo(() => {
-  const { uiVisible } = useAppStateStore();
+  const { uiVisible } = useTvConfig();
   const { contents, icon: icon2, fade } = useFeedback();
   const previousContents = usePrevious$2(contents);
   const previousIcon = usePrevious$2(icon2);
@@ -219304,6 +219340,21 @@ const FeedbackOverlay = reactExports.memo(() => {
   if (!displayedContents || !contents && !fade) return null;
   return /* @__PURE__ */ React$1.createElement("div", { className: cx("FeedbackOverlay", { "fade-out": !contents && fade, "muted": !uiVisible }) }, /* @__PURE__ */ React$1.createElement("div", { className: "contents-container" }, displayedIcon, displayedContents));
 });
+const useGamepadState = create()((set4) => ({
+  isConnected: false,
+  connectedAt: null,
+  setConnected: (connected) => set4((state) => ({
+    isConnected: connected,
+    connectedAt: connected && !state.isConnected ? Date.now() : state.connectedAt
+  }))
+}));
+function useGamepadStatus() {
+  const isConnected = useGamepadState((state) => state.isConnected);
+  const connectedAt = useGamepadState((state) => state.connectedAt);
+  return { isConnected, connectedAt };
+}
+const TOGGLE_VIDEO_EVENT = "toggle-video";
+const PAUSE_VIDEO_EVENT = "pause-video";
 videojs.registerPlugin("styledBigPlayButton", styledBigPlayButton);
 const noAnimateDurationThreshold = 30;
 const mountCount = /* @__PURE__ */ new Map();
@@ -219331,9 +219382,11 @@ const MediaSlide = (props) => {
     showGuideOverlay,
     uiVisible,
     leftHandedUi,
-    set: setAppSetting
-  } = useAppStateStore();
+    set: setTvConfig
+  } = useTvConfig();
   const { configuration: stashConfig } = reactExports.useContext(ConfigurationContext);
+  const { connectedAt: gamepadConnectedAt } = useGamepadStatus();
+  const gamepadConnectedAWhileAgo = Date.now() - (gamepadConnectedAt ?? 0) > 6e3;
   const logger3 = getLogger(["stash-tv", "MediaSlide", props.mediaItem.id]);
   reactExports.useMemo(() => {
     if (!showDebuggingInfo.includes("render-debugging")) return;
@@ -219369,15 +219422,15 @@ const MediaSlide = (props) => {
     const getPlayerVolume = () => videojsPlayerRef.current?.muted() ? 0 : videojsPlayerRef.current?.volume() || 0;
     player.on("volumechange", () => {
       logger3.info(`Video.js player volumechange event - player volume is ${getPlayerVolume() * 100}%`);
-      setAppSetting("volume", getPlayerVolume());
+      setTvConfig("volume", getPlayerVolume());
     });
     if (volume !== getPlayerVolume()) {
       logger3.info(`Video.js player loaded - player volume is ${getPlayerVolume() * 100}%`);
-      setAppSetting("volume", getPlayerVolume());
+      setTvConfig("volume", getPlayerVolume());
     }
     player.on("ratechange", () => {
       logger3.info(`Video.js player ratechange event - player playback rate is ${player.playbackRate()}`);
-      setAppSetting("playbackRate", player.playbackRate());
+      setTvConfig("playbackRate", player.playbackRate());
     });
     player.getChild("ControlBar")?.progressControl?.el().addEventListener("pointermove", (event2) => {
       event2.stopPropagation();
@@ -219686,6 +219739,19 @@ const MediaSlide = (props) => {
       window.removeEventListener("keyup", handleKeyUp, { capture: true });
     };
   }, [forceLandscape, isCurrentVideo, seekBackwards, seekForwards, props.index]);
+  reactExports.useEffect(() => {
+    if (!isCurrentVideo) return;
+    const handleToggle = () => {
+      videojsPlayerRef.current?.paused() ? videojsPlayerRef.current?.play() : videojsPlayerRef.current?.pause();
+    };
+    const handlePause = () => videojsPlayerRef.current?.pause();
+    window.addEventListener(TOGGLE_VIDEO_EVENT, handleToggle);
+    window.addEventListener(PAUSE_VIDEO_EVENT, handlePause);
+    return () => {
+      window.removeEventListener(TOGGLE_VIDEO_EVENT, handleToggle);
+      window.removeEventListener(PAUSE_VIDEO_EVENT, handlePause);
+    };
+  }, [isCurrentVideo]);
   const updatePlayableClass = reactExports.useCallback(() => {
     const className = "playable";
     let timeoutId;
@@ -219876,8 +219942,8 @@ const MediaSlide = (props) => {
           }
         }
       ),
-      currentlyPlayingMarkers.length > 0 && videoJsControlBarElm && reactDomExports.createPortal(
-        /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "vjs-control currently-playing-marker" }, currentlyPlayingMarkersDisplayName), /* @__PURE__ */ React$1.createElement("div", { className: "vjs-custom-control-spacer vjs-spacer" }, " ")),
+      videoJsControlBarElm && reactDomExports.createPortal(
+        /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "center-controls" }, currentlyPlayingMarkers.length > 0 && /* @__PURE__ */ React$1.createElement("div", { className: "vjs-control currently-playing-marker" }, currentlyPlayingMarkersDisplayName)), /* @__PURE__ */ React$1.createElement("div", { className: "vjs-custom-control-spacer vjs-spacer" }, " "), /* @__PURE__ */ React$1.createElement("div", { className: "right-controls" }, gamepadConnectedAt && !gamepadConnectedAWhileAgo && /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faGamepad, className: "vjs-control gamepad-connected-indicator" }))),
         videoJsControlBarElm
       ),
       videojsPlayerRef.current?.el() && reactDomExports.createPortal(
@@ -221318,8 +221384,8 @@ const VideoScroller = reactExports.memo(() => {
     scenePreviewOnly,
     markerPreviewOnly,
     renderedMediaItemsBuffer,
-    set: setAppSetting
-  } = useAppStateStore();
+    set: setTvConfig
+  } = useTvConfig();
   const { orientation: orientation2 } = useWindowSize();
   const rootElmRef = reactExports.useRef(null);
   const logger3 = getLogger(["stash-tv", "VideoScroller"]);
@@ -221496,7 +221562,7 @@ const VideoScroller = reactExports.memo(() => {
   reactExports.useEffect(() => {
     const handleKeyDown = (e2) => {
       if (e2.key === "c" && !e2.ctrlKey && !e2.metaKey && !e2.altKey && !e2.shiftKey && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
-        setAppSetting("crtEffect", (prev2) => !prev2);
+        setTvConfig("crtEffect", (prev2) => !prev2);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -221677,7 +221743,7 @@ function Select(props) {
   const { className, expandWidthToFit, styles: styles2, ...otherProps } = props;
   const hasTouchScreen = useMedia("(pointer: coarse)");
   const isSearchable = props.isSearchable !== void 0 ? props.isSearchable : !hasTouchScreen;
-  const { leftHandedUi } = useAppStateStore();
+  const { leftHandedUi } = useTvConfig();
   return /* @__PURE__ */ React$1.createElement(
     StateManagedSelect$1,
     {
@@ -224927,7 +224993,8 @@ function SideDrawer({ children, title: title2, closeDisabled, className, visible
   const ref = reactExports.useRef(null);
   const bodyRef = reactExports.useRef(null);
   const overlayRef = reactExports.useRef(null);
-  const { showSettings, showGuideOverlay, leftHandedUi, set: setAppSetting } = useAppStateStore();
+  const { showGuideOverlay, leftHandedUi } = useTvConfig();
+  const { showSettings, set: setGlobalState } = useGlobalState();
   const [sidebarWidth, setSidebarWidth] = React$1.useState(window.innerWidth);
   reactExports.useEffect(() => {
     const width2 = ref?.current?.clientWidth;
@@ -224982,7 +225049,7 @@ function SideDrawer({ children, title: title2, closeDisabled, className, visible
         tension: 400,
         friction: 20
       } : void 0,
-      onRest: () => setAppSetting("showSettings", true)
+      onRest: () => setGlobalState("showSettings", true)
     });
   };
   const close = reactExports.useCallback(({ immediate } = { immediate: false }) => {
@@ -224994,7 +225061,7 @@ function SideDrawer({ children, title: title2, closeDisabled, className, visible
       x: 0,
       immediate,
       config: { ...config$1.stiff },
-      onRest: () => setAppSetting("showSettings", false)
+      onRest: () => setGlobalState("showSettings", false)
     });
   }, [api2, closeDisabled]);
   const overlayOpacity = x3.to((px2) => visibleBackdrop ? 0.2 * (px2 / sidebarWidth) : 0);
@@ -225008,7 +225075,7 @@ function SideDrawer({ children, title: title2, closeDisabled, className, visible
       {
         className: "action",
         "data-testid": "SideDrawer--closeButton",
-        onClick: () => setAppSetting("showSettings", false),
+        onClick: () => setGlobalState("showSettings", false),
         type: "button"
       },
       /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faXmark }),
@@ -225347,6 +225414,7 @@ function VolumeForm({ formik }) {
     }
   ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Enable full volume control rather than just mute/unmute. Note that this does not work on iOS devices due to platform limitations."), formik.touched.fullControl && fullControlError && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, fullControlError)), Object.keys(otherErrors).length > 0 && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, /* @__PURE__ */ React$1.createElement("ul", null, Object.entries(otherErrors).map(([key, error]) => /* @__PURE__ */ React$1.createElement("li", { key }, error)))));
 }
+const objectEntries = Object.entries;
 const objectKeys = Object.keys;
 const getStashOrigin = () => location.origin;
 var bail_1;
@@ -237110,10 +237178,10 @@ const SettingsTab = reactExports.memo(() => {
     actionButtonsConfig,
     mediaItemsModifierFunction,
     renderedMediaItemsBuffer,
-    set: setAppSetting,
+    set: setTvConfig,
     setToDefault: setDefaultAppSetting,
     getDefault: getDefaultAppSetting
-  } = useAppStateStore();
+  } = useTvConfig();
   const { mediaItems, mediaItemsLoading, mediaItemsNeverLoaded, mediaItemsError } = useMediaItems();
   const noMediaItemsAvailable = !mediaItemFiltersLoading && !mediaItemsLoading && mediaItems.length === 0;
   const actionButtonsConfigIsDefault = reactExports.useMemo(() => {
@@ -237170,7 +237238,7 @@ const SettingsTab = reactExports.memo(() => {
     const handlePointerUp = () => {
       clickCount += 1;
       if (clickCount > 4) {
-        setAppSetting("showDevOptions", true);
+        setTvConfig("showDevOptions", true);
       }
       clearTimeout(clearClickCountTimer);
       clearClickCountTimer = setTimeout(() => {
@@ -237251,12 +237319,12 @@ const SettingsTab = reactExports.memo(() => {
   const saveActionButtonDraft = (actionButton) => {
     const existingButtonIndex = actionButtonsConfig.findIndex((button) => button.id === actionButton.id);
     if (existingButtonIndex !== -1) {
-      setAppSetting(
+      setTvConfig(
         "actionButtonsConfig",
         actionButtonsConfig.map((button, index2) => index2 === existingButtonIndex ? actionButton : button)
       );
     } else {
-      setAppSetting(
+      setTvConfig(
         "actionButtonsConfig",
         [...actionButtonsConfig, { ...actionButton, id: Date.now().toString() }]
       );
@@ -237287,7 +237355,7 @@ const SettingsTab = reactExports.memo(() => {
         if (getActionButtonDetails(config2).hasSettings) {
           setActionButtonDraft(config2);
         } else {
-          setAppSetting("actionButtonsConfig", [...actionButtonsConfig, config2]);
+          setTvConfig("actionButtonsConfig", [...actionButtonsConfig, config2]);
         }
       }
     };
@@ -237340,7 +237408,7 @@ const SettingsTab = reactExports.memo(() => {
         inputId: "filter",
         isLoading: mediaItemFiltersLoading || mediaItemsLoading,
         value: selectedFilter ?? null,
-        onChange: (newValue) => newValue && setAppSetting("currentFilterId", newValue.value),
+        onChange: (newValue) => newValue && setTvConfig("currentFilterId", newValue.value),
         options: allFiltersGrouped,
         placeholder: `${allFilters.length > 0 ? "No filter selected" : "No filters saved in stash"}. Showing all scenes.`,
         components: {
@@ -237354,7 +237422,7 @@ const SettingsTab = reactExports.memo(() => {
         id: "randomise-filter",
         checked: isRandomised,
         label: "Randomise filter order",
-        onChange: (event2) => setAppSetting("isRandomised", event2.target.checked)
+        onChange: (event2) => setTvConfig("isRandomised", event2.target.checked)
       }
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Randomise the order of scenes in the filter."))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
@@ -237362,7 +237430,7 @@ const SettingsTab = reactExports.memo(() => {
         id: "only-show-matching-orientation",
         label: "Only Show Scenes Matching Orientation",
         checked: onlyShowMatchingOrientation,
-        onChange: (event2) => setAppSetting("onlyShowMatchingOrientation", event2.target.checked)
+        onChange: (event2) => setTvConfig("onlyShowMatchingOrientation", event2.target.checked)
       }
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Limit scenes to only those in the same orientation as the current window.")))), /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "1" }, "Media Player"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "1" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
@@ -237370,7 +237438,7 @@ const SettingsTab = reactExports.memo(() => {
         id: "auto-play",
         label: "Auto Play",
         checked: autoPlay,
-        onChange: (event2) => setAppSetting("autoPlay", event2.target.checked)
+        onChange: (event2) => setTvConfig("autoPlay", event2.target.checked)
       }
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Automatically play scenes.")), selectedFilter?.filterType === "scene" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
@@ -237378,7 +237446,7 @@ const SettingsTab = reactExports.memo(() => {
         id: "scene-preview-only",
         label: "Scene Preview Only",
         checked: scenePreviewOnly,
-        onChange: (event2) => setAppSetting("scenePreviewOnly", event2.target.checked)
+        onChange: (event2) => setTvConfig("scenePreviewOnly", event2.target.checked)
       }
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Play a short preview rather than the full scene. (Requires the preview files to have been generated in Stash for a scene otherwise the full scene will be shown.)")), selectedFilter?.filterType === "marker" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
@@ -237386,14 +237454,14 @@ const SettingsTab = reactExports.memo(() => {
         id: "marker-preview-only",
         label: "Play Low-res Preview",
         checked: markerPreviewOnly,
-        onChange: (event2) => setAppSetting("markerPreviewOnly", event2.target.checked)
+        onChange: (event2) => setTvConfig("markerPreviewOnly", event2.target.checked)
       }
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Play the low-resolution marker preview which can be useful for low bandwidth situations. (Requires the preview files to have been generated in Stash for a marker otherwise the full-quality video will be shown.)")), (!selectedFilter || selectedFilter.filterType === "scene") && !scenePreviewOnly && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "start-position" }, "Start Point"), /* @__PURE__ */ React$1.createElement(
       Select,
       {
         inputId: "start-position",
         value: startPositionOptions.find((option) => option.value === startPosition) ?? null,
-        onChange: (newValue) => newValue && setAppSetting("startPosition", newValue.value),
+        onChange: (newValue) => newValue && setTvConfig("startPosition", newValue.value),
         options: startPositionOptions
       }
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The point in the scene to start playback from.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "end-position" }, "End Point"), /* @__PURE__ */ React$1.createElement(
@@ -237401,7 +237469,7 @@ const SettingsTab = reactExports.memo(() => {
       {
         inputId: "end-position",
         value: endPositionOptions.find((option) => option.value === endPosition) ?? null,
-        onChange: (newValue) => newValue && setAppSetting("endPosition", newValue.value),
+        onChange: (newValue) => newValue && setTvConfig("endPosition", newValue.value),
         options: endPositionOptions
       }
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The point in the scene to end playback."), endPosition === "fixed-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "play-length" }, "Play Length (Seconds)"), /* @__PURE__ */ React$1.createElement(
@@ -237411,7 +237479,7 @@ const SettingsTab = reactExports.memo(() => {
         id: "play-length",
         className: "text-input",
         value: playLength ?? "",
-        onChange: (event2) => setAppSetting(
+        onChange: (event2) => setTvConfig(
           "playLength",
           event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
         )
@@ -237424,7 +237492,7 @@ const SettingsTab = reactExports.memo(() => {
         className: "text-input",
         placeholder: "Min",
         value: minPlayLength ?? "",
-        onChange: (event2) => setAppSetting(
+        onChange: (event2) => setTvConfig(
           "minPlayLength",
           event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
         )
@@ -237437,7 +237505,7 @@ const SettingsTab = reactExports.memo(() => {
         className: "text-input",
         value: maxPlayLength ?? "",
         placeholder: "Max",
-        onChange: (event2) => setAppSetting(
+        onChange: (event2) => setTvConfig(
           "maxPlayLength",
           event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
         )
@@ -237464,7 +237532,7 @@ const SettingsTab = reactExports.memo(() => {
         id: "crt-effect",
         label: "CRT Effect",
         checked: crtEffect,
-        onChange: (event2) => setAppSetting("crtEffect", event2.target.checked)
+        onChange: (event2) => setTvConfig("crtEffect", event2.target.checked)
       }
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Emulate the visual effects of an old CRT television."), crtEffect && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Slider,
@@ -237475,7 +237543,7 @@ const SettingsTab = reactExports.memo(() => {
         step: 0.2,
         marks: true,
         value: [crtEffectStrength],
-        onValueChange: (e2) => setAppSetting("crtEffectStrength", Number(e2[0]))
+        onValueChange: (e2) => setTvConfig("crtEffectStrength", Number(e2[0]))
       }
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Adjusts how strong the CRT effect is."))))), /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "2" }, "UI"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "2" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
@@ -237483,7 +237551,7 @@ const SettingsTab = reactExports.memo(() => {
         id: "left-handed-ui",
         label: "Left-handed UI",
         checked: leftHandedUi,
-        onChange: (event2) => setAppSetting("leftHandedUi", event2.target.checked)
+        onChange: (event2) => setTvConfig("leftHandedUi", event2.target.checked)
       }
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Flip the user interface for left-handed use.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", null, "Action Buttons"), /* @__PURE__ */ React$1.createElement(
       DraggableList,
@@ -237493,7 +237561,7 @@ const SettingsTab = reactExports.memo(() => {
         onItemsOrderChange: (newOrder) => {
           const buttons = newOrder.toReversed();
           const indexOfFirstNonPinned = buttons.findIndex((button) => !button.pinned);
-          setAppSetting(
+          setTvConfig(
             "actionButtonsConfig",
             buttons.map((buttonConfig, index2) => ({
               ...buttonConfig,
@@ -237533,7 +237601,7 @@ const SettingsTab = reactExports.memo(() => {
             {
               variant: "link",
               className: cx("hide-button", "muted"),
-              onClick: () => setAppSetting(
+              onClick: () => setTvConfig(
                 "actionButtonsConfig",
                 actionButtonsConfig.filter((button) => button.id !== item.id)
               )
@@ -237544,7 +237612,7 @@ const SettingsTab = reactExports.memo(() => {
             {
               variant: "link",
               className: cx("pin-button", { muted: !item.pinned }),
-              onClick: () => setAppSetting(
+              onClick: () => setTvConfig(
                 "actionButtonsConfig",
                 actionButtonsConfig.map((button) => button.id === item.id ? { ...button, pinned: !button.pinned } : button)
               )
@@ -237583,7 +237651,7 @@ const SettingsTab = reactExports.memo(() => {
     )), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Pinning buttons stops them from being pushed off screen when the window is not tall enough to show them all without scrolling.")))), /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "3" }, "Help / Info"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "3" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement(
       Button,
       {
-        onClick: () => setAppSetting("showGuideOverlay", true)
+        onClick: () => setTvConfig("showGuideOverlay", true)
       },
       "Show Guide"
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement(
@@ -237592,20 +237660,20 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setDisplayedModal("keyboard-shortcuts")
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.14.3"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.15.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
         label: "Hide Developer Options",
         checked: showDevOptions,
-        onChange: (event2) => setAppSetting("showDevOptions", false)
+        onChange: (event2) => setTvConfig("showDevOptions", false)
       }
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Hide developer options.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "log-level" }, "Log Level to Show"), /* @__PURE__ */ React$1.createElement(
       Select,
       {
         inputId: "log-level",
         value: logLevelOptions.find((option) => option.value === logLevel) ?? null,
-        onChange: (newValue) => newValue?.value && setAppSetting("logLevel", newValue.value),
+        onChange: (newValue) => newValue?.value && setTvConfig("logLevel", newValue.value),
         options: logLevelOptions
       }
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The level of logging detail.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "loggers-to-show" }, "Loggers to Show"), /* @__PURE__ */ React$1.createElement(
@@ -237621,7 +237689,7 @@ const SettingsTab = reactExports.memo(() => {
             )
           )
         ),
-        onChange: (newValues) => setAppSetting("loggersToShow", newValues.map((option) => option.value)),
+        onChange: (newValues) => setTvConfig("loggersToShow", newValues.map((option) => option.value)),
         isMulti: true,
         closeMenuOnSelect: false
       }
@@ -237639,7 +237707,7 @@ const SettingsTab = reactExports.memo(() => {
           )
         ),
         placeholder: "All loggers",
-        onChange: (newValues) => setAppSetting("loggersToHide", newValues.map((option) => option.value)),
+        onChange: (newValues) => setTvConfig("loggersToHide", newValues.map((option) => option.value)),
         isMulti: true,
         closeMenuOnSelect: false
       }
@@ -237648,7 +237716,7 @@ const SettingsTab = reactExports.memo(() => {
       {
         inputId: "show-debugging-info",
         value: showDebuggingInfoOptions.filter((option) => showDebuggingInfo.includes(option.value)),
-        onChange: (newValues) => setAppSetting("showDebuggingInfo", newValues.map((option) => option.value)),
+        onChange: (newValues) => setTvConfig("showDebuggingInfo", newValues.map((option) => option.value)),
         options: showDebuggingInfoOptions,
         isMulti: true,
         closeMenuOnSelect: false
@@ -237663,7 +237731,7 @@ const SettingsTab = reactExports.memo(() => {
         onChange: (event2) => {
           const newSize = Number.parseInt(event2.currentTarget.value);
           if (isNaN(newSize) || newSize < 1) return;
-          setAppSetting("pageSize", newSize);
+          setTvConfig("pageSize", newSize);
         }
       }
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "(Reload page to take effect.) Load this many media at a time. Default is ", getDefaultAppSetting("pageSize"), ". Changing this can impact performance.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Limit of Media to Show"), /* @__PURE__ */ React$1.createElement(
@@ -237673,7 +237741,7 @@ const SettingsTab = reactExports.memo(() => {
         id: "max-media",
         className: "text-input",
         value: maxMedia ?? "",
-        onChange: (event2) => setAppSetting(
+        onChange: (event2) => setTvConfig(
           "maxMedia",
           event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
         )
@@ -237685,7 +237753,7 @@ const SettingsTab = reactExports.memo(() => {
         id: "max-media",
         className: "text-input",
         value: renderedMediaItemsBuffer,
-        onChange: (event2) => setAppSetting(
+        onChange: (event2) => setTvConfig(
           "renderedMediaItemsBuffer",
           event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : 0
         )
@@ -237697,7 +237765,7 @@ const SettingsTab = reactExports.memo(() => {
         id: "media-items-modifier-function",
         className: "text-input",
         value: mediaItemsModifierFunction,
-        onChange: (event2) => setAppSetting(
+        onChange: (event2) => setTvConfig(
           "mediaItemsModifierFunction",
           event2.currentTarget.value
         ),
@@ -237711,7 +237779,7 @@ const SettingsTab = reactExports.memo(() => {
           label: eventName,
           value: eventName
         })),
-        onChange: (newValue) => setAppSetting(
+        onChange: (newValue) => setTvConfig(
           "videoJsEventsToLog",
           newValue.some((item) => item.value === "all") ? videoJsEvents : newValue.map((item) => item.value)
         ),
@@ -237819,7 +237887,8 @@ const GuideOverlay = (props) => {
   );
 };
 const FeedPage = reactExports.memo(({ className }) => {
-  const { showSettings, fullscreen, showDebuggingInfo, showGuideOverlay, set: setAppSetting } = useAppStateStore();
+  const { showDebuggingInfo, showGuideOverlay, set: setTvConfig } = useTvConfig();
+  const { showSettings, fullscreen, set: setGlobalState } = useGlobalState();
   const {
     currentMediaItemFilter,
     mediaItemFiltersLoading,
@@ -237835,11 +237904,11 @@ const FeedPage = reactExports.memo(({ className }) => {
   } = useMediaItems();
   const loadedButNoScenes = !mediaItemsNeverLoaded && !mediaItemsLoading && mediaItems.length === 0;
   if (loadedButNoScenes && !showSettings) {
-    setAppSetting("showSettings", true);
+    setGlobalState("showSettings", true);
   }
   reactExports.useEffect(() => {
     if (!showGuideOverlay) return;
-    setAppSetting("showSettings", false);
+    setGlobalState("showSettings", false);
   }, [showGuideOverlay]);
   const initialLoad = reactExports.useRef(true);
   reactExports.useEffect(() => {
@@ -237900,7 +237969,7 @@ const FeedPage = reactExports.memo(({ className }) => {
       error: mediaItemsError
     },
     showSettings
-  }, null, 2))), /* @__PURE__ */ React$1.createElement(SettingsActionButton, null)) : /* @__PURE__ */ React$1.createElement(VideoScroller, null), /* @__PURE__ */ React$1.createElement(SettingsTab, null), showGuideOverlay && /* @__PURE__ */ React$1.createElement(GuideOverlay, { onClose: () => setAppSetting("showGuideOverlay", false) }));
+  }, null, 2))), /* @__PURE__ */ React$1.createElement(SettingsActionButton, null)) : /* @__PURE__ */ React$1.createElement(VideoScroller, null), /* @__PURE__ */ React$1.createElement(SettingsTab, null), showGuideOverlay && /* @__PURE__ */ React$1.createElement(GuideOverlay, { onClose: () => setTvConfig("showGuideOverlay", false) }));
 });
 FeedPage.displayName = "FeedPage";
 const originalDescriptorsObjectMap = /* @__PURE__ */ new WeakMap();
@@ -238643,7 +238712,8 @@ const flattenMessages = (nestedMessages, prefix2 = "") => {
   }, {});
 };
 function useDevConsoleHelpers() {
-  const { showDevOptions, get: getAppState, set: setAppState } = useAppStateStore();
+  const { showDevOptions, get: getAppState, set: setTvConfig } = useTvConfig();
+  const { set: setGlobalState } = useGlobalState();
   reactExports.useEffect(() => {
     if (showDevOptions) {
       window.freeze = (countdown = 2) => {
@@ -238651,20 +238721,100 @@ function useDevConsoleHelpers() {
           debugger;
         }, countdown * 1e3);
       };
-      window.showSettings = () => setAppState("showSettings", true);
-      window.setAppState = setAppState;
+      window.showSettings = () => setGlobalState("showSettings", true);
+      window.setTvConfig = setTvConfig;
       window.getAppState = getAppState;
     } else {
       delete window.freeze;
       delete window.showSettings;
-      delete window.setAppState;
+      delete window.setTvConfig;
       delete window.getAppState;
     }
   }, [showDevOptions]);
 }
+const DPAD_BUTTON_MAP_PORTRAIT = {
+  12: "ArrowUp",
+  13: "ArrowDown",
+  14: "ArrowLeft",
+  15: "ArrowRight"
+};
+const DPAD_BUTTON_MAP_LANDSCAPE = {
+  12: "ArrowLeft",
+  13: "ArrowRight",
+  14: "ArrowDown",
+  15: "ArrowUp"
+};
+const BUTTON_ACTION_MAP = {
+  8: () => window.dispatchEvent(new CustomEvent(TOGGLE_VIDEO_EVENT)),
+  17: () => window.dispatchEvent(new CustomEvent(PAUSE_VIDEO_EVENT))
+};
+function useGamepad({ forceLandscape }) {
+  const setConnected = useGamepadState((state) => state.setConnected);
+  reactExports.useEffect(() => {
+    const handleConnect = () => setConnected(true);
+    const handleDisconnect = () => setConnected(Array.from(navigator.getGamepads()).some(Boolean));
+    window.addEventListener("gamepadconnected", handleConnect);
+    window.addEventListener("gamepaddisconnected", handleDisconnect);
+    setConnected(Array.from(navigator.getGamepads()).some(Boolean));
+    return () => {
+      window.removeEventListener("gamepadconnected", handleConnect);
+      window.removeEventListener("gamepaddisconnected", handleDisconnect);
+    };
+  }, [setConnected]);
+  reactExports.useEffect(() => {
+    const dpadButtonMap = forceLandscape ? DPAD_BUTTON_MAP_LANDSCAPE : DPAD_BUTTON_MAP_PORTRAIT;
+    const keyButtonMap = { ...dpadButtonMap };
+    const previousButtonStates = /* @__PURE__ */ new Map();
+    let animationFrameId;
+    const dispatchKey = (key, type3) => {
+      window.dispatchEvent(
+        new KeyboardEvent(type3, {
+          key,
+          code: key,
+          bubbles: true,
+          cancelable: true,
+          capture: true
+        })
+      );
+    };
+    const poll = () => {
+      const gamepads = navigator.getGamepads();
+      for (const gamepad of gamepads) {
+        if (!gamepad) continue;
+        for (const [buttonIndex, key] of objectEntries(keyButtonMap)) {
+          const index2 = Number(buttonIndex);
+          const pressed = gamepad.buttons[index2]?.pressed ?? false;
+          const wasPressed = previousButtonStates.get(index2) ?? false;
+          if (pressed && !wasPressed) dispatchKey(key, "keydown");
+          else if (!pressed && wasPressed) dispatchKey(key, "keyup");
+          previousButtonStates.set(index2, pressed);
+        }
+        for (const [buttonIndex, action] of objectEntries(BUTTON_ACTION_MAP)) {
+          const index2 = Number(buttonIndex);
+          const pressed = gamepad.buttons[index2]?.pressed ?? false;
+          const wasPressed = previousButtonStates.get(index2) ?? false;
+          if (pressed && !wasPressed) action();
+          previousButtonStates.set(index2, pressed);
+        }
+      }
+      animationFrameId = requestAnimationFrame(poll);
+    };
+    const handleGamepadConnected = () => {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(poll);
+    };
+    window.addEventListener("gamepadconnected", handleGamepadConnected);
+    animationFrameId = requestAnimationFrame(poll);
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("gamepadconnected", handleGamepadConnected);
+    };
+  }, [forceLandscape]);
+}
 await setupLogging();
 const App = () => {
-  const { forceLandscape, logLevel, loggersToShow, loggersToHide, storeLoaded } = useAppStateStore();
+  const { forceLandscape, logLevel, loggersToShow, loggersToHide } = useTvConfig();
+  const { tvConfigLoaded } = useGlobalState();
   reactExports.useEffect(() => {
     setupLogging({ logLevel, logCategoriesToShow: loggersToShow, logCategoriesToHide: loggersToHide });
   }, [logLevel, loggersToShow, loggersToHide]);
@@ -238690,7 +238840,8 @@ const App = () => {
     }
   }), []);
   useDevConsoleHelpers();
-  if (!storeLoaded) return null;
+  useGamepad({ forceLandscape });
+  if (!tvConfigLoaded) return null;
   return /* @__PURE__ */ React$1.createElement(
     IntlProvider,
     {
@@ -238714,4 +238865,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-C9HZcRwV.js.map
+//# sourceMappingURL=index-DoMeHkX-.js.map
