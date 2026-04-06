@@ -10451,7 +10451,6 @@ select {
   scroll-snap-type: y mandatory;
   scroll-behavior: auto;
   container: viewport/size;
-  --overlay-edge-margin: 10px;
 }
 html.force-landscape {
   scroll-snap-type: unset; /* When the root is rotated scroll snapping doesn't seem to work on the root so we set it on a child instead */
@@ -13348,6 +13347,255 @@ video-js.video-js {
 html:has(dialog[open]) .video-js .vjs-big-play-button {
   display: none;
 }
+.ActionButtonStack {
+  --bottom-offset: 1.1em;
+  --side-offset: calc(0.8em + (var(--crt-inset-right) / 2) );
+  position: absolute;
+  bottom: calc(var(--y-dynamic-diff) + var(--crt-inset-bottom) + var(--bottom-offset));
+  padding-top: calc(var(--safe-inset-top) + var(--crt-inset-top));
+  padding-right: calc(var(--safe-inset-right) + (var(--crt-inset-right) / 2));
+  right: var(--side-offset);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+  z-index: 3;
+  max-height: calc(var(--y-unit-small) * 100 - var(--bottom-offset));
+
+  &.left-handed {
+    --side-offset: calc(0.8em + (var(--crt-inset-right) / 2));
+    right: unset;
+    left: var(--side-offset);
+    padding-right: unset;
+    padding-left: calc(var(--safe-inset-left) + (var(--crt-inset-left) / 2));
+    align-items: start;
+  }
+
+  .stack {
+    position: relative;
+    padding-top: 10px;
+    overflow-y: auto;
+    /* Firefox will automatically make overflow-x visible if overflow-y is set to auto even if we try to explicitly set
+overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appearing. */
+    overflow-x: hidden;
+
+    /* To avoid the drop shadows of the buttons being clipped we add some padding */
+    min-width: calc(40px + (var(--side-offset) * 3)); /* Button width + padding on either side + extra for scroll bar */
+    padding-right: var(--side-offset);
+    translate: var(--side-offset) 0;
+
+    --additional-transitions: var(--overflow-indicators-transition);
+  }
+
+  .stack, .pinned {
+    display: flex;
+    /* We reverse the order so that we start from the bottom when scrollable */
+    flex-direction: column-reverse;
+    align-items: end;
+
+    .folder {
+      .folder-contents {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.2em;
+        flex-direction: row-reverse;
+        justify-content: center;
+        > * {
+          flex: 0 0 0.8em;
+        }
+      }
+
+      height: 40px;
+      width: 40px;
+      margin: 5px 0;
+      border-radius: 0.3em;
+
+      button& {
+        background: none;
+        border: none;
+        color: inherit;
+      }
+
+      .hide-icon {
+        height: 100%;
+        width: 100%;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &.left-handed .stack {
+    translate: calc(var(--side-offset) * -1) 0;
+    padding-right: unset;
+    padding-left: var(--side-offset);
+    align-items: start;
+  }
+
+  .toggle-ui {
+    /* Stop the position of the toggle icon from shifting relative to the progress bar as the size of the buttons flexes */
+    align-items: end;
+    svg {
+      margin-bottom: 10px;
+    }
+  }
+
+  .ActionButton {
+    /* Rotate icon if device is landscape to reflect device */
+    @container viewport (min-aspect-ratio: 1/1) {
+      /* width >= height */
+      &.letterboxing svg {
+        transform: rotate(90deg);
+      }
+    }
+
+    svg {
+      /* Compensate for icons with less mass having visually lighter shadows */
+      &.fa-expand {
+        --shadow-layer-opacity: 0.24;
+      }
+
+      &.fa-down-left-and-up-right-to-center {
+        --shadow-layer-opacity: 0.14;
+      }
+
+      &.fa-repeat {
+        --shadow-layer-opacity: 0.19;
+      }
+
+      &.fa-ellipsis-vertical {
+        --shadow-layer-opacity: 0.15;
+      }
+
+      &.icon-fullscreen {
+        --shadow-layer-opacity: 0.3;
+      }
+    }
+  }
+}
+
+/* These live inside popover elements which are rendered as children of body */
+.action-button-side-panel-edit-tags {
+  width: 650px;
+
+  .primary-tag-note {
+    margin-top: 0.5em;
+    opacity: 0.8;
+    font-style: italic;
+  }
+}
+.action-button-create-marker {
+  margin: 0.5em;
+}
+.action-button-rating-stars {
+  display: flex;
+
+  &.not-set .clear,
+  &:not(.stars) .clear,
+  &:has(.rating-stars .star-rating-number) .clear {
+    display: none;
+  }
+
+  .rating-stars {
+    button {
+      /* We don't want any margin or gap between the stars so that when moving the cursor between the cursor never goes
+      over a space between the buttons which would cause it flick between showing a new rating, the current one and then
+      a new one again. */
+      margin: 0;
+
+      > div {
+        padding-left: 0.2em;
+        padding-right: 0.2em;
+      }
+    }
+  }
+
+  .star-rating-number {
+    font-size: unset;
+  }
+  &:not(.left-handed) .star-rating-number {
+    order: -1;
+    margin-left: 0;
+  }
+
+  svg {
+    width: 1.5em;
+    height: 1lh;
+    display: block; /* Remove small space under inline-blocks */
+  }
+}
+.action-button-o-counter {
+  display: flex;
+  gap: 0.3em;
+
+  button {
+    background: none;
+    border: none;
+    color: inherit;
+
+    &[disabled] {
+      opacity: 0.4;
+    }
+  }
+}
+.action-button-rating-stars,
+.action-button-o-counter {
+  font-size: 1.2em;
+}
+
+.folder-contents-popover {
+  &:not(.left-handed) {
+    translate: calc(var(--safe-inset-right) * -1) 0 !important;
+  }
+  background: none;
+  border: 0;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-y: auto;
+  z-index: 1;
+  padding: 0.5em; /* Add some padding so the drop shadow's aren't abruptly cut off by overflow auto */
+  overflow: auto;
+
+  > .arrow {
+    display: none;
+  }
+}
+.indicators-on-overflow {
+  --fade-height: 4em;
+  --top-fade-height: var(--fade-height);
+  --bottom-fade-height: var(--fade-height);
+  --overflow-indicators-transition-duration: 0.2s;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black var(--top-fade-height, 0),
+    black calc(100% - var(--bottom-fade-height, 0)),
+    transparent 100%
+  );
+  mask-size: 100% calc(100% + ( var(--fade-height) * 2 ));
+  mask-position: center;
+  --overflow-indicators-transition:
+    mask-position var(--overflow-indicators-transition-duration) ease,
+    mask-size var(--overflow-indicators-transition-duration) ease;
+  transition: var(--overflow-indicators-transition);
+
+
+  &.top-overflowing {
+    mask-position: top;
+    mask-size: 100% calc(100% + var(--fade-height));
+  }
+
+  &.bottom-overflowing {
+    mask-position: bottom;
+    mask-size: 100% calc(100% + var(--fade-height));
+  }
+
+  &.top-overflowing.bottom-overflowing {
+    mask-size: 100% 100%;
+    mask-position: center;
+  }
+}
 .ActionButton {
   display: flex;
   gap: 3px;
@@ -13468,16 +13716,6 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   .left-handed {
     translate: calc(var(--safe-inset-left) * 1) 0 !important;
   }
-  max-width: calc(
-    ( var(--x-unit-dynamic) * 100 )
-    -
-    ( 65px + var(--safe-inset-left) + var(--safe-inset-right) + var(--overlay-edge-margin) * 2 )
-  );
-  max-height: calc(
-    ( var(--y-unit-dynamic) * 100 )
-    -
-    ( var(--safe-inset-top) + var(--safe-inset-bottom) + var(--overlay-edge-margin) * 2 )
-  );
   display: flex;
 
   &.show {
@@ -13501,202 +13739,19 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
     width: 100%;
   }
 }
-.ActionButtons {
-  --bottom-offset: 1.1em;
-  --side-offset: calc(0.8em + (var(--crt-inset-right) / 2) );
-  position: absolute;
-  bottom: calc(var(--y-dynamic-diff) + var(--crt-inset-bottom) + var(--bottom-offset));
-  padding-top: calc(var(--safe-inset-top) + var(--crt-inset-top));
-  padding-right: calc(var(--safe-inset-right) + (var(--crt-inset-right) / 2));
-  right: var(--side-offset);
 
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  align-items: end;
-  z-index: 3;
-  max-height: calc(var(--y-unit-small) * 100 - var(--bottom-offset));
-
-  &.left-handed {
-    --side-offset: calc(0.8em + (var(--crt-inset-right) / 2));
-    right: unset;
-    left: var(--side-offset);
-    padding-right: unset;
-    padding-left: calc(var(--safe-inset-left) + (var(--crt-inset-left) / 2));
-    align-items: start;
+.ActionButtonIcon {
+  &.size-standard {
+    width: auto;
+    height: auto;
   }
-
-  .stack {
-    position: relative;
-    padding-top: 10px;
-    overflow-y: auto;
-    /* Firefox will automatically make overflow-x visible if overflow-y is set to auto even if we try to explicitly set
-overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appearing. */
-    overflow-x: hidden;
-
-    /* To avoid the drop shadows of the buttons being clipped we add some padding */
-    min-width: calc(40px + (var(--side-offset) * 3)); /* Button width + padding on either side + extra for scroll bar */
-    padding-right: var(--side-offset);
-    translate: var(--side-offset) 0;
-
-    --additional-transitions: var(--overflow-indicators-transition);
+  &.size-small {
+    width: 1.9em;
+    height: 1.9em;
   }
-
-  .stack, .pinned {
-    display: flex;
-    /* We reverse the order so that we start from the bottom when scrollable */
-    flex-direction: column-reverse;
-  }
-
-  &.left-handed .stack {
-    translate: calc(var(--side-offset) * -1) 0;
-    padding-right: unset;
-    padding-left: var(--side-offset);
-  }
-
-  .toggle-ui {
-    /* Stop the position of the toggle icon from shifting relative to the progress bar as the size of the buttons flexes */
-    align-items: end;
-    svg {
-      margin-bottom: 10px;
-    }
-  }
-
-  .ActionButton {
-    /* Rotate icon if device is landscape to reflect device */
-    @container viewport (min-aspect-ratio: 1/1) {
-      /* width >= height */
-      &.letterboxing svg {
-        transform: rotate(90deg);
-      }
-    }
-
-    svg {
-      /* Compensate for icons with less mass having visually lighter shadows */
-      &.fa-expand {
-        --shadow-layer-opacity: 0.24;
-      }
-
-      &.fa-down-left-and-up-right-to-center {
-        --shadow-layer-opacity: 0.14;
-      }
-
-      &.fa-repeat {
-        --shadow-layer-opacity: 0.19;
-      }
-
-      &.fa-ellipsis-vertical {
-        --shadow-layer-opacity: 0.15;
-      }
-
-      &.icon-fullscreen {
-        --shadow-layer-opacity: 0.3;
-      }
-    }
-  }
-}
-
-/* These live inside popover elements which are rendered as children of body */
-.action-button-side-panel-edit-tags {
-  width: 650px;
-
-  .primary-tag-note {
-    margin-top: 0.5em;
-    opacity: 0.8;
-    font-style: italic;
-  }
-}
-.action-button-create-marker {
-  margin: 0.5em;
-}
-.action-button-rating-stars {
-  display: flex;
-
-  &.not-set .clear,
-  &:not(.stars) .clear,
-  &:has(.rating-stars .star-rating-number) .clear {
-    display: none;
-  }
-
-  .rating-stars {
-    button {
-      /* We don't want any margin or gap between the stars so that when moving the cursor between the cursor never goes
-      over a space between the buttons which would cause it flick between showing a new rating, the current one and then
-      a new one again. */
-      margin: 0;
-
-      > div {
-        padding-left: 0.2em;
-        padding-right: 0.2em;
-      }
-    }
-  }
-
-  .star-rating-number {
-    font-size: unset;
-  }
-  &:not(.left-handed) .star-rating-number {
-    order: -1;
-    margin-left: 0;
-  }
-
-  svg {
-    width: 1.5em;
-    height: 1lh;
-    display: block; /* Remove small space under inline-blocks */
-  }
-}
-.action-button-o-counter {
-  display: flex;
-  gap: 0.3em;
-
-  button {
-    background: none;
-    border: none;
-    color: inherit;
-
-    &[disabled] {
-      opacity: 0.4;
-    }
-  }
-}
-.action-button-rating-stars,
-.action-button-o-counter {
-  font-size: 1.2em;
-}
-.indicators-on-overflow {
-  --fade-height: 4em;
-  --top-fade-height: var(--fade-height);
-  --bottom-fade-height: var(--fade-height);
-  --overflow-indicators-transition-duration: 0.2s;
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    black var(--top-fade-height, 0),
-    black calc(100% - var(--bottom-fade-height, 0)),
-    transparent 100%
-  );
-  mask-size: 100% calc(100% + ( var(--fade-height) * 2 ));
-  mask-position: center;
-  --overflow-indicators-transition:
-    mask-position var(--overflow-indicators-transition-duration) ease,
-    mask-size var(--overflow-indicators-transition-duration) ease;
-  transition: var(--overflow-indicators-transition);
-
-
-  &.top-overflowing {
-    mask-position: top;
-    mask-size: 100% calc(100% + var(--fade-height));
-  }
-
-  &.bottom-overflowing {
-    mask-position: bottom;
-    mask-size: 100% calc(100% + var(--fade-height));
-  }
-
-  &.top-overflowing.bottom-overflowing {
-    mask-size: 100% 100%;
-    mask-position: center;
+  &.size-max {
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -14519,6 +14574,313 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   height: 1em;
   vertical-align: -0.125em;
 }
+.SceneMarkerForm {
+  form > * {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    .input-group {
+      .invalid-feedback {
+        white-space: normal;
+        flex: 1 1 100%;
+        width: 0;
+        max-width: 100%;
+      }
+    }
+  }
+}
+.tag-list-row {
+  margin: 0.5rem 0;
+}
+.tag-list-button {
+  margin: 0 0.5rem;
+  width: 8rem;
+}
+.tag-list-anchor {
+  color: #f5f8fa;
+}
+.tag-list-count {
+  display: inline-block;
+  margin: 0 0.5rem;
+  min-width: 6rem;
+}
+
+.tag-card {
+  padding: 0.5rem;
+}
+@media (max-width: 576px) {
+  .tag-card {
+    width: 100%;
+  }
+}
+.tag-card-image {
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+.tag-card button.btn.favorite-button {
+  opacity: 1;
+  padding: 0;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  transition: opacity 0.5s;
+}
+.tag-card button.btn.favorite-button svg.fa-icon {
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+}
+.tag-card button.btn.favorite-button.not-favorite {
+  color: rgba(191, 204, 214, 0.5);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
+  opacity: 0;
+}
+.tag-card button.btn.favorite-button.favorite {
+  color: #ff7373;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
+}
+.tag-card button.btn.favorite-button:hover, .tag-card button.btn.favorite-button:active, .tag-card button.btn.favorite-button:focus, .tag-card button.btn.favorite-button:active:focus {
+  background: none;
+  box-shadow: none;
+}
+.tag-card:hover button.btn.favorite-button.not-favorite {
+  opacity: 1;
+}
+
+#tag-page .tag-head .name-icons .not-favorite {
+  color: rgba(191, 204, 214, 0.5);
+}
+#tag-page .tag-head .name-icons .favorite {
+  color: #ff7373;
+}
+
+.tag-details .logo {
+  max-height: 50vh;
+  max-width: 100%;
+}
+.tag-details .logo-container {
+  margin-bottom: 4rem;
+}
+
+#tag-merge-menu .dropdown-item {
+  align-items: center;
+}
+
+.tag-card .tag-description + div {
+  margin-top: 1rem;
+}
+
+.tag-popover-card-placeholder {
+  display: flex;
+  max-width: 240px;
+  min-height: 314px;
+  width: calc(100vw - 2rem);
+}
+
+.tag-popover-card {
+  padding: 0.5rem;
+  text-align: left;
+}
+.tag-popover-card .card {
+  background: transparent;
+  box-shadow: none;
+  max-width: calc(100vw - 2rem);
+  padding: 0;
+  width: 240px;
+}
+
+.tag-item .icon-wrapper {
+  color: #202b33;
+  opacity: 0.5;
+  padding-left: 6px;
+}
+
+.tag-item .tag-icon {
+  color: #202b33;
+  margin: 0;
+  opacity: 0.5;
+  padding-left: 3px;
+  transform: scale(0.7);
+}
+
+.tag-select .alias {
+  font-weight: bold;
+  white-space: pre;
+}
+
+.tag-select-image {
+  height: 25px;
+  margin-right: 0.5em;
+  width: 25px;
+}.Switch {
+  /* We add that extra class selector to increase specificity to override bootstrap styles */
+  &.custom-switch {
+    padding-left: initial;
+
+    .custom-control-label {
+      align-items: baseline;
+      display: flex;
+      --baseline-offset: 0.1rem;
+      --knob-width: calc(1rem - 4px);
+
+      span {
+        flex: 1 1 auto;
+      }
+
+      &::before,
+      &::after {
+        position: unset;
+        grid-column: 2;
+        grid-row: 1;
+        flex: 0 0 auto;
+      }
+
+      /* The track */
+      &::before {
+        translate: 0 var(--baseline-offset);
+        order: 3;
+      }
+
+      /* The knob */
+      &::after {
+        translate: calc(var(--knob-width) + 2px) calc(var(--baseline-offset) - 2px);
+        order: 2;
+        position: relative;
+        top: unset;
+        left: var(--width);
+        z-index: 2;
+      }
+    }
+  }
+}
+.Select {
+
+  .react-select__control {
+    min-height: 1lh;
+
+    .react-select__single-value {
+      display: flex;
+      gap: 0.5em;
+      align-items: center;
+    }
+
+    .react-select__input-container {
+      margin: 0;
+    }
+
+    .react-select__indicator {
+      color: color-mix(in srgb, var(--text-color) 80%, black);
+      transition: color 150ms;
+      padding: 0.3em 0.5em;
+    }
+
+    .react-select__indicator-separator {
+      background-color: color-mix(in srgb, var(--text-color) 40%, black);
+      margin: 0;
+    }
+  }
+
+  &:hover {
+    .react-select__indicator {
+      color: var(--text-color);
+    }
+  }
+}
+
+/* Rendered in portal outside of Select component */
+.react-select__menu-portal {
+  .react-select__menu {
+    z-index: 10;
+
+    &.menu-below {
+      margin-top: 2px;
+    }
+    &.menu-above {
+      margin-bottom: 2px;
+    }
+
+    .react-select__menu-list {
+      overscroll-behavior: contain;
+    }
+
+    .react-select__option--is-selected {
+      background-color: var(--theme-colors-primary);
+    }
+
+    .react-select__group {
+      padding-bottom: 0;
+      padding-top: 0;
+      margin-bottom: 8px;
+      margin-top: 8px;
+
+      .react-select__group-heading {
+        font-size: 1.1em;
+        text-transform: unset;
+        color: inherit;
+        background-color: var(--textfield-bg);
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+      }
+    }
+  }
+}
+.EditTagSelectionForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  .main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+
+    .actions {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
+    }
+
+    .tag-select {
+      flex: 1 1 min-content;
+    }
+  }
+}
+.Tag {
+  button& {
+    margin: 0;
+    padding: 0;
+
+    &:hover:not(:disabled) {
+      .add-icon {
+        color: var(--text-color);
+        cursor: pointer;
+      }
+    }
+  }
+
+  &.tag-item:hover {
+    cursor: unset;
+  }
+
+  .add-icon {
+    background: none;
+    border: none;
+    color: var(--body-bg);
+    font-size: 12px;
+    line-height: 1rem;
+    padding: 0 0.2rem 0 0.4rem ;
+    position: relative;
+  }
+}
 .rating-stars {
   display: inline-flex;
   vertical-align: middle;
@@ -14730,198 +15092,6 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     }
   }
 }
-.SceneMarkerForm {
-  form > * {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-
-    .input-group {
-      .invalid-feedback {
-        white-space: normal;
-        flex: 1 1 100%;
-        width: 0;
-        max-width: 100%;
-      }
-    }
-  }
-}
-.EditTagSelectionForm {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-
-  .main {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
-
-    .actions {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 1em;
-    }
-
-    .tag-select {
-      flex: 1 1 min-content;
-    }
-  }
-}
-.tag-list-row {
-  margin: 0.5rem 0;
-}
-.tag-list-button {
-  margin: 0 0.5rem;
-  width: 8rem;
-}
-.tag-list-anchor {
-  color: #f5f8fa;
-}
-.tag-list-count {
-  display: inline-block;
-  margin: 0 0.5rem;
-  min-width: 6rem;
-}
-
-.tag-card {
-  padding: 0.5rem;
-}
-@media (max-width: 576px) {
-  .tag-card {
-    width: 100%;
-  }
-}
-.tag-card-image {
-  display: block;
-  margin: 0 auto;
-  object-fit: contain;
-}
-.tag-card button.btn.favorite-button {
-  opacity: 1;
-  padding: 0;
-  position: absolute;
-  right: 5px;
-  top: 10px;
-  transition: opacity 0.5s;
-}
-.tag-card button.btn.favorite-button svg.fa-icon {
-  margin-left: 0.4rem;
-  margin-right: 0.4rem;
-}
-.tag-card button.btn.favorite-button.not-favorite {
-  color: rgba(191, 204, 214, 0.5);
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
-  opacity: 0;
-}
-.tag-card button.btn.favorite-button.favorite {
-  color: #ff7373;
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
-}
-.tag-card button.btn.favorite-button:hover, .tag-card button.btn.favorite-button:active, .tag-card button.btn.favorite-button:focus, .tag-card button.btn.favorite-button:active:focus {
-  background: none;
-  box-shadow: none;
-}
-.tag-card:hover button.btn.favorite-button.not-favorite {
-  opacity: 1;
-}
-
-#tag-page .tag-head .name-icons .not-favorite {
-  color: rgba(191, 204, 214, 0.5);
-}
-#tag-page .tag-head .name-icons .favorite {
-  color: #ff7373;
-}
-
-.tag-details .logo {
-  max-height: 50vh;
-  max-width: 100%;
-}
-.tag-details .logo-container {
-  margin-bottom: 4rem;
-}
-
-#tag-merge-menu .dropdown-item {
-  align-items: center;
-}
-
-.tag-card .tag-description + div {
-  margin-top: 1rem;
-}
-
-.tag-popover-card-placeholder {
-  display: flex;
-  max-width: 240px;
-  min-height: 314px;
-  width: calc(100vw - 2rem);
-}
-
-.tag-popover-card {
-  padding: 0.5rem;
-  text-align: left;
-}
-.tag-popover-card .card {
-  background: transparent;
-  box-shadow: none;
-  max-width: calc(100vw - 2rem);
-  padding: 0;
-  width: 240px;
-}
-
-.tag-item .icon-wrapper {
-  color: #202b33;
-  opacity: 0.5;
-  padding-left: 6px;
-}
-
-.tag-item .tag-icon {
-  color: #202b33;
-  margin: 0;
-  opacity: 0.5;
-  padding-left: 3px;
-  transform: scale(0.7);
-}
-
-.tag-select .alias {
-  font-weight: bold;
-  white-space: pre;
-}
-
-.tag-select-image {
-  height: 25px;
-  margin-right: 0.5em;
-  width: 25px;
-}.Tag {
-  button& {
-    margin: 0;
-    padding: 0;
-
-    &:hover:not(:disabled) {
-      .add-icon {
-        color: var(--text-color);
-        cursor: pointer;
-      }
-    }
-  }
-
-  &.tag-item:hover {
-    cursor: unset;
-  }
-
-  .add-icon {
-    background: none;
-    border: none;
-    color: var(--body-bg);
-    font-size: 12px;
-    line-height: 1rem;
-    padding: 0 0.2rem 0 0.4rem ;
-    position: relative;
-  }
-}
 .SceneInfo {
   position: absolute;
   bottom: calc(5em + var(--y-dynamic-diff));
@@ -15054,80 +15224,6 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     opacity: 0;
   }
 }
-.Select {
-
-  .react-select__control {
-    min-height: 1lh;
-
-    .react-select__single-value {
-      display: flex;
-      gap: 0.5em;
-      align-items: center;
-    }
-
-    .react-select__input-container {
-      margin: 0;
-    }
-
-    .react-select__indicator {
-      color: color-mix(in srgb, var(--text-color) 80%, black);
-      transition: color 150ms;
-      padding: 0.3em 0.5em;
-    }
-
-    .react-select__indicator-separator {
-      background-color: color-mix(in srgb, var(--text-color) 40%, black);
-      margin: 0;
-    }
-  }
-
-  &:hover {
-    .react-select__indicator {
-      color: var(--text-color);
-    }
-  }
-}
-
-/* Rendered in portal outside of Select component */
-.react-select__menu-portal {
-  .react-select__menu {
-    z-index: 10;
-
-    &.menu-below {
-      margin-top: 2px;
-    }
-    &.menu-above {
-      margin-bottom: 2px;
-    }
-
-    .react-select__menu-list {
-      overscroll-behavior: contain;
-    }
-
-    .react-select__option--is-selected {
-      background-color: var(--theme-colors-primary);
-    }
-
-    .react-select__group {
-      padding-bottom: 0;
-      padding-top: 0;
-      margin-bottom: 8px;
-      margin-top: 8px;
-
-      .react-select__group-heading {
-        font-size: 1.1em;
-        text-transform: unset;
-        color: inherit;
-        background-color: var(--textfield-bg);
-        padding-top: 0.4em;
-        padding-bottom: 0.4em;
-        display: flex;
-        gap: 0.5em;
-        align-items: center;
-      }
-    }
-  }
-}
 .SettingsTab .accordion > button {
   display: block;
   padding: 0;
@@ -15202,6 +15298,10 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 .SettingsTab label {
   font-size: 1.3rem;
 }
+.SettingsTab .large-icon {
+  height: 2em;
+  margin-bottom: 1em;
+}
 .SettingsTab .form-group .form-group {
   margin-top: 1em;
 }
@@ -15229,12 +15329,25 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   align-items: center;
   padding: var(--item-padding) 0;
 }
+.SettingsTab .draggable-list .draggable-list-item.folder {
+  flex-direction: column;
+  align-items: stretch;
+}
+.SettingsTab .draggable-list .draggable-list-item.folder .instructions {
+  padding-left: 2.5em; /* .draggable-list-item's drag handle has a bit of space on the left for extra hit box size so we make .instructions slightly bigger so that visually they're the same */
+}
+.SettingsTab .draggable-list .draggable-list-item.folder .draggable-list-item {
+  padding-left: 2em;
+}
 .SettingsTab .draggable-list .draggable-list-item .drag-handle {
   display: flex;
   gap: 0.5em;
   align-items: center;
   padding-left: 1.5em;
   margin-left: -1em;
+}
+.SettingsTab .draggable-list .draggable-list-item .drag-handle.disable .fa-grip-vertical {
+  visibility: hidden;
 }
 .SettingsTab .draggable-list .draggable-list-item .controls button {
   font-size: 1.3em;
@@ -15255,11 +15368,11 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   height: 2em;
   padding: 0.1em;
 }
-.SettingsTab .add-action-button {
+.SettingsTab .add-config-item {
   padding-left: 0.2em;
   text-align: left;
 }
-.SettingsTab .add-action-button .info {
+.SettingsTab .add-config-item .info {
   color: var(--text-color);
   display: flex;
   align-items: center;
@@ -15311,6 +15424,7 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   padding-inline-end: var(--side-padding);
   background-color: var(--body-bg);
   max-height: 100%;
+  z-index: 10;
 }
 .SideDrawer.left-handed {
   --safe-inset-draw-side: var(--safe-inset-left);
@@ -15334,7 +15448,6 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   background: inherit;
   height: 100%; /* this is too small in iOS safari but too big when viewed as a web app on iOS */
   width: 100%;
-  z-index: 10;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -15381,48 +15494,7 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   cursor: pointer;
   touch-action: none; /* Disable scrolling videos when side drawer is open */
   transition: opacity 50ms ease;
-}.Switch {
-  /* We add that extra class selector to increase specificity to override bootstrap styles */
-  &.custom-switch {
-    padding-left: initial;
-
-    .custom-control-label {
-      align-items: baseline;
-      display: flex;
-      --baseline-offset: 0.1rem;
-      --knob-width: calc(1rem - 4px);
-
-      span {
-        flex: 1 1 auto;
-      }
-
-      &::before,
-      &::after {
-        position: unset;
-        grid-column: 2;
-        grid-row: 1;
-        flex: 0 0 auto;
-      }
-
-      /* The track */
-      &::before {
-        translate: 0 var(--baseline-offset);
-        order: 3;
-      }
-
-      /* The knob */
-      &::after {
-        translate: calc(var(--knob-width) + 2px) calc(var(--baseline-offset) - 2px);
-        order: 2;
-        position: relative;
-        top: unset;
-        left: var(--width);
-        z-index: 2;
-      }
-    }
-  }
-}
-.DraggableList {
+}.DraggableList {
   ul& {
     list-style: none;
     padding: 0;

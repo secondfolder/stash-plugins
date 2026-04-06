@@ -354,11 +354,11 @@ function Rr(e) {
     }
   });
 }
-const Fu = L({}, Du);
-Fu[xe] = L(L(L(L({}, {
+const Cu = L({}, Du);
+Cu[xe] = L(L(L(L({}, {
   "fa-duotone": "duotone"
 }), Du[xe]), ao.kit), ao["kit-duotone"]);
-const Af = Rr(Fu), ki = L({}, ff);
+const Af = Rr(Cu), ki = L({}, ff);
 ki[xe] = L(L(L(L({}, {
   duotone: "fad"
 }), ki[xe]), oo.kit), oo["kit-duotone"]);
@@ -367,7 +367,7 @@ Oi[xe] = L(L({}, Oi[xe]), gf.kit);
 const ga = Rr(Oi), xi = L({}, Sf);
 xi[xe] = L(L({}, xi[xe]), hf.kit);
 Rr(xi);
-const Ff = rf, Cu = "fa-layers-text", Cf = nf, $f = L({}, uf);
+const Cf = rf, Fu = "fa-layers-text", Ff = nf, $f = L({}, uf);
 Rr($f);
 const Pf = ["class", "data-prefix", "data-icon", "data-fa-transform", "data-fa-mask"], Rn = af, Nf = [...pf, ...If], _r = ft.FontAwesomeConfig || {};
 function Rf(e) {
@@ -1158,12 +1158,12 @@ function fo(e) {
     return !!n.icon ? t[n.iconName] = n.icon : t[r] = n, t;
   }, {});
 }
-function Fi(e, t) {
+function Ci(e, t) {
   let r = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
   const {
     skipHooks: n = !1
   } = r, i = fo(t);
-  typeof ze.hooks.addPack == "function" && !n ? ze.hooks.addPack(e, fo(t)) : ze.styles[e] = L(L({}, ze.styles[e] || {}), i), e === "fas" && Fi("fa", t);
+  typeof ze.hooks.addPack == "function" && !n ? ze.hooks.addPack(e, fo(t)) : ze.styles[e] = L(L({}, ze.styles[e] || {}), i), e === "fas" && Ci("fa", t);
 }
 const {
   styles: Or,
@@ -1338,9 +1338,9 @@ class sd {
       r[n] = arguments[n];
     const i = r.reduce(this._pullDefinitions, {});
     Object.keys(i).forEach((a) => {
-      this.definitions[a] = L(L({}, this.definitions[a] || {}), i[a]), Fi(a, i[a]);
+      this.definitions[a] = L(L({}, this.definitions[a] || {}), i[a]), Ci(a, i[a]);
       const o = ga[xe][a];
-      o && Fi(o, i[a]), Gu();
+      o && Ci(o, i[a]), Gu();
     });
   }
   reset() {
@@ -1385,7 +1385,7 @@ function cd(e, t) {
     n.provides && n.provides(Vt);
   }), r;
 }
-function Ci(e, t) {
+function Fi(e, t) {
   for (var r = arguments.length, n = new Array(r > 2 ? r - 2 : 0), i = 2; i < r; i++)
     n[i - 2] = arguments[i];
   return (Mt[e] || []).forEach((o) => {
@@ -1446,7 +1446,7 @@ const Wu = new sd(), ld = () => {
         iconName: Dt(r, t) || t
       };
     }
-    if (typeof e == "string" && (e.indexOf("".concat(X.cssPrefix, "-")) > -1 || e.match(Ff))) {
+    if (typeof e == "string" && (e.indexOf("".concat(X.cssPrefix, "-")) > -1 || e.match(Cf))) {
       const t = vn(e.split(" "), {
         skipLookups: !0
       });
@@ -1912,7 +1912,7 @@ function So(e) {
     iconName: r,
     prefix: n,
     rest: i
-  } = Od(e), a = xd(e), o = Ci("parseNodeAttributes", {}, e);
+  } = Od(e), a = xd(e), o = Fi("parseNodeAttributes", {}, e);
   let s = t.styleParser ? kd(e) : [];
   return L({
     iconName: r,
@@ -1935,23 +1935,23 @@ function So(e) {
   }, o);
 }
 const {
-  styles: Fd
+  styles: Cd
 } = ze;
 function Xu(e) {
   const t = X.autoReplaceSvg === "nest" ? So(e, {
     styleParser: !1
   }) : So(e);
-  return ~t.extra.classes.indexOf(Cu) ? pt("generateLayersText", e, t) : pt("generateSvgReplacementMutation", e, t);
+  return ~t.extra.classes.indexOf(Fu) ? pt("generateLayersText", e, t) : pt("generateSvgReplacementMutation", e, t);
 }
-function Cd() {
+function Fd() {
   return [...df, ...Di];
 }
 function _o(e) {
   let t = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : null;
   if (!Xe) return Promise.resolve();
-  const r = he.documentElement.classList, n = (l) => r.add("".concat(so, "-").concat(l)), i = (l) => r.remove("".concat(so, "-").concat(l)), a = X.autoFetchSvg ? Cd() : Iu.concat(Object.keys(Fd));
+  const r = he.documentElement.classList, n = (l) => r.add("".concat(so, "-").concat(l)), i = (l) => r.remove("".concat(so, "-").concat(l)), a = X.autoFetchSvg ? Fd() : Iu.concat(Object.keys(Cd));
   a.includes("fa") || a.push("fa");
-  const o = [".".concat(Cu, ":not([").concat(It, "])")].concat(a.map((l) => ".".concat(l, ":not([").concat(It, "])"))).join(", ");
+  const o = [".".concat(Fu, ":not([").concat(It, "])")].concat(a.map((l) => ".".concat(l, ":not([").concat(It, "])"))).join(", ");
   if (o.length === 0)
     return Promise.resolve();
   let s = [];
@@ -2268,7 +2268,7 @@ function Do(e, t) {
   return new Promise((n, i) => {
     if (e.getAttribute(r) !== null)
       return n();
-    const o = Zt(e.children).filter((f) => f.getAttribute(Ti) === t)[0], s = ft.getComputedStyle(e, t), u = s.getPropertyValue("font-family"), c = u.match(Cf), l = s.getPropertyValue("font-weight"), d = s.getPropertyValue("content");
+    const o = Zt(e.children).filter((f) => f.getAttribute(Ti) === t)[0], s = ft.getComputedStyle(e, t), u = s.getPropertyValue("font-family"), c = u.match(Ff), l = s.getPropertyValue("font-weight"), d = s.getPropertyValue("content");
     if (o && !c)
       return e.removeChild(o), n();
     if (c && d !== "none" && d !== "") {
@@ -2356,7 +2356,7 @@ var Wd = {
   hooks() {
     return {
       bootstrap() {
-        bo(Ci("mutationObserverCallbacks", {}));
+        bo(Fi("mutationObserverCallbacks", {}));
       },
       noAuto() {
         Td();
@@ -2365,7 +2365,7 @@ var Wd = {
         const {
           observeMutationsRoot: t
         } = e;
-        To ? Mi() : bo(Ci("mutationObserverCallbacks", {
+        To ? Mi() : bo(Fi("mutationObserverCallbacks", {
           observeMutationsRoot: t
         }));
       }
@@ -2712,9 +2712,9 @@ function rp() {
     return a.PropTypes = a, a;
   }, Vn;
 }
-var Fo;
+var Co;
 function np() {
-  return Fo || (Fo = 1, qn.exports = /* @__PURE__ */ rp()()), qn.exports;
+  return Co || (Co = 1, qn.exports = /* @__PURE__ */ rp()()), qn.exports;
 }
 var ip = /* @__PURE__ */ np();
 const ee = /* @__PURE__ */ Sn(ip);
@@ -2724,10 +2724,10 @@ object-assign
 (c) Sindre Sorhus
 @license MIT
 */
-var zn, Co;
+var zn, Fo;
 function ap() {
-  if (Co) return zn;
-  Co = 1;
+  if (Fo) return zn;
+  Fo = 1;
   var e = Object.getOwnPropertySymbols, t = Object.prototype.hasOwnProperty, r = Object.prototype.propertyIsEnumerable;
   function n(a) {
     if (a == null)
@@ -3379,7 +3379,7 @@ function Ap() {
   return Jn.useSyncExternalStore = e.useSyncExternalStore !== void 0 ? e.useSyncExternalStore : l, Jn;
 }
 var qo;
-function Fp() {
+function Cp() {
   return qo || (qo = 1, Hn.exports = Ap()), Hn.exports;
 }
 /**
@@ -3392,10 +3392,10 @@ function Fp() {
  * LICENSE file in the root directory of this source tree.
  */
 var Bo;
-function Cp() {
+function Fp() {
   if (Bo) return Yn;
   Bo = 1;
-  var e = Da(), t = Fp();
+  var e = Da(), t = Cp();
   function r(c, l) {
     return c === l && (c !== 0 || 1 / c === 1 / l) || c !== c && l !== l;
   }
@@ -3444,7 +3444,7 @@ function Cp() {
 }
 var Vo;
 function $p() {
-  return Vo || (Vo = 1, Wn.exports = Cp()), Wn.exports;
+  return Vo || (Vo = 1, Wn.exports = Fp()), Wn.exports;
 }
 var Pp = $p();
 const Np = /* @__PURE__ */ Sn(Pp), nc = {}, { useDebugValue: Rp } = Ia, { useSyncExternalStoreWithSelector: Mp } = Np;
@@ -4069,14 +4069,14 @@ function Re(e, t) {
   }
   e.prototype = t === null ? Object.create(t) : (r.prototype = t.prototype, new r());
 }
-var C = function() {
-  return C = Object.assign || function(t) {
+var F = function() {
+  return F = Object.assign || function(t) {
     for (var r, n = 1, i = arguments.length; n < i; n++) {
       r = arguments[n];
       for (var a in r) Object.prototype.hasOwnProperty.call(r, a) && (t[a] = r[a]);
     }
     return t;
-  }, C.apply(this, arguments);
+  }, F.apply(this, arguments);
 };
 function We(e, t) {
   var r = {};
@@ -5185,7 +5185,7 @@ function xh(e) {
   return t;
 }
 const Ah = globalThis.process && // eslint-disable-next-line no-undef
-!0, Fh = (
+!0, Ch = (
   /* c8 ignore next 6 */
   // FIXME: https://github.com/graphql/graphql-js/issues/2317
   Ah ? function(t, r) {
@@ -5235,8 +5235,8 @@ class _c {
     return "Source";
   }
 }
-function Ch(e) {
-  return Fh(e, _c);
+function Fh(e) {
+  return Ch(e, _c);
 }
 function $h(e, t) {
   const r = new Ph(e, t), n = r.parseDocument();
@@ -5247,7 +5247,7 @@ function $h(e, t) {
 }
 class Ph {
   constructor(t, r = {}) {
-    const n = Ch(t) ? t : new _c(t);
+    const n = Fh(t) ? t : new _c(t);
     this._lexer = new ph(n), this._options = r, this._tokenCounter = 0;
   }
   get tokenCount() {
@@ -6876,7 +6876,7 @@ function Lr(e, t) {
     return a.value.kind === "Variable" ? (o = t && t[a.value.name.value], K(o !== void 0, 78, i.name.value)) : o = a.value.value, i.name.value === "skip" ? !o : o;
   });
 }
-function Fr(e, t, r) {
+function Cr(e, t, r) {
   var n = new Set(e), i = n.size;
   return Ue(t, {
     Directive: function(a) {
@@ -6886,7 +6886,7 @@ function Fr(e, t, r) {
   }), r ? !n.size : n.size < i;
 }
 function Vh(e) {
-  return e && Fr(["client", "export"], e, !0);
+  return e && Cr(["client", "export"], e, !0);
 }
 function Gh(e) {
   var t = e.name.value;
@@ -6975,7 +6975,7 @@ function Jh(e) {
 }
 var Kh = je(function() {
   return navigator.product;
-}) == "ReactNative", xt = typeof WeakMap == "function" && !(Kh && !global.HermesInternal), Fa = typeof WeakSet == "function", Ec = typeof Symbol == "function" && typeof Symbol.for == "function", In = Ec && Symbol.asyncIterator;
+}) == "ReactNative", xt = typeof WeakMap == "function" && !(Kh && !global.HermesInternal), Ca = typeof WeakSet == "function", Ec = typeof Symbol == "function" && typeof Symbol.for == "function", In = Ec && Symbol.asyncIterator;
 je(function() {
   return window.document.createElement;
 });
@@ -6996,7 +6996,7 @@ function Xh(e, t) {
       );
     a.kind === "FragmentDefinition" && n.push(a);
   }), typeof r > "u" && (K(n.length === 1, 86, n.length), r = n[0].name.value);
-  var i = C(C({}, e), { definitions: Oe([
+  var i = F(F({}, e), { definitions: Oe([
     {
       kind: "OperationDefinition",
       // OperationTypeNode is an enum
@@ -7176,7 +7176,7 @@ var Ic = function(e, t) {
     var a = Ji.prototype.set.call(this, n, i);
     return Dc(this), a;
   }, r;
-}, sm = Symbol.for("apollo.cacheSize"), Je = C({}, zi[sm]), _t = {};
+}, sm = Symbol.for("apollo.cacheSize"), Je = F({}, zi[sm]), _t = {};
 function Tc(e, t) {
   _t[e] = t;
 }
@@ -7212,7 +7212,7 @@ function dm() {
     throw new Error("only supported in development mode");
   return {
     limits: fm(),
-    sizes: C({ print: (e = _t.print) === null || e === void 0 ? void 0 : e.call(_t), parser: (t = _t.parser) === null || t === void 0 ? void 0 : t.call(_t), canonicalStringify: (r = _t.canonicalStringify) === null || r === void 0 ? void 0 : r.call(_t), links: Zi(this.link), queryManager: {
+    sizes: F({ print: (e = _t.print) === null || e === void 0 ? void 0 : e.call(_t), parser: (t = _t.parser) === null || t === void 0 ? void 0 : t.call(_t), canonicalStringify: (r = _t.canonicalStringify) === null || r === void 0 ? void 0 : r.call(_t), links: Zi(this.link), queryManager: {
       getDocumentInfo: this.queryManager.transformCache.size,
       documentTransforms: xc(this.queryManager.documentTransform)
     } }, (i = (n = this.cache).getMemoryInternals) === null || i === void 0 ? void 0 : i.call(n))
@@ -7227,7 +7227,7 @@ function kc() {
 }
 function pm() {
   var e = this.config.fragments;
-  return C(C({}, kc.apply(this)), { addTypenameDocumentTransform: xc(this.addTypenameTransform), inMemoryCache: {
+  return F(F({}, kc.apply(this)), { addTypenameDocumentTransform: xc(this.addTypenameTransform), inMemoryCache: {
     executeSelectionSet: ot(this.storeReader.executeSelectionSet),
     executeSubSelectedArray: ot(this.storeReader.executeSubSelectedArray),
     maybeBroadcastWatch: ot(this.maybeBroadcastWatch)
@@ -7473,11 +7473,11 @@ function nr(e) {
     return t.kind === "FragmentDefinition";
   });
 }
-function Fc(e) {
+function Cc(e) {
   var t = Ot(e);
   return K(t && t.operation === "query", 91), t;
 }
-function Cc(e) {
+function Fc(e) {
   K(e.kind === "Document", 92), K(e.definitions.length <= 1, 93);
   var t = e.definitions[0];
   return K(t.kind === "FragmentDefinition", 94), t;
@@ -7497,7 +7497,7 @@ function ir(e) {
     return t;
   throw Ae(95);
 }
-function Ca(e) {
+function Fa(e) {
   var t = /* @__PURE__ */ Object.create(null), r = e && e.variableDefinitions;
   return r && r.length && r.forEach(function(n) {
     n.defaultValue && Ht(t, n.variable.name, n.defaultValue);
@@ -7506,7 +7506,7 @@ function Ca(e) {
 let Te = null;
 const rs = {};
 let Am = 1;
-const Fm = () => class {
+const Cm = () => class {
   constructor() {
     this.id = [
       "slot",
@@ -7573,7 +7573,7 @@ function ns(e) {
   } catch {
   }
 }
-const ni = "@wry/context:Slot", Cm = (
+const ni = "@wry/context:Slot", Fm = (
   // Prefer globalThis when available.
   // https://github.com/benjamn/wryware/issues/347
   ns(() => globalThis) || // Fall back to global, which works in Node.js and may be converted by some
@@ -7583,7 +7583,7 @@ const ni = "@wry/context:Slot", Cm = (
   // back to using the Array constructor as a namespace, but that was flagged in
   // https://github.com/benjamn/wryware/issues/347, and can be avoided.
   /* @__PURE__ */ Object.create(null)
-), is = Cm, jr = is[ni] || // Earlier versions of this package stored the globalKey property on the Array
+), is = Fm, jr = is[ni] || // Earlier versions of this package stored the globalKey property on the Array
 // constructor, so we check there as well, to prevent Slot class duplication.
 Array[ni] || (function(e) {
   try {
@@ -7602,7 +7602,7 @@ Array[ni] || (function(e) {
   } finally {
     return e;
   }
-})(Fm()), { bind: mv, noContext: gv } = jr, On = new jr(), { hasOwnProperty: $m } = Object.prototype, $a = Array.from || function(e) {
+})(Cm()), { bind: mv, noContext: gv } = jr, On = new jr(), { hasOwnProperty: $m } = Object.prototype, $a = Array.from || function(e) {
   const t = [];
   return e.forEach((r) => t.push(r)), t;
 };
@@ -7610,7 +7610,7 @@ function Pa(e) {
   const { unsubscribe: t } = e;
   typeof t == "function" && (e.unsubscribe = void 0, t());
 }
-const Cr = [], Pm = 100;
+const Fr = [], Pm = 100;
 function Jt(e, t) {
   if (!e)
     throw new Error(t || "assertion failure");
@@ -7666,10 +7666,10 @@ class xn {
     this.dispose();
   }
   dependOn(t) {
-    t.add(this), this.deps || (this.deps = Cr.pop() || /* @__PURE__ */ new Set()), this.deps.add(t);
+    t.add(this), this.deps || (this.deps = Fr.pop() || /* @__PURE__ */ new Set()), this.deps.add(t);
   }
   forgetDeps() {
-    this.deps && ($a(this.deps).forEach((t) => t.delete(this)), this.deps.clear(), Cr.push(this.deps), this.deps = null);
+    this.deps && ($a(this.deps).forEach((t) => t.delete(this)), this.deps.clear(), Fr.push(this.deps), this.deps = null);
   }
 }
 xn.count = 0;
@@ -7721,7 +7721,7 @@ function Lc(e, t) {
   Jt(e.childValues.has(t)), Jt(mt(t));
   const r = !mt(e);
   if (!e.dirtyChildren)
-    e.dirtyChildren = Cr.pop() || /* @__PURE__ */ new Set();
+    e.dirtyChildren = Fr.pop() || /* @__PURE__ */ new Set();
   else if (e.dirtyChildren.has(t))
     return;
   e.dirtyChildren.add(t), r && Rc(e);
@@ -7733,7 +7733,7 @@ function jc(e, t) {
 }
 function Uc(e, t) {
   const r = e.dirtyChildren;
-  r && (r.delete(t), r.size === 0 && (Cr.length < Pm && Cr.push(r), e.dirtyChildren = null));
+  r && (r.delete(t), r.size === 0 && (Fr.length < Pm && Fr.push(r), e.dirtyChildren = null));
 }
 function qc(e) {
   e.childValues.size > 0 && e.childValues.forEach((t, r) => {
@@ -7833,7 +7833,7 @@ var Gc = (
   /** @class */
   (function() {
     function e(t, r) {
-      r === void 0 && (r = /* @__PURE__ */ Object.create(null)), this.resultCache = Fa ? /* @__PURE__ */ new WeakSet() : /* @__PURE__ */ new Set(), this.transform = t, r.getCacheKey && (this.getCacheKey = r.getCacheKey), this.cached = r.cache !== !1, this.resetCache();
+      r === void 0 && (r = /* @__PURE__ */ Object.create(null)), this.resultCache = Ca ? /* @__PURE__ */ new WeakSet() : /* @__PURE__ */ new Set(), this.transform = t, r.getCacheKey && (this.getCacheKey = r.getCacheKey), this.cached = r.cache !== !1, this.resetCache();
     }
     return e.prototype.getCacheKey = function(t) {
       return [t];
@@ -7915,7 +7915,7 @@ function zc(e, t) {
   });
 }
 function Bm(e) {
-  return zc(Ot(e) || Cc(e), tr(nr(e))) ? null : e;
+  return zc(Ot(e) || Fc(e), tr(nr(e))) ? null : e;
 }
 function Vm(e) {
   var t = /* @__PURE__ */ new Map(), r = /* @__PURE__ */ new Map();
@@ -8061,7 +8061,7 @@ function Qc(e, t) {
             r(g.name && g.name.value)
           ).transitiveVars;
           if (_.size < g.variableDefinitions.length)
-            return C(C({}, g), { variableDefinitions: g.variableDefinitions.filter(function(I) {
+            return F(F({}, g), { variableDefinitions: g.variableDefinitions.filter(function(I) {
               return _.has(I.variable.name.value);
             }) });
         }
@@ -8084,7 +8084,7 @@ var Ra = Object.assign(function(e) {
               if (!(ht(o) && o.directives && o.directives.some(function(s) {
                 return s.name.value === "export";
               })))
-                return C(C({}, t), { selections: Oe(Oe([], i, !0), [ss], !1) });
+                return F(F({}, t), { selections: Oe(Oe([], i, !0), [ss], !1) });
             }
           }
         }
@@ -8103,7 +8103,7 @@ function Gm(e) {
   var n = Ue(e, {
     OperationDefinition: {
       enter: function(i) {
-        return C(C({}, i), { operation: "query" });
+        return F(F({}, i), { operation: "query" });
       }
     }
   });
@@ -8128,7 +8128,7 @@ function zm(e) {
       if (!(!((r = t.directives) === null || r === void 0) && r.some(function(n) {
         return n.name.value === "unmask";
       })))
-        return C(C({}, t), { directives: Oe(Oe([], t.directives || [], !0), [
+        return F(F({}, t), { directives: Oe(Oe([], t.directives || [], !0), [
           {
             kind: G.DIRECTIVE,
             name: { kind: G.NAME, value: "nonreactive" }
@@ -8176,7 +8176,7 @@ var Wm = function(e, t, r) {
           t = n.shallowCopyForMerge(t), t[o] = r[o];
       }), t) : r;
     }, e.prototype.shallowCopyForMerge = function(t) {
-      return me(t) && (this.pastCopies.has(t) || (Array.isArray(t) ? t = t.slice(0) : t = C({ __proto__: Object.getPrototypeOf(t) }, t), this.pastCopies.add(t))), t;
+      return me(t) && (this.pastCopies.has(t) || (Array.isArray(t) ? t = t.slice(0) : t = F({ __proto__: Object.getPrototypeOf(t) }, t), this.pastCopies.add(t))), t;
     }, e;
   })()
 );
@@ -8838,7 +8838,7 @@ function Xt() {
 }
 function si(e, t) {
   return Xt(e, t, t.variables && {
-    variables: Xt(C(C({}, e && e.variables), t.variables))
+    variables: Xt(F(F({}, e && e.variables), t.variables))
   });
 }
 function ui(e) {
@@ -8865,10 +8865,10 @@ function cg(e) {
   return e;
 }
 function lg(e, t) {
-  var r = C({}, e), n = function(a) {
-    typeof a == "function" ? r = C(C({}, r), a(r)) : r = C(C({}, r), a);
+  var r = F({}, e), n = function(a) {
+    typeof a == "function" ? r = F(F({}, r), a(r)) : r = F(F({}, r), a);
   }, i = function() {
-    return C({}, r);
+    return F({}, r);
   };
   return Object.defineProperty(t, "setContext", {
     enumerable: !1,
@@ -8888,7 +8888,7 @@ function fg(e) {
   return t.operationName || (t.operationName = typeof t.query != "string" ? br(t.query) || void 0 : ""), t;
 }
 function dg(e, t) {
-  var r = C({}, e), n = new Set(Object.keys(e));
+  var r = F({}, e), n = new Set(Object.keys(e));
   return Ue(t, {
     Variable: function(i, a, o) {
       o && o.kind !== "VariableDefinition" && n.delete(i.name.value);
@@ -9076,9 +9076,9 @@ function Dg(e) {
     return gg(t);
   throw new Error("Unknown body type for responseIterator. Please pass a streamable response.");
 }
-var Fn = Symbol();
+var Cn = Symbol();
 function tl(e) {
-  return e.extensions ? Array.isArray(e.extensions[Fn]) : !1;
+  return e.extensions ? Array.isArray(e.extensions[Cn]) : !1;
 }
 function rl(e) {
   return e.hasOwnProperty("graphQLErrors");
@@ -9134,9 +9134,9 @@ function Tg(e, t) {
                         2
                         /*return*/
                       ];
-                    w = C({}, $.payload);
+                    w = F({}, $.payload);
                   }
-                  "errors" in $ && (w = C(C({}, w), { extensions: C(C({}, "extensions" in w ? w.extensions : null), (v = {}, v[Fn] = $.errors, v)) })), t(w);
+                  "errors" in $ && (w = F(F({}, w), { extensions: F(F({}, "extensions" in w ? w.extensions : null), (v = {}, v[Cn] = $.errors, v)) })), t(w);
                 } else
                   t($);
               else if (
@@ -9233,12 +9233,12 @@ var Pr = function(e, t) {
   // https://www.apollographql.com/docs/apollo-server/security/cors/#preventing-cross-site-request-forgery-csrf
   // for more details.
   "content-type": "application/json"
-}, Fg = {
+}, Cg = {
   method: "POST"
 }, al = {
   http: xg,
   headers: Ag,
-  options: Fg
+  options: Cg
 }, ol = function(e, t) {
   return t(e);
 };
@@ -9247,15 +9247,15 @@ function sl(e, t) {
     r[n - 2] = arguments[n];
   var i = {}, a = {};
   r.forEach(function(d) {
-    i = C(C(C({}, i), d.options), { headers: C(C({}, i.headers), d.headers) }), d.credentials && (i.credentials = d.credentials), a = C(C({}, a), d.http);
-  }), i.headers && (i.headers = Cg(i.headers, a.preserveHeaderCase));
+    i = F(F(F({}, i), d.options), { headers: F(F({}, i.headers), d.headers) }), d.credentials && (i.credentials = d.credentials), a = F(F({}, a), d.http);
+  }), i.headers && (i.headers = Fg(i.headers, a.preserveHeaderCase));
   var o = e.operationName, s = e.extensions, u = e.variables, c = e.query, l = { operationName: o, variables: u };
   return a.includeExtensions && (l.extensions = s), a.includeQuery && (l.query = t(c, ut)), {
     options: i,
     body: l
   };
 }
-function Cg(e, t) {
+function Fg(e, t) {
   if (!t) {
     var r = {};
     return Object.keys(Object(e)).forEach(function(a) {
@@ -9331,13 +9331,13 @@ var vs = je(function() {
       var g = S.clientAwareness, _ = g.name, I = g.version;
       _ && (h["apollographql-client-name"] = _), I && (h["apollographql-client-version"] = I);
     }
-    var k = C(C({}, h), S.headers), $ = {
+    var k = F(F({}, h), S.headers), $ = {
       http: S.http,
       options: S.fetchOptions,
       credentials: S.credentials,
       headers: k
     };
-    if (Fr(["client"], p.query)) {
+    if (Cr(["client"], p.query)) {
       var w = Wc(p.query);
       if (!w)
         return ui(new Error("HttpLink: Trying to send a client-only query to the server. To send to the server, ensure a non-client field is added to the query or set the `transformOptions.removeClientFields` option to `true`."));
@@ -9351,7 +9351,7 @@ var vs = je(function() {
       return M.kind === "OperationDefinition" && M.operation === "mutation";
     }, P = function(M) {
       return M.kind === "OperationDefinition" && M.operation === "subscription";
-    }, Q = P(ir(p.query)), H = Fr(["defer"], p.query);
+    }, Q = P(ir(p.query)), H = Cr(["defer"], p.query);
     if (u && !p.query.definitions.some(A) && (v.method = "GET"), H || Q) {
       v.headers = v.headers || {};
       var j = "multipart/mixed;";
@@ -9562,7 +9562,7 @@ function Es(e) {
 function qg(e) {
   return e.name.value === "nonreactive";
 }
-var fl = xt ? WeakMap : Map, dl = Fa ? WeakSet : Set, qa = new jr(), Ds = !1;
+var fl = xt ? WeakMap : Map, dl = Ca ? WeakSet : Set, qa = new jr(), Ds = !1;
 function pl() {
   Ds || (Ds = !0, globalThis.__DEV__ !== !1 && K.warn(52));
 }
@@ -9698,16 +9698,16 @@ var gl = (
     }, e.prototype.modify = function(t) {
       return !1;
     }, e.prototype.readQuery = function(t, r) {
-      return r === void 0 && (r = !!t.optimistic), this.read(C(C({}, t), { rootId: t.id || "ROOT_QUERY", optimistic: r }));
+      return r === void 0 && (r = !!t.optimistic), this.read(F(F({}, t), { rootId: t.id || "ROOT_QUERY", optimistic: r }));
     }, e.prototype.watchFragment = function(t) {
       var r = this, n = t.fragment, i = t.fragmentName, a = t.from, o = t.optimistic, s = o === void 0 ? !0 : o, u = We(t, ["fragment", "fragmentName", "from", "optimistic"]), c = this.getFragmentDoc(n, i), l = typeof a > "u" || typeof a == "string" ? a : this.identify(a), d = !!t[Symbol.for("apollo.dataMasking")];
       if (globalThis.__DEV__ !== !1) {
-        var f = i || Cc(n).name.value;
+        var f = i || Fc(n).name.value;
         l || globalThis.__DEV__ !== !1 && K.warn(1, f);
       }
-      var p = C(C({}, u), { returnPartialData: !0, id: l, query: c, optimistic: s }), y;
+      var p = F(F({}, u), { returnPartialData: !0, id: l, query: c, optimistic: s }), y;
       return new le(function(S) {
-        return r.watch(C(C({}, p), { immediate: !0, callback: function(h) {
+        return r.watch(F(F({}, p), { immediate: !0, callback: function(h) {
           var g = d ? ml(h.result, n, r, i) : h.result;
           if (
             // Always ensure we deliver the first result
@@ -9726,12 +9726,12 @@ var gl = (
             };
             h.missing && (_.missing = An(h.missing.map(function(I) {
               return I.missing;
-            }))), y = C(C({}, h), { result: g }), S.next(_);
+            }))), y = F(F({}, h), { result: g }), S.next(_);
           }
         } }));
       });
     }, e.prototype.readFragment = function(t, r) {
-      return r === void 0 && (r = !!t.optimistic), this.read(C(C({}, t), { query: this.getFragmentDoc(t.fragment, t.fragmentName), rootId: t.id, optimistic: r }));
+      return r === void 0 && (r = !!t.optimistic), this.read(F(F({}, t), { query: this.getFragmentDoc(t.fragment, t.fragmentName), rootId: t.id, optimistic: r }));
     }, e.prototype.writeQuery = function(t) {
       var r = t.id, n = t.data, i = We(t, ["id", "data"]);
       return this.write(Object.assign(i, {
@@ -9749,14 +9749,14 @@ var gl = (
       return this.batch({
         update: function(n) {
           var i = n.readQuery(t), a = r(i);
-          return a == null ? i : (n.writeQuery(C(C({}, t), { data: a })), a);
+          return a == null ? i : (n.writeQuery(F(F({}, t), { data: a })), a);
         }
       });
     }, e.prototype.updateFragment = function(t, r) {
       return this.batch({
         update: function(n) {
           var i = n.readFragment(t), a = r(i);
-          return a == null ? i : (n.writeFragment(C(C({}, t), { data: a })), a);
+          return a == null ? i : (n.writeFragment(F(F({}, t), { data: a })), a);
         }
       });
     }, e;
@@ -9862,7 +9862,7 @@ var nn = /* @__PURE__ */ Object.create(null), ci = function() {
       };
     }
     return e.prototype.toObject = function() {
-      return C({}, this.data);
+      return F({}, this.data);
     }, e.prototype.has = function(t) {
       return this.lookup(t, !0) !== void 0;
     }, e.prototype.get = function(t, r) {
@@ -9927,7 +9927,7 @@ var nn = /* @__PURE__ */ Object.create(null), ci = function() {
           if (d !== void 0) {
             var f = typeof r == "function" ? r : r[c] || r[l];
             if (f) {
-              var p = f === ci ? nn : f(dn(d), C(C({}, u), { fieldName: l, storeFieldName: c, storage: n.getStorage(t, c) }));
+              var p = f === ci ? nn : f(dn(d), F(F({}, u), { fieldName: l, storeFieldName: c, storage: n.getStorage(t, c) }));
               if (p === Is)
                 n.group.dirty(t, c);
               else if (p === nn && (p = void 0), p !== d && (a[c] = p, o = !0, d = p, globalThis.__DEV__ !== !1)) {
@@ -10105,10 +10105,10 @@ var rt = (
         })) : n.delete(a);
       }), i) : i === this.parent ? this : i.addLayer(this.id, this.replay);
     }, t.prototype.toObject = function() {
-      return C(C({}, this.parent.toObject()), this.data);
+      return F(F({}, this.parent.toObject()), this.data);
     }, t.prototype.findChildRefIds = function(r) {
       var n = this.parent.findChildRefIds(r);
-      return De.call(this.data, r) ? C(C({}, n), e.prototype.findChildRefIds.call(this, r)) : n;
+      return De.call(this.data, r) ? F(F({}, n), e.prototype.findChildRefIds.call(this, r)) : n;
     }, t.prototype.getStorage = function() {
       for (var r = this.parent; r.parent; )
         r = r.parent;
@@ -10142,13 +10142,13 @@ function Ir(e) {
   return !!(e instanceof Nr && e.group.caching);
 }
 function Jg(e) {
-  return me(e) ? ye(e) ? e.slice(0) : C({ __proto__: Object.getPrototypeOf(e) }, e) : e;
+  return me(e) ? ye(e) ? e.slice(0) : F({ __proto__: Object.getPrototypeOf(e) }, e) : e;
 }
 var ks = (
   /** @class */
   (function() {
     function e() {
-      this.known = new (Fa ? WeakSet : Set)(), this.pool = new Ze(xt), this.passes = /* @__PURE__ */ new WeakMap(), this.keysByJSON = /* @__PURE__ */ new Map(), this.empty = this.admit({});
+      this.known = new (Ca ? WeakSet : Set)(), this.pool = new Ze(xt), this.passes = /* @__PURE__ */ new WeakMap(), this.keysByJSON = /* @__PURE__ */ new Map(), this.empty = this.admit({});
     }
     return e.prototype.isKnown = function(t) {
       return me(t) && this.known.has(t);
@@ -10227,7 +10227,7 @@ var Kg = (
         var i, a = n.context.canonizeResults, o = Os(n);
         o[3] = !a;
         var s = (i = r.executeSelectionSet).peek.apply(i, o);
-        return s ? a ? C(C({}, s), {
+        return s ? a ? F(F({}, s), {
           // If we previously read this result without canonizing it, we can
           // reuse that result simply by canonizing it now.
           result: r.canon.admit(s.result)
@@ -10256,12 +10256,12 @@ var Kg = (
       this.canon = new ks();
     }, e.prototype.diffQueryAgainstStore = function(t) {
       var r = t.store, n = t.query, i = t.rootId, a = i === void 0 ? "ROOT_QUERY" : i, o = t.variables, s = t.returnPartialData, u = s === void 0 ? !0 : s, c = t.canonizeResults, l = c === void 0 ? this.config.canonizeResults : c, d = this.config.cache.policies;
-      o = C(C({}, Ca(Fc(n))), o);
+      o = F(F({}, Fa(Cc(n))), o);
       var f = Gt(a), p = this.executeSelectionSet({
         selectionSet: ir(n).selectionSet,
         objectOrReference: f,
         enclosingRef: f,
-        context: C({ store: r, query: n, policies: d, variables: o, varString: lt(o), canonizeResults: l }, wl(n, this.config.fragments))
+        context: F({ store: r, query: n, policies: d, variables: o, varString: lt(o), canonizeResults: l }, wl(n, this.config.fragments))
       }), y;
       if (p.missing && (y = [
         new yl(Xg(p.missing), p.missing, n, o)
@@ -10431,12 +10431,12 @@ function ty(e) {
 function ry(e) {
   e.broadcastWatches && e.broadcastWatches();
 }
-var Fs = /* @__PURE__ */ Object.create(null);
+var Cs = /* @__PURE__ */ Object.create(null);
 function Va(e) {
   var t = JSON.stringify(e);
-  return Fs[t] || (Fs[t] = /* @__PURE__ */ Object.create(null));
+  return Cs[t] || (Cs[t] = /* @__PURE__ */ Object.create(null));
 }
-function Cs(e) {
+function Fs(e) {
   var t = Va(e);
   return t.keyFieldsFn || (t.keyFieldsFn = function(r, n) {
     var i = function(o, s) {
@@ -10543,13 +10543,13 @@ var ny = function() {
   /** @class */
   (function() {
     function e(t) {
-      this.config = t, this.typePolicies = /* @__PURE__ */ Object.create(null), this.toBeAdded = /* @__PURE__ */ Object.create(null), this.supertypeMap = /* @__PURE__ */ new Map(), this.fuzzySubtypes = /* @__PURE__ */ new Map(), this.rootIdsByTypename = /* @__PURE__ */ Object.create(null), this.rootTypenamesById = /* @__PURE__ */ Object.create(null), this.usingPossibleTypes = !1, this.config = C({ dataIdFromObject: vl }, t), this.cache = this.config.cache, this.setRootTypename("Query"), this.setRootTypename("Mutation"), this.setRootTypename("Subscription"), t.possibleTypes && this.addPossibleTypes(t.possibleTypes), t.typePolicies && this.addTypePolicies(t.typePolicies);
+      this.config = t, this.typePolicies = /* @__PURE__ */ Object.create(null), this.toBeAdded = /* @__PURE__ */ Object.create(null), this.supertypeMap = /* @__PURE__ */ new Map(), this.fuzzySubtypes = /* @__PURE__ */ new Map(), this.rootIdsByTypename = /* @__PURE__ */ Object.create(null), this.rootTypenamesById = /* @__PURE__ */ Object.create(null), this.usingPossibleTypes = !1, this.config = F({ dataIdFromObject: vl }, t), this.cache = this.config.cache, this.setRootTypename("Query"), this.setRootTypename("Mutation"), this.setRootTypename("Subscription"), t.possibleTypes && this.addPossibleTypes(t.possibleTypes), t.typePolicies && this.addTypePolicies(t.typePolicies);
     }
     return e.prototype.identify = function(t, r) {
       var n, i = this, a = r && (r.typename || ((n = r.storeObject) === null || n === void 0 ? void 0 : n.__typename)) || t.__typename;
       if (a === this.rootTypenamesById.ROOT_QUERY)
         return ["ROOT_QUERY"];
-      var o = r && r.storeObject || t, s = C(C({}, r), { typename: a, storeObject: o, readField: r && r.readField || function() {
+      var o = r && r.storeObject || t, s = F(F({}, r), { typename: a, storeObject: o, readField: r && r.readField || function() {
         var d = za(arguments, o);
         return i.readField(d, {
           store: i.cache.data,
@@ -10558,9 +10558,9 @@ var ny = function() {
       } }), u, c = a && this.getTypePolicy(a), l = c && c.keyFn || this.config.dataIdFromObject;
       return qa.withValue(!0, function() {
         for (; l; ) {
-          var d = l(C(C({}, t), o), s);
+          var d = l(F(F({}, t), o), s);
           if (ye(d))
-            l = Cs(d);
+            l = Fs(d);
           else {
             u = d;
             break;
@@ -10579,7 +10579,7 @@ var ny = function() {
         u.merge = typeof c == "function" ? c : c === !0 ? Ns : c === !1 ? Rs : u.merge;
       }
       s(i, r.merge), i.keyFn = // Pass false to disable normalization for this typename.
-      a === !1 ? ny : ye(a) ? Cs(a) : typeof a == "function" ? a : i.keyFn, o && Object.keys(o).forEach(function(u) {
+      a === !1 ? ny : ye(a) ? Fs(a) : typeof a == "function" ? a : i.keyFn, o && Object.keys(o).forEach(function(u) {
         var c = n.getFieldPolicy(t, u, !0), l = o[u];
         if (typeof l == "function")
           c.read = l;
@@ -10765,7 +10765,7 @@ function za(e, t, r) {
     // passed for the from parameter, not when undefined is explicitly
     // passed as the second argument.
     from: a > 1 ? i : t
-  } : (o = C({}, n), De.call(o, "from") || (o.from = t)), globalThis.__DEV__ !== !1 && o.from === void 0 && globalThis.__DEV__ !== !1 && K.warn(8, fc(Array.from(e))), o.variables === void 0 && (o.variables = r), o;
+  } : (o = F({}, n), De.call(o, "from") || (o.from = t)), globalThis.__DEV__ !== !1 && o.from === void 0 && globalThis.__DEV__ !== !1 && K.warn(8, fc(Array.from(e))), o.variables === void 0 && (o.variables = r), o;
 }
 function kl(e) {
   return function(r, n) {
@@ -10780,14 +10780,14 @@ function kl(e) {
       if (Ut(r) && fe(n))
         return e.merge(r, n.__ref), n;
       if (Ut(r) && Ut(n))
-        return C(C({}, r), n);
+        return F(F({}, r), n);
     }
     return n;
   };
 }
 function fi(e, t, r) {
   var n = "".concat(t).concat(r), i = e.flavors.get(n);
-  return i || e.flavors.set(n, i = e.clientOnly === t && e.deferred === r ? e : C(C({}, e), { clientOnly: t, deferred: r })), i;
+  return i || e.flavors.set(n, i = e.clientOnly === t && e.deferred === r ? e : F(F({}, e), { clientOnly: t, deferred: r })), i;
 }
 var ay = (
   /** @class */
@@ -10797,8 +10797,8 @@ var ay = (
     }
     return e.prototype.writeToStore = function(t, r) {
       var n = this, i = r.query, a = r.result, o = r.dataId, s = r.variables, u = r.overwrite, c = Ot(i), l = Wg();
-      s = C(C({}, Ca(c)), s);
-      var d = C(C({ store: t, written: /* @__PURE__ */ Object.create(null), merge: function(p, y) {
+      s = F(F({}, Fa(c)), s);
+      var d = F(F({ store: t, written: /* @__PURE__ */ Object.create(null), merge: function(p, y) {
         return l.merge(p, y);
       }, variables: s, varString: lt(s) }, wl(i, this.fragments)), { overwrite: !!u, incomingById: /* @__PURE__ */ new Map(), clientOnly: !1, deferred: !1, flavors: /* @__PURE__ */ new Map() }), f = this.processSelectionSet({
         result: a || /* @__PURE__ */ Object.create(null),
@@ -10842,7 +10842,7 @@ var ay = (
         if (fe(I.from)) {
           var k = o.incomingById.get(I.from.__ref);
           if (k) {
-            var $ = u.readField(C(C({}, I), { from: k.storeObject }), o);
+            var $ = u.readField(F(F({}, I), { from: k.storeObject }), o);
             if ($ !== void 0)
               return $;
           }
@@ -10989,7 +10989,7 @@ var ay = (
             var h = s.applyMerges(f, y, S, i, a);
             h !== S && (l = l || /* @__PURE__ */ new Map(), l.set(p, h)), a && K(a.pop() === p);
           }
-        }), l && (n = ye(c) ? c.slice(0) : C({}, c), l.forEach(function(f, p) {
+        }), l && (n = ye(c) ? c.slice(0) : F({}, c), l.forEach(function(f, p) {
           n[p] = f;
         }));
       }
@@ -11006,7 +11006,7 @@ function la(e, t) {
     return e;
   if (!e || pn(e))
     return t;
-  var r = e.info && t.info ? C(C({}, e.info), t.info) : e.info || t.info, n = e.map.size && t.map.size, i = n ? /* @__PURE__ */ new Map() : e.map.size ? e.map : t.map, a = { info: r, map: i };
+  var r = e.info && t.info ? F(F({}, e.info), t.info) : e.info || t.info, n = e.map.size && t.map.size, i = n ? /* @__PURE__ */ new Map() : e.map.size ? e.map : t.map, a = { info: r, map: i };
   if (n) {
     var o = new Set(t.map.keys());
     e.map.forEach(function(s, u) {
@@ -11042,7 +11042,7 @@ function oy(e, t, r, n) {
         !ye(a) && !ye(o) && [a, o].forEach(function(d) {
           var f = n.getFieldValue(d, "__typename");
           typeof f == "string" && !l.includes(f) && l.push(f);
-        }), globalThis.__DEV__ !== !1 && K.warn(15, u, s, l.length ? "either ensure all objects of type " + l.join(" and ") + " have an ID or a custom merge function, or " : "", c, C({}, a), C({}, o));
+        }), globalThis.__DEV__ !== !1 && K.warn(15, u, s, l.length ? "either ensure all objects of type " + l.join(" and ") + " have an ID or a custom merge function, or " : "", c, F({}, a), F({}, o));
       }
     }
   }
@@ -11107,7 +11107,7 @@ var Qa = (
     }, t.prototype.read = function(r) {
       var n = r.returnPartialData, i = n === void 0 ? !1 : n;
       try {
-        return this.storeReader.diffQueryAgainstStore(C(C({}, r), { store: r.optimistic ? this.optimisticData : this.data, config: this.config, returnPartialData: i })).result || null;
+        return this.storeReader.diffQueryAgainstStore(F(F({}, r), { store: r.optimistic ? this.optimisticData : this.data, config: this.config, returnPartialData: i })).result || null;
       } catch (a) {
         if (a instanceof yl)
           return null;
@@ -11129,7 +11129,7 @@ var Qa = (
         !--this.txCount && r.broadcast !== !1 && this.broadcastWatches();
       }
     }, t.prototype.diff = function(r) {
-      return this.storeReader.diffQueryAgainstStore(C(C({}, r), { store: r.optimistic ? this.optimisticData : this.data, rootId: r.id || "ROOT_QUERY", config: this.config }));
+      return this.storeReader.diffQueryAgainstStore(F(F({}, r), { store: r.optimistic ? this.optimisticData : this.data, rootId: r.id || "ROOT_QUERY", config: this.config }));
     }, t.prototype.watch = function(r) {
       var n = this;
       return this.watches.size || ey(this), this.watches.add(r), r.immediate && this.maybeBroadcastWatch(r), function() {
@@ -11156,7 +11156,7 @@ var Qa = (
       if (!r.id) {
         if (De.call(r, "id"))
           return !1;
-        r = C(C({}, r), { id: "ROOT_QUERY" });
+        r = F(F({}, r), { id: "ROOT_QUERY" });
       }
       try {
         return ++this.txCount, this.optimisticData.evict(r, this.data);
@@ -11181,9 +11181,9 @@ var Qa = (
           --n.txCount, n.data = y, n.optimisticData = S;
         }
       }, d = /* @__PURE__ */ new Set();
-      return u && !this.txCount && this.broadcastWatches(C(C({}, r), { onWatchUpdated: function(f) {
+      return u && !this.txCount && this.broadcastWatches(F(F({}, r), { onWatchUpdated: function(f) {
         return d.add(f), !1;
-      } })), typeof o == "string" ? this.optimisticData = this.optimisticData.addLayer(o, l) : o === !1 ? l(this.data) : l(), typeof s == "string" && (this.optimisticData = this.optimisticData.removeLayer(s)), u && d.size ? (this.broadcastWatches(C(C({}, r), { onWatchUpdated: function(f, p) {
+      } })), typeof o == "string" ? this.optimisticData = this.optimisticData.addLayer(o, l) : o === !1 ? l(this.data) : l(), typeof s == "string" && (this.optimisticData = this.optimisticData.removeLayer(s)), u && d.size ? (this.broadcastWatches(F(F({}, r), { onWatchUpdated: function(f, p) {
         var y = u.call(this, f, p);
         return y !== !1 && d.delete(f), y;
       } })), d.size && d.forEach(function(f) {
@@ -11249,7 +11249,7 @@ var qs = Object.assign, sy = Object.hasOwnProperty, an = (
         return s && (n.queries.set(o.queryId, i), s = !1), o.queryManager.getOrCreateQuery(o.queryId);
       }, o.queryInfo = i, o.queryManager = n, o.waitForOwnResult = di(a.fetchPolicy), o.isTornDown = !1, o.subscribeToMore = o.subscribeToMore.bind(o), o.maskResult = o.maskResult.bind(o);
       var u = n.defaultOptions.watchQuery, c = u === void 0 ? {} : u, l = c.fetchPolicy, d = l === void 0 ? "cache-first" : l, f = a.fetchPolicy, p = f === void 0 ? d : f, y = a.initialFetchPolicy, S = y === void 0 ? p === "standby" ? d : p : y;
-      o.options = C(C({}, a), {
+      o.options = F(F({}, a), {
         // Remember the initial options.fetchPolicy so we can revert back to this
         // policy when variables change. This information can also be specified
         // (or overridden) by providing options.initialFetchPolicy explicitly.
@@ -11298,7 +11298,7 @@ var qs = Object.assign, sy = Object.hasOwnProperty, an = (
       this.queryInfo.resetDiff();
     }, t.prototype.getCurrentFullResult = function(r) {
       r === void 0 && (r = !0);
-      var n = this.getLastResult(!0), i = this.queryInfo.networkStatus || n && n.networkStatus || ce.ready, a = C(C({}, n), { loading: qt(i), networkStatus: i }), o = this.options.fetchPolicy, s = o === void 0 ? "cache-first" : o;
+      var n = this.getLastResult(!0), i = this.queryInfo.networkStatus || n && n.networkStatus || ce.ready, a = F(F({}, n), { loading: qt(i), networkStatus: i }), o = this.options.fetchPolicy, s = o === void 0 ? "cache-first" : o;
       if (
         // These fetch policies should never deliver data from the cache, unless
         // redelivering a previously delivered result.
@@ -11339,7 +11339,7 @@ var qs = Object.assign, sy = Object.hasOwnProperty, an = (
         pollInterval: 0
       }, a = this.options.fetchPolicy;
       if (a === "no-cache" ? i.fetchPolicy = "no-cache" : i.fetchPolicy = "network-only", globalThis.__DEV__ !== !1 && r && sy.call(r, "variables")) {
-        var o = Fc(this.query), s = o.variableDefinitions;
+        var o = Cc(this.query), s = o.variableDefinitions;
         (!s || !s.some(function(u) {
           return u.variable.name.value === "variables";
         })) && globalThis.__DEV__ !== !1 && K.warn(
@@ -11348,9 +11348,9 @@ var qs = Object.assign, sy = Object.hasOwnProperty, an = (
           ((n = o.name) === null || n === void 0 ? void 0 : n.value) || o
         );
       }
-      return r && !pe(this.options.variables, r) && (i.variables = this.options.variables = C(C({}, this.options.variables), r)), this.queryInfo.resetLastWrite(), this.reobserve(i, ce.refetch);
+      return r && !pe(this.options.variables, r) && (i.variables = this.options.variables = F(F({}, this.options.variables), r)), this.queryInfo.resetLastWrite(), this.reobserve(i, ce.refetch);
     }, t.prototype.fetchMore = function(r) {
-      var n = this, i = C(C({}, r.query ? r : C(C(C(C({}, this.options), { query: this.options.query }), r), { variables: C(C({}, this.options.variables), r.variables) })), {
+      var n = this, i = F(F({}, r.query ? r : F(F(F(F({}, this.options), { query: this.options.query }), r), { variables: F(F({}, this.options.variables), r.variables) })), {
         // The fetchMore request goes immediately to the network and does
         // not automatically write its result to the cache (hence no-cache
         // instead of network-only), because we allow the caller of
@@ -11394,7 +11394,7 @@ var qs = Object.assign, sy = Object.hasOwnProperty, an = (
             fetchMoreResult: d.data,
             variables: i.variables
           });
-          n.reportResult(C(C({}, f), { networkStatus: s, loading: qt(s), data: p }), n.variables);
+          n.reportResult(F(F({}, f), { networkStatus: s, loading: qt(s), data: p }), n.variables);
         }
         return n.maskResult(d);
       }).finally(function() {
@@ -11409,7 +11409,7 @@ var qs = Object.assign, sy = Object.hasOwnProperty, an = (
         next: function(a) {
           var o = r.updateQuery;
           o && n.updateQuery(function(s, u) {
-            return o(s, C({ subscriptionData: a }, u));
+            return o(s, F({ subscriptionData: a }, u));
           });
         },
         error: function(a) {
@@ -11499,7 +11499,7 @@ var qs = Object.assign, sy = Object.hasOwnProperty, an = (
     }, t.prototype.updateLastResult = function(r, n) {
       n === void 0 && (n = this.variables);
       var i = this.getLastError();
-      return i && this.last && !pe(n, this.last.variables) && (i = void 0), this.last = C({ result: this.queryManager.assumeImmutableResults ? r : Kc(r), variables: n }, i ? { error: i } : null);
+      return i && this.last && !pe(n, this.last.variables) && (i = void 0), this.last = F({ result: this.queryManager.assumeImmutableResults ? r : Kc(r), variables: n }, i ? { error: i } : null);
     }, t.prototype.reobserveAsConcast = function(r, n) {
       var i = this;
       this.isTornDown = !1;
@@ -11525,7 +11525,7 @@ var qs = Object.assign, sy = Object.hasOwnProperty, an = (
       typeof c.nextFetchPolicy == "function") && (this.applyNextFetchPolicy("variables-changed", c), n === void 0 && (n = ce.setVariables))), this.waitForOwnResult && (this.waitForOwnResult = di(c.fetchPolicy));
       var d = function() {
         i.concast === y && (i.waitForOwnResult = !1);
-      }, f = c.variables && C({}, c.variables), p = this.fetch(c, n, l), y = p.concast, S = p.fromLink, h = {
+      }, f = c.variables && F({}, c.variables), p = this.fetch(c, n, l), y = p.concast, S = p.fromLink, h = {
         next: function(g) {
           pe(i.variables, f) && (d(), i.reportResult(g, f));
         },
@@ -11556,7 +11556,7 @@ var qs = Object.assign, sy = Object.hasOwnProperty, an = (
       var i = this.getLastError(), a = this.isDifferentFromLastResult(r, n);
       (i || !r.partial || this.options.returnPartialData) && this.updateLastResult(r, n), (i || a) && Dr(this.observers, "next", this.maskResult(r));
     }, t.prototype.reportError = function(r, n) {
-      var i = C(C({}, this.getLastResult()), { error: r, errors: r.graphQLErrors, networkStatus: ce.error, loading: !1 });
+      var i = F(F({}, this.getLastResult()), { error: r, errors: r.graphQLErrors, networkStatus: ce.error, loading: !1 });
       this.updateLastResult(i, n), Dr(this.observers, "error", this.last.error = r);
     }, t.prototype.hasObservers = function() {
       return this.observers.size > 0;
@@ -11567,7 +11567,7 @@ var qs = Object.assign, sy = Object.hasOwnProperty, an = (
     }, t.prototype.transformDocument = function(r) {
       return this.queryManager.transform(r);
     }, t.prototype.maskResult = function(r) {
-      return r && "data" in r ? C(C({}, r), { data: this.queryManager.maskOperation({
+      return r && "data" in r ? F(F({}, r), { data: this.queryManager.maskOperation({
         document: this.query,
         data: r.data,
         fetchPolicy: this.options.fetchPolicy,
@@ -11688,7 +11688,7 @@ var hi = (
       t === void 0 && (t = this.variables);
       var n = this.observableQuery;
       if (!(n && n.options.fetchPolicy === "no-cache")) {
-        var i = C(C({}, this.getDiffOptions(t)), { watcher: this, callback: function(a) {
+        var i = F(F({}, this.getDiffOptions(t)), { watcher: this, callback: function(a) {
           return r.setDiff(a);
         } });
         (!this.lastWatch || !pe(i, this.lastWatch)) && (this.cancel(), this.cancelWatch = this.cache.watch(this.lastWatch = i));
@@ -11797,13 +11797,13 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
                 update: _,
                 keepRootFields: v
               }), this.broadcastQueries(), s = this, [2, new Promise(function(A, P) {
-                return oi(s.getObservableFromLink(l, C(C({}, D), { optimisticResponse: o ? f : void 0 }), d, {}, !1), function(Q) {
+                return oi(s.getObservableFromLink(l, F(F({}, D), { optimisticResponse: o ? f : void 0 }), d, {}, !1), function(Q) {
                   if (tn(Q) && x === "none")
                     throw new st({
                       graphQLErrors: ia(Q)
                     });
                   a && (a.loading = !1, a.error = null);
-                  var H = C({}, Q);
+                  var H = F({}, Q);
                   return typeof S == "function" && (S = S(H)), x === "ignore" && tn(H) && delete H.errors, s.markMutationResult({
                     mutationId: n,
                     result: H,
@@ -11822,7 +11822,7 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
                   });
                 }).subscribe({
                   next: function(Q) {
-                    s.broadcastQueries(), (!("hasNext" in Q) || Q.hasNext === !1) && A(C(C({}, Q), { data: s.maskOperation({
+                    s.broadcastQueries(), (!("hasNext" in Q) || Q.hasNext === !1) && A(F(F({}, Q), { data: s.maskOperation({
                       document: l,
                       data: Q.data,
                       fetchPolicy: $,
@@ -11913,7 +11913,7 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
                   optimistic: !1,
                   returnPartialData: !0
                 });
-                y.complete && (i = C(C({}, i), { data: y.result }), "incremental" in i && delete i.incremental, "hasNext" in i && delete i.hasNext);
+                y.complete && (i = F(F({}, i), { data: y.result }), "incremental" in i && delete i.incremental, "hasNext" in i && delete i.hasNext);
               }
               p && f(d, i, {
                 context: t.context,
@@ -11951,7 +11951,7 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
       var n = this, i = typeof t == "function" ? t(r.variables, { IGNORE: Bs }) : t;
       return i === Bs ? !1 : (this.cache.recordOptimisticTransaction(function(a) {
         try {
-          n.markMutationResult(C(C({}, r), { result: { data: i } }), a);
+          n.markMutationResult(F(F({}, r), { result: { data: i } }), a);
         } catch (o) {
           globalThis.__DEV__ !== !1 && K.error(o);
         }
@@ -11984,7 +11984,7 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
           // cached after the first time.
           hasClientExports: Vh(t),
           hasForcedResolvers: this.localState.shouldForceResolvers(t),
-          hasNonreactiveDirective: Fr(["nonreactive"], t),
+          hasNonreactiveDirective: Cr(["nonreactive"], t),
           nonReactiveQuery: zm(t),
           clientQuery: this.localState.clientQuery(t),
           serverQuery: Qc([
@@ -11993,21 +11993,21 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
             { name: "nonreactive" },
             { name: "unmask" }
           ], t),
-          defaultVars: Ca(Ot(t)),
+          defaultVars: Fa(Ot(t)),
           // Transform any mutation or subscription operations to query operations
           // so we can read/write them from/to the cache.
-          asQuery: C(C({}, t), { definitions: t.definitions.map(function(i) {
-            return i.kind === "OperationDefinition" && i.operation !== "query" ? C(C({}, i), { operation: "query" }) : i;
+          asQuery: F(F({}, t), { definitions: t.definitions.map(function(i) {
+            return i.kind === "OperationDefinition" && i.operation !== "query" ? F(F({}, i), { operation: "query" }) : i;
           }) })
         };
         r.set(t, n);
       }
       return r.get(t);
     }, e.prototype.getVariables = function(t, r) {
-      return C(C({}, this.getDocumentInfo(t).defaultVars), r);
+      return F(F({}, this.getDocumentInfo(t).defaultVars), r);
     }, e.prototype.watchQuery = function(t) {
       var r = this.transform(t.query);
-      t = C(C({}, t), { variables: this.getVariables(r, t.variables) }), typeof t.notifyOnNetworkStatusChange > "u" && (t.notifyOnNetworkStatusChange = !1);
+      t = F(F({}, t), { variables: this.getVariables(r, t.variables) }), typeof t.notifyOnNetworkStatusChange > "u" && (t.notifyOnNetworkStatusChange = !1);
       var n = new hi(this), i = new an({
         queryManager: this,
         queryInfo: n,
@@ -12022,8 +12022,8 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
       var n = this;
       r === void 0 && (r = this.generateQueryId()), K(t.query, 30), K(t.query.kind === "Document", 31), K(!t.returnPartialData, 32), K(!t.pollInterval, 33);
       var i = this.transform(t.query);
-      return this.fetchQuery(r, C(C({}, t), { query: i })).then(function(a) {
-        return a && C(C({}, a), { data: n.maskOperation({
+      return this.fetchQuery(r, F(F({}, t), { query: i })).then(function(a) {
+        return a && F(F({}, a), { data: n.maskOperation({
           document: i,
           data: a.data,
           fetchPolicy: t.fetchPolicy,
@@ -12079,7 +12079,7 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
         }), l = new an({
           queryManager: r,
           queryInfo: c,
-          options: C(C({}, s), { fetchPolicy: "network-only" })
+          options: F(F({}, s), { fetchPolicy: "network-only" })
         });
         K(l.queryId === u), c.setObservableQuery(l), n.set(u, l);
       }), globalThis.__DEV__ !== !1 && a.size && a.forEach(function(s, u) {
@@ -12110,7 +12110,7 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
           var h = tn(S), g = tl(S);
           if (h || g) {
             var _ = {};
-            if (h && (_.graphQLErrors = S.errors), g && (_.protocolErrors = S.extensions[Fn]), s === "none" || g)
+            if (h && (_.graphQLErrors = S.errors), g && (_.protocolErrors = S.extensions[Cn]), s === "none" || g)
               throw new st(_);
           }
           return s === "ignore" && delete S.errors, S;
@@ -12151,7 +12151,7 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
           query: l,
           variables: n,
           operationName: br(l) || void 0,
-          context: this.prepareContext(C(C({}, r), { forceFetch: !a })),
+          context: this.prepareContext(F(F({}, r), { forceFetch: !a })),
           extensions: i
         };
         if (r = S.context, a) {
@@ -12332,7 +12332,7 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
         var w = k.result;
         globalThis.__DEV__ !== !1 && !l && !pe(w, {}) && xl(k.missing);
         var x = function(v) {
-          return le.of(C({ data: v, loading: qt($), networkStatus: $ }, k.complete ? null : { partial: !0 }));
+          return le.of(F({ data: v, loading: qt($), networkStatus: $ }, k.complete ? null : { partial: !0 }));
         };
         return w && i.getDocumentInfo(a).hasForcedResolvers ? i.localState.runResolvers({
           document: a,
@@ -12397,7 +12397,7 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
     }, e.prototype.prepareContext = function(t) {
       t === void 0 && (t = {});
       var r = this.localState.prepareContext(t);
-      return C(C(C({}, this.defaultContext), r), { clientAwareness: this.clientAwareness });
+      return F(F(F({}, this.defaultContext), r), { clientAwareness: this.clientAwareness });
     }, e;
   })()
 ), fy = (
@@ -12421,7 +12421,7 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
         var n = r.document, i = r.remoteResult, a = r.context, o = r.variables, s = r.onlyRunForcedResolvers, u = s === void 0 ? !1 : s;
         return at(this, function(c) {
           return n ? [2, this.resolveDocument(n, i.data, a, o, this.fragmentMatcher, u).then(function(l) {
-            return C(C({}, i), { data: l.result });
+            return F(F({}, i), { data: l.result });
           })] : [2, i];
         });
       });
@@ -12430,12 +12430,12 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
     }, e.prototype.getFragmentMatcher = function() {
       return this.fragmentMatcher;
     }, e.prototype.clientQuery = function(t) {
-      return Fr(["client"], t) && this.resolvers ? t : null;
+      return Cr(["client"], t) && this.resolvers ? t : null;
     }, e.prototype.serverQuery = function(t) {
       return Wc(t);
     }, e.prototype.prepareContext = function(t) {
       var r = this.cache;
-      return C(C({}, t), {
+      return F(F({}, t), {
         cache: r,
         // Getting an entry's cache key is useful for local state resolvers.
         getCacheKey: function(n) {
@@ -12446,8 +12446,8 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
       return it(this, arguments, void 0, function(r, n, i) {
         return n === void 0 && (n = {}), i === void 0 && (i = {}), at(this, function(a) {
           return r ? [2, this.resolveDocument(r, this.buildRootValueFromCache(r, n) || {}, this.prepareContext(i), n).then(function(o) {
-            return C(C({}, n), o.exportedVariables);
-          })] : [2, C({}, n)];
+            return F(F({}, n), o.exportedVariables);
+          })] : [2, F({}, n)];
         });
       });
     }, e.prototype.shouldForceResolvers = function(t) {
@@ -12477,7 +12477,7 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
         }), u === void 0 && (u = !1), at(this, function(k) {
           return c = ir(n), l = nr(n), d = tr(l), f = this.collectSelectionsToResolve(c, d), p = c.operation, y = p ? p.charAt(0).toUpperCase() + p.slice(1) : "Query", S = this, h = S.cache, g = S.client, _ = {
             fragmentMap: d,
-            context: C(C({}, a), { cache: h, client: g }),
+            context: F(F({}, a), { cache: h, client: g }),
             variables: o,
             fragmentMatcher: s,
             defaultOperationType: y,
@@ -12601,7 +12601,7 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
       if (this.resetStoreCallbacks = [], this.clearStoreCallbacks = [], !t.cache)
         throw Ae(16);
       var i = t.uri, a = t.credentials, o = t.headers, s = t.cache, u = t.documentTransform, c = t.ssrMode, l = c === void 0 ? !1 : c, d = t.ssrForceFetchDelay, f = d === void 0 ? 0 : d, p = t.connectToDevTools, y = t.queryDeduplication, S = y === void 0 ? !0 : y, h = t.defaultOptions, g = t.defaultContext, _ = t.assumeImmutableResults, I = _ === void 0 ? s.assumeImmutableResults : _, k = t.resolvers, $ = t.typeDefs, w = t.fragmentMatcher, x = t.name, v = t.version, D = t.devtools, b = t.dataMasking, A = t.link;
-      A || (A = i ? new Rg({ uri: i, credentials: a, headers: o }) : qe.empty()), this.link = A, this.cache = s, this.disableNetworkFetches = l || f > 0, this.queryDeduplication = S, this.defaultOptions = h || /* @__PURE__ */ Object.create(null), this.typeDefs = $, this.devtoolsConfig = C(C({}, D), { enabled: (n = D?.enabled) !== null && n !== void 0 ? n : p }), this.devtoolsConfig.enabled === void 0 && (this.devtoolsConfig.enabled = globalThis.__DEV__ !== !1), f && setTimeout(function() {
+      A || (A = i ? new Rg({ uri: i, credentials: a, headers: o }) : qe.empty()), this.link = A, this.cache = s, this.disableNetworkFetches = l || f > 0, this.queryDeduplication = S, this.defaultOptions = h || /* @__PURE__ */ Object.create(null), this.typeDefs = $, this.devtoolsConfig = F(F({}, D), { enabled: (n = D?.enabled) !== null && n !== void 0 ? n : p }), this.devtoolsConfig.enabled === void 0 && (this.devtoolsConfig.enabled = globalThis.__DEV__ !== !1), f && setTimeout(function() {
         return r.disableNetworkFetches = !1;
       }, f), this.watchQuery = this.watchQuery.bind(this), this.query = this.query.bind(this), this.mutate = this.mutate.bind(this), this.watchFragment = this.watchFragment.bind(this), this.resetStore = this.resetStore.bind(this), this.reFetchObservableQueries = this.reFetchObservableQueries.bind(this), this.version = Ta, this.localState = new fy({
         cache: s,
@@ -12659,15 +12659,15 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
     }), e.prototype.stop = function() {
       this.queryManager.stop();
     }, e.prototype.watchQuery = function(t) {
-      return this.defaultOptions.watchQuery && (t = si(this.defaultOptions.watchQuery, t)), this.disableNetworkFetches && (t.fetchPolicy === "network-only" || t.fetchPolicy === "cache-and-network") && (t = C(C({}, t), { fetchPolicy: "cache-first" })), this.queryManager.watchQuery(t);
+      return this.defaultOptions.watchQuery && (t = si(this.defaultOptions.watchQuery, t)), this.disableNetworkFetches && (t.fetchPolicy === "network-only" || t.fetchPolicy === "cache-and-network") && (t = F(F({}, t), { fetchPolicy: "cache-first" })), this.queryManager.watchQuery(t);
     }, e.prototype.query = function(t) {
-      return this.defaultOptions.query && (t = si(this.defaultOptions.query, t)), K(t.fetchPolicy !== "cache-and-network", 17), this.disableNetworkFetches && t.fetchPolicy === "network-only" && (t = C(C({}, t), { fetchPolicy: "cache-first" })), this.queryManager.query(t);
+      return this.defaultOptions.query && (t = si(this.defaultOptions.query, t)), K(t.fetchPolicy !== "cache-and-network", 17), this.disableNetworkFetches && t.fetchPolicy === "network-only" && (t = F(F({}, t), { fetchPolicy: "cache-first" })), this.queryManager.query(t);
     }, e.prototype.mutate = function(t) {
       return this.defaultOptions.mutate && (t = si(this.defaultOptions.mutate, t)), this.queryManager.mutate(t);
     }, e.prototype.subscribe = function(t) {
       var r = this, n = this.queryManager.generateQueryId();
       return this.queryManager.startGraphQLSubscription(t).map(function(i) {
-        return C(C({}, i), { data: r.queryManager.maskOperation({
+        return F(F({}, i), { data: r.queryManager.maskOperation({
           document: t.query,
           data: i.data,
           fetchPolicy: t.fetchPolicy,
@@ -12678,7 +12678,7 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
       return r === void 0 && (r = !1), this.cache.readQuery(t, r);
     }, e.prototype.watchFragment = function(t) {
       var r;
-      return this.cache.watchFragment(C(C({}, t), (r = {}, r[Symbol.for("apollo.dataMasking")] = this.queryManager.dataMasking, r)));
+      return this.cache.watchFragment(F(F({}, t), (r = {}, r[Symbol.for("apollo.dataMasking")] = this.queryManager.dataMasking, r)));
     }, e.prototype.readFragment = function(t, r) {
       return r === void 0 && (r = !1), this.cache.readFragment(t, r);
     }, e.prototype.writeQuery = function(t) {
@@ -12767,11 +12767,11 @@ var cy = Object.prototype.hasOwnProperty, Bs = /* @__PURE__ */ Object.create(nul
 );
 globalThis.__DEV__ !== !1 && (Wa.prototype.getMemoryInternals = um);
 var on = /* @__PURE__ */ new Map(), da = /* @__PURE__ */ new Map(), Al = !0, hn = !1;
-function Fl(e) {
+function Cl(e) {
   return e.replace(/[\s,]+/g, " ").trim();
 }
 function dy(e) {
-  return Fl(e.source.body.substring(e.start, e.end));
+  return Cl(e.source.body.substring(e.start, e.end));
 }
 function py(e) {
   var t = /* @__PURE__ */ new Set(), r = [];
@@ -12783,7 +12783,7 @@ graphql-tag enforces all fragment names across your application to be unique; re
 this in the docs: http://dev.apollodata.com/core/fragments.html#unique-names`) : o || da.set(i, o = /* @__PURE__ */ new Set()), o.add(a), t.has(a) || (t.add(a), r.push(n));
     } else
       r.push(n);
-  }), C(C({}, e), { definitions: r });
+  }), F(F({}, e), { definitions: r });
 }
 function hy(e) {
   var t = new Set(e.definitions);
@@ -12797,7 +12797,7 @@ function hy(e) {
   return r && (delete r.startToken, delete r.endToken), e;
 }
 function my(e) {
-  var t = Fl(e);
+  var t = Cl(e);
   if (!on.has(t)) {
     var r = $h(e, {
       experimentalFragmentVariables: hn,
@@ -12941,7 +12941,7 @@ var hu;
 (function(e) {
   e.NeedsMigration = "NEEDS_MIGRATION", e.Ok = "OK", e.Setup = "SETUP";
 })(hu || (hu = {}));
-const Cl = E`
+const Fl = E`
     fragment ConfigGeneralData on ConfigGeneralResult {
   stashes {
     path
@@ -13165,7 +13165,7 @@ ${wy}`, Ey = E`
   ui
   plugins
 }
-    ${Cl}
+    ${Fl}
 ${$l}
 ${Pl}
 ${Nl}
@@ -13276,7 +13276,7 @@ const Ya = E`
     }
   }
 }
-    `, Cn = E`
+    `, Fn = E`
     fragment SlimImageData on Image {
   id
   title
@@ -13696,7 +13696,7 @@ const ky = E`
     image_path
   }
 }
-    `, Ft = E`
+    `, Ct = E`
     fragment SceneMarkerData on SceneMarker {
   id
   title
@@ -13882,7 +13882,7 @@ ${xy}`, bt = E`
   }
 }
     ${Ul}
-${Ft}
+${Ct}
 ${Vl}
 ${$n}
 ${ur}
@@ -13903,7 +13903,7 @@ ${vt}`, Ay = E`
     screenshot
   }
 }
-    `, Fy = E`
+    `, Cy = E`
     fragment ScrapedStudioData on ScrapedStudio {
   stored_id
   name
@@ -13959,7 +13959,7 @@ ${vt}`, Ay = E`
   name
   url
 }
-    `, Cy = E`
+    `, Fy = E`
     fragment ScrapedGroupData on ScrapedGroup {
   name
   aliases
@@ -14299,7 +14299,7 @@ E`
     ...ConfigGeneralData
   }
 }
-    ${Cl}`;
+    ${Fl}`;
 E`
     mutation ConfigureInterface($input: ConfigInterfaceInput!) {
   configureInterface(input: $input) {
@@ -14512,21 +14512,21 @@ E`
     ...SlimImageData
   }
 }
-    ${Cn}`;
+    ${Fn}`;
 E`
     mutation BulkImageUpdate($input: BulkImageUpdateInput!) {
   bulkImageUpdate(input: $input) {
     ...SlimImageData
   }
 }
-    ${Cn}`;
+    ${Fn}`;
 E`
     mutation ImagesUpdate($input: [ImageUpdateInput!]!) {
   imagesUpdate(input: $input) {
     ...SlimImageData
   }
 }
-    ${Cn}`;
+    ${Fn}`;
 E`
     mutation ImageIncrementO($id: ID!) {
   imageIncrementO(id: $id)
@@ -14720,7 +14720,7 @@ E`
     ...SceneMarkerData
   }
 }
-    ${Ft}`;
+    ${Ct}`;
 E`
     mutation SceneMarkerUpdate($id: ID!, $title: String!, $seconds: Float!, $end_seconds: Float, $scene_id: ID!, $primary_tag_id: ID!, $tag_ids: [ID!] = []) {
   sceneMarkerUpdate(
@@ -14729,7 +14729,7 @@ E`
     ...SceneMarkerData
   }
 }
-    ${Ft}`;
+    ${Ct}`;
 E`
     mutation SceneMarkerDestroy($id: ID!) {
   sceneMarkerDestroy(id: $id)
@@ -15040,7 +15040,7 @@ E`
     }
   }
 }
-    ${Cn}`;
+    ${Fn}`;
 E`
     query FindImage($id: ID!, $checksum: String) {
   findImage(id: $id, checksum: $checksum) {
@@ -15075,7 +15075,7 @@ E`
     ...SceneMarkerData
   }
 }
-    ${Ft}`;
+    ${Ct}`;
 E`
     query MarkerStrings($q: String, $sort: String) {
   markerStrings(q: $q, sort: $sort) {
@@ -15270,7 +15270,7 @@ E`
     }
   }
 }
-    ${Ft}`;
+    ${Ct}`;
 E`
     query FindScenes($filter: FindFilterType, $scene_filter: SceneFilterType, $scene_ids: [Int!]) {
   findScenes(filter: $filter, scene_filter: $scene_filter, scene_ids: $scene_ids) {
@@ -15321,7 +15321,7 @@ E`
     }
   }
 }
-    ${Ft}`;
+    ${Ct}`;
 E`
     query ParseSceneFilenames($filter: FindFilterType!, $config: SceneParserInput!) {
   parseSceneFilenames(filter: $filter, config: $config) {
@@ -15435,7 +15435,7 @@ E`
     ...ScrapedStudioData
   }
 }
-    ${Fy}`;
+    ${Cy}`;
 E`
     query ScrapeSinglePerformer($source: ScraperSourceInput!, $input: ScrapeSinglePerformerInput!) {
   scrapeSinglePerformer(source: $source, input: $input) {
@@ -15512,7 +15512,7 @@ E`
     ...ScrapedGroupData
   }
 }
-    ${Cy}`;
+    ${Fy}`;
 E`
     query InstalledScraperPackages {
   installedPackages(type: Scraper) {
@@ -15662,7 +15662,7 @@ E`
     }
   }
 }
-    ${Ft}
+    ${Ct}
 ${bt}`;
 E`
     query GetStashConfigForTv {
@@ -15726,7 +15726,7 @@ var Uy = (
     return t.prototype.request = function(r) {
       var n = this;
       return new le(function(i) {
-        return n.client.subscribe(C(C({}, r), { query: ut(r.query) }), {
+        return n.client.subscribe(F(F({}, r), { query: ut(r.query) }), {
           next: i.next.bind(i),
           complete: i.complete.bind(i),
           error: function(a) {
@@ -16237,7 +16237,7 @@ function Hl(e) {
               operation: t,
               forward: r
             }) : tl(s) && (o = e({
-              protocolErrors: s.extensions[Fn],
+              protocolErrors: s.extensions[Cn],
               response: s,
               operation: t,
               forward: r
@@ -16815,8 +16815,8 @@ Use "options.replacer" or "options.ignoreUnknown"
       }, { buffer: 3, lYpoI2: 11 }], 3: [function(r, n, i) {
         (function(a, o, h, u, c, l, d, f, p) {
           var y = r("base64-js"), S = r("ieee754");
-          function h(m, T, F) {
-            if (!(this instanceof h)) return new h(m, T, F);
+          function h(m, T, C) {
+            if (!(this instanceof h)) return new h(m, T, C);
             var B, U, z, re, ge = typeof m;
             if (T === "base64" && ge == "string") for (m = (re = m).trim ? re.trim() : re.replace(/^\s+|\s+$/g, ""); m.length % 4 != 0; ) m += "=";
             if (ge == "number") B = N(m);
@@ -16828,66 +16828,66 @@ Use "options.replacer" or "options.ignoreUnknown"
             if (h._useTypedArrays ? U = h._augment(new Uint8Array(B)) : ((U = this).length = B, U._isBuffer = !0), h._useTypedArrays && typeof m.byteLength == "number") U._set(m);
             else if (M(re = m) || h.isBuffer(re) || re && typeof re == "object" && typeof re.length == "number") for (z = 0; z < B; z++) h.isBuffer(m) ? U[z] = m.readUInt8(z) : U[z] = m[z];
             else if (ge == "string") U.write(m, 0, T);
-            else if (ge == "number" && !h._useTypedArrays && !F) for (z = 0; z < B; z++) U[z] = 0;
+            else if (ge == "number" && !h._useTypedArrays && !C) for (z = 0; z < B; z++) U[z] = 0;
             return U;
           }
-          function g(m, T, F, B) {
+          function g(m, T, C, B) {
             return h._charsWritten = ne((function(U) {
               for (var z = [], re = 0; re < U.length; re++) z.push(255 & U.charCodeAt(re));
               return z;
-            })(T), m, F, B);
+            })(T), m, C, B);
           }
-          function _(m, T, F, B) {
+          function _(m, T, C, B) {
             return h._charsWritten = ne((function(U) {
               for (var z, re, ge = [], we = 0; we < U.length; we++) re = U.charCodeAt(we), z = re >> 8, re = re % 256, ge.push(re), ge.push(z);
               return ge;
-            })(T), m, F, B);
+            })(T), m, C, B);
           }
-          function I(m, T, F) {
+          function I(m, T, C) {
             var B = "";
-            F = Math.min(m.length, F);
-            for (var U = T; U < F; U++) B += String.fromCharCode(m[U]);
+            C = Math.min(m.length, C);
+            for (var U = T; U < C; U++) B += String.fromCharCode(m[U]);
             return B;
           }
-          function k(m, T, F, z) {
-            z || (V(typeof F == "boolean", "missing or invalid endian"), V(T != null, "missing offset"), V(T + 1 < m.length, "Trying to read beyond buffer length"));
+          function k(m, T, C, z) {
+            z || (V(typeof C == "boolean", "missing or invalid endian"), V(T != null, "missing offset"), V(T + 1 < m.length, "Trying to read beyond buffer length"));
             var U, z = m.length;
-            if (!(z <= T)) return F ? (U = m[T], T + 1 < z && (U |= m[T + 1] << 8)) : (U = m[T] << 8, T + 1 < z && (U |= m[T + 1])), U;
+            if (!(z <= T)) return C ? (U = m[T], T + 1 < z && (U |= m[T + 1] << 8)) : (U = m[T] << 8, T + 1 < z && (U |= m[T + 1])), U;
           }
-          function $(m, T, F, z) {
-            z || (V(typeof F == "boolean", "missing or invalid endian"), V(T != null, "missing offset"), V(T + 3 < m.length, "Trying to read beyond buffer length"));
+          function $(m, T, C, z) {
+            z || (V(typeof C == "boolean", "missing or invalid endian"), V(T != null, "missing offset"), V(T + 3 < m.length, "Trying to read beyond buffer length"));
             var U, z = m.length;
-            if (!(z <= T)) return F ? (T + 2 < z && (U = m[T + 2] << 16), T + 1 < z && (U |= m[T + 1] << 8), U |= m[T], T + 3 < z && (U += m[T + 3] << 24 >>> 0)) : (T + 1 < z && (U = m[T + 1] << 16), T + 2 < z && (U |= m[T + 2] << 8), T + 3 < z && (U |= m[T + 3]), U += m[T] << 24 >>> 0), U;
+            if (!(z <= T)) return C ? (T + 2 < z && (U = m[T + 2] << 16), T + 1 < z && (U |= m[T + 1] << 8), U |= m[T], T + 3 < z && (U += m[T + 3] << 24 >>> 0)) : (T + 1 < z && (U = m[T + 1] << 16), T + 2 < z && (U |= m[T + 2] << 8), T + 3 < z && (U |= m[T + 3]), U += m[T] << 24 >>> 0), U;
           }
-          function w(m, T, F, B) {
-            if (B || (V(typeof F == "boolean", "missing or invalid endian"), V(T != null, "missing offset"), V(T + 1 < m.length, "Trying to read beyond buffer length")), !(m.length <= T)) return B = k(m, T, F, !0), 32768 & B ? -1 * (65535 - B + 1) : B;
+          function w(m, T, C, B) {
+            if (B || (V(typeof C == "boolean", "missing or invalid endian"), V(T != null, "missing offset"), V(T + 1 < m.length, "Trying to read beyond buffer length")), !(m.length <= T)) return B = k(m, T, C, !0), 32768 & B ? -1 * (65535 - B + 1) : B;
           }
-          function x(m, T, F, B) {
-            if (B || (V(typeof F == "boolean", "missing or invalid endian"), V(T != null, "missing offset"), V(T + 3 < m.length, "Trying to read beyond buffer length")), !(m.length <= T)) return B = $(m, T, F, !0), 2147483648 & B ? -1 * (4294967295 - B + 1) : B;
+          function x(m, T, C, B) {
+            if (B || (V(typeof C == "boolean", "missing or invalid endian"), V(T != null, "missing offset"), V(T + 3 < m.length, "Trying to read beyond buffer length")), !(m.length <= T)) return B = $(m, T, C, !0), 2147483648 & B ? -1 * (4294967295 - B + 1) : B;
           }
-          function v(m, T, F, B) {
-            return B || (V(typeof F == "boolean", "missing or invalid endian"), V(T + 3 < m.length, "Trying to read beyond buffer length")), S.read(m, T, F, 23, 4);
+          function v(m, T, C, B) {
+            return B || (V(typeof C == "boolean", "missing or invalid endian"), V(T + 3 < m.length, "Trying to read beyond buffer length")), S.read(m, T, C, 23, 4);
           }
-          function D(m, T, F, B) {
-            return B || (V(typeof F == "boolean", "missing or invalid endian"), V(T + 7 < m.length, "Trying to read beyond buffer length")), S.read(m, T, F, 52, 8);
+          function D(m, T, C, B) {
+            return B || (V(typeof C == "boolean", "missing or invalid endian"), V(T + 7 < m.length, "Trying to read beyond buffer length")), S.read(m, T, C, 52, 8);
           }
-          function b(m, T, F, B, U) {
-            if (U || (V(T != null, "missing value"), V(typeof B == "boolean", "missing or invalid endian"), V(F != null, "missing offset"), V(F + 1 < m.length, "trying to write beyond buffer length"), ae(T, 65535)), U = m.length, !(U <= F)) for (var z = 0, re = Math.min(U - F, 2); z < re; z++) m[F + z] = (T & 255 << 8 * (B ? z : 1 - z)) >>> 8 * (B ? z : 1 - z);
+          function b(m, T, C, B, U) {
+            if (U || (V(T != null, "missing value"), V(typeof B == "boolean", "missing or invalid endian"), V(C != null, "missing offset"), V(C + 1 < m.length, "trying to write beyond buffer length"), ae(T, 65535)), U = m.length, !(U <= C)) for (var z = 0, re = Math.min(U - C, 2); z < re; z++) m[C + z] = (T & 255 << 8 * (B ? z : 1 - z)) >>> 8 * (B ? z : 1 - z);
           }
-          function A(m, T, F, B, U) {
-            if (U || (V(T != null, "missing value"), V(typeof B == "boolean", "missing or invalid endian"), V(F != null, "missing offset"), V(F + 3 < m.length, "trying to write beyond buffer length"), ae(T, 4294967295)), U = m.length, !(U <= F)) for (var z = 0, re = Math.min(U - F, 4); z < re; z++) m[F + z] = T >>> 8 * (B ? z : 3 - z) & 255;
+          function A(m, T, C, B, U) {
+            if (U || (V(T != null, "missing value"), V(typeof B == "boolean", "missing or invalid endian"), V(C != null, "missing offset"), V(C + 3 < m.length, "trying to write beyond buffer length"), ae(T, 4294967295)), U = m.length, !(U <= C)) for (var z = 0, re = Math.min(U - C, 4); z < re; z++) m[C + z] = T >>> 8 * (B ? z : 3 - z) & 255;
           }
-          function P(m, T, F, B, U) {
-            U || (V(T != null, "missing value"), V(typeof B == "boolean", "missing or invalid endian"), V(F != null, "missing offset"), V(F + 1 < m.length, "Trying to write beyond buffer length"), oe(T, 32767, -32768)), m.length <= F || b(m, 0 <= T ? T : 65535 + T + 1, F, B, U);
+          function P(m, T, C, B, U) {
+            U || (V(T != null, "missing value"), V(typeof B == "boolean", "missing or invalid endian"), V(C != null, "missing offset"), V(C + 1 < m.length, "Trying to write beyond buffer length"), oe(T, 32767, -32768)), m.length <= C || b(m, 0 <= T ? T : 65535 + T + 1, C, B, U);
           }
-          function Q(m, T, F, B, U) {
-            U || (V(T != null, "missing value"), V(typeof B == "boolean", "missing or invalid endian"), V(F != null, "missing offset"), V(F + 3 < m.length, "Trying to write beyond buffer length"), oe(T, 2147483647, -2147483648)), m.length <= F || A(m, 0 <= T ? T : 4294967295 + T + 1, F, B, U);
+          function Q(m, T, C, B, U) {
+            U || (V(T != null, "missing value"), V(typeof B == "boolean", "missing or invalid endian"), V(C != null, "missing offset"), V(C + 3 < m.length, "Trying to write beyond buffer length"), oe(T, 2147483647, -2147483648)), m.length <= C || A(m, 0 <= T ? T : 4294967295 + T + 1, C, B, U);
           }
-          function H(m, T, F, B, U) {
-            U || (V(T != null, "missing value"), V(typeof B == "boolean", "missing or invalid endian"), V(F != null, "missing offset"), V(F + 3 < m.length, "Trying to write beyond buffer length"), be(T, 34028234663852886e22, -34028234663852886e22)), m.length <= F || S.write(m, T, F, B, 23, 4);
+          function H(m, T, C, B, U) {
+            U || (V(T != null, "missing value"), V(typeof B == "boolean", "missing or invalid endian"), V(C != null, "missing offset"), V(C + 3 < m.length, "Trying to write beyond buffer length"), be(T, 34028234663852886e22, -34028234663852886e22)), m.length <= C || S.write(m, T, C, B, 23, 4);
           }
-          function j(m, T, F, B, U) {
-            U || (V(T != null, "missing value"), V(typeof B == "boolean", "missing or invalid endian"), V(F != null, "missing offset"), V(F + 7 < m.length, "Trying to write beyond buffer length"), be(T, 17976931348623157e292, -17976931348623157e292)), m.length <= F || S.write(m, T, F, B, 52, 8);
+          function j(m, T, C, B, U) {
+            U || (V(T != null, "missing value"), V(typeof B == "boolean", "missing or invalid endian"), V(C != null, "missing offset"), V(C + 7 < m.length, "Trying to write beyond buffer length"), be(T, 17976931348623157e292, -17976931348623157e292)), m.length <= C || S.write(m, T, C, B, 52, 8);
           }
           i.Buffer = h, i.SlowBuffer = h, i.INSPECT_MAX_BYTES = 50, h.poolSize = 8192, h._useTypedArrays = (function() {
             try {
@@ -16918,116 +16918,116 @@ Use "options.replacer" or "options.ignoreUnknown"
           }, h.isBuffer = function(m) {
             return !(m == null || !m._isBuffer);
           }, h.byteLength = function(m, T) {
-            var F;
+            var C;
             switch (m += "", T || "utf8") {
               case "hex":
-                F = m.length / 2;
+                C = m.length / 2;
                 break;
               case "utf8":
               case "utf-8":
-                F = Y(m).length;
+                C = Y(m).length;
                 break;
               case "ascii":
               case "binary":
               case "raw":
-                F = m.length;
+                C = m.length;
                 break;
               case "base64":
-                F = Z(m).length;
+                C = Z(m).length;
                 break;
               case "ucs2":
               case "ucs-2":
               case "utf16le":
               case "utf-16le":
-                F = 2 * m.length;
+                C = 2 * m.length;
                 break;
               default:
                 throw new Error("Unknown encoding");
             }
-            return F;
+            return C;
           }, h.concat = function(m, T) {
             if (V(M(m), `Usage: Buffer.concat(list, [totalLength])
 list should be an Array.`), m.length === 0) return new h(0);
             if (m.length === 1) return m[0];
             if (typeof T != "number") for (U = T = 0; U < m.length; U++) T += m[U].length;
-            for (var F = new h(T), B = 0, U = 0; U < m.length; U++) {
+            for (var C = new h(T), B = 0, U = 0; U < m.length; U++) {
               var z = m[U];
-              z.copy(F, B), B += z.length;
+              z.copy(C, B), B += z.length;
             }
-            return F;
-          }, h.prototype.write = function(m, T, F, B) {
-            isFinite(T) ? isFinite(F) || (B = F, F = void 0) : (we = B, B = T, T = F, F = we), T = Number(T) || 0;
+            return C;
+          }, h.prototype.write = function(m, T, C, B) {
+            isFinite(T) ? isFinite(C) || (B = C, C = void 0) : (we = B, B = T, T = C, C = we), T = Number(T) || 0;
             var U, z, re, ge, we = this.length - T;
-            switch ((!F || we < (F = Number(F))) && (F = we), B = String(B || "utf8").toLowerCase()) {
+            switch ((!C || we < (C = Number(C))) && (C = we), B = String(B || "utf8").toLowerCase()) {
               case "hex":
-                U = (function(Me, Fe, Ce, Ee) {
-                  Ce = Number(Ce) || 0;
-                  var Se = Me.length - Ce;
-                  (!Ee || Se < (Ee = Number(Ee))) && (Ee = Se), V((Se = Fe.length) % 2 == 0, "Invalid hex string"), Se / 2 < Ee && (Ee = Se / 2);
-                  for (var Ct = 0; Ct < Ee; Ct++) {
-                    var eo = parseInt(Fe.substr(2 * Ct, 2), 16);
-                    V(!isNaN(eo), "Invalid hex string"), Me[Ce + Ct] = eo;
+                U = (function(Me, Ce, Fe, Ee) {
+                  Fe = Number(Fe) || 0;
+                  var Se = Me.length - Fe;
+                  (!Ee || Se < (Ee = Number(Ee))) && (Ee = Se), V((Se = Ce.length) % 2 == 0, "Invalid hex string"), Se / 2 < Ee && (Ee = Se / 2);
+                  for (var Ft = 0; Ft < Ee; Ft++) {
+                    var eo = parseInt(Ce.substr(2 * Ft, 2), 16);
+                    V(!isNaN(eo), "Invalid hex string"), Me[Fe + Ft] = eo;
                   }
-                  return h._charsWritten = 2 * Ct, Ct;
-                })(this, m, T, F);
+                  return h._charsWritten = 2 * Ft, Ft;
+                })(this, m, T, C);
                 break;
               case "utf8":
               case "utf-8":
-                z = this, re = T, ge = F, U = h._charsWritten = ne(Y(m), z, re, ge);
+                z = this, re = T, ge = C, U = h._charsWritten = ne(Y(m), z, re, ge);
                 break;
               case "ascii":
               case "binary":
-                U = g(this, m, T, F);
+                U = g(this, m, T, C);
                 break;
               case "base64":
-                z = this, re = T, ge = F, U = h._charsWritten = ne(Z(m), z, re, ge);
+                z = this, re = T, ge = C, U = h._charsWritten = ne(Z(m), z, re, ge);
                 break;
               case "ucs2":
               case "ucs-2":
               case "utf16le":
               case "utf-16le":
-                U = _(this, m, T, F);
+                U = _(this, m, T, C);
                 break;
               default:
                 throw new Error("Unknown encoding");
             }
             return U;
-          }, h.prototype.toString = function(m, T, F) {
+          }, h.prototype.toString = function(m, T, C) {
             var B, U, z, re, ge = this;
-            if (m = String(m || "utf8").toLowerCase(), T = Number(T) || 0, (F = F !== void 0 ? Number(F) : ge.length) === T) return "";
+            if (m = String(m || "utf8").toLowerCase(), T = Number(T) || 0, (C = C !== void 0 ? Number(C) : ge.length) === T) return "";
             switch (m) {
               case "hex":
-                B = (function(we, Me, Fe) {
-                  var Ce = we.length;
-                  (!Me || Me < 0) && (Me = 0), (!Fe || Fe < 0 || Ce < Fe) && (Fe = Ce);
-                  for (var Ee = "", Se = Me; Se < Fe; Se++) Ee += W(we[Se]);
+                B = (function(we, Me, Ce) {
+                  var Fe = we.length;
+                  (!Me || Me < 0) && (Me = 0), (!Ce || Ce < 0 || Fe < Ce) && (Ce = Fe);
+                  for (var Ee = "", Se = Me; Se < Ce; Se++) Ee += W(we[Se]);
                   return Ee;
-                })(ge, T, F);
+                })(ge, T, C);
                 break;
               case "utf8":
               case "utf-8":
-                B = (function(we, Me, Fe) {
-                  var Ce = "", Ee = "";
-                  Fe = Math.min(we.length, Fe);
-                  for (var Se = Me; Se < Fe; Se++) we[Se] <= 127 ? (Ce += se(Ee) + String.fromCharCode(we[Se]), Ee = "") : Ee += "%" + we[Se].toString(16);
-                  return Ce + se(Ee);
-                })(ge, T, F);
+                B = (function(we, Me, Ce) {
+                  var Fe = "", Ee = "";
+                  Ce = Math.min(we.length, Ce);
+                  for (var Se = Me; Se < Ce; Se++) we[Se] <= 127 ? (Fe += se(Ee) + String.fromCharCode(we[Se]), Ee = "") : Ee += "%" + we[Se].toString(16);
+                  return Fe + se(Ee);
+                })(ge, T, C);
                 break;
               case "ascii":
               case "binary":
-                B = I(ge, T, F);
+                B = I(ge, T, C);
                 break;
               case "base64":
-                U = ge, re = F, B = (z = T) === 0 && re === U.length ? y.fromByteArray(U) : y.fromByteArray(U.slice(z, re));
+                U = ge, re = C, B = (z = T) === 0 && re === U.length ? y.fromByteArray(U) : y.fromByteArray(U.slice(z, re));
                 break;
               case "ucs2":
               case "ucs-2":
               case "utf16le":
               case "utf-16le":
-                B = (function(we, Me, Fe) {
-                  for (var Ce = we.slice(Me, Fe), Ee = "", Se = 0; Se < Ce.length; Se += 2) Ee += String.fromCharCode(Ce[Se] + 256 * Ce[Se + 1]);
+                B = (function(we, Me, Ce) {
+                  for (var Fe = we.slice(Me, Ce), Ee = "", Se = 0; Se < Fe.length; Se += 2) Ee += String.fromCharCode(Fe[Se] + 256 * Fe[Se + 1]);
                   return Ee;
-                })(ge, T, F);
+                })(ge, T, C);
                 break;
               default:
                 throw new Error("Unknown encoding");
@@ -17035,16 +17035,16 @@ list should be an Array.`), m.length === 0) return new h(0);
             return B;
           }, h.prototype.toJSON = function() {
             return { type: "Buffer", data: Array.prototype.slice.call(this._arr || this, 0) };
-          }, h.prototype.copy = function(m, T, F, B) {
-            if (T = T || 0, (B = B || B === 0 ? B : this.length) !== (F = F || 0) && m.length !== 0 && this.length !== 0) {
-              V(F <= B, "sourceEnd < sourceStart"), V(0 <= T && T < m.length, "targetStart out of bounds"), V(0 <= F && F < this.length, "sourceStart out of bounds"), V(0 <= B && B <= this.length, "sourceEnd out of bounds"), B > this.length && (B = this.length);
-              var U = (B = m.length - T < B - F ? m.length - T + F : B) - F;
-              if (U < 100 || !h._useTypedArrays) for (var z = 0; z < U; z++) m[z + T] = this[z + F];
-              else m._set(this.subarray(F, F + U), T);
+          }, h.prototype.copy = function(m, T, C, B) {
+            if (T = T || 0, (B = B || B === 0 ? B : this.length) !== (C = C || 0) && m.length !== 0 && this.length !== 0) {
+              V(C <= B, "sourceEnd < sourceStart"), V(0 <= T && T < m.length, "targetStart out of bounds"), V(0 <= C && C < this.length, "sourceStart out of bounds"), V(0 <= B && B <= this.length, "sourceEnd out of bounds"), B > this.length && (B = this.length);
+              var U = (B = m.length - T < B - C ? m.length - T + C : B) - C;
+              if (U < 100 || !h._useTypedArrays) for (var z = 0; z < U; z++) m[z + T] = this[z + C];
+              else m._set(this.subarray(C, C + U), T);
             }
           }, h.prototype.slice = function(m, T) {
-            var F = this.length;
-            if (m = O(m, F, 0), T = O(T, F, F), h._useTypedArrays) return h._augment(this.subarray(m, T));
+            var C = this.length;
+            if (m = O(m, C, 0), T = O(T, C, C), h._useTypedArrays) return h._augment(this.subarray(m, T));
             for (var B = T - m, U = new h(B, void 0, !0), z = 0; z < B; z++) U[z] = this[z + m];
             return U;
           }, h.prototype.get = function(m) {
@@ -17079,54 +17079,54 @@ list should be an Array.`), m.length === 0) return new h(0);
             return D(this, m, !0, T);
           }, h.prototype.readDoubleBE = function(m, T) {
             return D(this, m, !1, T);
-          }, h.prototype.writeUInt8 = function(m, T, F) {
-            F || (V(m != null, "missing value"), V(T != null, "missing offset"), V(T < this.length, "trying to write beyond buffer length"), ae(m, 255)), T >= this.length || (this[T] = m);
-          }, h.prototype.writeUInt16LE = function(m, T, F) {
-            b(this, m, T, !0, F);
-          }, h.prototype.writeUInt16BE = function(m, T, F) {
-            b(this, m, T, !1, F);
-          }, h.prototype.writeUInt32LE = function(m, T, F) {
-            A(this, m, T, !0, F);
-          }, h.prototype.writeUInt32BE = function(m, T, F) {
-            A(this, m, T, !1, F);
-          }, h.prototype.writeInt8 = function(m, T, F) {
-            F || (V(m != null, "missing value"), V(T != null, "missing offset"), V(T < this.length, "Trying to write beyond buffer length"), oe(m, 127, -128)), T >= this.length || (0 <= m ? this.writeUInt8(m, T, F) : this.writeUInt8(255 + m + 1, T, F));
-          }, h.prototype.writeInt16LE = function(m, T, F) {
-            P(this, m, T, !0, F);
-          }, h.prototype.writeInt16BE = function(m, T, F) {
-            P(this, m, T, !1, F);
-          }, h.prototype.writeInt32LE = function(m, T, F) {
-            Q(this, m, T, !0, F);
-          }, h.prototype.writeInt32BE = function(m, T, F) {
-            Q(this, m, T, !1, F);
-          }, h.prototype.writeFloatLE = function(m, T, F) {
-            H(this, m, T, !0, F);
-          }, h.prototype.writeFloatBE = function(m, T, F) {
-            H(this, m, T, !1, F);
-          }, h.prototype.writeDoubleLE = function(m, T, F) {
-            j(this, m, T, !0, F);
-          }, h.prototype.writeDoubleBE = function(m, T, F) {
-            j(this, m, T, !1, F);
-          }, h.prototype.fill = function(m, T, F) {
-            if (T = T || 0, F = F || this.length, V(typeof (m = typeof (m = m || 0) == "string" ? m.charCodeAt(0) : m) == "number" && !isNaN(m), "value is not a number"), V(T <= F, "end < start"), F !== T && this.length !== 0) {
-              V(0 <= T && T < this.length, "start out of bounds"), V(0 <= F && F <= this.length, "end out of bounds");
-              for (var B = T; B < F; B++) this[B] = m;
+          }, h.prototype.writeUInt8 = function(m, T, C) {
+            C || (V(m != null, "missing value"), V(T != null, "missing offset"), V(T < this.length, "trying to write beyond buffer length"), ae(m, 255)), T >= this.length || (this[T] = m);
+          }, h.prototype.writeUInt16LE = function(m, T, C) {
+            b(this, m, T, !0, C);
+          }, h.prototype.writeUInt16BE = function(m, T, C) {
+            b(this, m, T, !1, C);
+          }, h.prototype.writeUInt32LE = function(m, T, C) {
+            A(this, m, T, !0, C);
+          }, h.prototype.writeUInt32BE = function(m, T, C) {
+            A(this, m, T, !1, C);
+          }, h.prototype.writeInt8 = function(m, T, C) {
+            C || (V(m != null, "missing value"), V(T != null, "missing offset"), V(T < this.length, "Trying to write beyond buffer length"), oe(m, 127, -128)), T >= this.length || (0 <= m ? this.writeUInt8(m, T, C) : this.writeUInt8(255 + m + 1, T, C));
+          }, h.prototype.writeInt16LE = function(m, T, C) {
+            P(this, m, T, !0, C);
+          }, h.prototype.writeInt16BE = function(m, T, C) {
+            P(this, m, T, !1, C);
+          }, h.prototype.writeInt32LE = function(m, T, C) {
+            Q(this, m, T, !0, C);
+          }, h.prototype.writeInt32BE = function(m, T, C) {
+            Q(this, m, T, !1, C);
+          }, h.prototype.writeFloatLE = function(m, T, C) {
+            H(this, m, T, !0, C);
+          }, h.prototype.writeFloatBE = function(m, T, C) {
+            H(this, m, T, !1, C);
+          }, h.prototype.writeDoubleLE = function(m, T, C) {
+            j(this, m, T, !0, C);
+          }, h.prototype.writeDoubleBE = function(m, T, C) {
+            j(this, m, T, !1, C);
+          }, h.prototype.fill = function(m, T, C) {
+            if (T = T || 0, C = C || this.length, V(typeof (m = typeof (m = m || 0) == "string" ? m.charCodeAt(0) : m) == "number" && !isNaN(m), "value is not a number"), V(T <= C, "end < start"), C !== T && this.length !== 0) {
+              V(0 <= T && T < this.length, "start out of bounds"), V(0 <= C && C <= this.length, "end out of bounds");
+              for (var B = T; B < C; B++) this[B] = m;
             }
           }, h.prototype.inspect = function() {
-            for (var m = [], T = this.length, F = 0; F < T; F++) if (m[F] = W(this[F]), F === i.INSPECT_MAX_BYTES) {
-              m[F + 1] = "...";
+            for (var m = [], T = this.length, C = 0; C < T; C++) if (m[C] = W(this[C]), C === i.INSPECT_MAX_BYTES) {
+              m[C + 1] = "...";
               break;
             }
             return "<Buffer " + m.join(" ") + ">";
           }, h.prototype.toArrayBuffer = function() {
             if (typeof Uint8Array > "u") throw new Error("Buffer.toArrayBuffer not supported in this browser");
             if (h._useTypedArrays) return new h(this).buffer;
-            for (var m = new Uint8Array(this.length), T = 0, F = m.length; T < F; T += 1) m[T] = this[T];
+            for (var m = new Uint8Array(this.length), T = 0, C = m.length; T < C; T += 1) m[T] = this[T];
             return m.buffer;
           };
           var q = h.prototype;
-          function O(m, T, F) {
-            return typeof m != "number" ? F : T <= (m = ~~m) ? T : 0 <= m || 0 <= (m += T) ? m : 0;
+          function O(m, T, C) {
+            return typeof m != "number" ? C : T <= (m = ~~m) ? T : 0 <= m || 0 <= (m += T) ? m : 0;
           }
           function N(m) {
             return (m = ~~Math.ceil(+m)) < 0 ? 0 : m;
@@ -17140,18 +17140,18 @@ list should be an Array.`), m.length === 0) return new h(0);
             return m < 16 ? "0" + m.toString(16) : m.toString(16);
           }
           function Y(m) {
-            for (var T = [], F = 0; F < m.length; F++) {
-              var B = m.charCodeAt(F);
-              if (B <= 127) T.push(m.charCodeAt(F));
-              else for (var U = F, z = (55296 <= B && B <= 57343 && F++, encodeURIComponent(m.slice(U, F + 1)).substr(1).split("%")), re = 0; re < z.length; re++) T.push(parseInt(z[re], 16));
+            for (var T = [], C = 0; C < m.length; C++) {
+              var B = m.charCodeAt(C);
+              if (B <= 127) T.push(m.charCodeAt(C));
+              else for (var U = C, z = (55296 <= B && B <= 57343 && C++, encodeURIComponent(m.slice(U, C + 1)).substr(1).split("%")), re = 0; re < z.length; re++) T.push(parseInt(z[re], 16));
             }
             return T;
           }
           function Z(m) {
             return y.toByteArray(m);
           }
-          function ne(m, T, F, B) {
-            for (var U = 0; U < B && !(U + F >= T.length || U >= m.length); U++) T[U + F] = m[U];
+          function ne(m, T, C, B) {
+            for (var U = 0; U < B && !(U + C >= T.length || U >= m.length); U++) T[U + C] = m[U];
             return U;
           }
           function se(m) {
@@ -17164,11 +17164,11 @@ list should be an Array.`), m.length === 0) return new h(0);
           function ae(m, T) {
             V(typeof m == "number", "cannot write a non-number as a number"), V(0 <= m, "specified a negative value for writing an unsigned value"), V(m <= T, "value is larger than maximum value for type"), V(Math.floor(m) === m, "value has a fractional component");
           }
-          function oe(m, T, F) {
-            V(typeof m == "number", "cannot write a non-number as a number"), V(m <= T, "value larger than maximum allowed value"), V(F <= m, "value smaller than minimum allowed value"), V(Math.floor(m) === m, "value has a fractional component");
+          function oe(m, T, C) {
+            V(typeof m == "number", "cannot write a non-number as a number"), V(m <= T, "value larger than maximum allowed value"), V(C <= m, "value smaller than minimum allowed value"), V(Math.floor(m) === m, "value has a fractional component");
           }
-          function be(m, T, F) {
-            V(typeof m == "number", "cannot write a non-number as a number"), V(m <= T, "value larger than maximum allowed value"), V(F <= m, "value smaller than minimum allowed value");
+          function be(m, T, C) {
+            V(typeof m == "number", "cannot write a non-number as a number"), V(m <= T, "value larger than maximum allowed value"), V(C <= m, "value smaller than minimum allowed value");
           }
           function V(m, T) {
             if (!m) throw new Error(T || "Failed assertion");
@@ -17521,18 +17521,26 @@ const Si = {
   showDebuggingInfo: [],
   renderedMediaItemsBuffer: 2,
   videoJsEventsToLog: [],
-  actionButtonsConfig: [
-    { id: "1", type: "ui-visibility", pinned: !0 },
-    { id: "2", type: "settings", pinned: !1 },
-    { id: "3", type: "show-scene-info", pinned: !1 },
-    { id: "4", type: "rate-scene", pinned: !1 },
-    { id: "5", type: "o-counter", pinned: !1 },
-    { id: "6", type: "force-landscape", pinned: !1 },
-    { id: "7", type: "fullscreen", pinned: !1 },
-    { id: "8", type: "volume", pinned: !1 },
-    { id: "9", type: "letterboxing", pinned: !1 },
-    { id: "10", type: "loop", pinned: !1 },
-    { id: "11", type: "subtitles", pinned: !1 }
+  actionButtonStackConfig: [
+    { id: "1", type: "button", buttonType: "ui-visibility", pinned: !0 },
+    { id: "2", type: "button", buttonType: "settings", pinned: !1 },
+    { id: "3", type: "button", buttonType: "show-scene-info", pinned: !1 },
+    { id: "12", type: "folder", pinned: !1, contents: [
+      { id: "12.1", type: "button", buttonType: "rate-scene", pinned: !1 },
+      { id: "12.2", type: "button", buttonType: "o-counter", pinned: !1 },
+      { id: "12.3", type: "button", buttonType: "set-organized", pinned: !1 },
+      { id: "12.4", type: "button", buttonType: "edit-tags", pinned: !1, pinnedTagIds: [] },
+      { id: "12.5", type: "button", buttonType: "delete-media-item", pinned: !1 }
+    ] },
+    { id: "6", type: "button", buttonType: "force-landscape", pinned: !1 },
+    { id: "8", type: "button", buttonType: "volume", pinned: !1 },
+    { id: "9", type: "button", buttonType: "letterboxing", pinned: !1 },
+    { id: "13", type: "folder", pinned: !1, contents: [
+      { id: "13.1", type: "button", buttonType: "loop", pinned: !1 },
+      { id: "13.2", type: "button", buttonType: "playback-rate", pinned: !1 },
+      { id: "13.3", type: "button", buttonType: "subtitles", pinned: !1 },
+      { id: "13.4", type: "button", buttonType: "fullscreen", pinned: !1 }
+    ] }
   ],
   playbackRate: 1
 }, cv = [
@@ -17607,11 +17615,17 @@ ic()(
       name: Be,
       storage: ac(() => lv()),
       onRehydrateStorage: (e) => () => _i.setState({ tvConfigLoaded: !0 }),
-      version: 1,
+      version: 2,
       migrate: (e, t) => {
         if (t === 0 && e && typeof e == "object" && ("audioMuted" in e && (e.volume = e.audioMuted ? 0 : 1, delete e.audioMuted), "actionButtonsConfig" in e && Array.isArray(e.actionButtonsConfig)))
           for (const r of e.actionButtonsConfig)
             r.type === "mute" && (r.type = "volume");
+        if (t < 2 && e && typeof e == "object" && "actionButtonsConfig" in e && Array.isArray(e.actionButtonsConfig)) {
+          const r = e.actionButtonsConfig;
+          e.actionButtonStackConfig = r, delete e.actionButtonsConfig;
+          for (const n of r)
+            n.buttonType = n.type, n.type = "button";
+        }
         return e;
       }
     }
