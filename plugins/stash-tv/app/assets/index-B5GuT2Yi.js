@@ -176741,878 +176741,16 @@ function getLoggers(rootLogger) {
   return loggers;
 }
 const PLUGIN_NAMESPACE = "stash-tv";
-var object_hash = { exports: {} };
-var hasRequiredObject_hash;
-function requireObject_hash() {
-  if (hasRequiredObject_hash) return object_hash.exports;
-  hasRequiredObject_hash = 1;
-  (function(module2, exports2) {
-    !(function(e2) {
-      module2.exports = e2();
-    })(function() {
-      return (function r3(o2, i3, u2) {
-        function s4(n, e3) {
-          if (!i3[n]) {
-            if (!o2[n]) {
-              var t4 = "function" == typeof commonjsRequire && commonjsRequire;
-              if (!e3 && t4) return t4(n, true);
-              if (a4) return a4(n, true);
-              throw new Error("Cannot find module '" + n + "'");
-            }
-            e3 = i3[n] = { exports: {} };
-            o2[n][0].call(e3.exports, function(e4) {
-              var t5 = o2[n][1][e4];
-              return s4(t5 || e4);
-            }, e3, e3.exports, r3, o2, i3, u2);
-          }
-          return i3[n].exports;
-        }
-        for (var a4 = "function" == typeof commonjsRequire && commonjsRequire, e2 = 0; e2 < u2.length; e2++) s4(u2[e2]);
-        return s4;
-      })({ 1: [function(w3, b3, m3) {
-        !(function(e2, n, s4, c3, d4, h3, p2, g2, y3) {
-          var r3 = w3("crypto");
-          function t4(e3, t5) {
-            t5 = u2(e3, t5);
-            var n2;
-            return void 0 === (n2 = "passthrough" !== t5.algorithm ? r3.createHash(t5.algorithm) : new l()).write && (n2.write = n2.update, n2.end = n2.update), f(t5, n2).dispatch(e3), n2.update || n2.end(""), n2.digest ? n2.digest("buffer" === t5.encoding ? void 0 : t5.encoding) : (e3 = n2.read(), "buffer" !== t5.encoding ? e3.toString(t5.encoding) : e3);
-          }
-          (m3 = b3.exports = t4).sha1 = function(e3) {
-            return t4(e3);
-          }, m3.keys = function(e3) {
-            return t4(e3, { excludeValues: true, algorithm: "sha1", encoding: "hex" });
-          }, m3.MD5 = function(e3) {
-            return t4(e3, { algorithm: "md5", encoding: "hex" });
-          }, m3.keysMD5 = function(e3) {
-            return t4(e3, { algorithm: "md5", encoding: "hex", excludeValues: true });
-          };
-          var o2 = r3.getHashes ? r3.getHashes().slice() : ["sha1", "md5"], i3 = (o2.push("passthrough"), ["buffer", "hex", "binary", "base64"]);
-          function u2(e3, t5) {
-            var n2 = {};
-            if (n2.algorithm = (t5 = t5 || {}).algorithm || "sha1", n2.encoding = t5.encoding || "hex", n2.excludeValues = !!t5.excludeValues, n2.algorithm = n2.algorithm.toLowerCase(), n2.encoding = n2.encoding.toLowerCase(), n2.ignoreUnknown = true === t5.ignoreUnknown, n2.respectType = false !== t5.respectType, n2.respectFunctionNames = false !== t5.respectFunctionNames, n2.respectFunctionProperties = false !== t5.respectFunctionProperties, n2.unorderedArrays = true === t5.unorderedArrays, n2.unorderedSets = false !== t5.unorderedSets, n2.unorderedObjects = false !== t5.unorderedObjects, n2.replacer = t5.replacer || void 0, n2.excludeKeys = t5.excludeKeys || void 0, void 0 === e3) throw new Error("Object argument required.");
-            for (var r4 = 0; r4 < o2.length; ++r4) o2[r4].toLowerCase() === n2.algorithm.toLowerCase() && (n2.algorithm = o2[r4]);
-            if (-1 === o2.indexOf(n2.algorithm)) throw new Error('Algorithm "' + n2.algorithm + '"  not supported. supported values: ' + o2.join(", "));
-            if (-1 === i3.indexOf(n2.encoding) && "passthrough" !== n2.algorithm) throw new Error('Encoding "' + n2.encoding + '"  not supported. supported values: ' + i3.join(", "));
-            return n2;
-          }
-          function a4(e3) {
-            if ("function" == typeof e3) return null != /^function\s+\w*\s*\(\s*\)\s*{\s+\[native code\]\s+}$/i.exec(Function.prototype.toString.call(e3));
-          }
-          function f(o3, t5, i4) {
-            i4 = i4 || [];
-            function u3(e3) {
-              return t5.update ? t5.update(e3, "utf8") : t5.write(e3, "utf8");
-            }
-            return { dispatch: function(e3) {
-              return this["_" + (null === (e3 = o3.replacer ? o3.replacer(e3) : e3) ? "null" : typeof e3)](e3);
-            }, _object: function(t6) {
-              var n2, e3 = Object.prototype.toString.call(t6), r4 = /\[object (.*)\]/i.exec(e3);
-              r4 = (r4 = r4 ? r4[1] : "unknown:[" + e3 + "]").toLowerCase();
-              if (0 <= (e3 = i4.indexOf(t6))) return this.dispatch("[CIRCULAR:" + e3 + "]");
-              if (i4.push(t6), void 0 !== s4 && s4.isBuffer && s4.isBuffer(t6)) return u3("buffer:"), u3(t6);
-              if ("object" === r4 || "function" === r4 || "asyncfunction" === r4) return e3 = Object.keys(t6), o3.unorderedObjects && (e3 = e3.sort()), false === o3.respectType || a4(t6) || e3.splice(0, 0, "prototype", "__proto__", "constructor"), o3.excludeKeys && (e3 = e3.filter(function(e4) {
-                return !o3.excludeKeys(e4);
-              })), u3("object:" + e3.length + ":"), n2 = this, e3.forEach(function(e4) {
-                n2.dispatch(e4), u3(":"), o3.excludeValues || n2.dispatch(t6[e4]), u3(",");
-              });
-              if (!this["_" + r4]) {
-                if (o3.ignoreUnknown) return u3("[" + r4 + "]");
-                throw new Error('Unknown object type "' + r4 + '"');
-              }
-              this["_" + r4](t6);
-            }, _array: function(e3, t6) {
-              t6 = void 0 !== t6 ? t6 : false !== o3.unorderedArrays;
-              var n2 = this;
-              if (u3("array:" + e3.length + ":"), !t6 || e3.length <= 1) return e3.forEach(function(e4) {
-                return n2.dispatch(e4);
-              });
-              var r4 = [], t6 = e3.map(function(e4) {
-                var t7 = new l(), n3 = i4.slice();
-                return f(o3, t7, n3).dispatch(e4), r4 = r4.concat(n3.slice(i4.length)), t7.read().toString();
-              });
-              return i4 = i4.concat(r4), t6.sort(), this._array(t6, false);
-            }, _date: function(e3) {
-              return u3("date:" + e3.toJSON());
-            }, _symbol: function(e3) {
-              return u3("symbol:" + e3.toString());
-            }, _error: function(e3) {
-              return u3("error:" + e3.toString());
-            }, _boolean: function(e3) {
-              return u3("bool:" + e3.toString());
-            }, _string: function(e3) {
-              u3("string:" + e3.length + ":"), u3(e3.toString());
-            }, _function: function(e3) {
-              u3("fn:"), a4(e3) ? this.dispatch("[native]") : this.dispatch(e3.toString()), false !== o3.respectFunctionNames && this.dispatch("function-name:" + String(e3.name)), o3.respectFunctionProperties && this._object(e3);
-            }, _number: function(e3) {
-              return u3("number:" + e3.toString());
-            }, _xml: function(e3) {
-              return u3("xml:" + e3.toString());
-            }, _null: function() {
-              return u3("Null");
-            }, _undefined: function() {
-              return u3("Undefined");
-            }, _regexp: function(e3) {
-              return u3("regex:" + e3.toString());
-            }, _uint8array: function(e3) {
-              return u3("uint8array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _uint8clampedarray: function(e3) {
-              return u3("uint8clampedarray:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _int8array: function(e3) {
-              return u3("int8array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _uint16array: function(e3) {
-              return u3("uint16array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _int16array: function(e3) {
-              return u3("int16array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _uint32array: function(e3) {
-              return u3("uint32array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _int32array: function(e3) {
-              return u3("int32array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _float32array: function(e3) {
-              return u3("float32array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _float64array: function(e3) {
-              return u3("float64array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _arraybuffer: function(e3) {
-              return u3("arraybuffer:"), this.dispatch(new Uint8Array(e3));
-            }, _url: function(e3) {
-              return u3("url:" + e3.toString());
-            }, _map: function(e3) {
-              u3("map:");
-              e3 = Array.from(e3);
-              return this._array(e3, false !== o3.unorderedSets);
-            }, _set: function(e3) {
-              u3("set:");
-              e3 = Array.from(e3);
-              return this._array(e3, false !== o3.unorderedSets);
-            }, _file: function(e3) {
-              return u3("file:"), this.dispatch([e3.name, e3.size, e3.type, e3.lastModfied]);
-            }, _blob: function() {
-              if (o3.ignoreUnknown) return u3("[blob]");
-              throw Error('Hashing Blob objects is currently not supported\n(see https://github.com/puleos/object-hash/issues/26)\nUse "options.replacer" or "options.ignoreUnknown"\n');
-            }, _domwindow: function() {
-              return u3("domwindow");
-            }, _bigint: function(e3) {
-              return u3("bigint:" + e3.toString());
-            }, _process: function() {
-              return u3("process");
-            }, _timer: function() {
-              return u3("timer");
-            }, _pipe: function() {
-              return u3("pipe");
-            }, _tcp: function() {
-              return u3("tcp");
-            }, _udp: function() {
-              return u3("udp");
-            }, _tty: function() {
-              return u3("tty");
-            }, _statwatcher: function() {
-              return u3("statwatcher");
-            }, _securecontext: function() {
-              return u3("securecontext");
-            }, _connection: function() {
-              return u3("connection");
-            }, _zlib: function() {
-              return u3("zlib");
-            }, _context: function() {
-              return u3("context");
-            }, _nodescript: function() {
-              return u3("nodescript");
-            }, _httpparser: function() {
-              return u3("httpparser");
-            }, _dataview: function() {
-              return u3("dataview");
-            }, _signal: function() {
-              return u3("signal");
-            }, _fsevent: function() {
-              return u3("fsevent");
-            }, _tlswrap: function() {
-              return u3("tlswrap");
-            } };
-          }
-          function l() {
-            return { buf: "", write: function(e3) {
-              this.buf += e3;
-            }, end: function(e3) {
-              this.buf += e3;
-            }, read: function() {
-              return this.buf;
-            } };
-          }
-          m3.writeToStream = function(e3, t5, n2) {
-            return void 0 === n2 && (n2 = t5, t5 = {}), f(t5 = u2(e3, t5), n2).dispatch(e3);
-          };
-        }).call(this, w3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, w3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_9a5aa49d.js", "/");
-      }, { buffer: 3, crypto: 5, lYpoI2: 11 }], 2: [function(e2, t4, f) {
-        !(function(e3, t5, n, r3, o2, i3, u2, s4, a4) {
-          !(function(e4) {
-            var a5 = "undefined" != typeof Uint8Array ? Uint8Array : Array, t6 = "+".charCodeAt(0), n2 = "/".charCodeAt(0), r4 = "0".charCodeAt(0), o3 = "a".charCodeAt(0), i4 = "A".charCodeAt(0), u3 = "-".charCodeAt(0), s5 = "_".charCodeAt(0);
-            function f2(e5) {
-              e5 = e5.charCodeAt(0);
-              return e5 === t6 || e5 === u3 ? 62 : e5 === n2 || e5 === s5 ? 63 : e5 < r4 ? -1 : e5 < r4 + 10 ? e5 - r4 + 26 + 26 : e5 < i4 + 26 ? e5 - i4 : e5 < o3 + 26 ? e5 - o3 + 26 : void 0;
-            }
-            e4.toByteArray = function(e5) {
-              var t7, n3;
-              if (0 < e5.length % 4) throw new Error("Invalid string. Length must be a multiple of 4");
-              var r5 = e5.length, r5 = "=" === e5.charAt(r5 - 2) ? 2 : "=" === e5.charAt(r5 - 1) ? 1 : 0, o4 = new a5(3 * e5.length / 4 - r5), i5 = 0 < r5 ? e5.length - 4 : e5.length, u4 = 0;
-              function s6(e6) {
-                o4[u4++] = e6;
-              }
-              for (t7 = 0; t7 < i5; t7 += 4, 0) s6((16711680 & (n3 = f2(e5.charAt(t7)) << 18 | f2(e5.charAt(t7 + 1)) << 12 | f2(e5.charAt(t7 + 2)) << 6 | f2(e5.charAt(t7 + 3)))) >> 16), s6((65280 & n3) >> 8), s6(255 & n3);
-              return 2 == r5 ? s6(255 & (n3 = f2(e5.charAt(t7)) << 2 | f2(e5.charAt(t7 + 1)) >> 4)) : 1 == r5 && (s6((n3 = f2(e5.charAt(t7)) << 10 | f2(e5.charAt(t7 + 1)) << 4 | f2(e5.charAt(t7 + 2)) >> 2) >> 8 & 255), s6(255 & n3)), o4;
-            }, e4.fromByteArray = function(e5) {
-              var t7, n3, r5, o4, i5 = e5.length % 3, u4 = "";
-              function s6(e6) {
-                return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(e6);
-              }
-              for (t7 = 0, r5 = e5.length - i5; t7 < r5; t7 += 3) n3 = (e5[t7] << 16) + (e5[t7 + 1] << 8) + e5[t7 + 2], u4 += s6((o4 = n3) >> 18 & 63) + s6(o4 >> 12 & 63) + s6(o4 >> 6 & 63) + s6(63 & o4);
-              switch (i5) {
-                case 1:
-                  u4 = (u4 += s6((n3 = e5[e5.length - 1]) >> 2)) + s6(n3 << 4 & 63) + "==";
-                  break;
-                case 2:
-                  u4 = (u4 = (u4 += s6((n3 = (e5[e5.length - 2] << 8) + e5[e5.length - 1]) >> 10)) + s6(n3 >> 4 & 63)) + s6(n3 << 2 & 63) + "=";
-              }
-              return u4;
-            };
-          })(void 0 === f ? this.base64js = {} : f);
-        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/base64-js/lib/b64.js", "/node_modules/gulp-browserify/node_modules/base64-js/lib");
-      }, { buffer: 3, lYpoI2: 11 }], 3: [function(O2, e2, H3) {
-        !(function(e3, n, f, r3, h3, p2, g2, y3, w3) {
-          var a4 = O2("base64-js"), i3 = O2("ieee754");
-          function f(e4, t5, n2) {
-            if (!(this instanceof f)) return new f(e4, t5, n2);
-            var r4, o3, i4, u3, s5 = typeof e4;
-            if ("base64" === t5 && "string" == s5) for (e4 = (u3 = e4).trim ? u3.trim() : u3.replace(/^\s+|\s+$/g, ""); e4.length % 4 != 0; ) e4 += "=";
-            if ("number" == s5) r4 = j2(e4);
-            else if ("string" == s5) r4 = f.byteLength(e4, t5);
-            else {
-              if ("object" != s5) throw new Error("First argument needs to be a number, array or string.");
-              r4 = j2(e4.length);
-            }
-            if (f._useTypedArrays ? o3 = f._augment(new Uint8Array(r4)) : ((o3 = this).length = r4, o3._isBuffer = true), f._useTypedArrays && "number" == typeof e4.byteLength) o3._set(e4);
-            else if (C(u3 = e4) || f.isBuffer(u3) || u3 && "object" == typeof u3 && "number" == typeof u3.length) for (i4 = 0; i4 < r4; i4++) f.isBuffer(e4) ? o3[i4] = e4.readUInt8(i4) : o3[i4] = e4[i4];
-            else if ("string" == s5) o3.write(e4, 0, t5);
-            else if ("number" == s5 && !f._useTypedArrays && !n2) for (i4 = 0; i4 < r4; i4++) o3[i4] = 0;
-            return o3;
-          }
-          function b3(e4, t5, n2, r4) {
-            return f._charsWritten = c3((function(e5) {
-              for (var t6 = [], n3 = 0; n3 < e5.length; n3++) t6.push(255 & e5.charCodeAt(n3));
-              return t6;
-            })(t5), e4, n2, r4);
-          }
-          function m3(e4, t5, n2, r4) {
-            return f._charsWritten = c3((function(e5) {
-              for (var t6, n3, r5 = [], o3 = 0; o3 < e5.length; o3++) n3 = e5.charCodeAt(o3), t6 = n3 >> 8, n3 = n3 % 256, r5.push(n3), r5.push(t6);
-              return r5;
-            })(t5), e4, n2, r4);
-          }
-          function v(e4, t5, n2) {
-            var r4 = "";
-            n2 = Math.min(e4.length, n2);
-            for (var o3 = t5; o3 < n2; o3++) r4 += String.fromCharCode(e4[o3]);
-            return r4;
-          }
-          function o2(e4, t5, n2, r4) {
-            r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 1 < e4.length, "Trying to read beyond buffer length"));
-            var o3, r4 = e4.length;
-            if (!(r4 <= t5)) return n2 ? (o3 = e4[t5], t5 + 1 < r4 && (o3 |= e4[t5 + 1] << 8)) : (o3 = e4[t5] << 8, t5 + 1 < r4 && (o3 |= e4[t5 + 1])), o3;
-          }
-          function u2(e4, t5, n2, r4) {
-            r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 3 < e4.length, "Trying to read beyond buffer length"));
-            var o3, r4 = e4.length;
-            if (!(r4 <= t5)) return n2 ? (t5 + 2 < r4 && (o3 = e4[t5 + 2] << 16), t5 + 1 < r4 && (o3 |= e4[t5 + 1] << 8), o3 |= e4[t5], t5 + 3 < r4 && (o3 += e4[t5 + 3] << 24 >>> 0)) : (t5 + 1 < r4 && (o3 = e4[t5 + 1] << 16), t5 + 2 < r4 && (o3 |= e4[t5 + 2] << 8), t5 + 3 < r4 && (o3 |= e4[t5 + 3]), o3 += e4[t5] << 24 >>> 0), o3;
-          }
-          function _(e4, t5, n2, r4) {
-            if (r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 1 < e4.length, "Trying to read beyond buffer length")), !(e4.length <= t5)) return r4 = o2(e4, t5, n2, true), 32768 & r4 ? -1 * (65535 - r4 + 1) : r4;
-          }
-          function E2(e4, t5, n2, r4) {
-            if (r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 3 < e4.length, "Trying to read beyond buffer length")), !(e4.length <= t5)) return r4 = u2(e4, t5, n2, true), 2147483648 & r4 ? -1 * (4294967295 - r4 + 1) : r4;
-          }
-          function I2(e4, t5, n2, r4) {
-            return r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(t5 + 3 < e4.length, "Trying to read beyond buffer length")), i3.read(e4, t5, n2, 23, 4);
-          }
-          function A2(e4, t5, n2, r4) {
-            return r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(t5 + 7 < e4.length, "Trying to read beyond buffer length")), i3.read(e4, t5, n2, 52, 8);
-          }
-          function s4(e4, t5, n2, r4, o3) {
-            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 1 < e4.length, "trying to write beyond buffer length"), Y2(t5, 65535));
-            o3 = e4.length;
-            if (!(o3 <= n2)) for (var i4 = 0, u3 = Math.min(o3 - n2, 2); i4 < u3; i4++) e4[n2 + i4] = (t5 & 255 << 8 * (r4 ? i4 : 1 - i4)) >>> 8 * (r4 ? i4 : 1 - i4);
-          }
-          function l(e4, t5, n2, r4, o3) {
-            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 3 < e4.length, "trying to write beyond buffer length"), Y2(t5, 4294967295));
-            o3 = e4.length;
-            if (!(o3 <= n2)) for (var i4 = 0, u3 = Math.min(o3 - n2, 4); i4 < u3; i4++) e4[n2 + i4] = t5 >>> 8 * (r4 ? i4 : 3 - i4) & 255;
-          }
-          function B2(e4, t5, n2, r4, o3) {
-            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 1 < e4.length, "Trying to write beyond buffer length"), F(t5, 32767, -32768)), e4.length <= n2 || s4(e4, 0 <= t5 ? t5 : 65535 + t5 + 1, n2, r4, o3);
-          }
-          function L3(e4, t5, n2, r4, o3) {
-            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 3 < e4.length, "Trying to write beyond buffer length"), F(t5, 2147483647, -2147483648)), e4.length <= n2 || l(e4, 0 <= t5 ? t5 : 4294967295 + t5 + 1, n2, r4, o3);
-          }
-          function U(e4, t5, n2, r4, o3) {
-            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 3 < e4.length, "Trying to write beyond buffer length"), D2(t5, 34028234663852886e22, -34028234663852886e22)), e4.length <= n2 || i3.write(e4, t5, n2, r4, 23, 4);
-          }
-          function x3(e4, t5, n2, r4, o3) {
-            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 7 < e4.length, "Trying to write beyond buffer length"), D2(t5, 17976931348623157e292, -17976931348623157e292)), e4.length <= n2 || i3.write(e4, t5, n2, r4, 52, 8);
-          }
-          H3.Buffer = f, H3.SlowBuffer = f, H3.INSPECT_MAX_BYTES = 50, f.poolSize = 8192, f._useTypedArrays = (function() {
-            try {
-              var e4 = new ArrayBuffer(0), t5 = new Uint8Array(e4);
-              return t5.foo = function() {
-                return 42;
-              }, 42 === t5.foo() && "function" == typeof t5.subarray;
-            } catch (e5) {
-              return false;
-            }
-          })(), f.isEncoding = function(e4) {
-            switch (String(e4).toLowerCase()) {
-              case "hex":
-              case "utf8":
-              case "utf-8":
-              case "ascii":
-              case "binary":
-              case "base64":
-              case "raw":
-              case "ucs2":
-              case "ucs-2":
-              case "utf16le":
-              case "utf-16le":
-                return true;
-              default:
-                return false;
-            }
-          }, f.isBuffer = function(e4) {
-            return !(null == e4 || !e4._isBuffer);
-          }, f.byteLength = function(e4, t5) {
-            var n2;
-            switch (e4 += "", t5 || "utf8") {
-              case "hex":
-                n2 = e4.length / 2;
-                break;
-              case "utf8":
-              case "utf-8":
-                n2 = T2(e4).length;
-                break;
-              case "ascii":
-              case "binary":
-              case "raw":
-                n2 = e4.length;
-                break;
-              case "base64":
-                n2 = M3(e4).length;
-                break;
-              case "ucs2":
-              case "ucs-2":
-              case "utf16le":
-              case "utf-16le":
-                n2 = 2 * e4.length;
-                break;
-              default:
-                throw new Error("Unknown encoding");
-            }
-            return n2;
-          }, f.concat = function(e4, t5) {
-            if (d4(C(e4), "Usage: Buffer.concat(list, [totalLength])\nlist should be an Array."), 0 === e4.length) return new f(0);
-            if (1 === e4.length) return e4[0];
-            if ("number" != typeof t5) for (o3 = t5 = 0; o3 < e4.length; o3++) t5 += e4[o3].length;
-            for (var n2 = new f(t5), r4 = 0, o3 = 0; o3 < e4.length; o3++) {
-              var i4 = e4[o3];
-              i4.copy(n2, r4), r4 += i4.length;
-            }
-            return n2;
-          }, f.prototype.write = function(e4, t5, n2, r4) {
-            isFinite(t5) ? isFinite(n2) || (r4 = n2, n2 = void 0) : (a5 = r4, r4 = t5, t5 = n2, n2 = a5), t5 = Number(t5) || 0;
-            var o3, i4, u3, s5, a5 = this.length - t5;
-            switch ((!n2 || a5 < (n2 = Number(n2))) && (n2 = a5), r4 = String(r4 || "utf8").toLowerCase()) {
-              case "hex":
-                o3 = (function(e5, t6, n3, r5) {
-                  n3 = Number(n3) || 0;
-                  var o4 = e5.length - n3;
-                  (!r5 || o4 < (r5 = Number(r5))) && (r5 = o4), d4((o4 = t6.length) % 2 == 0, "Invalid hex string"), o4 / 2 < r5 && (r5 = o4 / 2);
-                  for (var i5 = 0; i5 < r5; i5++) {
-                    var u4 = parseInt(t6.substr(2 * i5, 2), 16);
-                    d4(!isNaN(u4), "Invalid hex string"), e5[n3 + i5] = u4;
-                  }
-                  return f._charsWritten = 2 * i5, i5;
-                })(this, e4, t5, n2);
-                break;
-              case "utf8":
-              case "utf-8":
-                i4 = this, u3 = t5, s5 = n2, o3 = f._charsWritten = c3(T2(e4), i4, u3, s5);
-                break;
-              case "ascii":
-              case "binary":
-                o3 = b3(this, e4, t5, n2);
-                break;
-              case "base64":
-                i4 = this, u3 = t5, s5 = n2, o3 = f._charsWritten = c3(M3(e4), i4, u3, s5);
-                break;
-              case "ucs2":
-              case "ucs-2":
-              case "utf16le":
-              case "utf-16le":
-                o3 = m3(this, e4, t5, n2);
-                break;
-              default:
-                throw new Error("Unknown encoding");
-            }
-            return o3;
-          }, f.prototype.toString = function(e4, t5, n2) {
-            var r4, o3, i4, u3, s5 = this;
-            if (e4 = String(e4 || "utf8").toLowerCase(), t5 = Number(t5) || 0, (n2 = void 0 !== n2 ? Number(n2) : s5.length) === t5) return "";
-            switch (e4) {
-              case "hex":
-                r4 = (function(e5, t6, n3) {
-                  var r5 = e5.length;
-                  (!t6 || t6 < 0) && (t6 = 0);
-                  (!n3 || n3 < 0 || r5 < n3) && (n3 = r5);
-                  for (var o4 = "", i5 = t6; i5 < n3; i5++) o4 += k2(e5[i5]);
-                  return o4;
-                })(s5, t5, n2);
-                break;
-              case "utf8":
-              case "utf-8":
-                r4 = (function(e5, t6, n3) {
-                  var r5 = "", o4 = "";
-                  n3 = Math.min(e5.length, n3);
-                  for (var i5 = t6; i5 < n3; i5++) e5[i5] <= 127 ? (r5 += N(o4) + String.fromCharCode(e5[i5]), o4 = "") : o4 += "%" + e5[i5].toString(16);
-                  return r5 + N(o4);
-                })(s5, t5, n2);
-                break;
-              case "ascii":
-              case "binary":
-                r4 = v(s5, t5, n2);
-                break;
-              case "base64":
-                o3 = s5, u3 = n2, r4 = 0 === (i4 = t5) && u3 === o3.length ? a4.fromByteArray(o3) : a4.fromByteArray(o3.slice(i4, u3));
-                break;
-              case "ucs2":
-              case "ucs-2":
-              case "utf16le":
-              case "utf-16le":
-                r4 = (function(e5, t6, n3) {
-                  for (var r5 = e5.slice(t6, n3), o4 = "", i5 = 0; i5 < r5.length; i5 += 2) o4 += String.fromCharCode(r5[i5] + 256 * r5[i5 + 1]);
-                  return o4;
-                })(s5, t5, n2);
-                break;
-              default:
-                throw new Error("Unknown encoding");
-            }
-            return r4;
-          }, f.prototype.toJSON = function() {
-            return { type: "Buffer", data: Array.prototype.slice.call(this._arr || this, 0) };
-          }, f.prototype.copy = function(e4, t5, n2, r4) {
-            if (t5 = t5 || 0, (r4 = r4 || 0 === r4 ? r4 : this.length) !== (n2 = n2 || 0) && 0 !== e4.length && 0 !== this.length) {
-              d4(n2 <= r4, "sourceEnd < sourceStart"), d4(0 <= t5 && t5 < e4.length, "targetStart out of bounds"), d4(0 <= n2 && n2 < this.length, "sourceStart out of bounds"), d4(0 <= r4 && r4 <= this.length, "sourceEnd out of bounds"), r4 > this.length && (r4 = this.length);
-              var o3 = (r4 = e4.length - t5 < r4 - n2 ? e4.length - t5 + n2 : r4) - n2;
-              if (o3 < 100 || !f._useTypedArrays) for (var i4 = 0; i4 < o3; i4++) e4[i4 + t5] = this[i4 + n2];
-              else e4._set(this.subarray(n2, n2 + o3), t5);
-            }
-          }, f.prototype.slice = function(e4, t5) {
-            var n2 = this.length;
-            if (e4 = S4(e4, n2, 0), t5 = S4(t5, n2, n2), f._useTypedArrays) return f._augment(this.subarray(e4, t5));
-            for (var r4 = t5 - e4, o3 = new f(r4, void 0, true), i4 = 0; i4 < r4; i4++) o3[i4] = this[i4 + e4];
-            return o3;
-          }, f.prototype.get = function(e4) {
-            return console.log(".get() is deprecated. Access using array indexes instead."), this.readUInt8(e4);
-          }, f.prototype.set = function(e4, t5) {
-            return console.log(".set() is deprecated. Access using array indexes instead."), this.writeUInt8(e4, t5);
-          }, f.prototype.readUInt8 = function(e4, t5) {
-            if (t5 || (d4(null != e4, "missing offset"), d4(e4 < this.length, "Trying to read beyond buffer length")), !(e4 >= this.length)) return this[e4];
-          }, f.prototype.readUInt16LE = function(e4, t5) {
-            return o2(this, e4, true, t5);
-          }, f.prototype.readUInt16BE = function(e4, t5) {
-            return o2(this, e4, false, t5);
-          }, f.prototype.readUInt32LE = function(e4, t5) {
-            return u2(this, e4, true, t5);
-          }, f.prototype.readUInt32BE = function(e4, t5) {
-            return u2(this, e4, false, t5);
-          }, f.prototype.readInt8 = function(e4, t5) {
-            if (t5 || (d4(null != e4, "missing offset"), d4(e4 < this.length, "Trying to read beyond buffer length")), !(e4 >= this.length)) return 128 & this[e4] ? -1 * (255 - this[e4] + 1) : this[e4];
-          }, f.prototype.readInt16LE = function(e4, t5) {
-            return _(this, e4, true, t5);
-          }, f.prototype.readInt16BE = function(e4, t5) {
-            return _(this, e4, false, t5);
-          }, f.prototype.readInt32LE = function(e4, t5) {
-            return E2(this, e4, true, t5);
-          }, f.prototype.readInt32BE = function(e4, t5) {
-            return E2(this, e4, false, t5);
-          }, f.prototype.readFloatLE = function(e4, t5) {
-            return I2(this, e4, true, t5);
-          }, f.prototype.readFloatBE = function(e4, t5) {
-            return I2(this, e4, false, t5);
-          }, f.prototype.readDoubleLE = function(e4, t5) {
-            return A2(this, e4, true, t5);
-          }, f.prototype.readDoubleBE = function(e4, t5) {
-            return A2(this, e4, false, t5);
-          }, f.prototype.writeUInt8 = function(e4, t5, n2) {
-            n2 || (d4(null != e4, "missing value"), d4(null != t5, "missing offset"), d4(t5 < this.length, "trying to write beyond buffer length"), Y2(e4, 255)), t5 >= this.length || (this[t5] = e4);
-          }, f.prototype.writeUInt16LE = function(e4, t5, n2) {
-            s4(this, e4, t5, true, n2);
-          }, f.prototype.writeUInt16BE = function(e4, t5, n2) {
-            s4(this, e4, t5, false, n2);
-          }, f.prototype.writeUInt32LE = function(e4, t5, n2) {
-            l(this, e4, t5, true, n2);
-          }, f.prototype.writeUInt32BE = function(e4, t5, n2) {
-            l(this, e4, t5, false, n2);
-          }, f.prototype.writeInt8 = function(e4, t5, n2) {
-            n2 || (d4(null != e4, "missing value"), d4(null != t5, "missing offset"), d4(t5 < this.length, "Trying to write beyond buffer length"), F(e4, 127, -128)), t5 >= this.length || (0 <= e4 ? this.writeUInt8(e4, t5, n2) : this.writeUInt8(255 + e4 + 1, t5, n2));
-          }, f.prototype.writeInt16LE = function(e4, t5, n2) {
-            B2(this, e4, t5, true, n2);
-          }, f.prototype.writeInt16BE = function(e4, t5, n2) {
-            B2(this, e4, t5, false, n2);
-          }, f.prototype.writeInt32LE = function(e4, t5, n2) {
-            L3(this, e4, t5, true, n2);
-          }, f.prototype.writeInt32BE = function(e4, t5, n2) {
-            L3(this, e4, t5, false, n2);
-          }, f.prototype.writeFloatLE = function(e4, t5, n2) {
-            U(this, e4, t5, true, n2);
-          }, f.prototype.writeFloatBE = function(e4, t5, n2) {
-            U(this, e4, t5, false, n2);
-          }, f.prototype.writeDoubleLE = function(e4, t5, n2) {
-            x3(this, e4, t5, true, n2);
-          }, f.prototype.writeDoubleBE = function(e4, t5, n2) {
-            x3(this, e4, t5, false, n2);
-          }, f.prototype.fill = function(e4, t5, n2) {
-            if (t5 = t5 || 0, n2 = n2 || this.length, d4("number" == typeof (e4 = "string" == typeof (e4 = e4 || 0) ? e4.charCodeAt(0) : e4) && !isNaN(e4), "value is not a number"), d4(t5 <= n2, "end < start"), n2 !== t5 && 0 !== this.length) {
-              d4(0 <= t5 && t5 < this.length, "start out of bounds"), d4(0 <= n2 && n2 <= this.length, "end out of bounds");
-              for (var r4 = t5; r4 < n2; r4++) this[r4] = e4;
-            }
-          }, f.prototype.inspect = function() {
-            for (var e4 = [], t5 = this.length, n2 = 0; n2 < t5; n2++) if (e4[n2] = k2(this[n2]), n2 === H3.INSPECT_MAX_BYTES) {
-              e4[n2 + 1] = "...";
-              break;
-            }
-            return "<Buffer " + e4.join(" ") + ">";
-          }, f.prototype.toArrayBuffer = function() {
-            if ("undefined" == typeof Uint8Array) throw new Error("Buffer.toArrayBuffer not supported in this browser");
-            if (f._useTypedArrays) return new f(this).buffer;
-            for (var e4 = new Uint8Array(this.length), t5 = 0, n2 = e4.length; t5 < n2; t5 += 1) e4[t5] = this[t5];
-            return e4.buffer;
-          };
-          var t4 = f.prototype;
-          function S4(e4, t5, n2) {
-            return "number" != typeof e4 ? n2 : t5 <= (e4 = ~~e4) ? t5 : 0 <= e4 || 0 <= (e4 += t5) ? e4 : 0;
-          }
-          function j2(e4) {
-            return (e4 = ~~Math.ceil(+e4)) < 0 ? 0 : e4;
-          }
-          function C(e4) {
-            return (Array.isArray || function(e5) {
-              return "[object Array]" === Object.prototype.toString.call(e5);
-            })(e4);
-          }
-          function k2(e4) {
-            return e4 < 16 ? "0" + e4.toString(16) : e4.toString(16);
-          }
-          function T2(e4) {
-            for (var t5 = [], n2 = 0; n2 < e4.length; n2++) {
-              var r4 = e4.charCodeAt(n2);
-              if (r4 <= 127) t5.push(e4.charCodeAt(n2));
-              else for (var o3 = n2, i4 = (55296 <= r4 && r4 <= 57343 && n2++, encodeURIComponent(e4.slice(o3, n2 + 1)).substr(1).split("%")), u3 = 0; u3 < i4.length; u3++) t5.push(parseInt(i4[u3], 16));
-            }
-            return t5;
-          }
-          function M3(e4) {
-            return a4.toByteArray(e4);
-          }
-          function c3(e4, t5, n2, r4) {
-            for (var o3 = 0; o3 < r4 && !(o3 + n2 >= t5.length || o3 >= e4.length); o3++) t5[o3 + n2] = e4[o3];
-            return o3;
-          }
-          function N(e4) {
-            try {
-              return decodeURIComponent(e4);
-            } catch (e5) {
-              return String.fromCharCode(65533);
-            }
-          }
-          function Y2(e4, t5) {
-            d4("number" == typeof e4, "cannot write a non-number as a number"), d4(0 <= e4, "specified a negative value for writing an unsigned value"), d4(e4 <= t5, "value is larger than maximum value for type"), d4(Math.floor(e4) === e4, "value has a fractional component");
-          }
-          function F(e4, t5, n2) {
-            d4("number" == typeof e4, "cannot write a non-number as a number"), d4(e4 <= t5, "value larger than maximum allowed value"), d4(n2 <= e4, "value smaller than minimum allowed value"), d4(Math.floor(e4) === e4, "value has a fractional component");
-          }
-          function D2(e4, t5, n2) {
-            d4("number" == typeof e4, "cannot write a non-number as a number"), d4(e4 <= t5, "value larger than maximum allowed value"), d4(n2 <= e4, "value smaller than minimum allowed value");
-          }
-          function d4(e4, t5) {
-            if (!e4) throw new Error(t5 || "Failed assertion");
-          }
-          f._augment = function(e4) {
-            return e4._isBuffer = true, e4._get = e4.get, e4._set = e4.set, e4.get = t4.get, e4.set = t4.set, e4.write = t4.write, e4.toString = t4.toString, e4.toLocaleString = t4.toString, e4.toJSON = t4.toJSON, e4.copy = t4.copy, e4.slice = t4.slice, e4.readUInt8 = t4.readUInt8, e4.readUInt16LE = t4.readUInt16LE, e4.readUInt16BE = t4.readUInt16BE, e4.readUInt32LE = t4.readUInt32LE, e4.readUInt32BE = t4.readUInt32BE, e4.readInt8 = t4.readInt8, e4.readInt16LE = t4.readInt16LE, e4.readInt16BE = t4.readInt16BE, e4.readInt32LE = t4.readInt32LE, e4.readInt32BE = t4.readInt32BE, e4.readFloatLE = t4.readFloatLE, e4.readFloatBE = t4.readFloatBE, e4.readDoubleLE = t4.readDoubleLE, e4.readDoubleBE = t4.readDoubleBE, e4.writeUInt8 = t4.writeUInt8, e4.writeUInt16LE = t4.writeUInt16LE, e4.writeUInt16BE = t4.writeUInt16BE, e4.writeUInt32LE = t4.writeUInt32LE, e4.writeUInt32BE = t4.writeUInt32BE, e4.writeInt8 = t4.writeInt8, e4.writeInt16LE = t4.writeInt16LE, e4.writeInt16BE = t4.writeInt16BE, e4.writeInt32LE = t4.writeInt32LE, e4.writeInt32BE = t4.writeInt32BE, e4.writeFloatLE = t4.writeFloatLE, e4.writeFloatBE = t4.writeFloatBE, e4.writeDoubleLE = t4.writeDoubleLE, e4.writeDoubleBE = t4.writeDoubleBE, e4.fill = t4.fill, e4.inspect = t4.inspect, e4.toArrayBuffer = t4.toArrayBuffer, e4;
-          };
-        }).call(this, O2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, O2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/buffer/index.js", "/node_modules/gulp-browserify/node_modules/buffer");
-      }, { "base64-js": 2, buffer: 3, ieee754: 10, lYpoI2: 11 }], 4: [function(c3, d4, e2) {
-        !(function(e3, t4, a4, n, r3, o2, i3, u2, s4) {
-          var a4 = c3("buffer").Buffer, f = 4, l = new a4(f);
-          l.fill(0);
-          d4.exports = { hash: function(e4, t5, n2, r4) {
-            for (var o3 = t5((function(e5, t6) {
-              e5.length % f != 0 && (n3 = e5.length + (f - e5.length % f), e5 = a4.concat([e5, l], n3));
-              for (var n3, r5 = [], o4 = t6 ? e5.readInt32BE : e5.readInt32LE, i5 = 0; i5 < e5.length; i5 += f) r5.push(o4.call(e5, i5));
-              return r5;
-            })(e4 = a4.isBuffer(e4) ? e4 : new a4(e4), r4), 8 * e4.length), t5 = r4, i4 = new a4(n2), u3 = t5 ? i4.writeInt32BE : i4.writeInt32LE, s5 = 0; s5 < o3.length; s5++) u3.call(i4, o3[s5], 4 * s5, true);
-            return i4;
-          } };
-        }).call(this, c3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/helpers.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { buffer: 3, lYpoI2: 11 }], 5: [function(v, e2, _) {
-        !(function(l, c3, u2, d4, h3, p2, g2, y3, w3) {
-          var u2 = v("buffer").Buffer, e3 = v("./sha"), t4 = v("./sha256"), n = v("./rng"), b3 = { sha1: e3, sha256: t4, md5: v("./md5") }, s4 = 64, a4 = new u2(s4);
-          function r3(e4, n2) {
-            var r4 = b3[e4 = e4 || "sha1"], o3 = [];
-            return r4 || i3("algorithm:", e4, "is not yet supported"), { update: function(e5) {
-              return u2.isBuffer(e5) || (e5 = new u2(e5)), o3.push(e5), e5.length, this;
-            }, digest: function(e5) {
-              var t5 = u2.concat(o3), t5 = n2 ? (function(e6, t6, n3) {
-                u2.isBuffer(t6) || (t6 = new u2(t6)), u2.isBuffer(n3) || (n3 = new u2(n3)), t6.length > s4 ? t6 = e6(t6) : t6.length < s4 && (t6 = u2.concat([t6, a4], s4));
-                for (var r5 = new u2(s4), o4 = new u2(s4), i4 = 0; i4 < s4; i4++) r5[i4] = 54 ^ t6[i4], o4[i4] = 92 ^ t6[i4];
-                return n3 = e6(u2.concat([r5, n3])), e6(u2.concat([o4, n3]));
-              })(r4, n2, t5) : r4(t5);
-              return o3 = null, e5 ? t5.toString(e5) : t5;
-            } };
-          }
-          function i3() {
-            var e4 = [].slice.call(arguments).join(" ");
-            throw new Error([e4, "we accept pull requests", "http://github.com/dominictarr/crypto-browserify"].join("\n"));
-          }
-          a4.fill(0), _.createHash = function(e4) {
-            return r3(e4);
-          }, _.createHmac = r3, _.randomBytes = function(e4, t5) {
-            if (!t5 || !t5.call) return new u2(n(e4));
-            try {
-              t5.call(this, void 0, new u2(n(e4)));
-            } catch (e5) {
-              t5(e5);
-            }
-          };
-          var o2, f = ["createCredentials", "createCipher", "createCipheriv", "createDecipher", "createDecipheriv", "createSign", "createVerify", "createDiffieHellman", "pbkdf2"], m3 = function(e4) {
-            _[e4] = function() {
-              i3("sorry,", e4, "is not implemented yet");
-            };
-          };
-          for (o2 in f) m3(f[o2]);
-        }).call(this, v("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, v("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/index.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { "./md5": 6, "./rng": 7, "./sha": 8, "./sha256": 9, buffer: 3, lYpoI2: 11 }], 6: [function(w3, b3, e2) {
-        !(function(e3, r3, o2, i3, u2, a4, f, l, y3) {
-          var t4 = w3("./helpers");
-          function n(e4, t5) {
-            e4[t5 >> 5] |= 128 << t5 % 32, e4[14 + (t5 + 64 >>> 9 << 4)] = t5;
-            for (var n2 = 1732584193, r4 = -271733879, o3 = -1732584194, i4 = 271733878, u3 = 0; u3 < e4.length; u3 += 16) {
-              var s5 = n2, a5 = r4, f2 = o3, l2 = i4, n2 = c3(n2, r4, o3, i4, e4[u3 + 0], 7, -680876936), i4 = c3(i4, n2, r4, o3, e4[u3 + 1], 12, -389564586), o3 = c3(o3, i4, n2, r4, e4[u3 + 2], 17, 606105819), r4 = c3(r4, o3, i4, n2, e4[u3 + 3], 22, -1044525330);
-              n2 = c3(n2, r4, o3, i4, e4[u3 + 4], 7, -176418897), i4 = c3(i4, n2, r4, o3, e4[u3 + 5], 12, 1200080426), o3 = c3(o3, i4, n2, r4, e4[u3 + 6], 17, -1473231341), r4 = c3(r4, o3, i4, n2, e4[u3 + 7], 22, -45705983), n2 = c3(n2, r4, o3, i4, e4[u3 + 8], 7, 1770035416), i4 = c3(i4, n2, r4, o3, e4[u3 + 9], 12, -1958414417), o3 = c3(o3, i4, n2, r4, e4[u3 + 10], 17, -42063), r4 = c3(r4, o3, i4, n2, e4[u3 + 11], 22, -1990404162), n2 = c3(n2, r4, o3, i4, e4[u3 + 12], 7, 1804603682), i4 = c3(i4, n2, r4, o3, e4[u3 + 13], 12, -40341101), o3 = c3(o3, i4, n2, r4, e4[u3 + 14], 17, -1502002290), n2 = d4(n2, r4 = c3(r4, o3, i4, n2, e4[u3 + 15], 22, 1236535329), o3, i4, e4[u3 + 1], 5, -165796510), i4 = d4(i4, n2, r4, o3, e4[u3 + 6], 9, -1069501632), o3 = d4(o3, i4, n2, r4, e4[u3 + 11], 14, 643717713), r4 = d4(r4, o3, i4, n2, e4[u3 + 0], 20, -373897302), n2 = d4(n2, r4, o3, i4, e4[u3 + 5], 5, -701558691), i4 = d4(i4, n2, r4, o3, e4[u3 + 10], 9, 38016083), o3 = d4(o3, i4, n2, r4, e4[u3 + 15], 14, -660478335), r4 = d4(r4, o3, i4, n2, e4[u3 + 4], 20, -405537848), n2 = d4(n2, r4, o3, i4, e4[u3 + 9], 5, 568446438), i4 = d4(i4, n2, r4, o3, e4[u3 + 14], 9, -1019803690), o3 = d4(o3, i4, n2, r4, e4[u3 + 3], 14, -187363961), r4 = d4(r4, o3, i4, n2, e4[u3 + 8], 20, 1163531501), n2 = d4(n2, r4, o3, i4, e4[u3 + 13], 5, -1444681467), i4 = d4(i4, n2, r4, o3, e4[u3 + 2], 9, -51403784), o3 = d4(o3, i4, n2, r4, e4[u3 + 7], 14, 1735328473), n2 = h3(n2, r4 = d4(r4, o3, i4, n2, e4[u3 + 12], 20, -1926607734), o3, i4, e4[u3 + 5], 4, -378558), i4 = h3(i4, n2, r4, o3, e4[u3 + 8], 11, -2022574463), o3 = h3(o3, i4, n2, r4, e4[u3 + 11], 16, 1839030562), r4 = h3(r4, o3, i4, n2, e4[u3 + 14], 23, -35309556), n2 = h3(n2, r4, o3, i4, e4[u3 + 1], 4, -1530992060), i4 = h3(i4, n2, r4, o3, e4[u3 + 4], 11, 1272893353), o3 = h3(o3, i4, n2, r4, e4[u3 + 7], 16, -155497632), r4 = h3(r4, o3, i4, n2, e4[u3 + 10], 23, -1094730640), n2 = h3(n2, r4, o3, i4, e4[u3 + 13], 4, 681279174), i4 = h3(i4, n2, r4, o3, e4[u3 + 0], 11, -358537222), o3 = h3(o3, i4, n2, r4, e4[u3 + 3], 16, -722521979), r4 = h3(r4, o3, i4, n2, e4[u3 + 6], 23, 76029189), n2 = h3(n2, r4, o3, i4, e4[u3 + 9], 4, -640364487), i4 = h3(i4, n2, r4, o3, e4[u3 + 12], 11, -421815835), o3 = h3(o3, i4, n2, r4, e4[u3 + 15], 16, 530742520), n2 = p2(n2, r4 = h3(r4, o3, i4, n2, e4[u3 + 2], 23, -995338651), o3, i4, e4[u3 + 0], 6, -198630844), i4 = p2(i4, n2, r4, o3, e4[u3 + 7], 10, 1126891415), o3 = p2(o3, i4, n2, r4, e4[u3 + 14], 15, -1416354905), r4 = p2(r4, o3, i4, n2, e4[u3 + 5], 21, -57434055), n2 = p2(n2, r4, o3, i4, e4[u3 + 12], 6, 1700485571), i4 = p2(i4, n2, r4, o3, e4[u3 + 3], 10, -1894986606), o3 = p2(o3, i4, n2, r4, e4[u3 + 10], 15, -1051523), r4 = p2(r4, o3, i4, n2, e4[u3 + 1], 21, -2054922799), n2 = p2(n2, r4, o3, i4, e4[u3 + 8], 6, 1873313359), i4 = p2(i4, n2, r4, o3, e4[u3 + 15], 10, -30611744), o3 = p2(o3, i4, n2, r4, e4[u3 + 6], 15, -1560198380), r4 = p2(r4, o3, i4, n2, e4[u3 + 13], 21, 1309151649), n2 = p2(n2, r4, o3, i4, e4[u3 + 4], 6, -145523070), i4 = p2(i4, n2, r4, o3, e4[u3 + 11], 10, -1120210379), o3 = p2(o3, i4, n2, r4, e4[u3 + 2], 15, 718787259), r4 = p2(r4, o3, i4, n2, e4[u3 + 9], 21, -343485551), n2 = g2(n2, s5), r4 = g2(r4, a5), o3 = g2(o3, f2), i4 = g2(i4, l2);
-            }
-            return Array(n2, r4, o3, i4);
-          }
-          function s4(e4, t5, n2, r4, o3, i4) {
-            return g2((t5 = g2(g2(t5, e4), g2(r4, i4))) << o3 | t5 >>> 32 - o3, n2);
-          }
-          function c3(e4, t5, n2, r4, o3, i4, u3) {
-            return s4(t5 & n2 | ~t5 & r4, e4, t5, o3, i4, u3);
-          }
-          function d4(e4, t5, n2, r4, o3, i4, u3) {
-            return s4(t5 & r4 | n2 & ~r4, e4, t5, o3, i4, u3);
-          }
-          function h3(e4, t5, n2, r4, o3, i4, u3) {
-            return s4(t5 ^ n2 ^ r4, e4, t5, o3, i4, u3);
-          }
-          function p2(e4, t5, n2, r4, o3, i4, u3) {
-            return s4(n2 ^ (t5 | ~r4), e4, t5, o3, i4, u3);
-          }
-          function g2(e4, t5) {
-            var n2 = (65535 & e4) + (65535 & t5);
-            return (e4 >> 16) + (t5 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
-          }
-          b3.exports = function(e4) {
-            return t4.hash(e4, n, 16);
-          };
-        }).call(this, w3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, w3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/md5.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 7: [function(e2, l, t4) {
-        !(function(e3, t5, n, r3, o2, i3, u2, s4, f) {
-          l.exports = function(e4) {
-            for (var t6, n2 = new Array(e4), r4 = 0; r4 < e4; r4++) 0 == (3 & r4) && (t6 = 4294967296 * Math.random()), n2[r4] = t6 >>> ((3 & r4) << 3) & 255;
-            return n2;
-          };
-        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/rng.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { buffer: 3, lYpoI2: 11 }], 8: [function(c3, d4, e2) {
-        !(function(e3, t4, n, r3, o2, s4, a4, f, l) {
-          var i3 = c3("./helpers");
-          function u2(l2, c4) {
-            l2[c4 >> 5] |= 128 << 24 - c4 % 32, l2[15 + (c4 + 64 >> 9 << 4)] = c4;
-            for (var e4, t5, n2, r4 = Array(80), o3 = 1732584193, i4 = -271733879, u3 = -1732584194, s5 = 271733878, d5 = -1009589776, h3 = 0; h3 < l2.length; h3 += 16) {
-              for (var p2 = o3, g2 = i4, y3 = u3, w3 = s5, b3 = d5, a5 = 0; a5 < 80; a5++) {
-                r4[a5] = a5 < 16 ? l2[h3 + a5] : v(r4[a5 - 3] ^ r4[a5 - 8] ^ r4[a5 - 14] ^ r4[a5 - 16], 1);
-                var f2 = m3(m3(v(o3, 5), (f2 = i4, t5 = u3, n2 = s5, (e4 = a5) < 20 ? f2 & t5 | ~f2 & n2 : !(e4 < 40) && e4 < 60 ? f2 & t5 | f2 & n2 | t5 & n2 : f2 ^ t5 ^ n2)), m3(m3(d5, r4[a5]), (e4 = a5) < 20 ? 1518500249 : e4 < 40 ? 1859775393 : e4 < 60 ? -1894007588 : -899497514)), d5 = s5, s5 = u3, u3 = v(i4, 30), i4 = o3, o3 = f2;
-              }
-              o3 = m3(o3, p2), i4 = m3(i4, g2), u3 = m3(u3, y3), s5 = m3(s5, w3), d5 = m3(d5, b3);
-            }
-            return Array(o3, i4, u3, s5, d5);
-          }
-          function m3(e4, t5) {
-            var n2 = (65535 & e4) + (65535 & t5);
-            return (e4 >> 16) + (t5 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
-          }
-          function v(e4, t5) {
-            return e4 << t5 | e4 >>> 32 - t5;
-          }
-          d4.exports = function(e4) {
-            return i3.hash(e4, u2, 20, true);
-          };
-        }).call(this, c3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/sha.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 9: [function(c3, d4, e2) {
-        !(function(e3, t4, n, r3, u2, s4, a4, f, l) {
-          function b3(e4, t5) {
-            var n2 = (65535 & e4) + (65535 & t5);
-            return (e4 >> 16) + (t5 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
-          }
-          function o2(e4, l2) {
-            var c4, d5 = new Array(1116352408, 1899447441, 3049323471, 3921009573, 961987163, 1508970993, 2453635748, 2870763221, 3624381080, 310598401, 607225278, 1426881987, 1925078388, 2162078206, 2614888103, 3248222580, 3835390401, 4022224774, 264347078, 604807628, 770255983, 1249150122, 1555081692, 1996064986, 2554220882, 2821834349, 2952996808, 3210313671, 3336571891, 3584528711, 113926993, 338241895, 666307205, 773529912, 1294757372, 1396182291, 1695183700, 1986661051, 2177026350, 2456956037, 2730485921, 2820302411, 3259730800, 3345764771, 3516065817, 3600352804, 4094571909, 275423344, 430227734, 506948616, 659060556, 883997877, 958139571, 1322822218, 1537002063, 1747873779, 1955562222, 2024104815, 2227730452, 2361852424, 2428436474, 2756734187, 3204031479, 3329325298), t5 = new Array(1779033703, 3144134277, 1013904242, 2773480762, 1359893119, 2600822924, 528734635, 1541459225), n2 = new Array(64);
-            e4[l2 >> 5] |= 128 << 24 - l2 % 32, e4[15 + (l2 + 64 >> 9 << 4)] = l2;
-            for (var r4, o3, h3 = 0; h3 < e4.length; h3 += 16) {
-              for (var i4 = t5[0], u3 = t5[1], s5 = t5[2], p2 = t5[3], a5 = t5[4], g2 = t5[5], y3 = t5[6], w3 = t5[7], f2 = 0; f2 < 64; f2++) n2[f2] = f2 < 16 ? e4[f2 + h3] : b3(b3(b3((o3 = n2[f2 - 2], m3(o3, 17) ^ m3(o3, 19) ^ v(o3, 10)), n2[f2 - 7]), (o3 = n2[f2 - 15], m3(o3, 7) ^ m3(o3, 18) ^ v(o3, 3))), n2[f2 - 16]), c4 = b3(b3(b3(b3(w3, m3(o3 = a5, 6) ^ m3(o3, 11) ^ m3(o3, 25)), a5 & g2 ^ ~a5 & y3), d5[f2]), n2[f2]), r4 = b3(m3(r4 = i4, 2) ^ m3(r4, 13) ^ m3(r4, 22), i4 & u3 ^ i4 & s5 ^ u3 & s5), w3 = y3, y3 = g2, g2 = a5, a5 = b3(p2, c4), p2 = s5, s5 = u3, u3 = i4, i4 = b3(c4, r4);
-              t5[0] = b3(i4, t5[0]), t5[1] = b3(u3, t5[1]), t5[2] = b3(s5, t5[2]), t5[3] = b3(p2, t5[3]), t5[4] = b3(a5, t5[4]), t5[5] = b3(g2, t5[5]), t5[6] = b3(y3, t5[6]), t5[7] = b3(w3, t5[7]);
-            }
-            return t5;
-          }
-          var i3 = c3("./helpers"), m3 = function(e4, t5) {
-            return e4 >>> t5 | e4 << 32 - t5;
-          }, v = function(e4, t5) {
-            return e4 >>> t5;
-          };
-          d4.exports = function(e4) {
-            return i3.hash(e4, o2, 32, true);
-          };
-        }).call(this, c3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/sha256.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 10: [function(e2, t4, f) {
-        !(function(e3, t5, n, r3, o2, i3, u2, s4, a4) {
-          f.read = function(e4, t6, n2, r4, o3) {
-            var i4, u3, l = 8 * o3 - r4 - 1, c3 = (1 << l) - 1, d4 = c3 >> 1, s5 = -7, a5 = n2 ? o3 - 1 : 0, f2 = n2 ? -1 : 1, o3 = e4[t6 + a5];
-            for (a5 += f2, i4 = o3 & (1 << -s5) - 1, o3 >>= -s5, s5 += l; 0 < s5; i4 = 256 * i4 + e4[t6 + a5], a5 += f2, s5 -= 8) ;
-            for (u3 = i4 & (1 << -s5) - 1, i4 >>= -s5, s5 += r4; 0 < s5; u3 = 256 * u3 + e4[t6 + a5], a5 += f2, s5 -= 8) ;
-            if (0 === i4) i4 = 1 - d4;
-            else {
-              if (i4 === c3) return u3 ? NaN : 1 / 0 * (o3 ? -1 : 1);
-              u3 += Math.pow(2, r4), i4 -= d4;
-            }
-            return (o3 ? -1 : 1) * u3 * Math.pow(2, i4 - r4);
-          }, f.write = function(e4, t6, l, n2, r4, c3) {
-            var o3, i4, u3 = 8 * c3 - r4 - 1, s5 = (1 << u3) - 1, a5 = s5 >> 1, d4 = 23 === r4 ? Math.pow(2, -24) - Math.pow(2, -77) : 0, f2 = n2 ? 0 : c3 - 1, h3 = n2 ? 1 : -1, c3 = t6 < 0 || 0 === t6 && 1 / t6 < 0 ? 1 : 0;
-            for (t6 = Math.abs(t6), isNaN(t6) || t6 === 1 / 0 ? (i4 = isNaN(t6) ? 1 : 0, o3 = s5) : (o3 = Math.floor(Math.log(t6) / Math.LN2), t6 * (n2 = Math.pow(2, -o3)) < 1 && (o3--, n2 *= 2), 2 <= (t6 += 1 <= o3 + a5 ? d4 / n2 : d4 * Math.pow(2, 1 - a5)) * n2 && (o3++, n2 /= 2), s5 <= o3 + a5 ? (i4 = 0, o3 = s5) : 1 <= o3 + a5 ? (i4 = (t6 * n2 - 1) * Math.pow(2, r4), o3 += a5) : (i4 = t6 * Math.pow(2, a5 - 1) * Math.pow(2, r4), o3 = 0)); 8 <= r4; e4[l + f2] = 255 & i4, f2 += h3, i4 /= 256, r4 -= 8) ;
-            for (o3 = o3 << r4 | i4, u3 += r4; 0 < u3; e4[l + f2] = 255 & o3, f2 += h3, o3 /= 256, u3 -= 8) ;
-            e4[l + f2 - h3] |= 128 * c3;
-          };
-        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/ieee754/index.js", "/node_modules/gulp-browserify/node_modules/ieee754");
-      }, { buffer: 3, lYpoI2: 11 }], 11: [function(e2, h3, t4) {
-        !(function(e3, t5, n, r3, o2, f, l, c3, d4) {
-          var i3, u2, s4;
-          function a4() {
-          }
-          (e3 = h3.exports = {}).nextTick = (u2 = "undefined" != typeof window && window.setImmediate, s4 = "undefined" != typeof window && window.postMessage && window.addEventListener, u2 ? function(e4) {
-            return window.setImmediate(e4);
-          } : s4 ? (i3 = [], window.addEventListener("message", function(e4) {
-            var t6 = e4.source;
-            t6 !== window && null !== t6 || "process-tick" !== e4.data || (e4.stopPropagation(), 0 < i3.length && i3.shift()());
-          }, true), function(e4) {
-            i3.push(e4), window.postMessage("process-tick", "*");
-          }) : function(e4) {
-            setTimeout(e4, 0);
-          }), e3.title = "browser", e3.browser = true, e3.env = {}, e3.argv = [], e3.on = a4, e3.addListener = a4, e3.once = a4, e3.off = a4, e3.removeListener = a4, e3.removeAllListeners = a4, e3.emit = a4, e3.binding = function(e4) {
-            throw new Error("process.binding is not supported");
-          }, e3.cwd = function() {
-            return "/";
-          }, e3.chdir = function(e4) {
-            throw new Error("process.chdir is not supported");
-          };
-        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/process/browser.js", "/node_modules/gulp-browserify/node_modules/process");
-      }, { buffer: 3, lYpoI2: 11 }] }, {}, [1])(1);
-    });
-  })(object_hash);
-  return object_hash.exports;
-}
-var object_hashExports = requireObject_hash();
-const objectHash = /* @__PURE__ */ getDefaultExportFromCjs(object_hashExports);
 function getApolloClient() {
   const originalClient = getClient();
   const originalCacheConfig = "config" in originalClient.cache ? originalClient.cache.config : {};
   const newCache = new InMemoryCache({
-    ...originalCacheConfig,
-    typePolicies: {
-      ...originalCacheConfig.typePolicies,
-      Query: {
-        ...originalCacheConfig.typePolicies?.Query,
-        fields: {
-          ...originalCacheConfig.typePolicies?.Query.fields,
-          findScenes: {
-            ...originalCacheConfig.typePolicies?.Query.fields?.findScenes,
-            keyArgs: (variables) => objectHash({
-              ...variables,
-              filter: {
-                ...variables?.filter,
-                page: void 0,
-                per_page: void 0
-              }
-            }),
-            merge(existing = { scenes: [] }, incoming) {
-              return {
-                ...existing,
-                ...incoming,
-                scenes: [
-                  ...existing.scenes,
-                  ...incoming.scenes.filter(
-                    (incomingScene) => !existing.scenes.some((existingScene) => existingScene.__ref === incomingScene.__ref)
-                  )
-                ]
-              };
-            }
-          },
-          findSceneMarkers: {
-            ...originalCacheConfig.typePolicies?.Query.fields?.findSceneMarkers,
-            keyArgs: (variables) => objectHash({
-              ...variables,
-              filter: {
-                ...variables?.filter,
-                page: void 0,
-                per_page: void 0
-              }
-            }),
-            merge(existing = { scene_markers: [] }, incoming) {
-              return {
-                ...existing,
-                ...incoming,
-                scene_markers: [
-                  ...existing.scene_markers,
-                  ...incoming.scene_markers.filter(
-                    (incomingSceneMarker) => !existing.scene_markers.some((existingSceneMarker) => existingSceneMarker.__ref === incomingSceneMarker.__ref)
-                  )
-                ]
-              };
-            }
-          }
-        }
-      }
-    }
+    ...originalCacheConfig
   });
   const newClient = new ApolloClient({
     link: originalClient.link,
     cache: newCache
   });
-  const oldModify = newCache.modify;
-  newCache.modify = (firstArg, ...otherArgs) => {
-    const { fields = {} } = firstArg;
-    if ("findScenes" in fields && typeof fields.findScenes === "function") {
-      const originalModFn = fields.findScenes;
-      fields.findScenes = (...modFnArgs) => {
-        const [originalValue, { DELETE: DELETE2 }] = modFnArgs;
-        const result = originalModFn(...modFnArgs);
-        if (result === DELETE2) {
-          return originalValue;
-        }
-        return result;
-      };
-    }
-    return oldModify.apply(newCache, [firstArg, ...otherArgs]);
-  };
   return newClient;
 }
 const graphqlClient = getApolloClient();
@@ -177648,6 +176786,7 @@ async function updateTvConfig(configUpdate) {
 const defaults$4 = {
   showSettings: false,
   fullscreen: false,
+  sceneInfoOpen: false,
   tvConfigLoaded: false
 };
 const useGlobalState = create()(
@@ -178253,6 +177392,10 @@ videojs.hook("beforesetup", function(videoEl, options2) {
       doubleClick: false
     },
     inactivityTimeout: 5e3,
+    // The browser's native hover PiP icon (independent of video.js's own control bar, which
+    // already excludes pictureInPictureToggle) interferes with Stash TV's own menu overlay and
+    // has no use for this plugin.
+    disablePictureInPicture: true,
     controlBar: {
       children: [
         "progressControl",
@@ -189038,6 +188181,797 @@ function roundTo(num, decimals = 0) {
 function roundToNearest(num, nearest = 1) {
   return Math.round(num / nearest) * nearest;
 }
+var object_hash = { exports: {} };
+var hasRequiredObject_hash;
+function requireObject_hash() {
+  if (hasRequiredObject_hash) return object_hash.exports;
+  hasRequiredObject_hash = 1;
+  (function(module2, exports2) {
+    !(function(e2) {
+      module2.exports = e2();
+    })(function() {
+      return (function r3(o2, i3, u2) {
+        function s4(n, e3) {
+          if (!i3[n]) {
+            if (!o2[n]) {
+              var t4 = "function" == typeof commonjsRequire && commonjsRequire;
+              if (!e3 && t4) return t4(n, true);
+              if (a4) return a4(n, true);
+              throw new Error("Cannot find module '" + n + "'");
+            }
+            e3 = i3[n] = { exports: {} };
+            o2[n][0].call(e3.exports, function(e4) {
+              var t5 = o2[n][1][e4];
+              return s4(t5 || e4);
+            }, e3, e3.exports, r3, o2, i3, u2);
+          }
+          return i3[n].exports;
+        }
+        for (var a4 = "function" == typeof commonjsRequire && commonjsRequire, e2 = 0; e2 < u2.length; e2++) s4(u2[e2]);
+        return s4;
+      })({ 1: [function(w3, b3, m3) {
+        !(function(e2, n, s4, c3, d4, h3, p2, g2, y3) {
+          var r3 = w3("crypto");
+          function t4(e3, t5) {
+            t5 = u2(e3, t5);
+            var n2;
+            return void 0 === (n2 = "passthrough" !== t5.algorithm ? r3.createHash(t5.algorithm) : new l()).write && (n2.write = n2.update, n2.end = n2.update), f(t5, n2).dispatch(e3), n2.update || n2.end(""), n2.digest ? n2.digest("buffer" === t5.encoding ? void 0 : t5.encoding) : (e3 = n2.read(), "buffer" !== t5.encoding ? e3.toString(t5.encoding) : e3);
+          }
+          (m3 = b3.exports = t4).sha1 = function(e3) {
+            return t4(e3);
+          }, m3.keys = function(e3) {
+            return t4(e3, { excludeValues: true, algorithm: "sha1", encoding: "hex" });
+          }, m3.MD5 = function(e3) {
+            return t4(e3, { algorithm: "md5", encoding: "hex" });
+          }, m3.keysMD5 = function(e3) {
+            return t4(e3, { algorithm: "md5", encoding: "hex", excludeValues: true });
+          };
+          var o2 = r3.getHashes ? r3.getHashes().slice() : ["sha1", "md5"], i3 = (o2.push("passthrough"), ["buffer", "hex", "binary", "base64"]);
+          function u2(e3, t5) {
+            var n2 = {};
+            if (n2.algorithm = (t5 = t5 || {}).algorithm || "sha1", n2.encoding = t5.encoding || "hex", n2.excludeValues = !!t5.excludeValues, n2.algorithm = n2.algorithm.toLowerCase(), n2.encoding = n2.encoding.toLowerCase(), n2.ignoreUnknown = true === t5.ignoreUnknown, n2.respectType = false !== t5.respectType, n2.respectFunctionNames = false !== t5.respectFunctionNames, n2.respectFunctionProperties = false !== t5.respectFunctionProperties, n2.unorderedArrays = true === t5.unorderedArrays, n2.unorderedSets = false !== t5.unorderedSets, n2.unorderedObjects = false !== t5.unorderedObjects, n2.replacer = t5.replacer || void 0, n2.excludeKeys = t5.excludeKeys || void 0, void 0 === e3) throw new Error("Object argument required.");
+            for (var r4 = 0; r4 < o2.length; ++r4) o2[r4].toLowerCase() === n2.algorithm.toLowerCase() && (n2.algorithm = o2[r4]);
+            if (-1 === o2.indexOf(n2.algorithm)) throw new Error('Algorithm "' + n2.algorithm + '"  not supported. supported values: ' + o2.join(", "));
+            if (-1 === i3.indexOf(n2.encoding) && "passthrough" !== n2.algorithm) throw new Error('Encoding "' + n2.encoding + '"  not supported. supported values: ' + i3.join(", "));
+            return n2;
+          }
+          function a4(e3) {
+            if ("function" == typeof e3) return null != /^function\s+\w*\s*\(\s*\)\s*{\s+\[native code\]\s+}$/i.exec(Function.prototype.toString.call(e3));
+          }
+          function f(o3, t5, i4) {
+            i4 = i4 || [];
+            function u3(e3) {
+              return t5.update ? t5.update(e3, "utf8") : t5.write(e3, "utf8");
+            }
+            return { dispatch: function(e3) {
+              return this["_" + (null === (e3 = o3.replacer ? o3.replacer(e3) : e3) ? "null" : typeof e3)](e3);
+            }, _object: function(t6) {
+              var n2, e3 = Object.prototype.toString.call(t6), r4 = /\[object (.*)\]/i.exec(e3);
+              r4 = (r4 = r4 ? r4[1] : "unknown:[" + e3 + "]").toLowerCase();
+              if (0 <= (e3 = i4.indexOf(t6))) return this.dispatch("[CIRCULAR:" + e3 + "]");
+              if (i4.push(t6), void 0 !== s4 && s4.isBuffer && s4.isBuffer(t6)) return u3("buffer:"), u3(t6);
+              if ("object" === r4 || "function" === r4 || "asyncfunction" === r4) return e3 = Object.keys(t6), o3.unorderedObjects && (e3 = e3.sort()), false === o3.respectType || a4(t6) || e3.splice(0, 0, "prototype", "__proto__", "constructor"), o3.excludeKeys && (e3 = e3.filter(function(e4) {
+                return !o3.excludeKeys(e4);
+              })), u3("object:" + e3.length + ":"), n2 = this, e3.forEach(function(e4) {
+                n2.dispatch(e4), u3(":"), o3.excludeValues || n2.dispatch(t6[e4]), u3(",");
+              });
+              if (!this["_" + r4]) {
+                if (o3.ignoreUnknown) return u3("[" + r4 + "]");
+                throw new Error('Unknown object type "' + r4 + '"');
+              }
+              this["_" + r4](t6);
+            }, _array: function(e3, t6) {
+              t6 = void 0 !== t6 ? t6 : false !== o3.unorderedArrays;
+              var n2 = this;
+              if (u3("array:" + e3.length + ":"), !t6 || e3.length <= 1) return e3.forEach(function(e4) {
+                return n2.dispatch(e4);
+              });
+              var r4 = [], t6 = e3.map(function(e4) {
+                var t7 = new l(), n3 = i4.slice();
+                return f(o3, t7, n3).dispatch(e4), r4 = r4.concat(n3.slice(i4.length)), t7.read().toString();
+              });
+              return i4 = i4.concat(r4), t6.sort(), this._array(t6, false);
+            }, _date: function(e3) {
+              return u3("date:" + e3.toJSON());
+            }, _symbol: function(e3) {
+              return u3("symbol:" + e3.toString());
+            }, _error: function(e3) {
+              return u3("error:" + e3.toString());
+            }, _boolean: function(e3) {
+              return u3("bool:" + e3.toString());
+            }, _string: function(e3) {
+              u3("string:" + e3.length + ":"), u3(e3.toString());
+            }, _function: function(e3) {
+              u3("fn:"), a4(e3) ? this.dispatch("[native]") : this.dispatch(e3.toString()), false !== o3.respectFunctionNames && this.dispatch("function-name:" + String(e3.name)), o3.respectFunctionProperties && this._object(e3);
+            }, _number: function(e3) {
+              return u3("number:" + e3.toString());
+            }, _xml: function(e3) {
+              return u3("xml:" + e3.toString());
+            }, _null: function() {
+              return u3("Null");
+            }, _undefined: function() {
+              return u3("Undefined");
+            }, _regexp: function(e3) {
+              return u3("regex:" + e3.toString());
+            }, _uint8array: function(e3) {
+              return u3("uint8array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _uint8clampedarray: function(e3) {
+              return u3("uint8clampedarray:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _int8array: function(e3) {
+              return u3("int8array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _uint16array: function(e3) {
+              return u3("uint16array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _int16array: function(e3) {
+              return u3("int16array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _uint32array: function(e3) {
+              return u3("uint32array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _int32array: function(e3) {
+              return u3("int32array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _float32array: function(e3) {
+              return u3("float32array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _float64array: function(e3) {
+              return u3("float64array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _arraybuffer: function(e3) {
+              return u3("arraybuffer:"), this.dispatch(new Uint8Array(e3));
+            }, _url: function(e3) {
+              return u3("url:" + e3.toString());
+            }, _map: function(e3) {
+              u3("map:");
+              e3 = Array.from(e3);
+              return this._array(e3, false !== o3.unorderedSets);
+            }, _set: function(e3) {
+              u3("set:");
+              e3 = Array.from(e3);
+              return this._array(e3, false !== o3.unorderedSets);
+            }, _file: function(e3) {
+              return u3("file:"), this.dispatch([e3.name, e3.size, e3.type, e3.lastModfied]);
+            }, _blob: function() {
+              if (o3.ignoreUnknown) return u3("[blob]");
+              throw Error('Hashing Blob objects is currently not supported\n(see https://github.com/puleos/object-hash/issues/26)\nUse "options.replacer" or "options.ignoreUnknown"\n');
+            }, _domwindow: function() {
+              return u3("domwindow");
+            }, _bigint: function(e3) {
+              return u3("bigint:" + e3.toString());
+            }, _process: function() {
+              return u3("process");
+            }, _timer: function() {
+              return u3("timer");
+            }, _pipe: function() {
+              return u3("pipe");
+            }, _tcp: function() {
+              return u3("tcp");
+            }, _udp: function() {
+              return u3("udp");
+            }, _tty: function() {
+              return u3("tty");
+            }, _statwatcher: function() {
+              return u3("statwatcher");
+            }, _securecontext: function() {
+              return u3("securecontext");
+            }, _connection: function() {
+              return u3("connection");
+            }, _zlib: function() {
+              return u3("zlib");
+            }, _context: function() {
+              return u3("context");
+            }, _nodescript: function() {
+              return u3("nodescript");
+            }, _httpparser: function() {
+              return u3("httpparser");
+            }, _dataview: function() {
+              return u3("dataview");
+            }, _signal: function() {
+              return u3("signal");
+            }, _fsevent: function() {
+              return u3("fsevent");
+            }, _tlswrap: function() {
+              return u3("tlswrap");
+            } };
+          }
+          function l() {
+            return { buf: "", write: function(e3) {
+              this.buf += e3;
+            }, end: function(e3) {
+              this.buf += e3;
+            }, read: function() {
+              return this.buf;
+            } };
+          }
+          m3.writeToStream = function(e3, t5, n2) {
+            return void 0 === n2 && (n2 = t5, t5 = {}), f(t5 = u2(e3, t5), n2).dispatch(e3);
+          };
+        }).call(this, w3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, w3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_9a5aa49d.js", "/");
+      }, { buffer: 3, crypto: 5, lYpoI2: 11 }], 2: [function(e2, t4, f) {
+        !(function(e3, t5, n, r3, o2, i3, u2, s4, a4) {
+          !(function(e4) {
+            var a5 = "undefined" != typeof Uint8Array ? Uint8Array : Array, t6 = "+".charCodeAt(0), n2 = "/".charCodeAt(0), r4 = "0".charCodeAt(0), o3 = "a".charCodeAt(0), i4 = "A".charCodeAt(0), u3 = "-".charCodeAt(0), s5 = "_".charCodeAt(0);
+            function f2(e5) {
+              e5 = e5.charCodeAt(0);
+              return e5 === t6 || e5 === u3 ? 62 : e5 === n2 || e5 === s5 ? 63 : e5 < r4 ? -1 : e5 < r4 + 10 ? e5 - r4 + 26 + 26 : e5 < i4 + 26 ? e5 - i4 : e5 < o3 + 26 ? e5 - o3 + 26 : void 0;
+            }
+            e4.toByteArray = function(e5) {
+              var t7, n3;
+              if (0 < e5.length % 4) throw new Error("Invalid string. Length must be a multiple of 4");
+              var r5 = e5.length, r5 = "=" === e5.charAt(r5 - 2) ? 2 : "=" === e5.charAt(r5 - 1) ? 1 : 0, o4 = new a5(3 * e5.length / 4 - r5), i5 = 0 < r5 ? e5.length - 4 : e5.length, u4 = 0;
+              function s6(e6) {
+                o4[u4++] = e6;
+              }
+              for (t7 = 0; t7 < i5; t7 += 4, 0) s6((16711680 & (n3 = f2(e5.charAt(t7)) << 18 | f2(e5.charAt(t7 + 1)) << 12 | f2(e5.charAt(t7 + 2)) << 6 | f2(e5.charAt(t7 + 3)))) >> 16), s6((65280 & n3) >> 8), s6(255 & n3);
+              return 2 == r5 ? s6(255 & (n3 = f2(e5.charAt(t7)) << 2 | f2(e5.charAt(t7 + 1)) >> 4)) : 1 == r5 && (s6((n3 = f2(e5.charAt(t7)) << 10 | f2(e5.charAt(t7 + 1)) << 4 | f2(e5.charAt(t7 + 2)) >> 2) >> 8 & 255), s6(255 & n3)), o4;
+            }, e4.fromByteArray = function(e5) {
+              var t7, n3, r5, o4, i5 = e5.length % 3, u4 = "";
+              function s6(e6) {
+                return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(e6);
+              }
+              for (t7 = 0, r5 = e5.length - i5; t7 < r5; t7 += 3) n3 = (e5[t7] << 16) + (e5[t7 + 1] << 8) + e5[t7 + 2], u4 += s6((o4 = n3) >> 18 & 63) + s6(o4 >> 12 & 63) + s6(o4 >> 6 & 63) + s6(63 & o4);
+              switch (i5) {
+                case 1:
+                  u4 = (u4 += s6((n3 = e5[e5.length - 1]) >> 2)) + s6(n3 << 4 & 63) + "==";
+                  break;
+                case 2:
+                  u4 = (u4 = (u4 += s6((n3 = (e5[e5.length - 2] << 8) + e5[e5.length - 1]) >> 10)) + s6(n3 >> 4 & 63)) + s6(n3 << 2 & 63) + "=";
+              }
+              return u4;
+            };
+          })(void 0 === f ? this.base64js = {} : f);
+        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/base64-js/lib/b64.js", "/node_modules/gulp-browserify/node_modules/base64-js/lib");
+      }, { buffer: 3, lYpoI2: 11 }], 3: [function(O2, e2, H3) {
+        !(function(e3, n, f, r3, h3, p2, g2, y3, w3) {
+          var a4 = O2("base64-js"), i3 = O2("ieee754");
+          function f(e4, t5, n2) {
+            if (!(this instanceof f)) return new f(e4, t5, n2);
+            var r4, o3, i4, u3, s5 = typeof e4;
+            if ("base64" === t5 && "string" == s5) for (e4 = (u3 = e4).trim ? u3.trim() : u3.replace(/^\s+|\s+$/g, ""); e4.length % 4 != 0; ) e4 += "=";
+            if ("number" == s5) r4 = j2(e4);
+            else if ("string" == s5) r4 = f.byteLength(e4, t5);
+            else {
+              if ("object" != s5) throw new Error("First argument needs to be a number, array or string.");
+              r4 = j2(e4.length);
+            }
+            if (f._useTypedArrays ? o3 = f._augment(new Uint8Array(r4)) : ((o3 = this).length = r4, o3._isBuffer = true), f._useTypedArrays && "number" == typeof e4.byteLength) o3._set(e4);
+            else if (C(u3 = e4) || f.isBuffer(u3) || u3 && "object" == typeof u3 && "number" == typeof u3.length) for (i4 = 0; i4 < r4; i4++) f.isBuffer(e4) ? o3[i4] = e4.readUInt8(i4) : o3[i4] = e4[i4];
+            else if ("string" == s5) o3.write(e4, 0, t5);
+            else if ("number" == s5 && !f._useTypedArrays && !n2) for (i4 = 0; i4 < r4; i4++) o3[i4] = 0;
+            return o3;
+          }
+          function b3(e4, t5, n2, r4) {
+            return f._charsWritten = c3((function(e5) {
+              for (var t6 = [], n3 = 0; n3 < e5.length; n3++) t6.push(255 & e5.charCodeAt(n3));
+              return t6;
+            })(t5), e4, n2, r4);
+          }
+          function m3(e4, t5, n2, r4) {
+            return f._charsWritten = c3((function(e5) {
+              for (var t6, n3, r5 = [], o3 = 0; o3 < e5.length; o3++) n3 = e5.charCodeAt(o3), t6 = n3 >> 8, n3 = n3 % 256, r5.push(n3), r5.push(t6);
+              return r5;
+            })(t5), e4, n2, r4);
+          }
+          function v(e4, t5, n2) {
+            var r4 = "";
+            n2 = Math.min(e4.length, n2);
+            for (var o3 = t5; o3 < n2; o3++) r4 += String.fromCharCode(e4[o3]);
+            return r4;
+          }
+          function o2(e4, t5, n2, r4) {
+            r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 1 < e4.length, "Trying to read beyond buffer length"));
+            var o3, r4 = e4.length;
+            if (!(r4 <= t5)) return n2 ? (o3 = e4[t5], t5 + 1 < r4 && (o3 |= e4[t5 + 1] << 8)) : (o3 = e4[t5] << 8, t5 + 1 < r4 && (o3 |= e4[t5 + 1])), o3;
+          }
+          function u2(e4, t5, n2, r4) {
+            r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 3 < e4.length, "Trying to read beyond buffer length"));
+            var o3, r4 = e4.length;
+            if (!(r4 <= t5)) return n2 ? (t5 + 2 < r4 && (o3 = e4[t5 + 2] << 16), t5 + 1 < r4 && (o3 |= e4[t5 + 1] << 8), o3 |= e4[t5], t5 + 3 < r4 && (o3 += e4[t5 + 3] << 24 >>> 0)) : (t5 + 1 < r4 && (o3 = e4[t5 + 1] << 16), t5 + 2 < r4 && (o3 |= e4[t5 + 2] << 8), t5 + 3 < r4 && (o3 |= e4[t5 + 3]), o3 += e4[t5] << 24 >>> 0), o3;
+          }
+          function _(e4, t5, n2, r4) {
+            if (r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 1 < e4.length, "Trying to read beyond buffer length")), !(e4.length <= t5)) return r4 = o2(e4, t5, n2, true), 32768 & r4 ? -1 * (65535 - r4 + 1) : r4;
+          }
+          function E2(e4, t5, n2, r4) {
+            if (r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 3 < e4.length, "Trying to read beyond buffer length")), !(e4.length <= t5)) return r4 = u2(e4, t5, n2, true), 2147483648 & r4 ? -1 * (4294967295 - r4 + 1) : r4;
+          }
+          function I2(e4, t5, n2, r4) {
+            return r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(t5 + 3 < e4.length, "Trying to read beyond buffer length")), i3.read(e4, t5, n2, 23, 4);
+          }
+          function A2(e4, t5, n2, r4) {
+            return r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(t5 + 7 < e4.length, "Trying to read beyond buffer length")), i3.read(e4, t5, n2, 52, 8);
+          }
+          function s4(e4, t5, n2, r4, o3) {
+            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 1 < e4.length, "trying to write beyond buffer length"), Y2(t5, 65535));
+            o3 = e4.length;
+            if (!(o3 <= n2)) for (var i4 = 0, u3 = Math.min(o3 - n2, 2); i4 < u3; i4++) e4[n2 + i4] = (t5 & 255 << 8 * (r4 ? i4 : 1 - i4)) >>> 8 * (r4 ? i4 : 1 - i4);
+          }
+          function l(e4, t5, n2, r4, o3) {
+            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 3 < e4.length, "trying to write beyond buffer length"), Y2(t5, 4294967295));
+            o3 = e4.length;
+            if (!(o3 <= n2)) for (var i4 = 0, u3 = Math.min(o3 - n2, 4); i4 < u3; i4++) e4[n2 + i4] = t5 >>> 8 * (r4 ? i4 : 3 - i4) & 255;
+          }
+          function B2(e4, t5, n2, r4, o3) {
+            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 1 < e4.length, "Trying to write beyond buffer length"), F(t5, 32767, -32768)), e4.length <= n2 || s4(e4, 0 <= t5 ? t5 : 65535 + t5 + 1, n2, r4, o3);
+          }
+          function L3(e4, t5, n2, r4, o3) {
+            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 3 < e4.length, "Trying to write beyond buffer length"), F(t5, 2147483647, -2147483648)), e4.length <= n2 || l(e4, 0 <= t5 ? t5 : 4294967295 + t5 + 1, n2, r4, o3);
+          }
+          function U(e4, t5, n2, r4, o3) {
+            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 3 < e4.length, "Trying to write beyond buffer length"), D2(t5, 34028234663852886e22, -34028234663852886e22)), e4.length <= n2 || i3.write(e4, t5, n2, r4, 23, 4);
+          }
+          function x3(e4, t5, n2, r4, o3) {
+            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 7 < e4.length, "Trying to write beyond buffer length"), D2(t5, 17976931348623157e292, -17976931348623157e292)), e4.length <= n2 || i3.write(e4, t5, n2, r4, 52, 8);
+          }
+          H3.Buffer = f, H3.SlowBuffer = f, H3.INSPECT_MAX_BYTES = 50, f.poolSize = 8192, f._useTypedArrays = (function() {
+            try {
+              var e4 = new ArrayBuffer(0), t5 = new Uint8Array(e4);
+              return t5.foo = function() {
+                return 42;
+              }, 42 === t5.foo() && "function" == typeof t5.subarray;
+            } catch (e5) {
+              return false;
+            }
+          })(), f.isEncoding = function(e4) {
+            switch (String(e4).toLowerCase()) {
+              case "hex":
+              case "utf8":
+              case "utf-8":
+              case "ascii":
+              case "binary":
+              case "base64":
+              case "raw":
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                return true;
+              default:
+                return false;
+            }
+          }, f.isBuffer = function(e4) {
+            return !(null == e4 || !e4._isBuffer);
+          }, f.byteLength = function(e4, t5) {
+            var n2;
+            switch (e4 += "", t5 || "utf8") {
+              case "hex":
+                n2 = e4.length / 2;
+                break;
+              case "utf8":
+              case "utf-8":
+                n2 = T2(e4).length;
+                break;
+              case "ascii":
+              case "binary":
+              case "raw":
+                n2 = e4.length;
+                break;
+              case "base64":
+                n2 = M3(e4).length;
+                break;
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                n2 = 2 * e4.length;
+                break;
+              default:
+                throw new Error("Unknown encoding");
+            }
+            return n2;
+          }, f.concat = function(e4, t5) {
+            if (d4(C(e4), "Usage: Buffer.concat(list, [totalLength])\nlist should be an Array."), 0 === e4.length) return new f(0);
+            if (1 === e4.length) return e4[0];
+            if ("number" != typeof t5) for (o3 = t5 = 0; o3 < e4.length; o3++) t5 += e4[o3].length;
+            for (var n2 = new f(t5), r4 = 0, o3 = 0; o3 < e4.length; o3++) {
+              var i4 = e4[o3];
+              i4.copy(n2, r4), r4 += i4.length;
+            }
+            return n2;
+          }, f.prototype.write = function(e4, t5, n2, r4) {
+            isFinite(t5) ? isFinite(n2) || (r4 = n2, n2 = void 0) : (a5 = r4, r4 = t5, t5 = n2, n2 = a5), t5 = Number(t5) || 0;
+            var o3, i4, u3, s5, a5 = this.length - t5;
+            switch ((!n2 || a5 < (n2 = Number(n2))) && (n2 = a5), r4 = String(r4 || "utf8").toLowerCase()) {
+              case "hex":
+                o3 = (function(e5, t6, n3, r5) {
+                  n3 = Number(n3) || 0;
+                  var o4 = e5.length - n3;
+                  (!r5 || o4 < (r5 = Number(r5))) && (r5 = o4), d4((o4 = t6.length) % 2 == 0, "Invalid hex string"), o4 / 2 < r5 && (r5 = o4 / 2);
+                  for (var i5 = 0; i5 < r5; i5++) {
+                    var u4 = parseInt(t6.substr(2 * i5, 2), 16);
+                    d4(!isNaN(u4), "Invalid hex string"), e5[n3 + i5] = u4;
+                  }
+                  return f._charsWritten = 2 * i5, i5;
+                })(this, e4, t5, n2);
+                break;
+              case "utf8":
+              case "utf-8":
+                i4 = this, u3 = t5, s5 = n2, o3 = f._charsWritten = c3(T2(e4), i4, u3, s5);
+                break;
+              case "ascii":
+              case "binary":
+                o3 = b3(this, e4, t5, n2);
+                break;
+              case "base64":
+                i4 = this, u3 = t5, s5 = n2, o3 = f._charsWritten = c3(M3(e4), i4, u3, s5);
+                break;
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                o3 = m3(this, e4, t5, n2);
+                break;
+              default:
+                throw new Error("Unknown encoding");
+            }
+            return o3;
+          }, f.prototype.toString = function(e4, t5, n2) {
+            var r4, o3, i4, u3, s5 = this;
+            if (e4 = String(e4 || "utf8").toLowerCase(), t5 = Number(t5) || 0, (n2 = void 0 !== n2 ? Number(n2) : s5.length) === t5) return "";
+            switch (e4) {
+              case "hex":
+                r4 = (function(e5, t6, n3) {
+                  var r5 = e5.length;
+                  (!t6 || t6 < 0) && (t6 = 0);
+                  (!n3 || n3 < 0 || r5 < n3) && (n3 = r5);
+                  for (var o4 = "", i5 = t6; i5 < n3; i5++) o4 += k2(e5[i5]);
+                  return o4;
+                })(s5, t5, n2);
+                break;
+              case "utf8":
+              case "utf-8":
+                r4 = (function(e5, t6, n3) {
+                  var r5 = "", o4 = "";
+                  n3 = Math.min(e5.length, n3);
+                  for (var i5 = t6; i5 < n3; i5++) e5[i5] <= 127 ? (r5 += N(o4) + String.fromCharCode(e5[i5]), o4 = "") : o4 += "%" + e5[i5].toString(16);
+                  return r5 + N(o4);
+                })(s5, t5, n2);
+                break;
+              case "ascii":
+              case "binary":
+                r4 = v(s5, t5, n2);
+                break;
+              case "base64":
+                o3 = s5, u3 = n2, r4 = 0 === (i4 = t5) && u3 === o3.length ? a4.fromByteArray(o3) : a4.fromByteArray(o3.slice(i4, u3));
+                break;
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                r4 = (function(e5, t6, n3) {
+                  for (var r5 = e5.slice(t6, n3), o4 = "", i5 = 0; i5 < r5.length; i5 += 2) o4 += String.fromCharCode(r5[i5] + 256 * r5[i5 + 1]);
+                  return o4;
+                })(s5, t5, n2);
+                break;
+              default:
+                throw new Error("Unknown encoding");
+            }
+            return r4;
+          }, f.prototype.toJSON = function() {
+            return { type: "Buffer", data: Array.prototype.slice.call(this._arr || this, 0) };
+          }, f.prototype.copy = function(e4, t5, n2, r4) {
+            if (t5 = t5 || 0, (r4 = r4 || 0 === r4 ? r4 : this.length) !== (n2 = n2 || 0) && 0 !== e4.length && 0 !== this.length) {
+              d4(n2 <= r4, "sourceEnd < sourceStart"), d4(0 <= t5 && t5 < e4.length, "targetStart out of bounds"), d4(0 <= n2 && n2 < this.length, "sourceStart out of bounds"), d4(0 <= r4 && r4 <= this.length, "sourceEnd out of bounds"), r4 > this.length && (r4 = this.length);
+              var o3 = (r4 = e4.length - t5 < r4 - n2 ? e4.length - t5 + n2 : r4) - n2;
+              if (o3 < 100 || !f._useTypedArrays) for (var i4 = 0; i4 < o3; i4++) e4[i4 + t5] = this[i4 + n2];
+              else e4._set(this.subarray(n2, n2 + o3), t5);
+            }
+          }, f.prototype.slice = function(e4, t5) {
+            var n2 = this.length;
+            if (e4 = S4(e4, n2, 0), t5 = S4(t5, n2, n2), f._useTypedArrays) return f._augment(this.subarray(e4, t5));
+            for (var r4 = t5 - e4, o3 = new f(r4, void 0, true), i4 = 0; i4 < r4; i4++) o3[i4] = this[i4 + e4];
+            return o3;
+          }, f.prototype.get = function(e4) {
+            return console.log(".get() is deprecated. Access using array indexes instead."), this.readUInt8(e4);
+          }, f.prototype.set = function(e4, t5) {
+            return console.log(".set() is deprecated. Access using array indexes instead."), this.writeUInt8(e4, t5);
+          }, f.prototype.readUInt8 = function(e4, t5) {
+            if (t5 || (d4(null != e4, "missing offset"), d4(e4 < this.length, "Trying to read beyond buffer length")), !(e4 >= this.length)) return this[e4];
+          }, f.prototype.readUInt16LE = function(e4, t5) {
+            return o2(this, e4, true, t5);
+          }, f.prototype.readUInt16BE = function(e4, t5) {
+            return o2(this, e4, false, t5);
+          }, f.prototype.readUInt32LE = function(e4, t5) {
+            return u2(this, e4, true, t5);
+          }, f.prototype.readUInt32BE = function(e4, t5) {
+            return u2(this, e4, false, t5);
+          }, f.prototype.readInt8 = function(e4, t5) {
+            if (t5 || (d4(null != e4, "missing offset"), d4(e4 < this.length, "Trying to read beyond buffer length")), !(e4 >= this.length)) return 128 & this[e4] ? -1 * (255 - this[e4] + 1) : this[e4];
+          }, f.prototype.readInt16LE = function(e4, t5) {
+            return _(this, e4, true, t5);
+          }, f.prototype.readInt16BE = function(e4, t5) {
+            return _(this, e4, false, t5);
+          }, f.prototype.readInt32LE = function(e4, t5) {
+            return E2(this, e4, true, t5);
+          }, f.prototype.readInt32BE = function(e4, t5) {
+            return E2(this, e4, false, t5);
+          }, f.prototype.readFloatLE = function(e4, t5) {
+            return I2(this, e4, true, t5);
+          }, f.prototype.readFloatBE = function(e4, t5) {
+            return I2(this, e4, false, t5);
+          }, f.prototype.readDoubleLE = function(e4, t5) {
+            return A2(this, e4, true, t5);
+          }, f.prototype.readDoubleBE = function(e4, t5) {
+            return A2(this, e4, false, t5);
+          }, f.prototype.writeUInt8 = function(e4, t5, n2) {
+            n2 || (d4(null != e4, "missing value"), d4(null != t5, "missing offset"), d4(t5 < this.length, "trying to write beyond buffer length"), Y2(e4, 255)), t5 >= this.length || (this[t5] = e4);
+          }, f.prototype.writeUInt16LE = function(e4, t5, n2) {
+            s4(this, e4, t5, true, n2);
+          }, f.prototype.writeUInt16BE = function(e4, t5, n2) {
+            s4(this, e4, t5, false, n2);
+          }, f.prototype.writeUInt32LE = function(e4, t5, n2) {
+            l(this, e4, t5, true, n2);
+          }, f.prototype.writeUInt32BE = function(e4, t5, n2) {
+            l(this, e4, t5, false, n2);
+          }, f.prototype.writeInt8 = function(e4, t5, n2) {
+            n2 || (d4(null != e4, "missing value"), d4(null != t5, "missing offset"), d4(t5 < this.length, "Trying to write beyond buffer length"), F(e4, 127, -128)), t5 >= this.length || (0 <= e4 ? this.writeUInt8(e4, t5, n2) : this.writeUInt8(255 + e4 + 1, t5, n2));
+          }, f.prototype.writeInt16LE = function(e4, t5, n2) {
+            B2(this, e4, t5, true, n2);
+          }, f.prototype.writeInt16BE = function(e4, t5, n2) {
+            B2(this, e4, t5, false, n2);
+          }, f.prototype.writeInt32LE = function(e4, t5, n2) {
+            L3(this, e4, t5, true, n2);
+          }, f.prototype.writeInt32BE = function(e4, t5, n2) {
+            L3(this, e4, t5, false, n2);
+          }, f.prototype.writeFloatLE = function(e4, t5, n2) {
+            U(this, e4, t5, true, n2);
+          }, f.prototype.writeFloatBE = function(e4, t5, n2) {
+            U(this, e4, t5, false, n2);
+          }, f.prototype.writeDoubleLE = function(e4, t5, n2) {
+            x3(this, e4, t5, true, n2);
+          }, f.prototype.writeDoubleBE = function(e4, t5, n2) {
+            x3(this, e4, t5, false, n2);
+          }, f.prototype.fill = function(e4, t5, n2) {
+            if (t5 = t5 || 0, n2 = n2 || this.length, d4("number" == typeof (e4 = "string" == typeof (e4 = e4 || 0) ? e4.charCodeAt(0) : e4) && !isNaN(e4), "value is not a number"), d4(t5 <= n2, "end < start"), n2 !== t5 && 0 !== this.length) {
+              d4(0 <= t5 && t5 < this.length, "start out of bounds"), d4(0 <= n2 && n2 <= this.length, "end out of bounds");
+              for (var r4 = t5; r4 < n2; r4++) this[r4] = e4;
+            }
+          }, f.prototype.inspect = function() {
+            for (var e4 = [], t5 = this.length, n2 = 0; n2 < t5; n2++) if (e4[n2] = k2(this[n2]), n2 === H3.INSPECT_MAX_BYTES) {
+              e4[n2 + 1] = "...";
+              break;
+            }
+            return "<Buffer " + e4.join(" ") + ">";
+          }, f.prototype.toArrayBuffer = function() {
+            if ("undefined" == typeof Uint8Array) throw new Error("Buffer.toArrayBuffer not supported in this browser");
+            if (f._useTypedArrays) return new f(this).buffer;
+            for (var e4 = new Uint8Array(this.length), t5 = 0, n2 = e4.length; t5 < n2; t5 += 1) e4[t5] = this[t5];
+            return e4.buffer;
+          };
+          var t4 = f.prototype;
+          function S4(e4, t5, n2) {
+            return "number" != typeof e4 ? n2 : t5 <= (e4 = ~~e4) ? t5 : 0 <= e4 || 0 <= (e4 += t5) ? e4 : 0;
+          }
+          function j2(e4) {
+            return (e4 = ~~Math.ceil(+e4)) < 0 ? 0 : e4;
+          }
+          function C(e4) {
+            return (Array.isArray || function(e5) {
+              return "[object Array]" === Object.prototype.toString.call(e5);
+            })(e4);
+          }
+          function k2(e4) {
+            return e4 < 16 ? "0" + e4.toString(16) : e4.toString(16);
+          }
+          function T2(e4) {
+            for (var t5 = [], n2 = 0; n2 < e4.length; n2++) {
+              var r4 = e4.charCodeAt(n2);
+              if (r4 <= 127) t5.push(e4.charCodeAt(n2));
+              else for (var o3 = n2, i4 = (55296 <= r4 && r4 <= 57343 && n2++, encodeURIComponent(e4.slice(o3, n2 + 1)).substr(1).split("%")), u3 = 0; u3 < i4.length; u3++) t5.push(parseInt(i4[u3], 16));
+            }
+            return t5;
+          }
+          function M3(e4) {
+            return a4.toByteArray(e4);
+          }
+          function c3(e4, t5, n2, r4) {
+            for (var o3 = 0; o3 < r4 && !(o3 + n2 >= t5.length || o3 >= e4.length); o3++) t5[o3 + n2] = e4[o3];
+            return o3;
+          }
+          function N(e4) {
+            try {
+              return decodeURIComponent(e4);
+            } catch (e5) {
+              return String.fromCharCode(65533);
+            }
+          }
+          function Y2(e4, t5) {
+            d4("number" == typeof e4, "cannot write a non-number as a number"), d4(0 <= e4, "specified a negative value for writing an unsigned value"), d4(e4 <= t5, "value is larger than maximum value for type"), d4(Math.floor(e4) === e4, "value has a fractional component");
+          }
+          function F(e4, t5, n2) {
+            d4("number" == typeof e4, "cannot write a non-number as a number"), d4(e4 <= t5, "value larger than maximum allowed value"), d4(n2 <= e4, "value smaller than minimum allowed value"), d4(Math.floor(e4) === e4, "value has a fractional component");
+          }
+          function D2(e4, t5, n2) {
+            d4("number" == typeof e4, "cannot write a non-number as a number"), d4(e4 <= t5, "value larger than maximum allowed value"), d4(n2 <= e4, "value smaller than minimum allowed value");
+          }
+          function d4(e4, t5) {
+            if (!e4) throw new Error(t5 || "Failed assertion");
+          }
+          f._augment = function(e4) {
+            return e4._isBuffer = true, e4._get = e4.get, e4._set = e4.set, e4.get = t4.get, e4.set = t4.set, e4.write = t4.write, e4.toString = t4.toString, e4.toLocaleString = t4.toString, e4.toJSON = t4.toJSON, e4.copy = t4.copy, e4.slice = t4.slice, e4.readUInt8 = t4.readUInt8, e4.readUInt16LE = t4.readUInt16LE, e4.readUInt16BE = t4.readUInt16BE, e4.readUInt32LE = t4.readUInt32LE, e4.readUInt32BE = t4.readUInt32BE, e4.readInt8 = t4.readInt8, e4.readInt16LE = t4.readInt16LE, e4.readInt16BE = t4.readInt16BE, e4.readInt32LE = t4.readInt32LE, e4.readInt32BE = t4.readInt32BE, e4.readFloatLE = t4.readFloatLE, e4.readFloatBE = t4.readFloatBE, e4.readDoubleLE = t4.readDoubleLE, e4.readDoubleBE = t4.readDoubleBE, e4.writeUInt8 = t4.writeUInt8, e4.writeUInt16LE = t4.writeUInt16LE, e4.writeUInt16BE = t4.writeUInt16BE, e4.writeUInt32LE = t4.writeUInt32LE, e4.writeUInt32BE = t4.writeUInt32BE, e4.writeInt8 = t4.writeInt8, e4.writeInt16LE = t4.writeInt16LE, e4.writeInt16BE = t4.writeInt16BE, e4.writeInt32LE = t4.writeInt32LE, e4.writeInt32BE = t4.writeInt32BE, e4.writeFloatLE = t4.writeFloatLE, e4.writeFloatBE = t4.writeFloatBE, e4.writeDoubleLE = t4.writeDoubleLE, e4.writeDoubleBE = t4.writeDoubleBE, e4.fill = t4.fill, e4.inspect = t4.inspect, e4.toArrayBuffer = t4.toArrayBuffer, e4;
+          };
+        }).call(this, O2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, O2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/buffer/index.js", "/node_modules/gulp-browserify/node_modules/buffer");
+      }, { "base64-js": 2, buffer: 3, ieee754: 10, lYpoI2: 11 }], 4: [function(c3, d4, e2) {
+        !(function(e3, t4, a4, n, r3, o2, i3, u2, s4) {
+          var a4 = c3("buffer").Buffer, f = 4, l = new a4(f);
+          l.fill(0);
+          d4.exports = { hash: function(e4, t5, n2, r4) {
+            for (var o3 = t5((function(e5, t6) {
+              e5.length % f != 0 && (n3 = e5.length + (f - e5.length % f), e5 = a4.concat([e5, l], n3));
+              for (var n3, r5 = [], o4 = t6 ? e5.readInt32BE : e5.readInt32LE, i5 = 0; i5 < e5.length; i5 += f) r5.push(o4.call(e5, i5));
+              return r5;
+            })(e4 = a4.isBuffer(e4) ? e4 : new a4(e4), r4), 8 * e4.length), t5 = r4, i4 = new a4(n2), u3 = t5 ? i4.writeInt32BE : i4.writeInt32LE, s5 = 0; s5 < o3.length; s5++) u3.call(i4, o3[s5], 4 * s5, true);
+            return i4;
+          } };
+        }).call(this, c3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/helpers.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { buffer: 3, lYpoI2: 11 }], 5: [function(v, e2, _) {
+        !(function(l, c3, u2, d4, h3, p2, g2, y3, w3) {
+          var u2 = v("buffer").Buffer, e3 = v("./sha"), t4 = v("./sha256"), n = v("./rng"), b3 = { sha1: e3, sha256: t4, md5: v("./md5") }, s4 = 64, a4 = new u2(s4);
+          function r3(e4, n2) {
+            var r4 = b3[e4 = e4 || "sha1"], o3 = [];
+            return r4 || i3("algorithm:", e4, "is not yet supported"), { update: function(e5) {
+              return u2.isBuffer(e5) || (e5 = new u2(e5)), o3.push(e5), e5.length, this;
+            }, digest: function(e5) {
+              var t5 = u2.concat(o3), t5 = n2 ? (function(e6, t6, n3) {
+                u2.isBuffer(t6) || (t6 = new u2(t6)), u2.isBuffer(n3) || (n3 = new u2(n3)), t6.length > s4 ? t6 = e6(t6) : t6.length < s4 && (t6 = u2.concat([t6, a4], s4));
+                for (var r5 = new u2(s4), o4 = new u2(s4), i4 = 0; i4 < s4; i4++) r5[i4] = 54 ^ t6[i4], o4[i4] = 92 ^ t6[i4];
+                return n3 = e6(u2.concat([r5, n3])), e6(u2.concat([o4, n3]));
+              })(r4, n2, t5) : r4(t5);
+              return o3 = null, e5 ? t5.toString(e5) : t5;
+            } };
+          }
+          function i3() {
+            var e4 = [].slice.call(arguments).join(" ");
+            throw new Error([e4, "we accept pull requests", "http://github.com/dominictarr/crypto-browserify"].join("\n"));
+          }
+          a4.fill(0), _.createHash = function(e4) {
+            return r3(e4);
+          }, _.createHmac = r3, _.randomBytes = function(e4, t5) {
+            if (!t5 || !t5.call) return new u2(n(e4));
+            try {
+              t5.call(this, void 0, new u2(n(e4)));
+            } catch (e5) {
+              t5(e5);
+            }
+          };
+          var o2, f = ["createCredentials", "createCipher", "createCipheriv", "createDecipher", "createDecipheriv", "createSign", "createVerify", "createDiffieHellman", "pbkdf2"], m3 = function(e4) {
+            _[e4] = function() {
+              i3("sorry,", e4, "is not implemented yet");
+            };
+          };
+          for (o2 in f) m3(f[o2]);
+        }).call(this, v("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, v("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/index.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./md5": 6, "./rng": 7, "./sha": 8, "./sha256": 9, buffer: 3, lYpoI2: 11 }], 6: [function(w3, b3, e2) {
+        !(function(e3, r3, o2, i3, u2, a4, f, l, y3) {
+          var t4 = w3("./helpers");
+          function n(e4, t5) {
+            e4[t5 >> 5] |= 128 << t5 % 32, e4[14 + (t5 + 64 >>> 9 << 4)] = t5;
+            for (var n2 = 1732584193, r4 = -271733879, o3 = -1732584194, i4 = 271733878, u3 = 0; u3 < e4.length; u3 += 16) {
+              var s5 = n2, a5 = r4, f2 = o3, l2 = i4, n2 = c3(n2, r4, o3, i4, e4[u3 + 0], 7, -680876936), i4 = c3(i4, n2, r4, o3, e4[u3 + 1], 12, -389564586), o3 = c3(o3, i4, n2, r4, e4[u3 + 2], 17, 606105819), r4 = c3(r4, o3, i4, n2, e4[u3 + 3], 22, -1044525330);
+              n2 = c3(n2, r4, o3, i4, e4[u3 + 4], 7, -176418897), i4 = c3(i4, n2, r4, o3, e4[u3 + 5], 12, 1200080426), o3 = c3(o3, i4, n2, r4, e4[u3 + 6], 17, -1473231341), r4 = c3(r4, o3, i4, n2, e4[u3 + 7], 22, -45705983), n2 = c3(n2, r4, o3, i4, e4[u3 + 8], 7, 1770035416), i4 = c3(i4, n2, r4, o3, e4[u3 + 9], 12, -1958414417), o3 = c3(o3, i4, n2, r4, e4[u3 + 10], 17, -42063), r4 = c3(r4, o3, i4, n2, e4[u3 + 11], 22, -1990404162), n2 = c3(n2, r4, o3, i4, e4[u3 + 12], 7, 1804603682), i4 = c3(i4, n2, r4, o3, e4[u3 + 13], 12, -40341101), o3 = c3(o3, i4, n2, r4, e4[u3 + 14], 17, -1502002290), n2 = d4(n2, r4 = c3(r4, o3, i4, n2, e4[u3 + 15], 22, 1236535329), o3, i4, e4[u3 + 1], 5, -165796510), i4 = d4(i4, n2, r4, o3, e4[u3 + 6], 9, -1069501632), o3 = d4(o3, i4, n2, r4, e4[u3 + 11], 14, 643717713), r4 = d4(r4, o3, i4, n2, e4[u3 + 0], 20, -373897302), n2 = d4(n2, r4, o3, i4, e4[u3 + 5], 5, -701558691), i4 = d4(i4, n2, r4, o3, e4[u3 + 10], 9, 38016083), o3 = d4(o3, i4, n2, r4, e4[u3 + 15], 14, -660478335), r4 = d4(r4, o3, i4, n2, e4[u3 + 4], 20, -405537848), n2 = d4(n2, r4, o3, i4, e4[u3 + 9], 5, 568446438), i4 = d4(i4, n2, r4, o3, e4[u3 + 14], 9, -1019803690), o3 = d4(o3, i4, n2, r4, e4[u3 + 3], 14, -187363961), r4 = d4(r4, o3, i4, n2, e4[u3 + 8], 20, 1163531501), n2 = d4(n2, r4, o3, i4, e4[u3 + 13], 5, -1444681467), i4 = d4(i4, n2, r4, o3, e4[u3 + 2], 9, -51403784), o3 = d4(o3, i4, n2, r4, e4[u3 + 7], 14, 1735328473), n2 = h3(n2, r4 = d4(r4, o3, i4, n2, e4[u3 + 12], 20, -1926607734), o3, i4, e4[u3 + 5], 4, -378558), i4 = h3(i4, n2, r4, o3, e4[u3 + 8], 11, -2022574463), o3 = h3(o3, i4, n2, r4, e4[u3 + 11], 16, 1839030562), r4 = h3(r4, o3, i4, n2, e4[u3 + 14], 23, -35309556), n2 = h3(n2, r4, o3, i4, e4[u3 + 1], 4, -1530992060), i4 = h3(i4, n2, r4, o3, e4[u3 + 4], 11, 1272893353), o3 = h3(o3, i4, n2, r4, e4[u3 + 7], 16, -155497632), r4 = h3(r4, o3, i4, n2, e4[u3 + 10], 23, -1094730640), n2 = h3(n2, r4, o3, i4, e4[u3 + 13], 4, 681279174), i4 = h3(i4, n2, r4, o3, e4[u3 + 0], 11, -358537222), o3 = h3(o3, i4, n2, r4, e4[u3 + 3], 16, -722521979), r4 = h3(r4, o3, i4, n2, e4[u3 + 6], 23, 76029189), n2 = h3(n2, r4, o3, i4, e4[u3 + 9], 4, -640364487), i4 = h3(i4, n2, r4, o3, e4[u3 + 12], 11, -421815835), o3 = h3(o3, i4, n2, r4, e4[u3 + 15], 16, 530742520), n2 = p2(n2, r4 = h3(r4, o3, i4, n2, e4[u3 + 2], 23, -995338651), o3, i4, e4[u3 + 0], 6, -198630844), i4 = p2(i4, n2, r4, o3, e4[u3 + 7], 10, 1126891415), o3 = p2(o3, i4, n2, r4, e4[u3 + 14], 15, -1416354905), r4 = p2(r4, o3, i4, n2, e4[u3 + 5], 21, -57434055), n2 = p2(n2, r4, o3, i4, e4[u3 + 12], 6, 1700485571), i4 = p2(i4, n2, r4, o3, e4[u3 + 3], 10, -1894986606), o3 = p2(o3, i4, n2, r4, e4[u3 + 10], 15, -1051523), r4 = p2(r4, o3, i4, n2, e4[u3 + 1], 21, -2054922799), n2 = p2(n2, r4, o3, i4, e4[u3 + 8], 6, 1873313359), i4 = p2(i4, n2, r4, o3, e4[u3 + 15], 10, -30611744), o3 = p2(o3, i4, n2, r4, e4[u3 + 6], 15, -1560198380), r4 = p2(r4, o3, i4, n2, e4[u3 + 13], 21, 1309151649), n2 = p2(n2, r4, o3, i4, e4[u3 + 4], 6, -145523070), i4 = p2(i4, n2, r4, o3, e4[u3 + 11], 10, -1120210379), o3 = p2(o3, i4, n2, r4, e4[u3 + 2], 15, 718787259), r4 = p2(r4, o3, i4, n2, e4[u3 + 9], 21, -343485551), n2 = g2(n2, s5), r4 = g2(r4, a5), o3 = g2(o3, f2), i4 = g2(i4, l2);
+            }
+            return Array(n2, r4, o3, i4);
+          }
+          function s4(e4, t5, n2, r4, o3, i4) {
+            return g2((t5 = g2(g2(t5, e4), g2(r4, i4))) << o3 | t5 >>> 32 - o3, n2);
+          }
+          function c3(e4, t5, n2, r4, o3, i4, u3) {
+            return s4(t5 & n2 | ~t5 & r4, e4, t5, o3, i4, u3);
+          }
+          function d4(e4, t5, n2, r4, o3, i4, u3) {
+            return s4(t5 & r4 | n2 & ~r4, e4, t5, o3, i4, u3);
+          }
+          function h3(e4, t5, n2, r4, o3, i4, u3) {
+            return s4(t5 ^ n2 ^ r4, e4, t5, o3, i4, u3);
+          }
+          function p2(e4, t5, n2, r4, o3, i4, u3) {
+            return s4(n2 ^ (t5 | ~r4), e4, t5, o3, i4, u3);
+          }
+          function g2(e4, t5) {
+            var n2 = (65535 & e4) + (65535 & t5);
+            return (e4 >> 16) + (t5 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
+          }
+          b3.exports = function(e4) {
+            return t4.hash(e4, n, 16);
+          };
+        }).call(this, w3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, w3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/md5.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 7: [function(e2, l, t4) {
+        !(function(e3, t5, n, r3, o2, i3, u2, s4, f) {
+          l.exports = function(e4) {
+            for (var t6, n2 = new Array(e4), r4 = 0; r4 < e4; r4++) 0 == (3 & r4) && (t6 = 4294967296 * Math.random()), n2[r4] = t6 >>> ((3 & r4) << 3) & 255;
+            return n2;
+          };
+        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/rng.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { buffer: 3, lYpoI2: 11 }], 8: [function(c3, d4, e2) {
+        !(function(e3, t4, n, r3, o2, s4, a4, f, l) {
+          var i3 = c3("./helpers");
+          function u2(l2, c4) {
+            l2[c4 >> 5] |= 128 << 24 - c4 % 32, l2[15 + (c4 + 64 >> 9 << 4)] = c4;
+            for (var e4, t5, n2, r4 = Array(80), o3 = 1732584193, i4 = -271733879, u3 = -1732584194, s5 = 271733878, d5 = -1009589776, h3 = 0; h3 < l2.length; h3 += 16) {
+              for (var p2 = o3, g2 = i4, y3 = u3, w3 = s5, b3 = d5, a5 = 0; a5 < 80; a5++) {
+                r4[a5] = a5 < 16 ? l2[h3 + a5] : v(r4[a5 - 3] ^ r4[a5 - 8] ^ r4[a5 - 14] ^ r4[a5 - 16], 1);
+                var f2 = m3(m3(v(o3, 5), (f2 = i4, t5 = u3, n2 = s5, (e4 = a5) < 20 ? f2 & t5 | ~f2 & n2 : !(e4 < 40) && e4 < 60 ? f2 & t5 | f2 & n2 | t5 & n2 : f2 ^ t5 ^ n2)), m3(m3(d5, r4[a5]), (e4 = a5) < 20 ? 1518500249 : e4 < 40 ? 1859775393 : e4 < 60 ? -1894007588 : -899497514)), d5 = s5, s5 = u3, u3 = v(i4, 30), i4 = o3, o3 = f2;
+              }
+              o3 = m3(o3, p2), i4 = m3(i4, g2), u3 = m3(u3, y3), s5 = m3(s5, w3), d5 = m3(d5, b3);
+            }
+            return Array(o3, i4, u3, s5, d5);
+          }
+          function m3(e4, t5) {
+            var n2 = (65535 & e4) + (65535 & t5);
+            return (e4 >> 16) + (t5 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
+          }
+          function v(e4, t5) {
+            return e4 << t5 | e4 >>> 32 - t5;
+          }
+          d4.exports = function(e4) {
+            return i3.hash(e4, u2, 20, true);
+          };
+        }).call(this, c3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/sha.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 9: [function(c3, d4, e2) {
+        !(function(e3, t4, n, r3, u2, s4, a4, f, l) {
+          function b3(e4, t5) {
+            var n2 = (65535 & e4) + (65535 & t5);
+            return (e4 >> 16) + (t5 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
+          }
+          function o2(e4, l2) {
+            var c4, d5 = new Array(1116352408, 1899447441, 3049323471, 3921009573, 961987163, 1508970993, 2453635748, 2870763221, 3624381080, 310598401, 607225278, 1426881987, 1925078388, 2162078206, 2614888103, 3248222580, 3835390401, 4022224774, 264347078, 604807628, 770255983, 1249150122, 1555081692, 1996064986, 2554220882, 2821834349, 2952996808, 3210313671, 3336571891, 3584528711, 113926993, 338241895, 666307205, 773529912, 1294757372, 1396182291, 1695183700, 1986661051, 2177026350, 2456956037, 2730485921, 2820302411, 3259730800, 3345764771, 3516065817, 3600352804, 4094571909, 275423344, 430227734, 506948616, 659060556, 883997877, 958139571, 1322822218, 1537002063, 1747873779, 1955562222, 2024104815, 2227730452, 2361852424, 2428436474, 2756734187, 3204031479, 3329325298), t5 = new Array(1779033703, 3144134277, 1013904242, 2773480762, 1359893119, 2600822924, 528734635, 1541459225), n2 = new Array(64);
+            e4[l2 >> 5] |= 128 << 24 - l2 % 32, e4[15 + (l2 + 64 >> 9 << 4)] = l2;
+            for (var r4, o3, h3 = 0; h3 < e4.length; h3 += 16) {
+              for (var i4 = t5[0], u3 = t5[1], s5 = t5[2], p2 = t5[3], a5 = t5[4], g2 = t5[5], y3 = t5[6], w3 = t5[7], f2 = 0; f2 < 64; f2++) n2[f2] = f2 < 16 ? e4[f2 + h3] : b3(b3(b3((o3 = n2[f2 - 2], m3(o3, 17) ^ m3(o3, 19) ^ v(o3, 10)), n2[f2 - 7]), (o3 = n2[f2 - 15], m3(o3, 7) ^ m3(o3, 18) ^ v(o3, 3))), n2[f2 - 16]), c4 = b3(b3(b3(b3(w3, m3(o3 = a5, 6) ^ m3(o3, 11) ^ m3(o3, 25)), a5 & g2 ^ ~a5 & y3), d5[f2]), n2[f2]), r4 = b3(m3(r4 = i4, 2) ^ m3(r4, 13) ^ m3(r4, 22), i4 & u3 ^ i4 & s5 ^ u3 & s5), w3 = y3, y3 = g2, g2 = a5, a5 = b3(p2, c4), p2 = s5, s5 = u3, u3 = i4, i4 = b3(c4, r4);
+              t5[0] = b3(i4, t5[0]), t5[1] = b3(u3, t5[1]), t5[2] = b3(s5, t5[2]), t5[3] = b3(p2, t5[3]), t5[4] = b3(a5, t5[4]), t5[5] = b3(g2, t5[5]), t5[6] = b3(y3, t5[6]), t5[7] = b3(w3, t5[7]);
+            }
+            return t5;
+          }
+          var i3 = c3("./helpers"), m3 = function(e4, t5) {
+            return e4 >>> t5 | e4 << 32 - t5;
+          }, v = function(e4, t5) {
+            return e4 >>> t5;
+          };
+          d4.exports = function(e4) {
+            return i3.hash(e4, o2, 32, true);
+          };
+        }).call(this, c3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/sha256.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 10: [function(e2, t4, f) {
+        !(function(e3, t5, n, r3, o2, i3, u2, s4, a4) {
+          f.read = function(e4, t6, n2, r4, o3) {
+            var i4, u3, l = 8 * o3 - r4 - 1, c3 = (1 << l) - 1, d4 = c3 >> 1, s5 = -7, a5 = n2 ? o3 - 1 : 0, f2 = n2 ? -1 : 1, o3 = e4[t6 + a5];
+            for (a5 += f2, i4 = o3 & (1 << -s5) - 1, o3 >>= -s5, s5 += l; 0 < s5; i4 = 256 * i4 + e4[t6 + a5], a5 += f2, s5 -= 8) ;
+            for (u3 = i4 & (1 << -s5) - 1, i4 >>= -s5, s5 += r4; 0 < s5; u3 = 256 * u3 + e4[t6 + a5], a5 += f2, s5 -= 8) ;
+            if (0 === i4) i4 = 1 - d4;
+            else {
+              if (i4 === c3) return u3 ? NaN : 1 / 0 * (o3 ? -1 : 1);
+              u3 += Math.pow(2, r4), i4 -= d4;
+            }
+            return (o3 ? -1 : 1) * u3 * Math.pow(2, i4 - r4);
+          }, f.write = function(e4, t6, l, n2, r4, c3) {
+            var o3, i4, u3 = 8 * c3 - r4 - 1, s5 = (1 << u3) - 1, a5 = s5 >> 1, d4 = 23 === r4 ? Math.pow(2, -24) - Math.pow(2, -77) : 0, f2 = n2 ? 0 : c3 - 1, h3 = n2 ? 1 : -1, c3 = t6 < 0 || 0 === t6 && 1 / t6 < 0 ? 1 : 0;
+            for (t6 = Math.abs(t6), isNaN(t6) || t6 === 1 / 0 ? (i4 = isNaN(t6) ? 1 : 0, o3 = s5) : (o3 = Math.floor(Math.log(t6) / Math.LN2), t6 * (n2 = Math.pow(2, -o3)) < 1 && (o3--, n2 *= 2), 2 <= (t6 += 1 <= o3 + a5 ? d4 / n2 : d4 * Math.pow(2, 1 - a5)) * n2 && (o3++, n2 /= 2), s5 <= o3 + a5 ? (i4 = 0, o3 = s5) : 1 <= o3 + a5 ? (i4 = (t6 * n2 - 1) * Math.pow(2, r4), o3 += a5) : (i4 = t6 * Math.pow(2, a5 - 1) * Math.pow(2, r4), o3 = 0)); 8 <= r4; e4[l + f2] = 255 & i4, f2 += h3, i4 /= 256, r4 -= 8) ;
+            for (o3 = o3 << r4 | i4, u3 += r4; 0 < u3; e4[l + f2] = 255 & o3, f2 += h3, o3 /= 256, u3 -= 8) ;
+            e4[l + f2 - h3] |= 128 * c3;
+          };
+        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/ieee754/index.js", "/node_modules/gulp-browserify/node_modules/ieee754");
+      }, { buffer: 3, lYpoI2: 11 }], 11: [function(e2, h3, t4) {
+        !(function(e3, t5, n, r3, o2, f, l, c3, d4) {
+          var i3, u2, s4;
+          function a4() {
+          }
+          (e3 = h3.exports = {}).nextTick = (u2 = "undefined" != typeof window && window.setImmediate, s4 = "undefined" != typeof window && window.postMessage && window.addEventListener, u2 ? function(e4) {
+            return window.setImmediate(e4);
+          } : s4 ? (i3 = [], window.addEventListener("message", function(e4) {
+            var t6 = e4.source;
+            t6 !== window && null !== t6 || "process-tick" !== e4.data || (e4.stopPropagation(), 0 < i3.length && i3.shift()());
+          }, true), function(e4) {
+            i3.push(e4), window.postMessage("process-tick", "*");
+          }) : function(e4) {
+            setTimeout(e4, 0);
+          }), e3.title = "browser", e3.browser = true, e3.env = {}, e3.argv = [], e3.on = a4, e3.addListener = a4, e3.once = a4, e3.off = a4, e3.removeListener = a4, e3.removeAllListeners = a4, e3.emit = a4, e3.binding = function(e4) {
+            throw new Error("process.binding is not supported");
+          }, e3.cwd = function() {
+            return "/";
+          }, e3.chdir = function(e4) {
+            throw new Error("process.chdir is not supported");
+          };
+        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/process/browser.js", "/node_modules/gulp-browserify/node_modules/process");
+      }, { buffer: 3, lYpoI2: 11 }] }, {}, [1])(1);
+    });
+  })(object_hash);
+  return object_hash.exports;
+}
+var object_hashExports = requireObject_hash();
+const objectHash = /* @__PURE__ */ getDefaultExportFromCjs(object_hashExports);
 function getFunctionFromString(functionString) {
   if (!functionString?.trim()) return null;
   try {
@@ -189051,6 +188985,25 @@ function getFunctionFromString(functionString) {
   }
 }
 const defaultMarkerLength = 20;
+const useMediaItemsAccumulatorStore = create(() => ({
+  items: /* @__PURE__ */ new Map(),
+  pagesLoadedBeyondFirst: 0,
+  fetchMoreInFlight: false
+}));
+function mergeMediaItemsIntoStore(newPageItems) {
+  const state = useMediaItemsAccumulatorStore.getState();
+  let changed = false;
+  const newItems = new Map(state.items);
+  for (const item of newPageItems) {
+    if (newItems.get(item.id) !== item) {
+      newItems.set(item.id, item);
+      changed = true;
+    }
+  }
+  if (changed) {
+    useMediaItemsAccumulatorStore.setState({ items: newItems });
+  }
+}
 function useMediaItems() {
   const logger3 = getLogger(["stash-tv", "useMediaItems"]);
   const { lastLoadedCurrentMediaItemFilter } = useMediaItemFilters();
@@ -189066,8 +189019,29 @@ function useMediaItems() {
   const previewOnly = lastLoadedCurrentMediaItemFilter?.entityType === "scene" && scenePreviewOnly || lastLoadedCurrentMediaItemFilter?.entityType === "marker" && markerPreviewOnly;
   const hydratedMediaItemsModifierFunction = getFunctionFromString(mediaItemsModifierFunction);
   const [neverLoaded, setNeverLoaded] = reactExports.useState(true);
+  function mapMarker(marker) {
+    return {
+      id: `marker:${marker.id}`,
+      entityType: "marker",
+      entity: {
+        ...marker,
+        get duration() {
+          const endTime = marker.end_seconds ?? Math.min(marker.seconds + defaultMarkerLength, marker.scene.files[0].duration);
+          return endTime - marker.seconds;
+        }
+      }
+    };
+  }
+  function markerIsValid(marker) {
+    if (marker.seconds > marker.scene.files[0].duration) {
+      logger3.warn(`Marker with ID ${marker.id} has start time (${marker.seconds}s) greater than scene duration (${marker.scene.files[0].duration}s). This marker will be skipped.`, { marker });
+      return false;
+    }
+    return true;
+  }
   let response;
-  let mediaItems;
+  let apolloMediaItems;
+  let loadMoreMediaItemsImpl;
   if (!lastLoadedCurrentMediaItemFilter || lastLoadedCurrentMediaItemFilter.entityType === "scene") {
     const scenesResponse = useFindFullScenesQuery({
       variables: {
@@ -189081,7 +189055,7 @@ function useMediaItems() {
       },
       skip: !lastLoadedCurrentMediaItemFilter
     });
-    mediaItems = reactExports.useMemo(
+    apolloMediaItems = reactExports.useMemo(
       () => scenesResponse.data?.findScenes.scenes.map((scene2) => ({
         id: `scene:${scene2.id}`,
         entityType: "scene",
@@ -189090,6 +189064,34 @@ function useMediaItems() {
       [scenesResponse.data?.findScenes.scenes]
     );
     response = scenesResponse;
+    const { fetchMore } = scenesResponse;
+    const generalFilter = lastLoadedCurrentMediaItemFilter?.generalFilter;
+    const entityFilter = lastLoadedCurrentMediaItemFilter?.entityFilter;
+    loadMoreMediaItemsImpl = async () => {
+      const state = useMediaItemsAccumulatorStore.getState();
+      if (state.fetchMoreInFlight) return;
+      const nextPage = state.pagesLoadedBeyondFirst + 2;
+      logger3.debug("Fetch next media page: {*}", { nextPage });
+      useMediaItemsAccumulatorStore.setState({ fetchMoreInFlight: true });
+      try {
+        const result = await fetchMore({
+          variables: {
+            filter: { ...generalFilter, page: nextPage, per_page: mediaItemsPerPage },
+            scene_filter: entityFilter
+          }
+        });
+        const newPageItems = (result.data?.findScenes.scenes ?? []).map((scene2) => ({
+          id: `scene:${scene2.id}`,
+          entityType: "scene",
+          entity: scene2
+        }));
+        mergeMediaItemsIntoStore(newPageItems);
+        useMediaItemsAccumulatorStore.setState((s4) => ({ pagesLoadedBeyondFirst: s4.pagesLoadedBeyondFirst + 1, fetchMoreInFlight: false }));
+      } catch (error) {
+        logger3.error("Failed to fetch next media page", { error });
+        useMediaItemsAccumulatorStore.setState({ fetchMoreInFlight: false });
+      }
+    };
   } else if (lastLoadedCurrentMediaItemFilter.entityType === "marker") {
     const markersResponse = useFindSceneMarkersForTvQuery({
       variables: {
@@ -189102,34 +189104,59 @@ function useMediaItems() {
         scene_marker_filter: lastLoadedCurrentMediaItemFilter.entityFilter
       }
     });
-    mediaItems = reactExports.useMemo(
-      () => markersResponse.data?.findSceneMarkers.scene_markers.filter((marker) => {
-        if (marker.seconds > marker.scene.files[0].duration) {
-          logger3.warn(`Marker with ID ${marker.id} has start time (${marker.seconds}s) greater than scene duration (${marker.scene.files[0].duration}s). This marker will be skipped.`, { marker });
-          return false;
-        }
-        return true;
-      }).map((marker) => ({
-        id: `marker:${marker.id}`,
-        entityType: "marker",
-        entity: {
-          ...marker,
-          get duration() {
-            const endTime = marker.end_seconds ?? Math.min(marker.seconds + defaultMarkerLength, marker.scene.files[0].duration);
-            return endTime - marker.seconds;
-          }
-        }
-      })) || [],
+    apolloMediaItems = reactExports.useMemo(
+      () => markersResponse.data?.findSceneMarkers.scene_markers.filter(markerIsValid).map(mapMarker) || [],
       [markersResponse.data?.findSceneMarkers.scene_markers]
     );
     response = markersResponse;
+    const { fetchMore } = markersResponse;
+    const generalFilter = lastLoadedCurrentMediaItemFilter.generalFilter;
+    const entityFilter = lastLoadedCurrentMediaItemFilter.entityFilter;
+    loadMoreMediaItemsImpl = async () => {
+      const state = useMediaItemsAccumulatorStore.getState();
+      if (state.fetchMoreInFlight) return;
+      const nextPage = state.pagesLoadedBeyondFirst + 2;
+      logger3.debug("Fetch next media page: {*}", { nextPage });
+      useMediaItemsAccumulatorStore.setState({ fetchMoreInFlight: true });
+      try {
+        const result = await fetchMore({
+          variables: {
+            filter: { ...generalFilter, page: nextPage, per_page: mediaItemsPerPage },
+            scene_marker_filter: entityFilter
+          }
+        });
+        const newPageItems = (result.data?.findSceneMarkers.scene_markers ?? []).filter(markerIsValid).map(mapMarker);
+        mergeMediaItemsIntoStore(newPageItems);
+        useMediaItemsAccumulatorStore.setState((s4) => ({ pagesLoadedBeyondFirst: s4.pagesLoadedBeyondFirst + 1, fetchMoreInFlight: false }));
+      } catch (error) {
+        logger3.error("Failed to fetch next media page", { error });
+        useMediaItemsAccumulatorStore.setState({ fetchMoreInFlight: false });
+      }
+    };
   } else {
     logger3.debug("lastLoadedCurrentMediaItemFilter:", lastLoadedCurrentMediaItemFilter);
     throw new Error("Unsupported media item filter entity type");
   }
+  const accumulatorItems = useMediaItemsAccumulatorStore((s4) => s4.items);
   reactExports.useEffect(() => {
     logger3.debug(`lastLoadedCurrentMediaItemFilter changed to "${lastLoadedCurrentMediaItemFilter?.savedFilter?.name}", resetting media items`);
+    useMediaItemsAccumulatorStore.setState({ items: /* @__PURE__ */ new Map(), pagesLoadedBeyondFirst: 0, fetchMoreInFlight: false });
   }, [lastLoadedCurrentMediaItemFilter]);
+  reactExports.useEffect(() => {
+    if (apolloMediaItems.length === 0) return;
+    mergeMediaItemsIntoStore(apolloMediaItems);
+  }, [apolloMediaItems]);
+  const removeMediaItem = reactExports.useCallback((id2) => {
+    const state = useMediaItemsAccumulatorStore.getState();
+    if (!state.items.has(id2)) return;
+    const newItems = new Map(state.items);
+    newItems.delete(id2);
+    useMediaItemsAccumulatorStore.setState({ items: newItems });
+  }, []);
+  let mediaItems = reactExports.useMemo(
+    () => Array.from(accumulatorItems.values()),
+    [accumulatorItems]
+  );
   reactExports.useEffect(() => {
     if (showDevOptions) {
       window.mediaItems = [...mediaItems];
@@ -189155,7 +189182,6 @@ function useMediaItems() {
     }
   }, [mediaItems]);
   const {
-    fetchMore,
     error: mediaItemsError,
     loading: mediaItemsLoading
   } = response;
@@ -189263,29 +189289,8 @@ function useMediaItems() {
   );
   return {
     mediaItems,
-    loadMoreMediaItems: () => {
-      const nextPage = mediaItems.length ? Math.ceil(mediaItems.length / mediaItemsPerPage) + 1 : 1;
-      logger3.debug("Fetch next media page: {*}", { nextPage });
-      let entityFilterKey;
-      if (lastLoadedCurrentMediaItemFilter?.entityType === "scene") {
-        entityFilterKey = "scene_filter";
-      } else if (lastLoadedCurrentMediaItemFilter?.entityType === "marker") {
-        entityFilterKey = "scene_marker_filter";
-      } else {
-        throw new Error("Unsupported media filter entity type");
-      }
-      fetchMore({
-        variables: {
-          filter: {
-            ...lastLoadedCurrentMediaItemFilter?.generalFilter,
-            // We manage pagination ourselves and so override whatever the saved filter had
-            page: nextPage,
-            per_page: mediaItemsPerPage
-          },
-          [entityFilterKey]: lastLoadedCurrentMediaItemFilter?.entityFilter
-        }
-      });
-    },
+    removeMediaItem,
+    loadMoreMediaItems: loadMoreMediaItemsImpl,
     mediaItemsError,
     mediaItemsLoading,
     mediaItemsNeverLoaded: neverLoaded,
@@ -215273,7 +215278,55 @@ const DeleteSceneMarkersDialog = (props) => {
     variant: "secondary"
   }, isRunning: isDeleting, children: jsxRuntimeExports.jsx("p", { children: message }) });
 };
-const logger$9 = getLogger(["stash-tv", "DeleteMediaItemActionButton"]);
+const logger$9 = getLogger(["stash-tv", "useDeleteMediaItemDialog"]);
+function focusDeleteButtonWhenReady() {
+  let frame2;
+  const tryFocus = (attempt) => {
+    const deleteButton = document.querySelector(".ModalComponent .btn-danger");
+    if (deleteButton) {
+      deleteButton.focus();
+    } else if (attempt < 30) {
+      frame2 = requestAnimationFrame(() => tryFocus(attempt + 1));
+    }
+  };
+  frame2 = requestAnimationFrame(() => tryFocus(0));
+  return () => cancelAnimationFrame(frame2);
+}
+function useDeleteMediaItemDialog(mediaItem, onDeleted) {
+  const [isOpen, setIsOpen] = reactExports.useState(false);
+  const open = reactExports.useCallback(() => setIsOpen(true), []);
+  reactExports.useEffect(() => {
+    if (!isOpen) return;
+    return focusDeleteButtonWhenReady();
+  }, [isOpen]);
+  const handleClose = reactExports.useCallback((confirmed) => {
+    setIsOpen(false);
+    if (confirmed) onDeleted?.();
+  }, [onDeleted]);
+  let dialog = null;
+  if (isOpen) {
+    if (mediaItem.entityType === "scene") {
+      dialog = /* @__PURE__ */ React$1.createElement(
+        DeleteScenesDialog,
+        {
+          selected: [mediaItem.entity],
+          onClose: handleClose
+        }
+      );
+    } else if (mediaItem.entityType === "marker") {
+      dialog = /* @__PURE__ */ React$1.createElement(
+        DeleteSceneMarkersDialog,
+        {
+          selected: [mediaItem.entity],
+          onClose: handleClose
+        }
+      );
+    } else {
+      logger$9.error("useDeleteMediaItemDialog used for unsupported media item type", { mediaItem });
+    }
+  }
+  return { isOpen, open, dialog };
+}
 const id$f = "delete-media-item";
 const buttonDefinition$f = {
   id: id$f,
@@ -215290,40 +215343,18 @@ const buttonDefinition$f = {
   })
 };
 function DeleteMediaItemActionButton({
-  mediaItem
+  mediaItem,
+  onMediaItemDeleted
 }) {
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = reactExports.useState(false);
-  const handleClick = () => {
-    setShowDeleteConfirmation(true);
-  };
-  let renderDialog;
-  if (mediaItem.entityType === "scene") {
-    renderDialog = () => /* @__PURE__ */ React$1.createElement(
-      DeleteScenesDialog,
-      {
-        selected: [mediaItem.entity],
-        onClose: () => setShowDeleteConfirmation(false)
-      }
-    );
-  } else if (mediaItem.entityType === "marker") {
-    renderDialog = () => /* @__PURE__ */ React$1.createElement(
-      DeleteSceneMarkersDialog,
-      {
-        selected: [mediaItem.entity],
-        onClose: () => setShowDeleteConfirmation(false)
-      }
-    );
-  } else {
-    logger$9.error("DeleteMediaItemActionButton rendered for unsupported media item type", { mediaItem });
-    return null;
-  }
-  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, showDeleteConfirmation && renderDialog(), /* @__PURE__ */ React$1.createElement(
+  const { open, dialog } = useDeleteMediaItemDialog(mediaItem, onMediaItemDeleted);
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, dialog, /* @__PURE__ */ React$1.createElement(
     ActionButtonBase,
     {
       state: "inactive",
       icon: buttonDefinition$f.icon,
       title: buttonDefinition$f.title,
-      onClick: handleClick
+      className: cx(buttonDefinition$f.id, "hide-on-ui-hide"),
+      onClick: open
     }
   ));
 }
@@ -215541,6 +215572,17 @@ function EditTagSelectionForm({ initialTags, pinnedTagIds, save, cancel }) {
     }
   ))));
 }
+function EditTagsContents({ initialTags, pinnedTagIds, primaryTag, save, cancel }) {
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
+    EditTagSelectionForm,
+    {
+      initialTags,
+      pinnedTagIds,
+      save,
+      cancel
+    }
+  ), primaryTag && /* @__PURE__ */ React$1.createElement("div", { className: "primary-tag-note" }, `Marker's primary tag is "`, primaryTag.name, '".'));
+}
 const logger$6 = getLogger(["stash-tv", "EditTagsActionButton"]);
 const id$e = "edit-tags";
 const configSchema$2 = sharedActionButtonSchema.shape({
@@ -215579,15 +215621,16 @@ function EditTagsActionButton({
       icon: buttonDefinition$e.icon,
       title: buttonDefinition$e.title,
       className: cx(buttonDefinition$e.id, "hide-on-ui-hide"),
-      sidePanel: ({ close }) => /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
-        EditTagSelectionForm,
+      sidePanel: ({ close }) => /* @__PURE__ */ React$1.createElement(
+        EditTagsContents,
         {
           initialTags: tags2,
           pinnedTagIds,
+          primaryTag,
           save: setTags,
           cancel: close
         }
-      ), primaryTag && /* @__PURE__ */ React$1.createElement("div", { className: "primary-tag-note" }, `Marker's primary tag is "`, primaryTag.name, '".')),
+      ),
       sidePanelClassName: "action-button-side-panel-edit-tags",
       "data-testid": "MediaSlide--editTagsButton"
     }
@@ -218389,7 +218432,7 @@ function getActionButtonDefinition(type3) {
   return definition;
 }
 const logger$3 = getLogger(["stash-tv", "ActionButtonStack"]);
-function ActionButtonStack({ mediaItem, sceneInfoOpen, setSceneInfoOpen, playerRef }) {
+function ActionButtonStack({ mediaItem, sceneInfoOpen, setSceneInfoOpen, playerRef, onMediaItemDeleted }) {
   const {
     uiVisible,
     leftHandedUi,
@@ -218416,7 +218459,8 @@ function ActionButtonStack({ mediaItem, sceneInfoOpen, setSceneInfoOpen, playerR
         mediaItem,
         playerRef,
         sceneInfoOpen,
-        setSceneInfoOpen
+        setSceneInfoOpen,
+        onMediaItemDeleted
       }
     );
   }
@@ -220406,6 +220450,40 @@ function useGamepadStatus() {
 }
 const TOGGLE_VIDEO_EVENT = "toggle-video";
 const PAUSE_VIDEO_EVENT = "pause-video";
+const getViewportScrollbarWidth = () => window.innerWidth - (window.visualViewport?.width ?? document.documentElement.clientWidth);
+let viewportScrollbarWidth = getViewportScrollbarWidth();
+const Modal = (props) => {
+  reactExports.useMemo(() => {
+    viewportScrollbarWidth = getViewportScrollbarWidth();
+  }, [props.show]);
+  reactExports.useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const modalOpen = document.body.classList.contains("modal-open");
+      const fixedRightPadding = modalOpen ? viewportScrollbarWidth : 0;
+      document.documentElement.style.setProperty("--fixed-right-padding", `${fixedRightPadding}px`);
+    });
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class"]
+    });
+    return () => observer.disconnect();
+  }, []);
+  return /* @__PURE__ */ React$1.createElement(
+    Modal$1,
+    {
+      ...props,
+      className: cx("Modal", props.className)
+    }
+  );
+};
+Modal.displayName = "Modal";
+Modal.Body = BootstrapModalBody;
+Modal.Header = ModalHeader;
+Modal.Title = BootstrapModalTitle;
+Modal.Footer = BootstrapModalFooter;
+Modal.Dialog = ModalDialog;
+Modal.TRANSITION_DURATION = 300;
+Modal.BACKDROP_TRANSITION_DURATION = 150;
 videojs.registerPlugin("styledBigPlayButton", styledBigPlayButton);
 const noAnimateDurationThreshold = 30;
 const mountCount = /* @__PURE__ */ new Map();
@@ -220454,6 +220532,10 @@ const MediaSlide = (props) => {
   }, [isCurrentVideo, props.mediaItem.id]);
   const scene2 = props.mediaItem.entityType === "scene" ? props.mediaItem.entity : props.mediaItem.entity.scene;
   const getMediaItemDuration = () => props.mediaItem.entityType === "marker" ? props.mediaItem.entity.duration : props.mediaItem.entity.files[0]?.duration;
+  const maximumLoopDuration = stashConfig?.interface.maximumLoopDuration ?? 0;
+  const mediaItemDuration = getMediaItemDuration();
+  const stashAutoLoop = maximumLoopDuration > 0 && !!mediaItemDuration && mediaItemDuration < maximumLoopDuration;
+  const effectiveLooping = looping || stashAutoLoop;
   const videojsPlayerRef = useGetterRef(
     (player) => player?.isDisposed() ? null : player,
     null,
@@ -220532,7 +220614,7 @@ const MediaSlide = (props) => {
     videojsPlayerRef.current?.duration(getMediaItemDuration());
   }, [getMediaItemDuration()]);
   reactExports.useEffect(() => {
-    if (!looping || props.mediaItem.entityType !== "marker" || !videojsPlayerRef.current) return;
+    if (!effectiveLooping || props.mediaItem.entityType !== "marker" || !videojsPlayerRef.current) return;
     const handleEnded = () => {
       videojsPlayerRef.current?.one("loadstart", () => {
         videojsPlayerRef.current?.play();
@@ -220543,7 +220625,7 @@ const MediaSlide = (props) => {
     return () => {
       videojsPlayerRef.current?.off("ended", handleEnded);
     };
-  }, [looping]);
+  }, [effectiveLooping]);
   const isFirstMount = useFirstMountState();
   reactExports.useEffect(() => {
     if (!videojsPlayerRef.current) return;
@@ -220586,11 +220668,11 @@ const MediaSlide = (props) => {
       );
       return (initialTimestamp || 0) + Math.floor(Math.random() * (effectiveMaxPlayLength - effectiveMinPlayLength + 1)) + effectiveMinPlayLength;
     } else if (endPosition === "video-end") {
-      return looping ? duration5 : void 0;
+      return effectiveLooping ? duration5 : void 0;
     } else {
       return void 0;
     }
-  }, [endPosition, initialTimestamp, minPlayLength, maxPlayLength, playLength, getMediaItemDuration(), scenePreviewOnly, looping]);
+  }, [endPosition, initialTimestamp, minPlayLength, maxPlayLength, playLength, getMediaItemDuration(), scenePreviewOnly, effectiveLooping]);
   reactExports.useEffect(() => {
     logger3.info(`Initial timestamp: ${initialTimestamp}, End timestamp: ${endTimestamp}`, { initialTimestamp, endTimestamp });
   }, [initialTimestamp, endTimestamp]);
@@ -220652,7 +220734,7 @@ const MediaSlide = (props) => {
       nextSkipAheadTime >= duration5 || // Go to next item if we'd be jumping over the end timestamp
       endTimestamp !== void 0 && currentTime <= endTimestamp && nextSkipAheadTime >= endTimestamp
     ) {
-      if (looping) {
+      if (effectiveLooping) {
         nextSkipAheadTime = initialTimestamp || 0;
       } else {
         videojsPlayerRef.current?.trigger("ended");
@@ -220662,7 +220744,7 @@ const MediaSlide = (props) => {
     videojsPlayerRef.current?.currentTime(nextSkipAheadTime);
     setCurrentlyPlayingMarkers(findCurrentlyPlayingMarkers(nextSkipAheadTime));
     videojsPlayerRef.current?.play();
-  }, [getSkipTime, initialTimestamp, endTimestamp, looping]);
+  }, [getSkipTime, initialTimestamp, endTimestamp, effectiveLooping]);
   const seekBackwards = reactExports.useCallback(() => {
     if (!videojsPlayerRef.current) return null;
     const duration5 = videojsPlayerRef.current?.duration();
@@ -220673,10 +220755,10 @@ const MediaSlide = (props) => {
     const currentTime = videojsPlayerRef.current?.currentTime();
     let nextSkipBackTime = currentTime - skipAmount;
     logger3.info("Seeking backwards{*}", { skipAmount, duration: duration5, nextSkipBackTime });
-    if (looping && initialTimestamp !== void 0 && currentTime >= initialTimestamp && nextSkipBackTime < initialTimestamp) {
+    if (effectiveLooping && initialTimestamp !== void 0 && currentTime >= initialTimestamp && nextSkipBackTime < initialTimestamp) {
       nextSkipBackTime = initialTimestamp || 0;
     } else if (nextSkipBackTime < 0) {
-      if (looping || currentTime > 2) {
+      if (effectiveLooping || currentTime > 2) {
         nextSkipBackTime = 0;
       } else if (props.index === 0) {
         nextSkipBackTime = 0;
@@ -220688,14 +220770,14 @@ const MediaSlide = (props) => {
     videojsPlayerRef.current?.currentTime(nextSkipBackTime);
     setCurrentlyPlayingMarkers(findCurrentlyPlayingMarkers(nextSkipBackTime));
     videojsPlayerRef.current?.play();
-  }, [getSkipTime, props.index, goToItem, looping]);
+  }, [getSkipTime, props.index, goToItem, effectiveLooping]);
   const { textSelectionWorkaroundElm, seek, toDiscreteSeekSpeed } = useGestureControls({
     videoRef,
     videojsPlayerRef,
     seekForwards,
     seekBackwards,
     logger: logger3,
-    looping,
+    looping: effectiveLooping,
     initialTimestamp,
     endTimestamp
   });
@@ -220824,18 +220906,61 @@ const MediaSlide = (props) => {
   }, [isCurrentVideo, globalAutoPlay]);
   reactExports.useEffect(updatePlayableClass, [updatePlayableClass]);
   const handleOnEnded = () => {
-    if (looping) return;
+    if (effectiveLooping) return;
     videojsPlayerRef.current?.pause();
     if (isCurrentVideo) {
       videojsPlayerRef.current?.currentTime(initialTimestamp || 0);
       goToItem("next");
     }
   };
-  const [sceneInfoOpen, setSceneInfoOpen] = reactExports.useState(false);
   const sceneInfoPanelRef = reactExports.useRef(null);
+  const handleMediaItemDeleted = reactExports.useCallback(() => {
+    props.removeMediaItem(props.mediaItem.id);
+    props.changeItemHandler(props.index, { behavior: "instant" });
+  }, [props.removeMediaItem, props.mediaItem.id, props.changeItemHandler, props.index]);
+  const { open: openDeleteConfirmation, dialog: deleteConfirmationDialog } = useDeleteMediaItemDialog(props.mediaItem, handleMediaItemDeleted);
+  const { set: setGlobalState, sceneInfoOpen } = useGlobalState();
+  const setSceneInfoOpen = reactExports.useCallback((open) => setGlobalState("sceneInfoOpen", open), [setGlobalState]);
+  const { tags: mediaItemTags, primaryTag: mediaItemPrimaryTag, setTags: setMediaItemTags } = useMediaItemTags(props.mediaItem);
+  const [showTagEditor, setShowTagEditor] = reactExports.useState(false);
   reactExports.useEffect(() => {
-    if (!isCurrentVideo) setSceneInfoOpen(false);
-  }, [isCurrentVideo]);
+    if (!isCurrentVideo) return;
+    const handleKeyDown = (e2) => {
+      if (e2.ctrlKey || e2.metaKey || e2.altKey || e2.shiftKey || e2.target instanceof HTMLInputElement || e2.target instanceof HTMLTextAreaElement || e2.target instanceof HTMLElement && e2.target.getAttribute("role") === "slider") return;
+      switch (e2.key) {
+        case "d":
+          openDeleteConfirmation();
+          break;
+        case "i":
+          setSceneInfoOpen(!sceneInfoOpen);
+          break;
+        case "e":
+          setShowTagEditor(true);
+          break;
+        case "m":
+          setTvConfig("volume", (prev2) => prev2 ? 0 : 1);
+          break;
+        case "o":
+          setTvConfig("forceLandscape", (prev2) => !prev2);
+          break;
+        case "l":
+          setTvConfig("looping", (prev2) => !prev2);
+          break;
+        case "s":
+          setTvConfig("showSubtitles", (prev2) => !prev2);
+          break;
+        case "f":
+          setGlobalState("fullscreen", (prev2) => !prev2);
+          break;
+        default:
+          return;
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isCurrentVideo, openDeleteConfirmation, sceneInfoOpen, setTvConfig, setGlobalState]);
   reactExports.useEffect(() => {
     if (videoRef.current && videoRef.current.textTracks.length)
       videoRef.current.textTracks[0].mode = showSubtitles ? "showing" : "disabled";
@@ -220859,13 +220984,13 @@ const MediaSlide = (props) => {
       pauseAfterLooping: false,
       pauseBeforeLooping: false,
       ...videojsPlayerRef.current?.abLoopPlugin?.getOptions() ?? {},
-      enabled: looping,
+      enabled: effectiveLooping,
       start: initialTimestamp ?? false,
       end: endTimestamp ?? false
     };
     logger3.debug(`Setting AB loop plugin options{*}`, { options: options2 });
     videojsPlayerRef.current?.abLoopPlugin.setOptions(options2);
-  }, [looping, playerReady, initialTimestamp, endTimestamp]);
+  }, [effectiveLooping, playerReady, initialTimestamp, endTimestamp]);
   const findCurrentlyPlayingMarkers = (currentTime) => {
     if (props.mediaItem.entityType === "marker") {
       return [props.mediaItem.entity];
@@ -220968,7 +221093,7 @@ const MediaSlide = (props) => {
             volume,
             playbackRate,
             autoplay,
-            loop: looping,
+            loop: effectiveLooping,
             initialTimestamp,
             sendSetTimestamp: () => {
             },
@@ -221009,7 +221134,7 @@ const MediaSlide = (props) => {
           textSelectionWorkaroundElm,
           videojsPlayerRef.current?.el()
         ),
-        looping && initialTimestamp !== void 0 && videoJsProgressControlElm && reactDomExports.createPortal(
+        effectiveLooping && initialTimestamp !== void 0 && videoJsProgressControlElm && reactDomExports.createPortal(
           /* @__PURE__ */ React$1.createElement(ClipTimestamp, { type: "start", progressPercentage: initialTimestamp / (videojsPlayerRef.current?.duration() || 1) * 100 }),
           videoJsProgressControlElm
         ),
@@ -221032,9 +221157,20 @@ const MediaSlide = (props) => {
             mediaItem: props.mediaItem,
             sceneInfoOpen,
             setSceneInfoOpen,
-            playerRef: videojsPlayerRef
+            playerRef: videojsPlayerRef,
+            onMediaItemDeleted: handleMediaItemDeleted
           }
-        )
+        ),
+        deleteConfirmationDialog,
+        showTagEditor && /* @__PURE__ */ React$1.createElement(Modal, { show: true, onHide: () => setShowTagEditor(false) }, /* @__PURE__ */ React$1.createElement(Modal.Header, { closeButton: true }, /* @__PURE__ */ React$1.createElement(Modal.Title, null, "Edit tags")), /* @__PURE__ */ React$1.createElement(Modal.Body, null, /* @__PURE__ */ React$1.createElement(
+          EditTagsContents,
+          {
+            initialTags: mediaItemTags,
+            primaryTag: mediaItemPrimaryTag,
+            save: setMediaItemTags,
+            cancel: () => setShowTagEditor(false)
+          }
+        )))
       )
     )
   );
@@ -222461,7 +222597,7 @@ const VideoScroller = reactExports.memo(() => {
   reactExports.useEffect(() => () => {
     showDebuggingInfo.includes("render-debugging") && console.log("🔚 VideoScroller unmounting");
   }, []);
-  const { mediaItems, loadMoreMediaItems } = useMediaItems();
+  const { mediaItems, loadMoreMediaItems, removeMediaItem } = useMediaItems();
   const estimateSizeTesterElement = reactExports.useRef(null);
   reactExports.useEffect(() => {
     return () => {
@@ -222525,6 +222661,10 @@ const VideoScroller = reactExports.memo(() => {
     0
   );
   const currentIndexRef = reactExports.useRef(currentIndex);
+  const mediaItemsLengthRef = reactExports.useRef(mediaItems.length);
+  reactExports.useEffect(() => {
+    mediaItemsLengthRef.current = mediaItems.length;
+  }, [mediaItems.length]);
   const setCurrentIndex = reactExports.useMemo(
     () => {
       const throttledSetCurrentIndex = throttle((newIndex) => {
@@ -222535,12 +222675,12 @@ const VideoScroller = reactExports.memo(() => {
         currentIndexRef.current = clamp$3(
           0,
           typeof newIndex === "function" ? newIndex(currentIndexRef.current) : newIndex,
-          mediaItems.length ? mediaItems.length - 1 : 0
+          mediaItemsLengthRef.current ? mediaItemsLengthRef.current - 1 : 0
         );
         return throttledSetCurrentIndex(currentIndexRef.current);
       });
     },
-    [rowVirtualizer, mediaItems.length]
+    [rowVirtualizer]
   );
   const scrollSnappingReenableTimeoutRef = reactExports.useRef();
   const scrollSnappingEnabled = () => !scrollSnappingReenableTimeoutRef.current;
@@ -222782,6 +222922,7 @@ const VideoScroller = reactExports.memo(() => {
           MediaSlide$1,
           {
             changeItemHandler,
+            removeMediaItem,
             isCurrentVideo: i3 === currentIndex,
             index: i3,
             key: objectHash([mediaItem.id, scenePreviewOnly, markerPreviewOnly]),
@@ -226262,40 +226403,6 @@ function DraggableList({
     })
   );
 }
-const getViewportScrollbarWidth = () => window.innerWidth - (window.visualViewport?.width ?? document.documentElement.clientWidth);
-let viewportScrollbarWidth = getViewportScrollbarWidth();
-const Modal = (props) => {
-  reactExports.useMemo(() => {
-    viewportScrollbarWidth = getViewportScrollbarWidth();
-  }, [props.show]);
-  reactExports.useEffect(() => {
-    const observer = new MutationObserver(() => {
-      const modalOpen = document.body.classList.contains("modal-open");
-      const fixedRightPadding = modalOpen ? viewportScrollbarWidth : 0;
-      document.documentElement.style.setProperty("--fixed-right-padding", `${fixedRightPadding}px`);
-    });
-    observer.observe(document.body, {
-      attributes: true,
-      attributeFilter: ["class"]
-    });
-    return () => observer.disconnect();
-  }, []);
-  return /* @__PURE__ */ React$1.createElement(
-    Modal$1,
-    {
-      ...props,
-      className: cx("Modal", props.className)
-    }
-  );
-};
-Modal.displayName = "Modal";
-Modal.Body = BootstrapModalBody;
-Modal.Header = ModalHeader;
-Modal.Title = BootstrapModalTitle;
-Modal.Footer = BootstrapModalFooter;
-Modal.Dialog = ModalDialog;
-Modal.TRANSITION_DURATION = 300;
-Modal.BACKDROP_TRANSITION_DURATION = 150;
 const logger = getLogger(["stash-tv", "ActionButtonSettingsModal"]);
 const ActionButtonSettingsModal = ({ initialActionButtonConfig, onClose, onSave }) => {
   const initialConfig = initialActionButtonConfig;
@@ -238052,7 +238159,7 @@ const MarkdownPage = ({ page }) => {
   }, [page, markdown]);
   return jsxRuntimeExports.jsx("div", { className: "markdown", children: jsxRuntimeExports.jsx(Remark, { remarkPlugins: [remarkGfm], children: markdown }) });
 };
-const content = "data:text/markdown;base64,fCBLZXlib2FyZCBzZXF1ZW5jZSB8IEFjdGlvbiB8CnwgLS0tLS0tLS0tLS0tLS0tLS0gfCAtLS0tLS0gfAp8IGBTcGFjZWAgfCBQbGF5L3BhdXNlIHBsYXllciB8CnwgYOKGkGAgb3IgYOKGkmAgfCBKdW1wIGZvcndhcmRzL2JhY2t3YXJkLiBUaGUganVtcCBhbW91bnQgaXMgZGVwZW5kYW50IG9uIHRoZSBsZW5ndGggb2YgdGhlIHZpZGVvIGFuZCBpdCB3aWxsIHRyeSB0byBhbGlnbiBqdW1wcyB3aXRoIG5lYXJseSBieSBtYXJrZXJzIGlmIHRoZXJlIGFyZSBhbnkuIHwKfCBIb2xkIGRvd24gYOKGkGAgb3IgYOKGkmAgfCBQbGF5L3Jld2luZCBhdCAyeCBzcGVlZCB8CnwgSG9sZCBkb3duIGDihpBgIG9yIGDihpJgIHRoZW4gdGFwIGDihpFgIG9yIGDihpNgIHwgSW5jcmVhc2Ugb3IgZGVjcmVhc2UgdGhlIHBsYXkvcmV3aW5kIHNwZWVkIHwKfCBg4oaTYCBvciBg4oaRYCB8IEdvIHRvIG5leHQvcHJldmlvdXMgbWVkaWEgfAp8IGBjYCB8IFRvZ2dsZSBDUlQgZWZmZWN0IHwK";
+const content = "data:text/markdown;base64,fCBLZXlib2FyZCBzZXF1ZW5jZSB8IEFjdGlvbiB8CnwgLS0tLS0tLS0tLS0tLS0tLS0gfCAtLS0tLS0gfAp8IGBTcGFjZWAgfCBQbGF5L3BhdXNlIHBsYXllciB8CnwgYOKGkGAgb3IgYOKGkmAgfCBKdW1wIGZvcndhcmRzL2JhY2t3YXJkLiBUaGUganVtcCBhbW91bnQgaXMgZGVwZW5kYW50IG9uIHRoZSBsZW5ndGggb2YgdGhlIHZpZGVvIGFuZCBpdCB3aWxsIHRyeSB0byBhbGlnbiBqdW1wcyB3aXRoIG5lYXJseSBieSBtYXJrZXJzIGlmIHRoZXJlIGFyZSBhbnkuIHwKfCBIb2xkIGRvd24gYOKGkGAgb3IgYOKGkmAgfCBQbGF5L3Jld2luZCBhdCAyeCBzcGVlZCB8CnwgSG9sZCBkb3duIGDihpBgIG9yIGDihpJgIHRoZW4gdGFwIGDihpFgIG9yIGDihpNgIHwgSW5jcmVhc2Ugb3IgZGVjcmVhc2UgdGhlIHBsYXkvcmV3aW5kIHNwZWVkIHwKfCBg4oaTYCBvciBg4oaRYCB8IEdvIHRvIG5leHQvcHJldmlvdXMgbWVkaWEgfAp8IGBjYCB8IFRvZ2dsZSBDUlQgZWZmZWN0IHwKfCBgZGAgfCBEZWxldGUgdGhlIGN1cnJlbnQgc2NlbmUvbWFya2VyIChvcGVucyB0aGUgY29uZmlybWF0aW9uIGRpYWxvZyB3aXRoIERlbGV0ZSBmb2N1c2VkLCBzbyBgRW50ZXJgIGNvbmZpcm1zKSB8CnwgYGVgIHwgRWRpdCBzY2VuZS9tYXJrZXIgdGFncyB8CnwgYGZgIHwgVG9nZ2xlIGZ1bGxzY3JlZW4gfAp8IGBpYCB8IFRvZ2dsZSBzY2VuZSBpbmZvIHwKfCBgbGAgfCBUb2dnbGUgbG9vcGluZyB0aGUgc2NlbmUgfAp8IGBtYCB8IE11dGUvdW5tdXRlIHwKfCBgb2AgfCBUb2dnbGUgZm9yY2VkIGxhbmRzY2FwZSBvcmllbnRhdGlvbiB8CnwgYHNgIHwgVG9nZ2xlIHN1YnRpdGxlcyB8Cg==";
 const KeyboardShortcutsInfo = ({ show, onHide: onHide3 }) => {
   return /* @__PURE__ */ React$1.createElement(
     Modal,
@@ -238713,7 +238820,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setDisplayedModal("keyboard-shortcuts")
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.16.1"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.17.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -239240,6 +239347,31 @@ function useViewportRotate(rotationEnabled) {
     if (isFirstMount) return;
     window.dispatchEvent(new Event("resize"));
   }, [rotationEnabled]);
+}
+function useBrowserZoomResetOnViewportChange() {
+  reactExports.useEffect(() => {
+    const viewportMeta = document.querySelector('meta[name="viewport"]');
+    const originalViewportContent = viewportMeta?.getAttribute("content") ?? null;
+    const recompute = () => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (viewportMeta && originalViewportContent) {
+            viewportMeta.setAttribute("content", `${originalViewportContent}, user-scalable=no`);
+            requestAnimationFrame(() => viewportMeta.setAttribute("content", originalViewportContent));
+          }
+          document.documentElement.style.containerType = "normal";
+          void document.documentElement.offsetWidth;
+          document.documentElement.style.containerType = "";
+        });
+      });
+    };
+    window.addEventListener("resize", recompute);
+    window.addEventListener("orientationchange", recompute);
+    return () => {
+      window.removeEventListener("resize", recompute);
+      window.removeEventListener("orientationchange", recompute);
+    };
+  }, []);
 }
 const isLazyComponentError = (e2) => {
   return !!e2.__lazyComponentError;
@@ -239881,6 +240013,7 @@ const App = () => {
     }
   };
   useViewportRotate(forceLandscape);
+  useBrowserZoomResetOnViewportChange();
   const defaultLocale = "en-GB";
   const messages = reactExports.useMemo(
     () => flattenMessages(englishMessages),
@@ -239918,4 +240051,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-CgfWMB9q.js.map
+//# sourceMappingURL=index-B5GuT2Yi.js.map
