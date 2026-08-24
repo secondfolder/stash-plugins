@@ -13403,6 +13403,11 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
         justify-content: center;
         > * {
           flex: 0 0 0.8em;
+          /*
+          Inline font awesome icons try to make this overflow visible which for some reason stops them from being
+          resized down so we explicitly set it svg's default of overflow hidden.
+          */
+          overflow: hidden;
         }
       }
 
@@ -13422,6 +13427,12 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
         width: 100%;
         opacity: 0.8;
       }
+    }
+
+    /* Fade out the sideInfo of action buttons under outside the folder incase the folder contents overlaps with them */
+    &:has(.folder.open) .ActionButton .side-info {
+      opacity: 0.3;
+      transition-duration: 0.03s;
     }
   }
 
@@ -13477,6 +13488,31 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 /* These live inside popover elements which are rendered as children of body */
 .action-button-side-panel-edit-tags {
   width: 650px;
+}
+.action-button-resolution {
+  .stream-group + .stream-group {
+    margin-top: 0.4em;
+  }
+
+  .stream-group-label {
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
+  }
+
+  .stream-group-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.75em;
+
+    .btn {
+      /* Counteract the link variant's default padding so rows stay compact */
+      padding: 0;
+      justify-content: center;
+    }
+  }
 }
 .action-button-create-marker {
   margin: 0.5em;
@@ -13621,7 +13657,7 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   }
 
   .side-info {
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease;
     margin-left: 0.5em;
     filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.6));
     font-weight: bold;
@@ -13638,7 +13674,7 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 
     background-color: transparent;
     width: 40px;
-    transition: scale 0.1s ease-in-out;
+    transition: scale 0.1s ease;
     color: inherit;
 
     button& {

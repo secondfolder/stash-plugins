@@ -163585,6 +163585,11 @@ const faAngleLeft = {
   iconName: "angle-left",
   icon: [320, 512, [8249], "f104", "M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"]
 };
+const faTriangleExclamation = {
+  prefix: "fas",
+  iconName: "triangle-exclamation",
+  icon: [512, 512, [9888, "exclamation-triangle", "warning"], "f071", "M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480L40 480c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24l0 112c0 13.3 10.7 24 24 24s24-10.7 24-24l0-112c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"]
+};
 const faVideo = {
   prefix: "fas",
   iconName: "video",
@@ -174769,6 +174774,83 @@ function allowPluginRemoval(videojs2) {
     }
   });
 }
+const DIRECT_STREAM_LABEL = "Direct stream";
+function getSourceSelectorMenu(player) {
+  if (typeof player.sourceSelector !== "function") return void 0;
+  const plugin = player.sourceSelector();
+  return plugin.menu;
+}
+function getSceneStreamOptions(player) {
+  const menu = getSourceSelectorMenu(player);
+  if (!menu) return [];
+  return menu.items.map((item) => item.source);
+}
+function getSelectedSceneStream(player) {
+  return getSourceSelectorMenu(player)?.selectedSource ?? null;
+}
+function selectSceneStream(player, source2) {
+  const menu = getSourceSelectorMenu(player);
+  if (!menu) return false;
+  if (menu.selectedSource === source2) return true;
+  const item = menu.items.find((item2) => item2.source === source2);
+  if (!item) return false;
+  item.trigger("selected");
+  return true;
+}
+function isDirectStream(source2) {
+  if (source2.label === DIRECT_STREAM_LABEL) return true;
+  const { pathname } = new URL(source2.src);
+  return pathname.endsWith("/stream") || pathname.endsWith("/stream.m3u8") || pathname.endsWith("/stream.mpd");
+}
+function getShortStreamLabel(source2) {
+  const { codec, height: height3 } = parseStreamLabel(source2.label ?? "");
+  if (height3) return `${codec} ${height3}`;
+  return source2.label ?? "";
+}
+function parseStreamLabel(label) {
+  const match2 = label.match(/^(.+?)\s+[^(]+\((\d+p)\)$/);
+  if (!match2) return { codec: label };
+  return { codec: match2[1], height: match2[2] };
+}
+function getStreamItemLabel(source2) {
+  return parseStreamLabel(source2.label ?? "").codec;
+}
+function groupSceneStreamsByResolution(sources) {
+  const originalGroup = { id: "original", label: "Original", sources: [] };
+  const groups2 = [originalGroup];
+  const groupById = /* @__PURE__ */ new Map();
+  const getResolutionGroup = (height3) => {
+    let group2 = groupById.get(height3);
+    if (!group2) {
+      group2 = { id: height3, label: height3, sources: [] };
+      groupById.set(height3, group2);
+      groups2.push(group2);
+    }
+    return group2;
+  };
+  for (const source2 of sources) {
+    const { height: height3 } = parseStreamLabel(source2.label ?? "");
+    if (height3) {
+      getResolutionGroup(height3).sources.push(source2);
+    } else {
+      originalGroup.sources.push(source2);
+    }
+  }
+  groups2.sort((a4, b3) => {
+    if (a4 === originalGroup) return -1;
+    if (b3 === originalGroup) return 1;
+    return resolutionHeight(b3.id) - resolutionHeight(a4.id);
+  });
+  return groups2.filter((group2) => group2.sources.length > 0);
+}
+function resolutionHeight(groupId) {
+  return parseInt(groupId, 10) || 0;
+}
+function moveStreamToFront(sources, label) {
+  const index2 = sources.findIndex((source2) => source2.label === label);
+  if (index2 <= 0) return sources;
+  return [sources[index2], ...sources.slice(0, index2), ...sources.slice(index2 + 1)];
+}
 const __vite_import_meta_env__$2 = {};
 const createStoreImpl = (createState2) => {
   let state;
@@ -176836,6 +176918,7 @@ const defaults$3 = {
   crtEffectStrength: 1,
   scenePreviewOnly: false,
   markerPreviewOnly: false,
+  preferredStreamLabel: void 0,
   onlyShowMatchingOrientation: false,
   maxMedia: void 0,
   autoPlay: true,
@@ -177542,7 +177625,7 @@ const ScenePlayer = reactExports.forwardRef(({
       })
     )
   };
-  function addWrapperToRevertPreviewUrlChange(player) {
+  function addSourceSelectorWrappers(player) {
     const originalSourceSelector = player.sourceSelector;
     player.sourceSelector = function(...args) {
       const sourceSelector = originalSourceSelector.apply(this, args);
@@ -177553,7 +177636,9 @@ const ScenePlayer = reactExports.forwardRef(({
             source2.src = source2.src.replace(/\/preview\/stream$/, "/preview");
           }
         });
-        originalSetSources.apply(this, [sources, ...otherArgs]);
+        const preferredStreamLabel = useTvConfig.getState().get("preferredStreamLabel");
+        const sourcesToLoad = preferredStreamLabel ? moveStreamToFront(sources, preferredStreamLabel) : sources;
+        originalSetSources.apply(this, [sourcesToLoad, ...otherArgs]);
       };
       return sourceSelector;
     };
@@ -177597,7 +177682,7 @@ const ScenePlayer = reactExports.forwardRef(({
     if (loop2 !== void 0) {
       setTimeout(() => !player.isDisposed() && player.loop(loop2), 100);
     }
-    addWrapperToRevertPreviewUrlChange(player);
+    addSourceSelectorWrappers(player);
     disableBuggyOnEndHandling(player);
     onVideojsPlayerCreated?.(player);
     setVideojsPlayer(player);
@@ -178049,11 +178134,11 @@ var globalProjectionState = {
    */
   hasEverUpdated: false
 };
-var id$h = 1;
+var id$j = 1;
 function useProjectionId() {
   return useConstant(function() {
     if (globalProjectionState.hasEverUpdated) {
-      return id$h++;
+      return id$j++;
     }
   });
 }
@@ -214988,9 +215073,9 @@ const IconSelect = (props) => {
   );
 };
 const logger$a = getLogger(["stash-tv", "CreateMarkerActionButton"]);
-const id$g = "create-marker";
+const id$i = "create-marker";
 const configSchema$3 = sharedActionButtonSchema.shape({
-  buttonType: create$6().oneOf([id$g]).required(),
+  buttonType: create$6().oneOf([id$i]).required(),
   iconId: create$6().required(),
   markerDefaults: create$3({
     title: create$6(),
@@ -214998,14 +215083,14 @@ const configSchema$3 = sharedActionButtonSchema.shape({
     tagIds: create$2().of(create$6().required()).required()
   }).nullable()
 });
-const buttonDefinition$g = {
-  id: id$g,
+const buttonDefinition$h = {
+  id: id$i,
   title: ({ state, config: config2 }) => {
     let markerDefaults = null;
     let tagId = null;
     try {
       if (config2) {
-        if (config2.buttonType !== id$g) {
+        if (config2.buttonType !== id$i) {
           logger$a.error("Invalid config for create marker action button title {*}", { config: config2 });
           return /* @__PURE__ */ React$1.createElement("strong", null, "?");
         }
@@ -215051,7 +215136,7 @@ function CreateMarkerActionButton({
 }) {
   let parsedConfig;
   try {
-    parsedConfig = buttonDefinition$g.configSchema.validateSync(config2);
+    parsedConfig = buttonDefinition$h.configSchema.validateSync(config2);
   } catch (error) {
     logger$a.error("Invalid config for create marker action button", { error, config: config2 });
     return /* @__PURE__ */ React$1.createElement("strong", null, "?");
@@ -215086,9 +215171,9 @@ function CreateMarkerActionButton({
       ActionButtonBase,
       {
         state: "inactive",
-        icon: buttonDefinition$g.icon,
-        title: buttonDefinition$g.title,
-        className: cx(buttonDefinition$g.id, "hide-on-ui-hide"),
+        icon: buttonDefinition$h.icon,
+        title: buttonDefinition$h.title,
+        className: cx(buttonDefinition$h.id, "hide-on-ui-hide"),
         sidePanel: ({ close }) => /* @__PURE__ */ React$1.createElement(
           SceneMarkerForm,
           {
@@ -215115,9 +215200,9 @@ function CreateMarkerActionButton({
     ActionButtonBase,
     {
       state: Boolean(existingMarker) ? "active" : "inactive",
-      icon: buttonDefinition$g.icon,
-      title: buttonDefinition$g.title,
-      className: cx(buttonDefinition$g.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$h.icon,
+      title: buttonDefinition$h.title,
+      className: cx(buttonDefinition$h.id, "hide-on-ui-hide"),
       sidePanel: renderSidePanel,
       onClick: handleClick,
       config: config2
@@ -215352,9 +215437,9 @@ function useDeleteMediaItemDialog(mediaItem, onDeleted) {
   }
   return { isOpen, open, dialog };
 }
-const id$f = "delete-media-item";
-const buttonDefinition$f = {
-  id: id$f,
+const id$h = "delete-media-item";
+const buttonDefinition$g = {
+  id: id$h,
   title: {
     active: "Delete scene/marker",
     inactive: "Delete scene/marker"
@@ -215364,7 +215449,7 @@ const buttonDefinition$f = {
     button: DeleteMediaItemActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$f]).required()
+    buttonType: create$6().oneOf([id$h]).required()
   })
 };
 function DeleteMediaItemActionButton({
@@ -215376,9 +215461,9 @@ function DeleteMediaItemActionButton({
     ActionButtonBase,
     {
       state: "inactive",
-      icon: buttonDefinition$f.icon,
-      title: buttonDefinition$f.title,
-      className: cx(buttonDefinition$f.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$g.icon,
+      title: buttonDefinition$g.title,
+      className: cx(buttonDefinition$g.id, "hide-on-ui-hide"),
       onClick: open
     }
   ));
@@ -215609,13 +215694,13 @@ function EditTagsContents({ initialTags, pinnedTagIds, primaryTag, save, cancel 
   ), primaryTag && /* @__PURE__ */ React$1.createElement("div", { className: "primary-tag-note" }, `Marker's primary tag is "`, primaryTag.name, '".'));
 }
 const logger$6 = getLogger(["stash-tv", "EditTagsActionButton"]);
-const id$e = "edit-tags";
+const id$g = "edit-tags";
 const configSchema$2 = sharedActionButtonSchema.shape({
-  buttonType: create$6().oneOf([id$e]).required(),
+  buttonType: create$6().oneOf([id$g]).required(),
   pinnedTagIds: create$2().of(create$6().required()).required()
 });
-const buttonDefinition$e = {
-  id: id$e,
+const buttonDefinition$f = {
+  id: id$g,
   title: {
     active: "Edit scene/marker tags",
     inactive: "Edit scene/marker tags"
@@ -215634,7 +215719,7 @@ function EditTagsActionButton({
   const { tags: tags2, primaryTag, setTags } = useMediaItemTags(mediaItem);
   let pinnedTagIds = [];
   try {
-    const parsedConfig = buttonDefinition$e.configSchema.validateSync(config2);
+    const parsedConfig = buttonDefinition$f.configSchema.validateSync(config2);
     pinnedTagIds = parsedConfig.pinnedTagIds;
   } catch (error) {
     logger$6.warn("Invalid config for edit tags action button", { error, config: config2 });
@@ -215643,9 +215728,9 @@ function EditTagsActionButton({
     ActionButtonBase,
     {
       state: "inactive",
-      icon: buttonDefinition$e.icon,
-      title: buttonDefinition$e.title,
-      className: cx(buttonDefinition$e.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$f.icon,
+      title: buttonDefinition$f.title,
+      className: cx(buttonDefinition$f.id, "hide-on-ui-hide"),
       sidePanel: ({ close }) => /* @__PURE__ */ React$1.createElement(
         EditTagsContents,
         {
@@ -215704,9 +215789,9 @@ const SvgLandscapeRotation = (props) => /* @__PURE__ */ reactExports.createEleme
 }, d: "M405.077,128C343.846,72.436 290.187,64 256,64C229.593,64 127.954,67.087 56,196C47.153,211.429 28.255,214.044 16,204C-3.058,188.798 4.433,167.298 8,161.183C64.601,64.151 145.36,-0.478 256,0C314.573,0.253 379.319,27.216 443.672,80C463.341,62.496 466.105,60.036 466.105,60.036C477.535,49.865 494.967,50.952 505.072,62.307C509.592,67.387 512.045,73.905 511.999,80.773L511.441,183.94C511.46,188.475 505.39,201.538 501.074,202.81C486.713,207.041 470.914,199.978 464,192.209C464,192.209 438.887,164.843 405.077,128Z" }), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(-1,1.22465e-16,-1.22465e-16,-1,513.757,511.997)" }, /* @__PURE__ */ reactExports.createElement("path", { style: {
   fill: "currentColor"
 }, d: "M405.077,128C343.846,72.436 290.187,64 256,64C229.593,64 127.954,67.087 56,196C47.153,211.429 28.255,214.044 16,204C-3.058,188.798 4.433,167.298 8,161.183C64.601,64.151 145.36,-0.478 256,0C314.573,0.253 379.319,27.216 443.672,80C463.341,62.496 466.105,60.036 466.105,60.036C477.535,49.865 494.967,50.952 505.072,62.307C509.592,67.387 512.045,73.905 511.999,80.773L511.441,183.94C511.46,188.475 505.39,201.538 501.074,202.81C486.713,207.041 470.914,199.978 464,192.209C464,192.209 438.887,164.843 405.077,128Z" })));
-const id$d = "force-landscape";
-const buttonDefinition$d = {
-  id: id$d,
+const id$f = "force-landscape";
+const buttonDefinition$e = {
+  id: id$f,
   title: {
     active: "Landscape",
     inactive: "Portrait"
@@ -215719,7 +215804,7 @@ const buttonDefinition$d = {
     button: ForceLandscapeActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$d]).required()
+    buttonType: create$6().oneOf([id$f]).required()
   })
 };
 function ForceLandscapeActionButton() {
@@ -215728,9 +215813,9 @@ function ForceLandscapeActionButton() {
     ActionButtonBase,
     {
       state: forceLandscape ? "active" : "inactive",
-      icon: buttonDefinition$d.icon,
-      title: buttonDefinition$d.title,
-      className: cx(buttonDefinition$d.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$e.icon,
+      title: buttonDefinition$e.title,
+      className: cx(buttonDefinition$e.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--forceLandscapeButton",
       onClick: () => setTvConfig("forceLandscape", (prev2) => !prev2)
     }
@@ -215759,9 +215844,9 @@ const SvgExpandOutline = (props) => /* @__PURE__ */ reactExports.createElement("
   stroke: "currentColor",
   strokeWidth: 32
 } })));
-const id$c = "fullscreen";
-const buttonDefinition$c = {
-  id: id$c,
+const id$e = "fullscreen";
+const buttonDefinition$d = {
+  id: id$e,
   title: {
     active: "Close fullscreen",
     inactive: "Open fullscreen"
@@ -215774,7 +215859,7 @@ const buttonDefinition$c = {
     button: FullscreenActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$c]).required()
+    buttonType: create$6().oneOf([id$e]).required()
   })
 };
 function FullscreenActionButton() {
@@ -215784,9 +215869,9 @@ function FullscreenActionButton() {
     ActionButtonBase,
     {
       state: fullscreen ? "active" : "inactive",
-      icon: buttonDefinition$c.icon,
-      title: buttonDefinition$c.title,
-      className: cx(buttonDefinition$c.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$d.icon,
+      title: buttonDefinition$d.title,
+      className: cx(buttonDefinition$d.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--fullscreenButton",
       onClick: () => setGlobalState("fullscreen", (prev2) => !prev2)
     }
@@ -215829,9 +215914,9 @@ const SvgCoverOutline = (props) => /* @__PURE__ */ reactExports.createElement("s
   stroke: "currentColor",
   strokeWidth: 32
 } })));
-const id$b = "letterboxing";
-const buttonDefinition$b = {
-  id: id$b,
+const id$d = "letterboxing";
+const buttonDefinition$c = {
+  id: id$d,
   title: {
     active: "Fit to screen",
     inactive: "Fill screen"
@@ -215844,7 +215929,7 @@ const buttonDefinition$b = {
     button: LetterboxingActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$b]).required()
+    buttonType: create$6().oneOf([id$d]).required()
   })
 };
 function LetterboxingActionButton() {
@@ -215853,9 +215938,9 @@ function LetterboxingActionButton() {
     ActionButtonBase,
     {
       state: letterboxing ? "active" : "inactive",
-      icon: buttonDefinition$b.icon,
-      title: buttonDefinition$b.title,
-      className: cx(buttonDefinition$b.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$c.icon,
+      title: buttonDefinition$c.title,
+      className: cx(buttonDefinition$c.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--letterboxButton",
       onClick: () => setTvConfig("letterboxing", (prev2) => !prev2)
     }
@@ -215869,9 +215954,9 @@ const SvgLoopOutline = (props) => /* @__PURE__ */ reactExports.createElement("sv
 }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M15.2,272C6.4,271.5 -0.4,264 0,255.2L0.4,247.2C5.1,153.5 82.4,80 176.2,80L320,80L320,35.6C320,20.3 332.3,8     347.6,8C354.4,8 361,10.5 366,15.1L442.7,84.1C446.1,87.1 448,91.5 448,96C448,100.5 446.1,104.9     442.7,107.9L366,176.9C360.9,181.5 354.4,184 347.6,184C332.4,184 320,171.7 320,156.4L320,112L176.2,112C99.5,112     36.2,172.2 32.4,248.8L32,256.8C31.6,265.6 24,272.4     15.2,272ZM352,146.5L408.1,96L352,45.5L352,146.5ZM496.8,240C505.6,240.4 512.4,248 512,256.8L511.6,264.8C506.9,358.5     429.6,432 335.8,432L192,432L192,476.4C192,491.6 179.7,504 164.4,504C157.6,504 151,501.5     146,496.9L69.3,427.9C65.9,424.9 64,420.5 64,416C64,411.5 65.9,407.1 69.3,404.1L146,335.1C151.1,330.5 157.6,328     164.4,328C179.6,328 192,340.3 192,355.6L192,400L335.8,400C412.5,400 475.8,339.8 479.6,263.2L480,255.2C480.4,246.4     488,239.6 496.8,240ZM160,365.5L103.9,416L160,466.5L160,365.5Z", style: {
   fillRule: "nonzero"
 }, fill: "currentColor" }));
-const id$a = "loop";
-const buttonDefinition$a = {
-  id: id$a,
+const id$c = "loop";
+const buttonDefinition$b = {
+  id: id$c,
   title: {
     active: "Stop looping scene",
     inactive: "Loop scene"
@@ -215884,7 +215969,7 @@ const buttonDefinition$a = {
     button: LoopActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$a]).required()
+    buttonType: create$6().oneOf([id$c]).required()
   })
 };
 function LoopActionButton() {
@@ -215893,9 +215978,9 @@ function LoopActionButton() {
     ActionButtonBase,
     {
       state: looping ? "active" : "inactive",
-      icon: buttonDefinition$a.icon,
-      title: buttonDefinition$a.title,
-      className: cx(buttonDefinition$a.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$b.icon,
+      title: buttonDefinition$b.title,
+      className: cx(buttonDefinition$b.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--loopButton",
       onClick: () => setTvConfig("looping", (prev2) => !prev2)
     }
@@ -215915,9 +216000,9 @@ const SvgSplashOutline = (props) => /* @__PURE__ */ reactExports.createElement("
   strokeLinejoin: "round",
   strokeMiterlimit: 2
 }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { fill: "currentColor", d: "M401.593,365.404L285.583,298.657L285.114,429.916C283.862,458.38 297.972,486.559 324.229,501.658C336.009,508.434 349.361,512 362.949,512C390.942,512 416.852,496.862 430.61,472.469C451.931,434.841 438.988,386.894 401.593,365.404ZM385.635,393.141C385.639,393.144 385.644,393.146 385.649,393.149C407.834,405.898 415.418,434.369 402.769,456.693C402.758,456.712 402.748,456.731 402.737,456.749C394.647,471.094 379.411,480 362.949,480C354.96,480 347.11,477.903 340.184,473.919C340.183,473.919 340.183,473.919 340.182,473.918C324.611,464.964 316.34,448.201 317.083,431.322C317.102,430.892 317.112,430.461 317.113,430.031L317.386,353.874C317.386,353.874 385.635,393.141 385.635,393.141ZM183.413,265.569L32,144L1.973,334.55C-5.949,376.472 10.341,419.467 44.047,445.6C63.79,460.506 87.862,468.573 112.596,468.573C175.027,468.573 226.401,417.171 226.401,354.705C226.401,320.013 210.555,287.156 183.413,265.569ZM163.379,290.521C163.417,290.552 163.455,290.583 163.494,290.613C183.01,306.135 194.401,329.761 194.401,354.705C194.401,399.612 157.478,436.573 112.596,436.573C94.896,436.573 77.668,430.824 63.513,420.199C39.375,401.388 27.736,370.555 33.416,340.491C33.477,340.172 33.532,339.852 33.583,339.531L55.016,203.517C55.016,203.517 163.379,290.521 163.379,290.521ZM325.111,10.48L112,96L290.362,238.173C327.814,269.824 381.068,279.971 429.33,259.776C497.974,231.057 530.262,151.957 501.473,83.118C472.713,14.265 393.742,-18.254 325.111,10.48ZM337.029,40.178C337.176,40.118 337.323,40.058 337.469,39.997C389.81,18.083 450.012,42.942 471.946,95.452C471.948,95.456 471.949,95.461 471.951,95.465C493.913,147.979 469.345,208.347 416.979,230.256C416.978,230.256 416.978,230.256 416.977,230.257C380.176,245.656 339.576,237.867 311.018,213.732C310.784,213.534 310.548,213.34 310.308,213.149L174.92,105.231C174.92,105.231 337.029,40.178 337.029,40.178Z" }));
-const id$9 = "o-counter";
-const buttonDefinition$9 = {
-  id: id$9,
+const id$b = "o-counter";
+const buttonDefinition$a = {
+  id: id$b,
   title: {
     active: "Undo Orgasm Mark",
     inactive: "Mark Orgasm"
@@ -215930,7 +216015,7 @@ const buttonDefinition$9 = {
     button: OCounterActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$9]).required()
+    buttonType: create$6().oneOf([id$b]).required()
   })
 };
 function OCounterActionButton({
@@ -215958,9 +216043,9 @@ function OCounterActionButton({
     ActionButtonBase,
     {
       state: oCounterIncremented ? "active" : "inactive",
-      icon: buttonDefinition$9.icon,
-      title: buttonDefinition$9.title,
-      className: cx(buttonDefinition$9.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$a.icon,
+      title: buttonDefinition$a.title,
+      className: cx(buttonDefinition$a.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--oCounterButton",
       onClick: ({ toggleSidePanel }) => {
         if (oCounterIncremented) {
@@ -215974,9 +216059,9 @@ function OCounterActionButton({
     }
   );
 }
-const id$8 = "playback-rate";
-const buttonDefinition$8 = {
-  id: id$8,
+const id$a = "playback-rate";
+const buttonDefinition$9 = {
+  id: id$a,
   title: {
     active: "Set playback rate",
     inactive: "Set playback rate"
@@ -215989,7 +216074,7 @@ const buttonDefinition$8 = {
     button: PlaybackRateActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$8]).required()
+    buttonType: create$6().oneOf([id$a]).required()
   })
 };
 function PlaybackRateActionButton({
@@ -216010,9 +216095,9 @@ function PlaybackRateActionButton({
     ActionButtonBase,
     {
       state: active ? "active" : "inactive",
-      icon: buttonDefinition$8.icon,
-      title: buttonDefinition$8.title,
-      className: cx(buttonDefinition$8.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$9.icon,
+      title: buttonDefinition$9.title,
+      className: cx(buttonDefinition$9.id, "hide-on-ui-hide"),
       sidePanel: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, speeds.map((speed) => /* @__PURE__ */ React$1.createElement(
         Button,
         {
@@ -216028,17 +216113,17 @@ function PlaybackRateActionButton({
   );
 }
 const logger$5 = getLogger(["stash-tv", "QuickTagActionButton"]);
-const id$7 = "quick-tag";
+const id$9 = "quick-tag";
 const configSchema$1 = sharedActionButtonSchema.shape({
-  buttonType: create$6().oneOf([id$7]).required(),
+  buttonType: create$6().oneOf([id$9]).required(),
   iconId: create$6().required(),
   tagId: create$6().required()
 });
-const buttonDefinition$7 = {
-  id: id$7,
+const buttonDefinition$8 = {
+  id: id$9,
   title: ({ state, config: config2 }) => {
     const [tag2, setTag2] = reactExports.useState();
-    if (config2 && config2.buttonType !== id$7) {
+    if (config2 && config2.buttonType !== id$9) {
       logger$5.error("Invalid config for quick tag action button title {*}", { config: config2 });
       return /* @__PURE__ */ React$1.createElement("strong", null, "?");
     }
@@ -216070,7 +216155,7 @@ function QuickTagActionButton({
 }) {
   let parsedConfig;
   try {
-    parsedConfig = buttonDefinition$7.configSchema.validateSync(config2);
+    parsedConfig = buttonDefinition$8.configSchema.validateSync(config2);
   } catch (error) {
     logger$5.error("Invalid config for quick tag action button", { error, config: config2 });
     return /* @__PURE__ */ React$1.createElement("strong", null, "?");
@@ -216100,9 +216185,9 @@ function QuickTagActionButton({
     ActionButtonBase,
     {
       state: mediaItemHasTag ? "active" : "inactive",
-      icon: buttonDefinition$7.icon,
-      title: buttonDefinition$7.title,
-      className: cx(buttonDefinition$7.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$8.icon,
+      title: buttonDefinition$8.title,
+      className: cx(buttonDefinition$8.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--quickTagButton",
       onClick: mediaItemHasTag ? () => removeTag(parsedConfig.tagId) : () => addTag(parsedConfig.tagId),
       sidePanel,
@@ -217199,9 +217284,9 @@ const RatingSystem = (props) => {
     return /* @__PURE__ */ React$1.createElement(RatingSystem$1, { ...props });
   }
 };
-const id$6 = "rate-scene";
-const buttonDefinition$6 = {
-  id: id$6,
+const id$8 = "rate-scene";
+const buttonDefinition$7 = {
+  id: id$8,
   title: {
     active: "Rate scene",
     inactive: "Rate scene"
@@ -217214,7 +217299,7 @@ const buttonDefinition$6 = {
     button: RateSceneActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$6]).required()
+    buttonType: create$6().oneOf([id$8]).required()
   })
 };
 function RateSceneActionButton({
@@ -217246,9 +217331,9 @@ function RateSceneActionButton({
     ActionButtonBase,
     {
       state: typeof scene2.rating100 === "number" ? "active" : "inactive",
-      icon: buttonDefinition$6.icon,
-      title: buttonDefinition$6.title,
-      className: cx(buttonDefinition$6.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$7.icon,
+      title: buttonDefinition$7.title,
+      className: cx(buttonDefinition$7.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--rateButton",
       sidePanel: /* @__PURE__ */ React$1.createElement("div", { className: cx("action-button-rating-stars", { "not-set": typeof scene2.rating100 !== "number", "left-handed": leftHandedUi }, ratingSystemOptions.type.toLowerCase()) }, /* @__PURE__ */ React$1.createElement("span", { className: "clear star-rating-number" }, "Clear"), /* @__PURE__ */ React$1.createElement(
         RatingSystem,
@@ -217271,9 +217356,93 @@ function RateSceneActionButton({
     }
   );
 }
-const id$5 = "set-organized";
+const SvgResolutionOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
+  fillRule: "evenodd",
+  clipRule: "evenodd",
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+  strokeMiterlimit: 1.5
+}, ...props }, /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(2.857143,0,0,2.444444,-212.571429,-252.444444)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M248,152.763L248,263.237C248,272.489 241.574,280 233.659,280L94.341,280C86.426,280 80,272.489 80,263.237L80,152.763C80,143.511 86.426,136 94.341,136L233.659,136C241.574,136 248,143.511 248,152.763Z", style: {
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: "12.04px"
+} })), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(2.095238,0,0,1.777778,-151.619048,-161.777778)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M248,159.236L248,256.764C248,269.588 239.166,280 228.285,280L99.715,280C88.834,280 80,269.588 80,256.764L80,159.236C80,146.412 88.834,136 99.715,136L228.285,136C239.166,136 248,146.412 248,159.236Z", style: {
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: "16.47px"
+} })), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(1.333333,0,0,1.111111,-90.666667,-71.111111)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M248,173.195L248,242.805C248,263.333 234.111,280 217.004,280L110.996,280C93.889,280 80,263.333 80,242.805L80,173.195C80,152.667 93.889,136 110.996,136L217.004,136C234.111,136 248,152.667 248,173.195Z", style: {
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: "26.07px"
+} })));
+const id$7 = "resolution";
+const buttonDefinition$6 = {
+  id: id$7,
+  title: {
+    active: "Set stream resolution",
+    inactive: "Set stream resolution"
+  },
+  icon: SvgResolutionOutline,
+  components: {
+    button: ResolutionActionButton
+  },
+  configSchema: sharedActionButtonSchema.shape({
+    buttonType: create$6().oneOf([id$7]).required()
+  })
+};
+function ResolutionActionButton({
+  playerRef
+}) {
+  const { set: setTvConfig } = useTvConfig();
+  const [selection, setSelection] = reactExports.useState({ options: [], selected: null });
+  const refreshSelection = reactExports.useCallback(() => {
+    const player = playerRef.current;
+    if (!player || player.isDisposed()) return;
+    setSelection({
+      options: getSceneStreamOptions(player),
+      selected: getSelectedSceneStream(player)
+    });
+  }, [playerRef]);
+  reactExports.useEffect(() => {
+    const player = playerRef.current;
+    if (!player) return;
+    refreshSelection();
+    player.on("loadstart", refreshSelection);
+    return () => player.off("loadstart", refreshSelection);
+  }, [playerRef.current, refreshSelection]);
+  function handleSelectStream(source2) {
+    const player = playerRef.current;
+    if (!player) return;
+    selectSceneStream(player, source2);
+    setTvConfig("preferredStreamLabel", isDirectStream(source2) ? void 0 : source2.label);
+  }
+  const selectedStream = selection.selected;
+  const playingDirectStream = !selectedStream || isDirectStream(selectedStream);
+  return /* @__PURE__ */ React$1.createElement(
+    ActionButtonBase,
+    {
+      state: playingDirectStream ? "inactive" : "active",
+      icon: buttonDefinition$6.icon,
+      title: buttonDefinition$6.title,
+      className: cx(buttonDefinition$6.id, "hide-on-ui-hide"),
+      sideInfo: selectedStream && !playingDirectStream ? getShortStreamLabel(selectedStream) : void 0,
+      sidePanelClassName: "action-button-resolution",
+      sidePanel: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, groupSceneStreamsByResolution(selection.options).map((group2) => /* @__PURE__ */ React$1.createElement("div", { key: group2.id, className: "stream-group" }, /* @__PURE__ */ React$1.createElement("div", { className: "stream-group-label" }, group2.label), /* @__PURE__ */ React$1.createElement("div", { className: "stream-group-options" }, group2.sources.map((source2) => /* @__PURE__ */ React$1.createElement(
+        Button,
+        {
+          key: source2.src,
+          variant: "link",
+          className: cx("current", { active: source2 === selectedStream }),
+          onClick: () => handleSelectStream(source2)
+        },
+        getStreamItemLabel(source2)
+      ))))))
+    }
+  );
+}
+const id$6 = "set-organized";
 const buttonDefinition$5 = {
-  id: id$5,
+  id: id$6,
   title: {
     active: "Mark as unorganized",
     inactive: "Mark as organized"
@@ -217283,7 +217452,7 @@ const buttonDefinition$5 = {
     button: SetOrganizedActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$5]).required()
+    buttonType: create$6().oneOf([id$6]).required()
   })
 };
 function SetOrganizedActionButton({
@@ -217320,9 +217489,9 @@ const SvgCogOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg
 }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M223.3,37.8C223.7,36.3 224.6,35 225.7,34C235.6,32.7 245.7,32 256,32C266.3,32 276.4,32.7 286.3,34C287.4,35     288.2,36.3 288.7,37.8L302.4,85.5C305.9,97.6 314.6,106.6 324.9,111.6C332.5,115.2 339.7,119.4 346.6,124.1C356,130.6     368.3,133.6 380.5,130.6L428.7,118.6C430.2,118.2 431.7,118.3 433.1,118.8C438.5,125.7 443.5,133     448,140.6L452.3,148C456.5,155.5 460.2,163.3 463.5,171.3C463.2,172.8 462.5,174.2 461.4,175.3L426.8,211C418.1,220     414.6,232.1 415.5,243.5C415.8,247.6 416,251.8 416,256C416,260.2 415.8,264.4 415.5,268.5C414.6,279.9 418.1,292     426.8,301L461.3,336.7C462.4,337.8 463.1,339.2 463.4,340.7C460.1,348.7 456.4,356.5 452.2,364.1L448,371.4C443.4,379     438.4,386.2 433.1,393.2C431.7,393.7 430.2,393.7 428.7,393.4L380.5,381.4C368.3,378.4 356.1,381.4     346.6,387.9C339.7,392.6 332.5,396.8 324.9,400.4C314.6,405.3 305.8,414.4 302.4,426.5L288.7,474.2C288.3,475.7     287.4,477 286.3,478C276.4,479.3 266.3,480 256,480C245.7,480 235.6,479.3 225.7,478C224.6,477 223.8,475.7     223.3,474.2L209.6,426.5C206.1,414.4 197.4,405.4 187.1,400.4C179.5,396.8 172.3,392.6 165.4,387.9C156,381.4     143.7,378.4 131.5,381.4L83.3,393.4C81.8,393.8 80.3,393.7 78.9,393.2C73.5,386.2 68.5,379     63.9,371.4L59.7,364.1C55.5,356.6 51.8,348.8 48.5,340.7C48.8,339.2 49.5,337.8 50.6,336.7L85.2,301C93.9,292 97.4,279.9     96.5,268.5C96.2,264.4 96,260.2 96,256C96,251.8 96.2,247.6 96.5,243.5C97.4,232.1 93.9,220     85.2,211L50.7,175.2C49.6,174.1 48.9,172.7 48.6,171.2C51.9,163.2 55.6,155.4 59.8,147.8L64,140.5C68.6,132.9 73.6,125.7     79,118.7C80.4,118.2 81.9,118.2 83.4,118.5L131.6,130.5C143.8,133.5 156,130.5 165.5,124C172.4,119.3 179.6,115.1     187.2,111.5C197.5,106.6 206.3,97.5 209.7,85.4L223.4,37.7L223.3,37.8ZM256,0C243,0 230.1,1 217.6,2.9C215.9,3.2     214.2,3.7 212.6,4.5C203.1,9.4 195.7,18.1 192.6,29L178.9,76.7C178.3,78.9 176.4,81.2 173.3,82.7C164.2,87 155.5,92.1     147.3,97.7C144.5,99.6 141.5,100.1 139.3,99.5L91.1,87.5C80.2,84.8 69,86.9 60,92.6C58.5,93.5 57.2,94.7     56.1,96.1C49,105 42.4,114.3 36.5,124.1L36.4,124.4L32,132L31.9,132.3C26.5,142.1 21.7,152.2 17.6,162.7C17,164.3     16.6,166 16.5,167.7C16,178.5 19.8,189.3 27.7,197.5L62.2,233.2C63.8,234.9 64.9,237.6 64.6,241C64.2,246 64,251     64,256C64,261 64.2,266.1 64.6,271C64.9,274.4 63.8,277.2 62.2,278.8L27.7,314.6C19.8,322.8 16,333.6     16.5,344.4C16.6,346.1 17,347.8 17.6,349.4C21.7,359.9 26.5,370 31.9,379.8L32,380.1L36.4,387.7L36.5,388C42.4,397.8     48.9,407.2 56.1,416.1C57.2,417.5 58.5,418.7 60,419.6C69,425.3 80.2,427.4 91.1,424.7L139.3,412.7C141.5,412.1     144.5,412.6 147.3,414.5C155.5,420.2 164.2,425.2 173.3,429.5C176.4,431 178.2,433.3 178.9,435.5L192.6,483C195.7,493.8     203.1,502.5 212.6,507.5C214.2,508.3 215.8,508.9 217.6,509.1C230.1,511 243,512 256,512C269,512 281.9,511     294.4,509.1C296.1,508.8 297.8,508.3 299.4,507.5C308.9,502.6 316.3,493.9 319.4,483L333.1,435.3C333.7,433.1     335.6,430.8 338.7,429.3C347.8,425 356.5,419.9 364.7,414.3C367.5,412.4 370.5,411.9     372.7,412.5L420.9,424.5C431.8,427.2 443,425.2 452,419.4C453.5,418.5 454.8,417.3 455.9,415.9C463,407 469.5,397.7     475.4,387.9L475.6,387.6L480,380L480.1,379.7C485.5,370 490.3,359.8 494.4,349.3C495,347.7 495.4,346     495.5,344.3C496,333.5 492.2,322.7 484.3,314.5L449.8,278.8C448.2,277.1 447.1,274.4 447.4,271C447.8,266 448,261     448,256C448,251 447.8,245.9 447.4,241C447.1,237.6 448.2,234.8 449.8,233.2L484.3,197.5C492.2,189.3 496,178.5     495.5,167.7C495.4,166 495,164.3 494.4,162.7C490.3,152.2 485.5,142.1     480.1,132.3L480,132L475.6,124.4L475.4,124.1C469.5,114.3 463,104.9 455.9,96.1C454.8,94.7 453.5,93.5 452,92.6C443,86.9     431.8,84.8 420.9,87.5L372.7,99.5C370.5,100.1 367.5,99.6 364.7,97.7C356.5,92 347.8,87 338.7,82.7C335.6,81.2     333.8,78.9 333.1,76.7L319.4,29C316.3,18.2 308.9,9.5 299.4,4.5C297.8,3.7 296.2,3.1 294.4,2.9C281.9,1 269,0     256,0ZM200,256C200,225.279 225.279,200 256,200C286.721,200 312,225.279 312,256C312,286.721 286.721,312     256,312C225.279,312 200,286.721 200,256ZM344,256C344,207.725 304.275,168 256,168C207.725,168 168,207.725     168,256C168,304.275 207.725,344 256,344C304.275,344 344,304.275 344,256Z", style: {
   fillRule: "nonzero"
 }, fill: "currentColor" }));
-const id$4 = "settings";
+const id$5 = "settings";
 const buttonDefinition$4 = {
-  id: id$4,
+  id: id$5,
   title: {
     "active": "Hide Settings",
     "inactive": "Show Settings"
@@ -217335,7 +217504,7 @@ const buttonDefinition$4 = {
     button: SettingsActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$4]).required()
+    buttonType: create$6().oneOf([id$5]).required()
   })
 };
 function SettingsActionButton() {
@@ -217359,9 +217528,9 @@ const SvgInfoOutline = (props) => /* @__PURE__ */ reactExports.createElement("sv
 }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M256,32C378.883,32 480,133.117 480,256C480,378.883 378.883,480 256,480C133.117,480 32,378.883     32,256C32,133.117 133.117,32 256,32ZM256,512C396.437,512 512,396.437 512,256C512,115.563 396.437,0 256,0C115.563,0     -0,115.563 0,256C0,396.437 115.563,512 256,512ZM208,352C199.2,352 192,359.2 192,368C192,376.8 199.2,384     208,384L304,384C312.8,384 320,376.8 320,368C320,359.2 312.8,352 304,352L272,352L272,240C272,231.2 264.8,224     256,224L216,224C207.2,224 200,231.2 200,240C200,248.8 207.2,256 216,256L240,256L240,352L208,352ZM256,184C269.166,184     280,173.166 280,160C280,146.834 269.166,136 256,136C242.834,136 232,146.834 232,160C232,173.166 242.834,184     256,184Z", style: {
   fillRule: "nonzero"
 }, fill: "currentColor" }));
-const id$3 = "show-scene-info";
+const id$4 = "show-scene-info";
 const buttonDefinition$3 = {
-  id: id$3,
+  id: id$4,
   title: {
     active: "Close scene info",
     inactive: "Show scene info"
@@ -217374,7 +217543,7 @@ const buttonDefinition$3 = {
     button: ShowSceneInfoActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$3]).required()
+    buttonType: create$6().oneOf([id$4]).required()
   })
 };
 function ShowSceneInfoActionButton({
@@ -218247,9 +218416,9 @@ function requireSrc() {
 }
 var srcExports = requireSrc();
 const ISO6391 = /* @__PURE__ */ getDefaultExportFromCjs(srcExports);
-const id$2 = "subtitles";
+const id$3 = "subtitles";
 const buttonDefinition$2 = {
-  id: id$2,
+  id: id$3,
   title: {
     active: "Hide subtitles",
     inactive: "Show subtitles"
@@ -218262,7 +218431,7 @@ const buttonDefinition$2 = {
     button: SubtitlesActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$2]).required()
+    buttonType: create$6().oneOf([id$3]).required()
   })
 };
 function SubtitlesActionButton({
@@ -218307,9 +218476,9 @@ const SvgVerticalEllipsisOutline = (props) => /* @__PURE__ */ reactExports.creat
 }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M96,64C78.445,64 64,78.445 64,96C64,113.555 78.445,128 96,128C113.555,128 128,113.555 128,96C128,78.445     113.555,64 96,64ZM96,160C60.891,160 32,131.109 32,96C32,60.891 60.891,32 96,32C131.109,32 160,60.891     160,96C160,131.109 131.109,160 96,160ZM128,256C128,238.445 113.555,224 96,224C78.445,224 64,238.445     64,256C64,273.555 78.445,288 96,288C113.555,288 128,273.555 128,256ZM32,256C32,220.891 60.891,192 96,192C131.109,192     160,220.891 160,256C160,291.109 131.109,320 96,320C60.891,320 32,291.109 32,256ZM128,416C128,398.445 113.555,384     96,384C78.445,384 64,398.445 64,416C64,433.555 78.445,448 96,448C113.555,448 128,433.555 128,416ZM32,416C32,380.891     60.891,352 96,352C131.109,352 160,380.891 160,416C160,451.109 131.109,480 96,480C60.891,480 32,451.109 32,416Z", style: {
   fillRule: "nonzero"
 }, fill: "currentColor" }));
-const id$1 = "ui-visibility";
+const id$2 = "ui-visibility";
 const buttonDefinition$1 = {
-  id: id$1,
+  id: id$2,
   title: {
     active: "Hide UI",
     inactive: "Show UI"
@@ -218322,7 +218491,7 @@ const buttonDefinition$1 = {
     button: UiVisibilityActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$1]).required()
+    buttonType: create$6().oneOf([id$2]).required()
   })
 };
 function UiVisibilityActionButton() {
@@ -218335,6 +218504,29 @@ function UiVisibilityActionButton() {
       title: buttonDefinition$1.title,
       className: cx(buttonDefinition$1.id, "dim-on-ui-hide", { "active": uiVisible }),
       onClick: () => setTvConfig("uiVisible", (prev2) => !prev2)
+    }
+  );
+}
+const id$1 = "unknown-action-button";
+const unknownActionButtonDefinition = {
+  id: id$1,
+  title: ({ config: config2 }) => /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, 'Unknown button: "', config2?.buttonType || "<unknown type>", '"'),
+  icon: { active: faTriangleExclamation, inactive: faTriangleExclamation },
+  components: { button: UnknownActionButton },
+  configSchema: sharedActionButtonSchema.shape({
+    buttonType: create$6().required()
+  })
+};
+function UnknownActionButton({ config: config2 }) {
+  return /* @__PURE__ */ React$1.createElement(
+    ActionButtonBase,
+    {
+      state: "inactive",
+      icon: unknownActionButtonDefinition.icon,
+      title: unknownActionButtonDefinition.title,
+      className: cx(id$1, "hide-on-ui-hide"),
+      displayOnly: true,
+      sideInfo: `Unknown button type "${String(config2.buttonType)}"`
     }
   );
 }
@@ -218431,6 +218623,7 @@ function SettingsForm({ formik }) {
   ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Enable full volume control rather than just mute/unmute. Note that this does not work on iOS devices due to platform limitations."), formik.touched.fullControl && fullControlError && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, fullControlError)), Object.keys(otherErrors).length > 0 && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, /* @__PURE__ */ React$1.createElement("ul", null, Object.entries(otherErrors).map(([key, error]) => /* @__PURE__ */ React$1.createElement("li", { key }, error)))));
 }
 const allButtonDefinition = [
+  buttonDefinition$h,
   buttonDefinition$g,
   buttonDefinition$f,
   buttonDefinition$e,
@@ -218438,7 +218631,7 @@ const allButtonDefinition = [
   buttonDefinition$c,
   buttonDefinition$b,
   buttonDefinition$a,
-  buttonDefinition$9,
+  buttonDefinition$8,
   buttonDefinition$7,
   buttonDefinition$6,
   buttonDefinition$4,
@@ -218446,15 +218639,11 @@ const allButtonDefinition = [
   buttonDefinition$2,
   buttonDefinition$1,
   buttonDefinition$5,
-  buttonDefinition$8,
+  buttonDefinition$9,
   buttonDefinition
 ];
 function getActionButtonDefinition(type3) {
-  const definition = allButtonDefinition.find((def) => def.id === type3);
-  if (!definition) {
-    throw new Error(`No action button definition found for type ${type3}`);
-  }
-  return definition;
+  return allButtonDefinition.find((def) => def.id === type3) ?? unknownActionButtonDefinition;
 }
 const logger$3 = getLogger(["stash-tv", "ActionButtonStack"]);
 function ActionButtonStack({ mediaItem, sceneInfoOpen, setSceneInfoOpen, playerRef, onMediaItemDeleted }) {
@@ -218535,7 +218724,7 @@ const Folder = ({
   return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
     "button",
     {
-      className: "folder hide-on-ui-hide",
+      className: cx("folder", "hide-on-ui-hide", { open: isOpen }),
       ref: buttonRef,
       onClick: () => {
         if (!isOpen) {
@@ -238845,7 +239034,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setDisplayedModal("keyboard-shortcuts")
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.17.1"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.18.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -240076,4 +240265,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-C-5mFWy0.js.map
+//# sourceMappingURL=index-Co_ORrNP.js.map
