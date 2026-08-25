@@ -29648,7 +29648,7 @@ var resolveManifestRedirect = function resolveManifestRedirect2(handleManifestRe
   }
   return url2;
 };
-var logger$d = function logger2(source2) {
+var logger$e = function logger2(source2) {
   if (videojs.log.debug) {
     return videojs.log.debug.bind(videojs, "VHS:", source2 + " >");
   }
@@ -30632,7 +30632,7 @@ var PlaylistLoader = /* @__PURE__ */ (function(_EventTarget) {
     if (!src2) {
       throw new Error("A non-empty playlist URL or object is required");
     }
-    _this.logger_ = logger$d("PlaylistLoader");
+    _this.logger_ = logger$e("PlaylistLoader");
     var _options = options2, _options$withCredenti = _options.withCredentials, withCredentials = _options$withCredenti === void 0 ? false : _options$withCredenti, _options$handleManife = _options.handleManifestRedirects, handleManifestRedirects = _options$handleManife === void 0 ? false : _options$handleManife;
     _this.src = src2;
     _this.vhs_ = vhs;
@@ -31533,7 +31533,7 @@ var DashPlaylistLoader = /* @__PURE__ */ (function(_EventTarget) {
     });
     _this.state = "HAVE_NOTHING";
     _this.loadedPlaylists_ = {};
-    _this.logger_ = logger$d("DashPlaylistLoader");
+    _this.logger_ = logger$e("DashPlaylistLoader");
     if (_this.isMaster_) {
       _this.masterPlaylistLoader_.srcUrl = srcUrlOrPlaylist;
       _this.masterPlaylistLoader_.sidxMapping_ = {};
@@ -38932,7 +38932,7 @@ var mediaSegmentRequest = function mediaSegmentRequest2(_ref12) {
     return abortAll(activeXhrs);
   };
 };
-var logFn$1 = logger$d("CodecUtils");
+var logFn$1 = logger$e("CodecUtils");
 var getCodecs = function getCodecs2(media) {
   var mediaAttributes = media.attributes || {};
   if (mediaAttributes.CODECS) {
@@ -38996,7 +38996,7 @@ var codecsForPlaylist = function codecsForPlaylist2(master, media) {
   }
   return codecInfo;
 };
-var logFn = logger$d("PlaylistSelector");
+var logFn = logger$e("PlaylistSelector");
 var representationToString = function representationToString2(representation) {
   if (!representation || !representation.playlist) {
     return;
@@ -39770,7 +39770,7 @@ var SegmentLoader = /* @__PURE__ */ (function(_videojs$EventTarget) {
       }
     });
     _this.fetchAtBuffer_ = false;
-    _this.logger_ = logger$d("SegmentLoader[" + _this.loaderType_ + "]");
+    _this.logger_ = logger$e("SegmentLoader[" + _this.loaderType_ + "]");
     Object.defineProperty(_assertThisInitialized$2(_this), "state", {
       get: function get7() {
         return this.state_;
@@ -41534,7 +41534,7 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
       return shiftQueue("mediaSource", _assertThisInitialized$2(_this));
     };
     _this.mediaSource.addEventListener("sourceopen", _this.sourceopenListener_);
-    _this.logger_ = logger$d("SourceUpdater");
+    _this.logger_ = logger$e("SourceUpdater");
     _this.audioTimestampOffset_ = 0;
     _this.videoTimestampOffset_ = 0;
     _this.queue = [];
@@ -42328,7 +42328,7 @@ var SyncController = /* @__PURE__ */ (function(_videojs$EventTarget) {
     _this.timelines = [];
     _this.discontinuities = [];
     _this.timelineToDatetimeMappings = {};
-    _this.logger_ = logger$d("SyncController");
+    _this.logger_ = logger$e("SyncController");
     return _this;
   }
   var _proto = SyncController2.prototype;
@@ -43532,7 +43532,7 @@ var createMediaTypes = function createMediaTypes2() {
       onGroupChanged: noop$9,
       onTrackChanged: noop$9,
       lastTrack_: null,
-      logger_: logger$d("MediaGroups[" + type3 + "]")
+      logger_: logger$e("MediaGroups[" + type3 + "]")
     };
   });
   return mediaTypes2;
@@ -43722,7 +43722,7 @@ var MasterPlaylistController = /* @__PURE__ */ (function(_videojs$EventTarget) {
     loaderStats.forEach(function(stat) {
       _this[stat + "_"] = sumLoaderStat.bind(_assertThisInitialized$2(_this), stat);
     });
-    _this.logger_ = logger$d("MPC");
+    _this.logger_ = logger$e("MPC");
     _this.triggeredFmp4Usage = false;
     if (_this.tech_.preload() === "none") {
       _this.loadOnPlay_ = function() {
@@ -44859,7 +44859,7 @@ var PlaybackWatcher = /* @__PURE__ */ (function() {
     this.lastRecordedTime = null;
     this.timer_ = null;
     this.checkCurrentTimeTimeout_ = null;
-    this.logger_ = logger$d("PlaybackWatcher");
+    this.logger_ = logger$e("PlaybackWatcher");
     this.logger_("initialize");
     var playHandler = function playHandler2() {
       return _this.monitorCurrentTime_();
@@ -45543,7 +45543,7 @@ var VhsHandler = /* @__PURE__ */ (function(_Component) {
     if (typeof options2.initialBandwidth === "number") {
       _this.options_.bandwidth = options2.initialBandwidth;
     }
-    _this.logger_ = logger$d("VhsHandler");
+    _this.logger_ = logger$e("VhsHandler");
     if (tech.options_ && tech.options_.playerId) {
       var _player = videojs(tech.options_.playerId);
       if (!_player.hasOwnProperty("hls")) {
@@ -174774,635 +174774,6 @@ function allowPluginRemoval(videojs2) {
     }
   });
 }
-const DIRECT_STREAM_LABEL = "Direct stream";
-function getSourceSelectorMenu(player) {
-  if (typeof player.sourceSelector !== "function") return void 0;
-  const plugin = player.sourceSelector();
-  return plugin.menu;
-}
-function getSceneStreamOptions(player) {
-  const menu = getSourceSelectorMenu(player);
-  if (!menu) return [];
-  return menu.items.map((item) => item.source);
-}
-function getSelectedSceneStream(player) {
-  return getSourceSelectorMenu(player)?.selectedSource ?? null;
-}
-function selectSceneStream(player, source2) {
-  const menu = getSourceSelectorMenu(player);
-  if (!menu) return false;
-  if (menu.selectedSource === source2) return true;
-  const item = menu.items.find((item2) => item2.source === source2);
-  if (!item) return false;
-  item.trigger("selected");
-  return true;
-}
-function isDirectStream(source2) {
-  if (source2.label === DIRECT_STREAM_LABEL) return true;
-  const { pathname } = new URL(source2.src);
-  return pathname.endsWith("/stream") || pathname.endsWith("/stream.m3u8") || pathname.endsWith("/stream.mpd");
-}
-function getShortStreamLabel(source2) {
-  const { codec, height: height3 } = parseStreamLabel(source2.label ?? "");
-  if (height3) return `${codec} ${height3}`;
-  return source2.label ?? "";
-}
-function parseStreamLabel(label) {
-  const match2 = label.match(/^(.+?)\s+[^(]+\((\d+p)\)$/);
-  if (!match2) return { codec: label };
-  return { codec: match2[1], height: match2[2] };
-}
-function getStreamItemLabel(source2) {
-  return parseStreamLabel(source2.label ?? "").codec;
-}
-function groupSceneStreamsByResolution(sources) {
-  const originalGroup = { id: "original", label: "Original", sources: [] };
-  const groups2 = [originalGroup];
-  const groupById = /* @__PURE__ */ new Map();
-  const getResolutionGroup = (height3) => {
-    let group2 = groupById.get(height3);
-    if (!group2) {
-      group2 = { id: height3, label: height3, sources: [] };
-      groupById.set(height3, group2);
-      groups2.push(group2);
-    }
-    return group2;
-  };
-  for (const source2 of sources) {
-    const { height: height3 } = parseStreamLabel(source2.label ?? "");
-    if (height3) {
-      getResolutionGroup(height3).sources.push(source2);
-    } else {
-      originalGroup.sources.push(source2);
-    }
-  }
-  groups2.sort((a4, b3) => {
-    if (a4 === originalGroup) return -1;
-    if (b3 === originalGroup) return 1;
-    return resolutionHeight(b3.id) - resolutionHeight(a4.id);
-  });
-  return groups2.filter((group2) => group2.sources.length > 0);
-}
-function resolutionHeight(groupId) {
-  return parseInt(groupId, 10) || 0;
-}
-function moveStreamToFront(sources, label) {
-  const index2 = sources.findIndex((source2) => source2.label === label);
-  if (index2 <= 0) return sources;
-  return [sources[index2], ...sources.slice(0, index2), ...sources.slice(index2 + 1)];
-}
-const __vite_import_meta_env__$2 = {};
-const createStoreImpl = (createState2) => {
-  let state;
-  const listeners = /* @__PURE__ */ new Set();
-  const setState2 = (partial, replace2) => {
-    const nextState = typeof partial === "function" ? partial(state) : partial;
-    if (!Object.is(nextState, state)) {
-      const previousState = state;
-      state = (replace2 != null ? replace2 : typeof nextState !== "object" || nextState === null) ? nextState : Object.assign({}, state, nextState);
-      listeners.forEach((listener2) => listener2(state, previousState));
-    }
-  };
-  const getState = () => state;
-  const getInitialState2 = () => initialState;
-  const subscribe = (listener2) => {
-    listeners.add(listener2);
-    return () => listeners.delete(listener2);
-  };
-  const destroy = () => {
-    if ((__vite_import_meta_env__$2 ? "production" : void 0) !== "production") {
-      console.warn(
-        "[DEPRECATED] The `destroy` method will be unsupported in a future version. Instead use unsubscribe function returned by subscribe. Everything will be garbage-collected if store is garbage-collected."
-      );
-    }
-    listeners.clear();
-  };
-  const api2 = { setState: setState2, getState, getInitialState: getInitialState2, subscribe, destroy };
-  const initialState = state = createState2(setState2, getState, api2);
-  return api2;
-};
-const createStore = (createState2) => createState2 ? createStoreImpl(createState2) : createStoreImpl;
-var withSelector = { exports: {} };
-var withSelector_production = {};
-var shim = { exports: {} };
-var useSyncExternalStoreShim_production = {};
-/**
- * @license React
- * use-sync-external-store-shim.production.js
- *
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-var hasRequiredUseSyncExternalStoreShim_production;
-function requireUseSyncExternalStoreShim_production() {
-  if (hasRequiredUseSyncExternalStoreShim_production) return useSyncExternalStoreShim_production;
-  hasRequiredUseSyncExternalStoreShim_production = 1;
-  var React2 = requireReact();
-  function is2(x3, y3) {
-    return x3 === y3 && (0 !== x3 || 1 / x3 === 1 / y3) || x3 !== x3 && y3 !== y3;
-  }
-  var objectIs2 = "function" === typeof Object.is ? Object.is : is2, useState = React2.useState, useEffect = React2.useEffect, useLayoutEffect = React2.useLayoutEffect, useDebugValue2 = React2.useDebugValue;
-  function useSyncExternalStore$2(subscribe, getSnapshot) {
-    var value = getSnapshot(), _useState = useState({ inst: { value, getSnapshot } }), inst = _useState[0].inst, forceUpdate = _useState[1];
-    useLayoutEffect(
-      function() {
-        inst.value = value;
-        inst.getSnapshot = getSnapshot;
-        checkIfSnapshotChanged2(inst) && forceUpdate({ inst });
-      },
-      [subscribe, value, getSnapshot]
-    );
-    useEffect(
-      function() {
-        checkIfSnapshotChanged2(inst) && forceUpdate({ inst });
-        return subscribe(function() {
-          checkIfSnapshotChanged2(inst) && forceUpdate({ inst });
-        });
-      },
-      [subscribe]
-    );
-    useDebugValue2(value);
-    return value;
-  }
-  function checkIfSnapshotChanged2(inst) {
-    var latestGetSnapshot = inst.getSnapshot;
-    inst = inst.value;
-    try {
-      var nextValue = latestGetSnapshot();
-      return !objectIs2(inst, nextValue);
-    } catch (error) {
-      return true;
-    }
-  }
-  function useSyncExternalStore$1(subscribe, getSnapshot) {
-    return getSnapshot();
-  }
-  var shim2 = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? useSyncExternalStore$1 : useSyncExternalStore$2;
-  useSyncExternalStoreShim_production.useSyncExternalStore = void 0 !== React2.useSyncExternalStore ? React2.useSyncExternalStore : shim2;
-  return useSyncExternalStoreShim_production;
-}
-var hasRequiredShim;
-function requireShim() {
-  if (hasRequiredShim) return shim.exports;
-  hasRequiredShim = 1;
-  {
-    shim.exports = requireUseSyncExternalStoreShim_production();
-  }
-  return shim.exports;
-}
-/**
- * @license React
- * use-sync-external-store-shim/with-selector.production.js
- *
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-var hasRequiredWithSelector_production;
-function requireWithSelector_production() {
-  if (hasRequiredWithSelector_production) return withSelector_production;
-  hasRequiredWithSelector_production = 1;
-  var React2 = requireReact(), shim2 = requireShim();
-  function is2(x3, y3) {
-    return x3 === y3 && (0 !== x3 || 1 / x3 === 1 / y3) || x3 !== x3 && y3 !== y3;
-  }
-  var objectIs2 = "function" === typeof Object.is ? Object.is : is2, useSyncExternalStore2 = shim2.useSyncExternalStore, useRef = React2.useRef, useEffect = React2.useEffect, useMemo = React2.useMemo, useDebugValue2 = React2.useDebugValue;
-  withSelector_production.useSyncExternalStoreWithSelector = function(subscribe, getSnapshot, getServerSnapshot, selector, isEqual2) {
-    var instRef = useRef(null);
-    if (null === instRef.current) {
-      var inst = { hasValue: false, value: null };
-      instRef.current = inst;
-    } else inst = instRef.current;
-    instRef = useMemo(
-      function() {
-        function memoizedSelector(nextSnapshot) {
-          if (!hasMemo) {
-            hasMemo = true;
-            memoizedSnapshot = nextSnapshot;
-            nextSnapshot = selector(nextSnapshot);
-            if (void 0 !== isEqual2 && inst.hasValue) {
-              var currentSelection = inst.value;
-              if (isEqual2(currentSelection, nextSnapshot))
-                return memoizedSelection = currentSelection;
-            }
-            return memoizedSelection = nextSnapshot;
-          }
-          currentSelection = memoizedSelection;
-          if (objectIs2(memoizedSnapshot, nextSnapshot)) return currentSelection;
-          var nextSelection = selector(nextSnapshot);
-          if (void 0 !== isEqual2 && isEqual2(currentSelection, nextSelection))
-            return memoizedSnapshot = nextSnapshot, currentSelection;
-          memoizedSnapshot = nextSnapshot;
-          return memoizedSelection = nextSelection;
-        }
-        var hasMemo = false, memoizedSnapshot, memoizedSelection, maybeGetServerSnapshot = void 0 === getServerSnapshot ? null : getServerSnapshot;
-        return [
-          function() {
-            return memoizedSelector(getSnapshot());
-          },
-          null === maybeGetServerSnapshot ? void 0 : function() {
-            return memoizedSelector(maybeGetServerSnapshot());
-          }
-        ];
-      },
-      [getSnapshot, getServerSnapshot, selector, isEqual2]
-    );
-    var value = useSyncExternalStore2(subscribe, instRef[0], instRef[1]);
-    useEffect(
-      function() {
-        inst.hasValue = true;
-        inst.value = value;
-      },
-      [value]
-    );
-    useDebugValue2(value);
-    return value;
-  };
-  return withSelector_production;
-}
-var hasRequiredWithSelector;
-function requireWithSelector() {
-  if (hasRequiredWithSelector) return withSelector.exports;
-  hasRequiredWithSelector = 1;
-  {
-    withSelector.exports = requireWithSelector_production();
-  }
-  return withSelector.exports;
-}
-var withSelectorExports = requireWithSelector();
-const useSyncExternalStoreExports = /* @__PURE__ */ getDefaultExportFromCjs(withSelectorExports);
-const __vite_import_meta_env__$1 = {};
-const { useDebugValue } = React$1;
-const { useSyncExternalStoreWithSelector } = useSyncExternalStoreExports;
-let didWarnAboutEqualityFn = false;
-const identity$1 = (arg) => arg;
-function useStore(api2, selector = identity$1, equalityFn) {
-  if ((__vite_import_meta_env__$1 ? "production" : void 0) !== "production" && equalityFn && !didWarnAboutEqualityFn) {
-    console.warn(
-      "[DEPRECATED] Use `createWithEqualityFn` instead of `create` or use `useStoreWithEqualityFn` instead of `useStore`. They can be imported from 'zustand/traditional'. https://github.com/pmndrs/zustand/discussions/1937"
-    );
-    didWarnAboutEqualityFn = true;
-  }
-  const slice2 = useSyncExternalStoreWithSelector(
-    api2.subscribe,
-    api2.getState,
-    api2.getServerState || api2.getInitialState,
-    selector,
-    equalityFn
-  );
-  useDebugValue(slice2);
-  return slice2;
-}
-const createImpl = (createState2) => {
-  if ((__vite_import_meta_env__$1 ? "production" : void 0) !== "production" && typeof createState2 !== "function") {
-    console.warn(
-      "[DEPRECATED] Passing a vanilla store will be unsupported in a future version. Instead use `import { useStore } from 'zustand'`."
-    );
-  }
-  const api2 = typeof createState2 === "function" ? createStore(createState2) : createState2;
-  const useBoundStore = (selector, equalityFn) => useStore(api2, selector, equalityFn);
-  Object.assign(useBoundStore, api2);
-  return useBoundStore;
-};
-const create = (createState2) => createState2 ? createImpl(createState2) : createImpl;
-const __vite_import_meta_env__ = {};
-function createJSONStorage(getStorage, options2) {
-  let storage;
-  try {
-    storage = getStorage();
-  } catch (_e2) {
-    return;
-  }
-  const persistStorage = {
-    getItem: (name2) => {
-      var _a2;
-      const parse3 = (str2) => {
-        if (str2 === null) {
-          return null;
-        }
-        return JSON.parse(str2, void 0);
-      };
-      const str = (_a2 = storage.getItem(name2)) != null ? _a2 : null;
-      if (str instanceof Promise) {
-        return str.then(parse3);
-      }
-      return parse3(str);
-    },
-    setItem: (name2, newValue) => storage.setItem(
-      name2,
-      JSON.stringify(newValue, void 0)
-    ),
-    removeItem: (name2) => storage.removeItem(name2)
-  };
-  return persistStorage;
-}
-const toThenable = (fn3) => (input) => {
-  try {
-    const result = fn3(input);
-    if (result instanceof Promise) {
-      return result;
-    }
-    return {
-      then(onFulfilled) {
-        return toThenable(onFulfilled)(result);
-      },
-      catch(_onRejected) {
-        return this;
-      }
-    };
-  } catch (e2) {
-    return {
-      then(_onFulfilled) {
-        return this;
-      },
-      catch(onRejected) {
-        return toThenable(onRejected)(e2);
-      }
-    };
-  }
-};
-const oldImpl = (config2, baseOptions) => (set4, get7, api2) => {
-  let options2 = {
-    getStorage: () => localStorage,
-    serialize: JSON.stringify,
-    deserialize: JSON.parse,
-    partialize: (state) => state,
-    version: 0,
-    merge: (persistedState, currentState) => ({
-      ...currentState,
-      ...persistedState
-    }),
-    ...baseOptions
-  };
-  let hasHydrated = false;
-  const hydrationListeners = /* @__PURE__ */ new Set();
-  const finishHydrationListeners = /* @__PURE__ */ new Set();
-  let storage;
-  try {
-    storage = options2.getStorage();
-  } catch (_e2) {
-  }
-  if (!storage) {
-    return config2(
-      (...args) => {
-        console.warn(
-          `[zustand persist middleware] Unable to update item '${options2.name}', the given storage is currently unavailable.`
-        );
-        set4(...args);
-      },
-      get7,
-      api2
-    );
-  }
-  const thenableSerialize = toThenable(options2.serialize);
-  const setItem = () => {
-    const state = options2.partialize({ ...get7() });
-    let errorInSync;
-    const thenable = thenableSerialize({ state, version: options2.version }).then(
-      (serializedValue) => storage.setItem(options2.name, serializedValue)
-    ).catch((e2) => {
-      errorInSync = e2;
-    });
-    if (errorInSync) {
-      throw errorInSync;
-    }
-    return thenable;
-  };
-  const savedSetState = api2.setState;
-  api2.setState = (state, replace2) => {
-    savedSetState(state, replace2);
-    void setItem();
-  };
-  const configResult = config2(
-    (...args) => {
-      set4(...args);
-      void setItem();
-    },
-    get7,
-    api2
-  );
-  let stateFromStorage;
-  const hydrate = () => {
-    var _a2;
-    if (!storage) return;
-    hasHydrated = false;
-    hydrationListeners.forEach((cb2) => cb2(get7()));
-    const postRehydrationCallback = ((_a2 = options2.onRehydrateStorage) == null ? void 0 : _a2.call(options2, get7())) || void 0;
-    return toThenable(storage.getItem.bind(storage))(options2.name).then((storageValue) => {
-      if (storageValue) {
-        return options2.deserialize(storageValue);
-      }
-    }).then((deserializedStorageValue) => {
-      if (deserializedStorageValue) {
-        if (typeof deserializedStorageValue.version === "number" && deserializedStorageValue.version !== options2.version) {
-          if (options2.migrate) {
-            return options2.migrate(
-              deserializedStorageValue.state,
-              deserializedStorageValue.version
-            );
-          }
-          console.error(
-            `State loaded from storage couldn't be migrated since no migrate function was provided`
-          );
-        } else {
-          return deserializedStorageValue.state;
-        }
-      }
-    }).then((migratedState) => {
-      var _a22;
-      stateFromStorage = options2.merge(
-        migratedState,
-        (_a22 = get7()) != null ? _a22 : configResult
-      );
-      set4(stateFromStorage, true);
-      return setItem();
-    }).then(() => {
-      postRehydrationCallback == null ? void 0 : postRehydrationCallback(stateFromStorage, void 0);
-      hasHydrated = true;
-      finishHydrationListeners.forEach((cb2) => cb2(stateFromStorage));
-    }).catch((e2) => {
-      postRehydrationCallback == null ? void 0 : postRehydrationCallback(void 0, e2);
-    });
-  };
-  api2.persist = {
-    setOptions: (newOptions) => {
-      options2 = {
-        ...options2,
-        ...newOptions
-      };
-      if (newOptions.getStorage) {
-        storage = newOptions.getStorage();
-      }
-    },
-    clearStorage: () => {
-      storage == null ? void 0 : storage.removeItem(options2.name);
-    },
-    getOptions: () => options2,
-    rehydrate: () => hydrate(),
-    hasHydrated: () => hasHydrated,
-    onHydrate: (cb2) => {
-      hydrationListeners.add(cb2);
-      return () => {
-        hydrationListeners.delete(cb2);
-      };
-    },
-    onFinishHydration: (cb2) => {
-      finishHydrationListeners.add(cb2);
-      return () => {
-        finishHydrationListeners.delete(cb2);
-      };
-    }
-  };
-  hydrate();
-  return stateFromStorage || configResult;
-};
-const newImpl = (config2, baseOptions) => (set4, get7, api2) => {
-  let options2 = {
-    storage: createJSONStorage(() => localStorage),
-    partialize: (state) => state,
-    version: 0,
-    merge: (persistedState, currentState) => ({
-      ...currentState,
-      ...persistedState
-    }),
-    ...baseOptions
-  };
-  let hasHydrated = false;
-  const hydrationListeners = /* @__PURE__ */ new Set();
-  const finishHydrationListeners = /* @__PURE__ */ new Set();
-  let storage = options2.storage;
-  if (!storage) {
-    return config2(
-      (...args) => {
-        console.warn(
-          `[zustand persist middleware] Unable to update item '${options2.name}', the given storage is currently unavailable.`
-        );
-        set4(...args);
-      },
-      get7,
-      api2
-    );
-  }
-  const setItem = () => {
-    const state = options2.partialize({ ...get7() });
-    return storage.setItem(options2.name, {
-      state,
-      version: options2.version
-    });
-  };
-  const savedSetState = api2.setState;
-  api2.setState = (state, replace2) => {
-    savedSetState(state, replace2);
-    void setItem();
-  };
-  const configResult = config2(
-    (...args) => {
-      set4(...args);
-      void setItem();
-    },
-    get7,
-    api2
-  );
-  api2.getInitialState = () => configResult;
-  let stateFromStorage;
-  const hydrate = () => {
-    var _a2, _b2;
-    if (!storage) return;
-    hasHydrated = false;
-    hydrationListeners.forEach((cb2) => {
-      var _a22;
-      return cb2((_a22 = get7()) != null ? _a22 : configResult);
-    });
-    const postRehydrationCallback = ((_b2 = options2.onRehydrateStorage) == null ? void 0 : _b2.call(options2, (_a2 = get7()) != null ? _a2 : configResult)) || void 0;
-    return toThenable(storage.getItem.bind(storage))(options2.name).then((deserializedStorageValue) => {
-      if (deserializedStorageValue) {
-        if (typeof deserializedStorageValue.version === "number" && deserializedStorageValue.version !== options2.version) {
-          if (options2.migrate) {
-            return [
-              true,
-              options2.migrate(
-                deserializedStorageValue.state,
-                deserializedStorageValue.version
-              )
-            ];
-          }
-          console.error(
-            `State loaded from storage couldn't be migrated since no migrate function was provided`
-          );
-        } else {
-          return [false, deserializedStorageValue.state];
-        }
-      }
-      return [false, void 0];
-    }).then((migrationResult) => {
-      var _a22;
-      const [migrated, migratedState] = migrationResult;
-      stateFromStorage = options2.merge(
-        migratedState,
-        (_a22 = get7()) != null ? _a22 : configResult
-      );
-      set4(stateFromStorage, true);
-      if (migrated) {
-        return setItem();
-      }
-    }).then(() => {
-      postRehydrationCallback == null ? void 0 : postRehydrationCallback(stateFromStorage, void 0);
-      stateFromStorage = get7();
-      hasHydrated = true;
-      finishHydrationListeners.forEach((cb2) => cb2(stateFromStorage));
-    }).catch((e2) => {
-      postRehydrationCallback == null ? void 0 : postRehydrationCallback(void 0, e2);
-    });
-  };
-  api2.persist = {
-    setOptions: (newOptions) => {
-      options2 = {
-        ...options2,
-        ...newOptions
-      };
-      if (newOptions.storage) {
-        storage = newOptions.storage;
-      }
-    },
-    clearStorage: () => {
-      storage == null ? void 0 : storage.removeItem(options2.name);
-    },
-    getOptions: () => options2,
-    rehydrate: () => hydrate(),
-    hasHydrated: () => hasHydrated,
-    onHydrate: (cb2) => {
-      hydrationListeners.add(cb2);
-      return () => {
-        hydrationListeners.delete(cb2);
-      };
-    },
-    onFinishHydration: (cb2) => {
-      finishHydrationListeners.add(cb2);
-      return () => {
-        finishHydrationListeners.delete(cb2);
-      };
-    }
-  };
-  if (!options2.skipHydration) {
-    hydrate();
-  }
-  return stateFromStorage || configResult;
-};
-const persistImpl = (config2, baseOptions) => {
-  if ("getStorage" in baseOptions || "serialize" in baseOptions || "deserialize" in baseOptions) {
-    if ((__vite_import_meta_env__ ? "production" : void 0) !== "production") {
-      console.warn(
-        "[DEPRECATED] `getStorage`, `serialize` and `deserialize` options are deprecated. Use `storage` option instead."
-      );
-    }
-    return oldImpl(config2, baseOptions);
-  }
-  return newImpl(config2, baseOptions);
-};
-const persist = persistImpl;
 function toFilter(filter2) {
   if (typeof filter2 === "function") return filter2;
   return getLevelFilter(filter2);
@@ -176767,6 +176138,709 @@ var ConfigError = class extends Error {
     this.name = "ConfigureError";
   }
 };
+const logger$d = getLogger(["stash-tv", "source-selector-access"]);
+const DIRECT_STREAM_LABEL = "Direct stream";
+const ORIGINAL_RESOLUTION_LABEL = "Original";
+const DEFAULT_STREAM_LABEL = DIRECT_STREAM_LABEL;
+const getOriginalVideoDetails = (mediaItem) => {
+  const originalFile = mediaItem.entityType === "scene" ? mediaItem.entity.files?.[0] : mediaItem.entity.scene?.files?.[0];
+  if (!originalFile) return null;
+  return {
+    height: originalFile.height,
+    width: originalFile.width,
+    path: originalFile.path,
+    fileExtension: originalFile.path.match(/\/[^./]+\.([^./]+)$/)?.[1] ?? null
+  };
+};
+const getVideoSourceFromStashVideoSource = (source2, mediaItem) => {
+  const { height: originalVideoHeight } = getOriginalVideoDetails(mediaItem) ?? { height: 0 };
+  const parsedLabel = parseStreamLabel(source2.label ?? "", { originalVideoHeight });
+  const { label, ...sourceWithoutLabel } = source2;
+  return {
+    ...sourceWithoutLabel,
+    ...parsedLabel,
+    id: `${mediaItem.id}:${parsedLabel.fullStashLabel}`
+  };
+};
+function getVideoSources(player) {
+  const menu = getSourceSelectorMenu(player);
+  if (!menu) return [];
+  return menu.items.map((item) => getVideoSourceFromStashVideoSource(item.source, player.mediaItem));
+}
+function getDisplayableVideoSources(player) {
+  const sources = getVideoSources(player);
+  const {
+    height: originalVideoHeight,
+    fileExtension: originalVideoFileExtension
+  } = getOriginalVideoDetails(player.mediaItem) ?? {};
+  const videoHasDirectStream = sources.some(isDirectStream);
+  const filteredSources = sources.filter(
+    (source2) => source2.resolutionName === ORIGINAL_RESOLUTION_LABEL || source2.height !== originalVideoHeight
+  ).filter(
+    (source2) => isDirectStream(source2) || !videoHasDirectStream || source2.height !== originalVideoHeight || source2.format?.toLowerCase() !== originalVideoFileExtension?.toLowerCase()
+  );
+  return filteredSources;
+}
+function getBestMatchingVideoSource(sourceLabel, player) {
+  const sources = getVideoSources(player);
+  const matchingSource = sources.find((source2) => source2.fullStashLabel === sourceLabel);
+  const directSource = sources.find((source2) => isDirectStream(source2));
+  const {
+    fileExtension: originalVideoFileExtension,
+    height: originalVideoHeight
+  } = getOriginalVideoDetails(player.mediaItem) ?? {};
+  if (matchingSource && directSource && (matchingSource.resolutionName === ORIGINAL_RESOLUTION_LABEL || matchingSource.height === originalVideoHeight) && matchingSource.format?.toLowerCase() === originalVideoFileExtension?.toLowerCase()) {
+    return directSource;
+  }
+  return matchingSource ?? null;
+}
+function getSelectedVideoSource(player) {
+  return getVideoSourceFromStashVideoSource(player.currentSource(), player.mediaItem);
+}
+function getSourceSelectorMenu(player) {
+  if (typeof player.sourceSelector !== "function") return void 0;
+  return player.sourceSelector().menu;
+}
+function switchSceneStream(player, source2) {
+  const menu = getSourceSelectorMenu(player);
+  if (!menu) {
+    logger$d.warn(`Attempted to switch to "${source2.fullStashLabel}" source but the source selector menu isn't available`);
+    return false;
+  }
+  if (menu.selectedSource === source2) {
+    logger$d.info(`Attempted to switch to "${source2.fullStashLabel}" source but it is already selected in the source selector menu`);
+    return false;
+  }
+  const item = menu.items.find((item2) => item2.source.label === source2.fullStashLabel);
+  if (!item) {
+    logger$d.warn(`Attempted to switch to "${source2.fullStashLabel}" but it isn't in the source selector menu`, { source: source2, menuItems: menu.items.map((i3) => i3.source.label) });
+    return false;
+  }
+  const itemEl = item.el();
+  if (!itemEl || !(itemEl instanceof HTMLElement)) {
+    logger$d.warn(`Attempted to switch to "${source2.fullStashLabel}" but the menu item has no html element`, { item });
+    return false;
+  }
+  const originalFocus = menu.focus.bind(menu);
+  menu.focus = () => {
+    menu.focus = originalFocus;
+  };
+  itemEl.click();
+  return true;
+}
+function isDirectStream(source2) {
+  return source2.fullStashLabel === DIRECT_STREAM_LABEL;
+}
+function isPreferredStream(source2, preferredStreamLabel) {
+  return source2.fullStashLabel === (preferredStreamLabel ?? DEFAULT_STREAM_LABEL);
+}
+function parseStreamLabel(label, { originalVideoHeight }) {
+  const parsedLabel = { fullStashLabel: label };
+  const matchFormat = label.match(/^(Direct stream|[^\s]+)\s*(.*)$/);
+  const [, format2, labelRemainder] = matchFormat || [];
+  if (format2) {
+    parsedLabel.format = format2;
+  }
+  if (labelRemainder) {
+    const matchResolution = labelRemainder.match(/^([^(]+?)\s+\((\d+p)\)$/);
+    const [, resolutionName, resolutionHeightStr] = matchResolution || [];
+    if (resolutionName) {
+      parsedLabel.resolutionName = resolutionName;
+    }
+    if (resolutionHeightStr) {
+      const height3 = parseInt(resolutionHeightStr, 10);
+      if (!isNaN(height3)) {
+        parsedLabel.height = height3;
+      }
+    }
+  } else {
+    parsedLabel.resolutionName = ORIGINAL_RESOLUTION_LABEL;
+    parsedLabel.height = originalVideoHeight;
+  }
+  if (parsedLabel.height) {
+    parsedLabel.resolutionNumericalName = heightToResolutionNumericalName(parsedLabel.height);
+  }
+  return parsedLabel;
+}
+function heightToResolutionNumericalName(height3) {
+  if (height3 === 8640) return "16K";
+  if (height3 === 4320) return "8K";
+  if (height3 === 2880) return "5K";
+  if (height3 === 2160) return "4K";
+  return `${height3}p`;
+}
+const FORMAT_DISPLAY_ORDER = ["Direct stream", "MP4", "WEBM", "MKV", "HLS", "DASH"];
+function formatDisplayRank(format2) {
+  const index2 = FORMAT_DISPLAY_ORDER.indexOf(format2);
+  return index2 === -1 ? FORMAT_DISPLAY_ORDER.length : index2;
+}
+function groupVideoSourcesByResolution(sources) {
+  const groupMap = Map.groupBy(
+    sources,
+    (source2) => source2.resolutionName === ORIGINAL_RESOLUTION_LABEL ? Infinity : source2.height ?? 0
+  );
+  const sorted = [...groupMap.entries()].toSorted(([aHeight], [bHeight]) => bHeight - aHeight).map(
+    ([, sources2]) => sources2.toSorted((a4, b3) => formatDisplayRank(a4.format ?? "") - formatDisplayRank(b3.format ?? ""))
+  );
+  return sorted;
+}
+function moveStreamToFront(sources, label) {
+  const index2 = sources.findIndex((source2) => source2.label === label);
+  if (index2 <= 0) return sources;
+  return [sources[index2], ...sources.slice(0, index2), ...sources.slice(index2 + 1)];
+}
+const __vite_import_meta_env__$2 = {};
+const createStoreImpl = (createState2) => {
+  let state;
+  const listeners = /* @__PURE__ */ new Set();
+  const setState2 = (partial, replace2) => {
+    const nextState = typeof partial === "function" ? partial(state) : partial;
+    if (!Object.is(nextState, state)) {
+      const previousState = state;
+      state = (replace2 != null ? replace2 : typeof nextState !== "object" || nextState === null) ? nextState : Object.assign({}, state, nextState);
+      listeners.forEach((listener2) => listener2(state, previousState));
+    }
+  };
+  const getState = () => state;
+  const getInitialState2 = () => initialState;
+  const subscribe = (listener2) => {
+    listeners.add(listener2);
+    return () => listeners.delete(listener2);
+  };
+  const destroy = () => {
+    if ((__vite_import_meta_env__$2 ? "production" : void 0) !== "production") {
+      console.warn(
+        "[DEPRECATED] The `destroy` method will be unsupported in a future version. Instead use unsubscribe function returned by subscribe. Everything will be garbage-collected if store is garbage-collected."
+      );
+    }
+    listeners.clear();
+  };
+  const api2 = { setState: setState2, getState, getInitialState: getInitialState2, subscribe, destroy };
+  const initialState = state = createState2(setState2, getState, api2);
+  return api2;
+};
+const createStore = (createState2) => createState2 ? createStoreImpl(createState2) : createStoreImpl;
+var withSelector = { exports: {} };
+var withSelector_production = {};
+var shim = { exports: {} };
+var useSyncExternalStoreShim_production = {};
+/**
+ * @license React
+ * use-sync-external-store-shim.production.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var hasRequiredUseSyncExternalStoreShim_production;
+function requireUseSyncExternalStoreShim_production() {
+  if (hasRequiredUseSyncExternalStoreShim_production) return useSyncExternalStoreShim_production;
+  hasRequiredUseSyncExternalStoreShim_production = 1;
+  var React2 = requireReact();
+  function is2(x3, y3) {
+    return x3 === y3 && (0 !== x3 || 1 / x3 === 1 / y3) || x3 !== x3 && y3 !== y3;
+  }
+  var objectIs2 = "function" === typeof Object.is ? Object.is : is2, useState = React2.useState, useEffect = React2.useEffect, useLayoutEffect = React2.useLayoutEffect, useDebugValue2 = React2.useDebugValue;
+  function useSyncExternalStore$2(subscribe, getSnapshot) {
+    var value = getSnapshot(), _useState = useState({ inst: { value, getSnapshot } }), inst = _useState[0].inst, forceUpdate = _useState[1];
+    useLayoutEffect(
+      function() {
+        inst.value = value;
+        inst.getSnapshot = getSnapshot;
+        checkIfSnapshotChanged2(inst) && forceUpdate({ inst });
+      },
+      [subscribe, value, getSnapshot]
+    );
+    useEffect(
+      function() {
+        checkIfSnapshotChanged2(inst) && forceUpdate({ inst });
+        return subscribe(function() {
+          checkIfSnapshotChanged2(inst) && forceUpdate({ inst });
+        });
+      },
+      [subscribe]
+    );
+    useDebugValue2(value);
+    return value;
+  }
+  function checkIfSnapshotChanged2(inst) {
+    var latestGetSnapshot = inst.getSnapshot;
+    inst = inst.value;
+    try {
+      var nextValue = latestGetSnapshot();
+      return !objectIs2(inst, nextValue);
+    } catch (error) {
+      return true;
+    }
+  }
+  function useSyncExternalStore$1(subscribe, getSnapshot) {
+    return getSnapshot();
+  }
+  var shim2 = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? useSyncExternalStore$1 : useSyncExternalStore$2;
+  useSyncExternalStoreShim_production.useSyncExternalStore = void 0 !== React2.useSyncExternalStore ? React2.useSyncExternalStore : shim2;
+  return useSyncExternalStoreShim_production;
+}
+var hasRequiredShim;
+function requireShim() {
+  if (hasRequiredShim) return shim.exports;
+  hasRequiredShim = 1;
+  {
+    shim.exports = requireUseSyncExternalStoreShim_production();
+  }
+  return shim.exports;
+}
+/**
+ * @license React
+ * use-sync-external-store-shim/with-selector.production.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var hasRequiredWithSelector_production;
+function requireWithSelector_production() {
+  if (hasRequiredWithSelector_production) return withSelector_production;
+  hasRequiredWithSelector_production = 1;
+  var React2 = requireReact(), shim2 = requireShim();
+  function is2(x3, y3) {
+    return x3 === y3 && (0 !== x3 || 1 / x3 === 1 / y3) || x3 !== x3 && y3 !== y3;
+  }
+  var objectIs2 = "function" === typeof Object.is ? Object.is : is2, useSyncExternalStore2 = shim2.useSyncExternalStore, useRef = React2.useRef, useEffect = React2.useEffect, useMemo = React2.useMemo, useDebugValue2 = React2.useDebugValue;
+  withSelector_production.useSyncExternalStoreWithSelector = function(subscribe, getSnapshot, getServerSnapshot, selector, isEqual2) {
+    var instRef = useRef(null);
+    if (null === instRef.current) {
+      var inst = { hasValue: false, value: null };
+      instRef.current = inst;
+    } else inst = instRef.current;
+    instRef = useMemo(
+      function() {
+        function memoizedSelector(nextSnapshot) {
+          if (!hasMemo) {
+            hasMemo = true;
+            memoizedSnapshot = nextSnapshot;
+            nextSnapshot = selector(nextSnapshot);
+            if (void 0 !== isEqual2 && inst.hasValue) {
+              var currentSelection = inst.value;
+              if (isEqual2(currentSelection, nextSnapshot))
+                return memoizedSelection = currentSelection;
+            }
+            return memoizedSelection = nextSnapshot;
+          }
+          currentSelection = memoizedSelection;
+          if (objectIs2(memoizedSnapshot, nextSnapshot)) return currentSelection;
+          var nextSelection = selector(nextSnapshot);
+          if (void 0 !== isEqual2 && isEqual2(currentSelection, nextSelection))
+            return memoizedSnapshot = nextSnapshot, currentSelection;
+          memoizedSnapshot = nextSnapshot;
+          return memoizedSelection = nextSelection;
+        }
+        var hasMemo = false, memoizedSnapshot, memoizedSelection, maybeGetServerSnapshot = void 0 === getServerSnapshot ? null : getServerSnapshot;
+        return [
+          function() {
+            return memoizedSelector(getSnapshot());
+          },
+          null === maybeGetServerSnapshot ? void 0 : function() {
+            return memoizedSelector(maybeGetServerSnapshot());
+          }
+        ];
+      },
+      [getSnapshot, getServerSnapshot, selector, isEqual2]
+    );
+    var value = useSyncExternalStore2(subscribe, instRef[0], instRef[1]);
+    useEffect(
+      function() {
+        inst.hasValue = true;
+        inst.value = value;
+      },
+      [value]
+    );
+    useDebugValue2(value);
+    return value;
+  };
+  return withSelector_production;
+}
+var hasRequiredWithSelector;
+function requireWithSelector() {
+  if (hasRequiredWithSelector) return withSelector.exports;
+  hasRequiredWithSelector = 1;
+  {
+    withSelector.exports = requireWithSelector_production();
+  }
+  return withSelector.exports;
+}
+var withSelectorExports = requireWithSelector();
+const useSyncExternalStoreExports = /* @__PURE__ */ getDefaultExportFromCjs(withSelectorExports);
+const __vite_import_meta_env__$1 = {};
+const { useDebugValue } = React$1;
+const { useSyncExternalStoreWithSelector } = useSyncExternalStoreExports;
+let didWarnAboutEqualityFn = false;
+const identity$1 = (arg) => arg;
+function useStore(api2, selector = identity$1, equalityFn) {
+  if ((__vite_import_meta_env__$1 ? "production" : void 0) !== "production" && equalityFn && !didWarnAboutEqualityFn) {
+    console.warn(
+      "[DEPRECATED] Use `createWithEqualityFn` instead of `create` or use `useStoreWithEqualityFn` instead of `useStore`. They can be imported from 'zustand/traditional'. https://github.com/pmndrs/zustand/discussions/1937"
+    );
+    didWarnAboutEqualityFn = true;
+  }
+  const slice2 = useSyncExternalStoreWithSelector(
+    api2.subscribe,
+    api2.getState,
+    api2.getServerState || api2.getInitialState,
+    selector,
+    equalityFn
+  );
+  useDebugValue(slice2);
+  return slice2;
+}
+const createImpl = (createState2) => {
+  if ((__vite_import_meta_env__$1 ? "production" : void 0) !== "production" && typeof createState2 !== "function") {
+    console.warn(
+      "[DEPRECATED] Passing a vanilla store will be unsupported in a future version. Instead use `import { useStore } from 'zustand'`."
+    );
+  }
+  const api2 = typeof createState2 === "function" ? createStore(createState2) : createState2;
+  const useBoundStore = (selector, equalityFn) => useStore(api2, selector, equalityFn);
+  Object.assign(useBoundStore, api2);
+  return useBoundStore;
+};
+const create = (createState2) => createState2 ? createImpl(createState2) : createImpl;
+const __vite_import_meta_env__ = {};
+function createJSONStorage(getStorage, options2) {
+  let storage;
+  try {
+    storage = getStorage();
+  } catch (_e2) {
+    return;
+  }
+  const persistStorage = {
+    getItem: (name2) => {
+      var _a2;
+      const parse3 = (str2) => {
+        if (str2 === null) {
+          return null;
+        }
+        return JSON.parse(str2, void 0);
+      };
+      const str = (_a2 = storage.getItem(name2)) != null ? _a2 : null;
+      if (str instanceof Promise) {
+        return str.then(parse3);
+      }
+      return parse3(str);
+    },
+    setItem: (name2, newValue) => storage.setItem(
+      name2,
+      JSON.stringify(newValue, void 0)
+    ),
+    removeItem: (name2) => storage.removeItem(name2)
+  };
+  return persistStorage;
+}
+const toThenable = (fn3) => (input) => {
+  try {
+    const result = fn3(input);
+    if (result instanceof Promise) {
+      return result;
+    }
+    return {
+      then(onFulfilled) {
+        return toThenable(onFulfilled)(result);
+      },
+      catch(_onRejected) {
+        return this;
+      }
+    };
+  } catch (e2) {
+    return {
+      then(_onFulfilled) {
+        return this;
+      },
+      catch(onRejected) {
+        return toThenable(onRejected)(e2);
+      }
+    };
+  }
+};
+const oldImpl = (config2, baseOptions) => (set4, get7, api2) => {
+  let options2 = {
+    getStorage: () => localStorage,
+    serialize: JSON.stringify,
+    deserialize: JSON.parse,
+    partialize: (state) => state,
+    version: 0,
+    merge: (persistedState, currentState) => ({
+      ...currentState,
+      ...persistedState
+    }),
+    ...baseOptions
+  };
+  let hasHydrated = false;
+  const hydrationListeners = /* @__PURE__ */ new Set();
+  const finishHydrationListeners = /* @__PURE__ */ new Set();
+  let storage;
+  try {
+    storage = options2.getStorage();
+  } catch (_e2) {
+  }
+  if (!storage) {
+    return config2(
+      (...args) => {
+        console.warn(
+          `[zustand persist middleware] Unable to update item '${options2.name}', the given storage is currently unavailable.`
+        );
+        set4(...args);
+      },
+      get7,
+      api2
+    );
+  }
+  const thenableSerialize = toThenable(options2.serialize);
+  const setItem = () => {
+    const state = options2.partialize({ ...get7() });
+    let errorInSync;
+    const thenable = thenableSerialize({ state, version: options2.version }).then(
+      (serializedValue) => storage.setItem(options2.name, serializedValue)
+    ).catch((e2) => {
+      errorInSync = e2;
+    });
+    if (errorInSync) {
+      throw errorInSync;
+    }
+    return thenable;
+  };
+  const savedSetState = api2.setState;
+  api2.setState = (state, replace2) => {
+    savedSetState(state, replace2);
+    void setItem();
+  };
+  const configResult = config2(
+    (...args) => {
+      set4(...args);
+      void setItem();
+    },
+    get7,
+    api2
+  );
+  let stateFromStorage;
+  const hydrate = () => {
+    var _a2;
+    if (!storage) return;
+    hasHydrated = false;
+    hydrationListeners.forEach((cb2) => cb2(get7()));
+    const postRehydrationCallback = ((_a2 = options2.onRehydrateStorage) == null ? void 0 : _a2.call(options2, get7())) || void 0;
+    return toThenable(storage.getItem.bind(storage))(options2.name).then((storageValue) => {
+      if (storageValue) {
+        return options2.deserialize(storageValue);
+      }
+    }).then((deserializedStorageValue) => {
+      if (deserializedStorageValue) {
+        if (typeof deserializedStorageValue.version === "number" && deserializedStorageValue.version !== options2.version) {
+          if (options2.migrate) {
+            return options2.migrate(
+              deserializedStorageValue.state,
+              deserializedStorageValue.version
+            );
+          }
+          console.error(
+            `State loaded from storage couldn't be migrated since no migrate function was provided`
+          );
+        } else {
+          return deserializedStorageValue.state;
+        }
+      }
+    }).then((migratedState) => {
+      var _a22;
+      stateFromStorage = options2.merge(
+        migratedState,
+        (_a22 = get7()) != null ? _a22 : configResult
+      );
+      set4(stateFromStorage, true);
+      return setItem();
+    }).then(() => {
+      postRehydrationCallback == null ? void 0 : postRehydrationCallback(stateFromStorage, void 0);
+      hasHydrated = true;
+      finishHydrationListeners.forEach((cb2) => cb2(stateFromStorage));
+    }).catch((e2) => {
+      postRehydrationCallback == null ? void 0 : postRehydrationCallback(void 0, e2);
+    });
+  };
+  api2.persist = {
+    setOptions: (newOptions) => {
+      options2 = {
+        ...options2,
+        ...newOptions
+      };
+      if (newOptions.getStorage) {
+        storage = newOptions.getStorage();
+      }
+    },
+    clearStorage: () => {
+      storage == null ? void 0 : storage.removeItem(options2.name);
+    },
+    getOptions: () => options2,
+    rehydrate: () => hydrate(),
+    hasHydrated: () => hasHydrated,
+    onHydrate: (cb2) => {
+      hydrationListeners.add(cb2);
+      return () => {
+        hydrationListeners.delete(cb2);
+      };
+    },
+    onFinishHydration: (cb2) => {
+      finishHydrationListeners.add(cb2);
+      return () => {
+        finishHydrationListeners.delete(cb2);
+      };
+    }
+  };
+  hydrate();
+  return stateFromStorage || configResult;
+};
+const newImpl = (config2, baseOptions) => (set4, get7, api2) => {
+  let options2 = {
+    storage: createJSONStorage(() => localStorage),
+    partialize: (state) => state,
+    version: 0,
+    merge: (persistedState, currentState) => ({
+      ...currentState,
+      ...persistedState
+    }),
+    ...baseOptions
+  };
+  let hasHydrated = false;
+  const hydrationListeners = /* @__PURE__ */ new Set();
+  const finishHydrationListeners = /* @__PURE__ */ new Set();
+  let storage = options2.storage;
+  if (!storage) {
+    return config2(
+      (...args) => {
+        console.warn(
+          `[zustand persist middleware] Unable to update item '${options2.name}', the given storage is currently unavailable.`
+        );
+        set4(...args);
+      },
+      get7,
+      api2
+    );
+  }
+  const setItem = () => {
+    const state = options2.partialize({ ...get7() });
+    return storage.setItem(options2.name, {
+      state,
+      version: options2.version
+    });
+  };
+  const savedSetState = api2.setState;
+  api2.setState = (state, replace2) => {
+    savedSetState(state, replace2);
+    void setItem();
+  };
+  const configResult = config2(
+    (...args) => {
+      set4(...args);
+      void setItem();
+    },
+    get7,
+    api2
+  );
+  api2.getInitialState = () => configResult;
+  let stateFromStorage;
+  const hydrate = () => {
+    var _a2, _b2;
+    if (!storage) return;
+    hasHydrated = false;
+    hydrationListeners.forEach((cb2) => {
+      var _a22;
+      return cb2((_a22 = get7()) != null ? _a22 : configResult);
+    });
+    const postRehydrationCallback = ((_b2 = options2.onRehydrateStorage) == null ? void 0 : _b2.call(options2, (_a2 = get7()) != null ? _a2 : configResult)) || void 0;
+    return toThenable(storage.getItem.bind(storage))(options2.name).then((deserializedStorageValue) => {
+      if (deserializedStorageValue) {
+        if (typeof deserializedStorageValue.version === "number" && deserializedStorageValue.version !== options2.version) {
+          if (options2.migrate) {
+            return [
+              true,
+              options2.migrate(
+                deserializedStorageValue.state,
+                deserializedStorageValue.version
+              )
+            ];
+          }
+          console.error(
+            `State loaded from storage couldn't be migrated since no migrate function was provided`
+          );
+        } else {
+          return [false, deserializedStorageValue.state];
+        }
+      }
+      return [false, void 0];
+    }).then((migrationResult) => {
+      var _a22;
+      const [migrated, migratedState] = migrationResult;
+      stateFromStorage = options2.merge(
+        migratedState,
+        (_a22 = get7()) != null ? _a22 : configResult
+      );
+      set4(stateFromStorage, true);
+      if (migrated) {
+        return setItem();
+      }
+    }).then(() => {
+      postRehydrationCallback == null ? void 0 : postRehydrationCallback(stateFromStorage, void 0);
+      stateFromStorage = get7();
+      hasHydrated = true;
+      finishHydrationListeners.forEach((cb2) => cb2(stateFromStorage));
+    }).catch((e2) => {
+      postRehydrationCallback == null ? void 0 : postRehydrationCallback(void 0, e2);
+    });
+  };
+  api2.persist = {
+    setOptions: (newOptions) => {
+      options2 = {
+        ...options2,
+        ...newOptions
+      };
+      if (newOptions.storage) {
+        storage = newOptions.storage;
+      }
+    },
+    clearStorage: () => {
+      storage == null ? void 0 : storage.removeItem(options2.name);
+    },
+    getOptions: () => options2,
+    rehydrate: () => hydrate(),
+    hasHydrated: () => hasHydrated,
+    onHydrate: (cb2) => {
+      hydrationListeners.add(cb2);
+      return () => {
+        hydrationListeners.delete(cb2);
+      };
+    },
+    onFinishHydration: (cb2) => {
+      finishHydrationListeners.add(cb2);
+      return () => {
+        finishHydrationListeners.delete(cb2);
+      };
+    }
+  };
+  if (!options2.skipHydration) {
+    hydrate();
+  }
+  return stateFromStorage || configResult;
+};
+const persistImpl = (config2, baseOptions) => {
+  if ("getStorage" in baseOptions || "serialize" in baseOptions || "deserialize" in baseOptions) {
+    if ((__vite_import_meta_env__ ? "production" : void 0) !== "production") {
+      console.warn(
+        "[DEPRECATED] `getStorage`, `serialize` and `deserialize` options are deprecated. Use `storage` option instead."
+      );
+    }
+    return oldImpl(config2, baseOptions);
+  }
+  return newImpl(config2, baseOptions);
+};
+const persist = persistImpl;
 const consoleSink = getConsoleSink();
 const defaultLogLevel = "warning";
 const setupLogging = async ({ logLevel = defaultLogLevel, logCategoriesToShow = [], logCategoriesToHide = [] } = {}) => {
@@ -196699,7 +196773,6 @@ const setMaxSizeModifier = {
     const mainAxis = getMainAxisFromPlacement(basePlacement);
     let width2;
     let height3;
-    console.log("mainAxis", mainAxis);
     if (mainAxis === "x") {
       const availableSpaceSide = basePlacement;
       height3 = overflow[availableSpaceSide] * -1 + state.rects.popper.height + offsetDistance;
@@ -217375,6 +217448,39 @@ const SvgResolutionOutline = (props) => /* @__PURE__ */ reactExports.createEleme
   stroke: "currentColor",
   strokeWidth: "26.07px"
 } })));
+function useSceneStreamSelection({
+  playerRef
+}) {
+  const preferredStreamLabel = useTvConfig((state) => state.preferredStreamLabel);
+  const [availableStreams, setAvailableStreams] = reactExports.useState(playerRef.current ? getDisplayableVideoSources(playerRef.current) : []);
+  const [selectedStream, setSelectedStream] = reactExports.useState(playerRef.current ? getSelectedVideoSource(playerRef.current) : null);
+  reactExports.useEffect(() => {
+    const refreshSelection = () => {
+      const player2 = playerRef.current;
+      if (!player2) return;
+      setAvailableStreams(getDisplayableVideoSources(player2));
+      setSelectedStream(getSelectedVideoSource(player2));
+    };
+    const player = playerRef.current;
+    if (!player) return;
+    refreshSelection();
+    player.on("loadstart", refreshSelection);
+    return () => player.off("loadstart", refreshSelection);
+  }, [playerRef.current]);
+  const selectedIsPreferred = reactExports.useMemo(
+    () => selectedStream ? isPreferredStream(selectedStream, preferredStreamLabel) : false,
+    [selectedStream, preferredStreamLabel]
+  );
+  const preferredStream = reactExports.useMemo(() => {
+    return availableStreams.find((stream) => isPreferredStream(stream, preferredStreamLabel)) ?? null;
+  }, [availableStreams, preferredStreamLabel]);
+  return {
+    availableStreams,
+    selectedStream,
+    preferredStream,
+    selectedIsPreferred
+  };
+}
 const id$7 = "resolution";
 const buttonDefinition$6 = {
   id: id$7,
@@ -217393,31 +217499,41 @@ const buttonDefinition$6 = {
 function ResolutionActionButton({
   playerRef
 }) {
-  const { set: setTvConfig } = useTvConfig();
-  const [selection, setSelection] = reactExports.useState({ options: [], selected: null });
-  const refreshSelection = reactExports.useCallback(() => {
-    const player = playerRef.current;
-    if (!player || player.isDisposed()) return;
-    setSelection({
-      options: getSceneStreamOptions(player),
-      selected: getSelectedSceneStream(player)
-    });
-  }, [playerRef]);
+  const { preferredStreamLabel, set: setTvConfig } = useTvConfig();
+  const [currentlyChanging, setCurrentlyChanging] = React$1.useState(false);
+  const currentlyChangingAllowenceTimer = React$1.useRef(null);
+  const { selectedStream, availableStreams, preferredStream } = useSceneStreamSelection({
+    playerRef
+  });
   reactExports.useEffect(() => {
-    const player = playerRef.current;
-    if (!player) return;
-    refreshSelection();
-    player.on("loadstart", refreshSelection);
-    return () => player.off("loadstart", refreshSelection);
-  }, [playerRef.current, refreshSelection]);
-  function handleSelectStream(source2) {
-    const player = playerRef.current;
-    if (!player) return;
-    selectSceneStream(player, source2);
-    setTvConfig("preferredStreamLabel", isDirectStream(source2) ? void 0 : source2.label);
+    setCurrentlyChanging(false);
+  }, [selectedStream]);
+  reactExports.useEffect(() => {
+    if (currentlyChangingAllowenceTimer.current) {
+      clearTimeout(currentlyChangingAllowenceTimer.current);
+    }
+    currentlyChangingAllowenceTimer.current = setTimeout(() => {
+      setCurrentlyChanging(false);
+    }, 1e3);
+  }, [currentlyChanging]);
+  function handleStreamSelection(source2) {
+    setCurrentlyChanging(true);
+    if (isPreferredStream(source2, preferredStreamLabel)) {
+      if (!playerRef.current) return;
+      switchSceneStream(playerRef.current, source2);
+    } else {
+      setTvConfig("preferredStreamLabel", isDirectStream(source2) ? void 0 : source2.fullStashLabel);
+    }
   }
-  const selectedStream = selection.selected;
   const playingDirectStream = !selectedStream || isDirectStream(selectedStream);
+  const mediaItem = playerRef.current?.mediaItem;
+  const renderComments = () => {
+    if (currentlyChanging) return null;
+    if (!preferredStream) {
+      return /* @__PURE__ */ React$1.createElement("div", { className: "comment muted" }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faThumbtack }), /* @__PURE__ */ React$1.createElement("strong", null, preferredStreamLabel ?? DEFAULT_STREAM_LABEL));
+    }
+    return null;
+  };
   return /* @__PURE__ */ React$1.createElement(
     ActionButtonBase,
     {
@@ -217425,18 +217541,26 @@ function ResolutionActionButton({
       icon: buttonDefinition$6.icon,
       title: buttonDefinition$6.title,
       className: cx(buttonDefinition$6.id, "hide-on-ui-hide"),
-      sideInfo: selectedStream && !playingDirectStream ? getShortStreamLabel(selectedStream) : void 0,
       sidePanelClassName: "action-button-resolution",
-      sidePanel: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, groupSceneStreamsByResolution(selection.options).map((group2) => /* @__PURE__ */ React$1.createElement("div", { key: group2.id, className: "stream-group" }, /* @__PURE__ */ React$1.createElement("div", { className: "stream-group-label" }, group2.label), /* @__PURE__ */ React$1.createElement("div", { className: "stream-group-options" }, group2.sources.map((source2) => /* @__PURE__ */ React$1.createElement(
-        Button,
-        {
-          key: source2.src,
-          variant: "link",
-          className: cx("current", { active: source2 === selectedStream }),
-          onClick: () => handleSelectStream(source2)
-        },
-        getStreamItemLabel(source2)
-      ))))))
+      sidePanel: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, groupVideoSourcesByResolution(availableStreams).map((sources) => {
+        const firstSource = sources[0];
+        if (!firstSource) return null;
+        const { resolutionName, resolutionNumericalName } = firstSource;
+        const additionalResolutionName = resolutionNumericalName && resolutionNumericalName !== resolutionName ? resolutionNumericalName : void 0;
+        return /* @__PURE__ */ React$1.createElement("div", { key: firstSource.resolutionName, className: "stream-group" }, /* @__PURE__ */ React$1.createElement("div", { className: "stream-group-label" }, firstSource.resolutionName, " ", additionalResolutionName && /* @__PURE__ */ React$1.createElement("span", { className: "resolution-name-additional" }, additionalResolutionName)), /* @__PURE__ */ React$1.createElement("div", { className: "stream-group-options" }, sources.map((source2) => {
+          const formatTitle = isDirectStream(source2) && mediaItem ? `Direct ${getOriginalVideoDetails(mediaItem)?.fileExtension?.toLocaleUpperCase()}` : source2.format;
+          return /* @__PURE__ */ React$1.createElement(
+            Button,
+            {
+              key: source2.src,
+              variant: source2.fullStashLabel === selectedStream?.fullStashLabel ? "primary" : "link",
+              onClick: () => handleStreamSelection(source2)
+            },
+            isPreferredStream(source2, preferredStreamLabel) && /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faThumbtack }),
+            formatTitle
+          );
+        })));
+      }), renderComments())
     }
   );
 }
@@ -220698,6 +220822,24 @@ Modal.Footer = BootstrapModalFooter;
 Modal.Dialog = ModalDialog;
 Modal.TRANSITION_DURATION = 300;
 Modal.BACKDROP_TRANSITION_DURATION = 150;
+function useSyncPlayerWithPreferredStream({
+  playerRef,
+  enabled = true
+}) {
+  const preferredStreamLabel = useTvConfig((state) => state.preferredStreamLabel);
+  const enabledRef = reactExports.useRef(enabled);
+  reactExports.useEffect(() => {
+    enabledRef.current = enabled;
+  }, [enabled]);
+  reactExports.useEffect(() => {
+    if (typeof enabledRef.current === "function" ? !enabledRef.current() : !enabledRef.current) return;
+    const player = playerRef.current;
+    if (!player) return;
+    const targetStream = getBestMatchingVideoSource(preferredStreamLabel ?? DEFAULT_STREAM_LABEL, player);
+    if (!targetStream) return;
+    switchSceneStream(player, targetStream);
+  }, [preferredStreamLabel]);
+}
 videojs.registerPlugin("styledBigPlayButton", styledBigPlayButton);
 const noAnimateDurationThreshold = 30;
 const mountCount = /* @__PURE__ */ new Map();
@@ -221137,6 +221279,15 @@ const MediaSlide = (props) => {
   const setSceneInfoOpen = reactExports.useCallback((open) => setGlobalState("sceneInfoOpen", open), [setGlobalState]);
   const { tags: mediaItemTags, primaryTag: mediaItemPrimaryTag, setTags: setMediaItemTags } = useMediaItemTags(props.mediaItem);
   const [showTagEditor, setShowTagEditor] = reactExports.useState(false);
+  const { selectedStream } = useSceneStreamSelection({
+    playerRef: videojsPlayerRef
+  });
+  useSyncPlayerWithPreferredStream({
+    playerRef: videojsPlayerRef,
+    // Only apply stream preference to current and upcoming loaded slides or hasn't loaded yet so we keep buffered data
+    // on previous slides.
+    enabled: () => props.index >= props.currentIndex || videojsPlayerRef.current?.readyState() === 0
+  });
   reactExports.useEffect(() => {
     if (!isCurrentVideo) return;
     const handleKeyDown = (e2) => {
@@ -221341,7 +221492,7 @@ const MediaSlide = (props) => {
           }
         ),
         videoJsControlBarElm && reactDomExports.createPortal(
-          /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "center-controls" }, currentlyPlayingMarkers.length > 0 && /* @__PURE__ */ React$1.createElement("div", { className: "vjs-control currently-playing-marker" }, currentlyPlayingMarkersDisplayName)), /* @__PURE__ */ React$1.createElement("div", { className: "vjs-custom-control-spacer vjs-spacer" }, " "), /* @__PURE__ */ React$1.createElement("div", { className: "right-controls" }, gamepadConnectedAt && !gamepadConnectedAWhileAgo && /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faGamepad, className: "vjs-control gamepad-connected-indicator" }))),
+          /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("div", { className: "center-controls" }, currentlyPlayingMarkers.length > 0 && /* @__PURE__ */ React$1.createElement("div", { className: "vjs-control currently-playing-marker" }, currentlyPlayingMarkersDisplayName)), /* @__PURE__ */ React$1.createElement("div", { className: "vjs-custom-control-spacer vjs-spacer" }, " "), /* @__PURE__ */ React$1.createElement("div", { className: "right-controls" }, selectedStream && !isDirectStream(selectedStream) && /* @__PURE__ */ React$1.createElement("div", { className: "vjs-control current-stream-indicator" }, selectedStream.resolutionName !== ORIGINAL_RESOLUTION_LABEL && `${selectedStream.resolutionName} `, selectedStream.format), gamepadConnectedAt && !gamepadConnectedAWhileAgo && /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faGamepad, className: "vjs-control gamepad-connected-indicator" }))),
           videoJsControlBarElm
         ),
         videojsPlayerRef.current?.el() && reactDomExports.createPortal(
@@ -223138,6 +223289,7 @@ const VideoScroller = reactExports.memo(() => {
             changeItemHandler,
             removeMediaItem,
             isCurrentVideo: i3 === currentIndex,
+            currentIndex,
             index: i3,
             key: objectHash([mediaItem.id, scenePreviewOnly, markerPreviewOnly]),
             mediaItem,
@@ -239034,7 +239186,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setDisplayedModal("keyboard-shortcuts")
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.18.1"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.19.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -240265,4 +240417,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-nmNJIBkv.js.map
+//# sourceMappingURL=index-DWmY9NzG.js.map
