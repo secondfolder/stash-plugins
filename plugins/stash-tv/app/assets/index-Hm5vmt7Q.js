@@ -137804,9 +137804,7 @@ class GraphQLError extends Error {
    *
    * Enumerable, and appears in the result of JSON.stringify().
    */
-  /**
-   * An array of GraphQL AST Nodes corresponding to this error.
-   */
+  /** An array of GraphQL AST Nodes corresponding to this error. */
   /**
    * The source GraphQL document for the first location of this error.
    *
@@ -137817,13 +137815,89 @@ class GraphQLError extends Error {
    * An array of character offsets within the source GraphQL document
    * which correspond to this error.
    */
+  /** Original error that caused this GraphQLError, if one exists. */
+  /** Extension fields to add to the formatted error. */
   /**
-   * The original error thrown from a field resolver during execution.
+   * Creates a GraphQLError instance.
+   * @param message - Human-readable error message.
+   * @param options - Error metadata such as source locations, response path, original error, and extensions.
+   * This positional-arguments constructor overload is deprecated. Use the
+   * `GraphQLError(message, options)` overload instead.
+   * @example
+   * ```ts
+   * // Create an error from AST nodes and response metadata.
+   * import { parse } from 'graphql/language';
+   * import { GraphQLError } from 'graphql/error';
+   *
+   * const document = parse('{ greeting }');
+   * const fieldNode = document.definitions[0].selectionSet.selections[0];
+   * const error = new GraphQLError('Cannot query this field.', {
+   *   nodes: fieldNode,
+   *   path: ['greeting'],
+   *   extensions: { code: 'FORBIDDEN' },
+   * });
+   *
+   * error.message; // => 'Cannot query this field.'
+   * error.locations; // => [{ line: 1, column: 3 }]
+   * error.path; // => ['greeting']
+   * error.extensions; // => { code: 'FORBIDDEN' }
+   * ```
+   * @example
+   * ```ts
+   * // This variant derives locations from source positions and preserves the original error.
+   * import { Source } from 'graphql/language';
+   * import { GraphQLError } from 'graphql/error';
+   *
+   * const source = new Source('{ greeting }');
+   * const originalError = new Error('Database unavailable.');
+   * const error = new GraphQLError('Resolver failed.', {
+   *   source,
+   *   positions: [2],
+   *   path: ['greeting'],
+   *   originalError,
+   * });
+   *
+   * error.locations; // => [{ line: 1, column: 3 }]
+   * error.path; // => ['greeting']
+   * error.originalError; // => originalError
+   * ```
    */
   /**
-   * Extension fields to add to the formatted error.
-   */
-  /**
+   * Creates a GraphQLError instance using the legacy positional constructor.
+   * This deprecated overload will be removed in v17. Prefer the
+   * `GraphQLErrorOptions` object overload, which keeps optional error metadata
+   * in a single options bag.
+   * @param message - Human-readable error message.
+   * @param nodes - AST node or nodes associated with this error.
+   * @param source - Source document used to derive error locations.
+   * @param positions - Character offsets in the source document associated with
+   * this error.
+   * @param path - Response path where this error occurred during execution.
+   * @param originalError - Original error that caused this GraphQLError, if one
+   * exists.
+   * @param extensions - Extension fields to include in the formatted error.
+   * @example
+   * ```ts
+   * import { Source } from 'graphql/language';
+   * import { GraphQLError } from 'graphql/error';
+   *
+   * const source = new Source('{ greeting }');
+   * const originalError = new Error('Database unavailable.');
+   * const error = new GraphQLError(
+   *   'Resolver failed.',
+   *   undefined,
+   *   source,
+   *   [2],
+   *   ['greeting'],
+   *   originalError,
+   *   { code: 'INTERNAL' },
+   * );
+   *
+   * error.locations; // => [{ line: 1, column: 3 }]
+   * error.path; // => ['greeting']
+   * error.originalError; // => originalError
+   * error.extensions; // => { code: 'INTERNAL' }
+   * ```
    * @deprecated Please use the `GraphQLErrorOptions` constructor overload instead.
    */
   constructor(message, ...rawArgs) {
@@ -137883,9 +137957,29 @@ class GraphQLError extends Error {
       });
     }
   }
+  /**
+   * Returns the value used by `Object.prototype.toString`.
+   * @returns The built-in string tag for this object.
+   */
   get [Symbol.toStringTag]() {
     return "GraphQLError";
   }
+  /**
+   * Returns this error as a human-readable message with source locations.
+   * @returns The formatted error string.
+   * @example
+   * ```ts
+   * import { Source } from 'graphql/language';
+   * import { GraphQLError } from 'graphql/error';
+   *
+   * const error = new GraphQLError('Cannot query field "name".', {
+   *   source: new Source('{ name }'),
+   *   positions: [2],
+   * });
+   *
+   * error.toString(); // => 'Cannot query field "name".\n\nGraphQL request:1:3\n1 | { name }\n  |   ^'
+   * ```
+   */
   toString() {
     let output = this.message;
     if (this.nodes) {
@@ -137901,6 +137995,21 @@ class GraphQLError extends Error {
     }
     return output;
   }
+  /**
+   * Returns the JSON representation used when this object is serialized.
+   * @returns The JSON-serializable representation.
+   * @example
+   * ```ts
+   * import { GraphQLError } from 'graphql/error';
+   *
+   * const error = new GraphQLError('Resolver failed.', {
+   *   path: ['viewer', 'name'],
+   *   extensions: { code: 'INTERNAL' },
+   * });
+   *
+   * error.toJSON(); // => { message: 'Resolver failed.', path: ['viewer', 'name'], extensions: { code: 'INTERNAL' } }
+   * ```
+   */
   toJSON() {
     const formattedError = {
       message: this.message
@@ -137927,20 +138036,29 @@ function syntaxError(source2, position2, description2) {
   });
 }
 class Location {
+  /** The character offset at which this Node begins. */
+  /** The character offset at which this Node ends. */
+  /** The Token at which this Node begins. */
+  /** The Token at which this Node ends. */
+  /** The Source document the AST represents. */
   /**
-   * The character offset at which this Node begins.
-   */
-  /**
-   * The character offset at which this Node ends.
-   */
-  /**
-   * The Token at which this Node begins.
-   */
-  /**
-   * The Token at which this Node ends.
-   */
-  /**
-   * The Source document the AST represents.
+   * Creates a Location instance.
+   * @param startToken - The start token.
+   * @param endToken - The end token.
+   * @param source - Source document used to derive error locations.
+   * @example
+   * ```ts
+   * import { Location, Source, Token, TokenKind } from 'graphql/language';
+   *
+   * const source = new Source('{ hello }');
+   * const startToken = new Token(TokenKind.BRACE_L, 0, 1, 1, 1);
+   * const endToken = new Token(TokenKind.BRACE_R, 8, 9, 1, 9);
+   * const location = new Location(startToken, endToken, source);
+   *
+   * location.start; // => 0
+   * location.end; // => 9
+   * location.source.body; // => '{ hello }'
+   * ```
    */
   constructor(startToken, endToken, source2) {
     this.start = startToken.start;
@@ -137949,9 +138067,26 @@ class Location {
     this.endToken = endToken;
     this.source = source2;
   }
+  /**
+   * Returns the value used by `Object.prototype.toString`.
+   * @returns The built-in string tag for this object.
+   */
   get [Symbol.toStringTag]() {
     return "Location";
   }
+  /**
+   * Returns a JSON representation of this location.
+   * @returns The JSON-serializable representation.
+   * @example
+   * ```ts
+   * import { parse } from 'graphql/language';
+   *
+   * const document = parse('{ hello }');
+   * const location = document.loc?.toJSON();
+   *
+   * location; // => { start: 0, end: 9 }
+   * ```
+   */
   toJSON() {
     return {
       start: this.start,
@@ -137960,21 +138095,11 @@ class Location {
   }
 }
 class Token {
-  /**
-   * The kind of Token.
-   */
-  /**
-   * The character offset at which this Node begins.
-   */
-  /**
-   * The character offset at which this Node ends.
-   */
-  /**
-   * The 1-indexed line number on which this Token appears.
-   */
-  /**
-   * The 1-indexed column number at which this Token begins.
-   */
+  /** The kind of Token. */
+  /** The character offset at which this Node begins. */
+  /** The character offset at which this Node ends. */
+  /** The 1-indexed line number on which this Token appears. */
+  /** The 1-indexed column number at which this Token begins. */
   /**
    * For non-punctuation tokens, represents the interpreted value of the token.
    *
@@ -137986,6 +138111,26 @@ class Token {
    * including ignored tokens. <SOF> is always the first node and <EOF>
    * the last.
    */
+  /** Next token in the token stream, including ignored tokens. */
+  /**
+   * Creates a Token instance.
+   * @param kind - Token kind produced by lexical analysis.
+   * @param start - Character offset where this token begins.
+   * @param end - Character offset where this token ends.
+   * @param line - One-indexed line number where this token begins.
+   * @param column - One-indexed column number where this token begins.
+   * @param value - Interpreted value for non-punctuation tokens.
+   * @example
+   * ```ts
+   * import { Token, TokenKind } from 'graphql/language';
+   *
+   * const token = new Token(TokenKind.NAME, 2, 7, 1, 3, 'hello');
+   *
+   * token.kind; // => TokenKind.NAME
+   * token.value; // => 'hello'
+   * token.toJSON(); // => { kind: 'Name', value: 'hello', line: 1, column: 3 }
+   * ```
+   */
   constructor(kind, start3, end2, line2, column2, value) {
     this.kind = kind;
     this.start = start3;
@@ -137996,9 +138141,26 @@ class Token {
     this.prev = null;
     this.next = null;
   }
+  /**
+   * Returns the value used by `Object.prototype.toString`.
+   * @returns The built-in string tag for this object.
+   */
   get [Symbol.toStringTag]() {
     return "Token";
   }
+  /**
+   * Returns a JSON representation of this token.
+   * @returns The JSON-serializable representation.
+   * @example
+   * ```ts
+   * import { Lexer, Source } from 'graphql/language';
+   *
+   * const lexer = new Lexer(new Source('{ hello }'));
+   * const token = lexer.advance().toJSON();
+   *
+   * token; // => { kind: '{', value: undefined, line: 1, column: 1 }
+   * ```
+   */
   toJSON() {
     return {
       kind: this.kind,
@@ -138012,12 +138174,19 @@ const QueryDocumentKeys = {
   Name: [],
   Document: ["definitions"],
   OperationDefinition: [
+    "description",
     "name",
     "variableDefinitions",
     "directives",
     "selectionSet"
   ],
-  VariableDefinition: ["variable", "type", "defaultValue", "directives"],
+  VariableDefinition: [
+    "description",
+    "variable",
+    "type",
+    "defaultValue",
+    "directives"
+  ],
   Variable: ["name"],
   SelectionSet: ["selections"],
   Field: ["alias", "name", "arguments", "directives", "selectionSet"],
@@ -138025,6 +138194,7 @@ const QueryDocumentKeys = {
   FragmentSpread: ["name", "directives"],
   InlineFragment: ["typeCondition", "directives", "selectionSet"],
   FragmentDefinition: [
+    "description",
     "name",
     // Note: fragment variable definitions are deprecated and will removed in v17.0.0
     "variableDefinitions",
@@ -138074,14 +138244,26 @@ const QueryDocumentKeys = {
   EnumTypeDefinition: ["description", "name", "directives", "values"],
   EnumValueDefinition: ["description", "name", "directives"],
   InputObjectTypeDefinition: ["description", "name", "directives", "fields"],
-  DirectiveDefinition: ["description", "name", "arguments", "locations"],
+  DirectiveDefinition: [
+    "description",
+    "name",
+    "arguments",
+    "directives",
+    "locations"
+  ],
   SchemaExtension: ["directives", "operationTypes"],
+  DirectiveExtension: ["name", "directives"],
   ScalarTypeExtension: ["name", "directives"],
   ObjectTypeExtension: ["name", "interfaces", "directives", "fields"],
   InterfaceTypeExtension: ["name", "interfaces", "directives", "fields"],
   UnionTypeExtension: ["name", "directives", "types"],
   EnumTypeExtension: ["name", "directives", "values"],
-  InputObjectTypeExtension: ["name", "directives", "fields"]
+  InputObjectTypeExtension: ["name", "directives", "fields"],
+  TypeCoordinate: ["name"],
+  MemberCoordinate: ["name", "memberName"],
+  ArgumentCoordinate: ["name", "fieldName", "argumentName"],
+  DirectiveCoordinate: ["name"],
+  DirectiveArgumentCoordinate: ["name", "argumentName"]
 };
 const kindValues = new Set(Object.keys(QueryDocumentKeys));
 function isNode$1(maybeNode) {
@@ -138115,6 +138297,7 @@ var DirectiveLocation;
   DirectiveLocation2["ENUM_VALUE"] = "ENUM_VALUE";
   DirectiveLocation2["INPUT_OBJECT"] = "INPUT_OBJECT";
   DirectiveLocation2["INPUT_FIELD_DEFINITION"] = "INPUT_FIELD_DEFINITION";
+  DirectiveLocation2["DIRECTIVE_DEFINITION"] = "DIRECTIVE_DEFINITION";
 })(DirectiveLocation || (DirectiveLocation = {}));
 var Kind;
 (function(Kind2) {
@@ -138155,12 +138338,18 @@ var Kind;
   Kind2["INPUT_OBJECT_TYPE_DEFINITION"] = "InputObjectTypeDefinition";
   Kind2["DIRECTIVE_DEFINITION"] = "DirectiveDefinition";
   Kind2["SCHEMA_EXTENSION"] = "SchemaExtension";
+  Kind2["DIRECTIVE_EXTENSION"] = "DirectiveExtension";
   Kind2["SCALAR_TYPE_EXTENSION"] = "ScalarTypeExtension";
   Kind2["OBJECT_TYPE_EXTENSION"] = "ObjectTypeExtension";
   Kind2["INTERFACE_TYPE_EXTENSION"] = "InterfaceTypeExtension";
   Kind2["UNION_TYPE_EXTENSION"] = "UnionTypeExtension";
   Kind2["ENUM_TYPE_EXTENSION"] = "EnumTypeExtension";
   Kind2["INPUT_OBJECT_TYPE_EXTENSION"] = "InputObjectTypeExtension";
+  Kind2["TYPE_COORDINATE"] = "TypeCoordinate";
+  Kind2["MEMBER_COORDINATE"] = "MemberCoordinate";
+  Kind2["ARGUMENT_COORDINATE"] = "ArgumentCoordinate";
+  Kind2["DIRECTIVE_COORDINATE"] = "DirectiveCoordinate";
+  Kind2["DIRECTIVE_ARGUMENT_COORDINATE"] = "DirectiveArgumentCoordinate";
 })(Kind || (Kind = {}));
 function isWhiteSpace(code) {
   return code === 9 || code === 32;
@@ -138241,6 +138430,7 @@ var TokenKind;
   TokenKind2["AMP"] = "&";
   TokenKind2["PAREN_L"] = "(";
   TokenKind2["PAREN_R"] = ")";
+  TokenKind2["DOT"] = ".";
   TokenKind2["SPREAD"] = "...";
   TokenKind2["COLON"] = ":";
   TokenKind2["EQUALS"] = "=";
@@ -138258,17 +138448,25 @@ var TokenKind;
   TokenKind2["COMMENT"] = "Comment";
 })(TokenKind || (TokenKind = {}));
 class Lexer {
+  /** Source document used to derive error locations. */
+  /** Most recent non-ignored token returned by the lexer. */
+  /** Current non-ignored token at the lexer cursor. */
+  /** The (1-indexed) line containing the current token. */
+  /** Character offset where the current line starts. */
   /**
-   * The previously focused non-ignored token.
-   */
-  /**
-   * The currently focused non-ignored token.
-   */
-  /**
-   * The (1-indexed) line containing the current token.
-   */
-  /**
-   * The character offset at which the current line begins.
+   * Creates a Lexer instance.
+   * @param source - Source document used to derive error locations.
+   * @example
+   * ```ts
+   * import { Lexer, Source, TokenKind } from 'graphql/language';
+   *
+   * const lexer = new Lexer(new Source('{ hello }'));
+   *
+   * lexer.token.kind; // => TokenKind.SOF
+   * lexer.advance().kind; // => TokenKind.BRACE_L
+   * lexer.advance().value; // => 'hello'
+   * lexer.advance().kind; // => TokenKind.BRACE_R
+   * ```
    */
   constructor(source2) {
     const startOfFileToken = new Token(TokenKind.SOF, 0, 0, 0, 0);
@@ -138278,11 +138476,26 @@ class Lexer {
     this.line = 1;
     this.lineStart = 0;
   }
+  /**
+   * Returns the value used by `Object.prototype.toString`.
+   * @returns The built-in string tag for this object.
+   */
   get [Symbol.toStringTag]() {
     return "Lexer";
   }
   /**
    * Advances the token stream to the next non-ignored token.
+   * @returns The next non-ignored token.
+   * @example
+   * ```ts
+   * import { Lexer, Source } from 'graphql/language';
+   *
+   * const lexer = new Lexer(new Source('{ hello }'));
+   * const token = lexer.advance();
+   *
+   * token.kind; // => '{'
+   * lexer.token; // => token
+   * ```
    */
   advance() {
     this.lastToken = this.token;
@@ -138292,6 +138505,17 @@ class Lexer {
   /**
    * Looks ahead and returns the next non-ignored token, but does not change
    * the state of Lexer.
+   * @returns The next non-ignored token without advancing the lexer.
+   * @example
+   * ```ts
+   * import { Lexer, Source } from 'graphql/language';
+   *
+   * const lexer = new Lexer(new Source('{ hello }'));
+   * const token = lexer.lookahead();
+   *
+   * token.kind; // => '{'
+   * lexer.token.kind; // => '<SOF>'
+   * ```
    */
   lookahead() {
     let token2 = this.token;
@@ -138311,7 +138535,7 @@ class Lexer {
   }
 }
 function isPunctuatorTokenKind(kind) {
-  return kind === TokenKind.BANG || kind === TokenKind.DOLLAR || kind === TokenKind.AMP || kind === TokenKind.PAREN_L || kind === TokenKind.PAREN_R || kind === TokenKind.SPREAD || kind === TokenKind.COLON || kind === TokenKind.EQUALS || kind === TokenKind.AT || kind === TokenKind.BRACKET_L || kind === TokenKind.BRACKET_R || kind === TokenKind.BRACE_L || kind === TokenKind.PIPE || kind === TokenKind.BRACE_R;
+  return kind === TokenKind.BANG || kind === TokenKind.DOLLAR || kind === TokenKind.AMP || kind === TokenKind.PAREN_L || kind === TokenKind.PAREN_R || kind === TokenKind.DOT || kind === TokenKind.SPREAD || kind === TokenKind.COLON || kind === TokenKind.EQUALS || kind === TokenKind.AT || kind === TokenKind.BRACKET_L || kind === TokenKind.BRACKET_R || kind === TokenKind.BRACE_L || kind === TokenKind.PIPE || kind === TokenKind.BRACE_R;
 }
 function isUnicodeScalarValue(code) {
   return code >= 0 && code <= 55295 || code >= 57344 && code <= 1114111;
@@ -138906,6 +139130,29 @@ spurious results.`);
   }
 );
 class Source {
+  /** The GraphQL source text. */
+  /** Name used in diagnostics for this source, such as a file path or request name. */
+  /** One-indexed line and column where this source begins. */
+  /**
+   * Creates a Source instance.
+   * @param body - The GraphQL source text.
+   * @param name - Name used in diagnostics for this source.
+   * @param locationOffset - One-indexed line and column where this source begins.
+   * @example
+   * ```ts
+   * import { Source } from 'graphql/language';
+   *
+   * const source = new Source(
+   *   'type Query { greeting: String }',
+   *   'schema.graphql',
+   *   { line: 10, column: 1 },
+   * );
+   *
+   * source.body; // => 'type Query { greeting: String }'
+   * source.name; // => 'schema.graphql'
+   * source.locationOffset; // => { line: 10, column: 1 }
+   * ```
+   */
   constructor(body, name2 = "GraphQL request", locationOffset = {
     line: 1,
     column: 1
@@ -138923,6 +139170,10 @@ class Source {
       "column in locationOffset is 1-indexed and must be positive."
     );
   }
+  /**
+   * Returns the value used by `Object.prototype.toString`.
+   * @returns The built-in string tag for this object.
+   */
   get [Symbol.toStringTag]() {
     return "Source";
   }
@@ -138941,9 +139192,14 @@ function parse$6(source2, options2) {
 }
 let Parser$2 = class Parser2 {
   constructor(source2, options2 = {}) {
-    const sourceObj = isSource(source2) ? source2 : new Source(source2);
-    this._lexer = new Lexer(sourceObj);
-    this._options = options2;
+    const { lexer, ..._options } = options2;
+    if (lexer) {
+      this._lexer = lexer;
+    } else {
+      const sourceObj = isSource(source2) ? source2 : new Source(source2);
+      this._lexer = new Lexer(sourceObj);
+    }
+    this._options = _options;
     this._tokenCounter = 0;
   }
   get tokenCount() {
@@ -138951,6 +139207,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * Converts a name lex token into a name parse node.
+   *
+   * @internal
    */
   parseName() {
     const token2 = this.expectToken(TokenKind.NAME);
@@ -138962,6 +139220,8 @@ let Parser$2 = class Parser2 {
   // Implements the parsing rules in the Document section.
   /**
    * Document : Definition+
+   *
+   * @internal
    */
   parseDocument() {
     return this.node(this._lexer.token, {
@@ -138995,6 +139255,8 @@ let Parser$2 = class Parser2 {
    *   - UnionTypeDefinition
    *   - EnumTypeDefinition
    *   - InputObjectTypeDefinition
+   *
+   * @internal
    */
   parseDefinition() {
     if (this.peek(TokenKind.BRACE_L)) {
@@ -139002,6 +139264,13 @@ let Parser$2 = class Parser2 {
     }
     const hasDescription = this.peekDescription();
     const keywordToken = hasDescription ? this._lexer.lookahead() : this._lexer.token;
+    if (hasDescription && keywordToken.kind === TokenKind.BRACE_L) {
+      throw syntaxError(
+        this._lexer.source,
+        this._lexer.token.start,
+        "Unexpected description, descriptions are not supported on shorthand queries."
+      );
+    }
     if (keywordToken.kind === TokenKind.NAME) {
       switch (keywordToken.value) {
         case "schema":
@@ -139021,13 +139290,6 @@ let Parser$2 = class Parser2 {
         case "directive":
           return this.parseDirectiveDefinition();
       }
-      if (hasDescription) {
-        throw syntaxError(
-          this._lexer.source,
-          this._lexer.token.start,
-          "Unexpected description, descriptions are supported only on type definitions."
-        );
-      }
       switch (keywordToken.value) {
         case "query":
         case "mutation":
@@ -139035,6 +139297,15 @@ let Parser$2 = class Parser2 {
           return this.parseOperationDefinition();
         case "fragment":
           return this.parseFragmentDefinition();
+      }
+      if (hasDescription) {
+        throw syntaxError(
+          this._lexer.source,
+          this._lexer.token.start,
+          "Unexpected description, only GraphQL definitions support descriptions."
+        );
+      }
+      switch (keywordToken.value) {
         case "extend":
           return this.parseTypeSystemExtension();
       }
@@ -139046,6 +139317,8 @@ let Parser$2 = class Parser2 {
    * OperationDefinition :
    *  - SelectionSet
    *  - OperationType Name? VariableDefinitions? Directives? SelectionSet
+   *
+   * @internal
    */
   parseOperationDefinition() {
     const start3 = this._lexer.token;
@@ -139053,12 +139326,14 @@ let Parser$2 = class Parser2 {
       return this.node(start3, {
         kind: Kind.OPERATION_DEFINITION,
         operation: OperationTypeNode.QUERY,
+        description: void 0,
         name: void 0,
         variableDefinitions: [],
         directives: [],
         selectionSet: this.parseSelectionSet()
       });
     }
+    const description2 = this.parseDescription();
     const operation = this.parseOperationType();
     let name2;
     if (this.peek(TokenKind.NAME)) {
@@ -139067,6 +139342,7 @@ let Parser$2 = class Parser2 {
     return this.node(start3, {
       kind: Kind.OPERATION_DEFINITION,
       operation,
+      description: description2,
       name: name2,
       variableDefinitions: this.parseVariableDefinitions(),
       directives: this.parseDirectives(false),
@@ -139075,6 +139351,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * OperationType : one of query mutation subscription
+   *
+   * @internal
    */
   parseOperationType() {
     const operationToken = this.expectToken(TokenKind.NAME);
@@ -139090,6 +139368,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * VariableDefinitions : ( VariableDefinition+ )
+   *
+   * @internal
    */
   parseVariableDefinitions() {
     return this.optionalMany(
@@ -139100,10 +139380,13 @@ let Parser$2 = class Parser2 {
   }
   /**
    * VariableDefinition : Variable : Type DefaultValue? Directives[Const]?
+   *
+   * @internal
    */
   parseVariableDefinition() {
     return this.node(this._lexer.token, {
       kind: Kind.VARIABLE_DEFINITION,
+      description: this.parseDescription(),
       variable: this.parseVariable(),
       type: (this.expectToken(TokenKind.COLON), this.parseTypeReference()),
       defaultValue: this.expectOptionalToken(TokenKind.EQUALS) ? this.parseConstValueLiteral() : void 0,
@@ -139112,6 +139395,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * Variable : $ Name
+   *
+   * @internal
    */
   parseVariable() {
     const start3 = this._lexer.token;
@@ -139125,6 +139410,8 @@ let Parser$2 = class Parser2 {
    * ```
    * SelectionSet : { Selection+ }
    * ```
+   *
+   * @internal
    */
   parseSelectionSet() {
     return this.node(this._lexer.token, {
@@ -139141,6 +139428,8 @@ let Parser$2 = class Parser2 {
    *   - Field
    *   - FragmentSpread
    *   - InlineFragment
+   *
+   * @internal
    */
   parseSelection() {
     return this.peek(TokenKind.SPREAD) ? this.parseFragment() : this.parseField();
@@ -139149,6 +139438,8 @@ let Parser$2 = class Parser2 {
    * Field : Alias? Name Arguments? Directives? SelectionSet?
    *
    * Alias : Name :
+   *
+   * @internal
    */
   parseField() {
     const start3 = this._lexer.token;
@@ -139172,6 +139463,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * Arguments[Const] : ( Argument[?Const]+ )
+   *
+   * @internal
    */
   parseArguments(isConst) {
     const item = isConst ? this.parseConstArgument : this.parseArgument;
@@ -139179,6 +139472,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * Argument[Const] : Name : Value[?Const]
+   *
+   * @internal
    */
   parseArgument(isConst = false) {
     const start3 = this._lexer.token;
@@ -139200,6 +139495,8 @@ let Parser$2 = class Parser2 {
    * FragmentSpread : ... FragmentName Directives?
    *
    * InlineFragment : ... TypeCondition? Directives? SelectionSet
+   *
+   * @internal
    */
   parseFragment() {
     const start3 = this._lexer.token;
@@ -139224,13 +139521,17 @@ let Parser$2 = class Parser2 {
    *   - fragment FragmentName on TypeCondition Directives? SelectionSet
    *
    * TypeCondition : NamedType
+   *
+   * @internal
    */
   parseFragmentDefinition() {
     const start3 = this._lexer.token;
+    const description2 = this.parseDescription();
     this.expectKeyword("fragment");
     if (this._options.allowLegacyFragmentVariables === true) {
       return this.node(start3, {
         kind: Kind.FRAGMENT_DEFINITION,
+        description: description2,
         name: this.parseFragmentName(),
         variableDefinitions: this.parseVariableDefinitions(),
         typeCondition: (this.expectKeyword("on"), this.parseNamedType()),
@@ -139240,6 +139541,7 @@ let Parser$2 = class Parser2 {
     }
     return this.node(start3, {
       kind: Kind.FRAGMENT_DEFINITION,
+      description: description2,
       name: this.parseFragmentName(),
       typeCondition: (this.expectKeyword("on"), this.parseNamedType()),
       directives: this.parseDirectives(false),
@@ -139248,6 +139550,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * FragmentName : Name but not `on`
+   *
+   * @internal
    */
   parseFragmentName() {
     if (this._lexer.token.value === "on") {
@@ -139273,6 +139577,8 @@ let Parser$2 = class Parser2 {
    * NullValue : `null`
    *
    * EnumValue : Name but not `true`, `false` or `null`
+   *
+   * @internal
    */
   parseValueLiteral(isConst) {
     const token2 = this._lexer.token;
@@ -139354,6 +139660,8 @@ let Parser$2 = class Parser2 {
    * ListValue[Const] :
    *   - [ ]
    *   - [ Value[?Const]+ ]
+   *
+   * @internal
    */
   parseList(isConst) {
     const item = () => this.parseValueLiteral(isConst);
@@ -139368,6 +139676,8 @@ let Parser$2 = class Parser2 {
    *   - { }
    *   - { ObjectField[?Const]+ }
    * ```
+   *
+   * @internal
    */
   parseObject(isConst) {
     const item = () => this.parseObjectField(isConst);
@@ -139378,6 +139688,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * ObjectField[Const] : Name : Value[?Const]
+   *
+   * @internal
    */
   parseObjectField(isConst) {
     const start3 = this._lexer.token;
@@ -139392,6 +139704,8 @@ let Parser$2 = class Parser2 {
   // Implements the parsing rules in the Directives section.
   /**
    * Directives[Const] : Directive[?Const]+
+   *
+   * @internal
    */
   parseDirectives(isConst) {
     const directives = [];
@@ -139407,6 +139721,8 @@ let Parser$2 = class Parser2 {
    * ```
    * Directive[Const] : @ Name Arguments[?Const]?
    * ```
+   *
+   * @internal
    */
   parseDirective(isConst) {
     const start3 = this._lexer.token;
@@ -139423,6 +139739,8 @@ let Parser$2 = class Parser2 {
    *   - NamedType
    *   - ListType
    *   - NonNullType
+   *
+   * @internal
    */
   parseTypeReference() {
     const start3 = this._lexer.token;
@@ -139447,6 +139765,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * NamedType : Name
+   *
+   * @internal
    */
   parseNamedType() {
     return this.node(this._lexer.token, {
@@ -139460,6 +139780,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * Description : StringValue
+   *
+   * @internal
    */
   parseDescription() {
     if (this.peekDescription()) {
@@ -139470,6 +139792,8 @@ let Parser$2 = class Parser2 {
    * ```
    * SchemaDefinition : Description? schema Directives[Const]? { OperationTypeDefinition+ }
    * ```
+   *
+   * @internal
    */
   parseSchemaDefinition() {
     const start3 = this._lexer.token;
@@ -139490,6 +139814,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * OperationTypeDefinition : OperationType : NamedType
+   *
+   * @internal
    */
   parseOperationTypeDefinition() {
     const start3 = this._lexer.token;
@@ -139504,6 +139830,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * ScalarTypeDefinition : Description? scalar Name Directives[Const]?
+   *
+   * @internal
    */
   parseScalarTypeDefinition() {
     const start3 = this._lexer.token;
@@ -139522,6 +139850,8 @@ let Parser$2 = class Parser2 {
    * ObjectTypeDefinition :
    *   Description?
    *   type Name ImplementsInterfaces? Directives[Const]? FieldsDefinition?
+   *
+   * @internal
    */
   parseObjectTypeDefinition() {
     const start3 = this._lexer.token;
@@ -139544,6 +139874,8 @@ let Parser$2 = class Parser2 {
    * ImplementsInterfaces :
    *   - implements `&`? NamedType
    *   - ImplementsInterfaces & NamedType
+   *
+   * @internal
    */
   parseImplementsInterfaces() {
     return this.expectOptionalKeyword("implements") ? this.delimitedMany(TokenKind.AMP, this.parseNamedType) : [];
@@ -139552,6 +139884,8 @@ let Parser$2 = class Parser2 {
    * ```
    * FieldsDefinition : { FieldDefinition+ }
    * ```
+   *
+   * @internal
    */
   parseFieldsDefinition() {
     return this.optionalMany(
@@ -139563,6 +139897,8 @@ let Parser$2 = class Parser2 {
   /**
    * FieldDefinition :
    *   - Description? Name ArgumentsDefinition? : Type Directives[Const]?
+   *
+   * @internal
    */
   parseFieldDefinition() {
     const start3 = this._lexer.token;
@@ -139583,6 +139919,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * ArgumentsDefinition : ( InputValueDefinition+ )
+   *
+   * @internal
    */
   parseArgumentDefs() {
     return this.optionalMany(
@@ -139594,6 +139932,8 @@ let Parser$2 = class Parser2 {
   /**
    * InputValueDefinition :
    *   - Description? Name : Type DefaultValue? Directives[Const]?
+   *
+   * @internal
    */
   parseInputValueDef() {
     const start3 = this._lexer.token;
@@ -139618,6 +139958,8 @@ let Parser$2 = class Parser2 {
   /**
    * InterfaceTypeDefinition :
    *   - Description? interface Name Directives[Const]? FieldsDefinition?
+   *
+   * @internal
    */
   parseInterfaceTypeDefinition() {
     const start3 = this._lexer.token;
@@ -139639,6 +139981,8 @@ let Parser$2 = class Parser2 {
   /**
    * UnionTypeDefinition :
    *   - Description? union Name Directives[Const]? UnionMemberTypes?
+   *
+   * @internal
    */
   parseUnionTypeDefinition() {
     const start3 = this._lexer.token;
@@ -139659,6 +140003,8 @@ let Parser$2 = class Parser2 {
    * UnionMemberTypes :
    *   - = `|`? NamedType
    *   - UnionMemberTypes | NamedType
+   *
+   * @internal
    */
   parseUnionMemberTypes() {
     return this.expectOptionalToken(TokenKind.EQUALS) ? this.delimitedMany(TokenKind.PIPE, this.parseNamedType) : [];
@@ -139666,6 +140012,8 @@ let Parser$2 = class Parser2 {
   /**
    * EnumTypeDefinition :
    *   - Description? enum Name Directives[Const]? EnumValuesDefinition?
+   *
+   * @internal
    */
   parseEnumTypeDefinition() {
     const start3 = this._lexer.token;
@@ -139686,6 +140034,8 @@ let Parser$2 = class Parser2 {
    * ```
    * EnumValuesDefinition : { EnumValueDefinition+ }
    * ```
+   *
+   * @internal
    */
   parseEnumValuesDefinition() {
     return this.optionalMany(
@@ -139696,6 +140046,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * EnumValueDefinition : Description? EnumValue Directives[Const]?
+   *
+   * @internal
    */
   parseEnumValueDefinition() {
     const start3 = this._lexer.token;
@@ -139711,6 +140063,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * EnumValue : Name but not `true`, `false` or `null`
+   *
+   * @internal
    */
   parseEnumValueName() {
     if (this._lexer.token.value === "true" || this._lexer.token.value === "false" || this._lexer.token.value === "null") {
@@ -139727,6 +140081,8 @@ let Parser$2 = class Parser2 {
   /**
    * InputObjectTypeDefinition :
    *   - Description? input Name Directives[Const]? InputFieldsDefinition?
+   *
+   * @internal
    */
   parseInputObjectTypeDefinition() {
     const start3 = this._lexer.token;
@@ -139747,6 +140103,8 @@ let Parser$2 = class Parser2 {
    * ```
    * InputFieldsDefinition : { InputValueDefinition+ }
    * ```
+   *
+   * @internal
    */
   parseInputFieldsDefinition() {
     return this.optionalMany(
@@ -139767,6 +140125,9 @@ let Parser$2 = class Parser2 {
    *   - UnionTypeExtension
    *   - EnumTypeExtension
    *   - InputObjectTypeDefinition
+   *   - DirectiveDefinitionExtension
+   *
+   * @internal
    */
   parseTypeSystemExtension() {
     const keywordToken = this._lexer.lookahead();
@@ -139786,6 +140147,11 @@ let Parser$2 = class Parser2 {
           return this.parseEnumTypeExtension();
         case "input":
           return this.parseInputObjectTypeExtension();
+        case "directive":
+          if (this._options.experimentalDirectivesOnDirectiveDefinitions) {
+            return this.parseDirectiveDefinitionExtension();
+          }
+          break;
       }
     }
     throw this.unexpected(keywordToken);
@@ -139796,6 +140162,8 @@ let Parser$2 = class Parser2 {
    *  - extend schema Directives[Const]? { OperationTypeDefinition+ }
    *  - extend schema Directives[Const]
    * ```
+   *
+   * @internal
    */
   parseSchemaExtension() {
     const start3 = this._lexer.token;
@@ -139819,6 +140187,8 @@ let Parser$2 = class Parser2 {
   /**
    * ScalarTypeExtension :
    *   - extend scalar Name Directives[Const]
+   *
+   * @internal
    */
   parseScalarTypeExtension() {
     const start3 = this._lexer.token;
@@ -139840,6 +140210,8 @@ let Parser$2 = class Parser2 {
    *  - extend type Name ImplementsInterfaces? Directives[Const]? FieldsDefinition
    *  - extend type Name ImplementsInterfaces? Directives[Const]
    *  - extend type Name ImplementsInterfaces
+   *
+   * @internal
    */
   parseObjectTypeExtension() {
     const start3 = this._lexer.token;
@@ -139865,6 +140237,8 @@ let Parser$2 = class Parser2 {
    *  - extend interface Name ImplementsInterfaces? Directives[Const]? FieldsDefinition
    *  - extend interface Name ImplementsInterfaces? Directives[Const]
    *  - extend interface Name ImplementsInterfaces
+   *
+   * @internal
    */
   parseInterfaceTypeExtension() {
     const start3 = this._lexer.token;
@@ -139889,6 +140263,8 @@ let Parser$2 = class Parser2 {
    * UnionTypeExtension :
    *   - extend union Name Directives[Const]? UnionMemberTypes
    *   - extend union Name Directives[Const]
+   *
+   * @internal
    */
   parseUnionTypeExtension() {
     const start3 = this._lexer.token;
@@ -139911,6 +140287,8 @@ let Parser$2 = class Parser2 {
    * EnumTypeExtension :
    *   - extend enum Name Directives[Const]? EnumValuesDefinition
    *   - extend enum Name Directives[Const]
+   *
+   * @internal
    */
   parseEnumTypeExtension() {
     const start3 = this._lexer.token;
@@ -139933,6 +140311,8 @@ let Parser$2 = class Parser2 {
    * InputObjectTypeExtension :
    *   - extend input Name Directives[Const]? InputFieldsDefinition
    *   - extend input Name Directives[Const]
+   *
+   * @internal
    */
   parseInputObjectTypeExtension() {
     const start3 = this._lexer.token;
@@ -139951,11 +140331,29 @@ let Parser$2 = class Parser2 {
       fields
     });
   }
+  parseDirectiveDefinitionExtension() {
+    const start3 = this._lexer.token;
+    this.expectKeyword("extend");
+    this.expectKeyword("directive");
+    this.expectToken(TokenKind.AT);
+    const name2 = this.parseName();
+    const directives = this.parseConstDirectives();
+    if (directives.length === 0) {
+      throw this.unexpected();
+    }
+    return this.node(start3, {
+      kind: Kind.DIRECTIVE_EXTENSION,
+      name: name2,
+      directives
+    });
+  }
   /**
    * ```
    * DirectiveDefinition :
    *   - Description? directive @ Name ArgumentsDefinition? `repeatable`? on DirectiveLocations
    * ```
+   *
+   * @internal
    */
   parseDirectiveDefinition() {
     const start3 = this._lexer.token;
@@ -139964,6 +140362,7 @@ let Parser$2 = class Parser2 {
     this.expectToken(TokenKind.AT);
     const name2 = this.parseName();
     const args = this.parseArgumentDefs();
+    const directives = this._options.experimentalDirectivesOnDirectiveDefinitions ? this.parseConstDirectives() : [];
     const repeatable = this.expectOptionalKeyword("repeatable");
     this.expectKeyword("on");
     const locations = this.parseDirectiveLocations();
@@ -139972,6 +140371,7 @@ let Parser$2 = class Parser2 {
       description: description2,
       name: name2,
       arguments: args,
+      directives,
       repeatable,
       locations
     });
@@ -139980,6 +140380,8 @@ let Parser$2 = class Parser2 {
    * DirectiveLocations :
    *   - `|`? DirectiveLocation
    *   - DirectiveLocations | DirectiveLocation
+   *
+   * @internal
    */
   parseDirectiveLocations() {
     return this.delimitedMany(TokenKind.PIPE, this.parseDirectiveLocation);
@@ -140010,6 +140412,7 @@ let Parser$2 = class Parser2 {
    *   `ENUM_VALUE`
    *   `INPUT_OBJECT`
    *   `INPUT_FIELD_DEFINITION`
+   *   `DIRECTIVE_DEFINITION`
    */
   parseDirectiveLocation() {
     const start3 = this._lexer.token;
@@ -140019,11 +140422,81 @@ let Parser$2 = class Parser2 {
     }
     throw this.unexpected(start3);
   }
+  // Schema Coordinates
+  /**
+   * SchemaCoordinate :
+   *   - Name
+   *   - Name . Name
+   *   - Name . Name ( Name : )
+   *   - \@ Name
+   *   - \@ Name ( Name : )
+   * @returns Parsed schema coordinate AST.
+   * @example
+   * ```ts
+   * import { Parser, Source } from 'graphql/language';
+   *
+   * const typeCoordinate = new Parser(new Source('User.name')).parseSchemaCoordinate();
+   * const directiveCoordinate = new Parser(new Source('@include(if:)')).parseSchemaCoordinate();
+   *
+   * typeCoordinate.name.value; // => 'User'
+   * typeCoordinate.memberName?.value; // => 'name'
+   * directiveCoordinate.name.value; // => 'deprecated'
+   * directiveCoordinate.argumentName?.value; // => 'reason'
+   * ```
+   */
+  parseSchemaCoordinate() {
+    const start3 = this._lexer.token;
+    const ofDirective = this.expectOptionalToken(TokenKind.AT);
+    const name2 = this.parseName();
+    let memberName;
+    if (!ofDirective && this.expectOptionalToken(TokenKind.DOT)) {
+      memberName = this.parseName();
+    }
+    let argumentName;
+    if ((ofDirective || memberName) && this.expectOptionalToken(TokenKind.PAREN_L)) {
+      argumentName = this.parseName();
+      this.expectToken(TokenKind.COLON);
+      this.expectToken(TokenKind.PAREN_R);
+    }
+    if (ofDirective) {
+      if (argumentName) {
+        return this.node(start3, {
+          kind: Kind.DIRECTIVE_ARGUMENT_COORDINATE,
+          name: name2,
+          argumentName
+        });
+      }
+      return this.node(start3, {
+        kind: Kind.DIRECTIVE_COORDINATE,
+        name: name2
+      });
+    } else if (memberName) {
+      if (argumentName) {
+        return this.node(start3, {
+          kind: Kind.ARGUMENT_COORDINATE,
+          name: name2,
+          fieldName: memberName,
+          argumentName
+        });
+      }
+      return this.node(start3, {
+        kind: Kind.MEMBER_COORDINATE,
+        name: name2,
+        memberName
+      });
+    }
+    return this.node(start3, {
+      kind: Kind.TYPE_COORDINATE,
+      name: name2
+    });
+  }
   // Core parsing utility functions
   /**
    * Returns a node that, if configured to do so, sets a "loc" field as a
    * location object, used to identify the place in the source that created a
    * given parsed object.
+   *
+   * @internal
    */
   node(startToken, node2) {
     if (this._options.noLocation !== true) {
@@ -140037,6 +140510,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * Determines if the next token is of a given kind
+   *
+   * @internal
    */
   peek(kind) {
     return this._lexer.token.kind === kind;
@@ -140044,6 +140519,8 @@ let Parser$2 = class Parser2 {
   /**
    * If the next token is of the given kind, return that token after advancing the lexer.
    * Otherwise, do not change the parser state and throw an error.
+   *
+   * @internal
    */
   expectToken(kind) {
     const token2 = this._lexer.token;
@@ -140060,6 +140537,8 @@ let Parser$2 = class Parser2 {
   /**
    * If the next token is of the given kind, return "true" after advancing the lexer.
    * Otherwise, do not change the parser state and return "false".
+   *
+   * @internal
    */
   expectOptionalToken(kind) {
     const token2 = this._lexer.token;
@@ -140072,6 +140551,8 @@ let Parser$2 = class Parser2 {
   /**
    * If the next token is a given keyword, advance the lexer.
    * Otherwise, do not change the parser state and throw an error.
+   *
+   * @internal
    */
   expectKeyword(value) {
     const token2 = this._lexer.token;
@@ -140088,6 +140569,8 @@ let Parser$2 = class Parser2 {
   /**
    * If the next token is a given keyword, return "true" after advancing the lexer.
    * Otherwise, do not change the parser state and return "false".
+   *
+   * @internal
    */
   expectOptionalKeyword(value) {
     const token2 = this._lexer.token;
@@ -140099,6 +140582,8 @@ let Parser$2 = class Parser2 {
   }
   /**
    * Helper function for creating an error when an unexpected lexed token is encountered.
+   *
+   * @internal
    */
   unexpected(atToken) {
     const token2 = atToken !== null && atToken !== void 0 ? atToken : this._lexer.token;
@@ -140112,6 +140597,8 @@ let Parser$2 = class Parser2 {
    * Returns a possibly empty list of parse nodes, determined by the parseFn.
    * This list begins with a lex token of openKind and ends with a lex token of closeKind.
    * Advances the parser to the next lex token after the closing token.
+   *
+   * @internal
    */
   any(openKind, parseFn, closeKind) {
     this.expectToken(openKind);
@@ -140126,6 +140613,8 @@ let Parser$2 = class Parser2 {
    * It can be empty only if open token is missing otherwise it will always return non-empty list
    * that begins with a lex token of openKind and ends with a lex token of closeKind.
    * Advances the parser to the next lex token after the closing token.
+   *
+   * @internal
    */
   optionalMany(openKind, parseFn, closeKind) {
     if (this.expectOptionalToken(openKind)) {
@@ -140141,6 +140630,8 @@ let Parser$2 = class Parser2 {
    * Returns a non-empty list of parse nodes, determined by the parseFn.
    * This list begins with a lex token of openKind and ends with a lex token of closeKind.
    * Advances the parser to the next lex token after the closing token.
+   *
+   * @internal
    */
   many(openKind, parseFn, closeKind) {
     this.expectToken(openKind);
@@ -140154,6 +140645,8 @@ let Parser$2 = class Parser2 {
    * Returns a non-empty list of parse nodes, determined by the parseFn.
    * This list may begin with a lex token of delimiterKind followed by items separated by lex tokens of tokenKind.
    * Advances the parser to the next lex token after last item in the list.
+   *
+   * @internal
    */
   delimitedMany(delimiterKind, parseFn) {
     this.expectOptionalToken(delimiterKind);
@@ -140503,8 +140996,8 @@ const printDocASTReducer = {
   },
   OperationDefinition: {
     leave(node2) {
-      const varDefs = wrap$2("(", join(node2.variableDefinitions, ", "), ")");
-      const prefix2 = join(
+      const varDefs = hasMultilineItems(node2.variableDefinitions) ? wrap$2("(\n", join(node2.variableDefinitions, "\n"), "\n)") : wrap$2("(", join(node2.variableDefinitions, ", "), ")");
+      const prefix2 = wrap$2("", node2.description, "\n") + join(
         [
           node2.operation,
           join([node2.name, varDefs]),
@@ -140516,7 +141009,7 @@ const printDocASTReducer = {
     }
   },
   VariableDefinition: {
-    leave: ({ variable, type: type3, defaultValue, directives }) => variable + ": " + type3 + wrap$2(" = ", defaultValue) + wrap$2(" ", join(directives, " "))
+    leave: ({ variable, type: type3, defaultValue, directives, description: description2 }) => wrap$2("", description2, "\n") + variable + ": " + type3 + wrap$2(" = ", defaultValue) + wrap$2(" ", join(directives, " "))
   },
   SelectionSet: {
     leave: ({ selections }) => block(selections)
@@ -140550,10 +141043,16 @@ const printDocASTReducer = {
     )
   },
   FragmentDefinition: {
-    leave: ({ name: name2, typeCondition, variableDefinitions, directives, selectionSet }) => (
-      // or removed in the future.
-      `fragment ${name2}${wrap$2("(", join(variableDefinitions, ", "), ")")} on ${typeCondition} ${wrap$2("", join(directives, " "), " ")}` + selectionSet
-    )
+    leave: ({
+      name: name2,
+      typeCondition,
+      variableDefinitions,
+      directives,
+      selectionSet,
+      description: description2
+    }) => wrap$2("", description2, "\n") + // Note: fragment variable definitions are experimental and may be changed
+    // or removed in the future.
+    `fragment ${name2}${wrap$2("(", join(variableDefinitions, ", "), ")")} on ${typeCondition} ${wrap$2("", join(directives, " "), " ")}` + selectionSet
   },
   // Value
   IntValue: {
@@ -140656,7 +141155,14 @@ const printDocASTReducer = {
     leave: ({ description: description2, name: name2, directives, fields }) => wrap$2("", description2, "\n") + join(["input", name2, join(directives, " "), block(fields)], " ")
   },
   DirectiveDefinition: {
-    leave: ({ description: description2, name: name2, arguments: args, repeatable, locations }) => wrap$2("", description2, "\n") + "directive @" + name2 + (hasMultilineItems(args) ? wrap$2("(\n", indent(join(args, "\n")), "\n)") : wrap$2("(", join(args, ", "), ")")) + (repeatable ? " repeatable" : "") + " on " + join(locations, " | ")
+    leave: ({
+      description: description2,
+      name: name2,
+      arguments: args,
+      directives,
+      repeatable,
+      locations
+    }) => wrap$2("", description2, "\n") + "directive @" + name2 + (hasMultilineItems(args) ? wrap$2("(\n", indent(join(args, "\n")), "\n)") : wrap$2("(", join(args, ", "), ")")) + wrap$2(" ", join(directives, " ")) + (repeatable ? " repeatable" : "") + " on " + join(locations, " | ")
   },
   SchemaExtension: {
     leave: ({ directives, operationTypes }) => join(
@@ -140707,6 +141213,25 @@ const printDocASTReducer = {
   },
   InputObjectTypeExtension: {
     leave: ({ name: name2, directives, fields }) => join(["extend input", name2, join(directives, " "), block(fields)], " ")
+  },
+  DirectiveExtension: {
+    leave: ({ name: name2, directives }) => join(["extend directive @" + name2, join(directives, " ")], " ")
+  },
+  // Schema Coordinates
+  TypeCoordinate: {
+    leave: ({ name: name2 }) => name2
+  },
+  MemberCoordinate: {
+    leave: ({ name: name2, memberName }) => join([name2, wrap$2(".", memberName)])
+  },
+  ArgumentCoordinate: {
+    leave: ({ name: name2, fieldName, argumentName }) => join([name2, wrap$2(".", fieldName), wrap$2("(", argumentName, ":)")])
+  },
+  DirectiveCoordinate: {
+    leave: ({ name: name2 }) => join(["@", name2])
+  },
+  DirectiveArgumentCoordinate: {
+    leave: ({ name: name2, argumentName }) => join(["@", name2, wrap$2("(", argumentName, ":)")])
   }
 };
 function join(maybeArray, separator = "") {
@@ -154696,8 +155221,8 @@ const createClient = () => {
     wsClient
   };
 };
-const { client } = createClient();
-const getClient = () => client;
+const { client: client$1 } = createClient();
+const getClient = () => client$1;
 function evictQueries(cache2, queries) {
   const fields = {};
   for (const query of queries) {
@@ -154743,26 +155268,26 @@ function deleteObject(cache2, obj, query) {
   });
   cache2.evict({ id: cache2.identify(obj) });
 }
-const queryFindScenesForSelect = (filter2) => client.query({
+const queryFindScenesForSelect = (filter2) => client$1.query({
   query: FindScenesForSelectDocument,
   variables: {
     filter: filter2.makeFindFilter(),
     scene_filter: filter2.makeFilter()
   }
 });
-const queryFindScenesByIDForSelect = (sceneIDs) => client.query({
+const queryFindScenesByIDForSelect = (sceneIDs) => client$1.query({
   query: FindScenesForSelectDocument,
   variables: {
     ids: sceneIDs
   }
 });
-const queryFindGroupsByIDForSelect = (groupIDs) => client.query({
+const queryFindGroupsByIDForSelect = (groupIDs) => client$1.query({
   query: FindGroupsForSelectDocument,
   variables: {
     ids: groupIDs
   }
 });
-const queryFindGroupsForSelect = (filter2) => client.query({
+const queryFindGroupsForSelect = (filter2) => client$1.query({
   query: FindGroupsForSelectDocument,
   variables: {
     filter: filter2.makeFindFilter(),
@@ -154770,43 +155295,43 @@ const queryFindGroupsForSelect = (filter2) => client.query({
   }
 });
 const useMarkerStrings = () => useMarkerStringsQuery();
-const queryFindGalleriesForSelect = (filter2) => client.query({
+const queryFindGalleriesForSelect = (filter2) => client$1.query({
   query: FindGalleriesForSelectDocument,
   variables: {
     filter: filter2.makeFindFilter(),
     gallery_filter: filter2.makeFilter()
   }
 });
-const queryFindGalleriesByIDForSelect = (galleryIDs) => client.query({
+const queryFindGalleriesByIDForSelect = (galleryIDs) => client$1.query({
   query: FindGalleriesForSelectDocument,
   variables: {
     ids: galleryIDs
   }
 });
-const queryFindPerformersByIDForSelect = (performerIDs) => client.query({
+const queryFindPerformersByIDForSelect = (performerIDs) => client$1.query({
   query: FindPerformersForSelectDocument,
   variables: {
     ids: performerIDs
   }
 });
-const queryFindPerformersForSelect = (filter2) => client.query({
+const queryFindPerformersForSelect = (filter2) => client$1.query({
   query: FindPerformersForSelectDocument,
   variables: {
     filter: filter2.makeFindFilter(),
     performer_filter: filter2.makeFilter()
   }
 });
-const queryFindStudio = (id2) => client.query({
+const queryFindStudio = (id2) => client$1.query({
   query: FindStudioDocument,
   variables: { id: id2 }
 });
-const queryFindStudiosByIDForSelect = (studioIDs) => client.query({
+const queryFindStudiosByIDForSelect = (studioIDs) => client$1.query({
   query: FindStudiosForSelectDocument,
   variables: {
     ids: studioIDs
   }
 });
-const queryFindStudiosForSelect = (filter2) => client.query({
+const queryFindStudiosForSelect = (filter2) => client$1.query({
   query: FindStudiosForSelectDocument,
   variables: {
     filter: filter2.makeFindFilter(),
@@ -154817,13 +155342,13 @@ const useFindTag = (id2) => {
   const skip = id2 === "new" || id2 === "";
   return useFindTagQuery({ variables: { id: id2 }, skip });
 };
-const queryFindTagsByIDForSelect = (tagIDs) => client.query({
+const queryFindTagsByIDForSelect = (tagIDs) => client$1.query({
   query: FindTagsForSelectDocument,
   variables: {
     ids: tagIDs
   }
 });
-const queryFindTagsForSelect = (filter2) => client.query({
+const queryFindTagsForSelect = (filter2) => client$1.query({
   query: FindTagsForSelectDocument,
   variables: {
     filter: filter2.makeFindFilter(),
@@ -176909,7 +177434,10 @@ function getApolloClient() {
   });
   return newClient;
 }
-const graphqlClient = getApolloClient();
+let graphqlClient;
+function client() {
+  return graphqlClient ??= getApolloClient();
+}
 const stashConfigStorage = {
   getItem: async (key) => await getStashTvConfig().then((config2) => config2?.[key] || null).catch(console.error),
   setItem: async (key, value) => await updateTvConfig((config2) => ({ ...config2, [key]: value })).catch(console.error),
@@ -176923,14 +177451,14 @@ const stashConfigStorage = {
   }
 };
 async function getStashTvConfig() {
-  const result = await graphqlClient.query({
+  const result = await client().query({
     query: ConfigurationDocument
   });
   return result.data?.configuration.plugins[PLUGIN_NAMESPACE];
 }
 async function updateTvConfig(configUpdate) {
   getStashTvConfig().then((config2) => {
-    return graphqlClient.mutate({
+    return client().mutate({
       mutation: ConfigurePluginDocument,
       variables: {
         plugin_id: PLUGIN_NAMESPACE,
@@ -197050,12 +197578,12 @@ function ActionButtonIcon({
       iconSource = actionButtonIcons[config2.iconId].states[state];
     } else if (typeof iconDefinition === "function") {
       iconSource = iconDefinition;
-    } else if ("icon" in iconDefinition && "iconName" in iconDefinition) {
+    } else if (iconDefinition && typeof iconDefinition === "object" && "icon" in iconDefinition && "iconName" in iconDefinition) {
       iconSource = iconDefinition;
-    } else if ("render" in iconDefinition) {
+    } else if (iconDefinition && typeof iconDefinition === "object" && "render" in iconDefinition) {
       iconSource = iconDefinition;
     } else {
-      iconSource = iconDefinition[state];
+      iconSource = iconDefinition?.[state];
     }
     if (typeof iconSource === "function") {
       const IconComponent = iconSource;
@@ -197065,7 +197593,9 @@ function ActionButtonIcon({
           className
         }
       );
-    } else if ("icon" in iconSource && "iconName" in iconSource) {
+    } else if (typeof iconSource === "string") {
+      return /* @__PURE__ */ React$1.createElement("img", { src: iconSource, className, alt: "" });
+    } else if (iconSource && typeof iconSource === "object" && "icon" in iconSource && "iconName" in iconSource) {
       return /* @__PURE__ */ React$1.createElement(
         FontAwesomeIcon,
         {
@@ -197073,7 +197603,7 @@ function ActionButtonIcon({
           className
         }
       );
-    } else if ("render" in iconSource) {
+    } else if (iconSource && typeof iconSource === "object" && "render" in iconSource) {
       const IconComponent = iconSource;
       return /* @__PURE__ */ React$1.createElement(
         IconComponent,
@@ -197082,7 +197612,7 @@ function ActionButtonIcon({
         }
       );
     } else {
-      iconSource;
+      if (iconSource !== void 0) iconSource;
       logger$b.error("Unable to determine icon for action button {*}", { iconDefinition, iconSource, state });
     }
   } catch (error) {
@@ -217250,7 +217780,11 @@ var Thumb = SliderThumb;
 const Slider = (props) => {
   const { marks, onThumbMouseDown, onThumbMouseUp, ...sliderProps } = props;
   const numMarks = ((sliderProps.max || 1) - (sliderProps.min || 0)) / (sliderProps.step || 1) + 1;
-  return /* @__PURE__ */ reactExports.createElement(Root, { className: "Slider", ...sliderProps }, /* @__PURE__ */ reactExports.createElement("div", { className: "slider-body" }, /* @__PURE__ */ reactExports.createElement(Track, { className: "track" }, /* @__PURE__ */ reactExports.createElement(Range, { className: "range" }), marks && /* @__PURE__ */ reactExports.createElement("div", { className: "marks" }, new Array(numMarks).fill(0).map((_, i3) => /* @__PURE__ */ reactExports.createElement("div", { className: "mark", key: i3, style: { left: `${i3 / (numMarks - 1) * 100}%` } })))), /* @__PURE__ */ reactExports.createElement(
+  return /* @__PURE__ */ reactExports.createElement(Root, { className: "Slider", ...sliderProps }, /* @__PURE__ */ reactExports.createElement("div", { className: "slider-body" }, /* @__PURE__ */ reactExports.createElement(Track, { className: "track" }, /* @__PURE__ */ reactExports.createElement(Range, { className: "range" }), marks && /* @__PURE__ */ reactExports.createElement("div", { className: "marks" }, new Array(numMarks).fill(0).map((_, i3) => (
+    // Guard the divisor: a single mark (min === max) has no span to
+    // divide by, and would otherwise render at left: NaN%
+    /* @__PURE__ */ reactExports.createElement("div", { className: "mark", key: i3, style: { left: `${i3 / Math.max(numMarks - 1, 1) * 100}%` } })
+  )))), /* @__PURE__ */ reactExports.createElement(
     Thumb,
     {
       className: "thumb",
@@ -239186,7 +239720,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setDisplayedModal("keyboard-shortcuts")
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.19.1"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.20.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -239237,7 +239771,27 @@ const SettingsTab = reactExports.memo(() => {
         isMulti: true,
         closeMenuOnSelect: false
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Loggers to hide logs from.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "show-debugging-info" }, "Additional Debugging Info"), /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Loggers to hide logs from.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "video-js-events-to-log" }, "Video.js Events To Log"), /* @__PURE__ */ React$1.createElement(
+      Select,
+      {
+        inputId: "video-js-events-to-log",
+        value: videoJsEventsToLog.map((eventName) => ({
+          label: eventName,
+          value: eventName
+        })),
+        onChange: (newValue) => setTvConfig(
+          "videoJsEventsToLog",
+          newValue.some((item) => item.value === "all") ? videoJsEvents : newValue.map((item) => item.value)
+        ),
+        options: ["all", ...videoJsEvents].map((eventName) => ({
+          label: eventName,
+          value: eventName
+        })),
+        placeholder: "Select video.js events to log",
+        isMulti: true,
+        closeMenuOnSelect: false
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Which video.js events to log to the console.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "show-debugging-info" }, "Additional Debugging Info"), /* @__PURE__ */ React$1.createElement(
       Select,
       {
         inputId: "show-debugging-info",
@@ -239260,7 +239814,7 @@ const SettingsTab = reactExports.memo(() => {
           setTvConfig("pageSize", newSize);
         }
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "(Reload page to take effect.) Load this many media at a time. Default is ", getDefaultAppSetting("pageSize"), ". Changing this can impact performance.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Limit of Media to Show"), /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "(Reload page to take effect.) Load this many media at a time. Default is ", getDefaultAppSetting("pageSize"), ". Changing this can impact performance.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Limit Number of Media in Media Filter"), /* @__PURE__ */ React$1.createElement(
       FormImpl.Control,
       {
         type: "number",
@@ -239272,7 +239826,7 @@ const SettingsTab = reactExports.memo(() => {
           event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
         )
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Stop showing any more media once this limit has been reached. This does not just impact performance but will actually effect what media will get shown.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Upcoming media to render at a time"), /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Normally the feed can be scrolled till all media in the media filter have been displayed. But with this set only this many media will be displayed.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Upcoming media to render at a time"), /* @__PURE__ */ React$1.createElement(
       FormImpl.Control,
       {
         type: "number",
@@ -239297,27 +239851,7 @@ const SettingsTab = reactExports.memo(() => {
         ),
         placeholder: "(mediaItems) => {\n  return mediaItems.toReversed()\n}"
       }
-    ), mediaItemsModifierFunctionValidity && /* @__PURE__ */ React$1.createElement("div", null, mediaItemsModifierFunctionValidity), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "A JavaScript function that can be used to modified the content and ordering of the displayed media items. The function is given the media items array as an argument and it must return an array of media items.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "video-js-events-to-log" }, "Video.js Events To Log"), /* @__PURE__ */ React$1.createElement(
-      Select,
-      {
-        inputId: "video-js-events-to-log",
-        value: videoJsEventsToLog.map((eventName) => ({
-          label: eventName,
-          value: eventName
-        })),
-        onChange: (newValue) => setTvConfig(
-          "videoJsEventsToLog",
-          newValue.some((item) => item.value === "all") ? videoJsEvents : newValue.map((item) => item.value)
-        ),
-        options: ["all", ...videoJsEvents].map((eventName) => ({
-          label: eventName,
-          value: eventName
-        })),
-        placeholder: "Select video.js events to log",
-        isMulti: true,
-        closeMenuOnSelect: false
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Which video.js events to log to the console.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), mediaItemsModifierFunctionValidity && /* @__PURE__ */ React$1.createElement("div", null, mediaItemsModifierFunctionValidity), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "A JavaScript function that can be used to modified the content and ordering of the displayed media items. The function is given the media items array as an argument and it must return an array of media items.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Button,
       {
         onClick: () => window.location.reload()
@@ -240417,4 +240951,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-q4R-dte-.js.map
+//# sourceMappingURL=index-Hm5vmt7Q.js.map
