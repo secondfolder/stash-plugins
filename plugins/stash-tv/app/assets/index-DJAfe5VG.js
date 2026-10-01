@@ -29648,7 +29648,7 @@ var resolveManifestRedirect = function resolveManifestRedirect2(handleManifestRe
   }
   return url2;
 };
-var logger$j = function logger2(source2) {
+var logger$k = function logger2(source2) {
   if (videojs.log.debug) {
     return videojs.log.debug.bind(videojs, "VHS:", source2 + " >");
   }
@@ -30632,7 +30632,7 @@ var PlaylistLoader = /* @__PURE__ */ (function(_EventTarget) {
     if (!src2) {
       throw new Error("A non-empty playlist URL or object is required");
     }
-    _this.logger_ = logger$j("PlaylistLoader");
+    _this.logger_ = logger$k("PlaylistLoader");
     var _options = options2, _options$withCredenti = _options.withCredentials, withCredentials = _options$withCredenti === void 0 ? false : _options$withCredenti, _options$handleManife = _options.handleManifestRedirects, handleManifestRedirects = _options$handleManife === void 0 ? false : _options$handleManife;
     _this.src = src2;
     _this.vhs_ = vhs;
@@ -31533,7 +31533,7 @@ var DashPlaylistLoader = /* @__PURE__ */ (function(_EventTarget) {
     });
     _this.state = "HAVE_NOTHING";
     _this.loadedPlaylists_ = {};
-    _this.logger_ = logger$j("DashPlaylistLoader");
+    _this.logger_ = logger$k("DashPlaylistLoader");
     if (_this.isMaster_) {
       _this.masterPlaylistLoader_.srcUrl = srcUrlOrPlaylist;
       _this.masterPlaylistLoader_.sidxMapping_ = {};
@@ -38932,7 +38932,7 @@ var mediaSegmentRequest = function mediaSegmentRequest2(_ref12) {
     return abortAll(activeXhrs);
   };
 };
-var logFn$1 = logger$j("CodecUtils");
+var logFn$1 = logger$k("CodecUtils");
 var getCodecs = function getCodecs2(media) {
   var mediaAttributes = media.attributes || {};
   if (mediaAttributes.CODECS) {
@@ -38996,7 +38996,7 @@ var codecsForPlaylist = function codecsForPlaylist2(master, media) {
   }
   return codecInfo;
 };
-var logFn = logger$j("PlaylistSelector");
+var logFn = logger$k("PlaylistSelector");
 var representationToString = function representationToString2(representation) {
   if (!representation || !representation.playlist) {
     return;
@@ -39770,7 +39770,7 @@ var SegmentLoader = /* @__PURE__ */ (function(_videojs$EventTarget) {
       }
     });
     _this.fetchAtBuffer_ = false;
-    _this.logger_ = logger$j("SegmentLoader[" + _this.loaderType_ + "]");
+    _this.logger_ = logger$k("SegmentLoader[" + _this.loaderType_ + "]");
     Object.defineProperty(_assertThisInitialized$2(_this), "state", {
       get: function get7() {
         return this.state_;
@@ -41534,7 +41534,7 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
       return shiftQueue("mediaSource", _assertThisInitialized$2(_this));
     };
     _this.mediaSource.addEventListener("sourceopen", _this.sourceopenListener_);
-    _this.logger_ = logger$j("SourceUpdater");
+    _this.logger_ = logger$k("SourceUpdater");
     _this.audioTimestampOffset_ = 0;
     _this.videoTimestampOffset_ = 0;
     _this.queue = [];
@@ -42328,7 +42328,7 @@ var SyncController = /* @__PURE__ */ (function(_videojs$EventTarget) {
     _this.timelines = [];
     _this.discontinuities = [];
     _this.timelineToDatetimeMappings = {};
-    _this.logger_ = logger$j("SyncController");
+    _this.logger_ = logger$k("SyncController");
     return _this;
   }
   var _proto = SyncController2.prototype;
@@ -43532,7 +43532,7 @@ var createMediaTypes = function createMediaTypes2() {
       onGroupChanged: noop$9,
       onTrackChanged: noop$9,
       lastTrack_: null,
-      logger_: logger$j("MediaGroups[" + type3 + "]")
+      logger_: logger$k("MediaGroups[" + type3 + "]")
     };
   });
   return mediaTypes2;
@@ -43722,7 +43722,7 @@ var MasterPlaylistController = /* @__PURE__ */ (function(_videojs$EventTarget) {
     loaderStats.forEach(function(stat) {
       _this[stat + "_"] = sumLoaderStat.bind(_assertThisInitialized$2(_this), stat);
     });
-    _this.logger_ = logger$j("MPC");
+    _this.logger_ = logger$k("MPC");
     _this.triggeredFmp4Usage = false;
     if (_this.tech_.preload() === "none") {
       _this.loadOnPlay_ = function() {
@@ -44859,7 +44859,7 @@ var PlaybackWatcher = /* @__PURE__ */ (function() {
     this.lastRecordedTime = null;
     this.timer_ = null;
     this.checkCurrentTimeTimeout_ = null;
-    this.logger_ = logger$j("PlaybackWatcher");
+    this.logger_ = logger$k("PlaybackWatcher");
     this.logger_("initialize");
     var playHandler = function playHandler2() {
       return _this.monitorCurrentTime_();
@@ -45543,7 +45543,7 @@ var VhsHandler = /* @__PURE__ */ (function(_Component) {
     if (typeof options2.initialBandwidth === "number") {
       _this.options_.bandwidth = options2.initialBandwidth;
     }
-    _this.logger_ = logger$j("VhsHandler");
+    _this.logger_ = logger$k("VhsHandler");
     if (tech.options_ && tech.options_.playerId) {
       var _player = videojs(tech.options_.playerId);
       if (!_player.hasOwnProperty("hls")) {
@@ -176732,7 +176732,7 @@ var ConfigError = class extends Error {
     this.name = "ConfigureError";
   }
 };
-const logger$i = getLogger(["stash-tv", "source-selector-access"]);
+const logger$j = getLogger(["stash-tv", "source-selector-access"]);
 const DIRECT_STREAM_LABEL = "Direct stream";
 const ORIGINAL_RESOLUTION_LABEL = "Original";
 const DEFAULT_STREAM_LABEL = DIRECT_STREAM_LABEL;
@@ -176798,21 +176798,21 @@ function getSourceSelectorMenu(player) {
 function switchSceneStream(player, source2) {
   const menu = getSourceSelectorMenu(player);
   if (!menu) {
-    logger$i.warn(`Attempted to switch to "${source2.fullStashLabel}" source but the source selector menu isn't available`);
+    logger$j.warn(`Attempted to switch to "${source2.fullStashLabel}" source but the source selector menu isn't available`);
     return false;
   }
   if (menu.selectedSource === source2) {
-    logger$i.info(`Attempted to switch to "${source2.fullStashLabel}" source but it is already selected in the source selector menu`);
+    logger$j.info(`Attempted to switch to "${source2.fullStashLabel}" source but it is already selected in the source selector menu`);
     return false;
   }
   const item = menu.items.find((item2) => item2.source.label === source2.fullStashLabel);
   if (!item) {
-    logger$i.warn(`Attempted to switch to "${source2.fullStashLabel}" but it isn't in the source selector menu`, { source: source2, menuItems: menu.items.map((i3) => i3.source.label) });
+    logger$j.warn(`Attempted to switch to "${source2.fullStashLabel}" but it isn't in the source selector menu`, { source: source2, menuItems: menu.items.map((i3) => i3.source.label) });
     return false;
   }
   const itemEl = item.el();
   if (!itemEl || !(itemEl instanceof HTMLElement)) {
-    logger$i.warn(`Attempted to switch to "${source2.fullStashLabel}" but the menu item has no html element`, { item });
+    logger$j.warn(`Attempted to switch to "${source2.fullStashLabel}" but the menu item has no html element`, { item });
     return false;
   }
   const originalFocus = menu.focus.bind(menu);
@@ -177871,7 +177871,7 @@ offset.VERSION = version;
 const testVideo = "data:video/webm;base64,GkXfo59ChoEBQveBAULygQRC84EIQoKEd2VibUKHgQJChYECGFOAZwEAAAAAAAH7EU2bdLpNu4tTq4QVSalmU6yBoU27i1OrhBZUrmtTrIHYTbuMU6uEElTDZ1OsggElTbuMU6uEHFO7a1OsggHl7AEAAAAAAABZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVSalmsirXsYMPQkBNgI1MYXZmNTkuMjcuMTAwV0GNTGF2ZjU5LjI3LjEwMESJiEBEAAAAAAAAFlSua8iuAQAAAAAAAD/XgQFzxYj5fByPWCfQR5yBACK1nIN1bmSIgQCGhVZfVlA5g4EBI+ODhAJiWgDgkLCBQLqBQJqBAlWwhFW5gQESVMNnQIFzc6BjwIBnyJpFo4dFTkNPREVSRIeNTGF2ZjU5LjI3LjEwMHNz22PAi2PFiPl8HI9YJ9BHZ8ilRaOHRU5DT0RFUkSHmExhdmM1OS4zNy4xMDAgbGlidnB4LXZwOWfIokWjiERVUkFUSU9ORIeUMDA6MDA6MDAuMDQwMDAwMDAwAAAfQ7Z1tOeBAKOvgQAAgJJJg0IAAfgB+wAcEg4MJwAAGGAAABO///lkKAAR////7vyH/////KuoAAAcU7trkbuPs4EAt4r3gQHxggGs8IED";
 const tenBitSupportTestTimeoutMs = 3e3;
 let supports10BitVideos = void 0;
-const logger$h = getLogger(["stash-tv", "pause-loading-plugin"]);
+const logger$i = getLogger(["stash-tv", "pause-loading-plugin"]);
 class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
   constructor(player) {
     super(player);
@@ -177897,7 +177897,7 @@ class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
       if (player.isDisposed()) return;
       const videoElm = player.tech(true).el();
       if (!(videoElm instanceof HTMLVideoElement)) {
-        logger$h.error(`Unexpected element {*}`, { videoElm });
+        logger$i.error(`Unexpected element {*}`, { videoElm });
         return;
       }
       if (videoElm.readyState < 2) {
@@ -177933,14 +177933,14 @@ class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
         });
         await new Promise((resolve) => setTimeout(resolve, fadeToPosterTime * 1e3));
       } else {
-        logger$h.warn(`Failed to set video frame as poster`);
+        logger$i.warn(`Failed to set video frame as poster`);
       }
     }
     player.cancelLoading = function() {
       _loadingCanceled = true;
       const videoElm = player.tech(true).el();
       if (!(videoElm instanceof HTMLVideoElement)) {
-        logger$h.error(`Unexpected element {*}`, { videoElm });
+        logger$i.error(`Unexpected element {*}`, { videoElm });
         return;
       }
       unloadedSource = videoElm.src;
@@ -177960,7 +177960,7 @@ class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
         videoElm.load();
         videoElm.currentTime = currentTime;
         player.trigger("loadingCanceled", { currentTime });
-        logger$h.debug("Loading canceled.");
+        logger$i.debug("Loading canceled.");
       }
       pausedStateOnUnload = player.paused();
       if (!player.paused()) {
@@ -177976,7 +177976,7 @@ class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
       }
       const videoElm = player.tech(true).el();
       if (!(videoElm instanceof HTMLVideoElement)) {
-        logger$h.error(`Unexpected element {*}`, { videoElm });
+        logger$i.error(`Unexpected element {*}`, { videoElm });
         return;
       }
       _loadingCanceled = false;
@@ -177990,7 +177990,7 @@ class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
         player.play();
       }
       unloadedSource = null;
-      logger$h.debug("Video loading resumed, sources restored.");
+      logger$i.debug("Video loading resumed, sources restored.");
     };
   }
 }
@@ -178043,11 +178043,11 @@ function testFor10BitSupport() {
       resolve(result);
     };
     const onError2 = () => {
-      logger$h.warn("10-bit support test video failed to load, assuming unsupported");
+      logger$i.warn("10-bit support test video failed to load, assuming unsupported");
       settle(false);
     };
     const timeoutId = setTimeout(() => {
-      logger$h.warn(`10-bit support test timed out after ${tenBitSupportTestTimeoutMs}ms, assuming unsupported`);
+      logger$i.warn(`10-bit support test timed out after ${tenBitSupportTestTimeoutMs}ms, assuming unsupported`);
       settle(false);
     }, tenBitSupportTestTimeoutMs);
     video.addEventListener("error", onError2);
@@ -178059,7 +178059,7 @@ function testFor10BitSupport() {
       canvas.height = video.videoHeight;
       const ctx = canvas.getContext("2d");
       if (!ctx) {
-        logger$h.warn("Failed to get canvas context for 10-bit support test, assuming unsupported");
+        logger$i.warn("Failed to get canvas context for 10-bit support test, assuming unsupported");
         settle(false);
         return;
       }
@@ -189836,7 +189836,7 @@ function formatDuration(totalSeconds) {
   }
   return parts.length ? parts.join(" ") : "0 seconds";
 }
-const logger$g = getLogger(["stash-tv", "usePreviewLengths"]);
+const logger$h = getLogger(["stash-tv", "usePreviewLengths"]);
 const usePreviewLengths = create(() => ({}));
 function useTrackPreviewLengths(enabled) {
   reactExports.useEffect(() => {
@@ -189847,7 +189847,7 @@ function useTrackPreviewLengths(enabled) {
       try {
         const mediaItemId = getMediaItemIdForVideoJsPlayer(videoElm);
         if (usePreviewLengths.getState()[mediaItemId] === videoElm.duration) return;
-        logger$g.debug("Saving preview length for media item {*}", { mediaItemId, duration: videoElm.duration });
+        logger$h.debug("Saving preview length for media item {*}", { mediaItemId, duration: videoElm.duration });
         usePreviewLengths.setState({ [mediaItemId]: videoElm.duration });
       } catch (error) {
         console.warn("Failed to get media item ID for video element", error);
@@ -189859,7 +189859,7 @@ function useTrackPreviewLengths(enabled) {
     };
   }, [enabled]);
 }
-const logger$f = getLogger(["stash-tv", "useMediaItems"]);
+const logger$g = getLogger(["stash-tv", "useMediaItems"]);
 const initialFeedState = {
   source: void 0,
   refs: [],
@@ -189878,7 +189878,7 @@ function release(client2, cacheId) {
 }
 function markerIsPlayable(marker) {
   if (marker.seconds > marker.scene.files[0].duration) {
-    logger$f.warn(`Marker with ID ${marker.id} has start time (${marker.seconds}s) greater than scene duration (${marker.scene.files[0].duration}s). This marker will be skipped.`, { marker });
+    logger$g.warn(`Marker with ID ${marker.id} has start time (${marker.seconds}s) greater than scene duration (${marker.scene.files[0].duration}s). This marker will be skipped.`, { marker });
     return false;
   }
   return true;
@@ -189919,7 +189919,7 @@ async function loadNextPage(client2) {
   const offset3 = refs.length + skippedIds.size;
   if (total2 !== void 0 && offset3 >= total2) return;
   const page = Math.floor(offset3 / source2.pageSize) + 1;
-  logger$f.debug("Fetch media page {*}", { page });
+  logger$g.debug("Fetch media page {*}", { page });
   useFeedStore.setState({ fetchInFlight: true });
   try {
     const result = await fetchPage(client2, source2.filter, page, source2.pageSize);
@@ -189943,7 +189943,7 @@ async function loadNextPage(client2) {
     });
   } catch (error) {
     if (useFeedStore.getState().source !== source2) return;
-    logger$f.error("Failed to fetch media page {*}", { page, error });
+    logger$g.error("Failed to fetch media page {*}", { page, error });
     useFeedStore.setState({
       fetchInFlight: false,
       loading: false,
@@ -189980,7 +189980,7 @@ function useMediaItems() {
     const { entityType, generalFilter, entityFilter } = lastLoadedCurrentMediaItemFilter;
     const key = objectHash({ entityType, generalFilter, entityFilter, pageSize });
     if (useFeedStore.getState().source?.key === key) return;
-    logger$f.debug(`Filter changed to "${lastLoadedCurrentMediaItemFilter.savedFilter?.name}", resetting media items`);
+    logger$g.debug(`Filter changed to "${lastLoadedCurrentMediaItemFilter.savedFilter?.name}", resetting media items`);
     resetFeed(client2, { key, filter: lastLoadedCurrentMediaItemFilter, pageSize });
     loadNextPage(client2);
   }, [client2, lastLoadedCurrentMediaItemFilter, pageSize]);
@@ -189997,7 +189997,7 @@ function useMediaItems() {
           modifiedRefs = modifiedItems.flatMap((item) => refsById.get(item?.id) ?? []);
         }
       } catch (error2) {
-        logger$f.error(`Media items modifier function threw an error`, { error: error2 });
+        logger$g.error(`Media items modifier function threw an error`, { error: error2 });
       }
     }
     if (typeof maxMedia === "number") {
@@ -190031,7 +190031,7 @@ function useMediaItems() {
     waitingForMediaItemsFilter: !lastLoadedCurrentMediaItemFilter
   };
 }
-const logger$e = getLogger(["stash-tv", "makeMediaItemPreviewOnly"]);
+const logger$f = getLogger(["stash-tv", "makeMediaItemPreviewOnly"]);
 function makeMediaItemPreviewOnly(mediaItem, { previewLength, previewSegmentDuration = 0.75, previewSegments = 12 }) {
   let previewUrl;
   if (mediaItem.entityType === "scene") {
@@ -190042,7 +190042,7 @@ function makeMediaItemPreviewOnly(mediaItem, { previewLength, previewSegmentDura
     throw new Error("Unsupported media item entity type");
   }
   if (!previewUrl) {
-    logger$e.warn(`Media item ${mediaItem.id} has no preview`);
+    logger$f.warn(`Media item ${mediaItem.id} has no preview`);
     return mediaItem;
   }
   const scene2 = mediaItem.entityType === "marker" ? mediaItem.entity.scene : mediaItem.entity;
@@ -190083,6 +190083,11 @@ function makeMediaItemPreviewOnly(mediaItem, { previewLength, previewSegmentDura
     };
   }
 }
+const logger$e = getLogger(["stash-tv", "useLiveMediaItem"]);
+function sceneIdOf(mediaItem) {
+  if (!mediaItem) return void 0;
+  return mediaItem.entityType === "scene" ? mediaItem.entity.id : mediaItem.entity.scene.id;
+}
 function useLiveMediaItem(ref) {
   const { data: data2, complete } = useFragment({
     ...mediaItemFragment(ref.entityType),
@@ -190095,6 +190100,15 @@ function useLiveMediaItem(ref) {
   const lastCompleteMediaItem = reactExports.useRef(liveMediaItem);
   if (liveMediaItem) lastCompleteMediaItem.current = liveMediaItem;
   const mediaItem = liveMediaItem ?? lastCompleteMediaItem.current;
+  const client2 = useApolloClient();
+  const sceneIdToRefetch = complete ? void 0 : sceneIdOf(lastCompleteMediaItem.current);
+  reactExports.useEffect(() => {
+    if (!sceneIdToRefetch) return;
+    client2.query({ query: FindSceneDocument, variables: { id: sceneIdToRefetch }, fetchPolicy: "network-only" }).catch((error) => logger$e.error("Failed to refetch scene {sceneId} after its cached data was evicted {*}", {
+      sceneId: sceneIdToRefetch,
+      error
+    }));
+  }, [client2, sceneIdToRefetch]);
   const { scenePreviewOnly, markerPreviewOnly } = useTvConfig();
   const previewOnly = ref.entityType === "scene" ? scenePreviewOnly : markerPreviewOnly;
   const previewLength = usePreviewLengths((previewLengths) => previewLengths[ref.id]);
@@ -193189,7 +193203,7 @@ var useUID = function() {
   var uid2 = useUIDState().uid;
   return uid2;
 };
-function getOverflowAmount(parentElement) {
+function getOverflowAmount(parentElement, { ignore } = {}) {
   const parentRect = parentElement.getBoundingClientRect();
   let overflow = {
     top: 0,
@@ -193200,6 +193214,7 @@ function getOverflowAmount(parentElement) {
   function traverse(element) {
     const children = Array.from(element.children);
     for (const child of children) {
+      if (ignore && child.matches(ignore)) continue;
       const style2 = getComputedStyle(child);
       if (style2.display === "none") continue;
       const hasOverflowHidden = style2.overflow === "hidden" || style2.overflowX === "hidden" || style2.overflowY === "hidden" || style2.overflow === "clip" || style2.overflowX === "clip" || style2.overflowY === "clip" || style2.overflow === "auto" || style2.overflowX === "auto" || style2.overflowY === "auto";
@@ -193222,12 +193237,49 @@ function getOverflowAmount(parentElement) {
   traverse(parentElement);
   return overflow;
 }
+const DROPDOWN_MENU_SELECTOR = ".react-select__menu";
+const DEFAULT_MAX_LIST_HEIGHT = 300;
+function chooseMenuFit({
+  spaceAbove,
+  spaceBelow,
+  listContentHeight,
+  menuChromeHeight,
+  preferredMaxListHeight = DEFAULT_MAX_LIST_HEIGHT
+}) {
+  const menuHeight = Math.min(listContentHeight, preferredMaxListHeight) + menuChromeHeight;
+  if (menuHeight <= spaceBelow) return { placement: "below", maxListHeight: preferredMaxListHeight };
+  if (menuHeight <= spaceAbove) return { placement: "above", maxListHeight: preferredMaxListHeight };
+  const placement = spaceBelow >= spaceAbove ? "below" : "above";
+  const space = placement === "below" ? spaceBelow : spaceAbove;
+  return { placement, maxListHeight: Math.max(0, space - menuChromeHeight) };
+}
+function visibleArea() {
+  const viewport2 = window.visualViewport;
+  return viewport2 ? { top: viewport2.offsetTop, bottom: viewport2.offsetTop + viewport2.height } : { top: 0, bottom: window.innerHeight };
+}
+function fitDropdownMenu(menu) {
+  const list = menu.firstElementChild;
+  const container2 = menu.parentElement;
+  if (!(list instanceof HTMLElement) || !container2) return;
+  const input = container2.getBoundingClientRect();
+  const area2 = visibleArea();
+  const gap = parseFloat(getComputedStyle(menu).marginTop) || 0;
+  const fit = chooseMenuFit({
+    spaceAbove: input.top - area2.top - gap,
+    spaceBelow: area2.bottom - input.bottom - gap,
+    listContentHeight: list.scrollHeight,
+    menuChromeHeight: menu.offsetHeight - list.offsetHeight
+  });
+  menu.style.top = fit.placement === "below" ? "100%" : "auto";
+  menu.style.bottom = fit.placement === "above" ? "100%" : "auto";
+  list.style.maxHeight = `${fit.maxListHeight}px`;
+}
 const includeChildOverflowInPopperSizeModifier = {
   name: "includeChildOverflowInPopperSize",
   enabled: true,
   phase: "beforeRead",
   fn: ({ state }) => {
-    const overflowAmount = getOverflowAmount(state.elements.popper);
+    const overflowAmount = getOverflowAmount(state.elements.popper, { ignore: DROPDOWN_MENU_SELECTOR });
     state.rects.popper.height += overflowAmount.top + overflowAmount.bottom;
     state.rects.popper.width += overflowAmount.left + overflowAmount.right;
   },
@@ -198187,6 +198239,16 @@ const useOutsideClickModifier = ({ onOutsideClick }) => ({
     };
   }
 });
+function useFitDropdownMenus(container2) {
+  reactExports.useEffect(() => {
+    if (!container2) return;
+    const fitAll = () => container2.querySelectorAll(DROPDOWN_MENU_SELECTOR).forEach(fitDropdownMenu);
+    const observer = new MutationObserver(fitAll);
+    observer.observe(container2, { childList: true, subtree: true });
+    fitAll();
+    return () => observer.disconnect();
+  }, [container2]);
+}
 const logger$d = getLogger(["stash-tv", "ActionButtonBase"]);
 const useCurrentOpenPopover = create(() => null);
 const ActionButtonBase = (props) => {
@@ -198272,6 +198334,8 @@ const SidePanel = ({
   const offscreenModifier = useOffscreenModifier({
     onOffscreen: () => useCurrentOpenPopover.setState(null)
   });
+  const [contentsElement, setContentsElement] = React$1.useState(null);
+  useFitDropdownMenus(contentsElement);
   const onSidePanelToggleRef = React$1.useRef(onSidePanelToggle);
   onSidePanelToggleRef.current = onSidePanelToggle;
   reactExports.useEffect(() => {
@@ -198303,7 +198367,7 @@ const SidePanel = ({
           className: cx("action-button-side-panel", sidePanelClassName, { "left-handed": leftHandedUi }),
           id: id2
         },
-        /* @__PURE__ */ React$1.createElement("div", { className: "contents" }, isOpenDelayedClose && (typeof content2 === "function" ? content2({ isOpen, close: () => useCurrentOpenPopover.setState(null) }) : content2))
+        /* @__PURE__ */ React$1.createElement("div", { className: "contents", ref: setContentsElement }, isOpenDelayedClose && (typeof content2 === "function" ? content2({ isOpen, close: () => useCurrentOpenPopover.setState(null) }) : content2))
       ),
       show: isOpen,
       onToggle: (shouldOpen) => {
@@ -198444,1065 +198508,6 @@ const createNewActionButtonConfig = (type3, options2) => {
         buttonType
       };
   }
-};
-var isMergeableObject = function isMergeableObject2(value) {
-  return isNonNullObject(value) && !isSpecial(value);
-};
-function isNonNullObject(value) {
-  return !!value && typeof value === "object";
-}
-function isSpecial(value) {
-  var stringValue = Object.prototype.toString.call(value);
-  return stringValue === "[object RegExp]" || stringValue === "[object Date]" || isReactElement(value);
-}
-var canUseSymbol = typeof Symbol === "function" && Symbol.for;
-var REACT_ELEMENT_TYPE = canUseSymbol ? Symbol.for("react.element") : 60103;
-function isReactElement(value) {
-  return value.$$typeof === REACT_ELEMENT_TYPE;
-}
-function emptyTarget(val) {
-  return Array.isArray(val) ? [] : {};
-}
-function cloneUnlessOtherwiseSpecified(value, options2) {
-  return options2.clone !== false && options2.isMergeableObject(value) ? deepmerge(emptyTarget(value), value, options2) : value;
-}
-function defaultArrayMerge(target, source2, options2) {
-  return target.concat(source2).map(function(element) {
-    return cloneUnlessOtherwiseSpecified(element, options2);
-  });
-}
-function mergeObject(target, source2, options2) {
-  var destination = {};
-  if (options2.isMergeableObject(target)) {
-    Object.keys(target).forEach(function(key) {
-      destination[key] = cloneUnlessOtherwiseSpecified(target[key], options2);
-    });
-  }
-  Object.keys(source2).forEach(function(key) {
-    if (!options2.isMergeableObject(source2[key]) || !target[key]) {
-      destination[key] = cloneUnlessOtherwiseSpecified(source2[key], options2);
-    } else {
-      destination[key] = deepmerge(target[key], source2[key], options2);
-    }
-  });
-  return destination;
-}
-function deepmerge(target, source2, options2) {
-  options2 = options2 || {};
-  options2.arrayMerge = options2.arrayMerge || defaultArrayMerge;
-  options2.isMergeableObject = options2.isMergeableObject || isMergeableObject;
-  var sourceIsArray = Array.isArray(source2);
-  var targetIsArray = Array.isArray(target);
-  var sourceAndTargetTypesMatch = sourceIsArray === targetIsArray;
-  if (!sourceAndTargetTypesMatch) {
-    return cloneUnlessOtherwiseSpecified(source2, options2);
-  } else if (sourceIsArray) {
-    return options2.arrayMerge(target, source2, options2);
-  } else {
-    return mergeObject(target, source2, options2);
-  }
-}
-deepmerge.all = function deepmergeAll(array2, options2) {
-  if (!Array.isArray(array2)) {
-    throw new Error("first argument should be an array");
-  }
-  return array2.reduce(function(prev2, next2) {
-    return deepmerge(prev2, next2, options2);
-  }, {});
-};
-var deepmerge_1 = deepmerge;
-var reactFastCompare$1;
-var hasRequiredReactFastCompare$1;
-function requireReactFastCompare$1() {
-  if (hasRequiredReactFastCompare$1) return reactFastCompare$1;
-  hasRequiredReactFastCompare$1 = 1;
-  var isArray2 = Array.isArray;
-  var keyList = Object.keys;
-  var hasProp = Object.prototype.hasOwnProperty;
-  var hasElementType = typeof Element !== "undefined";
-  function equal2(a4, b3) {
-    if (a4 === b3) return true;
-    if (a4 && b3 && typeof a4 == "object" && typeof b3 == "object") {
-      var arrA = isArray2(a4), arrB = isArray2(b3), i3, length2, key;
-      if (arrA && arrB) {
-        length2 = a4.length;
-        if (length2 != b3.length) return false;
-        for (i3 = length2; i3-- !== 0; )
-          if (!equal2(a4[i3], b3[i3])) return false;
-        return true;
-      }
-      if (arrA != arrB) return false;
-      var dateA = a4 instanceof Date, dateB = b3 instanceof Date;
-      if (dateA != dateB) return false;
-      if (dateA && dateB) return a4.getTime() == b3.getTime();
-      var regexpA = a4 instanceof RegExp, regexpB = b3 instanceof RegExp;
-      if (regexpA != regexpB) return false;
-      if (regexpA && regexpB) return a4.toString() == b3.toString();
-      var keys3 = keyList(a4);
-      length2 = keys3.length;
-      if (length2 !== keyList(b3).length)
-        return false;
-      for (i3 = length2; i3-- !== 0; )
-        if (!hasProp.call(b3, keys3[i3])) return false;
-      if (hasElementType && a4 instanceof Element && b3 instanceof Element)
-        return a4 === b3;
-      for (i3 = length2; i3-- !== 0; ) {
-        key = keys3[i3];
-        if (key === "_owner" && a4.$$typeof) {
-          continue;
-        } else {
-          if (!equal2(a4[key], b3[key])) return false;
-        }
-      }
-      return true;
-    }
-    return a4 !== a4 && b3 !== b3;
-  }
-  reactFastCompare$1 = function exportedEqual(a4, b3) {
-    try {
-      return equal2(a4, b3);
-    } catch (error) {
-      if (error.message && error.message.match(/stack|recursion/i) || error.number === -2146828260) {
-        console.warn("Warning: react-fast-compare does not handle circular references.", error.name, error.message);
-        return false;
-      }
-      throw error;
-    }
-  };
-  return reactFastCompare$1;
-}
-var reactFastCompareExports$1 = requireReactFastCompare$1();
-const isEqual$4 = /* @__PURE__ */ getDefaultExportFromCjs(reactFastCompareExports$1);
-function _extends$1() {
-  _extends$1 = Object.assign || function(target) {
-    for (var i3 = 1; i3 < arguments.length; i3++) {
-      var source2 = arguments[i3];
-      for (var key in source2) {
-        if (Object.prototype.hasOwnProperty.call(source2, key)) {
-          target[key] = source2[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$1.apply(this, arguments);
-}
-function _objectWithoutPropertiesLoose$3(source2, excluded) {
-  if (source2 == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source2);
-  var key, i3;
-  for (i3 = 0; i3 < sourceKeys.length; i3++) {
-    key = sourceKeys[i3];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source2[key];
-  }
-  return target;
-}
-var FormikContext = /* @__PURE__ */ reactExports.createContext(void 0);
-FormikContext.displayName = "FormikContext";
-FormikContext.Provider;
-FormikContext.Consumer;
-function useFormikContext() {
-  var formik = reactExports.useContext(FormikContext);
-  return formik;
-}
-var isFunction$1 = function isFunction2(obj) {
-  return typeof obj === "function";
-};
-var isObject = function isObject22(obj) {
-  return obj !== null && typeof obj === "object";
-};
-var isInteger = function isInteger2(obj) {
-  return String(Math.floor(Number(obj))) === obj;
-};
-var isString = function isString2(obj) {
-  return Object.prototype.toString.call(obj) === "[object String]";
-};
-var isPromise = function isPromise2(value) {
-  return isObject(value) && isFunction$1(value.then);
-};
-function getIn(obj, key, def, p2) {
-  if (p2 === void 0) {
-    p2 = 0;
-  }
-  var path2 = toPath(key);
-  while (obj && p2 < path2.length) {
-    obj = obj[path2[p2++]];
-  }
-  if (p2 !== path2.length && !obj) {
-    return def;
-  }
-  return obj === void 0 ? def : obj;
-}
-function setIn(obj, path2, value) {
-  var res = clone$1(obj);
-  var resVal = res;
-  var i3 = 0;
-  var pathArray = toPath(path2);
-  for (; i3 < pathArray.length - 1; i3++) {
-    var currentPath = pathArray[i3];
-    var currentObj = getIn(obj, pathArray.slice(0, i3 + 1));
-    if (currentObj && (isObject(currentObj) || Array.isArray(currentObj))) {
-      resVal = resVal[currentPath] = clone$1(currentObj);
-    } else {
-      var nextPath = pathArray[i3 + 1];
-      resVal = resVal[currentPath] = isInteger(nextPath) && Number(nextPath) >= 0 ? [] : {};
-    }
-  }
-  if ((i3 === 0 ? obj : resVal)[pathArray[i3]] === value) {
-    return obj;
-  }
-  if (value === void 0) {
-    delete resVal[pathArray[i3]];
-  } else {
-    resVal[pathArray[i3]] = value;
-  }
-  if (i3 === 0 && value === void 0) {
-    delete res[pathArray[i3]];
-  }
-  return res;
-}
-function setNestedObjectValues(object2, value, visited, response) {
-  if (visited === void 0) {
-    visited = /* @__PURE__ */ new WeakMap();
-  }
-  if (response === void 0) {
-    response = {};
-  }
-  for (var _i2 = 0, _Object$keys = Object.keys(object2); _i2 < _Object$keys.length; _i2++) {
-    var k2 = _Object$keys[_i2];
-    var val = object2[k2];
-    if (isObject(val)) {
-      if (!visited.get(val)) {
-        visited.set(val, true);
-        response[k2] = Array.isArray(val) ? [] : {};
-        setNestedObjectValues(val, value, visited, response[k2]);
-      }
-    } else {
-      response[k2] = value;
-    }
-  }
-  return response;
-}
-function formikReducer(state, msg) {
-  switch (msg.type) {
-    case "SET_VALUES":
-      return _extends$1({}, state, {
-        values: msg.payload
-      });
-    case "SET_TOUCHED":
-      return _extends$1({}, state, {
-        touched: msg.payload
-      });
-    case "SET_ERRORS":
-      if (isEqual$4(state.errors, msg.payload)) {
-        return state;
-      }
-      return _extends$1({}, state, {
-        errors: msg.payload
-      });
-    case "SET_STATUS":
-      return _extends$1({}, state, {
-        status: msg.payload
-      });
-    case "SET_ISSUBMITTING":
-      return _extends$1({}, state, {
-        isSubmitting: msg.payload
-      });
-    case "SET_ISVALIDATING":
-      return _extends$1({}, state, {
-        isValidating: msg.payload
-      });
-    case "SET_FIELD_VALUE":
-      return _extends$1({}, state, {
-        values: setIn(state.values, msg.payload.field, msg.payload.value)
-      });
-    case "SET_FIELD_TOUCHED":
-      return _extends$1({}, state, {
-        touched: setIn(state.touched, msg.payload.field, msg.payload.value)
-      });
-    case "SET_FIELD_ERROR":
-      return _extends$1({}, state, {
-        errors: setIn(state.errors, msg.payload.field, msg.payload.value)
-      });
-    case "RESET_FORM":
-      return _extends$1({}, state, msg.payload);
-    case "SET_FORMIK_STATE":
-      return msg.payload(state);
-    case "SUBMIT_ATTEMPT":
-      return _extends$1({}, state, {
-        touched: setNestedObjectValues(state.values, true),
-        isSubmitting: true,
-        submitCount: state.submitCount + 1
-      });
-    case "SUBMIT_FAILURE":
-      return _extends$1({}, state, {
-        isSubmitting: false
-      });
-    case "SUBMIT_SUCCESS":
-      return _extends$1({}, state, {
-        isSubmitting: false
-      });
-    default:
-      return state;
-  }
-}
-var emptyErrors = {};
-var emptyTouched = {};
-function useFormik(_ref3) {
-  var _ref$validateOnChange = _ref3.validateOnChange, validateOnChange = _ref$validateOnChange === void 0 ? true : _ref$validateOnChange, _ref$validateOnBlur = _ref3.validateOnBlur, validateOnBlur = _ref$validateOnBlur === void 0 ? true : _ref$validateOnBlur, _ref$validateOnMount = _ref3.validateOnMount, validateOnMount = _ref$validateOnMount === void 0 ? false : _ref$validateOnMount, isInitialValid = _ref3.isInitialValid, _ref$enableReinitiali = _ref3.enableReinitialize, enableReinitialize = _ref$enableReinitiali === void 0 ? false : _ref$enableReinitiali, onSubmit = _ref3.onSubmit, rest = _objectWithoutPropertiesLoose$3(_ref3, ["validateOnChange", "validateOnBlur", "validateOnMount", "isInitialValid", "enableReinitialize", "onSubmit"]);
-  var props = _extends$1({
-    validateOnChange,
-    validateOnBlur,
-    validateOnMount,
-    onSubmit
-  }, rest);
-  var initialValues = reactExports.useRef(props.initialValues);
-  var initialErrors = reactExports.useRef(props.initialErrors || emptyErrors);
-  var initialTouched = reactExports.useRef(props.initialTouched || emptyTouched);
-  var initialStatus = reactExports.useRef(props.initialStatus);
-  var isMounted = reactExports.useRef(false);
-  var fieldRegistry = reactExports.useRef({});
-  reactExports.useEffect(function() {
-    isMounted.current = true;
-    return function() {
-      isMounted.current = false;
-    };
-  }, []);
-  var _React$useState = reactExports.useState(0), setIteration = _React$useState[1];
-  var stateRef = reactExports.useRef({
-    values: cloneDeep$1(props.initialValues),
-    errors: cloneDeep$1(props.initialErrors) || emptyErrors,
-    touched: cloneDeep$1(props.initialTouched) || emptyTouched,
-    status: cloneDeep$1(props.initialStatus),
-    isSubmitting: false,
-    isValidating: false,
-    submitCount: 0
-  });
-  var state = stateRef.current;
-  var dispatch = reactExports.useCallback(function(action) {
-    var prev2 = stateRef.current;
-    stateRef.current = formikReducer(prev2, action);
-    if (prev2 !== stateRef.current) setIteration(function(x3) {
-      return x3 + 1;
-    });
-  }, []);
-  var runValidateHandler = reactExports.useCallback(function(values3, field) {
-    return new Promise(function(resolve, reject) {
-      var maybePromisedErrors = props.validate(values3, field);
-      if (maybePromisedErrors == null) {
-        resolve(emptyErrors);
-      } else if (isPromise(maybePromisedErrors)) {
-        maybePromisedErrors.then(function(errors2) {
-          resolve(errors2 || emptyErrors);
-        }, function(actualException) {
-          reject(actualException);
-        });
-      } else {
-        resolve(maybePromisedErrors);
-      }
-    });
-  }, [props.validate]);
-  var runValidationSchema = reactExports.useCallback(function(values3, field) {
-    var validationSchema = props.validationSchema;
-    var schema2 = isFunction$1(validationSchema) ? validationSchema(field) : validationSchema;
-    var promise = field && schema2.validateAt ? schema2.validateAt(field, values3) : validateYupSchema(values3, schema2);
-    return new Promise(function(resolve, reject) {
-      promise.then(function() {
-        resolve(emptyErrors);
-      }, function(err) {
-        if (err.name === "ValidationError") {
-          resolve(yupToFormErrors(err));
-        } else {
-          reject(err);
-        }
-      });
-    });
-  }, [props.validationSchema]);
-  var runSingleFieldLevelValidation = reactExports.useCallback(function(field, value) {
-    return new Promise(function(resolve) {
-      return resolve(fieldRegistry.current[field].validate(value));
-    });
-  }, []);
-  var runFieldLevelValidations = reactExports.useCallback(function(values3) {
-    var fieldKeysWithValidation = Object.keys(fieldRegistry.current).filter(function(f) {
-      return isFunction$1(fieldRegistry.current[f].validate);
-    });
-    var fieldValidations = fieldKeysWithValidation.length > 0 ? fieldKeysWithValidation.map(function(f) {
-      return runSingleFieldLevelValidation(f, getIn(values3, f));
-    }) : [Promise.resolve("DO_NOT_DELETE_YOU_WILL_BE_FIRED")];
-    return Promise.all(fieldValidations).then(function(fieldErrorsList) {
-      return fieldErrorsList.reduce(function(prev2, curr, index2) {
-        if (curr === "DO_NOT_DELETE_YOU_WILL_BE_FIRED") {
-          return prev2;
-        }
-        if (curr) {
-          prev2 = setIn(prev2, fieldKeysWithValidation[index2], curr);
-        }
-        return prev2;
-      }, {});
-    });
-  }, [runSingleFieldLevelValidation]);
-  var runAllValidations = reactExports.useCallback(function(values3) {
-    return Promise.all([runFieldLevelValidations(values3), props.validationSchema ? runValidationSchema(values3) : {}, props.validate ? runValidateHandler(values3) : {}]).then(function(_ref22) {
-      var fieldErrors = _ref22[0], schemaErrors = _ref22[1], validateErrors = _ref22[2];
-      var combinedErrors = deepmerge_1.all([fieldErrors, schemaErrors, validateErrors], {
-        arrayMerge
-      });
-      return combinedErrors;
-    });
-  }, [props.validate, props.validationSchema, runFieldLevelValidations, runValidateHandler, runValidationSchema]);
-  var validateFormWithHighPriority = useEventCallback(function(values3) {
-    if (values3 === void 0) {
-      values3 = state.values;
-    }
-    dispatch({
-      type: "SET_ISVALIDATING",
-      payload: true
-    });
-    return runAllValidations(values3).then(function(combinedErrors) {
-      if (!!isMounted.current) {
-        dispatch({
-          type: "SET_ISVALIDATING",
-          payload: false
-        });
-        dispatch({
-          type: "SET_ERRORS",
-          payload: combinedErrors
-        });
-      }
-      return combinedErrors;
-    });
-  });
-  reactExports.useEffect(function() {
-    if (validateOnMount && isMounted.current === true && isEqual$4(initialValues.current, props.initialValues)) {
-      validateFormWithHighPriority(initialValues.current);
-    }
-  }, [validateOnMount, validateFormWithHighPriority]);
-  var resetForm = reactExports.useCallback(function(nextState) {
-    var values3 = nextState && nextState.values ? nextState.values : initialValues.current;
-    var errors2 = nextState && nextState.errors ? nextState.errors : initialErrors.current ? initialErrors.current : props.initialErrors || {};
-    var touched = nextState && nextState.touched ? nextState.touched : initialTouched.current ? initialTouched.current : props.initialTouched || {};
-    var status2 = nextState && nextState.status ? nextState.status : initialStatus.current ? initialStatus.current : props.initialStatus;
-    initialValues.current = values3;
-    initialErrors.current = errors2;
-    initialTouched.current = touched;
-    initialStatus.current = status2;
-    var dispatchFn = function dispatchFn2() {
-      dispatch({
-        type: "RESET_FORM",
-        payload: {
-          isSubmitting: !!nextState && !!nextState.isSubmitting,
-          errors: errors2,
-          touched,
-          status: status2,
-          values: values3,
-          isValidating: !!nextState && !!nextState.isValidating,
-          submitCount: !!nextState && !!nextState.submitCount && typeof nextState.submitCount === "number" ? nextState.submitCount : 0
-        }
-      });
-    };
-    if (props.onReset) {
-      var maybePromisedOnReset = props.onReset(state.values, imperativeMethods);
-      if (isPromise(maybePromisedOnReset)) {
-        maybePromisedOnReset.then(dispatchFn);
-      } else {
-        dispatchFn();
-      }
-    } else {
-      dispatchFn();
-    }
-  }, [props.initialErrors, props.initialStatus, props.initialTouched, props.onReset]);
-  reactExports.useEffect(function() {
-    if (isMounted.current === true && !isEqual$4(initialValues.current, props.initialValues)) {
-      if (enableReinitialize) {
-        initialValues.current = props.initialValues;
-        resetForm();
-        if (validateOnMount) {
-          validateFormWithHighPriority(initialValues.current);
-        }
-      }
-    }
-  }, [enableReinitialize, props.initialValues, resetForm, validateOnMount, validateFormWithHighPriority]);
-  reactExports.useEffect(function() {
-    if (enableReinitialize && isMounted.current === true && !isEqual$4(initialErrors.current, props.initialErrors)) {
-      initialErrors.current = props.initialErrors || emptyErrors;
-      dispatch({
-        type: "SET_ERRORS",
-        payload: props.initialErrors || emptyErrors
-      });
-    }
-  }, [enableReinitialize, props.initialErrors]);
-  reactExports.useEffect(function() {
-    if (enableReinitialize && isMounted.current === true && !isEqual$4(initialTouched.current, props.initialTouched)) {
-      initialTouched.current = props.initialTouched || emptyTouched;
-      dispatch({
-        type: "SET_TOUCHED",
-        payload: props.initialTouched || emptyTouched
-      });
-    }
-  }, [enableReinitialize, props.initialTouched]);
-  reactExports.useEffect(function() {
-    if (enableReinitialize && isMounted.current === true && !isEqual$4(initialStatus.current, props.initialStatus)) {
-      initialStatus.current = props.initialStatus;
-      dispatch({
-        type: "SET_STATUS",
-        payload: props.initialStatus
-      });
-    }
-  }, [enableReinitialize, props.initialStatus, props.initialTouched]);
-  var validateField = useEventCallback(function(name2) {
-    if (fieldRegistry.current[name2] && isFunction$1(fieldRegistry.current[name2].validate)) {
-      var value = getIn(state.values, name2);
-      var maybePromise = fieldRegistry.current[name2].validate(value);
-      if (isPromise(maybePromise)) {
-        dispatch({
-          type: "SET_ISVALIDATING",
-          payload: true
-        });
-        return maybePromise.then(function(x3) {
-          return x3;
-        }).then(function(error) {
-          dispatch({
-            type: "SET_FIELD_ERROR",
-            payload: {
-              field: name2,
-              value: error
-            }
-          });
-          dispatch({
-            type: "SET_ISVALIDATING",
-            payload: false
-          });
-        });
-      } else {
-        dispatch({
-          type: "SET_FIELD_ERROR",
-          payload: {
-            field: name2,
-            value: maybePromise
-          }
-        });
-        return Promise.resolve(maybePromise);
-      }
-    } else if (props.validationSchema) {
-      dispatch({
-        type: "SET_ISVALIDATING",
-        payload: true
-      });
-      return runValidationSchema(state.values, name2).then(function(x3) {
-        return x3;
-      }).then(function(error) {
-        dispatch({
-          type: "SET_FIELD_ERROR",
-          payload: {
-            field: name2,
-            value: getIn(error, name2)
-          }
-        });
-        dispatch({
-          type: "SET_ISVALIDATING",
-          payload: false
-        });
-      });
-    }
-    return Promise.resolve();
-  });
-  var registerField = reactExports.useCallback(function(name2, _ref32) {
-    var validate = _ref32.validate;
-    fieldRegistry.current[name2] = {
-      validate
-    };
-  }, []);
-  var unregisterField = reactExports.useCallback(function(name2) {
-    delete fieldRegistry.current[name2];
-  }, []);
-  var setTouched = useEventCallback(function(touched, shouldValidate) {
-    dispatch({
-      type: "SET_TOUCHED",
-      payload: touched
-    });
-    var willValidate = shouldValidate === void 0 ? validateOnBlur : shouldValidate;
-    return willValidate ? validateFormWithHighPriority(state.values) : Promise.resolve();
-  });
-  var setErrors = reactExports.useCallback(function(errors2) {
-    dispatch({
-      type: "SET_ERRORS",
-      payload: errors2
-    });
-  }, []);
-  var setValues = useEventCallback(function(values3, shouldValidate) {
-    var resolvedValues = isFunction$1(values3) ? values3(state.values) : values3;
-    dispatch({
-      type: "SET_VALUES",
-      payload: resolvedValues
-    });
-    var willValidate = shouldValidate === void 0 ? validateOnChange : shouldValidate;
-    return willValidate ? validateFormWithHighPriority(resolvedValues) : Promise.resolve();
-  });
-  var setFieldError = reactExports.useCallback(function(field, value) {
-    dispatch({
-      type: "SET_FIELD_ERROR",
-      payload: {
-        field,
-        value
-      }
-    });
-  }, []);
-  var setFieldValue = useEventCallback(function(field, value, shouldValidate) {
-    dispatch({
-      type: "SET_FIELD_VALUE",
-      payload: {
-        field,
-        value
-      }
-    });
-    var willValidate = shouldValidate === void 0 ? validateOnChange : shouldValidate;
-    return willValidate ? validateFormWithHighPriority(setIn(state.values, field, value)) : Promise.resolve();
-  });
-  var executeChange = reactExports.useCallback(function(eventOrTextValue, maybePath) {
-    var field = maybePath;
-    var val = eventOrTextValue;
-    var parsed;
-    if (!isString(eventOrTextValue)) {
-      if (eventOrTextValue.persist) {
-        eventOrTextValue.persist();
-      }
-      var target = eventOrTextValue.target ? eventOrTextValue.target : eventOrTextValue.currentTarget;
-      var type3 = target.type, name2 = target.name, id2 = target.id, value = target.value, checked = target.checked;
-      target.outerHTML;
-      var options2 = target.options, multiple = target.multiple;
-      field = maybePath ? maybePath : name2 ? name2 : id2;
-      val = /number|range/.test(type3) ? (parsed = parseFloat(value), isNaN(parsed) ? "" : parsed) : /checkbox/.test(type3) ? getValueForCheckbox(getIn(state.values, field), checked, value) : options2 && multiple ? getSelectedValues(options2) : value;
-    }
-    if (field) {
-      setFieldValue(field, val);
-    }
-  }, [setFieldValue, state.values]);
-  var handleChange = useEventCallback(function(eventOrPath) {
-    if (isString(eventOrPath)) {
-      return function(event2) {
-        return executeChange(event2, eventOrPath);
-      };
-    } else {
-      executeChange(eventOrPath);
-    }
-  });
-  var setFieldTouched = useEventCallback(function(field, touched, shouldValidate) {
-    if (touched === void 0) {
-      touched = true;
-    }
-    dispatch({
-      type: "SET_FIELD_TOUCHED",
-      payload: {
-        field,
-        value: touched
-      }
-    });
-    var willValidate = shouldValidate === void 0 ? validateOnBlur : shouldValidate;
-    return willValidate ? validateFormWithHighPriority(state.values) : Promise.resolve();
-  });
-  var executeBlur = reactExports.useCallback(function(e2, path2) {
-    if (e2.persist) {
-      e2.persist();
-    }
-    var _e$target = e2.target, name2 = _e$target.name, id2 = _e$target.id;
-    _e$target.outerHTML;
-    var field = path2 ? path2 : name2 ? name2 : id2;
-    setFieldTouched(field, true);
-  }, [setFieldTouched]);
-  var handleBlur = useEventCallback(function(eventOrString) {
-    if (isString(eventOrString)) {
-      return function(event2) {
-        return executeBlur(event2, eventOrString);
-      };
-    } else {
-      executeBlur(eventOrString);
-    }
-  });
-  var setFormikState = reactExports.useCallback(function(stateOrCb) {
-    if (isFunction$1(stateOrCb)) {
-      dispatch({
-        type: "SET_FORMIK_STATE",
-        payload: stateOrCb
-      });
-    } else {
-      dispatch({
-        type: "SET_FORMIK_STATE",
-        payload: function payload() {
-          return stateOrCb;
-        }
-      });
-    }
-  }, []);
-  var setStatus = reactExports.useCallback(function(status2) {
-    dispatch({
-      type: "SET_STATUS",
-      payload: status2
-    });
-  }, []);
-  var setSubmitting = reactExports.useCallback(function(isSubmitting) {
-    dispatch({
-      type: "SET_ISSUBMITTING",
-      payload: isSubmitting
-    });
-  }, []);
-  var submitForm = useEventCallback(function() {
-    dispatch({
-      type: "SUBMIT_ATTEMPT"
-    });
-    return validateFormWithHighPriority().then(function(combinedErrors) {
-      var isInstanceOfError = combinedErrors instanceof Error;
-      var isActuallyValid = !isInstanceOfError && Object.keys(combinedErrors).length === 0;
-      if (isActuallyValid) {
-        var promiseOrUndefined;
-        try {
-          promiseOrUndefined = executeSubmit();
-          if (promiseOrUndefined === void 0) {
-            return;
-          }
-        } catch (error) {
-          throw error;
-        }
-        return Promise.resolve(promiseOrUndefined).then(function(result) {
-          if (!!isMounted.current) {
-            dispatch({
-              type: "SUBMIT_SUCCESS"
-            });
-          }
-          return result;
-        })["catch"](function(_errors) {
-          if (!!isMounted.current) {
-            dispatch({
-              type: "SUBMIT_FAILURE"
-            });
-            throw _errors;
-          }
-        });
-      } else if (!!isMounted.current) {
-        dispatch({
-          type: "SUBMIT_FAILURE"
-        });
-        if (isInstanceOfError) {
-          throw combinedErrors;
-        }
-      }
-      return;
-    });
-  });
-  var handleSubmit = useEventCallback(function(e2) {
-    if (e2 && e2.preventDefault && isFunction$1(e2.preventDefault)) {
-      e2.preventDefault();
-    }
-    if (e2 && e2.stopPropagation && isFunction$1(e2.stopPropagation)) {
-      e2.stopPropagation();
-    }
-    submitForm()["catch"](function(reason) {
-      console.warn("Warning: An unhandled error was caught from submitForm()", reason);
-    });
-  });
-  var imperativeMethods = {
-    resetForm,
-    validateForm: validateFormWithHighPriority,
-    validateField,
-    setErrors,
-    setFieldError,
-    setFieldTouched,
-    setFieldValue,
-    setStatus,
-    setSubmitting,
-    setTouched,
-    setValues,
-    setFormikState,
-    submitForm
-  };
-  var executeSubmit = useEventCallback(function() {
-    return onSubmit(state.values, imperativeMethods);
-  });
-  var handleReset = useEventCallback(function(e2) {
-    if (e2 && e2.preventDefault && isFunction$1(e2.preventDefault)) {
-      e2.preventDefault();
-    }
-    if (e2 && e2.stopPropagation && isFunction$1(e2.stopPropagation)) {
-      e2.stopPropagation();
-    }
-    resetForm();
-  });
-  var getFieldMeta = reactExports.useCallback(function(name2) {
-    return {
-      value: getIn(state.values, name2),
-      error: getIn(state.errors, name2),
-      touched: !!getIn(state.touched, name2),
-      initialValue: getIn(initialValues.current, name2),
-      initialTouched: !!getIn(initialTouched.current, name2),
-      initialError: getIn(initialErrors.current, name2)
-    };
-  }, [state.errors, state.touched, state.values]);
-  var getFieldHelpers = reactExports.useCallback(function(name2) {
-    return {
-      setValue: function setValue(value, shouldValidate) {
-        return setFieldValue(name2, value, shouldValidate);
-      },
-      setTouched: function setTouched2(value, shouldValidate) {
-        return setFieldTouched(name2, value, shouldValidate);
-      },
-      setError: function setError(value) {
-        return setFieldError(name2, value);
-      }
-    };
-  }, [setFieldValue, setFieldTouched, setFieldError]);
-  var getFieldProps = reactExports.useCallback(function(nameOrOptions) {
-    var isAnObject = isObject(nameOrOptions);
-    var name2 = isAnObject ? nameOrOptions.name : nameOrOptions;
-    var valueState = getIn(state.values, name2);
-    var field = {
-      name: name2,
-      value: valueState,
-      onChange: handleChange,
-      onBlur: handleBlur
-    };
-    if (isAnObject) {
-      var type3 = nameOrOptions.type, valueProp = nameOrOptions.value, is2 = nameOrOptions.as, multiple = nameOrOptions.multiple;
-      if (type3 === "checkbox") {
-        if (valueProp === void 0) {
-          field.checked = !!valueState;
-        } else {
-          field.checked = !!(Array.isArray(valueState) && ~valueState.indexOf(valueProp));
-          field.value = valueProp;
-        }
-      } else if (type3 === "radio") {
-        field.checked = valueState === valueProp;
-        field.value = valueProp;
-      } else if (is2 === "select" && multiple) {
-        field.value = field.value || [];
-        field.multiple = true;
-      }
-    }
-    return field;
-  }, [handleBlur, handleChange, state.values]);
-  var dirty = reactExports.useMemo(function() {
-    return !isEqual$4(initialValues.current, state.values);
-  }, [initialValues.current, state.values]);
-  var isValid2 = reactExports.useMemo(function() {
-    return typeof isInitialValid !== "undefined" ? dirty ? state.errors && Object.keys(state.errors).length === 0 : isInitialValid !== false && isFunction$1(isInitialValid) ? isInitialValid(props) : isInitialValid : state.errors && Object.keys(state.errors).length === 0;
-  }, [isInitialValid, dirty, state.errors, props]);
-  var ctx = _extends$1({}, state, {
-    initialValues: initialValues.current,
-    initialErrors: initialErrors.current,
-    initialTouched: initialTouched.current,
-    initialStatus: initialStatus.current,
-    handleBlur,
-    handleChange,
-    handleReset,
-    handleSubmit,
-    resetForm,
-    setErrors,
-    setFormikState,
-    setFieldTouched,
-    setFieldValue,
-    setFieldError,
-    setStatus,
-    setSubmitting,
-    setTouched,
-    setValues,
-    submitForm,
-    validateForm: validateFormWithHighPriority,
-    validateField,
-    isValid: isValid2,
-    dirty,
-    unregisterField,
-    registerField,
-    getFieldProps,
-    getFieldMeta,
-    getFieldHelpers,
-    validateOnBlur,
-    validateOnChange,
-    validateOnMount
-  });
-  return ctx;
-}
-function yupToFormErrors(yupError) {
-  var errors2 = {};
-  if (yupError.inner) {
-    if (yupError.inner.length === 0) {
-      return setIn(errors2, yupError.path, yupError.message);
-    }
-    for (var _iterator = yupError.inner, _isArray = Array.isArray(_iterator), _i2 = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator](); ; ) {
-      var _ref5;
-      if (_isArray) {
-        if (_i2 >= _iterator.length) break;
-        _ref5 = _iterator[_i2++];
-      } else {
-        _i2 = _iterator.next();
-        if (_i2.done) break;
-        _ref5 = _i2.value;
-      }
-      var err = _ref5;
-      if (!getIn(errors2, err.path)) {
-        errors2 = setIn(errors2, err.path, err.message);
-      }
-    }
-  }
-  return errors2;
-}
-function validateYupSchema(values3, schema2, sync2, context2) {
-  if (sync2 === void 0) {
-    sync2 = false;
-  }
-  var normalizedValues = prepareDataForValidation(values3);
-  return schema2[sync2 ? "validateSync" : "validate"](normalizedValues, {
-    abortEarly: false,
-    context: normalizedValues
-  });
-}
-function prepareDataForValidation(values3) {
-  var data2 = Array.isArray(values3) ? [] : {};
-  for (var k2 in values3) {
-    if (Object.prototype.hasOwnProperty.call(values3, k2)) {
-      var key = String(k2);
-      if (Array.isArray(values3[key]) === true) {
-        data2[key] = values3[key].map(function(value) {
-          if (Array.isArray(value) === true || isPlainObject$1(value)) {
-            return prepareDataForValidation(value);
-          } else {
-            return value !== "" ? value : void 0;
-          }
-        });
-      } else if (isPlainObject$1(values3[key])) {
-        data2[key] = prepareDataForValidation(values3[key]);
-      } else {
-        data2[key] = values3[key] !== "" ? values3[key] : void 0;
-      }
-    }
-  }
-  return data2;
-}
-function arrayMerge(target, source2, options2) {
-  var destination = target.slice();
-  source2.forEach(function merge3(e2, i3) {
-    if (typeof destination[i3] === "undefined") {
-      var cloneRequested = options2.clone !== false;
-      var shouldClone = cloneRequested && options2.isMergeableObject(e2);
-      destination[i3] = shouldClone ? deepmerge_1(Array.isArray(e2) ? [] : {}, e2, options2) : e2;
-    } else if (options2.isMergeableObject(e2)) {
-      destination[i3] = deepmerge_1(target[i3], e2, options2);
-    } else if (target.indexOf(e2) === -1) {
-      destination.push(e2);
-    }
-  });
-  return destination;
-}
-function getSelectedValues(options2) {
-  return Array.from(options2).filter(function(el) {
-    return el.selected;
-  }).map(function(el) {
-    return el.value;
-  });
-}
-function getValueForCheckbox(currentValue, checked, valueProp) {
-  if (typeof currentValue === "boolean") {
-    return Boolean(checked);
-  }
-  var currentArrayOfValues = [];
-  var isValueInArray = false;
-  var index2 = -1;
-  if (!Array.isArray(currentValue)) {
-    if (!valueProp || valueProp == "true" || valueProp == "false") {
-      return Boolean(checked);
-    }
-  } else {
-    currentArrayOfValues = currentValue;
-    index2 = currentValue.indexOf(valueProp);
-    isValueInArray = index2 >= 0;
-  }
-  if (checked && valueProp && !isValueInArray) {
-    return currentArrayOfValues.concat(valueProp);
-  }
-  if (!isValueInArray) {
-    return currentArrayOfValues;
-  }
-  return currentArrayOfValues.slice(0, index2).concat(currentArrayOfValues.slice(index2 + 1));
-}
-var useIsomorphicLayoutEffect$3 = typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined" ? reactExports.useLayoutEffect : reactExports.useEffect;
-function useEventCallback(fn3) {
-  var ref = reactExports.useRef(fn3);
-  useIsomorphicLayoutEffect$3(function() {
-    ref.current = fn3;
-  });
-  return reactExports.useCallback(function() {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    return ref.current.apply(void 0, args);
-  }, []);
-}
-var Form = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
-  var action = props.action, rest = _objectWithoutPropertiesLoose$3(props, ["action"]);
-  var _action = action != null ? action : "#";
-  var _useFormikContext = useFormikContext(), handleReset = _useFormikContext.handleReset, handleSubmit = _useFormikContext.handleSubmit;
-  return reactExports.createElement("form", _extends$1({
-    onSubmit: handleSubmit,
-    ref,
-    onReset: handleReset,
-    action: _action
-  }, rest));
-});
-Form.displayName = "Form";
-const includeMS = true;
-const DurationInput = ({ disabled: disabled2, value, setValue, onReset, className, placeholder, error, allowNegative = false }) => {
-  const [tmpValue, setTmpValue] = reactExports.useState();
-  function onChange3(e2) {
-    setTmpValue(e2.currentTarget.value);
-  }
-  function onBlur() {
-    if (tmpValue !== void 0) {
-      updateValue(TextUtils.timestampToSeconds(tmpValue));
-      setTmpValue(void 0);
-    }
-  }
-  function updateValue(v) {
-    if (v !== null && !allowNegative && v < 0) {
-      v = null;
-    }
-    setValue(v);
-  }
-  function increment() {
-    setTmpValue(void 0);
-    updateValue((value !== null && value !== void 0 ? value : 0) + 1);
-  }
-  function decrement() {
-    setTmpValue(void 0);
-    if (allowNegative) {
-      updateValue((value !== null && value !== void 0 ? value : 0) - 1);
-    } else {
-      updateValue(value ? value - 1 : 0);
-    }
-  }
-  function renderButtons() {
-    if (!disabled2) {
-      return jsxRuntimeExports.jsxs(ButtonGroup, { vertical: true, children: [jsxRuntimeExports.jsx(Button, { variant: "secondary", className: "duration-button", onClick: () => increment(), children: jsxRuntimeExports.jsx(Icon, { icon: faChevronUp }) }), jsxRuntimeExports.jsx(Button, { variant: "secondary", className: "duration-button", onClick: () => decrement(), children: jsxRuntimeExports.jsx(Icon, { icon: faChevronDown }) })] });
-    }
-  }
-  function maybeRenderReset() {
-    if (onReset) {
-      return jsxRuntimeExports.jsx(Button, { variant: "secondary", onClick: () => onReset(), children: jsxRuntimeExports.jsx(Icon, { icon: faClock }) });
-    }
-  }
-  const inputValue = reactExports.useMemo(() => {
-    if (tmpValue !== void 0) {
-      return tmpValue;
-    } else if (value !== null && value !== void 0) {
-      return TextUtils.secondsToTimestamp(value, includeMS);
-    }
-  }, [value, tmpValue]);
-  const format2 = "hh:mm:ss.ms";
-  if (placeholder) {
-    placeholder = `${placeholder} (${format2})`;
-  } else {
-    placeholder = format2;
-  }
-  return jsxRuntimeExports.jsx("div", { className: `duration-input ${className}`, children: jsxRuntimeExports.jsxs(InputGroup, { children: [jsxRuntimeExports.jsx(FormImpl.Control, { className: "duration-control text-input", disabled: disabled2, value: inputValue, onChange: onChange3, onBlur, placeholder }), jsxRuntimeExports.jsxs(InputGroup.Append, { children: [maybeRenderReset(), renderButtons()] }), jsxRuntimeExports.jsx(FormImpl.Control.Feedback, { type: "invalid", children: error })] }) });
 };
 function _typeof(o2) {
   "@babel/helpers - typeof";
@@ -202285,7 +201290,7 @@ var defaultComponents = function defaultComponents2(props) {
 var safeIsNaN = Number.isNaN || function ponyfill(value) {
   return typeof value === "number" && value !== value;
 };
-function isEqual$3(first, second2) {
+function isEqual$4(first, second2) {
   if (first === second2) {
     return true;
   }
@@ -202299,7 +201304,7 @@ function areInputsEqual(newInputs, lastInputs) {
     return false;
   }
   for (var i3 = 0; i3 < newInputs.length; i3++) {
-    if (!isEqual$3(newInputs[i3], lastInputs[i3])) {
+    if (!isEqual$4(newInputs[i3], lastInputs[i3])) {
       return false;
     }
   }
@@ -208593,6 +207598,1159 @@ const MarkerTitleSuggest = (props) => {
     });
   }
   return jsxRuntimeExports.jsx(SelectComponent, { isMulti: false, creatable: true, onChange: onChange3, isLoading: loading2, items, initialIds, placeholder: "Marker title...", className: "select-suggest", showDropdown: false, groupHeader: "Previously used titles..." });
+};
+function TagIdSelect(props) {
+  const history2 = reactExports.useMemo(() => createBrowserHistory(), []);
+  return /* @__PURE__ */ React$1.createElement(Router, { history: history2 }, /* @__PURE__ */ React$1.createElement(
+    TagIDSelect,
+    {
+      ...props
+    }
+  ));
+}
+const Switch = function Switch2(props) {
+  return /* @__PURE__ */ React$1.createElement(
+    FormImpl.Switch,
+    {
+      ...props,
+      className: cx("Switch", props.className),
+      label: /* @__PURE__ */ React$1.createElement("span", null, props.label)
+    }
+  );
+};
+StateManagedSelect$1.whyDidYouRender = {
+  customName: "ReactSelect"
+};
+function Select(props) {
+  const { className, expandWidthToFit, styles: styles2, ...otherProps } = props;
+  const hasTouchScreen = useMedia("(pointer: coarse)");
+  const isSearchable = props.isSearchable !== void 0 ? props.isSearchable : !hasTouchScreen;
+  const { leftHandedUi } = useTvConfig();
+  return /* @__PURE__ */ React$1.createElement(
+    StateManagedSelect$1,
+    {
+      className: cx("Select", "react-select", className),
+      styles: {
+        ...styles2,
+        // Lift the focused select (and so its open menu) above neighbouring elements with their own z-index, like
+        // Bootstrap's input group buttons, when the menu isn't portalled. Stash's selects do the same.
+        container: (provided, state) => {
+          const lifted = { ...provided, zIndex: state.isFocused ? 10 : provided.zIndex };
+          return styles2?.container ? styles2.container(lifted, state) : lifted;
+        },
+        menu: (provided) => ({
+          ...expandWidthToFit ? {
+            "maxWidth": "calc(var(--x-unit-small) * 90)",
+            "minWidth": "max-content",
+            ...leftHandedUi ? { left: 0 } : { right: 0 }
+          } : {},
+          ...styles2?.menu ? styles2.menu(provided) : provided
+        }),
+        menuList: (provided) => ({
+          ...expandWidthToFit ? {
+            scrollbarGutter: "stable"
+          } : {},
+          ...styles2?.menuList ? styles2.menuList(provided) : provided
+        })
+      },
+      classNamePrefix: "react-select",
+      isSearchable,
+      classNames: {
+        menu: (state) => state.placement === "top" ? "menu-above" : "menu-below"
+      },
+      menuPortalTarget: document.body,
+      menuPosition: "fixed",
+      ...otherProps
+    }
+  );
+}
+const IconSelect = (props) => {
+  const GridMenuList = (props2) => {
+    return /* @__PURE__ */ React$1.createElement(components.MenuList, { ...props2 }, /* @__PURE__ */ React$1.createElement("div", { style: {
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, minmax(50px, 1fr))",
+      gap: "8px",
+      padding: "8px"
+    } }, props2.children));
+  };
+  const GridOption = (props2) => {
+    return /* @__PURE__ */ React$1.createElement(components.Option, { ...props2 }, props2.data.label);
+  };
+  const GridSingleValue = (props2) => {
+    return /* @__PURE__ */ React$1.createElement(components.SingleValue, { ...props2 }, /* @__PURE__ */ React$1.createElement("div", { style: { display: "flex", alignItems: "center", margin: "0.5em 0.1em", height: "30px" } }, props2.data.label));
+  };
+  return /* @__PURE__ */ React$1.createElement(
+    Select,
+    {
+      ...props,
+      inputId: "button-icon",
+      components: {
+        MenuList: GridMenuList,
+        Option: GridOption,
+        SingleValue: GridSingleValue,
+        ...props.components
+      }
+    }
+  );
+};
+var isMergeableObject = function isMergeableObject2(value) {
+  return isNonNullObject(value) && !isSpecial(value);
+};
+function isNonNullObject(value) {
+  return !!value && typeof value === "object";
+}
+function isSpecial(value) {
+  var stringValue = Object.prototype.toString.call(value);
+  return stringValue === "[object RegExp]" || stringValue === "[object Date]" || isReactElement(value);
+}
+var canUseSymbol = typeof Symbol === "function" && Symbol.for;
+var REACT_ELEMENT_TYPE = canUseSymbol ? Symbol.for("react.element") : 60103;
+function isReactElement(value) {
+  return value.$$typeof === REACT_ELEMENT_TYPE;
+}
+function emptyTarget(val) {
+  return Array.isArray(val) ? [] : {};
+}
+function cloneUnlessOtherwiseSpecified(value, options2) {
+  return options2.clone !== false && options2.isMergeableObject(value) ? deepmerge(emptyTarget(value), value, options2) : value;
+}
+function defaultArrayMerge(target, source2, options2) {
+  return target.concat(source2).map(function(element) {
+    return cloneUnlessOtherwiseSpecified(element, options2);
+  });
+}
+function mergeObject(target, source2, options2) {
+  var destination = {};
+  if (options2.isMergeableObject(target)) {
+    Object.keys(target).forEach(function(key) {
+      destination[key] = cloneUnlessOtherwiseSpecified(target[key], options2);
+    });
+  }
+  Object.keys(source2).forEach(function(key) {
+    if (!options2.isMergeableObject(source2[key]) || !target[key]) {
+      destination[key] = cloneUnlessOtherwiseSpecified(source2[key], options2);
+    } else {
+      destination[key] = deepmerge(target[key], source2[key], options2);
+    }
+  });
+  return destination;
+}
+function deepmerge(target, source2, options2) {
+  options2 = options2 || {};
+  options2.arrayMerge = options2.arrayMerge || defaultArrayMerge;
+  options2.isMergeableObject = options2.isMergeableObject || isMergeableObject;
+  var sourceIsArray = Array.isArray(source2);
+  var targetIsArray = Array.isArray(target);
+  var sourceAndTargetTypesMatch = sourceIsArray === targetIsArray;
+  if (!sourceAndTargetTypesMatch) {
+    return cloneUnlessOtherwiseSpecified(source2, options2);
+  } else if (sourceIsArray) {
+    return options2.arrayMerge(target, source2, options2);
+  } else {
+    return mergeObject(target, source2, options2);
+  }
+}
+deepmerge.all = function deepmergeAll(array2, options2) {
+  if (!Array.isArray(array2)) {
+    throw new Error("first argument should be an array");
+  }
+  return array2.reduce(function(prev2, next2) {
+    return deepmerge(prev2, next2, options2);
+  }, {});
+};
+var deepmerge_1 = deepmerge;
+var reactFastCompare$1;
+var hasRequiredReactFastCompare$1;
+function requireReactFastCompare$1() {
+  if (hasRequiredReactFastCompare$1) return reactFastCompare$1;
+  hasRequiredReactFastCompare$1 = 1;
+  var isArray2 = Array.isArray;
+  var keyList = Object.keys;
+  var hasProp = Object.prototype.hasOwnProperty;
+  var hasElementType = typeof Element !== "undefined";
+  function equal2(a4, b3) {
+    if (a4 === b3) return true;
+    if (a4 && b3 && typeof a4 == "object" && typeof b3 == "object") {
+      var arrA = isArray2(a4), arrB = isArray2(b3), i3, length2, key;
+      if (arrA && arrB) {
+        length2 = a4.length;
+        if (length2 != b3.length) return false;
+        for (i3 = length2; i3-- !== 0; )
+          if (!equal2(a4[i3], b3[i3])) return false;
+        return true;
+      }
+      if (arrA != arrB) return false;
+      var dateA = a4 instanceof Date, dateB = b3 instanceof Date;
+      if (dateA != dateB) return false;
+      if (dateA && dateB) return a4.getTime() == b3.getTime();
+      var regexpA = a4 instanceof RegExp, regexpB = b3 instanceof RegExp;
+      if (regexpA != regexpB) return false;
+      if (regexpA && regexpB) return a4.toString() == b3.toString();
+      var keys3 = keyList(a4);
+      length2 = keys3.length;
+      if (length2 !== keyList(b3).length)
+        return false;
+      for (i3 = length2; i3-- !== 0; )
+        if (!hasProp.call(b3, keys3[i3])) return false;
+      if (hasElementType && a4 instanceof Element && b3 instanceof Element)
+        return a4 === b3;
+      for (i3 = length2; i3-- !== 0; ) {
+        key = keys3[i3];
+        if (key === "_owner" && a4.$$typeof) {
+          continue;
+        } else {
+          if (!equal2(a4[key], b3[key])) return false;
+        }
+      }
+      return true;
+    }
+    return a4 !== a4 && b3 !== b3;
+  }
+  reactFastCompare$1 = function exportedEqual(a4, b3) {
+    try {
+      return equal2(a4, b3);
+    } catch (error) {
+      if (error.message && error.message.match(/stack|recursion/i) || error.number === -2146828260) {
+        console.warn("Warning: react-fast-compare does not handle circular references.", error.name, error.message);
+        return false;
+      }
+      throw error;
+    }
+  };
+  return reactFastCompare$1;
+}
+var reactFastCompareExports$1 = requireReactFastCompare$1();
+const isEqual$3 = /* @__PURE__ */ getDefaultExportFromCjs(reactFastCompareExports$1);
+function _extends$1() {
+  _extends$1 = Object.assign || function(target) {
+    for (var i3 = 1; i3 < arguments.length; i3++) {
+      var source2 = arguments[i3];
+      for (var key in source2) {
+        if (Object.prototype.hasOwnProperty.call(source2, key)) {
+          target[key] = source2[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$1.apply(this, arguments);
+}
+function _objectWithoutPropertiesLoose$3(source2, excluded) {
+  if (source2 == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source2);
+  var key, i3;
+  for (i3 = 0; i3 < sourceKeys.length; i3++) {
+    key = sourceKeys[i3];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source2[key];
+  }
+  return target;
+}
+var FormikContext = /* @__PURE__ */ reactExports.createContext(void 0);
+FormikContext.displayName = "FormikContext";
+FormikContext.Provider;
+FormikContext.Consumer;
+function useFormikContext() {
+  var formik = reactExports.useContext(FormikContext);
+  return formik;
+}
+var isFunction$1 = function isFunction2(obj) {
+  return typeof obj === "function";
+};
+var isObject = function isObject22(obj) {
+  return obj !== null && typeof obj === "object";
+};
+var isInteger = function isInteger2(obj) {
+  return String(Math.floor(Number(obj))) === obj;
+};
+var isString = function isString2(obj) {
+  return Object.prototype.toString.call(obj) === "[object String]";
+};
+var isPromise = function isPromise2(value) {
+  return isObject(value) && isFunction$1(value.then);
+};
+function getIn(obj, key, def, p2) {
+  if (p2 === void 0) {
+    p2 = 0;
+  }
+  var path2 = toPath(key);
+  while (obj && p2 < path2.length) {
+    obj = obj[path2[p2++]];
+  }
+  if (p2 !== path2.length && !obj) {
+    return def;
+  }
+  return obj === void 0 ? def : obj;
+}
+function setIn(obj, path2, value) {
+  var res = clone$1(obj);
+  var resVal = res;
+  var i3 = 0;
+  var pathArray = toPath(path2);
+  for (; i3 < pathArray.length - 1; i3++) {
+    var currentPath = pathArray[i3];
+    var currentObj = getIn(obj, pathArray.slice(0, i3 + 1));
+    if (currentObj && (isObject(currentObj) || Array.isArray(currentObj))) {
+      resVal = resVal[currentPath] = clone$1(currentObj);
+    } else {
+      var nextPath = pathArray[i3 + 1];
+      resVal = resVal[currentPath] = isInteger(nextPath) && Number(nextPath) >= 0 ? [] : {};
+    }
+  }
+  if ((i3 === 0 ? obj : resVal)[pathArray[i3]] === value) {
+    return obj;
+  }
+  if (value === void 0) {
+    delete resVal[pathArray[i3]];
+  } else {
+    resVal[pathArray[i3]] = value;
+  }
+  if (i3 === 0 && value === void 0) {
+    delete res[pathArray[i3]];
+  }
+  return res;
+}
+function setNestedObjectValues(object2, value, visited, response) {
+  if (visited === void 0) {
+    visited = /* @__PURE__ */ new WeakMap();
+  }
+  if (response === void 0) {
+    response = {};
+  }
+  for (var _i2 = 0, _Object$keys = Object.keys(object2); _i2 < _Object$keys.length; _i2++) {
+    var k2 = _Object$keys[_i2];
+    var val = object2[k2];
+    if (isObject(val)) {
+      if (!visited.get(val)) {
+        visited.set(val, true);
+        response[k2] = Array.isArray(val) ? [] : {};
+        setNestedObjectValues(val, value, visited, response[k2]);
+      }
+    } else {
+      response[k2] = value;
+    }
+  }
+  return response;
+}
+function formikReducer(state, msg) {
+  switch (msg.type) {
+    case "SET_VALUES":
+      return _extends$1({}, state, {
+        values: msg.payload
+      });
+    case "SET_TOUCHED":
+      return _extends$1({}, state, {
+        touched: msg.payload
+      });
+    case "SET_ERRORS":
+      if (isEqual$3(state.errors, msg.payload)) {
+        return state;
+      }
+      return _extends$1({}, state, {
+        errors: msg.payload
+      });
+    case "SET_STATUS":
+      return _extends$1({}, state, {
+        status: msg.payload
+      });
+    case "SET_ISSUBMITTING":
+      return _extends$1({}, state, {
+        isSubmitting: msg.payload
+      });
+    case "SET_ISVALIDATING":
+      return _extends$1({}, state, {
+        isValidating: msg.payload
+      });
+    case "SET_FIELD_VALUE":
+      return _extends$1({}, state, {
+        values: setIn(state.values, msg.payload.field, msg.payload.value)
+      });
+    case "SET_FIELD_TOUCHED":
+      return _extends$1({}, state, {
+        touched: setIn(state.touched, msg.payload.field, msg.payload.value)
+      });
+    case "SET_FIELD_ERROR":
+      return _extends$1({}, state, {
+        errors: setIn(state.errors, msg.payload.field, msg.payload.value)
+      });
+    case "RESET_FORM":
+      return _extends$1({}, state, msg.payload);
+    case "SET_FORMIK_STATE":
+      return msg.payload(state);
+    case "SUBMIT_ATTEMPT":
+      return _extends$1({}, state, {
+        touched: setNestedObjectValues(state.values, true),
+        isSubmitting: true,
+        submitCount: state.submitCount + 1
+      });
+    case "SUBMIT_FAILURE":
+      return _extends$1({}, state, {
+        isSubmitting: false
+      });
+    case "SUBMIT_SUCCESS":
+      return _extends$1({}, state, {
+        isSubmitting: false
+      });
+    default:
+      return state;
+  }
+}
+var emptyErrors = {};
+var emptyTouched = {};
+function useFormik(_ref3) {
+  var _ref$validateOnChange = _ref3.validateOnChange, validateOnChange = _ref$validateOnChange === void 0 ? true : _ref$validateOnChange, _ref$validateOnBlur = _ref3.validateOnBlur, validateOnBlur = _ref$validateOnBlur === void 0 ? true : _ref$validateOnBlur, _ref$validateOnMount = _ref3.validateOnMount, validateOnMount = _ref$validateOnMount === void 0 ? false : _ref$validateOnMount, isInitialValid = _ref3.isInitialValid, _ref$enableReinitiali = _ref3.enableReinitialize, enableReinitialize = _ref$enableReinitiali === void 0 ? false : _ref$enableReinitiali, onSubmit = _ref3.onSubmit, rest = _objectWithoutPropertiesLoose$3(_ref3, ["validateOnChange", "validateOnBlur", "validateOnMount", "isInitialValid", "enableReinitialize", "onSubmit"]);
+  var props = _extends$1({
+    validateOnChange,
+    validateOnBlur,
+    validateOnMount,
+    onSubmit
+  }, rest);
+  var initialValues = reactExports.useRef(props.initialValues);
+  var initialErrors = reactExports.useRef(props.initialErrors || emptyErrors);
+  var initialTouched = reactExports.useRef(props.initialTouched || emptyTouched);
+  var initialStatus = reactExports.useRef(props.initialStatus);
+  var isMounted = reactExports.useRef(false);
+  var fieldRegistry = reactExports.useRef({});
+  reactExports.useEffect(function() {
+    isMounted.current = true;
+    return function() {
+      isMounted.current = false;
+    };
+  }, []);
+  var _React$useState = reactExports.useState(0), setIteration = _React$useState[1];
+  var stateRef = reactExports.useRef({
+    values: cloneDeep$1(props.initialValues),
+    errors: cloneDeep$1(props.initialErrors) || emptyErrors,
+    touched: cloneDeep$1(props.initialTouched) || emptyTouched,
+    status: cloneDeep$1(props.initialStatus),
+    isSubmitting: false,
+    isValidating: false,
+    submitCount: 0
+  });
+  var state = stateRef.current;
+  var dispatch = reactExports.useCallback(function(action) {
+    var prev2 = stateRef.current;
+    stateRef.current = formikReducer(prev2, action);
+    if (prev2 !== stateRef.current) setIteration(function(x3) {
+      return x3 + 1;
+    });
+  }, []);
+  var runValidateHandler = reactExports.useCallback(function(values3, field) {
+    return new Promise(function(resolve, reject) {
+      var maybePromisedErrors = props.validate(values3, field);
+      if (maybePromisedErrors == null) {
+        resolve(emptyErrors);
+      } else if (isPromise(maybePromisedErrors)) {
+        maybePromisedErrors.then(function(errors2) {
+          resolve(errors2 || emptyErrors);
+        }, function(actualException) {
+          reject(actualException);
+        });
+      } else {
+        resolve(maybePromisedErrors);
+      }
+    });
+  }, [props.validate]);
+  var runValidationSchema = reactExports.useCallback(function(values3, field) {
+    var validationSchema = props.validationSchema;
+    var schema2 = isFunction$1(validationSchema) ? validationSchema(field) : validationSchema;
+    var promise = field && schema2.validateAt ? schema2.validateAt(field, values3) : validateYupSchema(values3, schema2);
+    return new Promise(function(resolve, reject) {
+      promise.then(function() {
+        resolve(emptyErrors);
+      }, function(err) {
+        if (err.name === "ValidationError") {
+          resolve(yupToFormErrors(err));
+        } else {
+          reject(err);
+        }
+      });
+    });
+  }, [props.validationSchema]);
+  var runSingleFieldLevelValidation = reactExports.useCallback(function(field, value) {
+    return new Promise(function(resolve) {
+      return resolve(fieldRegistry.current[field].validate(value));
+    });
+  }, []);
+  var runFieldLevelValidations = reactExports.useCallback(function(values3) {
+    var fieldKeysWithValidation = Object.keys(fieldRegistry.current).filter(function(f) {
+      return isFunction$1(fieldRegistry.current[f].validate);
+    });
+    var fieldValidations = fieldKeysWithValidation.length > 0 ? fieldKeysWithValidation.map(function(f) {
+      return runSingleFieldLevelValidation(f, getIn(values3, f));
+    }) : [Promise.resolve("DO_NOT_DELETE_YOU_WILL_BE_FIRED")];
+    return Promise.all(fieldValidations).then(function(fieldErrorsList) {
+      return fieldErrorsList.reduce(function(prev2, curr, index2) {
+        if (curr === "DO_NOT_DELETE_YOU_WILL_BE_FIRED") {
+          return prev2;
+        }
+        if (curr) {
+          prev2 = setIn(prev2, fieldKeysWithValidation[index2], curr);
+        }
+        return prev2;
+      }, {});
+    });
+  }, [runSingleFieldLevelValidation]);
+  var runAllValidations = reactExports.useCallback(function(values3) {
+    return Promise.all([runFieldLevelValidations(values3), props.validationSchema ? runValidationSchema(values3) : {}, props.validate ? runValidateHandler(values3) : {}]).then(function(_ref22) {
+      var fieldErrors = _ref22[0], schemaErrors = _ref22[1], validateErrors = _ref22[2];
+      var combinedErrors = deepmerge_1.all([fieldErrors, schemaErrors, validateErrors], {
+        arrayMerge
+      });
+      return combinedErrors;
+    });
+  }, [props.validate, props.validationSchema, runFieldLevelValidations, runValidateHandler, runValidationSchema]);
+  var validateFormWithHighPriority = useEventCallback(function(values3) {
+    if (values3 === void 0) {
+      values3 = state.values;
+    }
+    dispatch({
+      type: "SET_ISVALIDATING",
+      payload: true
+    });
+    return runAllValidations(values3).then(function(combinedErrors) {
+      if (!!isMounted.current) {
+        dispatch({
+          type: "SET_ISVALIDATING",
+          payload: false
+        });
+        dispatch({
+          type: "SET_ERRORS",
+          payload: combinedErrors
+        });
+      }
+      return combinedErrors;
+    });
+  });
+  reactExports.useEffect(function() {
+    if (validateOnMount && isMounted.current === true && isEqual$3(initialValues.current, props.initialValues)) {
+      validateFormWithHighPriority(initialValues.current);
+    }
+  }, [validateOnMount, validateFormWithHighPriority]);
+  var resetForm = reactExports.useCallback(function(nextState) {
+    var values3 = nextState && nextState.values ? nextState.values : initialValues.current;
+    var errors2 = nextState && nextState.errors ? nextState.errors : initialErrors.current ? initialErrors.current : props.initialErrors || {};
+    var touched = nextState && nextState.touched ? nextState.touched : initialTouched.current ? initialTouched.current : props.initialTouched || {};
+    var status2 = nextState && nextState.status ? nextState.status : initialStatus.current ? initialStatus.current : props.initialStatus;
+    initialValues.current = values3;
+    initialErrors.current = errors2;
+    initialTouched.current = touched;
+    initialStatus.current = status2;
+    var dispatchFn = function dispatchFn2() {
+      dispatch({
+        type: "RESET_FORM",
+        payload: {
+          isSubmitting: !!nextState && !!nextState.isSubmitting,
+          errors: errors2,
+          touched,
+          status: status2,
+          values: values3,
+          isValidating: !!nextState && !!nextState.isValidating,
+          submitCount: !!nextState && !!nextState.submitCount && typeof nextState.submitCount === "number" ? nextState.submitCount : 0
+        }
+      });
+    };
+    if (props.onReset) {
+      var maybePromisedOnReset = props.onReset(state.values, imperativeMethods);
+      if (isPromise(maybePromisedOnReset)) {
+        maybePromisedOnReset.then(dispatchFn);
+      } else {
+        dispatchFn();
+      }
+    } else {
+      dispatchFn();
+    }
+  }, [props.initialErrors, props.initialStatus, props.initialTouched, props.onReset]);
+  reactExports.useEffect(function() {
+    if (isMounted.current === true && !isEqual$3(initialValues.current, props.initialValues)) {
+      if (enableReinitialize) {
+        initialValues.current = props.initialValues;
+        resetForm();
+        if (validateOnMount) {
+          validateFormWithHighPriority(initialValues.current);
+        }
+      }
+    }
+  }, [enableReinitialize, props.initialValues, resetForm, validateOnMount, validateFormWithHighPriority]);
+  reactExports.useEffect(function() {
+    if (enableReinitialize && isMounted.current === true && !isEqual$3(initialErrors.current, props.initialErrors)) {
+      initialErrors.current = props.initialErrors || emptyErrors;
+      dispatch({
+        type: "SET_ERRORS",
+        payload: props.initialErrors || emptyErrors
+      });
+    }
+  }, [enableReinitialize, props.initialErrors]);
+  reactExports.useEffect(function() {
+    if (enableReinitialize && isMounted.current === true && !isEqual$3(initialTouched.current, props.initialTouched)) {
+      initialTouched.current = props.initialTouched || emptyTouched;
+      dispatch({
+        type: "SET_TOUCHED",
+        payload: props.initialTouched || emptyTouched
+      });
+    }
+  }, [enableReinitialize, props.initialTouched]);
+  reactExports.useEffect(function() {
+    if (enableReinitialize && isMounted.current === true && !isEqual$3(initialStatus.current, props.initialStatus)) {
+      initialStatus.current = props.initialStatus;
+      dispatch({
+        type: "SET_STATUS",
+        payload: props.initialStatus
+      });
+    }
+  }, [enableReinitialize, props.initialStatus, props.initialTouched]);
+  var validateField = useEventCallback(function(name2) {
+    if (fieldRegistry.current[name2] && isFunction$1(fieldRegistry.current[name2].validate)) {
+      var value = getIn(state.values, name2);
+      var maybePromise = fieldRegistry.current[name2].validate(value);
+      if (isPromise(maybePromise)) {
+        dispatch({
+          type: "SET_ISVALIDATING",
+          payload: true
+        });
+        return maybePromise.then(function(x3) {
+          return x3;
+        }).then(function(error) {
+          dispatch({
+            type: "SET_FIELD_ERROR",
+            payload: {
+              field: name2,
+              value: error
+            }
+          });
+          dispatch({
+            type: "SET_ISVALIDATING",
+            payload: false
+          });
+        });
+      } else {
+        dispatch({
+          type: "SET_FIELD_ERROR",
+          payload: {
+            field: name2,
+            value: maybePromise
+          }
+        });
+        return Promise.resolve(maybePromise);
+      }
+    } else if (props.validationSchema) {
+      dispatch({
+        type: "SET_ISVALIDATING",
+        payload: true
+      });
+      return runValidationSchema(state.values, name2).then(function(x3) {
+        return x3;
+      }).then(function(error) {
+        dispatch({
+          type: "SET_FIELD_ERROR",
+          payload: {
+            field: name2,
+            value: getIn(error, name2)
+          }
+        });
+        dispatch({
+          type: "SET_ISVALIDATING",
+          payload: false
+        });
+      });
+    }
+    return Promise.resolve();
+  });
+  var registerField = reactExports.useCallback(function(name2, _ref32) {
+    var validate = _ref32.validate;
+    fieldRegistry.current[name2] = {
+      validate
+    };
+  }, []);
+  var unregisterField = reactExports.useCallback(function(name2) {
+    delete fieldRegistry.current[name2];
+  }, []);
+  var setTouched = useEventCallback(function(touched, shouldValidate) {
+    dispatch({
+      type: "SET_TOUCHED",
+      payload: touched
+    });
+    var willValidate = shouldValidate === void 0 ? validateOnBlur : shouldValidate;
+    return willValidate ? validateFormWithHighPriority(state.values) : Promise.resolve();
+  });
+  var setErrors = reactExports.useCallback(function(errors2) {
+    dispatch({
+      type: "SET_ERRORS",
+      payload: errors2
+    });
+  }, []);
+  var setValues = useEventCallback(function(values3, shouldValidate) {
+    var resolvedValues = isFunction$1(values3) ? values3(state.values) : values3;
+    dispatch({
+      type: "SET_VALUES",
+      payload: resolvedValues
+    });
+    var willValidate = shouldValidate === void 0 ? validateOnChange : shouldValidate;
+    return willValidate ? validateFormWithHighPriority(resolvedValues) : Promise.resolve();
+  });
+  var setFieldError = reactExports.useCallback(function(field, value) {
+    dispatch({
+      type: "SET_FIELD_ERROR",
+      payload: {
+        field,
+        value
+      }
+    });
+  }, []);
+  var setFieldValue = useEventCallback(function(field, value, shouldValidate) {
+    dispatch({
+      type: "SET_FIELD_VALUE",
+      payload: {
+        field,
+        value
+      }
+    });
+    var willValidate = shouldValidate === void 0 ? validateOnChange : shouldValidate;
+    return willValidate ? validateFormWithHighPriority(setIn(state.values, field, value)) : Promise.resolve();
+  });
+  var executeChange = reactExports.useCallback(function(eventOrTextValue, maybePath) {
+    var field = maybePath;
+    var val = eventOrTextValue;
+    var parsed;
+    if (!isString(eventOrTextValue)) {
+      if (eventOrTextValue.persist) {
+        eventOrTextValue.persist();
+      }
+      var target = eventOrTextValue.target ? eventOrTextValue.target : eventOrTextValue.currentTarget;
+      var type3 = target.type, name2 = target.name, id2 = target.id, value = target.value, checked = target.checked;
+      target.outerHTML;
+      var options2 = target.options, multiple = target.multiple;
+      field = maybePath ? maybePath : name2 ? name2 : id2;
+      val = /number|range/.test(type3) ? (parsed = parseFloat(value), isNaN(parsed) ? "" : parsed) : /checkbox/.test(type3) ? getValueForCheckbox(getIn(state.values, field), checked, value) : options2 && multiple ? getSelectedValues(options2) : value;
+    }
+    if (field) {
+      setFieldValue(field, val);
+    }
+  }, [setFieldValue, state.values]);
+  var handleChange = useEventCallback(function(eventOrPath) {
+    if (isString(eventOrPath)) {
+      return function(event2) {
+        return executeChange(event2, eventOrPath);
+      };
+    } else {
+      executeChange(eventOrPath);
+    }
+  });
+  var setFieldTouched = useEventCallback(function(field, touched, shouldValidate) {
+    if (touched === void 0) {
+      touched = true;
+    }
+    dispatch({
+      type: "SET_FIELD_TOUCHED",
+      payload: {
+        field,
+        value: touched
+      }
+    });
+    var willValidate = shouldValidate === void 0 ? validateOnBlur : shouldValidate;
+    return willValidate ? validateFormWithHighPriority(state.values) : Promise.resolve();
+  });
+  var executeBlur = reactExports.useCallback(function(e2, path2) {
+    if (e2.persist) {
+      e2.persist();
+    }
+    var _e$target = e2.target, name2 = _e$target.name, id2 = _e$target.id;
+    _e$target.outerHTML;
+    var field = path2 ? path2 : name2 ? name2 : id2;
+    setFieldTouched(field, true);
+  }, [setFieldTouched]);
+  var handleBlur = useEventCallback(function(eventOrString) {
+    if (isString(eventOrString)) {
+      return function(event2) {
+        return executeBlur(event2, eventOrString);
+      };
+    } else {
+      executeBlur(eventOrString);
+    }
+  });
+  var setFormikState = reactExports.useCallback(function(stateOrCb) {
+    if (isFunction$1(stateOrCb)) {
+      dispatch({
+        type: "SET_FORMIK_STATE",
+        payload: stateOrCb
+      });
+    } else {
+      dispatch({
+        type: "SET_FORMIK_STATE",
+        payload: function payload() {
+          return stateOrCb;
+        }
+      });
+    }
+  }, []);
+  var setStatus = reactExports.useCallback(function(status2) {
+    dispatch({
+      type: "SET_STATUS",
+      payload: status2
+    });
+  }, []);
+  var setSubmitting = reactExports.useCallback(function(isSubmitting) {
+    dispatch({
+      type: "SET_ISSUBMITTING",
+      payload: isSubmitting
+    });
+  }, []);
+  var submitForm = useEventCallback(function() {
+    dispatch({
+      type: "SUBMIT_ATTEMPT"
+    });
+    return validateFormWithHighPriority().then(function(combinedErrors) {
+      var isInstanceOfError = combinedErrors instanceof Error;
+      var isActuallyValid = !isInstanceOfError && Object.keys(combinedErrors).length === 0;
+      if (isActuallyValid) {
+        var promiseOrUndefined;
+        try {
+          promiseOrUndefined = executeSubmit();
+          if (promiseOrUndefined === void 0) {
+            return;
+          }
+        } catch (error) {
+          throw error;
+        }
+        return Promise.resolve(promiseOrUndefined).then(function(result) {
+          if (!!isMounted.current) {
+            dispatch({
+              type: "SUBMIT_SUCCESS"
+            });
+          }
+          return result;
+        })["catch"](function(_errors) {
+          if (!!isMounted.current) {
+            dispatch({
+              type: "SUBMIT_FAILURE"
+            });
+            throw _errors;
+          }
+        });
+      } else if (!!isMounted.current) {
+        dispatch({
+          type: "SUBMIT_FAILURE"
+        });
+        if (isInstanceOfError) {
+          throw combinedErrors;
+        }
+      }
+      return;
+    });
+  });
+  var handleSubmit = useEventCallback(function(e2) {
+    if (e2 && e2.preventDefault && isFunction$1(e2.preventDefault)) {
+      e2.preventDefault();
+    }
+    if (e2 && e2.stopPropagation && isFunction$1(e2.stopPropagation)) {
+      e2.stopPropagation();
+    }
+    submitForm()["catch"](function(reason) {
+      console.warn("Warning: An unhandled error was caught from submitForm()", reason);
+    });
+  });
+  var imperativeMethods = {
+    resetForm,
+    validateForm: validateFormWithHighPriority,
+    validateField,
+    setErrors,
+    setFieldError,
+    setFieldTouched,
+    setFieldValue,
+    setStatus,
+    setSubmitting,
+    setTouched,
+    setValues,
+    setFormikState,
+    submitForm
+  };
+  var executeSubmit = useEventCallback(function() {
+    return onSubmit(state.values, imperativeMethods);
+  });
+  var handleReset = useEventCallback(function(e2) {
+    if (e2 && e2.preventDefault && isFunction$1(e2.preventDefault)) {
+      e2.preventDefault();
+    }
+    if (e2 && e2.stopPropagation && isFunction$1(e2.stopPropagation)) {
+      e2.stopPropagation();
+    }
+    resetForm();
+  });
+  var getFieldMeta = reactExports.useCallback(function(name2) {
+    return {
+      value: getIn(state.values, name2),
+      error: getIn(state.errors, name2),
+      touched: !!getIn(state.touched, name2),
+      initialValue: getIn(initialValues.current, name2),
+      initialTouched: !!getIn(initialTouched.current, name2),
+      initialError: getIn(initialErrors.current, name2)
+    };
+  }, [state.errors, state.touched, state.values]);
+  var getFieldHelpers = reactExports.useCallback(function(name2) {
+    return {
+      setValue: function setValue(value, shouldValidate) {
+        return setFieldValue(name2, value, shouldValidate);
+      },
+      setTouched: function setTouched2(value, shouldValidate) {
+        return setFieldTouched(name2, value, shouldValidate);
+      },
+      setError: function setError(value) {
+        return setFieldError(name2, value);
+      }
+    };
+  }, [setFieldValue, setFieldTouched, setFieldError]);
+  var getFieldProps = reactExports.useCallback(function(nameOrOptions) {
+    var isAnObject = isObject(nameOrOptions);
+    var name2 = isAnObject ? nameOrOptions.name : nameOrOptions;
+    var valueState = getIn(state.values, name2);
+    var field = {
+      name: name2,
+      value: valueState,
+      onChange: handleChange,
+      onBlur: handleBlur
+    };
+    if (isAnObject) {
+      var type3 = nameOrOptions.type, valueProp = nameOrOptions.value, is2 = nameOrOptions.as, multiple = nameOrOptions.multiple;
+      if (type3 === "checkbox") {
+        if (valueProp === void 0) {
+          field.checked = !!valueState;
+        } else {
+          field.checked = !!(Array.isArray(valueState) && ~valueState.indexOf(valueProp));
+          field.value = valueProp;
+        }
+      } else if (type3 === "radio") {
+        field.checked = valueState === valueProp;
+        field.value = valueProp;
+      } else if (is2 === "select" && multiple) {
+        field.value = field.value || [];
+        field.multiple = true;
+      }
+    }
+    return field;
+  }, [handleBlur, handleChange, state.values]);
+  var dirty = reactExports.useMemo(function() {
+    return !isEqual$3(initialValues.current, state.values);
+  }, [initialValues.current, state.values]);
+  var isValid2 = reactExports.useMemo(function() {
+    return typeof isInitialValid !== "undefined" ? dirty ? state.errors && Object.keys(state.errors).length === 0 : isInitialValid !== false && isFunction$1(isInitialValid) ? isInitialValid(props) : isInitialValid : state.errors && Object.keys(state.errors).length === 0;
+  }, [isInitialValid, dirty, state.errors, props]);
+  var ctx = _extends$1({}, state, {
+    initialValues: initialValues.current,
+    initialErrors: initialErrors.current,
+    initialTouched: initialTouched.current,
+    initialStatus: initialStatus.current,
+    handleBlur,
+    handleChange,
+    handleReset,
+    handleSubmit,
+    resetForm,
+    setErrors,
+    setFormikState,
+    setFieldTouched,
+    setFieldValue,
+    setFieldError,
+    setStatus,
+    setSubmitting,
+    setTouched,
+    setValues,
+    submitForm,
+    validateForm: validateFormWithHighPriority,
+    validateField,
+    isValid: isValid2,
+    dirty,
+    unregisterField,
+    registerField,
+    getFieldProps,
+    getFieldMeta,
+    getFieldHelpers,
+    validateOnBlur,
+    validateOnChange,
+    validateOnMount
+  });
+  return ctx;
+}
+function yupToFormErrors(yupError) {
+  var errors2 = {};
+  if (yupError.inner) {
+    if (yupError.inner.length === 0) {
+      return setIn(errors2, yupError.path, yupError.message);
+    }
+    for (var _iterator = yupError.inner, _isArray = Array.isArray(_iterator), _i2 = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator](); ; ) {
+      var _ref5;
+      if (_isArray) {
+        if (_i2 >= _iterator.length) break;
+        _ref5 = _iterator[_i2++];
+      } else {
+        _i2 = _iterator.next();
+        if (_i2.done) break;
+        _ref5 = _i2.value;
+      }
+      var err = _ref5;
+      if (!getIn(errors2, err.path)) {
+        errors2 = setIn(errors2, err.path, err.message);
+      }
+    }
+  }
+  return errors2;
+}
+function validateYupSchema(values3, schema2, sync2, context2) {
+  if (sync2 === void 0) {
+    sync2 = false;
+  }
+  var normalizedValues = prepareDataForValidation(values3);
+  return schema2[sync2 ? "validateSync" : "validate"](normalizedValues, {
+    abortEarly: false,
+    context: normalizedValues
+  });
+}
+function prepareDataForValidation(values3) {
+  var data2 = Array.isArray(values3) ? [] : {};
+  for (var k2 in values3) {
+    if (Object.prototype.hasOwnProperty.call(values3, k2)) {
+      var key = String(k2);
+      if (Array.isArray(values3[key]) === true) {
+        data2[key] = values3[key].map(function(value) {
+          if (Array.isArray(value) === true || isPlainObject$1(value)) {
+            return prepareDataForValidation(value);
+          } else {
+            return value !== "" ? value : void 0;
+          }
+        });
+      } else if (isPlainObject$1(values3[key])) {
+        data2[key] = prepareDataForValidation(values3[key]);
+      } else {
+        data2[key] = values3[key] !== "" ? values3[key] : void 0;
+      }
+    }
+  }
+  return data2;
+}
+function arrayMerge(target, source2, options2) {
+  var destination = target.slice();
+  source2.forEach(function merge3(e2, i3) {
+    if (typeof destination[i3] === "undefined") {
+      var cloneRequested = options2.clone !== false;
+      var shouldClone = cloneRequested && options2.isMergeableObject(e2);
+      destination[i3] = shouldClone ? deepmerge_1(Array.isArray(e2) ? [] : {}, e2, options2) : e2;
+    } else if (options2.isMergeableObject(e2)) {
+      destination[i3] = deepmerge_1(target[i3], e2, options2);
+    } else if (target.indexOf(e2) === -1) {
+      destination.push(e2);
+    }
+  });
+  return destination;
+}
+function getSelectedValues(options2) {
+  return Array.from(options2).filter(function(el) {
+    return el.selected;
+  }).map(function(el) {
+    return el.value;
+  });
+}
+function getValueForCheckbox(currentValue, checked, valueProp) {
+  if (typeof currentValue === "boolean") {
+    return Boolean(checked);
+  }
+  var currentArrayOfValues = [];
+  var isValueInArray = false;
+  var index2 = -1;
+  if (!Array.isArray(currentValue)) {
+    if (!valueProp || valueProp == "true" || valueProp == "false") {
+      return Boolean(checked);
+    }
+  } else {
+    currentArrayOfValues = currentValue;
+    index2 = currentValue.indexOf(valueProp);
+    isValueInArray = index2 >= 0;
+  }
+  if (checked && valueProp && !isValueInArray) {
+    return currentArrayOfValues.concat(valueProp);
+  }
+  if (!isValueInArray) {
+    return currentArrayOfValues;
+  }
+  return currentArrayOfValues.slice(0, index2).concat(currentArrayOfValues.slice(index2 + 1));
+}
+var useIsomorphicLayoutEffect$3 = typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined" ? reactExports.useLayoutEffect : reactExports.useEffect;
+function useEventCallback(fn3) {
+  var ref = reactExports.useRef(fn3);
+  useIsomorphicLayoutEffect$3(function() {
+    ref.current = fn3;
+  });
+  return reactExports.useCallback(function() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    return ref.current.apply(void 0, args);
+  }, []);
+}
+var Form = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
+  var action = props.action, rest = _objectWithoutPropertiesLoose$3(props, ["action"]);
+  var _action = action != null ? action : "#";
+  var _useFormikContext = useFormikContext(), handleReset = _useFormikContext.handleReset, handleSubmit = _useFormikContext.handleSubmit;
+  return reactExports.createElement("form", _extends$1({
+    onSubmit: handleSubmit,
+    ref,
+    onReset: handleReset,
+    action: _action
+  }, rest));
+});
+Form.displayName = "Form";
+const includeMS = true;
+const DurationInput = ({ disabled: disabled2, value, setValue, onReset, className, placeholder, error, allowNegative = false }) => {
+  const [tmpValue, setTmpValue] = reactExports.useState();
+  function onChange3(e2) {
+    setTmpValue(e2.currentTarget.value);
+  }
+  function onBlur() {
+    if (tmpValue !== void 0) {
+      updateValue(TextUtils.timestampToSeconds(tmpValue));
+      setTmpValue(void 0);
+    }
+  }
+  function updateValue(v) {
+    if (v !== null && !allowNegative && v < 0) {
+      v = null;
+    }
+    setValue(v);
+  }
+  function increment() {
+    setTmpValue(void 0);
+    updateValue((value !== null && value !== void 0 ? value : 0) + 1);
+  }
+  function decrement() {
+    setTmpValue(void 0);
+    if (allowNegative) {
+      updateValue((value !== null && value !== void 0 ? value : 0) - 1);
+    } else {
+      updateValue(value ? value - 1 : 0);
+    }
+  }
+  function renderButtons() {
+    if (!disabled2) {
+      return jsxRuntimeExports.jsxs(ButtonGroup, { vertical: true, children: [jsxRuntimeExports.jsx(Button, { variant: "secondary", className: "duration-button", onClick: () => increment(), children: jsxRuntimeExports.jsx(Icon, { icon: faChevronUp }) }), jsxRuntimeExports.jsx(Button, { variant: "secondary", className: "duration-button", onClick: () => decrement(), children: jsxRuntimeExports.jsx(Icon, { icon: faChevronDown }) })] });
+    }
+  }
+  function maybeRenderReset() {
+    if (onReset) {
+      return jsxRuntimeExports.jsx(Button, { variant: "secondary", onClick: () => onReset(), children: jsxRuntimeExports.jsx(Icon, { icon: faClock }) });
+    }
+  }
+  const inputValue = reactExports.useMemo(() => {
+    if (tmpValue !== void 0) {
+      return tmpValue;
+    } else if (value !== null && value !== void 0) {
+      return TextUtils.secondsToTimestamp(value, includeMS);
+    }
+  }, [value, tmpValue]);
+  const format2 = "hh:mm:ss.ms";
+  if (placeholder) {
+    placeholder = `${placeholder} (${format2})`;
+  } else {
+    placeholder = format2;
+  }
+  return jsxRuntimeExports.jsx("div", { className: `duration-input ${className}`, children: jsxRuntimeExports.jsxs(InputGroup, { children: [jsxRuntimeExports.jsx(FormImpl.Control, { className: "duration-control text-input", disabled: disabled2, value: inputValue, onChange: onChange3, onBlur, placeholder }), jsxRuntimeExports.jsxs(InputGroup.Append, { children: [maybeRenderReset(), renderButtons()] }), jsxRuntimeExports.jsx(FormImpl.Control.Feedback, { type: "invalid", children: error })] }) });
 };
 /*!
  * Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com
@@ -215898,94 +216056,85 @@ const SceneMarkerForm = function({ className, ...originalSceneMarkerFormProps })
     }
   )));
 };
-function TagIdSelect(props) {
-  const history2 = reactExports.useMemo(() => createBrowserHistory(), []);
-  return /* @__PURE__ */ React$1.createElement(Router, { history: history2 }, /* @__PURE__ */ React$1.createElement(
-    TagIDSelect,
+function sortMarkersByStartTime(markers2) {
+  return markers2.slice().sort((a4, b3) => a4.seconds - b3.seconds);
+}
+function markerLabel(marker) {
+  return `${TextUtils.secondsToTimestamp(marker.seconds)} ${marker.title || marker.primary_tag.name}`;
+}
+const NEW_MARKER = "new";
+function CreateMarkerPanel({ scene: scene2, close }) {
+  const [selectedId, setSelectedId] = reactExports.useState(NEW_MARKER);
+  const markerToEdit = scene2.scene_markers.find((marker) => marker.id === selectedId);
+  const options2 = reactExports.useMemo(
+    () => [
+      { value: NEW_MARKER, label: "Add new marker" },
+      ...sortMarkersByStartTime(scene2.scene_markers).map((marker) => ({
+        value: marker.id,
+        label: `Edit ${markerLabel(marker)}`
+      }))
+    ],
+    [scene2.scene_markers]
+  );
+  return /* @__PURE__ */ React$1.createElement("div", { className: "CreateMarkerPanel" }, scene2.scene_markers.length > 0 && /* @__PURE__ */ React$1.createElement(
+    Select,
     {
-      ...props
+      "aria-label": "Add or edit a marker",
+      className: "marker-select",
+      value: options2.find((option) => option.value === (markerToEdit?.id ?? NEW_MARKER)),
+      onChange: (option) => option && setSelectedId(option.value),
+      options: options2,
+      menuPortalTarget: null,
+      menuPosition: "absolute"
+    }
+  ), /* @__PURE__ */ React$1.createElement(
+    SceneMarkerForm,
+    {
+      key: markerToEdit?.id ?? NEW_MARKER,
+      className: "action-button-create-marker",
+      sceneID: scene2.id,
+      onClose: close,
+      marker: markerToEdit
     }
   ));
 }
-const Switch = function Switch2(props) {
-  return /* @__PURE__ */ React$1.createElement(
-    FormImpl.Switch,
+function DefaultMarkersPanel({
+  sceneId,
+  markers: markers2,
+  onAddMarker,
+  close
+}) {
+  const [markerToEditId, setMarkerToEditId] = reactExports.useState();
+  const markerToEdit = markers2.find((marker) => marker.id === markerToEditId);
+  if (markerToEdit) {
+    return /* @__PURE__ */ React$1.createElement(EditMarkerForm, { sceneId, marker: markerToEdit, close });
+  }
+  return /* @__PURE__ */ React$1.createElement("div", { className: "DefaultMarkersPanel" }, /* @__PURE__ */ React$1.createElement(
+    Button,
     {
-      ...props,
-      className: cx("Switch", props.className),
-      label: /* @__PURE__ */ React$1.createElement("span", null, props.label)
-    }
-  );
-};
-StateManagedSelect$1.whyDidYouRender = {
-  customName: "ReactSelect"
-};
-function Select(props) {
-  const { className, expandWidthToFit, styles: styles2, ...otherProps } = props;
-  const hasTouchScreen = useMedia("(pointer: coarse)");
-  const isSearchable = props.isSearchable !== void 0 ? props.isSearchable : !hasTouchScreen;
-  const { leftHandedUi } = useTvConfig();
-  return /* @__PURE__ */ React$1.createElement(
-    StateManagedSelect$1,
-    {
-      className: cx("Select", "react-select", className),
-      styles: {
-        ...styles2,
-        menu: (provided) => ({
-          ...expandWidthToFit ? {
-            "maxWidth": "calc(var(--x-unit-small) * 90)",
-            "minWidth": "max-content",
-            ...leftHandedUi ? { left: 0 } : { right: 0 }
-          } : {},
-          ...styles2?.menu ? styles2.menu(provided) : provided
-        }),
-        menuList: (provided) => ({
-          ...expandWidthToFit ? {
-            scrollbarGutter: "stable"
-          } : {},
-          ...styles2?.menuList ? styles2.menuList(provided) : provided
-        })
-      },
-      classNamePrefix: "react-select",
-      isSearchable,
-      classNames: {
-        menu: (state) => state.placement === "top" ? "menu-above" : "menu-below"
-      },
-      menuPortalTarget: document.body,
-      menuPosition: "fixed",
-      ...otherProps
-    }
-  );
-}
-const IconSelect = (props) => {
-  const GridMenuList = (props2) => {
-    return /* @__PURE__ */ React$1.createElement(components.MenuList, { ...props2 }, /* @__PURE__ */ React$1.createElement("div", { style: {
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fill, minmax(50px, 1fr))",
-      gap: "8px",
-      padding: "8px"
-    } }, props2.children));
-  };
-  const GridOption = (props2) => {
-    return /* @__PURE__ */ React$1.createElement(components.Option, { ...props2 }, props2.data.label);
-  };
-  const GridSingleValue = (props2) => {
-    return /* @__PURE__ */ React$1.createElement(components.SingleValue, { ...props2 }, /* @__PURE__ */ React$1.createElement("div", { style: { display: "flex", alignItems: "center", margin: "0.5em 0.1em", height: "30px" } }, props2.data.label));
-  };
-  return /* @__PURE__ */ React$1.createElement(
-    Select,
-    {
-      ...props,
-      inputId: "button-icon",
-      components: {
-        MenuList: GridMenuList,
-        Option: GridOption,
-        SingleValue: GridSingleValue,
-        ...props.components
+      variant: "primary",
+      onClick: () => {
+        onAddMarker();
+        close();
       }
-    }
-  );
-};
+    },
+    'Add another "',
+    markers2[0]?.primary_tag.name,
+    '" marker'
+  ), /* @__PURE__ */ React$1.createElement("ul", { className: "existing-markers" }, sortMarkersByStartTime(markers2).map((marker) => /* @__PURE__ */ React$1.createElement("li", { key: marker.id }, /* @__PURE__ */ React$1.createElement("span", { className: "label" }, markerLabel(marker)), /* @__PURE__ */ React$1.createElement(
+    Button,
+    {
+      variant: "secondary",
+      size: "sm",
+      "aria-label": `Edit ${markerLabel(marker)}`,
+      onClick: () => setMarkerToEditId(marker.id)
+    },
+    "Edit"
+  )))));
+}
+function EditMarkerForm({ sceneId, marker, close }) {
+  return /* @__PURE__ */ React$1.createElement(SceneMarkerForm, { className: "action-button-create-marker", sceneID: sceneId, onClose: close, marker });
+}
 const logger$c = getLogger(["stash-tv", "CreateMarkerActionButton"]);
 const id$l = "create-marker";
 const configSchema$3 = sharedActionButtonSchema.shape({
@@ -216000,40 +216149,26 @@ const configSchema$3 = sharedActionButtonSchema.shape({
 const buttonDefinition$k = {
   id: id$l,
   title: ({ state, config: config2 }) => {
-    let markerDefaults = null;
-    let tagId = null;
-    try {
-      if (config2) {
-        if (config2.buttonType !== id$l) {
-          logger$c.error("Invalid config for create marker action button title {*}", { config: config2 });
-          return /* @__PURE__ */ React$1.createElement("strong", null, "?");
-        }
-        if (typeof config2.markerDefaults === "object" && config2.markerDefaults !== null) {
-          markerDefaults = config2.markerDefaults;
-          if ("primaryTagId" in markerDefaults && markerDefaults.primaryTagId && typeof markerDefaults.primaryTagId === "string") {
-            tagId = markerDefaults.primaryTagId;
-          }
-        }
-      }
-    } catch (error) {
-      logger$c.error("Error processing create marker action button title config {*}", { error, config: config2 });
-      return /* @__PURE__ */ React$1.createElement("strong", null, "?");
-    }
+    const invalidConfig = Boolean(config2) && config2?.buttonType !== id$l;
+    const markerDefaults = typeof config2?.markerDefaults === "object" ? config2.markerDefaults : null;
+    const tagId = markerDefaults && "primaryTagId" in markerDefaults && typeof markerDefaults.primaryTagId === "string" ? markerDefaults.primaryTagId : null;
     const [tag2, setTag2] = reactExports.useState();
     reactExports.useEffect(() => {
       if (!tagId) return;
       queryFindTagsByIDForSelect([tagId]).then((result) => result.data.findTags.tags[0] && setTag2(result.data.findTags.tags[0]));
     }, [tagId]);
+    if (invalidConfig) {
+      logger$c.error("Invalid config for create marker action button title {*}", { config: config2 });
+      return /* @__PURE__ */ React$1.createElement("strong", null, "?");
+    }
     if (markerDefaults) {
-      if (state === "active") {
-        return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, tag2 ? `Edit "${tag2.name}" marker` : "Edit marker");
-      } else if (state === "inactive") {
-        return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, tag2 ? `Create "${tag2.name}" marker` : "Create marker with defaults");
+      if (state === "active" || state === "inactive") {
+        return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, tag2 ? `Add/edit "${tag2.name}" markers` : "Add/edit markers");
       } else {
-        logger$c.error("Unexpected state in QuickTagActionButton title function", { state });
+        logger$c.error("Unexpected state in CreateMarkerActionButton title function", { state });
       }
     }
-    return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, "Create marker for scene");
+    return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, "Add/edit scene marker");
   },
   icon: actionButtonIcons["add-marker"].states,
   components: {
@@ -216048,22 +216183,26 @@ function CreateMarkerActionButton({
   mediaItem,
   playerRef
 }) {
-  let parsedConfig;
-  try {
-    parsedConfig = buttonDefinition$k.configSchema.validateSync(config2);
-  } catch (error) {
-    logger$c.error("Invalid config for create marker action button", { error, config: config2 });
-    return /* @__PURE__ */ React$1.createElement("strong", null, "?");
-  }
-  if (mediaItem.entityType !== "scene") return null;
-  const scene2 = mediaItem.entity;
-  const existingMarker = reactExports.useMemo(
-    () => parsedConfig.markerDefaults && mediaItem.entity.scene_markers.find((m3) => m3.primary_tag.id === parsedConfig.markerDefaults?.primaryTagId && m3.title === parsedConfig.markerDefaults?.title),
-    [mediaItem.entity.scene_markers, parsedConfig.markerDefaults?.primaryTagId, parsedConfig.markerDefaults?.title]
+  const parsedConfig = reactExports.useMemo(() => {
+    try {
+      return buttonDefinition$k.configSchema.validateSync(config2);
+    } catch (error) {
+      logger$c.error("Invalid config for create marker action button", { error, config: config2 });
+      return void 0;
+    }
+  }, [config2]);
+  const markerDefaults = parsedConfig?.markerDefaults;
+  const scene2 = mediaItem.entityType === "scene" ? mediaItem.entity : void 0;
+  const defaultTitle = markerDefaults?.title ?? "";
+  const existingMarkers = reactExports.useMemo(
+    () => (markerDefaults && scene2?.scene_markers.filter((m3) => m3.primary_tag.id === markerDefaults.primaryTagId && m3.title === defaultTitle)) ?? [],
+    [scene2?.scene_markers, markerDefaults?.primaryTagId, defaultTitle]
   );
   const [sceneMarkerCreate] = useSceneMarkerCreate();
-  const handleClick = () => {
-    if (existingMarker || !parsedConfig.markerDefaults) return;
+  if (!parsedConfig) return /* @__PURE__ */ React$1.createElement("strong", null, "?");
+  if (!scene2) return null;
+  const createMarkerFromDefaults = () => {
+    if (!markerDefaults) return;
     const currentTime = playerRef.current?.currentTime();
     if (currentTime === void 0) {
       logger$c.error("Player current time is undefined when creating quick marker", { sceneId: scene2.id });
@@ -216072,15 +216211,15 @@ function CreateMarkerActionButton({
     sceneMarkerCreate({
       variables: {
         scene_id: scene2.id,
-        title: parsedConfig.markerDefaults.title ?? "",
-        primary_tag_id: parsedConfig.markerDefaults.primaryTagId,
-        tag_ids: parsedConfig.markerDefaults.tagIds,
+        title: defaultTitle,
+        primary_tag_id: markerDefaults.primaryTagId,
+        tag_ids: markerDefaults.tagIds,
         seconds: currentTime,
         end_seconds: null
       }
     });
   };
-  if (!parsedConfig.markerDefaults) {
+  if (!markerDefaults) {
     return /* @__PURE__ */ React$1.createElement(
       ActionButtonBase,
       {
@@ -216088,37 +216227,29 @@ function CreateMarkerActionButton({
         icon: buttonDefinition$k.icon,
         title: buttonDefinition$k.title,
         className: cx(buttonDefinition$k.id, "hide-on-ui-hide"),
-        sidePanel: ({ close }) => /* @__PURE__ */ React$1.createElement(
-          SceneMarkerForm,
-          {
-            className: "action-button-create-marker",
-            sceneID: mediaItem.entity.id,
-            onClose: close,
-            marker: void 0
-          }
-        ),
-        "data-testid": "MediaSlide--createMarkerButton"
+        sidePanel: ({ close }) => /* @__PURE__ */ React$1.createElement(CreateMarkerPanel, { scene: scene2, close })
       }
     );
   }
-  const renderSidePanel = existingMarker ? ({ close }) => /* @__PURE__ */ React$1.createElement(
-    SceneMarkerForm,
+  const hasExistingMarkers = existingMarkers.length > 0;
+  const renderSidePanel = hasExistingMarkers ? ({ close }) => /* @__PURE__ */ React$1.createElement(
+    DefaultMarkersPanel,
     {
-      className: "action-button-create-marker",
-      sceneID: mediaItem.entity.id,
-      onClose: close,
-      marker: existingMarker
+      sceneId: scene2.id,
+      markers: existingMarkers,
+      onAddMarker: createMarkerFromDefaults,
+      close
     }
   ) : null;
   return /* @__PURE__ */ React$1.createElement(
     ActionButtonBase,
     {
-      state: Boolean(existingMarker) ? "active" : "inactive",
+      state: hasExistingMarkers ? "active" : "inactive",
       icon: buttonDefinition$k.icon,
       title: buttonDefinition$k.title,
       className: cx(buttonDefinition$k.id, "hide-on-ui-hide"),
       sidePanel: renderSidePanel,
-      onClick: handleClick,
+      onClick: ({ toggleSidePanel }) => hasExistingMarkers ? toggleSidePanel() : createMarkerFromDefaults(),
       config: config2
     }
   );
@@ -222541,7 +222672,7 @@ const MediaSlideContent = (props) => {
     if (markers2.length === currentlyPlayingMarkers.length && markers2.every((marker) => currentlyPlayingMarkers.includes(marker))) return;
     logger3.debug(`Marker playback update{*}`, { currentTime, markers: markers2 });
     setCurrentlyPlayingMarkers(markers2);
-  }, [endTimestamp, currentlyPlayingMarkers, goToItem]);
+  }, [endTimestamp, currentlyPlayingMarkers, goToItem, props.mediaItem]);
   const videoJsControlBarElm = videojsPlayerRef.current?.getChild("ControlBar")?.el();
   const videoJsProgressControlElm = videojsPlayerRef.current?.getChild("ControlBar")?.getChild("ProgressControl")?.el();
   return /* @__PURE__ */ React$1.createElement(
@@ -228586,7 +228717,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setGlobalState("keyboardShortcutsOpen", true)
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.22.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.23.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -241572,4 +241703,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-BZ4AEwyE.js.map
+//# sourceMappingURL=index-DJAfe5VG.js.map

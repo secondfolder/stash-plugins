@@ -13815,6 +13815,244 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     height: 100%;
   }
 }
+.tag-list-row {
+  margin: 0.5rem 0;
+}
+.tag-list-button {
+  margin: 0 0.5rem;
+  width: 8rem;
+}
+.tag-list-anchor {
+  color: #f5f8fa;
+}
+.tag-list-count {
+  display: inline-block;
+  margin: 0 0.5rem;
+  min-width: 6rem;
+}
+
+.tag-card {
+  padding: 0.5rem;
+}
+@media (max-width: 576px) {
+  .tag-card {
+    width: 100%;
+  }
+}
+.tag-card-image {
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+.tag-card button.btn.favorite-button {
+  opacity: 1;
+  padding: 0;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  transition: opacity 0.5s;
+}
+.tag-card button.btn.favorite-button svg.fa-icon {
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+}
+.tag-card button.btn.favorite-button.not-favorite {
+  color: rgba(191, 204, 214, 0.5);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
+  opacity: 0;
+}
+.tag-card button.btn.favorite-button.favorite {
+  color: #ff7373;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
+}
+.tag-card button.btn.favorite-button:hover, .tag-card button.btn.favorite-button:active, .tag-card button.btn.favorite-button:focus, .tag-card button.btn.favorite-button:active:focus {
+  background: none;
+  box-shadow: none;
+}
+.tag-card:hover button.btn.favorite-button.not-favorite {
+  opacity: 1;
+}
+
+#tag-page .tag-head .name-icons .not-favorite {
+  color: rgba(191, 204, 214, 0.5);
+}
+#tag-page .tag-head .name-icons .favorite {
+  color: #ff7373;
+}
+
+.tag-details .logo {
+  max-height: 50vh;
+  max-width: 100%;
+}
+.tag-details .logo-container {
+  margin-bottom: 4rem;
+}
+
+#tag-merge-menu .dropdown-item {
+  align-items: center;
+}
+
+.tag-card .tag-description + div {
+  margin-top: 1rem;
+}
+
+.tag-popover-card-placeholder {
+  display: flex;
+  max-width: 240px;
+  min-height: 314px;
+  width: calc(100vw - 2rem);
+}
+
+.tag-popover-card {
+  padding: 0.5rem;
+  text-align: left;
+}
+.tag-popover-card .card {
+  background: transparent;
+  box-shadow: none;
+  max-width: calc(100vw - 2rem);
+  padding: 0;
+  width: 240px;
+}
+
+.tag-item .icon-wrapper {
+  color: #202b33;
+  opacity: 0.5;
+  padding-left: 6px;
+}
+
+.tag-item .tag-icon {
+  color: #202b33;
+  margin: 0;
+  opacity: 0.5;
+  padding-left: 3px;
+  transform: scale(0.7);
+}
+
+.tag-select .alias {
+  font-weight: bold;
+  white-space: pre;
+}
+
+.tag-select-image {
+  height: 25px;
+  margin-right: 0.5em;
+  width: 25px;
+}.Switch {
+  /* We add that extra class selector to increase specificity to override bootstrap styles */
+  &.custom-switch {
+    padding-left: initial;
+
+    .custom-control-label {
+      align-items: baseline;
+      display: flex;
+      --baseline-offset: 0.1rem;
+      --knob-width: calc(1rem - 4px);
+
+      span {
+        flex: 1 1 auto;
+      }
+
+      &::before,
+      &::after {
+        position: unset;
+        grid-column: 2;
+        grid-row: 1;
+        flex: 0 0 auto;
+      }
+
+      /* The track */
+      &::before {
+        translate: 0 var(--baseline-offset);
+        order: 3;
+      }
+
+      /* The knob */
+      &::after {
+        translate: calc(var(--knob-width) + 2px) calc(var(--baseline-offset) - 2px);
+        order: 2;
+        position: relative;
+        top: unset;
+        left: var(--width);
+        z-index: 2;
+      }
+    }
+  }
+}
+.Select {
+
+  .react-select__control {
+    min-height: 1lh;
+
+    .react-select__single-value {
+      display: flex;
+      gap: 0.5em;
+      align-items: center;
+    }
+
+    .react-select__input-container {
+      margin: 0;
+    }
+
+    .react-select__indicator {
+      color: color-mix(in srgb, var(--text-color) 80%, black);
+      transition: color 150ms;
+      padding: 0.3em 0.5em;
+    }
+
+    .react-select__indicator-separator {
+      background-color: color-mix(in srgb, var(--text-color) 40%, black);
+      margin: 0;
+    }
+  }
+
+  &:hover {
+    .react-select__indicator {
+      color: var(--text-color);
+    }
+  }
+}
+
+/* Rendered in portal outside of Select component */
+.react-select__menu-portal {
+  .react-select__menu {
+    z-index: 10;
+
+    &.menu-below {
+      margin-top: 2px;
+    }
+    &.menu-above {
+      margin-bottom: 2px;
+    }
+
+    .react-select__menu-list {
+      overscroll-behavior: contain;
+    }
+
+    .react-select__option--is-selected {
+      background-color: var(--theme-colors-primary);
+    }
+
+    .react-select__group {
+      padding-bottom: 0;
+      padding-top: 0;
+      margin-bottom: 8px;
+      margin-top: 8px;
+
+      .react-select__group-heading {
+        font-size: 1.1em;
+        text-transform: unset;
+        color: inherit;
+        background-color: var(--textfield-bg);
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+      }
+    }
+  }
+}
 
 .react-datepicker__year-read-view--down-arrow,
 .react-datepicker__month-read-view--down-arrow,
@@ -14650,240 +14888,27 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     }
   }
 }
-.tag-list-row {
-  margin: 0.5rem 0;
-}
-.tag-list-button {
-  margin: 0 0.5rem;
-  width: 8rem;
-}
-.tag-list-anchor {
-  color: #f5f8fa;
-}
-.tag-list-count {
-  display: inline-block;
-  margin: 0 0.5rem;
-  min-width: 6rem;
-}
-
-.tag-card {
-  padding: 0.5rem;
-}
-@media (max-width: 576px) {
-  .tag-card {
-    width: 100%;
+.CreateMarkerPanel {
+  /* Lines up with the marker form below, which has a 0.5em margin (see .action-button-create-marker) */
+  .marker-select {
+    margin: 0.5em 0.5em 1em;
   }
 }
-.tag-card-image {
-  display: block;
-  margin: 0 auto;
-  object-fit: contain;
-}
-.tag-card button.btn.favorite-button {
-  opacity: 1;
-  padding: 0;
-  position: absolute;
-  right: 5px;
-  top: 10px;
-  transition: opacity 0.5s;
-}
-.tag-card button.btn.favorite-button svg.fa-icon {
-  margin-left: 0.4rem;
-  margin-right: 0.4rem;
-}
-.tag-card button.btn.favorite-button.not-favorite {
-  color: rgba(191, 204, 214, 0.5);
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
-  opacity: 0;
-}
-.tag-card button.btn.favorite-button.favorite {
-  color: #ff7373;
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
-}
-.tag-card button.btn.favorite-button:hover, .tag-card button.btn.favorite-button:active, .tag-card button.btn.favorite-button:focus, .tag-card button.btn.favorite-button:active:focus {
-  background: none;
-  box-shadow: none;
-}
-.tag-card:hover button.btn.favorite-button.not-favorite {
-  opacity: 1;
-}
 
-#tag-page .tag-head .name-icons .not-favorite {
-  color: rgba(191, 204, 214, 0.5);
-}
-#tag-page .tag-head .name-icons .favorite {
-  color: #ff7373;
-}
+.DefaultMarkersPanel {
+  .existing-markers {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
 
-.tag-details .logo {
-  max-height: 50vh;
-  max-width: 100%;
-}
-.tag-details .logo-container {
-  margin-bottom: 4rem;
-}
-
-#tag-merge-menu .dropdown-item {
-  align-items: center;
-}
-
-.tag-card .tag-description + div {
-  margin-top: 1rem;
-}
-
-.tag-popover-card-placeholder {
-  display: flex;
-  max-width: 240px;
-  min-height: 314px;
-  width: calc(100vw - 2rem);
-}
-
-.tag-popover-card {
-  padding: 0.5rem;
-  text-align: left;
-}
-.tag-popover-card .card {
-  background: transparent;
-  box-shadow: none;
-  max-width: calc(100vw - 2rem);
-  padding: 0;
-  width: 240px;
-}
-
-.tag-item .icon-wrapper {
-  color: #202b33;
-  opacity: 0.5;
-  padding-left: 6px;
-}
-
-.tag-item .tag-icon {
-  color: #202b33;
-  margin: 0;
-  opacity: 0.5;
-  padding-left: 3px;
-  transform: scale(0.7);
-}
-
-.tag-select .alias {
-  font-weight: bold;
-  white-space: pre;
-}
-
-.tag-select-image {
-  height: 25px;
-  margin-right: 0.5em;
-  width: 25px;
-}.Switch {
-  /* We add that extra class selector to increase specificity to override bootstrap styles */
-  &.custom-switch {
-    padding-left: initial;
-
-    .custom-control-label {
-      align-items: baseline;
+    li {
       display: flex;
-      --baseline-offset: 0.1rem;
-      --knob-width: calc(1rem - 4px);
-
-      span {
-        flex: 1 1 auto;
-      }
-
-      &::before,
-      &::after {
-        position: unset;
-        grid-column: 2;
-        grid-row: 1;
-        flex: 0 0 auto;
-      }
-
-      /* The track */
-      &::before {
-        translate: 0 var(--baseline-offset);
-        order: 3;
-      }
-
-      /* The knob */
-      &::after {
-        translate: calc(var(--knob-width) + 2px) calc(var(--baseline-offset) - 2px);
-        order: 2;
-        position: relative;
-        top: unset;
-        left: var(--width);
-        z-index: 2;
-      }
-    }
-  }
-}
-.Select {
-
-  .react-select__control {
-    min-height: 1lh;
-
-    .react-select__single-value {
-      display: flex;
-      gap: 0.5em;
       align-items: center;
-    }
+      justify-content: space-between;
+      gap: 0.5rem;
 
-    .react-select__input-container {
-      margin: 0;
-    }
-
-    .react-select__indicator {
-      color: color-mix(in srgb, var(--text-color) 80%, black);
-      transition: color 150ms;
-      padding: 0.3em 0.5em;
-    }
-
-    .react-select__indicator-separator {
-      background-color: color-mix(in srgb, var(--text-color) 40%, black);
-      margin: 0;
-    }
-  }
-
-  &:hover {
-    .react-select__indicator {
-      color: var(--text-color);
-    }
-  }
-}
-
-/* Rendered in portal outside of Select component */
-.react-select__menu-portal {
-  .react-select__menu {
-    z-index: 10;
-
-    &.menu-below {
-      margin-top: 2px;
-    }
-    &.menu-above {
-      margin-bottom: 2px;
-    }
-
-    .react-select__menu-list {
-      overscroll-behavior: contain;
-    }
-
-    .react-select__option--is-selected {
-      background-color: var(--theme-colors-primary);
-    }
-
-    .react-select__group {
-      padding-bottom: 0;
-      padding-top: 0;
-      margin-bottom: 8px;
-      margin-top: 8px;
-
-      .react-select__group-heading {
-        font-size: 1.1em;
-        text-transform: unset;
-        color: inherit;
-        background-color: var(--textfield-bg);
-        padding-top: 0.4em;
-        padding-bottom: 0.4em;
-        display: flex;
-        gap: 0.5em;
-        align-items: center;
+      & + li {
+        margin-top: 0.5rem;
       }
     }
   }
