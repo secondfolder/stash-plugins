@@ -13778,6 +13778,7 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     translate: calc(var(--safe-inset-left) * 1) 0 !important;
   }
   display: flex;
+  flex-direction: column;
 
   &.show {
     animation: slideInFromRight 0.1s ease-out forwards;
@@ -13795,9 +13796,30 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     display: none;
   }
 
-  /* Including contents in it's own element allows us to check for overflow without including the arrow */
+  /* Scrolls when the panel is limited to the space available (see setMaxSizeModifier) */
   > .contents {
     width: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    /* Don't pass scrolling on to the feed behind the panel once the contents reach their end, which would move to
+       another video */
+    overscroll-behavior: contain;
+
+    /* An open dropdown menu has to stick out of the scrolling contents. A scrolling element doesn't clip descendants
+       whose containing block is outside it, so while a menu is open, make every element between it and the panel
+       unpositioned. The menu's containing block is then the panel, and fitDropdownMenu positions it against that.
+       (These elements are only position: relative with no offsets, so this doesn't move anything.)
+       Only once fitDropdownMenu has marked the menu: react-select measures the menu first, and with the panel as its
+       containing block it would see it far below its input and scroll the page to bring it into view. */
+    *:has(.react-select__menu[data-fitted]) {
+      position: static;
+    }
+  }
+
+  /* With its select no longer positioned, the select's own z-index can't lift the menu above neighbours like
+     Bootstrap's input group buttons (z-index 2), so lift the menu itself */
+  .react-select__menu {
+    z-index: 10;
   }
 }
 
@@ -14877,6 +14899,37 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   form > * {
     padding-left: 0 !important;
     padding-right: 0 !important;
+
+    /* Bootstrap's grid relies on that padding: its rows have negative side margins to cancel it out, so without it
+       they stick out past the form (and give a scrolling side panel a horizontal scrollbar). Drop the grid's outer
+       gutters, keeping its gap between a field's label and its input. */
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+
+      > :first-child {
+        padding-left: 0;
+      }
+
+      > :last-child {
+        padding-right: 0;
+      }
+
+      /* Where a label and its input are on separate lines, neither needs the gap between them: on narrow screens,
+         where every field stacks them, and on wide screens for full width fields */
+      @media (max-width: 575.98px) {
+        > * {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+      @media (min-width: 1200px) {
+        > .col-xl-12 {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+    }
 
     .input-group {
       .invalid-feedback {

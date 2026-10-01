@@ -178084,6 +178084,10 @@ function usePlayerManager({ mediaItem }) {
   const playerId = `player-${mediaItem.id.replace(":", "-")}-${mediaItemPlayerCount}`;
   beforeSetupHooks[playerId] = [];
   setupHooks[playerId] = [];
+  reactExports.useEffect(() => () => {
+    delete beforeSetupHooks[playerId];
+    delete setupHooks[playerId];
+  }, [playerId]);
   const scene2 = mediaItem.entityType === "scene" ? mediaItem.entity : mediaItem.entity.scene;
   function playerBeforeSetupHook(callback2) {
     beforeSetupHooks[playerId].push(callback2);
@@ -184954,8 +184958,10 @@ function CrtEffect({ strength = 1, infoText = "AV-1", ...props }) {
       }
     }
   }, [props.enabled]);
+  const animating = tvState !== "off";
   const rootElmRef = reactExports.useRef(null);
   reactExports.useEffect(() => {
+    if (!animating) return;
     const rootElm = rootElmRef.current;
     const canvasElm = rootElm?.querySelector("canvas");
     if (!canvasElm) return;
@@ -184983,7 +184989,7 @@ function CrtEffect({ strength = 1, infoText = "AV-1", ...props }) {
       clearTimeout(timeoutId);
       cancelAnimationFrame(frame2);
     };
-  }, []);
+  }, [animating]);
   reactExports.useEffect(() => {
     const rootElm = rootElmRef.current;
     if (!rootElm) return;
@@ -185047,6 +185053,7 @@ function CrtEffect({ strength = 1, infoText = "AV-1", ...props }) {
   const glitchTravelSpeed = 20;
   const glitchedBandsYOffset = useMotionValue(-glitchHeight);
   reactExports.useEffect(() => {
+    if (!animating) return;
     const animation = animate(-glitchHeight, contentHeight, {
       duration: (contentHeight + glitchHeight) / glitchTravelSpeed,
       repeat: Infinity,
@@ -185056,7 +185063,7 @@ function CrtEffect({ strength = 1, infoText = "AV-1", ...props }) {
       ease: "linear"
     });
     return () => animation.stop();
-  }, [contentHeight]);
+  }, [contentHeight, animating]);
   function glitchSpike(t4, amplitude = 1, spikeDuration = 0.05, tEnd = 15, epsilon = 0.01) {
     const pi = Math.PI;
     if (t4 < spikeDuration) {
@@ -193203,108 +193210,6 @@ var useUID = function() {
   var uid2 = useUIDState().uid;
   return uid2;
 };
-function getOverflowAmount(parentElement, { ignore } = {}) {
-  const parentRect = parentElement.getBoundingClientRect();
-  let overflow = {
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0
-  };
-  function traverse(element) {
-    const children = Array.from(element.children);
-    for (const child of children) {
-      if (ignore && child.matches(ignore)) continue;
-      const style2 = getComputedStyle(child);
-      if (style2.display === "none") continue;
-      const hasOverflowHidden = style2.overflow === "hidden" || style2.overflowX === "hidden" || style2.overflowY === "hidden" || style2.overflow === "clip" || style2.overflowX === "clip" || style2.overflowY === "clip" || style2.overflow === "auto" || style2.overflowX === "auto" || style2.overflowY === "auto";
-      const childRect = child.getBoundingClientRect();
-      const overflowAmount = {
-        left: Math.max(0, parentRect.left - childRect.left),
-        top: Math.max(0, parentRect.top - childRect.top),
-        right: Math.max(0, childRect.right - parentRect.right),
-        bottom: Math.max(0, childRect.bottom - parentRect.bottom)
-      };
-      overflow.left = Math.max(overflow.left, overflowAmount.left);
-      overflow.top = Math.max(overflow.top, overflowAmount.top);
-      overflow.right = Math.max(overflow.right, overflowAmount.right);
-      overflow.bottom = Math.max(overflow.bottom, overflowAmount.bottom);
-      if (!hasOverflowHidden) {
-        traverse(child);
-      }
-    }
-  }
-  traverse(parentElement);
-  return overflow;
-}
-const DROPDOWN_MENU_SELECTOR = ".react-select__menu";
-const DEFAULT_MAX_LIST_HEIGHT = 300;
-function chooseMenuFit({
-  spaceAbove,
-  spaceBelow,
-  listContentHeight,
-  menuChromeHeight,
-  preferredMaxListHeight = DEFAULT_MAX_LIST_HEIGHT
-}) {
-  const menuHeight = Math.min(listContentHeight, preferredMaxListHeight) + menuChromeHeight;
-  if (menuHeight <= spaceBelow) return { placement: "below", maxListHeight: preferredMaxListHeight };
-  if (menuHeight <= spaceAbove) return { placement: "above", maxListHeight: preferredMaxListHeight };
-  const placement = spaceBelow >= spaceAbove ? "below" : "above";
-  const space = placement === "below" ? spaceBelow : spaceAbove;
-  return { placement, maxListHeight: Math.max(0, space - menuChromeHeight) };
-}
-function visibleArea() {
-  const viewport2 = window.visualViewport;
-  return viewport2 ? { top: viewport2.offsetTop, bottom: viewport2.offsetTop + viewport2.height } : { top: 0, bottom: window.innerHeight };
-}
-function fitDropdownMenu(menu) {
-  const list = menu.firstElementChild;
-  const container2 = menu.parentElement;
-  if (!(list instanceof HTMLElement) || !container2) return;
-  const input = container2.getBoundingClientRect();
-  const area2 = visibleArea();
-  const gap = parseFloat(getComputedStyle(menu).marginTop) || 0;
-  const fit = chooseMenuFit({
-    spaceAbove: input.top - area2.top - gap,
-    spaceBelow: area2.bottom - input.bottom - gap,
-    listContentHeight: list.scrollHeight,
-    menuChromeHeight: menu.offsetHeight - list.offsetHeight
-  });
-  menu.style.top = fit.placement === "below" ? "100%" : "auto";
-  menu.style.bottom = fit.placement === "above" ? "100%" : "auto";
-  list.style.maxHeight = `${fit.maxListHeight}px`;
-}
-const includeChildOverflowInPopperSizeModifier = {
-  name: "includeChildOverflowInPopperSize",
-  enabled: true,
-  phase: "beforeRead",
-  fn: ({ state }) => {
-    const overflowAmount = getOverflowAmount(state.elements.popper, { ignore: DROPDOWN_MENU_SELECTOR });
-    state.rects.popper.height += overflowAmount.top + overflowAmount.bottom;
-    state.rects.popper.width += overflowAmount.left + overflowAmount.right;
-  },
-  effect: ({ state, instance }) => {
-    const popperElement = state.elements.popper;
-    let previousPopperHeightWithOverflow = popperElement.clientHeight;
-    let previousPopperWidthWithOverflow = popperElement.clientWidth;
-    const overflowAmountChanged = () => {
-      const heightWithOverflow = popperElement.scrollHeight;
-      const widthWithOverflow = popperElement.scrollWidth;
-      const changed = heightWithOverflow !== previousPopperHeightWithOverflow || widthWithOverflow !== previousPopperWidthWithOverflow;
-      previousPopperHeightWithOverflow = heightWithOverflow;
-      previousPopperWidthWithOverflow = widthWithOverflow;
-      return changed;
-    };
-    const intervalId = setInterval(() => {
-      if (overflowAmountChanged()) {
-        instance.forceUpdate();
-      }
-    }, 100);
-    return () => {
-      clearInterval(intervalId);
-    };
-  }
-};
 const applyArrowHideModifier = {
   name: "applyArrowHide",
   enabled: true,
@@ -197917,11 +197822,12 @@ function usePreventOverflowModifier({
   const getPadding = reactExports.useCallback(() => {
     const viewportStyle = getComputedStyle(document.documentElement);
     const visualViewport = accountForKeyboard ? window.visualViewport : null;
+    const area2 = boundary?.getBoundingClientRect() ?? { top: 0, left: 0, right: window.innerWidth, bottom: window.innerHeight };
     const visualViewportObscured = visualViewport ? {
-      top: Math.max(0, visualViewport.offsetTop),
-      left: Math.max(0, visualViewport.offsetLeft),
-      right: Math.max(0, window.innerWidth - (visualViewport.offsetLeft + visualViewport.width)),
-      bottom: Math.max(0, window.innerHeight - (visualViewport.offsetTop + visualViewport.height))
+      top: Math.max(0, visualViewport.offsetTop - area2.top),
+      left: Math.max(0, visualViewport.offsetLeft - area2.left),
+      right: Math.max(0, area2.right - (visualViewport.offsetLeft + visualViewport.width)),
+      bottom: Math.max(0, area2.bottom - (visualViewport.offsetTop + visualViewport.height))
     } : { top: 0, left: 0, right: 0, bottom: 0 };
     const padding2 = {
       top: Math.max(
@@ -197954,7 +197860,7 @@ function usePreventOverflowModifier({
       ) + (rootBoundaryPadding?.bottom ?? 0)
     };
     return padding2;
-  }, [boundaryPadding, rootBoundaryPadding, accountForKeyboard]);
+  }, [boundaryPadding, rootBoundaryPadding, accountForKeyboard, boundary]);
   const padding = reactExports.useMemo(() => getPadding(), []);
   const updatePadding = reactExports.useCallback(() => {
     const updatedPadding = getPadding();
@@ -197962,6 +197868,8 @@ function usePreventOverflowModifier({
       padding[key] = value;
     }
   }, [padding, getPadding]);
+  const updatePaddingRef = reactExports.useRef(updatePadding);
+  updatePaddingRef.current = updatePadding;
   reactExports.useEffect(() => {
     window.addEventListener("resize", updatePadding);
     if (accountForKeyboard) {
@@ -197987,6 +197895,12 @@ function usePreventOverflowModifier({
     effect: ({ instance }) => {
       if (!accountForKeyboard) return;
       const update2 = () => instance.update();
+      const updateForVisualViewport = () => {
+        updatePaddingRef.current();
+        update2();
+      };
+      window.visualViewport?.addEventListener("resize", updateForVisualViewport);
+      window.visualViewport?.addEventListener("scroll", updateForVisualViewport);
       let keyboardTimer;
       const onFocusIn = () => {
         clearTimeout(keyboardTimer);
@@ -197999,6 +197913,8 @@ function usePreventOverflowModifier({
       window.addEventListener("focusin", onFocusIn);
       window.addEventListener("focusout", onFocusOut);
       return () => {
+        window.visualViewport?.removeEventListener("resize", updateForVisualViewport);
+        window.visualViewport?.removeEventListener("scroll", updateForVisualViewport);
         window.removeEventListener("focusin", onFocusIn);
         window.removeEventListener("focusout", onFocusOut);
         clearTimeout(keyboardTimer);
@@ -198229,284 +198145,120 @@ const useOutsideClickModifier = ({ onOutsideClick }) => ({
     }
     backdrop.style.cssText = backdropCss;
     popper2.before(backdrop);
-    const backdropClickHandler = () => {
-      onOutsideClick?.();
+    let pressStartedOnBackdrop = false;
+    const pointerDownHandler = (event2) => {
+      pressStartedOnBackdrop = event2.target === backdrop;
     };
+    const backdropClickHandler = () => {
+      if (pressStartedOnBackdrop) onOutsideClick?.();
+      pressStartedOnBackdrop = false;
+    };
+    window.addEventListener("pointerdown", pointerDownHandler, { capture: true });
     backdrop.addEventListener("click", backdropClickHandler);
     return () => {
+      window.removeEventListener("pointerdown", pointerDownHandler, { capture: true });
       backdrop.removeEventListener("click", backdropClickHandler);
       backdrop.remove();
     };
   }
 });
+const DROPDOWN_MENU_SELECTOR = ".react-select__menu";
+const DEFAULT_MAX_LIST_HEIGHT = 300;
+function chooseMenuFit({
+  spaceAbove,
+  spaceBelow,
+  listContentHeight,
+  menuChromeHeight,
+  preferredMaxListHeight = DEFAULT_MAX_LIST_HEIGHT
+}) {
+  const menuHeight = Math.min(listContentHeight, preferredMaxListHeight) + menuChromeHeight;
+  if (menuHeight <= spaceBelow) return { placement: "below", maxListHeight: preferredMaxListHeight };
+  if (menuHeight <= spaceAbove) return { placement: "above", maxListHeight: preferredMaxListHeight };
+  const placement = spaceBelow >= spaceAbove ? "below" : "above";
+  const space = placement === "below" ? spaceBelow : spaceAbove;
+  return { placement, maxListHeight: Math.max(0, space - menuChromeHeight) };
+}
+function visibleArea() {
+  const viewport2 = window.visualViewport;
+  return viewport2 ? { top: viewport2.offsetTop, bottom: viewport2.offsetTop + viewport2.height } : { top: 0, bottom: window.innerHeight };
+}
+function fitDropdownMenu(menu) {
+  const list = menu.firstElementChild;
+  const container2 = menu.parentElement;
+  if (!(list instanceof HTMLElement) || !container2) return;
+  menu.dataset.fitted = "";
+  const containingBlock = menu.offsetParent;
+  if (!containingBlock) return;
+  const input = container2.getBoundingClientRect();
+  const area2 = visibleArea();
+  const gap = parseFloat(getComputedStyle(menu).marginTop) || 0;
+  const fit = chooseMenuFit({
+    spaceAbove: input.top - area2.top - gap,
+    spaceBelow: area2.bottom - input.bottom - gap,
+    listContentHeight: list.scrollHeight,
+    // Measured with fractional precision (offsetHeight rounds), or the menu can end up a fraction of a pixel off screen
+    menuChromeHeight: menu.getBoundingClientRect().height - list.getBoundingClientRect().height
+  });
+  const blockRect = containingBlock.getBoundingClientRect();
+  const blockTop = blockRect.top + containingBlock.clientTop;
+  const blockLeft = blockRect.left + containingBlock.clientLeft;
+  const blockBottom = blockTop + containingBlock.clientHeight;
+  menu.style.left = `${input.left - blockLeft}px`;
+  menu.style.width = `${input.width}px`;
+  menu.style.top = fit.placement === "below" ? `${input.bottom - blockTop}px` : "auto";
+  menu.style.bottom = fit.placement === "above" ? `${blockBottom - input.top}px` : "auto";
+  list.style.maxHeight = `${fit.maxListHeight}px`;
+}
 function useFitDropdownMenus(container2) {
   reactExports.useEffect(() => {
     if (!container2) return;
     const fitAll = () => container2.querySelectorAll(DROPDOWN_MENU_SELECTOR).forEach(fitDropdownMenu);
     const observer = new MutationObserver(fitAll);
     observer.observe(container2, { childList: true, subtree: true });
+    container2.addEventListener("scroll", fitAll, { capture: true, passive: true });
+    let frame2;
+    const fitAfterPanelMoves = () => {
+      if (frame2 !== void 0) cancelAnimationFrame(frame2);
+      frame2 = requestAnimationFrame(fitAll);
+    };
+    window.visualViewport?.addEventListener("resize", fitAfterPanelMoves);
+    window.visualViewport?.addEventListener("scroll", fitAfterPanelMoves);
     fitAll();
+    return () => {
+      observer.disconnect();
+      container2.removeEventListener("scroll", fitAll, { capture: true });
+      window.visualViewport?.removeEventListener("resize", fitAfterPanelMoves);
+      window.visualViewport?.removeEventListener("scroll", fitAfterPanelMoves);
+      if (frame2 !== void 0) cancelAnimationFrame(frame2);
+    };
+  }, [container2]);
+}
+const FOCUSABLE_SELECTOR = "input, textarea, select, [tabindex]";
+function useFocusWithoutScrolling(container2) {
+  reactExports.useEffect(() => {
+    if (!container2) return;
+    const preventFocusScroll = (element) => {
+      if (Object.prototype.hasOwnProperty.call(element, "focus")) return;
+      element.focus = (options2) => HTMLElement.prototype.focus.call(element, { ...options2, preventScroll: true });
+    };
+    const preventFocusScrollForAll = () => container2.querySelectorAll(FOCUSABLE_SELECTOR).forEach(preventFocusScroll);
+    const observer = new MutationObserver(preventFocusScrollForAll);
+    observer.observe(container2, { childList: true, subtree: true });
+    preventFocusScrollForAll();
     return () => observer.disconnect();
   }, [container2]);
 }
-const logger$d = getLogger(["stash-tv", "ActionButtonBase"]);
-const useCurrentOpenPopover = create(() => null);
-const ActionButtonBase = (props) => {
-  const {
-    state,
-    icon: icon2,
-    title: title2,
-    className,
-    sideInfo,
-    sidePanel,
-    size: size2,
-    displayOnly,
-    onClick,
-    onSidePanelToggle,
-    sidePanelClassName,
-    config: config2
-  } = props;
-  const ButtonElement = displayOnly ? "div" : "button";
-  const { leftHandedUi } = useTvConfig();
-  const getOnClickHandler = (sidePanelClick) => {
-    if (displayOnly) return;
-    return (event2) => {
-      if (onClick) {
-        onClick({ toggleSidePanel: () => sidePanelClick(event2) });
-      } else if (sidePanel) {
-        sidePanelClick(event2);
-      }
-    };
-  };
-  return /* @__PURE__ */ React$1.createElement(
-    "div",
-    {
-      className: cx("ActionButton", className, { state, "left-handed": leftHandedUi, [`size-${size2}`]: size2 })
-    },
-    sideInfo && /* @__PURE__ */ React$1.createElement("div", { className: "side-info" }, sideInfo),
-    /* @__PURE__ */ React$1.createElement(
-      SidePanel,
-      {
-        content: sidePanel,
-        onSidePanelToggle,
-        sidePanelClassName
-      },
-      ({ onClick: sidePanelClick, ref }) => {
-        return /* @__PURE__ */ React$1.createElement(
-          ButtonElement,
-          {
-            className: cx("icon-container", { "button": !displayOnly }),
-            type: displayOnly ? void 0 : "button",
-            onClick: displayOnly ? void 0 : getOnClickHandler(sidePanelClick),
-            ref
-          },
-          /* @__PURE__ */ React$1.createElement(ActionButtonIcon, { iconDefinition: icon2, state, config: config2 }),
-          /* @__PURE__ */ React$1.createElement("span", { className: "sr-only" }, /* @__PURE__ */ React$1.createElement(ActionButtonTitle, { title: title2, state, config: config2 }))
-        );
-      }
-    )
-  );
-};
-const SidePanel = ({
-  content: content2,
-  children,
-  onSidePanelToggle,
-  sidePanelClassName
-}) => {
-  const currentOpenPopover = useCurrentOpenPopover();
-  const { leftHandedUi } = useTvConfig();
-  const id2 = `action-button-side-panel-${useUID()}`;
-  const isOpen = id2 === currentOpenPopover;
-  let boundary;
-  if (hasMediaItemStateContext()) {
-    const { mediaSlideElementRef } = useMediaItemState();
-    boundary = mediaSlideElementRef.current ?? void 0;
-  } else {
-    boundary = void 0;
-  }
-  const preventOverflowModifier = usePreventOverflowModifier({
-    boundary,
-    accountForKeyboard: true
-  });
-  const outsideClickModifier = useOutsideClickModifier({
-    onOutsideClick: () => useCurrentOpenPopover.setState(null)
-  });
-  const offscreenModifier = useOffscreenModifier({
-    onOffscreen: () => useCurrentOpenPopover.setState(null)
-  });
-  const [contentsElement, setContentsElement] = React$1.useState(null);
-  useFitDropdownMenus(contentsElement);
-  const onSidePanelToggleRef = React$1.useRef(onSidePanelToggle);
-  onSidePanelToggleRef.current = onSidePanelToggle;
-  reactExports.useEffect(() => {
-    onSidePanelToggleRef.current?.(isOpen);
-  }, [isOpen]);
-  const [isOpenDelayedClose, setIsOpenDelayedClose] = React$1.useState(isOpen);
-  reactExports.useEffect(() => {
-    let timeout;
-    if (!isOpen) {
-      timeout = setTimeout(() => setIsOpenDelayedClose(false), 300);
-    } else {
-      setIsOpenDelayedClose(true);
-    }
-    return () => {
-      if (timeout) clearTimeout(timeout);
-    };
-  }, [isOpen]);
-  if (!content2) return children({ onClick: () => {
-  }, ref: null });
-  return /* @__PURE__ */ React$1.createElement(
-    OverlayTrigger,
-    {
-      trigger: "click",
-      placement: leftHandedUi ? "right" : "left",
-      overlay: /* @__PURE__ */ React$1.createElement(
-        Popover,
-        {
-          as: "dialog",
-          className: cx("action-button-side-panel", sidePanelClassName, { "left-handed": leftHandedUi }),
-          id: id2
-        },
-        /* @__PURE__ */ React$1.createElement("div", { className: "contents", ref: setContentsElement }, isOpenDelayedClose && (typeof content2 === "function" ? content2({ isOpen, close: () => useCurrentOpenPopover.setState(null) }) : content2))
-      ),
-      show: isOpen,
-      onToggle: (shouldOpen) => {
-        const currentlyOpen = id2 === useCurrentOpenPopover.getState();
-        if (shouldOpen && !currentlyOpen) {
-          useCurrentOpenPopover.setState(id2);
-        } else if (!shouldOpen && currentlyOpen) {
-          useCurrentOpenPopover.setState(null);
-        }
-      },
-      popperConfig: {
-        modifiers: [
-          includeChildOverflowInPopperSizeModifier,
-          applyArrowHideModifier,
-          preventOverflowModifier,
-          setMaxSizeModifier,
-          offscreenModifier,
-          outsideClickModifier
-        ]
-      }
-    },
-    // OverlayTrigger's children appear to be typed wrong
-    children
-  );
-};
-function ActionButtonIcon({
-  iconDefinition,
-  state,
-  size: size2 = "standard",
-  config: config2,
-  className: providedClassName
-}) {
-  const className = cx("ActionButtonIcon", `size-${size2}`, providedClassName);
-  let iconSource;
-  try {
-    if (config2 && "iconId" in config2 && typeof config2.iconId === "string" && config2.iconId in actionButtonIcons) {
-      iconSource = actionButtonIcons[config2.iconId].states[state];
-    } else if (typeof iconDefinition === "function") {
-      iconSource = iconDefinition;
-    } else if (iconDefinition && typeof iconDefinition === "object" && "icon" in iconDefinition && "iconName" in iconDefinition) {
-      iconSource = iconDefinition;
-    } else if (iconDefinition && typeof iconDefinition === "object" && "render" in iconDefinition) {
-      iconSource = iconDefinition;
-    } else {
-      iconSource = iconDefinition?.[state];
-    }
-    if (typeof iconSource === "function") {
-      const IconComponent = iconSource;
-      return /* @__PURE__ */ React$1.createElement(
-        IconComponent,
-        {
-          className
-        }
-      );
-    } else if (typeof iconSource === "string") {
-      return /* @__PURE__ */ React$1.createElement("img", { src: iconSource, className, alt: "" });
-    } else if (iconSource && typeof iconSource === "object" && "icon" in iconSource && "iconName" in iconSource) {
-      return /* @__PURE__ */ React$1.createElement(
-        FontAwesomeIcon,
-        {
-          icon: iconSource,
-          className
-        }
-      );
-    } else if (iconSource && typeof iconSource === "object" && "render" in iconSource) {
-      const IconComponent = iconSource;
-      return /* @__PURE__ */ React$1.createElement(
-        IconComponent,
-        {
-          className
-        }
-      );
-    } else {
-      if (iconSource !== void 0) iconSource;
-      logger$d.error("Unable to determine icon for action button {*}", { iconDefinition, iconSource, state });
-    }
-  } catch (error) {
-    logger$d.error("Error rendering action button icon {*}", { error, iconDefinition, state });
-  }
-  return /* @__PURE__ */ React$1.createElement("div", { className }, "?");
-}
-const ActionButtonTitle = ({
-  title: title2,
-  state,
-  config: config2
-}) => {
-  if (typeof title2 === "string") {
-    return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, title2);
-  } else if (typeof title2 === "function") {
-    const Title = title2;
-    return /* @__PURE__ */ React$1.createElement(Title, { state, config: config2 });
-  } else if (state in title2) {
-    return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, title2[state]);
-  }
-  logger$d.error("Unable to determine title for action button", { title: title2, state });
-  return /* @__PURE__ */ React$1.createElement("strong", null, '"?"');
-};
-const sharedActionButtonSchema = create$3({
-  id: create$6().required(),
-  type: create$6().oneOf(["button"]).required(),
-  pinned: create$7().required()
-});
-const createNewActionButtonConfig = (type3, options2) => {
-  const sharedDefaults = {
-    id: `${Date.now()}-${Math.random().toString().slice(2)}`,
-    type: "button",
-    pinned: false
-  };
-  const buttonType = type3;
-  switch (buttonType) {
-    case "edit-tags":
-      return {
-        ...sharedDefaults,
-        buttonType,
-        pinnedTagIds: []
-      };
-    case "quick-tag":
-      return {
-        ...sharedDefaults,
-        buttonType,
-        iconId: "add-tag",
-        tagId: ""
-      };
-    case "create-marker":
-      return {
-        ...sharedDefaults,
-        buttonType,
-        iconId: !options2?.includeMarkerDefaults ? "add-marker" : "bookmark",
-        markerDefaults: options2?.includeMarkerDefaults ? {
-          title: "",
-          primaryTagId: "",
-          tagIds: []
-        } : null
-      };
-    default:
-      return {
-        ...sharedDefaults,
-        buttonType
-      };
+const updateOnResizeModifier = {
+  name: "updateOnResize",
+  enabled: true,
+  phase: "main",
+  fn: () => {
+  },
+  effect: ({ state, instance }) => {
+    const observer = new ResizeObserver(() => instance.update());
+    observer.observe(state.elements.popper);
+    for (const child of state.elements.popper.children) observer.observe(child);
+    return () => observer.disconnect();
   }
 };
 function _typeof(o2) {
@@ -198560,101 +198312,6 @@ function _objectSpread2$1(e2) {
   }
   return e2;
 }
-function _arrayWithHoles(r3) {
-  if (Array.isArray(r3)) return r3;
-}
-function _iterableToArrayLimit(r3, l) {
-  var t4 = null == r3 ? null : "undefined" != typeof Symbol && r3[Symbol.iterator] || r3["@@iterator"];
-  if (null != t4) {
-    var e2, n, i3, u2, a4 = [], f = true, o2 = false;
-    try {
-      if (i3 = (t4 = t4.call(r3)).next, 0 === l) {
-        if (Object(t4) !== t4) return;
-        f = false;
-      } else for (; !(f = (e2 = i3.call(t4)).done) && (a4.push(e2.value), a4.length !== l); f = true) ;
-    } catch (r4) {
-      o2 = true, n = r4;
-    } finally {
-      try {
-        if (!f && null != t4["return"] && (u2 = t4["return"](), Object(u2) !== u2)) return;
-      } finally {
-        if (o2) throw n;
-      }
-    }
-    return a4;
-  }
-}
-function _arrayLikeToArray(r3, a4) {
-  (null == a4 || a4 > r3.length) && (a4 = r3.length);
-  for (var e2 = 0, n = Array(a4); e2 < a4; e2++) n[e2] = r3[e2];
-  return n;
-}
-function _unsupportedIterableToArray(r3, a4) {
-  if (r3) {
-    if ("string" == typeof r3) return _arrayLikeToArray(r3, a4);
-    var t4 = {}.toString.call(r3).slice(8, -1);
-    return "Object" === t4 && r3.constructor && (t4 = r3.constructor.name), "Map" === t4 || "Set" === t4 ? Array.from(r3) : "Arguments" === t4 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t4) ? _arrayLikeToArray(r3, a4) : void 0;
-  }
-}
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _slicedToArray(r3, e2) {
-  return _arrayWithHoles(r3) || _iterableToArrayLimit(r3, e2) || _unsupportedIterableToArray(r3, e2) || _nonIterableRest();
-}
-function _objectWithoutProperties$1(e2, t4) {
-  if (null == e2) return {};
-  var o2, r3, i3 = _objectWithoutPropertiesLoose$1s(e2, t4);
-  if (Object.getOwnPropertySymbols) {
-    var n = Object.getOwnPropertySymbols(e2);
-    for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
-  }
-  return i3;
-}
-var _excluded$6 = ["defaultInputValue", "defaultMenuIsOpen", "defaultValue", "inputValue", "menuIsOpen", "onChange", "onInputChange", "onMenuClose", "onMenuOpen", "value"];
-function useStateManager(_ref3) {
-  var _ref$defaultInputValu = _ref3.defaultInputValue, defaultInputValue = _ref$defaultInputValu === void 0 ? "" : _ref$defaultInputValu, _ref$defaultMenuIsOpe = _ref3.defaultMenuIsOpen, defaultMenuIsOpen = _ref$defaultMenuIsOpe === void 0 ? false : _ref$defaultMenuIsOpe, _ref$defaultValue = _ref3.defaultValue, defaultValue = _ref$defaultValue === void 0 ? null : _ref$defaultValue, propsInputValue = _ref3.inputValue, propsMenuIsOpen = _ref3.menuIsOpen, propsOnChange = _ref3.onChange, propsOnInputChange = _ref3.onInputChange, propsOnMenuClose = _ref3.onMenuClose, propsOnMenuOpen = _ref3.onMenuOpen, propsValue = _ref3.value, restSelectProps = _objectWithoutProperties$1(_ref3, _excluded$6);
-  var _useState = reactExports.useState(propsInputValue !== void 0 ? propsInputValue : defaultInputValue), _useState2 = _slicedToArray(_useState, 2), stateInputValue = _useState2[0], setStateInputValue = _useState2[1];
-  var _useState3 = reactExports.useState(propsMenuIsOpen !== void 0 ? propsMenuIsOpen : defaultMenuIsOpen), _useState4 = _slicedToArray(_useState3, 2), stateMenuIsOpen = _useState4[0], setStateMenuIsOpen = _useState4[1];
-  var _useState5 = reactExports.useState(propsValue !== void 0 ? propsValue : defaultValue), _useState6 = _slicedToArray(_useState5, 2), stateValue = _useState6[0], setStateValue = _useState6[1];
-  var onChange3 = reactExports.useCallback(function(value2, actionMeta) {
-    if (typeof propsOnChange === "function") {
-      propsOnChange(value2, actionMeta);
-    }
-    setStateValue(value2);
-  }, [propsOnChange]);
-  var onInputChange = reactExports.useCallback(function(value2, actionMeta) {
-    var newValue;
-    if (typeof propsOnInputChange === "function") {
-      newValue = propsOnInputChange(value2, actionMeta);
-    }
-    setStateInputValue(newValue !== void 0 ? newValue : value2);
-  }, [propsOnInputChange]);
-  var onMenuOpen = reactExports.useCallback(function() {
-    if (typeof propsOnMenuOpen === "function") {
-      propsOnMenuOpen();
-    }
-    setStateMenuIsOpen(true);
-  }, [propsOnMenuOpen]);
-  var onMenuClose = reactExports.useCallback(function() {
-    if (typeof propsOnMenuClose === "function") {
-      propsOnMenuClose();
-    }
-    setStateMenuIsOpen(false);
-  }, [propsOnMenuClose]);
-  var inputValue = propsInputValue !== void 0 ? propsInputValue : stateInputValue;
-  var menuIsOpen = propsMenuIsOpen !== void 0 ? propsMenuIsOpen : stateMenuIsOpen;
-  var value = propsValue !== void 0 ? propsValue : stateValue;
-  return _objectSpread2$1(_objectSpread2$1({}, restSelectProps), {}, {
-    inputValue,
-    menuIsOpen,
-    onChange: onChange3,
-    onInputChange,
-    onMenuClose,
-    onMenuOpen,
-    value
-  });
-}
 function _classCallCheck(a4, n) {
   if (!(a4 instanceof n)) throw new TypeError("Cannot call a class as a function");
 }
@@ -198685,11 +198342,23 @@ function _createSuper(t4) {
     return _possibleConstructorReturn(this, e2);
   };
 }
+function _arrayLikeToArray(r3, a4) {
+  (null == a4 || a4 > r3.length) && (a4 = r3.length);
+  for (var e2 = 0, n = Array(a4); e2 < a4; e2++) n[e2] = r3[e2];
+  return n;
+}
 function _arrayWithoutHoles(r3) {
   if (Array.isArray(r3)) return _arrayLikeToArray(r3);
 }
 function _iterableToArray(r3) {
   if ("undefined" != typeof Symbol && null != r3[Symbol.iterator] || null != r3["@@iterator"]) return Array.from(r3);
+}
+function _unsupportedIterableToArray(r3, a4) {
+  if (r3) {
+    if ("string" == typeof r3) return _arrayLikeToArray(r3, a4);
+    var t4 = {}.toString.call(r3).slice(8, -1);
+    return "Object" === t4 && r3.constructor && (t4 = r3.constructor.name), "Map" === t4 || "Set" === t4 ? Array.from(r3) : "Arguments" === t4 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t4) ? _arrayLikeToArray(r3, a4) : void 0;
+  }
 }
 function _nonIterableSpread() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
@@ -199879,6 +199548,45 @@ function keyframes() {
     }
   };
 }
+function _arrayWithHoles(r3) {
+  if (Array.isArray(r3)) return r3;
+}
+function _iterableToArrayLimit(r3, l) {
+  var t4 = null == r3 ? null : "undefined" != typeof Symbol && r3[Symbol.iterator] || r3["@@iterator"];
+  if (null != t4) {
+    var e2, n, i3, u2, a4 = [], f = true, o2 = false;
+    try {
+      if (i3 = (t4 = t4.call(r3)).next, 0 === l) {
+        if (Object(t4) !== t4) return;
+        f = false;
+      } else for (; !(f = (e2 = i3.call(t4)).done) && (a4.push(e2.value), a4.length !== l); f = true) ;
+    } catch (r4) {
+      o2 = true, n = r4;
+    } finally {
+      try {
+        if (!f && null != t4["return"] && (u2 = t4["return"](), Object(u2) !== u2)) return;
+      } finally {
+        if (o2) throw n;
+      }
+    }
+    return a4;
+  }
+}
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _slicedToArray(r3, e2) {
+  return _arrayWithHoles(r3) || _iterableToArrayLimit(r3, e2) || _unsupportedIterableToArray(r3, e2) || _nonIterableRest();
+}
+function _objectWithoutProperties$1(e2, t4) {
+  if (null == e2) return {};
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1s(e2, t4);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e2);
+    for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
+  }
+  return i3;
+}
 function _taggedTemplateLiteral(e2, t4) {
   return t4 || (t4 = e2.slice(0)), Object.freeze(Object.defineProperties(e2, {
     raw: {
@@ -201039,7 +200747,7 @@ var GroupHeading = function GroupHeading2(props) {
   }), innerProps));
 };
 var Group$1 = Group;
-var _excluded$5 = ["innerRef", "isDisabled", "isHidden", "inputClassName"];
+var _excluded$6 = ["innerRef", "isDisabled", "isHidden", "inputClassName"];
 var inputCSS = function inputCSS2(_ref3, unstyled) {
   var isDisabled3 = _ref3.isDisabled, value = _ref3.value, _ref$theme = _ref3.theme, spacing2 = _ref$theme.spacing, colors3 = _ref$theme.colors;
   return _objectSpread2$1(_objectSpread2$1({
@@ -201085,7 +200793,7 @@ var inputStyle = function inputStyle2(isHidden) {
 };
 var Input = function Input2(props) {
   var cx2 = props.cx, value = props.value;
-  var _cleanCommonProps = cleanCommonProps(props), innerRef = _cleanCommonProps.innerRef, isDisabled3 = _cleanCommonProps.isDisabled, isHidden = _cleanCommonProps.isHidden, inputClassName = _cleanCommonProps.inputClassName, innerProps = _objectWithoutProperties$1(_cleanCommonProps, _excluded$5);
+  var _cleanCommonProps = cleanCommonProps(props), innerRef = _cleanCommonProps.innerRef, isDisabled3 = _cleanCommonProps.isDisabled, isHidden = _cleanCommonProps.isHidden, inputClassName = _cleanCommonProps.inputClassName, innerProps = _objectWithoutProperties$1(_cleanCommonProps, _excluded$6);
   return jsx("div", _extends$1q({}, getStyleProps(props, "input", {
     "input-container": true
   }), {
@@ -201793,9 +201501,9 @@ var createFilter = function createFilter2(config2) {
     return matchFrom === "start" ? candidate.substr(0, input.length) === input : candidate.indexOf(input) > -1;
   };
 };
-var _excluded$4 = ["innerRef"];
+var _excluded$5 = ["innerRef"];
 function DummyInput(_ref3) {
-  var innerRef = _ref3.innerRef, props = _objectWithoutProperties$1(_ref3, _excluded$4);
+  var innerRef = _ref3.innerRef, props = _objectWithoutProperties$1(_ref3, _excluded$5);
   var filteredProps = removeProps(props, "onExited", "in", "enter", "exit", "appear");
   return jsx("input", _extends$1q({
     ref: innerRef
@@ -203608,115 +203316,55 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
   return Select2;
 })(reactExports.Component);
 Select$1.defaultProps = defaultProps;
-var StateManagedSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
-  var baseSelectProps = useStateManager(props);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1q({
-    ref
-  }, baseSelectProps));
-});
-var StateManagedSelect$1 = StateManagedSelect;
-var _excluded$3 = ["allowCreateWhileLoading", "createOptionPosition", "formatCreateLabel", "isValidNewOption", "getNewOptionData", "onCreateOption", "options", "onChange"];
-var compareOption = function compareOption2() {
-  var inputValue = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
-  var option = arguments.length > 1 ? arguments[1] : void 0;
-  var accessors = arguments.length > 2 ? arguments[2] : void 0;
-  var candidate = String(inputValue).toLowerCase();
-  var optionValue = String(accessors.getOptionValue(option)).toLowerCase();
-  var optionLabel = String(accessors.getOptionLabel(option)).toLowerCase();
-  return optionValue === candidate || optionLabel === candidate;
-};
-var builtins = {
-  formatCreateLabel: function formatCreateLabel(inputValue) {
-    return 'Create "'.concat(inputValue, '"');
-  },
-  isValidNewOption: function isValidNewOption(inputValue, selectValue, selectOptions, accessors) {
-    return !(!inputValue || selectValue.some(function(option) {
-      return compareOption(inputValue, option, accessors);
-    }) || selectOptions.some(function(option) {
-      return compareOption(inputValue, option, accessors);
-    }));
-  },
-  getNewOptionData: function getNewOptionData(inputValue, optionLabel) {
-    return {
-      label: optionLabel,
-      value: inputValue,
-      __isNew__: true
-    };
-  }
-};
-function useCreatable(_ref3) {
-  var _ref$allowCreateWhile = _ref3.allowCreateWhileLoading, allowCreateWhileLoading = _ref$allowCreateWhile === void 0 ? false : _ref$allowCreateWhile, _ref$createOptionPosi = _ref3.createOptionPosition, createOptionPosition = _ref$createOptionPosi === void 0 ? "last" : _ref$createOptionPosi, _ref$formatCreateLabe = _ref3.formatCreateLabel, formatCreateLabel2 = _ref$formatCreateLabe === void 0 ? builtins.formatCreateLabel : _ref$formatCreateLabe, _ref$isValidNewOption = _ref3.isValidNewOption, isValidNewOption2 = _ref$isValidNewOption === void 0 ? builtins.isValidNewOption : _ref$isValidNewOption, _ref$getNewOptionData = _ref3.getNewOptionData, getNewOptionData2 = _ref$getNewOptionData === void 0 ? builtins.getNewOptionData : _ref$getNewOptionData, onCreateOption = _ref3.onCreateOption, _ref$options = _ref3.options, propsOptions = _ref$options === void 0 ? [] : _ref$options, propsOnChange = _ref3.onChange, restSelectProps = _objectWithoutProperties$1(_ref3, _excluded$3);
-  var _restSelectProps$getO = restSelectProps.getOptionValue, getOptionValue$1$1 = _restSelectProps$getO === void 0 ? getOptionValue$1 : _restSelectProps$getO, _restSelectProps$getO2 = restSelectProps.getOptionLabel, getOptionLabel$1$1 = _restSelectProps$getO2 === void 0 ? getOptionLabel$1 : _restSelectProps$getO2, inputValue = restSelectProps.inputValue, isLoading = restSelectProps.isLoading, isMulti = restSelectProps.isMulti, value = restSelectProps.value, name2 = restSelectProps.name;
-  var newOption = reactExports.useMemo(function() {
-    return isValidNewOption2(inputValue, cleanValue(value), propsOptions, {
-      getOptionValue: getOptionValue$1$1,
-      getOptionLabel: getOptionLabel$1$1
-    }) ? getNewOptionData2(inputValue, formatCreateLabel2(inputValue)) : void 0;
-  }, [formatCreateLabel2, getNewOptionData2, getOptionLabel$1$1, getOptionValue$1$1, inputValue, isValidNewOption2, propsOptions, value]);
-  var options2 = reactExports.useMemo(function() {
-    return (allowCreateWhileLoading || !isLoading) && newOption ? createOptionPosition === "first" ? [newOption].concat(_toConsumableArray(propsOptions)) : [].concat(_toConsumableArray(propsOptions), [newOption]) : propsOptions;
-  }, [allowCreateWhileLoading, createOptionPosition, isLoading, newOption, propsOptions]);
-  var onChange3 = reactExports.useCallback(function(newValue, actionMeta) {
-    if (actionMeta.action !== "select-option") {
-      return propsOnChange(newValue, actionMeta);
+var _excluded$4 = ["defaultInputValue", "defaultMenuIsOpen", "defaultValue", "inputValue", "menuIsOpen", "onChange", "onInputChange", "onMenuClose", "onMenuOpen", "value"];
+function useStateManager(_ref3) {
+  var _ref$defaultInputValu = _ref3.defaultInputValue, defaultInputValue = _ref$defaultInputValu === void 0 ? "" : _ref$defaultInputValu, _ref$defaultMenuIsOpe = _ref3.defaultMenuIsOpen, defaultMenuIsOpen = _ref$defaultMenuIsOpe === void 0 ? false : _ref$defaultMenuIsOpe, _ref$defaultValue = _ref3.defaultValue, defaultValue = _ref$defaultValue === void 0 ? null : _ref$defaultValue, propsInputValue = _ref3.inputValue, propsMenuIsOpen = _ref3.menuIsOpen, propsOnChange = _ref3.onChange, propsOnInputChange = _ref3.onInputChange, propsOnMenuClose = _ref3.onMenuClose, propsOnMenuOpen = _ref3.onMenuOpen, propsValue = _ref3.value, restSelectProps = _objectWithoutProperties$1(_ref3, _excluded$4);
+  var _useState = reactExports.useState(propsInputValue !== void 0 ? propsInputValue : defaultInputValue), _useState2 = _slicedToArray(_useState, 2), stateInputValue = _useState2[0], setStateInputValue = _useState2[1];
+  var _useState3 = reactExports.useState(propsMenuIsOpen !== void 0 ? propsMenuIsOpen : defaultMenuIsOpen), _useState4 = _slicedToArray(_useState3, 2), stateMenuIsOpen = _useState4[0], setStateMenuIsOpen = _useState4[1];
+  var _useState5 = reactExports.useState(propsValue !== void 0 ? propsValue : defaultValue), _useState6 = _slicedToArray(_useState5, 2), stateValue = _useState6[0], setStateValue = _useState6[1];
+  var onChange3 = reactExports.useCallback(function(value2, actionMeta) {
+    if (typeof propsOnChange === "function") {
+      propsOnChange(value2, actionMeta);
     }
-    var valueArray = Array.isArray(newValue) ? newValue : [newValue];
-    if (valueArray[valueArray.length - 1] === newOption) {
-      if (onCreateOption) onCreateOption(inputValue);
-      else {
-        var newOptionData = getNewOptionData2(inputValue, inputValue);
-        var newActionMeta = {
-          action: "create-option",
-          name: name2,
-          option: newOptionData
-        };
-        propsOnChange(valueTernary(isMulti, [].concat(_toConsumableArray(cleanValue(value)), [newOptionData]), newOptionData), newActionMeta);
-      }
-      return;
+    setStateValue(value2);
+  }, [propsOnChange]);
+  var onInputChange = reactExports.useCallback(function(value2, actionMeta) {
+    var newValue;
+    if (typeof propsOnInputChange === "function") {
+      newValue = propsOnInputChange(value2, actionMeta);
     }
-    propsOnChange(newValue, actionMeta);
-  }, [getNewOptionData2, inputValue, isMulti, name2, newOption, onCreateOption, propsOnChange, value]);
+    setStateInputValue(newValue !== void 0 ? newValue : value2);
+  }, [propsOnInputChange]);
+  var onMenuOpen = reactExports.useCallback(function() {
+    if (typeof propsOnMenuOpen === "function") {
+      propsOnMenuOpen();
+    }
+    setStateMenuIsOpen(true);
+  }, [propsOnMenuOpen]);
+  var onMenuClose = reactExports.useCallback(function() {
+    if (typeof propsOnMenuClose === "function") {
+      propsOnMenuClose();
+    }
+    setStateMenuIsOpen(false);
+  }, [propsOnMenuClose]);
+  var inputValue = propsInputValue !== void 0 ? propsInputValue : stateInputValue;
+  var menuIsOpen = propsMenuIsOpen !== void 0 ? propsMenuIsOpen : stateMenuIsOpen;
+  var value = propsValue !== void 0 ? propsValue : stateValue;
   return _objectSpread2$1(_objectSpread2$1({}, restSelectProps), {}, {
-    options: options2,
-    onChange: onChange3
+    inputValue,
+    menuIsOpen,
+    onChange: onChange3,
+    onInputChange,
+    onMenuClose,
+    onMenuOpen,
+    value
   });
 }
-var CreatableSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
-  var creatableProps = useStateManager(props);
-  var selectProps = useCreatable(creatableProps);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1q({
-    ref
-  }, selectProps));
-});
-var CreatableSelect$1 = CreatableSelect;
-function objectTitle(s4) {
-  if (s4.title) {
-    return s4.title;
-  }
-  if (s4.files && s4.files.length > 0) {
-    return TextUtils.fileNameFromPath(s4.files[0].path);
-  }
-  return "";
-}
-function objectPath(s4) {
-  if (s4.files && s4.files.length > 0) {
-    return s4.files[0].path;
-  }
-  return "";
-}
-const defaultMaxOptionsShown = 200;
-function useDebounce(fn3, wait, options2) {
-  const func = reactExports.useRef(fn3);
-  func.current = fn3;
-  return reactExports.useCallback(debounce$2(function() {
-    return func.current.apply(this, arguments);
-  }, wait, options2), [wait, void 0, void 0, void 0]);
-}
-var _excluded$2 = ["defaultOptions", "cacheOptions", "loadOptions", "options", "isLoading", "onInputChange", "filterOption"];
+var _excluded$3 = ["defaultOptions", "cacheOptions", "loadOptions", "options", "isLoading", "onInputChange", "filterOption"];
 function useAsync(_ref3) {
   var _ref$defaultOptions = _ref3.defaultOptions, propsDefaultOptions = _ref$defaultOptions === void 0 ? false : _ref$defaultOptions, _ref$cacheOptions = _ref3.cacheOptions, cacheOptions = _ref$cacheOptions === void 0 ? false : _ref$cacheOptions, propsLoadOptions = _ref3.loadOptions;
   _ref3.options;
-  var _ref$isLoading = _ref3.isLoading, propsIsLoading = _ref$isLoading === void 0 ? false : _ref$isLoading, propsOnInputChange = _ref3.onInputChange, _ref$filterOption = _ref3.filterOption, filterOption = _ref$filterOption === void 0 ? null : _ref$filterOption, restSelectProps = _objectWithoutProperties$1(_ref3, _excluded$2);
+  var _ref$isLoading = _ref3.isLoading, propsIsLoading = _ref$isLoading === void 0 ? false : _ref$isLoading, propsOnInputChange = _ref3.onInputChange, _ref$filterOption = _ref3.filterOption, filterOption = _ref$filterOption === void 0 ? null : _ref$filterOption, restSelectProps = _objectWithoutProperties$1(_ref3, _excluded$3);
   var propsInputValue = restSelectProps.inputValue;
   var lastRequest = reactExports.useRef(void 0);
   var mounted = reactExports.useRef(false);
@@ -203811,6 +203459,72 @@ var AsyncSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   }, selectProps));
 });
 var AsyncSelect$1 = AsyncSelect;
+var _excluded$2 = ["allowCreateWhileLoading", "createOptionPosition", "formatCreateLabel", "isValidNewOption", "getNewOptionData", "onCreateOption", "options", "onChange"];
+var compareOption = function compareOption2() {
+  var inputValue = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
+  var option = arguments.length > 1 ? arguments[1] : void 0;
+  var accessors = arguments.length > 2 ? arguments[2] : void 0;
+  var candidate = String(inputValue).toLowerCase();
+  var optionValue = String(accessors.getOptionValue(option)).toLowerCase();
+  var optionLabel = String(accessors.getOptionLabel(option)).toLowerCase();
+  return optionValue === candidate || optionLabel === candidate;
+};
+var builtins = {
+  formatCreateLabel: function formatCreateLabel(inputValue) {
+    return 'Create "'.concat(inputValue, '"');
+  },
+  isValidNewOption: function isValidNewOption(inputValue, selectValue, selectOptions, accessors) {
+    return !(!inputValue || selectValue.some(function(option) {
+      return compareOption(inputValue, option, accessors);
+    }) || selectOptions.some(function(option) {
+      return compareOption(inputValue, option, accessors);
+    }));
+  },
+  getNewOptionData: function getNewOptionData(inputValue, optionLabel) {
+    return {
+      label: optionLabel,
+      value: inputValue,
+      __isNew__: true
+    };
+  }
+};
+function useCreatable(_ref3) {
+  var _ref$allowCreateWhile = _ref3.allowCreateWhileLoading, allowCreateWhileLoading = _ref$allowCreateWhile === void 0 ? false : _ref$allowCreateWhile, _ref$createOptionPosi = _ref3.createOptionPosition, createOptionPosition = _ref$createOptionPosi === void 0 ? "last" : _ref$createOptionPosi, _ref$formatCreateLabe = _ref3.formatCreateLabel, formatCreateLabel2 = _ref$formatCreateLabe === void 0 ? builtins.formatCreateLabel : _ref$formatCreateLabe, _ref$isValidNewOption = _ref3.isValidNewOption, isValidNewOption2 = _ref$isValidNewOption === void 0 ? builtins.isValidNewOption : _ref$isValidNewOption, _ref$getNewOptionData = _ref3.getNewOptionData, getNewOptionData2 = _ref$getNewOptionData === void 0 ? builtins.getNewOptionData : _ref$getNewOptionData, onCreateOption = _ref3.onCreateOption, _ref$options = _ref3.options, propsOptions = _ref$options === void 0 ? [] : _ref$options, propsOnChange = _ref3.onChange, restSelectProps = _objectWithoutProperties$1(_ref3, _excluded$2);
+  var _restSelectProps$getO = restSelectProps.getOptionValue, getOptionValue$1$1 = _restSelectProps$getO === void 0 ? getOptionValue$1 : _restSelectProps$getO, _restSelectProps$getO2 = restSelectProps.getOptionLabel, getOptionLabel$1$1 = _restSelectProps$getO2 === void 0 ? getOptionLabel$1 : _restSelectProps$getO2, inputValue = restSelectProps.inputValue, isLoading = restSelectProps.isLoading, isMulti = restSelectProps.isMulti, value = restSelectProps.value, name2 = restSelectProps.name;
+  var newOption = reactExports.useMemo(function() {
+    return isValidNewOption2(inputValue, cleanValue(value), propsOptions, {
+      getOptionValue: getOptionValue$1$1,
+      getOptionLabel: getOptionLabel$1$1
+    }) ? getNewOptionData2(inputValue, formatCreateLabel2(inputValue)) : void 0;
+  }, [formatCreateLabel2, getNewOptionData2, getOptionLabel$1$1, getOptionValue$1$1, inputValue, isValidNewOption2, propsOptions, value]);
+  var options2 = reactExports.useMemo(function() {
+    return (allowCreateWhileLoading || !isLoading) && newOption ? createOptionPosition === "first" ? [newOption].concat(_toConsumableArray(propsOptions)) : [].concat(_toConsumableArray(propsOptions), [newOption]) : propsOptions;
+  }, [allowCreateWhileLoading, createOptionPosition, isLoading, newOption, propsOptions]);
+  var onChange3 = reactExports.useCallback(function(newValue, actionMeta) {
+    if (actionMeta.action !== "select-option") {
+      return propsOnChange(newValue, actionMeta);
+    }
+    var valueArray = Array.isArray(newValue) ? newValue : [newValue];
+    if (valueArray[valueArray.length - 1] === newOption) {
+      if (onCreateOption) onCreateOption(inputValue);
+      else {
+        var newOptionData = getNewOptionData2(inputValue, inputValue);
+        var newActionMeta = {
+          action: "create-option",
+          name: name2,
+          option: newOptionData
+        };
+        propsOnChange(valueTernary(isMulti, [].concat(_toConsumableArray(cleanValue(value)), [newOptionData]), newOptionData), newActionMeta);
+      }
+      return;
+    }
+    propsOnChange(newValue, actionMeta);
+  }, [getNewOptionData2, inputValue, isMulti, name2, newOption, onCreateOption, propsOnChange, value]);
+  return _objectSpread2$1(_objectSpread2$1({}, restSelectProps), {}, {
+    options: options2,
+    onChange: onChange3
+  });
+}
 var AsyncCreatableSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   var stateManagerProps = useAsync(props);
   var creatableProps = useStateManager(stateManagerProps);
@@ -203864,6 +203578,13 @@ const useToast = () => {
     }
   }), [addToast]);
 };
+function useDebounce(fn3, wait, options2) {
+  const func = reactExports.useRef(fn3);
+  func.current = fn3;
+  return reactExports.useCallback(debounce$2(function() {
+    return func.current.apply(this, arguments);
+  }, wait, options2), [wait, void 0, void 0, void 0]);
+}
 const getSelectedItems = (selectedItems) => {
   if (Array.isArray(selectedItems)) {
     return selectedItems;
@@ -203873,7 +203594,9 @@ const getSelectedItems = (selectedItems) => {
     return [];
   }
 };
+const MenuShouldScrollIntoViewContext = React$1.createContext(void 0);
 const SelectComponent$1 = (props) => {
+  const menuShouldScrollIntoView = React$1.useContext(MenuShouldScrollIntoViewContext);
   const { selectedOptions, isLoading, isDisabled: isDisabled3 = false, creatable = false, components: components2, placeholder, showDropdown = true, noOptionsMessageText: noOptionsMessage2 = "None" } = props;
   const styles2 = {
     option: (base) => ({
@@ -203897,6 +203620,7 @@ const SelectComponent$1 = (props) => {
     value: selectedOptions !== null && selectedOptions !== void 0 ? selectedOptions : null,
     className: cx("react-select", props.className),
     classNamePrefix: "react-select",
+    menuShouldScrollIntoView,
     noOptionsMessage: () => noOptionsMessage2,
     placeholder: isDisabled3 ? "" : placeholder,
     components: {
@@ -203965,6 +203689,298 @@ const FilterSelectComponent = (props) => {
   }, debounceDelay);
   return jsxRuntimeExports.jsx(SelectComponent$1, { ...props, loadOptions: debounceLoadOptions, isLoading: props.isLoading || loading2, onChange: onChange3, selectedOptions, onCreateOption: onCreate, getNewOptionData: getNewOptionData2, isValidNewOption: validNewOption });
 };
+const logger$d = getLogger(["stash-tv", "ActionButtonBase"]);
+const useCurrentOpenPopover = create(() => null);
+const ActionButtonBase = (props) => {
+  const {
+    state,
+    icon: icon2,
+    title: title2,
+    className,
+    sideInfo,
+    sidePanel,
+    size: size2,
+    displayOnly,
+    onClick,
+    onSidePanelToggle,
+    sidePanelClassName,
+    config: config2
+  } = props;
+  const ButtonElement = displayOnly ? "div" : "button";
+  const { leftHandedUi } = useTvConfig();
+  const getOnClickHandler = (sidePanelClick) => {
+    if (displayOnly) return;
+    return (event2) => {
+      if (onClick) {
+        onClick({ toggleSidePanel: () => sidePanelClick(event2) });
+      } else if (sidePanel) {
+        sidePanelClick(event2);
+      }
+    };
+  };
+  return /* @__PURE__ */ React$1.createElement(
+    "div",
+    {
+      className: cx("ActionButton", className, `state-${state}`, { "left-handed": leftHandedUi, [`size-${size2}`]: size2 })
+    },
+    sideInfo && /* @__PURE__ */ React$1.createElement("div", { className: "side-info" }, sideInfo),
+    /* @__PURE__ */ React$1.createElement(
+      SidePanel,
+      {
+        content: sidePanel,
+        onSidePanelToggle,
+        sidePanelClassName
+      },
+      ({ onClick: sidePanelClick, ref }) => {
+        return /* @__PURE__ */ React$1.createElement(
+          ButtonElement,
+          {
+            className: cx("icon-container", { "button": !displayOnly }),
+            type: displayOnly ? void 0 : "button",
+            onClick: displayOnly ? void 0 : getOnClickHandler(sidePanelClick),
+            ref
+          },
+          /* @__PURE__ */ React$1.createElement(ActionButtonIcon, { iconDefinition: icon2, state, config: config2 }),
+          /* @__PURE__ */ React$1.createElement("span", { className: "sr-only" }, /* @__PURE__ */ React$1.createElement(ActionButtonTitle, { title: title2, state, config: config2 }))
+        );
+      }
+    )
+  );
+};
+const SidePanel = ({
+  content: content2,
+  children,
+  onSidePanelToggle,
+  sidePanelClassName
+}) => {
+  const currentOpenPopover = useCurrentOpenPopover();
+  const { leftHandedUi } = useTvConfig();
+  const id2 = `action-button-side-panel-${useUID()}`;
+  const isOpen = id2 === currentOpenPopover;
+  let boundary;
+  if (hasMediaItemStateContext()) {
+    const { mediaSlideElementRef } = useMediaItemState();
+    boundary = mediaSlideElementRef.current ?? void 0;
+  } else {
+    boundary = void 0;
+  }
+  const preventOverflowModifier = usePreventOverflowModifier({
+    boundary,
+    accountForKeyboard: true
+  });
+  const outsideClickModifier = useOutsideClickModifier({
+    onOutsideClick: () => useCurrentOpenPopover.setState(null)
+  });
+  const offscreenModifier = useOffscreenModifier({
+    onOffscreen: () => useCurrentOpenPopover.setState(null)
+  });
+  const [contentsElement, setContentsElement] = React$1.useState(null);
+  useFitDropdownMenus(contentsElement);
+  useFocusWithoutScrolling(contentsElement);
+  const onSidePanelToggleRef = React$1.useRef(onSidePanelToggle);
+  onSidePanelToggleRef.current = onSidePanelToggle;
+  reactExports.useEffect(() => {
+    onSidePanelToggleRef.current?.(isOpen);
+  }, [isOpen]);
+  const [isOpenDelayedClose, setIsOpenDelayedClose] = React$1.useState(isOpen);
+  reactExports.useEffect(() => {
+    let timeout;
+    if (!isOpen) {
+      timeout = setTimeout(() => setIsOpenDelayedClose(false), 300);
+    } else {
+      setIsOpenDelayedClose(true);
+    }
+    return () => {
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [isOpen]);
+  if (!content2) return children({ onClick: () => {
+  }, ref: null });
+  return /* @__PURE__ */ React$1.createElement(
+    OverlayTrigger,
+    {
+      trigger: "click",
+      placement: leftHandedUi ? "right" : "left",
+      overlay: /* @__PURE__ */ React$1.createElement(
+        Popover,
+        {
+          as: "dialog",
+          className: cx("action-button-side-panel", sidePanelClassName, { "left-handed": leftHandedUi }),
+          id: id2
+        },
+        /* @__PURE__ */ React$1.createElement("div", { className: "contents", ref: setContentsElement }, /* @__PURE__ */ React$1.createElement(MenuShouldScrollIntoViewContext.Provider, { value: false }, isOpenDelayedClose && (typeof content2 === "function" ? content2({ isOpen, close: () => useCurrentOpenPopover.setState(null) }) : content2)))
+      ),
+      show: isOpen,
+      onToggle: (shouldOpen) => {
+        const currentlyOpen = id2 === useCurrentOpenPopover.getState();
+        if (shouldOpen && !currentlyOpen) {
+          useCurrentOpenPopover.setState(id2);
+        } else if (!shouldOpen && currentlyOpen) {
+          useCurrentOpenPopover.setState(null);
+        }
+      },
+      popperConfig: {
+        modifiers: [
+          applyArrowHideModifier,
+          preventOverflowModifier,
+          setMaxSizeModifier,
+          updateOnResizeModifier,
+          offscreenModifier,
+          outsideClickModifier
+        ]
+      }
+    },
+    // OverlayTrigger's children appear to be typed wrong
+    children
+  );
+};
+function ActionButtonIcon({
+  iconDefinition,
+  state,
+  size: size2 = "standard",
+  config: config2,
+  className: providedClassName
+}) {
+  const className = cx("ActionButtonIcon", `size-${size2}`, providedClassName);
+  let iconSource;
+  try {
+    if (config2 && "iconId" in config2 && typeof config2.iconId === "string" && config2.iconId in actionButtonIcons) {
+      iconSource = actionButtonIcons[config2.iconId].states[state];
+    } else if (typeof iconDefinition === "function" || typeof iconDefinition === "string") {
+      iconSource = iconDefinition;
+    } else if (iconDefinition && typeof iconDefinition === "object" && "icon" in iconDefinition && "iconName" in iconDefinition) {
+      iconSource = iconDefinition;
+    } else if (iconDefinition && typeof iconDefinition === "object" && "render" in iconDefinition) {
+      iconSource = iconDefinition;
+    } else {
+      iconSource = iconDefinition?.[state];
+    }
+    if (typeof iconSource === "function") {
+      const IconComponent = iconSource;
+      return /* @__PURE__ */ React$1.createElement(
+        IconComponent,
+        {
+          className
+        }
+      );
+    } else if (typeof iconSource === "string") {
+      return /* @__PURE__ */ React$1.createElement("img", { src: iconSource, className, alt: "" });
+    } else if (iconSource && typeof iconSource === "object" && "icon" in iconSource && "iconName" in iconSource) {
+      return /* @__PURE__ */ React$1.createElement(
+        FontAwesomeIcon,
+        {
+          icon: iconSource,
+          className
+        }
+      );
+    } else if (iconSource && typeof iconSource === "object" && "render" in iconSource) {
+      const IconComponent = iconSource;
+      return /* @__PURE__ */ React$1.createElement(
+        IconComponent,
+        {
+          className
+        }
+      );
+    } else {
+      if (iconSource !== void 0) iconSource;
+      logger$d.error("Unable to determine icon for action button {*}", { iconDefinition, iconSource, state });
+    }
+  } catch (error) {
+    logger$d.error("Error rendering action button icon {*}", { error, iconDefinition, state });
+  }
+  return /* @__PURE__ */ React$1.createElement("div", { className }, "?");
+}
+const ActionButtonTitle = ({
+  title: title2,
+  state,
+  config: config2
+}) => {
+  if (typeof title2 === "string") {
+    return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, title2);
+  } else if (typeof title2 === "function") {
+    const Title = title2;
+    return /* @__PURE__ */ React$1.createElement(Title, { state, config: config2 });
+  } else if (state in title2) {
+    return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, title2[state]);
+  }
+  logger$d.error("Unable to determine title for action button", { title: title2, state });
+  return /* @__PURE__ */ React$1.createElement("strong", null, '"?"');
+};
+const sharedActionButtonSchema = create$3({
+  id: create$6().required(),
+  type: create$6().oneOf(["button"]).required(),
+  pinned: create$7().required()
+});
+const createNewActionButtonConfig = (type3, options2) => {
+  const sharedDefaults = {
+    id: `${Date.now()}-${Math.random().toString().slice(2)}`,
+    type: "button",
+    pinned: false
+  };
+  const buttonType = type3;
+  switch (buttonType) {
+    case "edit-tags":
+      return {
+        ...sharedDefaults,
+        buttonType,
+        pinnedTagIds: []
+      };
+    case "quick-tag":
+      return {
+        ...sharedDefaults,
+        buttonType,
+        iconId: "add-tag",
+        tagId: ""
+      };
+    case "create-marker":
+      return {
+        ...sharedDefaults,
+        buttonType,
+        iconId: !options2?.includeMarkerDefaults ? "add-marker" : "bookmark",
+        markerDefaults: options2?.includeMarkerDefaults ? {
+          title: "",
+          primaryTagId: "",
+          tagIds: []
+        } : null
+      };
+    default:
+      return {
+        ...sharedDefaults,
+        buttonType
+      };
+  }
+};
+var StateManagedSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
+  var baseSelectProps = useStateManager(props);
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1q({
+    ref
+  }, baseSelectProps));
+});
+var StateManagedSelect$1 = StateManagedSelect;
+var CreatableSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
+  var creatableProps = useStateManager(props);
+  var selectProps = useCreatable(creatableProps);
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1q({
+    ref
+  }, selectProps));
+});
+var CreatableSelect$1 = CreatableSelect;
+function objectTitle(s4) {
+  if (s4.title) {
+    return s4.title;
+  }
+  if (s4.files && s4.files.length > 0) {
+    return TextUtils.fileNameFromPath(s4.files[0].path);
+  }
+  return "";
+}
+function objectPath(s4) {
+  if (s4.files && s4.files.length > 0) {
+    return s4.files[0].path;
+  }
+  return "";
+}
+const defaultMaxOptionsShown = 200;
 function useCompare(val) {
   const prevVal = usePrevious$1(val);
   return prevVal !== val;
@@ -207524,6 +207540,7 @@ const LimitedSelectMenu = (props) => {
 };
 const SelectComponent = ({ type: type3, initialIds, onChange: onChange3, className, items, selectedOptions, isLoading, isDisabled: isDisabled3 = false, onCreateOption, isClearable = true, creatable = false, isMulti, onInputChange, filterOption, isValidNewOption: isValidNewOption2, components: components2, placeholder, showDropdown = true, groupHeader, menuPortalTarget, closeMenuOnSelect = true, noOptionsMessage: noOptionsMessage2 = type3 !== "tags" ? "None" : null }) => {
   var _a2;
+  const menuShouldScrollIntoView = React$1.useContext(MenuShouldScrollIntoViewContext);
   const values3 = items.filter((item) => (initialIds === null || initialIds === void 0 ? void 0 : initialIds.indexOf(item.value)) !== -1);
   const defaultValue = isMulti ? values3 : (_a2 = values3[0]) !== null && _a2 !== void 0 ? _a2 : null;
   const options2 = groupHeader ? [
@@ -207565,6 +207582,7 @@ const SelectComponent = ({ type: type3, initialIds, onChange: onChange3, classNa
     styles: styles2,
     closeMenuOnSelect,
     menuPortalTarget,
+    menuShouldScrollIntoView,
     components: {
       ...components2,
       MenuList: LimitedSelectMenu,
@@ -207626,6 +207644,7 @@ function Select(props) {
   const hasTouchScreen = useMedia("(pointer: coarse)");
   const isSearchable = props.isSearchable !== void 0 ? props.isSearchable : !hasTouchScreen;
   const { leftHandedUi } = useTvConfig();
+  const menuShouldScrollIntoView = reactExports.useContext(MenuShouldScrollIntoViewContext);
   return /* @__PURE__ */ React$1.createElement(
     StateManagedSelect$1,
     {
@@ -207660,6 +207679,7 @@ function Select(props) {
       },
       menuPortalTarget: document.body,
       menuPosition: "fixed",
+      menuShouldScrollIntoView,
       ...otherProps
     }
   );
@@ -217200,7 +217220,7 @@ function OCounterActionButton({
           incrementOCount();
         }
       },
-      sidePanel: /* @__PURE__ */ React$1.createElement("div", { className: "action-button-o-counter" }, /* @__PURE__ */ React$1.createElement("button", { onClick: () => decrementOCount(), disabled: (scene2.o_counter ?? 0) <= 0 }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faMinus })), scene2.o_counter ?? 0, /* @__PURE__ */ React$1.createElement("button", { onClick: () => incrementOCount() }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPlus }))),
+      sidePanel: /* @__PURE__ */ React$1.createElement("div", { className: "action-button-o-counter" }, /* @__PURE__ */ React$1.createElement("button", { onClick: () => decrementOCount(), disabled: (scene2.o_counter ?? 0) <= 0, "aria-label": "Decrease O-count" }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faMinus })), scene2.o_counter ?? 0, /* @__PURE__ */ React$1.createElement("button", { onClick: () => incrementOCount(), "aria-label": "Increase O-count" }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPlus }))),
       sideInfo: (scene2.o_counter ?? 0) > 0 && scene2.o_counter
     }
   );
@@ -217502,7 +217522,11 @@ function QuickTagActionButton({
       title: buttonDefinition$9.title,
       className: cx(buttonDefinition$9.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--quickTagButton",
-      onClick: mediaItemHasTag ? () => removeTag(parsedConfig.tagId) : () => addTag(parsedConfig.tagId),
+      onClick: ({ toggleSidePanel }) => {
+        if (sidePanel) toggleSidePanel();
+        else if (mediaItemHasTag) removeTag(parsedConfig.tagId);
+        else addTag(parsedConfig.tagId);
+      },
       sidePanel,
       config: config2
     }
@@ -218489,7 +218513,8 @@ var Range = SliderRange;
 var Thumb = SliderThumb;
 const Slider = (props) => {
   const { marks, onThumbMouseDown, onThumbMouseUp, ...sliderProps } = props;
-  const numMarks = ((sliderProps.max || 1) - (sliderProps.min || 0)) / (sliderProps.step || 1) + 1;
+  const { min: min2 = 0, max: max2 = 100, step = 1 } = sliderProps;
+  const numMarks = (step > 0 ? Math.floor((max2 - min2) / step + 1e-9) : 1) + 1;
   return /* @__PURE__ */ reactExports.createElement(Root, { className: "Slider", ...sliderProps }, /* @__PURE__ */ reactExports.createElement("div", { className: "slider-body" }, /* @__PURE__ */ reactExports.createElement(Track, { className: "track" }, /* @__PURE__ */ reactExports.createElement(Range, { className: "range" }), marks && /* @__PURE__ */ reactExports.createElement("div", { className: "marks" }, new Array(numMarks).fill(0).map((_, i3) => (
     // Guard the divisor: a single mark (min === max) has no span to
     // divide by, and would otherwise render at left: NaN%
@@ -218663,6 +218688,25 @@ function RateSceneActionButton({
     }
   );
 }
+const SvgResolution = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
+  fillRule: "evenodd",
+  clipRule: "evenodd",
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+  strokeMiterlimit: 1.5
+}, ...props }, /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(2.857143,0,0,2.444444,-212.571429,-252.444444)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M248,152.763L248,263.237C248,272.489 241.574,280 233.659,280L94.341,280C86.426,280 80,272.489 80,263.237L80,152.763C80,143.511 86.426,136 94.341,136L233.659,136C241.574,136 248,143.511 248,152.763Z", style: {
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: "12.04px"
+} })), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(2.095238,0,0,1.777778,-151.619048,-161.777778)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M248,159.236L248,256.764C248,269.588 239.166,280 228.285,280L99.715,280C88.834,280 80,269.588 80,256.764L80,159.236C80,146.412 88.834,136 99.715,136L228.285,136C239.166,136 248,146.412 248,159.236Z", style: {
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: "16.47px"
+} })), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(1.333333,0,0,1.111111,-90.666667,-71.111111)" }, /* @__PURE__ */ reactExports.createElement("path", { d: "M248,173.195L248,242.805C248,263.333 234.111,280 217.004,280L110.996,280C93.889,280 80,263.333 80,242.805L80,173.195C80,152.667 93.889,136 110.996,136L217.004,136C234.111,136 248,152.667 248,173.195Z", style: {
+  fill: "currentColor",
+  stroke: "currentColor",
+  strokeWidth: "26.07px"
+} })));
 const SvgResolutionOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
   fillRule: "evenodd",
   clipRule: "evenodd",
@@ -218722,7 +218766,10 @@ const buttonDefinition$7 = {
     active: "Set stream resolution",
     inactive: "Set stream resolution"
   },
-  icon: SvgResolutionOutline,
+  icon: {
+    active: SvgResolution,
+    inactive: SvgResolutionOutline
+  },
   components: {
     button: ResolutionActionButton
   },
@@ -219920,7 +219967,8 @@ function UnknownActionButton({ config: config2 }) {
       title: unknownActionButtonDefinition.title,
       className: cx(id$1, "hide-on-ui-hide"),
       displayOnly: true,
-      sideInfo: `Unknown button type "${String(config2.buttonType)}"`
+      sideInfo: `Unknown button type "${String(config2.buttonType)}"`,
+      config: config2
     }
   );
 }
@@ -220122,6 +220170,7 @@ const Folder = ({
     "button",
     {
       className: cx("folder", "hide-on-ui-hide", { open: isOpen }),
+      "aria-label": isOpen ? "Close folder" : "Open folder",
       ref: buttonRef,
       onClick: () => {
         if (!isOpen) {
@@ -222661,6 +222710,16 @@ const MediaSlideContent = (props) => {
     },
     [currentlyPlayingMarkers]
   );
+  const updateCurrentlyPlayingMarkers = reactExports.useCallback((currentTime) => {
+    const markers2 = findCurrentlyPlayingMarkers(currentTime);
+    if (markers2.length === currentlyPlayingMarkers.length && markers2.every((marker) => currentlyPlayingMarkers.includes(marker))) return;
+    logger3.debug(`Marker playback update{*}`, { currentTime, markers: markers2 });
+    setCurrentlyPlayingMarkers(markers2);
+  }, [currentlyPlayingMarkers, props.mediaItem]);
+  reactExports.useEffect(() => {
+    const currentTime = videojsPlayerRef.current?.currentTime();
+    if (currentTime !== void 0) updateCurrentlyPlayingMarkers(currentTime);
+  }, [props.mediaItem]);
   const handleOnTimeUpdate = reactExports.useCallback(() => {
     const currentTime = videojsPlayerRef.current?.currentTime();
     if (currentTime === void 0) return;
@@ -222668,11 +222727,8 @@ const MediaSlideContent = (props) => {
       logger3.debug(`End timestamp reached at ${currentTime}s (end: ${endTimestamp}s)`);
       videojsPlayerRef.current?.trigger("ended");
     }
-    const markers2 = findCurrentlyPlayingMarkers(currentTime);
-    if (markers2.length === currentlyPlayingMarkers.length && markers2.every((marker) => currentlyPlayingMarkers.includes(marker))) return;
-    logger3.debug(`Marker playback update{*}`, { currentTime, markers: markers2 });
-    setCurrentlyPlayingMarkers(markers2);
-  }, [endTimestamp, currentlyPlayingMarkers, goToItem, props.mediaItem]);
+    updateCurrentlyPlayingMarkers(currentTime);
+  }, [endTimestamp, updateCurrentlyPlayingMarkers]);
   const videoJsControlBarElm = videojsPlayerRef.current?.getChild("ControlBar")?.el();
   const videoJsProgressControlElm = videojsPlayerRef.current?.getChild("ControlBar")?.getChild("ProgressControl")?.el();
   return /* @__PURE__ */ React$1.createElement(
@@ -228043,9 +228099,8 @@ function DraggableList({
   );
 }
 const logger = getLogger(["stash-tv", "ActionButtonSettingsModal"]);
-const ActionButtonSettingsModal = ({ initialActionButtonConfig, onClose, onSave }) => {
+const ActionButtonSettingsModal = ({ initialActionButtonConfig, operation, onClose, onSave }) => {
   const initialConfig = initialActionButtonConfig;
-  const operation = initialConfig.id ? "edit" : "add";
   const initialButtonDefinition = reactExports.useMemo(
     () => allButtonDefinition.find((def) => def.id === initialConfig.buttonType),
     [initialConfig.id]
@@ -228248,12 +228303,23 @@ const SettingsTab = reactExports.memo(() => {
   })), []);
   const [actionButtonDraft, setActionButtonDraft] = React$1.useState(null);
   reactExports.useEffect(() => setDisplayedModal(actionButtonDraft ? "action-button-settings" : null), [actionButtonDraft]);
+  const isInActionButtonStack = (actionButton) => actionButtonStackConfig.some(
+    (config2) => config2.id === actionButton.id || config2.type === "folder" && config2.contents.some((button) => button.id === actionButton.id)
+  );
   const saveActionButtonDraft = (actionButton) => {
-    const existingButtonIndex = actionButtonStackConfig.findIndex((button) => button.id === actionButton.id);
-    if (existingButtonIndex !== -1) {
+    if (isInActionButtonStack(actionButton)) {
       setTvConfig(
         "actionButtonStackConfig",
-        actionButtonStackConfig.map((button, index2) => index2 === existingButtonIndex ? actionButton : button)
+        actionButtonStackConfig.map((config2) => {
+          if (config2.id === actionButton.id) return actionButton;
+          if (config2.type === "folder") {
+            return {
+              ...config2,
+              contents: config2.contents.map((button) => button.id === actionButton.id ? actionButton : button)
+            };
+          }
+          return config2;
+        })
       );
     } else {
       setTvConfig(
@@ -228347,6 +228413,7 @@ const SettingsTab = reactExports.memo(() => {
       ActionButtonSettingsModal,
       {
         initialActionButtonConfig: actionButtonDraft,
+        operation: isInActionButtonStack(actionButtonDraft) ? "edit" : "add",
         onClose: () => setActionButtonDraft(null),
         onSave: (config2) => {
           saveActionButtonDraft(config2);
@@ -228581,7 +228648,8 @@ const SettingsTab = reactExports.memo(() => {
             {
               variant: "link",
               className: cx("settings", "muted"),
-              onClick: () => setActionButtonDraft(item)
+              onClick: () => setActionButtonDraft(item),
+              "aria-label": "Edit button settings"
             },
             /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPenToSquare })
           ), canAddToFolder && /* @__PURE__ */ React$1.createElement(
@@ -228717,7 +228785,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setGlobalState("keyboardShortcutsOpen", true)
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.23.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.23.1"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -240785,49 +240853,60 @@ const FeedPage = reactExports.memo(({ className }) => {
 });
 FeedPage.displayName = "FeedPage";
 const originalDescriptorsObjectMap = /* @__PURE__ */ new WeakMap();
+function findDescriptor(object2, propName) {
+  for (let current = object2; current; current = Object.getPrototypeOf(current)) {
+    const descriptor = Object.getOwnPropertyDescriptor(current, propName);
+    if (descriptor) return descriptor;
+  }
+  return void 0;
+}
+function readDescriptor(descriptor, receiver) {
+  if (!descriptor) return void 0;
+  return descriptor.get ? descriptor.get.call(receiver) : descriptor.value;
+}
 function propertyRemap(parentObject, propertyMap, objectToModify = parentObject) {
+  const propNames = Object.keys(propertyMap);
   if (!originalDescriptorsObjectMap.has(objectToModify)) {
     originalDescriptorsObjectMap.set(objectToModify, {});
   }
   const originalDescriptors = originalDescriptorsObjectMap.get(objectToModify);
-  for (const propName of Object.keys(propertyMap)) {
+  for (const propName of propNames) {
     if (!(propName in originalDescriptors)) {
       originalDescriptors[propName] = Object.getOwnPropertyDescriptor(objectToModify, propName);
     }
   }
-  const beforeRemapDescriptors = Object.fromEntries(
-    Object.keys(propertyMap).map((propName) => [
-      propName,
-      Object.getOwnPropertyDescriptor(objectToModify, propName)
-    ])
+  const mappedToNames = Object.values(propertyMap).filter(
+    (mapping) => typeof mapping !== "function"
   );
-  for (const [propName, mappedPropOrGetter] of Object.entries(propertyMap)) {
-    const beforeRemapDescriptor = beforeRemapDescriptors[propName];
-    let { value, writable, ...other } = beforeRemapDescriptor || {};
-    console.log("remapping", propName, "to", mappedPropOrGetter, other);
-    if (typeof value === "function") {
-      value = value.bind(parentObject);
-    }
+  const beforeRemapDescriptors = new Map(
+    [...propNames, ...mappedToNames].map((propName) => [propName, findDescriptor(objectToModify, propName)])
+  );
+  for (const propName of propNames) {
+    const mapping = propertyMap[propName];
+    const beforeRemapDescriptor = beforeRemapDescriptors.get(propName);
     Object.defineProperty(objectToModify, propName, {
-      ...other,
+      configurable: true,
+      enumerable: beforeRemapDescriptor?.enumerable ?? true,
+      set: beforeRemapDescriptor?.set,
       get() {
-        if (this !== parentObject) {
-          return beforeRemapDescriptor.get?.call(this);
+        if (this !== parentObject) return readDescriptor(beforeRemapDescriptor, this);
+        if (typeof mapping === "function") {
+          let originalValue = readDescriptor(beforeRemapDescriptor, parentObject);
+          if (typeof originalValue === "function") originalValue = originalValue.bind(parentObject);
+          return mapping.call(parentObject, originalValue);
         }
-        if (typeof mappedPropOrGetter === "function") {
-          return mappedPropOrGetter.call(
-            parentObject,
-            value || beforeRemapDescriptors[propName].get
-          );
-        } else {
-          return beforeRemapDescriptors[mappedPropOrGetter].get?.call(parentObject);
-        }
+        return mapping === void 0 ? void 0 : readDescriptor(beforeRemapDescriptors.get(mapping), parentObject);
       }
     });
   }
   return () => {
-    for (const propName of Object.keys(propertyMap)) {
-      Object.defineProperty(objectToModify, propName, originalDescriptors[propName]);
+    for (const propName of propNames) {
+      const originalDescriptor = originalDescriptors[propName];
+      if (originalDescriptor) {
+        Object.defineProperty(objectToModify, propName, originalDescriptor);
+      } else {
+        Reflect.deleteProperty(objectToModify, propName);
+      }
     }
   };
 }
@@ -241703,4 +241782,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-DJAfe5VG.js.map
+//# sourceMappingURL=index-CBkPniVk.js.map
