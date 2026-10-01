@@ -190697,6 +190697,26 @@ function useKeyboardRating(scene2, { enabled }) {
     (rating2) => setRating(Number.isNaN(rating2) ? null : rating2)
   );
 }
+const STASH_URL_SIGNING_PARAMS = ["cid", "expires", "signature"];
+function getSceneStreamsKey(sceneStreams) {
+  return objectHash(sceneStreams.map((stream) => ({
+    url: stripUrlSigningParams(stream.url),
+    mime_type: stream.mime_type,
+    label: stream.label
+  })));
+}
+function stripUrlSigningParams(rawUrl) {
+  let url2;
+  try {
+    url2 = new URL(rawUrl);
+  } catch {
+    return rawUrl;
+  }
+  for (const param of STASH_URL_SIGNING_PARAMS) {
+    url2.searchParams.delete(param);
+  }
+  return url2.toString();
+}
 function useGetterRef(getter, initialValue, dependencies) {
   const valueSourceRef = reactExports.useRef(initialValue);
   const getterRef = reactExports.useMemo(() => {
@@ -222179,6 +222199,7 @@ const MediaSlideContent = (props) => {
     if (isCurrentVideo) logger3.info(`Current video set to ${props.mediaItem.id} {*}`, { mediaItem: props.mediaItem });
   }, [isCurrentVideo, props.mediaItem.id]);
   const scene2 = props.mediaItem.entityType === "scene" ? props.mediaItem.entity : props.mediaItem.entity.scene;
+  const sceneStreamsKey = reactExports.useMemo(() => getSceneStreamsKey(scene2.sceneStreams), [scene2.sceneStreams]);
   const getMediaItemDuration = () => props.mediaItem.entityType === "marker" ? props.mediaItem.entity.duration : props.mediaItem.entity.files[0]?.duration;
   const maximumLoopDuration = stashConfig?.interface.maximumLoopDuration ?? 0;
   const mediaItemDuration = getMediaItemDuration();
@@ -222763,7 +222784,7 @@ const MediaSlideContent = (props) => {
           ScenePlayer,
           {
             id: `scene-player-${props.mediaItem.id}`,
-            key: JSON.stringify([scene2.id, objectHash(scene2.sceneStreams)]),
+            key: JSON.stringify([scene2.id, sceneStreamsKey]),
             onTimeUpdate: handleOnTimeUpdate,
             mediaItem: props.mediaItem,
             scene: scene2,
@@ -228785,7 +228806,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setGlobalState("keyboardShortcutsOpen", true)
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.23.1"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.23.2"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -241782,4 +241803,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-CBkPniVk.js.map
+//# sourceMappingURL=index-DJ9ihHLK.js.map
