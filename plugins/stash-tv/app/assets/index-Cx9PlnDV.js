@@ -177422,6 +177422,16 @@ function getLoggers(rootLogger) {
   return loggers;
 }
 const PLUGIN_NAMESPACE = "stash-tv";
+const START_POSITION_OPTIONS = [
+  { value: "resume", label: "Resume from last played position", shortLabel: "Resume" },
+  { value: "beginning", label: "Play from the beginning", shortLabel: "Beginning" },
+  { value: "random", label: "Start at a random marker (or position if none)", shortLabel: "Random marker/time" }
+];
+const END_POSITION_OPTIONS = [
+  { value: "video-end", label: "Play till end", shortLabel: "End" },
+  { value: "fixed-length", label: ({ formattedDuration }) => `Play for ${formattedDuration}`, shortLabel: ({ formattedDuration }) => `After ${formattedDuration}` },
+  { value: "random-length", label: "Play for random length of time", shortLabel: "Random end" }
+];
 function getApolloClient() {
   const originalClient = getClient();
   const originalCacheConfig = "config" in originalClient.cache ? originalClient.cache.config : {};
@@ -177471,6 +177481,7 @@ const defaults$4 = {
   showSettings: false,
   fullscreen: false,
   sceneInfoOpen: false,
+  keyboardShortcutsOpen: false,
   tvConfigLoaded: false
 };
 const useGlobalState = create()(
@@ -177553,7 +177564,8 @@ const defaults$3 = {
       { id: "13.1", type: "button", buttonType: "loop", pinned: false },
       { id: "13.2", type: "button", buttonType: "playback-rate", pinned: false },
       { id: "13.3", type: "button", buttonType: "subtitles", pinned: false },
-      { id: "13.4", type: "button", buttonType: "fullscreen", pinned: false }
+      { id: "13.4", type: "button", buttonType: "fullscreen", pinned: false },
+      { id: "13.5", type: "button", buttonType: "resolution", pinned: false }
     ] }
   ],
   playbackRate: 1
@@ -178736,11 +178748,11 @@ var globalProjectionState = {
    */
   hasEverUpdated: false
 };
-var id$j = 1;
+var id$l = 1;
 function useProjectionId() {
   return useConstant(function() {
     if (globalProjectionState.hasEverUpdated) {
-      return id$j++;
+      return id$l++;
     }
   });
 }
@@ -188893,6 +188905,25 @@ function roundTo(num, decimals = 0) {
 function roundToNearest(num, nearest = 1) {
   return Math.round(num / nearest) * nearest;
 }
+function getNextOption(options2, current) {
+  const currentIndex = options2.findIndex((option) => option.value === current);
+  return options2[(currentIndex + 1) % options2.length];
+}
+function formatDuration(totalSeconds) {
+  const units = [
+    { name: "hour", seconds: 60 * 60 },
+    { name: "minute", seconds: 60 },
+    { name: "second", seconds: 1 }
+  ];
+  let remaining = Math.round(totalSeconds);
+  const parts = [];
+  for (const unit of units) {
+    const count2 = Math.floor(remaining / unit.seconds);
+    remaining -= count2 * unit.seconds;
+    if (count2 > 0) parts.push(`${count2} ${unit.name}${count2 === 1 ? "" : "s"}`);
+  }
+  return parts.length ? parts.join(" ") : "0 seconds";
+}
 var object_hash = { exports: {} };
 var hasRequiredObject_hash;
 function requireObject_hash() {
@@ -190008,6 +190039,576 @@ function useMediaItems() {
     mediaItemsNeverLoaded: neverLoaded,
     waitingForMediaItemsFilter: !lastLoadedCurrentMediaItemFilter
   };
+}
+function useSceneUpdate(scene2) {
+  const [mutation, mutationResult] = useSceneUpdateMutation({
+    update(cache2, result) {
+      if (!result.data?.sceneUpdate) return;
+    }
+  });
+  const wrappedMutation = (options2) => {
+    const finalOptions = options2 || {};
+    return mutation({
+      ...finalOptions,
+      optimisticResponse: {
+        __typename: "Mutation",
+        // @ts-expect-error -- Merging the scene input and scene output types has some complex edge cases but for our
+        // purposes of temporarily showing the expected updated scene in the UI this should be sufficient
+        sceneUpdate: {
+          __typename: "Scene",
+          ...scene2,
+          ...finalOptions.variables?.input ?? {}
+        }
+      }
+    });
+  };
+  return [wrappedMutation, mutationResult];
+}
+function useSetRating(scene2) {
+  const [updateScene] = useSceneUpdate(scene2);
+  function setRating(newRating) {
+    updateScene({
+      variables: {
+        input: {
+          id: scene2.id,
+          rating100: newRating
+        }
+      }
+    });
+  }
+  return setRating;
+}
+var mousetrap = { exports: {} };
+var hasRequiredMousetrap;
+function requireMousetrap() {
+  if (hasRequiredMousetrap) return mousetrap.exports;
+  hasRequiredMousetrap = 1;
+  (function(module2) {
+    (function(window2, document2, undefined$1) {
+      if (!window2) {
+        return;
+      }
+      var _MAP = {
+        8: "backspace",
+        9: "tab",
+        13: "enter",
+        16: "shift",
+        17: "ctrl",
+        18: "alt",
+        20: "capslock",
+        27: "esc",
+        32: "space",
+        33: "pageup",
+        34: "pagedown",
+        35: "end",
+        36: "home",
+        37: "left",
+        38: "up",
+        39: "right",
+        40: "down",
+        45: "ins",
+        46: "del",
+        91: "meta",
+        93: "meta",
+        224: "meta"
+      };
+      var _KEYCODE_MAP = {
+        106: "*",
+        107: "+",
+        109: "-",
+        110: ".",
+        111: "/",
+        186: ";",
+        187: "=",
+        188: ",",
+        189: "-",
+        190: ".",
+        191: "/",
+        192: "`",
+        219: "[",
+        220: "\\",
+        221: "]",
+        222: "'"
+      };
+      var _SHIFT_MAP = {
+        "~": "`",
+        "!": "1",
+        "@": "2",
+        "#": "3",
+        "$": "4",
+        "%": "5",
+        "^": "6",
+        "&": "7",
+        "*": "8",
+        "(": "9",
+        ")": "0",
+        "_": "-",
+        "+": "=",
+        ":": ";",
+        '"': "'",
+        "<": ",",
+        ">": ".",
+        "?": "/",
+        "|": "\\"
+      };
+      var _SPECIAL_ALIASES = {
+        "option": "alt",
+        "command": "meta",
+        "return": "enter",
+        "escape": "esc",
+        "plus": "+",
+        "mod": /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? "meta" : "ctrl"
+      };
+      var _REVERSE_MAP;
+      for (var i3 = 1; i3 < 20; ++i3) {
+        _MAP[111 + i3] = "f" + i3;
+      }
+      for (i3 = 0; i3 <= 9; ++i3) {
+        _MAP[i3 + 96] = i3.toString();
+      }
+      function _addEvent(object2, type3, callback2) {
+        if (object2.addEventListener) {
+          object2.addEventListener(type3, callback2, false);
+          return;
+        }
+        object2.attachEvent("on" + type3, callback2);
+      }
+      function _characterFromEvent(e2) {
+        if (e2.type == "keypress") {
+          var character2 = String.fromCharCode(e2.which);
+          if (!e2.shiftKey) {
+            character2 = character2.toLowerCase();
+          }
+          return character2;
+        }
+        if (_MAP[e2.which]) {
+          return _MAP[e2.which];
+        }
+        if (_KEYCODE_MAP[e2.which]) {
+          return _KEYCODE_MAP[e2.which];
+        }
+        return String.fromCharCode(e2.which).toLowerCase();
+      }
+      function _modifiersMatch(modifiers1, modifiers2) {
+        return modifiers1.sort().join(",") === modifiers2.sort().join(",");
+      }
+      function _eventModifiers(e2) {
+        var modifiers = [];
+        if (e2.shiftKey) {
+          modifiers.push("shift");
+        }
+        if (e2.altKey) {
+          modifiers.push("alt");
+        }
+        if (e2.ctrlKey) {
+          modifiers.push("ctrl");
+        }
+        if (e2.metaKey) {
+          modifiers.push("meta");
+        }
+        return modifiers;
+      }
+      function _preventDefault(e2) {
+        if (e2.preventDefault) {
+          e2.preventDefault();
+          return;
+        }
+        e2.returnValue = false;
+      }
+      function _stopPropagation(e2) {
+        if (e2.stopPropagation) {
+          e2.stopPropagation();
+          return;
+        }
+        e2.cancelBubble = true;
+      }
+      function _isModifier(key) {
+        return key == "shift" || key == "ctrl" || key == "alt" || key == "meta";
+      }
+      function _getReverseMap() {
+        if (!_REVERSE_MAP) {
+          _REVERSE_MAP = {};
+          for (var key in _MAP) {
+            if (key > 95 && key < 112) {
+              continue;
+            }
+            if (_MAP.hasOwnProperty(key)) {
+              _REVERSE_MAP[_MAP[key]] = key;
+            }
+          }
+        }
+        return _REVERSE_MAP;
+      }
+      function _pickBestAction(key, modifiers, action) {
+        if (!action) {
+          action = _getReverseMap()[key] ? "keydown" : "keypress";
+        }
+        if (action == "keypress" && modifiers.length) {
+          action = "keydown";
+        }
+        return action;
+      }
+      function _keysFromString(combination) {
+        if (combination === "+") {
+          return ["+"];
+        }
+        combination = combination.replace(/\+{2}/g, "+plus");
+        return combination.split("+");
+      }
+      function _getKeyInfo(combination, action) {
+        var keys3;
+        var key;
+        var i4;
+        var modifiers = [];
+        keys3 = _keysFromString(combination);
+        for (i4 = 0; i4 < keys3.length; ++i4) {
+          key = keys3[i4];
+          if (_SPECIAL_ALIASES[key]) {
+            key = _SPECIAL_ALIASES[key];
+          }
+          if (action && action != "keypress" && _SHIFT_MAP[key]) {
+            key = _SHIFT_MAP[key];
+            modifiers.push("shift");
+          }
+          if (_isModifier(key)) {
+            modifiers.push(key);
+          }
+        }
+        action = _pickBestAction(key, modifiers, action);
+        return {
+          key,
+          modifiers,
+          action
+        };
+      }
+      function _belongsTo(element, ancestor) {
+        if (element === null || element === document2) {
+          return false;
+        }
+        if (element === ancestor) {
+          return true;
+        }
+        return _belongsTo(element.parentNode, ancestor);
+      }
+      function Mousetrap2(targetElement) {
+        var self2 = this;
+        targetElement = targetElement || document2;
+        if (!(self2 instanceof Mousetrap2)) {
+          return new Mousetrap2(targetElement);
+        }
+        self2.target = targetElement;
+        self2._callbacks = {};
+        self2._directMap = {};
+        var _sequenceLevels = {};
+        var _resetTimer;
+        var _ignoreNextKeyup = false;
+        var _ignoreNextKeypress = false;
+        var _nextExpectedAction = false;
+        function _resetSequences(doNotReset) {
+          doNotReset = doNotReset || {};
+          var activeSequences = false, key;
+          for (key in _sequenceLevels) {
+            if (doNotReset[key]) {
+              activeSequences = true;
+              continue;
+            }
+            _sequenceLevels[key] = 0;
+          }
+          if (!activeSequences) {
+            _nextExpectedAction = false;
+          }
+        }
+        function _getMatches(character2, modifiers, e2, sequenceName, combination, level) {
+          var i4;
+          var callback2;
+          var matches = [];
+          var action = e2.type;
+          if (!self2._callbacks[character2]) {
+            return [];
+          }
+          if (action == "keyup" && _isModifier(character2)) {
+            modifiers = [character2];
+          }
+          for (i4 = 0; i4 < self2._callbacks[character2].length; ++i4) {
+            callback2 = self2._callbacks[character2][i4];
+            if (!sequenceName && callback2.seq && _sequenceLevels[callback2.seq] != callback2.level) {
+              continue;
+            }
+            if (action != callback2.action) {
+              continue;
+            }
+            if (action == "keypress" && !e2.metaKey && !e2.ctrlKey || _modifiersMatch(modifiers, callback2.modifiers)) {
+              var deleteCombo = !sequenceName && callback2.combo == combination;
+              var deleteSequence = sequenceName && callback2.seq == sequenceName && callback2.level == level;
+              if (deleteCombo || deleteSequence) {
+                self2._callbacks[character2].splice(i4, 1);
+              }
+              matches.push(callback2);
+            }
+          }
+          return matches;
+        }
+        function _fireCallback(callback2, e2, combo, sequence) {
+          if (self2.stopCallback(e2, e2.target || e2.srcElement, combo, sequence)) {
+            return;
+          }
+          if (callback2(e2, combo) === false) {
+            _preventDefault(e2);
+            _stopPropagation(e2);
+          }
+        }
+        self2._handleKey = function(character2, modifiers, e2) {
+          var callbacks = _getMatches(character2, modifiers, e2);
+          var i4;
+          var doNotReset = {};
+          var maxLevel = 0;
+          var processedSequenceCallback = false;
+          for (i4 = 0; i4 < callbacks.length; ++i4) {
+            if (callbacks[i4].seq) {
+              maxLevel = Math.max(maxLevel, callbacks[i4].level);
+            }
+          }
+          for (i4 = 0; i4 < callbacks.length; ++i4) {
+            if (callbacks[i4].seq) {
+              if (callbacks[i4].level != maxLevel) {
+                continue;
+              }
+              processedSequenceCallback = true;
+              doNotReset[callbacks[i4].seq] = 1;
+              _fireCallback(callbacks[i4].callback, e2, callbacks[i4].combo, callbacks[i4].seq);
+              continue;
+            }
+            if (!processedSequenceCallback) {
+              _fireCallback(callbacks[i4].callback, e2, callbacks[i4].combo);
+            }
+          }
+          var ignoreThisKeypress = e2.type == "keypress" && _ignoreNextKeypress;
+          if (e2.type == _nextExpectedAction && !_isModifier(character2) && !ignoreThisKeypress) {
+            _resetSequences(doNotReset);
+          }
+          _ignoreNextKeypress = processedSequenceCallback && e2.type == "keydown";
+        };
+        function _handleKeyEvent(e2) {
+          if (typeof e2.which !== "number") {
+            e2.which = e2.keyCode;
+          }
+          var character2 = _characterFromEvent(e2);
+          if (!character2) {
+            return;
+          }
+          if (e2.type == "keyup" && _ignoreNextKeyup === character2) {
+            _ignoreNextKeyup = false;
+            return;
+          }
+          self2.handleKey(character2, _eventModifiers(e2), e2);
+        }
+        function _resetSequenceTimer() {
+          clearTimeout(_resetTimer);
+          _resetTimer = setTimeout(_resetSequences, 1e3);
+        }
+        function _bindSequence(combo, keys3, callback2, action) {
+          _sequenceLevels[combo] = 0;
+          function _increaseSequence(nextAction) {
+            return function() {
+              _nextExpectedAction = nextAction;
+              ++_sequenceLevels[combo];
+              _resetSequenceTimer();
+            };
+          }
+          function _callbackAndReset(e2) {
+            _fireCallback(callback2, e2, combo);
+            if (action !== "keyup") {
+              _ignoreNextKeyup = _characterFromEvent(e2);
+            }
+            setTimeout(_resetSequences, 10);
+          }
+          for (var i4 = 0; i4 < keys3.length; ++i4) {
+            var isFinal = i4 + 1 === keys3.length;
+            var wrappedCallback = isFinal ? _callbackAndReset : _increaseSequence(action || _getKeyInfo(keys3[i4 + 1]).action);
+            _bindSingle(keys3[i4], wrappedCallback, action, combo, i4);
+          }
+        }
+        function _bindSingle(combination, callback2, action, sequenceName, level) {
+          self2._directMap[combination + ":" + action] = callback2;
+          combination = combination.replace(/\s+/g, " ");
+          var sequence = combination.split(" ");
+          var info2;
+          if (sequence.length > 1) {
+            _bindSequence(combination, sequence, callback2, action);
+            return;
+          }
+          info2 = _getKeyInfo(combination, action);
+          self2._callbacks[info2.key] = self2._callbacks[info2.key] || [];
+          _getMatches(info2.key, info2.modifiers, { type: info2.action }, sequenceName, combination, level);
+          self2._callbacks[info2.key][sequenceName ? "unshift" : "push"]({
+            callback: callback2,
+            modifiers: info2.modifiers,
+            action: info2.action,
+            seq: sequenceName,
+            level,
+            combo: combination
+          });
+        }
+        self2._bindMultiple = function(combinations, callback2, action) {
+          for (var i4 = 0; i4 < combinations.length; ++i4) {
+            _bindSingle(combinations[i4], callback2, action);
+          }
+        };
+        _addEvent(targetElement, "keypress", _handleKeyEvent);
+        _addEvent(targetElement, "keydown", _handleKeyEvent);
+        _addEvent(targetElement, "keyup", _handleKeyEvent);
+      }
+      Mousetrap2.prototype.bind = function(keys3, callback2, action) {
+        var self2 = this;
+        keys3 = keys3 instanceof Array ? keys3 : [keys3];
+        self2._bindMultiple.call(self2, keys3, callback2, action);
+        return self2;
+      };
+      Mousetrap2.prototype.unbind = function(keys3, action) {
+        var self2 = this;
+        return self2.bind.call(self2, keys3, function() {
+        }, action);
+      };
+      Mousetrap2.prototype.trigger = function(keys3, action) {
+        var self2 = this;
+        if (self2._directMap[keys3 + ":" + action]) {
+          self2._directMap[keys3 + ":" + action]({}, keys3);
+        }
+        return self2;
+      };
+      Mousetrap2.prototype.reset = function() {
+        var self2 = this;
+        self2._callbacks = {};
+        self2._directMap = {};
+        return self2;
+      };
+      Mousetrap2.prototype.stopCallback = function(e2, element) {
+        var self2 = this;
+        if ((" " + element.className + " ").indexOf(" mousetrap ") > -1) {
+          return false;
+        }
+        if (_belongsTo(element, self2.target)) {
+          return false;
+        }
+        if ("composedPath" in e2 && typeof e2.composedPath === "function") {
+          var initialEventTarget = e2.composedPath()[0];
+          if (initialEventTarget !== e2.target) {
+            element = initialEventTarget;
+          }
+        }
+        return element.tagName == "INPUT" || element.tagName == "SELECT" || element.tagName == "TEXTAREA" || element.isContentEditable;
+      };
+      Mousetrap2.prototype.handleKey = function() {
+        var self2 = this;
+        return self2._handleKey.apply(self2, arguments);
+      };
+      Mousetrap2.addKeycodes = function(object2) {
+        for (var key in object2) {
+          if (object2.hasOwnProperty(key)) {
+            _MAP[key] = object2[key];
+          }
+        }
+        _REVERSE_MAP = null;
+      };
+      Mousetrap2.init = function() {
+        var documentMousetrap = Mousetrap2(document2);
+        for (var method in documentMousetrap) {
+          if (method.charAt(0) !== "_") {
+            Mousetrap2[method] = /* @__PURE__ */ (function(method2) {
+              return function() {
+                return documentMousetrap[method2].apply(documentMousetrap, arguments);
+              };
+            })(method);
+          }
+        }
+      };
+      Mousetrap2.init();
+      window2.Mousetrap = Mousetrap2;
+      if (module2.exports) {
+        module2.exports = Mousetrap2;
+      }
+    })(typeof window !== "undefined" ? window : null, typeof window !== "undefined" ? document : null);
+  })(mousetrap);
+  return mousetrap.exports;
+}
+var mousetrapExports = requireMousetrap();
+const Mousetrap = /* @__PURE__ */ getDefaultExportFromCjs(mousetrapExports);
+let sequenceTimeout;
+function useRatingKeybinds(isVisible, ratingSystem, setRating) {
+  const firstChar = reactExports.useRef(void 0);
+  const sequenceKeys = ["`", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  function endSequence() {
+    firstChar.current = void 0;
+    for (const key of sequenceKeys) {
+      Mousetrap.unbind(key);
+    }
+  }
+  function restartSequenceTimeout() {
+    clearTimeout(sequenceTimeout);
+    sequenceTimeout = setTimeout(endSequence, 1e3);
+  }
+  const starRatingShortcuts = {
+    "0": NaN,
+    "1": 20,
+    "2": 40,
+    "3": 60,
+    "4": 80,
+    "5": 100
+  };
+  function handleStarRatingKeybinds() {
+    for (const key in starRatingShortcuts) {
+      Mousetrap.bind(key, () => setRating(starRatingShortcuts[key]));
+    }
+  }
+  function handleDecimalKeybinds() {
+    Mousetrap.bind("`", () => {
+      setRating(NaN);
+    });
+    for (let i3 = 0; i3 <= 9; ++i3) {
+      Mousetrap.bind(i3.toString(), () => {
+        if (firstChar.current !== void 0) {
+          let combined = parseInt(firstChar.current + i3.toString());
+          if (combined === 0) {
+            combined = 100;
+          }
+          setRating(combined);
+          firstChar.current = void 0;
+        } else {
+          firstChar.current = i3.toString();
+          restartSequenceTimeout();
+        }
+      });
+    }
+  }
+  reactExports.useEffect(() => {
+    if (!isVisible)
+      return;
+    Mousetrap.bind("r", () => {
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+      endSequence();
+      restartSequenceTimeout();
+      if (!ratingSystem || ratingSystem === RatingSystemType.Stars) {
+        return handleStarRatingKeybinds();
+      } else {
+        return handleDecimalKeybinds();
+      }
+    });
+    return () => {
+      Mousetrap.unbind("r");
+    };
+  });
+}
+function useKeyboardRating(scene2, { enabled }) {
+  const { configuration: stashConfig } = reactExports.useContext(ConfigurationContext);
+  const setRating = useSetRating(scene2);
+  useRatingKeybinds(
+    enabled,
+    stashConfig?.ui?.ratingSystemOptions?.type,
+    // Stash's keybinds use NaN to mean "unset rating"
+    (rating2) => setRating(Number.isNaN(rating2) ? null : rating2)
+  );
 }
 function useGetterRef(getter, initialValue, dependencies) {
   const valueSourceRef = reactExports.useRef(initialValue);
@@ -206668,460 +207269,6 @@ const NavUtils = {
   makeSubGroupsUrl,
   makeSceneMarkersSceneUrl
 };
-var mousetrap = { exports: {} };
-var hasRequiredMousetrap;
-function requireMousetrap() {
-  if (hasRequiredMousetrap) return mousetrap.exports;
-  hasRequiredMousetrap = 1;
-  (function(module2) {
-    (function(window2, document2, undefined$1) {
-      if (!window2) {
-        return;
-      }
-      var _MAP = {
-        8: "backspace",
-        9: "tab",
-        13: "enter",
-        16: "shift",
-        17: "ctrl",
-        18: "alt",
-        20: "capslock",
-        27: "esc",
-        32: "space",
-        33: "pageup",
-        34: "pagedown",
-        35: "end",
-        36: "home",
-        37: "left",
-        38: "up",
-        39: "right",
-        40: "down",
-        45: "ins",
-        46: "del",
-        91: "meta",
-        93: "meta",
-        224: "meta"
-      };
-      var _KEYCODE_MAP = {
-        106: "*",
-        107: "+",
-        109: "-",
-        110: ".",
-        111: "/",
-        186: ";",
-        187: "=",
-        188: ",",
-        189: "-",
-        190: ".",
-        191: "/",
-        192: "`",
-        219: "[",
-        220: "\\",
-        221: "]",
-        222: "'"
-      };
-      var _SHIFT_MAP = {
-        "~": "`",
-        "!": "1",
-        "@": "2",
-        "#": "3",
-        "$": "4",
-        "%": "5",
-        "^": "6",
-        "&": "7",
-        "*": "8",
-        "(": "9",
-        ")": "0",
-        "_": "-",
-        "+": "=",
-        ":": ";",
-        '"': "'",
-        "<": ",",
-        ">": ".",
-        "?": "/",
-        "|": "\\"
-      };
-      var _SPECIAL_ALIASES = {
-        "option": "alt",
-        "command": "meta",
-        "return": "enter",
-        "escape": "esc",
-        "plus": "+",
-        "mod": /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? "meta" : "ctrl"
-      };
-      var _REVERSE_MAP;
-      for (var i3 = 1; i3 < 20; ++i3) {
-        _MAP[111 + i3] = "f" + i3;
-      }
-      for (i3 = 0; i3 <= 9; ++i3) {
-        _MAP[i3 + 96] = i3.toString();
-      }
-      function _addEvent(object2, type3, callback2) {
-        if (object2.addEventListener) {
-          object2.addEventListener(type3, callback2, false);
-          return;
-        }
-        object2.attachEvent("on" + type3, callback2);
-      }
-      function _characterFromEvent(e2) {
-        if (e2.type == "keypress") {
-          var character2 = String.fromCharCode(e2.which);
-          if (!e2.shiftKey) {
-            character2 = character2.toLowerCase();
-          }
-          return character2;
-        }
-        if (_MAP[e2.which]) {
-          return _MAP[e2.which];
-        }
-        if (_KEYCODE_MAP[e2.which]) {
-          return _KEYCODE_MAP[e2.which];
-        }
-        return String.fromCharCode(e2.which).toLowerCase();
-      }
-      function _modifiersMatch(modifiers1, modifiers2) {
-        return modifiers1.sort().join(",") === modifiers2.sort().join(",");
-      }
-      function _eventModifiers(e2) {
-        var modifiers = [];
-        if (e2.shiftKey) {
-          modifiers.push("shift");
-        }
-        if (e2.altKey) {
-          modifiers.push("alt");
-        }
-        if (e2.ctrlKey) {
-          modifiers.push("ctrl");
-        }
-        if (e2.metaKey) {
-          modifiers.push("meta");
-        }
-        return modifiers;
-      }
-      function _preventDefault(e2) {
-        if (e2.preventDefault) {
-          e2.preventDefault();
-          return;
-        }
-        e2.returnValue = false;
-      }
-      function _stopPropagation(e2) {
-        if (e2.stopPropagation) {
-          e2.stopPropagation();
-          return;
-        }
-        e2.cancelBubble = true;
-      }
-      function _isModifier(key) {
-        return key == "shift" || key == "ctrl" || key == "alt" || key == "meta";
-      }
-      function _getReverseMap() {
-        if (!_REVERSE_MAP) {
-          _REVERSE_MAP = {};
-          for (var key in _MAP) {
-            if (key > 95 && key < 112) {
-              continue;
-            }
-            if (_MAP.hasOwnProperty(key)) {
-              _REVERSE_MAP[_MAP[key]] = key;
-            }
-          }
-        }
-        return _REVERSE_MAP;
-      }
-      function _pickBestAction(key, modifiers, action) {
-        if (!action) {
-          action = _getReverseMap()[key] ? "keydown" : "keypress";
-        }
-        if (action == "keypress" && modifiers.length) {
-          action = "keydown";
-        }
-        return action;
-      }
-      function _keysFromString(combination) {
-        if (combination === "+") {
-          return ["+"];
-        }
-        combination = combination.replace(/\+{2}/g, "+plus");
-        return combination.split("+");
-      }
-      function _getKeyInfo(combination, action) {
-        var keys3;
-        var key;
-        var i4;
-        var modifiers = [];
-        keys3 = _keysFromString(combination);
-        for (i4 = 0; i4 < keys3.length; ++i4) {
-          key = keys3[i4];
-          if (_SPECIAL_ALIASES[key]) {
-            key = _SPECIAL_ALIASES[key];
-          }
-          if (action && action != "keypress" && _SHIFT_MAP[key]) {
-            key = _SHIFT_MAP[key];
-            modifiers.push("shift");
-          }
-          if (_isModifier(key)) {
-            modifiers.push(key);
-          }
-        }
-        action = _pickBestAction(key, modifiers, action);
-        return {
-          key,
-          modifiers,
-          action
-        };
-      }
-      function _belongsTo(element, ancestor) {
-        if (element === null || element === document2) {
-          return false;
-        }
-        if (element === ancestor) {
-          return true;
-        }
-        return _belongsTo(element.parentNode, ancestor);
-      }
-      function Mousetrap(targetElement) {
-        var self2 = this;
-        targetElement = targetElement || document2;
-        if (!(self2 instanceof Mousetrap)) {
-          return new Mousetrap(targetElement);
-        }
-        self2.target = targetElement;
-        self2._callbacks = {};
-        self2._directMap = {};
-        var _sequenceLevels = {};
-        var _resetTimer;
-        var _ignoreNextKeyup = false;
-        var _ignoreNextKeypress = false;
-        var _nextExpectedAction = false;
-        function _resetSequences(doNotReset) {
-          doNotReset = doNotReset || {};
-          var activeSequences = false, key;
-          for (key in _sequenceLevels) {
-            if (doNotReset[key]) {
-              activeSequences = true;
-              continue;
-            }
-            _sequenceLevels[key] = 0;
-          }
-          if (!activeSequences) {
-            _nextExpectedAction = false;
-          }
-        }
-        function _getMatches(character2, modifiers, e2, sequenceName, combination, level) {
-          var i4;
-          var callback2;
-          var matches = [];
-          var action = e2.type;
-          if (!self2._callbacks[character2]) {
-            return [];
-          }
-          if (action == "keyup" && _isModifier(character2)) {
-            modifiers = [character2];
-          }
-          for (i4 = 0; i4 < self2._callbacks[character2].length; ++i4) {
-            callback2 = self2._callbacks[character2][i4];
-            if (!sequenceName && callback2.seq && _sequenceLevels[callback2.seq] != callback2.level) {
-              continue;
-            }
-            if (action != callback2.action) {
-              continue;
-            }
-            if (action == "keypress" && !e2.metaKey && !e2.ctrlKey || _modifiersMatch(modifiers, callback2.modifiers)) {
-              var deleteCombo = !sequenceName && callback2.combo == combination;
-              var deleteSequence = sequenceName && callback2.seq == sequenceName && callback2.level == level;
-              if (deleteCombo || deleteSequence) {
-                self2._callbacks[character2].splice(i4, 1);
-              }
-              matches.push(callback2);
-            }
-          }
-          return matches;
-        }
-        function _fireCallback(callback2, e2, combo, sequence) {
-          if (self2.stopCallback(e2, e2.target || e2.srcElement, combo, sequence)) {
-            return;
-          }
-          if (callback2(e2, combo) === false) {
-            _preventDefault(e2);
-            _stopPropagation(e2);
-          }
-        }
-        self2._handleKey = function(character2, modifiers, e2) {
-          var callbacks = _getMatches(character2, modifiers, e2);
-          var i4;
-          var doNotReset = {};
-          var maxLevel = 0;
-          var processedSequenceCallback = false;
-          for (i4 = 0; i4 < callbacks.length; ++i4) {
-            if (callbacks[i4].seq) {
-              maxLevel = Math.max(maxLevel, callbacks[i4].level);
-            }
-          }
-          for (i4 = 0; i4 < callbacks.length; ++i4) {
-            if (callbacks[i4].seq) {
-              if (callbacks[i4].level != maxLevel) {
-                continue;
-              }
-              processedSequenceCallback = true;
-              doNotReset[callbacks[i4].seq] = 1;
-              _fireCallback(callbacks[i4].callback, e2, callbacks[i4].combo, callbacks[i4].seq);
-              continue;
-            }
-            if (!processedSequenceCallback) {
-              _fireCallback(callbacks[i4].callback, e2, callbacks[i4].combo);
-            }
-          }
-          var ignoreThisKeypress = e2.type == "keypress" && _ignoreNextKeypress;
-          if (e2.type == _nextExpectedAction && !_isModifier(character2) && !ignoreThisKeypress) {
-            _resetSequences(doNotReset);
-          }
-          _ignoreNextKeypress = processedSequenceCallback && e2.type == "keydown";
-        };
-        function _handleKeyEvent(e2) {
-          if (typeof e2.which !== "number") {
-            e2.which = e2.keyCode;
-          }
-          var character2 = _characterFromEvent(e2);
-          if (!character2) {
-            return;
-          }
-          if (e2.type == "keyup" && _ignoreNextKeyup === character2) {
-            _ignoreNextKeyup = false;
-            return;
-          }
-          self2.handleKey(character2, _eventModifiers(e2), e2);
-        }
-        function _resetSequenceTimer() {
-          clearTimeout(_resetTimer);
-          _resetTimer = setTimeout(_resetSequences, 1e3);
-        }
-        function _bindSequence(combo, keys3, callback2, action) {
-          _sequenceLevels[combo] = 0;
-          function _increaseSequence(nextAction) {
-            return function() {
-              _nextExpectedAction = nextAction;
-              ++_sequenceLevels[combo];
-              _resetSequenceTimer();
-            };
-          }
-          function _callbackAndReset(e2) {
-            _fireCallback(callback2, e2, combo);
-            if (action !== "keyup") {
-              _ignoreNextKeyup = _characterFromEvent(e2);
-            }
-            setTimeout(_resetSequences, 10);
-          }
-          for (var i4 = 0; i4 < keys3.length; ++i4) {
-            var isFinal = i4 + 1 === keys3.length;
-            var wrappedCallback = isFinal ? _callbackAndReset : _increaseSequence(action || _getKeyInfo(keys3[i4 + 1]).action);
-            _bindSingle(keys3[i4], wrappedCallback, action, combo, i4);
-          }
-        }
-        function _bindSingle(combination, callback2, action, sequenceName, level) {
-          self2._directMap[combination + ":" + action] = callback2;
-          combination = combination.replace(/\s+/g, " ");
-          var sequence = combination.split(" ");
-          var info2;
-          if (sequence.length > 1) {
-            _bindSequence(combination, sequence, callback2, action);
-            return;
-          }
-          info2 = _getKeyInfo(combination, action);
-          self2._callbacks[info2.key] = self2._callbacks[info2.key] || [];
-          _getMatches(info2.key, info2.modifiers, { type: info2.action }, sequenceName, combination, level);
-          self2._callbacks[info2.key][sequenceName ? "unshift" : "push"]({
-            callback: callback2,
-            modifiers: info2.modifiers,
-            action: info2.action,
-            seq: sequenceName,
-            level,
-            combo: combination
-          });
-        }
-        self2._bindMultiple = function(combinations, callback2, action) {
-          for (var i4 = 0; i4 < combinations.length; ++i4) {
-            _bindSingle(combinations[i4], callback2, action);
-          }
-        };
-        _addEvent(targetElement, "keypress", _handleKeyEvent);
-        _addEvent(targetElement, "keydown", _handleKeyEvent);
-        _addEvent(targetElement, "keyup", _handleKeyEvent);
-      }
-      Mousetrap.prototype.bind = function(keys3, callback2, action) {
-        var self2 = this;
-        keys3 = keys3 instanceof Array ? keys3 : [keys3];
-        self2._bindMultiple.call(self2, keys3, callback2, action);
-        return self2;
-      };
-      Mousetrap.prototype.unbind = function(keys3, action) {
-        var self2 = this;
-        return self2.bind.call(self2, keys3, function() {
-        }, action);
-      };
-      Mousetrap.prototype.trigger = function(keys3, action) {
-        var self2 = this;
-        if (self2._directMap[keys3 + ":" + action]) {
-          self2._directMap[keys3 + ":" + action]({}, keys3);
-        }
-        return self2;
-      };
-      Mousetrap.prototype.reset = function() {
-        var self2 = this;
-        self2._callbacks = {};
-        self2._directMap = {};
-        return self2;
-      };
-      Mousetrap.prototype.stopCallback = function(e2, element) {
-        var self2 = this;
-        if ((" " + element.className + " ").indexOf(" mousetrap ") > -1) {
-          return false;
-        }
-        if (_belongsTo(element, self2.target)) {
-          return false;
-        }
-        if ("composedPath" in e2 && typeof e2.composedPath === "function") {
-          var initialEventTarget = e2.composedPath()[0];
-          if (initialEventTarget !== e2.target) {
-            element = initialEventTarget;
-          }
-        }
-        return element.tagName == "INPUT" || element.tagName == "SELECT" || element.tagName == "TEXTAREA" || element.isContentEditable;
-      };
-      Mousetrap.prototype.handleKey = function() {
-        var self2 = this;
-        return self2._handleKey.apply(self2, arguments);
-      };
-      Mousetrap.addKeycodes = function(object2) {
-        for (var key in object2) {
-          if (object2.hasOwnProperty(key)) {
-            _MAP[key] = object2[key];
-          }
-        }
-        _REVERSE_MAP = null;
-      };
-      Mousetrap.init = function() {
-        var documentMousetrap = Mousetrap(document2);
-        for (var method in documentMousetrap) {
-          if (method.charAt(0) !== "_") {
-            Mousetrap[method] = /* @__PURE__ */ (function(method2) {
-              return function() {
-                return documentMousetrap[method2].apply(documentMousetrap, arguments);
-              };
-            })(method);
-          }
-        }
-      };
-      Mousetrap.init();
-      window2.Mousetrap = Mousetrap;
-      if (module2.exports) {
-        module2.exports = Mousetrap;
-      }
-    })(typeof window !== "undefined" ? window : null, typeof window !== "undefined" ? document : null);
-  })(mousetrap);
-  return mousetrap.exports;
-}
-requireMousetrap();
 React$1.createContext(null);
 const ListStateContext = React$1.createContext(null);
 const emptyState = {
@@ -215676,9 +215823,9 @@ const IconSelect = (props) => {
   );
 };
 const logger$a = getLogger(["stash-tv", "CreateMarkerActionButton"]);
-const id$i = "create-marker";
+const id$k = "create-marker";
 const configSchema$3 = sharedActionButtonSchema.shape({
-  buttonType: create$6().oneOf([id$i]).required(),
+  buttonType: create$6().oneOf([id$k]).required(),
   iconId: create$6().required(),
   markerDefaults: create$3({
     title: create$6(),
@@ -215686,14 +215833,14 @@ const configSchema$3 = sharedActionButtonSchema.shape({
     tagIds: create$2().of(create$6().required()).required()
   }).nullable()
 });
-const buttonDefinition$h = {
-  id: id$i,
+const buttonDefinition$j = {
+  id: id$k,
   title: ({ state, config: config2 }) => {
     let markerDefaults = null;
     let tagId = null;
     try {
       if (config2) {
-        if (config2.buttonType !== id$i) {
+        if (config2.buttonType !== id$k) {
           logger$a.error("Invalid config for create marker action button title {*}", { config: config2 });
           return /* @__PURE__ */ React$1.createElement("strong", null, "?");
         }
@@ -215739,7 +215886,7 @@ function CreateMarkerActionButton({
 }) {
   let parsedConfig;
   try {
-    parsedConfig = buttonDefinition$h.configSchema.validateSync(config2);
+    parsedConfig = buttonDefinition$j.configSchema.validateSync(config2);
   } catch (error) {
     logger$a.error("Invalid config for create marker action button", { error, config: config2 });
     return /* @__PURE__ */ React$1.createElement("strong", null, "?");
@@ -215774,9 +215921,9 @@ function CreateMarkerActionButton({
       ActionButtonBase,
       {
         state: "inactive",
-        icon: buttonDefinition$h.icon,
-        title: buttonDefinition$h.title,
-        className: cx(buttonDefinition$h.id, "hide-on-ui-hide"),
+        icon: buttonDefinition$j.icon,
+        title: buttonDefinition$j.title,
+        className: cx(buttonDefinition$j.id, "hide-on-ui-hide"),
         sidePanel: ({ close }) => /* @__PURE__ */ React$1.createElement(
           SceneMarkerForm,
           {
@@ -215803,9 +215950,9 @@ function CreateMarkerActionButton({
     ActionButtonBase,
     {
       state: Boolean(existingMarker) ? "active" : "inactive",
-      icon: buttonDefinition$h.icon,
-      title: buttonDefinition$h.title,
-      className: cx(buttonDefinition$h.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$j.icon,
+      title: buttonDefinition$j.title,
+      className: cx(buttonDefinition$j.id, "hide-on-ui-hide"),
       sidePanel: renderSidePanel,
       onClick: handleClick,
       config: config2
@@ -216040,9 +216187,9 @@ function useDeleteMediaItemDialog(mediaItem, onDeleted) {
   }
   return { isOpen, open, dialog };
 }
-const id$h = "delete-media-item";
-const buttonDefinition$g = {
-  id: id$h,
+const id$j = "delete-media-item";
+const buttonDefinition$i = {
+  id: id$j,
   title: {
     active: "Delete scene/marker",
     inactive: "Delete scene/marker"
@@ -216052,7 +216199,7 @@ const buttonDefinition$g = {
     button: DeleteMediaItemActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$h]).required()
+    buttonType: create$6().oneOf([id$j]).required()
   })
 };
 function DeleteMediaItemActionButton({
@@ -216064,36 +216211,12 @@ function DeleteMediaItemActionButton({
     ActionButtonBase,
     {
       state: "inactive",
-      icon: buttonDefinition$g.icon,
-      title: buttonDefinition$g.title,
-      className: cx(buttonDefinition$g.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$i.icon,
+      title: buttonDefinition$i.title,
+      className: cx(buttonDefinition$i.id, "hide-on-ui-hide"),
       onClick: open
     }
   ));
-}
-function useSceneUpdate(scene2) {
-  const [mutation, mutationResult] = useSceneUpdateMutation({
-    update(cache2, result) {
-      if (!result.data?.sceneUpdate) return;
-    }
-  });
-  const wrappedMutation = (options2) => {
-    const finalOptions = options2 || {};
-    return mutation({
-      ...finalOptions,
-      optimisticResponse: {
-        __typename: "Mutation",
-        // @ts-expect-error -- Merging the scene input and scene output types has some complex edge cases but for our
-        // purposes of temporarily showing the expected updated scene in the UI this should be sufficient
-        sceneUpdate: {
-          __typename: "Scene",
-          ...scene2,
-          ...finalOptions.variables?.input ?? {}
-        }
-      }
-    });
-  };
-  return [wrappedMutation, mutationResult];
 }
 const logger$8 = getLogger(["stash-tv", "useMediaItemTags"]);
 function useMediaItemTags(mediaItem) {
@@ -216297,13 +216420,13 @@ function EditTagsContents({ initialTags, pinnedTagIds, primaryTag, save, cancel 
   ), primaryTag && /* @__PURE__ */ React$1.createElement("div", { className: "primary-tag-note" }, `Marker's primary tag is "`, primaryTag.name, '".'));
 }
 const logger$6 = getLogger(["stash-tv", "EditTagsActionButton"]);
-const id$g = "edit-tags";
+const id$i = "edit-tags";
 const configSchema$2 = sharedActionButtonSchema.shape({
-  buttonType: create$6().oneOf([id$g]).required(),
+  buttonType: create$6().oneOf([id$i]).required(),
   pinnedTagIds: create$2().of(create$6().required()).required()
 });
-const buttonDefinition$f = {
-  id: id$g,
+const buttonDefinition$h = {
+  id: id$i,
   title: {
     active: "Edit scene/marker tags",
     inactive: "Edit scene/marker tags"
@@ -216322,7 +216445,7 @@ function EditTagsActionButton({
   const { tags: tags2, primaryTag, setTags } = useMediaItemTags(mediaItem);
   let pinnedTagIds = [];
   try {
-    const parsedConfig = buttonDefinition$f.configSchema.validateSync(config2);
+    const parsedConfig = buttonDefinition$h.configSchema.validateSync(config2);
     pinnedTagIds = parsedConfig.pinnedTagIds;
   } catch (error) {
     logger$6.warn("Invalid config for edit tags action button", { error, config: config2 });
@@ -216331,9 +216454,9 @@ function EditTagsActionButton({
     ActionButtonBase,
     {
       state: "inactive",
-      icon: buttonDefinition$f.icon,
-      title: buttonDefinition$f.title,
-      className: cx(buttonDefinition$f.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$h.icon,
+      title: buttonDefinition$h.title,
+      className: cx(buttonDefinition$h.id, "hide-on-ui-hide"),
       sidePanel: ({ close }) => /* @__PURE__ */ React$1.createElement(
         EditTagsContents,
         {
@@ -216361,6 +216484,131 @@ function SettingsForm$2({ formik }) {
       hoverPlacement: "right"
     }
   ), formik.touched.pinnedTagIds && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, pinnedTagIdsError), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Pinned tags allow you to quickly add your most used tags.")), Object.keys(otherErrors).length > 0 && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, /* @__PURE__ */ React$1.createElement("ul", null, Object.entries(otherErrors).map(([key, error]) => /* @__PURE__ */ React$1.createElement("li", { key }, error)))));
+}
+const SvgLocationStopOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", style: {
+  fillRule: "evenodd",
+  clipRule: "evenodd",
+  strokeLinejoin: "round",
+  strokeMiterlimit: 2
+}, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M256,488L118,300A170,170 0 1 1 394,300Z", fill: "none", stroke: "currentColor", strokeWidth: 32, strokeLinejoin: "round" }), /* @__PURE__ */ reactExports.createElement("rect", { x: 188, y: 132, width: 136, height: 136, rx: 14, fill: "currentColor" }));
+function resolveLabel(label, context2) {
+  return typeof label === "function" ? label(context2) : label;
+}
+function resolvePlaybackPositionLabels(options2, context2) {
+  return options2.map((option) => ({
+    ...option,
+    label: resolveLabel(option.label, context2),
+    shortLabel: resolveLabel(option.shortLabel, context2)
+  }));
+}
+function usePlaybackPositionOptions() {
+  const { playLength } = useTvConfig();
+  return reactExports.useMemo(() => {
+    const context2 = {
+      // Without a play length the full scene plays.
+      formattedDuration: playLength ? formatDuration(playLength) : "full length"
+    };
+    return {
+      startPositionOptions: resolvePlaybackPositionLabels(START_POSITION_OPTIONS, context2),
+      endPositionOptions: resolvePlaybackPositionLabels(END_POSITION_OPTIONS, context2)
+    };
+  }, [playLength]);
+}
+const defaultDisplayDuration = 1e3;
+const logger$5 = getLogger(["stash-tv", "FeedbackOverlay"]);
+const useFeedback = create((set4, get7) => ({
+  contents: null,
+  fade: true,
+  icon: null,
+  setFeedback: (contents, { hold, fade = true, icon: icon2, displayDuration = defaultDisplayDuration } = {}) => {
+    if (get7().displayCountdown) {
+      clearTimeout(get7().displayCountdown);
+    }
+    const displayCountdown = hold || !contents ? void 0 : setTimeout(() => {
+      logger$5.debug("Clearing feedback");
+      set4({ contents: null, displayCountdown: void 0, icon: icon2 ?? null });
+    }, displayDuration);
+    if (get7().contents !== contents || get7().displayCountdown !== displayCountdown || get7().fade !== fade) {
+      logger$5.debug("Setting feedback{*}", { contents, hold, fade });
+      set4({ contents, displayCountdown, fade, icon: icon2 ?? null });
+    }
+  }
+}));
+const FeedbackOverlay = reactExports.memo(() => {
+  const { uiVisible } = useTvConfig();
+  const { contents, icon: icon2, fade } = useFeedback();
+  const previousContents = usePrevious$2(contents);
+  const previousIcon = usePrevious$2(icon2);
+  const displayedContents = !contents ? previousContents : contents;
+  const displayedIcon = !contents ? previousIcon : icon2;
+  if (!displayedContents || !contents && !fade) return null;
+  return /* @__PURE__ */ React$1.createElement("div", { className: cx("FeedbackOverlay", { "fade-out": !contents && fade, "muted": !uiVisible }) }, /* @__PURE__ */ React$1.createElement("div", { className: "contents-container" }, displayedIcon, displayedContents));
+});
+function cycleOptionTitle(name2, useOptions, fallback) {
+  return ({ state }) => {
+    const options2 = useOptions();
+    const option = options2.find((option2) => option2.value === state);
+    return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, option ? option.label : fallback);
+  };
+}
+function CycleOptionActionButton({
+  id: id2,
+  name: name2,
+  options: options2,
+  value,
+  unlabelledValue,
+  onChange: onChange3,
+  icon: icon2,
+  title: title2
+}) {
+  const { setFeedback } = useFeedback();
+  const currentOption = options2.find((option) => option.value === value);
+  return /* @__PURE__ */ React$1.createElement(
+    ActionButtonBase,
+    {
+      state: value,
+      icon: icon2,
+      title: title2,
+      className: cx(id2, "hide-on-ui-hide"),
+      sideInfo: value !== unlabelledValue && currentOption?.shortLabel,
+      onClick: () => {
+        const nextOption = getNextOption(options2, value);
+        if (!nextOption) return;
+        onChange3(nextOption.value);
+        setFeedback(nextOption.label, { displayDuration: 3e3 });
+      }
+    }
+  );
+}
+const id$h = "end-position";
+const name$2 = "End point";
+const buttonDefinition$g = {
+  id: id$h,
+  title: cycleOptionTitle(name$2, () => usePlaybackPositionOptions().endPositionOptions, "Change end point"),
+  icon: SvgLocationStopOutline,
+  components: {
+    button: EndPositionActionButton
+  },
+  configSchema: sharedActionButtonSchema.shape({
+    buttonType: create$6().oneOf([id$h]).required()
+  })
+};
+function EndPositionActionButton() {
+  const { endPosition, set: setTvConfig } = useTvConfig();
+  const { endPositionOptions } = usePlaybackPositionOptions();
+  return /* @__PURE__ */ React$1.createElement(
+    CycleOptionActionButton,
+    {
+      id: id$h,
+      name: name$2,
+      options: endPositionOptions,
+      value: endPosition,
+      unlabelledValue: "video-end",
+      onChange: (value) => setTvConfig("endPosition", value),
+      icon: buttonDefinition$g.icon,
+      title: buttonDefinition$g.title
+    }
+  );
 }
 const SvgPortraitRotationOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
   fillRule: "evenodd",
@@ -216392,9 +216640,9 @@ const SvgLandscapeRotation = (props) => /* @__PURE__ */ reactExports.createEleme
 }, d: "M405.077,128C343.846,72.436 290.187,64 256,64C229.593,64 127.954,67.087 56,196C47.153,211.429 28.255,214.044 16,204C-3.058,188.798 4.433,167.298 8,161.183C64.601,64.151 145.36,-0.478 256,0C314.573,0.253 379.319,27.216 443.672,80C463.341,62.496 466.105,60.036 466.105,60.036C477.535,49.865 494.967,50.952 505.072,62.307C509.592,67.387 512.045,73.905 511.999,80.773L511.441,183.94C511.46,188.475 505.39,201.538 501.074,202.81C486.713,207.041 470.914,199.978 464,192.209C464,192.209 438.887,164.843 405.077,128Z" }), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(-1,1.22465e-16,-1.22465e-16,-1,513.757,511.997)" }, /* @__PURE__ */ reactExports.createElement("path", { style: {
   fill: "currentColor"
 }, d: "M405.077,128C343.846,72.436 290.187,64 256,64C229.593,64 127.954,67.087 56,196C47.153,211.429 28.255,214.044 16,204C-3.058,188.798 4.433,167.298 8,161.183C64.601,64.151 145.36,-0.478 256,0C314.573,0.253 379.319,27.216 443.672,80C463.341,62.496 466.105,60.036 466.105,60.036C477.535,49.865 494.967,50.952 505.072,62.307C509.592,67.387 512.045,73.905 511.999,80.773L511.441,183.94C511.46,188.475 505.39,201.538 501.074,202.81C486.713,207.041 470.914,199.978 464,192.209C464,192.209 438.887,164.843 405.077,128Z" })));
-const id$f = "force-landscape";
-const buttonDefinition$e = {
-  id: id$f,
+const id$g = "force-landscape";
+const buttonDefinition$f = {
+  id: id$g,
   title: {
     active: "Landscape",
     inactive: "Portrait"
@@ -216407,7 +216655,7 @@ const buttonDefinition$e = {
     button: ForceLandscapeActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$f]).required()
+    buttonType: create$6().oneOf([id$g]).required()
   })
 };
 function ForceLandscapeActionButton() {
@@ -216416,9 +216664,9 @@ function ForceLandscapeActionButton() {
     ActionButtonBase,
     {
       state: forceLandscape ? "active" : "inactive",
-      icon: buttonDefinition$e.icon,
-      title: buttonDefinition$e.title,
-      className: cx(buttonDefinition$e.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$f.icon,
+      title: buttonDefinition$f.title,
+      className: cx(buttonDefinition$f.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--forceLandscapeButton",
       onClick: () => setTvConfig("forceLandscape", (prev2) => !prev2)
     }
@@ -216447,9 +216695,9 @@ const SvgExpandOutline = (props) => /* @__PURE__ */ reactExports.createElement("
   stroke: "currentColor",
   strokeWidth: 32
 } })));
-const id$e = "fullscreen";
-const buttonDefinition$d = {
-  id: id$e,
+const id$f = "fullscreen";
+const buttonDefinition$e = {
+  id: id$f,
   title: {
     active: "Close fullscreen",
     inactive: "Open fullscreen"
@@ -216462,7 +216710,7 @@ const buttonDefinition$d = {
     button: FullscreenActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$e]).required()
+    buttonType: create$6().oneOf([id$f]).required()
   })
 };
 function FullscreenActionButton() {
@@ -216472,9 +216720,9 @@ function FullscreenActionButton() {
     ActionButtonBase,
     {
       state: fullscreen ? "active" : "inactive",
-      icon: buttonDefinition$d.icon,
-      title: buttonDefinition$d.title,
-      className: cx(buttonDefinition$d.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$e.icon,
+      title: buttonDefinition$e.title,
+      className: cx(buttonDefinition$e.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--fullscreenButton",
       onClick: () => setGlobalState("fullscreen", (prev2) => !prev2)
     }
@@ -216517,9 +216765,9 @@ const SvgCoverOutline = (props) => /* @__PURE__ */ reactExports.createElement("s
   stroke: "currentColor",
   strokeWidth: 32
 } })));
-const id$d = "letterboxing";
-const buttonDefinition$c = {
-  id: id$d,
+const id$e = "letterboxing";
+const buttonDefinition$d = {
+  id: id$e,
   title: {
     active: "Fit to screen",
     inactive: "Fill screen"
@@ -216532,7 +216780,7 @@ const buttonDefinition$c = {
     button: LetterboxingActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$d]).required()
+    buttonType: create$6().oneOf([id$e]).required()
   })
 };
 function LetterboxingActionButton() {
@@ -216541,9 +216789,9 @@ function LetterboxingActionButton() {
     ActionButtonBase,
     {
       state: letterboxing ? "active" : "inactive",
-      icon: buttonDefinition$c.icon,
-      title: buttonDefinition$c.title,
-      className: cx(buttonDefinition$c.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$d.icon,
+      title: buttonDefinition$d.title,
+      className: cx(buttonDefinition$d.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--letterboxButton",
       onClick: () => setTvConfig("letterboxing", (prev2) => !prev2)
     }
@@ -216557,9 +216805,9 @@ const SvgLoopOutline = (props) => /* @__PURE__ */ reactExports.createElement("sv
 }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M15.2,272C6.4,271.5 -0.4,264 0,255.2L0.4,247.2C5.1,153.5 82.4,80 176.2,80L320,80L320,35.6C320,20.3 332.3,8     347.6,8C354.4,8 361,10.5 366,15.1L442.7,84.1C446.1,87.1 448,91.5 448,96C448,100.5 446.1,104.9     442.7,107.9L366,176.9C360.9,181.5 354.4,184 347.6,184C332.4,184 320,171.7 320,156.4L320,112L176.2,112C99.5,112     36.2,172.2 32.4,248.8L32,256.8C31.6,265.6 24,272.4     15.2,272ZM352,146.5L408.1,96L352,45.5L352,146.5ZM496.8,240C505.6,240.4 512.4,248 512,256.8L511.6,264.8C506.9,358.5     429.6,432 335.8,432L192,432L192,476.4C192,491.6 179.7,504 164.4,504C157.6,504 151,501.5     146,496.9L69.3,427.9C65.9,424.9 64,420.5 64,416C64,411.5 65.9,407.1 69.3,404.1L146,335.1C151.1,330.5 157.6,328     164.4,328C179.6,328 192,340.3 192,355.6L192,400L335.8,400C412.5,400 475.8,339.8 479.6,263.2L480,255.2C480.4,246.4     488,239.6 496.8,240ZM160,365.5L103.9,416L160,466.5L160,365.5Z", style: {
   fillRule: "nonzero"
 }, fill: "currentColor" }));
-const id$c = "loop";
-const buttonDefinition$b = {
-  id: id$c,
+const id$d = "loop";
+const buttonDefinition$c = {
+  id: id$d,
   title: {
     active: "Stop looping scene",
     inactive: "Loop scene"
@@ -216572,7 +216820,7 @@ const buttonDefinition$b = {
     button: LoopActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$c]).required()
+    buttonType: create$6().oneOf([id$d]).required()
   })
 };
 function LoopActionButton() {
@@ -216581,9 +216829,9 @@ function LoopActionButton() {
     ActionButtonBase,
     {
       state: looping ? "active" : "inactive",
-      icon: buttonDefinition$b.icon,
-      title: buttonDefinition$b.title,
-      className: cx(buttonDefinition$b.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$c.icon,
+      title: buttonDefinition$c.title,
+      className: cx(buttonDefinition$c.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--loopButton",
       onClick: () => setTvConfig("looping", (prev2) => !prev2)
     }
@@ -216603,9 +216851,9 @@ const SvgSplashOutline = (props) => /* @__PURE__ */ reactExports.createElement("
   strokeLinejoin: "round",
   strokeMiterlimit: 2
 }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { fill: "currentColor", d: "M401.593,365.404L285.583,298.657L285.114,429.916C283.862,458.38 297.972,486.559 324.229,501.658C336.009,508.434 349.361,512 362.949,512C390.942,512 416.852,496.862 430.61,472.469C451.931,434.841 438.988,386.894 401.593,365.404ZM385.635,393.141C385.639,393.144 385.644,393.146 385.649,393.149C407.834,405.898 415.418,434.369 402.769,456.693C402.758,456.712 402.748,456.731 402.737,456.749C394.647,471.094 379.411,480 362.949,480C354.96,480 347.11,477.903 340.184,473.919C340.183,473.919 340.183,473.919 340.182,473.918C324.611,464.964 316.34,448.201 317.083,431.322C317.102,430.892 317.112,430.461 317.113,430.031L317.386,353.874C317.386,353.874 385.635,393.141 385.635,393.141ZM183.413,265.569L32,144L1.973,334.55C-5.949,376.472 10.341,419.467 44.047,445.6C63.79,460.506 87.862,468.573 112.596,468.573C175.027,468.573 226.401,417.171 226.401,354.705C226.401,320.013 210.555,287.156 183.413,265.569ZM163.379,290.521C163.417,290.552 163.455,290.583 163.494,290.613C183.01,306.135 194.401,329.761 194.401,354.705C194.401,399.612 157.478,436.573 112.596,436.573C94.896,436.573 77.668,430.824 63.513,420.199C39.375,401.388 27.736,370.555 33.416,340.491C33.477,340.172 33.532,339.852 33.583,339.531L55.016,203.517C55.016,203.517 163.379,290.521 163.379,290.521ZM325.111,10.48L112,96L290.362,238.173C327.814,269.824 381.068,279.971 429.33,259.776C497.974,231.057 530.262,151.957 501.473,83.118C472.713,14.265 393.742,-18.254 325.111,10.48ZM337.029,40.178C337.176,40.118 337.323,40.058 337.469,39.997C389.81,18.083 450.012,42.942 471.946,95.452C471.948,95.456 471.949,95.461 471.951,95.465C493.913,147.979 469.345,208.347 416.979,230.256C416.978,230.256 416.978,230.256 416.977,230.257C380.176,245.656 339.576,237.867 311.018,213.732C310.784,213.534 310.548,213.34 310.308,213.149L174.92,105.231C174.92,105.231 337.029,40.178 337.029,40.178Z" }));
-const id$b = "o-counter";
-const buttonDefinition$a = {
-  id: id$b,
+const id$c = "o-counter";
+const buttonDefinition$b = {
+  id: id$c,
   title: {
     active: "Undo Orgasm Mark",
     inactive: "Mark Orgasm"
@@ -216618,7 +216866,7 @@ const buttonDefinition$a = {
     button: OCounterActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$b]).required()
+    buttonType: create$6().oneOf([id$c]).required()
   })
 };
 function OCounterActionButton({
@@ -216646,9 +216894,9 @@ function OCounterActionButton({
     ActionButtonBase,
     {
       state: oCounterIncremented ? "active" : "inactive",
-      icon: buttonDefinition$a.icon,
-      title: buttonDefinition$a.title,
-      className: cx(buttonDefinition$a.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$b.icon,
+      title: buttonDefinition$b.title,
+      className: cx(buttonDefinition$b.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--oCounterButton",
       onClick: ({ toggleSidePanel }) => {
         if (oCounterIncremented) {
@@ -216662,9 +216910,9 @@ function OCounterActionButton({
     }
   );
 }
-const id$a = "playback-rate";
-const buttonDefinition$9 = {
-  id: id$a,
+const id$b = "playback-rate";
+const buttonDefinition$a = {
+  id: id$b,
   title: {
     active: "Set playback rate",
     inactive: "Set playback rate"
@@ -216677,7 +216925,7 @@ const buttonDefinition$9 = {
     button: PlaybackRateActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$a]).required()
+    buttonType: create$6().oneOf([id$b]).required()
   })
 };
 function PlaybackRateActionButton({
@@ -216698,9 +216946,9 @@ function PlaybackRateActionButton({
     ActionButtonBase,
     {
       state: active ? "active" : "inactive",
-      icon: buttonDefinition$9.icon,
-      title: buttonDefinition$9.title,
-      className: cx(buttonDefinition$9.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$a.icon,
+      title: buttonDefinition$a.title,
+      className: cx(buttonDefinition$a.id, "hide-on-ui-hide"),
       sidePanel: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, speeds.map((speed) => /* @__PURE__ */ React$1.createElement(
         Button,
         {
@@ -216715,19 +216963,19 @@ function PlaybackRateActionButton({
     }
   );
 }
-const logger$5 = getLogger(["stash-tv", "QuickTagActionButton"]);
-const id$9 = "quick-tag";
+const logger$4 = getLogger(["stash-tv", "QuickTagActionButton"]);
+const id$a = "quick-tag";
 const configSchema$1 = sharedActionButtonSchema.shape({
-  buttonType: create$6().oneOf([id$9]).required(),
+  buttonType: create$6().oneOf([id$a]).required(),
   iconId: create$6().required(),
   tagId: create$6().required()
 });
-const buttonDefinition$8 = {
-  id: id$9,
+const buttonDefinition$9 = {
+  id: id$a,
   title: ({ state, config: config2 }) => {
     const [tag2, setTag2] = reactExports.useState();
-    if (config2 && config2.buttonType !== id$9) {
-      logger$5.error("Invalid config for quick tag action button title {*}", { config: config2 });
+    if (config2 && config2.buttonType !== id$a) {
+      logger$4.error("Invalid config for quick tag action button title {*}", { config: config2 });
       return /* @__PURE__ */ React$1.createElement("strong", null, "?");
     }
     const tagId = config2 && "tagId" in config2 && typeof config2.tagId === "string" ? config2.tagId : null;
@@ -216740,7 +216988,7 @@ const buttonDefinition$8 = {
     } else if (state === "inactive") {
       return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, tag2 ? `Add "${tag2.name}" to scene/marker` : "Add tag to scene/marker");
     } else {
-      logger$5.error("Unexpected state in QuickTagActionButton title function", { state });
+      logger$4.error("Unexpected state in QuickTagActionButton title function", { state });
       return /* @__PURE__ */ React$1.createElement("strong", null, "?");
     }
   },
@@ -216758,9 +217006,9 @@ function QuickTagActionButton({
 }) {
   let parsedConfig;
   try {
-    parsedConfig = buttonDefinition$8.configSchema.validateSync(config2);
+    parsedConfig = buttonDefinition$9.configSchema.validateSync(config2);
   } catch (error) {
-    logger$5.error("Invalid config for quick tag action button", { error, config: config2 });
+    logger$4.error("Invalid config for quick tag action button", { error, config: config2 });
     return /* @__PURE__ */ React$1.createElement("strong", null, "?");
   }
   const [tagName, setTagName] = reactExports.useState(`Tag ID: ${parsedConfig.tagId}`);
@@ -216781,16 +217029,16 @@ function QuickTagActionButton({
     );
     sidePanel = marker.primary_tag.id == parsedConfig.tagId ? /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, `Marker's primary tag is "`, tagName, `" and a markers's primary tag cannot be removed.`) : null;
   } else {
-    logger$5.error("QuickTagActionButton rendered for unsupported media item type", { mediaItem });
+    logger$4.error("QuickTagActionButton rendered for unsupported media item type", { mediaItem });
     return null;
   }
   return /* @__PURE__ */ React$1.createElement(
     ActionButtonBase,
     {
       state: mediaItemHasTag ? "active" : "inactive",
-      icon: buttonDefinition$8.icon,
-      title: buttonDefinition$8.title,
-      className: cx(buttonDefinition$8.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$9.icon,
+      title: buttonDefinition$9.title,
+      className: cx(buttonDefinition$9.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--quickTagButton",
       onClick: mediaItemHasTag ? () => removeTag(parsedConfig.tagId) : () => addTag(parsedConfig.tagId),
       sidePanel,
@@ -217891,9 +218139,9 @@ const RatingSystem = (props) => {
     return /* @__PURE__ */ React$1.createElement(RatingSystem$1, { ...props });
   }
 };
-const id$8 = "rate-scene";
-const buttonDefinition$7 = {
-  id: id$8,
+const id$9 = "rate-scene";
+const buttonDefinition$8 = {
+  id: id$9,
   title: {
     active: "Rate scene",
     inactive: "Rate scene"
@@ -217906,7 +218154,7 @@ const buttonDefinition$7 = {
     button: RateSceneActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$8]).required()
+    buttonType: create$6().oneOf([id$9]).required()
   })
 };
 function RateSceneActionButton({
@@ -217923,24 +218171,14 @@ function RateSceneActionButton({
       sceneRatingFormatted = (scene2.rating100 / 10).toString();
     }
   }
-  const [updateScene] = useSceneUpdate(scene2);
-  function setRating(newRating) {
-    updateScene({
-      variables: {
-        input: {
-          id: scene2.id,
-          rating100: newRating
-        }
-      }
-    });
-  }
+  const setRating = useSetRating(scene2);
   return /* @__PURE__ */ React$1.createElement(
     ActionButtonBase,
     {
       state: typeof scene2.rating100 === "number" ? "active" : "inactive",
-      icon: buttonDefinition$7.icon,
-      title: buttonDefinition$7.title,
-      className: cx(buttonDefinition$7.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$8.icon,
+      title: buttonDefinition$8.title,
+      className: cx(buttonDefinition$8.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--rateButton",
       sidePanel: /* @__PURE__ */ React$1.createElement("div", { className: cx("action-button-rating-stars", { "not-set": typeof scene2.rating100 !== "number", "left-handed": leftHandedUi }, ratingSystemOptions.type.toLowerCase()) }, /* @__PURE__ */ React$1.createElement("span", { className: "clear star-rating-number" }, "Clear"), /* @__PURE__ */ React$1.createElement(
         RatingSystem,
@@ -218015,9 +218253,9 @@ function useSceneStreamSelection({
     selectedIsPreferred
   };
 }
-const id$7 = "resolution";
-const buttonDefinition$6 = {
-  id: id$7,
+const id$8 = "resolution";
+const buttonDefinition$7 = {
+  id: id$8,
   title: {
     active: "Set stream resolution",
     inactive: "Set stream resolution"
@@ -218027,7 +218265,7 @@ const buttonDefinition$6 = {
     button: ResolutionActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$7]).required()
+    buttonType: create$6().oneOf([id$8]).required()
   })
 };
 function ResolutionActionButton({
@@ -218072,9 +218310,9 @@ function ResolutionActionButton({
     ActionButtonBase,
     {
       state: playingDirectStream ? "inactive" : "active",
-      icon: buttonDefinition$6.icon,
-      title: buttonDefinition$6.title,
-      className: cx(buttonDefinition$6.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$7.icon,
+      title: buttonDefinition$7.title,
+      className: cx(buttonDefinition$7.id, "hide-on-ui-hide"),
       sidePanelClassName: "action-button-resolution",
       sidePanel: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, groupVideoSourcesByResolution(availableStreams).map((sources) => {
         const firstSource = sources[0];
@@ -218098,9 +218336,9 @@ function ResolutionActionButton({
     }
   );
 }
-const id$6 = "set-organized";
-const buttonDefinition$5 = {
-  id: id$6,
+const id$7 = "set-organized";
+const buttonDefinition$6 = {
+  id: id$7,
   title: {
     active: "Mark as unorganized",
     inactive: "Mark as organized"
@@ -218110,7 +218348,7 @@ const buttonDefinition$5 = {
     button: SetOrganizedActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$6]).required()
+    buttonType: create$6().oneOf([id$7]).required()
   })
 };
 function SetOrganizedActionButton({
@@ -218133,8 +218371,8 @@ function SetOrganizedActionButton({
     ActionButtonBase,
     {
       state: scene2.organized ? "active" : "inactive",
-      icon: buttonDefinition$5.icon,
-      title: buttonDefinition$5.title,
+      icon: buttonDefinition$6.icon,
+      title: buttonDefinition$6.title,
       onClick: () => setOrganized(!scene2.organized)
     }
   );
@@ -218147,9 +218385,9 @@ const SvgCogOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg
 }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M223.3,37.8C223.7,36.3 224.6,35 225.7,34C235.6,32.7 245.7,32 256,32C266.3,32 276.4,32.7 286.3,34C287.4,35     288.2,36.3 288.7,37.8L302.4,85.5C305.9,97.6 314.6,106.6 324.9,111.6C332.5,115.2 339.7,119.4 346.6,124.1C356,130.6     368.3,133.6 380.5,130.6L428.7,118.6C430.2,118.2 431.7,118.3 433.1,118.8C438.5,125.7 443.5,133     448,140.6L452.3,148C456.5,155.5 460.2,163.3 463.5,171.3C463.2,172.8 462.5,174.2 461.4,175.3L426.8,211C418.1,220     414.6,232.1 415.5,243.5C415.8,247.6 416,251.8 416,256C416,260.2 415.8,264.4 415.5,268.5C414.6,279.9 418.1,292     426.8,301L461.3,336.7C462.4,337.8 463.1,339.2 463.4,340.7C460.1,348.7 456.4,356.5 452.2,364.1L448,371.4C443.4,379     438.4,386.2 433.1,393.2C431.7,393.7 430.2,393.7 428.7,393.4L380.5,381.4C368.3,378.4 356.1,381.4     346.6,387.9C339.7,392.6 332.5,396.8 324.9,400.4C314.6,405.3 305.8,414.4 302.4,426.5L288.7,474.2C288.3,475.7     287.4,477 286.3,478C276.4,479.3 266.3,480 256,480C245.7,480 235.6,479.3 225.7,478C224.6,477 223.8,475.7     223.3,474.2L209.6,426.5C206.1,414.4 197.4,405.4 187.1,400.4C179.5,396.8 172.3,392.6 165.4,387.9C156,381.4     143.7,378.4 131.5,381.4L83.3,393.4C81.8,393.8 80.3,393.7 78.9,393.2C73.5,386.2 68.5,379     63.9,371.4L59.7,364.1C55.5,356.6 51.8,348.8 48.5,340.7C48.8,339.2 49.5,337.8 50.6,336.7L85.2,301C93.9,292 97.4,279.9     96.5,268.5C96.2,264.4 96,260.2 96,256C96,251.8 96.2,247.6 96.5,243.5C97.4,232.1 93.9,220     85.2,211L50.7,175.2C49.6,174.1 48.9,172.7 48.6,171.2C51.9,163.2 55.6,155.4 59.8,147.8L64,140.5C68.6,132.9 73.6,125.7     79,118.7C80.4,118.2 81.9,118.2 83.4,118.5L131.6,130.5C143.8,133.5 156,130.5 165.5,124C172.4,119.3 179.6,115.1     187.2,111.5C197.5,106.6 206.3,97.5 209.7,85.4L223.4,37.7L223.3,37.8ZM256,0C243,0 230.1,1 217.6,2.9C215.9,3.2     214.2,3.7 212.6,4.5C203.1,9.4 195.7,18.1 192.6,29L178.9,76.7C178.3,78.9 176.4,81.2 173.3,82.7C164.2,87 155.5,92.1     147.3,97.7C144.5,99.6 141.5,100.1 139.3,99.5L91.1,87.5C80.2,84.8 69,86.9 60,92.6C58.5,93.5 57.2,94.7     56.1,96.1C49,105 42.4,114.3 36.5,124.1L36.4,124.4L32,132L31.9,132.3C26.5,142.1 21.7,152.2 17.6,162.7C17,164.3     16.6,166 16.5,167.7C16,178.5 19.8,189.3 27.7,197.5L62.2,233.2C63.8,234.9 64.9,237.6 64.6,241C64.2,246 64,251     64,256C64,261 64.2,266.1 64.6,271C64.9,274.4 63.8,277.2 62.2,278.8L27.7,314.6C19.8,322.8 16,333.6     16.5,344.4C16.6,346.1 17,347.8 17.6,349.4C21.7,359.9 26.5,370 31.9,379.8L32,380.1L36.4,387.7L36.5,388C42.4,397.8     48.9,407.2 56.1,416.1C57.2,417.5 58.5,418.7 60,419.6C69,425.3 80.2,427.4 91.1,424.7L139.3,412.7C141.5,412.1     144.5,412.6 147.3,414.5C155.5,420.2 164.2,425.2 173.3,429.5C176.4,431 178.2,433.3 178.9,435.5L192.6,483C195.7,493.8     203.1,502.5 212.6,507.5C214.2,508.3 215.8,508.9 217.6,509.1C230.1,511 243,512 256,512C269,512 281.9,511     294.4,509.1C296.1,508.8 297.8,508.3 299.4,507.5C308.9,502.6 316.3,493.9 319.4,483L333.1,435.3C333.7,433.1     335.6,430.8 338.7,429.3C347.8,425 356.5,419.9 364.7,414.3C367.5,412.4 370.5,411.9     372.7,412.5L420.9,424.5C431.8,427.2 443,425.2 452,419.4C453.5,418.5 454.8,417.3 455.9,415.9C463,407 469.5,397.7     475.4,387.9L475.6,387.6L480,380L480.1,379.7C485.5,370 490.3,359.8 494.4,349.3C495,347.7 495.4,346     495.5,344.3C496,333.5 492.2,322.7 484.3,314.5L449.8,278.8C448.2,277.1 447.1,274.4 447.4,271C447.8,266 448,261     448,256C448,251 447.8,245.9 447.4,241C447.1,237.6 448.2,234.8 449.8,233.2L484.3,197.5C492.2,189.3 496,178.5     495.5,167.7C495.4,166 495,164.3 494.4,162.7C490.3,152.2 485.5,142.1     480.1,132.3L480,132L475.6,124.4L475.4,124.1C469.5,114.3 463,104.9 455.9,96.1C454.8,94.7 453.5,93.5 452,92.6C443,86.9     431.8,84.8 420.9,87.5L372.7,99.5C370.5,100.1 367.5,99.6 364.7,97.7C356.5,92 347.8,87 338.7,82.7C335.6,81.2     333.8,78.9 333.1,76.7L319.4,29C316.3,18.2 308.9,9.5 299.4,4.5C297.8,3.7 296.2,3.1 294.4,2.9C281.9,1 269,0     256,0ZM200,256C200,225.279 225.279,200 256,200C286.721,200 312,225.279 312,256C312,286.721 286.721,312     256,312C225.279,312 200,286.721 200,256ZM344,256C344,207.725 304.275,168 256,168C207.725,168 168,207.725     168,256C168,304.275 207.725,344 256,344C304.275,344 344,304.275 344,256Z", style: {
   fillRule: "nonzero"
 }, fill: "currentColor" }));
-const id$5 = "settings";
-const buttonDefinition$4 = {
-  id: id$5,
+const id$6 = "settings";
+const buttonDefinition$5 = {
+  id: id$6,
   title: {
     "active": "Hide Settings",
     "inactive": "Show Settings"
@@ -218162,7 +218400,7 @@ const buttonDefinition$4 = {
     button: SettingsActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$5]).required()
+    buttonType: create$6().oneOf([id$6]).required()
   })
 };
 function SettingsActionButton() {
@@ -218171,9 +218409,9 @@ function SettingsActionButton() {
     ActionButtonBase,
     {
       state: showSettings ? "active" : "inactive",
-      icon: buttonDefinition$4.icon,
-      title: buttonDefinition$4.title,
-      className: cx(buttonDefinition$4.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$5.icon,
+      title: buttonDefinition$5.title,
+      className: cx(buttonDefinition$5.id, "hide-on-ui-hide"),
       onClick: () => setGlobalState("showSettings", (prev2) => !prev2)
     }
   );
@@ -218186,9 +218424,9 @@ const SvgInfoOutline = (props) => /* @__PURE__ */ reactExports.createElement("sv
 }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M256,32C378.883,32 480,133.117 480,256C480,378.883 378.883,480 256,480C133.117,480 32,378.883     32,256C32,133.117 133.117,32 256,32ZM256,512C396.437,512 512,396.437 512,256C512,115.563 396.437,0 256,0C115.563,0     -0,115.563 0,256C0,396.437 115.563,512 256,512ZM208,352C199.2,352 192,359.2 192,368C192,376.8 199.2,384     208,384L304,384C312.8,384 320,376.8 320,368C320,359.2 312.8,352 304,352L272,352L272,240C272,231.2 264.8,224     256,224L216,224C207.2,224 200,231.2 200,240C200,248.8 207.2,256 216,256L240,256L240,352L208,352ZM256,184C269.166,184     280,173.166 280,160C280,146.834 269.166,136 256,136C242.834,136 232,146.834 232,160C232,173.166 242.834,184     256,184Z", style: {
   fillRule: "nonzero"
 }, fill: "currentColor" }));
-const id$4 = "show-scene-info";
-const buttonDefinition$3 = {
-  id: id$4,
+const id$5 = "show-scene-info";
+const buttonDefinition$4 = {
+  id: id$5,
   title: {
     active: "Close scene info",
     inactive: "Show scene info"
@@ -218201,7 +218439,7 @@ const buttonDefinition$3 = {
     button: ShowSceneInfoActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$4]).required()
+    buttonType: create$6().oneOf([id$5]).required()
   })
 };
 function ShowSceneInfoActionButton({
@@ -218212,11 +218450,47 @@ function ShowSceneInfoActionButton({
     ActionButtonBase,
     {
       state: sceneInfoOpen ? "active" : "inactive",
-      icon: buttonDefinition$3.icon,
-      title: buttonDefinition$3.title,
-      className: cx(buttonDefinition$3.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$4.icon,
+      title: buttonDefinition$4.title,
+      className: cx(buttonDefinition$4.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--infoButton",
       onClick: () => setSceneInfoOpen(!sceneInfoOpen)
+    }
+  );
+}
+const SvgLocationPlayOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", style: {
+  fillRule: "evenodd",
+  clipRule: "evenodd",
+  strokeLinejoin: "round",
+  strokeMiterlimit: 2
+}, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M256,488L118,300A170,170 0 1 1 394,300Z", fill: "none", stroke: "currentColor", strokeWidth: 32, strokeLinejoin: "round" }), /* @__PURE__ */ reactExports.createElement("path", { d: "M210,120L348,200L210,280Z", fill: "currentColor", stroke: "currentColor", strokeWidth: 16, strokeLinejoin: "round" }));
+const id$4 = "start-position";
+const name$1 = "Start point";
+const buttonDefinition$3 = {
+  id: id$4,
+  title: cycleOptionTitle(name$1, () => usePlaybackPositionOptions().startPositionOptions, "Change start point"),
+  icon: SvgLocationPlayOutline,
+  components: {
+    button: StartPositionActionButton
+  },
+  configSchema: sharedActionButtonSchema.shape({
+    buttonType: create$6().oneOf([id$4]).required()
+  })
+};
+function StartPositionActionButton() {
+  const { startPosition, set: setTvConfig } = useTvConfig();
+  const { startPositionOptions } = usePlaybackPositionOptions();
+  return /* @__PURE__ */ React$1.createElement(
+    CycleOptionActionButton,
+    {
+      id: id$4,
+      name: name$1,
+      options: startPositionOptions,
+      value: startPosition,
+      unlabelledValue: "beginning",
+      onChange: (value) => setTvConfig("startPosition", value),
+      icon: buttonDefinition$3.icon,
+      title: buttonDefinition$3.title
     }
   );
 }
@@ -219205,7 +219479,7 @@ const SvgVolumeMuteOutline = (props) => /* @__PURE__ */ reactExports.createEleme
   stroke: "currentColor",
   strokeWidth: 33
 } })));
-const logger$4 = getLogger(["stash-tv", "VolumeActionButton"]);
+const logger$3 = getLogger(["stash-tv", "VolumeActionButton"]);
 const id = "volume";
 const configSchema = sharedActionButtonSchema.shape({
   buttonType: create$6().oneOf([id]).required(),
@@ -219235,7 +219509,7 @@ function VolumeActionButton({
     const parsedConfig = buttonDefinition.configSchema.validateSync(config2);
     controlVolumeLevel = parsedConfig.fullControl ?? false;
   } catch (error) {
-    logger$4.warn("Invalid config for volume action button, falling back to mute toggle", { error, config: config2 });
+    logger$3.warn("Invalid config for volume action button, falling back to mute toggle", { error, config: config2 });
   }
   const { volume, set: setTvConfig } = useTvConfig();
   let clickHandler;
@@ -219281,29 +219555,31 @@ function SettingsForm({ formik }) {
   ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Enable full volume control rather than just mute/unmute. Note that this does not work on iOS devices due to platform limitations."), formik.touched.fullControl && fullControlError && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, fullControlError)), Object.keys(otherErrors).length > 0 && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, /* @__PURE__ */ React$1.createElement("ul", null, Object.entries(otherErrors).map(([key, error]) => /* @__PURE__ */ React$1.createElement("li", { key }, error)))));
 }
 const allButtonDefinition = [
+  buttonDefinition$j,
+  buttonDefinition$i,
   buttonDefinition$h,
-  buttonDefinition$g,
   buttonDefinition$f,
   buttonDefinition$e,
   buttonDefinition$d,
   buttonDefinition$c,
   buttonDefinition$b,
-  buttonDefinition$a,
+  buttonDefinition$9,
   buttonDefinition$8,
   buttonDefinition$7,
-  buttonDefinition$6,
+  buttonDefinition$5,
   buttonDefinition$4,
-  buttonDefinition$3,
   buttonDefinition$2,
   buttonDefinition$1,
-  buttonDefinition$5,
-  buttonDefinition$9,
-  buttonDefinition
+  buttonDefinition$6,
+  buttonDefinition$a,
+  buttonDefinition,
+  buttonDefinition$3,
+  buttonDefinition$g
 ];
 function getActionButtonDefinition(type3) {
   return allButtonDefinition.find((def) => def.id === type3) ?? unknownActionButtonDefinition;
 }
-const logger$3 = getLogger(["stash-tv", "ActionButtonStack"]);
+const logger$2 = getLogger(["stash-tv", "ActionButtonStack"]);
 function ActionButtonStack({ mediaItem, sceneInfoOpen, setSceneInfoOpen, playerRef, onMediaItemDeleted }) {
   const {
     uiVisible,
@@ -219319,7 +219595,7 @@ function ActionButtonStack({ mediaItem, sceneInfoOpen, setSceneInfoOpen, playerR
     try {
       buttonDef = getActionButtonDefinition(buttonType);
     } catch (e2) {
-      logger$3.error(`Error getting button definition for action button config type ${buttonType}`, { buttonConfig, error: e2 });
+      logger$2.error(`Error getting button definition for action button config type ${buttonType}`, { buttonConfig, error: e2 });
       return /* @__PURE__ */ React$1.createElement("strong", null, "?");
     }
     return /* @__PURE__ */ React$1.createElement(
@@ -219433,7 +219709,7 @@ const Folder = ({
     )
   ));
 };
-const logger$2 = getLogger(["stash-tv", "SceneInfo"]);
+const logger$1 = getLogger(["stash-tv", "SceneInfo"]);
 const SceneInfo = reactExports.forwardRef(
   ({ scene: scene2, className, style: style2, onExternalLinkClick }, ref) => {
     const date2 = scene2.date ? /* @__PURE__ */ React$1.createElement("span", { className: "date" }, scene2.date) : null;
@@ -219464,7 +219740,7 @@ const SceneInfo = reactExports.forwardRef(
       while (currentStudio?.parent_studio) {
         const { data: data2, error } = await queryFindStudio(currentStudio.parent_studio.id);
         if (error) {
-          logger$2.error("Error fetching parent studio:", error);
+          logger$1.error("Error fetching parent studio:", error);
           break;
         }
         const parentStudio = data2?.findStudio;
@@ -221277,36 +221553,6 @@ function useGesture(handlers2, config2) {
   const hook3 = createUseGesture([dragAction, pinchAction, scrollAction, wheelAction, moveAction, hoverAction]);
   return hook3(handlers2, config2 || {});
 }
-const displayDuration = 1e3;
-const logger$1 = getLogger(["stash-tv", "FeedbackOverlay"]);
-const useFeedback = create((set4, get7) => ({
-  contents: null,
-  fade: true,
-  icon: null,
-  setFeedback: (contents, { hold, fade = true, icon: icon2 } = {}) => {
-    if (get7().displayCountdown) {
-      clearTimeout(get7().displayCountdown);
-    }
-    const displayCountdown = hold || !contents ? void 0 : setTimeout(() => {
-      logger$1.debug("Clearing feedback");
-      set4({ contents: null, displayCountdown: void 0, icon: icon2 ?? null });
-    }, displayDuration);
-    if (get7().contents !== contents || get7().displayCountdown !== displayCountdown || get7().fade !== fade) {
-      logger$1.debug("Setting feedback{*}", { contents, hold, fade });
-      set4({ contents, displayCountdown, fade, icon: icon2 ?? null });
-    }
-  }
-}));
-const FeedbackOverlay = reactExports.memo(() => {
-  const { uiVisible } = useTvConfig();
-  const { contents, icon: icon2, fade } = useFeedback();
-  const previousContents = usePrevious$2(contents);
-  const previousIcon = usePrevious$2(icon2);
-  const displayedContents = !contents ? previousContents : contents;
-  const displayedIcon = !contents ? previousIcon : icon2;
-  if (!displayedContents || !contents && !fade) return null;
-  return /* @__PURE__ */ React$1.createElement("div", { className: cx("FeedbackOverlay", { "fade-out": !contents && fade, "muted": !uiVisible }) }, /* @__PURE__ */ React$1.createElement("div", { className: "contents-container" }, displayedIcon, displayedContents));
-});
 const useGamepadState = create()((set4) => ({
   isConnected: false,
   connectedAt: null,
@@ -221860,6 +222106,7 @@ const MediaSlide = (props) => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isCurrentVideo, openDeleteConfirmation, sceneInfoOpen, setTvConfig, setGlobalState]);
+  useKeyboardRating(scene2, { enabled: isCurrentVideo });
   reactExports.useEffect(() => {
     if (videoRef.current && videoRef.current.textTracks.length)
       videoRef.current.textTracks[0].mode = showSubtitles ? "showing" : "disabled";
@@ -221966,6 +222213,7 @@ const MediaSlide = (props) => {
         "data-testid": "MediaSlide--container",
         "data-index": props.index,
         "data-scene-id": scene2.id,
+        "data-current-video": isCurrentVideo,
         ref: mediaSlideElementRef,
         style: props.style
       },
@@ -222508,9 +222756,11 @@ function useGestureControls({ videoRef, videojsPlayerRef, seekForwards, seekBack
     }
   });
   reactExports.useEffect(() => {
-    window.addEventListener("click", (event2) => {
+    const handleClick = (event2) => {
       Object.defineProperty(event2, "detail", { value: 0, writable: true });
-    }, { capture: true });
+    };
+    window.addEventListener("click", handleClick, { capture: true });
+    return () => window.removeEventListener("click", handleClick, { capture: true });
   }, []);
   reactExports.useEffect(() => {
     const handler = () => {
@@ -227345,6 +227595,865 @@ const ActionButtonSettingsModal = ({ initialActionButtonConfig, onClose, onSave 
   )), " ", "Action Button")), /* @__PURE__ */ React$1.createElement(Modal.Body, null, /* @__PURE__ */ React$1.createElement("div", { className: "dialog-content" }, form)), /* @__PURE__ */ React$1.createElement(Modal.Footer, null, /* @__PURE__ */ React$1.createElement(Button, { variant: "secondary", onClick: () => onClose() }, "Cancel"), /* @__PURE__ */ React$1.createElement(Button, { variant: "primary", onClick: () => formik.submitForm() }, operation === "add" ? "Add" : "Save")));
 };
 const getStashOrigin = () => location.origin;
+const SettingsTab = reactExports.memo(() => {
+  const logger3 = getLogger(["stash-tv", "SettingsTab"]);
+  const { data: { subtitleLanguage }, update: updateStashTvConfig } = useStashTvConfig();
+  const {
+    mediaItemFiltersLoading,
+    mediaItemFiltersError,
+    currentMediaItemFilter,
+    availableSavedFilters
+  } = useMediaItemFilters();
+  const {
+    isRandomised,
+    crtEffect,
+    crtEffectStrength,
+    scenePreviewOnly,
+    markerPreviewOnly,
+    onlyShowMatchingOrientation,
+    showDevOptions,
+    videoJsEventsToLog,
+    logLevel,
+    loggersToShow,
+    loggersToHide,
+    showDebuggingInfo,
+    autoPlay,
+    pageSize,
+    startPosition,
+    endPosition,
+    playLength,
+    minPlayLength,
+    maxPlayLength,
+    maxMedia,
+    leftHandedUi,
+    actionButtonStackConfig,
+    mediaItemsModifierFunction,
+    renderedMediaItemsBuffer,
+    set: setTvConfig,
+    setToDefault: setDefaultAppSetting,
+    getDefault: getDefaultAppSetting
+  } = useTvConfig();
+  const { set: setGlobalState } = useGlobalState();
+  const { mediaItems, mediaItemsLoading, mediaItemsNeverLoaded, mediaItemsError } = useMediaItems();
+  const noMediaItemsAvailable = !mediaItemFiltersLoading && !mediaItemsLoading && mediaItems.length === 0;
+  const actionButtonStackConfigIsDefault = reactExports.useMemo(() => {
+    const defaultConfig2 = getDefaultAppSetting("actionButtonStackConfig");
+    const hashOptions = { excludeKeys: (key) => ["id"].includes(key) };
+    return objectHash(actionButtonStackConfig, hashOptions) === objectHash(defaultConfig2, hashOptions);
+  }, [getDefaultAppSetting, actionButtonStackConfig]);
+  const [displayedModal, setDisplayedModal] = reactExports.useState(null);
+  const allFilters = reactExports.useMemo(
+    () => availableSavedFilters.map((filter2) => ({
+      value: filter2.id,
+      label: filter2.name,
+      filterType: filter2.entityType
+    })).sort((a4, b3) => a4.label.localeCompare(b3.label)),
+    [availableSavedFilters]
+  );
+  const allFiltersGrouped = reactExports.useMemo(
+    () => [
+      {
+        label: "Scene Filters",
+        filterType: "scene",
+        options: allFilters.filter((filter2) => filter2.filterType === "scene")
+      },
+      {
+        label: "Marker Filters",
+        filterType: "marker",
+        options: allFilters.filter((filter2) => filter2.filterType === "marker")
+      }
+    ],
+    [allFilters]
+  );
+  const selectedFilter = allFilters.find((filter2) => filter2.value === currentMediaItemFilter?.savedFilter?.id);
+  const subtitlesList = ISO6391.getAllNames().map((name2) => ({
+    label: name2,
+    value: ISO6391.getCode(name2)
+  })).sort((a4, b3) => {
+    if (a4.label < b3.label) {
+      return -1;
+    }
+    if (a4.label > b3.label) {
+      return 1;
+    }
+    return 0;
+  });
+  const defaultSubtitles = subtitleLanguage ? {
+    label: ISO6391.getName(subtitleLanguage),
+    value: subtitleLanguage
+  } : void 0;
+  const titleRef = React$1.useRef(null);
+  reactExports.useEffect(() => {
+    if (!titleRef.current) return;
+    let clearClickCountTimer;
+    let clickCount = 0;
+    const handlePointerUp = () => {
+      clickCount += 1;
+      if (clickCount > 4) {
+        setTvConfig("showDevOptions", true);
+      }
+      clearTimeout(clearClickCountTimer);
+      clearClickCountTimer = setTimeout(() => {
+        clickCount = 0;
+      }, 1e3);
+    };
+    titleRef.current.addEventListener("pointerup", handlePointerUp);
+    return () => {
+      titleRef.current?.removeEventListener("pointerup", handlePointerUp);
+    };
+  }, [titleRef]);
+  const isFirstLoad = mediaItemsNeverLoaded && !mediaItemFiltersError && !mediaItemsError;
+  let disableClose = false;
+  if (!isFirstLoad && (mediaItemFiltersLoading || mediaItemsLoading)) {
+    disableClose = "because loading";
+  } else if (!isFirstLoad && noMediaItemsAvailable) {
+    disableClose = true;
+  } else if (mediaItemsError || mediaItemFiltersError) {
+    disableClose = true;
+  }
+  const { startPositionOptions, endPositionOptions } = usePlaybackPositionOptions();
+  const logLevelOptions = reactExports.useMemo(() => Object.entries(
+    {
+      "trace": "Trace (most verbose)",
+      "debug": "Debug",
+      "info": "Info",
+      "warning": "Warning",
+      "error": "Error",
+      "fatal": "Fatal (least verbose)"
+    }
+  ).map(([value, label]) => ({
+    value,
+    label
+  })), []);
+  const [loggers, setLoggers] = React$1.useState(getLoggers());
+  reactExports.useEffect(() => {
+    const interval = setInterval(() => {
+      const newLoggers = getLoggers().filter((newLogger) => !loggers.includes(newLogger));
+      if (newLoggers.length === 0) return;
+      setLoggers([
+        ...loggers,
+        ...newLoggers
+      ]);
+    }, 1e3);
+    return () => clearInterval(interval);
+  }, [loggers]);
+  const loggerOptions = reactExports.useMemo(
+    () => loggers.map((logger22) => logger22.category).filter(
+      (category) => category.length && category[0] !== "logtape" && (category.length !== 1 || category[0] !== "stash-tv")
+      // Exclude root stash-tv logger
+    ).map((category) => ({
+      value: category,
+      label: category.join(" / ").replace(/^stash-tv \/ /, "")
+    })).toSorted((a4, b3) => a4.label.localeCompare(b3.label)),
+    [loggers]
+  );
+  const showDebuggingInfoOptions = reactExports.useMemo(() => Object.entries(
+    {
+      "render-debugging": "Render Debugging",
+      "onscreen-info": "On-screen Info",
+      "virtualizer-debugging": "Virtualizer Debugging"
+    }
+  ).map(([value, label]) => ({
+    value,
+    label
+  })), []);
+  const [actionButtonDraft, setActionButtonDraft] = React$1.useState(null);
+  reactExports.useEffect(() => setDisplayedModal(actionButtonDraft ? "action-button-settings" : null), [actionButtonDraft]);
+  const saveActionButtonDraft = (actionButton) => {
+    const existingButtonIndex = actionButtonStackConfig.findIndex((button) => button.id === actionButton.id);
+    if (existingButtonIndex !== -1) {
+      setTvConfig(
+        "actionButtonStackConfig",
+        actionButtonStackConfig.map((button, index2) => index2 === existingButtonIndex ? actionButton : button)
+      );
+    } else {
+      setTvConfig(
+        "actionButtonStackConfig",
+        [...actionButtonStackConfig, { ...actionButton, id: Date.now().toString() }]
+      );
+    }
+  };
+  const addableActionButtons = allButtonDefinition.map((definition) => {
+    return {
+      definition,
+      isRepeatable: "isRepeatable" in definition && definition.isRepeatable,
+      add() {
+        const options2 = {
+          includeMarkerDefaults: false
+        };
+        if (definition.id === "create-marker" && actionButtonStackConfig.some((config22) => config22.type === "button" && config22.buttonType === "create-marker")) {
+          options2.includeMarkerDefaults = true;
+        }
+        const config2 = createNewActionButtonConfig(definition.id, options2);
+        const buttonDefinition2 = getActionButtonDefinition(definition.id);
+        if ("settings" in buttonDefinition2.components) {
+          setActionButtonDraft(config2);
+        } else {
+          setTvConfig("actionButtonStackConfig", [...actionButtonStackConfig, config2]);
+        }
+      }
+    };
+  }).filter((v) => v !== null).filter(
+    (actionButton) => !actionButtonStackConfig.some(
+      (config2) => config2.type === "button" && config2.buttonType === actionButton.definition.id || config2.type === "folder" && config2.contents.some(
+        (config22) => config22.type === "button" && config22.buttonType === actionButton.definition.id
+      )
+    ) || actionButton.isRepeatable
+  );
+  const hydratedMediaItemsModifierFunction = mediaItemsModifierFunction && getFunctionFromString(mediaItemsModifierFunction);
+  const mediaItemsModifierFunctionValidity = reactExports.useMemo(() => {
+    if (!hydratedMediaItemsModifierFunction) return "";
+    if (hydratedMediaItemsModifierFunction instanceof Error) {
+      return hydratedMediaItemsModifierFunction.message;
+    }
+    try {
+      if (!Array.isArray(hydratedMediaItemsModifierFunction([]))) {
+        return "Does not return an array";
+      }
+    } catch (error) {
+      return `Threw an error when run: ${error}`;
+    }
+    return "";
+  }, [hydratedMediaItemsModifierFunction]);
+  const editableActionButtonStackConfig = reactExports.useMemo(
+    () => actionButtonStackConfig.toReversed().map((item) => {
+      if (item.type === "folder") {
+        return {
+          ...item,
+          contents: item.contents.toReversed()
+        };
+      }
+      return item;
+    }).toSorted((a4, b3) => (a4.pinned ? 1 : 0) - (b3.pinned ? 1 : 0)),
+    [actionButtonStackConfig]
+  );
+  const updateEditableActionButtonStackConfig = ((newConfig) => {
+    newConfig = newConfig.toReversed().map((item) => {
+      if (item.type === "folder") {
+        return {
+          ...item,
+          contents: item.contents.toReversed()
+        };
+      }
+      return item;
+    });
+    const indexOfFirstNonPinned = newConfig.findIndex((config2) => !config2.pinned);
+    newConfig = newConfig.map((config2, index2) => ({
+      ...config2,
+      pinned: config2.pinned && index2 >= indexOfFirstNonPinned ? false : config2.pinned
+    }));
+    setTvConfig(
+      "actionButtonStackConfig",
+      newConfig
+    );
+  });
+  return /* @__PURE__ */ React$1.createElement(
+    SideDrawer,
+    {
+      title: reactExports.useMemo(() => /* @__PURE__ */ React$1.createElement("span", { ref: titleRef }, "Settings"), []),
+      closeDisabled: disableClose,
+      className: "SettingsTab"
+    },
+    displayedModal === "action-button-settings" && actionButtonDraft && /* @__PURE__ */ React$1.createElement(
+      ActionButtonSettingsModal,
+      {
+        initialActionButtonConfig: actionButtonDraft,
+        onClose: () => setActionButtonDraft(null),
+        onSave: (config2) => {
+          saveActionButtonDraft(config2);
+          setActionButtonDraft(null);
+        }
+      }
+    ),
+    /* @__PURE__ */ React$1.createElement(Accordion, { defaultActiveKey: "0" }, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "0" }, "Media Feed"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "0" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "filter" }, "Media Filter"), /* @__PURE__ */ React$1.createElement(
+      Select,
+      {
+        inputId: "filter",
+        isLoading: mediaItemFiltersLoading || mediaItemsLoading,
+        value: selectedFilter ?? null,
+        onChange: (newValue) => newValue && setTvConfig("currentFilterId", newValue.value),
+        options: allFiltersGrouped,
+        placeholder: `${allFilters.length > 0 ? "No filter selected" : "No filters saved in stash"}. Showing all scenes.`,
+        components: {
+          GroupHeading: (props) => /* @__PURE__ */ React$1.createElement(components.GroupHeading, { ...props }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: props.data.filterType === "scene" ? faCirclePlay : faLocationDot }), props.data.label),
+          SingleValue: (props) => /* @__PURE__ */ React$1.createElement(components.SingleValue, { ...props }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: props.data.filterType === "scene" ? faCirclePlay : faLocationDot }), props.data.label)
+        }
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Choose a filter from Stash to use as your Stash TV filter. If you don't have any filters create a new", " ", /* @__PURE__ */ React$1.createElement("a", { href: new URL("/scenes", getStashOrigin()).toString() }, "scene filter"), " or", " ", /* @__PURE__ */ React$1.createElement("a", { href: new URL("/scenes/markers", getStashOrigin()).toString() }, "marker filter"), " in Stash and it will appear here."), mediaItemFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, currentMediaItemFilter?.savedFilter?.find_filter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
+      Switch,
+      {
+        id: "randomise-filter",
+        checked: isRandomised,
+        label: "Randomise filter order",
+        onChange: (event2) => setTvConfig("isRandomised", event2.target.checked)
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Randomise the order of scenes in the filter."))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+      Switch,
+      {
+        id: "only-show-matching-orientation",
+        label: "Only Show Scenes Matching Orientation",
+        checked: onlyShowMatchingOrientation,
+        onChange: (event2) => setTvConfig("onlyShowMatchingOrientation", event2.target.checked)
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Limit scenes to only those in the same orientation as the current window.")))), /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "1" }, "Media Player"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "1" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+      Switch,
+      {
+        id: "auto-play",
+        label: "Auto Play",
+        checked: autoPlay,
+        onChange: (event2) => setTvConfig("autoPlay", event2.target.checked)
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Automatically play scenes.")), selectedFilter?.filterType === "scene" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+      Switch,
+      {
+        id: "scene-preview-only",
+        label: "Scene Preview Only",
+        checked: scenePreviewOnly,
+        onChange: (event2) => setTvConfig("scenePreviewOnly", event2.target.checked)
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Play a short preview rather than the full scene. (Requires the preview files to have been generated in Stash for a scene otherwise the full scene will be shown.)")), selectedFilter?.filterType === "marker" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+      Switch,
+      {
+        id: "marker-preview-only",
+        label: "Play Low-res Preview",
+        checked: markerPreviewOnly,
+        onChange: (event2) => setTvConfig("markerPreviewOnly", event2.target.checked)
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Play the low-resolution marker preview which can be useful for low bandwidth situations. (Requires the preview files to have been generated in Stash for a marker otherwise the full-quality video will be shown.)")), (!selectedFilter || selectedFilter.filterType === "scene") && !scenePreviewOnly && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "start-position" }, "Play From…"), /* @__PURE__ */ React$1.createElement(
+      Select,
+      {
+        inputId: "start-position",
+        value: startPositionOptions.find((option) => option.value === startPosition) ?? null,
+        onChange: (newValue) => newValue && setTvConfig("startPosition", newValue.value),
+        options: startPositionOptions
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The point in the scene to start playback from.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "end-position" }, "End Play After…"), /* @__PURE__ */ React$1.createElement(
+      Select,
+      {
+        inputId: "end-position",
+        value: endPositionOptions.find((option) => option.value === endPosition) ?? null,
+        onChange: (newValue) => newValue && setTvConfig("endPosition", newValue.value),
+        options: endPositionOptions
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The point in the scene to end playback."), endPosition === "fixed-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "play-length" }, "Play Length (Seconds)"), /* @__PURE__ */ React$1.createElement(
+      FormImpl.Control,
+      {
+        type: "number",
+        id: "play-length",
+        className: "text-input",
+        value: playLength ?? "",
+        onChange: (event2) => setTvConfig(
+          "playLength",
+          event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
+        )
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The length to play the scene for after the start point. Will play the full scene if not set.")), endPosition === "random-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", null, "Random Play Length Range (Seconds)"), /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "min-play-length", className: "sr-only" }, "Random Length Minimum"), /* @__PURE__ */ React$1.createElement(
+      FormImpl.Control,
+      {
+        type: "number",
+        id: "min-play-length",
+        className: "text-input",
+        placeholder: "Min",
+        value: minPlayLength ?? "",
+        onChange: (event2) => setTvConfig(
+          "minPlayLength",
+          event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
+        )
+      }
+    ), /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-play-length", className: "sr-only" }, "Random Length Maximum"), /* @__PURE__ */ React$1.createElement(
+      FormImpl.Control,
+      {
+        type: "number",
+        id: "max-play-length",
+        className: "text-input",
+        value: maxPlayLength ?? "",
+        placeholder: "Max",
+        onChange: (event2) => setTvConfig(
+          "maxPlayLength",
+          event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
+        )
+      }
+    )), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Sets the minimum and maximum length to randomly play the scene for.")))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "subtitle-language" }, "Subtitle Language"), /* @__PURE__ */ React$1.createElement(
+      Select,
+      {
+        inputId: "subtitle-language",
+        value: defaultSubtitles,
+        onChange: (newValue) => {
+          if (!newValue) return;
+          updateStashTvConfig(
+            {
+              subtitleLanguage: newValue.value
+            }
+          );
+        },
+        options: subtitlesList,
+        placeholder: "Select a subtitle language"
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Select the language to use for subtitles if available.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+      Switch,
+      {
+        id: "crt-effect",
+        label: "CRT Effect",
+        checked: crtEffect,
+        onChange: (event2) => setTvConfig("crtEffect", event2.target.checked)
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Emulate the visual effects of an old CRT television."), crtEffect && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+      Slider,
+      {
+        id: "crt-effect-strength",
+        min: 0,
+        max: 1,
+        step: 0.2,
+        marks: true,
+        value: [crtEffectStrength],
+        onValueChange: (e2) => setTvConfig("crtEffectStrength", Number(e2[0]))
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Adjusts how strong the CRT effect is."))))), /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "2" }, "UI"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "2" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+      Switch,
+      {
+        id: "left-handed-ui",
+        label: "Left-handed UI",
+        checked: leftHandedUi,
+        onChange: (event2) => setTvConfig("leftHandedUi", event2.target.checked)
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Flip the user interface for left-handed use.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", null, "Action Buttons"), /* @__PURE__ */ React$1.createElement(
+      DraggableList,
+      {
+        className: cx("draggable-list"),
+        items: editableActionButtonStackConfig,
+        onItemsOrderChange: updateEditableActionButtonStackConfig,
+        nestingKey: "contents",
+        renderItem: ({
+          item,
+          items,
+          getDragHandleProps,
+          nestedChildren,
+          currentNestingParent,
+          previousNestingParent,
+          updateList
+        }) => {
+          const configType = item.type;
+          if (item.type === "folder") {
+            return /* @__PURE__ */ React$1.createElement("div", { className: cx("draggable-list-item", "folder") }, /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement("div", { className: "drag-handle", ...getDragHandleProps({ className: "drag-handle" }) }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faGripVertical }), /* @__PURE__ */ React$1.createElement(
+              ActionButtonIcon,
+              {
+                iconDefinition: Folder$1,
+                state: "inactive",
+                size: "small"
+              }
+            ), "Folder"), /* @__PURE__ */ React$1.createElement("div", { className: "controls" }, /* @__PURE__ */ React$1.createElement(
+              Button,
+              {
+                variant: "link",
+                className: cx("hide-button", "muted"),
+                onClick: () => updateList(items.filter((listItem) => listItem !== item))
+              },
+              /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faTrashCan })
+            ))), !item.contents.length && /* @__PURE__ */ React$1.createElement("div", { className: "text-muted instructions" }, "(click ", /* @__PURE__ */ React$1.createElement(Arrow90degRight, null), " on items below to add to folder)"), nestedChildren);
+          } else if (item.type !== "button") {
+            logger3.error(`Unsupported action button config type ${configType}`, { item });
+            return null;
+          }
+          const buttonDefinition2 = getActionButtonDefinition(item.buttonType);
+          if (!buttonDefinition2) {
+            logger3.error(`No button definition found for action button config type ${item.buttonType}`, { item });
+            return null;
+          }
+          const dragHandleProps = getDragHandleProps({ className: "drag-handle" });
+          const isDeletable = item.buttonType !== "settings";
+          const isPinnable = !currentNestingParent;
+          const isInsideFolder = currentNestingParent;
+          const canAddToFolder = previousNestingParent && item.buttonType !== "settings" && item.buttonType !== "ui-visibility";
+          return /* @__PURE__ */ React$1.createElement("div", { className: cx("draggable-list-item") }, /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement(
+            "div",
+            {
+              className: cx("drag-handle", { disable: items.length === 1 }),
+              ...items.length > 1 ? dragHandleProps : {}
+            },
+            /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faGripVertical }),
+            /* @__PURE__ */ React$1.createElement(
+              ActionButtonIcon,
+              {
+                iconDefinition: buttonDefinition2.icon,
+                state: "inactive",
+                size: "small",
+                config: item
+              }
+            )
+          ), /* @__PURE__ */ React$1.createElement(
+            ActionButtonTitle,
+            {
+              title: buttonDefinition2.title,
+              state: "inactive",
+              config: item
+            }
+          )), /* @__PURE__ */ React$1.createElement("div", { className: "inline controls" }, "settings" in buttonDefinition2.components && /* @__PURE__ */ React$1.createElement(
+            Button,
+            {
+              variant: "link",
+              className: cx("settings", "muted"),
+              onClick: () => setActionButtonDraft(item)
+            },
+            /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPenToSquare })
+          ), canAddToFolder && /* @__PURE__ */ React$1.createElement(
+            Button,
+            {
+              variant: "link",
+              className: cx("add-to-folder", "muted"),
+              onClick: () => updateEditableActionButtonStackConfig(
+                editableActionButtonStackConfig.map((config2) => {
+                  if (config2 === previousNestingParent && config2.type === "folder") {
+                    return {
+                      ...config2,
+                      contents: [...config2.contents, item]
+                    };
+                  } else if (config2 === item) {
+                    return null;
+                  }
+                  return config2;
+                }).filter((v) => v !== null)
+              )
+            },
+            /* @__PURE__ */ React$1.createElement(Arrow90degRight, null)
+          ), isDeletable && /* @__PURE__ */ React$1.createElement(
+            Button,
+            {
+              variant: "link",
+              className: cx("hide-button", "muted"),
+              onClick: () => updateList(items.filter((listItem) => listItem !== item))
+            },
+            /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faTrashCan })
+          ), isInsideFolder && /* @__PURE__ */ React$1.createElement(
+            Button,
+            {
+              variant: "link",
+              className: cx("remove-from-folder", "muted"),
+              onClick: () => updateEditableActionButtonStackConfig(
+                editableActionButtonStackConfig.flatMap((config2) => {
+                  if (config2.type === "folder" && config2.contents.some((config22) => config22 === item)) {
+                    return [
+                      {
+                        ...config2,
+                        contents: config2.contents.filter((config22) => config22 !== item)
+                      },
+                      item
+                    ];
+                  }
+                  return config2;
+                })
+              )
+            },
+            /* @__PURE__ */ React$1.createElement(ArrowLeft, null)
+          ), isPinnable && /* @__PURE__ */ React$1.createElement(
+            Button,
+            {
+              variant: "link",
+              className: cx("pin-button", { muted: !item.pinned }),
+              onClick: () => {
+                const updatedConfig = editableActionButtonStackConfig.map(
+                  (config2) => config2.type === "button" && config2.id === item.id ? { ...config2, pinned: !config2.pinned } : config2
+                );
+                updateEditableActionButtonStackConfig([
+                  ...updatedConfig.filter((config2) => !config2.pinned),
+                  ...updatedConfig.filter((config2) => config2.pinned)
+                ]);
+              }
+            },
+            /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faThumbtack })
+          )));
+        },
+        getItemKey: (item) => item.id
+      }
+    ), /* @__PURE__ */ React$1.createElement("div", { className: "form-subgroup" }, addableActionButtons.map((actionButton) => /* @__PURE__ */ React$1.createElement(
+      Button,
+      {
+        key: actionButton.definition.id,
+        variant: "link",
+        className: cx("add-config-item", "add-action-button"),
+        onClick: () => actionButton.add()
+      },
+      /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faAdd }),
+      /* @__PURE__ */ React$1.createElement("div", { className: "info" }, /* @__PURE__ */ React$1.createElement(
+        ActionButtonIcon,
+        {
+          iconDefinition: actionButton.definition.icon,
+          state: "inactive",
+          size: "small"
+        }
+      ), /* @__PURE__ */ React$1.createElement(
+        ActionButtonTitle,
+        {
+          title: actionButton.definition.title,
+          state: "inactive"
+        }
+      ))
+    )), /* @__PURE__ */ React$1.createElement(
+      Button,
+      {
+        variant: "link",
+        className: cx("add-config-item", "add-folder"),
+        onClick: () => setTvConfig("actionButtonStackConfig", [...actionButtonStackConfig, { id: Date.now().toString(), type: "folder", pinned: false, contents: [] }])
+      },
+      /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faAdd }),
+      /* @__PURE__ */ React$1.createElement("div", { className: "info" }, /* @__PURE__ */ React$1.createElement(
+        ActionButtonIcon,
+        {
+          iconDefinition: Folder$1,
+          state: "inactive",
+          size: "small"
+        }
+      ), /* @__PURE__ */ React$1.createElement(
+        ActionButtonTitle,
+        {
+          title: "New Folder",
+          state: "inactive"
+        }
+      ))
+    )), !actionButtonStackConfigIsDefault && /* @__PURE__ */ React$1.createElement("div", { className: "inline form-subgroup" }, /* @__PURE__ */ React$1.createElement(
+      Button,
+      {
+        variant: "outline-warning",
+        onClick: () => setDefaultAppSetting("actionButtonStackConfig")
+      },
+      "Reset to default"
+    )), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Pinning buttons stops them from being pushed off screen when the window is not tall enough to show them all without scrolling.")))), /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "3" }, "Help / Info"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "3" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement(
+      Button,
+      {
+        onClick: () => setTvConfig("showGuideOverlay", true)
+      },
+      "Show Guide"
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement(
+      Button,
+      {
+        onClick: () => setGlobalState("keyboardShortcutsOpen", true)
+      },
+      "Show Keyboard Shortcuts"
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.21.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+      Switch,
+      {
+        id: "show-dev-options",
+        label: "Hide Developer Options",
+        checked: showDevOptions,
+        onChange: (event2) => setTvConfig("showDevOptions", false)
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Hide developer options.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "log-level" }, "Log Level to Show"), /* @__PURE__ */ React$1.createElement(
+      Select,
+      {
+        inputId: "log-level",
+        value: logLevelOptions.find((option) => option.value === logLevel) ?? null,
+        onChange: (newValue) => newValue?.value && setTvConfig("logLevel", newValue.value),
+        options: logLevelOptions
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The level of logging detail.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "loggers-to-show" }, "Loggers to Show"), /* @__PURE__ */ React$1.createElement(
+      Select,
+      {
+        inputId: "loggers-to-show",
+        expandWidthToFit: true,
+        options: loggerOptions,
+        value: loggerOptions.filter(
+          ({ value: category }) => loggersToShow.some(
+            (shownCategory) => category.length === shownCategory.length && category.every(
+              (part, index2) => part === shownCategory[index2]
+            )
+          )
+        ),
+        onChange: (newValues) => setTvConfig("loggersToShow", newValues.map((option) => option.value)),
+        isMulti: true,
+        closeMenuOnSelect: false
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Loggers to show logs from. An empty list will show any that aren't otherwise hidden.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "loggers-to-hide" }, "Loggers to Hide"), /* @__PURE__ */ React$1.createElement(
+      Select,
+      {
+        inputId: "loggers-to-hide",
+        expandWidthToFit: true,
+        options: loggerOptions,
+        value: loggerOptions.filter(
+          ({ value: category }) => loggersToHide.some(
+            (hiddenCategory) => category.length === hiddenCategory.length && category.every(
+              (part, index2) => part === hiddenCategory[index2]
+            )
+          )
+        ),
+        placeholder: "All loggers",
+        onChange: (newValues) => setTvConfig("loggersToHide", newValues.map((option) => option.value)),
+        isMulti: true,
+        closeMenuOnSelect: false
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Loggers to hide logs from.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "video-js-events-to-log" }, "Video.js Events To Log"), /* @__PURE__ */ React$1.createElement(
+      Select,
+      {
+        inputId: "video-js-events-to-log",
+        value: videoJsEventsToLog.map((eventName) => ({
+          label: eventName,
+          value: eventName
+        })),
+        onChange: (newValue) => setTvConfig(
+          "videoJsEventsToLog",
+          newValue.some((item) => item.value === "all") ? videoJsEvents : newValue.map((item) => item.value)
+        ),
+        options: ["all", ...videoJsEvents].map((eventName) => ({
+          label: eventName,
+          value: eventName
+        })),
+        placeholder: "Select video.js events to log",
+        isMulti: true,
+        closeMenuOnSelect: false
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Which video.js events to log to the console.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "show-debugging-info" }, "Additional Debugging Info"), /* @__PURE__ */ React$1.createElement(
+      Select,
+      {
+        inputId: "show-debugging-info",
+        value: showDebuggingInfoOptions.filter((option) => showDebuggingInfo.includes(option.value)),
+        onChange: (newValues) => setTvConfig("showDebuggingInfo", newValues.map((option) => option.value)),
+        options: showDebuggingInfoOptions,
+        isMulti: true,
+        closeMenuOnSelect: false
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Additional debugging information.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "page-size" }, "Media Loading Page Size"), /* @__PURE__ */ React$1.createElement(
+      FormImpl.Control,
+      {
+        type: "number",
+        id: "page-size",
+        className: "text-input",
+        value: pageSize,
+        onChange: (event2) => {
+          const newSize = Number.parseInt(event2.currentTarget.value);
+          if (isNaN(newSize) || newSize < 1) return;
+          setTvConfig("pageSize", newSize);
+        }
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "(Reload page to take effect.) Load this many media at a time. Default is ", getDefaultAppSetting("pageSize"), ". Changing this can impact performance.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Limit Number of Media in Media Filter"), /* @__PURE__ */ React$1.createElement(
+      FormImpl.Control,
+      {
+        type: "number",
+        id: "max-media",
+        className: "text-input",
+        value: maxMedia ?? "",
+        onChange: (event2) => setTvConfig(
+          "maxMedia",
+          event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
+        )
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Normally the feed can be scrolled till all media in the media filter have been displayed. But with this set only this many media will be displayed.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Upcoming media to render at a time"), /* @__PURE__ */ React$1.createElement(
+      FormImpl.Control,
+      {
+        type: "number",
+        id: "max-media",
+        className: "text-input",
+        value: renderedMediaItemsBuffer,
+        onChange: (event2) => setTvConfig(
+          "renderedMediaItemsBuffer",
+          event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : 0
+        )
+      }
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The maximum number of media upcoming media to be rendered off screen. Default is ", getDefaultAppSetting("renderedMediaItemsBuffer"), ". Changing this can impact performance.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "media-items-modifier-function" }, "Media Items Modifier Function"), /* @__PURE__ */ React$1.createElement(
+      FormImpl.Control,
+      {
+        as: "textarea",
+        id: "media-items-modifier-function",
+        className: "text-input",
+        value: mediaItemsModifierFunction,
+        onChange: (event2) => setTvConfig(
+          "mediaItemsModifierFunction",
+          event2.currentTarget.value
+        ),
+        placeholder: "(mediaItems) => {\n  return mediaItems.toReversed()\n}"
+      }
+    ), mediaItemsModifierFunctionValidity && /* @__PURE__ */ React$1.createElement("div", null, mediaItemsModifierFunctionValidity), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "A JavaScript function that can be used to modified the content and ordering of the displayed media items. The function is given the media items array as an argument and it must return an array of media items.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+      Button,
+      {
+        onClick: () => window.location.reload()
+      },
+      "Reload Page"
+    ))))))
+  );
+});
+SettingsTab.displayName = "SettingsTab";
+const AccordionToggle = (props) => {
+  const { children, className, as, variant, eventKey, ...otherProps } = props;
+  const contextEventKey = reactExports.useContext(context$2);
+  const open = contextEventKey === eventKey;
+  useAccordionToggle(eventKey);
+  return /* @__PURE__ */ React$1.createElement(Accordion.Toggle, { className: cx(className, open ? "open" : ""), as: Button, variant: "link", eventKey, ...otherProps }, /* @__PURE__ */ React$1.createElement("h3", null, /* @__PURE__ */ React$1.createElement("span", null, children), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faChevronLeft })));
+};
+const videoJsEvents = [.../* @__PURE__ */ new Set([
+  // HTMLMediaElement events
+  "abort",
+  "canplay",
+  "canplaythrough",
+  "durationchange",
+  "emptied",
+  "ended",
+  "error",
+  "loadeddata",
+  "loadedmetadata",
+  "loadstart",
+  "pause",
+  "play",
+  "playing",
+  "progress",
+  "ratechange",
+  "seeked",
+  "seeking",
+  "stalled",
+  "suspend",
+  "timeupdate",
+  "volumechange",
+  "waiting",
+  // HTMLVideoElement events
+  "enterpictureinpicture",
+  "leavepictureinpicture",
+  // Element events
+  "fullscreenchange",
+  "resize",
+  // video.js events
+  "audioonlymodechange",
+  "audiopostermodechange",
+  "controlsdisabled",
+  "controlsenabled",
+  "debugon",
+  "debugoff",
+  "disablepictureinpicturechanged",
+  "dispose",
+  "enterFullWindow",
+  "error",
+  "exitFullWindow",
+  "firstplay",
+  "fullscreenerror",
+  "languagechange",
+  "loadedmetadata",
+  "loadstart",
+  "playerreset",
+  "playerresize",
+  "posterchange",
+  "ready",
+  "textdata",
+  "useractive",
+  "userinactive",
+  "usingcustomcontrols",
+  "usingnativecontrols"
+])];
+const GuideOverlay = (props) => {
+  return /* @__PURE__ */ React$1.createElement(
+    "dialog",
+    {
+      className: "GuideOverlay",
+      "data-testid": "GuideOverlay",
+      open: true
+    },
+    /* @__PURE__ */ React$1.createElement("div", { className: "header" }, /* @__PURE__ */ React$1.createElement("h1", null, "Using Stash TV")),
+    /* @__PURE__ */ React$1.createElement("div", { className: "spacer row-top col-left" }),
+    /* @__PURE__ */ React$1.createElement("div", { className: "spacer row-top col-middle" }),
+    /* @__PURE__ */ React$1.createElement("div", { className: "spacer row-top col-right" }),
+    /* @__PURE__ */ React$1.createElement("div", { className: "body row-middle col-left" }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faClockRotateLeft }), /* @__PURE__ */ React$1.createElement("span", null, "Tap the left side or press the ", /* @__PURE__ */ React$1.createElement("kbd", null, "←"), " key to skip backwards by a little bit.")),
+    /* @__PURE__ */ React$1.createElement("div", { className: "body row-middle col-middle" }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPlay }), /* @__PURE__ */ React$1.createElement("span", null, "Tap the middle or press ", /* @__PURE__ */ React$1.createElement("kbd", null, "space"), " to play/pause the video.")),
+    /* @__PURE__ */ React$1.createElement("div", { className: "body row-middle col-right" }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faClockRotateLeft, flip: "horizontal" }), /* @__PURE__ */ React$1.createElement("span", null, "Tap the right side or press the ", /* @__PURE__ */ React$1.createElement("kbd", null, "→"), " key to skip forwards by a little bit.")),
+    /* @__PURE__ */ React$1.createElement("div", { className: "spacer row-bottom col-left" }),
+    /* @__PURE__ */ React$1.createElement("div", { className: "spacer row-bottom col-middle" }),
+    /* @__PURE__ */ React$1.createElement("div", { className: "spacer row-bottom col-right" }),
+    /* @__PURE__ */ React$1.createElement("div", { className: "footer" }, /* @__PURE__ */ React$1.createElement("span", null, "Swipe up or down or press the ", /* @__PURE__ */ React$1.createElement("kbd", null, "↑"), " or ", /* @__PURE__ */ React$1.createElement("kbd", null, "↓"), " keys to scroll between videos. "), /* @__PURE__ */ React$1.createElement("div", { className: "actions" }, /* @__PURE__ */ React$1.createElement("span", { className: "accessInstructions" }, "You can view this guide again in the Settings."), /* @__PURE__ */ React$1.createElement(Button, { onClick: props.onClose }, "Done")))
+  );
+};
 var bail_1;
 var hasRequiredBail;
 function requireBail() {
@@ -239059,896 +240168,34 @@ const MarkdownPage = ({ page }) => {
   }, [page, markdown]);
   return jsxRuntimeExports.jsx("div", { className: "markdown", children: jsxRuntimeExports.jsx(Remark, { remarkPlugins: [remarkGfm], children: markdown }) });
 };
-const content = "data:text/markdown;base64,fCBLZXlib2FyZCBzZXF1ZW5jZSB8IEFjdGlvbiB8CnwgLS0tLS0tLS0tLS0tLS0tLS0gfCAtLS0tLS0gfAp8IGBTcGFjZWAgfCBQbGF5L3BhdXNlIHBsYXllciB8CnwgYOKGkGAgb3IgYOKGkmAgfCBKdW1wIGZvcndhcmRzL2JhY2t3YXJkLiBUaGUganVtcCBhbW91bnQgaXMgZGVwZW5kYW50IG9uIHRoZSBsZW5ndGggb2YgdGhlIHZpZGVvIGFuZCBpdCB3aWxsIHRyeSB0byBhbGlnbiBqdW1wcyB3aXRoIG5lYXJseSBieSBtYXJrZXJzIGlmIHRoZXJlIGFyZSBhbnkuIHwKfCBIb2xkIGRvd24gYOKGkGAgb3IgYOKGkmAgfCBQbGF5L3Jld2luZCBhdCAyeCBzcGVlZCB8CnwgSG9sZCBkb3duIGDihpBgIG9yIGDihpJgIHRoZW4gdGFwIGDihpFgIG9yIGDihpNgIHwgSW5jcmVhc2Ugb3IgZGVjcmVhc2UgdGhlIHBsYXkvcmV3aW5kIHNwZWVkIHwKfCBg4oaTYCBvciBg4oaRYCB8IEdvIHRvIG5leHQvcHJldmlvdXMgbWVkaWEgfAp8IGBjYCB8IFRvZ2dsZSBDUlQgZWZmZWN0IHwKfCBgZGAgfCBEZWxldGUgdGhlIGN1cnJlbnQgc2NlbmUvbWFya2VyIChvcGVucyB0aGUgY29uZmlybWF0aW9uIGRpYWxvZyB3aXRoIERlbGV0ZSBmb2N1c2VkLCBzbyBgRW50ZXJgIGNvbmZpcm1zKSB8CnwgYGVgIHwgRWRpdCBzY2VuZS9tYXJrZXIgdGFncyB8CnwgYGZgIHwgVG9nZ2xlIGZ1bGxzY3JlZW4gfAp8IGBpYCB8IFRvZ2dsZSBzY2VuZSBpbmZvIHwKfCBgbGAgfCBUb2dnbGUgbG9vcGluZyB0aGUgc2NlbmUgfAp8IGBtYCB8IE11dGUvdW5tdXRlIHwKfCBgb2AgfCBUb2dnbGUgZm9yY2VkIGxhbmRzY2FwZSBvcmllbnRhdGlvbiB8CnwgYHNgIHwgVG9nZ2xlIHN1YnRpdGxlcyB8Cg==";
+const content = "## General\n\n| Keyboard sequence | Action |\n| ----------------- | ------ |\n| `?` | Show keyboard shortcuts |\n\n## Playback\n\n| Keyboard sequence | Action |\n| ----------------- | ------ |\n| `Space` | Play/pause player |\n| `←` or `→` | Jump forwards/backward. The jump amount is dependant on the length of the video and it will try to align jumps with nearly by markers if there are any. |\n| Hold down `←` or `→` | Play/rewind at 2x speed |\n| Hold down `←` or `→` then tap `↑` or `↓` | Increase or decrease the play/rewind speed |\n| `↓` or `↑` | Go to next/previous media |\n| `l` | Toggle looping the scene |\n| `m` | Mute/unmute |\n\n## Scene/Marker Actions\n\nRatings set on a marker apply to the marker's scene.\n\n| Keyboard sequence | Action |\n| ----------------- | ------ |\n| `r {1-5}` | Set star rating | <!-- rating-system: stars -->\n| `r 0` | Unset star rating | <!-- rating-system: stars -->\n| `r {0-9} {0-9}` | Set decimal rating (e.g. `r 36` for `3.6`, use `r 00` for `10.0`) | <!-- rating-system: decimal -->\n| ``r ` `` | Unset decimal rating | <!-- rating-system: decimal -->\n| `d` | Delete the current scene/marker (opens the confirmation dialog with Delete focused, so `Enter` confirms) |\n| `e` | Edit scene/marker tags |\n| `i` | Toggle scene info |\n\n## Display\n\n| Keyboard sequence | Action |\n| ----------------- | ------ |\n| `c` | Toggle CRT effect |\n| `f` | Toggle fullscreen |\n| `o` | Toggle forced landscape orientation |\n| `s` | Toggle subtitles |\n";
+const ratingSystemTag = /\s*<!--\s*rating-system:\s*(\w+)\s*-->\s*$/;
+function filterShortcutsForRatingSystem(markdown, ratingSystem) {
+  return markdown.split("\n").flatMap((line2) => {
+    const match2 = line2.match(ratingSystemTag);
+    if (!match2) return [line2];
+    return match2[1] === ratingSystem ? [line2.replace(ratingSystemTag, "")] : [];
+  }).join("\n");
+}
 const KeyboardShortcutsInfo = ({ show, onHide: onHide3 }) => {
+  const { configuration: stashConfig } = reactExports.useContext(ConfigurationContext);
+  const ratingSystem = stashConfig?.ui?.ratingSystemOptions?.type ?? defaultRatingSystemOptions.type;
+  const pageUrl = `data:text/markdown;charset=utf-8,${encodeURIComponent(filterShortcutsForRatingSystem(content, ratingSystem))}`;
   return /* @__PURE__ */ React$1.createElement(
     Modal,
     {
       show,
       onHide: onHide3,
-      className: "KeyboardShortcutsInfo"
+      className: "KeyboardShortcutsInfo",
+      "aria-labelledby": "KeyboardShortcutsInfo-title"
     },
-    /* @__PURE__ */ React$1.createElement(Modal.Header, { closeButton: true }, /* @__PURE__ */ React$1.createElement(Modal.Title, null, "Keyboard Shortcuts")),
-    /* @__PURE__ */ React$1.createElement(Modal.Body, null, /* @__PURE__ */ React$1.createElement(MarkdownPage, { page: content }))
-  );
-};
-const SettingsTab = reactExports.memo(() => {
-  const logger3 = getLogger(["stash-tv", "SettingsTab"]);
-  const { data: { subtitleLanguage }, update: updateStashTvConfig } = useStashTvConfig();
-  const {
-    mediaItemFiltersLoading,
-    mediaItemFiltersError,
-    currentMediaItemFilter,
-    availableSavedFilters
-  } = useMediaItemFilters();
-  const {
-    isRandomised,
-    crtEffect,
-    crtEffectStrength,
-    scenePreviewOnly,
-    markerPreviewOnly,
-    onlyShowMatchingOrientation,
-    showDevOptions,
-    videoJsEventsToLog,
-    logLevel,
-    loggersToShow,
-    loggersToHide,
-    showDebuggingInfo,
-    autoPlay,
-    pageSize,
-    startPosition,
-    endPosition,
-    playLength,
-    minPlayLength,
-    maxPlayLength,
-    maxMedia,
-    leftHandedUi,
-    actionButtonStackConfig,
-    mediaItemsModifierFunction,
-    renderedMediaItemsBuffer,
-    set: setTvConfig,
-    setToDefault: setDefaultAppSetting,
-    getDefault: getDefaultAppSetting
-  } = useTvConfig();
-  const { mediaItems, mediaItemsLoading, mediaItemsNeverLoaded, mediaItemsError } = useMediaItems();
-  const noMediaItemsAvailable = !mediaItemFiltersLoading && !mediaItemsLoading && mediaItems.length === 0;
-  const actionButtonStackConfigIsDefault = reactExports.useMemo(() => {
-    const defaultConfig2 = getDefaultAppSetting("actionButtonStackConfig");
-    const hashOptions = { excludeKeys: (key) => ["id"].includes(key) };
-    return objectHash(actionButtonStackConfig, hashOptions) === objectHash(defaultConfig2, hashOptions);
-  }, [getDefaultAppSetting, actionButtonStackConfig]);
-  const [displayedModal, setDisplayedModal] = reactExports.useState(null);
-  const allFilters = reactExports.useMemo(
-    () => availableSavedFilters.map((filter2) => ({
-      value: filter2.id,
-      label: filter2.name,
-      filterType: filter2.entityType
-    })).sort((a4, b3) => a4.label.localeCompare(b3.label)),
-    [availableSavedFilters]
-  );
-  const allFiltersGrouped = reactExports.useMemo(
-    () => [
-      {
-        label: "Scene Filters",
-        filterType: "scene",
-        options: allFilters.filter((filter2) => filter2.filterType === "scene")
-      },
-      {
-        label: "Marker Filters",
-        filterType: "marker",
-        options: allFilters.filter((filter2) => filter2.filterType === "marker")
-      }
-    ],
-    [allFilters]
-  );
-  const selectedFilter = allFilters.find((filter2) => filter2.value === currentMediaItemFilter?.savedFilter?.id);
-  const subtitlesList = ISO6391.getAllNames().map((name2) => ({
-    label: name2,
-    value: ISO6391.getCode(name2)
-  })).sort((a4, b3) => {
-    if (a4.label < b3.label) {
-      return -1;
-    }
-    if (a4.label > b3.label) {
-      return 1;
-    }
-    return 0;
-  });
-  const defaultSubtitles = subtitleLanguage ? {
-    label: ISO6391.getName(subtitleLanguage),
-    value: subtitleLanguage
-  } : void 0;
-  const titleRef = React$1.useRef(null);
-  reactExports.useEffect(() => {
-    if (!titleRef.current) return;
-    let clearClickCountTimer;
-    let clickCount = 0;
-    const handlePointerUp = () => {
-      clickCount += 1;
-      if (clickCount > 4) {
-        setTvConfig("showDevOptions", true);
-      }
-      clearTimeout(clearClickCountTimer);
-      clearClickCountTimer = setTimeout(() => {
-        clickCount = 0;
-      }, 1e3);
-    };
-    titleRef.current.addEventListener("pointerup", handlePointerUp);
-    return () => {
-      titleRef.current?.removeEventListener("pointerup", handlePointerUp);
-    };
-  }, [titleRef]);
-  const isFirstLoad = mediaItemsNeverLoaded && !mediaItemFiltersError && !mediaItemsError;
-  let disableClose = false;
-  if (!isFirstLoad && (mediaItemFiltersLoading || mediaItemsLoading)) {
-    disableClose = "because loading";
-  } else if (!isFirstLoad && noMediaItemsAvailable) {
-    disableClose = true;
-  } else if (mediaItemsError || mediaItemFiltersError) {
-    disableClose = true;
-  }
-  const startPositionOptions = [
-    { value: "resume", label: "Resume from last position" },
-    { value: "beginning", label: "Beginning" },
-    { value: "random", label: "Random marker (or position if none)" }
-  ];
-  const endPositionOptions = [
-    { value: "video-end", label: "End of video" },
-    { value: "fixed-length", label: "After a fixed length of time" },
-    { value: "random-length", label: "After a random length of time" }
-  ];
-  const logLevelOptions = reactExports.useMemo(() => Object.entries(
-    {
-      "trace": "Trace (most verbose)",
-      "debug": "Debug",
-      "info": "Info",
-      "warning": "Warning",
-      "error": "Error",
-      "fatal": "Fatal (least verbose)"
-    }
-  ).map(([value, label]) => ({
-    value,
-    label
-  })), []);
-  const [loggers, setLoggers] = React$1.useState(getLoggers());
-  reactExports.useEffect(() => {
-    const interval = setInterval(() => {
-      const newLoggers = getLoggers().filter((newLogger) => !loggers.includes(newLogger));
-      if (newLoggers.length === 0) return;
-      setLoggers([
-        ...loggers,
-        ...newLoggers
-      ]);
-    }, 1e3);
-    return () => clearInterval(interval);
-  }, [loggers]);
-  const loggerOptions = reactExports.useMemo(
-    () => loggers.map((logger22) => logger22.category).filter(
-      (category) => category.length && category[0] !== "logtape" && (category.length !== 1 || category[0] !== "stash-tv")
-      // Exclude root stash-tv logger
-    ).map((category) => ({
-      value: category,
-      label: category.join(" / ").replace(/^stash-tv \/ /, "")
-    })).toSorted((a4, b3) => a4.label.localeCompare(b3.label)),
-    [loggers]
-  );
-  const showDebuggingInfoOptions = reactExports.useMemo(() => Object.entries(
-    {
-      "render-debugging": "Render Debugging",
-      "onscreen-info": "On-screen Info",
-      "virtualizer-debugging": "Virtualizer Debugging"
-    }
-  ).map(([value, label]) => ({
-    value,
-    label
-  })), []);
-  const [actionButtonDraft, setActionButtonDraft] = React$1.useState(null);
-  reactExports.useEffect(() => setDisplayedModal(actionButtonDraft ? "action-button-settings" : null), [actionButtonDraft]);
-  const saveActionButtonDraft = (actionButton) => {
-    const existingButtonIndex = actionButtonStackConfig.findIndex((button) => button.id === actionButton.id);
-    if (existingButtonIndex !== -1) {
-      setTvConfig(
-        "actionButtonStackConfig",
-        actionButtonStackConfig.map((button, index2) => index2 === existingButtonIndex ? actionButton : button)
-      );
-    } else {
-      setTvConfig(
-        "actionButtonStackConfig",
-        [...actionButtonStackConfig, { ...actionButton, id: Date.now().toString() }]
-      );
-    }
-  };
-  const addableActionButtons = allButtonDefinition.map((definition) => {
-    return {
-      definition,
-      isRepeatable: "isRepeatable" in definition && definition.isRepeatable,
-      add() {
-        const options2 = {
-          includeMarkerDefaults: false
-        };
-        if (definition.id === "create-marker" && actionButtonStackConfig.some((config22) => config22.type === "button" && config22.buttonType === "create-marker")) {
-          options2.includeMarkerDefaults = true;
-        }
-        const config2 = createNewActionButtonConfig(definition.id, options2);
-        const buttonDefinition2 = getActionButtonDefinition(definition.id);
-        if ("settings" in buttonDefinition2.components) {
-          setActionButtonDraft(config2);
-        } else {
-          setTvConfig("actionButtonStackConfig", [...actionButtonStackConfig, config2]);
-        }
-      }
-    };
-  }).filter((v) => v !== null).filter(
-    (actionButton) => !actionButtonStackConfig.some(
-      (config2) => config2.type === "button" && config2.buttonType === actionButton.definition.id || config2.type === "folder" && config2.contents.some(
-        (config22) => config22.type === "button" && config22.buttonType === actionButton.definition.id
-      )
-    ) || actionButton.isRepeatable
-  );
-  const hydratedMediaItemsModifierFunction = mediaItemsModifierFunction && getFunctionFromString(mediaItemsModifierFunction);
-  const mediaItemsModifierFunctionValidity = reactExports.useMemo(() => {
-    if (!hydratedMediaItemsModifierFunction) return "";
-    if (hydratedMediaItemsModifierFunction instanceof Error) {
-      return hydratedMediaItemsModifierFunction.message;
-    }
-    try {
-      if (!Array.isArray(hydratedMediaItemsModifierFunction([]))) {
-        return "Does not return an array";
-      }
-    } catch (error) {
-      return `Threw an error when run: ${error}`;
-    }
-    return "";
-  }, [hydratedMediaItemsModifierFunction]);
-  const editableActionButtonStackConfig = reactExports.useMemo(
-    () => actionButtonStackConfig.toReversed().map((item) => {
-      if (item.type === "folder") {
-        return {
-          ...item,
-          contents: item.contents.toReversed()
-        };
-      }
-      return item;
-    }).toSorted((a4, b3) => (a4.pinned ? 1 : 0) - (b3.pinned ? 1 : 0)),
-    [actionButtonStackConfig]
-  );
-  const updateEditableActionButtonStackConfig = ((newConfig) => {
-    newConfig = newConfig.toReversed().map((item) => {
-      if (item.type === "folder") {
-        return {
-          ...item,
-          contents: item.contents.toReversed()
-        };
-      }
-      return item;
-    });
-    const indexOfFirstNonPinned = newConfig.findIndex((config2) => !config2.pinned);
-    newConfig = newConfig.map((config2, index2) => ({
-      ...config2,
-      pinned: config2.pinned && index2 >= indexOfFirstNonPinned ? false : config2.pinned
-    }));
-    setTvConfig(
-      "actionButtonStackConfig",
-      newConfig
-    );
-  });
-  return /* @__PURE__ */ React$1.createElement(
-    SideDrawer,
-    {
-      title: reactExports.useMemo(() => /* @__PURE__ */ React$1.createElement("span", { ref: titleRef }, "Settings"), []),
-      closeDisabled: disableClose,
-      className: "SettingsTab"
-    },
-    displayedModal === "action-button-settings" && actionButtonDraft && /* @__PURE__ */ React$1.createElement(
-      ActionButtonSettingsModal,
-      {
-        initialActionButtonConfig: actionButtonDraft,
-        onClose: () => setActionButtonDraft(null),
-        onSave: (config2) => {
-          saveActionButtonDraft(config2);
-          setActionButtonDraft(null);
-        }
-      }
-    ),
-    /* @__PURE__ */ React$1.createElement(
-      KeyboardShortcutsInfo,
-      {
-        show: displayedModal === "keyboard-shortcuts",
-        onHide: () => setDisplayedModal(null)
-      }
-    ),
-    /* @__PURE__ */ React$1.createElement(Accordion, { defaultActiveKey: "0" }, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "0" }, "Media Feed"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "0" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "filter" }, "Media Filter"), /* @__PURE__ */ React$1.createElement(
-      Select,
-      {
-        inputId: "filter",
-        isLoading: mediaItemFiltersLoading || mediaItemsLoading,
-        value: selectedFilter ?? null,
-        onChange: (newValue) => newValue && setTvConfig("currentFilterId", newValue.value),
-        options: allFiltersGrouped,
-        placeholder: `${allFilters.length > 0 ? "No filter selected" : "No filters saved in stash"}. Showing all scenes.`,
-        components: {
-          GroupHeading: (props) => /* @__PURE__ */ React$1.createElement(components.GroupHeading, { ...props }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: props.data.filterType === "scene" ? faCirclePlay : faLocationDot }), props.data.label),
-          SingleValue: (props) => /* @__PURE__ */ React$1.createElement(components.SingleValue, { ...props }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: props.data.filterType === "scene" ? faCirclePlay : faLocationDot }), props.data.label)
-        }
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Choose a filter from Stash to use as your Stash TV filter. If you don't have any filters create a new", " ", /* @__PURE__ */ React$1.createElement("a", { href: new URL("/scenes", getStashOrigin()).toString() }, "scene filter"), " or", " ", /* @__PURE__ */ React$1.createElement("a", { href: new URL("/scenes/markers", getStashOrigin()).toString() }, "marker filter"), " in Stash and it will appear here."), mediaItemFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, currentMediaItemFilter?.savedFilter?.find_filter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
-      Switch,
-      {
-        id: "randomise-filter",
-        checked: isRandomised,
-        label: "Randomise filter order",
-        onChange: (event2) => setTvConfig("isRandomised", event2.target.checked)
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Randomise the order of scenes in the filter."))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
-      Switch,
-      {
-        id: "only-show-matching-orientation",
-        label: "Only Show Scenes Matching Orientation",
-        checked: onlyShowMatchingOrientation,
-        onChange: (event2) => setTvConfig("onlyShowMatchingOrientation", event2.target.checked)
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Limit scenes to only those in the same orientation as the current window.")))), /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "1" }, "Media Player"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "1" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
-      Switch,
-      {
-        id: "auto-play",
-        label: "Auto Play",
-        checked: autoPlay,
-        onChange: (event2) => setTvConfig("autoPlay", event2.target.checked)
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Automatically play scenes.")), selectedFilter?.filterType === "scene" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
-      Switch,
-      {
-        id: "scene-preview-only",
-        label: "Scene Preview Only",
-        checked: scenePreviewOnly,
-        onChange: (event2) => setTvConfig("scenePreviewOnly", event2.target.checked)
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Play a short preview rather than the full scene. (Requires the preview files to have been generated in Stash for a scene otherwise the full scene will be shown.)")), selectedFilter?.filterType === "marker" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
-      Switch,
-      {
-        id: "marker-preview-only",
-        label: "Play Low-res Preview",
-        checked: markerPreviewOnly,
-        onChange: (event2) => setTvConfig("markerPreviewOnly", event2.target.checked)
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Play the low-resolution marker preview which can be useful for low bandwidth situations. (Requires the preview files to have been generated in Stash for a marker otherwise the full-quality video will be shown.)")), (!selectedFilter || selectedFilter.filterType === "scene") && !scenePreviewOnly && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "start-position" }, "Start Point"), /* @__PURE__ */ React$1.createElement(
-      Select,
-      {
-        inputId: "start-position",
-        value: startPositionOptions.find((option) => option.value === startPosition) ?? null,
-        onChange: (newValue) => newValue && setTvConfig("startPosition", newValue.value),
-        options: startPositionOptions
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The point in the scene to start playback from.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "end-position" }, "End Point"), /* @__PURE__ */ React$1.createElement(
-      Select,
-      {
-        inputId: "end-position",
-        value: endPositionOptions.find((option) => option.value === endPosition) ?? null,
-        onChange: (newValue) => newValue && setTvConfig("endPosition", newValue.value),
-        options: endPositionOptions
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The point in the scene to end playback."), endPosition === "fixed-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "play-length" }, "Play Length (Seconds)"), /* @__PURE__ */ React$1.createElement(
-      FormImpl.Control,
-      {
-        type: "number",
-        id: "play-length",
-        className: "text-input",
-        value: playLength ?? "",
-        onChange: (event2) => setTvConfig(
-          "playLength",
-          event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
-        )
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The length to play the scene for after the start point. Will play the full scene if not set.")), endPosition === "random-length" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", null, "Random Play Length Range (Seconds)"), /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "min-play-length", className: "sr-only" }, "Random Length Minimum"), /* @__PURE__ */ React$1.createElement(
-      FormImpl.Control,
-      {
-        type: "number",
-        id: "min-play-length",
-        className: "text-input",
-        placeholder: "Min",
-        value: minPlayLength ?? "",
-        onChange: (event2) => setTvConfig(
-          "minPlayLength",
-          event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
-        )
-      }
-    ), /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-play-length", className: "sr-only" }, "Random Length Maximum"), /* @__PURE__ */ React$1.createElement(
-      FormImpl.Control,
-      {
-        type: "number",
-        id: "max-play-length",
-        className: "text-input",
-        value: maxPlayLength ?? "",
-        placeholder: "Max",
-        onChange: (event2) => setTvConfig(
-          "maxPlayLength",
-          event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
-        )
-      }
-    )), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Sets the minimum and maximum length to randomly play the scene for.")))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "subtitle-language" }, "Subtitle language"), /* @__PURE__ */ React$1.createElement(
-      Select,
-      {
-        inputId: "subtitle-language",
-        value: defaultSubtitles,
-        onChange: (newValue) => {
-          if (!newValue) return;
-          updateStashTvConfig(
-            {
-              subtitleLanguage: newValue.value
-            }
-          );
-        },
-        options: subtitlesList,
-        placeholder: "Select a subtitle language"
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Select the language to use for subtitles if available.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
-      Switch,
-      {
-        id: "crt-effect",
-        label: "CRT Effect",
-        checked: crtEffect,
-        onChange: (event2) => setTvConfig("crtEffect", event2.target.checked)
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Emulate the visual effects of an old CRT television."), crtEffect && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
-      Slider,
-      {
-        id: "crt-effect-strength",
-        min: 0,
-        max: 1,
-        step: 0.2,
-        marks: true,
-        value: [crtEffectStrength],
-        onValueChange: (e2) => setTvConfig("crtEffectStrength", Number(e2[0]))
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Adjusts how strong the CRT effect is."))))), /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "2" }, "UI"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "2" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
-      Switch,
-      {
-        id: "left-handed-ui",
-        label: "Left-handed UI",
-        checked: leftHandedUi,
-        onChange: (event2) => setTvConfig("leftHandedUi", event2.target.checked)
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Flip the user interface for left-handed use.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", null, "Action Buttons"), /* @__PURE__ */ React$1.createElement(
-      DraggableList,
-      {
-        className: cx("draggable-list"),
-        items: editableActionButtonStackConfig,
-        onItemsOrderChange: updateEditableActionButtonStackConfig,
-        nestingKey: "contents",
-        renderItem: ({
-          item,
-          items,
-          getDragHandleProps,
-          nestedChildren,
-          currentNestingParent,
-          previousNestingParent,
-          updateList
-        }) => {
-          const configType = item.type;
-          if (item.type === "folder") {
-            return /* @__PURE__ */ React$1.createElement("div", { className: cx("draggable-list-item", "folder") }, /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement("div", { className: "drag-handle", ...getDragHandleProps({ className: "drag-handle" }) }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faGripVertical }), /* @__PURE__ */ React$1.createElement(
-              ActionButtonIcon,
-              {
-                iconDefinition: Folder$1,
-                state: "inactive",
-                size: "small"
-              }
-            ), "Folder"), /* @__PURE__ */ React$1.createElement("div", { className: "controls" }, /* @__PURE__ */ React$1.createElement(
-              Button,
-              {
-                variant: "link",
-                className: cx("hide-button", "muted"),
-                onClick: () => updateList(items.filter((listItem) => listItem !== item))
-              },
-              /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faTrashCan })
-            ))), !item.contents.length && /* @__PURE__ */ React$1.createElement("div", { className: "text-muted instructions" }, "(click ", /* @__PURE__ */ React$1.createElement(Arrow90degRight, null), " on items below to add to folder)"), nestedChildren);
-          } else if (item.type !== "button") {
-            logger3.error(`Unsupported action button config type ${configType}`, { item });
-            return null;
-          }
-          const buttonDefinition2 = getActionButtonDefinition(item.buttonType);
-          if (!buttonDefinition2) {
-            logger3.error(`No button definition found for action button config type ${item.buttonType}`, { item });
-            return null;
-          }
-          const dragHandleProps = getDragHandleProps({ className: "drag-handle" });
-          const isDeletable = item.buttonType !== "settings";
-          const isPinnable = !currentNestingParent;
-          const isInsideFolder = currentNestingParent;
-          const canAddToFolder = previousNestingParent && item.buttonType !== "settings" && item.buttonType !== "ui-visibility";
-          return /* @__PURE__ */ React$1.createElement("div", { className: cx("draggable-list-item") }, /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement(
-            "div",
-            {
-              className: cx("drag-handle", { disable: items.length === 1 }),
-              ...items.length > 1 ? dragHandleProps : {}
-            },
-            /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faGripVertical }),
-            /* @__PURE__ */ React$1.createElement(
-              ActionButtonIcon,
-              {
-                iconDefinition: buttonDefinition2.icon,
-                state: "inactive",
-                size: "small",
-                config: item
-              }
-            )
-          ), /* @__PURE__ */ React$1.createElement(
-            ActionButtonTitle,
-            {
-              title: buttonDefinition2.title,
-              state: "inactive",
-              config: item
-            }
-          )), /* @__PURE__ */ React$1.createElement("div", { className: "inline controls" }, "settings" in buttonDefinition2.components && /* @__PURE__ */ React$1.createElement(
-            Button,
-            {
-              variant: "link",
-              className: cx("settings", "muted"),
-              onClick: () => setActionButtonDraft(item)
-            },
-            /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPenToSquare })
-          ), canAddToFolder && /* @__PURE__ */ React$1.createElement(
-            Button,
-            {
-              variant: "link",
-              className: cx("add-to-folder", "muted"),
-              onClick: () => updateEditableActionButtonStackConfig(
-                editableActionButtonStackConfig.map((config2) => {
-                  if (config2 === previousNestingParent && config2.type === "folder") {
-                    return {
-                      ...config2,
-                      contents: [...config2.contents, item]
-                    };
-                  } else if (config2 === item) {
-                    return null;
-                  }
-                  return config2;
-                }).filter((v) => v !== null)
-              )
-            },
-            /* @__PURE__ */ React$1.createElement(Arrow90degRight, null)
-          ), isDeletable && /* @__PURE__ */ React$1.createElement(
-            Button,
-            {
-              variant: "link",
-              className: cx("hide-button", "muted"),
-              onClick: () => updateList(items.filter((listItem) => listItem !== item))
-            },
-            /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faTrashCan })
-          ), isInsideFolder && /* @__PURE__ */ React$1.createElement(
-            Button,
-            {
-              variant: "link",
-              className: cx("remove-from-folder", "muted"),
-              onClick: () => updateEditableActionButtonStackConfig(
-                editableActionButtonStackConfig.flatMap((config2) => {
-                  if (config2.type === "folder" && config2.contents.some((config22) => config22 === item)) {
-                    return [
-                      {
-                        ...config2,
-                        contents: config2.contents.filter((config22) => config22 !== item)
-                      },
-                      item
-                    ];
-                  }
-                  return config2;
-                })
-              )
-            },
-            /* @__PURE__ */ React$1.createElement(ArrowLeft, null)
-          ), isPinnable && /* @__PURE__ */ React$1.createElement(
-            Button,
-            {
-              variant: "link",
-              className: cx("pin-button", { muted: !item.pinned }),
-              onClick: () => {
-                const updatedConfig = editableActionButtonStackConfig.map(
-                  (config2) => config2.type === "button" && config2.id === item.id ? { ...config2, pinned: !config2.pinned } : config2
-                );
-                updateEditableActionButtonStackConfig([
-                  ...updatedConfig.filter((config2) => !config2.pinned),
-                  ...updatedConfig.filter((config2) => config2.pinned)
-                ]);
-              }
-            },
-            /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faThumbtack })
-          )));
-        },
-        getItemKey: (item) => item.id
-      }
-    ), /* @__PURE__ */ React$1.createElement("div", { className: "form-subgroup" }, addableActionButtons.map((actionButton) => /* @__PURE__ */ React$1.createElement(
-      Button,
-      {
-        key: actionButton.definition.id,
-        variant: "link",
-        className: cx("add-config-item", "add-action-button"),
-        onClick: () => actionButton.add()
-      },
-      /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faAdd }),
-      /* @__PURE__ */ React$1.createElement("div", { className: "info" }, /* @__PURE__ */ React$1.createElement(
-        ActionButtonIcon,
-        {
-          iconDefinition: actionButton.definition.icon,
-          state: "inactive",
-          size: "small"
-        }
-      ), /* @__PURE__ */ React$1.createElement(
-        ActionButtonTitle,
-        {
-          title: actionButton.definition.title,
-          state: "inactive"
-        }
-      ))
-    )), /* @__PURE__ */ React$1.createElement(
-      Button,
-      {
-        variant: "link",
-        className: cx("add-config-item", "add-folder"),
-        onClick: () => setTvConfig("actionButtonStackConfig", [...actionButtonStackConfig, { id: Date.now().toString(), type: "folder", pinned: false, contents: [] }])
-      },
-      /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faAdd }),
-      /* @__PURE__ */ React$1.createElement("div", { className: "info" }, /* @__PURE__ */ React$1.createElement(
-        ActionButtonIcon,
-        {
-          iconDefinition: Folder$1,
-          state: "inactive",
-          size: "small"
-        }
-      ), /* @__PURE__ */ React$1.createElement(
-        ActionButtonTitle,
-        {
-          title: "New Folder",
-          state: "inactive"
-        }
-      ))
-    )), !actionButtonStackConfigIsDefault && /* @__PURE__ */ React$1.createElement("div", { className: "inline form-subgroup" }, /* @__PURE__ */ React$1.createElement(
-      Button,
-      {
-        variant: "outline-warning",
-        onClick: () => setDefaultAppSetting("actionButtonStackConfig")
-      },
-      "Reset to default"
-    )), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Pinning buttons stops them from being pushed off screen when the window is not tall enough to show them all without scrolling.")))), /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "3" }, "Help / Info"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "3" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement(
-      Button,
-      {
-        onClick: () => setTvConfig("showGuideOverlay", true)
-      },
-      "Show Guide"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show instructions for using Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement(
-      Button,
-      {
-        onClick: () => setDisplayedModal("keyboard-shortcuts")
-      },
-      "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.20.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
-      Switch,
-      {
-        id: "show-dev-options",
-        label: "Hide Developer Options",
-        checked: showDevOptions,
-        onChange: (event2) => setTvConfig("showDevOptions", false)
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Hide developer options.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "log-level" }, "Log Level to Show"), /* @__PURE__ */ React$1.createElement(
-      Select,
-      {
-        inputId: "log-level",
-        value: logLevelOptions.find((option) => option.value === logLevel) ?? null,
-        onChange: (newValue) => newValue?.value && setTvConfig("logLevel", newValue.value),
-        options: logLevelOptions
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The level of logging detail.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "loggers-to-show" }, "Loggers to Show"), /* @__PURE__ */ React$1.createElement(
-      Select,
-      {
-        inputId: "loggers-to-show",
-        expandWidthToFit: true,
-        options: loggerOptions,
-        value: loggerOptions.filter(
-          ({ value: category }) => loggersToShow.some(
-            (shownCategory) => category.length === shownCategory.length && category.every(
-              (part, index2) => part === shownCategory[index2]
-            )
-          )
-        ),
-        onChange: (newValues) => setTvConfig("loggersToShow", newValues.map((option) => option.value)),
-        isMulti: true,
-        closeMenuOnSelect: false
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Loggers to show logs from. An empty list will show any that aren't otherwise hidden.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "loggers-to-hide" }, "Loggers to Hide"), /* @__PURE__ */ React$1.createElement(
-      Select,
-      {
-        inputId: "loggers-to-hide",
-        expandWidthToFit: true,
-        options: loggerOptions,
-        value: loggerOptions.filter(
-          ({ value: category }) => loggersToHide.some(
-            (hiddenCategory) => category.length === hiddenCategory.length && category.every(
-              (part, index2) => part === hiddenCategory[index2]
-            )
-          )
-        ),
-        placeholder: "All loggers",
-        onChange: (newValues) => setTvConfig("loggersToHide", newValues.map((option) => option.value)),
-        isMulti: true,
-        closeMenuOnSelect: false
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Loggers to hide logs from.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "video-js-events-to-log" }, "Video.js Events To Log"), /* @__PURE__ */ React$1.createElement(
-      Select,
-      {
-        inputId: "video-js-events-to-log",
-        value: videoJsEventsToLog.map((eventName) => ({
-          label: eventName,
-          value: eventName
-        })),
-        onChange: (newValue) => setTvConfig(
-          "videoJsEventsToLog",
-          newValue.some((item) => item.value === "all") ? videoJsEvents : newValue.map((item) => item.value)
-        ),
-        options: ["all", ...videoJsEvents].map((eventName) => ({
-          label: eventName,
-          value: eventName
-        })),
-        placeholder: "Select video.js events to log",
-        isMulti: true,
-        closeMenuOnSelect: false
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Which video.js events to log to the console.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "show-debugging-info" }, "Additional Debugging Info"), /* @__PURE__ */ React$1.createElement(
-      Select,
-      {
-        inputId: "show-debugging-info",
-        value: showDebuggingInfoOptions.filter((option) => showDebuggingInfo.includes(option.value)),
-        onChange: (newValues) => setTvConfig("showDebuggingInfo", newValues.map((option) => option.value)),
-        options: showDebuggingInfoOptions,
-        isMulti: true,
-        closeMenuOnSelect: false
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Additional debugging information.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "page-size" }, "Media Loading Page Size"), /* @__PURE__ */ React$1.createElement(
-      FormImpl.Control,
-      {
-        type: "number",
-        id: "page-size",
-        className: "text-input",
-        value: pageSize,
-        onChange: (event2) => {
-          const newSize = Number.parseInt(event2.currentTarget.value);
-          if (isNaN(newSize) || newSize < 1) return;
-          setTvConfig("pageSize", newSize);
-        }
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "(Reload page to take effect.) Load this many media at a time. Default is ", getDefaultAppSetting("pageSize"), ". Changing this can impact performance.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Limit Number of Media in Media Filter"), /* @__PURE__ */ React$1.createElement(
-      FormImpl.Control,
-      {
-        type: "number",
-        id: "max-media",
-        className: "text-input",
-        value: maxMedia ?? "",
-        onChange: (event2) => setTvConfig(
-          "maxMedia",
-          event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : void 0
-        )
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Normally the feed can be scrolled till all media in the media filter have been displayed. But with this set only this many media will be displayed.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "max-media" }, "Upcoming media to render at a time"), /* @__PURE__ */ React$1.createElement(
-      FormImpl.Control,
-      {
-        type: "number",
-        id: "max-media",
-        className: "text-input",
-        value: renderedMediaItemsBuffer,
-        onChange: (event2) => setTvConfig(
-          "renderedMediaItemsBuffer",
-          event2.currentTarget.value ? Number.parseInt(event2.currentTarget.value) : 0
-        )
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "The maximum number of media upcoming media to be rendered off screen. Default is ", getDefaultAppSetting("renderedMediaItemsBuffer"), ". Changing this can impact performance.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "media-items-modifier-function" }, "Media Items Modifier Function"), /* @__PURE__ */ React$1.createElement(
-      FormImpl.Control,
-      {
-        as: "textarea",
-        id: "media-items-modifier-function",
-        className: "text-input",
-        value: mediaItemsModifierFunction,
-        onChange: (event2) => setTvConfig(
-          "mediaItemsModifierFunction",
-          event2.currentTarget.value
-        ),
-        placeholder: "(mediaItems) => {\n  return mediaItems.toReversed()\n}"
-      }
-    ), mediaItemsModifierFunctionValidity && /* @__PURE__ */ React$1.createElement("div", null, mediaItemsModifierFunctionValidity), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "A JavaScript function that can be used to modified the content and ordering of the displayed media items. The function is given the media items array as an argument and it must return an array of media items.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
-      Button,
-      {
-        onClick: () => window.location.reload()
-      },
-      "Reload Page"
-    ))))))
-  );
-});
-SettingsTab.displayName = "SettingsTab";
-const AccordionToggle = (props) => {
-  const { children, className, as, variant, eventKey, ...otherProps } = props;
-  const contextEventKey = reactExports.useContext(context$2);
-  const open = contextEventKey === eventKey;
-  useAccordionToggle(eventKey);
-  return /* @__PURE__ */ React$1.createElement(Accordion.Toggle, { className: cx(className, open ? "open" : ""), as: Button, variant: "link", eventKey, ...otherProps }, /* @__PURE__ */ React$1.createElement("h3", null, /* @__PURE__ */ React$1.createElement("span", null, children), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faChevronLeft })));
-};
-const videoJsEvents = [.../* @__PURE__ */ new Set([
-  // HTMLMediaElement events
-  "abort",
-  "canplay",
-  "canplaythrough",
-  "durationchange",
-  "emptied",
-  "ended",
-  "error",
-  "loadeddata",
-  "loadedmetadata",
-  "loadstart",
-  "pause",
-  "play",
-  "playing",
-  "progress",
-  "ratechange",
-  "seeked",
-  "seeking",
-  "stalled",
-  "suspend",
-  "timeupdate",
-  "volumechange",
-  "waiting",
-  // HTMLVideoElement events
-  "enterpictureinpicture",
-  "leavepictureinpicture",
-  // Element events
-  "fullscreenchange",
-  "resize",
-  // video.js events
-  "audioonlymodechange",
-  "audiopostermodechange",
-  "controlsdisabled",
-  "controlsenabled",
-  "debugon",
-  "debugoff",
-  "disablepictureinpicturechanged",
-  "dispose",
-  "enterFullWindow",
-  "error",
-  "exitFullWindow",
-  "firstplay",
-  "fullscreenerror",
-  "languagechange",
-  "loadedmetadata",
-  "loadstart",
-  "playerreset",
-  "playerresize",
-  "posterchange",
-  "ready",
-  "textdata",
-  "useractive",
-  "userinactive",
-  "usingcustomcontrols",
-  "usingnativecontrols"
-])];
-const GuideOverlay = (props) => {
-  return /* @__PURE__ */ React$1.createElement(
-    "dialog",
-    {
-      className: "GuideOverlay",
-      "data-testid": "GuideOverlay",
-      open: true
-    },
-    /* @__PURE__ */ React$1.createElement("div", { className: "header" }, /* @__PURE__ */ React$1.createElement("h1", null, "Using Stash TV")),
-    /* @__PURE__ */ React$1.createElement("div", { className: "spacer row-top col-left" }),
-    /* @__PURE__ */ React$1.createElement("div", { className: "spacer row-top col-middle" }),
-    /* @__PURE__ */ React$1.createElement("div", { className: "spacer row-top col-right" }),
-    /* @__PURE__ */ React$1.createElement("div", { className: "body row-middle col-left" }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faClockRotateLeft }), /* @__PURE__ */ React$1.createElement("span", null, "Tap the left side or press the ", /* @__PURE__ */ React$1.createElement("kbd", null, "←"), " key to skip backwards by a little bit.")),
-    /* @__PURE__ */ React$1.createElement("div", { className: "body row-middle col-middle" }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPlay }), /* @__PURE__ */ React$1.createElement("span", null, "Tap the middle or press ", /* @__PURE__ */ React$1.createElement("kbd", null, "space"), " to play/pause the video.")),
-    /* @__PURE__ */ React$1.createElement("div", { className: "body row-middle col-right" }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faClockRotateLeft, flip: "horizontal" }), /* @__PURE__ */ React$1.createElement("span", null, "Tap the right side or press the ", /* @__PURE__ */ React$1.createElement("kbd", null, "→"), " key to skip forwards by a little bit.")),
-    /* @__PURE__ */ React$1.createElement("div", { className: "spacer row-bottom col-left" }),
-    /* @__PURE__ */ React$1.createElement("div", { className: "spacer row-bottom col-middle" }),
-    /* @__PURE__ */ React$1.createElement("div", { className: "spacer row-bottom col-right" }),
-    /* @__PURE__ */ React$1.createElement("div", { className: "footer" }, /* @__PURE__ */ React$1.createElement("span", null, "Swipe up or down or press the ", /* @__PURE__ */ React$1.createElement("kbd", null, "↑"), " or ", /* @__PURE__ */ React$1.createElement("kbd", null, "↓"), " keys to scroll between videos. "), /* @__PURE__ */ React$1.createElement("div", { className: "actions" }, /* @__PURE__ */ React$1.createElement("span", { className: "accessInstructions" }, "You can view this guide again in the Settings."), /* @__PURE__ */ React$1.createElement(Button, { onClick: props.onClose }, "Done")))
+    /* @__PURE__ */ React$1.createElement(Modal.Header, { closeButton: true }, /* @__PURE__ */ React$1.createElement(Modal.Title, { id: "KeyboardShortcutsInfo-title" }, "Keyboard Shortcuts")),
+    /* @__PURE__ */ React$1.createElement(Modal.Body, null, /* @__PURE__ */ React$1.createElement(MarkdownPage, { key: pageUrl, page: pageUrl }))
   );
 };
 const FeedPage = reactExports.memo(({ className }) => {
   const { showDebuggingInfo, showGuideOverlay, set: setTvConfig } = useTvConfig();
-  const { showSettings, fullscreen, set: setGlobalState } = useGlobalState();
+  const { showSettings, fullscreen, keyboardShortcutsOpen, set: setGlobalState } = useGlobalState();
   const {
     currentMediaItemFilter,
     mediaItemFiltersLoading,
@@ -239982,6 +240229,16 @@ const FeedPage = reactExports.memo(({ className }) => {
       document.exitFullscreen?.();
     }
   }, [fullscreen]);
+  reactExports.useEffect(() => {
+    const handleKeyDown = (e2) => {
+      if (e2.key !== "?" || e2.ctrlKey || e2.metaKey || e2.altKey || e2.target instanceof HTMLInputElement || e2.target instanceof HTMLTextAreaElement) return;
+      setGlobalState("keyboardShortcutsOpen", true);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [setGlobalState]);
   const statusInfo = () => {
     if (mediaItemFiltersLoading || waitingForMediaItemsFilter && !mediaItemFiltersError) return /* @__PURE__ */ React$1.createElement(LoadingIndicator, { message: "Loading media filters..." });
     if (mediaItemsLoading) return /* @__PURE__ */ React$1.createElement(LoadingIndicator, { message: "Loading filters..." });
@@ -240029,7 +240286,13 @@ const FeedPage = reactExports.memo(({ className }) => {
       error: mediaItemsError
     },
     showSettings
-  }, null, 2))), /* @__PURE__ */ React$1.createElement(SettingsActionButton, null)) : /* @__PURE__ */ React$1.createElement(VideoScroller, null), /* @__PURE__ */ React$1.createElement(SettingsTab, null), showGuideOverlay && /* @__PURE__ */ React$1.createElement(GuideOverlay, { onClose: () => setTvConfig("showGuideOverlay", false) }));
+  }, null, 2))), /* @__PURE__ */ React$1.createElement(SettingsActionButton, null)) : /* @__PURE__ */ React$1.createElement(VideoScroller, null), /* @__PURE__ */ React$1.createElement(SettingsTab, null), showGuideOverlay && /* @__PURE__ */ React$1.createElement(GuideOverlay, { onClose: () => setTvConfig("showGuideOverlay", false) }), /* @__PURE__ */ React$1.createElement(
+    KeyboardShortcutsInfo,
+    {
+      show: keyboardShortcutsOpen,
+      onHide: () => setGlobalState("keyboardShortcutsOpen", false)
+    }
+  ));
 });
 FeedPage.displayName = "FeedPage";
 const originalDescriptorsObjectMap = /* @__PURE__ */ new WeakMap();
@@ -240951,4 +241214,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-Hm5vmt7Q.js.map
+//# sourceMappingURL=index-Cx9PlnDV.js.map

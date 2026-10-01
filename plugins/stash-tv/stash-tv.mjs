@@ -17120,6 +17120,7 @@ const ni = {
   showSettings: !1,
   fullscreen: !1,
   sceneInfoOpen: !1,
+  keyboardShortcutsOpen: !1,
   tvConfigLoaded: !1
 }, ri = Mu()(
   (e, t) => ({
@@ -17193,7 +17194,8 @@ const ni = {
       { id: "13.1", type: "button", buttonType: "loop", pinned: !1 },
       { id: "13.2", type: "button", buttonType: "playback-rate", pinned: !1 },
       { id: "13.3", type: "button", buttonType: "subtitles", pinned: !1 },
-      { id: "13.4", type: "button", buttonType: "fullscreen", pinned: !1 }
+      { id: "13.4", type: "button", buttonType: "fullscreen", pinned: !1 },
+      { id: "13.5", type: "button", buttonType: "resolution", pinned: !1 }
     ] }
   ],
   playbackRate: 1
