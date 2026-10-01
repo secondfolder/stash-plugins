@@ -6577,14 +6577,14 @@ function requireDocument$1() {
 }
 var documentExports = requireDocument$1();
 const document$1$1 = /* @__PURE__ */ getDefaultExportFromCjs(documentExports);
-function _extends$1o() {
-  return _extends$1o = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$1q() {
+  return _extends$1q = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$1o.apply(null, arguments);
+  }, _extends$1q.apply(null, arguments);
 }
 var keycode$1 = { exports: {} };
 var hasRequiredKeycode;
@@ -6745,10 +6745,10 @@ function requireTuple() {
 var tupleExports = requireTuple();
 const safeParseTuple = /* @__PURE__ */ getDefaultExportFromCjs(tupleExports);
 var lib$4 = { exports: {} };
-var _extends$1n = { exports: {} };
+var _extends$1p = { exports: {} };
 var hasRequired_extends;
 function require_extends() {
-  if (hasRequired_extends) return _extends$1n.exports;
+  if (hasRequired_extends) return _extends$1p.exports;
   hasRequired_extends = 1;
   (function(module2) {
     function _extends2() {
@@ -6761,8 +6761,8 @@ function require_extends() {
       }, module2.exports.__esModule = true, module2.exports["default"] = module2.exports, _extends2.apply(null, arguments);
     }
     module2.exports = _extends2, module2.exports.__esModule = true, module2.exports["default"] = module2.exports;
-  })(_extends$1n);
-  return _extends$1n.exports;
+  })(_extends$1p);
+  return _extends$1p.exports;
 }
 var isFunction_1;
 var hasRequiredIsFunction;
@@ -8954,7 +8954,7 @@ var ParseStream = /* @__PURE__ */ (function(_Stream) {
       }
       match2 = /^#EXT-X-BYTERANGE:?(.*)?$/.exec(newLine);
       if (match2) {
-        event2 = _extends$1o(parseByterange(match2[1]), {
+        event2 = _extends$1q(parseByterange(match2[1]), {
           type: "tag",
           tagType: "byterange"
         });
@@ -9578,7 +9578,7 @@ var Parser$3 = /* @__PURE__ */ (function(_Stream) {
               if (!currentUri.attributes) {
                 currentUri.attributes = {};
               }
-              _extends$1o(currentUri.attributes, entry.attributes);
+              _extends$1q(currentUri.attributes, entry.attributes);
             },
             media: function media() {
               this.manifest.mediaGroups = this.manifest.mediaGroups || defaultMediaGroups;
@@ -16941,7 +16941,7 @@ function assign$4(target) {
     sources[_key - 1] = arguments[_key];
   }
   if (Object.assign) {
-    return _extends$1o.apply(void 0, [target].concat(sources));
+    return _extends$1q.apply(void 0, [target].concat(sources));
   }
   sources.forEach(function(source2) {
     if (!source2) {
@@ -20310,7 +20310,7 @@ var REMOTE = {
     privateName: "remoteTextTrackEls_"
   }
 };
-var ALL = _extends$1o({}, NORMAL, REMOTE);
+var ALL = _extends$1q({}, NORMAL, REMOTE);
 REMOTE.names = Object.keys(REMOTE);
 NORMAL.names = Object.keys(NORMAL);
 ALL.names = [].concat(REMOTE.names).concat(NORMAL.names);
@@ -24684,7 +24684,7 @@ var ErrorDisplay = /* @__PURE__ */ (function(_ModalDialog) {
   };
   return ErrorDisplay2;
 })(ModalDialog$1);
-ErrorDisplay.prototype.options_ = _extends$1o({}, ModalDialog$1.prototype.options_, {
+ErrorDisplay.prototype.options_ = _extends$1q({}, ModalDialog$1.prototype.options_, {
   pauseOnOpen: false,
   fillAlways: true,
   temporary: false,
@@ -28237,7 +28237,7 @@ var Player = /* @__PURE__ */ (function(_Component) {
       return this.techGet_("requestPictureInPicture");
     }
   };
-  _proto.exitPictureInPicture = function exitPictureInPicture() {
+  _proto.exitPictureInPicture = function exitPictureInPicture2() {
     if ("pictureInPictureEnabled" in document$1$1) {
       return document$1$1.exitPictureInPicture();
     }
@@ -29648,7 +29648,7 @@ var resolveManifestRedirect = function resolveManifestRedirect2(handleManifestRe
   }
   return url2;
 };
-var logger$e = function logger2(source2) {
+var logger$j = function logger2(source2) {
   if (videojs.log.debug) {
     return videojs.log.debug.bind(videojs, "VHS:", source2 + " >");
   }
@@ -30409,7 +30409,7 @@ var addPropertiesToMaster = function addPropertiesToMaster2(master, uri, createG
           }
         }
       }
-      properties.playlists = [_extends$1o({}, properties)];
+      properties.playlists = [_extends$1q({}, properties)];
     }
     properties.playlists.forEach(function(p3, i4) {
       var groupId = createGroupID(mediaType, groupKey, labelKey, p3);
@@ -30632,7 +30632,7 @@ var PlaylistLoader = /* @__PURE__ */ (function(_EventTarget) {
     if (!src2) {
       throw new Error("A non-empty playlist URL or object is required");
     }
-    _this.logger_ = logger$e("PlaylistLoader");
+    _this.logger_ = logger$j("PlaylistLoader");
     var _options = options2, _options$withCredenti = _options.withCredentials, withCredentials = _options$withCredenti === void 0 ? false : _options$withCredenti, _options$handleManife = _options.handleManifestRedirects, handleManifestRedirects = _options$handleManife === void 0 ? false : _options$handleManife;
     _this.src = src2;
     _this.vhs_ = vhs;
@@ -31533,7 +31533,7 @@ var DashPlaylistLoader = /* @__PURE__ */ (function(_EventTarget) {
     });
     _this.state = "HAVE_NOTHING";
     _this.loadedPlaylists_ = {};
-    _this.logger_ = logger$e("DashPlaylistLoader");
+    _this.logger_ = logger$j("DashPlaylistLoader");
     if (_this.isMaster_) {
       _this.masterPlaylistLoader_.srcUrl = srcUrlOrPlaylist;
       _this.masterPlaylistLoader_.sidxMapping_ = {};
@@ -38307,7 +38307,7 @@ var workerCallback = function workerCallback2(options2) {
   var transmuxer = options2.transmuxer;
   var endAction = options2.endAction || options2.action;
   var callback2 = options2.callback;
-  var message = _extends$1o({}, options2, {
+  var message = _extends$1q({}, options2, {
     endAction: null,
     transmuxer: null,
     callback: null
@@ -38932,7 +38932,7 @@ var mediaSegmentRequest = function mediaSegmentRequest2(_ref12) {
     return abortAll(activeXhrs);
   };
 };
-var logFn$1 = logger$e("CodecUtils");
+var logFn$1 = logger$j("CodecUtils");
 var getCodecs = function getCodecs2(media) {
   var mediaAttributes = media.attributes || {};
   if (mediaAttributes.CODECS) {
@@ -38996,7 +38996,7 @@ var codecsForPlaylist = function codecsForPlaylist2(master, media) {
   }
   return codecInfo;
 };
-var logFn = logger$e("PlaylistSelector");
+var logFn = logger$j("PlaylistSelector");
 var representationToString = function representationToString2(representation) {
   if (!representation || !representation.playlist) {
     return;
@@ -39770,7 +39770,7 @@ var SegmentLoader = /* @__PURE__ */ (function(_videojs$EventTarget) {
       }
     });
     _this.fetchAtBuffer_ = false;
-    _this.logger_ = logger$e("SegmentLoader[" + _this.loaderType_ + "]");
+    _this.logger_ = logger$j("SegmentLoader[" + _this.loaderType_ + "]");
     Object.defineProperty(_assertThisInitialized$2(_this), "state", {
       get: function get7() {
         return this.state_;
@@ -40843,10 +40843,10 @@ var SegmentLoader = /* @__PURE__ */ (function(_videojs$EventTarget) {
     }
     if (!this.hasEnoughInfoToLoad_()) {
       this.loadQueue_.push(function() {
-        var options2 = _extends$1o({}, segmentInfo, {
+        var options2 = _extends$1q({}, segmentInfo, {
           forceTimestampOffset: true
         });
-        _extends$1o(segmentInfo, _this4.generateSegmentInfo_(options2));
+        _extends$1q(segmentInfo, _this4.generateSegmentInfo_(options2));
         _this4.isPendingTimestampOffset_ = false;
         _this4.updateTransmuxerAndRequestSegment_(segmentInfo);
       });
@@ -41534,7 +41534,7 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
       return shiftQueue("mediaSource", _assertThisInitialized$2(_this));
     };
     _this.mediaSource.addEventListener("sourceopen", _this.sourceopenListener_);
-    _this.logger_ = logger$e("SourceUpdater");
+    _this.logger_ = logger$j("SourceUpdater");
     _this.audioTimestampOffset_ = 0;
     _this.videoTimestampOffset_ = 0;
     _this.queue = [];
@@ -42328,7 +42328,7 @@ var SyncController = /* @__PURE__ */ (function(_videojs$EventTarget) {
     _this.timelines = [];
     _this.discontinuities = [];
     _this.timelineToDatetimeMappings = {};
-    _this.logger_ = logger$e("SyncController");
+    _this.logger_ = logger$j("SyncController");
     return _this;
   }
   var _proto = SyncController2.prototype;
@@ -43532,7 +43532,7 @@ var createMediaTypes = function createMediaTypes2() {
       onGroupChanged: noop$9,
       onTrackChanged: noop$9,
       lastTrack_: null,
-      logger_: logger$e("MediaGroups[" + type3 + "]")
+      logger_: logger$j("MediaGroups[" + type3 + "]")
     };
   });
   return mediaTypes2;
@@ -43722,7 +43722,7 @@ var MasterPlaylistController = /* @__PURE__ */ (function(_videojs$EventTarget) {
     loaderStats.forEach(function(stat) {
       _this[stat + "_"] = sumLoaderStat.bind(_assertThisInitialized$2(_this), stat);
     });
-    _this.logger_ = logger$e("MPC");
+    _this.logger_ = logger$j("MPC");
     _this.triggeredFmp4Usage = false;
     if (_this.tech_.preload() === "none") {
       _this.loadOnPlay_ = function() {
@@ -44859,7 +44859,7 @@ var PlaybackWatcher = /* @__PURE__ */ (function() {
     this.lastRecordedTime = null;
     this.timer_ = null;
     this.checkCurrentTimeTimeout_ = null;
-    this.logger_ = logger$e("PlaybackWatcher");
+    this.logger_ = logger$j("PlaybackWatcher");
     this.logger_("initialize");
     var playHandler = function playHandler2() {
       return _this.monitorCurrentTime_();
@@ -45543,7 +45543,7 @@ var VhsHandler = /* @__PURE__ */ (function(_Component) {
     if (typeof options2.initialBandwidth === "number") {
       _this.options_.bandwidth = options2.initialBandwidth;
     }
-    _this.logger_ = logger$e("VhsHandler");
+    _this.logger_ = logger$j("VhsHandler");
     if (tech.options_ && tech.options_.playerId) {
       var _player = videojs(tech.options_.playerId);
       if (!_player.hasOwnProperty("hls")) {
@@ -150585,6 +150585,13 @@ function verifyDocumentType(document2, type3) {
     usedOperationName
   );
 }
+function useDeepMemo(memoFn, deps) {
+  var ref = rehacktExports.useRef(void 0);
+  if (!ref.current || !equal(ref.current.deps, deps)) {
+    ref.current = { value: memoFn(), deps };
+  }
+  return ref.current.value;
+}
 var useIsomorphicLayoutEffect$5 = canUseDOM$3 ? rehacktExports.useLayoutEffect : rehacktExports.useEffect;
 var wrapperSymbol = Symbol.for("apollo.hook.wrappers");
 function wrapHook(hookName, useHook, clientOrObsQuery) {
@@ -151005,6 +151012,76 @@ function useMutation(mutation, options2) {
     };
   }, []);
   return [execute2, __assign({ reset: reset3 }, result)];
+}
+function useFragment(options2) {
+  return wrapHook(
+    "useFragment",
+    // eslint-disable-next-line react-compiler/react-compiler
+    useFragment_,
+    useApolloClient(options2.client)
+  )(options2);
+}
+function useFragment_(options2) {
+  var client2 = useApolloClient(options2.client);
+  var cache2 = client2.cache;
+  var from3 = options2.from, rest = __rest(options2, ["from"]);
+  var id2 = rehacktExports.useMemo(function() {
+    return typeof from3 === "string" ? from3 : from3 === null ? null : cache2.identify(from3);
+  }, [cache2, from3]);
+  var stableOptions = useDeepMemo(function() {
+    return __assign(__assign({}, rest), { from: id2 });
+  }, [rest, id2]);
+  var diff = rehacktExports.useMemo(function() {
+    var fragment = stableOptions.fragment, fragmentName = stableOptions.fragmentName, from4 = stableOptions.from, _a2 = stableOptions.optimistic, optimistic = _a2 === void 0 ? true : _a2;
+    if (from4 === null) {
+      return {
+        result: diffToResult({
+          result: {},
+          complete: false
+        })
+      };
+    }
+    var cache3 = client2.cache;
+    var diff2 = cache3.diff(__assign(__assign({}, stableOptions), { returnPartialData: true, id: from4, query: cache3["getFragmentDoc"](fragment, fragmentName), optimistic }));
+    return {
+      result: diffToResult(__assign(__assign({}, diff2), { result: client2["queryManager"].maskFragment({
+        fragment,
+        fragmentName,
+        data: diff2.result
+      }) }))
+    };
+  }, [client2, stableOptions]);
+  var getSnapshot = rehacktExports.useCallback(function() {
+    return diff.result;
+  }, [diff]);
+  return useSyncExternalStore(rehacktExports.useCallback(function(forceUpdate) {
+    var lastTimeout = 0;
+    var subscription = stableOptions.from === null ? null : client2.watchFragment(stableOptions).subscribe({
+      next: function(result) {
+        if (equal(result, diff.result))
+          return;
+        diff.result = result;
+        clearTimeout(lastTimeout);
+        lastTimeout = setTimeout(forceUpdate);
+      }
+    });
+    return function() {
+      subscription === null || subscription === void 0 ? void 0 : subscription.unsubscribe();
+      clearTimeout(lastTimeout);
+    };
+  }, [client2, stableOptions, diff]), getSnapshot, getSnapshot);
+}
+function diffToResult(diff) {
+  var result = {
+    data: diff.result,
+    complete: !!diff.complete
+  };
+  if (diff.missing) {
+    result.missing = mergeDeepArray(diff.missing.map(function(error) {
+      return error.missing;
+    }));
+  }
+  return result;
 }
 const defaultOptions$1 = {};
 var BlobsStorageType;
@@ -154025,10 +154102,6 @@ const FindFullScenesDocument = gql`
   }
 }
     ${SceneDataFragmentDoc}`;
-function useFindFullScenesQuery(baseOptions) {
-  const options2 = { ...defaultOptions$1, ...baseOptions };
-  return useQuery(FindFullScenesDocument, options2);
-}
 const FindSceneMarkersForTvDocument = gql`
     query FindSceneMarkersForTv($filter: FindFilterType, $scene_marker_filter: SceneMarkerFilterType, $ids: [ID!]) {
   findSceneMarkers(
@@ -154047,10 +154120,6 @@ const FindSceneMarkersForTvDocument = gql`
 }
     ${SceneMarkerDataFragmentDoc}
 ${SceneDataFragmentDoc}`;
-function useFindSceneMarkersForTvQuery(baseOptions) {
-  const options2 = { ...defaultOptions$1, ...baseOptions };
-  return useQuery(FindSceneMarkersForTvDocument, options2);
-}
 gql`
     query GetStashConfigForTv {
   configuration {
@@ -154538,12 +154607,12 @@ function createClient$1(options2) {
     })()));
     if (socket.readyState === WebSocketImpl.CLOSING)
       await throwOnClose;
-    let release = () => {
+    let release2 = () => {
     };
-    const released = new Promise((resolve) => release = resolve);
+    const released = new Promise((resolve) => release2 = resolve);
     return [
       socket,
-      release,
+      release2,
       Promise.race([
         // wait for
         released.then(() => {
@@ -154620,9 +154689,9 @@ function createClient$1(options2) {
       locks++;
       for (; ; ) {
         try {
-          const [socket, release, waitForReleaseOrThrowOnClose] = await connect();
+          const [socket, release2, waitForReleaseOrThrowOnClose] = await connect();
           if (done)
-            return release();
+            return release2();
           const unlisten = emitter.onMessage(id2, (message) => {
             switch (message.type) {
               case MessageType.Next: {
@@ -154655,7 +154724,7 @@ function createClient$1(options2) {
               }, replacer));
             locks--;
             done = true;
-            release();
+            release2();
           };
           await waitForReleaseOrThrowOnClose.finally(unlisten);
           return;
@@ -155746,7 +155815,7 @@ const useTagUpdate = () => useTagUpdateMutation({
     evictQueries(cache2, tagMutationImpactedQueries);
   }
 });
-function _objectWithoutPropertiesLoose$1q(r3, e2) {
+function _objectWithoutPropertiesLoose$1s(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -155792,10 +155861,10 @@ function useUncontrolledProp(propValue, defaultValue, handler) {
 function useUncontrolled(props, config2) {
   return Object.keys(config2).reduce(function(result, fieldName) {
     var _extends2;
-    var _ref3 = result, defaultValue = _ref3[defaultKey(fieldName)], propsValue = _ref3[fieldName], rest = _objectWithoutPropertiesLoose$1q(_ref3, [defaultKey(fieldName), fieldName].map(_toPropertyKey$3));
+    var _ref3 = result, defaultValue = _ref3[defaultKey(fieldName)], propsValue = _ref3[fieldName], rest = _objectWithoutPropertiesLoose$1s(_ref3, [defaultKey(fieldName), fieldName].map(_toPropertyKey$3));
     var handlerName = config2[fieldName];
     var _useUncontrolledProp = useUncontrolledProp(propsValue, defaultValue, props[handlerName]), value = _useUncontrolledProp[0], handler = _useUncontrolledProp[1];
-    return _extends$1o({}, rest, (_extends2 = {}, _extends2[fieldName] = value, _extends2[handlerName] = handler, _extends2));
+    return _extends$1q({}, rest, (_extends2 = {}, _extends2[fieldName] = value, _extends2[handlerName] = handler, _extends2));
   }, props);
 }
 var ThemeContext$1 = /* @__PURE__ */ React$1.createContext({});
@@ -155808,7 +155877,7 @@ function useBootstrapPrefix(prefix2, defaultPrefix) {
 var SelectableContext = /* @__PURE__ */ React$1.createContext(null);
 var context$2 = /* @__PURE__ */ React$1.createContext(null);
 context$2.displayName = "AccordionContext";
-var _excluded$22 = ["as", "children", "eventKey", "onClick"];
+var _excluded$24 = ["as", "children", "eventKey", "onClick"];
 function useAccordionToggle(eventKey, onClick) {
   var contextEventKey = reactExports.useContext(context$2);
   var onSelect = reactExports.useContext(SelectableContext);
@@ -155819,12 +155888,12 @@ function useAccordionToggle(eventKey, onClick) {
   };
 }
 var AccordionToggle$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "button" : _ref$as, children = _ref3.children, eventKey = _ref3.eventKey, onClick = _ref3.onClick, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$22);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "button" : _ref$as, children = _ref3.children, eventKey = _ref3.eventKey, onClick = _ref3.onClick, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$24);
   var accordionOnClick = useAccordionToggle(eventKey, onClick);
   if (Component2 === "button") {
     props.type = "button";
   }
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
     ref,
     onClick: accordionOnClick
   }, props), children);
@@ -156174,7 +156243,7 @@ var Transition = /* @__PURE__ */ (function(_React$Component) {
     _this$props.onExiting;
     _this$props.onExited;
     _this$props.nodeRef;
-    var childProps = _objectWithoutPropertiesLoose$1q(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
+    var childProps = _objectWithoutPropertiesLoose$1s(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
     return (
       // allows for nested Transitions
       /* @__PURE__ */ React$1.createElement(TransitionGroupContext.Provider, {
@@ -156333,7 +156402,7 @@ function createChainedFunction() {
 function triggerBrowserReflow(node2) {
   node2.offsetHeight;
 }
-var _excluded$21 = ["onEnter", "onEntering", "onEntered", "onExit", "onExiting", "className", "children", "dimension", "getDimensionValue"];
+var _excluded$23 = ["onEnter", "onEntering", "onEntered", "onExit", "onExiting", "className", "children", "dimension", "getDimensionValue"];
 var _collapseStyles;
 var MARGINS = {
   height: ["marginTop", "marginBottom"],
@@ -156357,7 +156426,7 @@ var defaultProps$i = {
   getDimensionValue: getDefaultDimensionValue
 };
 var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, className = _ref3.className, children = _ref3.children, _ref$dimension = _ref3.dimension, dimension = _ref$dimension === void 0 ? "height" : _ref$dimension, _ref$getDimensionValu = _ref3.getDimensionValue, getDimensionValue = _ref$getDimensionValu === void 0 ? getDefaultDimensionValue : _ref$getDimensionValu, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$21);
+  var onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, className = _ref3.className, children = _ref3.children, _ref$dimension = _ref3.dimension, dimension = _ref$dimension === void 0 ? "height" : _ref$dimension, _ref$getDimensionValu = _ref3.getDimensionValue, getDimensionValue = _ref$getDimensionValu === void 0 ? getDefaultDimensionValue : _ref$getDimensionValu, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$23);
   var computedDimension = typeof dimension === "function" ? dimension() : dimension;
   var handleEnter = reactExports.useMemo(function() {
     return createChainedFunction(function(elem) {
@@ -156388,7 +156457,7 @@ var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, [computedDimension, onExiting]);
   return /* @__PURE__ */ React$1.createElement(
     Transition,
-    _extends$1o({
+    _extends$1q({
       ref,
       addEndListener: transitionEndListener
     }, props, {
@@ -156400,36 +156469,36 @@ var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
       onExiting: handleExiting
     }),
     function(state, innerProps) {
-      return /* @__PURE__ */ React$1.cloneElement(children, _extends$1o({}, innerProps, {
+      return /* @__PURE__ */ React$1.cloneElement(children, _extends$1q({}, innerProps, {
         className: cx(className, children.props.className, collapseStyles[state], computedDimension === "width" && "width")
       }));
     }
   );
 });
 Collapse.defaultProps = defaultProps$i;
-var _excluded$20 = ["children", "eventKey"];
+var _excluded$22 = ["children", "eventKey"];
 var AccordionCollapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var children = _ref3.children, eventKey = _ref3.eventKey, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$20);
+  var children = _ref3.children, eventKey = _ref3.eventKey, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$22);
   var contextEventKey = reactExports.useContext(context$2);
   return /* @__PURE__ */ React$1.createElement(SelectableContext.Provider, {
     value: null
-  }, /* @__PURE__ */ React$1.createElement(Collapse, _extends$1o({
+  }, /* @__PURE__ */ React$1.createElement(Collapse, _extends$1q({
     ref,
     in: contextEventKey === eventKey
   }, props), /* @__PURE__ */ React$1.createElement("div", null, React$1.Children.only(children))));
 });
 AccordionCollapse.displayName = "AccordionCollapse";
-var _excluded$1$ = ["as", "activeKey", "bsPrefix", "children", "className", "onSelect"];
+var _excluded$21 = ["as", "activeKey", "bsPrefix", "children", "className", "onSelect"];
 var Accordion = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
   var _useUncontrolled = useUncontrolled(props, {
     activeKey: "onSelect"
-  }), _useUncontrolled$as = _useUncontrolled.as, Component2 = _useUncontrolled$as === void 0 ? "div" : _useUncontrolled$as, activeKey = _useUncontrolled.activeKey, bsPrefix = _useUncontrolled.bsPrefix, children = _useUncontrolled.children, className = _useUncontrolled.className, onSelect = _useUncontrolled.onSelect, controlledProps = _objectWithoutPropertiesLoose$1q(_useUncontrolled, _excluded$1$);
+  }), _useUncontrolled$as = _useUncontrolled.as, Component2 = _useUncontrolled$as === void 0 ? "div" : _useUncontrolled$as, activeKey = _useUncontrolled.activeKey, bsPrefix = _useUncontrolled.bsPrefix, children = _useUncontrolled.children, className = _useUncontrolled.className, onSelect = _useUncontrolled.onSelect, controlledProps = _objectWithoutPropertiesLoose$1s(_useUncontrolled, _excluded$21);
   var finalClassName = cx(className, useBootstrapPrefix(bsPrefix, "accordion"));
   return /* @__PURE__ */ React$1.createElement(context$2.Provider, {
     value: activeKey || null
   }, /* @__PURE__ */ React$1.createElement(SelectableContext.Provider, {
     value: onSelect || null
-  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({
+  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
     ref
   }, controlledProps, {
     className: finalClassName
@@ -156451,7 +156520,7 @@ function useEventCallback$1(fn3) {
     return ref.current && ref.current(...args);
   }, [ref]);
 }
-var _excluded$1_ = ["className", "children"];
+var _excluded$20 = ["className", "children"];
 var _fadeStyles;
 var defaultProps$h = {
   in: false,
@@ -156462,25 +156531,25 @@ var defaultProps$h = {
 };
 var fadeStyles = (_fadeStyles = {}, _fadeStyles[ENTERING] = "show", _fadeStyles[ENTERED] = "show", _fadeStyles);
 var Fade = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1_);
+  var className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$20);
   var handleEnter = reactExports.useCallback(function(node2) {
     triggerBrowserReflow(node2);
     if (props.onEnter) props.onEnter(node2);
   }, [props]);
-  return /* @__PURE__ */ React$1.createElement(Transition, _extends$1o({
+  return /* @__PURE__ */ React$1.createElement(Transition, _extends$1q({
     ref,
     addEndListener: transitionEndListener
   }, props, {
     onEnter: handleEnter
   }), function(status2, innerProps) {
-    return /* @__PURE__ */ React$1.cloneElement(children, _extends$1o({}, innerProps, {
+    return /* @__PURE__ */ React$1.cloneElement(children, _extends$1q({}, innerProps, {
       className: cx("fade", className, children.props.className, fadeStyles[status2])
     }));
   });
 });
 Fade.defaultProps = defaultProps$h;
 Fade.displayName = "Fade";
-var _excluded$1Z = ["label", "onClick", "className"];
+var _excluded$1$ = ["label", "onClick", "className"];
 var propTypes$2 = {
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func
@@ -156489,8 +156558,8 @@ var defaultProps$g = {
   label: "Close"
 };
 var CloseButton = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var label = _ref3.label, onClick = _ref3.onClick, className = _ref3.className, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1Z);
-  return /* @__PURE__ */ React$1.createElement("button", _extends$1o({
+  var label = _ref3.label, onClick = _ref3.onClick, className = _ref3.className, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1$);
+  return /* @__PURE__ */ React$1.createElement("button", _extends$1q({
     ref,
     type: "button",
     className: cx("close", className),
@@ -156506,7 +156575,7 @@ CloseButton.propTypes = propTypes$2;
 CloseButton.defaultProps = defaultProps$g;
 const divWithClassName = (function(className) {
   return /* @__PURE__ */ React$1.forwardRef(function(p2, ref) {
-    return /* @__PURE__ */ React$1.createElement("div", _extends$1o({}, p2, {
+    return /* @__PURE__ */ React$1.createElement("div", _extends$1q({}, p2, {
       ref,
       className: cx(p2.className, className)
     }));
@@ -156518,16 +156587,16 @@ function camelize$1(string2) {
     return chr.toUpperCase();
   });
 }
-var _excluded$1Y = ["className", "bsPrefix", "as"];
+var _excluded$1_ = ["className", "bsPrefix", "as"];
 var pascalCase = function pascalCase2(str) {
   return str[0].toUpperCase() + camelize$1(str).slice(1);
 };
 function createWithBsPrefix(prefix2, _temp) {
   var _ref3 = _temp === void 0 ? {} : _temp, _ref$displayName = _ref3.displayName, displayName = _ref$displayName === void 0 ? pascalCase(prefix2) : _ref$displayName, Component2 = _ref3.Component, defaultProps2 = _ref3.defaultProps;
   var BsComponent = /* @__PURE__ */ React$1.forwardRef(function(_ref22, ref) {
-    var className = _ref22.className, bsPrefix = _ref22.bsPrefix, _ref2$as = _ref22.as, Tag2 = _ref2$as === void 0 ? Component2 || "div" : _ref2$as, props = _objectWithoutPropertiesLoose$1q(_ref22, _excluded$1Y);
+    var className = _ref22.className, bsPrefix = _ref22.bsPrefix, _ref2$as = _ref22.as, Tag2 = _ref2$as === void 0 ? Component2 || "div" : _ref2$as, props = _objectWithoutPropertiesLoose$1s(_ref22, _excluded$1_);
     var resolvedPrefix = useBootstrapPrefix(bsPrefix, prefix2);
-    return /* @__PURE__ */ React$1.createElement(Tag2, _extends$1o({
+    return /* @__PURE__ */ React$1.createElement(Tag2, _extends$1q({
       ref,
       className: cx(className, resolvedPrefix)
     }, props));
@@ -156536,12 +156605,12 @@ function createWithBsPrefix(prefix2, _temp) {
   BsComponent.displayName = displayName;
   return BsComponent;
 }
-var _excluded$1X = ["as", "disabled", "onKeyDown"];
+var _excluded$1Z = ["as", "disabled", "onKeyDown"];
 function isTrivialHref(href) {
   return !href || href.trim() === "#";
 }
 var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "a" : _ref$as, disabled2 = _ref3.disabled, onKeyDown = _ref3.onKeyDown, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1X);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "a" : _ref$as, disabled2 = _ref3.disabled, onKeyDown = _ref3.onKeyDown, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1Z);
   var handleClick = function handleClick2(event2) {
     var href = props.href, onClick = props.onClick;
     if (disabled2 || isTrivialHref(href)) {
@@ -156569,7 +156638,7 @@ var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     props.tabIndex = -1;
     props["aria-disabled"] = true;
   }
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
     ref
   }, props, {
     onClick: handleClick,
@@ -156577,14 +156646,14 @@ var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 SafeAnchor.displayName = "SafeAnchor";
-var _excluded$1W = ["bsPrefix", "variant", "pill", "className", "as"];
+var _excluded$1Y = ["bsPrefix", "variant", "pill", "className", "as"];
 var defaultProps$f = {
   pill: false
 };
 var Badge = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, pill = _ref3.pill, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "span" : _ref$as, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1W);
+  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, pill = _ref3.pill, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "span" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1Y);
   var prefix2 = useBootstrapPrefix(bsPrefix, "badge");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
     ref
   }, props, {
     className: cx(className, prefix2, pill && prefix2 + "-pill", variant && prefix2 + "-" + variant)
@@ -156592,18 +156661,18 @@ var Badge = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 });
 Badge.displayName = "Badge";
 Badge.defaultProps = defaultProps$f;
-var _excluded$1V = ["bsPrefix", "variant", "size", "active", "className", "block", "type", "as"];
+var _excluded$1X = ["bsPrefix", "variant", "size", "active", "className", "block", "type", "as"];
 var defaultProps$e = {
   variant: "primary",
   active: false,
   disabled: false
 };
 var Button = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, size2 = _ref3.size, active = _ref3.active, className = _ref3.className, block2 = _ref3.block, type3 = _ref3.type, as = _ref3.as, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1V);
+  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, size2 = _ref3.size, active = _ref3.active, className = _ref3.className, block2 = _ref3.block, type3 = _ref3.type, as = _ref3.as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1X);
   var prefix2 = useBootstrapPrefix(bsPrefix, "btn");
   var classes = cx(className, prefix2, active && "active", variant && prefix2 + "-" + variant, block2 && prefix2 + "-block", size2 && prefix2 + "-" + size2);
   if (props.href) {
-    return /* @__PURE__ */ React$1.createElement(SafeAnchor, _extends$1o({}, props, {
+    return /* @__PURE__ */ React$1.createElement(SafeAnchor, _extends$1q({}, props, {
       as,
       ref,
       className: cx(classes, props.disabled && "disabled")
@@ -156618,24 +156687,24 @@ var Button = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     props.type = "button";
   }
   var Component2 = as || "button";
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
     className: classes
   }));
 });
 Button.displayName = "Button";
 Button.defaultProps = defaultProps$e;
-var _excluded$1U = ["bsPrefix", "size", "toggle", "vertical", "className", "as"];
+var _excluded$1W = ["bsPrefix", "size", "toggle", "vertical", "className", "as"];
 var defaultProps$d = {
   vertical: false,
   toggle: false,
   role: "group"
 };
 var ButtonGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, toggle = _ref3.toggle, vertical = _ref3.vertical, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, rest = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1U);
+  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, toggle = _ref3.toggle, vertical = _ref3.vertical, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, rest = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1W);
   var prefix2 = useBootstrapPrefix(bsPrefix, "btn-group");
   var baseClass = prefix2;
   if (vertical) baseClass = prefix2 + "-vertical";
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({}, rest, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, rest, {
     ref,
     className: cx(className, baseClass, size2 && prefix2 + "-" + size2, toggle && prefix2 + "-toggle")
   }));
@@ -156644,16 +156713,16 @@ ButtonGroup.displayName = "ButtonGroup";
 ButtonGroup.defaultProps = defaultProps$d;
 var context$1 = /* @__PURE__ */ React$1.createContext(null);
 context$1.displayName = "CardContext";
-var _excluded$1T = ["bsPrefix", "className", "variant", "as"];
+var _excluded$1V = ["bsPrefix", "className", "variant", "as"];
 var defaultProps$c = {
   variant: null
 };
 var CardImg = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, variant = _ref3.variant, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "img" : _ref$as, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1T);
+    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, variant = _ref3.variant, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "img" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1V);
     var prefix2 = useBootstrapPrefix(bsPrefix, "card-img");
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
       ref,
       className: cx(variant ? prefix2 + "-" + variant : prefix2, className)
     }, props));
@@ -156661,7 +156730,7 @@ var CardImg = /* @__PURE__ */ React$1.forwardRef(
 );
 CardImg.displayName = "CardImg";
 CardImg.defaultProps = defaultProps$c;
-var _excluded$1S = ["bsPrefix", "className", "bg", "text", "border", "body", "children", "as"];
+var _excluded$1U = ["bsPrefix", "className", "bg", "text", "border", "body", "children", "as"];
 var DivStyledAsH5 = divWithClassName("h5");
 var DivStyledAsH6 = divWithClassName("h6");
 var CardBody = createWithBsPrefix("card-body");
@@ -156684,7 +156753,7 @@ var defaultProps$b = {
   body: false
 };
 var Card = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, bg = _ref3.bg, text2 = _ref3.text, border = _ref3.border, body = _ref3.body, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1S);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, bg = _ref3.bg, text2 = _ref3.text, border = _ref3.border, body = _ref3.body, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1U);
   var prefix2 = useBootstrapPrefix(bsPrefix, "card");
   var cardContext = reactExports.useMemo(function() {
     return {
@@ -156693,7 +156762,7 @@ var Card = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, [prefix2]);
   return /* @__PURE__ */ React$1.createElement(context$1.Provider, {
     value: cardContext
-  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({
+  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
     ref
   }, props, {
     className: cx(className, prefix2, bg && "bg-" + bg, text2 && "text-" + text2, border && "border-" + border)
@@ -156760,12 +156829,12 @@ function useTimeout() {
     };
   }, []);
 }
-var _excluded$1R = ["bsPrefix", "className", "as"];
+var _excluded$1T = ["bsPrefix", "className", "as"];
 var DEVICE_SIZES$1 = ["xl", "lg", "md", "sm", "xs"];
 var Col = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1R);
+    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1T);
     var prefix2 = useBootstrapPrefix(bsPrefix, "col");
     var spans = [];
     var classes = [];
@@ -156791,7 +156860,7 @@ var Col = /* @__PURE__ */ React$1.forwardRef(
     if (!spans.length) {
       spans.push(prefix2);
     }
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({}, props, {
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
       ref,
       className: cx.apply(void 0, [className].concat(spans, classes))
     }));
@@ -158144,7 +158213,7 @@ var ariaDescribedByModifier = {
 };
 var EMPTY_MODIFIERS$2 = [];
 function usePopper$1(referenceElement, popperElement, _temp) {
-  var _ref3 = _temp === void 0 ? {} : _temp, _ref3$enabled = _ref3.enabled, enabled = _ref3$enabled === void 0 ? true : _ref3$enabled, _ref3$placement = _ref3.placement, placement = _ref3$placement === void 0 ? "bottom" : _ref3$placement, _ref3$strategy = _ref3.strategy, strategy = _ref3$strategy === void 0 ? "absolute" : _ref3$strategy, _ref3$modifiers = _ref3.modifiers, modifiers = _ref3$modifiers === void 0 ? EMPTY_MODIFIERS$2 : _ref3$modifiers, config2 = _objectWithoutPropertiesLoose$1q(_ref3, ["enabled", "placement", "strategy", "modifiers"]);
+  var _ref3 = _temp === void 0 ? {} : _temp, _ref3$enabled = _ref3.enabled, enabled = _ref3$enabled === void 0 ? true : _ref3$enabled, _ref3$placement = _ref3.placement, placement = _ref3$placement === void 0 ? "bottom" : _ref3$placement, _ref3$strategy = _ref3.strategy, strategy = _ref3$strategy === void 0 ? "absolute" : _ref3$strategy, _ref3$modifiers = _ref3.modifiers, modifiers = _ref3$modifiers === void 0 ? EMPTY_MODIFIERS$2 : _ref3$modifiers, config2 = _objectWithoutPropertiesLoose$1s(_ref3, ["enabled", "placement", "strategy", "modifiers"]);
   var popperInstanceRef = reactExports.useRef();
   var update2 = reactExports.useCallback(function() {
     var _popperInstanceRef$cu;
@@ -158201,7 +158270,7 @@ function usePopper$1(referenceElement, popperElement, _temp) {
     if (!enabled || referenceElement == null || popperElement == null) {
       return void 0;
     }
-    popperInstanceRef.current = createPopper$1(referenceElement, popperElement, _extends$1o({}, config2, {
+    popperInstanceRef.current = createPopper$1(referenceElement, popperElement, _extends$1q({}, config2, {
       placement,
       strategy,
       modifiers: [].concat(modifiers, [ariaDescribedByModifier, updateModifier])
@@ -158211,7 +158280,7 @@ function usePopper$1(referenceElement, popperElement, _temp) {
         popperInstanceRef.current.destroy();
         popperInstanceRef.current = void 0;
         setState2(function(s4) {
-          return _extends$1o({}, s4, {
+          return _extends$1q({}, s4, {
             attributes: {},
             styles: {
               popper: initialPopperStyles(strategy)
@@ -158339,31 +158408,31 @@ function mergeOptionsWithPopperConfig(_ref3) {
   var _modifiers$preventOve, _modifiers$preventOve2, _modifiers$offset, _modifiers$arrow;
   var enabled = _ref3.enabled, enableEvents = _ref3.enableEvents, placement = _ref3.placement, flip2 = _ref3.flip, offset3 = _ref3.offset, fixed = _ref3.fixed, containerPadding = _ref3.containerPadding, arrowElement = _ref3.arrowElement, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig;
   var modifiers = toModifierMap(popperConfig.modifiers);
-  return _extends$1o({}, popperConfig, {
+  return _extends$1q({}, popperConfig, {
     placement,
     enabled,
     strategy: fixed ? "fixed" : popperConfig.strategy,
-    modifiers: toModifierArray(_extends$1o({}, modifiers, {
+    modifiers: toModifierArray(_extends$1q({}, modifiers, {
       eventListeners: {
         enabled: enableEvents
       },
-      preventOverflow: _extends$1o({}, modifiers.preventOverflow, {
-        options: containerPadding ? _extends$1o({
+      preventOverflow: _extends$1q({}, modifiers.preventOverflow, {
+        options: containerPadding ? _extends$1q({
           padding: containerPadding
         }, (_modifiers$preventOve = modifiers.preventOverflow) == null ? void 0 : _modifiers$preventOve.options) : (_modifiers$preventOve2 = modifiers.preventOverflow) == null ? void 0 : _modifiers$preventOve2.options
       }),
       offset: {
-        options: _extends$1o({
+        options: _extends$1q({
           offset: offset3
         }, (_modifiers$offset = modifiers.offset) == null ? void 0 : _modifiers$offset.options)
       },
-      arrow: _extends$1o({}, modifiers.arrow, {
+      arrow: _extends$1q({}, modifiers.arrow, {
         enabled: !!arrowElement,
-        options: _extends$1o({}, (_modifiers$arrow = modifiers.arrow) == null ? void 0 : _modifiers$arrow.options, {
+        options: _extends$1q({}, (_modifiers$arrow = modifiers.arrow) == null ? void 0 : _modifiers$arrow.options, {
           element: arrowElement
         })
       }),
-      flip: _extends$1o({
+      flip: _extends$1q({
         enabled: !!flip2
       }, modifiers.flip)
     }))
@@ -158594,7 +158663,7 @@ function requireAll$1() {
   return all$1.exports;
 }
 requireAll$1();
-var _excluded$1Q = ["as", "className", "type", "tooltip"];
+var _excluded$1S = ["as", "className", "type", "tooltip"];
 var propTypes$1 = {
   /**
    * Specify whether the feedback is for valid or invalid fields
@@ -158609,8 +158678,8 @@ var propTypes$1 = {
 var Feedback = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "valid" : _ref$type, _ref$tooltip = _ref3.tooltip, tooltip = _ref$tooltip === void 0 ? false : _ref$tooltip, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1Q);
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({}, props, {
+    var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "valid" : _ref$type, _ref$tooltip = _ref3.tooltip, tooltip = _ref$tooltip === void 0 ? false : _ref$tooltip, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1S);
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
       ref,
       className: cx(className, type3 + "-" + (tooltip ? "tooltip" : "feedback"))
     }));
@@ -158621,13 +158690,13 @@ Feedback.propTypes = propTypes$1;
 var FormContext = /* @__PURE__ */ React$1.createContext({
   controlId: void 0
 });
-var _excluded$1P = ["id", "bsPrefix", "bsCustomPrefix", "className", "type", "isValid", "isInvalid", "isStatic", "as"];
+var _excluded$1R = ["id", "bsPrefix", "bsCustomPrefix", "className", "type", "isValid", "isInvalid", "isStatic", "as"];
 var FormCheckInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, isStatic = _ref3.isStatic, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1P);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, isStatic = _ref3.isStatic, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1R);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-control-input"] : [bsPrefix, "form-check-input"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
     ref,
     type: type3,
     id: id2 || controlId,
@@ -158635,22 +158704,22 @@ var FormCheckInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 FormCheckInput.displayName = "FormCheckInput";
-var _excluded$1O = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
+var _excluded$1Q = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
 var FormCheckLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1O);
+  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1Q);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-control-label"] : [bsPrefix, "form-check-label"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement("label", _extends$1o({}, props, {
+  return /* @__PURE__ */ React$1.createElement("label", _extends$1q({}, props, {
     ref,
     htmlFor: htmlFor || controlId,
     className: cx(className, bsPrefix)
   }));
 });
 FormCheckLabel.displayName = "FormCheckLabel";
-var _excluded$1N = ["id", "bsPrefix", "bsCustomPrefix", "inline", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "title", "type", "label", "children", "custom", "as"];
+var _excluded$1P = ["id", "bsPrefix", "bsCustomPrefix", "inline", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "title", "type", "label", "children", "custom", "as"];
 var FormCheck = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$inline = _ref3.inline, inline = _ref$inline === void 0 ? false : _ref$inline, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? "" : _ref$title, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, label = _ref3.label, children = _ref3.children, propCustom = _ref3.custom, _ref$as = _ref3.as, as = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1N);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$inline = _ref3.inline, inline = _ref$inline === void 0 ? false : _ref$inline, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? "" : _ref$title, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, label = _ref3.label, children = _ref3.children, propCustom = _ref3.custom, _ref$as = _ref3.as, as = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1P);
   var custom2 = type3 === "switch" ? true : propCustom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-control"] : [bsPrefix, "form-check"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -158662,7 +158731,7 @@ var FormCheck = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     };
   }, [controlId, custom2, id2]);
   var hasLabel = custom2 || label != null && label !== false && !children;
-  var input = /* @__PURE__ */ React$1.createElement(FormCheckInput, _extends$1o({}, props, {
+  var input = /* @__PURE__ */ React$1.createElement(FormCheckInput, _extends$1q({}, props, {
     type: type3 === "switch" ? "checkbox" : type3,
     ref,
     isValid: isValid2,
@@ -158686,14 +158755,14 @@ var FormCheck = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 FormCheck.displayName = "FormCheck";
 FormCheck.Input = FormCheckInput;
 FormCheck.Label = FormCheckLabel;
-var _excluded$1M = ["id", "bsPrefix", "bsCustomPrefix", "className", "isValid", "isInvalid", "lang", "as"];
+var _excluded$1O = ["id", "bsPrefix", "bsCustomPrefix", "className", "isValid", "isInvalid", "lang", "as"];
 var FormFileInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, isValid2 = _ref3.isValid, isInvalid = _ref3.isInvalid, lang = _ref3.lang, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1M);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, isValid2 = _ref3.isValid, isInvalid = _ref3.isInvalid, lang = _ref3.lang, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1O);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var type3 = "file";
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-file-input"] : [bsPrefix, "form-control-file"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
     ref,
     id: id2 || controlId,
     type: type3,
@@ -158702,13 +158771,13 @@ var FormFileInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 FormFileInput.displayName = "FormFileInput";
-var _excluded$1L = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
+var _excluded$1N = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
 var FormFileLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1L);
+  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1N);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-file-label"] : [bsPrefix, "form-file-label"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement("label", _extends$1o({}, props, {
+  return /* @__PURE__ */ React$1.createElement("label", _extends$1q({}, props, {
     ref,
     htmlFor: htmlFor || controlId,
     className: cx(className, bsPrefix),
@@ -158716,9 +158785,9 @@ var FormFileLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 FormFileLabel.displayName = "FormFileLabel";
-var _excluded$1K = ["id", "bsPrefix", "bsCustomPrefix", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "label", "children", "custom", "lang", "data-browse", "as", "inputAs"];
+var _excluded$1M = ["id", "bsPrefix", "bsCustomPrefix", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "label", "children", "custom", "lang", "data-browse", "as", "inputAs"];
 var FormFile = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, label = _ref3.label, children = _ref3.children, custom2 = _ref3.custom, lang = _ref3.lang, dataBrowse = _ref3["data-browse"], _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, _ref$inputAs = _ref3.inputAs, inputAs = _ref$inputAs === void 0 ? "input" : _ref$inputAs, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1K);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, label = _ref3.label, children = _ref3.children, custom2 = _ref3.custom, lang = _ref3.lang, dataBrowse = _ref3["data-browse"], _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, _ref$inputAs = _ref3.inputAs, inputAs = _ref$inputAs === void 0 ? "input" : _ref$inputAs, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1M);
   var _ref22 = custom2 ? [bsCustomPrefix, "custom"] : [bsPrefix, "form-file"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
   var type3 = "file";
@@ -158730,7 +158799,7 @@ var FormFile = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     };
   }, [controlId, custom2, id2]);
   var hasLabel = label != null && label !== false && !children;
-  var input = /* @__PURE__ */ React$1.createElement(FormFileInput, _extends$1o({}, props, {
+  var input = /* @__PURE__ */ React$1.createElement(FormFileInput, _extends$1q({}, props, {
     ref,
     isValid: isValid2,
     isInvalid,
@@ -158753,9 +158822,9 @@ var FormFile = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 FormFile.displayName = "FormFile";
 FormFile.Input = FormFileInput;
 FormFile.Label = FormFileLabel;
-var _excluded$1J = ["bsPrefix", "bsCustomPrefix", "type", "size", "htmlSize", "id", "className", "isValid", "isInvalid", "plaintext", "readOnly", "custom", "as"];
+var _excluded$1L = ["bsPrefix", "bsCustomPrefix", "type", "size", "htmlSize", "id", "className", "isValid", "isInvalid", "plaintext", "readOnly", "custom", "as"];
 var FormControl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, type3 = _ref3.type, size2 = _ref3.size, htmlSize = _ref3.htmlSize, id2 = _ref3.id, className = _ref3.className, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, plaintext = _ref3.plaintext, readOnly = _ref3.readOnly, custom2 = _ref3.custom, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1J);
+  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, type3 = _ref3.type, size2 = _ref3.size, htmlSize = _ref3.htmlSize, id2 = _ref3.id, className = _ref3.className, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, plaintext = _ref3.plaintext, readOnly = _ref3.readOnly, custom2 = _ref3.custom, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1L);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom"] : [bsPrefix, "form-control"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -158776,7 +158845,7 @@ var FormControl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     var _classes5;
     classes = (_classes5 = {}, _classes5[bsPrefix] = true, _classes5[bsPrefix + "-" + size2] = size2, _classes5);
   }
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
     type: type3,
     size: htmlSize,
     ref,
@@ -158789,9 +158858,9 @@ FormControl.displayName = "FormControl";
 const FormControl$1 = Object.assign(FormControl, {
   Feedback
 });
-var _excluded$1I = ["bsPrefix", "className", "children", "controlId", "as"];
+var _excluded$1K = ["bsPrefix", "className", "children", "controlId", "as"];
 var FormGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, controlId = _ref3.controlId, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1I);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, controlId = _ref3.controlId, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1K);
   bsPrefix = useBootstrapPrefix(bsPrefix, "form-group");
   var context2 = reactExports.useMemo(function() {
     return {
@@ -158800,26 +158869,26 @@ var FormGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, [controlId]);
   return /* @__PURE__ */ React$1.createElement(FormContext.Provider, {
     value: context2
-  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({}, props, {
+  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
     ref,
     className: cx(className, bsPrefix)
   }), children));
 });
 FormGroup.displayName = "FormGroup";
-var _excluded$1H = ["as", "bsPrefix", "column", "srOnly", "className", "htmlFor"];
+var _excluded$1J = ["as", "bsPrefix", "column", "srOnly", "className", "htmlFor"];
 var defaultProps$a = {
   column: false,
   srOnly: false
 };
 var FormLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "label" : _ref$as, bsPrefix = _ref3.bsPrefix, column2 = _ref3.column, srOnly = _ref3.srOnly, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1H);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "label" : _ref$as, bsPrefix = _ref3.bsPrefix, column2 = _ref3.column, srOnly = _ref3.srOnly, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1J);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId;
   bsPrefix = useBootstrapPrefix(bsPrefix, "form-label");
   var columnClass = "col-form-label";
   if (typeof column2 === "string") columnClass = columnClass + " " + columnClass + "-" + column2;
   var classes = cx(className, bsPrefix, srOnly && "sr-only", column2 && columnClass);
   htmlFor = htmlFor || controlId;
-  if (column2) return /* @__PURE__ */ React$1.createElement(Col, _extends$1o({
+  if (column2) return /* @__PURE__ */ React$1.createElement(Col, _extends$1q({
     ref,
     as: "label",
     className: classes,
@@ -158827,7 +158896,7 @@ var FormLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, props));
   return (
     // eslint-disable-next-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control
-    /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({
+    /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
       ref,
       className: classes,
       htmlFor
@@ -158836,13 +158905,13 @@ var FormLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 });
 FormLabel.displayName = "FormLabel";
 FormLabel.defaultProps = defaultProps$a;
-var _excluded$1G = ["bsPrefix", "className", "as", "muted"];
+var _excluded$1I = ["bsPrefix", "className", "as", "muted"];
 var FormText = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "small" : _ref$as, muted = _ref3.muted, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1G);
+    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "small" : _ref$as, muted = _ref3.muted, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1I);
     bsPrefix = useBootstrapPrefix(bsPrefix, "form-text");
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({}, props, {
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
       ref,
       className: cx(className, bsPrefix, muted && "text-muted")
     }));
@@ -158850,7 +158919,7 @@ var FormText = /* @__PURE__ */ React$1.forwardRef(
 );
 FormText.displayName = "FormText";
 var Switch$1 = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
-  return /* @__PURE__ */ React$1.createElement(FormCheck, _extends$1o({}, props, {
+  return /* @__PURE__ */ React$1.createElement(FormCheck, _extends$1q({}, props, {
     ref,
     type: "switch"
   }));
@@ -158858,15 +158927,15 @@ var Switch$1 = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
 Switch$1.displayName = "Switch";
 Switch$1.Input = FormCheck.Input;
 Switch$1.Label = FormCheck.Label;
-var _excluded$1F = ["bsPrefix", "inline", "className", "validated", "as"];
+var _excluded$1H = ["bsPrefix", "inline", "className", "validated", "as"];
 var FormRow = createWithBsPrefix("form-row");
 var defaultProps$9 = {
   inline: false
 };
 var FormImpl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, inline = _ref3.inline, className = _ref3.className, validated = _ref3.validated, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "form" : _ref$as, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1F);
+  var bsPrefix = _ref3.bsPrefix, inline = _ref3.inline, className = _ref3.className, validated = _ref3.validated, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "form" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1H);
   bsPrefix = useBootstrapPrefix(bsPrefix, "form");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
     ref,
     className: cx(className, validated && "was-validated", inline && bsPrefix + "-inline")
   }));
@@ -158881,26 +158950,26 @@ FormImpl.File = FormFile;
 FormImpl.Switch = Switch$1;
 FormImpl.Label = FormLabel;
 FormImpl.Text = FormText;
-var _excluded$1E = ["bsPrefix", "size", "hasValidation", "className", "as"];
+var _excluded$1G = ["bsPrefix", "size", "hasValidation", "className", "as"];
 var InputGroupAppend = createWithBsPrefix("input-group-append");
 var InputGroupPrepend = createWithBsPrefix("input-group-prepend");
 var InputGroupText = createWithBsPrefix("input-group-text", {
   Component: "span"
 });
 var InputGroupCheckbox = function InputGroupCheckbox2(props) {
-  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1o({
+  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1q({
     type: "checkbox"
   }, props)));
 };
 var InputGroupRadio = function InputGroupRadio2(props) {
-  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1o({
+  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1q({
     type: "radio"
   }, props)));
 };
 var InputGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, hasValidation = _ref3.hasValidation, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1E);
+  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, hasValidation = _ref3.hasValidation, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1G);
   bsPrefix = useBootstrapPrefix(bsPrefix, "input-group");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
     ref
   }, props, {
     className: cx(className, bsPrefix, size2 && bsPrefix + "-" + size2, hasValidation && "has-validation")
@@ -159183,7 +159252,7 @@ var Modal$2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$show = _ref3.show, show = _ref$show === void 0 ? false : _ref$show, _ref$role = _ref3.role, role = _ref$role === void 0 ? "dialog" : _ref$role, className = _ref3.className, style2 = _ref3.style, children = _ref3.children, _ref$backdrop = _ref3.backdrop, backdrop = _ref$backdrop === void 0 ? true : _ref$backdrop, _ref$keyboard = _ref3.keyboard, keyboard = _ref$keyboard === void 0 ? true : _ref$keyboard, onBackdropClick = _ref3.onBackdropClick, onEscapeKeyDown = _ref3.onEscapeKeyDown, transition = _ref3.transition, backdropTransition = _ref3.backdropTransition, _ref$autoFocus = _ref3.autoFocus, autoFocus = _ref$autoFocus === void 0 ? true : _ref$autoFocus, _ref$enforceFocus = _ref3.enforceFocus, enforceFocus = _ref$enforceFocus === void 0 ? true : _ref$enforceFocus, _ref$restoreFocus = _ref3.restoreFocus, restoreFocus = _ref$restoreFocus === void 0 ? true : _ref$restoreFocus, restoreFocusOptions = _ref3.restoreFocusOptions, renderDialog = _ref3.renderDialog, _ref$renderBackdrop = _ref3.renderBackdrop, renderBackdrop = _ref$renderBackdrop === void 0 ? function(props) {
     return /* @__PURE__ */ React$1.createElement("div", props);
   } : _ref$renderBackdrop, providedManager = _ref3.manager, containerRef = _ref3.container, containerClassName = _ref3.containerClassName, onShow = _ref3.onShow, _ref$onHide = _ref3.onHide, onHide3 = _ref$onHide === void 0 ? function() {
-  } : _ref$onHide, onExit = _ref3.onExit, onExited = _ref3.onExited, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, rest = _objectWithoutPropertiesLoose$1q(_ref3, ["show", "role", "className", "style", "children", "backdrop", "keyboard", "onBackdropClick", "onEscapeKeyDown", "transition", "backdropTransition", "autoFocus", "enforceFocus", "restoreFocus", "restoreFocusOptions", "renderDialog", "renderBackdrop", "manager", "container", "containerClassName", "onShow", "onHide", "onExit", "onExited", "onExiting", "onEnter", "onEntering", "onEntered"]);
+  } : _ref$onHide, onExit = _ref3.onExit, onExited = _ref3.onExited, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, rest = _objectWithoutPropertiesLoose$1s(_ref3, ["show", "role", "className", "style", "children", "backdrop", "keyboard", "onBackdropClick", "onEscapeKeyDown", "transition", "backdropTransition", "autoFocus", "enforceFocus", "restoreFocus", "restoreFocusOptions", "renderDialog", "renderBackdrop", "manager", "container", "containerClassName", "onShow", "onHide", "onExit", "onExited", "onExiting", "onEnter", "onEntering", "onEntered"]);
   var container2 = useWaitForDOMRef(containerRef);
   var modal = useModalManager(providedManager);
   var isMounted = useMounted();
@@ -159290,7 +159359,7 @@ var Modal$2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   if (!container2 || !(show || Transition2 && !exited)) {
     return null;
   }
-  var dialogProps = _extends$1o({
+  var dialogProps = _extends$1q({
     role,
     ref: modal.setDialogRef,
     // apparently only works on the dialog role element
@@ -159531,12 +159600,12 @@ var ModalContext = /* @__PURE__ */ React$1.createContext({
   onHide: function onHide() {
   }
 });
-var _excluded$1D = ["bsPrefix", "className", "contentClassName", "centered", "size", "children", "scrollable"];
+var _excluded$1F = ["bsPrefix", "className", "contentClassName", "centered", "size", "children", "scrollable"];
 var ModalDialog = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, contentClassName = _ref3.contentClassName, centered = _ref3.centered, size2 = _ref3.size, children = _ref3.children, scrollable = _ref3.scrollable, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1D);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, contentClassName = _ref3.contentClassName, centered = _ref3.centered, size2 = _ref3.size, children = _ref3.children, scrollable = _ref3.scrollable, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1F);
   bsPrefix = useBootstrapPrefix(bsPrefix, "modal");
   var dialogClass = bsPrefix + "-dialog";
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1o({}, props, {
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1q({}, props, {
     ref,
     className: cx(dialogClass, className, size2 && bsPrefix + "-" + size2, centered && dialogClass + "-centered", scrollable && dialogClass + "-scrollable")
   }), /* @__PURE__ */ React$1.createElement("div", {
@@ -159545,20 +159614,20 @@ var ModalDialog = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 });
 ModalDialog.displayName = "ModalDialog";
 const BootstrapModalFooter = createWithBsPrefix("modal-footer");
-var _excluded$1C = ["bsPrefix", "closeLabel", "closeButton", "onHide", "className", "children"];
+var _excluded$1E = ["bsPrefix", "closeLabel", "closeButton", "onHide", "className", "children"];
 var defaultProps$8 = {
   closeLabel: "Close",
   closeButton: false
 };
 var ModalHeader = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, closeLabel = _ref3.closeLabel, closeButton = _ref3.closeButton, onHide3 = _ref3.onHide, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1C);
+  var bsPrefix = _ref3.bsPrefix, closeLabel = _ref3.closeLabel, closeButton = _ref3.closeButton, onHide3 = _ref3.onHide, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1E);
   bsPrefix = useBootstrapPrefix(bsPrefix, "modal-header");
   var context2 = reactExports.useContext(ModalContext);
   var handleClick = useEventCallback$1(function() {
     if (context2) context2.onHide();
     if (onHide3) onHide3();
   });
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1o({
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1q({
     ref
   }, props, {
     className: cx(className, bsPrefix)
@@ -159573,7 +159642,7 @@ var DivStyledAsH4 = divWithClassName("h4");
 const BootstrapModalTitle = createWithBsPrefix("modal-title", {
   Component: DivStyledAsH4
 });
-var _excluded$1B = ["bsPrefix", "className", "style", "dialogClassName", "contentClassName", "children", "dialogAs", "aria-labelledby", "aria-describedby", "aria-label", "show", "animation", "backdrop", "keyboard", "onEscapeKeyDown", "onShow", "onHide", "container", "autoFocus", "enforceFocus", "restoreFocus", "restoreFocusOptions", "onEntered", "onExit", "onExiting", "onEnter", "onEntering", "onExited", "backdropClassName", "manager"];
+var _excluded$1D = ["bsPrefix", "className", "style", "dialogClassName", "contentClassName", "children", "dialogAs", "aria-labelledby", "aria-describedby", "aria-label", "show", "animation", "backdrop", "keyboard", "onEscapeKeyDown", "onShow", "onHide", "container", "autoFocus", "enforceFocus", "restoreFocus", "restoreFocusOptions", "onEntered", "onExit", "onExiting", "onEnter", "onEntering", "onExited", "backdropClassName", "manager"];
 var manager;
 var defaultProps$7 = {
   show: false,
@@ -159586,17 +159655,17 @@ var defaultProps$7 = {
   dialogAs: ModalDialog
 };
 function DialogTransition(props) {
-  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1o({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1q({}, props, {
     timeout: null
   }));
 }
 function BackdropTransition(props) {
-  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1o({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1q({}, props, {
     timeout: null
   }));
 }
 var Modal$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, style2 = _ref3.style, dialogClassName = _ref3.dialogClassName, contentClassName = _ref3.contentClassName, children = _ref3.children, Dialog = _ref3.dialogAs, ariaLabelledby = _ref3["aria-labelledby"], ariaDescribedby = _ref3["aria-describedby"], ariaLabel = _ref3["aria-label"], show = _ref3.show, animation = _ref3.animation, backdrop = _ref3.backdrop, keyboard = _ref3.keyboard, onEscapeKeyDown = _ref3.onEscapeKeyDown, onShow = _ref3.onShow, onHide3 = _ref3.onHide, container2 = _ref3.container, autoFocus = _ref3.autoFocus, enforceFocus = _ref3.enforceFocus, restoreFocus = _ref3.restoreFocus, restoreFocusOptions = _ref3.restoreFocusOptions, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onExited = _ref3.onExited, backdropClassName = _ref3.backdropClassName, propsManager = _ref3.manager, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1B);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, style2 = _ref3.style, dialogClassName = _ref3.dialogClassName, contentClassName = _ref3.contentClassName, children = _ref3.children, Dialog = _ref3.dialogAs, ariaLabelledby = _ref3["aria-labelledby"], ariaDescribedby = _ref3["aria-describedby"], ariaLabel = _ref3["aria-label"], show = _ref3.show, animation = _ref3.animation, backdrop = _ref3.backdrop, keyboard = _ref3.keyboard, onEscapeKeyDown = _ref3.onEscapeKeyDown, onShow = _ref3.onShow, onHide3 = _ref3.onHide, container2 = _ref3.container, autoFocus = _ref3.autoFocus, enforceFocus = _ref3.enforceFocus, restoreFocus = _ref3.restoreFocus, restoreFocusOptions = _ref3.restoreFocusOptions, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onExited = _ref3.onExited, backdropClassName = _ref3.backdropClassName, propsManager = _ref3.manager, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1D);
   var _useState = reactExports.useState({}), modalStyle = _useState[0], setStyle = _useState[1];
   var _useState2 = reactExports.useState(false), animateStaticModal = _useState2[0], setAnimateStaticModal = _useState2[1];
   var waitingForMouseUpRef = reactExports.useRef(false);
@@ -159703,16 +159772,16 @@ var Modal$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     removeEventListener(window, "resize", handleWindowResize);
   };
   var renderBackdrop = reactExports.useCallback(function(backdropProps) {
-    return /* @__PURE__ */ React$1.createElement("div", _extends$1o({}, backdropProps, {
+    return /* @__PURE__ */ React$1.createElement("div", _extends$1q({}, backdropProps, {
       className: cx(bsPrefix + "-backdrop", backdropClassName, !animation && "show")
     }));
   }, [animation, backdropClassName, bsPrefix]);
-  var baseModalStyle = _extends$1o({}, style2, modalStyle);
+  var baseModalStyle = _extends$1q({}, style2, modalStyle);
   if (!animation) {
     baseModalStyle.display = "block";
   }
   var renderDialog = function renderDialog2(dialogProps) {
-    return /* @__PURE__ */ React$1.createElement("div", _extends$1o({
+    return /* @__PURE__ */ React$1.createElement("div", _extends$1q({
       role: "dialog"
     }, dialogProps, {
       style: baseModalStyle,
@@ -159722,7 +159791,7 @@ var Modal$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
       "aria-label": ariaLabel,
       "aria-labelledby": ariaLabelledby,
       "aria-describedby": ariaDescribedby
-    }), /* @__PURE__ */ React$1.createElement(Dialog, _extends$1o({}, props, {
+    }), /* @__PURE__ */ React$1.createElement(Dialog, _extends$1q({}, props, {
       onMouseDown: handleDialogMouseDown,
       className: dialogClassName,
       contentClassName
@@ -159782,7 +159851,7 @@ var Overlay$1 = /* @__PURE__ */ React$1.forwardRef(function(props, outerRef) {
     offset: offset3,
     arrowElement,
     popperConfig
-  })), styles2 = _usePopper.styles, attributes = _usePopper.attributes, popper2 = _objectWithoutPropertiesLoose$1q(_usePopper, ["styles", "attributes"]);
+  })), styles2 = _usePopper.styles, attributes = _usePopper.attributes, popper2 = _objectWithoutPropertiesLoose$1s(_usePopper, ["styles", "attributes"]);
   if (props.show) {
     if (exited) setExited(false);
   } else if (!props.transition && !exited) {
@@ -159802,13 +159871,13 @@ var Overlay$1 = /* @__PURE__ */ React$1.forwardRef(function(props, outerRef) {
   if (!mountOverlay) {
     return null;
   }
-  var child = props.children(_extends$1o({}, popper2, {
+  var child = props.children(_extends$1q({}, popper2, {
     show: !!props.show,
-    props: _extends$1o({}, attributes.popper, {
+    props: _extends$1q({}, attributes.popper, {
       style: styles2.popper,
       ref: mergedRef
     }),
-    arrowProps: _extends$1o({}, attributes.arrow, {
+    arrowProps: _extends$1q({}, attributes.arrow, {
       style: styles2.arrow,
       ref: attachArrowRef
     })
@@ -159944,7 +160013,7 @@ Overlay$1.propTypes = {
    */
   onExited: PropTypes.func
 };
-var _excluded$1A = ["children", "transition", "popperConfig"], _excluded2$2 = ["props", "arrowProps", "show", "update", "forceUpdate", "placement", "state"];
+var _excluded$1C = ["children", "transition", "popperConfig"], _excluded2$2 = ["props", "arrowProps", "show", "update", "forceUpdate", "placement", "state"];
 var defaultProps$6 = {
   transition: Fade,
   rootClose: false,
@@ -159962,13 +160031,13 @@ function wrapRefs(props, arrowProps) {
   });
 }
 function Overlay(_ref3) {
-  var overlay = _ref3.children, transition = _ref3.transition, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, outerProps = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1A);
+  var overlay = _ref3.children, transition = _ref3.transition, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, outerProps = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1C);
   var popperRef = reactExports.useRef({});
   var _usePopperMarginModif = usePopperMarginModifiers(), ref = _usePopperMarginModif[0], marginModifiers = _usePopperMarginModif[1];
   var actualTransition = transition === true ? Fade : transition || null;
-  return /* @__PURE__ */ React$1.createElement(Overlay$1, _extends$1o({}, outerProps, {
+  return /* @__PURE__ */ React$1.createElement(Overlay$1, _extends$1q({}, outerProps, {
     ref,
-    popperConfig: _extends$1o({}, popperConfig, {
+    popperConfig: _extends$1q({}, popperConfig, {
       modifiers: marginModifiers.concat(popperConfig.modifiers || [])
     }),
     transition: actualTransition
@@ -159976,7 +160045,7 @@ function Overlay(_ref3) {
     var _state$modifiersData$;
     var overlayProps = _ref22.props, arrowProps = _ref22.arrowProps, show = _ref22.show, update2 = _ref22.update;
     _ref22.forceUpdate;
-    var placement = _ref22.placement, state = _ref22.state, props = _objectWithoutPropertiesLoose$1q(_ref22, _excluded2$2);
+    var placement = _ref22.placement, state = _ref22.state, props = _objectWithoutPropertiesLoose$1s(_ref22, _excluded2$2);
     wrapRefs(overlayProps, arrowProps);
     var popper2 = Object.assign(popperRef.current, {
       state,
@@ -159984,7 +160053,7 @@ function Overlay(_ref3) {
       placement,
       outOfBoundaries: (state == null ? void 0 : (_state$modifiersData$ = state.modifiersData.hide) == null ? void 0 : _state$modifiersData$.isReferenceHidden) || false
     });
-    if (typeof overlay === "function") return overlay(_extends$1o({}, props, overlayProps, {
+    if (typeof overlay === "function") return overlay(_extends$1q({}, props, overlayProps, {
       placement,
       show
     }, !transition && show && {
@@ -159993,17 +160062,17 @@ function Overlay(_ref3) {
       popper: popper2,
       arrowProps
     }));
-    return /* @__PURE__ */ React$1.cloneElement(overlay, _extends$1o({}, props, overlayProps, {
+    return /* @__PURE__ */ React$1.cloneElement(overlay, _extends$1q({}, props, overlayProps, {
       placement,
       arrowProps,
       popper: popper2,
       className: cx(overlay.props.className, !transition && show && "show"),
-      style: _extends$1o({}, overlay.props.style, overlayProps.style)
+      style: _extends$1q({}, overlay.props.style, overlayProps.style)
     }));
   });
 }
 Overlay.defaultProps = defaultProps$6;
-var _excluded$1z = ["trigger", "overlay", "children", "popperConfig", "show", "defaultShow", "onToggle", "delay", "placement", "flip"];
+var _excluded$1B = ["trigger", "overlay", "children", "popperConfig", "show", "defaultShow", "onToggle", "delay", "placement", "flip"];
 var RefHolder = /* @__PURE__ */ (function(_React$Component) {
   _inheritsLoose$2(RefHolder2, _React$Component);
   function RefHolder2() {
@@ -160034,7 +160103,7 @@ var defaultProps$5 = {
   trigger: ["hover", "focus"]
 };
 function OverlayTrigger(_ref3) {
-  var trigger2 = _ref3.trigger, overlay = _ref3.overlay, children = _ref3.children, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, propsShow = _ref3.show, _ref$defaultShow = _ref3.defaultShow, defaultShow = _ref$defaultShow === void 0 ? false : _ref$defaultShow, onToggle = _ref3.onToggle, propsDelay = _ref3.delay, placement = _ref3.placement, _ref$flip = _ref3.flip, flip2 = _ref$flip === void 0 ? placement && placement.indexOf("auto") !== -1 : _ref$flip, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1z);
+  var trigger2 = _ref3.trigger, overlay = _ref3.overlay, children = _ref3.children, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, propsShow = _ref3.show, _ref$defaultShow = _ref3.defaultShow, defaultShow = _ref$defaultShow === void 0 ? false : _ref$defaultShow, onToggle = _ref3.onToggle, propsDelay = _ref3.delay, placement = _ref3.placement, _ref$flip = _ref3.flip, flip2 = _ref$flip === void 0 ? placement && placement.indexOf("auto") !== -1 : _ref$flip, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1B);
   var triggerNodeRef = reactExports.useRef(null);
   var timeout = useTimeout();
   var hoverStateRef = reactExports.useRef("");
@@ -160109,11 +160178,11 @@ function OverlayTrigger(_ref3) {
     triggerProps.onMouseOver = handleMouseOver;
     triggerProps.onMouseOut = handleMouseOut;
   }
-  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, typeof children === "function" ? children(_extends$1o({}, triggerProps, {
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, typeof children === "function" ? children(_extends$1q({}, triggerProps, {
     ref: triggerNodeRef
   })) : /* @__PURE__ */ React$1.createElement(RefHolder, {
     ref: triggerNodeRef
-  }, /* @__PURE__ */ reactExports.cloneElement(children, triggerProps)), /* @__PURE__ */ React$1.createElement(Overlay, _extends$1o({}, props, {
+  }, /* @__PURE__ */ reactExports.cloneElement(children, triggerProps)), /* @__PURE__ */ React$1.createElement(Overlay, _extends$1q({}, props, {
     show,
     onHide: handleHide,
     flip: flip2,
@@ -160123,27 +160192,27 @@ function OverlayTrigger(_ref3) {
   }), overlay));
 }
 OverlayTrigger.defaultProps = defaultProps$5;
-var _excluded$1y = ["as", "bsPrefix", "className", "children"];
+var _excluded$1A = ["as", "bsPrefix", "className", "children"];
 var PopoverTitle = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1y);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1A);
   bsPrefix = useBootstrapPrefix(bsPrefix, "popover-header");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
     ref
   }, props, {
     className: cx(bsPrefix, className)
   }), children);
 });
-var _excluded$1x = ["as", "bsPrefix", "className", "children"];
+var _excluded$1z = ["as", "bsPrefix", "className", "children"];
 var PopoverContent = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1x);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1z);
   bsPrefix = useBootstrapPrefix(bsPrefix, "popover-body");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
     ref
   }, props, {
     className: cx(className, bsPrefix)
   }), children);
 });
-var _excluded$1w = ["bsPrefix", "placement", "className", "style", "children", "content", "arrowProps", "popper", "show"];
+var _excluded$1y = ["bsPrefix", "placement", "className", "style", "children", "content", "arrowProps", "popper", "show"];
 var defaultProps$4 = {
   placement: "right"
 };
@@ -160151,29 +160220,29 @@ var Popover = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   var bsPrefix = _ref3.bsPrefix, placement = _ref3.placement, className = _ref3.className, style2 = _ref3.style, children = _ref3.children, content2 = _ref3.content, arrowProps = _ref3.arrowProps;
   _ref3.popper;
   _ref3.show;
-  var props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1w);
+  var props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1y);
   var decoratedBsPrefix = useBootstrapPrefix(bsPrefix, "popover");
   var _ref22 = (placement == null ? void 0 : placement.split("-")) || [], primaryPlacement = _ref22[0];
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1o({
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1q({
     ref,
     role: "tooltip",
     style: style2,
     "x-placement": primaryPlacement,
     className: cx(className, decoratedBsPrefix, primaryPlacement && "bs-popover-" + primaryPlacement)
-  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1o({
+  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1q({
     className: "arrow"
   }, arrowProps)), content2 ? /* @__PURE__ */ React$1.createElement(PopoverContent, null, children) : children);
 });
 Popover.defaultProps = defaultProps$4;
 Popover.Title = PopoverTitle;
 Popover.Content = PopoverContent;
-var _excluded$1v = ["bsPrefix", "className", "noGutters", "as"];
+var _excluded$1x = ["bsPrefix", "className", "noGutters", "as"];
 var DEVICE_SIZES = ["xl", "lg", "md", "sm", "xs"];
 var defaultProps$3 = {
   noGutters: false
 };
 var Row = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, noGutters = _ref3.noGutters, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1v);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, noGutters = _ref3.noGutters, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1x);
   var decoratedBsPrefix = useBootstrapPrefix(bsPrefix, "row");
   var sizePrefix = decoratedBsPrefix + "-cols";
   var classes = [];
@@ -160189,7 +160258,7 @@ var Row = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     var infix = brkPoint !== "xs" ? "-" + brkPoint : "";
     if (cols != null) classes.push("" + sizePrefix + infix + "-" + cols);
   });
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
     ref
   }, props, {
     className: cx.apply(void 0, [className, decoratedBsPrefix, noGutters && "no-gutters"].concat(classes))
@@ -160197,19 +160266,19 @@ var Row = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 });
 Row.displayName = "Row";
 Row.defaultProps = defaultProps$3;
-var _excluded$1u = ["bsPrefix", "variant", "animation", "size", "children", "as", "className"];
+var _excluded$1w = ["bsPrefix", "variant", "animation", "size", "children", "as", "className"];
 var Spinner = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, animation = _ref3.animation, size2 = _ref3.size, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1u);
+  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, animation = _ref3.animation, size2 = _ref3.size, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1w);
   bsPrefix = useBootstrapPrefix(bsPrefix, "spinner");
   var bsSpinnerPrefix = bsPrefix + "-" + animation;
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1o({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
     ref
   }, props, {
     className: cx(className, bsSpinnerPrefix, size2 && bsSpinnerPrefix + "-" + size2, variant && "text-" + variant)
   }), children);
 });
 Spinner.displayName = "Spinner";
-var _excluded$1t = ["bsPrefix", "placement", "className", "style", "children", "arrowProps", "popper", "show"];
+var _excluded$1v = ["bsPrefix", "placement", "className", "style", "children", "arrowProps", "popper", "show"];
 var defaultProps$2 = {
   placement: "right"
 };
@@ -160217,16 +160286,16 @@ var Tooltip = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   var bsPrefix = _ref3.bsPrefix, placement = _ref3.placement, className = _ref3.className, style2 = _ref3.style, children = _ref3.children, arrowProps = _ref3.arrowProps;
   _ref3.popper;
   _ref3.show;
-  var props = _objectWithoutPropertiesLoose$1q(_ref3, _excluded$1t);
+  var props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1v);
   bsPrefix = useBootstrapPrefix(bsPrefix, "tooltip");
   var _ref22 = (placement == null ? void 0 : placement.split("-")) || [], primaryPlacement = _ref22[0];
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1o({
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1q({
     ref,
     style: style2,
     role: "tooltip",
     "x-placement": primaryPlacement,
     className: cx(className, bsPrefix, "bs-tooltip-" + primaryPlacement)
-  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1o({
+  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1q({
     className: "arrow"
   }, arrowProps)), /* @__PURE__ */ React$1.createElement("div", {
     className: bsPrefix + "-inner"
@@ -163531,16 +163600,16 @@ function _objectSpread2$2(e2) {
   }
   return e2;
 }
-function _objectWithoutProperties$1n(e2, t4) {
+function _objectWithoutProperties$1p(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i3 = _objectWithoutPropertiesLoose$1p(e2, t4);
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1r(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
   }
   return i3;
 }
-function _objectWithoutPropertiesLoose$1p(r3, e2) {
+function _objectWithoutPropertiesLoose$1r(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -163660,7 +163729,7 @@ function camelize(string2) {
   });
   return string2.substr(0, 1).toLowerCase() + string2.substr(1);
 }
-var _excluded$1s = ["style"];
+var _excluded$1u = ["style"];
 function capitalize$1(val) {
   return val.charAt(0).toUpperCase() + val.slice(1);
 }
@@ -163706,7 +163775,7 @@ function convert(createElement2, element) {
   }, {
     attrs: {}
   });
-  var _extraProps$style = extraProps.style, existingStyle = _extraProps$style === void 0 ? {} : _extraProps$style, remaining = _objectWithoutProperties$1n(extraProps, _excluded$1s);
+  var _extraProps$style = extraProps.style, existingStyle = _extraProps$style === void 0 ? {} : _extraProps$style, remaining = _objectWithoutProperties$1p(extraProps, _excluded$1u);
   mixins.attrs["style"] = _objectSpread2$2(_objectSpread2$2({}, mixins.attrs["style"]), existingStyle);
   return createElement2.apply(void 0, [element.tag, _objectSpread2$2(_objectSpread2$2({}, mixins.attrs), remaining)].concat(_toConsumableArray$1(children)));
 }
@@ -176663,7 +176732,7 @@ var ConfigError = class extends Error {
     this.name = "ConfigureError";
   }
 };
-const logger$d = getLogger(["stash-tv", "source-selector-access"]);
+const logger$i = getLogger(["stash-tv", "source-selector-access"]);
 const DIRECT_STREAM_LABEL = "Direct stream";
 const ORIGINAL_RESOLUTION_LABEL = "Original";
 const DEFAULT_STREAM_LABEL = DIRECT_STREAM_LABEL;
@@ -176729,21 +176798,21 @@ function getSourceSelectorMenu(player) {
 function switchSceneStream(player, source2) {
   const menu = getSourceSelectorMenu(player);
   if (!menu) {
-    logger$d.warn(`Attempted to switch to "${source2.fullStashLabel}" source but the source selector menu isn't available`);
+    logger$i.warn(`Attempted to switch to "${source2.fullStashLabel}" source but the source selector menu isn't available`);
     return false;
   }
   if (menu.selectedSource === source2) {
-    logger$d.info(`Attempted to switch to "${source2.fullStashLabel}" source but it is already selected in the source selector menu`);
+    logger$i.info(`Attempted to switch to "${source2.fullStashLabel}" source but it is already selected in the source selector menu`);
     return false;
   }
   const item = menu.items.find((item2) => item2.source.label === source2.fullStashLabel);
   if (!item) {
-    logger$d.warn(`Attempted to switch to "${source2.fullStashLabel}" but it isn't in the source selector menu`, { source: source2, menuItems: menu.items.map((i3) => i3.source.label) });
+    logger$i.warn(`Attempted to switch to "${source2.fullStashLabel}" but it isn't in the source selector menu`, { source: source2, menuItems: menu.items.map((i3) => i3.source.label) });
     return false;
   }
   const itemEl = item.el();
   if (!itemEl || !(itemEl instanceof HTMLElement)) {
-    logger$d.warn(`Attempted to switch to "${source2.fullStashLabel}" but the menu item has no html element`, { item });
+    logger$i.warn(`Attempted to switch to "${source2.fullStashLabel}" but the menu item has no html element`, { item });
     return false;
   }
   const originalFocus = menu.focus.bind(menu);
@@ -177802,7 +177871,7 @@ offset.VERSION = version;
 const testVideo = "data:video/webm;base64,GkXfo59ChoEBQveBAULygQRC84EIQoKEd2VibUKHgQJChYECGFOAZwEAAAAAAAH7EU2bdLpNu4tTq4QVSalmU6yBoU27i1OrhBZUrmtTrIHYTbuMU6uEElTDZ1OsggElTbuMU6uEHFO7a1OsggHl7AEAAAAAAABZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVSalmsirXsYMPQkBNgI1MYXZmNTkuMjcuMTAwV0GNTGF2ZjU5LjI3LjEwMESJiEBEAAAAAAAAFlSua8iuAQAAAAAAAD/XgQFzxYj5fByPWCfQR5yBACK1nIN1bmSIgQCGhVZfVlA5g4EBI+ODhAJiWgDgkLCBQLqBQJqBAlWwhFW5gQESVMNnQIFzc6BjwIBnyJpFo4dFTkNPREVSRIeNTGF2ZjU5LjI3LjEwMHNz22PAi2PFiPl8HI9YJ9BHZ8ilRaOHRU5DT0RFUkSHmExhdmM1OS4zNy4xMDAgbGlidnB4LXZwOWfIokWjiERVUkFUSU9ORIeUMDA6MDA6MDAuMDQwMDAwMDAwAAAfQ7Z1tOeBAKOvgQAAgJJJg0IAAfgB+wAcEg4MJwAAGGAAABO///lkKAAR////7vyH/////KuoAAAcU7trkbuPs4EAt4r3gQHxggGs8IED";
 const tenBitSupportTestTimeoutMs = 3e3;
 let supports10BitVideos = void 0;
-const logger$c = getLogger(["stash-tv", "pause-loading-plugin"]);
+const logger$h = getLogger(["stash-tv", "pause-loading-plugin"]);
 class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
   constructor(player) {
     super(player);
@@ -177828,7 +177897,7 @@ class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
       if (player.isDisposed()) return;
       const videoElm = player.tech(true).el();
       if (!(videoElm instanceof HTMLVideoElement)) {
-        logger$c.error(`Unexpected element {*}`, { videoElm });
+        logger$h.error(`Unexpected element {*}`, { videoElm });
         return;
       }
       if (videoElm.readyState < 2) {
@@ -177864,14 +177933,14 @@ class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
         });
         await new Promise((resolve) => setTimeout(resolve, fadeToPosterTime * 1e3));
       } else {
-        logger$c.warn(`Failed to set video frame as poster`);
+        logger$h.warn(`Failed to set video frame as poster`);
       }
     }
     player.cancelLoading = function() {
       _loadingCanceled = true;
       const videoElm = player.tech(true).el();
       if (!(videoElm instanceof HTMLVideoElement)) {
-        logger$c.error(`Unexpected element {*}`, { videoElm });
+        logger$h.error(`Unexpected element {*}`, { videoElm });
         return;
       }
       unloadedSource = videoElm.src;
@@ -177891,7 +177960,7 @@ class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
         videoElm.load();
         videoElm.currentTime = currentTime;
         player.trigger("loadingCanceled", { currentTime });
-        logger$c.debug("Loading canceled.");
+        logger$h.debug("Loading canceled.");
       }
       pausedStateOnUnload = player.paused();
       if (!player.paused()) {
@@ -177907,7 +177976,7 @@ class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
       }
       const videoElm = player.tech(true).el();
       if (!(videoElm instanceof HTMLVideoElement)) {
-        logger$c.error(`Unexpected element {*}`, { videoElm });
+        logger$h.error(`Unexpected element {*}`, { videoElm });
         return;
       }
       _loadingCanceled = false;
@@ -177921,7 +177990,7 @@ class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
         player.play();
       }
       unloadedSource = null;
-      logger$c.debug("Video loading resumed, sources restored.");
+      logger$h.debug("Video loading resumed, sources restored.");
     };
   }
 }
@@ -177974,11 +178043,11 @@ function testFor10BitSupport() {
       resolve(result);
     };
     const onError2 = () => {
-      logger$c.warn("10-bit support test video failed to load, assuming unsupported");
+      logger$h.warn("10-bit support test video failed to load, assuming unsupported");
       settle(false);
     };
     const timeoutId = setTimeout(() => {
-      logger$c.warn(`10-bit support test timed out after ${tenBitSupportTestTimeoutMs}ms, assuming unsupported`);
+      logger$h.warn(`10-bit support test timed out after ${tenBitSupportTestTimeoutMs}ms, assuming unsupported`);
       settle(false);
     }, tenBitSupportTestTimeoutMs);
     video.addEventListener("error", onError2);
@@ -177990,7 +178059,7 @@ function testFor10BitSupport() {
       canvas.height = video.videoHeight;
       const ctx = canvas.getContext("2d");
       if (!ctx) {
-        logger$c.warn("Failed to get canvas context for 10-bit support test, assuming unsupported");
+        logger$h.warn("Failed to get canvas context for 10-bit support test, assuming unsupported");
         settle(false);
         return;
       }
@@ -178748,11 +178817,11 @@ var globalProjectionState = {
    */
   hasEverUpdated: false
 };
-var id$l = 1;
+var id$m = 1;
 function useProjectionId() {
   return useConstant(function() {
     if (globalProjectionState.hasEverUpdated) {
-      return id$l++;
+      return id$m++;
     }
   });
 }
@@ -188848,82 +188917,6 @@ function useMediaItemFilters() {
 function getRandomSeed() {
   return Math.round(Math.random() * 1e6);
 }
-function sortPerformers(performers2) {
-  const ret = performers2.slice();
-  ret.sort((a4, b3) => {
-    if (a4.gender === b3.gender) {
-      return (a4.name ?? "").localeCompare(b3.name ?? "");
-    }
-    const aIndex = a4.gender ? GENDERS.indexOf(a4.gender) : GENDERS.length;
-    const bIndex = b3.gender ? GENDERS.indexOf(b3.gender) : GENDERS.length;
-    return aIndex - bIndex;
-  });
-  return ret;
-}
-const GENDERS = [
-  "FEMALE",
-  "TRANSGENDER_FEMALE",
-  "MALE",
-  "TRANSGENDER_MALE",
-  "INTERSEX",
-  "NON_BINARY"
-];
-function clamp$3(min2, num, max2) {
-  return Math.min(Math.max(num, min2), max2);
-}
-function updateReadOnlyProp(obj, prop, value) {
-  Object.defineProperty(obj, prop, { value, writable: true, enumerable: isEnumerableIncludingInherited(obj, prop) });
-}
-function updateReadOnlyProps(obj, props) {
-  for (const [prop, value] of Object.entries(props)) {
-    updateReadOnlyProp(obj, prop, value);
-  }
-}
-function isEnumerableIncludingInherited(obj, prop) {
-  let current = obj;
-  while (current) {
-    const desc = Object.getOwnPropertyDescriptor(current, prop);
-    if (desc) return !!desc.enumerable;
-    current = Object.getPrototypeOf(current);
-  }
-  return false;
-}
-function getMediaItemIdForVideoJsPlayer(videoElm) {
-  let node2 = videoElm;
-  while (node2 !== null) {
-    if (node2 instanceof HTMLElement && "sceneId" in node2.dataset && node2.dataset.sceneId) {
-      return node2.id.replace(/^scene-player-/, "");
-    }
-    node2 = node2.parentElement;
-  }
-  throw new Error("Could not find mediaItemId for Video.js player");
-}
-function roundTo(num, decimals = 0) {
-  const factor = Math.pow(10, decimals);
-  return Math.round(num * factor) / factor;
-}
-function roundToNearest(num, nearest = 1) {
-  return Math.round(num / nearest) * nearest;
-}
-function getNextOption(options2, current) {
-  const currentIndex = options2.findIndex((option) => option.value === current);
-  return options2[(currentIndex + 1) % options2.length];
-}
-function formatDuration(totalSeconds) {
-  const units = [
-    { name: "hour", seconds: 60 * 60 },
-    { name: "minute", seconds: 60 },
-    { name: "second", seconds: 1 }
-  ];
-  let remaining = Math.round(totalSeconds);
-  const parts = [];
-  for (const unit of units) {
-    const count2 = Math.floor(remaining / unit.seconds);
-    remaining -= count2 * unit.seconds;
-    if (count2 > 0) parts.push(`${count2} ${unit.name}${count2 === 1 ? "" : "s"}`);
-  }
-  return parts.length ? parts.join(" ") : "0 seconds";
-}
 var object_hash = { exports: {} };
 var hasRequiredObject_hash;
 function requireObject_hash() {
@@ -189728,224 +189721,134 @@ function getFunctionFromString(functionString) {
   }
 }
 const defaultMarkerLength = 20;
-const useMediaItemsAccumulatorStore = create(() => ({
-  items: /* @__PURE__ */ new Map(),
-  pagesLoadedBeyondFirst: 0,
-  fetchMoreInFlight: false
-}));
-function mergeMediaItemsIntoStore(newPageItems) {
-  const state = useMediaItemsAccumulatorStore.getState();
-  let changed = false;
-  const newItems = new Map(state.items);
-  for (const item of newPageItems) {
-    if (newItems.get(item.id) !== item) {
-      newItems.set(item.id, item);
-      changed = true;
+const MarkerForTvFragmentDoc = gql`
+  fragment MarkerForTv on SceneMarker {
+    ...SceneMarkerData
+    scene {
+      ...SceneData
     }
   }
-  if (changed) {
-    useMediaItemsAccumulatorStore.setState({ items: newItems });
+  ${SceneMarkerDataFragmentDoc}
+  ${SceneDataFragmentDoc}
+`;
+function mediaItemFragment(entityType) {
+  return entityType === "scene" ? { fragment: SceneDataFragmentDoc, fragmentName: "SceneData" } : { fragment: MarkerForTvFragmentDoc, fragmentName: "MarkerForTv" };
+}
+function sceneMediaItem(scene2) {
+  return { id: `scene:${scene2.id}`, entityType: "scene", entity: scene2 };
+}
+function markerMediaItem(marker) {
+  return {
+    id: `marker:${marker.id}`,
+    entityType: "marker",
+    entity: {
+      ...marker,
+      get duration() {
+        const endTime = marker.end_seconds ?? Math.min(marker.seconds + defaultMarkerLength, marker.scene.files[0].duration);
+        return endTime - marker.seconds;
+      }
+    }
+  };
+}
+function mediaItemFromEntity(entityType, entity) {
+  return entityType === "scene" ? sceneMediaItem(entity) : markerMediaItem(entity);
+}
+function readMediaItem(cache2, ref) {
+  const entity = cache2.readFragment({
+    id: ref.cacheId,
+    ...mediaItemFragment(ref.entityType)
+  });
+  return entity ? mediaItemFromEntity(ref.entityType, entity) : void 0;
+}
+function sortPerformers(performers2) {
+  const ret = performers2.slice();
+  ret.sort((a4, b3) => {
+    if (a4.gender === b3.gender) {
+      return (a4.name ?? "").localeCompare(b3.name ?? "");
+    }
+    const aIndex = a4.gender ? GENDERS.indexOf(a4.gender) : GENDERS.length;
+    const bIndex = b3.gender ? GENDERS.indexOf(b3.gender) : GENDERS.length;
+    return aIndex - bIndex;
+  });
+  return ret;
+}
+const GENDERS = [
+  "FEMALE",
+  "TRANSGENDER_FEMALE",
+  "MALE",
+  "TRANSGENDER_MALE",
+  "INTERSEX",
+  "NON_BINARY"
+];
+function clamp$3(min2, num, max2) {
+  return Math.min(Math.max(num, min2), max2);
+}
+function updateReadOnlyProp(obj, prop, value) {
+  Object.defineProperty(obj, prop, { value, writable: true, enumerable: isEnumerableIncludingInherited(obj, prop) });
+}
+function updateReadOnlyProps(obj, props) {
+  for (const [prop, value] of Object.entries(props)) {
+    updateReadOnlyProp(obj, prop, value);
   }
 }
-function useMediaItems() {
-  const logger3 = getLogger(["stash-tv", "useMediaItems"]);
-  const { lastLoadedCurrentMediaItemFilter } = useMediaItemFilters();
-  const {
-    maxMedia,
-    scenePreviewOnly,
-    markerPreviewOnly,
-    pageSize: mediaItemsPerPage,
-    showDevOptions,
-    mediaItemsModifierFunction
-  } = useTvConfig();
-  const { configuration: stashConfig } = reactExports.useContext(ConfigurationContext);
-  const previewOnly = lastLoadedCurrentMediaItemFilter?.entityType === "scene" && scenePreviewOnly || lastLoadedCurrentMediaItemFilter?.entityType === "marker" && markerPreviewOnly;
-  const hydratedMediaItemsModifierFunction = getFunctionFromString(mediaItemsModifierFunction);
-  const [neverLoaded, setNeverLoaded] = reactExports.useState(true);
-  function mapMarker(marker) {
-    return {
-      id: `marker:${marker.id}`,
-      entityType: "marker",
-      entity: {
-        ...marker,
-        get duration() {
-          const endTime = marker.end_seconds ?? Math.min(marker.seconds + defaultMarkerLength, marker.scene.files[0].duration);
-          return endTime - marker.seconds;
-        }
-      }
-    };
+function isEnumerableIncludingInherited(obj, prop) {
+  let current = obj;
+  while (current) {
+    const desc = Object.getOwnPropertyDescriptor(current, prop);
+    if (desc) return !!desc.enumerable;
+    current = Object.getPrototypeOf(current);
   }
-  function markerIsValid(marker) {
-    if (marker.seconds > marker.scene.files[0].duration) {
-      logger3.warn(`Marker with ID ${marker.id} has start time (${marker.seconds}s) greater than scene duration (${marker.scene.files[0].duration}s). This marker will be skipped.`, { marker });
-      return false;
+  return false;
+}
+function getMediaItemIdForVideoJsPlayer(videoElm) {
+  let node2 = videoElm;
+  while (node2 !== null) {
+    if (node2 instanceof HTMLElement && "sceneId" in node2.dataset && node2.dataset.sceneId) {
+      return node2.id.replace(/^scene-player-/, "");
     }
-    return true;
+    node2 = node2.parentElement;
   }
-  let response;
-  let apolloMediaItems;
-  let loadMoreMediaItemsImpl;
-  if (!lastLoadedCurrentMediaItemFilter || lastLoadedCurrentMediaItemFilter.entityType === "scene") {
-    const scenesResponse = useFindFullScenesQuery({
-      variables: {
-        filter: {
-          ...lastLoadedCurrentMediaItemFilter?.generalFilter,
-          // We manage pagination ourselves and so override whatever the saved filter had
-          page: 1,
-          per_page: mediaItemsPerPage
-        },
-        scene_filter: lastLoadedCurrentMediaItemFilter?.entityFilter
-      },
-      skip: !lastLoadedCurrentMediaItemFilter
-    });
-    apolloMediaItems = reactExports.useMemo(
-      () => scenesResponse.data?.findScenes.scenes.map((scene2) => ({
-        id: `scene:${scene2.id}`,
-        entityType: "scene",
-        entity: scene2
-      })) || [],
-      [scenesResponse.data?.findScenes.scenes]
-    );
-    response = scenesResponse;
-    const { fetchMore } = scenesResponse;
-    const generalFilter = lastLoadedCurrentMediaItemFilter?.generalFilter;
-    const entityFilter = lastLoadedCurrentMediaItemFilter?.entityFilter;
-    loadMoreMediaItemsImpl = async () => {
-      const state = useMediaItemsAccumulatorStore.getState();
-      if (state.fetchMoreInFlight) return;
-      const nextPage = state.pagesLoadedBeyondFirst + 2;
-      logger3.debug("Fetch next media page: {*}", { nextPage });
-      useMediaItemsAccumulatorStore.setState({ fetchMoreInFlight: true });
-      try {
-        const result = await fetchMore({
-          variables: {
-            filter: { ...generalFilter, page: nextPage, per_page: mediaItemsPerPage },
-            scene_filter: entityFilter
-          }
-        });
-        const newPageItems = (result.data?.findScenes.scenes ?? []).map((scene2) => ({
-          id: `scene:${scene2.id}`,
-          entityType: "scene",
-          entity: scene2
-        }));
-        mergeMediaItemsIntoStore(newPageItems);
-        useMediaItemsAccumulatorStore.setState((s4) => ({ pagesLoadedBeyondFirst: s4.pagesLoadedBeyondFirst + 1, fetchMoreInFlight: false }));
-      } catch (error) {
-        logger3.error("Failed to fetch next media page", { error });
-        useMediaItemsAccumulatorStore.setState({ fetchMoreInFlight: false });
-      }
-    };
-  } else if (lastLoadedCurrentMediaItemFilter.entityType === "marker") {
-    const markersResponse = useFindSceneMarkersForTvQuery({
-      variables: {
-        filter: {
-          ...lastLoadedCurrentMediaItemFilter.generalFilter,
-          // We manage pagination ourselves and so override whatever the saved filter had
-          page: 1,
-          per_page: mediaItemsPerPage
-        },
-        scene_marker_filter: lastLoadedCurrentMediaItemFilter.entityFilter
-      }
-    });
-    apolloMediaItems = reactExports.useMemo(
-      () => markersResponse.data?.findSceneMarkers.scene_markers.filter(markerIsValid).map(mapMarker) || [],
-      [markersResponse.data?.findSceneMarkers.scene_markers]
-    );
-    response = markersResponse;
-    const { fetchMore } = markersResponse;
-    const generalFilter = lastLoadedCurrentMediaItemFilter.generalFilter;
-    const entityFilter = lastLoadedCurrentMediaItemFilter.entityFilter;
-    loadMoreMediaItemsImpl = async () => {
-      const state = useMediaItemsAccumulatorStore.getState();
-      if (state.fetchMoreInFlight) return;
-      const nextPage = state.pagesLoadedBeyondFirst + 2;
-      logger3.debug("Fetch next media page: {*}", { nextPage });
-      useMediaItemsAccumulatorStore.setState({ fetchMoreInFlight: true });
-      try {
-        const result = await fetchMore({
-          variables: {
-            filter: { ...generalFilter, page: nextPage, per_page: mediaItemsPerPage },
-            scene_marker_filter: entityFilter
-          }
-        });
-        const newPageItems = (result.data?.findSceneMarkers.scene_markers ?? []).filter(markerIsValid).map(mapMarker);
-        mergeMediaItemsIntoStore(newPageItems);
-        useMediaItemsAccumulatorStore.setState((s4) => ({ pagesLoadedBeyondFirst: s4.pagesLoadedBeyondFirst + 1, fetchMoreInFlight: false }));
-      } catch (error) {
-        logger3.error("Failed to fetch next media page", { error });
-        useMediaItemsAccumulatorStore.setState({ fetchMoreInFlight: false });
-      }
-    };
-  } else {
-    logger3.debug("lastLoadedCurrentMediaItemFilter:", lastLoadedCurrentMediaItemFilter);
-    throw new Error("Unsupported media item filter entity type");
+  throw new Error("Could not find mediaItemId for Video.js player");
+}
+function roundTo(num, decimals = 0) {
+  const factor = Math.pow(10, decimals);
+  return Math.round(num * factor) / factor;
+}
+function roundToNearest(num, nearest = 1) {
+  return Math.round(num / nearest) * nearest;
+}
+function getNextOption(options2, current) {
+  const currentIndex = options2.findIndex((option) => option.value === current);
+  return options2[(currentIndex + 1) % options2.length];
+}
+function formatDuration(totalSeconds) {
+  const units = [
+    { name: "hour", seconds: 60 * 60 },
+    { name: "minute", seconds: 60 },
+    { name: "second", seconds: 1 }
+  ];
+  let remaining = Math.round(totalSeconds);
+  const parts = [];
+  for (const unit of units) {
+    const count2 = Math.floor(remaining / unit.seconds);
+    remaining -= count2 * unit.seconds;
+    if (count2 > 0) parts.push(`${count2} ${unit.name}${count2 === 1 ? "" : "s"}`);
   }
-  const accumulatorItems = useMediaItemsAccumulatorStore((s4) => s4.items);
+  return parts.length ? parts.join(" ") : "0 seconds";
+}
+const logger$g = getLogger(["stash-tv", "usePreviewLengths"]);
+const usePreviewLengths = create(() => ({}));
+function useTrackPreviewLengths(enabled) {
   reactExports.useEffect(() => {
-    logger3.debug(`lastLoadedCurrentMediaItemFilter changed to "${lastLoadedCurrentMediaItemFilter?.savedFilter?.name}", resetting media items`);
-    useMediaItemsAccumulatorStore.setState({ items: /* @__PURE__ */ new Map(), pagesLoadedBeyondFirst: 0, fetchMoreInFlight: false });
-  }, [lastLoadedCurrentMediaItemFilter]);
-  reactExports.useEffect(() => {
-    if (apolloMediaItems.length === 0) return;
-    mergeMediaItemsIntoStore(apolloMediaItems);
-  }, [apolloMediaItems]);
-  const removeMediaItem = reactExports.useCallback((id2) => {
-    const state = useMediaItemsAccumulatorStore.getState();
-    if (!state.items.has(id2)) return;
-    const newItems = new Map(state.items);
-    newItems.delete(id2);
-    useMediaItemsAccumulatorStore.setState({ items: newItems });
-  }, []);
-  let mediaItems = reactExports.useMemo(
-    () => Array.from(accumulatorItems.values()),
-    [accumulatorItems]
-  );
-  reactExports.useEffect(() => {
-    if (showDevOptions) {
-      window.mediaItems = [...mediaItems];
-    } else {
-      delete window.mediaItems;
-    }
-  }, [mediaItems]);
-  if (showDevOptions && typeof hydratedMediaItemsModifierFunction === "function") {
-    try {
-      const modifiedMediaItems = hydratedMediaItemsModifierFunction(mediaItems);
-      if (Array.isArray(modifiedMediaItems)) {
-        mediaItems = modifiedMediaItems;
-      }
-    } catch (error) {
-      logger3.error(`Media items modifier function threw an error`, { error });
-    }
-  }
-  reactExports.useEffect(() => {
-    if (showDevOptions) {
-      window.modifiedMediaItems = [...mediaItems];
-    } else {
-      delete window.modifiedMediaItems;
-    }
-  }, [mediaItems]);
-  const {
-    error: mediaItemsError,
-    loading: mediaItemsLoading
-  } = response;
-  reactExports.useEffect(() => {
-    mediaItems.length && setNeverLoaded(false);
-  }, [mediaItems.length]);
-  const [previewLengths, setPreviewLengths] = reactExports.useState({});
-  reactExports.useEffect(() => {
-    if (!previewOnly) return;
+    if (!enabled) return;
     const saveDurationOnceMetadataLoaded = (event2) => {
       if (!(event2?.target instanceof HTMLVideoElement)) return;
       const videoElm = event2.target;
       try {
         const mediaItemId = getMediaItemIdForVideoJsPlayer(videoElm);
-        logger3.debug("Saving preview length for media item {*}", { mediaItemId, duration: videoElm.duration });
-        setPreviewLengths(
-          (prev2) => ({
-            ...prev2,
-            [mediaItemId]: videoElm.duration
-          })
-        );
+        if (usePreviewLengths.getState()[mediaItemId] === videoElm.duration) return;
+        logger$g.debug("Saving preview length for media item {*}", { mediaItemId, duration: videoElm.duration });
+        usePreviewLengths.setState({ [mediaItemId]: videoElm.duration });
       } catch (error) {
         console.warn("Failed to get media item ID for video element", error);
       }
@@ -189954,91 +189857,254 @@ function useMediaItems() {
     return () => {
       window.removeEventListener("loadedmetadata", saveDurationOnceMetadataLoaded, { capture: true });
     };
-  }, [previewOnly]);
-  function makeMediaItemPreviewOnly(mediaItem) {
-    let previewUrl;
-    if (mediaItem.entityType === "scene") {
-      previewUrl = mediaItem.entity.paths.preview;
-    } else if (mediaItem.entityType === "marker") {
-      previewUrl = mediaItem.entity.stream;
+  }, [enabled]);
+}
+const logger$f = getLogger(["stash-tv", "useMediaItems"]);
+const initialFeedState = {
+  source: void 0,
+  refs: [],
+  skippedIds: /* @__PURE__ */ new Set(),
+  total: void 0,
+  fetchInFlight: false,
+  loading: false,
+  error: void 0
+};
+const useFeedStore = create(() => initialFeedState);
+function retain(client2, cacheId) {
+  if (client2.cache instanceof InMemoryCache) client2.cache.retain(cacheId);
+}
+function release(client2, cacheId) {
+  if (client2.cache instanceof InMemoryCache) client2.cache.release(cacheId);
+}
+function markerIsPlayable(marker) {
+  if (marker.seconds > marker.scene.files[0].duration) {
+    logger$f.warn(`Marker with ID ${marker.id} has start time (${marker.seconds}s) greater than scene duration (${marker.scene.files[0].duration}s). This marker will be skipped.`, { marker });
+    return false;
+  }
+  return true;
+}
+async function fetchPage(client2, filter2, page, perPage) {
+  const pageFilter = { ...filter2.generalFilter, page, per_page: perPage };
+  if (filter2.entityType === "scene") {
+    const { data: data22 } = await client2.query({
+      query: FindFullScenesDocument,
+      variables: { filter: pageFilter, scene_filter: filter2.entityFilter },
+      fetchPolicy: "network-only"
+    });
+    return { items: data22.findScenes.scenes.map(sceneMediaItem), skippedIds: [], total: data22.findScenes.count };
+  }
+  const { data: data2 } = await client2.query({
+    query: FindSceneMarkersForTvDocument,
+    variables: { filter: pageFilter, scene_marker_filter: filter2.entityFilter },
+    fetchPolicy: "network-only"
+  });
+  const items = [];
+  const skippedIds = [];
+  for (const marker of data2.findSceneMarkers.scene_markers) {
+    if (markerIsPlayable(marker)) {
+      items.push(markerMediaItem(marker));
     } else {
-      throw new Error("Unsupported media item entity type");
-    }
-    if (!previewUrl) {
-      console.warn(`Media item ${mediaItem.id} has no preview`);
-      return mediaItem;
-    }
-    const scene2 = "scene" in mediaItem.entity ? mediaItem.entity.scene : mediaItem.entity;
-    let estimatedDuration;
-    if (mediaItem.entityType === "marker") {
-      estimatedDuration = Math.min(defaultMarkerLength, scene2.files[0].duration);
-    } else {
-      const segmentDuration = stashConfig?.general.previewSegmentDuration ?? 0.75;
-      const segmentCount = stashConfig?.general.previewSegments ?? 12;
-      estimatedDuration = Math.min(segmentDuration * segmentCount, scene2.files[0].duration);
-    }
-    mediaItem.id in previewLengths && logger3.debug("Duration cached for media item {*}", { mediaItemId: mediaItem.id, duration: previewLengths[mediaItem.id] });
-    const duration5 = mediaItem.id in previewLengths ? previewLengths[mediaItem.id] : estimatedDuration;
-    const updatedScene = {
-      ...scene2,
-      sceneStreams: [
-        {
-          "url": previewUrl,
-          "mime_type": "video/mp4",
-          "label": "Direct stream",
-          "__typename": "SceneStreamEndpoint"
-        }
-      ],
-      files: [
-        {
-          ...scene2.files[0],
-          duration: duration5
-        },
-        ...scene2.files.slice(1)
-      ],
-      resume_time: null,
-      captions: null,
-      scene_markers: []
-    };
-    if (mediaItem.entityType === "scene") {
-      return {
-        ...mediaItem,
-        entity: updatedScene
-      };
-    } else if (mediaItem.entityType === "marker") {
-      return {
-        ...mediaItem,
-        entity: {
-          ...mediaItem.entity,
-          scene: updatedScene
-        }
-      };
-    } else {
-      return mediaItem;
+      skippedIds.push(`marker:${marker.id}`);
     }
   }
-  mediaItems = reactExports.useMemo(
-    () => {
-      let modifiedMediaItems = mediaItems;
-      if (typeof maxMedia === "number") {
-        modifiedMediaItems = modifiedMediaItems.slice(0, maxMedia);
+  return { items, skippedIds, total: data2.findSceneMarkers.count };
+}
+function resetFeed(client2, source2) {
+  for (const ref of useFeedStore.getState().refs) release(client2, ref.cacheId);
+  useFeedStore.setState({ ...initialFeedState, skippedIds: /* @__PURE__ */ new Set(), source: source2, loading: true });
+}
+async function loadNextPage(client2) {
+  const { source: source2, refs, skippedIds, total: total2, fetchInFlight } = useFeedStore.getState();
+  if (!source2 || fetchInFlight) return;
+  const offset3 = refs.length + skippedIds.size;
+  if (total2 !== void 0 && offset3 >= total2) return;
+  const page = Math.floor(offset3 / source2.pageSize) + 1;
+  logger$f.debug("Fetch media page {*}", { page });
+  useFeedStore.setState({ fetchInFlight: true });
+  try {
+    const result = await fetchPage(client2, source2.filter, page, source2.pageSize);
+    const state = useFeedStore.getState();
+    if (state.source !== source2) return;
+    const loadedIds = /* @__PURE__ */ new Set([...state.refs.map((ref) => ref.id), ...state.skippedIds]);
+    const newRefs = [];
+    for (const item of result.items) {
+      const cacheId = client2.cache.identify(item.entity);
+      if (loadedIds.has(item.id) || !cacheId) continue;
+      retain(client2, cacheId);
+      newRefs.push({ id: item.id, entityType: item.entityType, cacheId });
+    }
+    useFeedStore.setState({
+      refs: [...state.refs, ...newRefs],
+      skippedIds: /* @__PURE__ */ new Set([...state.skippedIds, ...result.skippedIds]),
+      total: result.total,
+      fetchInFlight: false,
+      loading: false,
+      error: void 0
+    });
+  } catch (error) {
+    if (useFeedStore.getState().source !== source2) return;
+    logger$f.error("Failed to fetch media page {*}", { page, error });
+    useFeedStore.setState({
+      fetchInFlight: false,
+      loading: false,
+      error: error instanceof Error ? error : new Error(String(error))
+    });
+  }
+}
+function removeFromFeed(client2, id2) {
+  const { refs } = useFeedStore.getState();
+  const ref = refs.find((ref2) => ref2.id === id2);
+  if (!ref) return;
+  release(client2, ref.cacheId);
+  useFeedStore.setState({ refs: refs.filter((otherRef) => otherRef !== ref) });
+}
+function readMediaItems(client2, refs) {
+  return refs.flatMap((ref) => readMediaItem(client2.cache, ref) ?? []);
+}
+function useMediaItems() {
+  const { lastLoadedCurrentMediaItemFilter } = useMediaItemFilters();
+  const {
+    maxMedia,
+    scenePreviewOnly,
+    markerPreviewOnly,
+    pageSize,
+    showDevOptions,
+    mediaItemsModifierFunction
+  } = useTvConfig();
+  const client2 = useApolloClient();
+  const refs = useFeedStore((state) => state.refs);
+  const loading2 = useFeedStore((state) => state.loading);
+  const error = useFeedStore((state) => state.error);
+  reactExports.useEffect(() => {
+    if (!lastLoadedCurrentMediaItemFilter) return;
+    const { entityType, generalFilter, entityFilter } = lastLoadedCurrentMediaItemFilter;
+    const key = objectHash({ entityType, generalFilter, entityFilter, pageSize });
+    if (useFeedStore.getState().source?.key === key) return;
+    logger$f.debug(`Filter changed to "${lastLoadedCurrentMediaItemFilter.savedFilter?.name}", resetting media items`);
+    resetFeed(client2, { key, filter: lastLoadedCurrentMediaItemFilter, pageSize });
+    loadNextPage(client2);
+  }, [client2, lastLoadedCurrentMediaItemFilter, pageSize]);
+  const loadMoreMediaItems = reactExports.useCallback(() => loadNextPage(client2), [client2]);
+  const removeMediaItem = reactExports.useCallback((id2) => removeFromFeed(client2, id2), [client2]);
+  const mediaItems = reactExports.useMemo(() => {
+    let modifiedRefs = refs;
+    const modifier = showDevOptions ? getFunctionFromString(mediaItemsModifierFunction) : null;
+    if (typeof modifier === "function") {
+      try {
+        const modifiedItems = modifier(readMediaItems(client2, refs));
+        if (Array.isArray(modifiedItems)) {
+          const refsById = new Map(refs.map((ref) => [ref.id, ref]));
+          modifiedRefs = modifiedItems.flatMap((item) => refsById.get(item?.id) ?? []);
+        }
+      } catch (error2) {
+        logger$f.error(`Media items modifier function threw an error`, { error: error2 });
       }
-      if (previewOnly) {
-        modifiedMediaItems = modifiedMediaItems.map(makeMediaItemPreviewOnly);
-      }
-      return modifiedMediaItems;
-    },
-    [mediaItems, previewOnly, maxMedia, objectHash(previewLengths)]
+    }
+    if (typeof maxMedia === "number") {
+      modifiedRefs = modifiedRefs.slice(0, maxMedia);
+    }
+    return modifiedRefs;
+  }, [client2, refs, showDevOptions, mediaItemsModifierFunction, maxMedia]);
+  reactExports.useEffect(() => {
+    if (showDevOptions) {
+      window.mediaItems = readMediaItems(client2, refs);
+      window.modifiedMediaItems = readMediaItems(client2, mediaItems);
+    } else {
+      delete window.mediaItems;
+      delete window.modifiedMediaItems;
+    }
+  }, [client2, showDevOptions, refs, mediaItems]);
+  const [neverLoaded, setNeverLoaded] = reactExports.useState(true);
+  reactExports.useEffect(() => {
+    mediaItems.length && setNeverLoaded(false);
+  }, [mediaItems.length]);
+  useTrackPreviewLengths(
+    lastLoadedCurrentMediaItemFilter?.entityType === "scene" && scenePreviewOnly || lastLoadedCurrentMediaItemFilter?.entityType === "marker" && markerPreviewOnly
   );
   return {
     mediaItems,
     removeMediaItem,
-    loadMoreMediaItems: loadMoreMediaItemsImpl,
-    mediaItemsError,
-    mediaItemsLoading,
+    loadMoreMediaItems,
+    mediaItemsError: error,
+    mediaItemsLoading: loading2,
     mediaItemsNeverLoaded: neverLoaded,
     waitingForMediaItemsFilter: !lastLoadedCurrentMediaItemFilter
   };
+}
+const logger$e = getLogger(["stash-tv", "makeMediaItemPreviewOnly"]);
+function makeMediaItemPreviewOnly(mediaItem, { previewLength, previewSegmentDuration = 0.75, previewSegments = 12 }) {
+  let previewUrl;
+  if (mediaItem.entityType === "scene") {
+    previewUrl = mediaItem.entity.paths.preview;
+  } else if (mediaItem.entityType === "marker") {
+    previewUrl = mediaItem.entity.stream;
+  } else {
+    throw new Error("Unsupported media item entity type");
+  }
+  if (!previewUrl) {
+    logger$e.warn(`Media item ${mediaItem.id} has no preview`);
+    return mediaItem;
+  }
+  const scene2 = mediaItem.entityType === "marker" ? mediaItem.entity.scene : mediaItem.entity;
+  const estimatedDuration = mediaItem.entityType === "marker" ? Math.min(defaultMarkerLength, scene2.files[0].duration) : Math.min(previewSegmentDuration * previewSegments, scene2.files[0].duration);
+  const updatedScene = {
+    ...scene2,
+    sceneStreams: [
+      {
+        "url": previewUrl,
+        "mime_type": "video/mp4",
+        "label": "Direct stream",
+        "__typename": "SceneStreamEndpoint"
+      }
+    ],
+    files: [
+      {
+        ...scene2.files[0],
+        duration: previewLength ?? estimatedDuration
+      },
+      ...scene2.files.slice(1)
+    ],
+    resume_time: null,
+    captions: null,
+    scene_markers: []
+  };
+  if (mediaItem.entityType === "scene") {
+    return {
+      ...mediaItem,
+      entity: updatedScene
+    };
+  } else {
+    return {
+      ...mediaItem,
+      entity: {
+        ...mediaItem.entity,
+        scene: updatedScene
+      }
+    };
+  }
+}
+function useLiveMediaItem(ref) {
+  const { data: data2, complete } = useFragment({
+    ...mediaItemFragment(ref.entityType),
+    from: ref.cacheId
+  });
+  const liveMediaItem = reactExports.useMemo(
+    () => complete ? mediaItemFromEntity(ref.entityType, data2) : void 0,
+    [complete, data2, ref.entityType]
+  );
+  const lastCompleteMediaItem = reactExports.useRef(liveMediaItem);
+  if (liveMediaItem) lastCompleteMediaItem.current = liveMediaItem;
+  const mediaItem = liveMediaItem ?? lastCompleteMediaItem.current;
+  const { scenePreviewOnly, markerPreviewOnly } = useTvConfig();
+  const previewOnly = ref.entityType === "scene" ? scenePreviewOnly : markerPreviewOnly;
+  const previewLength = usePreviewLengths((previewLengths) => previewLengths[ref.id]);
+  const { configuration: stashConfig } = reactExports.useContext(ConfigurationContext);
+  const previewSegmentDuration = stashConfig?.general.previewSegmentDuration ?? void 0;
+  const previewSegments = stashConfig?.general.previewSegments ?? void 0;
+  return reactExports.useMemo(
+    () => mediaItem && previewOnly ? makeMediaItemPreviewOnly(mediaItem, { previewLength, previewSegmentDuration, previewSegments }) : mediaItem,
+    [mediaItem, previewOnly, previewLength, previewSegmentDuration, previewSegments]
+  );
 }
 function useSceneUpdate(scene2) {
   const [mutation, mutationResult] = useSceneUpdateMutation({
@@ -193250,6 +193316,106 @@ const SvgAddMarkerOutline = (props) => /* @__PURE__ */ reactExports.createElemen
   strokeLinecap: "butt",
   strokeMiterlimit: 2
 } })));
+var _excluded$1t = ["color", "size", "title", "className"];
+function _extends$1o() {
+  return _extends$1o = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e2 = 1; e2 < arguments.length; e2++) {
+      var t4 = arguments[e2];
+      for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
+    }
+    return n;
+  }, _extends$1o.apply(null, arguments);
+}
+function _objectWithoutProperties$1o(e2, t4) {
+  if (null == e2) return {};
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1q(e2, t4);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e2);
+    for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
+  }
+  return i3;
+}
+function _objectWithoutPropertiesLoose$1q(r3, e2) {
+  if (null == r3) return {};
+  var t4 = {};
+  for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
+    if (-1 !== e2.indexOf(n)) continue;
+    t4[n] = r3[n];
+  }
+  return t4;
+}
+var Icon0CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+  var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1o(_ref3, _excluded$1t);
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1o({
+    ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size2,
+    height: size2,
+    fill: color2,
+    className: ["bi", "bi-0-circle-fill", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    d: "M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.012 4.158c1.858 0 2.96-1.582 2.96-3.99V7.84c0-2.426-1.079-3.996-2.936-3.996-1.864 0-2.965 1.588-2.965 3.996v.328c0 2.42 1.09 3.99 2.941 3.99"
+  }));
+});
+Icon0CircleFill.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.string,
+  className: PropTypes.string
+};
+var _excluded$1s = ["color", "size", "title", "className"];
+function _extends$1n() {
+  return _extends$1n = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e2 = 1; e2 < arguments.length; e2++) {
+      var t4 = arguments[e2];
+      for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
+    }
+    return n;
+  }, _extends$1n.apply(null, arguments);
+}
+function _objectWithoutProperties$1n(e2, t4) {
+  if (null == e2) return {};
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1p(e2, t4);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e2);
+    for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
+  }
+  return i3;
+}
+function _objectWithoutPropertiesLoose$1p(r3, e2) {
+  if (null == r3) return {};
+  var t4 = {};
+  for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
+    if (-1 !== e2.indexOf(n)) continue;
+    t4[n] = r3[n];
+  }
+  return t4;
+}
+var Icon0Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+  var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1n(_ref3, _excluded$1s);
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1n({
+    ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size2,
+    height: size2,
+    fill: color2,
+    className: ["bi", "bi-0-circle", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    d: "M7.988 12.158c-1.851 0-2.941-1.57-2.941-3.99V7.84c0-2.408 1.101-3.996 2.965-3.996 1.857 0 2.935 1.57 2.935 3.996v.328c0 2.408-1.101 3.99-2.959 3.99M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
+  }));
+});
+Icon0Circle.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.string,
+  className: PropTypes.string
+};
 var _excluded$1r = ["color", "size", "title", "className"];
 function _extends$1m() {
   return _extends$1m = Object.assign ? Object.assign.bind() : function(n) {
@@ -193278,7 +193444,7 @@ function _objectWithoutPropertiesLoose$1o(r3, e2) {
   }
   return t4;
 }
-var Icon0CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon1CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1m(_ref3, _excluded$1r);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1m({
     ref,
@@ -193287,14 +193453,12 @@ var Icon0CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-0-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-1-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.012 4.158c1.858 0 2.96-1.582 2.96-3.99V7.84c0-2.426-1.079-3.996-2.936-3.996-1.864 0-2.965 1.588-2.965 3.996v.328c0 2.42 1.09 3.99 2.941 3.99"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002H7.971L6.072 5.385v1.271l1.834-1.318h.065V12h1.312z"
   }));
 });
-Icon0CircleFill.propTypes = {
+Icon1CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193328,7 +193492,7 @@ function _objectWithoutPropertiesLoose$1n(r3, e2) {
   }
   return t4;
 }
-var Icon0Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon1Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1l(_ref3, _excluded$1q);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1l({
     ref,
@@ -193337,14 +193501,12 @@ var Icon0Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-0-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-1-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M7.988 12.158c-1.851 0-2.941-1.57-2.941-3.99V7.84c0-2.408 1.101-3.996 2.965-3.996 1.857 0 2.935 1.57 2.935 3.996v.328c0 2.408-1.101 3.99-2.959 3.99M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383z"
   }));
 });
-Icon0Circle.propTypes = {
+Icon1Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193378,7 +193540,7 @@ function _objectWithoutPropertiesLoose$1m(r3, e2) {
   }
   return t4;
 }
-var Icon1CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon2CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1k(_ref3, _excluded$1p);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1k({
     ref,
@@ -193387,12 +193549,12 @@ var Icon1CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-1-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-2-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002H7.971L6.072 5.385v1.271l1.834-1.318h.065V12h1.312z"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492 1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971 3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763 1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758 0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"
   }));
 });
-Icon1CircleFill.propTypes = {
+Icon2CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193426,7 +193588,7 @@ function _objectWithoutPropertiesLoose$1l(r3, e2) {
   }
   return t4;
 }
-var Icon1Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon2Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1j(_ref3, _excluded$1o);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1j({
     ref,
@@ -193435,12 +193597,12 @@ var Icon1Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-1-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-2-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383z"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306"
   }));
 });
-Icon1Circle.propTypes = {
+Icon2Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193474,7 +193636,7 @@ function _objectWithoutPropertiesLoose$1k(r3, e2) {
   }
   return t4;
 }
-var Icon2CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon3CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1i(_ref3, _excluded$1n);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1i({
     ref,
@@ -193483,12 +193645,12 @@ var Icon2CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-2-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-3-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492 1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971 3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763 1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758 0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.082.414c.92 0 1.535.54 1.541 1.318.012.791-.615 1.36-1.588 1.354-.861-.006-1.482-.469-1.54-1.066H5.104c.047 1.177 1.05 2.144 2.754 2.144 1.653 0 2.954-.937 2.93-2.396-.023-1.278-1.031-1.846-1.734-1.916v-.07c.597-.1 1.505-.739 1.482-1.876-.03-1.177-1.043-2.074-2.637-2.062-1.675.006-2.59.984-2.625 2.12h1.248c.036-.556.557-1.054 1.348-1.054.785 0 1.348.486 1.348 1.195.006.715-.563 1.237-1.342 1.237h-.838v1.072h.879Z"
   }));
 });
-Icon2CircleFill.propTypes = {
+Icon3CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193522,7 +193684,7 @@ function _objectWithoutPropertiesLoose$1j(r3, e2) {
   }
   return t4;
 }
-var Icon2Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon3Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1h(_ref3, _excluded$1m);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1h({
     ref,
@@ -193531,12 +193693,14 @@ var Icon2Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-2-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-3-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306"
+    d: "M7.918 8.414h-.879V7.342h.838c.78 0 1.348-.522 1.342-1.237 0-.709-.563-1.195-1.348-1.195-.79 0-1.312.498-1.348 1.055H5.275c.036-1.137.95-2.115 2.625-2.121 1.594-.012 2.608.885 2.637 2.062.023 1.137-.885 1.776-1.482 1.875v.07c.703.07 1.71.64 1.734 1.917.024 1.459-1.277 2.396-2.93 2.396-1.705 0-2.707-.967-2.754-2.144H6.33c.059.597.68 1.06 1.541 1.066.973.006 1.6-.563 1.588-1.354-.006-.779-.621-1.318-1.541-1.318"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
   }));
 });
-Icon2Circle.propTypes = {
+Icon3Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193570,7 +193734,7 @@ function _objectWithoutPropertiesLoose$1i(r3, e2) {
   }
   return t4;
 }
-var Icon3CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon4CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1g(_ref3, _excluded$1l);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1g({
     ref,
@@ -193579,12 +193743,12 @@ var Icon3CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-3-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-4-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.082.414c.92 0 1.535.54 1.541 1.318.012.791-.615 1.36-1.588 1.354-.861-.006-1.482-.469-1.54-1.066H5.104c.047 1.177 1.05 2.144 2.754 2.144 1.653 0 2.954-.937 2.93-2.396-.023-1.278-1.031-1.846-1.734-1.916v-.07c.597-.1 1.505-.739 1.482-1.876-.03-1.177-1.043-2.074-2.637-2.062-1.675.006-2.59.984-2.625 2.12h1.248c.036-.556.557-1.054 1.348-1.054.785 0 1.348.486 1.348 1.195.006.715-.563 1.237-1.342 1.237h-.838v1.072h.879Z"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M7.519 5.057c-.886 1.418-1.772 2.838-2.542 4.265v1.12H8.85V12h1.26v-1.559h1.007V9.334H10.11V4.002H8.176zM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218"
   }));
 });
-Icon3CircleFill.propTypes = {
+Icon4CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193618,7 +193782,7 @@ function _objectWithoutPropertiesLoose$1h(r3, e2) {
   }
   return t4;
 }
-var Icon3Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon4Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1f(_ref3, _excluded$1k);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1f({
     ref,
@@ -193627,14 +193791,14 @@ var Icon3Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-3-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-4-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M7.918 8.414h-.879V7.342h.838c.78 0 1.348-.522 1.342-1.237 0-.709-.563-1.195-1.348-1.195-.79 0-1.312.498-1.348 1.055H5.275c.036-1.137.95-2.115 2.625-2.121 1.594-.012 2.608.885 2.637 2.062.023 1.137-.885 1.776-1.482 1.875v.07c.703.07 1.71.64 1.734 1.917.024 1.459-1.277 2.396-2.93 2.396-1.705 0-2.707-.967-2.754-2.144H6.33c.059.597.68 1.06 1.541 1.066.973.006 1.6-.563 1.588-1.354-.006-.779-.621-1.318-1.541-1.318"
+    d: "M7.519 5.057q.33-.527.657-1.055h1.933v5.332h1.008v1.107H10.11V12H8.85v-1.559H4.978V9.322c.77-1.427 1.656-2.847 2.542-4.265ZM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218"
   }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
   }));
 });
-Icon3Circle.propTypes = {
+Icon4Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193668,7 +193832,7 @@ function _objectWithoutPropertiesLoose$1g(r3, e2) {
   }
   return t4;
 }
-var Icon4CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon5CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1e(_ref3, _excluded$1j);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1e({
     ref,
@@ -193677,12 +193841,12 @@ var Icon4CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-4-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-5-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M7.519 5.057c-.886 1.418-1.772 2.838-2.542 4.265v1.12H8.85V12h1.26v-1.559h1.007V9.334H10.11V4.002H8.176zM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.006 4.158c1.74 0 2.924-1.119 2.924-2.806 0-1.641-1.178-2.584-2.56-2.584-.897 0-1.442.421-1.612.68h-.064l.193-2.344h3.621V4.002H5.791L5.445 8.63h1.149c.193-.358.668-.809 1.435-.809.85 0 1.582.604 1.582 1.57 0 1.085-.779 1.682-1.57 1.682-.697 0-1.389-.31-1.53-1.031H5.276c.065 1.213 1.149 2.115 2.72 2.115Z"
   }));
 });
-Icon4CircleFill.propTypes = {
+Icon5CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193716,7 +193880,7 @@ function _objectWithoutPropertiesLoose$1f(r3, e2) {
   }
   return t4;
 }
-var Icon4Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon5Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1d(_ref3, _excluded$1i);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1d({
     ref,
@@ -193725,14 +193889,12 @@ var Icon4Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-4-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-5-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M7.519 5.057q.33-.527.657-1.055h1.933v5.332h1.008v1.107H10.11V12H8.85v-1.559H4.978V9.322c.77-1.427 1.656-2.847 2.542-4.265ZM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
+    d: "M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8m15 0A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-8.006 4.158c-1.57 0-2.654-.902-2.719-2.115h1.237c.14.72.832 1.031 1.529 1.031.791 0 1.57-.597 1.57-1.681 0-.967-.732-1.57-1.582-1.57-.767 0-1.242.45-1.435.808H5.445L5.791 4h4.705v1.103H6.875l-.193 2.343h.064c.17-.258.715-.68 1.611-.68 1.383 0 2.561.944 2.561 2.585 0 1.687-1.184 2.806-2.924 2.806Z"
   }));
 });
-Icon4Circle.propTypes = {
+Icon5Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193766,7 +193928,7 @@ function _objectWithoutPropertiesLoose$1e(r3, e2) {
   }
   return t4;
 }
-var Icon5CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon6CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1c(_ref3, _excluded$1h);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1c({
     ref,
@@ -193775,12 +193937,12 @@ var Icon5CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-5-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-6-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.006 4.158c1.74 0 2.924-1.119 2.924-2.806 0-1.641-1.178-2.584-2.56-2.584-.897 0-1.442.421-1.612.68h-.064l.193-2.344h3.621V4.002H5.791L5.445 8.63h1.149c.193-.358.668-.809 1.435-.809.85 0 1.582.604 1.582 1.57 0 1.085-.779 1.682-1.57 1.682-.697 0-1.389-.31-1.53-1.031H5.276c.065 1.213 1.149 2.115 2.72 2.115Z"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.21 3.855c-1.868 0-3.116 1.395-3.116 4.407 0 1.183.228 2.039.597 2.642.569.926 1.477 1.254 2.409 1.254 1.629 0 2.847-1.013 2.847-2.783 0-1.676-1.254-2.555-2.508-2.555-1.125 0-1.752.61-1.98 1.155h-.082c-.012-1.946.727-3.036 1.805-3.036.802 0 1.213.457 1.312.815h1.29c-.06-.908-.962-1.899-2.573-1.899Zm-.099 4.008c-.92 0-1.564.65-1.564 1.576 0 1.032.703 1.635 1.558 1.635.868 0 1.553-.533 1.553-1.629 0-1.06-.744-1.582-1.547-1.582"
   }));
 });
-Icon5CircleFill.propTypes = {
+Icon6CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193814,7 +193976,7 @@ function _objectWithoutPropertiesLoose$1d(r3, e2) {
   }
   return t4;
 }
-var Icon5Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon6Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1b(_ref3, _excluded$1g);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1b({
     ref,
@@ -193823,12 +193985,12 @@ var Icon5Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-5-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-6-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8m15 0A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-8.006 4.158c-1.57 0-2.654-.902-2.719-2.115h1.237c.14.72.832 1.031 1.529 1.031.791 0 1.57-.597 1.57-1.681 0-.967-.732-1.57-1.582-1.57-.767 0-1.242.45-1.435.808H5.445L5.791 4h4.705v1.103H6.875l-.193 2.343h.064c.17-.258.715-.68 1.611-.68 1.383 0 2.561.944 2.561 2.585 0 1.687-1.184 2.806-2.924 2.806Z"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.21 3.855c1.612 0 2.515.99 2.573 1.899H9.494c-.1-.358-.51-.815-1.312-.815-1.078 0-1.817 1.09-1.805 3.036h.082c.229-.545.855-1.155 1.98-1.155 1.254 0 2.508.88 2.508 2.555 0 1.77-1.218 2.783-2.847 2.783-.932 0-1.84-.328-2.409-1.254-.369-.603-.597-1.459-.597-2.642 0-3.012 1.248-4.407 3.117-4.407Zm-.099 4.008c-.92 0-1.564.65-1.564 1.576 0 1.032.703 1.635 1.558 1.635.868 0 1.553-.533 1.553-1.629 0-1.06-.744-1.582-1.547-1.582"
   }));
 });
-Icon5Circle.propTypes = {
+Icon6Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193862,7 +194024,7 @@ function _objectWithoutPropertiesLoose$1c(r3, e2) {
   }
   return t4;
 }
-var Icon6CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon7CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1a(_ref3, _excluded$1f);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1a({
     ref,
@@ -193871,12 +194033,12 @@ var Icon6CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-6-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-7-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.21 3.855c-1.868 0-3.116 1.395-3.116 4.407 0 1.183.228 2.039.597 2.642.569.926 1.477 1.254 2.409 1.254 1.629 0 2.847-1.013 2.847-2.783 0-1.676-1.254-2.555-2.508-2.555-1.125 0-1.752.61-1.98 1.155h-.082c-.012-1.946.727-3.036 1.805-3.036.802 0 1.213.457 1.312.815h1.29c-.06-.908-.962-1.899-2.573-1.899Zm-.099 4.008c-.92 0-1.564.65-1.564 1.576 0 1.032.703 1.635 1.558 1.635.868 0 1.553-.533 1.553-1.629 0-1.06-.744-1.582-1.547-1.582"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.37 5.11h3.972v.07L6.025 12H7.42l3.258-6.85V4.002H5.369v1.107Z"
   }));
 });
-Icon6CircleFill.propTypes = {
+Icon7CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193910,7 +194072,7 @@ function _objectWithoutPropertiesLoose$1b(r3, e2) {
   }
   return t4;
 }
-var Icon6Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon7Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$19(_ref3, _excluded$1e);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$19({
     ref,
@@ -193919,12 +194081,12 @@ var Icon6Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-6-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-7-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.21 3.855c1.612 0 2.515.99 2.573 1.899H9.494c-.1-.358-.51-.815-1.312-.815-1.078 0-1.817 1.09-1.805 3.036h.082c.229-.545.855-1.155 1.98-1.155 1.254 0 2.508.88 2.508 2.555 0 1.77-1.218 2.783-2.847 2.783-.932 0-1.84-.328-2.409-1.254-.369-.603-.597-1.459-.597-2.642 0-3.012 1.248-4.407 3.117-4.407Zm-.099 4.008c-.92 0-1.564.65-1.564 1.576 0 1.032.703 1.635 1.558 1.635.868 0 1.553-.533 1.553-1.629 0-1.06-.744-1.582-1.547-1.582"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.37 5.11V4.001h5.308V5.15L7.42 12H6.025l3.317-6.82v-.07H5.369Z"
   }));
 });
-Icon6Circle.propTypes = {
+Icon7Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193958,7 +194120,7 @@ function _objectWithoutPropertiesLoose$1a(r3, e2) {
   }
   return t4;
 }
-var Icon7CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon8CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$18(_ref3, _excluded$1d);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$18({
     ref,
@@ -193967,12 +194129,12 @@ var Icon7CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-7-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-8-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.37 5.11h3.972v.07L6.025 12H7.42l3.258-6.85V4.002H5.369v1.107Z"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-5.03 1.803c0-1.248-.943-1.84-1.646-1.992v-.065c.598-.187 1.336-.72 1.336-1.781 0-1.225-1.084-2.121-2.654-2.121s-2.66.896-2.66 2.12c0 1.044.709 1.589 1.33 1.782v.065c-.697.152-1.647.732-1.647 2.003 0 1.39 1.19 2.344 2.953 2.344 1.77 0 2.989-.96 2.989-2.355Zm-4.347-3.71c0 .739.586 1.255 1.383 1.255s1.377-.516 1.377-1.254c0-.733-.58-1.23-1.377-1.23s-1.383.497-1.383 1.23Zm-.281 3.645c0 .838.72 1.412 1.664 1.412.943 0 1.658-.574 1.658-1.412 0-.843-.715-1.424-1.658-1.424-.944 0-1.664.58-1.664 1.424"
   }));
 });
-Icon7CircleFill.propTypes = {
+Icon8CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194006,7 +194168,7 @@ function _objectWithoutPropertiesLoose$19(r3, e2) {
   }
   return t4;
 }
-var Icon7Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon8Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$17(_ref3, _excluded$1c);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$17({
     ref,
@@ -194015,12 +194177,12 @@ var Icon7Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-7-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-8-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.37 5.11V4.001h5.308V5.15L7.42 12H6.025l3.317-6.82v-.07H5.369Z"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-5.03 1.803c0 1.394-1.218 2.355-2.988 2.355-1.763 0-2.953-.955-2.953-2.344 0-1.271.95-1.851 1.647-2.003v-.065c-.621-.193-1.33-.738-1.33-1.781 0-1.225 1.09-2.121 2.66-2.121s2.654.896 2.654 2.12c0 1.061-.738 1.595-1.336 1.782v.065c.703.152 1.647.744 1.647 1.992Zm-4.347-3.71c0 .739.586 1.255 1.383 1.255s1.377-.516 1.377-1.254c0-.733-.58-1.23-1.377-1.23s-1.383.497-1.383 1.23Zm-.281 3.645c0 .838.72 1.412 1.664 1.412.943 0 1.658-.574 1.658-1.412 0-.843-.715-1.424-1.658-1.424-.944 0-1.664.58-1.664 1.424"
   }));
 });
-Icon7Circle.propTypes = {
+Icon8Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194054,7 +194216,7 @@ function _objectWithoutPropertiesLoose$18(r3, e2) {
   }
   return t4;
 }
-var Icon8CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon9CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$16(_ref3, _excluded$1b);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$16({
     ref,
@@ -194063,12 +194225,12 @@ var Icon8CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-8-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-9-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-5.03 1.803c0-1.248-.943-1.84-1.646-1.992v-.065c.598-.187 1.336-.72 1.336-1.781 0-1.225-1.084-2.121-2.654-2.121s-2.66.896-2.66 2.12c0 1.044.709 1.589 1.33 1.782v.065c-.697.152-1.647.732-1.647 2.003 0 1.39 1.19 2.344 2.953 2.344 1.77 0 2.989-.96 2.989-2.355Zm-4.347-3.71c0 .739.586 1.255 1.383 1.255s1.377-.516 1.377-1.254c0-.733-.58-1.23-1.377-1.23s-1.383.497-1.383 1.23Zm-.281 3.645c0 .838.72 1.412 1.664 1.412.943 0 1.658-.574 1.658-1.412 0-.843-.715-1.424-1.658-1.424-.944 0-1.664.58-1.664 1.424"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.223 4.146c2.104 0 3.123-1.464 3.123-4.3 0-3.147-1.459-4.014-2.97-4.014-1.63 0-2.871 1.02-2.871 2.73 0 1.706 1.171 2.667 2.566 2.667 1.06 0 1.7-.557 1.934-1.184h.076c.047 1.67-.475 3.023-1.834 3.023-.71 0-1.149-.363-1.248-.72H5.258c.094.908.926 1.798 2.52 1.798Zm.118-3.972c.808 0 1.535-.528 1.535-1.594s-.668-1.676-1.56-1.676c-.838 0-1.517.616-1.517 1.659 0 1.072.708 1.61 1.54 1.61Z"
   }));
 });
-Icon8CircleFill.propTypes = {
+Icon9CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194102,7 +194264,7 @@ function _objectWithoutPropertiesLoose$17(r3, e2) {
   }
   return t4;
 }
-var Icon8Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon9Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$15(_ref3, _excluded$1a);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$15({
     ref,
@@ -194111,12 +194273,12 @@ var Icon8Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-8-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-9-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-5.03 1.803c0 1.394-1.218 2.355-2.988 2.355-1.763 0-2.953-.955-2.953-2.344 0-1.271.95-1.851 1.647-2.003v-.065c-.621-.193-1.33-.738-1.33-1.781 0-1.225 1.09-2.121 2.66-2.121s2.654.896 2.654 2.12c0 1.061-.738 1.595-1.336 1.782v.065c.703.152 1.647.744 1.647 1.992Zm-4.347-3.71c0 .739.586 1.255 1.383 1.255s1.377-.516 1.377-1.254c0-.733-.58-1.23-1.377-1.23s-1.383.497-1.383 1.23Zm-.281 3.645c0 .838.72 1.412 1.664 1.412.943 0 1.658-.574 1.658-1.412 0-.843-.715-1.424-1.658-1.424-.944 0-1.664.58-1.664 1.424"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.223 4.146c-1.593 0-2.425-.89-2.52-1.798h1.296c.1.357.539.72 1.248.72 1.36 0 1.88-1.353 1.834-3.023h-.076c-.235.627-.873 1.184-1.934 1.184-1.395 0-2.566-.961-2.566-2.666 0-1.711 1.242-2.731 2.87-2.731 1.512 0 2.971.867 2.971 4.014 0 2.836-1.02 4.3-3.123 4.3m.118-3.972c.808 0 1.535-.528 1.535-1.594s-.668-1.676-1.56-1.676c-.838 0-1.517.616-1.517 1.659 0 1.072.708 1.61 1.54 1.61Z"
   }));
 });
-Icon8Circle.propTypes = {
+Icon9Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194150,7 +194312,7 @@ function _objectWithoutPropertiesLoose$16(r3, e2) {
   }
   return t4;
 }
-var Icon9CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ArchiveFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$14(_ref3, _excluded$19);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$14({
     ref,
@@ -194159,12 +194321,12 @@ var Icon9CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-9-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-archive-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.223 4.146c2.104 0 3.123-1.464 3.123-4.3 0-3.147-1.459-4.014-2.97-4.014-1.63 0-2.871 1.02-2.871 2.73 0 1.706 1.171 2.667 2.566 2.667 1.06 0 1.7-.557 1.934-1.184h.076c.047 1.67-.475 3.023-1.834 3.023-.71 0-1.149-.363-1.248-.72H5.258c.094.908.926 1.798 2.52 1.798Zm.118-3.972c.808 0 1.535-.528 1.535-1.594s-.668-1.676-1.56-1.676c-.838 0-1.517.616-1.517 1.659 0 1.072.708 1.61 1.54 1.61Z"
+    d: "M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z"
   }));
 });
-Icon9CircleFill.propTypes = {
+ArchiveFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194198,7 +194360,7 @@ function _objectWithoutPropertiesLoose$15(r3, e2) {
   }
   return t4;
 }
-var Icon9Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Archive = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$13(_ref3, _excluded$18);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$13({
     ref,
@@ -194207,12 +194369,12 @@ var Icon9Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-9-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-archive", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.223 4.146c-1.593 0-2.425-.89-2.52-1.798h1.296c.1.357.539.72 1.248.72 1.36 0 1.88-1.353 1.834-3.023h-.076c-.235.627-.873 1.184-1.934 1.184-1.395 0-2.566-.961-2.566-2.666 0-1.711 1.242-2.731 2.87-2.731 1.512 0 2.971.867 2.971 4.014 0 2.836-1.02 4.3-3.123 4.3m.118-3.972c.808 0 1.535-.528 1.535-1.594s-.668-1.676-1.56-1.676c-.838 0-1.517.616-1.517 1.659 0 1.072.708 1.61 1.54 1.61Z"
+    d: "M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"
   }));
 });
-Icon9Circle.propTypes = {
+Archive.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194246,7 +194408,7 @@ function _objectWithoutPropertiesLoose$14(r3, e2) {
   }
   return t4;
 }
-var ArchiveFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Arrow90degRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$12(_ref3, _excluded$17);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$12({
     ref,
@@ -194255,12 +194417,13 @@ var ArchiveFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-archive-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-arrow-90deg-right", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z"
+    fillRule: "evenodd",
+    d: "M14.854 4.854a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 4H3.5A2.5 2.5 0 0 0 1 6.5v8a.5.5 0 0 0 1 0v-8A1.5 1.5 0 0 1 3.5 5h9.793l-3.147 3.146a.5.5 0 0 0 .708.708z"
   }));
 });
-ArchiveFill.propTypes = {
+Arrow90degRight.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194294,7 +194457,7 @@ function _objectWithoutPropertiesLoose$13(r3, e2) {
   }
   return t4;
 }
-var Archive = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ArrowLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$11(_ref3, _excluded$16);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$11({
     ref,
@@ -194303,12 +194466,13 @@ var Archive = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-archive", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-arrow-left", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"
+    fillRule: "evenodd",
+    d: "M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
   }));
 });
-Archive.propTypes = {
+ArrowLeft.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194342,7 +194506,7 @@ function _objectWithoutPropertiesLoose$12(r3, e2) {
   }
   return t4;
 }
-var Arrow90degRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Backpack3Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$10(_ref3, _excluded$15);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$10({
     ref,
@@ -194351,13 +194515,14 @@ var Arrow90degRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-arrow-90deg-right", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-backpack3-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M14.854 4.854a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 4H3.5A2.5 2.5 0 0 0 1 6.5v8a.5.5 0 0 0 1 0v-8A1.5 1.5 0 0 1 3.5 5h9.793l-3.147 3.146a.5.5 0 0 0 .708.708z"
+    d: "M5 10v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M6 2v.341a6 6 0 0 0-1.308.653l-.416-1.247a1 1 0 0 0-1.749-.284l-.77 1.027a1 1 0 0 0-.149.917l.803 2.407A6 6 0 0 0 2 8v5.5A2.5 2.5 0 0 0 4.5 16h7a2.5 2.5 0 0 0 2.5-2.5V8c0-.771-.146-1.509-.41-2.186l.801-2.407a1 1 0 0 0-.148-.917l-.77-1.027a1 1 0 0 0-1.75.284l-.415 1.247A6 6 0 0 0 10 2.34V2a2 2 0 1 0-4 0m1 0a1 1 0 0 1 2 0v.083a6 6 0 0 0-2 0zm5.941 2.595a6 6 0 0 0-.8-.937l.531-1.595.77 1.027zM3.86 3.658a6 6 0 0 0-.8.937L2.557 3.09l.77-1.027zm.18 3.772a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.142 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.142M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5z"
   }));
 });
-Arrow90degRight.propTypes = {
+Backpack3Fill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194391,7 +194556,7 @@ function _objectWithoutPropertiesLoose$11(r3, e2) {
   }
   return t4;
 }
-var ArrowLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Backpack3 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$$(_ref3, _excluded$14);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$$({
     ref,
@@ -194400,13 +194565,14 @@ var ArrowLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-arrow-left", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-backpack3", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+    d: "M4.04 7.43a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M6 2.341V2a2 2 0 1 1 4 0v.341c.465.165.904.385 1.308.653l.416-1.247a1 1 0 0 1 1.748-.284l.77 1.027a1 1 0 0 1 .15.917l-.803 2.407C13.854 6.49 14 7.229 14 8v5.5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5V8c0-.771.146-1.509.41-2.186l-.802-2.407a1 1 0 0 1 .15-.917l.77-1.027a1 1 0 0 1 1.748.284l.416 1.247A6 6 0 0 1 6 2.34ZM7 2v.083a6 6 0 0 1 2 0V2a1 1 0 1 0-2 0m5.941 2.595.502-1.505-.77-1.027-.532 1.595q.447.427.8.937M3.86 3.658l-.532-1.595-.77 1.027.502 1.505q.352-.51.8-.937M8 3a5 5 0 0 0-5 5v5.5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5V8a5 5 0 0 0-5-5"
   }));
 });
-ArrowLeft.propTypes = {
+Backpack3.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194440,7 +194606,7 @@ function _objectWithoutPropertiesLoose$10(r3, e2) {
   }
   return t4;
 }
-var Backpack3Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var BagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$_(_ref3, _excluded$13);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$_({
     ref,
@@ -194449,14 +194615,12 @@ var Backpack3Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref)
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-backpack3-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bag-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M5 10v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6 2v.341a6 6 0 0 0-1.308.653l-.416-1.247a1 1 0 0 0-1.749-.284l-.77 1.027a1 1 0 0 0-.149.917l.803 2.407A6 6 0 0 0 2 8v5.5A2.5 2.5 0 0 0 4.5 16h7a2.5 2.5 0 0 0 2.5-2.5V8c0-.771-.146-1.509-.41-2.186l.801-2.407a1 1 0 0 0-.148-.917l-.77-1.027a1 1 0 0 0-1.75.284l-.415 1.247A6 6 0 0 0 10 2.34V2a2 2 0 1 0-4 0m1 0a1 1 0 0 1 2 0v.083a6 6 0 0 0-2 0zm5.941 2.595a6 6 0 0 0-.8-.937l.531-1.595.77 1.027zM3.86 3.658a6 6 0 0 0-.8.937L2.557 3.09l.77-1.027zm.18 3.772a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.142 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.142M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5z"
+    d: "M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z"
   }));
 });
-Backpack3Fill.propTypes = {
+BagFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194490,7 +194654,7 @@ function _objectWithoutPropertiesLoose$$(r3, e2) {
   }
   return t4;
 }
-var Backpack3 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Bag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$Z(_ref3, _excluded$12);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$Z({
     ref,
@@ -194499,14 +194663,12 @@ var Backpack3 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-backpack3", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bag", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4.04 7.43a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6 2.341V2a2 2 0 1 1 4 0v.341c.465.165.904.385 1.308.653l.416-1.247a1 1 0 0 1 1.748-.284l.77 1.027a1 1 0 0 1 .15.917l-.803 2.407C13.854 6.49 14 7.229 14 8v5.5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5V8c0-.771.146-1.509.41-2.186l-.802-2.407a1 1 0 0 1 .15-.917l.77-1.027a1 1 0 0 1 1.748.284l.416 1.247A6 6 0 0 1 6 2.34ZM7 2v.083a6 6 0 0 1 2 0V2a1 1 0 1 0-2 0m5.941 2.595.502-1.505-.77-1.027-.532 1.595q.447.427.8.937M3.86 3.658l-.532-1.595-.77 1.027.502 1.505q.352-.51.8-.937M8 3a5 5 0 0 0-5 5v5.5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5V8a5 5 0 0 0-5-5"
+    d: "M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"
   }));
 });
-Backpack3.propTypes = {
+Bag.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194540,7 +194702,7 @@ function _objectWithoutPropertiesLoose$_(r3, e2) {
   }
   return t4;
 }
-var BagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Basket2Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$Y(_ref3, _excluded$11);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$Y({
     ref,
@@ -194549,12 +194711,12 @@ var BagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bag-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-basket2-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z"
+    d: "M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"
   }));
 });
-BagFill.propTypes = {
+Basket2Fill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194588,7 +194750,7 @@ function _objectWithoutPropertiesLoose$Z(r3, e2) {
   }
   return t4;
 }
-var Bag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Basket2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$X(_ref3, _excluded$10);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$X({
     ref,
@@ -194597,12 +194759,14 @@ var Bag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bag", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-basket2", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"
+    d: "M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6z"
   }));
 });
-Bag.propTypes = {
+Basket2.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194636,7 +194800,7 @@ function _objectWithoutPropertiesLoose$Y(r3, e2) {
   }
   return t4;
 }
-var Basket2Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var BellFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$W(_ref3, _excluded$$);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$W({
     ref,
@@ -194645,12 +194809,12 @@ var Basket2Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-basket2-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bell-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"
+    d: "M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"
   }));
 });
-Basket2Fill.propTypes = {
+BellFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194684,7 +194848,7 @@ function _objectWithoutPropertiesLoose$X(r3, e2) {
   }
   return t4;
 }
-var Basket2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Bell = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$V(_ref3, _excluded$_);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$V({
     ref,
@@ -194693,14 +194857,12 @@ var Basket2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-basket2", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bell", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6z"
+    d: "M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"
   }));
 });
-Basket2.propTypes = {
+Bell.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194734,7 +194896,7 @@ function _objectWithoutPropertiesLoose$W(r3, e2) {
   }
   return t4;
 }
-var BellFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var BookmarkFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$U(_ref3, _excluded$Z);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$U({
     ref,
@@ -194743,12 +194905,12 @@ var BellFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bell-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bookmark-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"
+    d: "M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"
   }));
 });
-BellFill.propTypes = {
+BookmarkFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194782,7 +194944,7 @@ function _objectWithoutPropertiesLoose$V(r3, e2) {
   }
   return t4;
 }
-var Bell = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Bookmark = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$T(_ref3, _excluded$Y);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$T({
     ref,
@@ -194791,12 +194953,12 @@ var Bell = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bell", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bookmark", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"
+    d: "M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"
   }));
 });
-Bell.propTypes = {
+Bookmark.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194830,7 +194992,7 @@ function _objectWithoutPropertiesLoose$U(r3, e2) {
   }
   return t4;
 }
-var BookmarkFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CardList = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$S(_ref3, _excluded$X);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$S({
     ref,
@@ -194839,12 +195001,14 @@ var BookmarkFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) 
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bookmark-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-card-list", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"
+    d: "M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"
   }));
 });
-BookmarkFill.propTypes = {
+CardList.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194878,7 +195042,7 @@ function _objectWithoutPropertiesLoose$T(r3, e2) {
   }
   return t4;
 }
-var Bookmark = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CheckCircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$R(_ref3, _excluded$W);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$R({
     ref,
@@ -194887,12 +195051,12 @@ var Bookmark = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bookmark", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-check-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
   }));
 });
-Bookmark.propTypes = {
+CheckCircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194926,7 +195090,7 @@ function _objectWithoutPropertiesLoose$S(r3, e2) {
   }
   return t4;
 }
-var CardList = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CheckCircle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$Q(_ref3, _excluded$V);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$Q({
     ref,
@@ -194935,14 +195099,14 @@ var CardList = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-card-list", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-check-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"
+    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"
+    d: "m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"
   }));
 });
-CardList.propTypes = {
+CheckCircle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194976,7 +195140,7 @@ function _objectWithoutPropertiesLoose$R(r3, e2) {
   }
   return t4;
 }
-var CheckCircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ChevronRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$P(_ref3, _excluded$U);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$P({
     ref,
@@ -194985,12 +195149,13 @@ var CheckCircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-check-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-chevron-right", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+    fillRule: "evenodd",
+    d: "M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
   }));
 });
-CheckCircleFill.propTypes = {
+ChevronRight.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195024,7 +195189,7 @@ function _objectWithoutPropertiesLoose$Q(r3, e2) {
   }
   return t4;
 }
-var CheckCircle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$O(_ref3, _excluded$T);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$O({
     ref,
@@ -195033,14 +195198,14 @@ var CheckCircle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-check-circle", className].filter(Boolean).join(" ")
-  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"
+    className: ["bi", "bi-circle-fill", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("circle", {
+    cx: "8",
+    cy: "8",
+    r: "8"
   }));
 });
-CheckCircle.propTypes = {
+CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195074,7 +195239,7 @@ function _objectWithoutPropertiesLoose$P(r3, e2) {
   }
   return t4;
 }
-var ChevronRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$N(_ref3, _excluded$S);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$N({
     ref,
@@ -195083,13 +195248,12 @@ var ChevronRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) 
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-chevron-right", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
   }));
 });
-ChevronRight.propTypes = {
+Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195123,7 +195287,7 @@ function _objectWithoutPropertiesLoose$O(r3, e2) {
   }
   return t4;
 }
-var CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ClipboardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$M(_ref3, _excluded$R);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$M({
     ref,
@@ -195132,14 +195296,13 @@ var CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-circle-fill", className].filter(Boolean).join(" ")
-  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("circle", {
-    cx: "8",
-    cy: "8",
-    r: "8"
+    className: ["bi", "bi-clipboard-fill", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    fillRule: "evenodd",
+    d: "M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2"
   }));
 });
-CircleFill.propTypes = {
+ClipboardFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195173,7 +195336,7 @@ function _objectWithoutPropertiesLoose$N(r3, e2) {
   }
   return t4;
 }
-var Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Clipboard = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$L(_ref3, _excluded$Q);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$L({
     ref,
@@ -195182,12 +195345,14 @@ var Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-clipboard", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+    d: "M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"
   }));
 });
-Circle.propTypes = {
+Clipboard.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195221,7 +195386,7 @@ function _objectWithoutPropertiesLoose$M(r3, e2) {
   }
   return t4;
 }
-var ClipboardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ClockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$K(_ref3, _excluded$P);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$K({
     ref,
@@ -195230,13 +195395,12 @@ var ClipboardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref)
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-clipboard-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-clock-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
   }));
 });
-ClipboardFill.propTypes = {
+ClockFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195270,7 +195434,7 @@ function _objectWithoutPropertiesLoose$L(r3, e2) {
   }
   return t4;
 }
-var Clipboard = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Clock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$J(_ref3, _excluded$O);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$J({
     ref,
@@ -195279,14 +195443,14 @@ var Clipboard = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-clipboard", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-clock", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"
+    d: "M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"
+    d: "M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"
   }));
 });
-Clipboard.propTypes = {
+Clock.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195320,7 +195484,7 @@ function _objectWithoutPropertiesLoose$K(r3, e2) {
   }
   return t4;
 }
-var ClockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CollectionFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$I(_ref3, _excluded$N);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$I({
     ref,
@@ -195329,12 +195493,12 @@ var ClockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-clock-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-collection-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
+    d: "M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3m2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1"
   }));
 });
-ClockFill.propTypes = {
+CollectionFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195368,7 +195532,7 @@ function _objectWithoutPropertiesLoose$J(r3, e2) {
   }
   return t4;
 }
-var Clock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CollectionPlayFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$H(_ref3, _excluded$M);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$H({
     ref,
@@ -195377,14 +195541,12 @@ var Clock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-clock", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-collection-play-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"
+    d: "M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437"
   }));
 });
-Clock.propTypes = {
+CollectionPlayFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195418,7 +195580,7 @@ function _objectWithoutPropertiesLoose$I(r3, e2) {
   }
   return t4;
 }
-var CollectionFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CollectionPlay = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$G(_ref3, _excluded$L);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$G({
     ref,
@@ -195427,12 +195589,14 @@ var CollectionFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-collection-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-collection-play", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3m2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1"
+    d: "M2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3m2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1m2.765 5.576A.5.5 0 0 0 6 7v5a.5.5 0 0 0 .765.424l4-2.5a.5.5 0 0 0 0-.848z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M1.5 14.5A1.5 1.5 0 0 1 0 13V6a1.5 1.5 0 0 1 1.5-1.5h13A1.5 1.5 0 0 1 16 6v7a1.5 1.5 0 0 1-1.5 1.5zm13-1a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5h-13A.5.5 0 0 0 1 6v7a.5.5 0 0 0 .5.5z"
   }));
 });
-CollectionFill.propTypes = {
+CollectionPlay.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195466,7 +195630,7 @@ function _objectWithoutPropertiesLoose$H(r3, e2) {
   }
   return t4;
 }
-var CollectionPlayFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Collection$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$F(_ref3, _excluded$K);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$F({
     ref,
@@ -195475,12 +195639,12 @@ var CollectionPlayFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3,
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-collection-play-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-collection", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437"
+    d: "M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"
   }));
 });
-CollectionPlayFill.propTypes = {
+Collection$1.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195514,7 +195678,7 @@ function _objectWithoutPropertiesLoose$G(r3, e2) {
   }
   return t4;
 }
-var CollectionPlay = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var DropletFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$E(_ref3, _excluded$J);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$E({
     ref,
@@ -195523,14 +195687,12 @@ var CollectionPlay = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-collection-play", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-droplet-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3m2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1m2.765 5.576A.5.5 0 0 0 6 7v5a.5.5 0 0 0 .765.424l4-2.5a.5.5 0 0 0 0-.848z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1.5 14.5A1.5 1.5 0 0 1 0 13V6a1.5 1.5 0 0 1 1.5-1.5h13A1.5 1.5 0 0 1 16 6v7a1.5 1.5 0 0 1-1.5 1.5zm13-1a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5h-13A.5.5 0 0 0 1 6v7a.5.5 0 0 0 .5.5z"
+    d: "M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 0 0 6 6M6.646 4.646l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448c.82-1.641 1.717-2.753 2.093-3.13"
   }));
 });
-CollectionPlay.propTypes = {
+DropletFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195564,7 +195726,7 @@ function _objectWithoutPropertiesLoose$F(r3, e2) {
   }
   return t4;
 }
-var Collection$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Droplet = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$D(_ref3, _excluded$I);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$D({
     ref,
@@ -195573,12 +195735,16 @@ var Collection$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) 
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-collection", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-droplet", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"
+    fillRule: "evenodd",
+    d: "M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    fillRule: "evenodd",
+    d: "M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"
   }));
 });
-Collection$1.propTypes = {
+Droplet.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195612,7 +195778,7 @@ function _objectWithoutPropertiesLoose$E(r3, e2) {
   }
   return t4;
 }
-var DropletFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var FastForwardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$C(_ref3, _excluded$H);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$C({
     ref,
@@ -195621,12 +195787,14 @@ var DropletFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-droplet-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-fast-forward-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 0 0 6 6M6.646 4.646l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448c.82-1.641 1.717-2.753 2.093-3.13"
+    d: "M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M15.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"
   }));
 });
-DropletFill.propTypes = {
+FastForwardFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195660,7 +195828,7 @@ function _objectWithoutPropertiesLoose$D(r3, e2) {
   }
   return t4;
 }
-var Droplet = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var FastForward = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$B(_ref3, _excluded$G);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$B({
     ref,
@@ -195669,16 +195837,14 @@ var Droplet = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-droplet", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-fast-forward", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"
+    d: "M6.804 8 1 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"
+    d: "M14.804 8 9 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"
   }));
 });
-Droplet.propTypes = {
+FastForward.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195712,7 +195878,7 @@ function _objectWithoutPropertiesLoose$C(r3, e2) {
   }
   return t4;
 }
-var FastForwardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var FlagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$A(_ref3, _excluded$F);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$A({
     ref,
@@ -195721,14 +195887,12 @@ var FastForwardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-fast-forward-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-flag-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M15.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"
+    d: "M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001"
   }));
 });
-FastForwardFill.propTypes = {
+FlagFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195762,7 +195926,7 @@ function _objectWithoutPropertiesLoose$B(r3, e2) {
   }
   return t4;
 }
-var FastForward = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Flag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$z(_ref3, _excluded$E);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$z({
     ref,
@@ -195771,14 +195935,12 @@ var FastForward = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-fast-forward", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-flag", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6.804 8 1 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M14.804 8 9 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"
+    d: "M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21 21 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21 21 0 0 0 14 7.655V1.222z"
   }));
 });
-FastForward.propTypes = {
+Flag.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195812,7 +195974,7 @@ function _objectWithoutPropertiesLoose$A(r3, e2) {
   }
   return t4;
 }
-var FlagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var FloppyFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$y(_ref3, _excluded$D);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$y({
     ref,
@@ -195821,12 +195983,14 @@ var FlagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-flag-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-floppy-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001"
+    d: "M0 1.5A1.5 1.5 0 0 1 1.5 0H3v5.5A1.5 1.5 0 0 0 4.5 7h7A1.5 1.5 0 0 0 13 5.5V0h.086a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5H14v-5.5A1.5 1.5 0 0 0 12.5 9h-9A1.5 1.5 0 0 0 2 10.5V16h-.5A1.5 1.5 0 0 1 0 14.5z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M3 16h10v-5.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5zm9-16H4v5.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5zM9 1h2v4H9z"
   }));
 });
-FlagFill.propTypes = {
+FloppyFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195860,7 +196024,7 @@ function _objectWithoutPropertiesLoose$z(r3, e2) {
   }
   return t4;
 }
-var Flag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Floppy = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$x(_ref3, _excluded$C);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$x({
     ref,
@@ -195869,12 +196033,14 @@ var Flag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-flag", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-floppy", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21 21 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21 21 0 0 0 14 7.655V1.222z"
+    d: "M11 2H9v3h2z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"
   }));
 });
-Flag.propTypes = {
+Floppy.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195908,7 +196074,7 @@ function _objectWithoutPropertiesLoose$y(r3, e2) {
   }
   return t4;
 }
-var FloppyFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var FolderFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$w(_ref3, _excluded$B);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$w({
     ref,
@@ -195917,14 +196083,12 @@ var FloppyFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-floppy-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-folder-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M0 1.5A1.5 1.5 0 0 1 1.5 0H3v5.5A1.5 1.5 0 0 0 4.5 7h7A1.5 1.5 0 0 0 13 5.5V0h.086a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5H14v-5.5A1.5 1.5 0 0 0 12.5 9h-9A1.5 1.5 0 0 0 2 10.5V16h-.5A1.5 1.5 0 0 1 0 14.5z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M3 16h10v-5.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5zm9-16H4v5.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5zM9 1h2v4H9z"
+    d: "M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3m-8.322.12q.322-.119.684-.12h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981z"
   }));
 });
-FloppyFill.propTypes = {
+FolderFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195958,7 +196122,7 @@ function _objectWithoutPropertiesLoose$x(r3, e2) {
   }
   return t4;
 }
-var Floppy = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Folder$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$v(_ref3, _excluded$A);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$v({
     ref,
@@ -195967,14 +196131,12 @@ var Floppy = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-floppy", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-folder", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M11 2H9v3h2z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"
+    d: "M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139q.323-.119.684-.12h5.396z"
   }));
 });
-Floppy.propTypes = {
+Folder$1.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196008,7 +196170,7 @@ function _objectWithoutPropertiesLoose$w(r3, e2) {
   }
   return t4;
 }
-var FolderFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var HandThumbsDownFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$u(_ref3, _excluded$z);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$u({
     ref,
@@ -196017,12 +196179,12 @@ var FolderFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-folder-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-hand-thumbs-down-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3m-8.322.12q.322-.119.684-.12h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981z"
+    d: "M6.956 14.534c.065.936.952 1.659 1.908 1.42l.261-.065a1.38 1.38 0 0 0 1.012-.965c.22-.816.533-2.512.062-4.51q.205.03.443.051c.713.065 1.669.071 2.516-.211.518-.173.994-.68 1.2-1.272a1.9 1.9 0 0 0-.234-1.734c.058-.118.103-.242.138-.362.077-.27.113-.568.113-.856 0-.29-.036-.586-.113-.857a2 2 0 0 0-.16-.403c.169-.387.107-.82-.003-1.149a3.2 3.2 0 0 0-.488-.9c.054-.153.076-.313.076-.465a1.86 1.86 0 0 0-.253-.912C13.1.757 12.437.28 11.5.28H8c-.605 0-1.07.08-1.466.217a4.8 4.8 0 0 0-.97.485l-.048.029c-.504.308-.999.61-2.068.723C2.682 1.815 2 2.434 2 3.279v4c0 .851.685 1.433 1.357 1.616.849.232 1.574.787 2.132 1.41.56.626.914 1.28 1.039 1.638.199.575.356 1.54.428 2.591"
   }));
 });
-FolderFill.propTypes = {
+HandThumbsDownFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196056,7 +196218,7 @@ function _objectWithoutPropertiesLoose$v(r3, e2) {
   }
   return t4;
 }
-var Folder$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var HandThumbsDown = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$t(_ref3, _excluded$y);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$t({
     ref,
@@ -196065,12 +196227,12 @@ var Folder$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-folder", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-hand-thumbs-down", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139q.323-.119.684-.12h5.396z"
+    d: "M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856s-.036.586-.113.856c-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a10 10 0 0 1-.443-.05 9.36 9.36 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a9 9 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581s-.027-.414-.075-.581c-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.2 2.2 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.9.9 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1"
   }));
 });
-Folder$1.propTypes = {
+HandThumbsDown.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196104,7 +196266,7 @@ function _objectWithoutPropertiesLoose$u(r3, e2) {
   }
   return t4;
 }
-var HandThumbsDownFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var HandThumbsUpFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$s(_ref3, _excluded$x);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$s({
     ref,
@@ -196113,12 +196275,12 @@ var HandThumbsDownFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3,
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-hand-thumbs-down-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-hand-thumbs-up-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6.956 14.534c.065.936.952 1.659 1.908 1.42l.261-.065a1.38 1.38 0 0 0 1.012-.965c.22-.816.533-2.512.062-4.51q.205.03.443.051c.713.065 1.669.071 2.516-.211.518-.173.994-.68 1.2-1.272a1.9 1.9 0 0 0-.234-1.734c.058-.118.103-.242.138-.362.077-.27.113-.568.113-.856 0-.29-.036-.586-.113-.857a2 2 0 0 0-.16-.403c.169-.387.107-.82-.003-1.149a3.2 3.2 0 0 0-.488-.9c.054-.153.076-.313.076-.465a1.86 1.86 0 0 0-.253-.912C13.1.757 12.437.28 11.5.28H8c-.605 0-1.07.08-1.466.217a4.8 4.8 0 0 0-.97.485l-.048.029c-.504.308-.999.61-2.068.723C2.682 1.815 2 2.434 2 3.279v4c0 .851.685 1.433 1.357 1.616.849.232 1.574.787 2.132 1.41.56.626.914 1.28 1.039 1.638.199.575.356 1.54.428 2.591"
+    d: "M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"
   }));
 });
-HandThumbsDownFill.propTypes = {
+HandThumbsUpFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196152,7 +196314,7 @@ function _objectWithoutPropertiesLoose$t(r3, e2) {
   }
   return t4;
 }
-var HandThumbsDown = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var HandThumbsUp = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$r(_ref3, _excluded$w);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$r({
     ref,
@@ -196161,12 +196323,12 @@ var HandThumbsDown = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-hand-thumbs-down", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-hand-thumbs-up", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856s-.036.586-.113.856c-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a10 10 0 0 1-.443-.05 9.36 9.36 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a9 9 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581s-.027-.414-.075-.581c-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.2 2.2 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.9.9 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1"
+    d: "M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2 2 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a10 10 0 0 0-.443.05 9.4 9.4 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a9 9 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.2 2.2 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.9.9 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"
   }));
 });
-HandThumbsDown.propTypes = {
+HandThumbsUp.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196200,7 +196362,7 @@ function _objectWithoutPropertiesLoose$s(r3, e2) {
   }
   return t4;
 }
-var HandThumbsUpFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var HeartFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$q(_ref3, _excluded$v);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$q({
     ref,
@@ -196209,12 +196371,13 @@ var HandThumbsUpFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, r
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-hand-thumbs-up-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-heart-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"
+    fillRule: "evenodd",
+    d: "M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
   }));
 });
-HandThumbsUpFill.propTypes = {
+HeartFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196248,7 +196411,7 @@ function _objectWithoutPropertiesLoose$r(r3, e2) {
   }
   return t4;
 }
-var HandThumbsUp = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Heart = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$p(_ref3, _excluded$u);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$p({
     ref,
@@ -196257,12 +196420,12 @@ var HandThumbsUp = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) 
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-hand-thumbs-up", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-heart", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2 2 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a10 10 0 0 0-.443.05 9.4 9.4 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a9 9 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.2 2.2 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.9.9 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"
+    d: "m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
   }));
 });
-HandThumbsUp.propTypes = {
+Heart.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196296,7 +196459,7 @@ function _objectWithoutPropertiesLoose$q(r3, e2) {
   }
   return t4;
 }
-var HeartFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var InboxFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$o(_ref3, _excluded$t);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$o({
     ref,
@@ -196305,13 +196468,12 @@ var HeartFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-heart-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-inbox-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
+    d: "M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm-1.17-.437A1.5 1.5 0 0 1 4.98 3h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z"
   }));
 });
-HeartFill.propTypes = {
+InboxFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196345,7 +196507,7 @@ function _objectWithoutPropertiesLoose$p(r3, e2) {
   }
   return t4;
 }
-var Heart = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Inbox = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$n(_ref3, _excluded$s);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$n({
     ref,
@@ -196354,12 +196516,12 @@ var Heart = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-heart", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-inbox", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+    d: "M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562a.5.5 0 0 0 .497.438h12.234a.5.5 0 0 0 .496-.438zM3.809 3.563A1.5 1.5 0 0 1 4.981 3h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z"
   }));
 });
-Heart.propTypes = {
+Inbox.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196393,7 +196555,7 @@ function _objectWithoutPropertiesLoose$o(r3, e2) {
   }
   return t4;
 }
-var InboxFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var LightbulbFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$m(_ref3, _excluded$r);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$m({
     ref,
@@ -196402,12 +196564,12 @@ var InboxFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-inbox-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-lightbulb-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm-1.17-.437A1.5 1.5 0 0 1 4.98 3h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z"
+    d: "M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5"
   }));
 });
-InboxFill.propTypes = {
+LightbulbFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196441,7 +196603,7 @@ function _objectWithoutPropertiesLoose$n(r3, e2) {
   }
   return t4;
 }
-var Inbox = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Lightbulb = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$l(_ref3, _excluded$q);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$l({
     ref,
@@ -196450,12 +196612,12 @@ var Inbox = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-inbox", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-lightbulb", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562a.5.5 0 0 0 .497.438h12.234a.5.5 0 0 0 .496-.438zM3.809 3.563A1.5 1.5 0 0 1 4.981 3h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z"
+    d: "M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1"
   }));
 });
-Inbox.propTypes = {
+Lightbulb.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196489,7 +196651,7 @@ function _objectWithoutPropertiesLoose$m(r3, e2) {
   }
   return t4;
 }
-var LightbulbFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ListUl = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$k(_ref3, _excluded$p);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$k({
     ref,
@@ -196498,12 +196660,13 @@ var LightbulbFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref)
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-lightbulb-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-list-ul", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5"
+    fillRule: "evenodd",
+    d: "M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
   }));
 });
-LightbulbFill.propTypes = {
+ListUl.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196537,7 +196700,7 @@ function _objectWithoutPropertiesLoose$l(r3, e2) {
   }
   return t4;
 }
-var Lightbulb = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var LockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$j(_ref3, _excluded$o);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$j({
     ref,
@@ -196546,12 +196709,13 @@ var Lightbulb = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-lightbulb", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-lock-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1"
+    fillRule: "evenodd",
+    d: "M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4m0 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"
   }));
 });
-Lightbulb.propTypes = {
+LockFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196585,7 +196749,7 @@ function _objectWithoutPropertiesLoose$k(r3, e2) {
   }
   return t4;
 }
-var ListUl = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Lock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$i(_ref3, _excluded$n);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$i({
     ref,
@@ -196594,13 +196758,13 @@ var ListUl = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-list-ul", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-lock", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
     fillRule: "evenodd",
-    d: "M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+    d: "M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4M4.5 7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7zM8 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"
   }));
 });
-ListUl.propTypes = {
+Lock.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196634,7 +196798,7 @@ function _objectWithoutPropertiesLoose$j(r3, e2) {
   }
   return t4;
 }
-var LockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var PinFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$h(_ref3, _excluded$m);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$h({
     ref,
@@ -196643,13 +196807,12 @@ var LockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-lock-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-pin-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4m0 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"
+    d: "M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A6 6 0 0 1 5 6.708V2.277a3 3 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354"
   }));
 });
-LockFill.propTypes = {
+PinFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196683,7 +196846,7 @@ function _objectWithoutPropertiesLoose$i(r3, e2) {
   }
   return t4;
 }
-var Lock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Pin = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$g(_ref3, _excluded$l);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$g({
     ref,
@@ -196692,13 +196855,12 @@ var Lock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-lock", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-pin", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4M4.5 7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7zM8 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"
+    d: "M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A6 6 0 0 1 5 6.708V2.277a3 3 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354m1.58 1.408-.002-.001zm-.002-.001.002.001A.5.5 0 0 1 6 2v5a.5.5 0 0 1-.276.447h-.002l-.012.007-.054.03a5 5 0 0 0-.827.58c-.318.278-.585.596-.725.936h7.792c-.14-.34-.407-.658-.725-.936a5 5 0 0 0-.881-.61l-.012-.006h-.002A.5.5 0 0 1 10 7V2a.5.5 0 0 1 .295-.458 1.8 1.8 0 0 0 .351-.271c.08-.08.155-.17.214-.271H5.14q.091.15.214.271a1.8 1.8 0 0 0 .37.282"
   }));
 });
-Lock.propTypes = {
+Pin.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196732,7 +196894,7 @@ function _objectWithoutPropertiesLoose$h(r3, e2) {
   }
   return t4;
 }
-var PinFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var PipFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$f(_ref3, _excluded$k);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$f({
     ref,
@@ -196741,12 +196903,12 @@ var PinFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-pin-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-pip-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A6 6 0 0 1 5 6.708V2.277a3 3 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354"
+    d: "M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm7 6h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5"
   }));
 });
-PinFill.propTypes = {
+PipFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196780,7 +196942,7 @@ function _objectWithoutPropertiesLoose$g(r3, e2) {
   }
   return t4;
 }
-var Pin = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Pip = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$e(_ref3, _excluded$j);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$e({
     ref,
@@ -196789,12 +196951,14 @@ var Pin = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-pin", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-pip", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A6 6 0 0 1 5 6.708V2.277a3 3 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354m1.58 1.408-.002-.001zm-.002-.001.002.001A.5.5 0 0 1 6 2v5a.5.5 0 0 1-.276.447h-.002l-.012.007-.054.03a5 5 0 0 0-.827.58c-.318.278-.585.596-.725.936h7.792c-.14-.34-.407-.658-.725-.936a5 5 0 0 0-.881-.61l-.012-.006h-.002A.5.5 0 0 1 10 7V2a.5.5 0 0 1 .295-.458 1.8 1.8 0 0 0 .351-.271c.08-.08.155-.17.214-.271H5.14q.091.15.214.271a1.8 1.8 0 0 0 .37.282"
+    d: "M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M8 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5z"
   }));
 });
-Pin.propTypes = {
+Pip.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -198023,7 +198187,7 @@ const useOutsideClickModifier = ({ onOutsideClick }) => ({
     };
   }
 });
-const logger$b = getLogger(["stash-tv", "ActionButtonBase"]);
+const logger$d = getLogger(["stash-tv", "ActionButtonBase"]);
 const useCurrentOpenPopover = create(() => null);
 const ActionButtonBase = (props) => {
   const {
@@ -198214,10 +198378,10 @@ function ActionButtonIcon({
       );
     } else {
       if (iconSource !== void 0) iconSource;
-      logger$b.error("Unable to determine icon for action button {*}", { iconDefinition, iconSource, state });
+      logger$d.error("Unable to determine icon for action button {*}", { iconDefinition, iconSource, state });
     }
   } catch (error) {
-    logger$b.error("Error rendering action button icon {*}", { error, iconDefinition, state });
+    logger$d.error("Error rendering action button icon {*}", { error, iconDefinition, state });
   }
   return /* @__PURE__ */ React$1.createElement("div", { className }, "?");
 }
@@ -198234,7 +198398,7 @@ const ActionButtonTitle = ({
   } else if (state in title2) {
     return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, title2[state]);
   }
-  logger$b.error("Unable to determine title for action button", { title: title2, state });
+  logger$d.error("Unable to determine title for action button", { title: title2, state });
   return /* @__PURE__ */ React$1.createElement("strong", null, '"?"');
 };
 const sharedActionButtonSchema = create$3({
@@ -199435,7 +199599,7 @@ function _slicedToArray(r3, e2) {
 }
 function _objectWithoutProperties$1(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i3 = _objectWithoutPropertiesLoose$1q(e2, t4);
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1s(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
@@ -201473,7 +201637,7 @@ var MenuPlacer = function MenuPlacer2(props) {
 };
 var Menu = function Menu2(props) {
   var children = props.children, innerRef = props.innerRef, innerProps = props.innerProps;
-  return jsx("div", _extends$1o({}, getStyleProps(props, "menu", {
+  return jsx("div", _extends$1q({}, getStyleProps(props, "menu", {
     menu: true
   }), {
     ref: innerRef
@@ -201495,7 +201659,7 @@ var menuListCSS = function menuListCSS2(_ref4, unstyled) {
 };
 var MenuList = function MenuList2(props) {
   var children = props.children, innerProps = props.innerProps, innerRef = props.innerRef, isMulti = props.isMulti;
-  return jsx("div", _extends$1o({}, getStyleProps(props, "menuList", {
+  return jsx("div", _extends$1q({}, getStyleProps(props, "menuList", {
     "menu-list": true,
     "menu-list--is-multi": isMulti
   }), {
@@ -201515,7 +201679,7 @@ var noOptionsMessageCSS = noticeCSS;
 var loadingMessageCSS = noticeCSS;
 var NoOptionsMessage = function NoOptionsMessage2(_ref6) {
   var _ref6$children = _ref6.children, children = _ref6$children === void 0 ? "No options" : _ref6$children, innerProps = _ref6.innerProps, restProps = _objectWithoutProperties$1(_ref6, _excluded$3$1);
-  return jsx("div", _extends$1o({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
+  return jsx("div", _extends$1q({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
     children,
     innerProps
   }), "noOptionsMessage", {
@@ -201525,7 +201689,7 @@ var NoOptionsMessage = function NoOptionsMessage2(_ref6) {
 };
 var LoadingMessage = function LoadingMessage2(_ref7) {
   var _ref7$children = _ref7.children, children = _ref7$children === void 0 ? "Loading..." : _ref7$children, innerProps = _ref7.innerProps, restProps = _objectWithoutProperties$1(_ref7, _excluded2$1);
-  return jsx("div", _extends$1o({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
+  return jsx("div", _extends$1q({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
     children,
     innerProps
   }), "loadingMessage", {
@@ -201588,7 +201752,7 @@ var MenuPortal = function MenuPortal2(props) {
     runAutoUpdate();
   }, [runAutoUpdate]);
   if (!appendTo && menuPosition !== "fixed" || !computedPosition) return null;
-  var menuWrapper = jsx("div", _extends$1o({
+  var menuWrapper = jsx("div", _extends$1q({
     ref: setMenuPortalElement
   }, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, props), {}, {
     offset: computedPosition.offset,
@@ -201613,7 +201777,7 @@ var containerCSS = function containerCSS2(_ref3) {
 };
 var SelectContainer = function SelectContainer2(props) {
   var children = props.children, innerProps = props.innerProps, isDisabled3 = props.isDisabled, isRtl = props.isRtl;
-  return jsx("div", _extends$1o({}, getStyleProps(props, "container", {
+  return jsx("div", _extends$1q({}, getStyleProps(props, "container", {
     "--is-disabled": isDisabled3,
     "--is-rtl": isRtl
   }), innerProps), children);
@@ -201634,7 +201798,7 @@ var valueContainerCSS = function valueContainerCSS2(_ref22, unstyled) {
 };
 var ValueContainer = function ValueContainer2(props) {
   var children = props.children, innerProps = props.innerProps, isMulti = props.isMulti, hasValue = props.hasValue;
-  return jsx("div", _extends$1o({}, getStyleProps(props, "valueContainer", {
+  return jsx("div", _extends$1q({}, getStyleProps(props, "valueContainer", {
     "value-container": true,
     "value-container--is-multi": isMulti,
     "value-container--has-value": hasValue
@@ -201650,7 +201814,7 @@ var indicatorsContainerCSS = function indicatorsContainerCSS2() {
 };
 var IndicatorsContainer = function IndicatorsContainer2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1o({}, getStyleProps(props, "indicatorsContainer", {
+  return jsx("div", _extends$1q({}, getStyleProps(props, "indicatorsContainer", {
     indicators: true
   }), innerProps), children);
 };
@@ -201662,7 +201826,7 @@ var _ref2$2 = {
 };
 var Svg = function Svg2(_ref3) {
   var size2 = _ref3.size, props = _objectWithoutProperties$1(_ref3, _excluded$2$1);
-  return jsx("svg", _extends$1o({
+  return jsx("svg", _extends$1q({
     height: size2,
     width: size2,
     viewBox: "0 0 20 20",
@@ -201672,14 +201836,14 @@ var Svg = function Svg2(_ref3) {
   }, props));
 };
 var CrossIcon = function CrossIcon2(props) {
-  return jsx(Svg, _extends$1o({
+  return jsx(Svg, _extends$1q({
     size: 20
   }, props), jsx("path", {
     d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"
   }));
 };
 var DownChevron = function DownChevron2(props) {
-  return jsx(Svg, _extends$1o({
+  return jsx(Svg, _extends$1q({
     size: 20
   }, props), jsx("path", {
     d: "M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
@@ -201702,7 +201866,7 @@ var baseCSS = function baseCSS2(_ref3, unstyled) {
 var dropdownIndicatorCSS = baseCSS;
 var DropdownIndicator = function DropdownIndicator2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1o({}, getStyleProps(props, "dropdownIndicator", {
+  return jsx("div", _extends$1q({}, getStyleProps(props, "dropdownIndicator", {
     indicator: true,
     "dropdown-indicator": true
   }), innerProps), children || jsx(DownChevron, null));
@@ -201710,7 +201874,7 @@ var DropdownIndicator = function DropdownIndicator2(props) {
 var clearIndicatorCSS = baseCSS;
 var ClearIndicator = function ClearIndicator2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1o({}, getStyleProps(props, "clearIndicator", {
+  return jsx("div", _extends$1q({}, getStyleProps(props, "clearIndicator", {
     indicator: true,
     "clear-indicator": true
   }), innerProps), children || jsx(CrossIcon, null));
@@ -201729,7 +201893,7 @@ var indicatorSeparatorCSS = function indicatorSeparatorCSS2(_ref4, unstyled) {
 };
 var IndicatorSeparator = function IndicatorSeparator2(props) {
   var innerProps = props.innerProps;
-  return jsx("span", _extends$1o({}, innerProps, getStyleProps(props, "indicatorSeparator", {
+  return jsx("span", _extends$1q({}, innerProps, getStyleProps(props, "indicatorSeparator", {
     "indicator-separator": true
   })));
 };
@@ -201768,7 +201932,7 @@ var LoadingDot = function LoadingDot2(_ref6) {
 };
 var LoadingIndicator$1 = function LoadingIndicator2(_ref7) {
   var innerProps = _ref7.innerProps, isRtl = _ref7.isRtl, _ref7$size = _ref7.size, size2 = _ref7$size === void 0 ? 4 : _ref7$size, restProps = _objectWithoutProperties$1(_ref7, _excluded2);
-  return jsx("div", _extends$1o({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
+  return jsx("div", _extends$1q({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
     innerProps,
     isRtl,
     size: size2
@@ -201813,7 +201977,7 @@ var css$1 = function css3(_ref3, unstyled) {
 };
 var Control = function Control2(props) {
   var children = props.children, isDisabled3 = props.isDisabled, isFocused = props.isFocused, innerRef = props.innerRef, innerProps = props.innerProps, menuIsOpen = props.menuIsOpen;
-  return jsx("div", _extends$1o({
+  return jsx("div", _extends$1q({
     ref: innerRef
   }, getStyleProps(props, "control", {
     control: true,
@@ -201835,9 +201999,9 @@ var groupCSS = function groupCSS2(_ref3, unstyled) {
 };
 var Group = function Group2(props) {
   var children = props.children, cx2 = props.cx, getStyles = props.getStyles, getClassNames = props.getClassNames, Heading = props.Heading, headingProps = props.headingProps, innerProps = props.innerProps, label = props.label, theme = props.theme, selectProps = props.selectProps;
-  return jsx("div", _extends$1o({}, getStyleProps(props, "group", {
+  return jsx("div", _extends$1q({}, getStyleProps(props, "group", {
     group: true
-  }), innerProps), jsx(Heading, _extends$1o({}, headingProps, {
+  }), innerProps), jsx(Heading, _extends$1q({}, headingProps, {
     selectProps,
     theme,
     getStyles,
@@ -201865,7 +202029,7 @@ var GroupHeading = function GroupHeading2(props) {
   var _cleanCommonProps = cleanCommonProps(props);
   _cleanCommonProps.data;
   var innerProps = _objectWithoutProperties$1(_cleanCommonProps, _excluded$1$1);
-  return jsx("div", _extends$1o({}, getStyleProps(props, "groupHeading", {
+  return jsx("div", _extends$1q({}, getStyleProps(props, "groupHeading", {
     "group-heading": true
   }), innerProps));
 };
@@ -201917,11 +202081,11 @@ var inputStyle = function inputStyle2(isHidden) {
 var Input = function Input2(props) {
   var cx2 = props.cx, value = props.value;
   var _cleanCommonProps = cleanCommonProps(props), innerRef = _cleanCommonProps.innerRef, isDisabled3 = _cleanCommonProps.isDisabled, isHidden = _cleanCommonProps.isHidden, inputClassName = _cleanCommonProps.inputClassName, innerProps = _objectWithoutProperties$1(_cleanCommonProps, _excluded$5);
-  return jsx("div", _extends$1o({}, getStyleProps(props, "input", {
+  return jsx("div", _extends$1q({}, getStyleProps(props, "input", {
     "input-container": true
   }), {
     "data-value": value || ""
-  }), jsx("input", _extends$1o({
+  }), jsx("input", _extends$1q({
     className: cx2({
       input: true
     }, inputClassName),
@@ -201981,7 +202145,7 @@ var MultiValueContainer = MultiValueGeneric;
 var MultiValueLabel = MultiValueGeneric;
 function MultiValueRemove(_ref5) {
   var children = _ref5.children, innerProps = _ref5.innerProps;
-  return jsx("div", _extends$1o({
+  return jsx("div", _extends$1q({
     role: "button"
   }, innerProps), children || jsx(CrossIcon, {
     size: 14
@@ -202036,7 +202200,7 @@ var optionCSS = function optionCSS2(_ref3, unstyled) {
 };
 var Option = function Option2(props) {
   var children = props.children, isDisabled3 = props.isDisabled, isFocused = props.isFocused, isSelected = props.isSelected, innerRef = props.innerRef, innerProps = props.innerProps;
-  return jsx("div", _extends$1o({}, getStyleProps(props, "option", {
+  return jsx("div", _extends$1q({}, getStyleProps(props, "option", {
     option: true,
     "option--is-disabled": isDisabled3,
     "option--is-focused": isFocused,
@@ -202060,7 +202224,7 @@ var placeholderCSS = function placeholderCSS2(_ref3, unstyled) {
 };
 var Placeholder = function Placeholder2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1o({}, getStyleProps(props, "placeholder", {
+  return jsx("div", _extends$1q({}, getStyleProps(props, "placeholder", {
     placeholder: true
   }), innerProps), children);
 };
@@ -202082,7 +202246,7 @@ var css2 = function css32(_ref3, unstyled) {
 };
 var SingleValue = function SingleValue2(props) {
   var children = props.children, isDisabled3 = props.isDisabled, innerProps = props.innerProps;
-  return jsx("div", _extends$1o({}, getStyleProps(props, "singleValue", {
+  return jsx("div", _extends$1q({}, getStyleProps(props, "singleValue", {
     "single-value": true,
     "single-value--is-disabled": isDisabled3
   }), innerProps), children);
@@ -202172,7 +202336,7 @@ var _ref = {
   styles: "label:a11yText;z-index:9999;border:0;clip:rect(1px, 1px, 1px, 1px);height:1px;width:1px;position:absolute;overflow:hidden;padding:0;white-space:nowrap"
 };
 var A11yText = function A11yText2(props) {
-  return jsx("span", _extends$1o({
+  return jsx("span", _extends$1q({
     css: _ref
   }, props));
 };
@@ -202628,7 +202792,7 @@ var _excluded$4 = ["innerRef"];
 function DummyInput(_ref3) {
   var innerRef = _ref3.innerRef, props = _objectWithoutProperties$1(_ref3, _excluded$4);
   var filteredProps = removeProps(props, "onExited", "in", "enter", "exit", "appear");
-  return jsx("input", _extends$1o({
+  return jsx("input", _extends$1q({
     ref: innerRef
   }, filteredProps, {
     css: /* @__PURE__ */ css({
@@ -204014,7 +204178,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           "aria-describedby": this.getElementId("placeholder")
         });
         if (!isSearchable) {
-          return /* @__PURE__ */ reactExports.createElement(DummyInput, _extends$1o({
+          return /* @__PURE__ */ reactExports.createElement(DummyInput, _extends$1q({
             id: id2,
             innerRef: this.getInputRef,
             onBlur: this.onInputBlur,
@@ -204027,7 +204191,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
             value: ""
           }, ariaAttributes));
         }
-        return /* @__PURE__ */ reactExports.createElement(Input3, _extends$1o({}, commonProps, {
+        return /* @__PURE__ */ reactExports.createElement(Input3, _extends$1q({}, commonProps, {
           autoCapitalize: "none",
           autoComplete: "off",
           autoCorrect: "off",
@@ -204055,7 +204219,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var _this$props9 = this.props, controlShouldRenderValue = _this$props9.controlShouldRenderValue, isDisabled3 = _this$props9.isDisabled, isMulti = _this$props9.isMulti, inputValue = _this$props9.inputValue, placeholder = _this$props9.placeholder;
       var _this$state5 = this.state, selectValue = _this$state5.selectValue, focusedValue = _this$state5.focusedValue, isFocused = _this$state5.isFocused;
       if (!this.hasValue() || !controlShouldRenderValue) {
-        return inputValue ? null : /* @__PURE__ */ reactExports.createElement(Placeholder3, _extends$1o({}, commonProps, {
+        return inputValue ? null : /* @__PURE__ */ reactExports.createElement(Placeholder3, _extends$1q({}, commonProps, {
           key: "placeholder",
           isDisabled: isDisabled3,
           isFocused,
@@ -204068,7 +204232,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         return selectValue.map(function(opt, index2) {
           var isOptionFocused = opt === focusedValue;
           var key = "".concat(_this3.getOptionLabel(opt), "-").concat(_this3.getOptionValue(opt));
-          return /* @__PURE__ */ reactExports.createElement(MultiValue3, _extends$1o({}, commonProps, {
+          return /* @__PURE__ */ reactExports.createElement(MultiValue3, _extends$1q({}, commonProps, {
             components: {
               Container: MultiValueContainer2,
               Label: MultiValueLabel2,
@@ -204097,7 +204261,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         return null;
       }
       var singleValue = selectValue[0];
-      return /* @__PURE__ */ reactExports.createElement(SingleValue3, _extends$1o({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(SingleValue3, _extends$1q({}, commonProps, {
         data: singleValue,
         isDisabled: isDisabled3
       }), this.formatOptionLabel(singleValue, "value"));
@@ -204117,7 +204281,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         onTouchEnd: this.onClearIndicatorTouchEnd,
         "aria-hidden": "true"
       };
-      return /* @__PURE__ */ reactExports.createElement(ClearIndicator3, _extends$1o({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(ClearIndicator3, _extends$1q({}, commonProps, {
         innerProps,
         isFocused
       }));
@@ -204133,7 +204297,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var innerProps = {
         "aria-hidden": "true"
       };
-      return /* @__PURE__ */ reactExports.createElement(LoadingIndicator3, _extends$1o({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(LoadingIndicator3, _extends$1q({}, commonProps, {
         innerProps,
         isDisabled: isDisabled3,
         isFocused
@@ -204147,7 +204311,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var commonProps = this.commonProps;
       var isDisabled3 = this.props.isDisabled;
       var isFocused = this.state.isFocused;
-      return /* @__PURE__ */ reactExports.createElement(IndicatorSeparator3, _extends$1o({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(IndicatorSeparator3, _extends$1q({}, commonProps, {
         isDisabled: isDisabled3,
         isFocused
       }));
@@ -204165,7 +204329,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         onTouchEnd: this.onDropdownIndicatorTouchEnd,
         "aria-hidden": "true"
       };
-      return /* @__PURE__ */ reactExports.createElement(DropdownIndicator3, _extends$1o({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(DropdownIndicator3, _extends$1q({}, commonProps, {
         innerProps,
         isDisabled: isDisabled3,
         isFocused
@@ -204200,7 +204364,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           "aria-selected": _this4.state.isAppleDevice ? void 0 : isSelected
           // is not supported on Apple devices
         };
-        return /* @__PURE__ */ reactExports.createElement(Option3, _extends$1o({}, commonProps, {
+        return /* @__PURE__ */ reactExports.createElement(Option3, _extends$1q({}, commonProps, {
           innerProps,
           data: data2,
           isDisabled: isDisabled3,
@@ -204220,7 +204384,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
             var _data = item.data, options2 = item.options, groupIndex = item.index;
             var groupId = "".concat(_this4.getElementId("group"), "-").concat(groupIndex);
             var headingId = "".concat(groupId, "-heading");
-            return /* @__PURE__ */ reactExports.createElement(Group3, _extends$1o({}, commonProps, {
+            return /* @__PURE__ */ reactExports.createElement(Group3, _extends$1q({}, commonProps, {
               key: groupId,
               data: _data,
               options: options2,
@@ -204257,9 +204421,9 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         menuPosition,
         menuShouldScrollIntoView
       };
-      var menuElement = /* @__PURE__ */ reactExports.createElement(MenuPlacer, _extends$1o({}, commonProps, menuPlacementProps), function(_ref4) {
+      var menuElement = /* @__PURE__ */ reactExports.createElement(MenuPlacer, _extends$1q({}, commonProps, menuPlacementProps), function(_ref4) {
         var ref = _ref4.ref, _ref4$placerProps = _ref4.placerProps, placement = _ref4$placerProps.placement, maxHeight = _ref4$placerProps.maxHeight;
-        return /* @__PURE__ */ reactExports.createElement(Menu3, _extends$1o({}, commonProps, menuPlacementProps, {
+        return /* @__PURE__ */ reactExports.createElement(Menu3, _extends$1q({}, commonProps, menuPlacementProps, {
           innerRef: ref,
           innerProps: {
             onMouseDown: _this4.onMenuMouseDown,
@@ -204273,7 +204437,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           onBottomArrive: onMenuScrollToBottom,
           lockEnabled: menuShouldBlockScroll
         }, function(scrollTargetRef) {
-          return /* @__PURE__ */ reactExports.createElement(MenuList3, _extends$1o({}, commonProps, {
+          return /* @__PURE__ */ reactExports.createElement(MenuList3, _extends$1q({}, commonProps, {
             innerRef: function innerRef(instance) {
               _this4.getMenuListRef(instance);
               scrollTargetRef(instance);
@@ -204289,7 +204453,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           }), menuUI);
         }));
       });
-      return menuPortalTarget || menuPosition === "fixed" ? /* @__PURE__ */ reactExports.createElement(MenuPortal3, _extends$1o({}, commonProps, {
+      return menuPortalTarget || menuPosition === "fixed" ? /* @__PURE__ */ reactExports.createElement(MenuPortal3, _extends$1q({}, commonProps, {
         appendTo: menuPortalTarget,
         controlElement: this.controlRef,
         menuPlacement,
@@ -204349,7 +204513,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var commonProps = this.commonProps;
       var _this$state6 = this.state, ariaSelection = _this$state6.ariaSelection, focusedOption = _this$state6.focusedOption, focusedValue = _this$state6.focusedValue, isFocused = _this$state6.isFocused, selectValue = _this$state6.selectValue;
       var focusableOptions = this.getFocusableOptions();
-      return /* @__PURE__ */ reactExports.createElement(LiveRegion$1, _extends$1o({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(LiveRegion$1, _extends$1q({}, commonProps, {
         id: this.getElementId("live-region"),
         ariaSelection,
         focusedOption,
@@ -204367,7 +204531,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var _this$props14 = this.props, className = _this$props14.className, id2 = _this$props14.id, isDisabled3 = _this$props14.isDisabled, menuIsOpen = _this$props14.menuIsOpen;
       var isFocused = this.state.isFocused;
       var commonProps = this.commonProps = this.getCommonProps();
-      return /* @__PURE__ */ reactExports.createElement(SelectContainer3, _extends$1o({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(SelectContainer3, _extends$1q({}, commonProps, {
         className,
         innerProps: {
           id: id2,
@@ -204375,7 +204539,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         },
         isDisabled: isDisabled3,
         isFocused
-      }), this.renderLiveRegion(), /* @__PURE__ */ reactExports.createElement(Control3, _extends$1o({}, commonProps, {
+      }), this.renderLiveRegion(), /* @__PURE__ */ reactExports.createElement(Control3, _extends$1q({}, commonProps, {
         innerRef: this.getControlRef,
         innerProps: {
           onMouseDown: this.onControlMouseDown,
@@ -204384,9 +204548,9 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         isDisabled: isDisabled3,
         isFocused,
         menuIsOpen
-      }), /* @__PURE__ */ reactExports.createElement(ValueContainer3, _extends$1o({}, commonProps, {
+      }), /* @__PURE__ */ reactExports.createElement(ValueContainer3, _extends$1q({}, commonProps, {
         isDisabled: isDisabled3
-      }), this.renderPlaceholderOrValue(), this.renderInput()), /* @__PURE__ */ reactExports.createElement(IndicatorsContainer3, _extends$1o({}, commonProps, {
+      }), this.renderPlaceholderOrValue(), this.renderInput()), /* @__PURE__ */ reactExports.createElement(IndicatorsContainer3, _extends$1q({}, commonProps, {
         isDisabled: isDisabled3
       }), this.renderClearIndicator(), this.renderLoadingIndicator(), this.renderIndicatorSeparator(), this.renderDropdownIndicator())), this.renderMenu(), this.renderFormField());
     }
@@ -204441,7 +204605,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
 Select$1.defaultProps = defaultProps;
 var StateManagedSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   var baseSelectProps = useStateManager(props);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1o({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1q({
     ref
   }, baseSelectProps));
 });
@@ -204515,7 +204679,7 @@ function useCreatable(_ref3) {
 var CreatableSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   var creatableProps = useStateManager(props);
   var selectProps = useCreatable(creatableProps);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1o({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1q({
     ref
   }, selectProps));
 });
@@ -204637,7 +204801,7 @@ function useAsync(_ref3) {
 var AsyncSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   var stateManagedProps = useAsync(props);
   var selectProps = useStateManager(stateManagedProps);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1o({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1q({
     ref
   }, selectProps));
 });
@@ -204646,7 +204810,7 @@ var AsyncCreatableSelect = /* @__PURE__ */ reactExports.forwardRef(function(prop
   var stateManagerProps = useAsync(props);
   var creatableProps = useStateManager(stateManagerProps);
   var selectProps = useCreatable(creatableProps);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1o({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1q({
     ref
   }, selectProps));
 });
@@ -204911,7 +205075,7 @@ function createLocation(path2, state, key, currentLocation) {
     location2 = parsePath(path2);
     location2.state = state;
   } else {
-    location2 = _extends$1o({}, path2);
+    location2 = _extends$1q({}, path2);
     if (location2.pathname === void 0) location2.pathname = "";
     if (location2.search) {
       if (location2.search.charAt(0) !== "?") location2.search = "?" + location2.search;
@@ -205050,7 +205214,7 @@ function createBrowserHistory(props) {
   }
   var transitionManager = createTransitionManager();
   function setState2(nextState) {
-    _extends$1o(history2, nextState);
+    _extends$1q(history2, nextState);
     history2.length = globalHistory.length;
     transitionManager.notifyListeners(history2.location, history2.action);
   }
@@ -205265,7 +205429,7 @@ function createHashHistory(props) {
   }
   var transitionManager = createTransitionManager();
   function setState2(nextState) {
-    _extends$1o(history2, nextState);
+    _extends$1q(history2, nextState);
     history2.length = globalHistory.length;
     transitionManager.notifyListeners(history2.location, history2.action);
   }
@@ -205444,7 +205608,7 @@ function createMemoryHistory(props) {
   var _props = props, getUserConfirmation = _props.getUserConfirmation, _props$initialEntries = _props.initialEntries, initialEntries = _props$initialEntries === void 0 ? ["/"] : _props$initialEntries, _props$initialIndex = _props.initialIndex, initialIndex = _props$initialIndex === void 0 ? 0 : _props$initialIndex, _props$keyLength = _props.keyLength, keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
   var transitionManager = createTransitionManager();
   function setState2(nextState) {
-    _extends$1o(history2, nextState);
+    _extends$1q(history2, nextState);
     history2.length = history2.entries.length;
     transitionManager.notifyListeners(history2.location, history2.action);
   }
@@ -206157,7 +206321,7 @@ function isEmptyChildren(children) {
       !context$12 ? invariant() : void 0;
       var location2 = _this.props.location || context$12.location;
       var match2 = _this.props.computedMatch ? _this.props.computedMatch : _this.props.path ? matchPath(location2.pathname, _this.props) : context$12.match;
-      var props = _extends$1o({}, context$12, {
+      var props = _extends$1q({}, context$12, {
         location: location2,
         match: match2
       });
@@ -206177,7 +206341,7 @@ function addLeadingSlash(path2) {
 }
 function addBasename(basename, location2) {
   if (!basename) return location2;
-  return _extends$1o({}, location2, {
+  return _extends$1q({}, location2, {
     pathname: addLeadingSlash(basename) + location2.pathname
   });
 }
@@ -206185,7 +206349,7 @@ function stripBasename(basename, location2) {
   if (!basename) return location2;
   var base = addLeadingSlash(basename);
   if (location2.pathname.indexOf(base) !== 0) return location2;
-  return _extends$1o({}, location2, {
+  return _extends$1q({}, location2, {
     pathname: location2.pathname.substr(base.length)
   });
 }
@@ -206229,7 +206393,7 @@ function noop$2() {
     context2.url = createURL(context2.location);
   };
   _proto.render = function render2() {
-    var _this$props2 = this.props, _this$props2$basename = _this$props2.basename, basename = _this$props2$basename === void 0 ? "" : _this$props2$basename, _this$props2$context = _this$props2.context, context2 = _this$props2$context === void 0 ? {} : _this$props2$context, _this$props2$location = _this$props2.location, location2 = _this$props2$location === void 0 ? "/" : _this$props2$location, rest = _objectWithoutPropertiesLoose$1q(_this$props2, ["basename", "context", "location"]);
+    var _this$props2 = this.props, _this$props2$basename = _this$props2.basename, basename = _this$props2$basename === void 0 ? "" : _this$props2$basename, _this$props2$context = _this$props2.context, context2 = _this$props2$context === void 0 ? {} : _this$props2$context, _this$props2$location = _this$props2.location, location2 = _this$props2$location === void 0 ? "/" : _this$props2$location, rest = _objectWithoutPropertiesLoose$1s(_this$props2, ["basename", "context", "location"]);
     var history2 = {
       createHref: function createHref(path2) {
         return addLeadingSlash(basename + createURL(path2));
@@ -206244,7 +206408,7 @@ function noop$2() {
       listen: this.handleListen,
       block: this.handleBlock
     };
-    return /* @__PURE__ */ React$1.createElement(Router, _extends$1o({}, rest, {
+    return /* @__PURE__ */ React$1.createElement(Router, _extends$1q({}, rest, {
       history: history2,
       staticContext: context2
     }));
@@ -206267,7 +206431,7 @@ function noop$2() {
         if (match2 == null && /* @__PURE__ */ React$1.isValidElement(child)) {
           element = child;
           var path2 = child.props.path || child.props.from;
-          match2 = path2 ? matchPath(location2.pathname, _extends$1o({}, child.props, {
+          match2 = path2 ? matchPath(location2.pathname, _extends$1q({}, child.props, {
             path: path2
           })) : context2.match;
         }
@@ -206338,9 +206502,9 @@ function isModifiedEvent(event2) {
   return !!(event2.metaKey || event2.altKey || event2.ctrlKey || event2.shiftKey);
 }
 var LinkAnchor = forwardRef(function(_ref3, forwardedRef) {
-  var innerRef = _ref3.innerRef, navigate = _ref3.navigate, _onClick = _ref3.onClick, rest = _objectWithoutPropertiesLoose$1q(_ref3, ["innerRef", "navigate", "onClick"]);
+  var innerRef = _ref3.innerRef, navigate = _ref3.navigate, _onClick = _ref3.onClick, rest = _objectWithoutPropertiesLoose$1s(_ref3, ["innerRef", "navigate", "onClick"]);
   var target = rest.target;
-  var props = _extends$1o({}, rest, {
+  var props = _extends$1q({}, rest, {
     onClick: function onClick(event2) {
       try {
         if (_onClick) _onClick(event2);
@@ -206365,13 +206529,13 @@ var LinkAnchor = forwardRef(function(_ref3, forwardedRef) {
   return /* @__PURE__ */ React$1.createElement("a", props);
 });
 var Link = forwardRef(function(_ref22, forwardedRef) {
-  var _ref2$component = _ref22.component, component = _ref2$component === void 0 ? LinkAnchor : _ref2$component, replace2 = _ref22.replace, to2 = _ref22.to, innerRef = _ref22.innerRef, rest = _objectWithoutPropertiesLoose$1q(_ref22, ["component", "replace", "to", "innerRef"]);
+  var _ref2$component = _ref22.component, component = _ref2$component === void 0 ? LinkAnchor : _ref2$component, replace2 = _ref22.replace, to2 = _ref22.to, innerRef = _ref22.innerRef, rest = _objectWithoutPropertiesLoose$1s(_ref22, ["component", "replace", "to", "innerRef"]);
   return /* @__PURE__ */ React$1.createElement(context.Consumer, null, function(context2) {
     !context2 ? invariant() : void 0;
     var history2 = context2.history;
     var location2 = normalizeToLocation(resolveToLocation(to2, context2.location), context2.location);
     var href = location2 ? history2.createHref(location2) : "";
-    var props = _extends$1o({}, rest, {
+    var props = _extends$1q({}, rest, {
       href,
       navigate: function navigate() {
         var location22 = resolveToLocation(to2, context2.location);
@@ -206404,7 +206568,7 @@ function joinClassnames() {
   }).join(" ");
 }
 forwardRef$1(function(_ref3, forwardedRef) {
-  var _ref$ariaCurrent = _ref3["aria-current"], ariaCurrent = _ref$ariaCurrent === void 0 ? "page" : _ref$ariaCurrent, _ref$activeClassName = _ref3.activeClassName, activeClassName = _ref$activeClassName === void 0 ? "active" : _ref$activeClassName, activeStyle = _ref3.activeStyle, classNameProp = _ref3.className, exact = _ref3.exact, isActiveProp = _ref3.isActive, locationProp = _ref3.location, sensitive = _ref3.sensitive, strict = _ref3.strict, styleProp = _ref3.style, to2 = _ref3.to, innerRef = _ref3.innerRef, rest = _objectWithoutPropertiesLoose$1q(_ref3, ["aria-current", "activeClassName", "activeStyle", "className", "exact", "isActive", "location", "sensitive", "strict", "style", "to", "innerRef"]);
+  var _ref$ariaCurrent = _ref3["aria-current"], ariaCurrent = _ref$ariaCurrent === void 0 ? "page" : _ref$ariaCurrent, _ref$activeClassName = _ref3.activeClassName, activeClassName = _ref$activeClassName === void 0 ? "active" : _ref$activeClassName, activeStyle = _ref3.activeStyle, classNameProp = _ref3.className, exact = _ref3.exact, isActiveProp = _ref3.isActive, locationProp = _ref3.location, sensitive = _ref3.sensitive, strict = _ref3.strict, styleProp = _ref3.style, to2 = _ref3.to, innerRef = _ref3.innerRef, rest = _objectWithoutPropertiesLoose$1s(_ref3, ["aria-current", "activeClassName", "activeStyle", "className", "exact", "isActive", "location", "sensitive", "strict", "style", "to", "innerRef"]);
   return /* @__PURE__ */ React$1.createElement(context.Consumer, null, function(context2) {
     !context2 ? invariant() : void 0;
     var currentLocation = locationProp || context2.location;
@@ -206422,9 +206586,9 @@ forwardRef$1(function(_ref3, forwardedRef) {
     var style2 = typeof styleProp === "function" ? styleProp(isActive) : styleProp;
     if (isActive) {
       className = joinClassnames(className, activeClassName);
-      style2 = _extends$1o({}, style2, activeStyle);
+      style2 = _extends$1q({}, style2, activeStyle);
     }
-    var props = _extends$1o({
+    var props = _extends$1q({
       "aria-current": isActive && ariaCurrent || null,
       className,
       style: style2,
@@ -215822,10 +215986,10 @@ const IconSelect = (props) => {
     }
   );
 };
-const logger$a = getLogger(["stash-tv", "CreateMarkerActionButton"]);
-const id$k = "create-marker";
+const logger$c = getLogger(["stash-tv", "CreateMarkerActionButton"]);
+const id$l = "create-marker";
 const configSchema$3 = sharedActionButtonSchema.shape({
-  buttonType: create$6().oneOf([id$k]).required(),
+  buttonType: create$6().oneOf([id$l]).required(),
   iconId: create$6().required(),
   markerDefaults: create$3({
     title: create$6(),
@@ -215833,15 +215997,15 @@ const configSchema$3 = sharedActionButtonSchema.shape({
     tagIds: create$2().of(create$6().required()).required()
   }).nullable()
 });
-const buttonDefinition$j = {
-  id: id$k,
+const buttonDefinition$k = {
+  id: id$l,
   title: ({ state, config: config2 }) => {
     let markerDefaults = null;
     let tagId = null;
     try {
       if (config2) {
-        if (config2.buttonType !== id$k) {
-          logger$a.error("Invalid config for create marker action button title {*}", { config: config2 });
+        if (config2.buttonType !== id$l) {
+          logger$c.error("Invalid config for create marker action button title {*}", { config: config2 });
           return /* @__PURE__ */ React$1.createElement("strong", null, "?");
         }
         if (typeof config2.markerDefaults === "object" && config2.markerDefaults !== null) {
@@ -215852,7 +216016,7 @@ const buttonDefinition$j = {
         }
       }
     } catch (error) {
-      logger$a.error("Error processing create marker action button title config {*}", { error, config: config2 });
+      logger$c.error("Error processing create marker action button title config {*}", { error, config: config2 });
       return /* @__PURE__ */ React$1.createElement("strong", null, "?");
     }
     const [tag2, setTag2] = reactExports.useState();
@@ -215866,7 +216030,7 @@ const buttonDefinition$j = {
       } else if (state === "inactive") {
         return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, tag2 ? `Create "${tag2.name}" marker` : "Create marker with defaults");
       } else {
-        logger$a.error("Unexpected state in QuickTagActionButton title function", { state });
+        logger$c.error("Unexpected state in QuickTagActionButton title function", { state });
       }
     }
     return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, "Create marker for scene");
@@ -215886,9 +216050,9 @@ function CreateMarkerActionButton({
 }) {
   let parsedConfig;
   try {
-    parsedConfig = buttonDefinition$j.configSchema.validateSync(config2);
+    parsedConfig = buttonDefinition$k.configSchema.validateSync(config2);
   } catch (error) {
-    logger$a.error("Invalid config for create marker action button", { error, config: config2 });
+    logger$c.error("Invalid config for create marker action button", { error, config: config2 });
     return /* @__PURE__ */ React$1.createElement("strong", null, "?");
   }
   if (mediaItem.entityType !== "scene") return null;
@@ -215902,7 +216066,7 @@ function CreateMarkerActionButton({
     if (existingMarker || !parsedConfig.markerDefaults) return;
     const currentTime = playerRef.current?.currentTime();
     if (currentTime === void 0) {
-      logger$a.error("Player current time is undefined when creating quick marker", { sceneId: scene2.id });
+      logger$c.error("Player current time is undefined when creating quick marker", { sceneId: scene2.id });
       return;
     }
     sceneMarkerCreate({
@@ -215921,9 +216085,9 @@ function CreateMarkerActionButton({
       ActionButtonBase,
       {
         state: "inactive",
-        icon: buttonDefinition$j.icon,
-        title: buttonDefinition$j.title,
-        className: cx(buttonDefinition$j.id, "hide-on-ui-hide"),
+        icon: buttonDefinition$k.icon,
+        title: buttonDefinition$k.title,
+        className: cx(buttonDefinition$k.id, "hide-on-ui-hide"),
         sidePanel: ({ close }) => /* @__PURE__ */ React$1.createElement(
           SceneMarkerForm,
           {
@@ -215950,9 +216114,9 @@ function CreateMarkerActionButton({
     ActionButtonBase,
     {
       state: Boolean(existingMarker) ? "active" : "inactive",
-      icon: buttonDefinition$j.icon,
-      title: buttonDefinition$j.title,
-      className: cx(buttonDefinition$j.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$k.icon,
+      title: buttonDefinition$k.title,
+      className: cx(buttonDefinition$k.id, "hide-on-ui-hide"),
       sidePanel: renderSidePanel,
       onClick: handleClick,
       config: config2
@@ -216138,7 +216302,7 @@ const DeleteSceneMarkersDialog = (props) => {
     variant: "secondary"
   }, isRunning: isDeleting, children: jsxRuntimeExports.jsx("p", { children: message }) });
 };
-const logger$9 = getLogger(["stash-tv", "useDeleteMediaItemDialog"]);
+const logger$b = getLogger(["stash-tv", "useDeleteMediaItemDialog"]);
 function focusDeleteButtonWhenReady() {
   let frame2;
   const tryFocus = (attempt) => {
@@ -216182,14 +216346,14 @@ function useDeleteMediaItemDialog(mediaItem, onDeleted) {
         }
       );
     } else {
-      logger$9.error("useDeleteMediaItemDialog used for unsupported media item type", { mediaItem });
+      logger$b.error("useDeleteMediaItemDialog used for unsupported media item type", { mediaItem });
     }
   }
   return { isOpen, open, dialog };
 }
-const id$j = "delete-media-item";
-const buttonDefinition$i = {
-  id: id$j,
+const id$k = "delete-media-item";
+const buttonDefinition$j = {
+  id: id$k,
   title: {
     active: "Delete scene/marker",
     inactive: "Delete scene/marker"
@@ -216199,7 +216363,7 @@ const buttonDefinition$i = {
     button: DeleteMediaItemActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$j]).required()
+    buttonType: create$6().oneOf([id$k]).required()
   })
 };
 function DeleteMediaItemActionButton({
@@ -216211,14 +216375,14 @@ function DeleteMediaItemActionButton({
     ActionButtonBase,
     {
       state: "inactive",
-      icon: buttonDefinition$i.icon,
-      title: buttonDefinition$i.title,
-      className: cx(buttonDefinition$i.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$j.icon,
+      title: buttonDefinition$j.title,
+      className: cx(buttonDefinition$j.id, "hide-on-ui-hide"),
       onClick: open
     }
   ));
 }
-const logger$8 = getLogger(["stash-tv", "useMediaItemTags"]);
+const logger$a = getLogger(["stash-tv", "useMediaItemTags"]);
 function useMediaItemTags(mediaItem) {
   let tags2;
   let primaryTag = null;
@@ -216297,7 +216461,7 @@ function useMediaItemTags(mediaItem) {
       updateMarkerTags(tagIds);
     };
   } else {
-    logger$8.error("useMediaItemTags rendered for unsupported media item type", { mediaItem });
+    logger$a.error("useMediaItemTags rendered for unsupported media item type", { mediaItem });
     tags2 = [];
     addTag = () => {
     };
@@ -216347,7 +216511,7 @@ function Tag({ tag: tag2, onClick, icon: icon2, className }) {
   }
   return renderBadge({ className: rootClassName });
 }
-const logger$7 = getLogger(["stash-tv", "EditTagSelectionForm"]);
+const logger$9 = getLogger(["stash-tv", "EditTagSelectionForm"]);
 function EditTagSelectionForm({ initialTags, pinnedTagIds, save, cancel }) {
   const [selectedTags, setSelectedTags] = reactExports.useState(
     initialTags
@@ -216360,7 +216524,7 @@ function EditTagSelectionForm({ initialTags, pinnedTagIds, save, cancel }) {
   reactExports.useEffect(() => {
     if (!pinnedTagIds || !pinnedTagIds.length) return;
     queryFindTagsByIDForSelect(pinnedTagIds).then((result) => setPinnedTags(result.data.findTags.tags)).catch((error) => {
-      logger$7.error(`Error when fetching tags ${pinnedTagIds.join(", ")} for edit tags form: {error}`, { error });
+      logger$9.error(`Error when fetching tags ${pinnedTagIds.join(", ")} for edit tags form: {error}`, { error });
     });
   }, [objectHash(pinnedTagIds?.toSorted() || [])]);
   const tagsChanged = reactExports.useMemo(
@@ -216419,14 +216583,14 @@ function EditTagsContents({ initialTags, pinnedTagIds, primaryTag, save, cancel 
     }
   ), primaryTag && /* @__PURE__ */ React$1.createElement("div", { className: "primary-tag-note" }, `Marker's primary tag is "`, primaryTag.name, '".'));
 }
-const logger$6 = getLogger(["stash-tv", "EditTagsActionButton"]);
-const id$i = "edit-tags";
+const logger$8 = getLogger(["stash-tv", "EditTagsActionButton"]);
+const id$j = "edit-tags";
 const configSchema$2 = sharedActionButtonSchema.shape({
-  buttonType: create$6().oneOf([id$i]).required(),
+  buttonType: create$6().oneOf([id$j]).required(),
   pinnedTagIds: create$2().of(create$6().required()).required()
 });
-const buttonDefinition$h = {
-  id: id$i,
+const buttonDefinition$i = {
+  id: id$j,
   title: {
     active: "Edit scene/marker tags",
     inactive: "Edit scene/marker tags"
@@ -216445,18 +216609,18 @@ function EditTagsActionButton({
   const { tags: tags2, primaryTag, setTags } = useMediaItemTags(mediaItem);
   let pinnedTagIds = [];
   try {
-    const parsedConfig = buttonDefinition$h.configSchema.validateSync(config2);
+    const parsedConfig = buttonDefinition$i.configSchema.validateSync(config2);
     pinnedTagIds = parsedConfig.pinnedTagIds;
   } catch (error) {
-    logger$6.warn("Invalid config for edit tags action button", { error, config: config2 });
+    logger$8.warn("Invalid config for edit tags action button", { error, config: config2 });
   }
   return /* @__PURE__ */ React$1.createElement(
     ActionButtonBase,
     {
       state: "inactive",
-      icon: buttonDefinition$h.icon,
-      title: buttonDefinition$h.title,
-      className: cx(buttonDefinition$h.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$i.icon,
+      title: buttonDefinition$i.title,
+      className: cx(buttonDefinition$i.id, "hide-on-ui-hide"),
       sidePanel: ({ close }) => /* @__PURE__ */ React$1.createElement(
         EditTagsContents,
         {
@@ -216515,7 +216679,7 @@ function usePlaybackPositionOptions() {
   }, [playLength]);
 }
 const defaultDisplayDuration = 1e3;
-const logger$5 = getLogger(["stash-tv", "FeedbackOverlay"]);
+const logger$7 = getLogger(["stash-tv", "FeedbackOverlay"]);
 const useFeedback = create((set4, get7) => ({
   contents: null,
   fade: true,
@@ -216525,11 +216689,11 @@ const useFeedback = create((set4, get7) => ({
       clearTimeout(get7().displayCountdown);
     }
     const displayCountdown = hold || !contents ? void 0 : setTimeout(() => {
-      logger$5.debug("Clearing feedback");
+      logger$7.debug("Clearing feedback");
       set4({ contents: null, displayCountdown: void 0, icon: icon2 ?? null });
     }, displayDuration);
     if (get7().contents !== contents || get7().displayCountdown !== displayCountdown || get7().fade !== fade) {
-      logger$5.debug("Setting feedback{*}", { contents, hold, fade });
+      logger$7.debug("Setting feedback{*}", { contents, hold, fade });
       set4({ contents, displayCountdown, fade, icon: icon2 ?? null });
     }
   }
@@ -216580,17 +216744,17 @@ function CycleOptionActionButton({
     }
   );
 }
-const id$h = "end-position";
+const id$i = "end-position";
 const name$2 = "End point";
-const buttonDefinition$g = {
-  id: id$h,
+const buttonDefinition$h = {
+  id: id$i,
   title: cycleOptionTitle(name$2, () => usePlaybackPositionOptions().endPositionOptions, "Change end point"),
   icon: SvgLocationStopOutline,
   components: {
     button: EndPositionActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$h]).required()
+    buttonType: create$6().oneOf([id$i]).required()
   })
 };
 function EndPositionActionButton() {
@@ -216599,14 +216763,14 @@ function EndPositionActionButton() {
   return /* @__PURE__ */ React$1.createElement(
     CycleOptionActionButton,
     {
-      id: id$h,
+      id: id$i,
       name: name$2,
       options: endPositionOptions,
       value: endPosition,
       unlabelledValue: "video-end",
       onChange: (value) => setTvConfig("endPosition", value),
-      icon: buttonDefinition$g.icon,
-      title: buttonDefinition$g.title
+      icon: buttonDefinition$h.icon,
+      title: buttonDefinition$h.title
     }
   );
 }
@@ -216640,9 +216804,9 @@ const SvgLandscapeRotation = (props) => /* @__PURE__ */ reactExports.createEleme
 }, d: "M405.077,128C343.846,72.436 290.187,64 256,64C229.593,64 127.954,67.087 56,196C47.153,211.429 28.255,214.044 16,204C-3.058,188.798 4.433,167.298 8,161.183C64.601,64.151 145.36,-0.478 256,0C314.573,0.253 379.319,27.216 443.672,80C463.341,62.496 466.105,60.036 466.105,60.036C477.535,49.865 494.967,50.952 505.072,62.307C509.592,67.387 512.045,73.905 511.999,80.773L511.441,183.94C511.46,188.475 505.39,201.538 501.074,202.81C486.713,207.041 470.914,199.978 464,192.209C464,192.209 438.887,164.843 405.077,128Z" }), /* @__PURE__ */ reactExports.createElement("g", { transform: "matrix(-1,1.22465e-16,-1.22465e-16,-1,513.757,511.997)" }, /* @__PURE__ */ reactExports.createElement("path", { style: {
   fill: "currentColor"
 }, d: "M405.077,128C343.846,72.436 290.187,64 256,64C229.593,64 127.954,67.087 56,196C47.153,211.429 28.255,214.044 16,204C-3.058,188.798 4.433,167.298 8,161.183C64.601,64.151 145.36,-0.478 256,0C314.573,0.253 379.319,27.216 443.672,80C463.341,62.496 466.105,60.036 466.105,60.036C477.535,49.865 494.967,50.952 505.072,62.307C509.592,67.387 512.045,73.905 511.999,80.773L511.441,183.94C511.46,188.475 505.39,201.538 501.074,202.81C486.713,207.041 470.914,199.978 464,192.209C464,192.209 438.887,164.843 405.077,128Z" })));
-const id$g = "force-landscape";
-const buttonDefinition$f = {
-  id: id$g,
+const id$h = "force-landscape";
+const buttonDefinition$g = {
+  id: id$h,
   title: {
     active: "Landscape",
     inactive: "Portrait"
@@ -216655,7 +216819,7 @@ const buttonDefinition$f = {
     button: ForceLandscapeActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$g]).required()
+    buttonType: create$6().oneOf([id$h]).required()
   })
 };
 function ForceLandscapeActionButton() {
@@ -216664,9 +216828,9 @@ function ForceLandscapeActionButton() {
     ActionButtonBase,
     {
       state: forceLandscape ? "active" : "inactive",
-      icon: buttonDefinition$f.icon,
-      title: buttonDefinition$f.title,
-      className: cx(buttonDefinition$f.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$g.icon,
+      title: buttonDefinition$g.title,
+      className: cx(buttonDefinition$g.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--forceLandscapeButton",
       onClick: () => setTvConfig("forceLandscape", (prev2) => !prev2)
     }
@@ -216695,9 +216859,9 @@ const SvgExpandOutline = (props) => /* @__PURE__ */ reactExports.createElement("
   stroke: "currentColor",
   strokeWidth: 32
 } })));
-const id$f = "fullscreen";
-const buttonDefinition$e = {
-  id: id$f,
+const id$g = "fullscreen";
+const buttonDefinition$f = {
+  id: id$g,
   title: {
     active: "Close fullscreen",
     inactive: "Open fullscreen"
@@ -216710,7 +216874,7 @@ const buttonDefinition$e = {
     button: FullscreenActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$f]).required()
+    buttonType: create$6().oneOf([id$g]).required()
   })
 };
 function FullscreenActionButton() {
@@ -216720,9 +216884,9 @@ function FullscreenActionButton() {
     ActionButtonBase,
     {
       state: fullscreen ? "active" : "inactive",
-      icon: buttonDefinition$e.icon,
-      title: buttonDefinition$e.title,
-      className: cx(buttonDefinition$e.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$f.icon,
+      title: buttonDefinition$f.title,
+      className: cx(buttonDefinition$f.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--fullscreenButton",
       onClick: () => setGlobalState("fullscreen", (prev2) => !prev2)
     }
@@ -216765,9 +216929,9 @@ const SvgCoverOutline = (props) => /* @__PURE__ */ reactExports.createElement("s
   stroke: "currentColor",
   strokeWidth: 32
 } })));
-const id$e = "letterboxing";
-const buttonDefinition$d = {
-  id: id$e,
+const id$f = "letterboxing";
+const buttonDefinition$e = {
+  id: id$f,
   title: {
     active: "Fit to screen",
     inactive: "Fill screen"
@@ -216780,7 +216944,7 @@ const buttonDefinition$d = {
     button: LetterboxingActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$e]).required()
+    buttonType: create$6().oneOf([id$f]).required()
   })
 };
 function LetterboxingActionButton() {
@@ -216789,9 +216953,9 @@ function LetterboxingActionButton() {
     ActionButtonBase,
     {
       state: letterboxing ? "active" : "inactive",
-      icon: buttonDefinition$d.icon,
-      title: buttonDefinition$d.title,
-      className: cx(buttonDefinition$d.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$e.icon,
+      title: buttonDefinition$e.title,
+      className: cx(buttonDefinition$e.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--letterboxButton",
       onClick: () => setTvConfig("letterboxing", (prev2) => !prev2)
     }
@@ -216805,9 +216969,9 @@ const SvgLoopOutline = (props) => /* @__PURE__ */ reactExports.createElement("sv
 }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { d: "M15.2,272C6.4,271.5 -0.4,264 0,255.2L0.4,247.2C5.1,153.5 82.4,80 176.2,80L320,80L320,35.6C320,20.3 332.3,8     347.6,8C354.4,8 361,10.5 366,15.1L442.7,84.1C446.1,87.1 448,91.5 448,96C448,100.5 446.1,104.9     442.7,107.9L366,176.9C360.9,181.5 354.4,184 347.6,184C332.4,184 320,171.7 320,156.4L320,112L176.2,112C99.5,112     36.2,172.2 32.4,248.8L32,256.8C31.6,265.6 24,272.4     15.2,272ZM352,146.5L408.1,96L352,45.5L352,146.5ZM496.8,240C505.6,240.4 512.4,248 512,256.8L511.6,264.8C506.9,358.5     429.6,432 335.8,432L192,432L192,476.4C192,491.6 179.7,504 164.4,504C157.6,504 151,501.5     146,496.9L69.3,427.9C65.9,424.9 64,420.5 64,416C64,411.5 65.9,407.1 69.3,404.1L146,335.1C151.1,330.5 157.6,328     164.4,328C179.6,328 192,340.3 192,355.6L192,400L335.8,400C412.5,400 475.8,339.8 479.6,263.2L480,255.2C480.4,246.4     488,239.6 496.8,240ZM160,365.5L103.9,416L160,466.5L160,365.5Z", style: {
   fillRule: "nonzero"
 }, fill: "currentColor" }));
-const id$d = "loop";
-const buttonDefinition$c = {
-  id: id$d,
+const id$e = "loop";
+const buttonDefinition$d = {
+  id: id$e,
   title: {
     active: "Stop looping scene",
     inactive: "Loop scene"
@@ -216820,7 +216984,7 @@ const buttonDefinition$c = {
     button: LoopActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$d]).required()
+    buttonType: create$6().oneOf([id$e]).required()
   })
 };
 function LoopActionButton() {
@@ -216829,9 +216993,9 @@ function LoopActionButton() {
     ActionButtonBase,
     {
       state: looping ? "active" : "inactive",
-      icon: buttonDefinition$c.icon,
-      title: buttonDefinition$c.title,
-      className: cx(buttonDefinition$c.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$d.icon,
+      title: buttonDefinition$d.title,
+      className: cx(buttonDefinition$d.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--loopButton",
       onClick: () => setTvConfig("looping", (prev2) => !prev2)
     }
@@ -216851,9 +217015,9 @@ const SvgSplashOutline = (props) => /* @__PURE__ */ reactExports.createElement("
   strokeLinejoin: "round",
   strokeMiterlimit: 2
 }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { fill: "currentColor", d: "M401.593,365.404L285.583,298.657L285.114,429.916C283.862,458.38 297.972,486.559 324.229,501.658C336.009,508.434 349.361,512 362.949,512C390.942,512 416.852,496.862 430.61,472.469C451.931,434.841 438.988,386.894 401.593,365.404ZM385.635,393.141C385.639,393.144 385.644,393.146 385.649,393.149C407.834,405.898 415.418,434.369 402.769,456.693C402.758,456.712 402.748,456.731 402.737,456.749C394.647,471.094 379.411,480 362.949,480C354.96,480 347.11,477.903 340.184,473.919C340.183,473.919 340.183,473.919 340.182,473.918C324.611,464.964 316.34,448.201 317.083,431.322C317.102,430.892 317.112,430.461 317.113,430.031L317.386,353.874C317.386,353.874 385.635,393.141 385.635,393.141ZM183.413,265.569L32,144L1.973,334.55C-5.949,376.472 10.341,419.467 44.047,445.6C63.79,460.506 87.862,468.573 112.596,468.573C175.027,468.573 226.401,417.171 226.401,354.705C226.401,320.013 210.555,287.156 183.413,265.569ZM163.379,290.521C163.417,290.552 163.455,290.583 163.494,290.613C183.01,306.135 194.401,329.761 194.401,354.705C194.401,399.612 157.478,436.573 112.596,436.573C94.896,436.573 77.668,430.824 63.513,420.199C39.375,401.388 27.736,370.555 33.416,340.491C33.477,340.172 33.532,339.852 33.583,339.531L55.016,203.517C55.016,203.517 163.379,290.521 163.379,290.521ZM325.111,10.48L112,96L290.362,238.173C327.814,269.824 381.068,279.971 429.33,259.776C497.974,231.057 530.262,151.957 501.473,83.118C472.713,14.265 393.742,-18.254 325.111,10.48ZM337.029,40.178C337.176,40.118 337.323,40.058 337.469,39.997C389.81,18.083 450.012,42.942 471.946,95.452C471.948,95.456 471.949,95.461 471.951,95.465C493.913,147.979 469.345,208.347 416.979,230.256C416.978,230.256 416.978,230.256 416.977,230.257C380.176,245.656 339.576,237.867 311.018,213.732C310.784,213.534 310.548,213.34 310.308,213.149L174.92,105.231C174.92,105.231 337.029,40.178 337.029,40.178Z" }));
-const id$c = "o-counter";
-const buttonDefinition$b = {
-  id: id$c,
+const id$d = "o-counter";
+const buttonDefinition$c = {
+  id: id$d,
   title: {
     active: "Undo Orgasm Mark",
     inactive: "Mark Orgasm"
@@ -216866,7 +217030,7 @@ const buttonDefinition$b = {
     button: OCounterActionButton
   },
   configSchema: sharedActionButtonSchema.shape({
-    buttonType: create$6().oneOf([id$c]).required()
+    buttonType: create$6().oneOf([id$d]).required()
   })
 };
 function OCounterActionButton({
@@ -216894,9 +217058,9 @@ function OCounterActionButton({
     ActionButtonBase,
     {
       state: oCounterIncremented ? "active" : "inactive",
-      icon: buttonDefinition$b.icon,
-      title: buttonDefinition$b.title,
-      className: cx(buttonDefinition$b.id, "hide-on-ui-hide"),
+      icon: buttonDefinition$c.icon,
+      title: buttonDefinition$c.title,
+      className: cx(buttonDefinition$c.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--oCounterButton",
       onClick: ({ toggleSidePanel }) => {
         if (oCounterIncremented) {
@@ -216907,6 +217071,173 @@ function OCounterActionButton({
       },
       sidePanel: /* @__PURE__ */ React$1.createElement("div", { className: "action-button-o-counter" }, /* @__PURE__ */ React$1.createElement("button", { onClick: () => decrementOCount(), disabled: (scene2.o_counter ?? 0) <= 0 }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faMinus })), scene2.o_counter ?? 0, /* @__PURE__ */ React$1.createElement("button", { onClick: () => incrementOCount() }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPlus }))),
       sideInfo: (scene2.o_counter ?? 0) > 0 && scene2.o_counter
+    }
+  );
+}
+const logger$6 = getLogger(["stash-tv", "picture-in-picture"]);
+function isPictureInPictureSupported() {
+  return typeof document !== "undefined" && document.pictureInPictureEnabled === true;
+}
+async function enterPictureInPicture(player) {
+  const restoreDisablePictureInPicture = () => {
+    if (!player.isDisposed()) player.disablePictureInPicture(true);
+  };
+  player.disablePictureInPicture(false);
+  try {
+    const request = player.requestPictureInPicture();
+    if (!request) {
+      throw new Error("Picture-in-picture is not available for this player");
+    }
+    const pictureInPictureWindow = await request;
+    player.one("leavepictureinpicture", restoreDisablePictureInPicture);
+    return pictureInPictureWindow;
+  } catch (error) {
+    restoreDisablePictureInPicture();
+    throw error;
+  }
+}
+async function enterPictureInPictureFromUserGesture(player) {
+  try {
+    return await enterPictureInPicture(player);
+  } catch (error) {
+    if (!player.paused() && player.readyState() > 0) throw error;
+    logger$6.info("Couldn't enter picture-in-picture, playing the video then retrying: {errorMessage}", {
+      errorMessage: String(error)
+    });
+  }
+  await player.play();
+  if (player.readyState() === 0) {
+    await waitForPlayerEvent(player, "loadedmetadata", metadataTimeoutMs);
+  }
+  return await enterPictureInPicture(player);
+}
+const metadataTimeoutMs = 5e3;
+function waitForPlayerEvent(player, event2, timeoutMs) {
+  return new Promise((resolve, reject) => {
+    const onEvent = () => {
+      clearTimeout(timeout);
+      resolve();
+    };
+    const timeout = setTimeout(() => {
+      if (!player.isDisposed()) player.off(event2, onEvent);
+      reject(new Error(`Timed out after ${timeoutMs}ms waiting for ${event2}`));
+    }, timeoutMs);
+    player.one(event2, onEvent);
+  });
+}
+async function exitPictureInPicture() {
+  if (!document.pictureInPictureElement) return;
+  await document.exitPictureInPicture();
+}
+async function togglePictureInPicture(player) {
+  try {
+    if (document.pictureInPictureElement) {
+      await exitPictureInPicture();
+    } else if (player) {
+      await enterPictureInPictureFromUserGesture(player);
+    } else {
+      return false;
+    }
+    return true;
+  } catch (error) {
+    logger$6.error("Failed to toggle picture-in-picture: {errorMessage} {*}", { errorMessage: String(error), error });
+    return false;
+  }
+}
+const logger$5 = getLogger(["stash-tv", "picture-in-picture"]);
+function usePictureInPictureActive() {
+  const [active, setActive] = reactExports.useState(() => typeof document !== "undefined" && !!document.pictureInPictureElement);
+  reactExports.useEffect(() => {
+    const update2 = () => setActive(!!document.pictureInPictureElement);
+    update2();
+    document.addEventListener("enterpictureinpicture", update2, { capture: true });
+    document.addEventListener("leavepictureinpicture", update2, { capture: true });
+    return () => {
+      document.removeEventListener("enterpictureinpicture", update2, { capture: true });
+      document.removeEventListener("leavepictureinpicture", update2, { capture: true });
+    };
+  }, []);
+  return active;
+}
+function useFollowPictureInPicture({ playerRef, isCurrentVideo, playerReady, goToItem }) {
+  reactExports.useEffect(() => {
+    const player = playerRef.current;
+    if (!isCurrentVideo || !player || !document.pictureInPictureElement || player.isInPictureInPicture()) return;
+    const moveToThisPlayer = () => {
+      if (!document.pictureInPictureElement || player.isDisposed()) return;
+      enterPictureInPicture(player).catch((error) => {
+        logger$5.warn("Failed to move picture-in-picture to the current video, closing it: {errorMessage} {*}", {
+          errorMessage: String(error),
+          error
+        });
+        exitPictureInPicture().catch(() => {
+        });
+      });
+    };
+    if (player.readyState() > 0) {
+      moveToThisPlayer();
+      return;
+    }
+    player.one("loadedmetadata", moveToThisPlayer);
+    return () => {
+      if (!player.isDisposed()) player.off("loadedmetadata", moveToThisPlayer);
+    };
+  }, [isCurrentVideo, playerReady]);
+  const pictureInPictureActive = usePictureInPictureActive();
+  reactExports.useEffect(() => {
+    if (!isCurrentVideo || !pictureInPictureActive || !("mediaSession" in navigator)) return;
+    const setHandler = (action, handler) => {
+      try {
+        navigator.mediaSession.setActionHandler(action, handler);
+      } catch (error) {
+        logger$5.debug(`Media Session action ${action} not supported {*}`, { error });
+      }
+    };
+    setHandler("nexttrack", () => goToItem("next"));
+    setHandler("previoustrack", () => goToItem("previous"));
+    return () => {
+      setHandler("nexttrack", null);
+      setHandler("previoustrack", null);
+    };
+  }, [isCurrentVideo, pictureInPictureActive, goToItem]);
+}
+const id$c = "picture-in-picture";
+const buttonDefinition$b = {
+  id: id$c,
+  title: {
+    active: "Close picture-in-picture",
+    inactive: "Open picture-in-picture"
+  },
+  icon: {
+    active: PipFill,
+    inactive: Pip
+  },
+  components: {
+    button: PictureInPictureActionButton
+  },
+  configSchema: sharedActionButtonSchema.shape({
+    buttonType: create$6().oneOf([id$c]).required()
+  })
+};
+function PictureInPictureActionButton({ playerRef }) {
+  const active = usePictureInPictureActive();
+  const sidePanelOpenRef = reactExports.useRef(false);
+  if (!isPictureInPictureSupported()) return null;
+  return /* @__PURE__ */ React$1.createElement(
+    ActionButtonBase,
+    {
+      state: active ? "active" : "inactive",
+      icon: buttonDefinition$b.icon,
+      title: buttonDefinition$b.title,
+      className: cx(buttonDefinition$b.id, "hide-on-ui-hide"),
+      onClick: async ({ toggleSidePanel }) => {
+        const succeeded = await togglePictureInPicture(playerRef.current);
+        if (!succeeded && !sidePanelOpenRef.current) toggleSidePanel();
+      },
+      onSidePanelToggle: (isOpen) => {
+        sidePanelOpenRef.current = isOpen;
+      },
+      sidePanel: /* @__PURE__ */ React$1.createElement("div", { className: "action-button-picture-in-picture" }, "Couldn't open picture-in-picture. Play the video first, then try again.")
     }
   );
 }
@@ -219555,14 +219886,14 @@ function SettingsForm({ formik }) {
   ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Enable full volume control rather than just mute/unmute. Note that this does not work on iOS devices due to platform limitations."), formik.touched.fullControl && fullControlError && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, fullControlError)), Object.keys(otherErrors).length > 0 && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, /* @__PURE__ */ React$1.createElement("ul", null, Object.entries(otherErrors).map(([key, error]) => /* @__PURE__ */ React$1.createElement("li", { key }, error)))));
 }
 const allButtonDefinition = [
+  buttonDefinition$k,
   buttonDefinition$j,
   buttonDefinition$i,
-  buttonDefinition$h,
+  buttonDefinition$g,
   buttonDefinition$f,
   buttonDefinition$e,
   buttonDefinition$d,
   buttonDefinition$c,
-  buttonDefinition$b,
   buttonDefinition$9,
   buttonDefinition$8,
   buttonDefinition$7,
@@ -219574,7 +219905,8 @@ const allButtonDefinition = [
   buttonDefinition$a,
   buttonDefinition,
   buttonDefinition$3,
-  buttonDefinition$g
+  buttonDefinition$h,
+  buttonDefinition$b
 ];
 function getActionButtonDefinition(type3) {
   return allButtonDefinition.find((def) => def.id === type3) ?? unknownActionButtonDefinition;
@@ -221623,7 +221955,7 @@ function useSyncPlayerWithPreferredStream({
 videojs.registerPlugin("styledBigPlayButton", styledBigPlayButton);
 const noAnimateDurationThreshold = 30;
 const mountCount = /* @__PURE__ */ new Map();
-const MediaSlide = (props) => {
+const MediaSlideContent = (props) => {
   const { isCurrentVideo } = props;
   const {
     letterboxing,
@@ -221733,13 +222065,14 @@ const MediaSlide = (props) => {
       { ...shouldSkipAnimation ? { behavior: "instant" } : {} }
     );
   }, [noAnimateDurationThreshold, props.changeItemHandler, props.index, isCurrentVideo]);
+  useFollowPictureInPicture({ playerRef: videojsPlayerRef, isCurrentVideo, playerReady, goToItem });
   reactExports.useEffect(() => {
     if (!isCurrentVideo || !videojsPlayerRef.current) return;
     window.videojs = videojs;
     window.tvCurrentPlayer = showDevOptions ? videojsPlayerRef.current : void 0;
     window.tvAllPlayers = showDevOptions ? videojs.getAllPlayers() : void 0;
     window.tvCurrentMediaItem = showDevOptions ? props.mediaItem : void 0;
-  }, [isCurrentVideo, showDevOptions, playerReady]);
+  }, [isCurrentVideo, showDevOptions, playerReady, props.mediaItem]);
   const firstDurationChangeRef = reactExports.useRef(true);
   reactExports.useEffect(() => {
     if (!videojsPlayerRef.current) return;
@@ -221769,8 +222102,17 @@ const MediaSlide = (props) => {
       if (!autoplay) return;
       videojsPlayerRef.current?.play();
     } else if (!isFirstMount) {
-      videojsPlayerRef.current?.pause();
-      videojsPlayerRef.current?.cancelLoading?.();
+      const player = videojsPlayerRef.current;
+      player.pause();
+      if (!player.isInPictureInPicture()) {
+        player.cancelLoading?.();
+        return;
+      }
+      const cancelLoading = () => player.cancelLoading?.();
+      player.one("leavepictureinpicture", cancelLoading);
+      return () => {
+        if (!player.isDisposed()) player.off("leavepictureinpicture", cancelLoading);
+      };
     }
   }, [isCurrentVideo, autoplay]);
   const initialTimestamp = reactExports.useMemo(() => {
@@ -222097,6 +222439,10 @@ const MediaSlide = (props) => {
         case "f":
           setGlobalState("fullscreen", (prev2) => !prev2);
           break;
+        case "p":
+          if (!isPictureInPictureSupported()) return;
+          void togglePictureInPicture(videojsPlayerRef.current);
+          break;
         default:
           return;
       }
@@ -222321,6 +222667,11 @@ const MediaSlide = (props) => {
       )
     )
   );
+};
+const MediaSlide = ({ mediaItemRef, ...otherProps }) => {
+  const mediaItem = useLiveMediaItem(mediaItemRef);
+  if (!mediaItem) return null;
+  return /* @__PURE__ */ React$1.createElement(MediaSlideContent, { ...otherProps, mediaItem });
 };
 const MediaSlide$1 = React$1.memo(MediaSlide);
 function useGestureControls({ videoRef, videojsPlayerRef, seekForwards, seekBackwards, logger: logger3, looping, initialTimestamp, endTimestamp }) {
@@ -223872,7 +224223,14 @@ const VideoScroller = reactExports.memo(() => {
       const newScrollTop = index2 * itemHeight;
       temporarilyDisableScrollSnapping();
       logger3.debug(`Scrolling to index ${index2} at height ${newScrollTop}`);
-      rowVirtualizer.scrollElement?.scrollTo({ top: newScrollTop, behavior: "smooth", ...options2 });
+      rowVirtualizer.scrollElement?.scrollTo({
+        top: newScrollTop,
+        behavior: "smooth",
+        ...options2,
+        // A smooth scroll may never finish while the page is hidden (e.g. watching in picture-in-picture from another
+        // tab) which would stop the rendered slides keeping up with currentIndex as the feed auto-advances
+        ...document.hidden ? { behavior: "instant" } : {}
+      });
     },
     [rowVirtualizer]
   );
@@ -224065,7 +224423,7 @@ const VideoScroller = reactExports.memo(() => {
       style: { height: rowVirtualizer.getTotalSize() }
     },
     showDebuggingInfo.includes("onscreen-info") && /* @__PURE__ */ React$1.createElement("div", { className: "debugStats" }, rowVirtualizer.isScrolling ? "Scrolling" : "Not Scrolling", " ", "(", mediaItems.length, " media loaded)", onlyShowMatchingOrientation && ` limiting to ${orientation2} orientation`),
-    mediaItems.map((mediaItem, i3) => {
+    mediaItems.map((mediaItemRef, i3) => {
       if (itemIndexesToRender.includes(i3)) {
         return /* @__PURE__ */ React$1.createElement(
           MediaSlide$1,
@@ -224075,8 +224433,8 @@ const VideoScroller = reactExports.memo(() => {
             isCurrentVideo: i3 === currentIndex,
             currentIndex,
             index: i3,
-            key: objectHash([mediaItem.id, scenePreviewOnly, markerPreviewOnly]),
-            mediaItem,
+            key: objectHash([mediaItemRef.id, scenePreviewOnly, markerPreviewOnly]),
+            mediaItemRef,
             style: mediaSlidePositioningStyles[i3],
             currentlyScrolling: rowVirtualizer.isScrolling
           }
@@ -224085,7 +224443,7 @@ const VideoScroller = reactExports.memo(() => {
       return /* @__PURE__ */ React$1.createElement(
         "div",
         {
-          key: mediaItem.id,
+          key: mediaItemRef.id,
           className: "dummy-video-item",
           style: mediaSlidePositioningStyles[i3]
         }
@@ -228228,7 +228586,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setGlobalState("keyboardShortcutsOpen", true)
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.21.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.22.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -240168,7 +240526,7 @@ const MarkdownPage = ({ page }) => {
   }, [page, markdown]);
   return jsxRuntimeExports.jsx("div", { className: "markdown", children: jsxRuntimeExports.jsx(Remark, { remarkPlugins: [remarkGfm], children: markdown }) });
 };
-const content = "## General\n\n| Keyboard sequence | Action |\n| ----------------- | ------ |\n| `?` | Show keyboard shortcuts |\n\n## Playback\n\n| Keyboard sequence | Action |\n| ----------------- | ------ |\n| `Space` | Play/pause player |\n| `←` or `→` | Jump forwards/backward. The jump amount is dependant on the length of the video and it will try to align jumps with nearly by markers if there are any. |\n| Hold down `←` or `→` | Play/rewind at 2x speed |\n| Hold down `←` or `→` then tap `↑` or `↓` | Increase or decrease the play/rewind speed |\n| `↓` or `↑` | Go to next/previous media |\n| `l` | Toggle looping the scene |\n| `m` | Mute/unmute |\n\n## Scene/Marker Actions\n\nRatings set on a marker apply to the marker's scene.\n\n| Keyboard sequence | Action |\n| ----------------- | ------ |\n| `r {1-5}` | Set star rating | <!-- rating-system: stars -->\n| `r 0` | Unset star rating | <!-- rating-system: stars -->\n| `r {0-9} {0-9}` | Set decimal rating (e.g. `r 36` for `3.6`, use `r 00` for `10.0`) | <!-- rating-system: decimal -->\n| ``r ` `` | Unset decimal rating | <!-- rating-system: decimal -->\n| `d` | Delete the current scene/marker (opens the confirmation dialog with Delete focused, so `Enter` confirms) |\n| `e` | Edit scene/marker tags |\n| `i` | Toggle scene info |\n\n## Display\n\n| Keyboard sequence | Action |\n| ----------------- | ------ |\n| `c` | Toggle CRT effect |\n| `f` | Toggle fullscreen |\n| `o` | Toggle forced landscape orientation |\n| `s` | Toggle subtitles |\n";
+const content = "## General\n\n| Keyboard sequence | Action |\n| ----------------- | ------ |\n| `?` | Show keyboard shortcuts |\n\n## Playback\n\n| Keyboard sequence | Action |\n| ----------------- | ------ |\n| `Space` | Play/pause player |\n| `←` or `→` | Jump forwards/backward. The jump amount is dependant on the length of the video and it will try to align jumps with nearly by markers if there are any. |\n| Hold down `←` or `→` | Play/rewind at 2x speed |\n| Hold down `←` or `→` then tap `↑` or `↓` | Increase or decrease the play/rewind speed |\n| `↓` or `↑` | Go to next/previous media |\n| `l` | Toggle looping the scene |\n| `m` | Mute/unmute |\n\n## Scene/Marker Actions\n\nRatings set on a marker apply to the marker's scene.\n\n| Keyboard sequence | Action |\n| ----------------- | ------ |\n| `r {1-5}` | Set star rating | <!-- rating-system: stars -->\n| `r 0` | Unset star rating | <!-- rating-system: stars -->\n| `r {0-9} {0-9}` | Set decimal rating (e.g. `r 36` for `3.6`, use `r 00` for `10.0`) | <!-- rating-system: decimal -->\n| ``r ` `` | Unset decimal rating | <!-- rating-system: decimal -->\n| `d` | Delete the current scene/marker (opens the confirmation dialog with Delete focused, so `Enter` confirms) |\n| `e` | Edit scene/marker tags |\n| `i` | Toggle scene info |\n\n## Display\n\n| Keyboard sequence | Action |\n| ----------------- | ------ |\n| `c` | Toggle CRT effect |\n| `f` | Toggle fullscreen |\n| `o` | Toggle forced landscape orientation |\n| `p` | Toggle picture-in-picture |\n| `s` | Toggle subtitles |\n";
 const ratingSystemTag = /\s*<!--\s*rating-system:\s*(\w+)\s*-->\s*$/;
 function filterShortcutsForRatingSystem(markdown, ratingSystem) {
   return markdown.split("\n").flatMap((line2) => {
@@ -241214,4 +241572,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-Cx9PlnDV.js.map
+//# sourceMappingURL=index-BZ4AEwyE.js.map
