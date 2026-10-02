@@ -13408,16 +13408,32 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
         gap: 0.2em;
         flex-direction: row-reverse;
         justify-content: center;
+        /* Scale the icon shadow down to suit the smaller icons */
+        --shadow-offset: 1.5px;
+        --shadow-blur: 1.5px;
         > * {
           flex: 0 0 0.8em;
+          height: 0.8em;
+        }
+        .ActionButtonIcon {
           /*
           Inline font awesome icons try to make this overflow visible which for some reason stops them from being
           resized down so we explicitly set it svg's default of overflow hidden.
           */
           overflow: hidden;
         }
+        /* Every button is rendered so that ones which aren't shown (e.g. subtitles without captions) render nothing
+        and so don't take a place. Only the first 4 that are shown fit, so the rest wait unseen in the middle of the
+        folder, which is where they move out from when it opens. */
+        > :nth-child(n+5) {
+          position: absolute;
+          inset: 0;
+          width: 0.8em;
+          margin: auto;
+          visibility: hidden;
+        }
       }
-
+      position: relative;
       height: 40px;
       width: 40px;
       margin: 5px 0;
@@ -13429,10 +13445,28 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
         color: inherit;
       }
 
+      /* Shown while the folder is open. It fades in once the icons are on their way out of the folder, and fades out
+      straight away so it's gone by the time they're back. */
       .hide-icon {
+        position: absolute;
+        inset: 0;
         height: 100%;
         width: 100%;
-        opacity: 0.8;
+        opacity: 0;
+        transition: opacity 0.06s ease;
+      }
+      &.open .hide-icon {
+        opacity: 0.6;
+        transition-delay: 0.03s;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hide-icon {
+          transition: none;
+        }
+      }
+
+      &.showing-open-folder .folder-contents {
+        visibility: hidden;
       }
     }
 
@@ -13464,29 +13498,6 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
       /* width >= height */
       &.letterboxing svg {
         transform: rotate(90deg);
-      }
-    }
-
-    svg {
-      /* Compensate for icons with less mass having visually lighter shadows */
-      &.fa-expand {
-        --shadow-layer-opacity: 0.24;
-      }
-
-      &.fa-down-left-and-up-right-to-center {
-        --shadow-layer-opacity: 0.14;
-      }
-
-      &.fa-repeat {
-        --shadow-layer-opacity: 0.19;
-      }
-
-      &.fa-ellipsis-vertical {
-        --shadow-layer-opacity: 0.15;
-      }
-
-      &.icon-fullscreen {
-        --shadow-layer-opacity: 0.3;
       }
     }
   }
@@ -13539,6 +13550,17 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     &.muted {
       opacity: 0.3;
     }
+  }
+}
+.action-button-change-channel {
+  .contents {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    text-align: left;
   }
 }
 .action-button-create-marker {
@@ -13616,6 +13638,13 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 
   &.hide {
     visibility: hidden;
+  }
+
+  /* Don't clip the icons while they move between it and the folder's preview, which is outside it. The overflow
+  indicators' mask would clip them too. */
+  &.icons-animating {
+    overflow: visible;
+    mask-image: none;
   }
 
   > .arrow {
@@ -13701,6 +13730,9 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 
     background-color: transparent;
     width: 40px;
+    /* Buttons will flex shrink as needed up to the size of the svg + any svg margin. We add a bit of margin to ensure
+    they don't get too close to each other. */
+    --flex-margin: 7px;
     transition: scale 0.1s ease;
     color: inherit;
 
@@ -13724,20 +13756,22 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     svg {
       height: 28px;
       width: 100%;
-      /* Buttons will flex shrink as needed up to the size of the svg + any svg margin. We add a bit of margin to ensure
-      they don't get too close to each other. */
-      --flex-margin: 7px;
       margin-top: var(--flex-margin);
       margin-bottom: var(--flex-margin);
-      --shadow-layer-opacity: 0.2;
-      --shadow-offset: 4px;
-      --shadow-blur: 4px;
-      filter:
-        drop-shadow(calc(var(--shadow-offset) * 1)  calc(var(--shadow-offset) * 1)  var(--shadow-blur) rgba(0, 0, 0, var(--shadow-layer-opacity)))
-        drop-shadow(calc(var(--shadow-offset) * -1) calc(var(--shadow-offset) * -1) var(--shadow-blur) rgba(0, 0, 0, var(--shadow-layer-opacity)))
-        drop-shadow(calc(var(--shadow-offset) * 1)  calc(var(--shadow-offset) * -1) var(--shadow-blur) rgba(0, 0, 0, var(--shadow-layer-opacity)))
-        drop-shadow(calc(var(--shadow-offset) * -1) calc(var(--shadow-offset) * 1)  var(--shadow-blur) rgba(0, 0, 0,
-        var(--shadow-layer-opacity)));
+    }
+
+    /* A button in a folder animates its icon between the folder's preview and the open folder. The animated box is
+    just the icon so that it scales evenly. */
+    .folder-icon {
+      width: 28px;
+      height: 28px;
+      margin-top: var(--flex-margin);
+      margin-bottom: var(--flex-margin);
+
+      svg {
+        height: 100%;
+        margin: 0;
+      }
     }
   }
 }
@@ -13823,7 +13857,50 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   }
 }
 
+/* A button rendered as just its icon, for a folder's preview (see ActionButtonFolderContext) */
+.ActionButton.icon-only {
+  display: block;
+  height: auto;
+
+  .folder-icon, .ActionButtonIcon {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .ActionButtonIcon {
+  /* Keeps the icons of action buttons legible over any video. The variables can be set on an ancestor to scale the shadow
+  for smaller icons (see folder previews in ActionButtonStack.css), or on the icon itself to adjust its weight. */
+  .ActionButton & {
+    filter:
+      drop-shadow(calc(var(--shadow-offset, 4px) * 1)  calc(var(--shadow-offset, 4px) * 1)  var(--shadow-blur, 4px) rgba(0, 0, 0, var(--shadow-layer-opacity, 0.2)))
+      drop-shadow(calc(var(--shadow-offset, 4px) * -1) calc(var(--shadow-offset, 4px) * -1) var(--shadow-blur, 4px) rgba(0, 0, 0, var(--shadow-layer-opacity, 0.2)))
+      drop-shadow(calc(var(--shadow-offset, 4px) * 1)  calc(var(--shadow-offset, 4px) * -1) var(--shadow-blur, 4px) rgba(0, 0, 0, var(--shadow-layer-opacity, 0.2)))
+      drop-shadow(calc(var(--shadow-offset, 4px) * -1) calc(var(--shadow-offset, 4px) * 1)  var(--shadow-blur, 4px) rgba(0, 0, 0, var(--shadow-layer-opacity, 0.2)));
+
+    /* Compensate for icons with less mass having visually lighter shadows */
+    &.fa-expand {
+      --shadow-layer-opacity: 0.24;
+    }
+
+    &.fa-down-left-and-up-right-to-center {
+      --shadow-layer-opacity: 0.14;
+    }
+
+    &.fa-repeat {
+      --shadow-layer-opacity: 0.19;
+    }
+
+    &.fa-ellipsis-vertical {
+      --shadow-layer-opacity: 0.15;
+    }
+
+    &.icon-fullscreen {
+      --shadow-layer-opacity: 0.3;
+    }
+  }
+
   &.size-standard {
     width: auto;
     height: auto;
@@ -13835,6 +13912,108 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   &.size-max {
     width: 100%;
     height: 100%;
+  }
+}
+.FeedbackOverlay {
+  position: fixed;
+  top: calc(var(--safe-inset-top) + 5vh);
+  left: 50%;
+  pointer-events: none;
+  z-index: 1000;
+  background: rgb(from var(--body-bg) r g b / 70%);
+  text-shadow: var(--body-bg) 0 0 10px;
+  transform: translate(-50%);
+  border-radius: 1rem;
+  padding: calc(0.7em - 0.17lh) clamp(1em, 1.5vw, 1.5em) calc(0.7em - 0.13lh);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  opacity: 0.9;
+  text-align: center;
+  width: max-content;
+  max-width: calc(100% - 2em);
+  min-height: 1.5lh;
+
+  &.muted {
+    background: transparent;
+    opacity: 0.5;
+    text-shadow:
+      rgba(from var(--body-bg) r g b / 25%) 1px  -1px 5px,
+      rgba(from var(--body-bg) r g b / 25%) 1px  1px  5px,
+      rgba(from var(--body-bg) r g b / 25%) -1px -1px 5px,
+      rgba(from var(--body-bg) r g b / 25%) -1px 1px  5px;
+  }
+
+  svg {
+    filter:
+      drop-shadow(rgba(from var(--body-bg) r g b / 12%) 1px -1px  5px)
+      drop-shadow(rgba(from var(--body-bg) r g b / 12%) 1px  1px  5px)
+      drop-shadow(rgba(from var(--body-bg) r g b / 12%) -1px -1px 5px)
+      drop-shadow(rgba(from var(--body-bg) r g b / 12%) -1px  1px 5px);
+  }
+
+  &.fade-out {
+    animation: feedback-overlay-fade-out 2s forwards;
+  }
+
+  > .contents-container {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    justify-content: center;
+    align-items: center;
+    min-height: 1.2lh;
+  }
+}
+
+@starting-style {
+  .FeedbackOverlay {
+    opacity: 0;
+  }
+}
+
+@keyframes feedback-overlay-fade-out {
+  100% {
+    opacity: 0;
+  }
+}
+.Switch {
+  /* We add that extra class selector to increase specificity to override bootstrap styles */
+  &.custom-switch {
+    padding-left: initial;
+
+    .custom-control-label {
+      align-items: baseline;
+      display: flex;
+      --baseline-offset: 0.1rem;
+      --knob-width: calc(1rem - 4px);
+
+      span {
+        flex: 1 1 auto;
+      }
+
+      &::before,
+      &::after {
+        position: unset;
+        grid-column: 2;
+        grid-row: 1;
+        flex: 0 0 auto;
+      }
+
+      /* The track */
+      &::before {
+        translate: 0 var(--baseline-offset);
+        order: 3;
+      }
+
+      /* The knob */
+      &::after {
+        translate: calc(var(--knob-width) + 2px) calc(var(--baseline-offset) - 2px);
+        order: 2;
+        position: relative;
+        top: unset;
+        left: var(--width);
+        z-index: 2;
+      }
+    }
   }
 }
 .tag-list-row {
@@ -13960,48 +14139,7 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   height: 25px;
   margin-right: 0.5em;
   width: 25px;
-}.Switch {
-  /* We add that extra class selector to increase specificity to override bootstrap styles */
-  &.custom-switch {
-    padding-left: initial;
-
-    .custom-control-label {
-      align-items: baseline;
-      display: flex;
-      --baseline-offset: 0.1rem;
-      --knob-width: calc(1rem - 4px);
-
-      span {
-        flex: 1 1 auto;
-      }
-
-      &::before,
-      &::after {
-        position: unset;
-        grid-column: 2;
-        grid-row: 1;
-        flex: 0 0 auto;
-      }
-
-      /* The track */
-      &::before {
-        translate: 0 var(--baseline-offset);
-        order: 3;
-      }
-
-      /* The knob */
-      &::after {
-        translate: calc(var(--knob-width) + 2px) calc(var(--baseline-offset) - 2px);
-        order: 2;
-        position: relative;
-        top: unset;
-        left: var(--width);
-        z-index: 2;
-      }
-    }
-  }
-}
-.Select {
+}.Select {
 
   .react-select__control {
     min-height: 1lh;
@@ -15025,67 +15163,6 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   opacity: 0.8;
   font-style: italic;
 }
-.FeedbackOverlay {
-  position: fixed;
-  top: calc(var(--safe-inset-top) + 5vh);
-  left: 50%;
-  pointer-events: none;
-  z-index: 1000;
-  background: rgb(from var(--body-bg) r g b / 70%);
-  text-shadow: var(--body-bg) 0 0 10px;
-  transform: translate(-50%);
-  border-radius: 1rem;
-  padding: calc(0.7em - 0.17lh) clamp(1em, 1.5vw, 1.5em) calc(0.7em - 0.13lh);
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  opacity: 0.9;
-  text-align: center;
-  width: max-content;
-  max-width: calc(100% - 2em);
-  min-height: 1.5lh;
-
-  &.muted {
-    background: transparent;
-    opacity: 0.5;
-    text-shadow:
-      rgba(from var(--body-bg) r g b / 25%) 1px  -1px 5px,
-      rgba(from var(--body-bg) r g b / 25%) 1px  1px  5px,
-      rgba(from var(--body-bg) r g b / 25%) -1px -1px 5px,
-      rgba(from var(--body-bg) r g b / 25%) -1px 1px  5px;
-  }
-
-  svg {
-    filter:
-      drop-shadow(rgba(from var(--body-bg) r g b / 12%) 1px -1px  5px)
-      drop-shadow(rgba(from var(--body-bg) r g b / 12%) 1px  1px  5px)
-      drop-shadow(rgba(from var(--body-bg) r g b / 12%) -1px -1px 5px)
-      drop-shadow(rgba(from var(--body-bg) r g b / 12%) -1px  1px 5px);
-  }
-
-  &.fade-out {
-    animation: feedback-overlay-fade-out 2s forwards;
-  }
-
-  > .contents-container {
-    display: flex;
-    align-items: center;
-    gap: 0.4em;
-    justify-content: center;
-    align-items: center;
-    min-height: 1.2lh;
-  }
-}
-
-@starting-style {
-  .FeedbackOverlay {
-    opacity: 0;
-  }
-}
-
-@keyframes feedback-overlay-fade-out {
-  100% {
-    opacity: 0;
-  }
-}
 .rating-stars {
   display: inline-flex;
   vertical-align: middle;
@@ -15496,55 +15573,6 @@ html:not(.force-landscape) {
 .SettingsTab .Slider {
   width: 100%;
 }
-.SettingsTab .draggable-list {
-  --item-padding: 0.3em;
-  margin: calc(var(--item-padding) * -1 + 0.3em) 0;
-}
-.SettingsTab .draggable-list li {
-  margin: 0 calc(var(--content-padding) * -1);
-  padding: 0 var(--content-padding);
-}
-.SettingsTab .draggable-list li:nth-child(odd) {
-  background: rgba(0, 0, 0, 0.15);
-}
-.SettingsTab .draggable-list .draggable-list-item {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--item-padding) 0;
-}
-.SettingsTab .draggable-list .draggable-list-item.folder {
-  flex-direction: column;
-  align-items: stretch;
-}
-.SettingsTab .draggable-list .draggable-list-item.folder .instructions {
-  padding-left: 2.5em; /* .draggable-list-item's drag handle has a bit of space on the left for extra hit box size so we make .instructions slightly bigger so that visually they're the same */
-}
-.SettingsTab .draggable-list .draggable-list-item.folder .draggable-list-item {
-  padding-left: 2em;
-}
-.SettingsTab .draggable-list .draggable-list-item .drag-handle {
-  display: flex;
-  gap: 0.5em;
-  align-items: center;
-  padding-left: 1.5em;
-  margin-left: -1em;
-}
-.SettingsTab .draggable-list .draggable-list-item .drag-handle.disable .fa-grip-vertical {
-  visibility: hidden;
-}
-.SettingsTab .draggable-list .draggable-list-item .controls button {
-  font-size: 1.3em;
-  padding: 0.1em;
-}
-.SettingsTab .draggable-list .draggable-list-item .inline {
-  gap: 0.5em;
-  align-items: center;
-}
-.SettingsTab .draggable-list .draggable-list-item.muted {
-  opacity: 0.5;
-}
 .SettingsTab .accent-icon {
   color: var(--link-color);
 }
@@ -15552,16 +15580,6 @@ html:not(.force-landscape) {
   width: 2em;
   height: 2em;
   padding: 0.1em;
-}
-.SettingsTab .add-config-item {
-  padding-left: 0.2em;
-  text-align: left;
-}
-.SettingsTab .add-config-item .info {
-  color: var(--text-color);
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
 }
 .SettingsTab button {
   display: flex;
@@ -15692,16 +15710,110 @@ html:not(.force-landscape) {
     user-select: none;
   }
 }
-.ActionButtonSettingsModal {
-  .modal-dialog {
-    .modal-body {
-      #filter {
-        caret-color: transparent;
-      }
-    }
-  }
+.ConfigList {
+  --item-padding: 0.3em;
+  margin: calc(var(--item-padding) * -1 + 0.3em) 0;
+}
+.ConfigList li {
+  margin: 0 calc(var(--content-padding) * -1);
+  padding: 0 var(--content-padding);
+}
+.ConfigList li:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.15);
+}
+.ConfigList .config-list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: var(--item-padding) 0;
+}
+.ConfigList .config-list-item.folder .instructions {
+  padding-left: 2.5em; /* .config-list-item's drag handle has a bit of space on the left for extra hit box size so we make .instructions slightly bigger so that visually they're the same */
+}
+.ConfigList .config-list-item.folder .config-list-item {
+  padding-left: 2em;
+}
+.ConfigList .config-list-item .config-list-item-row {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.ConfigList .config-list-item .drag-handle {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  padding-left: 1.5em;
+  margin-left: -1em;
+}
+.ConfigList .config-list-item .drag-handle.disable .fa-grip-vertical {
+  visibility: hidden;
+}
+.ConfigList .config-list-item .controls button {
+  font-size: 1.3em;
+  padding: 0.1em;
+}
+.ConfigList .config-list-item .inline {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+.ConfigList .config-list-item.muted {
+  opacity: 0.5;
 }
 
+.btn.add-config-item-link {
+  padding-left: 0.2em;
+  text-align: left;
+}
+.btn.add-config-item-link .info {
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}.ChannelSourceSelect {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.ChannelSourceSelect .entity-type {
+  align-self: flex-start;
+}
+.ChannelSourceSelect .entity-type .btn:not(.active) {
+  opacity: 0.7;
+}.ChannelSettings .channel {
+  font-size: 1.15rem;
+  padding-block: 0.5em;
+}
+.ChannelSettings .channel .select-channel {
+  padding: 0;
+  font-size: inherit;
+  color: var(--text-color);
+  text-align: left;
+}
+.ChannelSettings .channel .randomised-icon {
+  opacity: 0.6;
+}
+.ChannelSettings .channel.active {
+  position: relative;
+}
+.ChannelSettings .channel.active::before {
+  content: "";
+  position: absolute;
+  top: 0.35em;
+  bottom: 0.35em;
+  left: -0.9rem;
+  width: 4px;
+  border-radius: 2px;
+  background: var(--link-color);
+}
+.ChannelSettings .channel.active .channel-title {
+  font-weight: bold;
+}
+.ChannelSettings .channel.missing .channel-name {
+  font-style: italic;
+  opacity: 0.7;
+}
 .LoadingIndicator {
   animation: fadeInAnimation ease 200ms;
   animation-delay: 200ms;

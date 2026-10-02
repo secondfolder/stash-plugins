@@ -29648,7 +29648,7 @@ var resolveManifestRedirect = function resolveManifestRedirect2(handleManifestRe
   }
   return url2;
 };
-var logger$k = function logger2(source2) {
+var logger$l = function logger2(source2) {
   if (videojs.log.debug) {
     return videojs.log.debug.bind(videojs, "VHS:", source2 + " >");
   }
@@ -29970,7 +29970,7 @@ var intervalDuration = function intervalDuration2(playlist, endSequence, expired
   }
   return backward.result + expired;
 };
-var duration$1 = function duration3(playlist, endSequence, expired) {
+var duration$2 = function duration3(playlist, endSequence, expired) {
   if (!playlist) {
     return 0;
   }
@@ -30011,7 +30011,7 @@ var playlistEnd = function playlistEnd2(playlist, expired, useSafeLiveEnd, liveE
     return null;
   }
   if (playlist.endList) {
-    return duration$1(playlist);
+    return duration$2(playlist);
   }
   if (expired === null) {
     return null;
@@ -30233,7 +30233,7 @@ var isAudioOnly = function isAudioOnly2(master) {
 };
 var Playlist = {
   liveEdgeDelay,
-  duration: duration$1,
+  duration: duration$2,
   seekable,
   getMediaInfoForTime,
   isEnabled,
@@ -30632,7 +30632,7 @@ var PlaylistLoader = /* @__PURE__ */ (function(_EventTarget) {
     if (!src2) {
       throw new Error("A non-empty playlist URL or object is required");
     }
-    _this.logger_ = logger$k("PlaylistLoader");
+    _this.logger_ = logger$l("PlaylistLoader");
     var _options = options2, _options$withCredenti = _options.withCredentials, withCredentials = _options$withCredenti === void 0 ? false : _options$withCredenti, _options$handleManife = _options.handleManifestRedirects, handleManifestRedirects = _options$handleManife === void 0 ? false : _options$handleManife;
     _this.src = src2;
     _this.vhs_ = vhs;
@@ -31533,7 +31533,7 @@ var DashPlaylistLoader = /* @__PURE__ */ (function(_EventTarget) {
     });
     _this.state = "HAVE_NOTHING";
     _this.loadedPlaylists_ = {};
-    _this.logger_ = logger$k("DashPlaylistLoader");
+    _this.logger_ = logger$l("DashPlaylistLoader");
     if (_this.isMaster_) {
       _this.masterPlaylistLoader_.srcUrl = srcUrlOrPlaylist;
       _this.masterPlaylistLoader_.sidxMapping_ = {};
@@ -38932,7 +38932,7 @@ var mediaSegmentRequest = function mediaSegmentRequest2(_ref12) {
     return abortAll(activeXhrs);
   };
 };
-var logFn$1 = logger$k("CodecUtils");
+var logFn$1 = logger$l("CodecUtils");
 var getCodecs = function getCodecs2(media) {
   var mediaAttributes = media.attributes || {};
   if (mediaAttributes.CODECS) {
@@ -38996,7 +38996,7 @@ var codecsForPlaylist = function codecsForPlaylist2(master, media) {
   }
   return codecInfo;
 };
-var logFn = logger$k("PlaylistSelector");
+var logFn = logger$l("PlaylistSelector");
 var representationToString = function representationToString2(representation) {
   if (!representation || !representation.playlist) {
     return;
@@ -39770,7 +39770,7 @@ var SegmentLoader = /* @__PURE__ */ (function(_videojs$EventTarget) {
       }
     });
     _this.fetchAtBuffer_ = false;
-    _this.logger_ = logger$k("SegmentLoader[" + _this.loaderType_ + "]");
+    _this.logger_ = logger$l("SegmentLoader[" + _this.loaderType_ + "]");
     Object.defineProperty(_assertThisInitialized$2(_this), "state", {
       get: function get7() {
         return this.state_;
@@ -41534,7 +41534,7 @@ var SourceUpdater = /* @__PURE__ */ (function(_videojs$EventTarget) {
       return shiftQueue("mediaSource", _assertThisInitialized$2(_this));
     };
     _this.mediaSource.addEventListener("sourceopen", _this.sourceopenListener_);
-    _this.logger_ = logger$k("SourceUpdater");
+    _this.logger_ = logger$l("SourceUpdater");
     _this.audioTimestampOffset_ = 0;
     _this.videoTimestampOffset_ = 0;
     _this.queue = [];
@@ -42328,7 +42328,7 @@ var SyncController = /* @__PURE__ */ (function(_videojs$EventTarget) {
     _this.timelines = [];
     _this.discontinuities = [];
     _this.timelineToDatetimeMappings = {};
-    _this.logger_ = logger$k("SyncController");
+    _this.logger_ = logger$l("SyncController");
     return _this;
   }
   var _proto = SyncController2.prototype;
@@ -43532,7 +43532,7 @@ var createMediaTypes = function createMediaTypes2() {
       onGroupChanged: noop$9,
       onTrackChanged: noop$9,
       lastTrack_: null,
-      logger_: logger$k("MediaGroups[" + type3 + "]")
+      logger_: logger$l("MediaGroups[" + type3 + "]")
     };
   });
   return mediaTypes2;
@@ -43722,7 +43722,7 @@ var MasterPlaylistController = /* @__PURE__ */ (function(_videojs$EventTarget) {
     loaderStats.forEach(function(stat) {
       _this[stat + "_"] = sumLoaderStat.bind(_assertThisInitialized$2(_this), stat);
     });
-    _this.logger_ = logger$k("MPC");
+    _this.logger_ = logger$l("MPC");
     _this.triggeredFmp4Usage = false;
     if (_this.tech_.preload() === "none") {
       _this.loadOnPlay_ = function() {
@@ -44859,7 +44859,7 @@ var PlaybackWatcher = /* @__PURE__ */ (function() {
     this.lastRecordedTime = null;
     this.timer_ = null;
     this.checkCurrentTimeTimeout_ = null;
-    this.logger_ = logger$k("PlaybackWatcher");
+    this.logger_ = logger$l("PlaybackWatcher");
     this.logger_("initialize");
     var playHandler = function playHandler2() {
       return _this.monitorCurrentTime_();
@@ -45543,7 +45543,7 @@ var VhsHandler = /* @__PURE__ */ (function(_Component) {
     if (typeof options2.initialBandwidth === "number") {
       _this.options_.bandwidth = options2.initialBandwidth;
     }
-    _this.logger_ = logger$k("VhsHandler");
+    _this.logger_ = logger$l("VhsHandler");
     if (tech.options_ && tech.options_.playerId) {
       var _player = videojs(tech.options_.playerId);
       if (!_player.hasOwnProperty("hls")) {
@@ -164025,6 +164025,11 @@ const faRepeat = {
   iconName: "repeat",
   icon: [512, 512, [128257], "f363", "M0 224c0 17.7 14.3 32 32 32s32-14.3 32-32c0-53 43-96 96-96l160 0 0 32c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-9.2-9.2-22.9-11.9-34.9-6.9S320 19.1 320 32l0 32L160 64C71.6 64 0 135.6 0 224zm512 64c0-17.7-14.3-32-32-32s-32 14.3-32 32c0 53-43 96-96 96l-160 0 0-32c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6l0-32 160 0c88.4 0 160-71.6 160-160z"]
 };
+const faShuffle = {
+  prefix: "fas",
+  iconName: "shuffle",
+  icon: [512, 512, [128256, "random"], "f074", "M403.8 34.4c12-5 25.7-2.2 34.9 6.9l64 64c6 6 9.4 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-64 64c-9.2 9.2-22.9 11.9-34.9 6.9s-19.8-16.6-19.8-29.6l0-32-32 0c-10.1 0-19.6 4.7-25.6 12.8L284 229.3 244 176l31.2-41.6C293.3 110.2 321.8 96 352 96l32 0 0-32c0-12.9 7.8-24.6 19.8-29.6zM164 282.7L204 336l-31.2 41.6C154.7 401.8 126.2 416 96 416l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c10.1 0 19.6-4.7 25.6-12.8L164 282.7zm274.6 188c-9.2 9.2-22.9 11.9-34.9 6.9s-19.8-16.6-19.8-29.6l0-32-32 0c-30.2 0-58.7-14.2-76.8-38.4L121.6 172.8c-6-8.1-15.5-12.8-25.6-12.8l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c30.2 0 58.7 14.2 76.8 38.4L326.4 339.2c6 8.1 15.5 12.8 25.6 12.8l32 0 0-32c0-12.9 7.8-24.6 19.8-29.6s25.7-2.2 34.9 6.9l64 64c6 6 9.4 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-64 64z"]
+};
 const faImage = {
   prefix: "fas",
   iconName: "image",
@@ -176732,7 +176737,7 @@ var ConfigError = class extends Error {
     this.name = "ConfigureError";
   }
 };
-const logger$j = getLogger(["stash-tv", "source-selector-access"]);
+const logger$k = getLogger(["stash-tv", "source-selector-access"]);
 const DIRECT_STREAM_LABEL = "Direct stream";
 const ORIGINAL_RESOLUTION_LABEL = "Original";
 const DEFAULT_STREAM_LABEL = DIRECT_STREAM_LABEL;
@@ -176798,21 +176803,21 @@ function getSourceSelectorMenu(player) {
 function switchSceneStream(player, source2) {
   const menu = getSourceSelectorMenu(player);
   if (!menu) {
-    logger$j.warn(`Attempted to switch to "${source2.fullStashLabel}" source but the source selector menu isn't available`);
+    logger$k.warn(`Attempted to switch to "${source2.fullStashLabel}" source but the source selector menu isn't available`);
     return false;
   }
   if (menu.selectedSource === source2) {
-    logger$j.info(`Attempted to switch to "${source2.fullStashLabel}" source but it is already selected in the source selector menu`);
+    logger$k.info(`Attempted to switch to "${source2.fullStashLabel}" source but it is already selected in the source selector menu`);
     return false;
   }
   const item = menu.items.find((item2) => item2.source.label === source2.fullStashLabel);
   if (!item) {
-    logger$j.warn(`Attempted to switch to "${source2.fullStashLabel}" but it isn't in the source selector menu`, { source: source2, menuItems: menu.items.map((i3) => i3.source.label) });
+    logger$k.warn(`Attempted to switch to "${source2.fullStashLabel}" but it isn't in the source selector menu`, { source: source2, menuItems: menu.items.map((i3) => i3.source.label) });
     return false;
   }
   const itemEl = item.el();
   if (!itemEl || !(itemEl instanceof HTMLElement)) {
-    logger$j.warn(`Attempted to switch to "${source2.fullStashLabel}" but the menu item has no html element`, { item });
+    logger$k.warn(`Attempted to switch to "${source2.fullStashLabel}" but the menu item has no html element`, { item });
     return false;
   }
   const originalFocus = menu.focus.bind(menu);
@@ -177587,6 +177592,9 @@ const useGlobalState = create()(
     }
   })
 );
+function generateConfigId() {
+  return `${Date.now()}-${Math.random().toString().slice(2)}`;
+}
 const tvConfigStorageKey = "app-state";
 const defaults$3 = {
   volume: 0,
@@ -177595,7 +177603,6 @@ const defaults$3 = {
   forceLandscape: false,
   looping: false,
   uiVisible: true,
-  isRandomised: false,
   crtEffect: false,
   crtEffectStrength: 1,
   scenePreviewOnly: false,
@@ -177629,6 +177636,7 @@ const defaults$3 = {
     { id: "6", type: "button", buttonType: "force-landscape", pinned: false },
     { id: "8", type: "button", buttonType: "volume", pinned: false },
     { id: "9", type: "button", buttonType: "letterboxing", pinned: false },
+    { id: "14", type: "button", buttonType: "change-channel", pinned: false },
     { id: "13", type: "folder", pinned: false, contents: [
       { id: "13.1", type: "button", buttonType: "loop", pinned: false },
       { id: "13.2", type: "button", buttonType: "playback-rate", pinned: false },
@@ -177637,6 +177645,11 @@ const defaults$3 = {
       { id: "13.5", type: "button", buttonType: "resolution", pinned: false }
     ] }
   ],
+  // New users start with one channel showing every scene
+  channels: [
+    { id: "all-scenes", sources: [{ type: "all", entityType: "scene", randomise: false }] }
+  ],
+  startupChannel: "last-viewed",
   playbackRate: 1
 };
 const localStorageKeys = [
@@ -177740,7 +177753,7 @@ const useTvConfig = create()(
       onRehydrateStorage: (state) => {
         return () => useGlobalState.setState({ tvConfigLoaded: true });
       },
-      version: 2,
+      version: 3,
       migrate: (persistedState, version2) => {
         if (version2 === 0 && persistedState && typeof persistedState === "object") {
           if ("audioMuted" in persistedState) {
@@ -177765,6 +177778,19 @@ const useTvConfig = create()(
               config2.type = "button";
             }
           }
+        }
+        if (version2 < 3 && persistedState && typeof persistedState === "object") {
+          const state = persistedState;
+          if (typeof state.currentFilterId === "string" && state.currentFilterId) {
+            const channel = {
+              id: generateConfigId(),
+              sources: [{ type: "stash-saved-filter", savedFilterId: state.currentFilterId, randomise: !!state.isRandomised }]
+            };
+            state.channels = [channel];
+            state.lastViewedChannelId = channel.id;
+          }
+          delete state.currentFilterId;
+          delete state.isRandomised;
         }
         return persistedState;
       }
@@ -177871,7 +177897,7 @@ offset.VERSION = version;
 const testVideo = "data:video/webm;base64,GkXfo59ChoEBQveBAULygQRC84EIQoKEd2VibUKHgQJChYECGFOAZwEAAAAAAAH7EU2bdLpNu4tTq4QVSalmU6yBoU27i1OrhBZUrmtTrIHYTbuMU6uEElTDZ1OsggElTbuMU6uEHFO7a1OsggHl7AEAAAAAAABZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVSalmsirXsYMPQkBNgI1MYXZmNTkuMjcuMTAwV0GNTGF2ZjU5LjI3LjEwMESJiEBEAAAAAAAAFlSua8iuAQAAAAAAAD/XgQFzxYj5fByPWCfQR5yBACK1nIN1bmSIgQCGhVZfVlA5g4EBI+ODhAJiWgDgkLCBQLqBQJqBAlWwhFW5gQESVMNnQIFzc6BjwIBnyJpFo4dFTkNPREVSRIeNTGF2ZjU5LjI3LjEwMHNz22PAi2PFiPl8HI9YJ9BHZ8ilRaOHRU5DT0RFUkSHmExhdmM1OS4zNy4xMDAgbGlidnB4LXZwOWfIokWjiERVUkFUSU9ORIeUMDA6MDA6MDAuMDQwMDAwMDAwAAAfQ7Z1tOeBAKOvgQAAgJJJg0IAAfgB+wAcEg4MJwAAGGAAABO///lkKAAR////7vyH/////KuoAAAcU7trkbuPs4EAt4r3gQHxggGs8IED";
 const tenBitSupportTestTimeoutMs = 3e3;
 let supports10BitVideos = void 0;
-const logger$i = getLogger(["stash-tv", "pause-loading-plugin"]);
+const logger$j = getLogger(["stash-tv", "pause-loading-plugin"]);
 class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
   constructor(player) {
     super(player);
@@ -177897,7 +177923,7 @@ class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
       if (player.isDisposed()) return;
       const videoElm = player.tech(true).el();
       if (!(videoElm instanceof HTMLVideoElement)) {
-        logger$i.error(`Unexpected element {*}`, { videoElm });
+        logger$j.error(`Unexpected element {*}`, { videoElm });
         return;
       }
       if (videoElm.readyState < 2) {
@@ -177933,14 +177959,14 @@ class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
         });
         await new Promise((resolve) => setTimeout(resolve, fadeToPosterTime * 1e3));
       } else {
-        logger$i.warn(`Failed to set video frame as poster`);
+        logger$j.warn(`Failed to set video frame as poster`);
       }
     }
     player.cancelLoading = function() {
       _loadingCanceled = true;
       const videoElm = player.tech(true).el();
       if (!(videoElm instanceof HTMLVideoElement)) {
-        logger$i.error(`Unexpected element {*}`, { videoElm });
+        logger$j.error(`Unexpected element {*}`, { videoElm });
         return;
       }
       unloadedSource = videoElm.src;
@@ -177960,7 +177986,7 @@ class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
         videoElm.load();
         videoElm.currentTime = currentTime;
         player.trigger("loadingCanceled", { currentTime });
-        logger$i.debug("Loading canceled.");
+        logger$j.debug("Loading canceled.");
       }
       pausedStateOnUnload = player.paused();
       if (!player.paused()) {
@@ -177976,7 +178002,7 @@ class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
       }
       const videoElm = player.tech(true).el();
       if (!(videoElm instanceof HTMLVideoElement)) {
-        logger$i.error(`Unexpected element {*}`, { videoElm });
+        logger$j.error(`Unexpected element {*}`, { videoElm });
         return;
       }
       _loadingCanceled = false;
@@ -177990,7 +178016,7 @@ class PauseLoadingPlugin extends videojs.getPlugin("plugin") {
         player.play();
       }
       unloadedSource = null;
-      logger$i.debug("Video loading resumed, sources restored.");
+      logger$j.debug("Video loading resumed, sources restored.");
     };
   }
 }
@@ -178043,11 +178069,11 @@ function testFor10BitSupport() {
       resolve(result);
     };
     const onError2 = () => {
-      logger$i.warn("10-bit support test video failed to load, assuming unsupported");
+      logger$j.warn("10-bit support test video failed to load, assuming unsupported");
       settle(false);
     };
     const timeoutId = setTimeout(() => {
-      logger$i.warn(`10-bit support test timed out after ${tenBitSupportTestTimeoutMs}ms, assuming unsupported`);
+      logger$j.warn(`10-bit support test timed out after ${tenBitSupportTestTimeoutMs}ms, assuming unsupported`);
       settle(false);
     }, tenBitSupportTestTimeoutMs);
     video.addEventListener("error", onError2);
@@ -178059,7 +178085,7 @@ function testFor10BitSupport() {
       canvas.height = video.videoHeight;
       const ctx = canvas.getContext("2d");
       if (!ctx) {
-        logger$i.warn("Failed to get canvas context for 10-bit support test, assuming unsupported");
+        logger$j.warn("Failed to get canvas context for 10-bit support test, assuming unsupported");
         settle(false);
         return;
       }
@@ -178821,11 +178847,11 @@ var globalProjectionState = {
    */
   hasEverUpdated: false
 };
-var id$m = 1;
+var id$n = 1;
 function useProjectionId() {
   return useConstant(function() {
     if (globalProjectionState.hasEverUpdated) {
-      return id$m++;
+      return id$n++;
     }
   });
 }
@@ -180288,8 +180314,8 @@ function interpolate$1(input, output, { clamp: isClamp = true, ease, mixer } = {
   const interpolator = inputLength === 2 ? fastInterpolate(input, mixers) : slowInterpolate(input, mixers);
   return isClamp ? (v) => interpolator(clamp$4(input[0], input[inputLength - 1], v)) : interpolator;
 }
-const reverseEasing = (easing) => (p2) => 1 - easing(1 - p2);
-const mirrorEasing = (easing) => (p2) => p2 <= 0.5 ? easing(2 * p2) / 2 : (2 - easing(2 * (1 - p2))) / 2;
+const reverseEasing = (easing2) => (p2) => 1 - easing2(1 - p2);
+const mirrorEasing = (easing2) => (p2) => p2 <= 0.5 ? easing2(2 * p2) / 2 : (2 - easing2(2 * (1 - p2))) / 2;
 const createExpoIn = (power) => (p2) => Math.pow(p2, power);
 const createBackIn = (power) => (p2) => p2 * p2 * ((power + 1) * p2 - power);
 const createAnticipate = (power) => {
@@ -180322,8 +180348,8 @@ const bounceOut = (p2) => {
 };
 const bounceIn = reverseEasing(bounceOut);
 const bounceInOut = (p2) => p2 < 0.5 ? 0.5 * (1 - bounceOut(1 - p2 * 2)) : 0.5 * bounceOut(p2 * 2 - 1) + 0.5;
-function defaultEasing(values3, easing) {
-  return values3.map(() => easing || easeInOut).splice(0, values3.length - 1);
+function defaultEasing(values3, easing2) {
+  return values3.map(() => easing2 || easeInOut).splice(0, values3.length - 1);
 }
 function defaultOffset(values3) {
   const numValues = values3.length;
@@ -183563,13 +183589,13 @@ function getRadius(values3, radiusName) {
 }
 var easeCrossfadeIn = compress(0, 0.5, circOut);
 var easeCrossfadeOut = compress(0.5, 0.95, linear);
-function compress(min2, max2, easing) {
+function compress(min2, max2, easing2) {
   return function(p2) {
     if (p2 < min2)
       return 0;
     if (p2 > max2)
       return 1;
-    return easing(progress(min2, max2, p2));
+    return easing2(progress(min2, max2, p2));
   };
 }
 function copyAxisInto(axis, originAxis) {
@@ -188709,2082 +188735,6 @@ function useConditionalMemo(factory3, deps, shouldRecompute) {
     return valueRef.current;
   }, [shouldRecompute, ...deps || []]);
 }
-const useGlobalFilterState = create(() => ({
-  loadingResponsibilityClaimed: false,
-  currentSavedFilter: void 0,
-  loading: false,
-  error: void 0,
-  randomSeed: getRandomSeed()
-}));
-function useMediaItemFilters() {
-  const {
-    currentSavedFilter,
-    loading: mediaItemFiltersLoading,
-    error: mediaItemFiltersError,
-    randomSeed
-  } = useGlobalFilterState();
-  const apolloClient = useApolloClient();
-  const {
-    configuration: {
-      ui: {
-        defaultFilters: {
-          scenes: stashDefaultScenesFilter
-        } = {}
-      } = {}
-    } = {},
-    loading: stashConfigurationLoading
-  } = reactExports.useContext(ConfigurationContext);
-  const {
-    data: { findSavedFilters: availableSavedSceneFilters = [] } = {},
-    loading: loadingAvailableSavedSceneFilters
-  } = useFindSavedFilters(FilterMode.Scenes);
-  const {
-    data: { findSavedFilters: availableSavedMarkerFilters = [] } = {},
-    loading: loadingAvailableSavedMarkerFilters
-  } = useFindSavedFilters(FilterMode.SceneMarkers);
-  const loadingDataRequiredBeforeLoadingCurrentFilter = stashConfigurationLoading || loadingAvailableSavedSceneFilters || loadingAvailableSavedMarkerFilters;
-  const { isRandomised, onlyShowMatchingOrientation, currentFilterId } = useTvConfig();
-  const { orientation: orientation2 } = useWindowSize();
-  let limitOrientation = void 0;
-  if (onlyShowMatchingOrientation && orientation2 !== "square") {
-    limitOrientation = orientation2;
-  }
-  const currentSearchableFilter = reactExports.useMemo(
-    () => currentSavedFilter ? convertSavedToSearchableFilter(currentSavedFilter) : void 0,
-    [currentSavedFilter, isRandomised && randomSeed, limitOrientation]
-  );
-  const lastLoadedCurrentMediaItemFilter = useConditionalMemo(
-    () => currentSearchableFilter,
-    [currentSearchableFilter],
-    !loadingDataRequiredBeforeLoadingCurrentFilter && !mediaItemFiltersLoading
-  );
-  const [isResponsibleForLoading, setIsResponsibleForLoading] = reactExports.useState(false);
-  reactExports.useEffect(() => {
-    if (useGlobalFilterState.getState().loadingResponsibilityClaimed) return;
-    useGlobalFilterState.setState({ loadingResponsibilityClaimed: true, loading: true });
-    setIsResponsibleForLoading(true);
-  }, []);
-  reactExports.useEffect(() => {
-    if (!isResponsibleForLoading || loadingDataRequiredBeforeLoadingCurrentFilter) return;
-    async function setCurrentMediaItemFilterOnInitialLoad() {
-      try {
-        if (currentFilterId) {
-          await setCurrentMediaItemFilterById(currentFilterId);
-        } else if (stashDefaultScenesFilter) {
-          useGlobalFilterState.setState({
-            currentSavedFilter: {
-              ...stashDefaultScenesFilter,
-              filter: ""
-              // The filter prop is deprecated in favour of find_filter and object_filter, and it's not
-              // provided when getting a default saved filter so we can safely set an empty string here.
-            }
-          });
-        } else {
-          useGlobalFilterState.setState({
-            currentSavedFilter: {
-              id: "",
-              mode: FilterMode.Scenes,
-              name: "",
-              filter: ""
-              // See the comment above about the `filter` prop
-            }
-          });
-        }
-      } catch (error) {
-        useGlobalFilterState.setState({ error });
-      }
-      useGlobalFilterState.setState({ loading: false });
-    }
-    setCurrentMediaItemFilterOnInitialLoad();
-  }, [isResponsibleForLoading, loadingDataRequiredBeforeLoadingCurrentFilter, currentFilterId, stashDefaultScenesFilter]);
-  async function setCurrentMediaItemFilterById(id2) {
-    useGlobalFilterState.setState({ loading: true });
-    const { name: name2, entityType } = availableSavedFilters.find((f) => f.id === id2) || {};
-    if (name2 && entityType) {
-      useGlobalFilterState.setState({
-        currentSavedFilter: {
-          id: id2,
-          mode: entityType === "scene" ? FilterMode.Scenes : FilterMode.SceneMarkers,
-          name: name2,
-          filter: ""
-          // See the comment above about the `filter` prop
-        }
-      });
-    }
-    const mediaItemFiltersStashResponse = await fetchSavedFilterFromStash(apolloClient, id2);
-    if (!mediaItemFiltersStashResponse) {
-      return void 0;
-    }
-    useGlobalFilterState.setState({
-      randomSeed: getRandomSeed(),
-      currentSavedFilter: {
-        ...mediaItemFiltersStashResponse,
-        filter: ""
-        // See the comment above about the `filter` prop
-      },
-      loading: false
-    });
-  }
-  async function fetchSavedFilterFromStash(apolloClient2, filterId) {
-    const { data: data2 } = await apolloClient2.query({
-      query: FindSavedFilterDocument,
-      variables: { id: filterId }
-    });
-    return data2?.findSavedFilter ?? null;
-  }
-  function convertSavedToSearchableFilter(savedFilter) {
-    function getGeneralFilter() {
-      const filter2 = new ListFilterModel(savedFilter.mode);
-      filter2.configureFromSavedFilter(savedFilter);
-      const updatedFilter = { ...filter2.makeFindFilter() };
-      if (updatedFilter.sort?.match(/^random_\d*$/) || isRandomised) {
-        updatedFilter.sort = `random_${randomSeed}`;
-      }
-      return updatedFilter;
-    }
-    function addSceneFiltersMods(sceneFilter) {
-      if (limitOrientation) {
-        sceneFilter = sceneFilter || {};
-        sceneFilter.orientation = {
-          "value": [
-            limitOrientation.toUpperCase(),
-            "SQUARE"
-          ]
-        };
-      }
-      return sceneFilter;
-    }
-    function getSceneFilter() {
-      const filter2 = new ListFilterModel(savedFilter.mode);
-      filter2.configureFromSavedFilter(savedFilter);
-      return addSceneFiltersMods(
-        filter2.makeFilter()
-      );
-    }
-    function getMarkerFilter() {
-      const filter2 = new ListFilterModel(savedFilter.mode);
-      filter2.configureFromSavedFilter(savedFilter);
-      const markerFilter = filter2.makeFilter();
-      markerFilter.scene_filter = addSceneFiltersMods(markerFilter.scene_filter);
-      return markerFilter;
-    }
-    const sharedProps = {
-      savedFilter,
-      generalFilter: getGeneralFilter(),
-      get isCurrentFilter() {
-        return savedFilter.id === currentFilterId;
-      }
-    };
-    if (savedFilter.mode === FilterMode.Scenes) {
-      return {
-        ...sharedProps,
-        entityFilter: getSceneFilter(),
-        entityType: "scene"
-      };
-    } else if (savedFilter.mode === FilterMode.SceneMarkers) {
-      return {
-        ...sharedProps,
-        entityFilter: getMarkerFilter(),
-        entityType: "marker"
-      };
-    } else {
-      throw new Error(`Unsupported saved filter mode: ${savedFilter.mode}`);
-    }
-  }
-  const availableSavedFilters = reactExports.useMemo(
-    () => {
-      const savedFilters = [];
-      const savedFiltersByType = [
-        ["scene", availableSavedSceneFilters],
-        ["marker", availableSavedMarkerFilters]
-      ];
-      for (const [entityType, savedFiltersOfType] of savedFiltersByType) {
-        for (const savedFilter of savedFiltersOfType) {
-          savedFilters.push({
-            ...savedFilter,
-            isCurrentFilter: savedFilter.id === currentFilterId,
-            entityType
-          });
-        }
-      }
-      return savedFilters;
-    },
-    [availableSavedSceneFilters, availableSavedMarkerFilters, currentFilterId]
-  );
-  return {
-    mediaItemFiltersLoading: loadingDataRequiredBeforeLoadingCurrentFilter || mediaItemFiltersLoading,
-    mediaItemFiltersError,
-    currentMediaItemFilter: currentSearchableFilter,
-    lastLoadedCurrentMediaItemFilter,
-    clearCurrentMediaItemFilter: () => useGlobalFilterState.setState({ currentSavedFilter: void 0 }),
-    setCurrentMediaItemFilterById,
-    availableSavedFilters
-  };
-}
-function getRandomSeed() {
-  return Math.round(Math.random() * 1e6);
-}
-var object_hash = { exports: {} };
-var hasRequiredObject_hash;
-function requireObject_hash() {
-  if (hasRequiredObject_hash) return object_hash.exports;
-  hasRequiredObject_hash = 1;
-  (function(module2, exports2) {
-    !(function(e2) {
-      module2.exports = e2();
-    })(function() {
-      return (function r3(o2, i3, u2) {
-        function s4(n, e3) {
-          if (!i3[n]) {
-            if (!o2[n]) {
-              var t4 = "function" == typeof commonjsRequire && commonjsRequire;
-              if (!e3 && t4) return t4(n, true);
-              if (a4) return a4(n, true);
-              throw new Error("Cannot find module '" + n + "'");
-            }
-            e3 = i3[n] = { exports: {} };
-            o2[n][0].call(e3.exports, function(e4) {
-              var t5 = o2[n][1][e4];
-              return s4(t5 || e4);
-            }, e3, e3.exports, r3, o2, i3, u2);
-          }
-          return i3[n].exports;
-        }
-        for (var a4 = "function" == typeof commonjsRequire && commonjsRequire, e2 = 0; e2 < u2.length; e2++) s4(u2[e2]);
-        return s4;
-      })({ 1: [function(w3, b3, m3) {
-        !(function(e2, n, s4, c3, d4, h3, p2, g2, y3) {
-          var r3 = w3("crypto");
-          function t4(e3, t5) {
-            t5 = u2(e3, t5);
-            var n2;
-            return void 0 === (n2 = "passthrough" !== t5.algorithm ? r3.createHash(t5.algorithm) : new l()).write && (n2.write = n2.update, n2.end = n2.update), f(t5, n2).dispatch(e3), n2.update || n2.end(""), n2.digest ? n2.digest("buffer" === t5.encoding ? void 0 : t5.encoding) : (e3 = n2.read(), "buffer" !== t5.encoding ? e3.toString(t5.encoding) : e3);
-          }
-          (m3 = b3.exports = t4).sha1 = function(e3) {
-            return t4(e3);
-          }, m3.keys = function(e3) {
-            return t4(e3, { excludeValues: true, algorithm: "sha1", encoding: "hex" });
-          }, m3.MD5 = function(e3) {
-            return t4(e3, { algorithm: "md5", encoding: "hex" });
-          }, m3.keysMD5 = function(e3) {
-            return t4(e3, { algorithm: "md5", encoding: "hex", excludeValues: true });
-          };
-          var o2 = r3.getHashes ? r3.getHashes().slice() : ["sha1", "md5"], i3 = (o2.push("passthrough"), ["buffer", "hex", "binary", "base64"]);
-          function u2(e3, t5) {
-            var n2 = {};
-            if (n2.algorithm = (t5 = t5 || {}).algorithm || "sha1", n2.encoding = t5.encoding || "hex", n2.excludeValues = !!t5.excludeValues, n2.algorithm = n2.algorithm.toLowerCase(), n2.encoding = n2.encoding.toLowerCase(), n2.ignoreUnknown = true === t5.ignoreUnknown, n2.respectType = false !== t5.respectType, n2.respectFunctionNames = false !== t5.respectFunctionNames, n2.respectFunctionProperties = false !== t5.respectFunctionProperties, n2.unorderedArrays = true === t5.unorderedArrays, n2.unorderedSets = false !== t5.unorderedSets, n2.unorderedObjects = false !== t5.unorderedObjects, n2.replacer = t5.replacer || void 0, n2.excludeKeys = t5.excludeKeys || void 0, void 0 === e3) throw new Error("Object argument required.");
-            for (var r4 = 0; r4 < o2.length; ++r4) o2[r4].toLowerCase() === n2.algorithm.toLowerCase() && (n2.algorithm = o2[r4]);
-            if (-1 === o2.indexOf(n2.algorithm)) throw new Error('Algorithm "' + n2.algorithm + '"  not supported. supported values: ' + o2.join(", "));
-            if (-1 === i3.indexOf(n2.encoding) && "passthrough" !== n2.algorithm) throw new Error('Encoding "' + n2.encoding + '"  not supported. supported values: ' + i3.join(", "));
-            return n2;
-          }
-          function a4(e3) {
-            if ("function" == typeof e3) return null != /^function\s+\w*\s*\(\s*\)\s*{\s+\[native code\]\s+}$/i.exec(Function.prototype.toString.call(e3));
-          }
-          function f(o3, t5, i4) {
-            i4 = i4 || [];
-            function u3(e3) {
-              return t5.update ? t5.update(e3, "utf8") : t5.write(e3, "utf8");
-            }
-            return { dispatch: function(e3) {
-              return this["_" + (null === (e3 = o3.replacer ? o3.replacer(e3) : e3) ? "null" : typeof e3)](e3);
-            }, _object: function(t6) {
-              var n2, e3 = Object.prototype.toString.call(t6), r4 = /\[object (.*)\]/i.exec(e3);
-              r4 = (r4 = r4 ? r4[1] : "unknown:[" + e3 + "]").toLowerCase();
-              if (0 <= (e3 = i4.indexOf(t6))) return this.dispatch("[CIRCULAR:" + e3 + "]");
-              if (i4.push(t6), void 0 !== s4 && s4.isBuffer && s4.isBuffer(t6)) return u3("buffer:"), u3(t6);
-              if ("object" === r4 || "function" === r4 || "asyncfunction" === r4) return e3 = Object.keys(t6), o3.unorderedObjects && (e3 = e3.sort()), false === o3.respectType || a4(t6) || e3.splice(0, 0, "prototype", "__proto__", "constructor"), o3.excludeKeys && (e3 = e3.filter(function(e4) {
-                return !o3.excludeKeys(e4);
-              })), u3("object:" + e3.length + ":"), n2 = this, e3.forEach(function(e4) {
-                n2.dispatch(e4), u3(":"), o3.excludeValues || n2.dispatch(t6[e4]), u3(",");
-              });
-              if (!this["_" + r4]) {
-                if (o3.ignoreUnknown) return u3("[" + r4 + "]");
-                throw new Error('Unknown object type "' + r4 + '"');
-              }
-              this["_" + r4](t6);
-            }, _array: function(e3, t6) {
-              t6 = void 0 !== t6 ? t6 : false !== o3.unorderedArrays;
-              var n2 = this;
-              if (u3("array:" + e3.length + ":"), !t6 || e3.length <= 1) return e3.forEach(function(e4) {
-                return n2.dispatch(e4);
-              });
-              var r4 = [], t6 = e3.map(function(e4) {
-                var t7 = new l(), n3 = i4.slice();
-                return f(o3, t7, n3).dispatch(e4), r4 = r4.concat(n3.slice(i4.length)), t7.read().toString();
-              });
-              return i4 = i4.concat(r4), t6.sort(), this._array(t6, false);
-            }, _date: function(e3) {
-              return u3("date:" + e3.toJSON());
-            }, _symbol: function(e3) {
-              return u3("symbol:" + e3.toString());
-            }, _error: function(e3) {
-              return u3("error:" + e3.toString());
-            }, _boolean: function(e3) {
-              return u3("bool:" + e3.toString());
-            }, _string: function(e3) {
-              u3("string:" + e3.length + ":"), u3(e3.toString());
-            }, _function: function(e3) {
-              u3("fn:"), a4(e3) ? this.dispatch("[native]") : this.dispatch(e3.toString()), false !== o3.respectFunctionNames && this.dispatch("function-name:" + String(e3.name)), o3.respectFunctionProperties && this._object(e3);
-            }, _number: function(e3) {
-              return u3("number:" + e3.toString());
-            }, _xml: function(e3) {
-              return u3("xml:" + e3.toString());
-            }, _null: function() {
-              return u3("Null");
-            }, _undefined: function() {
-              return u3("Undefined");
-            }, _regexp: function(e3) {
-              return u3("regex:" + e3.toString());
-            }, _uint8array: function(e3) {
-              return u3("uint8array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _uint8clampedarray: function(e3) {
-              return u3("uint8clampedarray:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _int8array: function(e3) {
-              return u3("int8array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _uint16array: function(e3) {
-              return u3("uint16array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _int16array: function(e3) {
-              return u3("int16array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _uint32array: function(e3) {
-              return u3("uint32array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _int32array: function(e3) {
-              return u3("int32array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _float32array: function(e3) {
-              return u3("float32array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _float64array: function(e3) {
-              return u3("float64array:"), this.dispatch(Array.prototype.slice.call(e3));
-            }, _arraybuffer: function(e3) {
-              return u3("arraybuffer:"), this.dispatch(new Uint8Array(e3));
-            }, _url: function(e3) {
-              return u3("url:" + e3.toString());
-            }, _map: function(e3) {
-              u3("map:");
-              e3 = Array.from(e3);
-              return this._array(e3, false !== o3.unorderedSets);
-            }, _set: function(e3) {
-              u3("set:");
-              e3 = Array.from(e3);
-              return this._array(e3, false !== o3.unorderedSets);
-            }, _file: function(e3) {
-              return u3("file:"), this.dispatch([e3.name, e3.size, e3.type, e3.lastModfied]);
-            }, _blob: function() {
-              if (o3.ignoreUnknown) return u3("[blob]");
-              throw Error('Hashing Blob objects is currently not supported\n(see https://github.com/puleos/object-hash/issues/26)\nUse "options.replacer" or "options.ignoreUnknown"\n');
-            }, _domwindow: function() {
-              return u3("domwindow");
-            }, _bigint: function(e3) {
-              return u3("bigint:" + e3.toString());
-            }, _process: function() {
-              return u3("process");
-            }, _timer: function() {
-              return u3("timer");
-            }, _pipe: function() {
-              return u3("pipe");
-            }, _tcp: function() {
-              return u3("tcp");
-            }, _udp: function() {
-              return u3("udp");
-            }, _tty: function() {
-              return u3("tty");
-            }, _statwatcher: function() {
-              return u3("statwatcher");
-            }, _securecontext: function() {
-              return u3("securecontext");
-            }, _connection: function() {
-              return u3("connection");
-            }, _zlib: function() {
-              return u3("zlib");
-            }, _context: function() {
-              return u3("context");
-            }, _nodescript: function() {
-              return u3("nodescript");
-            }, _httpparser: function() {
-              return u3("httpparser");
-            }, _dataview: function() {
-              return u3("dataview");
-            }, _signal: function() {
-              return u3("signal");
-            }, _fsevent: function() {
-              return u3("fsevent");
-            }, _tlswrap: function() {
-              return u3("tlswrap");
-            } };
-          }
-          function l() {
-            return { buf: "", write: function(e3) {
-              this.buf += e3;
-            }, end: function(e3) {
-              this.buf += e3;
-            }, read: function() {
-              return this.buf;
-            } };
-          }
-          m3.writeToStream = function(e3, t5, n2) {
-            return void 0 === n2 && (n2 = t5, t5 = {}), f(t5 = u2(e3, t5), n2).dispatch(e3);
-          };
-        }).call(this, w3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, w3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_9a5aa49d.js", "/");
-      }, { buffer: 3, crypto: 5, lYpoI2: 11 }], 2: [function(e2, t4, f) {
-        !(function(e3, t5, n, r3, o2, i3, u2, s4, a4) {
-          !(function(e4) {
-            var a5 = "undefined" != typeof Uint8Array ? Uint8Array : Array, t6 = "+".charCodeAt(0), n2 = "/".charCodeAt(0), r4 = "0".charCodeAt(0), o3 = "a".charCodeAt(0), i4 = "A".charCodeAt(0), u3 = "-".charCodeAt(0), s5 = "_".charCodeAt(0);
-            function f2(e5) {
-              e5 = e5.charCodeAt(0);
-              return e5 === t6 || e5 === u3 ? 62 : e5 === n2 || e5 === s5 ? 63 : e5 < r4 ? -1 : e5 < r4 + 10 ? e5 - r4 + 26 + 26 : e5 < i4 + 26 ? e5 - i4 : e5 < o3 + 26 ? e5 - o3 + 26 : void 0;
-            }
-            e4.toByteArray = function(e5) {
-              var t7, n3;
-              if (0 < e5.length % 4) throw new Error("Invalid string. Length must be a multiple of 4");
-              var r5 = e5.length, r5 = "=" === e5.charAt(r5 - 2) ? 2 : "=" === e5.charAt(r5 - 1) ? 1 : 0, o4 = new a5(3 * e5.length / 4 - r5), i5 = 0 < r5 ? e5.length - 4 : e5.length, u4 = 0;
-              function s6(e6) {
-                o4[u4++] = e6;
-              }
-              for (t7 = 0; t7 < i5; t7 += 4, 0) s6((16711680 & (n3 = f2(e5.charAt(t7)) << 18 | f2(e5.charAt(t7 + 1)) << 12 | f2(e5.charAt(t7 + 2)) << 6 | f2(e5.charAt(t7 + 3)))) >> 16), s6((65280 & n3) >> 8), s6(255 & n3);
-              return 2 == r5 ? s6(255 & (n3 = f2(e5.charAt(t7)) << 2 | f2(e5.charAt(t7 + 1)) >> 4)) : 1 == r5 && (s6((n3 = f2(e5.charAt(t7)) << 10 | f2(e5.charAt(t7 + 1)) << 4 | f2(e5.charAt(t7 + 2)) >> 2) >> 8 & 255), s6(255 & n3)), o4;
-            }, e4.fromByteArray = function(e5) {
-              var t7, n3, r5, o4, i5 = e5.length % 3, u4 = "";
-              function s6(e6) {
-                return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(e6);
-              }
-              for (t7 = 0, r5 = e5.length - i5; t7 < r5; t7 += 3) n3 = (e5[t7] << 16) + (e5[t7 + 1] << 8) + e5[t7 + 2], u4 += s6((o4 = n3) >> 18 & 63) + s6(o4 >> 12 & 63) + s6(o4 >> 6 & 63) + s6(63 & o4);
-              switch (i5) {
-                case 1:
-                  u4 = (u4 += s6((n3 = e5[e5.length - 1]) >> 2)) + s6(n3 << 4 & 63) + "==";
-                  break;
-                case 2:
-                  u4 = (u4 = (u4 += s6((n3 = (e5[e5.length - 2] << 8) + e5[e5.length - 1]) >> 10)) + s6(n3 >> 4 & 63)) + s6(n3 << 2 & 63) + "=";
-              }
-              return u4;
-            };
-          })(void 0 === f ? this.base64js = {} : f);
-        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/base64-js/lib/b64.js", "/node_modules/gulp-browserify/node_modules/base64-js/lib");
-      }, { buffer: 3, lYpoI2: 11 }], 3: [function(O2, e2, H3) {
-        !(function(e3, n, f, r3, h3, p2, g2, y3, w3) {
-          var a4 = O2("base64-js"), i3 = O2("ieee754");
-          function f(e4, t5, n2) {
-            if (!(this instanceof f)) return new f(e4, t5, n2);
-            var r4, o3, i4, u3, s5 = typeof e4;
-            if ("base64" === t5 && "string" == s5) for (e4 = (u3 = e4).trim ? u3.trim() : u3.replace(/^\s+|\s+$/g, ""); e4.length % 4 != 0; ) e4 += "=";
-            if ("number" == s5) r4 = j2(e4);
-            else if ("string" == s5) r4 = f.byteLength(e4, t5);
-            else {
-              if ("object" != s5) throw new Error("First argument needs to be a number, array or string.");
-              r4 = j2(e4.length);
-            }
-            if (f._useTypedArrays ? o3 = f._augment(new Uint8Array(r4)) : ((o3 = this).length = r4, o3._isBuffer = true), f._useTypedArrays && "number" == typeof e4.byteLength) o3._set(e4);
-            else if (C(u3 = e4) || f.isBuffer(u3) || u3 && "object" == typeof u3 && "number" == typeof u3.length) for (i4 = 0; i4 < r4; i4++) f.isBuffer(e4) ? o3[i4] = e4.readUInt8(i4) : o3[i4] = e4[i4];
-            else if ("string" == s5) o3.write(e4, 0, t5);
-            else if ("number" == s5 && !f._useTypedArrays && !n2) for (i4 = 0; i4 < r4; i4++) o3[i4] = 0;
-            return o3;
-          }
-          function b3(e4, t5, n2, r4) {
-            return f._charsWritten = c3((function(e5) {
-              for (var t6 = [], n3 = 0; n3 < e5.length; n3++) t6.push(255 & e5.charCodeAt(n3));
-              return t6;
-            })(t5), e4, n2, r4);
-          }
-          function m3(e4, t5, n2, r4) {
-            return f._charsWritten = c3((function(e5) {
-              for (var t6, n3, r5 = [], o3 = 0; o3 < e5.length; o3++) n3 = e5.charCodeAt(o3), t6 = n3 >> 8, n3 = n3 % 256, r5.push(n3), r5.push(t6);
-              return r5;
-            })(t5), e4, n2, r4);
-          }
-          function v(e4, t5, n2) {
-            var r4 = "";
-            n2 = Math.min(e4.length, n2);
-            for (var o3 = t5; o3 < n2; o3++) r4 += String.fromCharCode(e4[o3]);
-            return r4;
-          }
-          function o2(e4, t5, n2, r4) {
-            r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 1 < e4.length, "Trying to read beyond buffer length"));
-            var o3, r4 = e4.length;
-            if (!(r4 <= t5)) return n2 ? (o3 = e4[t5], t5 + 1 < r4 && (o3 |= e4[t5 + 1] << 8)) : (o3 = e4[t5] << 8, t5 + 1 < r4 && (o3 |= e4[t5 + 1])), o3;
-          }
-          function u2(e4, t5, n2, r4) {
-            r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 3 < e4.length, "Trying to read beyond buffer length"));
-            var o3, r4 = e4.length;
-            if (!(r4 <= t5)) return n2 ? (t5 + 2 < r4 && (o3 = e4[t5 + 2] << 16), t5 + 1 < r4 && (o3 |= e4[t5 + 1] << 8), o3 |= e4[t5], t5 + 3 < r4 && (o3 += e4[t5 + 3] << 24 >>> 0)) : (t5 + 1 < r4 && (o3 = e4[t5 + 1] << 16), t5 + 2 < r4 && (o3 |= e4[t5 + 2] << 8), t5 + 3 < r4 && (o3 |= e4[t5 + 3]), o3 += e4[t5] << 24 >>> 0), o3;
-          }
-          function _(e4, t5, n2, r4) {
-            if (r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 1 < e4.length, "Trying to read beyond buffer length")), !(e4.length <= t5)) return r4 = o2(e4, t5, n2, true), 32768 & r4 ? -1 * (65535 - r4 + 1) : r4;
-          }
-          function E2(e4, t5, n2, r4) {
-            if (r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 3 < e4.length, "Trying to read beyond buffer length")), !(e4.length <= t5)) return r4 = u2(e4, t5, n2, true), 2147483648 & r4 ? -1 * (4294967295 - r4 + 1) : r4;
-          }
-          function I2(e4, t5, n2, r4) {
-            return r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(t5 + 3 < e4.length, "Trying to read beyond buffer length")), i3.read(e4, t5, n2, 23, 4);
-          }
-          function A2(e4, t5, n2, r4) {
-            return r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(t5 + 7 < e4.length, "Trying to read beyond buffer length")), i3.read(e4, t5, n2, 52, 8);
-          }
-          function s4(e4, t5, n2, r4, o3) {
-            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 1 < e4.length, "trying to write beyond buffer length"), Y2(t5, 65535));
-            o3 = e4.length;
-            if (!(o3 <= n2)) for (var i4 = 0, u3 = Math.min(o3 - n2, 2); i4 < u3; i4++) e4[n2 + i4] = (t5 & 255 << 8 * (r4 ? i4 : 1 - i4)) >>> 8 * (r4 ? i4 : 1 - i4);
-          }
-          function l(e4, t5, n2, r4, o3) {
-            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 3 < e4.length, "trying to write beyond buffer length"), Y2(t5, 4294967295));
-            o3 = e4.length;
-            if (!(o3 <= n2)) for (var i4 = 0, u3 = Math.min(o3 - n2, 4); i4 < u3; i4++) e4[n2 + i4] = t5 >>> 8 * (r4 ? i4 : 3 - i4) & 255;
-          }
-          function B2(e4, t5, n2, r4, o3) {
-            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 1 < e4.length, "Trying to write beyond buffer length"), F(t5, 32767, -32768)), e4.length <= n2 || s4(e4, 0 <= t5 ? t5 : 65535 + t5 + 1, n2, r4, o3);
-          }
-          function L3(e4, t5, n2, r4, o3) {
-            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 3 < e4.length, "Trying to write beyond buffer length"), F(t5, 2147483647, -2147483648)), e4.length <= n2 || l(e4, 0 <= t5 ? t5 : 4294967295 + t5 + 1, n2, r4, o3);
-          }
-          function U(e4, t5, n2, r4, o3) {
-            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 3 < e4.length, "Trying to write beyond buffer length"), D2(t5, 34028234663852886e22, -34028234663852886e22)), e4.length <= n2 || i3.write(e4, t5, n2, r4, 23, 4);
-          }
-          function x3(e4, t5, n2, r4, o3) {
-            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 7 < e4.length, "Trying to write beyond buffer length"), D2(t5, 17976931348623157e292, -17976931348623157e292)), e4.length <= n2 || i3.write(e4, t5, n2, r4, 52, 8);
-          }
-          H3.Buffer = f, H3.SlowBuffer = f, H3.INSPECT_MAX_BYTES = 50, f.poolSize = 8192, f._useTypedArrays = (function() {
-            try {
-              var e4 = new ArrayBuffer(0), t5 = new Uint8Array(e4);
-              return t5.foo = function() {
-                return 42;
-              }, 42 === t5.foo() && "function" == typeof t5.subarray;
-            } catch (e5) {
-              return false;
-            }
-          })(), f.isEncoding = function(e4) {
-            switch (String(e4).toLowerCase()) {
-              case "hex":
-              case "utf8":
-              case "utf-8":
-              case "ascii":
-              case "binary":
-              case "base64":
-              case "raw":
-              case "ucs2":
-              case "ucs-2":
-              case "utf16le":
-              case "utf-16le":
-                return true;
-              default:
-                return false;
-            }
-          }, f.isBuffer = function(e4) {
-            return !(null == e4 || !e4._isBuffer);
-          }, f.byteLength = function(e4, t5) {
-            var n2;
-            switch (e4 += "", t5 || "utf8") {
-              case "hex":
-                n2 = e4.length / 2;
-                break;
-              case "utf8":
-              case "utf-8":
-                n2 = T2(e4).length;
-                break;
-              case "ascii":
-              case "binary":
-              case "raw":
-                n2 = e4.length;
-                break;
-              case "base64":
-                n2 = M3(e4).length;
-                break;
-              case "ucs2":
-              case "ucs-2":
-              case "utf16le":
-              case "utf-16le":
-                n2 = 2 * e4.length;
-                break;
-              default:
-                throw new Error("Unknown encoding");
-            }
-            return n2;
-          }, f.concat = function(e4, t5) {
-            if (d4(C(e4), "Usage: Buffer.concat(list, [totalLength])\nlist should be an Array."), 0 === e4.length) return new f(0);
-            if (1 === e4.length) return e4[0];
-            if ("number" != typeof t5) for (o3 = t5 = 0; o3 < e4.length; o3++) t5 += e4[o3].length;
-            for (var n2 = new f(t5), r4 = 0, o3 = 0; o3 < e4.length; o3++) {
-              var i4 = e4[o3];
-              i4.copy(n2, r4), r4 += i4.length;
-            }
-            return n2;
-          }, f.prototype.write = function(e4, t5, n2, r4) {
-            isFinite(t5) ? isFinite(n2) || (r4 = n2, n2 = void 0) : (a5 = r4, r4 = t5, t5 = n2, n2 = a5), t5 = Number(t5) || 0;
-            var o3, i4, u3, s5, a5 = this.length - t5;
-            switch ((!n2 || a5 < (n2 = Number(n2))) && (n2 = a5), r4 = String(r4 || "utf8").toLowerCase()) {
-              case "hex":
-                o3 = (function(e5, t6, n3, r5) {
-                  n3 = Number(n3) || 0;
-                  var o4 = e5.length - n3;
-                  (!r5 || o4 < (r5 = Number(r5))) && (r5 = o4), d4((o4 = t6.length) % 2 == 0, "Invalid hex string"), o4 / 2 < r5 && (r5 = o4 / 2);
-                  for (var i5 = 0; i5 < r5; i5++) {
-                    var u4 = parseInt(t6.substr(2 * i5, 2), 16);
-                    d4(!isNaN(u4), "Invalid hex string"), e5[n3 + i5] = u4;
-                  }
-                  return f._charsWritten = 2 * i5, i5;
-                })(this, e4, t5, n2);
-                break;
-              case "utf8":
-              case "utf-8":
-                i4 = this, u3 = t5, s5 = n2, o3 = f._charsWritten = c3(T2(e4), i4, u3, s5);
-                break;
-              case "ascii":
-              case "binary":
-                o3 = b3(this, e4, t5, n2);
-                break;
-              case "base64":
-                i4 = this, u3 = t5, s5 = n2, o3 = f._charsWritten = c3(M3(e4), i4, u3, s5);
-                break;
-              case "ucs2":
-              case "ucs-2":
-              case "utf16le":
-              case "utf-16le":
-                o3 = m3(this, e4, t5, n2);
-                break;
-              default:
-                throw new Error("Unknown encoding");
-            }
-            return o3;
-          }, f.prototype.toString = function(e4, t5, n2) {
-            var r4, o3, i4, u3, s5 = this;
-            if (e4 = String(e4 || "utf8").toLowerCase(), t5 = Number(t5) || 0, (n2 = void 0 !== n2 ? Number(n2) : s5.length) === t5) return "";
-            switch (e4) {
-              case "hex":
-                r4 = (function(e5, t6, n3) {
-                  var r5 = e5.length;
-                  (!t6 || t6 < 0) && (t6 = 0);
-                  (!n3 || n3 < 0 || r5 < n3) && (n3 = r5);
-                  for (var o4 = "", i5 = t6; i5 < n3; i5++) o4 += k2(e5[i5]);
-                  return o4;
-                })(s5, t5, n2);
-                break;
-              case "utf8":
-              case "utf-8":
-                r4 = (function(e5, t6, n3) {
-                  var r5 = "", o4 = "";
-                  n3 = Math.min(e5.length, n3);
-                  for (var i5 = t6; i5 < n3; i5++) e5[i5] <= 127 ? (r5 += N(o4) + String.fromCharCode(e5[i5]), o4 = "") : o4 += "%" + e5[i5].toString(16);
-                  return r5 + N(o4);
-                })(s5, t5, n2);
-                break;
-              case "ascii":
-              case "binary":
-                r4 = v(s5, t5, n2);
-                break;
-              case "base64":
-                o3 = s5, u3 = n2, r4 = 0 === (i4 = t5) && u3 === o3.length ? a4.fromByteArray(o3) : a4.fromByteArray(o3.slice(i4, u3));
-                break;
-              case "ucs2":
-              case "ucs-2":
-              case "utf16le":
-              case "utf-16le":
-                r4 = (function(e5, t6, n3) {
-                  for (var r5 = e5.slice(t6, n3), o4 = "", i5 = 0; i5 < r5.length; i5 += 2) o4 += String.fromCharCode(r5[i5] + 256 * r5[i5 + 1]);
-                  return o4;
-                })(s5, t5, n2);
-                break;
-              default:
-                throw new Error("Unknown encoding");
-            }
-            return r4;
-          }, f.prototype.toJSON = function() {
-            return { type: "Buffer", data: Array.prototype.slice.call(this._arr || this, 0) };
-          }, f.prototype.copy = function(e4, t5, n2, r4) {
-            if (t5 = t5 || 0, (r4 = r4 || 0 === r4 ? r4 : this.length) !== (n2 = n2 || 0) && 0 !== e4.length && 0 !== this.length) {
-              d4(n2 <= r4, "sourceEnd < sourceStart"), d4(0 <= t5 && t5 < e4.length, "targetStart out of bounds"), d4(0 <= n2 && n2 < this.length, "sourceStart out of bounds"), d4(0 <= r4 && r4 <= this.length, "sourceEnd out of bounds"), r4 > this.length && (r4 = this.length);
-              var o3 = (r4 = e4.length - t5 < r4 - n2 ? e4.length - t5 + n2 : r4) - n2;
-              if (o3 < 100 || !f._useTypedArrays) for (var i4 = 0; i4 < o3; i4++) e4[i4 + t5] = this[i4 + n2];
-              else e4._set(this.subarray(n2, n2 + o3), t5);
-            }
-          }, f.prototype.slice = function(e4, t5) {
-            var n2 = this.length;
-            if (e4 = S4(e4, n2, 0), t5 = S4(t5, n2, n2), f._useTypedArrays) return f._augment(this.subarray(e4, t5));
-            for (var r4 = t5 - e4, o3 = new f(r4, void 0, true), i4 = 0; i4 < r4; i4++) o3[i4] = this[i4 + e4];
-            return o3;
-          }, f.prototype.get = function(e4) {
-            return console.log(".get() is deprecated. Access using array indexes instead."), this.readUInt8(e4);
-          }, f.prototype.set = function(e4, t5) {
-            return console.log(".set() is deprecated. Access using array indexes instead."), this.writeUInt8(e4, t5);
-          }, f.prototype.readUInt8 = function(e4, t5) {
-            if (t5 || (d4(null != e4, "missing offset"), d4(e4 < this.length, "Trying to read beyond buffer length")), !(e4 >= this.length)) return this[e4];
-          }, f.prototype.readUInt16LE = function(e4, t5) {
-            return o2(this, e4, true, t5);
-          }, f.prototype.readUInt16BE = function(e4, t5) {
-            return o2(this, e4, false, t5);
-          }, f.prototype.readUInt32LE = function(e4, t5) {
-            return u2(this, e4, true, t5);
-          }, f.prototype.readUInt32BE = function(e4, t5) {
-            return u2(this, e4, false, t5);
-          }, f.prototype.readInt8 = function(e4, t5) {
-            if (t5 || (d4(null != e4, "missing offset"), d4(e4 < this.length, "Trying to read beyond buffer length")), !(e4 >= this.length)) return 128 & this[e4] ? -1 * (255 - this[e4] + 1) : this[e4];
-          }, f.prototype.readInt16LE = function(e4, t5) {
-            return _(this, e4, true, t5);
-          }, f.prototype.readInt16BE = function(e4, t5) {
-            return _(this, e4, false, t5);
-          }, f.prototype.readInt32LE = function(e4, t5) {
-            return E2(this, e4, true, t5);
-          }, f.prototype.readInt32BE = function(e4, t5) {
-            return E2(this, e4, false, t5);
-          }, f.prototype.readFloatLE = function(e4, t5) {
-            return I2(this, e4, true, t5);
-          }, f.prototype.readFloatBE = function(e4, t5) {
-            return I2(this, e4, false, t5);
-          }, f.prototype.readDoubleLE = function(e4, t5) {
-            return A2(this, e4, true, t5);
-          }, f.prototype.readDoubleBE = function(e4, t5) {
-            return A2(this, e4, false, t5);
-          }, f.prototype.writeUInt8 = function(e4, t5, n2) {
-            n2 || (d4(null != e4, "missing value"), d4(null != t5, "missing offset"), d4(t5 < this.length, "trying to write beyond buffer length"), Y2(e4, 255)), t5 >= this.length || (this[t5] = e4);
-          }, f.prototype.writeUInt16LE = function(e4, t5, n2) {
-            s4(this, e4, t5, true, n2);
-          }, f.prototype.writeUInt16BE = function(e4, t5, n2) {
-            s4(this, e4, t5, false, n2);
-          }, f.prototype.writeUInt32LE = function(e4, t5, n2) {
-            l(this, e4, t5, true, n2);
-          }, f.prototype.writeUInt32BE = function(e4, t5, n2) {
-            l(this, e4, t5, false, n2);
-          }, f.prototype.writeInt8 = function(e4, t5, n2) {
-            n2 || (d4(null != e4, "missing value"), d4(null != t5, "missing offset"), d4(t5 < this.length, "Trying to write beyond buffer length"), F(e4, 127, -128)), t5 >= this.length || (0 <= e4 ? this.writeUInt8(e4, t5, n2) : this.writeUInt8(255 + e4 + 1, t5, n2));
-          }, f.prototype.writeInt16LE = function(e4, t5, n2) {
-            B2(this, e4, t5, true, n2);
-          }, f.prototype.writeInt16BE = function(e4, t5, n2) {
-            B2(this, e4, t5, false, n2);
-          }, f.prototype.writeInt32LE = function(e4, t5, n2) {
-            L3(this, e4, t5, true, n2);
-          }, f.prototype.writeInt32BE = function(e4, t5, n2) {
-            L3(this, e4, t5, false, n2);
-          }, f.prototype.writeFloatLE = function(e4, t5, n2) {
-            U(this, e4, t5, true, n2);
-          }, f.prototype.writeFloatBE = function(e4, t5, n2) {
-            U(this, e4, t5, false, n2);
-          }, f.prototype.writeDoubleLE = function(e4, t5, n2) {
-            x3(this, e4, t5, true, n2);
-          }, f.prototype.writeDoubleBE = function(e4, t5, n2) {
-            x3(this, e4, t5, false, n2);
-          }, f.prototype.fill = function(e4, t5, n2) {
-            if (t5 = t5 || 0, n2 = n2 || this.length, d4("number" == typeof (e4 = "string" == typeof (e4 = e4 || 0) ? e4.charCodeAt(0) : e4) && !isNaN(e4), "value is not a number"), d4(t5 <= n2, "end < start"), n2 !== t5 && 0 !== this.length) {
-              d4(0 <= t5 && t5 < this.length, "start out of bounds"), d4(0 <= n2 && n2 <= this.length, "end out of bounds");
-              for (var r4 = t5; r4 < n2; r4++) this[r4] = e4;
-            }
-          }, f.prototype.inspect = function() {
-            for (var e4 = [], t5 = this.length, n2 = 0; n2 < t5; n2++) if (e4[n2] = k2(this[n2]), n2 === H3.INSPECT_MAX_BYTES) {
-              e4[n2 + 1] = "...";
-              break;
-            }
-            return "<Buffer " + e4.join(" ") + ">";
-          }, f.prototype.toArrayBuffer = function() {
-            if ("undefined" == typeof Uint8Array) throw new Error("Buffer.toArrayBuffer not supported in this browser");
-            if (f._useTypedArrays) return new f(this).buffer;
-            for (var e4 = new Uint8Array(this.length), t5 = 0, n2 = e4.length; t5 < n2; t5 += 1) e4[t5] = this[t5];
-            return e4.buffer;
-          };
-          var t4 = f.prototype;
-          function S4(e4, t5, n2) {
-            return "number" != typeof e4 ? n2 : t5 <= (e4 = ~~e4) ? t5 : 0 <= e4 || 0 <= (e4 += t5) ? e4 : 0;
-          }
-          function j2(e4) {
-            return (e4 = ~~Math.ceil(+e4)) < 0 ? 0 : e4;
-          }
-          function C(e4) {
-            return (Array.isArray || function(e5) {
-              return "[object Array]" === Object.prototype.toString.call(e5);
-            })(e4);
-          }
-          function k2(e4) {
-            return e4 < 16 ? "0" + e4.toString(16) : e4.toString(16);
-          }
-          function T2(e4) {
-            for (var t5 = [], n2 = 0; n2 < e4.length; n2++) {
-              var r4 = e4.charCodeAt(n2);
-              if (r4 <= 127) t5.push(e4.charCodeAt(n2));
-              else for (var o3 = n2, i4 = (55296 <= r4 && r4 <= 57343 && n2++, encodeURIComponent(e4.slice(o3, n2 + 1)).substr(1).split("%")), u3 = 0; u3 < i4.length; u3++) t5.push(parseInt(i4[u3], 16));
-            }
-            return t5;
-          }
-          function M3(e4) {
-            return a4.toByteArray(e4);
-          }
-          function c3(e4, t5, n2, r4) {
-            for (var o3 = 0; o3 < r4 && !(o3 + n2 >= t5.length || o3 >= e4.length); o3++) t5[o3 + n2] = e4[o3];
-            return o3;
-          }
-          function N(e4) {
-            try {
-              return decodeURIComponent(e4);
-            } catch (e5) {
-              return String.fromCharCode(65533);
-            }
-          }
-          function Y2(e4, t5) {
-            d4("number" == typeof e4, "cannot write a non-number as a number"), d4(0 <= e4, "specified a negative value for writing an unsigned value"), d4(e4 <= t5, "value is larger than maximum value for type"), d4(Math.floor(e4) === e4, "value has a fractional component");
-          }
-          function F(e4, t5, n2) {
-            d4("number" == typeof e4, "cannot write a non-number as a number"), d4(e4 <= t5, "value larger than maximum allowed value"), d4(n2 <= e4, "value smaller than minimum allowed value"), d4(Math.floor(e4) === e4, "value has a fractional component");
-          }
-          function D2(e4, t5, n2) {
-            d4("number" == typeof e4, "cannot write a non-number as a number"), d4(e4 <= t5, "value larger than maximum allowed value"), d4(n2 <= e4, "value smaller than minimum allowed value");
-          }
-          function d4(e4, t5) {
-            if (!e4) throw new Error(t5 || "Failed assertion");
-          }
-          f._augment = function(e4) {
-            return e4._isBuffer = true, e4._get = e4.get, e4._set = e4.set, e4.get = t4.get, e4.set = t4.set, e4.write = t4.write, e4.toString = t4.toString, e4.toLocaleString = t4.toString, e4.toJSON = t4.toJSON, e4.copy = t4.copy, e4.slice = t4.slice, e4.readUInt8 = t4.readUInt8, e4.readUInt16LE = t4.readUInt16LE, e4.readUInt16BE = t4.readUInt16BE, e4.readUInt32LE = t4.readUInt32LE, e4.readUInt32BE = t4.readUInt32BE, e4.readInt8 = t4.readInt8, e4.readInt16LE = t4.readInt16LE, e4.readInt16BE = t4.readInt16BE, e4.readInt32LE = t4.readInt32LE, e4.readInt32BE = t4.readInt32BE, e4.readFloatLE = t4.readFloatLE, e4.readFloatBE = t4.readFloatBE, e4.readDoubleLE = t4.readDoubleLE, e4.readDoubleBE = t4.readDoubleBE, e4.writeUInt8 = t4.writeUInt8, e4.writeUInt16LE = t4.writeUInt16LE, e4.writeUInt16BE = t4.writeUInt16BE, e4.writeUInt32LE = t4.writeUInt32LE, e4.writeUInt32BE = t4.writeUInt32BE, e4.writeInt8 = t4.writeInt8, e4.writeInt16LE = t4.writeInt16LE, e4.writeInt16BE = t4.writeInt16BE, e4.writeInt32LE = t4.writeInt32LE, e4.writeInt32BE = t4.writeInt32BE, e4.writeFloatLE = t4.writeFloatLE, e4.writeFloatBE = t4.writeFloatBE, e4.writeDoubleLE = t4.writeDoubleLE, e4.writeDoubleBE = t4.writeDoubleBE, e4.fill = t4.fill, e4.inspect = t4.inspect, e4.toArrayBuffer = t4.toArrayBuffer, e4;
-          };
-        }).call(this, O2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, O2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/buffer/index.js", "/node_modules/gulp-browserify/node_modules/buffer");
-      }, { "base64-js": 2, buffer: 3, ieee754: 10, lYpoI2: 11 }], 4: [function(c3, d4, e2) {
-        !(function(e3, t4, a4, n, r3, o2, i3, u2, s4) {
-          var a4 = c3("buffer").Buffer, f = 4, l = new a4(f);
-          l.fill(0);
-          d4.exports = { hash: function(e4, t5, n2, r4) {
-            for (var o3 = t5((function(e5, t6) {
-              e5.length % f != 0 && (n3 = e5.length + (f - e5.length % f), e5 = a4.concat([e5, l], n3));
-              for (var n3, r5 = [], o4 = t6 ? e5.readInt32BE : e5.readInt32LE, i5 = 0; i5 < e5.length; i5 += f) r5.push(o4.call(e5, i5));
-              return r5;
-            })(e4 = a4.isBuffer(e4) ? e4 : new a4(e4), r4), 8 * e4.length), t5 = r4, i4 = new a4(n2), u3 = t5 ? i4.writeInt32BE : i4.writeInt32LE, s5 = 0; s5 < o3.length; s5++) u3.call(i4, o3[s5], 4 * s5, true);
-            return i4;
-          } };
-        }).call(this, c3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/helpers.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { buffer: 3, lYpoI2: 11 }], 5: [function(v, e2, _) {
-        !(function(l, c3, u2, d4, h3, p2, g2, y3, w3) {
-          var u2 = v("buffer").Buffer, e3 = v("./sha"), t4 = v("./sha256"), n = v("./rng"), b3 = { sha1: e3, sha256: t4, md5: v("./md5") }, s4 = 64, a4 = new u2(s4);
-          function r3(e4, n2) {
-            var r4 = b3[e4 = e4 || "sha1"], o3 = [];
-            return r4 || i3("algorithm:", e4, "is not yet supported"), { update: function(e5) {
-              return u2.isBuffer(e5) || (e5 = new u2(e5)), o3.push(e5), e5.length, this;
-            }, digest: function(e5) {
-              var t5 = u2.concat(o3), t5 = n2 ? (function(e6, t6, n3) {
-                u2.isBuffer(t6) || (t6 = new u2(t6)), u2.isBuffer(n3) || (n3 = new u2(n3)), t6.length > s4 ? t6 = e6(t6) : t6.length < s4 && (t6 = u2.concat([t6, a4], s4));
-                for (var r5 = new u2(s4), o4 = new u2(s4), i4 = 0; i4 < s4; i4++) r5[i4] = 54 ^ t6[i4], o4[i4] = 92 ^ t6[i4];
-                return n3 = e6(u2.concat([r5, n3])), e6(u2.concat([o4, n3]));
-              })(r4, n2, t5) : r4(t5);
-              return o3 = null, e5 ? t5.toString(e5) : t5;
-            } };
-          }
-          function i3() {
-            var e4 = [].slice.call(arguments).join(" ");
-            throw new Error([e4, "we accept pull requests", "http://github.com/dominictarr/crypto-browserify"].join("\n"));
-          }
-          a4.fill(0), _.createHash = function(e4) {
-            return r3(e4);
-          }, _.createHmac = r3, _.randomBytes = function(e4, t5) {
-            if (!t5 || !t5.call) return new u2(n(e4));
-            try {
-              t5.call(this, void 0, new u2(n(e4)));
-            } catch (e5) {
-              t5(e5);
-            }
-          };
-          var o2, f = ["createCredentials", "createCipher", "createCipheriv", "createDecipher", "createDecipheriv", "createSign", "createVerify", "createDiffieHellman", "pbkdf2"], m3 = function(e4) {
-            _[e4] = function() {
-              i3("sorry,", e4, "is not implemented yet");
-            };
-          };
-          for (o2 in f) m3(f[o2]);
-        }).call(this, v("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, v("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/index.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { "./md5": 6, "./rng": 7, "./sha": 8, "./sha256": 9, buffer: 3, lYpoI2: 11 }], 6: [function(w3, b3, e2) {
-        !(function(e3, r3, o2, i3, u2, a4, f, l, y3) {
-          var t4 = w3("./helpers");
-          function n(e4, t5) {
-            e4[t5 >> 5] |= 128 << t5 % 32, e4[14 + (t5 + 64 >>> 9 << 4)] = t5;
-            for (var n2 = 1732584193, r4 = -271733879, o3 = -1732584194, i4 = 271733878, u3 = 0; u3 < e4.length; u3 += 16) {
-              var s5 = n2, a5 = r4, f2 = o3, l2 = i4, n2 = c3(n2, r4, o3, i4, e4[u3 + 0], 7, -680876936), i4 = c3(i4, n2, r4, o3, e4[u3 + 1], 12, -389564586), o3 = c3(o3, i4, n2, r4, e4[u3 + 2], 17, 606105819), r4 = c3(r4, o3, i4, n2, e4[u3 + 3], 22, -1044525330);
-              n2 = c3(n2, r4, o3, i4, e4[u3 + 4], 7, -176418897), i4 = c3(i4, n2, r4, o3, e4[u3 + 5], 12, 1200080426), o3 = c3(o3, i4, n2, r4, e4[u3 + 6], 17, -1473231341), r4 = c3(r4, o3, i4, n2, e4[u3 + 7], 22, -45705983), n2 = c3(n2, r4, o3, i4, e4[u3 + 8], 7, 1770035416), i4 = c3(i4, n2, r4, o3, e4[u3 + 9], 12, -1958414417), o3 = c3(o3, i4, n2, r4, e4[u3 + 10], 17, -42063), r4 = c3(r4, o3, i4, n2, e4[u3 + 11], 22, -1990404162), n2 = c3(n2, r4, o3, i4, e4[u3 + 12], 7, 1804603682), i4 = c3(i4, n2, r4, o3, e4[u3 + 13], 12, -40341101), o3 = c3(o3, i4, n2, r4, e4[u3 + 14], 17, -1502002290), n2 = d4(n2, r4 = c3(r4, o3, i4, n2, e4[u3 + 15], 22, 1236535329), o3, i4, e4[u3 + 1], 5, -165796510), i4 = d4(i4, n2, r4, o3, e4[u3 + 6], 9, -1069501632), o3 = d4(o3, i4, n2, r4, e4[u3 + 11], 14, 643717713), r4 = d4(r4, o3, i4, n2, e4[u3 + 0], 20, -373897302), n2 = d4(n2, r4, o3, i4, e4[u3 + 5], 5, -701558691), i4 = d4(i4, n2, r4, o3, e4[u3 + 10], 9, 38016083), o3 = d4(o3, i4, n2, r4, e4[u3 + 15], 14, -660478335), r4 = d4(r4, o3, i4, n2, e4[u3 + 4], 20, -405537848), n2 = d4(n2, r4, o3, i4, e4[u3 + 9], 5, 568446438), i4 = d4(i4, n2, r4, o3, e4[u3 + 14], 9, -1019803690), o3 = d4(o3, i4, n2, r4, e4[u3 + 3], 14, -187363961), r4 = d4(r4, o3, i4, n2, e4[u3 + 8], 20, 1163531501), n2 = d4(n2, r4, o3, i4, e4[u3 + 13], 5, -1444681467), i4 = d4(i4, n2, r4, o3, e4[u3 + 2], 9, -51403784), o3 = d4(o3, i4, n2, r4, e4[u3 + 7], 14, 1735328473), n2 = h3(n2, r4 = d4(r4, o3, i4, n2, e4[u3 + 12], 20, -1926607734), o3, i4, e4[u3 + 5], 4, -378558), i4 = h3(i4, n2, r4, o3, e4[u3 + 8], 11, -2022574463), o3 = h3(o3, i4, n2, r4, e4[u3 + 11], 16, 1839030562), r4 = h3(r4, o3, i4, n2, e4[u3 + 14], 23, -35309556), n2 = h3(n2, r4, o3, i4, e4[u3 + 1], 4, -1530992060), i4 = h3(i4, n2, r4, o3, e4[u3 + 4], 11, 1272893353), o3 = h3(o3, i4, n2, r4, e4[u3 + 7], 16, -155497632), r4 = h3(r4, o3, i4, n2, e4[u3 + 10], 23, -1094730640), n2 = h3(n2, r4, o3, i4, e4[u3 + 13], 4, 681279174), i4 = h3(i4, n2, r4, o3, e4[u3 + 0], 11, -358537222), o3 = h3(o3, i4, n2, r4, e4[u3 + 3], 16, -722521979), r4 = h3(r4, o3, i4, n2, e4[u3 + 6], 23, 76029189), n2 = h3(n2, r4, o3, i4, e4[u3 + 9], 4, -640364487), i4 = h3(i4, n2, r4, o3, e4[u3 + 12], 11, -421815835), o3 = h3(o3, i4, n2, r4, e4[u3 + 15], 16, 530742520), n2 = p2(n2, r4 = h3(r4, o3, i4, n2, e4[u3 + 2], 23, -995338651), o3, i4, e4[u3 + 0], 6, -198630844), i4 = p2(i4, n2, r4, o3, e4[u3 + 7], 10, 1126891415), o3 = p2(o3, i4, n2, r4, e4[u3 + 14], 15, -1416354905), r4 = p2(r4, o3, i4, n2, e4[u3 + 5], 21, -57434055), n2 = p2(n2, r4, o3, i4, e4[u3 + 12], 6, 1700485571), i4 = p2(i4, n2, r4, o3, e4[u3 + 3], 10, -1894986606), o3 = p2(o3, i4, n2, r4, e4[u3 + 10], 15, -1051523), r4 = p2(r4, o3, i4, n2, e4[u3 + 1], 21, -2054922799), n2 = p2(n2, r4, o3, i4, e4[u3 + 8], 6, 1873313359), i4 = p2(i4, n2, r4, o3, e4[u3 + 15], 10, -30611744), o3 = p2(o3, i4, n2, r4, e4[u3 + 6], 15, -1560198380), r4 = p2(r4, o3, i4, n2, e4[u3 + 13], 21, 1309151649), n2 = p2(n2, r4, o3, i4, e4[u3 + 4], 6, -145523070), i4 = p2(i4, n2, r4, o3, e4[u3 + 11], 10, -1120210379), o3 = p2(o3, i4, n2, r4, e4[u3 + 2], 15, 718787259), r4 = p2(r4, o3, i4, n2, e4[u3 + 9], 21, -343485551), n2 = g2(n2, s5), r4 = g2(r4, a5), o3 = g2(o3, f2), i4 = g2(i4, l2);
-            }
-            return Array(n2, r4, o3, i4);
-          }
-          function s4(e4, t5, n2, r4, o3, i4) {
-            return g2((t5 = g2(g2(t5, e4), g2(r4, i4))) << o3 | t5 >>> 32 - o3, n2);
-          }
-          function c3(e4, t5, n2, r4, o3, i4, u3) {
-            return s4(t5 & n2 | ~t5 & r4, e4, t5, o3, i4, u3);
-          }
-          function d4(e4, t5, n2, r4, o3, i4, u3) {
-            return s4(t5 & r4 | n2 & ~r4, e4, t5, o3, i4, u3);
-          }
-          function h3(e4, t5, n2, r4, o3, i4, u3) {
-            return s4(t5 ^ n2 ^ r4, e4, t5, o3, i4, u3);
-          }
-          function p2(e4, t5, n2, r4, o3, i4, u3) {
-            return s4(n2 ^ (t5 | ~r4), e4, t5, o3, i4, u3);
-          }
-          function g2(e4, t5) {
-            var n2 = (65535 & e4) + (65535 & t5);
-            return (e4 >> 16) + (t5 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
-          }
-          b3.exports = function(e4) {
-            return t4.hash(e4, n, 16);
-          };
-        }).call(this, w3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, w3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/md5.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 7: [function(e2, l, t4) {
-        !(function(e3, t5, n, r3, o2, i3, u2, s4, f) {
-          l.exports = function(e4) {
-            for (var t6, n2 = new Array(e4), r4 = 0; r4 < e4; r4++) 0 == (3 & r4) && (t6 = 4294967296 * Math.random()), n2[r4] = t6 >>> ((3 & r4) << 3) & 255;
-            return n2;
-          };
-        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/rng.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { buffer: 3, lYpoI2: 11 }], 8: [function(c3, d4, e2) {
-        !(function(e3, t4, n, r3, o2, s4, a4, f, l) {
-          var i3 = c3("./helpers");
-          function u2(l2, c4) {
-            l2[c4 >> 5] |= 128 << 24 - c4 % 32, l2[15 + (c4 + 64 >> 9 << 4)] = c4;
-            for (var e4, t5, n2, r4 = Array(80), o3 = 1732584193, i4 = -271733879, u3 = -1732584194, s5 = 271733878, d5 = -1009589776, h3 = 0; h3 < l2.length; h3 += 16) {
-              for (var p2 = o3, g2 = i4, y3 = u3, w3 = s5, b3 = d5, a5 = 0; a5 < 80; a5++) {
-                r4[a5] = a5 < 16 ? l2[h3 + a5] : v(r4[a5 - 3] ^ r4[a5 - 8] ^ r4[a5 - 14] ^ r4[a5 - 16], 1);
-                var f2 = m3(m3(v(o3, 5), (f2 = i4, t5 = u3, n2 = s5, (e4 = a5) < 20 ? f2 & t5 | ~f2 & n2 : !(e4 < 40) && e4 < 60 ? f2 & t5 | f2 & n2 | t5 & n2 : f2 ^ t5 ^ n2)), m3(m3(d5, r4[a5]), (e4 = a5) < 20 ? 1518500249 : e4 < 40 ? 1859775393 : e4 < 60 ? -1894007588 : -899497514)), d5 = s5, s5 = u3, u3 = v(i4, 30), i4 = o3, o3 = f2;
-              }
-              o3 = m3(o3, p2), i4 = m3(i4, g2), u3 = m3(u3, y3), s5 = m3(s5, w3), d5 = m3(d5, b3);
-            }
-            return Array(o3, i4, u3, s5, d5);
-          }
-          function m3(e4, t5) {
-            var n2 = (65535 & e4) + (65535 & t5);
-            return (e4 >> 16) + (t5 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
-          }
-          function v(e4, t5) {
-            return e4 << t5 | e4 >>> 32 - t5;
-          }
-          d4.exports = function(e4) {
-            return i3.hash(e4, u2, 20, true);
-          };
-        }).call(this, c3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/sha.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 9: [function(c3, d4, e2) {
-        !(function(e3, t4, n, r3, u2, s4, a4, f, l) {
-          function b3(e4, t5) {
-            var n2 = (65535 & e4) + (65535 & t5);
-            return (e4 >> 16) + (t5 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
-          }
-          function o2(e4, l2) {
-            var c4, d5 = new Array(1116352408, 1899447441, 3049323471, 3921009573, 961987163, 1508970993, 2453635748, 2870763221, 3624381080, 310598401, 607225278, 1426881987, 1925078388, 2162078206, 2614888103, 3248222580, 3835390401, 4022224774, 264347078, 604807628, 770255983, 1249150122, 1555081692, 1996064986, 2554220882, 2821834349, 2952996808, 3210313671, 3336571891, 3584528711, 113926993, 338241895, 666307205, 773529912, 1294757372, 1396182291, 1695183700, 1986661051, 2177026350, 2456956037, 2730485921, 2820302411, 3259730800, 3345764771, 3516065817, 3600352804, 4094571909, 275423344, 430227734, 506948616, 659060556, 883997877, 958139571, 1322822218, 1537002063, 1747873779, 1955562222, 2024104815, 2227730452, 2361852424, 2428436474, 2756734187, 3204031479, 3329325298), t5 = new Array(1779033703, 3144134277, 1013904242, 2773480762, 1359893119, 2600822924, 528734635, 1541459225), n2 = new Array(64);
-            e4[l2 >> 5] |= 128 << 24 - l2 % 32, e4[15 + (l2 + 64 >> 9 << 4)] = l2;
-            for (var r4, o3, h3 = 0; h3 < e4.length; h3 += 16) {
-              for (var i4 = t5[0], u3 = t5[1], s5 = t5[2], p2 = t5[3], a5 = t5[4], g2 = t5[5], y3 = t5[6], w3 = t5[7], f2 = 0; f2 < 64; f2++) n2[f2] = f2 < 16 ? e4[f2 + h3] : b3(b3(b3((o3 = n2[f2 - 2], m3(o3, 17) ^ m3(o3, 19) ^ v(o3, 10)), n2[f2 - 7]), (o3 = n2[f2 - 15], m3(o3, 7) ^ m3(o3, 18) ^ v(o3, 3))), n2[f2 - 16]), c4 = b3(b3(b3(b3(w3, m3(o3 = a5, 6) ^ m3(o3, 11) ^ m3(o3, 25)), a5 & g2 ^ ~a5 & y3), d5[f2]), n2[f2]), r4 = b3(m3(r4 = i4, 2) ^ m3(r4, 13) ^ m3(r4, 22), i4 & u3 ^ i4 & s5 ^ u3 & s5), w3 = y3, y3 = g2, g2 = a5, a5 = b3(p2, c4), p2 = s5, s5 = u3, u3 = i4, i4 = b3(c4, r4);
-              t5[0] = b3(i4, t5[0]), t5[1] = b3(u3, t5[1]), t5[2] = b3(s5, t5[2]), t5[3] = b3(p2, t5[3]), t5[4] = b3(a5, t5[4]), t5[5] = b3(g2, t5[5]), t5[6] = b3(y3, t5[6]), t5[7] = b3(w3, t5[7]);
-            }
-            return t5;
-          }
-          var i3 = c3("./helpers"), m3 = function(e4, t5) {
-            return e4 >>> t5 | e4 << 32 - t5;
-          }, v = function(e4, t5) {
-            return e4 >>> t5;
-          };
-          d4.exports = function(e4) {
-            return i3.hash(e4, o2, 32, true);
-          };
-        }).call(this, c3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/sha256.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
-      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 10: [function(e2, t4, f) {
-        !(function(e3, t5, n, r3, o2, i3, u2, s4, a4) {
-          f.read = function(e4, t6, n2, r4, o3) {
-            var i4, u3, l = 8 * o3 - r4 - 1, c3 = (1 << l) - 1, d4 = c3 >> 1, s5 = -7, a5 = n2 ? o3 - 1 : 0, f2 = n2 ? -1 : 1, o3 = e4[t6 + a5];
-            for (a5 += f2, i4 = o3 & (1 << -s5) - 1, o3 >>= -s5, s5 += l; 0 < s5; i4 = 256 * i4 + e4[t6 + a5], a5 += f2, s5 -= 8) ;
-            for (u3 = i4 & (1 << -s5) - 1, i4 >>= -s5, s5 += r4; 0 < s5; u3 = 256 * u3 + e4[t6 + a5], a5 += f2, s5 -= 8) ;
-            if (0 === i4) i4 = 1 - d4;
-            else {
-              if (i4 === c3) return u3 ? NaN : 1 / 0 * (o3 ? -1 : 1);
-              u3 += Math.pow(2, r4), i4 -= d4;
-            }
-            return (o3 ? -1 : 1) * u3 * Math.pow(2, i4 - r4);
-          }, f.write = function(e4, t6, l, n2, r4, c3) {
-            var o3, i4, u3 = 8 * c3 - r4 - 1, s5 = (1 << u3) - 1, a5 = s5 >> 1, d4 = 23 === r4 ? Math.pow(2, -24) - Math.pow(2, -77) : 0, f2 = n2 ? 0 : c3 - 1, h3 = n2 ? 1 : -1, c3 = t6 < 0 || 0 === t6 && 1 / t6 < 0 ? 1 : 0;
-            for (t6 = Math.abs(t6), isNaN(t6) || t6 === 1 / 0 ? (i4 = isNaN(t6) ? 1 : 0, o3 = s5) : (o3 = Math.floor(Math.log(t6) / Math.LN2), t6 * (n2 = Math.pow(2, -o3)) < 1 && (o3--, n2 *= 2), 2 <= (t6 += 1 <= o3 + a5 ? d4 / n2 : d4 * Math.pow(2, 1 - a5)) * n2 && (o3++, n2 /= 2), s5 <= o3 + a5 ? (i4 = 0, o3 = s5) : 1 <= o3 + a5 ? (i4 = (t6 * n2 - 1) * Math.pow(2, r4), o3 += a5) : (i4 = t6 * Math.pow(2, a5 - 1) * Math.pow(2, r4), o3 = 0)); 8 <= r4; e4[l + f2] = 255 & i4, f2 += h3, i4 /= 256, r4 -= 8) ;
-            for (o3 = o3 << r4 | i4, u3 += r4; 0 < u3; e4[l + f2] = 255 & o3, f2 += h3, o3 /= 256, u3 -= 8) ;
-            e4[l + f2 - h3] |= 128 * c3;
-          };
-        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/ieee754/index.js", "/node_modules/gulp-browserify/node_modules/ieee754");
-      }, { buffer: 3, lYpoI2: 11 }], 11: [function(e2, h3, t4) {
-        !(function(e3, t5, n, r3, o2, f, l, c3, d4) {
-          var i3, u2, s4;
-          function a4() {
-          }
-          (e3 = h3.exports = {}).nextTick = (u2 = "undefined" != typeof window && window.setImmediate, s4 = "undefined" != typeof window && window.postMessage && window.addEventListener, u2 ? function(e4) {
-            return window.setImmediate(e4);
-          } : s4 ? (i3 = [], window.addEventListener("message", function(e4) {
-            var t6 = e4.source;
-            t6 !== window && null !== t6 || "process-tick" !== e4.data || (e4.stopPropagation(), 0 < i3.length && i3.shift()());
-          }, true), function(e4) {
-            i3.push(e4), window.postMessage("process-tick", "*");
-          }) : function(e4) {
-            setTimeout(e4, 0);
-          }), e3.title = "browser", e3.browser = true, e3.env = {}, e3.argv = [], e3.on = a4, e3.addListener = a4, e3.once = a4, e3.off = a4, e3.removeListener = a4, e3.removeAllListeners = a4, e3.emit = a4, e3.binding = function(e4) {
-            throw new Error("process.binding is not supported");
-          }, e3.cwd = function() {
-            return "/";
-          }, e3.chdir = function(e4) {
-            throw new Error("process.chdir is not supported");
-          };
-        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/process/browser.js", "/node_modules/gulp-browserify/node_modules/process");
-      }, { buffer: 3, lYpoI2: 11 }] }, {}, [1])(1);
-    });
-  })(object_hash);
-  return object_hash.exports;
-}
-var object_hashExports = requireObject_hash();
-const objectHash = /* @__PURE__ */ getDefaultExportFromCjs(object_hashExports);
-function getFunctionFromString(functionString) {
-  if (!functionString?.trim()) return null;
-  try {
-    const evalResult = eval(`(${functionString})`);
-    if (typeof evalResult !== "function") {
-      return Error(`Type is a ${typeof evalResult}, not a function`);
-    }
-    return evalResult;
-  } catch (error) {
-    return Error(`Not a valid function (${error})`, { cause: error });
-  }
-}
-const defaultMarkerLength = 20;
-const MarkerForTvFragmentDoc = gql`
-  fragment MarkerForTv on SceneMarker {
-    ...SceneMarkerData
-    scene {
-      ...SceneData
-    }
-  }
-  ${SceneMarkerDataFragmentDoc}
-  ${SceneDataFragmentDoc}
-`;
-function mediaItemFragment(entityType) {
-  return entityType === "scene" ? { fragment: SceneDataFragmentDoc, fragmentName: "SceneData" } : { fragment: MarkerForTvFragmentDoc, fragmentName: "MarkerForTv" };
-}
-function sceneMediaItem(scene2) {
-  return { id: `scene:${scene2.id}`, entityType: "scene", entity: scene2 };
-}
-function markerMediaItem(marker) {
-  return {
-    id: `marker:${marker.id}`,
-    entityType: "marker",
-    entity: {
-      ...marker,
-      get duration() {
-        const endTime = marker.end_seconds ?? Math.min(marker.seconds + defaultMarkerLength, marker.scene.files[0].duration);
-        return endTime - marker.seconds;
-      }
-    }
-  };
-}
-function mediaItemFromEntity(entityType, entity) {
-  return entityType === "scene" ? sceneMediaItem(entity) : markerMediaItem(entity);
-}
-function readMediaItem(cache2, ref) {
-  const entity = cache2.readFragment({
-    id: ref.cacheId,
-    ...mediaItemFragment(ref.entityType)
-  });
-  return entity ? mediaItemFromEntity(ref.entityType, entity) : void 0;
-}
-function sortPerformers(performers2) {
-  const ret = performers2.slice();
-  ret.sort((a4, b3) => {
-    if (a4.gender === b3.gender) {
-      return (a4.name ?? "").localeCompare(b3.name ?? "");
-    }
-    const aIndex = a4.gender ? GENDERS.indexOf(a4.gender) : GENDERS.length;
-    const bIndex = b3.gender ? GENDERS.indexOf(b3.gender) : GENDERS.length;
-    return aIndex - bIndex;
-  });
-  return ret;
-}
-const GENDERS = [
-  "FEMALE",
-  "TRANSGENDER_FEMALE",
-  "MALE",
-  "TRANSGENDER_MALE",
-  "INTERSEX",
-  "NON_BINARY"
-];
-function clamp$3(min2, num, max2) {
-  return Math.min(Math.max(num, min2), max2);
-}
-function updateReadOnlyProp(obj, prop, value) {
-  Object.defineProperty(obj, prop, { value, writable: true, enumerable: isEnumerableIncludingInherited(obj, prop) });
-}
-function updateReadOnlyProps(obj, props) {
-  for (const [prop, value] of Object.entries(props)) {
-    updateReadOnlyProp(obj, prop, value);
-  }
-}
-function isEnumerableIncludingInherited(obj, prop) {
-  let current = obj;
-  while (current) {
-    const desc = Object.getOwnPropertyDescriptor(current, prop);
-    if (desc) return !!desc.enumerable;
-    current = Object.getPrototypeOf(current);
-  }
-  return false;
-}
-function getMediaItemIdForVideoJsPlayer(videoElm) {
-  let node2 = videoElm;
-  while (node2 !== null) {
-    if (node2 instanceof HTMLElement && "sceneId" in node2.dataset && node2.dataset.sceneId) {
-      return node2.id.replace(/^scene-player-/, "");
-    }
-    node2 = node2.parentElement;
-  }
-  throw new Error("Could not find mediaItemId for Video.js player");
-}
-function roundTo(num, decimals = 0) {
-  const factor = Math.pow(10, decimals);
-  return Math.round(num * factor) / factor;
-}
-function roundToNearest(num, nearest = 1) {
-  return Math.round(num / nearest) * nearest;
-}
-function getNextOption(options2, current) {
-  const currentIndex = options2.findIndex((option) => option.value === current);
-  return options2[(currentIndex + 1) % options2.length];
-}
-function formatDuration(totalSeconds) {
-  const units = [
-    { name: "hour", seconds: 60 * 60 },
-    { name: "minute", seconds: 60 },
-    { name: "second", seconds: 1 }
-  ];
-  let remaining = Math.round(totalSeconds);
-  const parts = [];
-  for (const unit of units) {
-    const count2 = Math.floor(remaining / unit.seconds);
-    remaining -= count2 * unit.seconds;
-    if (count2 > 0) parts.push(`${count2} ${unit.name}${count2 === 1 ? "" : "s"}`);
-  }
-  return parts.length ? parts.join(" ") : "0 seconds";
-}
-const logger$h = getLogger(["stash-tv", "usePreviewLengths"]);
-const usePreviewLengths = create(() => ({}));
-function useTrackPreviewLengths(enabled) {
-  reactExports.useEffect(() => {
-    if (!enabled) return;
-    const saveDurationOnceMetadataLoaded = (event2) => {
-      if (!(event2?.target instanceof HTMLVideoElement)) return;
-      const videoElm = event2.target;
-      try {
-        const mediaItemId = getMediaItemIdForVideoJsPlayer(videoElm);
-        if (usePreviewLengths.getState()[mediaItemId] === videoElm.duration) return;
-        logger$h.debug("Saving preview length for media item {*}", { mediaItemId, duration: videoElm.duration });
-        usePreviewLengths.setState({ [mediaItemId]: videoElm.duration });
-      } catch (error) {
-        console.warn("Failed to get media item ID for video element", error);
-      }
-    };
-    window.addEventListener("loadedmetadata", saveDurationOnceMetadataLoaded, { capture: true });
-    return () => {
-      window.removeEventListener("loadedmetadata", saveDurationOnceMetadataLoaded, { capture: true });
-    };
-  }, [enabled]);
-}
-const logger$g = getLogger(["stash-tv", "useMediaItems"]);
-const initialFeedState = {
-  source: void 0,
-  refs: [],
-  skippedIds: /* @__PURE__ */ new Set(),
-  total: void 0,
-  fetchInFlight: false,
-  loading: false,
-  error: void 0
-};
-const useFeedStore = create(() => initialFeedState);
-function retain(client2, cacheId) {
-  if (client2.cache instanceof InMemoryCache) client2.cache.retain(cacheId);
-}
-function release(client2, cacheId) {
-  if (client2.cache instanceof InMemoryCache) client2.cache.release(cacheId);
-}
-function markerIsPlayable(marker) {
-  if (marker.seconds > marker.scene.files[0].duration) {
-    logger$g.warn(`Marker with ID ${marker.id} has start time (${marker.seconds}s) greater than scene duration (${marker.scene.files[0].duration}s). This marker will be skipped.`, { marker });
-    return false;
-  }
-  return true;
-}
-async function fetchPage(client2, filter2, page, perPage) {
-  const pageFilter = { ...filter2.generalFilter, page, per_page: perPage };
-  if (filter2.entityType === "scene") {
-    const { data: data22 } = await client2.query({
-      query: FindFullScenesDocument,
-      variables: { filter: pageFilter, scene_filter: filter2.entityFilter },
-      fetchPolicy: "network-only"
-    });
-    return { items: data22.findScenes.scenes.map(sceneMediaItem), skippedIds: [], total: data22.findScenes.count };
-  }
-  const { data: data2 } = await client2.query({
-    query: FindSceneMarkersForTvDocument,
-    variables: { filter: pageFilter, scene_marker_filter: filter2.entityFilter },
-    fetchPolicy: "network-only"
-  });
-  const items = [];
-  const skippedIds = [];
-  for (const marker of data2.findSceneMarkers.scene_markers) {
-    if (markerIsPlayable(marker)) {
-      items.push(markerMediaItem(marker));
-    } else {
-      skippedIds.push(`marker:${marker.id}`);
-    }
-  }
-  return { items, skippedIds, total: data2.findSceneMarkers.count };
-}
-function resetFeed(client2, source2) {
-  for (const ref of useFeedStore.getState().refs) release(client2, ref.cacheId);
-  useFeedStore.setState({ ...initialFeedState, skippedIds: /* @__PURE__ */ new Set(), source: source2, loading: true });
-}
-async function loadNextPage(client2) {
-  const { source: source2, refs, skippedIds, total: total2, fetchInFlight } = useFeedStore.getState();
-  if (!source2 || fetchInFlight) return;
-  const offset3 = refs.length + skippedIds.size;
-  if (total2 !== void 0 && offset3 >= total2) return;
-  const page = Math.floor(offset3 / source2.pageSize) + 1;
-  logger$g.debug("Fetch media page {*}", { page });
-  useFeedStore.setState({ fetchInFlight: true });
-  try {
-    const result = await fetchPage(client2, source2.filter, page, source2.pageSize);
-    const state = useFeedStore.getState();
-    if (state.source !== source2) return;
-    const loadedIds = /* @__PURE__ */ new Set([...state.refs.map((ref) => ref.id), ...state.skippedIds]);
-    const newRefs = [];
-    for (const item of result.items) {
-      const cacheId = client2.cache.identify(item.entity);
-      if (loadedIds.has(item.id) || !cacheId) continue;
-      retain(client2, cacheId);
-      newRefs.push({ id: item.id, entityType: item.entityType, cacheId });
-    }
-    useFeedStore.setState({
-      refs: [...state.refs, ...newRefs],
-      skippedIds: /* @__PURE__ */ new Set([...state.skippedIds, ...result.skippedIds]),
-      total: result.total,
-      fetchInFlight: false,
-      loading: false,
-      error: void 0
-    });
-  } catch (error) {
-    if (useFeedStore.getState().source !== source2) return;
-    logger$g.error("Failed to fetch media page {*}", { page, error });
-    useFeedStore.setState({
-      fetchInFlight: false,
-      loading: false,
-      error: error instanceof Error ? error : new Error(String(error))
-    });
-  }
-}
-function removeFromFeed(client2, id2) {
-  const { refs } = useFeedStore.getState();
-  const ref = refs.find((ref2) => ref2.id === id2);
-  if (!ref) return;
-  release(client2, ref.cacheId);
-  useFeedStore.setState({ refs: refs.filter((otherRef) => otherRef !== ref) });
-}
-function readMediaItems(client2, refs) {
-  return refs.flatMap((ref) => readMediaItem(client2.cache, ref) ?? []);
-}
-function useMediaItems() {
-  const { lastLoadedCurrentMediaItemFilter } = useMediaItemFilters();
-  const {
-    maxMedia,
-    scenePreviewOnly,
-    markerPreviewOnly,
-    pageSize,
-    showDevOptions,
-    mediaItemsModifierFunction
-  } = useTvConfig();
-  const client2 = useApolloClient();
-  const refs = useFeedStore((state) => state.refs);
-  const loading2 = useFeedStore((state) => state.loading);
-  const error = useFeedStore((state) => state.error);
-  reactExports.useEffect(() => {
-    if (!lastLoadedCurrentMediaItemFilter) return;
-    const { entityType, generalFilter, entityFilter } = lastLoadedCurrentMediaItemFilter;
-    const key = objectHash({ entityType, generalFilter, entityFilter, pageSize });
-    if (useFeedStore.getState().source?.key === key) return;
-    logger$g.debug(`Filter changed to "${lastLoadedCurrentMediaItemFilter.savedFilter?.name}", resetting media items`);
-    resetFeed(client2, { key, filter: lastLoadedCurrentMediaItemFilter, pageSize });
-    loadNextPage(client2);
-  }, [client2, lastLoadedCurrentMediaItemFilter, pageSize]);
-  const loadMoreMediaItems = reactExports.useCallback(() => loadNextPage(client2), [client2]);
-  const removeMediaItem = reactExports.useCallback((id2) => removeFromFeed(client2, id2), [client2]);
-  const mediaItems = reactExports.useMemo(() => {
-    let modifiedRefs = refs;
-    const modifier = showDevOptions ? getFunctionFromString(mediaItemsModifierFunction) : null;
-    if (typeof modifier === "function") {
-      try {
-        const modifiedItems = modifier(readMediaItems(client2, refs));
-        if (Array.isArray(modifiedItems)) {
-          const refsById = new Map(refs.map((ref) => [ref.id, ref]));
-          modifiedRefs = modifiedItems.flatMap((item) => refsById.get(item?.id) ?? []);
-        }
-      } catch (error2) {
-        logger$g.error(`Media items modifier function threw an error`, { error: error2 });
-      }
-    }
-    if (typeof maxMedia === "number") {
-      modifiedRefs = modifiedRefs.slice(0, maxMedia);
-    }
-    return modifiedRefs;
-  }, [client2, refs, showDevOptions, mediaItemsModifierFunction, maxMedia]);
-  reactExports.useEffect(() => {
-    if (showDevOptions) {
-      window.mediaItems = readMediaItems(client2, refs);
-      window.modifiedMediaItems = readMediaItems(client2, mediaItems);
-    } else {
-      delete window.mediaItems;
-      delete window.modifiedMediaItems;
-    }
-  }, [client2, showDevOptions, refs, mediaItems]);
-  const [neverLoaded, setNeverLoaded] = reactExports.useState(true);
-  reactExports.useEffect(() => {
-    mediaItems.length && setNeverLoaded(false);
-  }, [mediaItems.length]);
-  useTrackPreviewLengths(
-    lastLoadedCurrentMediaItemFilter?.entityType === "scene" && scenePreviewOnly || lastLoadedCurrentMediaItemFilter?.entityType === "marker" && markerPreviewOnly
-  );
-  return {
-    mediaItems,
-    removeMediaItem,
-    loadMoreMediaItems,
-    mediaItemsError: error,
-    mediaItemsLoading: loading2,
-    mediaItemsNeverLoaded: neverLoaded,
-    waitingForMediaItemsFilter: !lastLoadedCurrentMediaItemFilter
-  };
-}
-const logger$f = getLogger(["stash-tv", "makeMediaItemPreviewOnly"]);
-function makeMediaItemPreviewOnly(mediaItem, { previewLength, previewSegmentDuration = 0.75, previewSegments = 12 }) {
-  let previewUrl;
-  if (mediaItem.entityType === "scene") {
-    previewUrl = mediaItem.entity.paths.preview;
-  } else if (mediaItem.entityType === "marker") {
-    previewUrl = mediaItem.entity.stream;
-  } else {
-    throw new Error("Unsupported media item entity type");
-  }
-  if (!previewUrl) {
-    logger$f.warn(`Media item ${mediaItem.id} has no preview`);
-    return mediaItem;
-  }
-  const scene2 = mediaItem.entityType === "marker" ? mediaItem.entity.scene : mediaItem.entity;
-  const estimatedDuration = mediaItem.entityType === "marker" ? Math.min(defaultMarkerLength, scene2.files[0].duration) : Math.min(previewSegmentDuration * previewSegments, scene2.files[0].duration);
-  const updatedScene = {
-    ...scene2,
-    sceneStreams: [
-      {
-        "url": previewUrl,
-        "mime_type": "video/mp4",
-        "label": "Direct stream",
-        "__typename": "SceneStreamEndpoint"
-      }
-    ],
-    files: [
-      {
-        ...scene2.files[0],
-        duration: previewLength ?? estimatedDuration
-      },
-      ...scene2.files.slice(1)
-    ],
-    resume_time: null,
-    captions: null,
-    scene_markers: []
-  };
-  if (mediaItem.entityType === "scene") {
-    return {
-      ...mediaItem,
-      entity: updatedScene
-    };
-  } else {
-    return {
-      ...mediaItem,
-      entity: {
-        ...mediaItem.entity,
-        scene: updatedScene
-      }
-    };
-  }
-}
-const logger$e = getLogger(["stash-tv", "useLiveMediaItem"]);
-function sceneIdOf(mediaItem) {
-  if (!mediaItem) return void 0;
-  return mediaItem.entityType === "scene" ? mediaItem.entity.id : mediaItem.entity.scene.id;
-}
-function useLiveMediaItem(ref) {
-  const { data: data2, complete } = useFragment({
-    ...mediaItemFragment(ref.entityType),
-    from: ref.cacheId
-  });
-  const liveMediaItem = reactExports.useMemo(
-    () => complete ? mediaItemFromEntity(ref.entityType, data2) : void 0,
-    [complete, data2, ref.entityType]
-  );
-  const lastCompleteMediaItem = reactExports.useRef(liveMediaItem);
-  if (liveMediaItem) lastCompleteMediaItem.current = liveMediaItem;
-  const mediaItem = liveMediaItem ?? lastCompleteMediaItem.current;
-  const client2 = useApolloClient();
-  const sceneIdToRefetch = complete ? void 0 : sceneIdOf(lastCompleteMediaItem.current);
-  reactExports.useEffect(() => {
-    if (!sceneIdToRefetch) return;
-    client2.query({ query: FindSceneDocument, variables: { id: sceneIdToRefetch }, fetchPolicy: "network-only" }).catch((error) => logger$e.error("Failed to refetch scene {sceneId} after its cached data was evicted {*}", {
-      sceneId: sceneIdToRefetch,
-      error
-    }));
-  }, [client2, sceneIdToRefetch]);
-  const { scenePreviewOnly, markerPreviewOnly } = useTvConfig();
-  const previewOnly = ref.entityType === "scene" ? scenePreviewOnly : markerPreviewOnly;
-  const previewLength = usePreviewLengths((previewLengths) => previewLengths[ref.id]);
-  const { configuration: stashConfig } = reactExports.useContext(ConfigurationContext);
-  const previewSegmentDuration = stashConfig?.general.previewSegmentDuration ?? void 0;
-  const previewSegments = stashConfig?.general.previewSegments ?? void 0;
-  return reactExports.useMemo(
-    () => mediaItem && previewOnly ? makeMediaItemPreviewOnly(mediaItem, { previewLength, previewSegmentDuration, previewSegments }) : mediaItem,
-    [mediaItem, previewOnly, previewLength, previewSegmentDuration, previewSegments]
-  );
-}
-function useSceneUpdate(scene2) {
-  const [mutation, mutationResult] = useSceneUpdateMutation({
-    update(cache2, result) {
-      if (!result.data?.sceneUpdate) return;
-    }
-  });
-  const wrappedMutation = (options2) => {
-    const finalOptions = options2 || {};
-    return mutation({
-      ...finalOptions,
-      optimisticResponse: {
-        __typename: "Mutation",
-        // @ts-expect-error -- Merging the scene input and scene output types has some complex edge cases but for our
-        // purposes of temporarily showing the expected updated scene in the UI this should be sufficient
-        sceneUpdate: {
-          __typename: "Scene",
-          ...scene2,
-          ...finalOptions.variables?.input ?? {}
-        }
-      }
-    });
-  };
-  return [wrappedMutation, mutationResult];
-}
-function useSetRating(scene2) {
-  const [updateScene] = useSceneUpdate(scene2);
-  function setRating(newRating) {
-    updateScene({
-      variables: {
-        input: {
-          id: scene2.id,
-          rating100: newRating
-        }
-      }
-    });
-  }
-  return setRating;
-}
-var mousetrap = { exports: {} };
-var hasRequiredMousetrap;
-function requireMousetrap() {
-  if (hasRequiredMousetrap) return mousetrap.exports;
-  hasRequiredMousetrap = 1;
-  (function(module2) {
-    (function(window2, document2, undefined$1) {
-      if (!window2) {
-        return;
-      }
-      var _MAP = {
-        8: "backspace",
-        9: "tab",
-        13: "enter",
-        16: "shift",
-        17: "ctrl",
-        18: "alt",
-        20: "capslock",
-        27: "esc",
-        32: "space",
-        33: "pageup",
-        34: "pagedown",
-        35: "end",
-        36: "home",
-        37: "left",
-        38: "up",
-        39: "right",
-        40: "down",
-        45: "ins",
-        46: "del",
-        91: "meta",
-        93: "meta",
-        224: "meta"
-      };
-      var _KEYCODE_MAP = {
-        106: "*",
-        107: "+",
-        109: "-",
-        110: ".",
-        111: "/",
-        186: ";",
-        187: "=",
-        188: ",",
-        189: "-",
-        190: ".",
-        191: "/",
-        192: "`",
-        219: "[",
-        220: "\\",
-        221: "]",
-        222: "'"
-      };
-      var _SHIFT_MAP = {
-        "~": "`",
-        "!": "1",
-        "@": "2",
-        "#": "3",
-        "$": "4",
-        "%": "5",
-        "^": "6",
-        "&": "7",
-        "*": "8",
-        "(": "9",
-        ")": "0",
-        "_": "-",
-        "+": "=",
-        ":": ";",
-        '"': "'",
-        "<": ",",
-        ">": ".",
-        "?": "/",
-        "|": "\\"
-      };
-      var _SPECIAL_ALIASES = {
-        "option": "alt",
-        "command": "meta",
-        "return": "enter",
-        "escape": "esc",
-        "plus": "+",
-        "mod": /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? "meta" : "ctrl"
-      };
-      var _REVERSE_MAP;
-      for (var i3 = 1; i3 < 20; ++i3) {
-        _MAP[111 + i3] = "f" + i3;
-      }
-      for (i3 = 0; i3 <= 9; ++i3) {
-        _MAP[i3 + 96] = i3.toString();
-      }
-      function _addEvent(object2, type3, callback2) {
-        if (object2.addEventListener) {
-          object2.addEventListener(type3, callback2, false);
-          return;
-        }
-        object2.attachEvent("on" + type3, callback2);
-      }
-      function _characterFromEvent(e2) {
-        if (e2.type == "keypress") {
-          var character2 = String.fromCharCode(e2.which);
-          if (!e2.shiftKey) {
-            character2 = character2.toLowerCase();
-          }
-          return character2;
-        }
-        if (_MAP[e2.which]) {
-          return _MAP[e2.which];
-        }
-        if (_KEYCODE_MAP[e2.which]) {
-          return _KEYCODE_MAP[e2.which];
-        }
-        return String.fromCharCode(e2.which).toLowerCase();
-      }
-      function _modifiersMatch(modifiers1, modifiers2) {
-        return modifiers1.sort().join(",") === modifiers2.sort().join(",");
-      }
-      function _eventModifiers(e2) {
-        var modifiers = [];
-        if (e2.shiftKey) {
-          modifiers.push("shift");
-        }
-        if (e2.altKey) {
-          modifiers.push("alt");
-        }
-        if (e2.ctrlKey) {
-          modifiers.push("ctrl");
-        }
-        if (e2.metaKey) {
-          modifiers.push("meta");
-        }
-        return modifiers;
-      }
-      function _preventDefault(e2) {
-        if (e2.preventDefault) {
-          e2.preventDefault();
-          return;
-        }
-        e2.returnValue = false;
-      }
-      function _stopPropagation(e2) {
-        if (e2.stopPropagation) {
-          e2.stopPropagation();
-          return;
-        }
-        e2.cancelBubble = true;
-      }
-      function _isModifier(key) {
-        return key == "shift" || key == "ctrl" || key == "alt" || key == "meta";
-      }
-      function _getReverseMap() {
-        if (!_REVERSE_MAP) {
-          _REVERSE_MAP = {};
-          for (var key in _MAP) {
-            if (key > 95 && key < 112) {
-              continue;
-            }
-            if (_MAP.hasOwnProperty(key)) {
-              _REVERSE_MAP[_MAP[key]] = key;
-            }
-          }
-        }
-        return _REVERSE_MAP;
-      }
-      function _pickBestAction(key, modifiers, action) {
-        if (!action) {
-          action = _getReverseMap()[key] ? "keydown" : "keypress";
-        }
-        if (action == "keypress" && modifiers.length) {
-          action = "keydown";
-        }
-        return action;
-      }
-      function _keysFromString(combination) {
-        if (combination === "+") {
-          return ["+"];
-        }
-        combination = combination.replace(/\+{2}/g, "+plus");
-        return combination.split("+");
-      }
-      function _getKeyInfo(combination, action) {
-        var keys3;
-        var key;
-        var i4;
-        var modifiers = [];
-        keys3 = _keysFromString(combination);
-        for (i4 = 0; i4 < keys3.length; ++i4) {
-          key = keys3[i4];
-          if (_SPECIAL_ALIASES[key]) {
-            key = _SPECIAL_ALIASES[key];
-          }
-          if (action && action != "keypress" && _SHIFT_MAP[key]) {
-            key = _SHIFT_MAP[key];
-            modifiers.push("shift");
-          }
-          if (_isModifier(key)) {
-            modifiers.push(key);
-          }
-        }
-        action = _pickBestAction(key, modifiers, action);
-        return {
-          key,
-          modifiers,
-          action
-        };
-      }
-      function _belongsTo(element, ancestor) {
-        if (element === null || element === document2) {
-          return false;
-        }
-        if (element === ancestor) {
-          return true;
-        }
-        return _belongsTo(element.parentNode, ancestor);
-      }
-      function Mousetrap2(targetElement) {
-        var self2 = this;
-        targetElement = targetElement || document2;
-        if (!(self2 instanceof Mousetrap2)) {
-          return new Mousetrap2(targetElement);
-        }
-        self2.target = targetElement;
-        self2._callbacks = {};
-        self2._directMap = {};
-        var _sequenceLevels = {};
-        var _resetTimer;
-        var _ignoreNextKeyup = false;
-        var _ignoreNextKeypress = false;
-        var _nextExpectedAction = false;
-        function _resetSequences(doNotReset) {
-          doNotReset = doNotReset || {};
-          var activeSequences = false, key;
-          for (key in _sequenceLevels) {
-            if (doNotReset[key]) {
-              activeSequences = true;
-              continue;
-            }
-            _sequenceLevels[key] = 0;
-          }
-          if (!activeSequences) {
-            _nextExpectedAction = false;
-          }
-        }
-        function _getMatches(character2, modifiers, e2, sequenceName, combination, level) {
-          var i4;
-          var callback2;
-          var matches = [];
-          var action = e2.type;
-          if (!self2._callbacks[character2]) {
-            return [];
-          }
-          if (action == "keyup" && _isModifier(character2)) {
-            modifiers = [character2];
-          }
-          for (i4 = 0; i4 < self2._callbacks[character2].length; ++i4) {
-            callback2 = self2._callbacks[character2][i4];
-            if (!sequenceName && callback2.seq && _sequenceLevels[callback2.seq] != callback2.level) {
-              continue;
-            }
-            if (action != callback2.action) {
-              continue;
-            }
-            if (action == "keypress" && !e2.metaKey && !e2.ctrlKey || _modifiersMatch(modifiers, callback2.modifiers)) {
-              var deleteCombo = !sequenceName && callback2.combo == combination;
-              var deleteSequence = sequenceName && callback2.seq == sequenceName && callback2.level == level;
-              if (deleteCombo || deleteSequence) {
-                self2._callbacks[character2].splice(i4, 1);
-              }
-              matches.push(callback2);
-            }
-          }
-          return matches;
-        }
-        function _fireCallback(callback2, e2, combo, sequence) {
-          if (self2.stopCallback(e2, e2.target || e2.srcElement, combo, sequence)) {
-            return;
-          }
-          if (callback2(e2, combo) === false) {
-            _preventDefault(e2);
-            _stopPropagation(e2);
-          }
-        }
-        self2._handleKey = function(character2, modifiers, e2) {
-          var callbacks = _getMatches(character2, modifiers, e2);
-          var i4;
-          var doNotReset = {};
-          var maxLevel = 0;
-          var processedSequenceCallback = false;
-          for (i4 = 0; i4 < callbacks.length; ++i4) {
-            if (callbacks[i4].seq) {
-              maxLevel = Math.max(maxLevel, callbacks[i4].level);
-            }
-          }
-          for (i4 = 0; i4 < callbacks.length; ++i4) {
-            if (callbacks[i4].seq) {
-              if (callbacks[i4].level != maxLevel) {
-                continue;
-              }
-              processedSequenceCallback = true;
-              doNotReset[callbacks[i4].seq] = 1;
-              _fireCallback(callbacks[i4].callback, e2, callbacks[i4].combo, callbacks[i4].seq);
-              continue;
-            }
-            if (!processedSequenceCallback) {
-              _fireCallback(callbacks[i4].callback, e2, callbacks[i4].combo);
-            }
-          }
-          var ignoreThisKeypress = e2.type == "keypress" && _ignoreNextKeypress;
-          if (e2.type == _nextExpectedAction && !_isModifier(character2) && !ignoreThisKeypress) {
-            _resetSequences(doNotReset);
-          }
-          _ignoreNextKeypress = processedSequenceCallback && e2.type == "keydown";
-        };
-        function _handleKeyEvent(e2) {
-          if (typeof e2.which !== "number") {
-            e2.which = e2.keyCode;
-          }
-          var character2 = _characterFromEvent(e2);
-          if (!character2) {
-            return;
-          }
-          if (e2.type == "keyup" && _ignoreNextKeyup === character2) {
-            _ignoreNextKeyup = false;
-            return;
-          }
-          self2.handleKey(character2, _eventModifiers(e2), e2);
-        }
-        function _resetSequenceTimer() {
-          clearTimeout(_resetTimer);
-          _resetTimer = setTimeout(_resetSequences, 1e3);
-        }
-        function _bindSequence(combo, keys3, callback2, action) {
-          _sequenceLevels[combo] = 0;
-          function _increaseSequence(nextAction) {
-            return function() {
-              _nextExpectedAction = nextAction;
-              ++_sequenceLevels[combo];
-              _resetSequenceTimer();
-            };
-          }
-          function _callbackAndReset(e2) {
-            _fireCallback(callback2, e2, combo);
-            if (action !== "keyup") {
-              _ignoreNextKeyup = _characterFromEvent(e2);
-            }
-            setTimeout(_resetSequences, 10);
-          }
-          for (var i4 = 0; i4 < keys3.length; ++i4) {
-            var isFinal = i4 + 1 === keys3.length;
-            var wrappedCallback = isFinal ? _callbackAndReset : _increaseSequence(action || _getKeyInfo(keys3[i4 + 1]).action);
-            _bindSingle(keys3[i4], wrappedCallback, action, combo, i4);
-          }
-        }
-        function _bindSingle(combination, callback2, action, sequenceName, level) {
-          self2._directMap[combination + ":" + action] = callback2;
-          combination = combination.replace(/\s+/g, " ");
-          var sequence = combination.split(" ");
-          var info2;
-          if (sequence.length > 1) {
-            _bindSequence(combination, sequence, callback2, action);
-            return;
-          }
-          info2 = _getKeyInfo(combination, action);
-          self2._callbacks[info2.key] = self2._callbacks[info2.key] || [];
-          _getMatches(info2.key, info2.modifiers, { type: info2.action }, sequenceName, combination, level);
-          self2._callbacks[info2.key][sequenceName ? "unshift" : "push"]({
-            callback: callback2,
-            modifiers: info2.modifiers,
-            action: info2.action,
-            seq: sequenceName,
-            level,
-            combo: combination
-          });
-        }
-        self2._bindMultiple = function(combinations, callback2, action) {
-          for (var i4 = 0; i4 < combinations.length; ++i4) {
-            _bindSingle(combinations[i4], callback2, action);
-          }
-        };
-        _addEvent(targetElement, "keypress", _handleKeyEvent);
-        _addEvent(targetElement, "keydown", _handleKeyEvent);
-        _addEvent(targetElement, "keyup", _handleKeyEvent);
-      }
-      Mousetrap2.prototype.bind = function(keys3, callback2, action) {
-        var self2 = this;
-        keys3 = keys3 instanceof Array ? keys3 : [keys3];
-        self2._bindMultiple.call(self2, keys3, callback2, action);
-        return self2;
-      };
-      Mousetrap2.prototype.unbind = function(keys3, action) {
-        var self2 = this;
-        return self2.bind.call(self2, keys3, function() {
-        }, action);
-      };
-      Mousetrap2.prototype.trigger = function(keys3, action) {
-        var self2 = this;
-        if (self2._directMap[keys3 + ":" + action]) {
-          self2._directMap[keys3 + ":" + action]({}, keys3);
-        }
-        return self2;
-      };
-      Mousetrap2.prototype.reset = function() {
-        var self2 = this;
-        self2._callbacks = {};
-        self2._directMap = {};
-        return self2;
-      };
-      Mousetrap2.prototype.stopCallback = function(e2, element) {
-        var self2 = this;
-        if ((" " + element.className + " ").indexOf(" mousetrap ") > -1) {
-          return false;
-        }
-        if (_belongsTo(element, self2.target)) {
-          return false;
-        }
-        if ("composedPath" in e2 && typeof e2.composedPath === "function") {
-          var initialEventTarget = e2.composedPath()[0];
-          if (initialEventTarget !== e2.target) {
-            element = initialEventTarget;
-          }
-        }
-        return element.tagName == "INPUT" || element.tagName == "SELECT" || element.tagName == "TEXTAREA" || element.isContentEditable;
-      };
-      Mousetrap2.prototype.handleKey = function() {
-        var self2 = this;
-        return self2._handleKey.apply(self2, arguments);
-      };
-      Mousetrap2.addKeycodes = function(object2) {
-        for (var key in object2) {
-          if (object2.hasOwnProperty(key)) {
-            _MAP[key] = object2[key];
-          }
-        }
-        _REVERSE_MAP = null;
-      };
-      Mousetrap2.init = function() {
-        var documentMousetrap = Mousetrap2(document2);
-        for (var method in documentMousetrap) {
-          if (method.charAt(0) !== "_") {
-            Mousetrap2[method] = /* @__PURE__ */ (function(method2) {
-              return function() {
-                return documentMousetrap[method2].apply(documentMousetrap, arguments);
-              };
-            })(method);
-          }
-        }
-      };
-      Mousetrap2.init();
-      window2.Mousetrap = Mousetrap2;
-      if (module2.exports) {
-        module2.exports = Mousetrap2;
-      }
-    })(typeof window !== "undefined" ? window : null, typeof window !== "undefined" ? document : null);
-  })(mousetrap);
-  return mousetrap.exports;
-}
-var mousetrapExports = requireMousetrap();
-const Mousetrap = /* @__PURE__ */ getDefaultExportFromCjs(mousetrapExports);
-let sequenceTimeout;
-function useRatingKeybinds(isVisible, ratingSystem, setRating) {
-  const firstChar = reactExports.useRef(void 0);
-  const sequenceKeys = ["`", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-  function endSequence() {
-    firstChar.current = void 0;
-    for (const key of sequenceKeys) {
-      Mousetrap.unbind(key);
-    }
-  }
-  function restartSequenceTimeout() {
-    clearTimeout(sequenceTimeout);
-    sequenceTimeout = setTimeout(endSequence, 1e3);
-  }
-  const starRatingShortcuts = {
-    "0": NaN,
-    "1": 20,
-    "2": 40,
-    "3": 60,
-    "4": 80,
-    "5": 100
-  };
-  function handleStarRatingKeybinds() {
-    for (const key in starRatingShortcuts) {
-      Mousetrap.bind(key, () => setRating(starRatingShortcuts[key]));
-    }
-  }
-  function handleDecimalKeybinds() {
-    Mousetrap.bind("`", () => {
-      setRating(NaN);
-    });
-    for (let i3 = 0; i3 <= 9; ++i3) {
-      Mousetrap.bind(i3.toString(), () => {
-        if (firstChar.current !== void 0) {
-          let combined = parseInt(firstChar.current + i3.toString());
-          if (combined === 0) {
-            combined = 100;
-          }
-          setRating(combined);
-          firstChar.current = void 0;
-        } else {
-          firstChar.current = i3.toString();
-          restartSequenceTimeout();
-        }
-      });
-    }
-  }
-  reactExports.useEffect(() => {
-    if (!isVisible)
-      return;
-    Mousetrap.bind("r", () => {
-      if (document.activeElement instanceof HTMLElement) {
-        document.activeElement.blur();
-      }
-      endSequence();
-      restartSequenceTimeout();
-      if (!ratingSystem || ratingSystem === RatingSystemType.Stars) {
-        return handleStarRatingKeybinds();
-      } else {
-        return handleDecimalKeybinds();
-      }
-    });
-    return () => {
-      Mousetrap.unbind("r");
-    };
-  });
-}
-function useKeyboardRating(scene2, { enabled }) {
-  const { configuration: stashConfig } = reactExports.useContext(ConfigurationContext);
-  const setRating = useSetRating(scene2);
-  useRatingKeybinds(
-    enabled,
-    stashConfig?.ui?.ratingSystemOptions?.type,
-    // Stash's keybinds use NaN to mean "unset rating"
-    (rating2) => setRating(Number.isNaN(rating2) ? null : rating2)
-  );
-}
-const STASH_URL_SIGNING_PARAMS = ["cid", "expires", "signature"];
-function getSceneStreamsKey(sceneStreams) {
-  return objectHash(sceneStreams.map((stream) => ({
-    url: stripUrlSigningParams(stream.url),
-    mime_type: stream.mime_type,
-    label: stream.label
-  })));
-}
-function stripUrlSigningParams(rawUrl) {
-  let url2;
-  try {
-    url2 = new URL(rawUrl);
-  } catch {
-    return rawUrl;
-  }
-  for (const param of STASH_URL_SIGNING_PARAMS) {
-    url2.searchParams.delete(param);
-  }
-  return url2.toString();
-}
-function useGetterRef(getter, initialValue, dependencies) {
-  const valueSourceRef = reactExports.useRef(initialValue);
-  const getterRef = reactExports.useMemo(() => {
-    const getterRef2 = {
-      get current() {
-        return getter(valueSourceRef.current);
-      },
-      set current(newValue) {
-        valueSourceRef.current = newValue;
-      }
-    };
-    return getterRef2;
-  }, []);
-  reactExports.useEffect(() => {
-    Object.defineProperty(getterRef, "current", {
-      get: () => getter(valueSourceRef.current)
-    });
-  }, dependencies);
-  return getterRef;
-}
-const faPlayIcon = icon(faPlay);
-const styledBigPlayButton = function(options2) {
-  const player = this;
-  player.ready(() => {
-    const button = player.bigPlayButton?.el();
-    if (!button) return;
-    button.innerHTML = "";
-    button.insertAdjacentElement("beforeend", faPlayIcon.node[0]);
-  });
-};
-function useOverflowIndicators(stackElmRef) {
-  const [isOverflowingTop, setIsOverflowingTop] = reactExports.useState(false);
-  const [isOverflowingBottom, setIsOverflowingBottom] = reactExports.useState(false);
-  const stackScrollClasses = reactExports.useMemo(() => {
-    const classes = ["indicators-on-overflow"];
-    if (isOverflowingTop) classes.push("top-overflowing");
-    if (isOverflowingBottom) classes.push("bottom-overflowing");
-    return classes;
-  }, [isOverflowingTop, isOverflowingBottom]);
-  function handleStackScroll(event2) {
-    const target = event2.currentTarget;
-    if (!target || !(target instanceof HTMLElement)) return;
-    updateStackScrollClasses(target);
-  }
-  reactExports.useEffect(() => {
-    if (!stackElmRef.current) return;
-    updateStackScrollClasses(stackElmRef.current);
-    stackElmRef.current.addEventListener("scroll", handleStackScroll);
-    const observer = new ResizeObserver(() => {
-      if (!stackElmRef.current) return;
-      updateStackScrollClasses(stackElmRef.current);
-    });
-    observer.observe(stackElmRef.current);
-    return () => {
-      observer.disconnect();
-      stackElmRef.current?.removeEventListener("scroll", handleStackScroll);
-    };
-  }, [stackElmRef.current]);
-  function updateStackScrollClasses(element) {
-    const isScrollable = element.scrollHeight > element.offsetHeight;
-    const scrollPercent = Math.abs(element.scrollTop) / (element.scrollHeight - element.offsetHeight);
-    const isReversed = getComputedStyle(element).flexDirection?.includes("reverse");
-    const scrollPercentDirectionCorrected = isReversed ? 1 - scrollPercent : scrollPercent;
-    setIsOverflowingTop(isScrollable && scrollPercentDirectionCorrected > 0);
-    setIsOverflowingBottom(isScrollable && scrollPercentDirectionCorrected < 1);
-  }
-  return stackScrollClasses;
-}
 var propertyExpr;
 var hasRequiredPropertyExpr;
 function requirePropertyExpr() {
@@ -193176,6 +191126,2205 @@ class ArraySchema extends Schema {
   }
 }
 create$2.prototype = ArraySchema.prototype;
+const sourceSchema = create$3({
+  type: create$6().oneOf(["stash-saved-filter", "all"]).required(),
+  randomise: create$7().required(),
+  savedFilterId: create$6().when("type", {
+    is: "stash-saved-filter",
+    then: (schema2) => schema2.required("Choose a filter"),
+    otherwise: (schema2) => schema2.strip()
+  }),
+  entityType: create$6().when("type", {
+    is: "all",
+    then: (schema2) => schema2.oneOf(["scene", "marker"]).required(),
+    otherwise: (schema2) => schema2.strip()
+  })
+});
+const channelConfigSchema = create$3({
+  id: create$6().required(),
+  sources: create$2().of(sourceSchema).min(1, "Choose a filter").max(1).required()
+});
+function createNewChannelConfig() {
+  return {
+    id: generateConfigId(),
+    sources: []
+  };
+}
+function entityTypeToFilterMode(entityType) {
+  return entityType === "scene" ? FilterMode.Scenes : FilterMode.SceneMarkers;
+}
+function makeEmptySavedFilter(mode) {
+  return {
+    id: "",
+    mode,
+    name: "",
+    filter: ""
+  };
+}
+function getAllMediaSourceName(entityType) {
+  return entityType === "scene" ? "All scenes" : "All markers";
+}
+function getSourceTargetKey(source2) {
+  if (!source2) return "none";
+  if (source2.type === "stash-saved-filter") return `stash-saved-filter:${source2.savedFilterId}`;
+  if (source2.type === "all") return `all:${source2.entityType}`;
+  return "unknown";
+}
+function getChannelSourceInfo(source2, availableSavedFilters, availableSavedFiltersLoading) {
+  if (source2.type === "all") {
+    return { name: getAllMediaSourceName(source2.entityType), entityType: source2.entityType, missing: false, sortedRandomly: false };
+  }
+  if (source2.type === "stash-saved-filter") {
+    const savedFilter = availableSavedFilters.find((filter2) => filter2.id === source2.savedFilterId);
+    if (!savedFilter) {
+      return availableSavedFiltersLoading ? { name: "Loading…", missing: false, sortedRandomly: false } : { name: "Missing filter", missing: true, sortedRandomly: false };
+    }
+    return {
+      name: savedFilter.name,
+      entityType: savedFilter.entityType,
+      missing: false,
+      sortedRandomly: !!savedFilter.find_filter?.sort?.startsWith("random_")
+    };
+  }
+  return { name: "Unknown source", missing: true, sortedRandomly: false };
+}
+const savedFilterNamePrefixes = {
+  scene: "Scenes: ",
+  marker: "Markers: "
+};
+function getChannelName(channel, availableSavedFilters, availableSavedFiltersLoading) {
+  const source2 = channel.sources[0];
+  if (!source2) return { prefix: "", name: "Empty channel", sourceInfo: void 0 };
+  const sourceInfo = getChannelSourceInfo(source2, availableSavedFilters, availableSavedFiltersLoading);
+  const prefix2 = source2.type === "stash-saved-filter" && sourceInfo.entityType ? savedFilterNamePrefixes[sourceInfo.entityType] : "";
+  return { prefix: prefix2, name: sourceInfo.name, sourceInfo };
+}
+const useGlobalFilterState = create(() => ({
+  loadingResponsibilityClaimed: false,
+  activeChannelId: void 0,
+  currentSavedFilter: void 0,
+  loading: false,
+  error: void 0,
+  randomSeed: getRandomSeed()
+}));
+function getStartupChannel(channels, startupChannel, lastViewedChannelId) {
+  if (startupChannel === "last-viewed") {
+    const lastViewed = channels.find((channel) => channel.id === lastViewedChannelId);
+    if (lastViewed) return lastViewed;
+  }
+  return channels[0];
+}
+function useMediaItemFilters() {
+  const {
+    activeChannelId,
+    currentSavedFilter,
+    loading: mediaItemFiltersLoading,
+    error: mediaItemFiltersError,
+    randomSeed
+  } = useGlobalFilterState();
+  const apolloClient = useApolloClient();
+  const {
+    configuration: {
+      ui: {
+        defaultFilters: {
+          scenes: stashDefaultScenesFilter
+        } = {}
+      } = {}
+    } = {},
+    loading: stashConfigurationLoading
+  } = reactExports.useContext(ConfigurationContext);
+  const {
+    data: { findSavedFilters: availableSavedSceneFilters = [] } = {},
+    loading: loadingAvailableSavedSceneFilters
+  } = useFindSavedFilters(FilterMode.Scenes);
+  const {
+    data: { findSavedFilters: availableSavedMarkerFilters = [] } = {},
+    loading: loadingAvailableSavedMarkerFilters
+  } = useFindSavedFilters(FilterMode.SceneMarkers);
+  const loadingDataRequiredBeforeLoadingCurrentFilter = stashConfigurationLoading || loadingAvailableSavedSceneFilters || loadingAvailableSavedMarkerFilters;
+  const {
+    onlyShowMatchingOrientation,
+    channels,
+    startupChannel,
+    lastViewedChannelId,
+    set: setTvConfig
+  } = useTvConfig();
+  const { orientation: orientation2 } = useWindowSize();
+  const activeChannel = channels.find((channel) => channel.id === activeChannelId);
+  const activeSource = activeChannel?.sources[0];
+  const activeSourceTargetKey = getSourceTargetKey(activeSource);
+  const randomise = !!activeSource?.randomise;
+  let limitOrientation = void 0;
+  if (onlyShowMatchingOrientation && orientation2 !== "square") {
+    limitOrientation = orientation2;
+  }
+  const currentSearchableFilter = reactExports.useMemo(
+    () => currentSavedFilter ? convertSavedToSearchableFilter(currentSavedFilter, { randomise }) : void 0,
+    [currentSavedFilter, randomise, randomise && randomSeed, limitOrientation]
+  );
+  const lastLoadedCurrentMediaItemFilter = useConditionalMemo(
+    () => currentSearchableFilter,
+    [currentSearchableFilter],
+    !loadingDataRequiredBeforeLoadingCurrentFilter && !mediaItemFiltersLoading
+  );
+  const [isResponsibleForLoading, setIsResponsibleForLoading] = reactExports.useState(false);
+  reactExports.useEffect(() => {
+    if (useGlobalFilterState.getState().loadingResponsibilityClaimed) return;
+    useGlobalFilterState.setState({ loadingResponsibilityClaimed: true, loading: true });
+    setIsResponsibleForLoading(true);
+  }, []);
+  reactExports.useEffect(() => {
+    if (!isResponsibleForLoading) return;
+    if (activeChannelId === void 0) {
+      useGlobalFilterState.setState({
+        activeChannelId: getStartupChannel(channels, startupChannel, lastViewedChannelId)?.id ?? null
+      });
+    } else if (!activeChannel && (activeChannelId !== null || channels.length)) {
+      useGlobalFilterState.setState({ activeChannelId: channels[0]?.id ?? null });
+    }
+  }, [isResponsibleForLoading, activeChannelId, activeChannel, channels]);
+  reactExports.useEffect(() => {
+    if (!isResponsibleForLoading || loadingDataRequiredBeforeLoadingCurrentFilter) return;
+    if (activeChannelId === void 0 || activeChannelId !== null && !activeChannel) return;
+    let cancelled = false;
+    useGlobalFilterState.setState({ loading: true, error: void 0 });
+    async function loadActiveSource() {
+      if (!activeSource) {
+        if (stashDefaultScenesFilter) {
+          return {
+            ...stashDefaultScenesFilter,
+            filter: ""
+            // The filter prop is deprecated in favour of find_filter and object_filter, and it's not
+            // provided when getting a default saved filter so we can safely set an empty string here.
+          };
+        }
+        return makeEmptySavedFilter(FilterMode.Scenes);
+      }
+      if (activeSource.type === "all") {
+        return makeEmptySavedFilter(entityTypeToFilterMode(activeSource.entityType));
+      }
+      if (activeSource.type === "stash-saved-filter") {
+        const id2 = activeSource.savedFilterId;
+        const { name: name2, entityType } = availableSavedFilters.find((f) => f.id === id2) || {};
+        if (name2 && entityType) {
+          useGlobalFilterState.setState({
+            currentSavedFilter: {
+              id: id2,
+              mode: entityTypeToFilterMode(entityType),
+              name: name2,
+              filter: ""
+              // See the comment above about the `filter` prop
+            }
+          });
+        }
+        const savedFilter = await fetchSavedFilterFromStash(apolloClient, id2);
+        if (!savedFilter) {
+          throw new Error("The filter used by this channel no longer exists in Stash. Edit or delete the channel in settings.");
+        }
+        return {
+          ...savedFilter,
+          filter: ""
+          // See the comment above about the `filter` prop
+        };
+      }
+      throw new Error(`Unsupported channel source: ${JSON.stringify(activeSource)}`);
+    }
+    loadActiveSource().then((savedFilter) => {
+      if (cancelled) return;
+      useGlobalFilterState.setState({ randomSeed: getRandomSeed(), currentSavedFilter: savedFilter, loading: false });
+    }).catch((error) => {
+      if (cancelled) return;
+      useGlobalFilterState.setState({ error, currentSavedFilter: void 0, loading: false });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [isResponsibleForLoading, loadingDataRequiredBeforeLoadingCurrentFilter, activeChannelId, activeSourceTargetKey, stashDefaultScenesFilter]);
+  function setActiveChannel(channelId) {
+    useGlobalFilterState.setState({ activeChannelId: channelId });
+    setTvConfig("lastViewedChannelId", channelId);
+  }
+  async function fetchSavedFilterFromStash(apolloClient2, filterId) {
+    const { data: data2 } = await apolloClient2.query({
+      query: FindSavedFilterDocument,
+      variables: { id: filterId }
+    });
+    return data2?.findSavedFilter ?? null;
+  }
+  function convertSavedToSearchableFilter(savedFilter, { randomise: randomise2 }) {
+    function getGeneralFilter() {
+      const filter2 = new ListFilterModel(savedFilter.mode);
+      filter2.configureFromSavedFilter(savedFilter);
+      const updatedFilter = { ...filter2.makeFindFilter() };
+      if (updatedFilter.sort?.match(/^random_\d*$/) || randomise2) {
+        updatedFilter.sort = `random_${randomSeed}`;
+      }
+      return updatedFilter;
+    }
+    function addSceneFiltersMods(sceneFilter) {
+      if (limitOrientation) {
+        sceneFilter = sceneFilter || {};
+        sceneFilter.orientation = {
+          "value": [
+            limitOrientation.toUpperCase(),
+            "SQUARE"
+          ]
+        };
+      }
+      return sceneFilter;
+    }
+    function getSceneFilter() {
+      const filter2 = new ListFilterModel(savedFilter.mode);
+      filter2.configureFromSavedFilter(savedFilter);
+      return addSceneFiltersMods(
+        filter2.makeFilter()
+      );
+    }
+    function getMarkerFilter() {
+      const filter2 = new ListFilterModel(savedFilter.mode);
+      filter2.configureFromSavedFilter(savedFilter);
+      const markerFilter = filter2.makeFilter();
+      markerFilter.scene_filter = addSceneFiltersMods(markerFilter.scene_filter);
+      return markerFilter;
+    }
+    const sharedProps = {
+      savedFilter,
+      generalFilter: getGeneralFilter()
+    };
+    if (savedFilter.mode === FilterMode.Scenes) {
+      return {
+        ...sharedProps,
+        entityFilter: getSceneFilter(),
+        entityType: "scene"
+      };
+    } else if (savedFilter.mode === FilterMode.SceneMarkers) {
+      return {
+        ...sharedProps,
+        entityFilter: getMarkerFilter(),
+        entityType: "marker"
+      };
+    } else {
+      throw new Error(`Unsupported saved filter mode: ${savedFilter.mode}`);
+    }
+  }
+  const availableSavedFilters = reactExports.useMemo(
+    () => {
+      const savedFilters = [];
+      const savedFiltersByType = [
+        ["scene", availableSavedSceneFilters],
+        ["marker", availableSavedMarkerFilters]
+      ];
+      for (const [entityType, savedFiltersOfType] of savedFiltersByType) {
+        for (const savedFilter of savedFiltersOfType) {
+          savedFilters.push({
+            ...savedFilter,
+            entityType
+          });
+        }
+      }
+      return savedFilters;
+    },
+    [availableSavedSceneFilters, availableSavedMarkerFilters]
+  );
+  return {
+    mediaItemFiltersLoading: loadingDataRequiredBeforeLoadingCurrentFilter || mediaItemFiltersLoading,
+    /** Whether the saved filters available in Stash are still loading */
+    availableSavedFiltersLoading: loadingAvailableSavedSceneFilters || loadingAvailableSavedMarkerFilters,
+    mediaItemFiltersError,
+    currentMediaItemFilter: currentSearchableFilter,
+    lastLoadedCurrentMediaItemFilter,
+    activeChannel,
+    setActiveChannel,
+    availableSavedFilters
+  };
+}
+function getRandomSeed() {
+  return Math.round(Math.random() * 1e6);
+}
+var object_hash = { exports: {} };
+var hasRequiredObject_hash;
+function requireObject_hash() {
+  if (hasRequiredObject_hash) return object_hash.exports;
+  hasRequiredObject_hash = 1;
+  (function(module2, exports2) {
+    !(function(e2) {
+      module2.exports = e2();
+    })(function() {
+      return (function r3(o2, i3, u2) {
+        function s4(n, e3) {
+          if (!i3[n]) {
+            if (!o2[n]) {
+              var t4 = "function" == typeof commonjsRequire && commonjsRequire;
+              if (!e3 && t4) return t4(n, true);
+              if (a4) return a4(n, true);
+              throw new Error("Cannot find module '" + n + "'");
+            }
+            e3 = i3[n] = { exports: {} };
+            o2[n][0].call(e3.exports, function(e4) {
+              var t5 = o2[n][1][e4];
+              return s4(t5 || e4);
+            }, e3, e3.exports, r3, o2, i3, u2);
+          }
+          return i3[n].exports;
+        }
+        for (var a4 = "function" == typeof commonjsRequire && commonjsRequire, e2 = 0; e2 < u2.length; e2++) s4(u2[e2]);
+        return s4;
+      })({ 1: [function(w3, b3, m3) {
+        !(function(e2, n, s4, c3, d4, h3, p2, g2, y3) {
+          var r3 = w3("crypto");
+          function t4(e3, t5) {
+            t5 = u2(e3, t5);
+            var n2;
+            return void 0 === (n2 = "passthrough" !== t5.algorithm ? r3.createHash(t5.algorithm) : new l()).write && (n2.write = n2.update, n2.end = n2.update), f(t5, n2).dispatch(e3), n2.update || n2.end(""), n2.digest ? n2.digest("buffer" === t5.encoding ? void 0 : t5.encoding) : (e3 = n2.read(), "buffer" !== t5.encoding ? e3.toString(t5.encoding) : e3);
+          }
+          (m3 = b3.exports = t4).sha1 = function(e3) {
+            return t4(e3);
+          }, m3.keys = function(e3) {
+            return t4(e3, { excludeValues: true, algorithm: "sha1", encoding: "hex" });
+          }, m3.MD5 = function(e3) {
+            return t4(e3, { algorithm: "md5", encoding: "hex" });
+          }, m3.keysMD5 = function(e3) {
+            return t4(e3, { algorithm: "md5", encoding: "hex", excludeValues: true });
+          };
+          var o2 = r3.getHashes ? r3.getHashes().slice() : ["sha1", "md5"], i3 = (o2.push("passthrough"), ["buffer", "hex", "binary", "base64"]);
+          function u2(e3, t5) {
+            var n2 = {};
+            if (n2.algorithm = (t5 = t5 || {}).algorithm || "sha1", n2.encoding = t5.encoding || "hex", n2.excludeValues = !!t5.excludeValues, n2.algorithm = n2.algorithm.toLowerCase(), n2.encoding = n2.encoding.toLowerCase(), n2.ignoreUnknown = true === t5.ignoreUnknown, n2.respectType = false !== t5.respectType, n2.respectFunctionNames = false !== t5.respectFunctionNames, n2.respectFunctionProperties = false !== t5.respectFunctionProperties, n2.unorderedArrays = true === t5.unorderedArrays, n2.unorderedSets = false !== t5.unorderedSets, n2.unorderedObjects = false !== t5.unorderedObjects, n2.replacer = t5.replacer || void 0, n2.excludeKeys = t5.excludeKeys || void 0, void 0 === e3) throw new Error("Object argument required.");
+            for (var r4 = 0; r4 < o2.length; ++r4) o2[r4].toLowerCase() === n2.algorithm.toLowerCase() && (n2.algorithm = o2[r4]);
+            if (-1 === o2.indexOf(n2.algorithm)) throw new Error('Algorithm "' + n2.algorithm + '"  not supported. supported values: ' + o2.join(", "));
+            if (-1 === i3.indexOf(n2.encoding) && "passthrough" !== n2.algorithm) throw new Error('Encoding "' + n2.encoding + '"  not supported. supported values: ' + i3.join(", "));
+            return n2;
+          }
+          function a4(e3) {
+            if ("function" == typeof e3) return null != /^function\s+\w*\s*\(\s*\)\s*{\s+\[native code\]\s+}$/i.exec(Function.prototype.toString.call(e3));
+          }
+          function f(o3, t5, i4) {
+            i4 = i4 || [];
+            function u3(e3) {
+              return t5.update ? t5.update(e3, "utf8") : t5.write(e3, "utf8");
+            }
+            return { dispatch: function(e3) {
+              return this["_" + (null === (e3 = o3.replacer ? o3.replacer(e3) : e3) ? "null" : typeof e3)](e3);
+            }, _object: function(t6) {
+              var n2, e3 = Object.prototype.toString.call(t6), r4 = /\[object (.*)\]/i.exec(e3);
+              r4 = (r4 = r4 ? r4[1] : "unknown:[" + e3 + "]").toLowerCase();
+              if (0 <= (e3 = i4.indexOf(t6))) return this.dispatch("[CIRCULAR:" + e3 + "]");
+              if (i4.push(t6), void 0 !== s4 && s4.isBuffer && s4.isBuffer(t6)) return u3("buffer:"), u3(t6);
+              if ("object" === r4 || "function" === r4 || "asyncfunction" === r4) return e3 = Object.keys(t6), o3.unorderedObjects && (e3 = e3.sort()), false === o3.respectType || a4(t6) || e3.splice(0, 0, "prototype", "__proto__", "constructor"), o3.excludeKeys && (e3 = e3.filter(function(e4) {
+                return !o3.excludeKeys(e4);
+              })), u3("object:" + e3.length + ":"), n2 = this, e3.forEach(function(e4) {
+                n2.dispatch(e4), u3(":"), o3.excludeValues || n2.dispatch(t6[e4]), u3(",");
+              });
+              if (!this["_" + r4]) {
+                if (o3.ignoreUnknown) return u3("[" + r4 + "]");
+                throw new Error('Unknown object type "' + r4 + '"');
+              }
+              this["_" + r4](t6);
+            }, _array: function(e3, t6) {
+              t6 = void 0 !== t6 ? t6 : false !== o3.unorderedArrays;
+              var n2 = this;
+              if (u3("array:" + e3.length + ":"), !t6 || e3.length <= 1) return e3.forEach(function(e4) {
+                return n2.dispatch(e4);
+              });
+              var r4 = [], t6 = e3.map(function(e4) {
+                var t7 = new l(), n3 = i4.slice();
+                return f(o3, t7, n3).dispatch(e4), r4 = r4.concat(n3.slice(i4.length)), t7.read().toString();
+              });
+              return i4 = i4.concat(r4), t6.sort(), this._array(t6, false);
+            }, _date: function(e3) {
+              return u3("date:" + e3.toJSON());
+            }, _symbol: function(e3) {
+              return u3("symbol:" + e3.toString());
+            }, _error: function(e3) {
+              return u3("error:" + e3.toString());
+            }, _boolean: function(e3) {
+              return u3("bool:" + e3.toString());
+            }, _string: function(e3) {
+              u3("string:" + e3.length + ":"), u3(e3.toString());
+            }, _function: function(e3) {
+              u3("fn:"), a4(e3) ? this.dispatch("[native]") : this.dispatch(e3.toString()), false !== o3.respectFunctionNames && this.dispatch("function-name:" + String(e3.name)), o3.respectFunctionProperties && this._object(e3);
+            }, _number: function(e3) {
+              return u3("number:" + e3.toString());
+            }, _xml: function(e3) {
+              return u3("xml:" + e3.toString());
+            }, _null: function() {
+              return u3("Null");
+            }, _undefined: function() {
+              return u3("Undefined");
+            }, _regexp: function(e3) {
+              return u3("regex:" + e3.toString());
+            }, _uint8array: function(e3) {
+              return u3("uint8array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _uint8clampedarray: function(e3) {
+              return u3("uint8clampedarray:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _int8array: function(e3) {
+              return u3("int8array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _uint16array: function(e3) {
+              return u3("uint16array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _int16array: function(e3) {
+              return u3("int16array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _uint32array: function(e3) {
+              return u3("uint32array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _int32array: function(e3) {
+              return u3("int32array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _float32array: function(e3) {
+              return u3("float32array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _float64array: function(e3) {
+              return u3("float64array:"), this.dispatch(Array.prototype.slice.call(e3));
+            }, _arraybuffer: function(e3) {
+              return u3("arraybuffer:"), this.dispatch(new Uint8Array(e3));
+            }, _url: function(e3) {
+              return u3("url:" + e3.toString());
+            }, _map: function(e3) {
+              u3("map:");
+              e3 = Array.from(e3);
+              return this._array(e3, false !== o3.unorderedSets);
+            }, _set: function(e3) {
+              u3("set:");
+              e3 = Array.from(e3);
+              return this._array(e3, false !== o3.unorderedSets);
+            }, _file: function(e3) {
+              return u3("file:"), this.dispatch([e3.name, e3.size, e3.type, e3.lastModfied]);
+            }, _blob: function() {
+              if (o3.ignoreUnknown) return u3("[blob]");
+              throw Error('Hashing Blob objects is currently not supported\n(see https://github.com/puleos/object-hash/issues/26)\nUse "options.replacer" or "options.ignoreUnknown"\n');
+            }, _domwindow: function() {
+              return u3("domwindow");
+            }, _bigint: function(e3) {
+              return u3("bigint:" + e3.toString());
+            }, _process: function() {
+              return u3("process");
+            }, _timer: function() {
+              return u3("timer");
+            }, _pipe: function() {
+              return u3("pipe");
+            }, _tcp: function() {
+              return u3("tcp");
+            }, _udp: function() {
+              return u3("udp");
+            }, _tty: function() {
+              return u3("tty");
+            }, _statwatcher: function() {
+              return u3("statwatcher");
+            }, _securecontext: function() {
+              return u3("securecontext");
+            }, _connection: function() {
+              return u3("connection");
+            }, _zlib: function() {
+              return u3("zlib");
+            }, _context: function() {
+              return u3("context");
+            }, _nodescript: function() {
+              return u3("nodescript");
+            }, _httpparser: function() {
+              return u3("httpparser");
+            }, _dataview: function() {
+              return u3("dataview");
+            }, _signal: function() {
+              return u3("signal");
+            }, _fsevent: function() {
+              return u3("fsevent");
+            }, _tlswrap: function() {
+              return u3("tlswrap");
+            } };
+          }
+          function l() {
+            return { buf: "", write: function(e3) {
+              this.buf += e3;
+            }, end: function(e3) {
+              this.buf += e3;
+            }, read: function() {
+              return this.buf;
+            } };
+          }
+          m3.writeToStream = function(e3, t5, n2) {
+            return void 0 === n2 && (n2 = t5, t5 = {}), f(t5 = u2(e3, t5), n2).dispatch(e3);
+          };
+        }).call(this, w3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, w3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_9a5aa49d.js", "/");
+      }, { buffer: 3, crypto: 5, lYpoI2: 11 }], 2: [function(e2, t4, f) {
+        !(function(e3, t5, n, r3, o2, i3, u2, s4, a4) {
+          !(function(e4) {
+            var a5 = "undefined" != typeof Uint8Array ? Uint8Array : Array, t6 = "+".charCodeAt(0), n2 = "/".charCodeAt(0), r4 = "0".charCodeAt(0), o3 = "a".charCodeAt(0), i4 = "A".charCodeAt(0), u3 = "-".charCodeAt(0), s5 = "_".charCodeAt(0);
+            function f2(e5) {
+              e5 = e5.charCodeAt(0);
+              return e5 === t6 || e5 === u3 ? 62 : e5 === n2 || e5 === s5 ? 63 : e5 < r4 ? -1 : e5 < r4 + 10 ? e5 - r4 + 26 + 26 : e5 < i4 + 26 ? e5 - i4 : e5 < o3 + 26 ? e5 - o3 + 26 : void 0;
+            }
+            e4.toByteArray = function(e5) {
+              var t7, n3;
+              if (0 < e5.length % 4) throw new Error("Invalid string. Length must be a multiple of 4");
+              var r5 = e5.length, r5 = "=" === e5.charAt(r5 - 2) ? 2 : "=" === e5.charAt(r5 - 1) ? 1 : 0, o4 = new a5(3 * e5.length / 4 - r5), i5 = 0 < r5 ? e5.length - 4 : e5.length, u4 = 0;
+              function s6(e6) {
+                o4[u4++] = e6;
+              }
+              for (t7 = 0; t7 < i5; t7 += 4, 0) s6((16711680 & (n3 = f2(e5.charAt(t7)) << 18 | f2(e5.charAt(t7 + 1)) << 12 | f2(e5.charAt(t7 + 2)) << 6 | f2(e5.charAt(t7 + 3)))) >> 16), s6((65280 & n3) >> 8), s6(255 & n3);
+              return 2 == r5 ? s6(255 & (n3 = f2(e5.charAt(t7)) << 2 | f2(e5.charAt(t7 + 1)) >> 4)) : 1 == r5 && (s6((n3 = f2(e5.charAt(t7)) << 10 | f2(e5.charAt(t7 + 1)) << 4 | f2(e5.charAt(t7 + 2)) >> 2) >> 8 & 255), s6(255 & n3)), o4;
+            }, e4.fromByteArray = function(e5) {
+              var t7, n3, r5, o4, i5 = e5.length % 3, u4 = "";
+              function s6(e6) {
+                return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(e6);
+              }
+              for (t7 = 0, r5 = e5.length - i5; t7 < r5; t7 += 3) n3 = (e5[t7] << 16) + (e5[t7 + 1] << 8) + e5[t7 + 2], u4 += s6((o4 = n3) >> 18 & 63) + s6(o4 >> 12 & 63) + s6(o4 >> 6 & 63) + s6(63 & o4);
+              switch (i5) {
+                case 1:
+                  u4 = (u4 += s6((n3 = e5[e5.length - 1]) >> 2)) + s6(n3 << 4 & 63) + "==";
+                  break;
+                case 2:
+                  u4 = (u4 = (u4 += s6((n3 = (e5[e5.length - 2] << 8) + e5[e5.length - 1]) >> 10)) + s6(n3 >> 4 & 63)) + s6(n3 << 2 & 63) + "=";
+              }
+              return u4;
+            };
+          })(void 0 === f ? this.base64js = {} : f);
+        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/base64-js/lib/b64.js", "/node_modules/gulp-browserify/node_modules/base64-js/lib");
+      }, { buffer: 3, lYpoI2: 11 }], 3: [function(O2, e2, H3) {
+        !(function(e3, n, f, r3, h3, p2, g2, y3, w3) {
+          var a4 = O2("base64-js"), i3 = O2("ieee754");
+          function f(e4, t5, n2) {
+            if (!(this instanceof f)) return new f(e4, t5, n2);
+            var r4, o3, i4, u3, s5 = typeof e4;
+            if ("base64" === t5 && "string" == s5) for (e4 = (u3 = e4).trim ? u3.trim() : u3.replace(/^\s+|\s+$/g, ""); e4.length % 4 != 0; ) e4 += "=";
+            if ("number" == s5) r4 = j2(e4);
+            else if ("string" == s5) r4 = f.byteLength(e4, t5);
+            else {
+              if ("object" != s5) throw new Error("First argument needs to be a number, array or string.");
+              r4 = j2(e4.length);
+            }
+            if (f._useTypedArrays ? o3 = f._augment(new Uint8Array(r4)) : ((o3 = this).length = r4, o3._isBuffer = true), f._useTypedArrays && "number" == typeof e4.byteLength) o3._set(e4);
+            else if (C(u3 = e4) || f.isBuffer(u3) || u3 && "object" == typeof u3 && "number" == typeof u3.length) for (i4 = 0; i4 < r4; i4++) f.isBuffer(e4) ? o3[i4] = e4.readUInt8(i4) : o3[i4] = e4[i4];
+            else if ("string" == s5) o3.write(e4, 0, t5);
+            else if ("number" == s5 && !f._useTypedArrays && !n2) for (i4 = 0; i4 < r4; i4++) o3[i4] = 0;
+            return o3;
+          }
+          function b3(e4, t5, n2, r4) {
+            return f._charsWritten = c3((function(e5) {
+              for (var t6 = [], n3 = 0; n3 < e5.length; n3++) t6.push(255 & e5.charCodeAt(n3));
+              return t6;
+            })(t5), e4, n2, r4);
+          }
+          function m3(e4, t5, n2, r4) {
+            return f._charsWritten = c3((function(e5) {
+              for (var t6, n3, r5 = [], o3 = 0; o3 < e5.length; o3++) n3 = e5.charCodeAt(o3), t6 = n3 >> 8, n3 = n3 % 256, r5.push(n3), r5.push(t6);
+              return r5;
+            })(t5), e4, n2, r4);
+          }
+          function v(e4, t5, n2) {
+            var r4 = "";
+            n2 = Math.min(e4.length, n2);
+            for (var o3 = t5; o3 < n2; o3++) r4 += String.fromCharCode(e4[o3]);
+            return r4;
+          }
+          function o2(e4, t5, n2, r4) {
+            r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 1 < e4.length, "Trying to read beyond buffer length"));
+            var o3, r4 = e4.length;
+            if (!(r4 <= t5)) return n2 ? (o3 = e4[t5], t5 + 1 < r4 && (o3 |= e4[t5 + 1] << 8)) : (o3 = e4[t5] << 8, t5 + 1 < r4 && (o3 |= e4[t5 + 1])), o3;
+          }
+          function u2(e4, t5, n2, r4) {
+            r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 3 < e4.length, "Trying to read beyond buffer length"));
+            var o3, r4 = e4.length;
+            if (!(r4 <= t5)) return n2 ? (t5 + 2 < r4 && (o3 = e4[t5 + 2] << 16), t5 + 1 < r4 && (o3 |= e4[t5 + 1] << 8), o3 |= e4[t5], t5 + 3 < r4 && (o3 += e4[t5 + 3] << 24 >>> 0)) : (t5 + 1 < r4 && (o3 = e4[t5 + 1] << 16), t5 + 2 < r4 && (o3 |= e4[t5 + 2] << 8), t5 + 3 < r4 && (o3 |= e4[t5 + 3]), o3 += e4[t5] << 24 >>> 0), o3;
+          }
+          function _(e4, t5, n2, r4) {
+            if (r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 1 < e4.length, "Trying to read beyond buffer length")), !(e4.length <= t5)) return r4 = o2(e4, t5, n2, true), 32768 & r4 ? -1 * (65535 - r4 + 1) : r4;
+          }
+          function E2(e4, t5, n2, r4) {
+            if (r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(null != t5, "missing offset"), d4(t5 + 3 < e4.length, "Trying to read beyond buffer length")), !(e4.length <= t5)) return r4 = u2(e4, t5, n2, true), 2147483648 & r4 ? -1 * (4294967295 - r4 + 1) : r4;
+          }
+          function I2(e4, t5, n2, r4) {
+            return r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(t5 + 3 < e4.length, "Trying to read beyond buffer length")), i3.read(e4, t5, n2, 23, 4);
+          }
+          function A2(e4, t5, n2, r4) {
+            return r4 || (d4("boolean" == typeof n2, "missing or invalid endian"), d4(t5 + 7 < e4.length, "Trying to read beyond buffer length")), i3.read(e4, t5, n2, 52, 8);
+          }
+          function s4(e4, t5, n2, r4, o3) {
+            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 1 < e4.length, "trying to write beyond buffer length"), Y2(t5, 65535));
+            o3 = e4.length;
+            if (!(o3 <= n2)) for (var i4 = 0, u3 = Math.min(o3 - n2, 2); i4 < u3; i4++) e4[n2 + i4] = (t5 & 255 << 8 * (r4 ? i4 : 1 - i4)) >>> 8 * (r4 ? i4 : 1 - i4);
+          }
+          function l(e4, t5, n2, r4, o3) {
+            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 3 < e4.length, "trying to write beyond buffer length"), Y2(t5, 4294967295));
+            o3 = e4.length;
+            if (!(o3 <= n2)) for (var i4 = 0, u3 = Math.min(o3 - n2, 4); i4 < u3; i4++) e4[n2 + i4] = t5 >>> 8 * (r4 ? i4 : 3 - i4) & 255;
+          }
+          function B2(e4, t5, n2, r4, o3) {
+            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 1 < e4.length, "Trying to write beyond buffer length"), F(t5, 32767, -32768)), e4.length <= n2 || s4(e4, 0 <= t5 ? t5 : 65535 + t5 + 1, n2, r4, o3);
+          }
+          function L3(e4, t5, n2, r4, o3) {
+            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 3 < e4.length, "Trying to write beyond buffer length"), F(t5, 2147483647, -2147483648)), e4.length <= n2 || l(e4, 0 <= t5 ? t5 : 4294967295 + t5 + 1, n2, r4, o3);
+          }
+          function U(e4, t5, n2, r4, o3) {
+            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 3 < e4.length, "Trying to write beyond buffer length"), D2(t5, 34028234663852886e22, -34028234663852886e22)), e4.length <= n2 || i3.write(e4, t5, n2, r4, 23, 4);
+          }
+          function x3(e4, t5, n2, r4, o3) {
+            o3 || (d4(null != t5, "missing value"), d4("boolean" == typeof r4, "missing or invalid endian"), d4(null != n2, "missing offset"), d4(n2 + 7 < e4.length, "Trying to write beyond buffer length"), D2(t5, 17976931348623157e292, -17976931348623157e292)), e4.length <= n2 || i3.write(e4, t5, n2, r4, 52, 8);
+          }
+          H3.Buffer = f, H3.SlowBuffer = f, H3.INSPECT_MAX_BYTES = 50, f.poolSize = 8192, f._useTypedArrays = (function() {
+            try {
+              var e4 = new ArrayBuffer(0), t5 = new Uint8Array(e4);
+              return t5.foo = function() {
+                return 42;
+              }, 42 === t5.foo() && "function" == typeof t5.subarray;
+            } catch (e5) {
+              return false;
+            }
+          })(), f.isEncoding = function(e4) {
+            switch (String(e4).toLowerCase()) {
+              case "hex":
+              case "utf8":
+              case "utf-8":
+              case "ascii":
+              case "binary":
+              case "base64":
+              case "raw":
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                return true;
+              default:
+                return false;
+            }
+          }, f.isBuffer = function(e4) {
+            return !(null == e4 || !e4._isBuffer);
+          }, f.byteLength = function(e4, t5) {
+            var n2;
+            switch (e4 += "", t5 || "utf8") {
+              case "hex":
+                n2 = e4.length / 2;
+                break;
+              case "utf8":
+              case "utf-8":
+                n2 = T2(e4).length;
+                break;
+              case "ascii":
+              case "binary":
+              case "raw":
+                n2 = e4.length;
+                break;
+              case "base64":
+                n2 = M3(e4).length;
+                break;
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                n2 = 2 * e4.length;
+                break;
+              default:
+                throw new Error("Unknown encoding");
+            }
+            return n2;
+          }, f.concat = function(e4, t5) {
+            if (d4(C(e4), "Usage: Buffer.concat(list, [totalLength])\nlist should be an Array."), 0 === e4.length) return new f(0);
+            if (1 === e4.length) return e4[0];
+            if ("number" != typeof t5) for (o3 = t5 = 0; o3 < e4.length; o3++) t5 += e4[o3].length;
+            for (var n2 = new f(t5), r4 = 0, o3 = 0; o3 < e4.length; o3++) {
+              var i4 = e4[o3];
+              i4.copy(n2, r4), r4 += i4.length;
+            }
+            return n2;
+          }, f.prototype.write = function(e4, t5, n2, r4) {
+            isFinite(t5) ? isFinite(n2) || (r4 = n2, n2 = void 0) : (a5 = r4, r4 = t5, t5 = n2, n2 = a5), t5 = Number(t5) || 0;
+            var o3, i4, u3, s5, a5 = this.length - t5;
+            switch ((!n2 || a5 < (n2 = Number(n2))) && (n2 = a5), r4 = String(r4 || "utf8").toLowerCase()) {
+              case "hex":
+                o3 = (function(e5, t6, n3, r5) {
+                  n3 = Number(n3) || 0;
+                  var o4 = e5.length - n3;
+                  (!r5 || o4 < (r5 = Number(r5))) && (r5 = o4), d4((o4 = t6.length) % 2 == 0, "Invalid hex string"), o4 / 2 < r5 && (r5 = o4 / 2);
+                  for (var i5 = 0; i5 < r5; i5++) {
+                    var u4 = parseInt(t6.substr(2 * i5, 2), 16);
+                    d4(!isNaN(u4), "Invalid hex string"), e5[n3 + i5] = u4;
+                  }
+                  return f._charsWritten = 2 * i5, i5;
+                })(this, e4, t5, n2);
+                break;
+              case "utf8":
+              case "utf-8":
+                i4 = this, u3 = t5, s5 = n2, o3 = f._charsWritten = c3(T2(e4), i4, u3, s5);
+                break;
+              case "ascii":
+              case "binary":
+                o3 = b3(this, e4, t5, n2);
+                break;
+              case "base64":
+                i4 = this, u3 = t5, s5 = n2, o3 = f._charsWritten = c3(M3(e4), i4, u3, s5);
+                break;
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                o3 = m3(this, e4, t5, n2);
+                break;
+              default:
+                throw new Error("Unknown encoding");
+            }
+            return o3;
+          }, f.prototype.toString = function(e4, t5, n2) {
+            var r4, o3, i4, u3, s5 = this;
+            if (e4 = String(e4 || "utf8").toLowerCase(), t5 = Number(t5) || 0, (n2 = void 0 !== n2 ? Number(n2) : s5.length) === t5) return "";
+            switch (e4) {
+              case "hex":
+                r4 = (function(e5, t6, n3) {
+                  var r5 = e5.length;
+                  (!t6 || t6 < 0) && (t6 = 0);
+                  (!n3 || n3 < 0 || r5 < n3) && (n3 = r5);
+                  for (var o4 = "", i5 = t6; i5 < n3; i5++) o4 += k2(e5[i5]);
+                  return o4;
+                })(s5, t5, n2);
+                break;
+              case "utf8":
+              case "utf-8":
+                r4 = (function(e5, t6, n3) {
+                  var r5 = "", o4 = "";
+                  n3 = Math.min(e5.length, n3);
+                  for (var i5 = t6; i5 < n3; i5++) e5[i5] <= 127 ? (r5 += N(o4) + String.fromCharCode(e5[i5]), o4 = "") : o4 += "%" + e5[i5].toString(16);
+                  return r5 + N(o4);
+                })(s5, t5, n2);
+                break;
+              case "ascii":
+              case "binary":
+                r4 = v(s5, t5, n2);
+                break;
+              case "base64":
+                o3 = s5, u3 = n2, r4 = 0 === (i4 = t5) && u3 === o3.length ? a4.fromByteArray(o3) : a4.fromByteArray(o3.slice(i4, u3));
+                break;
+              case "ucs2":
+              case "ucs-2":
+              case "utf16le":
+              case "utf-16le":
+                r4 = (function(e5, t6, n3) {
+                  for (var r5 = e5.slice(t6, n3), o4 = "", i5 = 0; i5 < r5.length; i5 += 2) o4 += String.fromCharCode(r5[i5] + 256 * r5[i5 + 1]);
+                  return o4;
+                })(s5, t5, n2);
+                break;
+              default:
+                throw new Error("Unknown encoding");
+            }
+            return r4;
+          }, f.prototype.toJSON = function() {
+            return { type: "Buffer", data: Array.prototype.slice.call(this._arr || this, 0) };
+          }, f.prototype.copy = function(e4, t5, n2, r4) {
+            if (t5 = t5 || 0, (r4 = r4 || 0 === r4 ? r4 : this.length) !== (n2 = n2 || 0) && 0 !== e4.length && 0 !== this.length) {
+              d4(n2 <= r4, "sourceEnd < sourceStart"), d4(0 <= t5 && t5 < e4.length, "targetStart out of bounds"), d4(0 <= n2 && n2 < this.length, "sourceStart out of bounds"), d4(0 <= r4 && r4 <= this.length, "sourceEnd out of bounds"), r4 > this.length && (r4 = this.length);
+              var o3 = (r4 = e4.length - t5 < r4 - n2 ? e4.length - t5 + n2 : r4) - n2;
+              if (o3 < 100 || !f._useTypedArrays) for (var i4 = 0; i4 < o3; i4++) e4[i4 + t5] = this[i4 + n2];
+              else e4._set(this.subarray(n2, n2 + o3), t5);
+            }
+          }, f.prototype.slice = function(e4, t5) {
+            var n2 = this.length;
+            if (e4 = S4(e4, n2, 0), t5 = S4(t5, n2, n2), f._useTypedArrays) return f._augment(this.subarray(e4, t5));
+            for (var r4 = t5 - e4, o3 = new f(r4, void 0, true), i4 = 0; i4 < r4; i4++) o3[i4] = this[i4 + e4];
+            return o3;
+          }, f.prototype.get = function(e4) {
+            return console.log(".get() is deprecated. Access using array indexes instead."), this.readUInt8(e4);
+          }, f.prototype.set = function(e4, t5) {
+            return console.log(".set() is deprecated. Access using array indexes instead."), this.writeUInt8(e4, t5);
+          }, f.prototype.readUInt8 = function(e4, t5) {
+            if (t5 || (d4(null != e4, "missing offset"), d4(e4 < this.length, "Trying to read beyond buffer length")), !(e4 >= this.length)) return this[e4];
+          }, f.prototype.readUInt16LE = function(e4, t5) {
+            return o2(this, e4, true, t5);
+          }, f.prototype.readUInt16BE = function(e4, t5) {
+            return o2(this, e4, false, t5);
+          }, f.prototype.readUInt32LE = function(e4, t5) {
+            return u2(this, e4, true, t5);
+          }, f.prototype.readUInt32BE = function(e4, t5) {
+            return u2(this, e4, false, t5);
+          }, f.prototype.readInt8 = function(e4, t5) {
+            if (t5 || (d4(null != e4, "missing offset"), d4(e4 < this.length, "Trying to read beyond buffer length")), !(e4 >= this.length)) return 128 & this[e4] ? -1 * (255 - this[e4] + 1) : this[e4];
+          }, f.prototype.readInt16LE = function(e4, t5) {
+            return _(this, e4, true, t5);
+          }, f.prototype.readInt16BE = function(e4, t5) {
+            return _(this, e4, false, t5);
+          }, f.prototype.readInt32LE = function(e4, t5) {
+            return E2(this, e4, true, t5);
+          }, f.prototype.readInt32BE = function(e4, t5) {
+            return E2(this, e4, false, t5);
+          }, f.prototype.readFloatLE = function(e4, t5) {
+            return I2(this, e4, true, t5);
+          }, f.prototype.readFloatBE = function(e4, t5) {
+            return I2(this, e4, false, t5);
+          }, f.prototype.readDoubleLE = function(e4, t5) {
+            return A2(this, e4, true, t5);
+          }, f.prototype.readDoubleBE = function(e4, t5) {
+            return A2(this, e4, false, t5);
+          }, f.prototype.writeUInt8 = function(e4, t5, n2) {
+            n2 || (d4(null != e4, "missing value"), d4(null != t5, "missing offset"), d4(t5 < this.length, "trying to write beyond buffer length"), Y2(e4, 255)), t5 >= this.length || (this[t5] = e4);
+          }, f.prototype.writeUInt16LE = function(e4, t5, n2) {
+            s4(this, e4, t5, true, n2);
+          }, f.prototype.writeUInt16BE = function(e4, t5, n2) {
+            s4(this, e4, t5, false, n2);
+          }, f.prototype.writeUInt32LE = function(e4, t5, n2) {
+            l(this, e4, t5, true, n2);
+          }, f.prototype.writeUInt32BE = function(e4, t5, n2) {
+            l(this, e4, t5, false, n2);
+          }, f.prototype.writeInt8 = function(e4, t5, n2) {
+            n2 || (d4(null != e4, "missing value"), d4(null != t5, "missing offset"), d4(t5 < this.length, "Trying to write beyond buffer length"), F(e4, 127, -128)), t5 >= this.length || (0 <= e4 ? this.writeUInt8(e4, t5, n2) : this.writeUInt8(255 + e4 + 1, t5, n2));
+          }, f.prototype.writeInt16LE = function(e4, t5, n2) {
+            B2(this, e4, t5, true, n2);
+          }, f.prototype.writeInt16BE = function(e4, t5, n2) {
+            B2(this, e4, t5, false, n2);
+          }, f.prototype.writeInt32LE = function(e4, t5, n2) {
+            L3(this, e4, t5, true, n2);
+          }, f.prototype.writeInt32BE = function(e4, t5, n2) {
+            L3(this, e4, t5, false, n2);
+          }, f.prototype.writeFloatLE = function(e4, t5, n2) {
+            U(this, e4, t5, true, n2);
+          }, f.prototype.writeFloatBE = function(e4, t5, n2) {
+            U(this, e4, t5, false, n2);
+          }, f.prototype.writeDoubleLE = function(e4, t5, n2) {
+            x3(this, e4, t5, true, n2);
+          }, f.prototype.writeDoubleBE = function(e4, t5, n2) {
+            x3(this, e4, t5, false, n2);
+          }, f.prototype.fill = function(e4, t5, n2) {
+            if (t5 = t5 || 0, n2 = n2 || this.length, d4("number" == typeof (e4 = "string" == typeof (e4 = e4 || 0) ? e4.charCodeAt(0) : e4) && !isNaN(e4), "value is not a number"), d4(t5 <= n2, "end < start"), n2 !== t5 && 0 !== this.length) {
+              d4(0 <= t5 && t5 < this.length, "start out of bounds"), d4(0 <= n2 && n2 <= this.length, "end out of bounds");
+              for (var r4 = t5; r4 < n2; r4++) this[r4] = e4;
+            }
+          }, f.prototype.inspect = function() {
+            for (var e4 = [], t5 = this.length, n2 = 0; n2 < t5; n2++) if (e4[n2] = k2(this[n2]), n2 === H3.INSPECT_MAX_BYTES) {
+              e4[n2 + 1] = "...";
+              break;
+            }
+            return "<Buffer " + e4.join(" ") + ">";
+          }, f.prototype.toArrayBuffer = function() {
+            if ("undefined" == typeof Uint8Array) throw new Error("Buffer.toArrayBuffer not supported in this browser");
+            if (f._useTypedArrays) return new f(this).buffer;
+            for (var e4 = new Uint8Array(this.length), t5 = 0, n2 = e4.length; t5 < n2; t5 += 1) e4[t5] = this[t5];
+            return e4.buffer;
+          };
+          var t4 = f.prototype;
+          function S4(e4, t5, n2) {
+            return "number" != typeof e4 ? n2 : t5 <= (e4 = ~~e4) ? t5 : 0 <= e4 || 0 <= (e4 += t5) ? e4 : 0;
+          }
+          function j2(e4) {
+            return (e4 = ~~Math.ceil(+e4)) < 0 ? 0 : e4;
+          }
+          function C(e4) {
+            return (Array.isArray || function(e5) {
+              return "[object Array]" === Object.prototype.toString.call(e5);
+            })(e4);
+          }
+          function k2(e4) {
+            return e4 < 16 ? "0" + e4.toString(16) : e4.toString(16);
+          }
+          function T2(e4) {
+            for (var t5 = [], n2 = 0; n2 < e4.length; n2++) {
+              var r4 = e4.charCodeAt(n2);
+              if (r4 <= 127) t5.push(e4.charCodeAt(n2));
+              else for (var o3 = n2, i4 = (55296 <= r4 && r4 <= 57343 && n2++, encodeURIComponent(e4.slice(o3, n2 + 1)).substr(1).split("%")), u3 = 0; u3 < i4.length; u3++) t5.push(parseInt(i4[u3], 16));
+            }
+            return t5;
+          }
+          function M3(e4) {
+            return a4.toByteArray(e4);
+          }
+          function c3(e4, t5, n2, r4) {
+            for (var o3 = 0; o3 < r4 && !(o3 + n2 >= t5.length || o3 >= e4.length); o3++) t5[o3 + n2] = e4[o3];
+            return o3;
+          }
+          function N(e4) {
+            try {
+              return decodeURIComponent(e4);
+            } catch (e5) {
+              return String.fromCharCode(65533);
+            }
+          }
+          function Y2(e4, t5) {
+            d4("number" == typeof e4, "cannot write a non-number as a number"), d4(0 <= e4, "specified a negative value for writing an unsigned value"), d4(e4 <= t5, "value is larger than maximum value for type"), d4(Math.floor(e4) === e4, "value has a fractional component");
+          }
+          function F(e4, t5, n2) {
+            d4("number" == typeof e4, "cannot write a non-number as a number"), d4(e4 <= t5, "value larger than maximum allowed value"), d4(n2 <= e4, "value smaller than minimum allowed value"), d4(Math.floor(e4) === e4, "value has a fractional component");
+          }
+          function D2(e4, t5, n2) {
+            d4("number" == typeof e4, "cannot write a non-number as a number"), d4(e4 <= t5, "value larger than maximum allowed value"), d4(n2 <= e4, "value smaller than minimum allowed value");
+          }
+          function d4(e4, t5) {
+            if (!e4) throw new Error(t5 || "Failed assertion");
+          }
+          f._augment = function(e4) {
+            return e4._isBuffer = true, e4._get = e4.get, e4._set = e4.set, e4.get = t4.get, e4.set = t4.set, e4.write = t4.write, e4.toString = t4.toString, e4.toLocaleString = t4.toString, e4.toJSON = t4.toJSON, e4.copy = t4.copy, e4.slice = t4.slice, e4.readUInt8 = t4.readUInt8, e4.readUInt16LE = t4.readUInt16LE, e4.readUInt16BE = t4.readUInt16BE, e4.readUInt32LE = t4.readUInt32LE, e4.readUInt32BE = t4.readUInt32BE, e4.readInt8 = t4.readInt8, e4.readInt16LE = t4.readInt16LE, e4.readInt16BE = t4.readInt16BE, e4.readInt32LE = t4.readInt32LE, e4.readInt32BE = t4.readInt32BE, e4.readFloatLE = t4.readFloatLE, e4.readFloatBE = t4.readFloatBE, e4.readDoubleLE = t4.readDoubleLE, e4.readDoubleBE = t4.readDoubleBE, e4.writeUInt8 = t4.writeUInt8, e4.writeUInt16LE = t4.writeUInt16LE, e4.writeUInt16BE = t4.writeUInt16BE, e4.writeUInt32LE = t4.writeUInt32LE, e4.writeUInt32BE = t4.writeUInt32BE, e4.writeInt8 = t4.writeInt8, e4.writeInt16LE = t4.writeInt16LE, e4.writeInt16BE = t4.writeInt16BE, e4.writeInt32LE = t4.writeInt32LE, e4.writeInt32BE = t4.writeInt32BE, e4.writeFloatLE = t4.writeFloatLE, e4.writeFloatBE = t4.writeFloatBE, e4.writeDoubleLE = t4.writeDoubleLE, e4.writeDoubleBE = t4.writeDoubleBE, e4.fill = t4.fill, e4.inspect = t4.inspect, e4.toArrayBuffer = t4.toArrayBuffer, e4;
+          };
+        }).call(this, O2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, O2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/buffer/index.js", "/node_modules/gulp-browserify/node_modules/buffer");
+      }, { "base64-js": 2, buffer: 3, ieee754: 10, lYpoI2: 11 }], 4: [function(c3, d4, e2) {
+        !(function(e3, t4, a4, n, r3, o2, i3, u2, s4) {
+          var a4 = c3("buffer").Buffer, f = 4, l = new a4(f);
+          l.fill(0);
+          d4.exports = { hash: function(e4, t5, n2, r4) {
+            for (var o3 = t5((function(e5, t6) {
+              e5.length % f != 0 && (n3 = e5.length + (f - e5.length % f), e5 = a4.concat([e5, l], n3));
+              for (var n3, r5 = [], o4 = t6 ? e5.readInt32BE : e5.readInt32LE, i5 = 0; i5 < e5.length; i5 += f) r5.push(o4.call(e5, i5));
+              return r5;
+            })(e4 = a4.isBuffer(e4) ? e4 : new a4(e4), r4), 8 * e4.length), t5 = r4, i4 = new a4(n2), u3 = t5 ? i4.writeInt32BE : i4.writeInt32LE, s5 = 0; s5 < o3.length; s5++) u3.call(i4, o3[s5], 4 * s5, true);
+            return i4;
+          } };
+        }).call(this, c3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/helpers.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { buffer: 3, lYpoI2: 11 }], 5: [function(v, e2, _) {
+        !(function(l, c3, u2, d4, h3, p2, g2, y3, w3) {
+          var u2 = v("buffer").Buffer, e3 = v("./sha"), t4 = v("./sha256"), n = v("./rng"), b3 = { sha1: e3, sha256: t4, md5: v("./md5") }, s4 = 64, a4 = new u2(s4);
+          function r3(e4, n2) {
+            var r4 = b3[e4 = e4 || "sha1"], o3 = [];
+            return r4 || i3("algorithm:", e4, "is not yet supported"), { update: function(e5) {
+              return u2.isBuffer(e5) || (e5 = new u2(e5)), o3.push(e5), e5.length, this;
+            }, digest: function(e5) {
+              var t5 = u2.concat(o3), t5 = n2 ? (function(e6, t6, n3) {
+                u2.isBuffer(t6) || (t6 = new u2(t6)), u2.isBuffer(n3) || (n3 = new u2(n3)), t6.length > s4 ? t6 = e6(t6) : t6.length < s4 && (t6 = u2.concat([t6, a4], s4));
+                for (var r5 = new u2(s4), o4 = new u2(s4), i4 = 0; i4 < s4; i4++) r5[i4] = 54 ^ t6[i4], o4[i4] = 92 ^ t6[i4];
+                return n3 = e6(u2.concat([r5, n3])), e6(u2.concat([o4, n3]));
+              })(r4, n2, t5) : r4(t5);
+              return o3 = null, e5 ? t5.toString(e5) : t5;
+            } };
+          }
+          function i3() {
+            var e4 = [].slice.call(arguments).join(" ");
+            throw new Error([e4, "we accept pull requests", "http://github.com/dominictarr/crypto-browserify"].join("\n"));
+          }
+          a4.fill(0), _.createHash = function(e4) {
+            return r3(e4);
+          }, _.createHmac = r3, _.randomBytes = function(e4, t5) {
+            if (!t5 || !t5.call) return new u2(n(e4));
+            try {
+              t5.call(this, void 0, new u2(n(e4)));
+            } catch (e5) {
+              t5(e5);
+            }
+          };
+          var o2, f = ["createCredentials", "createCipher", "createCipheriv", "createDecipher", "createDecipheriv", "createSign", "createVerify", "createDiffieHellman", "pbkdf2"], m3 = function(e4) {
+            _[e4] = function() {
+              i3("sorry,", e4, "is not implemented yet");
+            };
+          };
+          for (o2 in f) m3(f[o2]);
+        }).call(this, v("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, v("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/index.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./md5": 6, "./rng": 7, "./sha": 8, "./sha256": 9, buffer: 3, lYpoI2: 11 }], 6: [function(w3, b3, e2) {
+        !(function(e3, r3, o2, i3, u2, a4, f, l, y3) {
+          var t4 = w3("./helpers");
+          function n(e4, t5) {
+            e4[t5 >> 5] |= 128 << t5 % 32, e4[14 + (t5 + 64 >>> 9 << 4)] = t5;
+            for (var n2 = 1732584193, r4 = -271733879, o3 = -1732584194, i4 = 271733878, u3 = 0; u3 < e4.length; u3 += 16) {
+              var s5 = n2, a5 = r4, f2 = o3, l2 = i4, n2 = c3(n2, r4, o3, i4, e4[u3 + 0], 7, -680876936), i4 = c3(i4, n2, r4, o3, e4[u3 + 1], 12, -389564586), o3 = c3(o3, i4, n2, r4, e4[u3 + 2], 17, 606105819), r4 = c3(r4, o3, i4, n2, e4[u3 + 3], 22, -1044525330);
+              n2 = c3(n2, r4, o3, i4, e4[u3 + 4], 7, -176418897), i4 = c3(i4, n2, r4, o3, e4[u3 + 5], 12, 1200080426), o3 = c3(o3, i4, n2, r4, e4[u3 + 6], 17, -1473231341), r4 = c3(r4, o3, i4, n2, e4[u3 + 7], 22, -45705983), n2 = c3(n2, r4, o3, i4, e4[u3 + 8], 7, 1770035416), i4 = c3(i4, n2, r4, o3, e4[u3 + 9], 12, -1958414417), o3 = c3(o3, i4, n2, r4, e4[u3 + 10], 17, -42063), r4 = c3(r4, o3, i4, n2, e4[u3 + 11], 22, -1990404162), n2 = c3(n2, r4, o3, i4, e4[u3 + 12], 7, 1804603682), i4 = c3(i4, n2, r4, o3, e4[u3 + 13], 12, -40341101), o3 = c3(o3, i4, n2, r4, e4[u3 + 14], 17, -1502002290), n2 = d4(n2, r4 = c3(r4, o3, i4, n2, e4[u3 + 15], 22, 1236535329), o3, i4, e4[u3 + 1], 5, -165796510), i4 = d4(i4, n2, r4, o3, e4[u3 + 6], 9, -1069501632), o3 = d4(o3, i4, n2, r4, e4[u3 + 11], 14, 643717713), r4 = d4(r4, o3, i4, n2, e4[u3 + 0], 20, -373897302), n2 = d4(n2, r4, o3, i4, e4[u3 + 5], 5, -701558691), i4 = d4(i4, n2, r4, o3, e4[u3 + 10], 9, 38016083), o3 = d4(o3, i4, n2, r4, e4[u3 + 15], 14, -660478335), r4 = d4(r4, o3, i4, n2, e4[u3 + 4], 20, -405537848), n2 = d4(n2, r4, o3, i4, e4[u3 + 9], 5, 568446438), i4 = d4(i4, n2, r4, o3, e4[u3 + 14], 9, -1019803690), o3 = d4(o3, i4, n2, r4, e4[u3 + 3], 14, -187363961), r4 = d4(r4, o3, i4, n2, e4[u3 + 8], 20, 1163531501), n2 = d4(n2, r4, o3, i4, e4[u3 + 13], 5, -1444681467), i4 = d4(i4, n2, r4, o3, e4[u3 + 2], 9, -51403784), o3 = d4(o3, i4, n2, r4, e4[u3 + 7], 14, 1735328473), n2 = h3(n2, r4 = d4(r4, o3, i4, n2, e4[u3 + 12], 20, -1926607734), o3, i4, e4[u3 + 5], 4, -378558), i4 = h3(i4, n2, r4, o3, e4[u3 + 8], 11, -2022574463), o3 = h3(o3, i4, n2, r4, e4[u3 + 11], 16, 1839030562), r4 = h3(r4, o3, i4, n2, e4[u3 + 14], 23, -35309556), n2 = h3(n2, r4, o3, i4, e4[u3 + 1], 4, -1530992060), i4 = h3(i4, n2, r4, o3, e4[u3 + 4], 11, 1272893353), o3 = h3(o3, i4, n2, r4, e4[u3 + 7], 16, -155497632), r4 = h3(r4, o3, i4, n2, e4[u3 + 10], 23, -1094730640), n2 = h3(n2, r4, o3, i4, e4[u3 + 13], 4, 681279174), i4 = h3(i4, n2, r4, o3, e4[u3 + 0], 11, -358537222), o3 = h3(o3, i4, n2, r4, e4[u3 + 3], 16, -722521979), r4 = h3(r4, o3, i4, n2, e4[u3 + 6], 23, 76029189), n2 = h3(n2, r4, o3, i4, e4[u3 + 9], 4, -640364487), i4 = h3(i4, n2, r4, o3, e4[u3 + 12], 11, -421815835), o3 = h3(o3, i4, n2, r4, e4[u3 + 15], 16, 530742520), n2 = p2(n2, r4 = h3(r4, o3, i4, n2, e4[u3 + 2], 23, -995338651), o3, i4, e4[u3 + 0], 6, -198630844), i4 = p2(i4, n2, r4, o3, e4[u3 + 7], 10, 1126891415), o3 = p2(o3, i4, n2, r4, e4[u3 + 14], 15, -1416354905), r4 = p2(r4, o3, i4, n2, e4[u3 + 5], 21, -57434055), n2 = p2(n2, r4, o3, i4, e4[u3 + 12], 6, 1700485571), i4 = p2(i4, n2, r4, o3, e4[u3 + 3], 10, -1894986606), o3 = p2(o3, i4, n2, r4, e4[u3 + 10], 15, -1051523), r4 = p2(r4, o3, i4, n2, e4[u3 + 1], 21, -2054922799), n2 = p2(n2, r4, o3, i4, e4[u3 + 8], 6, 1873313359), i4 = p2(i4, n2, r4, o3, e4[u3 + 15], 10, -30611744), o3 = p2(o3, i4, n2, r4, e4[u3 + 6], 15, -1560198380), r4 = p2(r4, o3, i4, n2, e4[u3 + 13], 21, 1309151649), n2 = p2(n2, r4, o3, i4, e4[u3 + 4], 6, -145523070), i4 = p2(i4, n2, r4, o3, e4[u3 + 11], 10, -1120210379), o3 = p2(o3, i4, n2, r4, e4[u3 + 2], 15, 718787259), r4 = p2(r4, o3, i4, n2, e4[u3 + 9], 21, -343485551), n2 = g2(n2, s5), r4 = g2(r4, a5), o3 = g2(o3, f2), i4 = g2(i4, l2);
+            }
+            return Array(n2, r4, o3, i4);
+          }
+          function s4(e4, t5, n2, r4, o3, i4) {
+            return g2((t5 = g2(g2(t5, e4), g2(r4, i4))) << o3 | t5 >>> 32 - o3, n2);
+          }
+          function c3(e4, t5, n2, r4, o3, i4, u3) {
+            return s4(t5 & n2 | ~t5 & r4, e4, t5, o3, i4, u3);
+          }
+          function d4(e4, t5, n2, r4, o3, i4, u3) {
+            return s4(t5 & r4 | n2 & ~r4, e4, t5, o3, i4, u3);
+          }
+          function h3(e4, t5, n2, r4, o3, i4, u3) {
+            return s4(t5 ^ n2 ^ r4, e4, t5, o3, i4, u3);
+          }
+          function p2(e4, t5, n2, r4, o3, i4, u3) {
+            return s4(n2 ^ (t5 | ~r4), e4, t5, o3, i4, u3);
+          }
+          function g2(e4, t5) {
+            var n2 = (65535 & e4) + (65535 & t5);
+            return (e4 >> 16) + (t5 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
+          }
+          b3.exports = function(e4) {
+            return t4.hash(e4, n, 16);
+          };
+        }).call(this, w3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, w3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/md5.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 7: [function(e2, l, t4) {
+        !(function(e3, t5, n, r3, o2, i3, u2, s4, f) {
+          l.exports = function(e4) {
+            for (var t6, n2 = new Array(e4), r4 = 0; r4 < e4; r4++) 0 == (3 & r4) && (t6 = 4294967296 * Math.random()), n2[r4] = t6 >>> ((3 & r4) << 3) & 255;
+            return n2;
+          };
+        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/rng.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { buffer: 3, lYpoI2: 11 }], 8: [function(c3, d4, e2) {
+        !(function(e3, t4, n, r3, o2, s4, a4, f, l) {
+          var i3 = c3("./helpers");
+          function u2(l2, c4) {
+            l2[c4 >> 5] |= 128 << 24 - c4 % 32, l2[15 + (c4 + 64 >> 9 << 4)] = c4;
+            for (var e4, t5, n2, r4 = Array(80), o3 = 1732584193, i4 = -271733879, u3 = -1732584194, s5 = 271733878, d5 = -1009589776, h3 = 0; h3 < l2.length; h3 += 16) {
+              for (var p2 = o3, g2 = i4, y3 = u3, w3 = s5, b3 = d5, a5 = 0; a5 < 80; a5++) {
+                r4[a5] = a5 < 16 ? l2[h3 + a5] : v(r4[a5 - 3] ^ r4[a5 - 8] ^ r4[a5 - 14] ^ r4[a5 - 16], 1);
+                var f2 = m3(m3(v(o3, 5), (f2 = i4, t5 = u3, n2 = s5, (e4 = a5) < 20 ? f2 & t5 | ~f2 & n2 : !(e4 < 40) && e4 < 60 ? f2 & t5 | f2 & n2 | t5 & n2 : f2 ^ t5 ^ n2)), m3(m3(d5, r4[a5]), (e4 = a5) < 20 ? 1518500249 : e4 < 40 ? 1859775393 : e4 < 60 ? -1894007588 : -899497514)), d5 = s5, s5 = u3, u3 = v(i4, 30), i4 = o3, o3 = f2;
+              }
+              o3 = m3(o3, p2), i4 = m3(i4, g2), u3 = m3(u3, y3), s5 = m3(s5, w3), d5 = m3(d5, b3);
+            }
+            return Array(o3, i4, u3, s5, d5);
+          }
+          function m3(e4, t5) {
+            var n2 = (65535 & e4) + (65535 & t5);
+            return (e4 >> 16) + (t5 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
+          }
+          function v(e4, t5) {
+            return e4 << t5 | e4 >>> 32 - t5;
+          }
+          d4.exports = function(e4) {
+            return i3.hash(e4, u2, 20, true);
+          };
+        }).call(this, c3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/sha.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 9: [function(c3, d4, e2) {
+        !(function(e3, t4, n, r3, u2, s4, a4, f, l) {
+          function b3(e4, t5) {
+            var n2 = (65535 & e4) + (65535 & t5);
+            return (e4 >> 16) + (t5 >> 16) + (n2 >> 16) << 16 | 65535 & n2;
+          }
+          function o2(e4, l2) {
+            var c4, d5 = new Array(1116352408, 1899447441, 3049323471, 3921009573, 961987163, 1508970993, 2453635748, 2870763221, 3624381080, 310598401, 607225278, 1426881987, 1925078388, 2162078206, 2614888103, 3248222580, 3835390401, 4022224774, 264347078, 604807628, 770255983, 1249150122, 1555081692, 1996064986, 2554220882, 2821834349, 2952996808, 3210313671, 3336571891, 3584528711, 113926993, 338241895, 666307205, 773529912, 1294757372, 1396182291, 1695183700, 1986661051, 2177026350, 2456956037, 2730485921, 2820302411, 3259730800, 3345764771, 3516065817, 3600352804, 4094571909, 275423344, 430227734, 506948616, 659060556, 883997877, 958139571, 1322822218, 1537002063, 1747873779, 1955562222, 2024104815, 2227730452, 2361852424, 2428436474, 2756734187, 3204031479, 3329325298), t5 = new Array(1779033703, 3144134277, 1013904242, 2773480762, 1359893119, 2600822924, 528734635, 1541459225), n2 = new Array(64);
+            e4[l2 >> 5] |= 128 << 24 - l2 % 32, e4[15 + (l2 + 64 >> 9 << 4)] = l2;
+            for (var r4, o3, h3 = 0; h3 < e4.length; h3 += 16) {
+              for (var i4 = t5[0], u3 = t5[1], s5 = t5[2], p2 = t5[3], a5 = t5[4], g2 = t5[5], y3 = t5[6], w3 = t5[7], f2 = 0; f2 < 64; f2++) n2[f2] = f2 < 16 ? e4[f2 + h3] : b3(b3(b3((o3 = n2[f2 - 2], m3(o3, 17) ^ m3(o3, 19) ^ v(o3, 10)), n2[f2 - 7]), (o3 = n2[f2 - 15], m3(o3, 7) ^ m3(o3, 18) ^ v(o3, 3))), n2[f2 - 16]), c4 = b3(b3(b3(b3(w3, m3(o3 = a5, 6) ^ m3(o3, 11) ^ m3(o3, 25)), a5 & g2 ^ ~a5 & y3), d5[f2]), n2[f2]), r4 = b3(m3(r4 = i4, 2) ^ m3(r4, 13) ^ m3(r4, 22), i4 & u3 ^ i4 & s5 ^ u3 & s5), w3 = y3, y3 = g2, g2 = a5, a5 = b3(p2, c4), p2 = s5, s5 = u3, u3 = i4, i4 = b3(c4, r4);
+              t5[0] = b3(i4, t5[0]), t5[1] = b3(u3, t5[1]), t5[2] = b3(s5, t5[2]), t5[3] = b3(p2, t5[3]), t5[4] = b3(a5, t5[4]), t5[5] = b3(g2, t5[5]), t5[6] = b3(y3, t5[6]), t5[7] = b3(w3, t5[7]);
+            }
+            return t5;
+          }
+          var i3 = c3("./helpers"), m3 = function(e4, t5) {
+            return e4 >>> t5 | e4 << 32 - t5;
+          }, v = function(e4, t5) {
+            return e4 >>> t5;
+          };
+          d4.exports = function(e4) {
+            return i3.hash(e4, o2, 32, true);
+          };
+        }).call(this, c3("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, c3("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/crypto-browserify/sha256.js", "/node_modules/gulp-browserify/node_modules/crypto-browserify");
+      }, { "./helpers": 4, buffer: 3, lYpoI2: 11 }], 10: [function(e2, t4, f) {
+        !(function(e3, t5, n, r3, o2, i3, u2, s4, a4) {
+          f.read = function(e4, t6, n2, r4, o3) {
+            var i4, u3, l = 8 * o3 - r4 - 1, c3 = (1 << l) - 1, d4 = c3 >> 1, s5 = -7, a5 = n2 ? o3 - 1 : 0, f2 = n2 ? -1 : 1, o3 = e4[t6 + a5];
+            for (a5 += f2, i4 = o3 & (1 << -s5) - 1, o3 >>= -s5, s5 += l; 0 < s5; i4 = 256 * i4 + e4[t6 + a5], a5 += f2, s5 -= 8) ;
+            for (u3 = i4 & (1 << -s5) - 1, i4 >>= -s5, s5 += r4; 0 < s5; u3 = 256 * u3 + e4[t6 + a5], a5 += f2, s5 -= 8) ;
+            if (0 === i4) i4 = 1 - d4;
+            else {
+              if (i4 === c3) return u3 ? NaN : 1 / 0 * (o3 ? -1 : 1);
+              u3 += Math.pow(2, r4), i4 -= d4;
+            }
+            return (o3 ? -1 : 1) * u3 * Math.pow(2, i4 - r4);
+          }, f.write = function(e4, t6, l, n2, r4, c3) {
+            var o3, i4, u3 = 8 * c3 - r4 - 1, s5 = (1 << u3) - 1, a5 = s5 >> 1, d4 = 23 === r4 ? Math.pow(2, -24) - Math.pow(2, -77) : 0, f2 = n2 ? 0 : c3 - 1, h3 = n2 ? 1 : -1, c3 = t6 < 0 || 0 === t6 && 1 / t6 < 0 ? 1 : 0;
+            for (t6 = Math.abs(t6), isNaN(t6) || t6 === 1 / 0 ? (i4 = isNaN(t6) ? 1 : 0, o3 = s5) : (o3 = Math.floor(Math.log(t6) / Math.LN2), t6 * (n2 = Math.pow(2, -o3)) < 1 && (o3--, n2 *= 2), 2 <= (t6 += 1 <= o3 + a5 ? d4 / n2 : d4 * Math.pow(2, 1 - a5)) * n2 && (o3++, n2 /= 2), s5 <= o3 + a5 ? (i4 = 0, o3 = s5) : 1 <= o3 + a5 ? (i4 = (t6 * n2 - 1) * Math.pow(2, r4), o3 += a5) : (i4 = t6 * Math.pow(2, a5 - 1) * Math.pow(2, r4), o3 = 0)); 8 <= r4; e4[l + f2] = 255 & i4, f2 += h3, i4 /= 256, r4 -= 8) ;
+            for (o3 = o3 << r4 | i4, u3 += r4; 0 < u3; e4[l + f2] = 255 & o3, f2 += h3, o3 /= 256, u3 -= 8) ;
+            e4[l + f2 - h3] |= 128 * c3;
+          };
+        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/ieee754/index.js", "/node_modules/gulp-browserify/node_modules/ieee754");
+      }, { buffer: 3, lYpoI2: 11 }], 11: [function(e2, h3, t4) {
+        !(function(e3, t5, n, r3, o2, f, l, c3, d4) {
+          var i3, u2, s4;
+          function a4() {
+          }
+          (e3 = h3.exports = {}).nextTick = (u2 = "undefined" != typeof window && window.setImmediate, s4 = "undefined" != typeof window && window.postMessage && window.addEventListener, u2 ? function(e4) {
+            return window.setImmediate(e4);
+          } : s4 ? (i3 = [], window.addEventListener("message", function(e4) {
+            var t6 = e4.source;
+            t6 !== window && null !== t6 || "process-tick" !== e4.data || (e4.stopPropagation(), 0 < i3.length && i3.shift()());
+          }, true), function(e4) {
+            i3.push(e4), window.postMessage("process-tick", "*");
+          }) : function(e4) {
+            setTimeout(e4, 0);
+          }), e3.title = "browser", e3.browser = true, e3.env = {}, e3.argv = [], e3.on = a4, e3.addListener = a4, e3.once = a4, e3.off = a4, e3.removeListener = a4, e3.removeAllListeners = a4, e3.emit = a4, e3.binding = function(e4) {
+            throw new Error("process.binding is not supported");
+          }, e3.cwd = function() {
+            return "/";
+          }, e3.chdir = function(e4) {
+            throw new Error("process.chdir is not supported");
+          };
+        }).call(this, e2("lYpoI2"), "undefined" != typeof self ? self : "undefined" != typeof window ? window : {}, e2("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/node_modules/gulp-browserify/node_modules/process/browser.js", "/node_modules/gulp-browserify/node_modules/process");
+      }, { buffer: 3, lYpoI2: 11 }] }, {}, [1])(1);
+    });
+  })(object_hash);
+  return object_hash.exports;
+}
+var object_hashExports = requireObject_hash();
+const objectHash = /* @__PURE__ */ getDefaultExportFromCjs(object_hashExports);
+function getFunctionFromString(functionString) {
+  if (!functionString?.trim()) return null;
+  try {
+    const evalResult = eval(`(${functionString})`);
+    if (typeof evalResult !== "function") {
+      return Error(`Type is a ${typeof evalResult}, not a function`);
+    }
+    return evalResult;
+  } catch (error) {
+    return Error(`Not a valid function (${error})`, { cause: error });
+  }
+}
+const defaultMarkerLength = 20;
+const MarkerForTvFragmentDoc = gql`
+  fragment MarkerForTv on SceneMarker {
+    ...SceneMarkerData
+    scene {
+      ...SceneData
+    }
+  }
+  ${SceneMarkerDataFragmentDoc}
+  ${SceneDataFragmentDoc}
+`;
+function mediaItemFragment(entityType) {
+  return entityType === "scene" ? { fragment: SceneDataFragmentDoc, fragmentName: "SceneData" } : { fragment: MarkerForTvFragmentDoc, fragmentName: "MarkerForTv" };
+}
+function sceneMediaItem(scene2) {
+  return { id: `scene:${scene2.id}`, entityType: "scene", entity: scene2 };
+}
+function markerMediaItem(marker) {
+  return {
+    id: `marker:${marker.id}`,
+    entityType: "marker",
+    entity: {
+      ...marker,
+      get duration() {
+        const endTime = marker.end_seconds ?? Math.min(marker.seconds + defaultMarkerLength, marker.scene.files[0].duration);
+        return endTime - marker.seconds;
+      }
+    }
+  };
+}
+function mediaItemFromEntity(entityType, entity) {
+  return entityType === "scene" ? sceneMediaItem(entity) : markerMediaItem(entity);
+}
+function readMediaItem(cache2, ref) {
+  const entity = cache2.readFragment({
+    id: ref.cacheId,
+    ...mediaItemFragment(ref.entityType)
+  });
+  return entity ? mediaItemFromEntity(ref.entityType, entity) : void 0;
+}
+function sortPerformers(performers2) {
+  const ret = performers2.slice();
+  ret.sort((a4, b3) => {
+    if (a4.gender === b3.gender) {
+      return (a4.name ?? "").localeCompare(b3.name ?? "");
+    }
+    const aIndex = a4.gender ? GENDERS.indexOf(a4.gender) : GENDERS.length;
+    const bIndex = b3.gender ? GENDERS.indexOf(b3.gender) : GENDERS.length;
+    return aIndex - bIndex;
+  });
+  return ret;
+}
+const GENDERS = [
+  "FEMALE",
+  "TRANSGENDER_FEMALE",
+  "MALE",
+  "TRANSGENDER_MALE",
+  "INTERSEX",
+  "NON_BINARY"
+];
+function clamp$3(min2, num, max2) {
+  return Math.min(Math.max(num, min2), max2);
+}
+function updateReadOnlyProp(obj, prop, value) {
+  Object.defineProperty(obj, prop, { value, writable: true, enumerable: isEnumerableIncludingInherited(obj, prop) });
+}
+function updateReadOnlyProps(obj, props) {
+  for (const [prop, value] of Object.entries(props)) {
+    updateReadOnlyProp(obj, prop, value);
+  }
+}
+function isEnumerableIncludingInherited(obj, prop) {
+  let current = obj;
+  while (current) {
+    const desc = Object.getOwnPropertyDescriptor(current, prop);
+    if (desc) return !!desc.enumerable;
+    current = Object.getPrototypeOf(current);
+  }
+  return false;
+}
+function getMediaItemIdForVideoJsPlayer(videoElm) {
+  let node2 = videoElm;
+  while (node2 !== null) {
+    if (node2 instanceof HTMLElement && "sceneId" in node2.dataset && node2.dataset.sceneId) {
+      return node2.id.replace(/^scene-player-/, "");
+    }
+    node2 = node2.parentElement;
+  }
+  throw new Error("Could not find mediaItemId for Video.js player");
+}
+function roundTo(num, decimals = 0) {
+  const factor = Math.pow(10, decimals);
+  return Math.round(num * factor) / factor;
+}
+function roundToNearest(num, nearest = 1) {
+  return Math.round(num / nearest) * nearest;
+}
+function getNextOption(options2, current) {
+  const currentIndex = options2.findIndex((option) => option.value === current);
+  return options2[(currentIndex + 1) % options2.length];
+}
+function formatDuration(totalSeconds) {
+  const units = [
+    { name: "hour", seconds: 60 * 60 },
+    { name: "minute", seconds: 60 },
+    { name: "second", seconds: 1 }
+  ];
+  let remaining = Math.round(totalSeconds);
+  const parts = [];
+  for (const unit of units) {
+    const count2 = Math.floor(remaining / unit.seconds);
+    remaining -= count2 * unit.seconds;
+    if (count2 > 0) parts.push(`${count2} ${unit.name}${count2 === 1 ? "" : "s"}`);
+  }
+  return parts.length ? parts.join(" ") : "0 seconds";
+}
+const logger$i = getLogger(["stash-tv", "usePreviewLengths"]);
+const usePreviewLengths = create(() => ({}));
+function useTrackPreviewLengths(enabled) {
+  reactExports.useEffect(() => {
+    if (!enabled) return;
+    const saveDurationOnceMetadataLoaded = (event2) => {
+      if (!(event2?.target instanceof HTMLVideoElement)) return;
+      const videoElm = event2.target;
+      try {
+        const mediaItemId = getMediaItemIdForVideoJsPlayer(videoElm);
+        if (usePreviewLengths.getState()[mediaItemId] === videoElm.duration) return;
+        logger$i.debug("Saving preview length for media item {*}", { mediaItemId, duration: videoElm.duration });
+        usePreviewLengths.setState({ [mediaItemId]: videoElm.duration });
+      } catch (error) {
+        console.warn("Failed to get media item ID for video element", error);
+      }
+    };
+    window.addEventListener("loadedmetadata", saveDurationOnceMetadataLoaded, { capture: true });
+    return () => {
+      window.removeEventListener("loadedmetadata", saveDurationOnceMetadataLoaded, { capture: true });
+    };
+  }, [enabled]);
+}
+const logger$h = getLogger(["stash-tv", "useMediaItems"]);
+const initialFeedState = {
+  source: void 0,
+  refs: [],
+  skippedIds: /* @__PURE__ */ new Set(),
+  total: void 0,
+  fetchInFlight: false,
+  loading: false,
+  error: void 0
+};
+const useFeedStore = create(() => initialFeedState);
+function retain(client2, cacheId) {
+  if (client2.cache instanceof InMemoryCache) client2.cache.retain(cacheId);
+}
+function release(client2, cacheId) {
+  if (client2.cache instanceof InMemoryCache) client2.cache.release(cacheId);
+}
+function markerIsPlayable(marker) {
+  if (marker.seconds > marker.scene.files[0].duration) {
+    logger$h.warn(`Marker with ID ${marker.id} has start time (${marker.seconds}s) greater than scene duration (${marker.scene.files[0].duration}s). This marker will be skipped.`, { marker });
+    return false;
+  }
+  return true;
+}
+async function fetchPage(client2, filter2, page, perPage) {
+  const pageFilter = { ...filter2.generalFilter, page, per_page: perPage };
+  if (filter2.entityType === "scene") {
+    const { data: data22 } = await client2.query({
+      query: FindFullScenesDocument,
+      variables: { filter: pageFilter, scene_filter: filter2.entityFilter },
+      fetchPolicy: "network-only"
+    });
+    return { items: data22.findScenes.scenes.map(sceneMediaItem), skippedIds: [], total: data22.findScenes.count };
+  }
+  const { data: data2 } = await client2.query({
+    query: FindSceneMarkersForTvDocument,
+    variables: { filter: pageFilter, scene_marker_filter: filter2.entityFilter },
+    fetchPolicy: "network-only"
+  });
+  const items = [];
+  const skippedIds = [];
+  for (const marker of data2.findSceneMarkers.scene_markers) {
+    if (markerIsPlayable(marker)) {
+      items.push(markerMediaItem(marker));
+    } else {
+      skippedIds.push(`marker:${marker.id}`);
+    }
+  }
+  return { items, skippedIds, total: data2.findSceneMarkers.count };
+}
+function resetFeed(client2, source2) {
+  for (const ref of useFeedStore.getState().refs) release(client2, ref.cacheId);
+  useFeedStore.setState({ ...initialFeedState, skippedIds: /* @__PURE__ */ new Set(), source: source2, loading: true });
+}
+async function loadNextPage(client2) {
+  const { source: source2, refs, skippedIds, total: total2, fetchInFlight } = useFeedStore.getState();
+  if (!source2 || fetchInFlight) return;
+  const offset3 = refs.length + skippedIds.size;
+  if (total2 !== void 0 && offset3 >= total2) return;
+  const page = Math.floor(offset3 / source2.pageSize) + 1;
+  logger$h.debug("Fetch media page {*}", { page });
+  useFeedStore.setState({ fetchInFlight: true });
+  try {
+    const result = await fetchPage(client2, source2.filter, page, source2.pageSize);
+    const state = useFeedStore.getState();
+    if (state.source !== source2) return;
+    const loadedIds = /* @__PURE__ */ new Set([...state.refs.map((ref) => ref.id), ...state.skippedIds]);
+    const newRefs = [];
+    for (const item of result.items) {
+      const cacheId = client2.cache.identify(item.entity);
+      if (loadedIds.has(item.id) || !cacheId) continue;
+      retain(client2, cacheId);
+      newRefs.push({ id: item.id, entityType: item.entityType, cacheId });
+    }
+    useFeedStore.setState({
+      refs: [...state.refs, ...newRefs],
+      skippedIds: /* @__PURE__ */ new Set([...state.skippedIds, ...result.skippedIds]),
+      total: result.total,
+      fetchInFlight: false,
+      loading: false,
+      error: void 0
+    });
+  } catch (error) {
+    if (useFeedStore.getState().source !== source2) return;
+    logger$h.error("Failed to fetch media page {*}", { page, error });
+    useFeedStore.setState({
+      fetchInFlight: false,
+      loading: false,
+      error: error instanceof Error ? error : new Error(String(error))
+    });
+  }
+}
+function removeFromFeed(client2, id2) {
+  const { refs } = useFeedStore.getState();
+  const ref = refs.find((ref2) => ref2.id === id2);
+  if (!ref) return;
+  release(client2, ref.cacheId);
+  useFeedStore.setState({ refs: refs.filter((otherRef) => otherRef !== ref) });
+}
+function readMediaItems(client2, refs) {
+  return refs.flatMap((ref) => readMediaItem(client2.cache, ref) ?? []);
+}
+function useMediaItems() {
+  const { lastLoadedCurrentMediaItemFilter } = useMediaItemFilters();
+  const {
+    maxMedia,
+    scenePreviewOnly,
+    markerPreviewOnly,
+    pageSize,
+    showDevOptions,
+    mediaItemsModifierFunction
+  } = useTvConfig();
+  const client2 = useApolloClient();
+  const refs = useFeedStore((state) => state.refs);
+  const loading2 = useFeedStore((state) => state.loading);
+  const error = useFeedStore((state) => state.error);
+  reactExports.useEffect(() => {
+    if (!lastLoadedCurrentMediaItemFilter) return;
+    const { entityType, generalFilter, entityFilter } = lastLoadedCurrentMediaItemFilter;
+    const key = objectHash({ entityType, generalFilter, entityFilter, pageSize });
+    if (useFeedStore.getState().source?.key === key) return;
+    logger$h.debug(`Filter changed to "${lastLoadedCurrentMediaItemFilter.savedFilter?.name}", resetting media items`);
+    resetFeed(client2, { key, filter: lastLoadedCurrentMediaItemFilter, pageSize });
+    loadNextPage(client2);
+  }, [client2, lastLoadedCurrentMediaItemFilter, pageSize]);
+  const loadMoreMediaItems = reactExports.useCallback(() => loadNextPage(client2), [client2]);
+  const removeMediaItem = reactExports.useCallback((id2) => removeFromFeed(client2, id2), [client2]);
+  const mediaItems = reactExports.useMemo(() => {
+    let modifiedRefs = refs;
+    const modifier = showDevOptions ? getFunctionFromString(mediaItemsModifierFunction) : null;
+    if (typeof modifier === "function") {
+      try {
+        const modifiedItems = modifier(readMediaItems(client2, refs));
+        if (Array.isArray(modifiedItems)) {
+          const refsById = new Map(refs.map((ref) => [ref.id, ref]));
+          modifiedRefs = modifiedItems.flatMap((item) => refsById.get(item?.id) ?? []);
+        }
+      } catch (error2) {
+        logger$h.error(`Media items modifier function threw an error`, { error: error2 });
+      }
+    }
+    if (typeof maxMedia === "number") {
+      modifiedRefs = modifiedRefs.slice(0, maxMedia);
+    }
+    return modifiedRefs;
+  }, [client2, refs, showDevOptions, mediaItemsModifierFunction, maxMedia]);
+  reactExports.useEffect(() => {
+    if (showDevOptions) {
+      window.mediaItems = readMediaItems(client2, refs);
+      window.modifiedMediaItems = readMediaItems(client2, mediaItems);
+    } else {
+      delete window.mediaItems;
+      delete window.modifiedMediaItems;
+    }
+  }, [client2, showDevOptions, refs, mediaItems]);
+  const [neverLoaded, setNeverLoaded] = reactExports.useState(true);
+  reactExports.useEffect(() => {
+    mediaItems.length && setNeverLoaded(false);
+  }, [mediaItems.length]);
+  useTrackPreviewLengths(
+    lastLoadedCurrentMediaItemFilter?.entityType === "scene" && scenePreviewOnly || lastLoadedCurrentMediaItemFilter?.entityType === "marker" && markerPreviewOnly
+  );
+  return {
+    mediaItems,
+    removeMediaItem,
+    loadMoreMediaItems,
+    mediaItemsError: error,
+    mediaItemsLoading: loading2,
+    mediaItemsNeverLoaded: neverLoaded,
+    waitingForMediaItemsFilter: !lastLoadedCurrentMediaItemFilter
+  };
+}
+const logger$g = getLogger(["stash-tv", "makeMediaItemPreviewOnly"]);
+function makeMediaItemPreviewOnly(mediaItem, { previewLength, previewSegmentDuration = 0.75, previewSegments = 12 }) {
+  let previewUrl;
+  if (mediaItem.entityType === "scene") {
+    previewUrl = mediaItem.entity.paths.preview;
+  } else if (mediaItem.entityType === "marker") {
+    previewUrl = mediaItem.entity.stream;
+  } else {
+    throw new Error("Unsupported media item entity type");
+  }
+  if (!previewUrl) {
+    logger$g.warn(`Media item ${mediaItem.id} has no preview`);
+    return mediaItem;
+  }
+  const scene2 = mediaItem.entityType === "marker" ? mediaItem.entity.scene : mediaItem.entity;
+  const estimatedDuration = mediaItem.entityType === "marker" ? Math.min(defaultMarkerLength, scene2.files[0].duration) : Math.min(previewSegmentDuration * previewSegments, scene2.files[0].duration);
+  const updatedScene = {
+    ...scene2,
+    sceneStreams: [
+      {
+        "url": previewUrl,
+        "mime_type": "video/mp4",
+        "label": "Direct stream",
+        "__typename": "SceneStreamEndpoint"
+      }
+    ],
+    files: [
+      {
+        ...scene2.files[0],
+        duration: previewLength ?? estimatedDuration
+      },
+      ...scene2.files.slice(1)
+    ],
+    resume_time: null,
+    captions: null,
+    scene_markers: []
+  };
+  if (mediaItem.entityType === "scene") {
+    return {
+      ...mediaItem,
+      entity: updatedScene
+    };
+  } else {
+    return {
+      ...mediaItem,
+      entity: {
+        ...mediaItem.entity,
+        scene: updatedScene
+      }
+    };
+  }
+}
+const logger$f = getLogger(["stash-tv", "useLiveMediaItem"]);
+function sceneIdOf(mediaItem) {
+  if (!mediaItem) return void 0;
+  return mediaItem.entityType === "scene" ? mediaItem.entity.id : mediaItem.entity.scene.id;
+}
+function useLiveMediaItem(ref) {
+  const { data: data2, complete } = useFragment({
+    ...mediaItemFragment(ref.entityType),
+    from: ref.cacheId
+  });
+  const liveMediaItem = reactExports.useMemo(
+    () => complete ? mediaItemFromEntity(ref.entityType, data2) : void 0,
+    [complete, data2, ref.entityType]
+  );
+  const lastCompleteMediaItem = reactExports.useRef(liveMediaItem);
+  if (liveMediaItem) lastCompleteMediaItem.current = liveMediaItem;
+  const mediaItem = liveMediaItem ?? lastCompleteMediaItem.current;
+  const client2 = useApolloClient();
+  const sceneIdToRefetch = complete ? void 0 : sceneIdOf(lastCompleteMediaItem.current);
+  reactExports.useEffect(() => {
+    if (!sceneIdToRefetch) return;
+    client2.query({ query: FindSceneDocument, variables: { id: sceneIdToRefetch }, fetchPolicy: "network-only" }).catch((error) => logger$f.error("Failed to refetch scene {sceneId} after its cached data was evicted {*}", {
+      sceneId: sceneIdToRefetch,
+      error
+    }));
+  }, [client2, sceneIdToRefetch]);
+  const { scenePreviewOnly, markerPreviewOnly } = useTvConfig();
+  const previewOnly = ref.entityType === "scene" ? scenePreviewOnly : markerPreviewOnly;
+  const previewLength = usePreviewLengths((previewLengths) => previewLengths[ref.id]);
+  const { configuration: stashConfig } = reactExports.useContext(ConfigurationContext);
+  const previewSegmentDuration = stashConfig?.general.previewSegmentDuration ?? void 0;
+  const previewSegments = stashConfig?.general.previewSegments ?? void 0;
+  return reactExports.useMemo(
+    () => mediaItem && previewOnly ? makeMediaItemPreviewOnly(mediaItem, { previewLength, previewSegmentDuration, previewSegments }) : mediaItem,
+    [mediaItem, previewOnly, previewLength, previewSegmentDuration, previewSegments]
+  );
+}
+function useSceneUpdate(scene2) {
+  const [mutation, mutationResult] = useSceneUpdateMutation({
+    update(cache2, result) {
+      if (!result.data?.sceneUpdate) return;
+    }
+  });
+  const wrappedMutation = (options2) => {
+    const finalOptions = options2 || {};
+    return mutation({
+      ...finalOptions,
+      optimisticResponse: {
+        __typename: "Mutation",
+        // @ts-expect-error -- Merging the scene input and scene output types has some complex edge cases but for our
+        // purposes of temporarily showing the expected updated scene in the UI this should be sufficient
+        sceneUpdate: {
+          __typename: "Scene",
+          ...scene2,
+          ...finalOptions.variables?.input ?? {}
+        }
+      }
+    });
+  };
+  return [wrappedMutation, mutationResult];
+}
+function useSetRating(scene2) {
+  const [updateScene] = useSceneUpdate(scene2);
+  function setRating(newRating) {
+    updateScene({
+      variables: {
+        input: {
+          id: scene2.id,
+          rating100: newRating
+        }
+      }
+    });
+  }
+  return setRating;
+}
+var mousetrap = { exports: {} };
+var hasRequiredMousetrap;
+function requireMousetrap() {
+  if (hasRequiredMousetrap) return mousetrap.exports;
+  hasRequiredMousetrap = 1;
+  (function(module2) {
+    (function(window2, document2, undefined$1) {
+      if (!window2) {
+        return;
+      }
+      var _MAP = {
+        8: "backspace",
+        9: "tab",
+        13: "enter",
+        16: "shift",
+        17: "ctrl",
+        18: "alt",
+        20: "capslock",
+        27: "esc",
+        32: "space",
+        33: "pageup",
+        34: "pagedown",
+        35: "end",
+        36: "home",
+        37: "left",
+        38: "up",
+        39: "right",
+        40: "down",
+        45: "ins",
+        46: "del",
+        91: "meta",
+        93: "meta",
+        224: "meta"
+      };
+      var _KEYCODE_MAP = {
+        106: "*",
+        107: "+",
+        109: "-",
+        110: ".",
+        111: "/",
+        186: ";",
+        187: "=",
+        188: ",",
+        189: "-",
+        190: ".",
+        191: "/",
+        192: "`",
+        219: "[",
+        220: "\\",
+        221: "]",
+        222: "'"
+      };
+      var _SHIFT_MAP = {
+        "~": "`",
+        "!": "1",
+        "@": "2",
+        "#": "3",
+        "$": "4",
+        "%": "5",
+        "^": "6",
+        "&": "7",
+        "*": "8",
+        "(": "9",
+        ")": "0",
+        "_": "-",
+        "+": "=",
+        ":": ";",
+        '"': "'",
+        "<": ",",
+        ">": ".",
+        "?": "/",
+        "|": "\\"
+      };
+      var _SPECIAL_ALIASES = {
+        "option": "alt",
+        "command": "meta",
+        "return": "enter",
+        "escape": "esc",
+        "plus": "+",
+        "mod": /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? "meta" : "ctrl"
+      };
+      var _REVERSE_MAP;
+      for (var i3 = 1; i3 < 20; ++i3) {
+        _MAP[111 + i3] = "f" + i3;
+      }
+      for (i3 = 0; i3 <= 9; ++i3) {
+        _MAP[i3 + 96] = i3.toString();
+      }
+      function _addEvent(object2, type3, callback2) {
+        if (object2.addEventListener) {
+          object2.addEventListener(type3, callback2, false);
+          return;
+        }
+        object2.attachEvent("on" + type3, callback2);
+      }
+      function _characterFromEvent(e2) {
+        if (e2.type == "keypress") {
+          var character2 = String.fromCharCode(e2.which);
+          if (!e2.shiftKey) {
+            character2 = character2.toLowerCase();
+          }
+          return character2;
+        }
+        if (_MAP[e2.which]) {
+          return _MAP[e2.which];
+        }
+        if (_KEYCODE_MAP[e2.which]) {
+          return _KEYCODE_MAP[e2.which];
+        }
+        return String.fromCharCode(e2.which).toLowerCase();
+      }
+      function _modifiersMatch(modifiers1, modifiers2) {
+        return modifiers1.sort().join(",") === modifiers2.sort().join(",");
+      }
+      function _eventModifiers(e2) {
+        var modifiers = [];
+        if (e2.shiftKey) {
+          modifiers.push("shift");
+        }
+        if (e2.altKey) {
+          modifiers.push("alt");
+        }
+        if (e2.ctrlKey) {
+          modifiers.push("ctrl");
+        }
+        if (e2.metaKey) {
+          modifiers.push("meta");
+        }
+        return modifiers;
+      }
+      function _preventDefault(e2) {
+        if (e2.preventDefault) {
+          e2.preventDefault();
+          return;
+        }
+        e2.returnValue = false;
+      }
+      function _stopPropagation(e2) {
+        if (e2.stopPropagation) {
+          e2.stopPropagation();
+          return;
+        }
+        e2.cancelBubble = true;
+      }
+      function _isModifier(key) {
+        return key == "shift" || key == "ctrl" || key == "alt" || key == "meta";
+      }
+      function _getReverseMap() {
+        if (!_REVERSE_MAP) {
+          _REVERSE_MAP = {};
+          for (var key in _MAP) {
+            if (key > 95 && key < 112) {
+              continue;
+            }
+            if (_MAP.hasOwnProperty(key)) {
+              _REVERSE_MAP[_MAP[key]] = key;
+            }
+          }
+        }
+        return _REVERSE_MAP;
+      }
+      function _pickBestAction(key, modifiers, action) {
+        if (!action) {
+          action = _getReverseMap()[key] ? "keydown" : "keypress";
+        }
+        if (action == "keypress" && modifiers.length) {
+          action = "keydown";
+        }
+        return action;
+      }
+      function _keysFromString(combination) {
+        if (combination === "+") {
+          return ["+"];
+        }
+        combination = combination.replace(/\+{2}/g, "+plus");
+        return combination.split("+");
+      }
+      function _getKeyInfo(combination, action) {
+        var keys3;
+        var key;
+        var i4;
+        var modifiers = [];
+        keys3 = _keysFromString(combination);
+        for (i4 = 0; i4 < keys3.length; ++i4) {
+          key = keys3[i4];
+          if (_SPECIAL_ALIASES[key]) {
+            key = _SPECIAL_ALIASES[key];
+          }
+          if (action && action != "keypress" && _SHIFT_MAP[key]) {
+            key = _SHIFT_MAP[key];
+            modifiers.push("shift");
+          }
+          if (_isModifier(key)) {
+            modifiers.push(key);
+          }
+        }
+        action = _pickBestAction(key, modifiers, action);
+        return {
+          key,
+          modifiers,
+          action
+        };
+      }
+      function _belongsTo(element, ancestor) {
+        if (element === null || element === document2) {
+          return false;
+        }
+        if (element === ancestor) {
+          return true;
+        }
+        return _belongsTo(element.parentNode, ancestor);
+      }
+      function Mousetrap2(targetElement) {
+        var self2 = this;
+        targetElement = targetElement || document2;
+        if (!(self2 instanceof Mousetrap2)) {
+          return new Mousetrap2(targetElement);
+        }
+        self2.target = targetElement;
+        self2._callbacks = {};
+        self2._directMap = {};
+        var _sequenceLevels = {};
+        var _resetTimer;
+        var _ignoreNextKeyup = false;
+        var _ignoreNextKeypress = false;
+        var _nextExpectedAction = false;
+        function _resetSequences(doNotReset) {
+          doNotReset = doNotReset || {};
+          var activeSequences = false, key;
+          for (key in _sequenceLevels) {
+            if (doNotReset[key]) {
+              activeSequences = true;
+              continue;
+            }
+            _sequenceLevels[key] = 0;
+          }
+          if (!activeSequences) {
+            _nextExpectedAction = false;
+          }
+        }
+        function _getMatches(character2, modifiers, e2, sequenceName, combination, level) {
+          var i4;
+          var callback2;
+          var matches = [];
+          var action = e2.type;
+          if (!self2._callbacks[character2]) {
+            return [];
+          }
+          if (action == "keyup" && _isModifier(character2)) {
+            modifiers = [character2];
+          }
+          for (i4 = 0; i4 < self2._callbacks[character2].length; ++i4) {
+            callback2 = self2._callbacks[character2][i4];
+            if (!sequenceName && callback2.seq && _sequenceLevels[callback2.seq] != callback2.level) {
+              continue;
+            }
+            if (action != callback2.action) {
+              continue;
+            }
+            if (action == "keypress" && !e2.metaKey && !e2.ctrlKey || _modifiersMatch(modifiers, callback2.modifiers)) {
+              var deleteCombo = !sequenceName && callback2.combo == combination;
+              var deleteSequence = sequenceName && callback2.seq == sequenceName && callback2.level == level;
+              if (deleteCombo || deleteSequence) {
+                self2._callbacks[character2].splice(i4, 1);
+              }
+              matches.push(callback2);
+            }
+          }
+          return matches;
+        }
+        function _fireCallback(callback2, e2, combo, sequence) {
+          if (self2.stopCallback(e2, e2.target || e2.srcElement, combo, sequence)) {
+            return;
+          }
+          if (callback2(e2, combo) === false) {
+            _preventDefault(e2);
+            _stopPropagation(e2);
+          }
+        }
+        self2._handleKey = function(character2, modifiers, e2) {
+          var callbacks = _getMatches(character2, modifiers, e2);
+          var i4;
+          var doNotReset = {};
+          var maxLevel = 0;
+          var processedSequenceCallback = false;
+          for (i4 = 0; i4 < callbacks.length; ++i4) {
+            if (callbacks[i4].seq) {
+              maxLevel = Math.max(maxLevel, callbacks[i4].level);
+            }
+          }
+          for (i4 = 0; i4 < callbacks.length; ++i4) {
+            if (callbacks[i4].seq) {
+              if (callbacks[i4].level != maxLevel) {
+                continue;
+              }
+              processedSequenceCallback = true;
+              doNotReset[callbacks[i4].seq] = 1;
+              _fireCallback(callbacks[i4].callback, e2, callbacks[i4].combo, callbacks[i4].seq);
+              continue;
+            }
+            if (!processedSequenceCallback) {
+              _fireCallback(callbacks[i4].callback, e2, callbacks[i4].combo);
+            }
+          }
+          var ignoreThisKeypress = e2.type == "keypress" && _ignoreNextKeypress;
+          if (e2.type == _nextExpectedAction && !_isModifier(character2) && !ignoreThisKeypress) {
+            _resetSequences(doNotReset);
+          }
+          _ignoreNextKeypress = processedSequenceCallback && e2.type == "keydown";
+        };
+        function _handleKeyEvent(e2) {
+          if (typeof e2.which !== "number") {
+            e2.which = e2.keyCode;
+          }
+          var character2 = _characterFromEvent(e2);
+          if (!character2) {
+            return;
+          }
+          if (e2.type == "keyup" && _ignoreNextKeyup === character2) {
+            _ignoreNextKeyup = false;
+            return;
+          }
+          self2.handleKey(character2, _eventModifiers(e2), e2);
+        }
+        function _resetSequenceTimer() {
+          clearTimeout(_resetTimer);
+          _resetTimer = setTimeout(_resetSequences, 1e3);
+        }
+        function _bindSequence(combo, keys3, callback2, action) {
+          _sequenceLevels[combo] = 0;
+          function _increaseSequence(nextAction) {
+            return function() {
+              _nextExpectedAction = nextAction;
+              ++_sequenceLevels[combo];
+              _resetSequenceTimer();
+            };
+          }
+          function _callbackAndReset(e2) {
+            _fireCallback(callback2, e2, combo);
+            if (action !== "keyup") {
+              _ignoreNextKeyup = _characterFromEvent(e2);
+            }
+            setTimeout(_resetSequences, 10);
+          }
+          for (var i4 = 0; i4 < keys3.length; ++i4) {
+            var isFinal = i4 + 1 === keys3.length;
+            var wrappedCallback = isFinal ? _callbackAndReset : _increaseSequence(action || _getKeyInfo(keys3[i4 + 1]).action);
+            _bindSingle(keys3[i4], wrappedCallback, action, combo, i4);
+          }
+        }
+        function _bindSingle(combination, callback2, action, sequenceName, level) {
+          self2._directMap[combination + ":" + action] = callback2;
+          combination = combination.replace(/\s+/g, " ");
+          var sequence = combination.split(" ");
+          var info2;
+          if (sequence.length > 1) {
+            _bindSequence(combination, sequence, callback2, action);
+            return;
+          }
+          info2 = _getKeyInfo(combination, action);
+          self2._callbacks[info2.key] = self2._callbacks[info2.key] || [];
+          _getMatches(info2.key, info2.modifiers, { type: info2.action }, sequenceName, combination, level);
+          self2._callbacks[info2.key][sequenceName ? "unshift" : "push"]({
+            callback: callback2,
+            modifiers: info2.modifiers,
+            action: info2.action,
+            seq: sequenceName,
+            level,
+            combo: combination
+          });
+        }
+        self2._bindMultiple = function(combinations, callback2, action) {
+          for (var i4 = 0; i4 < combinations.length; ++i4) {
+            _bindSingle(combinations[i4], callback2, action);
+          }
+        };
+        _addEvent(targetElement, "keypress", _handleKeyEvent);
+        _addEvent(targetElement, "keydown", _handleKeyEvent);
+        _addEvent(targetElement, "keyup", _handleKeyEvent);
+      }
+      Mousetrap2.prototype.bind = function(keys3, callback2, action) {
+        var self2 = this;
+        keys3 = keys3 instanceof Array ? keys3 : [keys3];
+        self2._bindMultiple.call(self2, keys3, callback2, action);
+        return self2;
+      };
+      Mousetrap2.prototype.unbind = function(keys3, action) {
+        var self2 = this;
+        return self2.bind.call(self2, keys3, function() {
+        }, action);
+      };
+      Mousetrap2.prototype.trigger = function(keys3, action) {
+        var self2 = this;
+        if (self2._directMap[keys3 + ":" + action]) {
+          self2._directMap[keys3 + ":" + action]({}, keys3);
+        }
+        return self2;
+      };
+      Mousetrap2.prototype.reset = function() {
+        var self2 = this;
+        self2._callbacks = {};
+        self2._directMap = {};
+        return self2;
+      };
+      Mousetrap2.prototype.stopCallback = function(e2, element) {
+        var self2 = this;
+        if ((" " + element.className + " ").indexOf(" mousetrap ") > -1) {
+          return false;
+        }
+        if (_belongsTo(element, self2.target)) {
+          return false;
+        }
+        if ("composedPath" in e2 && typeof e2.composedPath === "function") {
+          var initialEventTarget = e2.composedPath()[0];
+          if (initialEventTarget !== e2.target) {
+            element = initialEventTarget;
+          }
+        }
+        return element.tagName == "INPUT" || element.tagName == "SELECT" || element.tagName == "TEXTAREA" || element.isContentEditable;
+      };
+      Mousetrap2.prototype.handleKey = function() {
+        var self2 = this;
+        return self2._handleKey.apply(self2, arguments);
+      };
+      Mousetrap2.addKeycodes = function(object2) {
+        for (var key in object2) {
+          if (object2.hasOwnProperty(key)) {
+            _MAP[key] = object2[key];
+          }
+        }
+        _REVERSE_MAP = null;
+      };
+      Mousetrap2.init = function() {
+        var documentMousetrap = Mousetrap2(document2);
+        for (var method in documentMousetrap) {
+          if (method.charAt(0) !== "_") {
+            Mousetrap2[method] = /* @__PURE__ */ (function(method2) {
+              return function() {
+                return documentMousetrap[method2].apply(documentMousetrap, arguments);
+              };
+            })(method);
+          }
+        }
+      };
+      Mousetrap2.init();
+      window2.Mousetrap = Mousetrap2;
+      if (module2.exports) {
+        module2.exports = Mousetrap2;
+      }
+    })(typeof window !== "undefined" ? window : null, typeof window !== "undefined" ? document : null);
+  })(mousetrap);
+  return mousetrap.exports;
+}
+var mousetrapExports = requireMousetrap();
+const Mousetrap = /* @__PURE__ */ getDefaultExportFromCjs(mousetrapExports);
+let sequenceTimeout;
+function useRatingKeybinds(isVisible, ratingSystem, setRating) {
+  const firstChar = reactExports.useRef(void 0);
+  const sequenceKeys = ["`", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  function endSequence() {
+    firstChar.current = void 0;
+    for (const key of sequenceKeys) {
+      Mousetrap.unbind(key);
+    }
+  }
+  function restartSequenceTimeout() {
+    clearTimeout(sequenceTimeout);
+    sequenceTimeout = setTimeout(endSequence, 1e3);
+  }
+  const starRatingShortcuts = {
+    "0": NaN,
+    "1": 20,
+    "2": 40,
+    "3": 60,
+    "4": 80,
+    "5": 100
+  };
+  function handleStarRatingKeybinds() {
+    for (const key in starRatingShortcuts) {
+      Mousetrap.bind(key, () => setRating(starRatingShortcuts[key]));
+    }
+  }
+  function handleDecimalKeybinds() {
+    Mousetrap.bind("`", () => {
+      setRating(NaN);
+    });
+    for (let i3 = 0; i3 <= 9; ++i3) {
+      Mousetrap.bind(i3.toString(), () => {
+        if (firstChar.current !== void 0) {
+          let combined = parseInt(firstChar.current + i3.toString());
+          if (combined === 0) {
+            combined = 100;
+          }
+          setRating(combined);
+          firstChar.current = void 0;
+        } else {
+          firstChar.current = i3.toString();
+          restartSequenceTimeout();
+        }
+      });
+    }
+  }
+  reactExports.useEffect(() => {
+    if (!isVisible)
+      return;
+    Mousetrap.bind("r", () => {
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+      endSequence();
+      restartSequenceTimeout();
+      if (!ratingSystem || ratingSystem === RatingSystemType.Stars) {
+        return handleStarRatingKeybinds();
+      } else {
+        return handleDecimalKeybinds();
+      }
+    });
+    return () => {
+      Mousetrap.unbind("r");
+    };
+  });
+}
+function useKeyboardRating(scene2, { enabled }) {
+  const { configuration: stashConfig } = reactExports.useContext(ConfigurationContext);
+  const setRating = useSetRating(scene2);
+  useRatingKeybinds(
+    enabled,
+    stashConfig?.ui?.ratingSystemOptions?.type,
+    // Stash's keybinds use NaN to mean "unset rating"
+    (rating2) => setRating(Number.isNaN(rating2) ? null : rating2)
+  );
+}
+const STASH_URL_SIGNING_PARAMS = ["cid", "expires", "signature"];
+function getSceneStreamsKey(sceneStreams) {
+  return objectHash(sceneStreams.map((stream) => ({
+    url: stripUrlSigningParams(stream.url),
+    mime_type: stream.mime_type,
+    label: stream.label
+  })));
+}
+function stripUrlSigningParams(rawUrl) {
+  let url2;
+  try {
+    url2 = new URL(rawUrl);
+  } catch {
+    return rawUrl;
+  }
+  for (const param of STASH_URL_SIGNING_PARAMS) {
+    url2.searchParams.delete(param);
+  }
+  return url2.toString();
+}
+function useGetterRef(getter, initialValue, dependencies) {
+  const valueSourceRef = reactExports.useRef(initialValue);
+  const getterRef = reactExports.useMemo(() => {
+    const getterRef2 = {
+      get current() {
+        return getter(valueSourceRef.current);
+      },
+      set current(newValue) {
+        valueSourceRef.current = newValue;
+      }
+    };
+    return getterRef2;
+  }, []);
+  reactExports.useEffect(() => {
+    Object.defineProperty(getterRef, "current", {
+      get: () => getter(valueSourceRef.current)
+    });
+  }, dependencies);
+  return getterRef;
+}
+const faPlayIcon = icon(faPlay);
+const styledBigPlayButton = function(options2) {
+  const player = this;
+  player.ready(() => {
+    const button = player.bigPlayButton?.el();
+    if (!button) return;
+    button.innerHTML = "";
+    button.insertAdjacentElement("beforeend", faPlayIcon.node[0]);
+  });
+};
+function useOverflowIndicators(stackElmRef) {
+  const [isOverflowingTop, setIsOverflowingTop] = reactExports.useState(false);
+  const [isOverflowingBottom, setIsOverflowingBottom] = reactExports.useState(false);
+  const stackScrollClasses = reactExports.useMemo(() => {
+    const classes = ["indicators-on-overflow"];
+    if (isOverflowingTop) classes.push("top-overflowing");
+    if (isOverflowingBottom) classes.push("bottom-overflowing");
+    return classes;
+  }, [isOverflowingTop, isOverflowingBottom]);
+  function handleStackScroll(event2) {
+    const target = event2.currentTarget;
+    if (!target || !(target instanceof HTMLElement)) return;
+    updateStackScrollClasses(target);
+  }
+  reactExports.useEffect(() => {
+    if (!stackElmRef.current) return;
+    updateStackScrollClasses(stackElmRef.current);
+    stackElmRef.current.addEventListener("scroll", handleStackScroll);
+    const observer = new ResizeObserver(() => {
+      if (!stackElmRef.current) return;
+      updateStackScrollClasses(stackElmRef.current);
+    });
+    observer.observe(stackElmRef.current);
+    return () => {
+      observer.disconnect();
+      stackElmRef.current?.removeEventListener("scroll", handleStackScroll);
+    };
+  }, [stackElmRef.current]);
+  function updateStackScrollClasses(element) {
+    const isScrollable = element.scrollHeight > element.offsetHeight;
+    const scrollPercent = Math.abs(element.scrollTop) / (element.scrollHeight - element.offsetHeight);
+    const isReversed = getComputedStyle(element).flexDirection?.includes("reverse");
+    const scrollPercentDirectionCorrected = isReversed ? 1 - scrollPercent : scrollPercent;
+    setIsOverflowingTop(isScrollable && scrollPercentDirectionCorrected > 0);
+    setIsOverflowingBottom(isScrollable && scrollPercentDirectionCorrected < 1);
+  }
+  return stackScrollClasses;
+}
+const SvgTvChannelOutline = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlSpace: "preserve", style: {
+  fillRule: "evenodd",
+  clipRule: "evenodd",
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+  strokeMiterlimit: 1.5
+}, ...props }, /* @__PURE__ */ reactExports.createElement("rect", { x: 48, y: 88, width: 416, height: 296, rx: 44, ry: 44, style: {
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 28
+} }), /* @__PURE__ */ reactExports.createElement("path", { d: "M176,440L336,440", style: {
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 28
+} }), /* @__PURE__ */ reactExports.createElement("path", { d: "M126,172Q139,172 152,196Q178,244 204,196T256,196T308,196T360,196Q373,220 386,220", style: {
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 28
+} }), /* @__PURE__ */ reactExports.createElement("path", { d: "M126,260Q139,260 152,284Q178,332 204,284T256,284T308,284T360,284Q373,308 386,308", style: {
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 28
+} }));
 var generateUID$1 = function() {
   var counter2 = 1;
   var map = /* @__PURE__ */ new WeakMap();
@@ -203709,8 +203858,9 @@ const FilterSelectComponent = (props) => {
   }, debounceDelay);
   return jsxRuntimeExports.jsx(SelectComponent$1, { ...props, loadOptions: debounceLoadOptions, isLoading: props.isLoading || loading2, onChange: onChange3, selectedOptions, onCreateOption: onCreate, getNewOptionData: getNewOptionData2, isValidNewOption: validNewOption });
 };
-const logger$d = getLogger(["stash-tv", "ActionButtonBase"]);
+const logger$e = getLogger(["stash-tv", "ActionButtonBase"]);
 const useCurrentOpenPopover = create(() => null);
+const ActionButtonFolderContext = React$1.createContext(null);
 const ActionButtonBase = (props) => {
   const {
     state,
@@ -203728,6 +203878,14 @@ const ActionButtonBase = (props) => {
   } = props;
   const ButtonElement = displayOnly ? "div" : "button";
   const { leftHandedUi } = useTvConfig();
+  const folderContext = reactExports.useContext(ActionButtonFolderContext);
+  let iconElement = /* @__PURE__ */ React$1.createElement(ActionButtonIcon, { iconDefinition: icon2, state, config: config2 });
+  if (folderContext) {
+    iconElement = /* @__PURE__ */ React$1.createElement("div", { className: "folder-icon", "data-folder-button": folderContext.buttonId }, iconElement);
+  }
+  if (folderContext?.iconOnly) {
+    return /* @__PURE__ */ React$1.createElement("div", { className: cx("ActionButton", "icon-only", className, `state-${state}`) }, iconElement);
+  }
   const getOnClickHandler = (sidePanelClick) => {
     if (displayOnly) return;
     return (event2) => {
@@ -203760,7 +203918,7 @@ const ActionButtonBase = (props) => {
             onClick: displayOnly ? void 0 : getOnClickHandler(sidePanelClick),
             ref
           },
-          /* @__PURE__ */ React$1.createElement(ActionButtonIcon, { iconDefinition: icon2, state, config: config2 }),
+          iconElement,
           /* @__PURE__ */ React$1.createElement("span", { className: "sr-only" }, /* @__PURE__ */ React$1.createElement(ActionButtonTitle, { title: title2, state, config: config2 }))
         );
       }
@@ -203903,10 +204061,10 @@ function ActionButtonIcon({
       );
     } else {
       if (iconSource !== void 0) iconSource;
-      logger$d.error("Unable to determine icon for action button {*}", { iconDefinition, iconSource, state });
+      logger$e.error("Unable to determine icon for action button {*}", { iconDefinition, iconSource, state });
     }
   } catch (error) {
-    logger$d.error("Error rendering action button icon {*}", { error, iconDefinition, state });
+    logger$e.error("Error rendering action button icon {*}", { error, iconDefinition, state });
   }
   return /* @__PURE__ */ React$1.createElement("div", { className }, "?");
 }
@@ -203923,7 +204081,7 @@ const ActionButtonTitle = ({
   } else if (state in title2) {
     return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, title2[state]);
   }
-  logger$d.error("Unable to determine title for action button", { title: title2, state });
+  logger$e.error("Unable to determine title for action button", { title: title2, state });
   return /* @__PURE__ */ React$1.createElement("strong", null, '"?"');
 };
 const sharedActionButtonSchema = create$3({
@@ -203933,7 +204091,7 @@ const sharedActionButtonSchema = create$3({
 });
 const createNewActionButtonConfig = (type3, options2) => {
   const sharedDefaults = {
-    id: `${Date.now()}-${Math.random().toString().slice(2)}`,
+    id: generateConfigId(),
     type: "button",
     pinned: false
   };
@@ -203970,6 +204128,128 @@ const createNewActionButtonConfig = (type3, options2) => {
       };
   }
 };
+const defaultDisplayDuration = 1e3;
+const logger$d = getLogger(["stash-tv", "FeedbackOverlay"]);
+const useFeedback = create((set4, get7) => ({
+  contents: null,
+  fade: true,
+  icon: null,
+  setFeedback: (contents, { hold, fade = true, icon: icon2, displayDuration = defaultDisplayDuration } = {}) => {
+    if (get7().displayCountdown) {
+      clearTimeout(get7().displayCountdown);
+    }
+    const displayCountdown = hold || !contents ? void 0 : setTimeout(() => {
+      logger$d.debug("Clearing feedback");
+      set4({ contents: null, displayCountdown: void 0, icon: icon2 ?? null });
+    }, displayDuration);
+    if (get7().contents !== contents || get7().displayCountdown !== displayCountdown || get7().fade !== fade) {
+      logger$d.debug("Setting feedback{*}", { contents, hold, fade });
+      set4({ contents, displayCountdown, fade, icon: icon2 ?? null });
+    }
+  }
+}));
+const FeedbackOverlay = reactExports.memo(() => {
+  const { uiVisible } = useTvConfig();
+  const { contents, icon: icon2, fade } = useFeedback();
+  const previousContents = usePrevious$2(contents);
+  const previousIcon = usePrevious$2(icon2);
+  const displayedContents = !contents ? previousContents : contents;
+  const displayedIcon = !contents ? previousIcon : icon2;
+  if (!displayedContents || !contents && !fade) return null;
+  return /* @__PURE__ */ React$1.createElement("div", { className: cx("FeedbackOverlay", { "fade-out": !contents && fade, "muted": !uiVisible }) }, /* @__PURE__ */ React$1.createElement("div", { className: "contents-container" }, displayedIcon, displayedContents));
+});
+const Switch = function Switch2(props) {
+  return /* @__PURE__ */ React$1.createElement(
+    FormImpl.Switch,
+    {
+      ...props,
+      className: cx("Switch", props.className),
+      label: /* @__PURE__ */ React$1.createElement("span", null, props.label)
+    }
+  );
+};
+const logger$c = getLogger(["stash-tv", "ChangeChannelActionButton"]);
+const id$m = "change-channel";
+const configSchema$4 = sharedActionButtonSchema.shape({
+  buttonType: create$6().oneOf([id$m]).required(),
+  /** Step to the next channel on each press instead of opening a list of them */
+  cycle: create$7().optional()
+});
+const buttonDefinition$l = {
+  id: id$m,
+  title: {
+    active: "Change channel",
+    inactive: "Change channel"
+  },
+  // A single icon since the button has no active state
+  icon: SvgTvChannelOutline,
+  components: {
+    button: ChangeChannelActionButton,
+    settings: SettingsForm$4
+  },
+  configSchema: configSchema$4
+};
+function ChangeChannelActionButton({
+  config: config2
+}) {
+  let cycle = false;
+  try {
+    cycle = buttonDefinition$l.configSchema.validateSync(config2).cycle ?? false;
+  } catch (error) {
+    logger$c.warn("Invalid config for change channel action button, falling back to the channel list", { error, config: config2 });
+  }
+  const { channels } = useTvConfig();
+  const { activeChannel, setActiveChannel, availableSavedFilters, availableSavedFiltersLoading } = useMediaItemFilters();
+  const { setFeedback } = useFeedback();
+  const channelName = (channel) => {
+    const { prefix: prefix2, name: name2 } = getChannelName(channel, availableSavedFilters, availableSavedFiltersLoading);
+    return prefix2 + name2;
+  };
+  if (channels.length <= 1) return null;
+  return /* @__PURE__ */ React$1.createElement(
+    ActionButtonBase,
+    {
+      state: "inactive",
+      icon: buttonDefinition$l.icon,
+      title: buttonDefinition$l.title,
+      className: cx(buttonDefinition$l.id, "hide-on-ui-hide"),
+      sidePanelClassName: "action-button-change-channel",
+      onClick: cycle ? () => {
+        const nextChannel = getNextOption(channels.map((channel) => ({ value: channel.id, channel })), activeChannel?.id ?? "");
+        if (!nextChannel) return;
+        setActiveChannel(nextChannel.channel.id);
+        setFeedback(channelName(nextChannel.channel), { displayDuration: 3e3 });
+      } : void 0,
+      sidePanel: cycle ? void 0 : ({ close }) => /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, channels.map((channel) => {
+        const isActive = channel.id === activeChannel?.id;
+        return /* @__PURE__ */ React$1.createElement(
+          Button,
+          {
+            key: channel.id,
+            variant: isActive ? "primary" : "link",
+            "aria-current": isActive ? "true" : void 0,
+            onClick: () => {
+              setActiveChannel(channel.id);
+              close();
+            }
+          },
+          channelName(channel)
+        );
+      }))
+    }
+  );
+}
+function SettingsForm$4({ formik }) {
+  return /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    Switch,
+    {
+      id: "cycle-channels",
+      checked: Boolean(formik.values.cycle),
+      label: "Cycle through channels",
+      onChange: (event2) => formik.setFieldValue("cycle", event2.target.checked)
+    }
+  ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Switch to the next channel each time the button is pressed, rather than choosing one from a list."));
+}
 var StateManagedSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   var baseSelectProps = useStateManager(props);
   return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1q({
@@ -207646,16 +207926,6 @@ function TagIdSelect(props) {
     }
   ));
 }
-const Switch = function Switch2(props) {
-  return /* @__PURE__ */ React$1.createElement(
-    FormImpl.Switch,
-    {
-      ...props,
-      className: cx("Switch", props.className),
-      label: /* @__PURE__ */ React$1.createElement("span", null, props.label)
-    }
-  );
-};
 StateManagedSelect$1.whyDidYouRender = {
   customName: "ReactSelect"
 };
@@ -216175,7 +216445,7 @@ function DefaultMarkersPanel({
 function EditMarkerForm({ sceneId, marker, close }) {
   return /* @__PURE__ */ React$1.createElement(SceneMarkerForm, { className: "action-button-create-marker", sceneID: sceneId, onClose: close, marker });
 }
-const logger$c = getLogger(["stash-tv", "CreateMarkerActionButton"]);
+const logger$b = getLogger(["stash-tv", "CreateMarkerActionButton"]);
 const id$l = "create-marker";
 const configSchema$3 = sharedActionButtonSchema.shape({
   buttonType: create$6().oneOf([id$l]).required(),
@@ -216198,14 +216468,14 @@ const buttonDefinition$k = {
       queryFindTagsByIDForSelect([tagId]).then((result) => result.data.findTags.tags[0] && setTag2(result.data.findTags.tags[0]));
     }, [tagId]);
     if (invalidConfig) {
-      logger$c.error("Invalid config for create marker action button title {*}", { config: config2 });
+      logger$b.error("Invalid config for create marker action button title {*}", { config: config2 });
       return /* @__PURE__ */ React$1.createElement("strong", null, "?");
     }
     if (markerDefaults) {
       if (state === "active" || state === "inactive") {
         return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, tag2 ? `Add/edit "${tag2.name}" markers` : "Add/edit markers");
       } else {
-        logger$c.error("Unexpected state in CreateMarkerActionButton title function", { state });
+        logger$b.error("Unexpected state in CreateMarkerActionButton title function", { state });
       }
     }
     return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, "Add/edit scene marker");
@@ -216227,7 +216497,7 @@ function CreateMarkerActionButton({
     try {
       return buttonDefinition$k.configSchema.validateSync(config2);
     } catch (error) {
-      logger$c.error("Invalid config for create marker action button", { error, config: config2 });
+      logger$b.error("Invalid config for create marker action button", { error, config: config2 });
       return void 0;
     }
   }, [config2]);
@@ -216245,7 +216515,7 @@ function CreateMarkerActionButton({
     if (!markerDefaults) return;
     const currentTime = playerRef.current?.currentTime();
     if (currentTime === void 0) {
-      logger$c.error("Player current time is undefined when creating quick marker", { sceneId: scene2.id });
+      logger$b.error("Player current time is undefined when creating quick marker", { sceneId: scene2.id });
       return;
     }
     sceneMarkerCreate({
@@ -216473,7 +216743,7 @@ const DeleteSceneMarkersDialog = (props) => {
     variant: "secondary"
   }, isRunning: isDeleting, children: jsxRuntimeExports.jsx("p", { children: message }) });
 };
-const logger$b = getLogger(["stash-tv", "useDeleteMediaItemDialog"]);
+const logger$a = getLogger(["stash-tv", "useDeleteMediaItemDialog"]);
 function focusDeleteButtonWhenReady() {
   let frame2;
   const tryFocus = (attempt) => {
@@ -216517,7 +216787,7 @@ function useDeleteMediaItemDialog(mediaItem, onDeleted) {
         }
       );
     } else {
-      logger$b.error("useDeleteMediaItemDialog used for unsupported media item type", { mediaItem });
+      logger$a.error("useDeleteMediaItemDialog used for unsupported media item type", { mediaItem });
     }
   }
   return { isOpen, open, dialog };
@@ -216553,7 +216823,7 @@ function DeleteMediaItemActionButton({
     }
   ));
 }
-const logger$a = getLogger(["stash-tv", "useMediaItemTags"]);
+const logger$9 = getLogger(["stash-tv", "useMediaItemTags"]);
 function useMediaItemTags(mediaItem) {
   let tags2;
   let primaryTag = null;
@@ -216632,7 +216902,7 @@ function useMediaItemTags(mediaItem) {
       updateMarkerTags(tagIds);
     };
   } else {
-    logger$a.error("useMediaItemTags rendered for unsupported media item type", { mediaItem });
+    logger$9.error("useMediaItemTags rendered for unsupported media item type", { mediaItem });
     tags2 = [];
     addTag = () => {
     };
@@ -216682,7 +216952,7 @@ function Tag({ tag: tag2, onClick, icon: icon2, className }) {
   }
   return renderBadge({ className: rootClassName });
 }
-const logger$9 = getLogger(["stash-tv", "EditTagSelectionForm"]);
+const logger$8 = getLogger(["stash-tv", "EditTagSelectionForm"]);
 function EditTagSelectionForm({ initialTags, pinnedTagIds, save, cancel }) {
   const [selectedTags, setSelectedTags] = reactExports.useState(
     initialTags
@@ -216695,7 +216965,7 @@ function EditTagSelectionForm({ initialTags, pinnedTagIds, save, cancel }) {
   reactExports.useEffect(() => {
     if (!pinnedTagIds || !pinnedTagIds.length) return;
     queryFindTagsByIDForSelect(pinnedTagIds).then((result) => setPinnedTags(result.data.findTags.tags)).catch((error) => {
-      logger$9.error(`Error when fetching tags ${pinnedTagIds.join(", ")} for edit tags form: {error}`, { error });
+      logger$8.error(`Error when fetching tags ${pinnedTagIds.join(", ")} for edit tags form: {error}`, { error });
     });
   }, [objectHash(pinnedTagIds?.toSorted() || [])]);
   const tagsChanged = reactExports.useMemo(
@@ -216754,7 +217024,7 @@ function EditTagsContents({ initialTags, pinnedTagIds, primaryTag, save, cancel 
     }
   ), primaryTag && /* @__PURE__ */ React$1.createElement("div", { className: "primary-tag-note" }, `Marker's primary tag is "`, primaryTag.name, '".'));
 }
-const logger$8 = getLogger(["stash-tv", "EditTagsActionButton"]);
+const logger$7 = getLogger(["stash-tv", "EditTagsActionButton"]);
 const id$j = "edit-tags";
 const configSchema$2 = sharedActionButtonSchema.shape({
   buttonType: create$6().oneOf([id$j]).required(),
@@ -216783,7 +217053,7 @@ function EditTagsActionButton({
     const parsedConfig = buttonDefinition$i.configSchema.validateSync(config2);
     pinnedTagIds = parsedConfig.pinnedTagIds;
   } catch (error) {
-    logger$8.warn("Invalid config for edit tags action button", { error, config: config2 });
+    logger$7.warn("Invalid config for edit tags action button", { error, config: config2 });
   }
   return /* @__PURE__ */ React$1.createElement(
     ActionButtonBase,
@@ -216849,36 +217119,6 @@ function usePlaybackPositionOptions() {
     };
   }, [playLength]);
 }
-const defaultDisplayDuration = 1e3;
-const logger$7 = getLogger(["stash-tv", "FeedbackOverlay"]);
-const useFeedback = create((set4, get7) => ({
-  contents: null,
-  fade: true,
-  icon: null,
-  setFeedback: (contents, { hold, fade = true, icon: icon2, displayDuration = defaultDisplayDuration } = {}) => {
-    if (get7().displayCountdown) {
-      clearTimeout(get7().displayCountdown);
-    }
-    const displayCountdown = hold || !contents ? void 0 : setTimeout(() => {
-      logger$7.debug("Clearing feedback");
-      set4({ contents: null, displayCountdown: void 0, icon: icon2 ?? null });
-    }, displayDuration);
-    if (get7().contents !== contents || get7().displayCountdown !== displayCountdown || get7().fade !== fade) {
-      logger$7.debug("Setting feedback{*}", { contents, hold, fade });
-      set4({ contents, displayCountdown, fade, icon: icon2 ?? null });
-    }
-  }
-}));
-const FeedbackOverlay = reactExports.memo(() => {
-  const { uiVisible } = useTvConfig();
-  const { contents, icon: icon2, fade } = useFeedback();
-  const previousContents = usePrevious$2(contents);
-  const previousIcon = usePrevious$2(icon2);
-  const displayedContents = !contents ? previousContents : contents;
-  const displayedIcon = !contents ? previousIcon : icon2;
-  if (!displayedContents || !contents && !fade) return null;
-  return /* @__PURE__ */ React$1.createElement("div", { className: cx("FeedbackOverlay", { "fade-out": !contents && fade, "muted": !uiVisible }) }, /* @__PURE__ */ React$1.createElement("div", { className: "contents-container" }, displayedIcon, displayedContents));
-});
 function cycleOptionTitle(name2, useOptions, fallback) {
   return ({ state }) => {
     const options2 = useOptions();
@@ -217437,12 +217677,12 @@ function PlaybackRateActionButton({
   const [playbackRate, setPlaybackRate] = reactExports.useState(desiredPlaybackRate);
   const active = reactExports.useMemo(() => playbackRate !== 1, [playbackRate]);
   reactExports.useEffect(() => {
-    if (!playerRef.current) return;
-    playerRef.current.on("ratechange", () => {
-      const currentRate = playerRef.current?.playbackRate();
-      if (currentRate !== void 0) setPlaybackRate(currentRate);
-    });
-  }, [playerRef.current, setPlaybackRate]);
+    const player = playerRef.current;
+    if (!player) return;
+    const onRateChange = () => setPlaybackRate(player.playbackRate());
+    player.on("ratechange", onRateChange);
+    return () => player.off("ratechange", onRateChange);
+  }, [playerRef.current]);
   const speeds = [0.5, 0.75, 1, 1.25, 1.5, 2, 4, 8];
   return /* @__PURE__ */ React$1.createElement(
     ActionButtonBase,
@@ -220085,6 +220325,7 @@ function SettingsForm({ formik }) {
   ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Enable full volume control rather than just mute/unmute. Note that this does not work on iOS devices due to platform limitations."), formik.touched.fullControl && fullControlError && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, fullControlError)), Object.keys(otherErrors).length > 0 && /* @__PURE__ */ React$1.createElement(FormImpl.Control.Feedback, { type: "invalid" }, /* @__PURE__ */ React$1.createElement("ul", null, Object.entries(otherErrors).map(([key, error]) => /* @__PURE__ */ React$1.createElement("li", { key }, error)))));
 }
 const allButtonDefinition = [
+  buttonDefinition$l,
   buttonDefinition$k,
   buttonDefinition$j,
   buttonDefinition$i,
@@ -220109,6 +220350,40 @@ const allButtonDefinition = [
 ];
 function getActionButtonDefinition(type3) {
   return allButtonDefinition.find((def) => def.id === type3) ?? unknownActionButtonDefinition;
+}
+const duration$1 = 100;
+const easing = "cubic-bezier(0.4, 0, 0.2, 1)";
+function transformOnto(from3, to2) {
+  const dx = to2.x + to2.width / 2 - (from3.x + from3.width / 2);
+  const dy = to2.y + to2.height / 2 - (from3.y + from3.height / 2);
+  return `translate(${dx}px, ${dy}px) scale(${to2.width / from3.width})`;
+}
+function animateFolderIcons(openFolder, preview, { from: from3, to: to2 }) {
+  const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+  const previewIcons = new Map(
+    [...preview.querySelectorAll(".folder-icon")].map((icon2) => [icon2.dataset.folderButton, icon2])
+  );
+  const animations2 = [...openFolder.querySelectorAll(".folder-icon")].flatMap((icon2) => {
+    const previewIcon = previewIcons.get(icon2.dataset.folderButton);
+    if (!previewIcon || typeof icon2.animate !== "function") return [];
+    const current = icon2.getBoundingClientRect();
+    icon2.getAnimations().forEach((animation) => animation.cancel());
+    if (reduceMotion) return [];
+    const own = icon2.getBoundingClientRect();
+    const previewBox = previewIcon.getBoundingClientRect();
+    return [icon2.animate(
+      [
+        { transform: transformOnto(own, from3 === "preview" ? previewBox : current) },
+        { transform: transformOnto(own, to2 === "preview" ? previewBox : own) }
+      ],
+      // Holds the icons in the preview once there, until the open folder is gone
+      { duration: duration$1, easing, fill: "forwards" }
+    )];
+  });
+  return new Promise((resolve) => {
+    Promise.all(animations2.map((animation) => animation.finished)).then(() => resolve(), () => {
+    });
+  });
 }
 const logger$2 = getLogger(["stash-tv", "ActionButtonStack"]);
 function ActionButtonStack({ mediaItem, sceneInfoOpen, setSceneInfoOpen, playerRef, onMediaItemDeleted }) {
@@ -220181,49 +220456,74 @@ const Folder = ({
   const offscreenModifier = useOffscreenModifier({
     onOffscreen: () => setMediaItemState("openFolderId", "")
   });
-  const first4buttons = folderConfig.contents.slice(0, 4);
   const buttonRef = reactExports.useRef(null);
+  const previewRef = reactExports.useRef(null);
   const folderRef = reactExports.useRef(null);
   const [_, setFolderRefSet] = reactExports.useState(false);
   const stackScrollClasses = useOverflowIndicators(folderRef);
+  const [closing, setClosing] = reactExports.useState(false);
+  const showOpenFolder = isOpen || closing;
+  const [iconsAnimating, setIconsAnimating] = reactExports.useState(false);
+  const latestAnimation = reactExports.useRef(0);
+  async function animateIcons(movement) {
+    const openFolder = folderRef.current;
+    const preview = previewRef.current;
+    if (!openFolder || !preview) return true;
+    const animation = ++latestAnimation.current;
+    setIconsAnimating(true);
+    await animateFolderIcons(openFolder, preview, movement);
+    if (animation !== latestAnimation.current) return false;
+    setIconsAnimating(false);
+    return true;
+  }
+  reactExports.useEffect(() => {
+    if (showOpenFolder) return;
+    latestAnimation.current++;
+    setIconsAnimating(false);
+  }, [showOpenFolder]);
+  reactExports.useEffect(() => () => {
+    latestAnimation.current++;
+  }, []);
+  async function close() {
+    setMediaItemState("openFolderId", "");
+    setClosing(true);
+    if (await animateIcons({ from: "current", to: "preview" })) setClosing(false);
+  }
+  function open() {
+    setMediaItemState("openFolderId", id2);
+    if (closing) {
+      setClosing(false);
+      animateIcons({ from: "current", to: "open" });
+    }
+  }
+  function renderFolderButtons(iconOnly) {
+    return folderConfig.contents.map((config2) => /* @__PURE__ */ React$1.createElement(ActionButtonFolderContext.Provider, { key: config2.id, value: { iconOnly, buttonId: config2.id } }, renderActionButton(config2)));
+  }
   return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
     "button",
     {
-      className: cx("folder", "hide-on-ui-hide", { open: isOpen }),
+      className: cx("folder", "hide-on-ui-hide", { open: isOpen, "showing-open-folder": showOpenFolder }),
       "aria-label": isOpen ? "Close folder" : "Open folder",
       ref: buttonRef,
-      onClick: () => {
-        if (!isOpen) {
-          setMediaItemState("openFolderId", id2);
-        } else {
-          setMediaItemState("openFolderId", "");
-        }
-      }
+      onClick: isOpen ? close : open
     },
-    !isOpen && /* @__PURE__ */ React$1.createElement("div", { className: "folder-contents" }, first4buttons.map((config2) => {
-      const def = getActionButtonDefinition(config2.buttonType);
-      return /* @__PURE__ */ React$1.createElement(
-        ActionButtonIcon,
-        {
-          iconDefinition: def.icon,
-          state: "inactive",
-          config: def,
-          key: config2.id
-        }
-      );
-    })),
-    isOpen && /* @__PURE__ */ React$1.createElement(ChevronRight, { className: "hide-icon" })
+    /* @__PURE__ */ React$1.createElement("div", { className: "folder-contents", ref: previewRef }, renderFolderButtons(true)),
+    /* @__PURE__ */ React$1.createElement(ChevronRight, { className: "hide-icon", "aria-hidden": true })
   ), /* @__PURE__ */ React$1.createElement(
     Overlay,
     {
       target: buttonRef,
       placement: leftHandedUi ? "right" : "left",
-      show: isOpen,
-      onEntering: (elm) => {
-        setFolderRefSet(true);
-        folderRef.current = elm;
-      },
+      show: showOpenFolder,
+      transition: false,
       popperConfig: {
+        // The "ref" prop doesn't work, so get the element from Popper. Once Popper has positioned it, the icons can
+        // move into it from the preview.
+        onFirstUpdate: (state) => {
+          folderRef.current = state.elements?.popper ?? null;
+          setFolderRefSet(true);
+          animateIcons({ from: "preview", to: "open" });
+        },
         modifiers: [
           preventOverflowModifier,
           setMaxSizeModifier,
@@ -220234,10 +220534,10 @@ const Folder = ({
     /* @__PURE__ */ React$1.createElement(
       Popover,
       {
-        className: cx("folder-contents-popover", { "left-handed": leftHandedUi, hide: !uiVisible }, stackScrollClasses),
+        className: cx("folder-contents-popover", { "left-handed": leftHandedUi, hide: !uiVisible, "icons-animating": iconsAnimating }, stackScrollClasses),
         id: id2
       },
-      folderConfig.contents.map((config2) => renderActionButton(config2))
+      renderFolderButtons(false)
     )
   ));
 };
@@ -225274,7 +225574,7 @@ var createInterpolator = (range3, output, extrapolate) => {
   const inputRange = config2.range || [0, 1];
   const extrapolateLeft = config2.extrapolateLeft || config2.extrapolate || "extend";
   const extrapolateRight = config2.extrapolateRight || config2.extrapolate || "extend";
-  const easing = config2.easing || ((t4) => t4);
+  const easing2 = config2.easing || ((t4) => t4);
   return (input) => {
     const range22 = findRange(input, inputRange);
     return interpolate(
@@ -225283,14 +225583,14 @@ var createInterpolator = (range3, output, extrapolate) => {
       inputRange[range22 + 1],
       outputRange[range22],
       outputRange[range22 + 1],
-      easing,
+      easing2,
       extrapolateLeft,
       extrapolateRight,
       config2.map
     );
   };
 };
-function interpolate(input, inputMin, inputMax, outputMin, outputMax, easing, extrapolateLeft, extrapolateRight, map) {
+function interpolate(input, inputMin, inputMax, outputMin, outputMax, easing2, extrapolateLeft, extrapolateRight, map) {
   let result = map ? map(input) : input;
   if (result < inputMin) {
     if (extrapolateLeft === "identity") return result;
@@ -225305,7 +225605,7 @@ function interpolate(input, inputMin, inputMax, outputMin, outputMax, easing, ex
   if (inputMin === -Infinity) result = -result;
   else if (inputMax === Infinity) result = result - inputMin;
   else result = (result - inputMin) / (inputMax - inputMin);
-  result = easing(result);
+  result = easing2(result);
   if (outputMin === -Infinity) result = -result;
   else if (outputMax === Infinity) result = result + outputMin;
   else result = result * (outputMax - outputMin) + outputMin;
@@ -228119,6 +228419,56 @@ function DraggableList({
     })
   );
 }
+function ConfigList({ className, ...props }) {
+  return /* @__PURE__ */ React$1.createElement(DraggableList, { className: cx("ConfigList", className), ...props });
+}
+function ConfigListItem({
+  className,
+  dragHandleProps,
+  icon: icon2,
+  title: title2,
+  controls,
+  children,
+  ...props
+}) {
+  return /* @__PURE__ */ React$1.createElement("div", { className: cx("config-list-item", className), ...props }, /* @__PURE__ */ React$1.createElement("div", { className: "config-list-item-row" }, /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement("div", { className: cx("drag-handle", { disable: !dragHandleProps }), ...dragHandleProps }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faGripVertical }), icon2), title2), controls && /* @__PURE__ */ React$1.createElement("div", { className: "inline controls" }, controls)), children);
+}
+function AddConfigItemButton({
+  className,
+  variant = "link",
+  icon: icon2,
+  title: title2,
+  onClick
+}) {
+  return /* @__PURE__ */ React$1.createElement(
+    Button,
+    {
+      variant,
+      className: cx("add-config-item", `add-config-item-${variant}`, className),
+      onClick
+    },
+    /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faAdd }),
+    /* @__PURE__ */ React$1.createElement("div", { className: "info" }, icon2, title2)
+  );
+}
+function ConfigItemModal({
+  className,
+  header,
+  operation,
+  initialValues,
+  schema: schema2,
+  onClose,
+  onSave,
+  children
+}) {
+  const formik = useFormik({
+    initialValues,
+    enableReinitialize: true,
+    validate: yupFormikValidate(schema2),
+    onSubmit: (values3) => onSave(schema2.cast(values3))
+  });
+  return /* @__PURE__ */ React$1.createElement(Modal, { show: true, onHide: () => onClose(), title: "", className: cx("ConfigItemModal", className) }, /* @__PURE__ */ React$1.createElement(Modal.Header, null, header), /* @__PURE__ */ React$1.createElement(Modal.Body, null, /* @__PURE__ */ React$1.createElement("div", { className: "dialog-content" }, children(formik))), /* @__PURE__ */ React$1.createElement(Modal.Footer, null, /* @__PURE__ */ React$1.createElement(Button, { variant: "secondary", onClick: () => onClose() }, "Cancel"), /* @__PURE__ */ React$1.createElement(Button, { variant: "primary", onClick: () => formik.submitForm() }, operation === "add" ? "Add" : "Save")));
+}
 const logger = getLogger(["stash-tv", "ActionButtonSettingsModal"]);
 const ActionButtonSettingsModal = ({ initialActionButtonConfig, operation, onClose, onSave }) => {
   const initialConfig = initialActionButtonConfig;
@@ -228135,42 +228485,250 @@ const ActionButtonSettingsModal = ({ initialActionButtonConfig, operation, onClo
     logger.warn("Action button definition has no settings component", { actionButtonDefinition });
     return null;
   }
-  const formik = useFormik({
-    initialValues: initialConfig,
-    enableReinitialize: true,
-    validate: yupFormikValidate(actionButtonDefinition.configSchema),
-    onSubmit: (values3) => onSave(actionButtonDefinition.configSchema.cast(values3))
-  });
-  const form = /* @__PURE__ */ React$1.createElement(actionButtonDefinition.components.settings, { formik });
-  return /* @__PURE__ */ React$1.createElement(Modal, { show: true, onHide: () => onClose(), title: "", className: "ActionButtonSettingsModal" }, /* @__PURE__ */ React$1.createElement(Modal.Header, null, /* @__PURE__ */ React$1.createElement(
-    ActionButtonIcon,
+  const SettingsForm2 = actionButtonDefinition.components.settings;
+  return /* @__PURE__ */ React$1.createElement(
+    ConfigItemModal,
     {
-      iconDefinition: initialButtonDefinition.icon,
-      state: "inactive",
-      size: "small",
-      config: initialConfig
-    }
-  ), /* @__PURE__ */ React$1.createElement("span", null, operation === "add" ? "Add" : "Edit", " ", /* @__PURE__ */ React$1.createElement("em", null, /* @__PURE__ */ React$1.createElement(
-    ActionButtonTitle,
-    {
-      title: initialButtonDefinition.title,
-      state: "inactive",
-      config: initialConfig
-    }
-  )), " ", "Action Button")), /* @__PURE__ */ React$1.createElement(Modal.Body, null, /* @__PURE__ */ React$1.createElement("div", { className: "dialog-content" }, form)), /* @__PURE__ */ React$1.createElement(Modal.Footer, null, /* @__PURE__ */ React$1.createElement(Button, { variant: "secondary", onClick: () => onClose() }, "Cancel"), /* @__PURE__ */ React$1.createElement(Button, { variant: "primary", onClick: () => formik.submitForm() }, operation === "add" ? "Add" : "Save")));
+      className: "ActionButtonSettingsModal",
+      operation,
+      initialValues: initialConfig,
+      schema: actionButtonDefinition.configSchema,
+      onClose,
+      onSave,
+      header: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
+        ActionButtonIcon,
+        {
+          iconDefinition: initialButtonDefinition.icon,
+          state: "inactive",
+          size: "small",
+          config: initialConfig
+        }
+      ), /* @__PURE__ */ React$1.createElement("span", null, operation === "add" ? "Add" : "Edit", " ", /* @__PURE__ */ React$1.createElement("em", null, /* @__PURE__ */ React$1.createElement(
+        ActionButtonTitle,
+        {
+          title: initialButtonDefinition.title,
+          state: "inactive",
+          config: initialConfig
+        }
+      )), " ", "Action Button"))
+    },
+    (formik) => /* @__PURE__ */ React$1.createElement(SettingsForm2, { formik })
+  );
 };
+const entityTypeLabels = {
+  scene: "Scenes",
+  marker: "Markers"
+};
+function ChannelSourceSelect({
+  inputId,
+  value,
+  onChange: onChange3
+}) {
+  const { availableSavedFilters, availableSavedFiltersLoading } = useMediaItemFilters();
+  const valueEntityType = value?.type === "all" ? value.entityType : value?.type === "stash-saved-filter" ? availableSavedFilters.find((filter2) => filter2.id === value.savedFilterId)?.entityType : void 0;
+  const [chosenEntityType, setChosenEntityType] = reactExports.useState();
+  const entityType = chosenEntityType ?? valueEntityType ?? "scene";
+  const options2 = reactExports.useMemo(() => {
+    const filtersOfType = availableSavedFilters.filter((filter2) => filter2.entityType === entityType);
+    const allMediaName = getAllMediaSourceName(entityType);
+    const allMedia = {
+      value: getSourceTargetKey({ type: "all", entityType }),
+      label: allMediaName,
+      source: { type: "all", entityType }
+    };
+    const showAllMedia = value?.type === "all" || !filtersOfType.some((filter2) => filter2.name.trim().toLowerCase() === allMediaName.toLowerCase());
+    const savedFilters = filtersOfType.map((filter2) => ({
+      value: getSourceTargetKey({ type: "stash-saved-filter", savedFilterId: filter2.id }),
+      label: filter2.name,
+      source: { type: "stash-saved-filter", savedFilterId: filter2.id }
+    })).sort((a4, b3) => a4.label.localeCompare(b3.label));
+    return showAllMedia ? [allMedia, ...savedFilters] : savedFilters;
+  }, [availableSavedFilters, entityType, value?.type]);
+  const valueKey = value && getSourceTargetKey(value);
+  const selectedOption = options2.find((option) => option.value === valueKey);
+  return /* @__PURE__ */ React$1.createElement("div", { className: "ChannelSourceSelect" }, /* @__PURE__ */ React$1.createElement(ButtonGroup, { className: "entity-type", "aria-label": "Media type" }, ["scene", "marker"].map((buttonEntityType) => {
+    const active = buttonEntityType === entityType;
+    return /* @__PURE__ */ React$1.createElement(
+      Button,
+      {
+        key: buttonEntityType,
+        variant: active ? "primary" : "secondary",
+        className: buttonEntityType,
+        active,
+        "aria-pressed": active,
+        onClick: () => {
+          if (active) return;
+          setChosenEntityType(buttonEntityType);
+          if (value) onChange3(void 0);
+        }
+      },
+      entityTypeLabels[buttonEntityType]
+    );
+  })), /* @__PURE__ */ React$1.createElement(
+    Select,
+    {
+      inputId,
+      isLoading: availableSavedFiltersLoading,
+      value: selectedOption ?? null,
+      onChange: (option) => option && onChange3(option.source),
+      options: options2,
+      placeholder: `Choose ${entityType === "scene" ? "scenes" : "markers"} to show…`
+    }
+  ));
+}
 const getStashOrigin = () => location.origin;
+const ChannelSettingsModal = ({ initialChannelConfig, operation, onClose, onSave }) => {
+  const { availableSavedFilters, availableSavedFiltersLoading } = useMediaItemFilters();
+  return /* @__PURE__ */ React$1.createElement(
+    ConfigItemModal,
+    {
+      className: "ChannelSettingsModal",
+      operation,
+      initialValues: initialChannelConfig,
+      schema: channelConfigSchema,
+      onClose,
+      onSave,
+      header: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(ActionButtonIcon, { iconDefinition: SvgTvChannelOutline, state: "inactive", size: "small" }), /* @__PURE__ */ React$1.createElement("span", null, operation === "add" ? "Add" : "Edit", " Channel"))
+    },
+    (formik) => {
+      const source2 = formik.values.sources[0];
+      const sourceInfo = source2 && getChannelSourceInfo(source2, availableSavedFilters, availableSavedFiltersLoading);
+      const sourcesError = formik.submitCount > 0 && typeof formik.errors.sources === "string" ? formik.errors.sources : void 0;
+      return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "channel-source" }, "Show"), /* @__PURE__ */ React$1.createElement(
+        ChannelSourceSelect,
+        {
+          inputId: "channel-source",
+          value: source2,
+          onChange: (target) => formik.setFieldValue(
+            "sources",
+            target ? [{ ...target, randomise: source2?.randomise ?? false }] : []
+          )
+        }
+      ), sourcesError && /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-danger" }, sourcesError), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show every scene or marker, or a filter saved in Stash. To use a new filter create a", " ", /* @__PURE__ */ React$1.createElement("a", { href: new URL("/scenes", getStashOrigin()).toString() }, "scene filter"), " or", " ", /* @__PURE__ */ React$1.createElement("a", { href: new URL("/scenes/markers", getStashOrigin()).toString() }, "marker filter"), " in Stash and it will appear here.")), source2 && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, sourceInfo?.sortedRandomly ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
+        Switch,
+        {
+          id: "channel-source-randomise",
+          checked: source2.randomise,
+          label: "Randomise order",
+          onChange: (event2) => formik.setFieldValue("sources[0].randomise", event2.target.checked)
+        }
+      ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Randomise the order of the media in this filter."))));
+    }
+  );
+};
+const startupChannelOptions = [
+  { value: "last-viewed", label: "Last viewed" },
+  { value: "first", label: "First in list" }
+];
+function ChannelSettings() {
+  const { channels, startupChannel, set: setTvConfig } = useTvConfig();
+  const { activeChannel, setActiveChannel, availableSavedFilters, availableSavedFiltersLoading } = useMediaItemFilters();
+  const [channelDraft, setChannelDraft] = reactExports.useState(null);
+  const isInChannelList = (channel) => channels.some((otherChannel) => otherChannel.id === channel.id);
+  const saveChannelDraft = (channel) => {
+    if (isInChannelList(channel)) {
+      setTvConfig("channels", channels.map((otherChannel) => otherChannel.id === channel.id ? channel : otherChannel));
+    } else {
+      setTvConfig("channels", [...channels, channel]);
+      setActiveChannel(channel.id);
+    }
+  };
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, channelDraft && /* @__PURE__ */ React$1.createElement(
+    ChannelSettingsModal,
+    {
+      initialChannelConfig: channelDraft,
+      operation: isInChannelList(channelDraft) ? "edit" : "add",
+      onClose: () => setChannelDraft(null),
+      onSave: (channel) => {
+        saveChannelDraft(channel);
+        setChannelDraft(null);
+      }
+    }
+  ), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "ChannelSettings" }, /* @__PURE__ */ React$1.createElement(
+    ConfigList,
+    {
+      className: "channel-list",
+      items: channels,
+      onItemsOrderChange: (newOrder) => setTvConfig("channels", newOrder),
+      getItemKey: (channel) => channel.id,
+      renderItem: ({ item: channel, items, getDragHandleProps }) => {
+        const dragHandleProps = getDragHandleProps({ className: "drag-handle" });
+        const source2 = channel.sources[0];
+        const { prefix: prefix2, name: name2, sourceInfo } = getChannelName(channel, availableSavedFilters, availableSavedFiltersLoading);
+        const isActive = channel.id === activeChannel?.id;
+        return /* @__PURE__ */ React$1.createElement(
+          ConfigListItem,
+          {
+            className: cx("channel", { active: isActive, missing: sourceInfo?.missing }),
+            dragHandleProps: items.length > 1 ? dragHandleProps : void 0,
+            title: /* @__PURE__ */ React$1.createElement(
+              Button,
+              {
+                variant: "link",
+                className: "select-channel",
+                "aria-current": isActive ? "true" : void 0,
+                onClick: () => setActiveChannel(channel.id)
+              },
+              /* @__PURE__ */ React$1.createElement("span", { className: "channel-title" }, prefix2 && /* @__PURE__ */ React$1.createElement("span", { className: "channel-name-prefix" }, prefix2), /* @__PURE__ */ React$1.createElement("span", { className: "channel-name" }, name2)),
+              source2?.randomise && !sourceInfo?.sortedRandomly && /* @__PURE__ */ React$1.createElement(
+                FontAwesomeIcon,
+                {
+                  className: "randomised-icon",
+                  icon: faShuffle,
+                  title: "Randomised"
+                }
+              )
+            ),
+            controls: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
+              Button,
+              {
+                variant: "link",
+                className: cx("edit-channel", "muted"),
+                onClick: () => setChannelDraft(channel),
+                "aria-label": "Edit channel"
+              },
+              /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPenToSquare })
+            ), items.length > 1 && /* @__PURE__ */ React$1.createElement(
+              Button,
+              {
+                variant: "link",
+                className: cx("delete-channel", "muted"),
+                onClick: () => setTvConfig("channels", channels.filter((otherChannel) => otherChannel !== channel)),
+                "aria-label": "Delete channel"
+              },
+              /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faTrashCan })
+            ))
+          }
+        );
+      }
+    }
+  ), !channels.length && /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Showing all scenes. Add a channel to choose what the feed shows."), /* @__PURE__ */ React$1.createElement("div", { className: "form-subgroup" }, /* @__PURE__ */ React$1.createElement(
+    AddConfigItemButton,
+    {
+      className: "add-channel",
+      variant: "primary",
+      onClick: () => setChannelDraft(createNewChannelConfig()),
+      title: "Add channel"
+    }
+  ))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "startup-channel" }, "Channel on Startup"), /* @__PURE__ */ React$1.createElement(
+    Select,
+    {
+      inputId: "startup-channel",
+      value: startupChannelOptions.find((option) => option.value === startupChannel) ?? null,
+      onChange: (option) => option && setTvConfig("startupChannel", option.value),
+      options: startupChannelOptions
+    }
+  ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Which channel to show when Stash TV opens.")));
+}
 const SettingsTab = reactExports.memo(() => {
   const logger3 = getLogger(["stash-tv", "SettingsTab"]);
   const { data: { subtitleLanguage }, update: updateStashTvConfig } = useStashTvConfig();
   const {
     mediaItemFiltersLoading,
     mediaItemFiltersError,
-    currentMediaItemFilter,
-    availableSavedFilters
+    currentMediaItemFilter
   } = useMediaItemFilters();
   const {
-    isRandomised,
     crtEffect,
     crtEffectStrength,
     scenePreviewOnly,
@@ -228207,30 +228765,6 @@ const SettingsTab = reactExports.memo(() => {
     return objectHash(actionButtonStackConfig, hashOptions) === objectHash(defaultConfig2, hashOptions);
   }, [getDefaultAppSetting, actionButtonStackConfig]);
   const [displayedModal, setDisplayedModal] = reactExports.useState(null);
-  const allFilters = reactExports.useMemo(
-    () => availableSavedFilters.map((filter2) => ({
-      value: filter2.id,
-      label: filter2.name,
-      filterType: filter2.entityType
-    })).sort((a4, b3) => a4.label.localeCompare(b3.label)),
-    [availableSavedFilters]
-  );
-  const allFiltersGrouped = reactExports.useMemo(
-    () => [
-      {
-        label: "Scene Filters",
-        filterType: "scene",
-        options: allFilters.filter((filter2) => filter2.filterType === "scene")
-      },
-      {
-        label: "Marker Filters",
-        filterType: "marker",
-        options: allFilters.filter((filter2) => filter2.filterType === "marker")
-      }
-    ],
-    [allFilters]
-  );
-  const selectedFilter = allFilters.find((filter2) => filter2.value === currentMediaItemFilter?.savedFilter?.id);
   const subtitlesList = ISO6391.getAllNames().map((name2) => ({
     label: name2,
     value: ISO6391.getCode(name2)
@@ -228345,7 +228879,7 @@ const SettingsTab = reactExports.memo(() => {
     } else {
       setTvConfig(
         "actionButtonStackConfig",
-        [...actionButtonStackConfig, { ...actionButton, id: Date.now().toString() }]
+        [...actionButtonStackConfig, { ...actionButton, id: generateConfigId() }]
       );
     }
   };
@@ -228442,29 +228976,7 @@ const SettingsTab = reactExports.memo(() => {
         }
       }
     ),
-    /* @__PURE__ */ React$1.createElement(Accordion, { defaultActiveKey: "0" }, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "0" }, "Media Feed"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "0" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "filter" }, "Media Filter"), /* @__PURE__ */ React$1.createElement(
-      Select,
-      {
-        inputId: "filter",
-        isLoading: mediaItemFiltersLoading || mediaItemsLoading,
-        value: selectedFilter ?? null,
-        onChange: (newValue) => newValue && setTvConfig("currentFilterId", newValue.value),
-        options: allFiltersGrouped,
-        placeholder: `${allFilters.length > 0 ? "No filter selected" : "No filters saved in stash"}. Showing all scenes.`,
-        components: {
-          GroupHeading: (props) => /* @__PURE__ */ React$1.createElement(components.GroupHeading, { ...props }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: props.data.filterType === "scene" ? faCirclePlay : faLocationDot }), props.data.label),
-          SingleValue: (props) => /* @__PURE__ */ React$1.createElement(components.SingleValue, { ...props }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: props.data.filterType === "scene" ? faCirclePlay : faLocationDot }), props.data.label)
-        }
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Choose a filter from Stash to use as your Stash TV filter. If you don't have any filters create a new", " ", /* @__PURE__ */ React$1.createElement("a", { href: new URL("/scenes", getStashOrigin()).toString() }, "scene filter"), " or", " ", /* @__PURE__ */ React$1.createElement("a", { href: new URL("/scenes/markers", getStashOrigin()).toString() }, "marker filter"), " in Stash and it will appear here."), mediaItemFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading scene filters."), /* @__PURE__ */ React$1.createElement("p", null, "Try reloading the page.")) : null, noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Filter contains no scenes!"), /* @__PURE__ */ React$1.createElement("p", null, "No scenes were found in the currently selected filter. Please choose a different one."))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, currentMediaItemFilter?.savedFilter?.find_filter?.sort?.startsWith("random_") ? /* @__PURE__ */ React$1.createElement("span", null, "Filter sort order is random") : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
-      Switch,
-      {
-        id: "randomise-filter",
-        checked: isRandomised,
-        label: "Randomise filter order",
-        onChange: (event2) => setTvConfig("isRandomised", event2.target.checked)
-      }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Randomise the order of scenes in the filter."))), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    /* @__PURE__ */ React$1.createElement(Accordion, { defaultActiveKey: "0" }, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "0" }, "Channels"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "0" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(ChannelSettings, null), mediaItemFiltersError ? /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "An error occurred loading the channel."), /* @__PURE__ */ React$1.createElement("p", null, mediaItemFiltersError instanceof Error ? mediaItemFiltersError.message : "Try reloading the page.")) : null, noMediaItemsAvailable && /* @__PURE__ */ React$1.createElement("div", { className: "error" }, /* @__PURE__ */ React$1.createElement("h2", null, "Channel contains no media!"), /* @__PURE__ */ React$1.createElement("p", null, "No media was found for the current channel. Please choose a different one.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "only-show-matching-orientation",
@@ -228480,7 +228992,7 @@ const SettingsTab = reactExports.memo(() => {
         checked: autoPlay,
         onChange: (event2) => setTvConfig("autoPlay", event2.target.checked)
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Automatically play scenes.")), selectedFilter?.filterType === "scene" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Automatically play scenes.")), currentMediaItemFilter?.entityType === "scene" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "scene-preview-only",
@@ -228488,7 +229000,7 @@ const SettingsTab = reactExports.memo(() => {
         checked: scenePreviewOnly,
         onChange: (event2) => setTvConfig("scenePreviewOnly", event2.target.checked)
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Play a short preview rather than the full scene. (Requires the preview files to have been generated in Stash for a scene otherwise the full scene will be shown.)")), selectedFilter?.filterType === "marker" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Play a short preview rather than the full scene. (Requires the preview files to have been generated in Stash for a scene otherwise the full scene will be shown.)")), currentMediaItemFilter?.entityType === "marker" && /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "marker-preview-only",
@@ -228496,7 +229008,7 @@ const SettingsTab = reactExports.memo(() => {
         checked: markerPreviewOnly,
         onChange: (event2) => setTvConfig("markerPreviewOnly", event2.target.checked)
       }
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Play the low-resolution marker preview which can be useful for low bandwidth situations. (Requires the preview files to have been generated in Stash for a marker otherwise the full-quality video will be shown.)")), (!selectedFilter || selectedFilter.filterType === "scene") && !scenePreviewOnly && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "start-position" }, "Play From…"), /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Play the low-resolution marker preview which can be useful for low bandwidth situations. (Requires the preview files to have been generated in Stash for a marker otherwise the full-quality video will be shown.)")), (!currentMediaItemFilter || currentMediaItemFilter.entityType === "scene") && !scenePreviewOnly && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", { htmlFor: "start-position" }, "Play From…"), /* @__PURE__ */ React$1.createElement(
       Select,
       {
         inputId: "start-position",
@@ -228594,9 +229106,9 @@ const SettingsTab = reactExports.memo(() => {
         onChange: (event2) => setTvConfig("leftHandedUi", event2.target.checked)
       }
     ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Flip the user interface for left-handed use.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("label", null, "Action Buttons"), /* @__PURE__ */ React$1.createElement(
-      DraggableList,
+      ConfigList,
       {
-        className: cx("draggable-list"),
+        className: "action-button-list",
         items: editableActionButtonStackConfig,
         onItemsOrderChange: updateEditableActionButtonStackConfig,
         nestingKey: "contents",
@@ -228611,22 +229123,33 @@ const SettingsTab = reactExports.memo(() => {
         }) => {
           const configType = item.type;
           if (item.type === "folder") {
-            return /* @__PURE__ */ React$1.createElement("div", { className: cx("draggable-list-item", "folder") }, /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement("div", { className: "drag-handle", ...getDragHandleProps({ className: "drag-handle" }) }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faGripVertical }), /* @__PURE__ */ React$1.createElement(
-              ActionButtonIcon,
+            return /* @__PURE__ */ React$1.createElement(
+              ConfigListItem,
               {
-                iconDefinition: Folder$1,
-                state: "inactive",
-                size: "small"
-              }
-            ), "Folder"), /* @__PURE__ */ React$1.createElement("div", { className: "controls" }, /* @__PURE__ */ React$1.createElement(
-              Button,
-              {
-                variant: "link",
-                className: cx("hide-button", "muted"),
-                onClick: () => updateList(items.filter((listItem) => listItem !== item))
+                className: "folder",
+                dragHandleProps: getDragHandleProps({ className: "drag-handle" }),
+                icon: /* @__PURE__ */ React$1.createElement(
+                  ActionButtonIcon,
+                  {
+                    iconDefinition: Folder$1,
+                    state: "inactive",
+                    size: "small"
+                  }
+                ),
+                title: "Folder",
+                controls: /* @__PURE__ */ React$1.createElement(
+                  Button,
+                  {
+                    variant: "link",
+                    className: cx("hide-button", "muted"),
+                    onClick: () => updateList(items.filter((listItem) => listItem !== item))
+                  },
+                  /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faTrashCan })
+                )
               },
-              /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faTrashCan })
-            ))), !item.contents.length && /* @__PURE__ */ React$1.createElement("div", { className: "text-muted instructions" }, "(click ", /* @__PURE__ */ React$1.createElement(Arrow90degRight, null), " on items below to add to folder)"), nestedChildren);
+              !item.contents.length && /* @__PURE__ */ React$1.createElement("div", { className: "text-muted instructions" }, "(click ", /* @__PURE__ */ React$1.createElement(Arrow90degRight, null), " on items below to add to folder)"),
+              nestedChildren
+            );
           } else if (item.type !== "button") {
             logger3.error(`Unsupported action button config type ${configType}`, { item });
             return null;
@@ -228641,152 +229164,150 @@ const SettingsTab = reactExports.memo(() => {
           const isPinnable = !currentNestingParent;
           const isInsideFolder = currentNestingParent;
           const canAddToFolder = previousNestingParent && item.buttonType !== "settings" && item.buttonType !== "ui-visibility";
-          return /* @__PURE__ */ React$1.createElement("div", { className: cx("draggable-list-item") }, /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement(
-            "div",
+          return /* @__PURE__ */ React$1.createElement(
+            ConfigListItem,
             {
-              className: cx("drag-handle", { disable: items.length === 1 }),
-              ...items.length > 1 ? dragHandleProps : {}
-            },
-            /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faGripVertical }),
-            /* @__PURE__ */ React$1.createElement(
-              ActionButtonIcon,
-              {
-                iconDefinition: buttonDefinition2.icon,
-                state: "inactive",
-                size: "small",
-                config: item
-              }
-            )
-          ), /* @__PURE__ */ React$1.createElement(
-            ActionButtonTitle,
-            {
-              title: buttonDefinition2.title,
-              state: "inactive",
-              config: item
+              dragHandleProps: items.length > 1 ? dragHandleProps : void 0,
+              icon: /* @__PURE__ */ React$1.createElement(
+                ActionButtonIcon,
+                {
+                  iconDefinition: buttonDefinition2.icon,
+                  state: "inactive",
+                  size: "small",
+                  config: item
+                }
+              ),
+              title: /* @__PURE__ */ React$1.createElement(
+                ActionButtonTitle,
+                {
+                  title: buttonDefinition2.title,
+                  state: "inactive",
+                  config: item
+                }
+              ),
+              controls: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, "settings" in buttonDefinition2.components && /* @__PURE__ */ React$1.createElement(
+                Button,
+                {
+                  variant: "link",
+                  className: cx("settings", "muted"),
+                  onClick: () => setActionButtonDraft(item),
+                  "aria-label": "Edit button settings"
+                },
+                /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPenToSquare })
+              ), canAddToFolder && /* @__PURE__ */ React$1.createElement(
+                Button,
+                {
+                  variant: "link",
+                  className: cx("add-to-folder", "muted"),
+                  onClick: () => updateEditableActionButtonStackConfig(
+                    editableActionButtonStackConfig.map((config2) => {
+                      if (config2 === previousNestingParent && config2.type === "folder") {
+                        return {
+                          ...config2,
+                          contents: [...config2.contents, item]
+                        };
+                      } else if (config2 === item) {
+                        return null;
+                      }
+                      return config2;
+                    }).filter((v) => v !== null)
+                  )
+                },
+                /* @__PURE__ */ React$1.createElement(Arrow90degRight, null)
+              ), isDeletable && /* @__PURE__ */ React$1.createElement(
+                Button,
+                {
+                  variant: "link",
+                  className: cx("hide-button", "muted"),
+                  onClick: () => updateList(items.filter((listItem) => listItem !== item))
+                },
+                /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faTrashCan })
+              ), isInsideFolder && /* @__PURE__ */ React$1.createElement(
+                Button,
+                {
+                  variant: "link",
+                  className: cx("remove-from-folder", "muted"),
+                  onClick: () => updateEditableActionButtonStackConfig(
+                    editableActionButtonStackConfig.flatMap((config2) => {
+                      if (config2.type === "folder" && config2.contents.some((config22) => config22 === item)) {
+                        return [
+                          {
+                            ...config2,
+                            contents: config2.contents.filter((config22) => config22 !== item)
+                          },
+                          item
+                        ];
+                      }
+                      return config2;
+                    })
+                  )
+                },
+                /* @__PURE__ */ React$1.createElement(ArrowLeft, null)
+              ), isPinnable && /* @__PURE__ */ React$1.createElement(
+                Button,
+                {
+                  variant: "link",
+                  className: cx("pin-button", { muted: !item.pinned }),
+                  onClick: () => {
+                    const updatedConfig = editableActionButtonStackConfig.map(
+                      (config2) => config2.type === "button" && config2.id === item.id ? { ...config2, pinned: !config2.pinned } : config2
+                    );
+                    updateEditableActionButtonStackConfig([
+                      ...updatedConfig.filter((config2) => !config2.pinned),
+                      ...updatedConfig.filter((config2) => config2.pinned)
+                    ]);
+                  }
+                },
+                /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faThumbtack })
+              ))
             }
-          )), /* @__PURE__ */ React$1.createElement("div", { className: "inline controls" }, "settings" in buttonDefinition2.components && /* @__PURE__ */ React$1.createElement(
-            Button,
-            {
-              variant: "link",
-              className: cx("settings", "muted"),
-              onClick: () => setActionButtonDraft(item),
-              "aria-label": "Edit button settings"
-            },
-            /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPenToSquare })
-          ), canAddToFolder && /* @__PURE__ */ React$1.createElement(
-            Button,
-            {
-              variant: "link",
-              className: cx("add-to-folder", "muted"),
-              onClick: () => updateEditableActionButtonStackConfig(
-                editableActionButtonStackConfig.map((config2) => {
-                  if (config2 === previousNestingParent && config2.type === "folder") {
-                    return {
-                      ...config2,
-                      contents: [...config2.contents, item]
-                    };
-                  } else if (config2 === item) {
-                    return null;
-                  }
-                  return config2;
-                }).filter((v) => v !== null)
-              )
-            },
-            /* @__PURE__ */ React$1.createElement(Arrow90degRight, null)
-          ), isDeletable && /* @__PURE__ */ React$1.createElement(
-            Button,
-            {
-              variant: "link",
-              className: cx("hide-button", "muted"),
-              onClick: () => updateList(items.filter((listItem) => listItem !== item))
-            },
-            /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faTrashCan })
-          ), isInsideFolder && /* @__PURE__ */ React$1.createElement(
-            Button,
-            {
-              variant: "link",
-              className: cx("remove-from-folder", "muted"),
-              onClick: () => updateEditableActionButtonStackConfig(
-                editableActionButtonStackConfig.flatMap((config2) => {
-                  if (config2.type === "folder" && config2.contents.some((config22) => config22 === item)) {
-                    return [
-                      {
-                        ...config2,
-                        contents: config2.contents.filter((config22) => config22 !== item)
-                      },
-                      item
-                    ];
-                  }
-                  return config2;
-                })
-              )
-            },
-            /* @__PURE__ */ React$1.createElement(ArrowLeft, null)
-          ), isPinnable && /* @__PURE__ */ React$1.createElement(
-            Button,
-            {
-              variant: "link",
-              className: cx("pin-button", { muted: !item.pinned }),
-              onClick: () => {
-                const updatedConfig = editableActionButtonStackConfig.map(
-                  (config2) => config2.type === "button" && config2.id === item.id ? { ...config2, pinned: !config2.pinned } : config2
-                );
-                updateEditableActionButtonStackConfig([
-                  ...updatedConfig.filter((config2) => !config2.pinned),
-                  ...updatedConfig.filter((config2) => config2.pinned)
-                ]);
-              }
-            },
-            /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faThumbtack })
-          )));
+          );
         },
         getItemKey: (item) => item.id
       }
     ), /* @__PURE__ */ React$1.createElement("div", { className: "form-subgroup" }, addableActionButtons.map((actionButton) => /* @__PURE__ */ React$1.createElement(
-      Button,
+      AddConfigItemButton,
       {
         key: actionButton.definition.id,
-        variant: "link",
-        className: cx("add-config-item", "add-action-button"),
-        onClick: () => actionButton.add()
-      },
-      /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faAdd }),
-      /* @__PURE__ */ React$1.createElement("div", { className: "info" }, /* @__PURE__ */ React$1.createElement(
-        ActionButtonIcon,
-        {
-          iconDefinition: actionButton.definition.icon,
-          state: "inactive",
-          size: "small"
-        }
-      ), /* @__PURE__ */ React$1.createElement(
-        ActionButtonTitle,
-        {
-          title: actionButton.definition.title,
-          state: "inactive"
-        }
-      ))
+        className: "add-action-button",
+        onClick: () => actionButton.add(),
+        icon: /* @__PURE__ */ React$1.createElement(
+          ActionButtonIcon,
+          {
+            iconDefinition: actionButton.definition.icon,
+            state: "inactive",
+            size: "small"
+          }
+        ),
+        title: /* @__PURE__ */ React$1.createElement(
+          ActionButtonTitle,
+          {
+            title: actionButton.definition.title,
+            state: "inactive"
+          }
+        )
+      }
     )), /* @__PURE__ */ React$1.createElement(
-      Button,
+      AddConfigItemButton,
       {
-        variant: "link",
-        className: cx("add-config-item", "add-folder"),
-        onClick: () => setTvConfig("actionButtonStackConfig", [...actionButtonStackConfig, { id: Date.now().toString(), type: "folder", pinned: false, contents: [] }])
-      },
-      /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faAdd }),
-      /* @__PURE__ */ React$1.createElement("div", { className: "info" }, /* @__PURE__ */ React$1.createElement(
-        ActionButtonIcon,
-        {
-          iconDefinition: Folder$1,
-          state: "inactive",
-          size: "small"
-        }
-      ), /* @__PURE__ */ React$1.createElement(
-        ActionButtonTitle,
-        {
-          title: "New Folder",
-          state: "inactive"
-        }
-      ))
+        className: "add-folder",
+        onClick: () => setTvConfig("actionButtonStackConfig", [...actionButtonStackConfig, { id: generateConfigId(), type: "folder", pinned: false, contents: [] }]),
+        icon: /* @__PURE__ */ React$1.createElement(
+          ActionButtonIcon,
+          {
+            iconDefinition: Folder$1,
+            state: "inactive",
+            size: "small"
+          }
+        ),
+        title: /* @__PURE__ */ React$1.createElement(
+          ActionButtonTitle,
+          {
+            title: "New Folder",
+            state: "inactive"
+          }
+        )
+      }
     )), !actionButtonStackConfigIsDefault && /* @__PURE__ */ React$1.createElement("div", { className: "inline form-subgroup" }, /* @__PURE__ */ React$1.createElement(
       Button,
       {
@@ -228806,7 +229327,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setGlobalState("keyboardShortcutsOpen", true)
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.23.2"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.24.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -241803,4 +242324,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-DJ9ihHLK.js.map
+//# sourceMappingURL=index-DZVv6Ztm.js.map
