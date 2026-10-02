@@ -13569,56 +13569,13 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 .action-button-rating-stars {
   display: flex;
 
-  &.not-set .clear,
-  &:not(.stars) .clear,
-  &:has(.rating-stars .star-rating-number) .clear {
-    display: none;
-  }
-
-  .rating-stars {
-    button {
-      /* We don't want any margin or gap between the stars so that when moving the cursor between the cursor never goes
-      over a space between the buttons which would cause it flick between showing a new rating, the current one and then
-      a new one again. */
-      margin: 0;
-
-      > div {
-        padding-left: 0.2em;
-        padding-right: 0.2em;
-      }
-    }
-  }
-
-  .star-rating-number {
-    font-size: unset;
-  }
-  &:not(.left-handed) .star-rating-number {
-    order: -1;
-    margin-left: 0;
-  }
-
   svg {
     width: 1.5em;
     height: 1lh;
     display: block; /* Remove small space under inline-blocks */
   }
 }
-.action-button-o-counter {
-  display: flex;
-  gap: 0.3em;
-
-  button {
-    background: none;
-    border: none;
-    color: inherit;
-
-    &[disabled] {
-      opacity: 0.4;
-    }
-  }
-}
-.action-button-rating-stars,
-.action-button-o-counter {
+.action-button-rating-stars {
   font-size: 1.2em;
 }
 
@@ -13787,6 +13744,15 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes fadeOut {
   from {
     opacity: 1;
@@ -13805,7 +13771,7 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   font-size: unset;
   margin: 0.7rem;
 
-  &:not(.left-handed) {
+  &:not(.left-handed, .vertical) {
     translate: calc(var(--safe-inset-right) * -1) 0 !important;
   }
   .left-handed {
@@ -13818,12 +13784,27 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     animation: slideInFromRight 0.1s ease-out forwards;
   }
 
+  /* Opening above or below what opened it, rather than beside the action buttons */
+  &.vertical.show {
+    animation: fadeIn 0.1s ease-out forwards;
+  }
+
   &:not(.show) {
     animation: fadeOut 0.1s ease-out forwards;
   }
 
   > .arrow::after {
     border-left-color: var(--body-bg);
+  }
+
+  &.bs-popover-top > .arrow::after {
+    border-left-color: transparent;
+    border-top-color: var(--body-bg);
+  }
+
+  &.bs-popover-bottom > .arrow::after {
+    border-left-color: transparent;
+    border-bottom-color: var(--body-bg);
   }
 
   > .arrow[data-hide] {
@@ -15163,6 +15144,21 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   opacity: 0.8;
   font-style: italic;
 }
+.OCounterControls {
+  display: flex;
+  gap: 0.3em;
+  font-size: 1.2em;
+
+  button {
+    background: none;
+    border: none;
+    color: inherit;
+
+    &[disabled] {
+      opacity: 0.4;
+    }
+  }
+}
 .rating-stars {
   display: inline-flex;
   vertical-align: middle;
@@ -15276,6 +15272,51 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   }
 
 }
+
+.rating-system-stars {
+  display: inline-flex;
+  align-items: center;
+
+  /* Without a rating, nothing beside the stars: not "Clear", nor the rating a hovered star would give */
+  &.not-set .star-rating-number,
+  &:has(.rating-stars .star-rating-number) .clear {
+    display: none;
+  }
+
+  .rating-stars button {
+    /* No margin or gap between the stars, so that moving the pointer between them it's never over a space between
+    them, which would make it flick between showing a new rating, the current one and then a new one again */
+    margin: 0;
+
+    /* Growing faster than the stars as they get bigger: 0.1em at 1rem, 0.2em at 1.5rem (0.4em - 0.3rem, in px 1.6 at
+    16px and 4.8 at 24px), and never less than nothing */
+    > div {
+      padding-left: max(0px, calc(0.4em - 0.3rem));
+      padding-right: max(0px, calc(0.4em - 0.3rem));
+    }
+  }
+
+  .star-rating-number {
+    font-size: unset;
+  }
+
+  &.value-start {
+    .clear, .rating-stars .star-rating-number {
+      order: -1;
+      margin-left: 0;
+    }
+  }
+
+  &.value-end {
+    .clear {
+      order: 1;
+    }
+
+    .star-rating-number {
+      margin-right: 0;
+    }
+  }
+}
 .Slider {
 	position: relative;
 	display: flex;
@@ -15375,38 +15416,82 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   }
 }
 .SceneInfo {
+  /* The action button stack overlaps the panel at the side, and its scrolling area is wider than its buttons, so the
+  panel's content (including the edit button) keeps clear of this much space beside it */
+  --padding-left: 3em;
+  --padding-right: 6.25em;
   position: absolute;
   bottom: calc(5em + var(--y-dynamic-diff));
   left: 0;
   width: 100%;
-  padding: 1em 5em 1em 3em;
+  /* Here rather than on .panel-content: it has a percentage in it, which only applies to an element whose containing
+  block has a set height, as this one's does (the slide), and .panel-content's (this) doesn't */
+  max-height: calc(var(--y-unit-small) * 100 - 5em - var(--safe-inset-top) - var(--crt-inset-top, 0px));
+  display: flex;
+  flex-direction: column;
   z-index: 3; /* Make sure it's above .text-selection-on-gesture-workaround if present */
 
-  align-self: flex-end;
-  background-color: rgba(0, 0, 0, 0.7);
+  .panel-background {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
 
-  display: grid;
+  .panel-content {
+    position: relative;
+    min-height: 0;
+    padding: 1em var(--padding-right) 1em var(--padding-left);
+    /* Scrolls when many fields are shown (and only then clips what's outside it, see PanelContent). The feed scrolls
+    the page, so scrolling past the end mustn't carry on to it. */
+    &.scrollable {
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+  }
 
   a {
     color: inherit;
     text-decoration-color: #ffffff85;
   }
 
+  /* Floated so that only the first line or two of the fields make room for it */
+  .edit-toggle {
+    float: right;
+    width: 2em;
+    height: 2em;
+    margin: -0.5em 0 0 0.5em;
+    padding: 0;
+    color: var(--text-muted);
+
+    &:hover, &:focus-visible {
+      color: inherit;
+    }
+  }
+
+  .field-label {
+    color: var(--text-muted);
+    margin-right: 0.4em;
+  }
+
+  /* An icon standing in for the field's name */
+  .field-icon {
+    display: inline-flex;
+    vertical-align: -0.15em;
+    margin-right: 0.35em;
+    color: var(--text-muted);
+
+    svg {
+      width: 1.1em;
+      height: 1.1em;
+    }
+  }
+
   /* Title */
   h5 {
-    font-size: 1.1rem;
+    margin: 0;
   }
 
-  .date {
-    font-size: 0.9rem;
-  }
-
-  .performers {
-    font-size: 0.9rem;
-  }
-
-  .studio {
-    font-size: 0.9rem;
+  .field-studio {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
@@ -15416,34 +15501,579 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
       color: var(--text-muted)
     }
   }
-}
-/* Nest in .video-js to increase specificity */
-.video-js {
-  .ClipTimestamp {
-    position: absolute;
-    top: 50%;
-    opacity: 0.8;
-    z-index: 1;
-    transform: translate(-50%, -50%);
-    height: auto;
 
-    &::after {
-      display: block;
-      content: "";
-      height: 0.8em;
-      width: 1px;
+  .field-details {
+    white-space: pre-line;
+
+    /* Cut short at a few lines (the number's set inline), until clicked */
+    &.capped .details-text {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
-    &.start-timestamp {
-      outline: oklab(from var(--green) calc(l * 1.5) a b) 1px solid;
-      background: var(--green);
-    }
-
-    &.end-timestamp {
-      outline: oklab(from var(--red) calc(l * 1.5) a b) 1px solid;
-      background: var(--red);
+    &.toggleable .details-text {
+      cursor: pointer;
     }
   }
+
+  .field-tags {
+    margin: 0.2em 0;
+
+    /* Spaced by the gap alone, without Stash's margin around each tag. Positioned, as its tags' rows are measured from
+    where they're laid out in it. */
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4em;
+      position: relative;
+    }
+
+    /* Outlined in the text's colour rather than Stash's filled badges */
+    .tag-item {
+      margin: 0;
+      color: var(--text-color);
+      padding: 0.1em 0.4em;
+      background: transparent;
+      /* The text's colour at half opacity */
+      border: 1px color-mix(in srgb, var(--text-color) 50%, transparent) solid;
+    }
+
+    /* Cut short after a few rows (its max-height set inline) */
+    &.capped .tag-list {
+      overflow: hidden;
+    }
+
+    /* Below the rows shown, on a line of its own, at the end it's aligned to */
+    .show-more {
+      display: block;
+      width: fit-content;
+      padding: 0;
+      margin-top: 0.2em;
+      color: var(--text-color);
+    }
+  }
+
+  /* Space beside the fields on its line, the only space between them */
+  .field-spacer > span {
+    display: block;
+  }
+  .spacer-small > span { width: 0.5em; }
+  .spacer-medium > span { width: 1.5em; }
+  .spacer-big > span { width: 3em; }
+
+  /* With no other field on its line showing anything, space between the lines above and below */
+  .field-line:not(:has(.field:not(.field-spacer))) {
+    .field-spacer > span { width: 0; }
+    .spacer-small > span { height: 0.5em; }
+    .spacer-medium > span { height: 1em; }
+    .spacer-big > span { height: 2em; }
+  }
+
+  /* One of several such spacers with nothing between them, which show only the biggest (see collapseSpacers) */
+  .field-line.collapsed-spacer {
+    display: none;
+  }
+
+  /* A spacer's pill, showing values, is named, there being nothing else to see */
+  .spacer-preview {
+    font-style: italic;
+    opacity: 0.6;
+  }
+
+  /* The o-counter icon, followed by the o-count */
+  .o-count-control {
+    .o-counter-button {
+      display: flex;
+      align-items: center;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: inherit;
+    }
+
+    /* On the icon rather than as the button's gap, so it's spaced in the editor's pills too, where it's no button */
+    .o-counter-icon {
+      width: 1.2em;
+      height: 1.2em;
+      margin-right: 0.3em;
+      vertical-align: -0.25em;
+    }
+  }
+
+  .field-path, .field-urls {
+    overflow-wrap: anywhere;
+  }
+
+  .field-urls {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* In the editor, a line that wraps has its later rows indented (a hanging indent), so they don't look like lines of
+  their own. Room for the marker showing that, and a little space between it and the fields. */
+  --wrapped-line-indent: 2em;
+  /* The least space between a line's left fields and its right-aligned ones, so they don't run together */
+  --line-sides-gap: 2em;
+
+  /* A line's left fields and its right-aligned ones side by side, each in a box wrapping on its own. As a flexbox does,
+  each box is as wide as its fields on one row if both fit, and otherwise both shrink, in proportion to that width. */
+  .field-line {
+    display: flex;
+    align-items: center;
+    column-gap: var(--line-sides-gap);
+  }
+
+  /* No gap between the fields: the space between them is up to spacers, which a gap would come either side of too */
+  .line-fields {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* Taking the line's spare room to their left, and wrapping onto rows that are right-aligned too, as is what's in
+  them (in the editor too, showing values) */
+  .right-aligned-fields, .line-side.right .pill-value {
+    text-align: right;
+
+    .field-studio, .field-tags .tag-list {
+      justify-content: flex-end;
+    }
+
+    .field-tags .show-more {
+      margin-left: auto;
+    }
+
+    .field-urls {
+      align-items: flex-end;
+    }
+  }
+
+  /* Laid out from the line's end, so the first is at the end (as the first left field is at the start), and wrapping
+  onto rows that start there too */
+  .right-aligned-fields {
+    margin-left: auto;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+  }
+
+  .editor-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .shown-values {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .editor-actions {
+    display: flex;
+    gap: 0.5em;
+
+    .reset {
+      margin-right: 1em;
+    }
+  }
+
+  .editor-lines {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Like the panel's lines (.field-line), each side's fields in a box wrapping on its own. The space between lines is
+  their margins (room for the ghost line); a row gap would also go around the absolutely positioned markers. */
+  .editor-line {
+    display: flex;
+    /* Each side's rows line up with the other's */
+    align-items: flex-start;
+    column-gap: var(--line-sides-gap);
+    margin: 0.4em 0;
+    /* Like the pills' corners */
+    border-radius: 1em;
+    transition: background-color 0.1s ease-out, box-shadow 0.1s ease-out;
+  }
+
+  /* The line a field's dragged onto, or that's hovered over, so it's clear which right-aligned fields share it with
+  which left ones. The shadow reaches into the space around the line, as the background alone would end at its pills. */
+  .editor-line.target {
+    background-color: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 0 0 0.25em rgba(255, 255, 255, 0.07);
+  }
+
+  @media (hover: hover) {
+    .editor:not(.dragging) .editor-line:hover {
+      background-color: rgba(255, 255, 255, 0.07);
+      box-shadow: 0 0 0 0.25em rgba(255, 255, 255, 0.07);
+    }
+  }
+
+  .line-side {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 0.4em;
+    row-gap: 0.8em;
+    flex: 1 1 auto;
+  }
+
+  /* The left side's later rows are indented (see --wrapped-line-indent), with its first field outdented back */
+  .line-side.left {
+    padding-left: var(--wrapped-line-indent);
+
+    &:empty {
+      padding-left: 0;
+    }
+
+    /* Pills are no wider than their box, but the first one's outdented into its padding, so it has that much more */
+    > :first-child {
+      margin-left: calc(var(--wrapped-line-indent) * -1);
+      max-width: calc(100% + var(--wrapped-line-indent));
+    }
+  }
+
+  /* Like the panel's right-aligned fields, laid out from the line's end, mirroring the left side. As there, its later
+  rows are indented (from the right), with its first field outdented back. */
+  .line-side.right {
+    margin-left: auto;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    padding-right: var(--wrapped-line-indent);
+
+    > :first-child {
+      margin-right: calc(var(--wrapped-line-indent) * -1);
+      max-width: calc(100% + var(--wrapped-line-indent));
+    }
+  }
+
+  /* In the indent of a side of a line's later rows, showing they're the same line wrapped rather than lines of their own */
+  .wrapped-line-marker {
+    position: absolute;
+    left: 0;
+    width: var(--wrapped-line-indent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    pointer-events: none;
+
+    /* In the right-aligned fields' indent */
+    &.right {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  /* A hidden copy of a line, to measure how tall it would be with the dragged field on it (see probeLineHeight) */
+  .editor-line.height-probe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Where a dragged field will go on a line, when showing its ghost there would make the line taller */
+  .insertion-line {
+    position: absolute;
+    width: 3px;
+    margin-left: -1.5px;
+    border-radius: 2px;
+    background: var(--text-muted);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  /* Where a dragged field will go on a new line, between the lines: on the half of them it will be aligned to */
+  .ghost-line {
+    position: absolute;
+    left: 0;
+    right: 50%;
+    height: 3px;
+    margin-top: -1.5px;
+    border-radius: 2px;
+    background: var(--text-muted);
+    opacity: 0.7;
+    pointer-events: none;
+    transition: top 0.1s ease-out, left 0.1s ease-out, right 0.1s ease-out;
+
+    &.right {
+      left: 50%;
+      right: 0;
+    }
+  }
+
+
+  .editor-empty {
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 0.4em 0;
+  }
+
+  /* Pills are Stash's tag badges (.tag-item), so take its look; this only lays them out and handles dragging */
+  .field-pill {
+    display: inline-flex;
+    align-items: center;
+    /* Between the field and its × */
+    gap: 0.3em;
+    border-radius: 1em;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    /* Big enough to grab easily on a touchscreen */
+    font-size: 1rem;
+    padding: 0.3em 0.7em;
+    cursor: grab;
+    /* Dragging a pill mustn't scroll the page (the feed) or select text */
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+
+    /* Where the dragged field will go */
+    &.ghost {
+      /* A filter rather than opacity, which framer-motion sets inline on elements it lays out, overriding this */
+      filter: opacity(0.4);
+    }
+
+    /* The field being dragged, following the pointer */
+    &.dragged {
+      cursor: grabbing;
+      box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.7);
+    }
+
+    &.unknown {
+      font-style: italic;
+    }
+
+    .pill-name, .pill-value {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* Values are shown to identify the field, not to be clicked */
+    .pill-value {
+      pointer-events: none;
+
+      &:empty::before {
+        content: attr(data-empty-label);
+        font-style: italic;
+      }
+
+      .field, .field-studio, .field-tags, .field-tags .tag-list, .field-urls {
+        display: inline;
+      }
+
+      .field-label, .separator {
+        color: inherit;
+        opacity: 0.6;
+      }
+
+      h5 {
+        display: inline;
+        font-size: inherit;
+      }
+    }
+
+    /* Spaced by the pill's gap rather than Stash's .tag-item .btn margin and padding, so pills without one (the unused
+    fields) have even padding too */
+    .pill-button {
+      bottom: 0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      font-size: 0.75em;
+      /* Clearer than Stash's half-faded .tag-item .btn */
+      opacity: 0.8;
+      /* A bigger target than the icon, for touch, without taking more room */
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: -0.6em;
+      }
+    }
+
+    .pill-button.field-options {
+      font-size: 0.85em;
+    }
+
+    /* Buttons in a value (e.g. the rating's stars) look as they do in the panel, not like Stash's buttons in a tag
+    badge (.tag-item .btn): faded, with padding that moved the unfilled stars away from the filled ones over them */
+    .pill-value :is(.rating-stars, .rating-number) .btn {
+      bottom: auto;
+      color: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      margin: 0;
+      opacity: 1;
+      padding: 0;
+    }
+  }
+
+  /* Showing values, each pill shows its field as the panel does, outlined rather than as a badge */
+  .editor.showing-values .field-pill {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    text-align: left;
+    white-space: normal;
+    padding: 0.3em 0.7em;
+
+    .pill-value {
+      white-space: normal;
+      overflow: visible;
+
+      &:empty::before {
+        opacity: 0.6;
+      }
+
+      .field-studio {
+        display: flex;
+      }
+
+      .field-tags {
+        display: block;
+        margin: 0;
+
+        .tag-list {
+          display: flex;
+        }
+      }
+
+      .field-urls {
+        display: flex;
+      }
+
+      .field-label {
+        color: var(--text-muted);
+        opacity: 1;
+      }
+
+      .separator {
+        color: var(--text-muted);
+        opacity: 1;
+      }
+
+      h5 {
+        display: block;
+      }
+    }
+
+    .pill-button {
+      color: inherit;
+    }
+  }
+
+  /* Unused fields' pills are buttons, which the browser gives a border */
+  button.field-pill {
+    border: none;
+  }
+
+  /* A spacer is space rather than a field, so it's just its name (and buttons), not a badge or outlined, and with no
+  padding, whether the pills show names or values */
+  .editor .field-pill.spacer-pill,
+  .editor.showing-values .field-pill.spacer-pill {
+    background: none;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    color: var(--text-muted);
+
+    .pill-button {
+      color: inherit;
+    }
+
+    .spacer-preview {
+      opacity: 1;
+    }
+  }
+
+  /* The toolbar, the lines and the unused fields, with the same space between them whether the unused fields are below
+  the lines or beside them */
+  .editor {
+    --editor-gap: 1.25rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--editor-gap);
+
+    &.dragging {
+      cursor: grabbing;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+  }
+
+  /* On a screen wider than it's tall, the unused fields are beside the fields rather than below them */
+  .editor.side-by-side {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(12em, 40%);
+    gap: var(--editor-gap) 1.5em;
+    align-items: start;
+
+    .editor-toolbar {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .drag-overlay {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    display: flex;
+    /* Lifted and tilted, so over its ghost it doesn't look like the ghost has turned solid */
+    transform: rotate(-3deg) scale(1.05);
+    transform-origin: center;
+  }
+
+  .unused-fields {
+    padding: 0.75em 1em 1em;
+    border: 1px dashed rgba(255, 255, 255, 0.35);
+    border-radius: 0.5em;
+
+    &.drop-to-remove {
+      border-color: var(--danger, #db3737);
+      background: rgba(219, 55, 55, 0.15);
+    }
+
+    .hint {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-bottom: 0.4em;
+    }
+  }
+
+  .unused-field-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+  }
+}
+
+.MediaSlide.left-handed .SceneInfo {
+  --padding-left: 6.25em;
+  --padding-right: 3em;
+}
+/* Icons in the choices' buttons (e.g. a label's "Icon"), the size of their text. Some (e.g. the resolution's) are
+otherwise as big as they can be. */
+.SceneInfoFieldOptionsModal .btn svg {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: -0.2em;
 }
 .Modal {
   padding-right: 0 !important; /* Override the padding set on the element with js by Bootstrap library */
@@ -15485,6 +16115,34 @@ html:not(.force-landscape) {
 .modal-backdrop {
   width: calc(var(--x-unit-large) * 100);
   height: calc(var(--y-unit-large) * 100);
+}
+/* Nest in .video-js to increase specificity */
+.video-js {
+  .ClipTimestamp {
+    position: absolute;
+    top: 50%;
+    opacity: 0.8;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    height: auto;
+
+    &::after {
+      display: block;
+      content: "";
+      height: 0.8em;
+      width: 1px;
+    }
+
+    &.start-timestamp {
+      outline: oklab(from var(--green) calc(l * 1.5) a b) 1px solid;
+      background: var(--green);
+    }
+
+    &.end-timestamp {
+      outline: oklab(from var(--red) calc(l * 1.5) a b) 1px solid;
+      background: var(--red);
+    }
+  }
 }
 .SettingsTab .accordion > button {
   display: block;

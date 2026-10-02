@@ -6577,14 +6577,14 @@ function requireDocument$1() {
 }
 var documentExports = requireDocument$1();
 const document$1$1 = /* @__PURE__ */ getDefaultExportFromCjs(documentExports);
-function _extends$1q() {
-  return _extends$1q = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$1z() {
+  return _extends$1z = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$1q.apply(null, arguments);
+  }, _extends$1z.apply(null, arguments);
 }
 var keycode$1 = { exports: {} };
 var hasRequiredKeycode;
@@ -6745,10 +6745,10 @@ function requireTuple() {
 var tupleExports = requireTuple();
 const safeParseTuple = /* @__PURE__ */ getDefaultExportFromCjs(tupleExports);
 var lib$4 = { exports: {} };
-var _extends$1p = { exports: {} };
+var _extends$1y = { exports: {} };
 var hasRequired_extends;
 function require_extends() {
-  if (hasRequired_extends) return _extends$1p.exports;
+  if (hasRequired_extends) return _extends$1y.exports;
   hasRequired_extends = 1;
   (function(module2) {
     function _extends2() {
@@ -6761,8 +6761,8 @@ function require_extends() {
       }, module2.exports.__esModule = true, module2.exports["default"] = module2.exports, _extends2.apply(null, arguments);
     }
     module2.exports = _extends2, module2.exports.__esModule = true, module2.exports["default"] = module2.exports;
-  })(_extends$1p);
-  return _extends$1p.exports;
+  })(_extends$1y);
+  return _extends$1y.exports;
 }
 var isFunction_1;
 var hasRequiredIsFunction;
@@ -8954,7 +8954,7 @@ var ParseStream = /* @__PURE__ */ (function(_Stream) {
       }
       match2 = /^#EXT-X-BYTERANGE:?(.*)?$/.exec(newLine);
       if (match2) {
-        event2 = _extends$1q(parseByterange(match2[1]), {
+        event2 = _extends$1z(parseByterange(match2[1]), {
           type: "tag",
           tagType: "byterange"
         });
@@ -9578,7 +9578,7 @@ var Parser$3 = /* @__PURE__ */ (function(_Stream) {
               if (!currentUri.attributes) {
                 currentUri.attributes = {};
               }
-              _extends$1q(currentUri.attributes, entry.attributes);
+              _extends$1z(currentUri.attributes, entry.attributes);
             },
             media: function media() {
               this.manifest.mediaGroups = this.manifest.mediaGroups || defaultMediaGroups;
@@ -16941,7 +16941,7 @@ function assign$4(target) {
     sources[_key - 1] = arguments[_key];
   }
   if (Object.assign) {
-    return _extends$1q.apply(void 0, [target].concat(sources));
+    return _extends$1z.apply(void 0, [target].concat(sources));
   }
   sources.forEach(function(source2) {
     if (!source2) {
@@ -20310,7 +20310,7 @@ var REMOTE = {
     privateName: "remoteTextTrackEls_"
   }
 };
-var ALL = _extends$1q({}, NORMAL, REMOTE);
+var ALL = _extends$1z({}, NORMAL, REMOTE);
 REMOTE.names = Object.keys(REMOTE);
 NORMAL.names = Object.keys(NORMAL);
 ALL.names = [].concat(REMOTE.names).concat(NORMAL.names);
@@ -24684,7 +24684,7 @@ var ErrorDisplay = /* @__PURE__ */ (function(_ModalDialog) {
   };
   return ErrorDisplay2;
 })(ModalDialog$1);
-ErrorDisplay.prototype.options_ = _extends$1q({}, ModalDialog$1.prototype.options_, {
+ErrorDisplay.prototype.options_ = _extends$1z({}, ModalDialog$1.prototype.options_, {
   pauseOnOpen: false,
   fillAlways: true,
   temporary: false,
@@ -30409,7 +30409,7 @@ var addPropertiesToMaster = function addPropertiesToMaster2(master, uri, createG
           }
         }
       }
-      properties.playlists = [_extends$1q({}, properties)];
+      properties.playlists = [_extends$1z({}, properties)];
     }
     properties.playlists.forEach(function(p3, i4) {
       var groupId = createGroupID(mediaType, groupKey, labelKey, p3);
@@ -38307,7 +38307,7 @@ var workerCallback = function workerCallback2(options2) {
   var transmuxer = options2.transmuxer;
   var endAction = options2.endAction || options2.action;
   var callback2 = options2.callback;
-  var message = _extends$1q({}, options2, {
+  var message = _extends$1z({}, options2, {
     endAction: null,
     transmuxer: null,
     callback: null
@@ -40843,10 +40843,10 @@ var SegmentLoader = /* @__PURE__ */ (function(_videojs$EventTarget) {
     }
     if (!this.hasEnoughInfoToLoad_()) {
       this.loadQueue_.push(function() {
-        var options2 = _extends$1q({}, segmentInfo, {
+        var options2 = _extends$1z({}, segmentInfo, {
           forceTimestampOffset: true
         });
-        _extends$1q(segmentInfo, _this4.generateSegmentInfo_(options2));
+        _extends$1z(segmentInfo, _this4.generateSegmentInfo_(options2));
         _this4.isPendingTimestampOffset_ = false;
         _this4.updateTransmuxerAndRequestSegment_(segmentInfo);
       });
@@ -109776,7 +109776,7 @@ function requireWebvrPolyfill() {
             BUFFER_SCALE: 0.5,
             DIRTY_SUBMIT_FRAME_BINDINGS: false
           };
-          var Eye = {
+          var Eye2 = {
             LEFT: "left",
             RIGHT: "right"
           };
@@ -109830,9 +109830,9 @@ function requireWebvrPolyfill() {
           };
           CardboardVRDisplay2.prototype._getFieldOfView = function(whichEye) {
             var fieldOfView;
-            if (whichEye == Eye.LEFT) {
+            if (whichEye == Eye2.LEFT) {
               fieldOfView = this.deviceInfo_.getFieldOfViewLeftEye();
-            } else if (whichEye == Eye.RIGHT) {
+            } else if (whichEye == Eye2.RIGHT) {
               fieldOfView = this.deviceInfo_.getFieldOfViewRightEye();
             } else {
               console.error("Invalid eye provided: %s", whichEye);
@@ -109842,9 +109842,9 @@ function requireWebvrPolyfill() {
           };
           CardboardVRDisplay2.prototype._getEyeOffset = function(whichEye) {
             var offset3;
-            if (whichEye == Eye.LEFT) {
+            if (whichEye == Eye2.LEFT) {
               offset3 = [-this.deviceInfo_.viewer.interLensDistance * 0.5, 0, 0];
-            } else if (whichEye == Eye.RIGHT) {
+            } else if (whichEye == Eye2.RIGHT) {
               offset3 = [this.deviceInfo_.viewer.interLensDistance * 0.5, 0, 0];
             } else {
               console.error("Invalid eye provided: %s", whichEye);
@@ -155815,7 +155815,7 @@ const useTagUpdate = () => useTagUpdateMutation({
     evictQueries(cache2, tagMutationImpactedQueries);
   }
 });
-function _objectWithoutPropertiesLoose$1s(r3, e2) {
+function _objectWithoutPropertiesLoose$1B(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -155861,10 +155861,10 @@ function useUncontrolledProp(propValue, defaultValue, handler) {
 function useUncontrolled(props, config2) {
   return Object.keys(config2).reduce(function(result, fieldName) {
     var _extends2;
-    var _ref3 = result, defaultValue = _ref3[defaultKey(fieldName)], propsValue = _ref3[fieldName], rest = _objectWithoutPropertiesLoose$1s(_ref3, [defaultKey(fieldName), fieldName].map(_toPropertyKey$3));
+    var _ref3 = result, defaultValue = _ref3[defaultKey(fieldName)], propsValue = _ref3[fieldName], rest = _objectWithoutPropertiesLoose$1B(_ref3, [defaultKey(fieldName), fieldName].map(_toPropertyKey$3));
     var handlerName = config2[fieldName];
     var _useUncontrolledProp = useUncontrolledProp(propsValue, defaultValue, props[handlerName]), value = _useUncontrolledProp[0], handler = _useUncontrolledProp[1];
-    return _extends$1q({}, rest, (_extends2 = {}, _extends2[fieldName] = value, _extends2[handlerName] = handler, _extends2));
+    return _extends$1z({}, rest, (_extends2 = {}, _extends2[fieldName] = value, _extends2[handlerName] = handler, _extends2));
   }, props);
 }
 var ThemeContext$1 = /* @__PURE__ */ React$1.createContext({});
@@ -155877,7 +155877,7 @@ function useBootstrapPrefix(prefix2, defaultPrefix) {
 var SelectableContext = /* @__PURE__ */ React$1.createContext(null);
 var context$2 = /* @__PURE__ */ React$1.createContext(null);
 context$2.displayName = "AccordionContext";
-var _excluded$24 = ["as", "children", "eventKey", "onClick"];
+var _excluded$2d = ["as", "children", "eventKey", "onClick"];
 function useAccordionToggle(eventKey, onClick) {
   var contextEventKey = reactExports.useContext(context$2);
   var onSelect = reactExports.useContext(SelectableContext);
@@ -155888,12 +155888,12 @@ function useAccordionToggle(eventKey, onClick) {
   };
 }
 var AccordionToggle$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "button" : _ref$as, children = _ref3.children, eventKey = _ref3.eventKey, onClick = _ref3.onClick, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$24);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "button" : _ref$as, children = _ref3.children, eventKey = _ref3.eventKey, onClick = _ref3.onClick, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$2d);
   var accordionOnClick = useAccordionToggle(eventKey, onClick);
   if (Component2 === "button") {
     props.type = "button";
   }
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({
     ref,
     onClick: accordionOnClick
   }, props), children);
@@ -156243,7 +156243,7 @@ var Transition = /* @__PURE__ */ (function(_React$Component) {
     _this$props.onExiting;
     _this$props.onExited;
     _this$props.nodeRef;
-    var childProps = _objectWithoutPropertiesLoose$1s(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
+    var childProps = _objectWithoutPropertiesLoose$1B(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
     return (
       // allows for nested Transitions
       /* @__PURE__ */ React$1.createElement(TransitionGroupContext.Provider, {
@@ -156402,7 +156402,7 @@ function createChainedFunction() {
 function triggerBrowserReflow(node2) {
   node2.offsetHeight;
 }
-var _excluded$23 = ["onEnter", "onEntering", "onEntered", "onExit", "onExiting", "className", "children", "dimension", "getDimensionValue"];
+var _excluded$2c = ["onEnter", "onEntering", "onEntered", "onExit", "onExiting", "className", "children", "dimension", "getDimensionValue"];
 var _collapseStyles;
 var MARGINS = {
   height: ["marginTop", "marginBottom"],
@@ -156426,7 +156426,7 @@ var defaultProps$i = {
   getDimensionValue: getDefaultDimensionValue
 };
 var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, className = _ref3.className, children = _ref3.children, _ref$dimension = _ref3.dimension, dimension = _ref$dimension === void 0 ? "height" : _ref$dimension, _ref$getDimensionValu = _ref3.getDimensionValue, getDimensionValue = _ref$getDimensionValu === void 0 ? getDefaultDimensionValue : _ref$getDimensionValu, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$23);
+  var onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, className = _ref3.className, children = _ref3.children, _ref$dimension = _ref3.dimension, dimension = _ref$dimension === void 0 ? "height" : _ref$dimension, _ref$getDimensionValu = _ref3.getDimensionValue, getDimensionValue = _ref$getDimensionValu === void 0 ? getDefaultDimensionValue : _ref$getDimensionValu, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$2c);
   var computedDimension = typeof dimension === "function" ? dimension() : dimension;
   var handleEnter = reactExports.useMemo(function() {
     return createChainedFunction(function(elem) {
@@ -156457,7 +156457,7 @@ var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, [computedDimension, onExiting]);
   return /* @__PURE__ */ React$1.createElement(
     Transition,
-    _extends$1q({
+    _extends$1z({
       ref,
       addEndListener: transitionEndListener
     }, props, {
@@ -156469,36 +156469,36 @@ var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
       onExiting: handleExiting
     }),
     function(state, innerProps) {
-      return /* @__PURE__ */ React$1.cloneElement(children, _extends$1q({}, innerProps, {
+      return /* @__PURE__ */ React$1.cloneElement(children, _extends$1z({}, innerProps, {
         className: cx(className, children.props.className, collapseStyles[state], computedDimension === "width" && "width")
       }));
     }
   );
 });
 Collapse.defaultProps = defaultProps$i;
-var _excluded$22 = ["children", "eventKey"];
+var _excluded$2b = ["children", "eventKey"];
 var AccordionCollapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var children = _ref3.children, eventKey = _ref3.eventKey, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$22);
+  var children = _ref3.children, eventKey = _ref3.eventKey, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$2b);
   var contextEventKey = reactExports.useContext(context$2);
   return /* @__PURE__ */ React$1.createElement(SelectableContext.Provider, {
     value: null
-  }, /* @__PURE__ */ React$1.createElement(Collapse, _extends$1q({
+  }, /* @__PURE__ */ React$1.createElement(Collapse, _extends$1z({
     ref,
     in: contextEventKey === eventKey
   }, props), /* @__PURE__ */ React$1.createElement("div", null, React$1.Children.only(children))));
 });
 AccordionCollapse.displayName = "AccordionCollapse";
-var _excluded$21 = ["as", "activeKey", "bsPrefix", "children", "className", "onSelect"];
+var _excluded$2a = ["as", "activeKey", "bsPrefix", "children", "className", "onSelect"];
 var Accordion = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
   var _useUncontrolled = useUncontrolled(props, {
     activeKey: "onSelect"
-  }), _useUncontrolled$as = _useUncontrolled.as, Component2 = _useUncontrolled$as === void 0 ? "div" : _useUncontrolled$as, activeKey = _useUncontrolled.activeKey, bsPrefix = _useUncontrolled.bsPrefix, children = _useUncontrolled.children, className = _useUncontrolled.className, onSelect = _useUncontrolled.onSelect, controlledProps = _objectWithoutPropertiesLoose$1s(_useUncontrolled, _excluded$21);
+  }), _useUncontrolled$as = _useUncontrolled.as, Component2 = _useUncontrolled$as === void 0 ? "div" : _useUncontrolled$as, activeKey = _useUncontrolled.activeKey, bsPrefix = _useUncontrolled.bsPrefix, children = _useUncontrolled.children, className = _useUncontrolled.className, onSelect = _useUncontrolled.onSelect, controlledProps = _objectWithoutPropertiesLoose$1B(_useUncontrolled, _excluded$2a);
   var finalClassName = cx(className, useBootstrapPrefix(bsPrefix, "accordion"));
   return /* @__PURE__ */ React$1.createElement(context$2.Provider, {
     value: activeKey || null
   }, /* @__PURE__ */ React$1.createElement(SelectableContext.Provider, {
     value: onSelect || null
-  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
+  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({
     ref
   }, controlledProps, {
     className: finalClassName
@@ -156520,7 +156520,7 @@ function useEventCallback$1(fn3) {
     return ref.current && ref.current(...args);
   }, [ref]);
 }
-var _excluded$20 = ["className", "children"];
+var _excluded$29 = ["className", "children"];
 var _fadeStyles;
 var defaultProps$h = {
   in: false,
@@ -156531,25 +156531,25 @@ var defaultProps$h = {
 };
 var fadeStyles = (_fadeStyles = {}, _fadeStyles[ENTERING] = "show", _fadeStyles[ENTERED] = "show", _fadeStyles);
 var Fade = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$20);
+  var className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$29);
   var handleEnter = reactExports.useCallback(function(node2) {
     triggerBrowserReflow(node2);
     if (props.onEnter) props.onEnter(node2);
   }, [props]);
-  return /* @__PURE__ */ React$1.createElement(Transition, _extends$1q({
+  return /* @__PURE__ */ React$1.createElement(Transition, _extends$1z({
     ref,
     addEndListener: transitionEndListener
   }, props, {
     onEnter: handleEnter
   }), function(status2, innerProps) {
-    return /* @__PURE__ */ React$1.cloneElement(children, _extends$1q({}, innerProps, {
+    return /* @__PURE__ */ React$1.cloneElement(children, _extends$1z({}, innerProps, {
       className: cx("fade", className, children.props.className, fadeStyles[status2])
     }));
   });
 });
 Fade.defaultProps = defaultProps$h;
 Fade.displayName = "Fade";
-var _excluded$1$ = ["label", "onClick", "className"];
+var _excluded$28 = ["label", "onClick", "className"];
 var propTypes$2 = {
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func
@@ -156558,8 +156558,8 @@ var defaultProps$g = {
   label: "Close"
 };
 var CloseButton = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var label = _ref3.label, onClick = _ref3.onClick, className = _ref3.className, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1$);
-  return /* @__PURE__ */ React$1.createElement("button", _extends$1q({
+  var label = _ref3.label, onClick = _ref3.onClick, className = _ref3.className, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$28);
+  return /* @__PURE__ */ React$1.createElement("button", _extends$1z({
     ref,
     type: "button",
     className: cx("close", className),
@@ -156575,7 +156575,7 @@ CloseButton.propTypes = propTypes$2;
 CloseButton.defaultProps = defaultProps$g;
 const divWithClassName = (function(className) {
   return /* @__PURE__ */ React$1.forwardRef(function(p2, ref) {
-    return /* @__PURE__ */ React$1.createElement("div", _extends$1q({}, p2, {
+    return /* @__PURE__ */ React$1.createElement("div", _extends$1z({}, p2, {
       ref,
       className: cx(p2.className, className)
     }));
@@ -156587,16 +156587,16 @@ function camelize$1(string2) {
     return chr.toUpperCase();
   });
 }
-var _excluded$1_ = ["className", "bsPrefix", "as"];
+var _excluded$27 = ["className", "bsPrefix", "as"];
 var pascalCase = function pascalCase2(str) {
   return str[0].toUpperCase() + camelize$1(str).slice(1);
 };
 function createWithBsPrefix(prefix2, _temp) {
   var _ref3 = _temp === void 0 ? {} : _temp, _ref$displayName = _ref3.displayName, displayName = _ref$displayName === void 0 ? pascalCase(prefix2) : _ref$displayName, Component2 = _ref3.Component, defaultProps2 = _ref3.defaultProps;
   var BsComponent = /* @__PURE__ */ React$1.forwardRef(function(_ref22, ref) {
-    var className = _ref22.className, bsPrefix = _ref22.bsPrefix, _ref2$as = _ref22.as, Tag2 = _ref2$as === void 0 ? Component2 || "div" : _ref2$as, props = _objectWithoutPropertiesLoose$1s(_ref22, _excluded$1_);
+    var className = _ref22.className, bsPrefix = _ref22.bsPrefix, _ref2$as = _ref22.as, Tag2 = _ref2$as === void 0 ? Component2 || "div" : _ref2$as, props = _objectWithoutPropertiesLoose$1B(_ref22, _excluded$27);
     var resolvedPrefix = useBootstrapPrefix(bsPrefix, prefix2);
-    return /* @__PURE__ */ React$1.createElement(Tag2, _extends$1q({
+    return /* @__PURE__ */ React$1.createElement(Tag2, _extends$1z({
       ref,
       className: cx(className, resolvedPrefix)
     }, props));
@@ -156605,12 +156605,12 @@ function createWithBsPrefix(prefix2, _temp) {
   BsComponent.displayName = displayName;
   return BsComponent;
 }
-var _excluded$1Z = ["as", "disabled", "onKeyDown"];
+var _excluded$26 = ["as", "disabled", "onKeyDown"];
 function isTrivialHref(href) {
   return !href || href.trim() === "#";
 }
 var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "a" : _ref$as, disabled2 = _ref3.disabled, onKeyDown = _ref3.onKeyDown, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1Z);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "a" : _ref$as, disabled2 = _ref3.disabled, onKeyDown = _ref3.onKeyDown, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$26);
   var handleClick = function handleClick2(event2) {
     var href = props.href, onClick = props.onClick;
     if (disabled2 || isTrivialHref(href)) {
@@ -156638,7 +156638,7 @@ var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     props.tabIndex = -1;
     props["aria-disabled"] = true;
   }
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({
     ref
   }, props, {
     onClick: handleClick,
@@ -156646,14 +156646,14 @@ var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 SafeAnchor.displayName = "SafeAnchor";
-var _excluded$1Y = ["bsPrefix", "variant", "pill", "className", "as"];
+var _excluded$25 = ["bsPrefix", "variant", "pill", "className", "as"];
 var defaultProps$f = {
   pill: false
 };
 var Badge = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, pill = _ref3.pill, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "span" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1Y);
+  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, pill = _ref3.pill, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "span" : _ref$as, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$25);
   var prefix2 = useBootstrapPrefix(bsPrefix, "badge");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({
     ref
   }, props, {
     className: cx(className, prefix2, pill && prefix2 + "-pill", variant && prefix2 + "-" + variant)
@@ -156661,18 +156661,18 @@ var Badge = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 });
 Badge.displayName = "Badge";
 Badge.defaultProps = defaultProps$f;
-var _excluded$1X = ["bsPrefix", "variant", "size", "active", "className", "block", "type", "as"];
+var _excluded$24 = ["bsPrefix", "variant", "size", "active", "className", "block", "type", "as"];
 var defaultProps$e = {
   variant: "primary",
   active: false,
   disabled: false
 };
 var Button = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, size2 = _ref3.size, active = _ref3.active, className = _ref3.className, block2 = _ref3.block, type3 = _ref3.type, as = _ref3.as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1X);
+  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, size2 = _ref3.size, active = _ref3.active, className = _ref3.className, block2 = _ref3.block, type3 = _ref3.type, as = _ref3.as, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$24);
   var prefix2 = useBootstrapPrefix(bsPrefix, "btn");
   var classes = cx(className, prefix2, active && "active", variant && prefix2 + "-" + variant, block2 && prefix2 + "-block", size2 && prefix2 + "-" + size2);
   if (props.href) {
-    return /* @__PURE__ */ React$1.createElement(SafeAnchor, _extends$1q({}, props, {
+    return /* @__PURE__ */ React$1.createElement(SafeAnchor, _extends$1z({}, props, {
       as,
       ref,
       className: cx(classes, props.disabled && "disabled")
@@ -156687,24 +156687,24 @@ var Button = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     props.type = "button";
   }
   var Component2 = as || "button";
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({}, props, {
     className: classes
   }));
 });
 Button.displayName = "Button";
 Button.defaultProps = defaultProps$e;
-var _excluded$1W = ["bsPrefix", "size", "toggle", "vertical", "className", "as"];
+var _excluded$23 = ["bsPrefix", "size", "toggle", "vertical", "className", "as"];
 var defaultProps$d = {
   vertical: false,
   toggle: false,
   role: "group"
 };
 var ButtonGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, toggle = _ref3.toggle, vertical = _ref3.vertical, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, rest = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1W);
+  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, toggle = _ref3.toggle, vertical = _ref3.vertical, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, rest = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$23);
   var prefix2 = useBootstrapPrefix(bsPrefix, "btn-group");
   var baseClass = prefix2;
   if (vertical) baseClass = prefix2 + "-vertical";
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, rest, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({}, rest, {
     ref,
     className: cx(className, baseClass, size2 && prefix2 + "-" + size2, toggle && prefix2 + "-toggle")
   }));
@@ -156713,16 +156713,16 @@ ButtonGroup.displayName = "ButtonGroup";
 ButtonGroup.defaultProps = defaultProps$d;
 var context$1 = /* @__PURE__ */ React$1.createContext(null);
 context$1.displayName = "CardContext";
-var _excluded$1V = ["bsPrefix", "className", "variant", "as"];
+var _excluded$22 = ["bsPrefix", "className", "variant", "as"];
 var defaultProps$c = {
   variant: null
 };
 var CardImg = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, variant = _ref3.variant, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "img" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1V);
+    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, variant = _ref3.variant, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "img" : _ref$as, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$22);
     var prefix2 = useBootstrapPrefix(bsPrefix, "card-img");
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({
       ref,
       className: cx(variant ? prefix2 + "-" + variant : prefix2, className)
     }, props));
@@ -156730,7 +156730,7 @@ var CardImg = /* @__PURE__ */ React$1.forwardRef(
 );
 CardImg.displayName = "CardImg";
 CardImg.defaultProps = defaultProps$c;
-var _excluded$1U = ["bsPrefix", "className", "bg", "text", "border", "body", "children", "as"];
+var _excluded$21 = ["bsPrefix", "className", "bg", "text", "border", "body", "children", "as"];
 var DivStyledAsH5 = divWithClassName("h5");
 var DivStyledAsH6 = divWithClassName("h6");
 var CardBody = createWithBsPrefix("card-body");
@@ -156753,7 +156753,7 @@ var defaultProps$b = {
   body: false
 };
 var Card = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, bg = _ref3.bg, text2 = _ref3.text, border = _ref3.border, body = _ref3.body, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1U);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, bg = _ref3.bg, text2 = _ref3.text, border = _ref3.border, body = _ref3.body, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$21);
   var prefix2 = useBootstrapPrefix(bsPrefix, "card");
   var cardContext = reactExports.useMemo(function() {
     return {
@@ -156762,7 +156762,7 @@ var Card = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, [prefix2]);
   return /* @__PURE__ */ React$1.createElement(context$1.Provider, {
     value: cardContext
-  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
+  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({
     ref
   }, props, {
     className: cx(className, prefix2, bg && "bg-" + bg, text2 && "text-" + text2, border && "border-" + border)
@@ -156829,12 +156829,12 @@ function useTimeout() {
     };
   }, []);
 }
-var _excluded$1T = ["bsPrefix", "className", "as"];
+var _excluded$20 = ["bsPrefix", "className", "as"];
 var DEVICE_SIZES$1 = ["xl", "lg", "md", "sm", "xs"];
 var Col = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1T);
+    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$20);
     var prefix2 = useBootstrapPrefix(bsPrefix, "col");
     var spans = [];
     var classes = [];
@@ -156860,7 +156860,7 @@ var Col = /* @__PURE__ */ React$1.forwardRef(
     if (!spans.length) {
       spans.push(prefix2);
     }
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({}, props, {
       ref,
       className: cx.apply(void 0, [className].concat(spans, classes))
     }));
@@ -157007,7 +157007,7 @@ function getLayoutRect(element) {
     height: height3
   };
 }
-function contains$1(parent, child) {
+function contains$2(parent, child) {
   var rootNode = child.getRootNode && child.getRootNode();
   if (parent.contains(child)) {
     return true;
@@ -157166,7 +157166,7 @@ function effect$2(_ref22) {
       return;
     }
   }
-  if (!contains$1(state.elements.popper, arrowElement)) {
+  if (!contains$2(state.elements.popper, arrowElement)) {
     return;
   }
   state.elements.arrow = arrowElement;
@@ -157472,7 +157472,7 @@ function getClippingParents(element) {
     return [];
   }
   return clippingParents2.filter(function(clippingParent) {
-    return isElement$1(clippingParent) && contains$1(clippingParent, clipperElement) && getNodeName$1(clippingParent) !== "body";
+    return isElement$1(clippingParent) && contains$2(clippingParent, clipperElement) && getNodeName$1(clippingParent) !== "body";
   });
 }
 function getClippingRect(element, boundary, rootBoundary, strategy) {
@@ -158213,7 +158213,7 @@ var ariaDescribedByModifier = {
 };
 var EMPTY_MODIFIERS$2 = [];
 function usePopper$1(referenceElement, popperElement, _temp) {
-  var _ref3 = _temp === void 0 ? {} : _temp, _ref3$enabled = _ref3.enabled, enabled = _ref3$enabled === void 0 ? true : _ref3$enabled, _ref3$placement = _ref3.placement, placement = _ref3$placement === void 0 ? "bottom" : _ref3$placement, _ref3$strategy = _ref3.strategy, strategy = _ref3$strategy === void 0 ? "absolute" : _ref3$strategy, _ref3$modifiers = _ref3.modifiers, modifiers = _ref3$modifiers === void 0 ? EMPTY_MODIFIERS$2 : _ref3$modifiers, config2 = _objectWithoutPropertiesLoose$1s(_ref3, ["enabled", "placement", "strategy", "modifiers"]);
+  var _ref3 = _temp === void 0 ? {} : _temp, _ref3$enabled = _ref3.enabled, enabled = _ref3$enabled === void 0 ? true : _ref3$enabled, _ref3$placement = _ref3.placement, placement = _ref3$placement === void 0 ? "bottom" : _ref3$placement, _ref3$strategy = _ref3.strategy, strategy = _ref3$strategy === void 0 ? "absolute" : _ref3$strategy, _ref3$modifiers = _ref3.modifiers, modifiers = _ref3$modifiers === void 0 ? EMPTY_MODIFIERS$2 : _ref3$modifiers, config2 = _objectWithoutPropertiesLoose$1B(_ref3, ["enabled", "placement", "strategy", "modifiers"]);
   var popperInstanceRef = reactExports.useRef();
   var update2 = reactExports.useCallback(function() {
     var _popperInstanceRef$cu;
@@ -158270,7 +158270,7 @@ function usePopper$1(referenceElement, popperElement, _temp) {
     if (!enabled || referenceElement == null || popperElement == null) {
       return void 0;
     }
-    popperInstanceRef.current = createPopper$1(referenceElement, popperElement, _extends$1q({}, config2, {
+    popperInstanceRef.current = createPopper$1(referenceElement, popperElement, _extends$1z({}, config2, {
       placement,
       strategy,
       modifiers: [].concat(modifiers, [ariaDescribedByModifier, updateModifier])
@@ -158280,7 +158280,7 @@ function usePopper$1(referenceElement, popperElement, _temp) {
         popperInstanceRef.current.destroy();
         popperInstanceRef.current = void 0;
         setState2(function(s4) {
-          return _extends$1q({}, s4, {
+          return _extends$1z({}, s4, {
             attributes: {},
             styles: {
               popper: initialPopperStyles(strategy)
@@ -158292,7 +158292,7 @@ function usePopper$1(referenceElement, popperElement, _temp) {
   }, [enabled, referenceElement, popperElement]);
   return popperState;
 }
-function contains(context2, node2) {
+function contains$1(context2, node2) {
   if (context2.contains) return context2.contains(node2);
   if (context2.compareDocumentPosition) return context2 === node2 || !!(context2.compareDocumentPosition(node2) & 16);
 }
@@ -158337,7 +158337,7 @@ function useRootClose(ref, onRootClose, _temp) {
     var _e$composedPath$;
     var currentTarget = getRefTarget(ref);
     warning(!!currentTarget, "RootClose captured a close event but does not have a ref to compare it to. useRootClose(), should be passed a ref that resolves to a DOM node");
-    preventMouseRootCloseRef.current = !currentTarget || isModifiedEvent$1(e2) || !isLeftClickEvent(e2) || !!contains(currentTarget, (_e$composedPath$ = e2.composedPath == null ? void 0 : e2.composedPath()[0]) != null ? _e$composedPath$ : e2.target);
+    preventMouseRootCloseRef.current = !currentTarget || isModifiedEvent$1(e2) || !isLeftClickEvent(e2) || !!contains$1(currentTarget, (_e$composedPath$ = e2.composedPath == null ? void 0 : e2.composedPath()[0]) != null ? _e$composedPath$ : e2.target);
   }, [ref]);
   var handleMouse = useEventCallback$1(function(e2) {
     if (!preventMouseRootCloseRef.current) {
@@ -158408,31 +158408,31 @@ function mergeOptionsWithPopperConfig(_ref3) {
   var _modifiers$preventOve, _modifiers$preventOve2, _modifiers$offset, _modifiers$arrow;
   var enabled = _ref3.enabled, enableEvents = _ref3.enableEvents, placement = _ref3.placement, flip2 = _ref3.flip, offset3 = _ref3.offset, fixed = _ref3.fixed, containerPadding = _ref3.containerPadding, arrowElement = _ref3.arrowElement, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig;
   var modifiers = toModifierMap(popperConfig.modifiers);
-  return _extends$1q({}, popperConfig, {
+  return _extends$1z({}, popperConfig, {
     placement,
     enabled,
     strategy: fixed ? "fixed" : popperConfig.strategy,
-    modifiers: toModifierArray(_extends$1q({}, modifiers, {
+    modifiers: toModifierArray(_extends$1z({}, modifiers, {
       eventListeners: {
         enabled: enableEvents
       },
-      preventOverflow: _extends$1q({}, modifiers.preventOverflow, {
-        options: containerPadding ? _extends$1q({
+      preventOverflow: _extends$1z({}, modifiers.preventOverflow, {
+        options: containerPadding ? _extends$1z({
           padding: containerPadding
         }, (_modifiers$preventOve = modifiers.preventOverflow) == null ? void 0 : _modifiers$preventOve.options) : (_modifiers$preventOve2 = modifiers.preventOverflow) == null ? void 0 : _modifiers$preventOve2.options
       }),
       offset: {
-        options: _extends$1q({
+        options: _extends$1z({
           offset: offset3
         }, (_modifiers$offset = modifiers.offset) == null ? void 0 : _modifiers$offset.options)
       },
-      arrow: _extends$1q({}, modifiers.arrow, {
+      arrow: _extends$1z({}, modifiers.arrow, {
         enabled: !!arrowElement,
-        options: _extends$1q({}, (_modifiers$arrow = modifiers.arrow) == null ? void 0 : _modifiers$arrow.options, {
+        options: _extends$1z({}, (_modifiers$arrow = modifiers.arrow) == null ? void 0 : _modifiers$arrow.options, {
           element: arrowElement
         })
       }),
-      flip: _extends$1q({
+      flip: _extends$1z({
         enabled: !!flip2
       }, modifiers.flip)
     }))
@@ -158663,7 +158663,7 @@ function requireAll$1() {
   return all$1.exports;
 }
 requireAll$1();
-var _excluded$1S = ["as", "className", "type", "tooltip"];
+var _excluded$1$ = ["as", "className", "type", "tooltip"];
 var propTypes$1 = {
   /**
    * Specify whether the feedback is for valid or invalid fields
@@ -158678,8 +158678,8 @@ var propTypes$1 = {
 var Feedback = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "valid" : _ref$type, _ref$tooltip = _ref3.tooltip, tooltip = _ref$tooltip === void 0 ? false : _ref$tooltip, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1S);
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
+    var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "valid" : _ref$type, _ref$tooltip = _ref3.tooltip, tooltip = _ref$tooltip === void 0 ? false : _ref$tooltip, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1$);
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({}, props, {
       ref,
       className: cx(className, type3 + "-" + (tooltip ? "tooltip" : "feedback"))
     }));
@@ -158690,13 +158690,13 @@ Feedback.propTypes = propTypes$1;
 var FormContext = /* @__PURE__ */ React$1.createContext({
   controlId: void 0
 });
-var _excluded$1R = ["id", "bsPrefix", "bsCustomPrefix", "className", "type", "isValid", "isInvalid", "isStatic", "as"];
+var _excluded$1_ = ["id", "bsPrefix", "bsCustomPrefix", "className", "type", "isValid", "isInvalid", "isStatic", "as"];
 var FormCheckInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, isStatic = _ref3.isStatic, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1R);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, isStatic = _ref3.isStatic, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1_);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-control-input"] : [bsPrefix, "form-check-input"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({}, props, {
     ref,
     type: type3,
     id: id2 || controlId,
@@ -158704,22 +158704,22 @@ var FormCheckInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 FormCheckInput.displayName = "FormCheckInput";
-var _excluded$1Q = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
+var _excluded$1Z = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
 var FormCheckLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1Q);
+  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1Z);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-control-label"] : [bsPrefix, "form-check-label"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement("label", _extends$1q({}, props, {
+  return /* @__PURE__ */ React$1.createElement("label", _extends$1z({}, props, {
     ref,
     htmlFor: htmlFor || controlId,
     className: cx(className, bsPrefix)
   }));
 });
 FormCheckLabel.displayName = "FormCheckLabel";
-var _excluded$1P = ["id", "bsPrefix", "bsCustomPrefix", "inline", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "title", "type", "label", "children", "custom", "as"];
+var _excluded$1Y = ["id", "bsPrefix", "bsCustomPrefix", "inline", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "title", "type", "label", "children", "custom", "as"];
 var FormCheck = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$inline = _ref3.inline, inline = _ref$inline === void 0 ? false : _ref$inline, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? "" : _ref$title, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, label = _ref3.label, children = _ref3.children, propCustom = _ref3.custom, _ref$as = _ref3.as, as = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1P);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$inline = _ref3.inline, inline = _ref$inline === void 0 ? false : _ref$inline, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? "" : _ref$title, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, label = _ref3.label, children = _ref3.children, propCustom = _ref3.custom, _ref$as = _ref3.as, as = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1Y);
   var custom2 = type3 === "switch" ? true : propCustom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-control"] : [bsPrefix, "form-check"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -158731,7 +158731,7 @@ var FormCheck = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     };
   }, [controlId, custom2, id2]);
   var hasLabel = custom2 || label != null && label !== false && !children;
-  var input = /* @__PURE__ */ React$1.createElement(FormCheckInput, _extends$1q({}, props, {
+  var input = /* @__PURE__ */ React$1.createElement(FormCheckInput, _extends$1z({}, props, {
     type: type3 === "switch" ? "checkbox" : type3,
     ref,
     isValid: isValid2,
@@ -158755,14 +158755,14 @@ var FormCheck = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 FormCheck.displayName = "FormCheck";
 FormCheck.Input = FormCheckInput;
 FormCheck.Label = FormCheckLabel;
-var _excluded$1O = ["id", "bsPrefix", "bsCustomPrefix", "className", "isValid", "isInvalid", "lang", "as"];
+var _excluded$1X = ["id", "bsPrefix", "bsCustomPrefix", "className", "isValid", "isInvalid", "lang", "as"];
 var FormFileInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, isValid2 = _ref3.isValid, isInvalid = _ref3.isInvalid, lang = _ref3.lang, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1O);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, isValid2 = _ref3.isValid, isInvalid = _ref3.isInvalid, lang = _ref3.lang, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1X);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var type3 = "file";
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-file-input"] : [bsPrefix, "form-control-file"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({}, props, {
     ref,
     id: id2 || controlId,
     type: type3,
@@ -158771,13 +158771,13 @@ var FormFileInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 FormFileInput.displayName = "FormFileInput";
-var _excluded$1N = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
+var _excluded$1W = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
 var FormFileLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1N);
+  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1W);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-file-label"] : [bsPrefix, "form-file-label"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement("label", _extends$1q({}, props, {
+  return /* @__PURE__ */ React$1.createElement("label", _extends$1z({}, props, {
     ref,
     htmlFor: htmlFor || controlId,
     className: cx(className, bsPrefix),
@@ -158785,9 +158785,9 @@ var FormFileLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 FormFileLabel.displayName = "FormFileLabel";
-var _excluded$1M = ["id", "bsPrefix", "bsCustomPrefix", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "label", "children", "custom", "lang", "data-browse", "as", "inputAs"];
+var _excluded$1V = ["id", "bsPrefix", "bsCustomPrefix", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "label", "children", "custom", "lang", "data-browse", "as", "inputAs"];
 var FormFile = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, label = _ref3.label, children = _ref3.children, custom2 = _ref3.custom, lang = _ref3.lang, dataBrowse = _ref3["data-browse"], _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, _ref$inputAs = _ref3.inputAs, inputAs = _ref$inputAs === void 0 ? "input" : _ref$inputAs, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1M);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, label = _ref3.label, children = _ref3.children, custom2 = _ref3.custom, lang = _ref3.lang, dataBrowse = _ref3["data-browse"], _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, _ref$inputAs = _ref3.inputAs, inputAs = _ref$inputAs === void 0 ? "input" : _ref$inputAs, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1V);
   var _ref22 = custom2 ? [bsCustomPrefix, "custom"] : [bsPrefix, "form-file"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
   var type3 = "file";
@@ -158799,7 +158799,7 @@ var FormFile = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     };
   }, [controlId, custom2, id2]);
   var hasLabel = label != null && label !== false && !children;
-  var input = /* @__PURE__ */ React$1.createElement(FormFileInput, _extends$1q({}, props, {
+  var input = /* @__PURE__ */ React$1.createElement(FormFileInput, _extends$1z({}, props, {
     ref,
     isValid: isValid2,
     isInvalid,
@@ -158822,9 +158822,9 @@ var FormFile = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 FormFile.displayName = "FormFile";
 FormFile.Input = FormFileInput;
 FormFile.Label = FormFileLabel;
-var _excluded$1L = ["bsPrefix", "bsCustomPrefix", "type", "size", "htmlSize", "id", "className", "isValid", "isInvalid", "plaintext", "readOnly", "custom", "as"];
+var _excluded$1U = ["bsPrefix", "bsCustomPrefix", "type", "size", "htmlSize", "id", "className", "isValid", "isInvalid", "plaintext", "readOnly", "custom", "as"];
 var FormControl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, type3 = _ref3.type, size2 = _ref3.size, htmlSize = _ref3.htmlSize, id2 = _ref3.id, className = _ref3.className, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, plaintext = _ref3.plaintext, readOnly = _ref3.readOnly, custom2 = _ref3.custom, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1L);
+  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, type3 = _ref3.type, size2 = _ref3.size, htmlSize = _ref3.htmlSize, id2 = _ref3.id, className = _ref3.className, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, plaintext = _ref3.plaintext, readOnly = _ref3.readOnly, custom2 = _ref3.custom, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1U);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom"] : [bsPrefix, "form-control"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -158845,7 +158845,7 @@ var FormControl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     var _classes5;
     classes = (_classes5 = {}, _classes5[bsPrefix] = true, _classes5[bsPrefix + "-" + size2] = size2, _classes5);
   }
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({}, props, {
     type: type3,
     size: htmlSize,
     ref,
@@ -158858,9 +158858,9 @@ FormControl.displayName = "FormControl";
 const FormControl$1 = Object.assign(FormControl, {
   Feedback
 });
-var _excluded$1K = ["bsPrefix", "className", "children", "controlId", "as"];
+var _excluded$1T = ["bsPrefix", "className", "children", "controlId", "as"];
 var FormGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, controlId = _ref3.controlId, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1K);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, controlId = _ref3.controlId, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1T);
   bsPrefix = useBootstrapPrefix(bsPrefix, "form-group");
   var context2 = reactExports.useMemo(function() {
     return {
@@ -158869,26 +158869,26 @@ var FormGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, [controlId]);
   return /* @__PURE__ */ React$1.createElement(FormContext.Provider, {
     value: context2
-  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
+  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({}, props, {
     ref,
     className: cx(className, bsPrefix)
   }), children));
 });
 FormGroup.displayName = "FormGroup";
-var _excluded$1J = ["as", "bsPrefix", "column", "srOnly", "className", "htmlFor"];
+var _excluded$1S = ["as", "bsPrefix", "column", "srOnly", "className", "htmlFor"];
 var defaultProps$a = {
   column: false,
   srOnly: false
 };
 var FormLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "label" : _ref$as, bsPrefix = _ref3.bsPrefix, column2 = _ref3.column, srOnly = _ref3.srOnly, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1J);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "label" : _ref$as, bsPrefix = _ref3.bsPrefix, column2 = _ref3.column, srOnly = _ref3.srOnly, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1S);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId;
   bsPrefix = useBootstrapPrefix(bsPrefix, "form-label");
   var columnClass = "col-form-label";
   if (typeof column2 === "string") columnClass = columnClass + " " + columnClass + "-" + column2;
   var classes = cx(className, bsPrefix, srOnly && "sr-only", column2 && columnClass);
   htmlFor = htmlFor || controlId;
-  if (column2) return /* @__PURE__ */ React$1.createElement(Col, _extends$1q({
+  if (column2) return /* @__PURE__ */ React$1.createElement(Col, _extends$1z({
     ref,
     as: "label",
     className: classes,
@@ -158896,7 +158896,7 @@ var FormLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, props));
   return (
     // eslint-disable-next-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control
-    /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
+    /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({
       ref,
       className: classes,
       htmlFor
@@ -158905,13 +158905,13 @@ var FormLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 });
 FormLabel.displayName = "FormLabel";
 FormLabel.defaultProps = defaultProps$a;
-var _excluded$1I = ["bsPrefix", "className", "as", "muted"];
+var _excluded$1R = ["bsPrefix", "className", "as", "muted"];
 var FormText = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "small" : _ref$as, muted = _ref3.muted, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1I);
+    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "small" : _ref$as, muted = _ref3.muted, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1R);
     bsPrefix = useBootstrapPrefix(bsPrefix, "form-text");
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({}, props, {
       ref,
       className: cx(className, bsPrefix, muted && "text-muted")
     }));
@@ -158919,7 +158919,7 @@ var FormText = /* @__PURE__ */ React$1.forwardRef(
 );
 FormText.displayName = "FormText";
 var Switch$1 = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
-  return /* @__PURE__ */ React$1.createElement(FormCheck, _extends$1q({}, props, {
+  return /* @__PURE__ */ React$1.createElement(FormCheck, _extends$1z({}, props, {
     ref,
     type: "switch"
   }));
@@ -158927,15 +158927,15 @@ var Switch$1 = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
 Switch$1.displayName = "Switch";
 Switch$1.Input = FormCheck.Input;
 Switch$1.Label = FormCheck.Label;
-var _excluded$1H = ["bsPrefix", "inline", "className", "validated", "as"];
+var _excluded$1Q = ["bsPrefix", "inline", "className", "validated", "as"];
 var FormRow = createWithBsPrefix("form-row");
 var defaultProps$9 = {
   inline: false
 };
 var FormImpl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, inline = _ref3.inline, className = _ref3.className, validated = _ref3.validated, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "form" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1H);
+  var bsPrefix = _ref3.bsPrefix, inline = _ref3.inline, className = _ref3.className, validated = _ref3.validated, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "form" : _ref$as, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1Q);
   bsPrefix = useBootstrapPrefix(bsPrefix, "form");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({}, props, {
     ref,
     className: cx(className, validated && "was-validated", inline && bsPrefix + "-inline")
   }));
@@ -158950,26 +158950,26 @@ FormImpl.File = FormFile;
 FormImpl.Switch = Switch$1;
 FormImpl.Label = FormLabel;
 FormImpl.Text = FormText;
-var _excluded$1G = ["bsPrefix", "size", "hasValidation", "className", "as"];
+var _excluded$1P = ["bsPrefix", "size", "hasValidation", "className", "as"];
 var InputGroupAppend = createWithBsPrefix("input-group-append");
 var InputGroupPrepend = createWithBsPrefix("input-group-prepend");
 var InputGroupText = createWithBsPrefix("input-group-text", {
   Component: "span"
 });
 var InputGroupCheckbox = function InputGroupCheckbox2(props) {
-  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1q({
+  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1z({
     type: "checkbox"
   }, props)));
 };
 var InputGroupRadio = function InputGroupRadio2(props) {
-  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1q({
+  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1z({
     type: "radio"
   }, props)));
 };
 var InputGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, hasValidation = _ref3.hasValidation, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1G);
+  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, hasValidation = _ref3.hasValidation, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1P);
   bsPrefix = useBootstrapPrefix(bsPrefix, "input-group");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({
     ref
   }, props, {
     className: cx(className, bsPrefix, size2 && bsPrefix + "-" + size2, hasValidation && "has-validation")
@@ -159252,7 +159252,7 @@ var Modal$2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$show = _ref3.show, show = _ref$show === void 0 ? false : _ref$show, _ref$role = _ref3.role, role = _ref$role === void 0 ? "dialog" : _ref$role, className = _ref3.className, style2 = _ref3.style, children = _ref3.children, _ref$backdrop = _ref3.backdrop, backdrop = _ref$backdrop === void 0 ? true : _ref$backdrop, _ref$keyboard = _ref3.keyboard, keyboard = _ref$keyboard === void 0 ? true : _ref$keyboard, onBackdropClick = _ref3.onBackdropClick, onEscapeKeyDown = _ref3.onEscapeKeyDown, transition = _ref3.transition, backdropTransition = _ref3.backdropTransition, _ref$autoFocus = _ref3.autoFocus, autoFocus = _ref$autoFocus === void 0 ? true : _ref$autoFocus, _ref$enforceFocus = _ref3.enforceFocus, enforceFocus = _ref$enforceFocus === void 0 ? true : _ref$enforceFocus, _ref$restoreFocus = _ref3.restoreFocus, restoreFocus = _ref$restoreFocus === void 0 ? true : _ref$restoreFocus, restoreFocusOptions = _ref3.restoreFocusOptions, renderDialog = _ref3.renderDialog, _ref$renderBackdrop = _ref3.renderBackdrop, renderBackdrop = _ref$renderBackdrop === void 0 ? function(props) {
     return /* @__PURE__ */ React$1.createElement("div", props);
   } : _ref$renderBackdrop, providedManager = _ref3.manager, containerRef = _ref3.container, containerClassName = _ref3.containerClassName, onShow = _ref3.onShow, _ref$onHide = _ref3.onHide, onHide3 = _ref$onHide === void 0 ? function() {
-  } : _ref$onHide, onExit = _ref3.onExit, onExited = _ref3.onExited, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, rest = _objectWithoutPropertiesLoose$1s(_ref3, ["show", "role", "className", "style", "children", "backdrop", "keyboard", "onBackdropClick", "onEscapeKeyDown", "transition", "backdropTransition", "autoFocus", "enforceFocus", "restoreFocus", "restoreFocusOptions", "renderDialog", "renderBackdrop", "manager", "container", "containerClassName", "onShow", "onHide", "onExit", "onExited", "onExiting", "onEnter", "onEntering", "onEntered"]);
+  } : _ref$onHide, onExit = _ref3.onExit, onExited = _ref3.onExited, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, rest = _objectWithoutPropertiesLoose$1B(_ref3, ["show", "role", "className", "style", "children", "backdrop", "keyboard", "onBackdropClick", "onEscapeKeyDown", "transition", "backdropTransition", "autoFocus", "enforceFocus", "restoreFocus", "restoreFocusOptions", "renderDialog", "renderBackdrop", "manager", "container", "containerClassName", "onShow", "onHide", "onExit", "onExited", "onExiting", "onEnter", "onEntering", "onEntered"]);
   var container2 = useWaitForDOMRef(containerRef);
   var modal = useModalManager(providedManager);
   var isMounted = useMounted();
@@ -159288,7 +159288,7 @@ var Modal$2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     }
     if (autoFocus) {
       var currentActiveElement = activeElement(document);
-      if (modal.dialog && currentActiveElement && !contains(modal.dialog, currentActiveElement)) {
+      if (modal.dialog && currentActiveElement && !contains$1(modal.dialog, currentActiveElement)) {
         lastFocusRef.current = currentActiveElement;
         modal.dialog.focus();
       }
@@ -159325,7 +159325,7 @@ var Modal$2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
       return;
     }
     var currentActiveElement = activeElement();
-    if (modal.dialog && currentActiveElement && !contains(modal.dialog, currentActiveElement)) {
+    if (modal.dialog && currentActiveElement && !contains$1(modal.dialog, currentActiveElement)) {
       modal.dialog.focus();
     }
   });
@@ -159359,7 +159359,7 @@ var Modal$2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   if (!container2 || !(show || Transition2 && !exited)) {
     return null;
   }
-  var dialogProps = _extends$1q({
+  var dialogProps = _extends$1z({
     role,
     ref: modal.setDialogRef,
     // apparently only works on the dialog role element
@@ -159600,12 +159600,12 @@ var ModalContext = /* @__PURE__ */ React$1.createContext({
   onHide: function onHide() {
   }
 });
-var _excluded$1F = ["bsPrefix", "className", "contentClassName", "centered", "size", "children", "scrollable"];
+var _excluded$1O = ["bsPrefix", "className", "contentClassName", "centered", "size", "children", "scrollable"];
 var ModalDialog = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, contentClassName = _ref3.contentClassName, centered = _ref3.centered, size2 = _ref3.size, children = _ref3.children, scrollable = _ref3.scrollable, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1F);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, contentClassName = _ref3.contentClassName, centered = _ref3.centered, size2 = _ref3.size, children = _ref3.children, scrollable = _ref3.scrollable, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1O);
   bsPrefix = useBootstrapPrefix(bsPrefix, "modal");
   var dialogClass = bsPrefix + "-dialog";
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1q({}, props, {
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1z({}, props, {
     ref,
     className: cx(dialogClass, className, size2 && bsPrefix + "-" + size2, centered && dialogClass + "-centered", scrollable && dialogClass + "-scrollable")
   }), /* @__PURE__ */ React$1.createElement("div", {
@@ -159614,20 +159614,20 @@ var ModalDialog = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 });
 ModalDialog.displayName = "ModalDialog";
 const BootstrapModalFooter = createWithBsPrefix("modal-footer");
-var _excluded$1E = ["bsPrefix", "closeLabel", "closeButton", "onHide", "className", "children"];
+var _excluded$1N = ["bsPrefix", "closeLabel", "closeButton", "onHide", "className", "children"];
 var defaultProps$8 = {
   closeLabel: "Close",
   closeButton: false
 };
 var ModalHeader = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, closeLabel = _ref3.closeLabel, closeButton = _ref3.closeButton, onHide3 = _ref3.onHide, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1E);
+  var bsPrefix = _ref3.bsPrefix, closeLabel = _ref3.closeLabel, closeButton = _ref3.closeButton, onHide3 = _ref3.onHide, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1N);
   bsPrefix = useBootstrapPrefix(bsPrefix, "modal-header");
   var context2 = reactExports.useContext(ModalContext);
   var handleClick = useEventCallback$1(function() {
     if (context2) context2.onHide();
     if (onHide3) onHide3();
   });
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1q({
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1z({
     ref
   }, props, {
     className: cx(className, bsPrefix)
@@ -159642,7 +159642,7 @@ var DivStyledAsH4 = divWithClassName("h4");
 const BootstrapModalTitle = createWithBsPrefix("modal-title", {
   Component: DivStyledAsH4
 });
-var _excluded$1D = ["bsPrefix", "className", "style", "dialogClassName", "contentClassName", "children", "dialogAs", "aria-labelledby", "aria-describedby", "aria-label", "show", "animation", "backdrop", "keyboard", "onEscapeKeyDown", "onShow", "onHide", "container", "autoFocus", "enforceFocus", "restoreFocus", "restoreFocusOptions", "onEntered", "onExit", "onExiting", "onEnter", "onEntering", "onExited", "backdropClassName", "manager"];
+var _excluded$1M = ["bsPrefix", "className", "style", "dialogClassName", "contentClassName", "children", "dialogAs", "aria-labelledby", "aria-describedby", "aria-label", "show", "animation", "backdrop", "keyboard", "onEscapeKeyDown", "onShow", "onHide", "container", "autoFocus", "enforceFocus", "restoreFocus", "restoreFocusOptions", "onEntered", "onExit", "onExiting", "onEnter", "onEntering", "onExited", "backdropClassName", "manager"];
 var manager;
 var defaultProps$7 = {
   show: false,
@@ -159655,17 +159655,17 @@ var defaultProps$7 = {
   dialogAs: ModalDialog
 };
 function DialogTransition(props) {
-  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1q({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1z({}, props, {
     timeout: null
   }));
 }
 function BackdropTransition(props) {
-  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1q({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1z({}, props, {
     timeout: null
   }));
 }
 var Modal$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, style2 = _ref3.style, dialogClassName = _ref3.dialogClassName, contentClassName = _ref3.contentClassName, children = _ref3.children, Dialog = _ref3.dialogAs, ariaLabelledby = _ref3["aria-labelledby"], ariaDescribedby = _ref3["aria-describedby"], ariaLabel = _ref3["aria-label"], show = _ref3.show, animation = _ref3.animation, backdrop = _ref3.backdrop, keyboard = _ref3.keyboard, onEscapeKeyDown = _ref3.onEscapeKeyDown, onShow = _ref3.onShow, onHide3 = _ref3.onHide, container2 = _ref3.container, autoFocus = _ref3.autoFocus, enforceFocus = _ref3.enforceFocus, restoreFocus = _ref3.restoreFocus, restoreFocusOptions = _ref3.restoreFocusOptions, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onExited = _ref3.onExited, backdropClassName = _ref3.backdropClassName, propsManager = _ref3.manager, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1D);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, style2 = _ref3.style, dialogClassName = _ref3.dialogClassName, contentClassName = _ref3.contentClassName, children = _ref3.children, Dialog = _ref3.dialogAs, ariaLabelledby = _ref3["aria-labelledby"], ariaDescribedby = _ref3["aria-describedby"], ariaLabel = _ref3["aria-label"], show = _ref3.show, animation = _ref3.animation, backdrop = _ref3.backdrop, keyboard = _ref3.keyboard, onEscapeKeyDown = _ref3.onEscapeKeyDown, onShow = _ref3.onShow, onHide3 = _ref3.onHide, container2 = _ref3.container, autoFocus = _ref3.autoFocus, enforceFocus = _ref3.enforceFocus, restoreFocus = _ref3.restoreFocus, restoreFocusOptions = _ref3.restoreFocusOptions, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onExited = _ref3.onExited, backdropClassName = _ref3.backdropClassName, propsManager = _ref3.manager, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1M);
   var _useState = reactExports.useState({}), modalStyle = _useState[0], setStyle = _useState[1];
   var _useState2 = reactExports.useState(false), animateStaticModal = _useState2[0], setAnimateStaticModal = _useState2[1];
   var waitingForMouseUpRef = reactExports.useRef(false);
@@ -159772,16 +159772,16 @@ var Modal$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     removeEventListener(window, "resize", handleWindowResize);
   };
   var renderBackdrop = reactExports.useCallback(function(backdropProps) {
-    return /* @__PURE__ */ React$1.createElement("div", _extends$1q({}, backdropProps, {
+    return /* @__PURE__ */ React$1.createElement("div", _extends$1z({}, backdropProps, {
       className: cx(bsPrefix + "-backdrop", backdropClassName, !animation && "show")
     }));
   }, [animation, backdropClassName, bsPrefix]);
-  var baseModalStyle = _extends$1q({}, style2, modalStyle);
+  var baseModalStyle = _extends$1z({}, style2, modalStyle);
   if (!animation) {
     baseModalStyle.display = "block";
   }
   var renderDialog = function renderDialog2(dialogProps) {
-    return /* @__PURE__ */ React$1.createElement("div", _extends$1q({
+    return /* @__PURE__ */ React$1.createElement("div", _extends$1z({
       role: "dialog"
     }, dialogProps, {
       style: baseModalStyle,
@@ -159791,7 +159791,7 @@ var Modal$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
       "aria-label": ariaLabel,
       "aria-labelledby": ariaLabelledby,
       "aria-describedby": ariaDescribedby
-    }), /* @__PURE__ */ React$1.createElement(Dialog, _extends$1q({}, props, {
+    }), /* @__PURE__ */ React$1.createElement(Dialog, _extends$1z({}, props, {
       onMouseDown: handleDialogMouseDown,
       className: dialogClassName,
       contentClassName
@@ -159851,7 +159851,7 @@ var Overlay$1 = /* @__PURE__ */ React$1.forwardRef(function(props, outerRef) {
     offset: offset3,
     arrowElement,
     popperConfig
-  })), styles2 = _usePopper.styles, attributes = _usePopper.attributes, popper2 = _objectWithoutPropertiesLoose$1s(_usePopper, ["styles", "attributes"]);
+  })), styles2 = _usePopper.styles, attributes = _usePopper.attributes, popper2 = _objectWithoutPropertiesLoose$1B(_usePopper, ["styles", "attributes"]);
   if (props.show) {
     if (exited) setExited(false);
   } else if (!props.transition && !exited) {
@@ -159871,13 +159871,13 @@ var Overlay$1 = /* @__PURE__ */ React$1.forwardRef(function(props, outerRef) {
   if (!mountOverlay) {
     return null;
   }
-  var child = props.children(_extends$1q({}, popper2, {
+  var child = props.children(_extends$1z({}, popper2, {
     show: !!props.show,
-    props: _extends$1q({}, attributes.popper, {
+    props: _extends$1z({}, attributes.popper, {
       style: styles2.popper,
       ref: mergedRef
     }),
-    arrowProps: _extends$1q({}, attributes.arrow, {
+    arrowProps: _extends$1z({}, attributes.arrow, {
       style: styles2.arrow,
       ref: attachArrowRef
     })
@@ -160013,7 +160013,7 @@ Overlay$1.propTypes = {
    */
   onExited: PropTypes.func
 };
-var _excluded$1C = ["children", "transition", "popperConfig"], _excluded2$2 = ["props", "arrowProps", "show", "update", "forceUpdate", "placement", "state"];
+var _excluded$1L = ["children", "transition", "popperConfig"], _excluded2$2 = ["props", "arrowProps", "show", "update", "forceUpdate", "placement", "state"];
 var defaultProps$6 = {
   transition: Fade,
   rootClose: false,
@@ -160031,13 +160031,13 @@ function wrapRefs(props, arrowProps) {
   });
 }
 function Overlay(_ref3) {
-  var overlay = _ref3.children, transition = _ref3.transition, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, outerProps = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1C);
+  var overlay = _ref3.children, transition = _ref3.transition, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, outerProps = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1L);
   var popperRef = reactExports.useRef({});
   var _usePopperMarginModif = usePopperMarginModifiers(), ref = _usePopperMarginModif[0], marginModifiers = _usePopperMarginModif[1];
   var actualTransition = transition === true ? Fade : transition || null;
-  return /* @__PURE__ */ React$1.createElement(Overlay$1, _extends$1q({}, outerProps, {
+  return /* @__PURE__ */ React$1.createElement(Overlay$1, _extends$1z({}, outerProps, {
     ref,
-    popperConfig: _extends$1q({}, popperConfig, {
+    popperConfig: _extends$1z({}, popperConfig, {
       modifiers: marginModifiers.concat(popperConfig.modifiers || [])
     }),
     transition: actualTransition
@@ -160045,7 +160045,7 @@ function Overlay(_ref3) {
     var _state$modifiersData$;
     var overlayProps = _ref22.props, arrowProps = _ref22.arrowProps, show = _ref22.show, update2 = _ref22.update;
     _ref22.forceUpdate;
-    var placement = _ref22.placement, state = _ref22.state, props = _objectWithoutPropertiesLoose$1s(_ref22, _excluded2$2);
+    var placement = _ref22.placement, state = _ref22.state, props = _objectWithoutPropertiesLoose$1B(_ref22, _excluded2$2);
     wrapRefs(overlayProps, arrowProps);
     var popper2 = Object.assign(popperRef.current, {
       state,
@@ -160053,7 +160053,7 @@ function Overlay(_ref3) {
       placement,
       outOfBoundaries: (state == null ? void 0 : (_state$modifiersData$ = state.modifiersData.hide) == null ? void 0 : _state$modifiersData$.isReferenceHidden) || false
     });
-    if (typeof overlay === "function") return overlay(_extends$1q({}, props, overlayProps, {
+    if (typeof overlay === "function") return overlay(_extends$1z({}, props, overlayProps, {
       placement,
       show
     }, !transition && show && {
@@ -160062,17 +160062,17 @@ function Overlay(_ref3) {
       popper: popper2,
       arrowProps
     }));
-    return /* @__PURE__ */ React$1.cloneElement(overlay, _extends$1q({}, props, overlayProps, {
+    return /* @__PURE__ */ React$1.cloneElement(overlay, _extends$1z({}, props, overlayProps, {
       placement,
       arrowProps,
       popper: popper2,
       className: cx(overlay.props.className, !transition && show && "show"),
-      style: _extends$1q({}, overlay.props.style, overlayProps.style)
+      style: _extends$1z({}, overlay.props.style, overlayProps.style)
     }));
   });
 }
 Overlay.defaultProps = defaultProps$6;
-var _excluded$1B = ["trigger", "overlay", "children", "popperConfig", "show", "defaultShow", "onToggle", "delay", "placement", "flip"];
+var _excluded$1K = ["trigger", "overlay", "children", "popperConfig", "show", "defaultShow", "onToggle", "delay", "placement", "flip"];
 var RefHolder = /* @__PURE__ */ (function(_React$Component) {
   _inheritsLoose$2(RefHolder2, _React$Component);
   function RefHolder2() {
@@ -160094,7 +160094,7 @@ function handleMouseOverOut(handler, args, relatedNative) {
   var e2 = args[0];
   var target = e2.currentTarget;
   var related = e2.relatedTarget || e2.nativeEvent[relatedNative];
-  if ((!related || related !== target) && !contains(target, related)) {
+  if ((!related || related !== target) && !contains$1(target, related)) {
     handler.apply(void 0, args);
   }
 }
@@ -160103,7 +160103,7 @@ var defaultProps$5 = {
   trigger: ["hover", "focus"]
 };
 function OverlayTrigger(_ref3) {
-  var trigger2 = _ref3.trigger, overlay = _ref3.overlay, children = _ref3.children, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, propsShow = _ref3.show, _ref$defaultShow = _ref3.defaultShow, defaultShow = _ref$defaultShow === void 0 ? false : _ref$defaultShow, onToggle = _ref3.onToggle, propsDelay = _ref3.delay, placement = _ref3.placement, _ref$flip = _ref3.flip, flip2 = _ref$flip === void 0 ? placement && placement.indexOf("auto") !== -1 : _ref$flip, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1B);
+  var trigger2 = _ref3.trigger, overlay = _ref3.overlay, children = _ref3.children, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, propsShow = _ref3.show, _ref$defaultShow = _ref3.defaultShow, defaultShow = _ref$defaultShow === void 0 ? false : _ref$defaultShow, onToggle = _ref3.onToggle, propsDelay = _ref3.delay, placement = _ref3.placement, _ref$flip = _ref3.flip, flip2 = _ref$flip === void 0 ? placement && placement.indexOf("auto") !== -1 : _ref$flip, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1K);
   var triggerNodeRef = reactExports.useRef(null);
   var timeout = useTimeout();
   var hoverStateRef = reactExports.useRef("");
@@ -160178,11 +160178,11 @@ function OverlayTrigger(_ref3) {
     triggerProps.onMouseOver = handleMouseOver;
     triggerProps.onMouseOut = handleMouseOut;
   }
-  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, typeof children === "function" ? children(_extends$1q({}, triggerProps, {
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, typeof children === "function" ? children(_extends$1z({}, triggerProps, {
     ref: triggerNodeRef
   })) : /* @__PURE__ */ React$1.createElement(RefHolder, {
     ref: triggerNodeRef
-  }, /* @__PURE__ */ reactExports.cloneElement(children, triggerProps)), /* @__PURE__ */ React$1.createElement(Overlay, _extends$1q({}, props, {
+  }, /* @__PURE__ */ reactExports.cloneElement(children, triggerProps)), /* @__PURE__ */ React$1.createElement(Overlay, _extends$1z({}, props, {
     show,
     onHide: handleHide,
     flip: flip2,
@@ -160192,27 +160192,27 @@ function OverlayTrigger(_ref3) {
   }), overlay));
 }
 OverlayTrigger.defaultProps = defaultProps$5;
-var _excluded$1A = ["as", "bsPrefix", "className", "children"];
+var _excluded$1J = ["as", "bsPrefix", "className", "children"];
 var PopoverTitle = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1A);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1J);
   bsPrefix = useBootstrapPrefix(bsPrefix, "popover-header");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({
     ref
   }, props, {
     className: cx(bsPrefix, className)
   }), children);
 });
-var _excluded$1z = ["as", "bsPrefix", "className", "children"];
+var _excluded$1I = ["as", "bsPrefix", "className", "children"];
 var PopoverContent = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1z);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1I);
   bsPrefix = useBootstrapPrefix(bsPrefix, "popover-body");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({
     ref
   }, props, {
     className: cx(className, bsPrefix)
   }), children);
 });
-var _excluded$1y = ["bsPrefix", "placement", "className", "style", "children", "content", "arrowProps", "popper", "show"];
+var _excluded$1H = ["bsPrefix", "placement", "className", "style", "children", "content", "arrowProps", "popper", "show"];
 var defaultProps$4 = {
   placement: "right"
 };
@@ -160220,29 +160220,29 @@ var Popover = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   var bsPrefix = _ref3.bsPrefix, placement = _ref3.placement, className = _ref3.className, style2 = _ref3.style, children = _ref3.children, content2 = _ref3.content, arrowProps = _ref3.arrowProps;
   _ref3.popper;
   _ref3.show;
-  var props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1y);
+  var props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1H);
   var decoratedBsPrefix = useBootstrapPrefix(bsPrefix, "popover");
   var _ref22 = (placement == null ? void 0 : placement.split("-")) || [], primaryPlacement = _ref22[0];
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1q({
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1z({
     ref,
     role: "tooltip",
     style: style2,
     "x-placement": primaryPlacement,
     className: cx(className, decoratedBsPrefix, primaryPlacement && "bs-popover-" + primaryPlacement)
-  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1q({
+  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1z({
     className: "arrow"
   }, arrowProps)), content2 ? /* @__PURE__ */ React$1.createElement(PopoverContent, null, children) : children);
 });
 Popover.defaultProps = defaultProps$4;
 Popover.Title = PopoverTitle;
 Popover.Content = PopoverContent;
-var _excluded$1x = ["bsPrefix", "className", "noGutters", "as"];
+var _excluded$1G = ["bsPrefix", "className", "noGutters", "as"];
 var DEVICE_SIZES = ["xl", "lg", "md", "sm", "xs"];
 var defaultProps$3 = {
   noGutters: false
 };
 var Row = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, noGutters = _ref3.noGutters, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1x);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, noGutters = _ref3.noGutters, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1G);
   var decoratedBsPrefix = useBootstrapPrefix(bsPrefix, "row");
   var sizePrefix = decoratedBsPrefix + "-cols";
   var classes = [];
@@ -160258,7 +160258,7 @@ var Row = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     var infix = brkPoint !== "xs" ? "-" + brkPoint : "";
     if (cols != null) classes.push("" + sizePrefix + infix + "-" + cols);
   });
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({
     ref
   }, props, {
     className: cx.apply(void 0, [className, decoratedBsPrefix, noGutters && "no-gutters"].concat(classes))
@@ -160266,19 +160266,19 @@ var Row = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 });
 Row.displayName = "Row";
 Row.defaultProps = defaultProps$3;
-var _excluded$1w = ["bsPrefix", "variant", "animation", "size", "children", "as", "className"];
+var _excluded$1F = ["bsPrefix", "variant", "animation", "size", "children", "as", "className"];
 var Spinner = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, animation = _ref3.animation, size2 = _ref3.size, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1w);
+  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, animation = _ref3.animation, size2 = _ref3.size, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1F);
   bsPrefix = useBootstrapPrefix(bsPrefix, "spinner");
   var bsSpinnerPrefix = bsPrefix + "-" + animation;
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1q({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1z({
     ref
   }, props, {
     className: cx(className, bsSpinnerPrefix, size2 && bsSpinnerPrefix + "-" + size2, variant && "text-" + variant)
   }), children);
 });
 Spinner.displayName = "Spinner";
-var _excluded$1v = ["bsPrefix", "placement", "className", "style", "children", "arrowProps", "popper", "show"];
+var _excluded$1E = ["bsPrefix", "placement", "className", "style", "children", "arrowProps", "popper", "show"];
 var defaultProps$2 = {
   placement: "right"
 };
@@ -160286,16 +160286,16 @@ var Tooltip = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   var bsPrefix = _ref3.bsPrefix, placement = _ref3.placement, className = _ref3.className, style2 = _ref3.style, children = _ref3.children, arrowProps = _ref3.arrowProps;
   _ref3.popper;
   _ref3.show;
-  var props = _objectWithoutPropertiesLoose$1s(_ref3, _excluded$1v);
+  var props = _objectWithoutPropertiesLoose$1B(_ref3, _excluded$1E);
   bsPrefix = useBootstrapPrefix(bsPrefix, "tooltip");
   var _ref22 = (placement == null ? void 0 : placement.split("-")) || [], primaryPlacement = _ref22[0];
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1q({
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1z({
     ref,
     style: style2,
     role: "tooltip",
     "x-placement": primaryPlacement,
     className: cx(className, bsPrefix, "bs-tooltip-" + primaryPlacement)
-  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1q({
+  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1z({
     className: "arrow"
   }, arrowProps)), /* @__PURE__ */ React$1.createElement("div", {
     className: bsPrefix + "-inner"
@@ -163600,16 +163600,16 @@ function _objectSpread2$2(e2) {
   }
   return e2;
 }
-function _objectWithoutProperties$1p(e2, t4) {
+function _objectWithoutProperties$1y(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i3 = _objectWithoutPropertiesLoose$1r(e2, t4);
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1A(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
   }
   return i3;
 }
-function _objectWithoutPropertiesLoose$1r(r3, e2) {
+function _objectWithoutPropertiesLoose$1A(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -163729,7 +163729,7 @@ function camelize(string2) {
   });
   return string2.substr(0, 1).toLowerCase() + string2.substr(1);
 }
-var _excluded$1u = ["style"];
+var _excluded$1D = ["style"];
 function capitalize$1(val) {
   return val.charAt(0).toUpperCase() + val.slice(1);
 }
@@ -163775,7 +163775,7 @@ function convert(createElement2, element) {
   }, {
     attrs: {}
   });
-  var _extraProps$style = extraProps.style, existingStyle = _extraProps$style === void 0 ? {} : _extraProps$style, remaining = _objectWithoutProperties$1p(extraProps, _excluded$1u);
+  var _extraProps$style = extraProps.style, existingStyle = _extraProps$style === void 0 ? {} : _extraProps$style, remaining = _objectWithoutProperties$1y(extraProps, _excluded$1D);
   mixins.attrs["style"] = _objectSpread2$2(_objectSpread2$2({}, mixins.attrs["style"]), existingStyle);
   return createElement2.apply(void 0, [element.tag, _objectSpread2$2(_objectSpread2$2({}, mixins.attrs), remaining)].concat(_toConsumableArray$1(children)));
 }
@@ -164178,11 +164178,6 @@ const faClockRotateLeft = {
   prefix: "fas",
   iconName: "clock-rotate-left",
   icon: [512, 512, ["history"], "f1da", "M75 75L41 41C25.9 25.9 0 36.6 0 57.9L0 168c0 13.3 10.7 24 24 24l110.1 0c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24l0 104c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65 0-94.1c0-13.3-10.7-24-24-24z"]
-};
-const faAngleLeft = {
-  prefix: "fas",
-  iconName: "angle-left",
-  icon: [320, 512, [8249], "f104", "M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"]
 };
 const faTriangleExclamation = {
   prefix: "fas",
@@ -170043,7 +170038,7 @@ function FormattedMessage(props) {
 FormattedMessage.displayName = "FormattedMessage";
 var MemoizedFormattedMessage = reactExports.memo(FormattedMessage, areEqual);
 MemoizedFormattedMessage.displayName = "MemoizedFormattedMessage";
-createFormattedComponent("formatDate");
+var FormattedDate = createFormattedComponent("formatDate");
 createFormattedComponent("formatTime");
 var FormattedNumber = createFormattedComponent("formatNumber");
 createFormattedComponent("formatList");
@@ -174298,7 +174293,7 @@ function requireVideojsAbloop() {
         }
         return cloneAndPluck(opts, retOpts);
       };
-      var notify = function(funcToRun, changed) {
+      var notify2 = function(funcToRun, changed) {
         var defValue = changed ? false : true;
         changed = changed || {};
         optionNames.forEach(function(optName) {
@@ -174542,40 +174537,40 @@ function requireVideojsAbloop() {
         }
       };
       var api2 = {
-        validateOptions: notify(validateOptions),
-        resetToInitialOptions: notify(setOptionsToInitialOptions),
-        setOptions: notify(setOptions2),
+        validateOptions: notify2(validateOptions),
+        resetToInitialOptions: notify2(setOptionsToInitialOptions),
+        setOptions: notify2(setOptions2),
         getOptions,
         goToStart: goToStartOfLoop,
         goToEnd: goToEndOfLoop,
-        setStart: notify(timeSetter("start"), {
+        setStart: notify2(timeSetter("start"), {
           "start": true
         }),
-        setEnd: notify(timeSetter("end"), {
+        setEnd: notify2(timeSetter("end"), {
           "end": true
         }),
-        adjustStart: notify(timeAdjuster("start"), {
+        adjustStart: notify2(timeAdjuster("start"), {
           "start": true
         }),
-        adjustEnd: notify(timeAdjuster("end"), {
+        adjustEnd: notify2(timeAdjuster("end"), {
           "end": true
         }),
-        enable: notify(enableLoop, {
+        enable: notify2(enableLoop, {
           "enabled": true
         }),
-        disable: notify(disableLoop, {
+        disable: notify2(disableLoop, {
           "enabled": true
         }),
-        toggle: notify(toggler("enabled"), {
+        toggle: notify2(toggler("enabled"), {
           "enabled": true
         }),
-        togglePauseAfterLooping: notify(toggler("pauseAfterLooping"), {
+        togglePauseAfterLooping: notify2(toggler("pauseAfterLooping"), {
           "pauseAfterLooping": true
         }),
-        togglePauseBeforeLooping: notify(toggler("pauseBeforeLooping"), {
+        togglePauseBeforeLooping: notify2(toggler("pauseBeforeLooping"), {
           "pauseBeforeLooping": true
         }),
-        cyclePauseOnLooping: notify(cyclePauseOnLooping, {
+        cyclePauseOnLooping: notify2(cyclePauseOnLooping, {
           "pauseBeforeLooping": true,
           "pauseAfterLooping": true
         }),
@@ -174584,21 +174579,21 @@ function requireVideojsAbloop() {
         getAbsoluteUrl: getAbsoluteUrlWithHash,
         getUrl: getUrlWithHash,
         getUrlFragment: getUrlHash,
-        applyUrl: notify(applyUrl, {
+        applyUrl: notify2(applyUrl, {
           "start": true,
           "end": true
         }),
-        applyUrlFragment: notify(applyUrlHash, {
+        applyUrlFragment: notify2(applyUrlHash, {
           "start": true,
           "end": true
         }),
         loopRequired,
-        playLoop: notify(playLoop)
+        playLoop: notify2(playLoop)
       };
       var setup2 = function() {
         defaultInitialOptions();
         setCallBacksToInitialOptions();
-        notify(setOptionsToInitialOptions)();
+        notify2(setOptionsToInitialOptions)();
         player.ready(function() {
           if (initialOptions.createButtons != false) {
             createButtons(buttonSpecs);
@@ -177525,14 +177520,12 @@ function client() {
 const stashConfigStorage = {
   getItem: async (key) => await getStashTvConfig().then((config2) => config2?.[key] || null).catch(console.error),
   setItem: async (key, value) => await updateTvConfig((config2) => ({ ...config2, [key]: value })).catch(console.error),
-  removeItem: async (key) => {
-    await updateTvConfig(
-      (config2) => {
-        const { [key]: _, ...rest } = config2;
-        return rest;
-      }
-    );
-  }
+  removeItem: async (key) => await updateTvConfig(
+    (config2) => {
+      const { [key]: _, ...rest } = config2;
+      return rest;
+    }
+  ).catch(console.error)
 };
 async function getStashTvConfig() {
   const result = await client().query({
@@ -177540,8 +177533,9 @@ async function getStashTvConfig() {
   });
   return result.data?.configuration.plugins[PLUGIN_NAMESPACE];
 }
+const pendingWrites = /* @__PURE__ */ new Set();
 async function updateTvConfig(configUpdate) {
-  getStashTvConfig().then((config2) => {
+  const write2 = getStashTvConfig().then((config2) => {
     return client().mutate({
       mutation: ConfigurePluginDocument,
       variables: {
@@ -177550,11 +177544,19 @@ async function updateTvConfig(configUpdate) {
       }
     });
   });
+  pendingWrites.add(write2);
+  try {
+    await write2;
+  } finally {
+    pendingWrites.delete(write2);
+  }
 }
 const defaults$4 = {
   showSettings: false,
   fullscreen: false,
   sceneInfoOpen: false,
+  sceneInfoDraft: null,
+  sceneInfoEditorPillContent: "names",
   keyboardShortcutsOpen: false,
   tvConfigLoaded: false
 };
@@ -177594,6 +177596,253 @@ const useGlobalState = create()(
 );
 function generateConfigId() {
   return `${Date.now()}-${Math.random().toString().slice(2)}`;
+}
+const sceneInfoFieldIds = [
+  "studio",
+  "title",
+  "performers",
+  "date",
+  "details",
+  "tags",
+  "groups",
+  "code",
+  "director",
+  "rating",
+  "duration",
+  "resolution",
+  "frame-rate",
+  "play-count",
+  "o-count",
+  "path",
+  "urls",
+  "spacer"
+];
+const sceneInfoFieldLabels = {
+  studio: "Studio",
+  title: "Title",
+  performers: "Performers",
+  date: "Date",
+  details: "Details",
+  tags: "Tags",
+  groups: "Groups",
+  code: "Studio code",
+  director: "Director",
+  rating: "Rating",
+  duration: "Duration",
+  resolution: "Resolution",
+  "frame-rate": "Frame rate",
+  "play-count": "Play count",
+  "o-count": "O-count",
+  path: "File path",
+  urls: "URLs",
+  spacer: "Spacer"
+};
+const repeatableFields = ["spacer"];
+function isRepeatableField(field) {
+  return repeatableFields.includes(field);
+}
+function newFieldInstance(field) {
+  return { field, id: generateConfigId() };
+}
+function entryField(entry) {
+  if (typeof entry === "string") return entry;
+  return typeof entry?.field === "string" ? entry.field : "";
+}
+function entryKey(entry) {
+  return typeof entry === "string" ? entry : `${entryField(entry)}:${String(entry?.id)}`;
+}
+function entryLabel(entry, options2) {
+  const field = entryField(entry);
+  if (!isKnownField(field)) return "Unknown field";
+  if (typeof entry !== "string" && field === "spacer") return `${spacerSizeLabels[options2.spacer.size]} spacer`;
+  return sceneInfoFieldLabels[field];
+}
+const spacerSizeLabels = {
+  small: "Small",
+  medium: "Medium",
+  big: "Big"
+};
+function noValueLabel(field) {
+  return `No ${sceneInfoFieldLabels[field].replace(/^[A-Z][a-z]+\b/, (word) => word.toLowerCase())}`;
+}
+const defaultSceneInfoFieldOptions = {
+  rating: { display: "control" },
+  "o-count": { display: "control", label: "icon" },
+  "play-count": { label: "icon" },
+  performers: { label: "icon" },
+  details: { showFullText: false },
+  tags: { showAll: false },
+  resolution: { format: "name", label: "none" },
+  spacer: { size: "medium" }
+};
+function hasFieldOptions(field) {
+  return Object.hasOwn(defaultSceneInfoFieldOptions, field);
+}
+function resolveFieldOptions(config2, entry) {
+  const instance = entry !== void 0 && typeof entry !== "string" ? entry : null;
+  const resolved = Object.fromEntries(
+    Object.entries(defaultSceneInfoFieldOptions).map(([field, defaults2]) => [field, { ...defaults2 }])
+  );
+  for (const [field, defaults2] of Object.entries(resolved)) {
+    const set4 = instance && field === entryField(instance) ? instance.options : config2?.[field];
+    if (!set4 || typeof set4 !== "object") continue;
+    for (const [option, defaultValue] of Object.entries(defaults2)) {
+      const value = set4[option];
+      if (value !== void 0 && typeof value === typeof defaultValue && isAllowedValue(field, option, value)) {
+        defaults2[option] = value;
+      }
+    }
+  }
+  return resolved;
+}
+function replaceEntry(layout, key, entry) {
+  const replace2 = (entries) => entries.map((other) => entryKey(other) === key ? entry : other);
+  return layout.map((line2) => Array.isArray(line2) ? replace2(line2) : { left: replace2(line2.left), right: replace2(line2.right) });
+}
+const sceneInfoFieldOptionChoices = {
+  rating: { display: ["control", "text"] },
+  "o-count": { display: ["control", "text"], label: ["icon", "text"] },
+  "play-count": { label: ["icon", "text"] },
+  performers: { label: ["none", "icon", "text"] },
+  resolution: { format: ["name", "dimensions"], label: ["none", "icon", "text"] },
+  spacer: { size: ["small", "medium", "big"] }
+};
+function isAllowedValue(field, option, value) {
+  const choices = sceneInfoFieldOptionChoices[field]?.[option];
+  return !choices || choices.includes(value);
+}
+function defaultSpacer(id2, size2) {
+  return { field: "spacer", id: `default-${id2}`, options: { size: size2 } };
+}
+const defaultSceneInfoLayout = [
+  ["studio"],
+  ["title"],
+  [defaultSpacer(1, "medium")],
+  { left: ["date"], right: ["resolution", defaultSpacer(2, "small"), "frame-rate"] },
+  [defaultSpacer(3, "small")],
+  { left: ["rating"], right: ["o-count", defaultSpacer(4, "medium"), "play-count"] },
+  [defaultSpacer(5, "medium")],
+  ["performers"],
+  [defaultSpacer(6, "small")],
+  ["tags"],
+  [defaultSpacer(7, "small")],
+  ["details"]
+];
+function isKnownField(field) {
+  return sceneInfoFieldIds.includes(field);
+}
+function lineSides(line2) {
+  if (!line2) return { left: [], right: [] };
+  return Array.isArray(line2) ? { left: line2, right: [] } : line2;
+}
+function lineFields(line2) {
+  const { left: left2, right: right2 } = lineSides(line2);
+  return [...left2, ...right2];
+}
+function makeLine(left2, right2) {
+  return right2.length ? { left: left2, right: right2 } : left2;
+}
+function fieldsNotInLayout(layout) {
+  return sceneInfoFieldIds.filter((field) => isRepeatableField(field) || !layout.some((line2) => lineFields(line2).some((entry) => entryField(entry) === field)));
+}
+function isRightAligned(layout, position2) {
+  return position2.index >= lineSides(layout[position2.line]).left.length;
+}
+function placeField(layout, field, from3, target, { keepEmptyLines = false } = {}) {
+  const lines = layout.map((line2, lineIndex) => {
+    const { left: left2, right: right2 } = lineSides(line2);
+    return [...left2, ...right2].map((other, index2) => ({
+      field: other,
+      moving: lineIndex === from3?.line && index2 === from3?.index,
+      right: index2 >= left2.length
+    }));
+  });
+  const placed = { field, moving: false, right: target.type !== "remove" && target.right };
+  if (target.type === "same-line") lines[target.line]?.splice(target.index, 0, placed);
+  else if (target.type === "new-line") lines.splice(target.line, 0, [placed]);
+  return lines.map((line2) => line2.filter((entry) => !entry.moving)).filter((line2) => keepEmptyLines || line2.length).map((line2) => makeLine(
+    line2.filter((entry) => !entry.right).map((entry) => entry.field),
+    line2.filter((entry) => entry.right).map((entry) => entry.field)
+  ));
+}
+function getDropTarget(point, lines, centre) {
+  const right2 = point.x > centre;
+  for (const [lineIndex, { rect }] of lines.entries()) {
+    const edge = Math.min(2, (rect.bottom - rect.top) / 4);
+    if (point.y < rect.top + edge) return { type: "new-line", line: lineIndex, right: right2 };
+    if (point.y <= rect.bottom - edge) return { type: "same-line", line: lineIndex };
+  }
+  return { type: "new-line", line: lines.length, right: right2 };
+}
+function startsRow(field, previous) {
+  return field.left < previous.left || field.top >= previous.bottom;
+}
+function rowAt(y3, fields) {
+  const rows = [];
+  fields.forEach((field, index2) => {
+    const previous = fields[index2 - 1];
+    if (!previous || startsRow(field, previous)) rows.push([index2]);
+    else rows[rows.length - 1].push(index2);
+  });
+  const distance2 = (row) => {
+    const top2 = Math.min(...row.map((index2) => fields[index2].top));
+    const bottom2 = Math.max(...row.map((index2) => fields[index2].bottom));
+    return y3 < top2 ? top2 - y3 : y3 > bottom2 ? y3 - bottom2 : 0;
+  };
+  return rows.reduce((nearest, row) => distance2(row) < distance2(nearest) ? row : nearest, rows[0] ?? []);
+}
+function fieldUnder(x3, fields, row) {
+  return row.find((index2) => x3 >= fields[index2].left && x3 <= fields[index2].right);
+}
+function getSlotOnArrival(point, fields) {
+  if (!fields.length) return { index: 0, over: null };
+  const row = rowAt(point.y, fields);
+  const over = fieldUnder(point.x, fields, row);
+  if (over !== void 0) return { index: over, over };
+  return { index: row[0] + row.filter((index2) => fields[index2].right < point.x).length, over: null };
+}
+function getSlotNearGhost(point, direction, fields, ghostIndex, ignore = null, ghost = null) {
+  if (!fields.length) return { index: 0, ignore: null };
+  if (ghost && point.y >= ghost.top && point.y <= ghost.bottom) {
+    const overGhost = point.x >= ghost.left && point.x <= ghost.right;
+    const ghostRowHasFields = fields.some((field) => field.top < ghost.bottom && field.bottom > ghost.top);
+    if (overGhost || !ghostRowHasFields) return { index: ghostIndex, ignore: null };
+  }
+  const row = rowAt(point.y, fields);
+  const first = row[0];
+  const last = row[row.length - 1];
+  if (point.x < fields[first].left) return { index: first, ignore: null };
+  if (point.x > fields[last].right) return { index: last + 1, ignore: null };
+  const over = fieldUnder(point.x, fields, row);
+  if (over === void 0) {
+    if (ignore !== null && row.includes(ignore) && point.x > fields[ignore].right) return { index: ignore + 1, ignore: null };
+    return { index: ghostIndex, ignore: null };
+  }
+  if (over === ignore) return { index: ghostIndex, ignore };
+  const rowTop = Math.min(...row.map((index2) => fields[index2].top));
+  const rowBottom = Math.max(...row.map((index2) => fields[index2].bottom));
+  const ghostOnRow = !ghost || ghost.top < rowBottom && ghost.bottom > rowTop;
+  if (!ghostOnRow) return { index: over >= ghostIndex ? over + 1 : over, ignore: over };
+  if (direction > 0 && over >= ghostIndex) return { index: over + 1, ignore: null };
+  if (direction < 0 && over < ghostIndex) return { index: over, ignore: null };
+  return { index: ghostIndex, ignore: null };
+}
+function preferVacatedLine(target, layout, from3) {
+  if (!from3 || target.type !== "new-line" || !layout[from3.line] || lineFields(layout[from3.line]).length) return target;
+  if (target.line !== from3.line && target.line !== from3.line + 1) return target;
+  return { type: "same-line", line: from3.line };
+}
+function sideAt(x3, line2, leftBox, rightBox) {
+  if (leftBox && x3 < leftBox.right) return { side: "left" };
+  if (rightBox && x3 > rightBox.left) return { side: "right" };
+  const spaceLeft = leftBox?.right ?? line2.left;
+  const spaceRight = rightBox?.left ?? line2.right;
+  return { side: "space", right: x3 >= spaceLeft + (spaceRight - spaceLeft) * 2 / 3 };
+}
+function getSlotByMidpoints(point, fields) {
+  if (!fields.length) return 0;
+  const row = rowAt(point.y, fields);
+  return row[0] + row.filter((index2) => (fields[index2].left + fields[index2].right) / 2 < point.x).length;
 }
 const tvConfigStorageKey = "app-state";
 const defaults$3 = {
@@ -177645,6 +177894,8 @@ const defaults$3 = {
       { id: "13.5", type: "button", buttonType: "resolution", pinned: false }
     ] }
   ],
+  sceneInfoLayout: defaultSceneInfoLayout,
+  sceneInfoFieldOptions: {},
   // New users start with one channel showing every scene
   channels: [
     { id: "all-scenes", sources: [{ type: "all", entityType: "scene", randomise: false }] }
@@ -178859,14 +179110,14 @@ var LayoutGroupContext = reactExports.createContext({});
 var SwitchLayoutGroupContext = reactExports.createContext({});
 function useProjection(projectionId, _a2, visualElement2, ProjectionNodeConstructor) {
   var _b2;
-  var layoutId = _a2.layoutId, layout = _a2.layout, drag2 = _a2.drag, dragConstraints = _a2.dragConstraints, layoutScroll = _a2.layoutScroll;
+  var layoutId2 = _a2.layoutId, layout = _a2.layout, drag2 = _a2.drag, dragConstraints = _a2.dragConstraints, layoutScroll = _a2.layoutScroll;
   var initialPromotionConfig = reactExports.useContext(SwitchLayoutGroupContext);
   if (!ProjectionNodeConstructor || !visualElement2 || (visualElement2 === null || visualElement2 === void 0 ? void 0 : visualElement2.projection)) {
     return;
   }
   visualElement2.projection = new ProjectionNodeConstructor(projectionId, visualElement2.getLatestValues(), (_b2 = visualElement2.parent) === null || _b2 === void 0 ? void 0 : _b2.projection);
   visualElement2.projection.setOptions({
-    layoutId,
+    layoutId: layoutId2,
     layout,
     alwaysMeasureLayout: Boolean(drag2) || dragConstraints && isRefObject(dragConstraints),
     visualElement: visualElement2,
@@ -178913,8 +179164,8 @@ function createMotionComponent(_a2) {
   var preloadedFeatures = _a2.preloadedFeatures, createVisualElement = _a2.createVisualElement, projectionNodeConstructor = _a2.projectionNodeConstructor, useRender = _a2.useRender, useVisualState = _a2.useVisualState, Component2 = _a2.Component;
   preloadedFeatures && loadFeatures(preloadedFeatures);
   function MotionComponent(props, externalRef) {
-    var layoutId = useLayoutId(props);
-    props = __assign(__assign({}, props), { layoutId });
+    var layoutId2 = useLayoutId(props);
+    props = __assign(__assign({}, props), { layoutId: layoutId2 });
     var config2 = reactExports.useContext(MotionConfigContext);
     var features = null;
     var context2 = useCreateMotionContext(props);
@@ -178936,9 +179187,9 @@ function createMotionComponent(_a2) {
 }
 function useLayoutId(_a2) {
   var _b2;
-  var layoutId = _a2.layoutId;
+  var layoutId2 = _a2.layoutId;
   var layoutGroupId = (_b2 = reactExports.useContext(LayoutGroupContext)) === null || _b2 === void 0 ? void 0 : _b2.id;
-  return layoutGroupId && layoutId !== void 0 ? layoutGroupId + "-" + layoutId : layoutId;
+  return layoutGroupId && layoutId2 !== void 0 ? layoutGroupId + "-" + layoutId2 : layoutId2;
 }
 function createMotionProxy(createConfig) {
   function custom2(Component2, customMotionComponentConfig) {
@@ -179041,8 +179292,8 @@ function isTransformOriginProp(key) {
   return transformOriginProps.has(key);
 }
 function isForcedMotionValue(key, _a2) {
-  var layout = _a2.layout, layoutId = _a2.layoutId;
-  return isTransformProp(key) || isTransformOriginProp(key) || (layout || layoutId !== void 0) && (!!scaleCorrectors[key] || key === "opacity");
+  var layout = _a2.layout, layoutId2 = _a2.layoutId;
+  return isTransformProp(key) || isTransformOriginProp(key) || (layout || layoutId2 !== void 0) && (!!scaleCorrectors[key] || key === "opacity");
 }
 var isMotionValue = function(value) {
   return Boolean(value !== null && typeof value === "object" && value.getVelocity);
@@ -183428,13 +183679,13 @@ var MeasureLayoutWithContext = (
     }
     MeasureLayoutWithContext2.prototype.componentDidMount = function() {
       var _this = this;
-      var _a2 = this.props, visualElement2 = _a2.visualElement, layoutGroup = _a2.layoutGroup, switchLayoutGroup = _a2.switchLayoutGroup, layoutId = _a2.layoutId;
+      var _a2 = this.props, visualElement2 = _a2.visualElement, layoutGroup = _a2.layoutGroup, switchLayoutGroup = _a2.switchLayoutGroup, layoutId2 = _a2.layoutId;
       var projection = visualElement2.projection;
       addScaleCorrector(defaultScaleCorrectors);
       if (projection) {
         if (layoutGroup === null || layoutGroup === void 0 ? void 0 : layoutGroup.group)
           layoutGroup.group.add(projection);
-        if ((switchLayoutGroup === null || switchLayoutGroup === void 0 ? void 0 : switchLayoutGroup.register) && layoutId) {
+        if ((switchLayoutGroup === null || switchLayoutGroup === void 0 ? void 0 : switchLayoutGroup.register) && layoutId2) {
           switchLayoutGroup.register(projection);
         }
         projection.root.didUpdate();
@@ -183885,14 +184136,14 @@ function createProjectionNode(_a2) {
           return;
         this.isSVG = instance instanceof SVGElement && instance.tagName !== "svg";
         this.instance = instance;
-        var _b2 = this.options, layoutId = _b2.layoutId, layout = _b2.layout, visualElement2 = _b2.visualElement;
+        var _b2 = this.options, layoutId2 = _b2.layoutId, layout = _b2.layout, visualElement2 = _b2.visualElement;
         if (visualElement2 && !visualElement2.getInstance()) {
           visualElement2.mount(instance);
         }
         this.root.nodes.add(this);
         (_a3 = this.parent) === null || _a3 === void 0 ? void 0 : _a3.children.add(this);
         this.id && this.root.potentialNodes.delete(this.id);
-        if (isLayoutDirty && (layout || layoutId)) {
+        if (isLayoutDirty && (layout || layoutId2)) {
           this.isLayoutDirty = true;
         }
         if (attachResizeListener) {
@@ -183910,10 +184161,10 @@ function createProjectionNode(_a2) {
             }
           });
         }
-        if (layoutId) {
-          this.root.registerSharedNode(layoutId, this);
+        if (layoutId2) {
+          this.root.registerSharedNode(layoutId2, this);
         }
-        if (this.options.animate !== false && visualElement2 && (layoutId || layout)) {
+        if (this.options.animate !== false && visualElement2 && (layoutId2 || layout)) {
           this.addEventListener("didUpdate", function(_a4) {
             var _b3, _c, _d, _e2, _f;
             var delta = _a4.delta, hasLayoutChanged = _a4.hasLayoutChanged, hasRelativeTargetChanged = _a4.hasRelativeTargetChanged, newLayout = _a4.layout;
@@ -183995,8 +184246,8 @@ function createProjectionNode(_a2) {
           node2.shouldResetTransform = true;
           node2.updateScroll();
         }
-        var _d = this.options, layoutId = _d.layoutId, layout = _d.layout;
-        if (layoutId === void 0 && !layout)
+        var _d = this.options, layoutId2 = _d.layoutId, layout = _d.layout;
+        if (layoutId2 === void 0 && !layout)
           return;
         var transformTemplate = (_c = this.options.visualElement) === null || _c === void 0 ? void 0 : _c.getProps().transformTemplate;
         this.prevTransformTemplateValue = transformTemplate === null || transformTemplate === void 0 ? void 0 : transformTemplate(this.latestValues, "");
@@ -184199,8 +184450,8 @@ function createProjectionNode(_a2) {
       };
       ProjectionNode.prototype.resolveTargetDelta = function() {
         var _a3;
-        var _b2 = this.options, layout = _b2.layout, layoutId = _b2.layoutId;
-        if (!this.layout || !(layout || layoutId))
+        var _b2 = this.options, layout = _b2.layout, layoutId2 = _b2.layoutId;
+        if (!this.layout || !(layout || layoutId2))
           return;
         if (!this.targetDelta && !this.relativeTarget) {
           this.relativeParent = this.getClosestProjectingParent();
@@ -184251,12 +184502,12 @@ function createProjectionNode(_a2) {
       };
       ProjectionNode.prototype.calcProjection = function() {
         var _a3;
-        var _b2 = this.options, layout = _b2.layout, layoutId = _b2.layoutId;
+        var _b2 = this.options, layout = _b2.layout, layoutId2 = _b2.layoutId;
         this.isTreeAnimating = Boolean(((_a3 = this.parent) === null || _a3 === void 0 ? void 0 : _a3.isTreeAnimating) || this.currentAnimation || this.pendingAnimation);
         if (!this.isTreeAnimating) {
           this.targetDelta = this.relativeTarget = void 0;
         }
-        if (!this.layout || !(layout || layoutId))
+        if (!this.layout || !(layout || layoutId2))
           return;
         var lead = this.getLead();
         copyBoxInto(this.layoutCorrected, this.layout.actual);
@@ -184388,12 +184639,12 @@ function createProjectionNode(_a2) {
         transformBox(targetWithTransforms, latestValues);
         calcBoxDelta(this.projectionDeltaWithTransform, this.layoutCorrected, targetWithTransforms, latestValues);
       };
-      ProjectionNode.prototype.registerSharedNode = function(layoutId, node2) {
+      ProjectionNode.prototype.registerSharedNode = function(layoutId2, node2) {
         var _a3, _b2, _c;
-        if (!this.sharedNodes.has(layoutId)) {
-          this.sharedNodes.set(layoutId, new NodeStack());
+        if (!this.sharedNodes.has(layoutId2)) {
+          this.sharedNodes.set(layoutId2, new NodeStack());
         }
-        var stack = this.sharedNodes.get(layoutId);
+        var stack = this.sharedNodes.get(layoutId2);
         stack.add(node2);
         node2.promote({
           transition: (_a3 = node2.options.initialPromotionConfig) === null || _a3 === void 0 ? void 0 : _a3.transition,
@@ -184406,18 +184657,18 @@ function createProjectionNode(_a2) {
       };
       ProjectionNode.prototype.getLead = function() {
         var _a3;
-        var layoutId = this.options.layoutId;
-        return layoutId ? ((_a3 = this.getStack()) === null || _a3 === void 0 ? void 0 : _a3.lead) || this : this;
+        var layoutId2 = this.options.layoutId;
+        return layoutId2 ? ((_a3 = this.getStack()) === null || _a3 === void 0 ? void 0 : _a3.lead) || this : this;
       };
       ProjectionNode.prototype.getPrevLead = function() {
         var _a3;
-        var layoutId = this.options.layoutId;
-        return layoutId ? (_a3 = this.getStack()) === null || _a3 === void 0 ? void 0 : _a3.prevLead : void 0;
+        var layoutId2 = this.options.layoutId;
+        return layoutId2 ? (_a3 = this.getStack()) === null || _a3 === void 0 ? void 0 : _a3.prevLead : void 0;
       };
       ProjectionNode.prototype.getStack = function() {
-        var layoutId = this.options.layoutId;
-        if (layoutId)
-          return this.root.sharedNodes.get(layoutId);
+        var layoutId2 = this.options.layoutId;
+        if (layoutId2)
+          return this.root.sharedNodes.get(layoutId2);
       };
       ProjectionNode.prototype.promote = function(_a3) {
         var _b2 = _a3 === void 0 ? {} : _a3, needsReset = _b2.needsReset, transition = _b2.transition, preserveFollowOpacity = _b2.preserveFollowOpacity;
@@ -184676,8 +184927,8 @@ function roundBox(box) {
   roundAxis(box.y);
 }
 var DocumentProjectionNode = createProjectionNode({
-  attachResizeListener: function(ref, notify) {
-    return addDomEvent(ref, "resize", notify);
+  attachResizeListener: function(ref, notify2) {
+    return addDomEvent(ref, "resize", notify2);
   },
   measureScroll: function() {
     return {
@@ -184719,6 +184970,82 @@ var featureBundle = __assign(__assign(__assign(__assign({}, animations), gesture
 var motion = /* @__PURE__ */ createMotionProxy(function(Component2, config2) {
   return createDomMotionConfig(Component2, config2, featureBundle, createDomVisualElement, HTMLProjectionNode);
 });
+function useIsMounted$1() {
+  var isMounted = reactExports.useRef(false);
+  useIsomorphicLayoutEffect$4(function() {
+    isMounted.current = true;
+    return function() {
+      isMounted.current = false;
+    };
+  }, []);
+  return isMounted;
+}
+function useForceUpdate$1() {
+  var isMounted = useIsMounted$1();
+  var _a2 = __read(reactExports.useState(0), 2), forcedRenderCount = _a2[0], setForcedRenderCount = _a2[1];
+  var forceRender = reactExports.useCallback(function() {
+    isMounted.current && setForcedRenderCount(forcedRenderCount + 1);
+  }, [forcedRenderCount]);
+  var deferredForceRender = reactExports.useCallback(function() {
+    return sync$1.postRender(forceRender);
+  }, [forceRender]);
+  return [deferredForceRender, forcedRenderCount];
+}
+var DeprecatedLayoutGroupContext = reactExports.createContext(null);
+var notify = function(node2) {
+  return !node2.isLayoutDirty && node2.willUpdate(false);
+};
+function nodeGroup() {
+  var nodes = /* @__PURE__ */ new Set();
+  var subscriptions = /* @__PURE__ */ new WeakMap();
+  var dirtyAll = function() {
+    return nodes.forEach(notify);
+  };
+  return {
+    add: function(node2) {
+      nodes.add(node2);
+      subscriptions.set(node2, node2.addEventListener("willUpdate", dirtyAll));
+    },
+    remove: function(node2) {
+      var _a2;
+      nodes.delete(node2);
+      (_a2 = subscriptions.get(node2)) === null || _a2 === void 0 ? void 0 : _a2();
+      subscriptions.delete(node2);
+      dirtyAll();
+    },
+    dirty: dirtyAll
+  };
+}
+var shouldInheritGroup = function(inherit) {
+  return inherit === true;
+};
+var shouldInheritId = function(inherit) {
+  return shouldInheritGroup(inherit === true) || inherit === "id";
+};
+var LayoutGroup = function(_a2) {
+  var _b2, _c;
+  var children = _a2.children, id2 = _a2.id, inheritId = _a2.inheritId, _d = _a2.inherit, inherit = _d === void 0 ? true : _d;
+  if (inheritId !== void 0)
+    inherit = inheritId;
+  var layoutGroupContext = reactExports.useContext(LayoutGroupContext);
+  var deprecatedLayoutGroupContext = reactExports.useContext(DeprecatedLayoutGroupContext);
+  var _e2 = __read(useForceUpdate$1(), 2), forceRender = _e2[0], key = _e2[1];
+  var context2 = reactExports.useRef(null);
+  var upstreamId = (_b2 = layoutGroupContext.id) !== null && _b2 !== void 0 ? _b2 : deprecatedLayoutGroupContext;
+  if (context2.current === null) {
+    if (shouldInheritId(inherit) && upstreamId) {
+      id2 = id2 ? upstreamId + "-" + id2 : upstreamId;
+    }
+    context2.current = {
+      id: id2,
+      group: shouldInheritGroup(inherit) ? (_c = layoutGroupContext === null || layoutGroupContext === void 0 ? void 0 : layoutGroupContext.group) !== null && _c !== void 0 ? _c : nodeGroup() : nodeGroup()
+    };
+  }
+  var memoizedContext = reactExports.useMemo(function() {
+    return __assign(__assign({}, context2.current), { forceRender });
+  }, [key]);
+  return reactExports.createElement(LayoutGroupContext.Provider, { value: memoizedContext }, children);
+};
 var ReorderContext = reactExports.createContext(null);
 function checkReorder(order2, value, offset3, velocity) {
   if (!velocity)
@@ -193442,6 +193769,444 @@ const SvgAddMarkerOutline = (props) => /* @__PURE__ */ reactExports.createElemen
   strokeLinecap: "butt",
   strokeMiterlimit: 2
 } })));
+var _excluded$1C = ["color", "size", "title", "className"];
+function _extends$1x() {
+  return _extends$1x = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e2 = 1; e2 < arguments.length; e2++) {
+      var t4 = arguments[e2];
+      for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
+    }
+    return n;
+  }, _extends$1x.apply(null, arguments);
+}
+function _objectWithoutProperties$1x(e2, t4) {
+  if (null == e2) return {};
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1z(e2, t4);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e2);
+    for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
+  }
+  return i3;
+}
+function _objectWithoutPropertiesLoose$1z(r3, e2) {
+  if (null == r3) return {};
+  var t4 = {};
+  for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
+    if (-1 !== e2.indexOf(n)) continue;
+    t4[n] = r3[n];
+  }
+  return t4;
+}
+var Icon0CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+  var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1x(_ref3, _excluded$1C);
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1x({
+    ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size2,
+    height: size2,
+    fill: color2,
+    className: ["bi", "bi-0-circle-fill", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    d: "M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.012 4.158c1.858 0 2.96-1.582 2.96-3.99V7.84c0-2.426-1.079-3.996-2.936-3.996-1.864 0-2.965 1.588-2.965 3.996v.328c0 2.42 1.09 3.99 2.941 3.99"
+  }));
+});
+Icon0CircleFill.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.string,
+  className: PropTypes.string
+};
+var _excluded$1B = ["color", "size", "title", "className"];
+function _extends$1w() {
+  return _extends$1w = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e2 = 1; e2 < arguments.length; e2++) {
+      var t4 = arguments[e2];
+      for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
+    }
+    return n;
+  }, _extends$1w.apply(null, arguments);
+}
+function _objectWithoutProperties$1w(e2, t4) {
+  if (null == e2) return {};
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1y(e2, t4);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e2);
+    for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
+  }
+  return i3;
+}
+function _objectWithoutPropertiesLoose$1y(r3, e2) {
+  if (null == r3) return {};
+  var t4 = {};
+  for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
+    if (-1 !== e2.indexOf(n)) continue;
+    t4[n] = r3[n];
+  }
+  return t4;
+}
+var Icon0Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+  var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1w(_ref3, _excluded$1B);
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1w({
+    ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size2,
+    height: size2,
+    fill: color2,
+    className: ["bi", "bi-0-circle", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    d: "M7.988 12.158c-1.851 0-2.941-1.57-2.941-3.99V7.84c0-2.408 1.101-3.996 2.965-3.996 1.857 0 2.935 1.57 2.935 3.996v.328c0 2.408-1.101 3.99-2.959 3.99M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
+  }));
+});
+Icon0Circle.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.string,
+  className: PropTypes.string
+};
+var _excluded$1A = ["color", "size", "title", "className"];
+function _extends$1v() {
+  return _extends$1v = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e2 = 1; e2 < arguments.length; e2++) {
+      var t4 = arguments[e2];
+      for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
+    }
+    return n;
+  }, _extends$1v.apply(null, arguments);
+}
+function _objectWithoutProperties$1v(e2, t4) {
+  if (null == e2) return {};
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1x(e2, t4);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e2);
+    for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
+  }
+  return i3;
+}
+function _objectWithoutPropertiesLoose$1x(r3, e2) {
+  if (null == r3) return {};
+  var t4 = {};
+  for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
+    if (-1 !== e2.indexOf(n)) continue;
+    t4[n] = r3[n];
+  }
+  return t4;
+}
+var Icon1CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+  var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1v(_ref3, _excluded$1A);
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1v({
+    ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size2,
+    height: size2,
+    fill: color2,
+    className: ["bi", "bi-1-circle-fill", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002H7.971L6.072 5.385v1.271l1.834-1.318h.065V12h1.312z"
+  }));
+});
+Icon1CircleFill.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.string,
+  className: PropTypes.string
+};
+var _excluded$1z = ["color", "size", "title", "className"];
+function _extends$1u() {
+  return _extends$1u = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e2 = 1; e2 < arguments.length; e2++) {
+      var t4 = arguments[e2];
+      for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
+    }
+    return n;
+  }, _extends$1u.apply(null, arguments);
+}
+function _objectWithoutProperties$1u(e2, t4) {
+  if (null == e2) return {};
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1w(e2, t4);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e2);
+    for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
+  }
+  return i3;
+}
+function _objectWithoutPropertiesLoose$1w(r3, e2) {
+  if (null == r3) return {};
+  var t4 = {};
+  for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
+    if (-1 !== e2.indexOf(n)) continue;
+    t4[n] = r3[n];
+  }
+  return t4;
+}
+var Icon1Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+  var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1u(_ref3, _excluded$1z);
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1u({
+    ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size2,
+    height: size2,
+    fill: color2,
+    className: ["bi", "bi-1-circle", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383z"
+  }));
+});
+Icon1Circle.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.string,
+  className: PropTypes.string
+};
+var _excluded$1y = ["color", "size", "title", "className"];
+function _extends$1t() {
+  return _extends$1t = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e2 = 1; e2 < arguments.length; e2++) {
+      var t4 = arguments[e2];
+      for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
+    }
+    return n;
+  }, _extends$1t.apply(null, arguments);
+}
+function _objectWithoutProperties$1t(e2, t4) {
+  if (null == e2) return {};
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1v(e2, t4);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e2);
+    for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
+  }
+  return i3;
+}
+function _objectWithoutPropertiesLoose$1v(r3, e2) {
+  if (null == r3) return {};
+  var t4 = {};
+  for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
+    if (-1 !== e2.indexOf(n)) continue;
+    t4[n] = r3[n];
+  }
+  return t4;
+}
+var Icon2CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+  var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1t(_ref3, _excluded$1y);
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1t({
+    ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size2,
+    height: size2,
+    fill: color2,
+    className: ["bi", "bi-2-circle-fill", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492 1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971 3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763 1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758 0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"
+  }));
+});
+Icon2CircleFill.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.string,
+  className: PropTypes.string
+};
+var _excluded$1x = ["color", "size", "title", "className"];
+function _extends$1s() {
+  return _extends$1s = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e2 = 1; e2 < arguments.length; e2++) {
+      var t4 = arguments[e2];
+      for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
+    }
+    return n;
+  }, _extends$1s.apply(null, arguments);
+}
+function _objectWithoutProperties$1s(e2, t4) {
+  if (null == e2) return {};
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1u(e2, t4);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e2);
+    for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
+  }
+  return i3;
+}
+function _objectWithoutPropertiesLoose$1u(r3, e2) {
+  if (null == r3) return {};
+  var t4 = {};
+  for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
+    if (-1 !== e2.indexOf(n)) continue;
+    t4[n] = r3[n];
+  }
+  return t4;
+}
+var Icon2Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+  var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1s(_ref3, _excluded$1x);
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1s({
+    ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size2,
+    height: size2,
+    fill: color2,
+    className: ["bi", "bi-2-circle", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306"
+  }));
+});
+Icon2Circle.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.string,
+  className: PropTypes.string
+};
+var _excluded$1w = ["color", "size", "title", "className"];
+function _extends$1r() {
+  return _extends$1r = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e2 = 1; e2 < arguments.length; e2++) {
+      var t4 = arguments[e2];
+      for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
+    }
+    return n;
+  }, _extends$1r.apply(null, arguments);
+}
+function _objectWithoutProperties$1r(e2, t4) {
+  if (null == e2) return {};
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1t(e2, t4);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e2);
+    for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
+  }
+  return i3;
+}
+function _objectWithoutPropertiesLoose$1t(r3, e2) {
+  if (null == r3) return {};
+  var t4 = {};
+  for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
+    if (-1 !== e2.indexOf(n)) continue;
+    t4[n] = r3[n];
+  }
+  return t4;
+}
+var Icon3CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+  var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1r(_ref3, _excluded$1w);
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1r({
+    ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size2,
+    height: size2,
+    fill: color2,
+    className: ["bi", "bi-3-circle-fill", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.082.414c.92 0 1.535.54 1.541 1.318.012.791-.615 1.36-1.588 1.354-.861-.006-1.482-.469-1.54-1.066H5.104c.047 1.177 1.05 2.144 2.754 2.144 1.653 0 2.954-.937 2.93-2.396-.023-1.278-1.031-1.846-1.734-1.916v-.07c.597-.1 1.505-.739 1.482-1.876-.03-1.177-1.043-2.074-2.637-2.062-1.675.006-2.59.984-2.625 2.12h1.248c.036-.556.557-1.054 1.348-1.054.785 0 1.348.486 1.348 1.195.006.715-.563 1.237-1.342 1.237h-.838v1.072h.879Z"
+  }));
+});
+Icon3CircleFill.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.string,
+  className: PropTypes.string
+};
+var _excluded$1v = ["color", "size", "title", "className"];
+function _extends$1q() {
+  return _extends$1q = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e2 = 1; e2 < arguments.length; e2++) {
+      var t4 = arguments[e2];
+      for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
+    }
+    return n;
+  }, _extends$1q.apply(null, arguments);
+}
+function _objectWithoutProperties$1q(e2, t4) {
+  if (null == e2) return {};
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1s(e2, t4);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e2);
+    for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
+  }
+  return i3;
+}
+function _objectWithoutPropertiesLoose$1s(r3, e2) {
+  if (null == r3) return {};
+  var t4 = {};
+  for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
+    if (-1 !== e2.indexOf(n)) continue;
+    t4[n] = r3[n];
+  }
+  return t4;
+}
+var Icon3Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+  var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1q(_ref3, _excluded$1v);
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1q({
+    ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size2,
+    height: size2,
+    fill: color2,
+    className: ["bi", "bi-3-circle", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    d: "M7.918 8.414h-.879V7.342h.838c.78 0 1.348-.522 1.342-1.237 0-.709-.563-1.195-1.348-1.195-.79 0-1.312.498-1.348 1.055H5.275c.036-1.137.95-2.115 2.625-2.121 1.594-.012 2.608.885 2.637 2.062.023 1.137-.885 1.776-1.482 1.875v.07c.703.07 1.71.64 1.734 1.917.024 1.459-1.277 2.396-2.93 2.396-1.705 0-2.707-.967-2.754-2.144H6.33c.059.597.68 1.06 1.541 1.066.973.006 1.6-.563 1.588-1.354-.006-.779-.621-1.318-1.541-1.318"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
+  }));
+});
+Icon3Circle.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.string,
+  className: PropTypes.string
+};
+var _excluded$1u = ["color", "size", "title", "className"];
+function _extends$1p() {
+  return _extends$1p = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e2 = 1; e2 < arguments.length; e2++) {
+      var t4 = arguments[e2];
+      for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
+    }
+    return n;
+  }, _extends$1p.apply(null, arguments);
+}
+function _objectWithoutProperties$1p(e2, t4) {
+  if (null == e2) return {};
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1r(e2, t4);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e2);
+    for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
+  }
+  return i3;
+}
+function _objectWithoutPropertiesLoose$1r(r3, e2) {
+  if (null == r3) return {};
+  var t4 = {};
+  for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
+    if (-1 !== e2.indexOf(n)) continue;
+    t4[n] = r3[n];
+  }
+  return t4;
+}
+var Icon4CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+  var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1p(_ref3, _excluded$1u);
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1p({
+    ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size2,
+    height: size2,
+    fill: color2,
+    className: ["bi", "bi-4-circle-fill", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M7.519 5.057c-.886 1.418-1.772 2.838-2.542 4.265v1.12H8.85V12h1.26v-1.559h1.007V9.334H10.11V4.002H8.176zM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218"
+  }));
+});
+Icon4CircleFill.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.string,
+  className: PropTypes.string
+};
 var _excluded$1t = ["color", "size", "title", "className"];
 function _extends$1o() {
   return _extends$1o = Object.assign ? Object.assign.bind() : function(n) {
@@ -193470,7 +194235,7 @@ function _objectWithoutPropertiesLoose$1q(r3, e2) {
   }
   return t4;
 }
-var Icon0CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon4Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1o(_ref3, _excluded$1t);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1o({
     ref,
@@ -193479,14 +194244,14 @@ var Icon0CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-0-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-4-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"
+    d: "M7.519 5.057q.33-.527.657-1.055h1.933v5.332h1.008v1.107H10.11V12H8.85v-1.559H4.978V9.322c.77-1.427 1.656-2.847 2.542-4.265ZM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.012 4.158c1.858 0 2.96-1.582 2.96-3.99V7.84c0-2.426-1.079-3.996-2.936-3.996-1.864 0-2.965 1.588-2.965 3.996v.328c0 2.42 1.09 3.99 2.941 3.99"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
   }));
 });
-Icon0CircleFill.propTypes = {
+Icon4Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193520,7 +194285,7 @@ function _objectWithoutPropertiesLoose$1p(r3, e2) {
   }
   return t4;
 }
-var Icon0Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon5CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1n(_ref3, _excluded$1s);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1n({
     ref,
@@ -193529,14 +194294,12 @@ var Icon0Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-0-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-5-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M7.988 12.158c-1.851 0-2.941-1.57-2.941-3.99V7.84c0-2.408 1.101-3.996 2.965-3.996 1.857 0 2.935 1.57 2.935 3.996v.328c0 2.408-1.101 3.99-2.959 3.99M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.006 4.158c1.74 0 2.924-1.119 2.924-2.806 0-1.641-1.178-2.584-2.56-2.584-.897 0-1.442.421-1.612.68h-.064l.193-2.344h3.621V4.002H5.791L5.445 8.63h1.149c.193-.358.668-.809 1.435-.809.85 0 1.582.604 1.582 1.57 0 1.085-.779 1.682-1.57 1.682-.697 0-1.389-.31-1.53-1.031H5.276c.065 1.213 1.149 2.115 2.72 2.115Z"
   }));
 });
-Icon0Circle.propTypes = {
+Icon5CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193570,7 +194333,7 @@ function _objectWithoutPropertiesLoose$1o(r3, e2) {
   }
   return t4;
 }
-var Icon1CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon5Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1m(_ref3, _excluded$1r);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1m({
     ref,
@@ -193579,12 +194342,12 @@ var Icon1CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-1-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-5-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002H7.971L6.072 5.385v1.271l1.834-1.318h.065V12h1.312z"
+    d: "M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8m15 0A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-8.006 4.158c-1.57 0-2.654-.902-2.719-2.115h1.237c.14.72.832 1.031 1.529 1.031.791 0 1.57-.597 1.57-1.681 0-.967-.732-1.57-1.582-1.57-.767 0-1.242.45-1.435.808H5.445L5.791 4h4.705v1.103H6.875l-.193 2.343h.064c.17-.258.715-.68 1.611-.68 1.383 0 2.561.944 2.561 2.585 0 1.687-1.184 2.806-2.924 2.806Z"
   }));
 });
-Icon1CircleFill.propTypes = {
+Icon5Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193618,7 +194381,7 @@ function _objectWithoutPropertiesLoose$1n(r3, e2) {
   }
   return t4;
 }
-var Icon1Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon6CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1l(_ref3, _excluded$1q);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1l({
     ref,
@@ -193627,12 +194390,12 @@ var Icon1Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-1-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-6-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383z"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.21 3.855c-1.868 0-3.116 1.395-3.116 4.407 0 1.183.228 2.039.597 2.642.569.926 1.477 1.254 2.409 1.254 1.629 0 2.847-1.013 2.847-2.783 0-1.676-1.254-2.555-2.508-2.555-1.125 0-1.752.61-1.98 1.155h-.082c-.012-1.946.727-3.036 1.805-3.036.802 0 1.213.457 1.312.815h1.29c-.06-.908-.962-1.899-2.573-1.899Zm-.099 4.008c-.92 0-1.564.65-1.564 1.576 0 1.032.703 1.635 1.558 1.635.868 0 1.553-.533 1.553-1.629 0-1.06-.744-1.582-1.547-1.582"
   }));
 });
-Icon1Circle.propTypes = {
+Icon6CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193666,7 +194429,7 @@ function _objectWithoutPropertiesLoose$1m(r3, e2) {
   }
   return t4;
 }
-var Icon2CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon6Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1k(_ref3, _excluded$1p);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1k({
     ref,
@@ -193675,12 +194438,12 @@ var Icon2CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-2-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-6-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492 1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971 3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763 1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758 0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.21 3.855c1.612 0 2.515.99 2.573 1.899H9.494c-.1-.358-.51-.815-1.312-.815-1.078 0-1.817 1.09-1.805 3.036h.082c.229-.545.855-1.155 1.98-1.155 1.254 0 2.508.88 2.508 2.555 0 1.77-1.218 2.783-2.847 2.783-.932 0-1.84-.328-2.409-1.254-.369-.603-.597-1.459-.597-2.642 0-3.012 1.248-4.407 3.117-4.407Zm-.099 4.008c-.92 0-1.564.65-1.564 1.576 0 1.032.703 1.635 1.558 1.635.868 0 1.553-.533 1.553-1.629 0-1.06-.744-1.582-1.547-1.582"
   }));
 });
-Icon2CircleFill.propTypes = {
+Icon6Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193714,7 +194477,7 @@ function _objectWithoutPropertiesLoose$1l(r3, e2) {
   }
   return t4;
 }
-var Icon2Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon7CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1j(_ref3, _excluded$1o);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1j({
     ref,
@@ -193723,12 +194486,12 @@ var Icon2Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-2-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-7-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.37 5.11h3.972v.07L6.025 12H7.42l3.258-6.85V4.002H5.369v1.107Z"
   }));
 });
-Icon2Circle.propTypes = {
+Icon7CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193762,7 +194525,7 @@ function _objectWithoutPropertiesLoose$1k(r3, e2) {
   }
   return t4;
 }
-var Icon3CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon7Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1i(_ref3, _excluded$1n);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1i({
     ref,
@@ -193771,12 +194534,12 @@ var Icon3CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-3-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-7-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.082.414c.92 0 1.535.54 1.541 1.318.012.791-.615 1.36-1.588 1.354-.861-.006-1.482-.469-1.54-1.066H5.104c.047 1.177 1.05 2.144 2.754 2.144 1.653 0 2.954-.937 2.93-2.396-.023-1.278-1.031-1.846-1.734-1.916v-.07c.597-.1 1.505-.739 1.482-1.876-.03-1.177-1.043-2.074-2.637-2.062-1.675.006-2.59.984-2.625 2.12h1.248c.036-.556.557-1.054 1.348-1.054.785 0 1.348.486 1.348 1.195.006.715-.563 1.237-1.342 1.237h-.838v1.072h.879Z"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.37 5.11V4.001h5.308V5.15L7.42 12H6.025l3.317-6.82v-.07H5.369Z"
   }));
 });
-Icon3CircleFill.propTypes = {
+Icon7Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193810,7 +194573,7 @@ function _objectWithoutPropertiesLoose$1j(r3, e2) {
   }
   return t4;
 }
-var Icon3Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon8CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1h(_ref3, _excluded$1m);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1h({
     ref,
@@ -193819,14 +194582,12 @@ var Icon3Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-3-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-8-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M7.918 8.414h-.879V7.342h.838c.78 0 1.348-.522 1.342-1.237 0-.709-.563-1.195-1.348-1.195-.79 0-1.312.498-1.348 1.055H5.275c.036-1.137.95-2.115 2.625-2.121 1.594-.012 2.608.885 2.637 2.062.023 1.137-.885 1.776-1.482 1.875v.07c.703.07 1.71.64 1.734 1.917.024 1.459-1.277 2.396-2.93 2.396-1.705 0-2.707-.967-2.754-2.144H6.33c.059.597.68 1.06 1.541 1.066.973.006 1.6-.563 1.588-1.354-.006-.779-.621-1.318-1.541-1.318"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-5.03 1.803c0-1.248-.943-1.84-1.646-1.992v-.065c.598-.187 1.336-.72 1.336-1.781 0-1.225-1.084-2.121-2.654-2.121s-2.66.896-2.66 2.12c0 1.044.709 1.589 1.33 1.782v.065c-.697.152-1.647.732-1.647 2.003 0 1.39 1.19 2.344 2.953 2.344 1.77 0 2.989-.96 2.989-2.355Zm-4.347-3.71c0 .739.586 1.255 1.383 1.255s1.377-.516 1.377-1.254c0-.733-.58-1.23-1.377-1.23s-1.383.497-1.383 1.23Zm-.281 3.645c0 .838.72 1.412 1.664 1.412.943 0 1.658-.574 1.658-1.412 0-.843-.715-1.424-1.658-1.424-.944 0-1.664.58-1.664 1.424"
   }));
 });
-Icon3Circle.propTypes = {
+Icon8CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193860,7 +194621,7 @@ function _objectWithoutPropertiesLoose$1i(r3, e2) {
   }
   return t4;
 }
-var Icon4CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon8Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1g(_ref3, _excluded$1l);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1g({
     ref,
@@ -193869,12 +194630,12 @@ var Icon4CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-4-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-8-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M7.519 5.057c-.886 1.418-1.772 2.838-2.542 4.265v1.12H8.85V12h1.26v-1.559h1.007V9.334H10.11V4.002H8.176zM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-5.03 1.803c0 1.394-1.218 2.355-2.988 2.355-1.763 0-2.953-.955-2.953-2.344 0-1.271.95-1.851 1.647-2.003v-.065c-.621-.193-1.33-.738-1.33-1.781 0-1.225 1.09-2.121 2.66-2.121s2.654.896 2.654 2.12c0 1.061-.738 1.595-1.336 1.782v.065c.703.152 1.647.744 1.647 1.992Zm-4.347-3.71c0 .739.586 1.255 1.383 1.255s1.377-.516 1.377-1.254c0-.733-.58-1.23-1.377-1.23s-1.383.497-1.383 1.23Zm-.281 3.645c0 .838.72 1.412 1.664 1.412.943 0 1.658-.574 1.658-1.412 0-.843-.715-1.424-1.658-1.424-.944 0-1.664.58-1.664 1.424"
   }));
 });
-Icon4CircleFill.propTypes = {
+Icon8Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193908,7 +194669,7 @@ function _objectWithoutPropertiesLoose$1h(r3, e2) {
   }
   return t4;
 }
-var Icon4Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon9CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1f(_ref3, _excluded$1k);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1f({
     ref,
@@ -193917,14 +194678,12 @@ var Icon4Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-4-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-9-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M7.519 5.057q.33-.527.657-1.055h1.933v5.332h1.008v1.107H10.11V12H8.85v-1.559H4.978V9.322c.77-1.427 1.656-2.847 2.542-4.265ZM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.223 4.146c2.104 0 3.123-1.464 3.123-4.3 0-3.147-1.459-4.014-2.97-4.014-1.63 0-2.871 1.02-2.871 2.73 0 1.706 1.171 2.667 2.566 2.667 1.06 0 1.7-.557 1.934-1.184h.076c.047 1.67-.475 3.023-1.834 3.023-.71 0-1.149-.363-1.248-.72H5.258c.094.908.926 1.798 2.52 1.798Zm.118-3.972c.808 0 1.535-.528 1.535-1.594s-.668-1.676-1.56-1.676c-.838 0-1.517.616-1.517 1.659 0 1.072.708 1.61 1.54 1.61Z"
   }));
 });
-Icon4Circle.propTypes = {
+Icon9CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193958,7 +194717,7 @@ function _objectWithoutPropertiesLoose$1g(r3, e2) {
   }
   return t4;
 }
-var Icon5CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon9Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1e(_ref3, _excluded$1j);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1e({
     ref,
@@ -193967,12 +194726,12 @@ var Icon5CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-5-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-9-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.006 4.158c1.74 0 2.924-1.119 2.924-2.806 0-1.641-1.178-2.584-2.56-2.584-.897 0-1.442.421-1.612.68h-.064l.193-2.344h3.621V4.002H5.791L5.445 8.63h1.149c.193-.358.668-.809 1.435-.809.85 0 1.582.604 1.582 1.57 0 1.085-.779 1.682-1.57 1.682-.697 0-1.389-.31-1.53-1.031H5.276c.065 1.213 1.149 2.115 2.72 2.115Z"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.223 4.146c-1.593 0-2.425-.89-2.52-1.798h1.296c.1.357.539.72 1.248.72 1.36 0 1.88-1.353 1.834-3.023h-.076c-.235.627-.873 1.184-1.934 1.184-1.395 0-2.566-.961-2.566-2.666 0-1.711 1.242-2.731 2.87-2.731 1.512 0 2.971.867 2.971 4.014 0 2.836-1.02 4.3-3.123 4.3m.118-3.972c.808 0 1.535-.528 1.535-1.594s-.668-1.676-1.56-1.676c-.838 0-1.517.616-1.517 1.659 0 1.072.708 1.61 1.54 1.61Z"
   }));
 });
-Icon5CircleFill.propTypes = {
+Icon9Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194006,7 +194765,7 @@ function _objectWithoutPropertiesLoose$1f(r3, e2) {
   }
   return t4;
 }
-var Icon5Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ArchiveFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1d(_ref3, _excluded$1i);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1d({
     ref,
@@ -194015,12 +194774,12 @@ var Icon5Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-5-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-archive-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8m15 0A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-8.006 4.158c-1.57 0-2.654-.902-2.719-2.115h1.237c.14.72.832 1.031 1.529 1.031.791 0 1.57-.597 1.57-1.681 0-.967-.732-1.57-1.582-1.57-.767 0-1.242.45-1.435.808H5.445L5.791 4h4.705v1.103H6.875l-.193 2.343h.064c.17-.258.715-.68 1.611-.68 1.383 0 2.561.944 2.561 2.585 0 1.687-1.184 2.806-2.924 2.806Z"
+    d: "M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z"
   }));
 });
-Icon5Circle.propTypes = {
+ArchiveFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194054,7 +194813,7 @@ function _objectWithoutPropertiesLoose$1e(r3, e2) {
   }
   return t4;
 }
-var Icon6CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Archive = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1c(_ref3, _excluded$1h);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1c({
     ref,
@@ -194063,12 +194822,12 @@ var Icon6CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-6-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-archive", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.21 3.855c-1.868 0-3.116 1.395-3.116 4.407 0 1.183.228 2.039.597 2.642.569.926 1.477 1.254 2.409 1.254 1.629 0 2.847-1.013 2.847-2.783 0-1.676-1.254-2.555-2.508-2.555-1.125 0-1.752.61-1.98 1.155h-.082c-.012-1.946.727-3.036 1.805-3.036.802 0 1.213.457 1.312.815h1.29c-.06-.908-.962-1.899-2.573-1.899Zm-.099 4.008c-.92 0-1.564.65-1.564 1.576 0 1.032.703 1.635 1.558 1.635.868 0 1.553-.533 1.553-1.629 0-1.06-.744-1.582-1.547-1.582"
+    d: "M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"
   }));
 });
-Icon6CircleFill.propTypes = {
+Archive.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194102,7 +194861,7 @@ function _objectWithoutPropertiesLoose$1d(r3, e2) {
   }
   return t4;
 }
-var Icon6Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Arrow90degRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1b(_ref3, _excluded$1g);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1b({
     ref,
@@ -194111,12 +194870,13 @@ var Icon6Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-6-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-arrow-90deg-right", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.21 3.855c1.612 0 2.515.99 2.573 1.899H9.494c-.1-.358-.51-.815-1.312-.815-1.078 0-1.817 1.09-1.805 3.036h.082c.229-.545.855-1.155 1.98-1.155 1.254 0 2.508.88 2.508 2.555 0 1.77-1.218 2.783-2.847 2.783-.932 0-1.84-.328-2.409-1.254-.369-.603-.597-1.459-.597-2.642 0-3.012 1.248-4.407 3.117-4.407Zm-.099 4.008c-.92 0-1.564.65-1.564 1.576 0 1.032.703 1.635 1.558 1.635.868 0 1.553-.533 1.553-1.629 0-1.06-.744-1.582-1.547-1.582"
+    fillRule: "evenodd",
+    d: "M14.854 4.854a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 4H3.5A2.5 2.5 0 0 0 1 6.5v8a.5.5 0 0 0 1 0v-8A1.5 1.5 0 0 1 3.5 5h9.793l-3.147 3.146a.5.5 0 0 0 .708.708z"
   }));
 });
-Icon6Circle.propTypes = {
+Arrow90degRight.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194150,7 +194910,7 @@ function _objectWithoutPropertiesLoose$1c(r3, e2) {
   }
   return t4;
 }
-var Icon7CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ArrowLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1a(_ref3, _excluded$1f);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1a({
     ref,
@@ -194159,12 +194919,13 @@ var Icon7CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-7-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-arrow-left", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.37 5.11h3.972v.07L6.025 12H7.42l3.258-6.85V4.002H5.369v1.107Z"
+    fillRule: "evenodd",
+    d: "M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
   }));
 });
-Icon7CircleFill.propTypes = {
+ArrowLeft.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194198,7 +194959,7 @@ function _objectWithoutPropertiesLoose$1b(r3, e2) {
   }
   return t4;
 }
-var Icon7Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ArrowReturnLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$19(_ref3, _excluded$1e);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$19({
     ref,
@@ -194207,12 +194968,13 @@ var Icon7Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-7-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-arrow-return-left", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.37 5.11V4.001h5.308V5.15L7.42 12H6.025l3.317-6.82v-.07H5.369Z"
+    fillRule: "evenodd",
+    d: "M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"
   }));
 });
-Icon7Circle.propTypes = {
+ArrowReturnLeft.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194246,7 +195008,7 @@ function _objectWithoutPropertiesLoose$1a(r3, e2) {
   }
   return t4;
 }
-var Icon8CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ArrowReturnRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$18(_ref3, _excluded$1d);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$18({
     ref,
@@ -194255,12 +195017,13 @@ var Icon8CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-8-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-arrow-return-right", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-5.03 1.803c0-1.248-.943-1.84-1.646-1.992v-.065c.598-.187 1.336-.72 1.336-1.781 0-1.225-1.084-2.121-2.654-2.121s-2.66.896-2.66 2.12c0 1.044.709 1.589 1.33 1.782v.065c-.697.152-1.647.732-1.647 2.003 0 1.39 1.19 2.344 2.953 2.344 1.77 0 2.989-.96 2.989-2.355Zm-4.347-3.71c0 .739.586 1.255 1.383 1.255s1.377-.516 1.377-1.254c0-.733-.58-1.23-1.377-1.23s-1.383.497-1.383 1.23Zm-.281 3.645c0 .838.72 1.412 1.664 1.412.943 0 1.658-.574 1.658-1.412 0-.843-.715-1.424-1.658-1.424-.944 0-1.664.58-1.664 1.424"
+    fillRule: "evenodd",
+    d: "M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5"
   }));
 });
-Icon8CircleFill.propTypes = {
+ArrowReturnRight.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194294,7 +195057,7 @@ function _objectWithoutPropertiesLoose$19(r3, e2) {
   }
   return t4;
 }
-var Icon8Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Backpack3Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$17(_ref3, _excluded$1c);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$17({
     ref,
@@ -194303,12 +195066,14 @@ var Icon8Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-8-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-backpack3-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-5.03 1.803c0 1.394-1.218 2.355-2.988 2.355-1.763 0-2.953-.955-2.953-2.344 0-1.271.95-1.851 1.647-2.003v-.065c-.621-.193-1.33-.738-1.33-1.781 0-1.225 1.09-2.121 2.66-2.121s2.654.896 2.654 2.12c0 1.061-.738 1.595-1.336 1.782v.065c.703.152 1.647.744 1.647 1.992Zm-4.347-3.71c0 .739.586 1.255 1.383 1.255s1.377-.516 1.377-1.254c0-.733-.58-1.23-1.377-1.23s-1.383.497-1.383 1.23Zm-.281 3.645c0 .838.72 1.412 1.664 1.412.943 0 1.658-.574 1.658-1.412 0-.843-.715-1.424-1.658-1.424-.944 0-1.664.58-1.664 1.424"
+    d: "M5 10v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M6 2v.341a6 6 0 0 0-1.308.653l-.416-1.247a1 1 0 0 0-1.749-.284l-.77 1.027a1 1 0 0 0-.149.917l.803 2.407A6 6 0 0 0 2 8v5.5A2.5 2.5 0 0 0 4.5 16h7a2.5 2.5 0 0 0 2.5-2.5V8c0-.771-.146-1.509-.41-2.186l.801-2.407a1 1 0 0 0-.148-.917l-.77-1.027a1 1 0 0 0-1.75.284l-.415 1.247A6 6 0 0 0 10 2.34V2a2 2 0 1 0-4 0m1 0a1 1 0 0 1 2 0v.083a6 6 0 0 0-2 0zm5.941 2.595a6 6 0 0 0-.8-.937l.531-1.595.77 1.027zM3.86 3.658a6 6 0 0 0-.8.937L2.557 3.09l.77-1.027zm.18 3.772a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.142 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.142M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5z"
   }));
 });
-Icon8Circle.propTypes = {
+Backpack3Fill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194342,7 +195107,7 @@ function _objectWithoutPropertiesLoose$18(r3, e2) {
   }
   return t4;
 }
-var Icon9CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Backpack3 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$16(_ref3, _excluded$1b);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$16({
     ref,
@@ -194351,12 +195116,14 @@ var Icon9CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-9-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-backpack3", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.223 4.146c2.104 0 3.123-1.464 3.123-4.3 0-3.147-1.459-4.014-2.97-4.014-1.63 0-2.871 1.02-2.871 2.73 0 1.706 1.171 2.667 2.566 2.667 1.06 0 1.7-.557 1.934-1.184h.076c.047 1.67-.475 3.023-1.834 3.023-.71 0-1.149-.363-1.248-.72H5.258c.094.908.926 1.798 2.52 1.798Zm.118-3.972c.808 0 1.535-.528 1.535-1.594s-.668-1.676-1.56-1.676c-.838 0-1.517.616-1.517 1.659 0 1.072.708 1.61 1.54 1.61Z"
+    d: "M4.04 7.43a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M6 2.341V2a2 2 0 1 1 4 0v.341c.465.165.904.385 1.308.653l.416-1.247a1 1 0 0 1 1.748-.284l.77 1.027a1 1 0 0 1 .15.917l-.803 2.407C13.854 6.49 14 7.229 14 8v5.5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5V8c0-.771.146-1.509.41-2.186l-.802-2.407a1 1 0 0 1 .15-.917l.77-1.027a1 1 0 0 1 1.748.284l.416 1.247A6 6 0 0 1 6 2.34ZM7 2v.083a6 6 0 0 1 2 0V2a1 1 0 1 0-2 0m5.941 2.595.502-1.505-.77-1.027-.532 1.595q.447.427.8.937M3.86 3.658l-.532-1.595-.77 1.027.502 1.505q.352-.51.8-.937M8 3a5 5 0 0 0-5 5v5.5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5V8a5 5 0 0 0-5-5"
   }));
 });
-Icon9CircleFill.propTypes = {
+Backpack3.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194390,7 +195157,7 @@ function _objectWithoutPropertiesLoose$17(r3, e2) {
   }
   return t4;
 }
-var Icon9Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var BagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$15(_ref3, _excluded$1a);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$15({
     ref,
@@ -194399,12 +195166,12 @@ var Icon9Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-9-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bag-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.223 4.146c-1.593 0-2.425-.89-2.52-1.798h1.296c.1.357.539.72 1.248.72 1.36 0 1.88-1.353 1.834-3.023h-.076c-.235.627-.873 1.184-1.934 1.184-1.395 0-2.566-.961-2.566-2.666 0-1.711 1.242-2.731 2.87-2.731 1.512 0 2.971.867 2.971 4.014 0 2.836-1.02 4.3-3.123 4.3m.118-3.972c.808 0 1.535-.528 1.535-1.594s-.668-1.676-1.56-1.676c-.838 0-1.517.616-1.517 1.659 0 1.072.708 1.61 1.54 1.61Z"
+    d: "M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z"
   }));
 });
-Icon9Circle.propTypes = {
+BagFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194438,7 +195205,7 @@ function _objectWithoutPropertiesLoose$16(r3, e2) {
   }
   return t4;
 }
-var ArchiveFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Bag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$14(_ref3, _excluded$19);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$14({
     ref,
@@ -194447,12 +195214,12 @@ var ArchiveFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-archive-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bag", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z"
+    d: "M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"
   }));
 });
-ArchiveFill.propTypes = {
+Bag.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194486,7 +195253,7 @@ function _objectWithoutPropertiesLoose$15(r3, e2) {
   }
   return t4;
 }
-var Archive = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Basket2Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$13(_ref3, _excluded$18);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$13({
     ref,
@@ -194495,12 +195262,12 @@ var Archive = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-archive", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-basket2-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"
+    d: "M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"
   }));
 });
-Archive.propTypes = {
+Basket2Fill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194534,7 +195301,7 @@ function _objectWithoutPropertiesLoose$14(r3, e2) {
   }
   return t4;
 }
-var Arrow90degRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Basket2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$12(_ref3, _excluded$17);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$12({
     ref,
@@ -194543,13 +195310,14 @@ var Arrow90degRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-arrow-90deg-right", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-basket2", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M14.854 4.854a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 4H3.5A2.5 2.5 0 0 0 1 6.5v8a.5.5 0 0 0 1 0v-8A1.5 1.5 0 0 1 3.5 5h9.793l-3.147 3.146a.5.5 0 0 0 .708.708z"
+    d: "M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6z"
   }));
 });
-Arrow90degRight.propTypes = {
+Basket2.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194583,7 +195351,7 @@ function _objectWithoutPropertiesLoose$13(r3, e2) {
   }
   return t4;
 }
-var ArrowLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var BellFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$11(_ref3, _excluded$16);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$11({
     ref,
@@ -194592,13 +195360,12 @@ var ArrowLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-arrow-left", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bell-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+    d: "M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"
   }));
 });
-ArrowLeft.propTypes = {
+BellFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194632,7 +195399,7 @@ function _objectWithoutPropertiesLoose$12(r3, e2) {
   }
   return t4;
 }
-var Backpack3Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Bell = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$10(_ref3, _excluded$15);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$10({
     ref,
@@ -194641,14 +195408,12 @@ var Backpack3Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref)
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-backpack3-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bell", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M5 10v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6 2v.341a6 6 0 0 0-1.308.653l-.416-1.247a1 1 0 0 0-1.749-.284l-.77 1.027a1 1 0 0 0-.149.917l.803 2.407A6 6 0 0 0 2 8v5.5A2.5 2.5 0 0 0 4.5 16h7a2.5 2.5 0 0 0 2.5-2.5V8c0-.771-.146-1.509-.41-2.186l.801-2.407a1 1 0 0 0-.148-.917l-.77-1.027a1 1 0 0 0-1.75.284l-.415 1.247A6 6 0 0 0 10 2.34V2a2 2 0 1 0-4 0m1 0a1 1 0 0 1 2 0v.083a6 6 0 0 0-2 0zm5.941 2.595a6 6 0 0 0-.8-.937l.531-1.595.77 1.027zM3.86 3.658a6 6 0 0 0-.8.937L2.557 3.09l.77-1.027zm.18 3.772a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.142 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.142M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5z"
+    d: "M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"
   }));
 });
-Backpack3Fill.propTypes = {
+Bell.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194682,7 +195447,7 @@ function _objectWithoutPropertiesLoose$11(r3, e2) {
   }
   return t4;
 }
-var Backpack3 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var BookmarkFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$$(_ref3, _excluded$14);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$$({
     ref,
@@ -194691,14 +195456,12 @@ var Backpack3 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-backpack3", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bookmark-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4.04 7.43a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6 2.341V2a2 2 0 1 1 4 0v.341c.465.165.904.385 1.308.653l.416-1.247a1 1 0 0 1 1.748-.284l.77 1.027a1 1 0 0 1 .15.917l-.803 2.407C13.854 6.49 14 7.229 14 8v5.5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5V8c0-.771.146-1.509.41-2.186l-.802-2.407a1 1 0 0 1 .15-.917l.77-1.027a1 1 0 0 1 1.748.284l.416 1.247A6 6 0 0 1 6 2.34ZM7 2v.083a6 6 0 0 1 2 0V2a1 1 0 1 0-2 0m5.941 2.595.502-1.505-.77-1.027-.532 1.595q.447.427.8.937M3.86 3.658l-.532-1.595-.77 1.027.502 1.505q.352-.51.8-.937M8 3a5 5 0 0 0-5 5v5.5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5V8a5 5 0 0 0-5-5"
+    d: "M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"
   }));
 });
-Backpack3.propTypes = {
+BookmarkFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194732,7 +195495,7 @@ function _objectWithoutPropertiesLoose$10(r3, e2) {
   }
   return t4;
 }
-var BagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Bookmark = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$_(_ref3, _excluded$13);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$_({
     ref,
@@ -194741,12 +195504,12 @@ var BagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bag-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bookmark", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z"
+    d: "M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"
   }));
 });
-BagFill.propTypes = {
+Bookmark.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194780,7 +195543,7 @@ function _objectWithoutPropertiesLoose$$(r3, e2) {
   }
   return t4;
 }
-var Bag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CardList = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$Z(_ref3, _excluded$12);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$Z({
     ref,
@@ -194789,12 +195552,14 @@ var Bag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bag", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-card-list", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"
+    d: "M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"
   }));
 });
-Bag.propTypes = {
+CardList.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194828,7 +195593,7 @@ function _objectWithoutPropertiesLoose$_(r3, e2) {
   }
   return t4;
 }
-var Basket2Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CheckCircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$Y(_ref3, _excluded$11);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$Y({
     ref,
@@ -194837,12 +195602,12 @@ var Basket2Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-basket2-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-check-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
   }));
 });
-Basket2Fill.propTypes = {
+CheckCircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194876,7 +195641,7 @@ function _objectWithoutPropertiesLoose$Z(r3, e2) {
   }
   return t4;
 }
-var Basket2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CheckCircle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$X(_ref3, _excluded$10);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$X({
     ref,
@@ -194885,14 +195650,14 @@ var Basket2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-basket2", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-check-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0z"
+    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6z"
+    d: "m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"
   }));
 });
-Basket2.propTypes = {
+CheckCircle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194926,7 +195691,7 @@ function _objectWithoutPropertiesLoose$Y(r3, e2) {
   }
   return t4;
 }
-var BellFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ChevronLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$W(_ref3, _excluded$$);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$W({
     ref,
@@ -194935,12 +195700,13 @@ var BellFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bell-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-chevron-left", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"
+    fillRule: "evenodd",
+    d: "M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
   }));
 });
-BellFill.propTypes = {
+ChevronLeft.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194974,7 +195740,7 @@ function _objectWithoutPropertiesLoose$X(r3, e2) {
   }
   return t4;
 }
-var Bell = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ChevronRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$V(_ref3, _excluded$_);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$V({
     ref,
@@ -194983,12 +195749,13 @@ var Bell = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bell", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-chevron-right", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"
+    fillRule: "evenodd",
+    d: "M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
   }));
 });
-Bell.propTypes = {
+ChevronRight.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195022,7 +195789,7 @@ function _objectWithoutPropertiesLoose$W(r3, e2) {
   }
   return t4;
 }
-var BookmarkFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$U(_ref3, _excluded$Z);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$U({
     ref,
@@ -195031,12 +195798,14 @@ var BookmarkFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) 
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bookmark-fill", className].filter(Boolean).join(" ")
-  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"
+    className: ["bi", "bi-circle-fill", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("circle", {
+    cx: "8",
+    cy: "8",
+    r: "8"
   }));
 });
-BookmarkFill.propTypes = {
+CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195070,7 +195839,7 @@ function _objectWithoutPropertiesLoose$V(r3, e2) {
   }
   return t4;
 }
-var Bookmark = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$T(_ref3, _excluded$Y);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$T({
     ref,
@@ -195079,12 +195848,12 @@ var Bookmark = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bookmark", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"
+    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
   }));
 });
-Bookmark.propTypes = {
+Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195118,7 +195887,7 @@ function _objectWithoutPropertiesLoose$U(r3, e2) {
   }
   return t4;
 }
-var CardList = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ClipboardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$S(_ref3, _excluded$X);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$S({
     ref,
@@ -195127,14 +195896,13 @@ var CardList = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-card-list", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-clipboard-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"
+    fillRule: "evenodd",
+    d: "M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2"
   }));
 });
-CardList.propTypes = {
+ClipboardFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195168,7 +195936,7 @@ function _objectWithoutPropertiesLoose$T(r3, e2) {
   }
   return t4;
 }
-var CheckCircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Clipboard = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$R(_ref3, _excluded$W);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$R({
     ref,
@@ -195177,12 +195945,14 @@ var CheckCircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-check-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-clipboard", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+    d: "M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"
   }));
 });
-CheckCircleFill.propTypes = {
+Clipboard.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195216,7 +195986,7 @@ function _objectWithoutPropertiesLoose$S(r3, e2) {
   }
   return t4;
 }
-var CheckCircle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ClockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$Q(_ref3, _excluded$V);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$Q({
     ref,
@@ -195225,14 +195995,12 @@ var CheckCircle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-check-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-clock-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
   }));
 });
-CheckCircle.propTypes = {
+ClockFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195266,7 +196034,7 @@ function _objectWithoutPropertiesLoose$R(r3, e2) {
   }
   return t4;
 }
-var ChevronRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Clock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$P(_ref3, _excluded$U);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$P({
     ref,
@@ -195275,13 +196043,14 @@ var ChevronRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) 
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-chevron-right", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-clock", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+    d: "M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"
   }));
 });
-ChevronRight.propTypes = {
+Clock.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195315,7 +196084,7 @@ function _objectWithoutPropertiesLoose$Q(r3, e2) {
   }
   return t4;
 }
-var CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CollectionFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$O(_ref3, _excluded$T);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$O({
     ref,
@@ -195324,14 +196093,12 @@ var CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-circle-fill", className].filter(Boolean).join(" ")
-  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("circle", {
-    cx: "8",
-    cy: "8",
-    r: "8"
+    className: ["bi", "bi-collection-fill", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    d: "M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3m2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1"
   }));
 });
-CircleFill.propTypes = {
+CollectionFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195365,7 +196132,7 @@ function _objectWithoutPropertiesLoose$P(r3, e2) {
   }
   return t4;
 }
-var Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CollectionPlayFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$N(_ref3, _excluded$S);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$N({
     ref,
@@ -195374,12 +196141,12 @@ var Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-collection-play-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+    d: "M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437"
   }));
 });
-Circle.propTypes = {
+CollectionPlayFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195413,7 +196180,7 @@ function _objectWithoutPropertiesLoose$O(r3, e2) {
   }
   return t4;
 }
-var ClipboardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CollectionPlay = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$M(_ref3, _excluded$R);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$M({
     ref,
@@ -195422,13 +196189,14 @@ var ClipboardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref)
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-clipboard-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-collection-play", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2"
+    d: "M2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3m2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1m2.765 5.576A.5.5 0 0 0 6 7v5a.5.5 0 0 0 .765.424l4-2.5a.5.5 0 0 0 0-.848z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M1.5 14.5A1.5 1.5 0 0 1 0 13V6a1.5 1.5 0 0 1 1.5-1.5h13A1.5 1.5 0 0 1 16 6v7a1.5 1.5 0 0 1-1.5 1.5zm13-1a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5h-13A.5.5 0 0 0 1 6v7a.5.5 0 0 0 .5.5z"
   }));
 });
-ClipboardFill.propTypes = {
+CollectionPlay.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195462,7 +196230,7 @@ function _objectWithoutPropertiesLoose$N(r3, e2) {
   }
   return t4;
 }
-var Clipboard = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Collection$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$L(_ref3, _excluded$Q);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$L({
     ref,
@@ -195471,14 +196239,12 @@ var Clipboard = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-clipboard", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-collection", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"
+    d: "M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"
   }));
 });
-Clipboard.propTypes = {
+Collection$1.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195512,7 +196278,7 @@ function _objectWithoutPropertiesLoose$M(r3, e2) {
   }
   return t4;
 }
-var ClockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var DropletFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$K(_ref3, _excluded$P);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$K({
     ref,
@@ -195521,12 +196287,12 @@ var ClockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-clock-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-droplet-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
+    d: "M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 0 0 6 6M6.646 4.646l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448c.82-1.641 1.717-2.753 2.093-3.13"
   }));
 });
-ClockFill.propTypes = {
+DropletFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195560,7 +196326,7 @@ function _objectWithoutPropertiesLoose$L(r3, e2) {
   }
   return t4;
 }
-var Clock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Droplet = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$J(_ref3, _excluded$O);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$J({
     ref,
@@ -195569,14 +196335,16 @@ var Clock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-clock", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-droplet", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
+    fillRule: "evenodd",
+    d: "M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"
+    fillRule: "evenodd",
+    d: "M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"
   }));
 });
-Clock.propTypes = {
+Droplet.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195610,7 +196378,7 @@ function _objectWithoutPropertiesLoose$K(r3, e2) {
   }
   return t4;
 }
-var CollectionFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var EyeFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$I(_ref3, _excluded$N);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$I({
     ref,
@@ -195619,12 +196387,14 @@ var CollectionFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-collection-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-eye-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3m2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1"
+    d: "M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"
   }));
 });
-CollectionFill.propTypes = {
+EyeFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195658,7 +196428,7 @@ function _objectWithoutPropertiesLoose$J(r3, e2) {
   }
   return t4;
 }
-var CollectionPlayFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Eye = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$H(_ref3, _excluded$M);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$H({
     ref,
@@ -195667,12 +196437,14 @@ var CollectionPlayFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3,
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-collection-play-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-eye", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437"
+    d: "M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"
   }));
 });
-CollectionPlayFill.propTypes = {
+Eye.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195706,7 +196478,7 @@ function _objectWithoutPropertiesLoose$I(r3, e2) {
   }
   return t4;
 }
-var CollectionPlay = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var FastForwardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$G(_ref3, _excluded$L);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$G({
     ref,
@@ -195715,14 +196487,14 @@ var CollectionPlay = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-collection-play", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-fast-forward-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3m2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1m2.765 5.576A.5.5 0 0 0 6 7v5a.5.5 0 0 0 .765.424l4-2.5a.5.5 0 0 0 0-.848z"
+    d: "M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1.5 14.5A1.5 1.5 0 0 1 0 13V6a1.5 1.5 0 0 1 1.5-1.5h13A1.5 1.5 0 0 1 16 6v7a1.5 1.5 0 0 1-1.5 1.5zm13-1a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5h-13A.5.5 0 0 0 1 6v7a.5.5 0 0 0 .5.5z"
+    d: "M15.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"
   }));
 });
-CollectionPlay.propTypes = {
+FastForwardFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195756,7 +196528,7 @@ function _objectWithoutPropertiesLoose$H(r3, e2) {
   }
   return t4;
 }
-var Collection$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var FastForward = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$F(_ref3, _excluded$K);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$F({
     ref,
@@ -195765,12 +196537,14 @@ var Collection$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) 
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-collection", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-fast-forward", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"
+    d: "M6.804 8 1 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M14.804 8 9 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"
   }));
 });
-Collection$1.propTypes = {
+FastForward.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195804,7 +196578,7 @@ function _objectWithoutPropertiesLoose$G(r3, e2) {
   }
   return t4;
 }
-var DropletFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var FlagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$E(_ref3, _excluded$J);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$E({
     ref,
@@ -195813,12 +196587,12 @@ var DropletFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-droplet-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-flag-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 0 0 6 6M6.646 4.646l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448c.82-1.641 1.717-2.753 2.093-3.13"
+    d: "M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001"
   }));
 });
-DropletFill.propTypes = {
+FlagFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195852,7 +196626,7 @@ function _objectWithoutPropertiesLoose$F(r3, e2) {
   }
   return t4;
 }
-var Droplet = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Flag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$D(_ref3, _excluded$I);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$D({
     ref,
@@ -195861,16 +196635,12 @@ var Droplet = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-droplet", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-flag", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"
+    d: "M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21 21 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21 21 0 0 0 14 7.655V1.222z"
   }));
 });
-Droplet.propTypes = {
+Flag.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195904,7 +196674,7 @@ function _objectWithoutPropertiesLoose$E(r3, e2) {
   }
   return t4;
 }
-var FastForwardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var FloppyFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$C(_ref3, _excluded$H);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$C({
     ref,
@@ -195913,14 +196683,14 @@ var FastForwardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-fast-forward-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-floppy-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"
+    d: "M0 1.5A1.5 1.5 0 0 1 1.5 0H3v5.5A1.5 1.5 0 0 0 4.5 7h7A1.5 1.5 0 0 0 13 5.5V0h.086a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5H14v-5.5A1.5 1.5 0 0 0 12.5 9h-9A1.5 1.5 0 0 0 2 10.5V16h-.5A1.5 1.5 0 0 1 0 14.5z"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M15.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"
+    d: "M3 16h10v-5.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5zm9-16H4v5.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5zM9 1h2v4H9z"
   }));
 });
-FastForwardFill.propTypes = {
+FloppyFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195954,7 +196724,7 @@ function _objectWithoutPropertiesLoose$D(r3, e2) {
   }
   return t4;
 }
-var FastForward = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Floppy = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$B(_ref3, _excluded$G);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$B({
     ref,
@@ -195963,14 +196733,14 @@ var FastForward = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-fast-forward", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-floppy", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6.804 8 1 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"
+    d: "M11 2H9v3h2z"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M14.804 8 9 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"
+    d: "M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"
   }));
 });
-FastForward.propTypes = {
+Floppy.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196004,7 +196774,7 @@ function _objectWithoutPropertiesLoose$C(r3, e2) {
   }
   return t4;
 }
-var FlagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var FolderFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$A(_ref3, _excluded$F);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$A({
     ref,
@@ -196013,12 +196783,12 @@ var FlagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-flag-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-folder-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001"
+    d: "M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3m-8.322.12q.322-.119.684-.12h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981z"
   }));
 });
-FlagFill.propTypes = {
+FolderFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196052,7 +196822,7 @@ function _objectWithoutPropertiesLoose$B(r3, e2) {
   }
   return t4;
 }
-var Flag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Folder$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$z(_ref3, _excluded$E);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$z({
     ref,
@@ -196061,12 +196831,12 @@ var Flag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-flag", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-folder", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21 21 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21 21 0 0 0 14 7.655V1.222z"
+    d: "M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139q.323-.119.684-.12h5.396z"
   }));
 });
-Flag.propTypes = {
+Folder$1.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196100,7 +196870,7 @@ function _objectWithoutPropertiesLoose$A(r3, e2) {
   }
   return t4;
 }
-var FloppyFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var HandThumbsDownFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$y(_ref3, _excluded$D);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$y({
     ref,
@@ -196109,14 +196879,12 @@ var FloppyFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-floppy-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-hand-thumbs-down-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M0 1.5A1.5 1.5 0 0 1 1.5 0H3v5.5A1.5 1.5 0 0 0 4.5 7h7A1.5 1.5 0 0 0 13 5.5V0h.086a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5H14v-5.5A1.5 1.5 0 0 0 12.5 9h-9A1.5 1.5 0 0 0 2 10.5V16h-.5A1.5 1.5 0 0 1 0 14.5z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M3 16h10v-5.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5zm9-16H4v5.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5zM9 1h2v4H9z"
+    d: "M6.956 14.534c.065.936.952 1.659 1.908 1.42l.261-.065a1.38 1.38 0 0 0 1.012-.965c.22-.816.533-2.512.062-4.51q.205.03.443.051c.713.065 1.669.071 2.516-.211.518-.173.994-.68 1.2-1.272a1.9 1.9 0 0 0-.234-1.734c.058-.118.103-.242.138-.362.077-.27.113-.568.113-.856 0-.29-.036-.586-.113-.857a2 2 0 0 0-.16-.403c.169-.387.107-.82-.003-1.149a3.2 3.2 0 0 0-.488-.9c.054-.153.076-.313.076-.465a1.86 1.86 0 0 0-.253-.912C13.1.757 12.437.28 11.5.28H8c-.605 0-1.07.08-1.466.217a4.8 4.8 0 0 0-.97.485l-.048.029c-.504.308-.999.61-2.068.723C2.682 1.815 2 2.434 2 3.279v4c0 .851.685 1.433 1.357 1.616.849.232 1.574.787 2.132 1.41.56.626.914 1.28 1.039 1.638.199.575.356 1.54.428 2.591"
   }));
 });
-FloppyFill.propTypes = {
+HandThumbsDownFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196150,7 +196918,7 @@ function _objectWithoutPropertiesLoose$z(r3, e2) {
   }
   return t4;
 }
-var Floppy = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var HandThumbsDown = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$x(_ref3, _excluded$C);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$x({
     ref,
@@ -196159,14 +196927,12 @@ var Floppy = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-floppy", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-hand-thumbs-down", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M11 2H9v3h2z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"
+    d: "M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856s-.036.586-.113.856c-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a10 10 0 0 1-.443-.05 9.36 9.36 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a9 9 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581s-.027-.414-.075-.581c-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.2 2.2 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.9.9 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1"
   }));
 });
-Floppy.propTypes = {
+HandThumbsDown.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196200,7 +196966,7 @@ function _objectWithoutPropertiesLoose$y(r3, e2) {
   }
   return t4;
 }
-var FolderFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var HandThumbsUpFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$w(_ref3, _excluded$B);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$w({
     ref,
@@ -196209,12 +196975,12 @@ var FolderFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-folder-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-hand-thumbs-up-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3m-8.322.12q.322-.119.684-.12h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981z"
+    d: "M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"
   }));
 });
-FolderFill.propTypes = {
+HandThumbsUpFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196248,7 +197014,7 @@ function _objectWithoutPropertiesLoose$x(r3, e2) {
   }
   return t4;
 }
-var Folder$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var HandThumbsUp = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$v(_ref3, _excluded$A);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$v({
     ref,
@@ -196257,12 +197023,12 @@ var Folder$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-folder", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-hand-thumbs-up", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139q.323-.119.684-.12h5.396z"
+    d: "M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2 2 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a10 10 0 0 0-.443.05 9.4 9.4 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a9 9 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.2 2.2 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.9.9 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"
   }));
 });
-Folder$1.propTypes = {
+HandThumbsUp.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196296,7 +197062,7 @@ function _objectWithoutPropertiesLoose$w(r3, e2) {
   }
   return t4;
 }
-var HandThumbsDownFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var HeartFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$u(_ref3, _excluded$z);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$u({
     ref,
@@ -196305,12 +197071,13 @@ var HandThumbsDownFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3,
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-hand-thumbs-down-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-heart-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6.956 14.534c.065.936.952 1.659 1.908 1.42l.261-.065a1.38 1.38 0 0 0 1.012-.965c.22-.816.533-2.512.062-4.51q.205.03.443.051c.713.065 1.669.071 2.516-.211.518-.173.994-.68 1.2-1.272a1.9 1.9 0 0 0-.234-1.734c.058-.118.103-.242.138-.362.077-.27.113-.568.113-.856 0-.29-.036-.586-.113-.857a2 2 0 0 0-.16-.403c.169-.387.107-.82-.003-1.149a3.2 3.2 0 0 0-.488-.9c.054-.153.076-.313.076-.465a1.86 1.86 0 0 0-.253-.912C13.1.757 12.437.28 11.5.28H8c-.605 0-1.07.08-1.466.217a4.8 4.8 0 0 0-.97.485l-.048.029c-.504.308-.999.61-2.068.723C2.682 1.815 2 2.434 2 3.279v4c0 .851.685 1.433 1.357 1.616.849.232 1.574.787 2.132 1.41.56.626.914 1.28 1.039 1.638.199.575.356 1.54.428 2.591"
+    fillRule: "evenodd",
+    d: "M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
   }));
 });
-HandThumbsDownFill.propTypes = {
+HeartFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196344,7 +197111,7 @@ function _objectWithoutPropertiesLoose$v(r3, e2) {
   }
   return t4;
 }
-var HandThumbsDown = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Heart = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$t(_ref3, _excluded$y);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$t({
     ref,
@@ -196353,12 +197120,12 @@ var HandThumbsDown = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-hand-thumbs-down", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-heart", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856s-.036.586-.113.856c-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a10 10 0 0 1-.443-.05 9.36 9.36 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a9 9 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581s-.027-.414-.075-.581c-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.2 2.2 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.9.9 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1"
+    d: "m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
   }));
 });
-HandThumbsDown.propTypes = {
+Heart.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196392,7 +197159,7 @@ function _objectWithoutPropertiesLoose$u(r3, e2) {
   }
   return t4;
 }
-var HandThumbsUpFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var InboxFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$s(_ref3, _excluded$x);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$s({
     ref,
@@ -196401,12 +197168,12 @@ var HandThumbsUpFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, r
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-hand-thumbs-up-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-inbox-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"
+    d: "M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm-1.17-.437A1.5 1.5 0 0 1 4.98 3h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z"
   }));
 });
-HandThumbsUpFill.propTypes = {
+InboxFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196440,7 +197207,7 @@ function _objectWithoutPropertiesLoose$t(r3, e2) {
   }
   return t4;
 }
-var HandThumbsUp = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Inbox = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$r(_ref3, _excluded$w);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$r({
     ref,
@@ -196449,12 +197216,12 @@ var HandThumbsUp = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) 
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-hand-thumbs-up", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-inbox", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2 2 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a10 10 0 0 0-.443.05 9.4 9.4 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a9 9 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.2 2.2 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.9.9 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"
+    d: "M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562a.5.5 0 0 0 .497.438h12.234a.5.5 0 0 0 .496-.438zM3.809 3.563A1.5 1.5 0 0 1 4.981 3h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z"
   }));
 });
-HandThumbsUp.propTypes = {
+Inbox.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196488,7 +197255,7 @@ function _objectWithoutPropertiesLoose$s(r3, e2) {
   }
   return t4;
 }
-var HeartFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var LightbulbFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$q(_ref3, _excluded$v);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$q({
     ref,
@@ -196497,13 +197264,12 @@ var HeartFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-heart-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-lightbulb-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
+    d: "M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5"
   }));
 });
-HeartFill.propTypes = {
+LightbulbFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196537,7 +197303,7 @@ function _objectWithoutPropertiesLoose$r(r3, e2) {
   }
   return t4;
 }
-var Heart = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Lightbulb = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$p(_ref3, _excluded$u);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$p({
     ref,
@@ -196546,12 +197312,12 @@ var Heart = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-heart", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-lightbulb", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+    d: "M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1"
   }));
 });
-Heart.propTypes = {
+Lightbulb.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196585,7 +197351,7 @@ function _objectWithoutPropertiesLoose$q(r3, e2) {
   }
   return t4;
 }
-var InboxFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ListUl = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$o(_ref3, _excluded$t);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$o({
     ref,
@@ -196594,12 +197360,13 @@ var InboxFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-inbox-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-list-ul", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm-1.17-.437A1.5 1.5 0 0 1 4.98 3h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z"
+    fillRule: "evenodd",
+    d: "M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
   }));
 });
-InboxFill.propTypes = {
+ListUl.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196633,7 +197400,7 @@ function _objectWithoutPropertiesLoose$p(r3, e2) {
   }
   return t4;
 }
-var Inbox = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var LockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$n(_ref3, _excluded$s);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$n({
     ref,
@@ -196642,12 +197409,13 @@ var Inbox = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-inbox", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-lock-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562a.5.5 0 0 0 .497.438h12.234a.5.5 0 0 0 .496-.438zM3.809 3.563A1.5 1.5 0 0 1 4.981 3h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z"
+    fillRule: "evenodd",
+    d: "M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4m0 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"
   }));
 });
-Inbox.propTypes = {
+LockFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196681,7 +197449,7 @@ function _objectWithoutPropertiesLoose$o(r3, e2) {
   }
   return t4;
 }
-var LightbulbFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Lock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$m(_ref3, _excluded$r);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$m({
     ref,
@@ -196690,12 +197458,13 @@ var LightbulbFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref)
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-lightbulb-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-lock", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5"
+    fillRule: "evenodd",
+    d: "M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4M4.5 7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7zM8 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"
   }));
 });
-LightbulbFill.propTypes = {
+Lock.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196729,7 +197498,7 @@ function _objectWithoutPropertiesLoose$n(r3, e2) {
   }
   return t4;
 }
-var Lightbulb = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Pencil = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$l(_ref3, _excluded$q);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$l({
     ref,
@@ -196738,12 +197507,12 @@ var Lightbulb = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-lightbulb", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-pencil", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1"
+    d: "M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"
   }));
 });
-Lightbulb.propTypes = {
+Pencil.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196777,7 +197546,7 @@ function _objectWithoutPropertiesLoose$m(r3, e2) {
   }
   return t4;
 }
-var ListUl = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var PersonFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$k(_ref3, _excluded$p);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$k({
     ref,
@@ -196786,13 +197555,12 @@ var ListUl = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-list-ul", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-person-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+    d: "M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
   }));
 });
-ListUl.propTypes = {
+PersonFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196826,7 +197594,7 @@ function _objectWithoutPropertiesLoose$l(r3, e2) {
   }
   return t4;
 }
-var LockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Person = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$j(_ref3, _excluded$o);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$j({
     ref,
@@ -196835,13 +197603,12 @@ var LockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-lock-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-person", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4m0 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"
+    d: "M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"
   }));
 });
-LockFill.propTypes = {
+Person.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196875,7 +197642,7 @@ function _objectWithoutPropertiesLoose$k(r3, e2) {
   }
   return t4;
 }
-var Lock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var PinFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$i(_ref3, _excluded$n);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$i({
     ref,
@@ -196884,13 +197651,12 @@ var Lock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-lock", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-pin-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4M4.5 7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7zM8 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"
+    d: "M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A6 6 0 0 1 5 6.708V2.277a3 3 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354"
   }));
 });
-Lock.propTypes = {
+PinFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196924,7 +197690,7 @@ function _objectWithoutPropertiesLoose$j(r3, e2) {
   }
   return t4;
 }
-var PinFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Pin = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$h(_ref3, _excluded$m);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$h({
     ref,
@@ -196933,12 +197699,12 @@ var PinFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-pin-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-pin", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A6 6 0 0 1 5 6.708V2.277a3 3 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354"
+    d: "M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A6 6 0 0 1 5 6.708V2.277a3 3 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354m1.58 1.408-.002-.001zm-.002-.001.002.001A.5.5 0 0 1 6 2v5a.5.5 0 0 1-.276.447h-.002l-.012.007-.054.03a5 5 0 0 0-.827.58c-.318.278-.585.596-.725.936h7.792c-.14-.34-.407-.658-.725-.936a5 5 0 0 0-.881-.61l-.012-.006h-.002A.5.5 0 0 1 10 7V2a.5.5 0 0 1 .295-.458 1.8 1.8 0 0 0 .351-.271c.08-.08.155-.17.214-.271H5.14q.091.15.214.271a1.8 1.8 0 0 0 .37.282"
   }));
 });
-PinFill.propTypes = {
+Pin.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196972,7 +197738,7 @@ function _objectWithoutPropertiesLoose$i(r3, e2) {
   }
   return t4;
 }
-var Pin = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var PipFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$g(_ref3, _excluded$l);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$g({
     ref,
@@ -196981,12 +197747,12 @@ var Pin = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-pin", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-pip-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A6 6 0 0 1 5 6.708V2.277a3 3 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354m1.58 1.408-.002-.001zm-.002-.001.002.001A.5.5 0 0 1 6 2v5a.5.5 0 0 1-.276.447h-.002l-.012.007-.054.03a5 5 0 0 0-.827.58c-.318.278-.585.596-.725.936h7.792c-.14-.34-.407-.658-.725-.936a5 5 0 0 0-.881-.61l-.012-.006h-.002A.5.5 0 0 1 10 7V2a.5.5 0 0 1 .295-.458 1.8 1.8 0 0 0 .351-.271c.08-.08.155-.17.214-.271H5.14q.091.15.214.271a1.8 1.8 0 0 0 .37.282"
+    d: "M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm7 6h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5"
   }));
 });
-Pin.propTypes = {
+PipFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197020,7 +197786,7 @@ function _objectWithoutPropertiesLoose$h(r3, e2) {
   }
   return t4;
 }
-var PipFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Pip = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$f(_ref3, _excluded$k);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$f({
     ref,
@@ -197029,12 +197795,14 @@ var PipFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-pip-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-pip", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm7 6h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5"
+    d: "M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M8 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5z"
   }));
 });
-PipFill.propTypes = {
+Pip.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197068,7 +197836,7 @@ function _objectWithoutPropertiesLoose$g(r3, e2) {
   }
   return t4;
 }
-var Pip = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var StarFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$e(_ref3, _excluded$j);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$e({
     ref,
@@ -197077,14 +197845,12 @@ var Pip = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-pip", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-star-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5z"
+    d: "M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
   }));
 });
-Pip.propTypes = {
+StarFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197118,7 +197884,7 @@ function _objectWithoutPropertiesLoose$f(r3, e2) {
   }
   return t4;
 }
-var StarFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Star = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$d(_ref3, _excluded$i);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$d({
     ref,
@@ -197127,12 +197893,12 @@ var StarFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-star-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-star", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+    d: "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"
   }));
 });
-StarFill.propTypes = {
+Star.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197166,7 +197932,7 @@ function _objectWithoutPropertiesLoose$e(r3, e2) {
   }
   return t4;
 }
-var Star = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var SuitClubFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$c(_ref3, _excluded$h);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$c({
     ref,
@@ -197175,12 +197941,12 @@ var Star = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-star", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-suit-club-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"
+    d: "M11.5 12.5a3.5 3.5 0 0 1-2.684-1.254 20 20 0 0 0 1.582 2.907c.231.35-.02.847-.438.847H6.04c-.419 0-.67-.497-.438-.847a20 20 0 0 0 1.582-2.907 3.5 3.5 0 1 1-2.538-5.743 3.5 3.5 0 1 1 6.708 0A3.5 3.5 0 1 1 11.5 12.5"
   }));
 });
-Star.propTypes = {
+SuitClubFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197214,7 +197980,7 @@ function _objectWithoutPropertiesLoose$d(r3, e2) {
   }
   return t4;
 }
-var SuitClubFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var SuitClub = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$b(_ref3, _excluded$g);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$b({
     ref,
@@ -197223,12 +197989,12 @@ var SuitClubFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) 
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-suit-club-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-suit-club", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M11.5 12.5a3.5 3.5 0 0 1-2.684-1.254 20 20 0 0 0 1.582 2.907c.231.35-.02.847-.438.847H6.04c-.419 0-.67-.497-.438-.847a20 20 0 0 0 1.582-2.907 3.5 3.5 0 1 1-2.538-5.743 3.5 3.5 0 1 1 6.708 0A3.5 3.5 0 1 1 11.5 12.5"
+    d: "M8 1a3.25 3.25 0 0 0-3.25 3.25c0 .186 0 .29.016.41.014.12.045.27.12.527l.19.665-.692-.028a3.25 3.25 0 1 0 2.357 5.334.5.5 0 0 1 .844.518l-.003.005-.006.015-.024.055a22 22 0 0 1-.438.92 22 22 0 0 1-1.266 2.197c-.013.018-.02.05.001.09q.016.029.03.036A.04.04 0 0 0 5.9 15h4.2q.014 0 .022-.006a.1.1 0 0 0 .029-.035c.02-.04.014-.073.001-.091a23 23 0 0 1-1.704-3.117l-.024-.054-.006-.015-.002-.004a.5.5 0 0 1 .838-.524c.601.7 1.516 1.168 2.496 1.168a3.25 3.25 0 1 0-.139-6.498l-.699.03.199-.671c.14-.47.14-.745.139-.927V4.25A3.25 3.25 0 0 0 8 1m2.207 12.024c.225.405.487.848.78 1.294C11.437 15 10.975 16 10.1 16H5.9c-.876 0-1.338-1-.887-1.683.291-.442.552-.88.776-1.283a4.25 4.25 0 1 1-2.007-8.187l-.009-.064c-.023-.187-.023-.348-.023-.52V4.25a4.25 4.25 0 0 1 8.5 0c0 .14 0 .333-.04.596a4.25 4.25 0 0 1-.46 8.476 4.2 4.2 0 0 1-1.543-.298"
   }));
 });
-SuitClubFill.propTypes = {
+SuitClub.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197262,7 +198028,7 @@ function _objectWithoutPropertiesLoose$c(r3, e2) {
   }
   return t4;
 }
-var SuitClub = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var TagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$a(_ref3, _excluded$f);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$a({
     ref,
@@ -197271,12 +198037,12 @@ var SuitClub = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-suit-club", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-tag-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 1a3.25 3.25 0 0 0-3.25 3.25c0 .186 0 .29.016.41.014.12.045.27.12.527l.19.665-.692-.028a3.25 3.25 0 1 0 2.357 5.334.5.5 0 0 1 .844.518l-.003.005-.006.015-.024.055a22 22 0 0 1-.438.92 22 22 0 0 1-1.266 2.197c-.013.018-.02.05.001.09q.016.029.03.036A.04.04 0 0 0 5.9 15h4.2q.014 0 .022-.006a.1.1 0 0 0 .029-.035c.02-.04.014-.073.001-.091a23 23 0 0 1-1.704-3.117l-.024-.054-.006-.015-.002-.004a.5.5 0 0 1 .838-.524c.601.7 1.516 1.168 2.496 1.168a3.25 3.25 0 1 0-.139-6.498l-.699.03.199-.671c.14-.47.14-.745.139-.927V4.25A3.25 3.25 0 0 0 8 1m2.207 12.024c.225.405.487.848.78 1.294C11.437 15 10.975 16 10.1 16H5.9c-.876 0-1.338-1-.887-1.683.291-.442.552-.88.776-1.283a4.25 4.25 0 1 1-2.007-8.187l-.009-.064c-.023-.187-.023-.348-.023-.52V4.25a4.25 4.25 0 0 1 8.5 0c0 .14 0 .333-.04.596a4.25 4.25 0 0 1-.46 8.476 4.2 4.2 0 0 1-1.543-.298"
+    d: "M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"
   }));
 });
-SuitClub.propTypes = {
+TagFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197310,7 +198076,7 @@ function _objectWithoutPropertiesLoose$b(r3, e2) {
   }
   return t4;
 }
-var TagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Tag$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$9(_ref3, _excluded$e);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$9({
     ref,
@@ -197319,12 +198085,14 @@ var TagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-tag-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-tag", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"
+    d: "M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"
   }));
 });
-TagFill.propTypes = {
+Tag$1.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197358,7 +198126,7 @@ function _objectWithoutPropertiesLoose$a(r3, e2) {
   }
   return t4;
 }
-var Tag$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var TagsFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$8(_ref3, _excluded$d);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$8({
     ref,
@@ -197367,14 +198135,14 @@ var Tag$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-tag", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-tags-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"
+    d: "M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"
+    d: "M1.293 7.793A1 1 0 0 1 1 7.086V2a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l.043-.043z"
   }));
 });
-Tag$1.propTypes = {
+TagsFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197408,7 +198176,7 @@ function _objectWithoutPropertiesLoose$9(r3, e2) {
   }
   return t4;
 }
-var TagsFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Tags = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$7(_ref3, _excluded$c);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$7({
     ref,
@@ -197417,14 +198185,14 @@ var TagsFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-tags-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-tags", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"
+    d: "M3 2v4.586l7 7L14.586 9l-7-7zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586z"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1.293 7.793A1 1 0 0 1 1 7.086V2a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l.043-.043z"
+    d: "M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1z"
   }));
 });
-TagsFill.propTypes = {
+Tags.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197458,7 +198226,7 @@ function _objectWithoutPropertiesLoose$8(r3, e2) {
   }
   return t4;
 }
-var Tags = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var TelephoneFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$6(_ref3, _excluded$b);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
     ref,
@@ -197467,14 +198235,13 @@ var Tags = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-tags", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-telephone-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M3 2v4.586l7 7L14.586 9l-7-7zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1z"
+    fillRule: "evenodd",
+    d: "M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
   }));
 });
-Tags.propTypes = {
+TelephoneFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197508,7 +198275,7 @@ function _objectWithoutPropertiesLoose$7(r3, e2) {
   }
   return t4;
 }
-var TelephoneFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Telephone = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$5(_ref3, _excluded$a);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$5({
     ref,
@@ -197517,13 +198284,12 @@ var TelephoneFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref)
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-telephone-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-telephone", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
+    d: "M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
   }));
 });
-TelephoneFill.propTypes = {
+Telephone.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197557,7 +198323,7 @@ function _objectWithoutPropertiesLoose$6(r3, e2) {
   }
   return t4;
 }
-var Telephone = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Trash3Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$4(_ref3, _excluded$9);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$4({
     ref,
@@ -197566,12 +198332,12 @@ var Telephone = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-telephone", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-trash3-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
+    d: "M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"
   }));
 });
-Telephone.propTypes = {
+Trash3Fill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197605,7 +198371,7 @@ function _objectWithoutPropertiesLoose$5(r3, e2) {
   }
   return t4;
 }
-var Trash3Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Trash3 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$3(_ref3, _excluded$8);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$3({
     ref,
@@ -197614,12 +198380,12 @@ var Trash3Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-trash3-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-trash3", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"
+    d: "M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"
   }));
 });
-Trash3Fill.propTypes = {
+Trash3.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197653,7 +198419,7 @@ function _objectWithoutPropertiesLoose$4(r3, e2) {
   }
   return t4;
 }
-var Trash3 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var XLg = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$2(_ref3, _excluded$7);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$2({
     ref,
@@ -197662,12 +198428,12 @@ var Trash3 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-trash3", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-x-lg", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"
+    d: "M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
   }));
 });
-Trash3.propTypes = {
+XLg.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -199749,7 +200515,7 @@ function _slicedToArray(r3, e2) {
 }
 function _objectWithoutProperties$1(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i3 = _objectWithoutPropertiesLoose$1s(e2, t4);
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1B(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
@@ -200519,7 +201285,7 @@ var MenuPlacer = function MenuPlacer2(props) {
 };
 var Menu = function Menu2(props) {
   var children = props.children, innerRef = props.innerRef, innerProps = props.innerProps;
-  return jsx("div", _extends$1q({}, getStyleProps(props, "menu", {
+  return jsx("div", _extends$1z({}, getStyleProps(props, "menu", {
     menu: true
   }), {
     ref: innerRef
@@ -200541,7 +201307,7 @@ var menuListCSS = function menuListCSS2(_ref4, unstyled) {
 };
 var MenuList = function MenuList2(props) {
   var children = props.children, innerProps = props.innerProps, innerRef = props.innerRef, isMulti = props.isMulti;
-  return jsx("div", _extends$1q({}, getStyleProps(props, "menuList", {
+  return jsx("div", _extends$1z({}, getStyleProps(props, "menuList", {
     "menu-list": true,
     "menu-list--is-multi": isMulti
   }), {
@@ -200561,7 +201327,7 @@ var noOptionsMessageCSS = noticeCSS;
 var loadingMessageCSS = noticeCSS;
 var NoOptionsMessage = function NoOptionsMessage2(_ref6) {
   var _ref6$children = _ref6.children, children = _ref6$children === void 0 ? "No options" : _ref6$children, innerProps = _ref6.innerProps, restProps = _objectWithoutProperties$1(_ref6, _excluded$3$1);
-  return jsx("div", _extends$1q({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
+  return jsx("div", _extends$1z({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
     children,
     innerProps
   }), "noOptionsMessage", {
@@ -200571,7 +201337,7 @@ var NoOptionsMessage = function NoOptionsMessage2(_ref6) {
 };
 var LoadingMessage = function LoadingMessage2(_ref7) {
   var _ref7$children = _ref7.children, children = _ref7$children === void 0 ? "Loading..." : _ref7$children, innerProps = _ref7.innerProps, restProps = _objectWithoutProperties$1(_ref7, _excluded2$1);
-  return jsx("div", _extends$1q({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
+  return jsx("div", _extends$1z({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
     children,
     innerProps
   }), "loadingMessage", {
@@ -200634,7 +201400,7 @@ var MenuPortal = function MenuPortal2(props) {
     runAutoUpdate();
   }, [runAutoUpdate]);
   if (!appendTo && menuPosition !== "fixed" || !computedPosition) return null;
-  var menuWrapper = jsx("div", _extends$1q({
+  var menuWrapper = jsx("div", _extends$1z({
     ref: setMenuPortalElement
   }, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, props), {}, {
     offset: computedPosition.offset,
@@ -200659,7 +201425,7 @@ var containerCSS = function containerCSS2(_ref3) {
 };
 var SelectContainer = function SelectContainer2(props) {
   var children = props.children, innerProps = props.innerProps, isDisabled3 = props.isDisabled, isRtl = props.isRtl;
-  return jsx("div", _extends$1q({}, getStyleProps(props, "container", {
+  return jsx("div", _extends$1z({}, getStyleProps(props, "container", {
     "--is-disabled": isDisabled3,
     "--is-rtl": isRtl
   }), innerProps), children);
@@ -200680,7 +201446,7 @@ var valueContainerCSS = function valueContainerCSS2(_ref22, unstyled) {
 };
 var ValueContainer = function ValueContainer2(props) {
   var children = props.children, innerProps = props.innerProps, isMulti = props.isMulti, hasValue = props.hasValue;
-  return jsx("div", _extends$1q({}, getStyleProps(props, "valueContainer", {
+  return jsx("div", _extends$1z({}, getStyleProps(props, "valueContainer", {
     "value-container": true,
     "value-container--is-multi": isMulti,
     "value-container--has-value": hasValue
@@ -200696,7 +201462,7 @@ var indicatorsContainerCSS = function indicatorsContainerCSS2() {
 };
 var IndicatorsContainer = function IndicatorsContainer2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1q({}, getStyleProps(props, "indicatorsContainer", {
+  return jsx("div", _extends$1z({}, getStyleProps(props, "indicatorsContainer", {
     indicators: true
   }), innerProps), children);
 };
@@ -200708,7 +201474,7 @@ var _ref2$2 = {
 };
 var Svg = function Svg2(_ref3) {
   var size2 = _ref3.size, props = _objectWithoutProperties$1(_ref3, _excluded$2$1);
-  return jsx("svg", _extends$1q({
+  return jsx("svg", _extends$1z({
     height: size2,
     width: size2,
     viewBox: "0 0 20 20",
@@ -200718,14 +201484,14 @@ var Svg = function Svg2(_ref3) {
   }, props));
 };
 var CrossIcon = function CrossIcon2(props) {
-  return jsx(Svg, _extends$1q({
+  return jsx(Svg, _extends$1z({
     size: 20
   }, props), jsx("path", {
     d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"
   }));
 };
 var DownChevron = function DownChevron2(props) {
-  return jsx(Svg, _extends$1q({
+  return jsx(Svg, _extends$1z({
     size: 20
   }, props), jsx("path", {
     d: "M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
@@ -200748,7 +201514,7 @@ var baseCSS = function baseCSS2(_ref3, unstyled) {
 var dropdownIndicatorCSS = baseCSS;
 var DropdownIndicator = function DropdownIndicator2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1q({}, getStyleProps(props, "dropdownIndicator", {
+  return jsx("div", _extends$1z({}, getStyleProps(props, "dropdownIndicator", {
     indicator: true,
     "dropdown-indicator": true
   }), innerProps), children || jsx(DownChevron, null));
@@ -200756,7 +201522,7 @@ var DropdownIndicator = function DropdownIndicator2(props) {
 var clearIndicatorCSS = baseCSS;
 var ClearIndicator = function ClearIndicator2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1q({}, getStyleProps(props, "clearIndicator", {
+  return jsx("div", _extends$1z({}, getStyleProps(props, "clearIndicator", {
     indicator: true,
     "clear-indicator": true
   }), innerProps), children || jsx(CrossIcon, null));
@@ -200775,7 +201541,7 @@ var indicatorSeparatorCSS = function indicatorSeparatorCSS2(_ref4, unstyled) {
 };
 var IndicatorSeparator = function IndicatorSeparator2(props) {
   var innerProps = props.innerProps;
-  return jsx("span", _extends$1q({}, innerProps, getStyleProps(props, "indicatorSeparator", {
+  return jsx("span", _extends$1z({}, innerProps, getStyleProps(props, "indicatorSeparator", {
     "indicator-separator": true
   })));
 };
@@ -200814,7 +201580,7 @@ var LoadingDot = function LoadingDot2(_ref6) {
 };
 var LoadingIndicator$1 = function LoadingIndicator2(_ref7) {
   var innerProps = _ref7.innerProps, isRtl = _ref7.isRtl, _ref7$size = _ref7.size, size2 = _ref7$size === void 0 ? 4 : _ref7$size, restProps = _objectWithoutProperties$1(_ref7, _excluded2);
-  return jsx("div", _extends$1q({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
+  return jsx("div", _extends$1z({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
     innerProps,
     isRtl,
     size: size2
@@ -200859,7 +201625,7 @@ var css$1 = function css3(_ref3, unstyled) {
 };
 var Control = function Control2(props) {
   var children = props.children, isDisabled3 = props.isDisabled, isFocused = props.isFocused, innerRef = props.innerRef, innerProps = props.innerProps, menuIsOpen = props.menuIsOpen;
-  return jsx("div", _extends$1q({
+  return jsx("div", _extends$1z({
     ref: innerRef
   }, getStyleProps(props, "control", {
     control: true,
@@ -200881,9 +201647,9 @@ var groupCSS = function groupCSS2(_ref3, unstyled) {
 };
 var Group = function Group2(props) {
   var children = props.children, cx2 = props.cx, getStyles = props.getStyles, getClassNames = props.getClassNames, Heading = props.Heading, headingProps = props.headingProps, innerProps = props.innerProps, label = props.label, theme = props.theme, selectProps = props.selectProps;
-  return jsx("div", _extends$1q({}, getStyleProps(props, "group", {
+  return jsx("div", _extends$1z({}, getStyleProps(props, "group", {
     group: true
-  }), innerProps), jsx(Heading, _extends$1q({}, headingProps, {
+  }), innerProps), jsx(Heading, _extends$1z({}, headingProps, {
     selectProps,
     theme,
     getStyles,
@@ -200911,7 +201677,7 @@ var GroupHeading = function GroupHeading2(props) {
   var _cleanCommonProps = cleanCommonProps(props);
   _cleanCommonProps.data;
   var innerProps = _objectWithoutProperties$1(_cleanCommonProps, _excluded$1$1);
-  return jsx("div", _extends$1q({}, getStyleProps(props, "groupHeading", {
+  return jsx("div", _extends$1z({}, getStyleProps(props, "groupHeading", {
     "group-heading": true
   }), innerProps));
 };
@@ -200963,11 +201729,11 @@ var inputStyle = function inputStyle2(isHidden) {
 var Input = function Input2(props) {
   var cx2 = props.cx, value = props.value;
   var _cleanCommonProps = cleanCommonProps(props), innerRef = _cleanCommonProps.innerRef, isDisabled3 = _cleanCommonProps.isDisabled, isHidden = _cleanCommonProps.isHidden, inputClassName = _cleanCommonProps.inputClassName, innerProps = _objectWithoutProperties$1(_cleanCommonProps, _excluded$6);
-  return jsx("div", _extends$1q({}, getStyleProps(props, "input", {
+  return jsx("div", _extends$1z({}, getStyleProps(props, "input", {
     "input-container": true
   }), {
     "data-value": value || ""
-  }), jsx("input", _extends$1q({
+  }), jsx("input", _extends$1z({
     className: cx2({
       input: true
     }, inputClassName),
@@ -201027,7 +201793,7 @@ var MultiValueContainer = MultiValueGeneric;
 var MultiValueLabel = MultiValueGeneric;
 function MultiValueRemove(_ref5) {
   var children = _ref5.children, innerProps = _ref5.innerProps;
-  return jsx("div", _extends$1q({
+  return jsx("div", _extends$1z({
     role: "button"
   }, innerProps), children || jsx(CrossIcon, {
     size: 14
@@ -201082,7 +201848,7 @@ var optionCSS = function optionCSS2(_ref3, unstyled) {
 };
 var Option = function Option2(props) {
   var children = props.children, isDisabled3 = props.isDisabled, isFocused = props.isFocused, isSelected = props.isSelected, innerRef = props.innerRef, innerProps = props.innerProps;
-  return jsx("div", _extends$1q({}, getStyleProps(props, "option", {
+  return jsx("div", _extends$1z({}, getStyleProps(props, "option", {
     option: true,
     "option--is-disabled": isDisabled3,
     "option--is-focused": isFocused,
@@ -201106,7 +201872,7 @@ var placeholderCSS = function placeholderCSS2(_ref3, unstyled) {
 };
 var Placeholder = function Placeholder2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1q({}, getStyleProps(props, "placeholder", {
+  return jsx("div", _extends$1z({}, getStyleProps(props, "placeholder", {
     placeholder: true
   }), innerProps), children);
 };
@@ -201128,7 +201894,7 @@ var css2 = function css32(_ref3, unstyled) {
 };
 var SingleValue = function SingleValue2(props) {
   var children = props.children, isDisabled3 = props.isDisabled, innerProps = props.innerProps;
-  return jsx("div", _extends$1q({}, getStyleProps(props, "singleValue", {
+  return jsx("div", _extends$1z({}, getStyleProps(props, "singleValue", {
     "single-value": true,
     "single-value--is-disabled": isDisabled3
   }), innerProps), children);
@@ -201218,7 +201984,7 @@ var _ref = {
   styles: "label:a11yText;z-index:9999;border:0;clip:rect(1px, 1px, 1px, 1px);height:1px;width:1px;position:absolute;overflow:hidden;padding:0;white-space:nowrap"
 };
 var A11yText = function A11yText2(props) {
-  return jsx("span", _extends$1q({
+  return jsx("span", _extends$1z({
     css: _ref
   }, props));
 };
@@ -201674,7 +202440,7 @@ var _excluded$5 = ["innerRef"];
 function DummyInput(_ref3) {
   var innerRef = _ref3.innerRef, props = _objectWithoutProperties$1(_ref3, _excluded$5);
   var filteredProps = removeProps(props, "onExited", "in", "enter", "exit", "appear");
-  return jsx("input", _extends$1q({
+  return jsx("input", _extends$1z({
     ref: innerRef
   }, filteredProps, {
     css: /* @__PURE__ */ css({
@@ -203060,7 +203826,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           "aria-describedby": this.getElementId("placeholder")
         });
         if (!isSearchable) {
-          return /* @__PURE__ */ reactExports.createElement(DummyInput, _extends$1q({
+          return /* @__PURE__ */ reactExports.createElement(DummyInput, _extends$1z({
             id: id2,
             innerRef: this.getInputRef,
             onBlur: this.onInputBlur,
@@ -203073,7 +203839,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
             value: ""
           }, ariaAttributes));
         }
-        return /* @__PURE__ */ reactExports.createElement(Input3, _extends$1q({}, commonProps, {
+        return /* @__PURE__ */ reactExports.createElement(Input3, _extends$1z({}, commonProps, {
           autoCapitalize: "none",
           autoComplete: "off",
           autoCorrect: "off",
@@ -203101,7 +203867,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var _this$props9 = this.props, controlShouldRenderValue = _this$props9.controlShouldRenderValue, isDisabled3 = _this$props9.isDisabled, isMulti = _this$props9.isMulti, inputValue = _this$props9.inputValue, placeholder = _this$props9.placeholder;
       var _this$state5 = this.state, selectValue = _this$state5.selectValue, focusedValue = _this$state5.focusedValue, isFocused = _this$state5.isFocused;
       if (!this.hasValue() || !controlShouldRenderValue) {
-        return inputValue ? null : /* @__PURE__ */ reactExports.createElement(Placeholder3, _extends$1q({}, commonProps, {
+        return inputValue ? null : /* @__PURE__ */ reactExports.createElement(Placeholder3, _extends$1z({}, commonProps, {
           key: "placeholder",
           isDisabled: isDisabled3,
           isFocused,
@@ -203114,7 +203880,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         return selectValue.map(function(opt, index2) {
           var isOptionFocused = opt === focusedValue;
           var key = "".concat(_this3.getOptionLabel(opt), "-").concat(_this3.getOptionValue(opt));
-          return /* @__PURE__ */ reactExports.createElement(MultiValue3, _extends$1q({}, commonProps, {
+          return /* @__PURE__ */ reactExports.createElement(MultiValue3, _extends$1z({}, commonProps, {
             components: {
               Container: MultiValueContainer2,
               Label: MultiValueLabel2,
@@ -203143,7 +203909,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         return null;
       }
       var singleValue = selectValue[0];
-      return /* @__PURE__ */ reactExports.createElement(SingleValue3, _extends$1q({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(SingleValue3, _extends$1z({}, commonProps, {
         data: singleValue,
         isDisabled: isDisabled3
       }), this.formatOptionLabel(singleValue, "value"));
@@ -203163,7 +203929,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         onTouchEnd: this.onClearIndicatorTouchEnd,
         "aria-hidden": "true"
       };
-      return /* @__PURE__ */ reactExports.createElement(ClearIndicator3, _extends$1q({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(ClearIndicator3, _extends$1z({}, commonProps, {
         innerProps,
         isFocused
       }));
@@ -203179,7 +203945,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var innerProps = {
         "aria-hidden": "true"
       };
-      return /* @__PURE__ */ reactExports.createElement(LoadingIndicator3, _extends$1q({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(LoadingIndicator3, _extends$1z({}, commonProps, {
         innerProps,
         isDisabled: isDisabled3,
         isFocused
@@ -203193,7 +203959,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var commonProps = this.commonProps;
       var isDisabled3 = this.props.isDisabled;
       var isFocused = this.state.isFocused;
-      return /* @__PURE__ */ reactExports.createElement(IndicatorSeparator3, _extends$1q({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(IndicatorSeparator3, _extends$1z({}, commonProps, {
         isDisabled: isDisabled3,
         isFocused
       }));
@@ -203211,7 +203977,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         onTouchEnd: this.onDropdownIndicatorTouchEnd,
         "aria-hidden": "true"
       };
-      return /* @__PURE__ */ reactExports.createElement(DropdownIndicator3, _extends$1q({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(DropdownIndicator3, _extends$1z({}, commonProps, {
         innerProps,
         isDisabled: isDisabled3,
         isFocused
@@ -203246,7 +204012,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           "aria-selected": _this4.state.isAppleDevice ? void 0 : isSelected
           // is not supported on Apple devices
         };
-        return /* @__PURE__ */ reactExports.createElement(Option3, _extends$1q({}, commonProps, {
+        return /* @__PURE__ */ reactExports.createElement(Option3, _extends$1z({}, commonProps, {
           innerProps,
           data: data2,
           isDisabled: isDisabled3,
@@ -203266,7 +204032,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
             var _data = item.data, options2 = item.options, groupIndex = item.index;
             var groupId = "".concat(_this4.getElementId("group"), "-").concat(groupIndex);
             var headingId = "".concat(groupId, "-heading");
-            return /* @__PURE__ */ reactExports.createElement(Group3, _extends$1q({}, commonProps, {
+            return /* @__PURE__ */ reactExports.createElement(Group3, _extends$1z({}, commonProps, {
               key: groupId,
               data: _data,
               options: options2,
@@ -203303,9 +204069,9 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         menuPosition,
         menuShouldScrollIntoView
       };
-      var menuElement = /* @__PURE__ */ reactExports.createElement(MenuPlacer, _extends$1q({}, commonProps, menuPlacementProps), function(_ref4) {
+      var menuElement = /* @__PURE__ */ reactExports.createElement(MenuPlacer, _extends$1z({}, commonProps, menuPlacementProps), function(_ref4) {
         var ref = _ref4.ref, _ref4$placerProps = _ref4.placerProps, placement = _ref4$placerProps.placement, maxHeight = _ref4$placerProps.maxHeight;
-        return /* @__PURE__ */ reactExports.createElement(Menu3, _extends$1q({}, commonProps, menuPlacementProps, {
+        return /* @__PURE__ */ reactExports.createElement(Menu3, _extends$1z({}, commonProps, menuPlacementProps, {
           innerRef: ref,
           innerProps: {
             onMouseDown: _this4.onMenuMouseDown,
@@ -203319,7 +204085,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           onBottomArrive: onMenuScrollToBottom,
           lockEnabled: menuShouldBlockScroll
         }, function(scrollTargetRef) {
-          return /* @__PURE__ */ reactExports.createElement(MenuList3, _extends$1q({}, commonProps, {
+          return /* @__PURE__ */ reactExports.createElement(MenuList3, _extends$1z({}, commonProps, {
             innerRef: function innerRef(instance) {
               _this4.getMenuListRef(instance);
               scrollTargetRef(instance);
@@ -203335,7 +204101,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           }), menuUI);
         }));
       });
-      return menuPortalTarget || menuPosition === "fixed" ? /* @__PURE__ */ reactExports.createElement(MenuPortal3, _extends$1q({}, commonProps, {
+      return menuPortalTarget || menuPosition === "fixed" ? /* @__PURE__ */ reactExports.createElement(MenuPortal3, _extends$1z({}, commonProps, {
         appendTo: menuPortalTarget,
         controlElement: this.controlRef,
         menuPlacement,
@@ -203395,7 +204161,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var commonProps = this.commonProps;
       var _this$state6 = this.state, ariaSelection = _this$state6.ariaSelection, focusedOption = _this$state6.focusedOption, focusedValue = _this$state6.focusedValue, isFocused = _this$state6.isFocused, selectValue = _this$state6.selectValue;
       var focusableOptions = this.getFocusableOptions();
-      return /* @__PURE__ */ reactExports.createElement(LiveRegion$1, _extends$1q({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(LiveRegion$1, _extends$1z({}, commonProps, {
         id: this.getElementId("live-region"),
         ariaSelection,
         focusedOption,
@@ -203413,7 +204179,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var _this$props14 = this.props, className = _this$props14.className, id2 = _this$props14.id, isDisabled3 = _this$props14.isDisabled, menuIsOpen = _this$props14.menuIsOpen;
       var isFocused = this.state.isFocused;
       var commonProps = this.commonProps = this.getCommonProps();
-      return /* @__PURE__ */ reactExports.createElement(SelectContainer3, _extends$1q({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(SelectContainer3, _extends$1z({}, commonProps, {
         className,
         innerProps: {
           id: id2,
@@ -203421,7 +204187,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         },
         isDisabled: isDisabled3,
         isFocused
-      }), this.renderLiveRegion(), /* @__PURE__ */ reactExports.createElement(Control3, _extends$1q({}, commonProps, {
+      }), this.renderLiveRegion(), /* @__PURE__ */ reactExports.createElement(Control3, _extends$1z({}, commonProps, {
         innerRef: this.getControlRef,
         innerProps: {
           onMouseDown: this.onControlMouseDown,
@@ -203430,9 +204196,9 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         isDisabled: isDisabled3,
         isFocused,
         menuIsOpen
-      }), /* @__PURE__ */ reactExports.createElement(ValueContainer3, _extends$1q({}, commonProps, {
+      }), /* @__PURE__ */ reactExports.createElement(ValueContainer3, _extends$1z({}, commonProps, {
         isDisabled: isDisabled3
-      }), this.renderPlaceholderOrValue(), this.renderInput()), /* @__PURE__ */ reactExports.createElement(IndicatorsContainer3, _extends$1q({}, commonProps, {
+      }), this.renderPlaceholderOrValue(), this.renderInput()), /* @__PURE__ */ reactExports.createElement(IndicatorsContainer3, _extends$1z({}, commonProps, {
         isDisabled: isDisabled3
       }), this.renderClearIndicator(), this.renderLoadingIndicator(), this.renderIndicatorSeparator(), this.renderDropdownIndicator())), this.renderMenu(), this.renderFormField());
     }
@@ -203623,7 +204389,7 @@ function useAsync(_ref3) {
 var AsyncSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   var stateManagedProps = useAsync(props);
   var selectProps = useStateManager(stateManagedProps);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1q({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1z({
     ref
   }, selectProps));
 });
@@ -203698,7 +204464,7 @@ var AsyncCreatableSelect = /* @__PURE__ */ reactExports.forwardRef(function(prop
   var stateManagerProps = useAsync(props);
   var creatableProps = useStateManager(stateManagerProps);
   var selectProps = useCreatable(creatableProps);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1q({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1z({
     ref
   }, selectProps));
 });
@@ -203929,7 +204695,8 @@ const SidePanel = ({
   content: content2,
   children,
   onSidePanelToggle,
-  sidePanelClassName
+  sidePanelClassName,
+  placement
 }) => {
   const currentOpenPopover = useCurrentOpenPopover();
   const { leftHandedUi } = useTvConfig();
@@ -203978,12 +204745,12 @@ const SidePanel = ({
     OverlayTrigger,
     {
       trigger: "click",
-      placement: leftHandedUi ? "right" : "left",
+      placement: placement ?? (leftHandedUi ? "right" : "left"),
       overlay: /* @__PURE__ */ React$1.createElement(
         Popover,
         {
           as: "dialog",
-          className: cx("action-button-side-panel", sidePanelClassName, { "left-handed": leftHandedUi }),
+          className: cx("action-button-side-panel", sidePanelClassName, { "left-handed": leftHandedUi, vertical: placement }),
           id: id2
         },
         /* @__PURE__ */ React$1.createElement("div", { className: "contents", ref: setContentsElement }, /* @__PURE__ */ React$1.createElement(MenuShouldScrollIntoViewContext.Provider, { value: false }, isOpenDelayedClose && (typeof content2 === "function" ? content2({ isOpen, close: () => useCurrentOpenPopover.setState(null) }) : content2)))
@@ -204252,7 +205019,7 @@ function SettingsForm$4({ formik }) {
 }
 var StateManagedSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   var baseSelectProps = useStateManager(props);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1q({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1z({
     ref
   }, baseSelectProps));
 });
@@ -204260,7 +205027,7 @@ var StateManagedSelect$1 = StateManagedSelect;
 var CreatableSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   var creatableProps = useStateManager(props);
   var selectProps = useCreatable(creatableProps);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1q({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1z({
     ref
   }, selectProps));
 });
@@ -204396,7 +205163,7 @@ function createLocation(path2, state, key, currentLocation) {
     location2 = parsePath(path2);
     location2.state = state;
   } else {
-    location2 = _extends$1q({}, path2);
+    location2 = _extends$1z({}, path2);
     if (location2.pathname === void 0) location2.pathname = "";
     if (location2.search) {
       if (location2.search.charAt(0) !== "?") location2.search = "?" + location2.search;
@@ -204535,7 +205302,7 @@ function createBrowserHistory(props) {
   }
   var transitionManager = createTransitionManager();
   function setState2(nextState) {
-    _extends$1q(history2, nextState);
+    _extends$1z(history2, nextState);
     history2.length = globalHistory.length;
     transitionManager.notifyListeners(history2.location, history2.action);
   }
@@ -204750,7 +205517,7 @@ function createHashHistory(props) {
   }
   var transitionManager = createTransitionManager();
   function setState2(nextState) {
-    _extends$1q(history2, nextState);
+    _extends$1z(history2, nextState);
     history2.length = globalHistory.length;
     transitionManager.notifyListeners(history2.location, history2.action);
   }
@@ -204929,7 +205696,7 @@ function createMemoryHistory(props) {
   var _props = props, getUserConfirmation = _props.getUserConfirmation, _props$initialEntries = _props.initialEntries, initialEntries = _props$initialEntries === void 0 ? ["/"] : _props$initialEntries, _props$initialIndex = _props.initialIndex, initialIndex = _props$initialIndex === void 0 ? 0 : _props$initialIndex, _props$keyLength = _props.keyLength, keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
   var transitionManager = createTransitionManager();
   function setState2(nextState) {
-    _extends$1q(history2, nextState);
+    _extends$1z(history2, nextState);
     history2.length = history2.entries.length;
     transitionManager.notifyListeners(history2.location, history2.action);
   }
@@ -205642,7 +206409,7 @@ function isEmptyChildren(children) {
       !context$12 ? invariant() : void 0;
       var location2 = _this.props.location || context$12.location;
       var match2 = _this.props.computedMatch ? _this.props.computedMatch : _this.props.path ? matchPath(location2.pathname, _this.props) : context$12.match;
-      var props = _extends$1q({}, context$12, {
+      var props = _extends$1z({}, context$12, {
         location: location2,
         match: match2
       });
@@ -205662,7 +206429,7 @@ function addLeadingSlash(path2) {
 }
 function addBasename(basename, location2) {
   if (!basename) return location2;
-  return _extends$1q({}, location2, {
+  return _extends$1z({}, location2, {
     pathname: addLeadingSlash(basename) + location2.pathname
   });
 }
@@ -205670,7 +206437,7 @@ function stripBasename(basename, location2) {
   if (!basename) return location2;
   var base = addLeadingSlash(basename);
   if (location2.pathname.indexOf(base) !== 0) return location2;
-  return _extends$1q({}, location2, {
+  return _extends$1z({}, location2, {
     pathname: location2.pathname.substr(base.length)
   });
 }
@@ -205714,7 +206481,7 @@ function noop$2() {
     context2.url = createURL(context2.location);
   };
   _proto.render = function render2() {
-    var _this$props2 = this.props, _this$props2$basename = _this$props2.basename, basename = _this$props2$basename === void 0 ? "" : _this$props2$basename, _this$props2$context = _this$props2.context, context2 = _this$props2$context === void 0 ? {} : _this$props2$context, _this$props2$location = _this$props2.location, location2 = _this$props2$location === void 0 ? "/" : _this$props2$location, rest = _objectWithoutPropertiesLoose$1s(_this$props2, ["basename", "context", "location"]);
+    var _this$props2 = this.props, _this$props2$basename = _this$props2.basename, basename = _this$props2$basename === void 0 ? "" : _this$props2$basename, _this$props2$context = _this$props2.context, context2 = _this$props2$context === void 0 ? {} : _this$props2$context, _this$props2$location = _this$props2.location, location2 = _this$props2$location === void 0 ? "/" : _this$props2$location, rest = _objectWithoutPropertiesLoose$1B(_this$props2, ["basename", "context", "location"]);
     var history2 = {
       createHref: function createHref(path2) {
         return addLeadingSlash(basename + createURL(path2));
@@ -205729,7 +206496,7 @@ function noop$2() {
       listen: this.handleListen,
       block: this.handleBlock
     };
-    return /* @__PURE__ */ React$1.createElement(Router, _extends$1q({}, rest, {
+    return /* @__PURE__ */ React$1.createElement(Router, _extends$1z({}, rest, {
       history: history2,
       staticContext: context2
     }));
@@ -205752,7 +206519,7 @@ function noop$2() {
         if (match2 == null && /* @__PURE__ */ React$1.isValidElement(child)) {
           element = child;
           var path2 = child.props.path || child.props.from;
-          match2 = path2 ? matchPath(location2.pathname, _extends$1q({}, child.props, {
+          match2 = path2 ? matchPath(location2.pathname, _extends$1z({}, child.props, {
             path: path2
           })) : context2.match;
         }
@@ -205823,9 +206590,9 @@ function isModifiedEvent(event2) {
   return !!(event2.metaKey || event2.altKey || event2.ctrlKey || event2.shiftKey);
 }
 var LinkAnchor = forwardRef(function(_ref3, forwardedRef) {
-  var innerRef = _ref3.innerRef, navigate = _ref3.navigate, _onClick = _ref3.onClick, rest = _objectWithoutPropertiesLoose$1s(_ref3, ["innerRef", "navigate", "onClick"]);
+  var innerRef = _ref3.innerRef, navigate = _ref3.navigate, _onClick = _ref3.onClick, rest = _objectWithoutPropertiesLoose$1B(_ref3, ["innerRef", "navigate", "onClick"]);
   var target = rest.target;
-  var props = _extends$1q({}, rest, {
+  var props = _extends$1z({}, rest, {
     onClick: function onClick(event2) {
       try {
         if (_onClick) _onClick(event2);
@@ -205850,13 +206617,13 @@ var LinkAnchor = forwardRef(function(_ref3, forwardedRef) {
   return /* @__PURE__ */ React$1.createElement("a", props);
 });
 var Link = forwardRef(function(_ref22, forwardedRef) {
-  var _ref2$component = _ref22.component, component = _ref2$component === void 0 ? LinkAnchor : _ref2$component, replace2 = _ref22.replace, to2 = _ref22.to, innerRef = _ref22.innerRef, rest = _objectWithoutPropertiesLoose$1s(_ref22, ["component", "replace", "to", "innerRef"]);
+  var _ref2$component = _ref22.component, component = _ref2$component === void 0 ? LinkAnchor : _ref2$component, replace2 = _ref22.replace, to2 = _ref22.to, innerRef = _ref22.innerRef, rest = _objectWithoutPropertiesLoose$1B(_ref22, ["component", "replace", "to", "innerRef"]);
   return /* @__PURE__ */ React$1.createElement(context.Consumer, null, function(context2) {
     !context2 ? invariant() : void 0;
     var history2 = context2.history;
     var location2 = normalizeToLocation(resolveToLocation(to2, context2.location), context2.location);
     var href = location2 ? history2.createHref(location2) : "";
-    var props = _extends$1q({}, rest, {
+    var props = _extends$1z({}, rest, {
       href,
       navigate: function navigate() {
         var location22 = resolveToLocation(to2, context2.location);
@@ -205889,7 +206656,7 @@ function joinClassnames() {
   }).join(" ");
 }
 forwardRef$1(function(_ref3, forwardedRef) {
-  var _ref$ariaCurrent = _ref3["aria-current"], ariaCurrent = _ref$ariaCurrent === void 0 ? "page" : _ref$ariaCurrent, _ref$activeClassName = _ref3.activeClassName, activeClassName = _ref$activeClassName === void 0 ? "active" : _ref$activeClassName, activeStyle = _ref3.activeStyle, classNameProp = _ref3.className, exact = _ref3.exact, isActiveProp = _ref3.isActive, locationProp = _ref3.location, sensitive = _ref3.sensitive, strict = _ref3.strict, styleProp = _ref3.style, to2 = _ref3.to, innerRef = _ref3.innerRef, rest = _objectWithoutPropertiesLoose$1s(_ref3, ["aria-current", "activeClassName", "activeStyle", "className", "exact", "isActive", "location", "sensitive", "strict", "style", "to", "innerRef"]);
+  var _ref$ariaCurrent = _ref3["aria-current"], ariaCurrent = _ref$ariaCurrent === void 0 ? "page" : _ref$ariaCurrent, _ref$activeClassName = _ref3.activeClassName, activeClassName = _ref$activeClassName === void 0 ? "active" : _ref$activeClassName, activeStyle = _ref3.activeStyle, classNameProp = _ref3.className, exact = _ref3.exact, isActiveProp = _ref3.isActive, locationProp = _ref3.location, sensitive = _ref3.sensitive, strict = _ref3.strict, styleProp = _ref3.style, to2 = _ref3.to, innerRef = _ref3.innerRef, rest = _objectWithoutPropertiesLoose$1B(_ref3, ["aria-current", "activeClassName", "activeStyle", "className", "exact", "isActive", "location", "sensitive", "strict", "style", "to", "innerRef"]);
   return /* @__PURE__ */ React$1.createElement(context.Consumer, null, function(context2) {
     !context2 ? invariant() : void 0;
     var currentLocation = locationProp || context2.location;
@@ -205907,9 +206674,9 @@ forwardRef$1(function(_ref3, forwardedRef) {
     var style2 = typeof styleProp === "function" ? styleProp(isActive) : styleProp;
     if (isActive) {
       className = joinClassnames(className, activeClassName);
-      style2 = _extends$1q({}, style2, activeStyle);
+      style2 = _extends$1z({}, style2, activeStyle);
     }
-    var props = _extends$1q({
+    var props = _extends$1z({
       "aria-current": isActive && ariaCurrent || null,
       className,
       style: style2,
@@ -216071,7 +216838,7 @@ const NumberField = (props) => {
   useStopWheelScroll(inputRef);
   return jsxRuntimeExports.jsx(FormImpl.Control, { ...props, type: "number", ref: inputRef });
 };
-function formikUtils(intl, formik, { labelProps = {
+function formikUtils(intl, formik, { labelProps: labelProps2 = {
   column: true,
   sm: 3,
   xl: 2
@@ -216100,7 +216867,7 @@ function formikUtils(intl, formik, { labelProps = {
   }
   function renderField(field, title2, control, props) {
     var _a2, _b2;
-    return jsxRuntimeExports.jsxs(FormImpl.Group, { controlId: field, as: Row, children: [jsxRuntimeExports.jsx(FormImpl.Label, { ...(_a2 = props === null || props === void 0 ? void 0 : props.labelProps) !== null && _a2 !== void 0 ? _a2 : labelProps, children: title2 }), jsxRuntimeExports.jsx(Col, { ...(_b2 = props === null || props === void 0 ? void 0 : props.fieldProps) !== null && _b2 !== void 0 ? _b2 : fieldProps, children: control })] });
+    return jsxRuntimeExports.jsxs(FormImpl.Group, { controlId: field, as: Row, children: [jsxRuntimeExports.jsx(FormImpl.Label, { ...(_a2 = props === null || props === void 0 ? void 0 : props.labelProps) !== null && _a2 !== void 0 ? _a2 : labelProps2, children: title2 }), jsxRuntimeExports.jsx(Col, { ...(_b2 = props === null || props === void 0 ? void 0 : props.fieldProps) !== null && _b2 !== void 0 ? _b2 : fieldProps, children: control })] });
   }
   function renderInputField(field, type3 = "text", messageID = field, props) {
     const title2 = intl.formatMessage({ id: messageID });
@@ -217412,6 +218179,28 @@ function LoopActionButton() {
     }
   );
 }
+function useOCounter(scene2) {
+  const { preIncrementOCounterValue, set: setMediaItemState } = useMediaItemState();
+  const count2 = scene2.o_counter ?? 0;
+  const incremented = count2 > preIncrementOCounterValue;
+  const [increment] = useSceneIncrementO(scene2.id);
+  const [removeOCountTime] = useSceneDecrementO(scene2.id);
+  const decrement = () => {
+    const latestOHistoryTime = scene2.o_history?.toSorted().reverse()[0];
+    if (latestOHistoryTime) {
+      removeOCountTime({
+        variables: {
+          id: scene2.id,
+          times: [latestOHistoryTime]
+        }
+      });
+    }
+  };
+  if (typeof scene2.o_counter === "number" && scene2.o_counter < preIncrementOCounterValue) {
+    setMediaItemState("preIncrementOCounterValue", scene2.o_counter);
+  }
+  return { count: count2, incremented, increment: () => increment(), decrement };
+}
 const SvgSplash = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 512 512", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", xmlSpace: "preserve", "xmlns:serif": "http://www.serif.com/", style: {
   fillRule: "evenodd",
   clipRule: "evenodd",
@@ -217426,6 +218215,13 @@ const SvgSplashOutline = (props) => /* @__PURE__ */ reactExports.createElement("
   strokeLinejoin: "round",
   strokeMiterlimit: 2
 }, ...props }, /* @__PURE__ */ reactExports.createElement("path", { fill: "currentColor", d: "M401.593,365.404L285.583,298.657L285.114,429.916C283.862,458.38 297.972,486.559 324.229,501.658C336.009,508.434 349.361,512 362.949,512C390.942,512 416.852,496.862 430.61,472.469C451.931,434.841 438.988,386.894 401.593,365.404ZM385.635,393.141C385.639,393.144 385.644,393.146 385.649,393.149C407.834,405.898 415.418,434.369 402.769,456.693C402.758,456.712 402.748,456.731 402.737,456.749C394.647,471.094 379.411,480 362.949,480C354.96,480 347.11,477.903 340.184,473.919C340.183,473.919 340.183,473.919 340.182,473.918C324.611,464.964 316.34,448.201 317.083,431.322C317.102,430.892 317.112,430.461 317.113,430.031L317.386,353.874C317.386,353.874 385.635,393.141 385.635,393.141ZM183.413,265.569L32,144L1.973,334.55C-5.949,376.472 10.341,419.467 44.047,445.6C63.79,460.506 87.862,468.573 112.596,468.573C175.027,468.573 226.401,417.171 226.401,354.705C226.401,320.013 210.555,287.156 183.413,265.569ZM163.379,290.521C163.417,290.552 163.455,290.583 163.494,290.613C183.01,306.135 194.401,329.761 194.401,354.705C194.401,399.612 157.478,436.573 112.596,436.573C94.896,436.573 77.668,430.824 63.513,420.199C39.375,401.388 27.736,370.555 33.416,340.491C33.477,340.172 33.532,339.852 33.583,339.531L55.016,203.517C55.016,203.517 163.379,290.521 163.379,290.521ZM325.111,10.48L112,96L290.362,238.173C327.814,269.824 381.068,279.971 429.33,259.776C497.974,231.057 530.262,151.957 501.473,83.118C472.713,14.265 393.742,-18.254 325.111,10.48ZM337.029,40.178C337.176,40.118 337.323,40.058 337.469,39.997C389.81,18.083 450.012,42.942 471.946,95.452C471.948,95.456 471.949,95.461 471.951,95.465C493.913,147.979 469.345,208.347 416.979,230.256C416.978,230.256 416.978,230.256 416.977,230.257C380.176,245.656 339.576,237.867 311.018,213.732C310.784,213.534 310.548,213.34 310.308,213.149L174.92,105.231C174.92,105.231 337.029,40.178 337.029,40.178Z" }));
+const oCounterIcons = {
+  active: SvgSplash,
+  inactive: SvgSplashOutline
+};
+function OCounterControls({ oCounter, className }) {
+  return /* @__PURE__ */ React$1.createElement("div", { className: cx("OCounterControls", className) }, /* @__PURE__ */ React$1.createElement("button", { onClick: () => oCounter.decrement(), disabled: oCounter.count <= 0, "aria-label": "Decrease O-count" }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faMinus })), oCounter.count, /* @__PURE__ */ React$1.createElement("button", { onClick: () => oCounter.increment(), "aria-label": "Increase O-count" }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPlus })));
+}
 const id$d = "o-counter";
 const buttonDefinition$c = {
   id: id$d,
@@ -217433,10 +218229,7 @@ const buttonDefinition$c = {
     active: "Undo Orgasm Mark",
     inactive: "Mark Orgasm"
   },
-  icon: {
-    active: SvgSplash,
-    inactive: SvgSplashOutline
-  },
+  icon: oCounterIcons,
   components: {
     button: OCounterActionButton
   },
@@ -217447,41 +218240,24 @@ const buttonDefinition$c = {
 function OCounterActionButton({
   scene: scene2
 }) {
-  const { preIncrementOCounterValue, set: setMediaItemState } = useMediaItemState();
-  const oCounterIncremented = (scene2.o_counter ?? 0) > preIncrementOCounterValue;
-  const [incrementOCount] = useSceneIncrementO(scene2.id);
-  const [removeOCountTime] = useSceneDecrementO(scene2.id);
-  const decrementOCount = () => {
-    const latestOHistoryTime = scene2.o_history?.toSorted().reverse()[0];
-    if (latestOHistoryTime) {
-      removeOCountTime({
-        variables: {
-          id: scene2.id,
-          times: [latestOHistoryTime]
-        }
-      });
-    }
-  };
-  if (typeof scene2.o_counter === "number" && scene2.o_counter < preIncrementOCounterValue) {
-    setMediaItemState("preIncrementOCounterValue", scene2.o_counter);
-  }
+  const oCounter = useOCounter(scene2);
   return /* @__PURE__ */ React$1.createElement(
     ActionButtonBase,
     {
-      state: oCounterIncremented ? "active" : "inactive",
+      state: oCounter.incremented ? "active" : "inactive",
       icon: buttonDefinition$c.icon,
       title: buttonDefinition$c.title,
       className: cx(buttonDefinition$c.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--oCounterButton",
       onClick: ({ toggleSidePanel }) => {
-        if (oCounterIncremented) {
+        if (oCounter.incremented) {
           toggleSidePanel();
         } else {
-          incrementOCount();
+          oCounter.increment();
         }
       },
-      sidePanel: /* @__PURE__ */ React$1.createElement("div", { className: "action-button-o-counter" }, /* @__PURE__ */ React$1.createElement("button", { onClick: () => decrementOCount(), disabled: (scene2.o_counter ?? 0) <= 0, "aria-label": "Decrease O-count" }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faMinus })), scene2.o_counter ?? 0, /* @__PURE__ */ React$1.createElement("button", { onClick: () => incrementOCount(), "aria-label": "Increase O-count" }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPlus }))),
-      sideInfo: (scene2.o_counter ?? 0) > 0 && scene2.o_counter
+      sidePanel: /* @__PURE__ */ React$1.createElement(OCounterControls, { oCounter }),
+      sideInfo: oCounter.count > 0 && oCounter.count
     }
   );
 }
@@ -218868,7 +219644,7 @@ const RatingNumber = ({ onSetRating, value, disabled: disabled2 }) => {
     }
   )));
 };
-const RatingSystem = (props) => {
+const RatingSystem = ({ valueSide = "end", ...props }) => {
   const { configuration: config2 } = React$1.useContext(ConfigurationContext);
   const ratingSystemOptions = config2?.ui.ratingSystemOptions ?? defaultRatingSystemOptions;
   if (ratingSystemOptions.type === RatingSystemType.Decimal) {
@@ -218883,9 +219659,16 @@ const RatingSystem = (props) => {
       }
     );
   } else {
-    return /* @__PURE__ */ React$1.createElement(RatingSystem$1, { ...props });
+    const shownRating = convertToRatingFormat(props.value, ratingSystemOptions);
+    return /* @__PURE__ */ React$1.createElement("div", { className: cx("rating-system-stars", `value-${valueSide}`, { "not-set": !shownRating }) }, /* @__PURE__ */ React$1.createElement("span", { className: "clear star-rating-number" }, "Clear"), /* @__PURE__ */ React$1.createElement(RatingSystem$1, { ...props }));
   }
 };
+function formatRating(rating100, ratingSystemType) {
+  if (ratingSystemType === RatingSystemType.Stars) {
+    return (rating100 / 20).toFixed(1).replace(/\.0$/, "");
+  }
+  return (rating100 / 10).toString();
+}
 const id$9 = "rate-scene";
 const buttonDefinition$8 = {
   id: id$9,
@@ -218910,14 +219693,7 @@ function RateSceneActionButton({
   const { configuration: stashConfig } = React$1.useContext(ConfigurationContext);
   const { leftHandedUi } = useTvConfig();
   const ratingSystemOptions = stashConfig?.ui.ratingSystemOptions ?? defaultRatingSystemOptions;
-  let sceneRatingFormatted;
-  if (typeof scene2.rating100 === "number") {
-    if (ratingSystemOptions.type === RatingSystemType.Stars) {
-      sceneRatingFormatted = (scene2.rating100 / 20).toFixed(1).replace(/\.0$/, "");
-    } else {
-      sceneRatingFormatted = (scene2.rating100 / 10).toString();
-    }
-  }
+  const sceneRatingFormatted = typeof scene2.rating100 === "number" ? formatRating(scene2.rating100, ratingSystemOptions.type) : void 0;
   const setRating = useSetRating(scene2);
   return /* @__PURE__ */ React$1.createElement(
     ActionButtonBase,
@@ -218927,12 +219703,13 @@ function RateSceneActionButton({
       title: buttonDefinition$8.title,
       className: cx(buttonDefinition$8.id, "hide-on-ui-hide"),
       "data-testid": "MediaSlide--rateButton",
-      sidePanel: /* @__PURE__ */ React$1.createElement("div", { className: cx("action-button-rating-stars", { "not-set": typeof scene2.rating100 !== "number", "left-handed": leftHandedUi }, ratingSystemOptions.type.toLowerCase()) }, /* @__PURE__ */ React$1.createElement("span", { className: "clear star-rating-number" }, "Clear"), /* @__PURE__ */ React$1.createElement(
+      sidePanel: /* @__PURE__ */ React$1.createElement("div", { className: cx("action-button-rating-stars", { "left-handed": leftHandedUi }, ratingSystemOptions.type.toLowerCase()) }, /* @__PURE__ */ React$1.createElement(
         RatingSystem,
         {
           value: scene2.rating100,
           onSetRating: setRating,
-          clickToRate: false
+          clickToRate: false,
+          valueSide: leftHandedUi ? "end" : "start"
         }
       )),
       onSidePanelToggle: (isOpen) => {
@@ -220542,82 +221319,983 @@ const Folder = ({
   ));
 };
 const logger$1 = getLogger(["stash-tv", "SceneInfo"]);
-const SceneInfo = reactExports.forwardRef(
-  ({ scene: scene2, className, style: style2, onExternalLinkClick }, ref) => {
-    const date2 = scene2.date ? /* @__PURE__ */ React$1.createElement("span", { className: "date" }, scene2.date) : null;
-    const sortedPerformers = sortPerformers(scene2.performers);
-    const totalPerformers = sortedPerformers.length;
-    const performersInner = sortedPerformers.map((pf, i3) => {
-      const isOneBeforeLast = i3 === totalPerformers - 2;
-      const isAnyBeforeLast = i3 < totalPerformers - 1;
-      let suffix = null;
-      if (totalPerformers === 2 && isOneBeforeLast) suffix = " and ";
-      else {
-        if (isAnyBeforeLast) suffix = ", ";
-        if (isOneBeforeLast) suffix += "and ";
-      }
-      return /* @__PURE__ */ React$1.createElement(React$1.Fragment, { key: pf.id }, /* @__PURE__ */ React$1.createElement(
-        "a",
+const sceneInfoFieldLabelIcons = {
+  "play-count": { active: EyeFill, inactive: Eye },
+  performers: { active: PersonFill, inactive: Person },
+  "o-count": oCounterIcons,
+  resolution: { active: SvgResolution, inactive: SvgResolution }
+};
+function SceneInfoField({ field, ...props }) {
+  const Value = sceneInfoFieldComponents[field];
+  return /* @__PURE__ */ React$1.createElement(Value, { ...props });
+}
+const getStashUrl = (path2) => {
+  return path2;
+};
+function Field({ field, showLabel, icon: icon2, className, children }) {
+  return /* @__PURE__ */ React$1.createElement("div", { className: cx("field", `field-${field}`, className) }, showLabel && /* @__PURE__ */ React$1.createElement("span", { className: "field-label" }, sceneInfoFieldLabels[field]), icon2 && /* @__PURE__ */ React$1.createElement("span", { className: "field-icon", role: "img", "aria-label": sceneInfoFieldLabels[field], title: sceneInfoFieldLabels[field] }, icon2), children);
+}
+function labelProps(field, style2, active) {
+  if (style2 === "none") return {};
+  if (style2 === "text") return { showLabel: true };
+  const Icon2 = sceneInfoFieldLabelIcons[field][active ? "active" : "inactive"];
+  return { icon: /* @__PURE__ */ React$1.createElement(Icon2, { "aria-hidden": true }) };
+}
+function joinAsSentence(items) {
+  return items.map((item, i3) => {
+    let suffix = null;
+    if (items.length === 2 && i3 === 0) suffix = " and ";
+    else if (i3 === items.length - 2) suffix = ", and ";
+    else if (i3 < items.length - 2) suffix = ", ";
+    return /* @__PURE__ */ React$1.createElement(React$1.Fragment, { key: i3 }, item, suffix);
+  });
+}
+const getStudioOwnershipChain = async (studio2) => {
+  const chain2 = [studio2];
+  let currentStudio = studio2;
+  while (currentStudio?.parent_studio) {
+    const { data: data2, error } = await queryFindStudio(currentStudio.parent_studio.id);
+    if (error) {
+      logger$1.error("Error fetching parent studio:", error);
+      break;
+    }
+    const parentStudio = data2?.findStudio;
+    if (!parentStudio) break;
+    chain2.push(parentStudio);
+    currentStudio = parentStudio;
+  }
+  return chain2;
+};
+function StudioField({ scene: scene2 }) {
+  const [studioOwnershipChain, setStudioOwnershipChain] = reactExports.useState(scene2.studio ? [scene2.studio] : []);
+  reactExports.useEffect(() => {
+    (async () => {
+      if (!scene2.studio) return;
+      const chain2 = await getStudioOwnershipChain(scene2.studio);
+      setStudioOwnershipChain(chain2);
+    })();
+  }, [scene2.studio]);
+  if (!scene2.studio) return null;
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "studio" }, studioOwnershipChain.map((studio2, i3) => {
+    const renderedStudio = /* @__PURE__ */ React$1.createElement(
+      "a",
+      {
+        key: studio2.id,
+        href: getStashUrl(`/studios/${studio2.id}`),
+        target: "_blank"
+      },
+      studio2.name
+    );
+    return i3 > 0 ? [
+      /* @__PURE__ */ React$1.createElement(
+        ChevronLeft,
         {
-          href: getStashUrl(`/performers/${pf.id}`),
-          target: "_blank"
-        },
-        pf.name
-      ), suffix);
-    });
-    const performers2 = performersInner.length ? /* @__PURE__ */ React$1.createElement("div", { className: "performers" }, performersInner) : null;
-    const getStudioOwnershipChain = async (studio22) => {
-      const chain2 = [studio22];
-      let currentStudio = studio22;
-      while (currentStudio?.parent_studio) {
-        const { data: data2, error } = await queryFindStudio(currentStudio.parent_studio.id);
-        if (error) {
-          logger$1.error("Error fetching parent studio:", error);
-          break;
+          className: "separator",
+          key: i3
         }
-        const parentStudio = data2?.findStudio;
-        if (!parentStudio) break;
-        chain2.push(parentStudio);
-        currentStudio = parentStudio;
-      }
-      return chain2;
+      ),
+      renderedStudio
+    ] : renderedStudio;
+  }).flat());
+}
+function TitleField({ scene: scene2, onExternalLinkClick }) {
+  let sceneUrl = scene2.paths.stream?.split("/stream")[0]?.replace("/scene", "/scenes");
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "title" }, /* @__PURE__ */ React$1.createElement("a", { href: sceneUrl || "", target: "_blank", onClick: onExternalLinkClick }, /* @__PURE__ */ React$1.createElement("h5", null, objectTitle(scene2))));
+}
+function PerformersField({ scene: scene2, fieldOptions }) {
+  if (!scene2.performers.length) return null;
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "performers", ...labelProps("performers", fieldOptions.performers.label, true) }, joinAsSentence(sortPerformers(scene2.performers).map((performer2) => /* @__PURE__ */ React$1.createElement("a", { href: getStashUrl(`/performers/${performer2.id}`), target: "_blank" }, performer2.name))));
+}
+function DateField({ scene: scene2 }) {
+  if (!scene2.date) return null;
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "date" }, /* @__PURE__ */ React$1.createElement(FormattedDate, { value: scene2.date, format: "long", timeZone: "utc" }));
+}
+const detailsLineCount = 3;
+function DetailsField({ scene: scene2, fieldOptions, preview }) {
+  const [expanded, setExpanded] = reactExports.useState(false);
+  const [overflowing, setOverflowing] = reactExports.useState(false);
+  const ref = reactExports.useRef(null);
+  const capped = !fieldOptions.details.showFullText && !expanded;
+  reactExports.useLayoutEffect(() => {
+    const element = ref.current;
+    if (!capped || !element) return;
+    const measure = () => setOverflowing(element.scrollHeight > element.clientHeight + 1);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [capped, scene2.details]);
+  if (!scene2.details) return null;
+  const toggleable = !preview && (expanded || overflowing);
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "details", className: cx({ capped, toggleable }) }, /* @__PURE__ */ React$1.createElement(
+    "div",
+    {
+      ref,
+      className: "details-text",
+      style: capped ? { WebkitLineClamp: detailsLineCount } : void 0,
+      role: toggleable ? "button" : void 0,
+      tabIndex: toggleable ? 0 : void 0,
+      "aria-expanded": toggleable ? expanded : void 0,
+      onClick: toggleable ? () => setExpanded(!expanded) : void 0,
+      onKeyDown: toggleable ? (event2) => {
+        if (event2.key !== "Enter" && event2.key !== " ") return;
+        event2.preventDefault();
+        setExpanded(!expanded);
+      } : void 0
+    },
+    scene2.details
+  ));
+}
+const tagRowCount = 2;
+const minHiddenTags = 2;
+function measureRows(list) {
+  const rows = [];
+  for (const item of list.children) {
+    if (!(item instanceof HTMLElement)) continue;
+    const top2 = item.offsetTop;
+    const bottom2 = top2 + item.offsetHeight;
+    const row = rows[rows.length - 1];
+    if (row && top2 < row.bottom) row.bottom = Math.max(row.bottom, bottom2);
+    else rows.push({ top: top2, bottom: bottom2 });
+  }
+  return rows;
+}
+function TagsField({ scene: scene2, fieldOptions, preview }) {
+  const [expanded, setExpanded] = reactExports.useState(false);
+  const [cut, setCut] = reactExports.useState(null);
+  const listRef = reactExports.useRef(null);
+  const capping = !fieldOptions.tags.showAll && !expanded;
+  reactExports.useLayoutEffect(() => {
+    const list = listRef.current;
+    if (!capping || !list) {
+      setCut(null);
+      return;
+    }
+    const measure = () => {
+      const lastRow = measureRows(list)[tagRowCount - 1];
+      const hidden = lastRow ? [...list.children].filter((tag2) => tag2 instanceof HTMLElement && tag2.offsetTop >= lastRow.bottom).length : 0;
+      const next2 = lastRow && hidden >= minHiddenTags ? { bottom: lastRow.bottom, hidden } : null;
+      setCut((previous) => previous?.bottom === next2?.bottom && previous?.hidden === next2?.hidden ? previous : next2);
     };
-    const [studioOwnershipChain, setStudioOwnershipChain] = reactExports.useState(scene2.studio ? [scene2.studio] : []);
-    React$1.useEffect(() => {
-      (async () => {
-        if (!scene2.studio) return;
-        const chain2 = await getStudioOwnershipChain(scene2.studio);
-        setStudioOwnershipChain(chain2);
-      })();
-    }, [scene2.studio]);
-    const studio2 = scene2.studio ? /* @__PURE__ */ React$1.createElement("span", { className: "studio" }, studioOwnershipChain.map((studio22, i3) => {
-      const renderedStudio = /* @__PURE__ */ React$1.createElement(
-        "a",
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(list);
+    return () => observer.disconnect();
+  }, [capping, scene2.tags]);
+  if (!scene2.tags.length) return null;
+  const capped = capping && cut;
+  const showMore = capped && `Show ${cut.hidden} more`;
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "tags", className: cx({ capped }) }, /* @__PURE__ */ React$1.createElement("div", { ref: listRef, className: "tag-list", style: capped ? { maxHeight: cut.bottom } : void 0 }, scene2.tags.map((tag2) => /* @__PURE__ */ React$1.createElement("a", { key: tag2.id, href: getStashUrl(`/tags/${tag2.id}`), target: "_blank" }, /* @__PURE__ */ React$1.createElement(Tag, { tag: tag2 })))), capped && (preview ? /* @__PURE__ */ React$1.createElement("span", { className: "show-more btn btn-link btn-sm" }, showMore) : /* @__PURE__ */ React$1.createElement(Button, { variant: "link", size: "sm", className: "show-more", onClick: () => setExpanded(true) }, showMore)));
+}
+function GroupsField({ scene: scene2 }) {
+  if (!scene2.groups.length) return null;
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "groups", showLabel: true }, joinAsSentence(scene2.groups.map(({ group: group2 }) => /* @__PURE__ */ React$1.createElement("a", { href: getStashUrl(`/groups/${group2.id}`), target: "_blank" }, group2.name))));
+}
+function CodeField({ scene: scene2 }) {
+  if (!scene2.code) return null;
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "code", showLabel: true }, scene2.code);
+}
+function DirectorField({ scene: scene2 }) {
+  if (!scene2.director) return null;
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "director", showLabel: true }, scene2.director);
+}
+function RatingField({ scene: scene2, fieldOptions, preview, rightAligned }) {
+  const { configuration: stashConfig } = reactExports.useContext(ConfigurationContext);
+  const ratingSystemType = (stashConfig?.ui.ratingSystemOptions ?? defaultRatingSystemOptions).type;
+  const setRating = useSetRating(scene2);
+  if (fieldOptions.rating.display === "control") {
+    return /* @__PURE__ */ React$1.createElement(Field, { field: "rating" }, /* @__PURE__ */ React$1.createElement(
+      RatingSystem,
+      {
+        value: scene2.rating100,
+        onSetRating: setRating,
+        clickToRate: true,
+        disabled: preview,
+        valueSide: rightAligned ? "start" : "end"
+      }
+    ));
+  }
+  if (typeof scene2.rating100 !== "number") return null;
+  const outOf = ratingSystemType === RatingSystemType.Stars ? 5 : 10;
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "rating", showLabel: true }, formatRating(scene2.rating100, ratingSystemType), " / ", outOf);
+}
+function DurationField({ scene: scene2 }) {
+  const duration5 = scene2.files[0]?.duration;
+  if (!duration5) return null;
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "duration", showLabel: true }, TextUtils.secondsToTimestamp(duration5));
+}
+function ResolutionField({ scene: scene2, fieldOptions }) {
+  const file2 = scene2.files[0];
+  if (!file2?.width || !file2?.height) return null;
+  const { label, format: format2 } = fieldOptions.resolution;
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "resolution", ...labelProps("resolution", label, true) }, format2 === "dimensions" ? `${file2.width}×${file2.height}` : TextUtils.resolution(file2.width, file2.height));
+}
+function FrameRateField({ scene: scene2 }) {
+  const intl = useIntl();
+  const frameRate2 = scene2.files[0]?.frame_rate;
+  if (!frameRate2) return null;
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "frame-rate" }, /* @__PURE__ */ React$1.createElement(MemoizedFormattedMessage, { id: "frames_per_second", values: { value: intl.formatNumber(frameRate2) } }));
+}
+function PlayCountField({ scene: scene2, fieldOptions }) {
+  const { label } = fieldOptions["play-count"];
+  const playCount = scene2.play_count ?? 0;
+  if (!playCount && label === "text") return null;
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "play-count", ...labelProps("play-count", label, playCount > 0) }, playCount);
+}
+function OCountField(props) {
+  const { scene: scene2, fieldOptions } = props;
+  const { display, label } = fieldOptions["o-count"];
+  if (display === "control") return /* @__PURE__ */ React$1.createElement(OCountControlField, { ...props });
+  const oCount = scene2.o_counter ?? 0;
+  if (!oCount && label === "text") return null;
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "o-count", ...labelProps("o-count", label, oCount > 0) }, oCount);
+}
+function OCountControlField({ scene: scene2, preview }) {
+  const oCounter = useOCounter(scene2);
+  const state = oCounter.incremented ? "active" : "inactive";
+  const Icon2 = oCounterIcons[state];
+  const content2 = /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(Icon2, { className: "o-counter-icon", "aria-hidden": true }), oCounter.count);
+  if (preview) return /* @__PURE__ */ React$1.createElement(Field, { field: "o-count", className: "o-count-control" }, content2);
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "o-count", className: "o-count-control" }, /* @__PURE__ */ React$1.createElement(SidePanel, { content: /* @__PURE__ */ React$1.createElement(OCounterControls, { oCounter }), placement: "top" }, ({ onClick, ref }) => /* @__PURE__ */ React$1.createElement(
+    "button",
+    {
+      type: "button",
+      ref,
+      className: cx("o-counter-button", `state-${state}`),
+      "aria-label": oCounter.incremented ? "Change O-count" : "Mark Orgasm",
+      onClick: (event2) => oCounter.incremented ? onClick(event2) : oCounter.increment()
+    },
+    content2
+  )));
+}
+function PathField({ scene: scene2 }) {
+  const path2 = scene2.files[0]?.path;
+  if (!path2) return null;
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "path" }, path2);
+}
+function UrlsField({ scene: scene2 }) {
+  if (!scene2.urls.length) return null;
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "urls" }, scene2.urls.map((url2) => /* @__PURE__ */ React$1.createElement("a", { key: url2, href: url2, target: "_blank", rel: "noreferrer" }, url2)));
+}
+function SpacerField({ fieldOptions, preview }) {
+  const { size: size2 } = fieldOptions.spacer;
+  if (preview) return /* @__PURE__ */ React$1.createElement(Field, { field: "spacer", className: "spacer-preview" }, spacerSizeLabels[size2], " spacer");
+  return /* @__PURE__ */ React$1.createElement(Field, { field: "spacer", className: `spacer-${size2}` }, /* @__PURE__ */ React$1.createElement("span", { "aria-hidden": true }));
+}
+const sceneInfoFieldComponents = {
+  studio: StudioField,
+  title: TitleField,
+  performers: PerformersField,
+  date: DateField,
+  details: DetailsField,
+  tags: TagsField,
+  groups: GroupsField,
+  code: CodeField,
+  director: DirectorField,
+  rating: RatingField,
+  duration: DurationField,
+  resolution: ResolutionField,
+  "frame-rate": FrameRateField,
+  "play-count": PlayCountField,
+  "o-count": OCountField,
+  path: PathField,
+  urls: UrlsField,
+  spacer: SpacerField
+};
+const getViewportScrollbarWidth = () => window.innerWidth - (window.visualViewport?.width ?? document.documentElement.clientWidth);
+let viewportScrollbarWidth = getViewportScrollbarWidth();
+const Modal = (props) => {
+  reactExports.useMemo(() => {
+    viewportScrollbarWidth = getViewportScrollbarWidth();
+  }, [props.show]);
+  reactExports.useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const modalOpen = document.body.classList.contains("modal-open");
+      const fixedRightPadding = modalOpen ? viewportScrollbarWidth : 0;
+      document.documentElement.style.setProperty("--fixed-right-padding", `${fixedRightPadding}px`);
+    });
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class"]
+    });
+    return () => observer.disconnect();
+  }, []);
+  return /* @__PURE__ */ React$1.createElement(
+    Modal$1,
+    {
+      ...props,
+      className: cx("Modal", props.className)
+    }
+  );
+};
+Modal.displayName = "Modal";
+Modal.Body = BootstrapModalBody;
+Modal.Header = ModalHeader;
+Modal.Title = BootstrapModalTitle;
+Modal.Footer = BootstrapModalFooter;
+Modal.Dialog = ModalDialog;
+Modal.TRANSITION_DURATION = 300;
+Modal.BACKDROP_TRANSITION_DURATION = 150;
+function ConfigItemModal({
+  className,
+  header,
+  operation,
+  initialValues,
+  schema: schema2,
+  onClose,
+  onSave,
+  children
+}) {
+  const formik = useFormik({
+    initialValues,
+    enableReinitialize: true,
+    validate: yupFormikValidate(schema2),
+    onSubmit: (values3) => onSave(schema2.cast(values3))
+  });
+  return /* @__PURE__ */ React$1.createElement(Modal, { show: true, onHide: () => onClose(), title: "", className: cx("ConfigItemModal", className) }, /* @__PURE__ */ React$1.createElement(Modal.Header, null, header), /* @__PURE__ */ React$1.createElement(Modal.Body, null, /* @__PURE__ */ React$1.createElement("div", { className: "dialog-content" }, children(formik))), /* @__PURE__ */ React$1.createElement(Modal.Footer, null, /* @__PURE__ */ React$1.createElement(Button, { variant: "secondary", onClick: () => onClose() }, "Cancel"), /* @__PURE__ */ React$1.createElement(Button, { variant: "primary", onClick: () => formik.submitForm() }, operation === "add" ? "Add" : "Save")));
+}
+const noLabelChoice = { none: { content: /* @__PURE__ */ React$1.createElement("em", null, "None"), name: "None" } };
+function labelChoices(field) {
+  const Icon2 = sceneInfoFieldLabelIcons[field].active;
+  return { icon: { content: /* @__PURE__ */ React$1.createElement(Icon2, { "aria-hidden": true }), name: "Icon" }, text: sceneInfoFieldLabels[field] };
+}
+const optionControls = {
+  rating: [{
+    option: "display",
+    label: "Show as",
+    type: "choice",
+    choices: { control: "Rating control", text: "Text" },
+    description: "The rating control sets the scene's rating, and shows even when it has none."
+  }],
+  "o-count": [{
+    option: "display",
+    label: "Show as",
+    type: "choice",
+    choices: { control: "O-counter button", text: "Text" },
+    description: "The button marks an orgasm, like the O-counter action button, and shows even when the O-count is 0."
+  }, {
+    option: "label",
+    label: "Label",
+    type: "choice",
+    choices: labelChoices("o-count"),
+    shown: (options2) => options2.display === "text"
+  }],
+  performers: [{ option: "label", label: "Label", type: "choice", choices: { ...noLabelChoice, ...labelChoices("performers") } }],
+  "play-count": [{
+    option: "label",
+    label: "Label",
+    type: "choice",
+    choices: labelChoices("play-count"),
+    description: "With the icon, it shows before the scene's been played too, the icon an outline until it has."
+  }],
+  details: [{
+    option: "showFullText",
+    label: "Always show the full text",
+    type: "switch",
+    description: "Otherwise the details are cut short after 3 lines. Click them to show the rest."
+  }],
+  tags: [{
+    option: "showAll",
+    label: "Always show every tag",
+    type: "switch",
+    description: "Otherwise only 2 rows of tags are shown, with a button below them showing the rest."
+  }],
+  spacer: [{
+    option: "size",
+    label: "Size",
+    type: "choice",
+    choices: spacerSizeLabels,
+    description: "Alone on its line, it's space between lines. Beside other fields, it's space between them."
+  }],
+  resolution: [
+    {
+      option: "format",
+      label: "Show as",
+      type: "choice",
+      choices: { name: "Name (e.g. 1080p)", dimensions: "Width × height (e.g. 1920×1080)" }
+    },
+    { option: "label", label: "Label", type: "choice", choices: { ...noLabelChoice, ...labelChoices("resolution") } }
+  ]
+};
+function optionsSchema(field) {
+  const controls = optionControls[field];
+  const choices = sceneInfoFieldOptionChoices;
+  return create$3(Object.fromEntries(controls.map((control) => [
+    control.option,
+    control.type === "switch" ? create$7().required() : create$6().oneOf([...choices[field]?.[control.option] ?? []]).required()
+  ])));
+}
+function SceneInfoFieldOptionsModal({ field, options: options2, onClose, onSave }) {
+  const controls = optionControls[field];
+  return /* @__PURE__ */ React$1.createElement(
+    ConfigItemModal,
+    {
+      className: "SceneInfoFieldOptionsModal",
+      operation: "edit",
+      header: /* @__PURE__ */ React$1.createElement("span", null, sceneInfoFieldLabels[field], " options"),
+      initialValues: options2,
+      schema: optionsSchema(field),
+      onClose,
+      onSave: (values3) => onSave(values3)
+    },
+    (formik) => controls.filter((control) => !control.shown || control.shown(formik.values)).map((control) => {
+      const id2 = `scene-info-${field}-${control.option}`;
+      const name2 = control.option;
+      const value = formik.values[name2];
+      return /* @__PURE__ */ React$1.createElement(FormImpl.Group, { key: name2 }, control.type === "switch" ? /* @__PURE__ */ React$1.createElement(
+        Switch,
         {
-          key: studio22.id,
-          href: getStashUrl(`/studios/${studio22.id}`),
-          target: "_blank"
-        },
-        studio22.name
-      );
-      return i3 > 0 ? [
-        /* @__PURE__ */ React$1.createElement(
-          FontAwesomeIcon,
+          id: id2,
+          checked: Boolean(value),
+          label: control.label,
+          onChange: (event2) => formik.setFieldValue(name2, event2.target.checked)
+        }
+      ) : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("label", { id: `${id2}-label` }, control.label), /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement(ButtonGroup, { "aria-labelledby": `${id2}-label` }, Object.entries(control.choices).map(([choice, label]) => {
+        const active = choice === value;
+        return /* @__PURE__ */ React$1.createElement(
+          Button,
           {
-            className: "separator",
-            icon: faAngleLeft,
-            key: i3
+            key: choice,
+            variant: active ? "primary" : "secondary",
+            active,
+            "aria-pressed": active,
+            "aria-label": typeof label === "string" ? void 0 : label.name,
+            title: typeof label === "string" ? void 0 : label.name,
+            onClick: () => formik.setFieldValue(name2, choice)
+          },
+          typeof label === "string" ? label : label.content
+        );
+      })))), control.description && /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, control.description));
+    })
+  );
+}
+let nextEditorId = 0;
+const dragThreshold = 5;
+const ghostField = "\0ghost";
+const shownValuesLabels = {
+  names: "Field name",
+  values: "Field value"
+};
+function layoutId(field) {
+  return `scene-info-field-${field}`;
+}
+function lineHeight(rect) {
+  return rect && rect.bottom - rect.top;
+}
+function mirror(rect) {
+  return { ...rect, left: -rect.right, right: -rect.left };
+}
+function contains(rect, point) {
+  return point.x >= rect.left && point.x <= rect.right && point.y >= rect.top && point.y <= rect.bottom;
+}
+function SceneInfoEditor({
+  scene: scene2,
+  layout,
+  onChange: onChange3,
+  fieldOptionsConfig,
+  onFieldOptionsChange,
+  onReset,
+  isDefault,
+  onSave,
+  onCancel
+}) {
+  const { sceneInfoEditorPillContent: shownValues, set: setGlobalState } = useGlobalState();
+  const setShownValues = (content2) => setGlobalState("sceneInfoEditorPillContent", content2);
+  const [layoutGroupId] = reactExports.useState(() => `scene-info-editor-${nextEditorId++}`);
+  const { orientation: orientation2 } = useWindowSize();
+  const showValues = shownValues === "values";
+  const [optionsEntry, setOptionsEntry] = reactExports.useState(null);
+  const fieldOptions = reactExports.useMemo(() => resolveFieldOptions(fieldOptionsConfig), [fieldOptionsConfig]);
+  const optionsFor = (entry) => typeof entry === "string" ? fieldOptions : resolveFieldOptions(fieldOptionsConfig, entry);
+  const nameOf = (entry) => entryLabel(entry, optionsFor(entry));
+  const editorRef = reactExports.useRef(null);
+  const linesRef = reactExports.useRef(null);
+  const unusedRef = reactExports.useRef(null);
+  const [drag2, setDragState] = reactExports.useState(null);
+  const dragRef = reactExports.useRef(null);
+  const setDrag = (next2) => {
+    dragRef.current = next2;
+    setDragState(next2);
+  };
+  const justDraggedRef = reactExports.useRef(false);
+  const isDragging = !!drag2?.active;
+  const baseLayout = drag2?.from ? placeField(layout, drag2.field, drag2.from, { type: "remove" }, { keepEmptyLines: true }) : layout;
+  const ghostTarget = isDragging && drag2.target?.type === "same-line" && !drag2.insertAt ? drag2.target : null;
+  const shownLayout = isDragging ? placeField(baseLayout, ghostField, null, ghostTarget ?? { type: "remove" }, { keepEmptyLines: true }) : layout;
+  const unused = fieldsNotInLayout(isDragging ? baseLayout : layout);
+  const startingLinesRef = reactExports.useRef([]);
+  const startingLinesTopRef = reactExports.useRef(0);
+  const fromLineHeight = isDragging && drag2.from ? lineHeight(startingLinesRef.current[drag2.from.line]?.rect) : void 0;
+  const layoutRect = (item, containerRect) => {
+    const left2 = containerRect.left + item.offsetLeft;
+    const top2 = containerRect.top + item.offsetTop;
+    return { left: left2, right: left2 + item.offsetWidth, top: top2, bottom: top2 + item.offsetHeight };
+  };
+  const measureLines = () => {
+    const container2 = linesRef.current;
+    if (!container2) return [];
+    const containerRect = container2.getBoundingClientRect();
+    return [...container2.querySelectorAll(":scope > .editor-line")].map((lineElement) => {
+      const side = (name2) => {
+        const box = lineElement.querySelector(`:scope > .line-side.${name2}`);
+        const pills = box ? [...box.querySelectorAll(":scope > .field-pill:not(.ghost)")] : [];
+        return {
+          box: box?.childElementCount ? layoutRect(box, containerRect) : null,
+          fields: pills.map((pill) => layoutRect(pill, containerRect))
+        };
+      };
+      const left2 = side("left");
+      const right2 = side("right");
+      return {
+        // The whole width of the lines, beyond the end of either side
+        rect: { ...layoutRect(lineElement, containerRect), left: containerRect.left, right: containerRect.right },
+        fields: [...left2.fields, ...right2.fields],
+        leftCount: left2.fields.length,
+        leftBox: left2.box,
+        rightBox: right2.box
+      };
+    });
+  };
+  const measureGhost = () => {
+    const container2 = linesRef.current;
+    const ghost = container2?.querySelector(".field-pill.ghost");
+    return container2 && ghost ? layoutRect(ghost, container2.getBoundingClientRect()) : null;
+  };
+  const measureNewLineAt = (line2) => {
+    const container2 = linesRef.current;
+    if (!container2) return null;
+    const lines = measureLines();
+    const containerTop = container2.getBoundingClientRect().top;
+    const lineElement = container2.querySelector(":scope > .editor-line");
+    const halfGap = lineElement ? parseFloat(getComputedStyle(lineElement).marginBottom) || 0 : 0;
+    const above = lines[line2 - 1]?.rect;
+    const below = lines[line2]?.rect;
+    const y3 = above && below ? (above.bottom + below.top) / 2 : above ? above.bottom + halfGap : below ? below.top - halfGap : containerTop + container2.clientHeight / 2;
+    return y3 - containerTop;
+  };
+  const probeHeightsRef = reactExports.useRef(/* @__PURE__ */ new Map());
+  const probeLineHeight = (line2, place, field) => {
+    const container2 = linesRef.current;
+    const lineElement = container2?.querySelectorAll(":scope > .editor-line")[line2];
+    if (!container2 || !lineElement) return 0;
+    const key = `${container2.clientWidth}:${line2}:${place ? `${place.right}:${place.sideIndex}` : "none"}`;
+    const cached = probeHeightsRef.current.get(key);
+    if (cached !== void 0) return cached;
+    const copy2 = lineElement.cloneNode(true);
+    copy2.removeAttribute("style");
+    copy2.classList.add("height-probe");
+    copy2.setAttribute("aria-hidden", "true");
+    copy2.querySelectorAll(".field-pill.ghost").forEach((ghost) => ghost.remove());
+    copy2.querySelectorAll(":scope > .line-side.right:empty").forEach((side) => side.remove());
+    if (place) {
+      const sideName = place.right ? "right" : "left";
+      let side = copy2.querySelector(`:scope > .line-side.${sideName}`);
+      if (!side) {
+        side = document.createElement("div");
+        side.className = `line-side ${sideName}`;
+        if (place.right) copy2.append(side);
+        else copy2.prepend(side);
+      }
+      side.insertBefore(copyOfDraggedPill(field), side.children[place.sideIndex] ?? null);
+    }
+    container2.append(copy2);
+    const height3 = copy2.getBoundingClientRect().height;
+    copy2.remove();
+    probeHeightsRef.current.set(key, height3);
+    return height3;
+  };
+  const copyOfDraggedPill = (field) => {
+    const editor = editorRef.current;
+    const source2 = editor.querySelector(".drag-overlay .field-pill") ?? editor.querySelector(`.field-pill[data-key="${CSS.escape(entryKey(field))}"]`) ?? editor.querySelector(`.field-pill[data-field="${CSS.escape(entryField(field))}"]`);
+    const pill = document.createElement("div");
+    if (!source2) return pill;
+    pill.className = source2.className;
+    pill.classList.remove("dragged", "ghost");
+    pill.append(...[...source2.childNodes].map((node2) => node2.cloneNode(true)));
+    const removeButton = editor.querySelector(".editor-lines .field-pill .remove-field");
+    if (!pill.querySelector(".remove-field") && removeButton) {
+      if (hasFieldOptions(entryField(field))) {
+        const optionsButton = editor.querySelector(".editor-lines .field-pill .field-options") ?? removeButton;
+        pill.append(optionsButton.cloneNode(true));
+      }
+      pill.append(removeButton.cloneNode(true));
+    }
+    return pill;
+  };
+  const measureInsertAt = (line2, { index: index2, right: right2 }, measured, current) => {
+    const container2 = linesRef.current;
+    if (!container2) return null;
+    const sideIndex = right2 ? index2 - measured.leftCount : index2;
+    const from3 = current.from?.line === line2 ? current.from : null;
+    const fromRight = from3 ? isRightAligned(layout, from3) : false;
+    const asItIs = probeLineHeight(line2, from3 && {
+      right: fromRight,
+      sideIndex: fromRight ? from3.index - lineSides(layout[line2]).left.length : from3.index
+    }, current.field);
+    const withField = probeLineHeight(line2, { right: right2, sideIndex }, current.field);
+    if (from3 ? withField <= asItIs + 0.5 : Math.abs(withField - asItIs) <= 0.5) return null;
+    const containerRect = container2.getBoundingClientRect();
+    const sideBox = container2.querySelectorAll(":scope > .editor-line")[line2]?.querySelector(":scope > .line-side");
+    const gap = sideBox ? parseFloat(getComputedStyle(sideBox).columnGap) || 0 : 0;
+    const sideFields = right2 ? measured.fields.slice(measured.leftCount) : measured.fields.slice(0, measured.leftCount);
+    const next2 = sideFields[sideIndex];
+    const previous = sideFields[sideIndex - 1];
+    const beside = next2 ?? previous ?? measured.rect;
+    const left2 = right2 ? next2 ? next2.right + gap / 2 : previous ? previous.left - gap / 2 : containerRect.right : next2 ? next2.left - gap / 2 : previous ? previous.right + gap / 2 : containerRect.left;
+    return { left: left2 - containerRect.left, top: beside.top - containerRect.top, height: beside.bottom - beside.top };
+  };
+  const measureTarget = (point, current) => {
+    const unusedRect = unusedRef.current?.getBoundingClientRect();
+    if (unusedRect && contains(unusedRect, point)) return { target: { type: "remove" }, arrivedOver: null, newLineAt: null, insertAt: null };
+    const linesRect = linesRef.current?.getBoundingClientRect();
+    const linesMoved = (linesRect?.top ?? 0) - startingLinesTopRef.current;
+    const pointAtStart = { x: point.x, y: point.y - linesMoved };
+    const centre = linesRect ? (linesRect.left + linesRect.right) / 2 : 0;
+    const lineTarget = preferVacatedLine(getDropTarget(pointAtStart, startingLinesRef.current, centre), baseLayout, current.from);
+    if (lineTarget.type === "new-line") return { target: lineTarget, arrivedOver: null, newLineAt: measureNewLineAt(lineTarget.line), insertAt: null };
+    const { line: line2 } = lineTarget;
+    const measured = measureLines()[line2];
+    if (!measured) return { target: { type: "same-line", line: line2, index: 0, right: false }, arrivedOver: null, newLineAt: null, insertAt: null };
+    const place = (index22, right22, arrivedOver) => ({
+      target: { type: "same-line", line: line2, index: index22, right: right22 },
+      arrivedOver,
+      newLineAt: null,
+      insertAt: measureInsertAt(line2, { index: index22, right: right22 }, measured, current)
+    });
+    const where = sideAt(point.x, measured.rect, measured.leftBox, measured.rightBox);
+    if (where.side === "space") return place(where.right ? measured.fields.length : measured.leftCount, where.right, null);
+    const right2 = where.side === "right";
+    const offset3 = right2 ? measured.leftCount : 0;
+    const flip2 = right2 ? mirror : (rect) => rect;
+    const fields = (right2 ? measured.fields.slice(measured.leftCount) : measured.fields.slice(0, measured.leftCount)).map(flip2);
+    const sidePoint = right2 ? { x: -point.x, y: point.y } : point;
+    const ghost = measureGhost();
+    const onLine = current.target?.type === "same-line" && current.target.line === line2 ? current.target : null;
+    if (onLine && current.insertAt) {
+      return place(offset3 + getSlotByMidpoints(sidePoint, fields), right2, null);
+    }
+    const fromSide = (index22) => index22 === null ? null : index22 + offset3;
+    if (onLine && onLine.right === right2) {
+      const direction = Math.sign(point.x - current.lastX) * (right2 ? -1 : 1);
+      const arrivedOver = current.arrivedOver !== null && current.arrivedOver >= offset3 ? current.arrivedOver - offset3 : null;
+      const { index: index22, ignore } = getSlotNearGhost(sidePoint, direction, fields, onLine.index - offset3, arrivedOver, ghost && flip2(ghost));
+      return place(offset3 + index22, right2, fromSide(ignore));
+    }
+    const { index: index2, over } = getSlotOnArrival(sidePoint, fields);
+    return place(offset3 + index2, right2, fromSide(over));
+  };
+  const startDrag = (event2, field, key, from3) => {
+    if (event2.button !== 0 || dragRef.current) return;
+    const pillRect = event2.currentTarget.getBoundingClientRect();
+    probeHeightsRef.current.clear();
+    setDrag({
+      field,
+      key,
+      from: from3,
+      pointerId: event2.pointerId,
+      startX: event2.clientX,
+      startY: event2.clientY,
+      active: false,
+      grab: { x: event2.clientX - pillRect.left, y: event2.clientY - pillRect.top, width: pillRect.width },
+      newLineAt: null,
+      insertAt: null,
+      startingHeights: null,
+      position: { left: 0, top: 0 },
+      target: null,
+      lastX: event2.clientX,
+      arrivedOver: null
+    });
+  };
+  const pointerHandlersRef = reactExports.useRef({ move: () => {
+  }, end: () => {
+  } });
+  pointerHandlersRef.current = {
+    move: (event2) => {
+      const current = dragRef.current;
+      if (!current || event2.pointerId !== current.pointerId) return;
+      if (!current.active && Math.hypot(event2.clientX - current.startX, event2.clientY - current.startY) < dragThreshold) return;
+      const editorRect = editorRef.current?.getBoundingClientRect();
+      const position2 = {
+        left: event2.clientX - current.grab.x - (editorRect?.left ?? 0),
+        top: event2.clientY - current.grab.y - (editorRect?.top ?? 0)
+      };
+      let measured;
+      if (!current.active) {
+        startingLinesRef.current = measureLines();
+        startingLinesTopRef.current = linesRef.current?.getBoundingClientRect().top ?? 0;
+        measured = current.from ? { target: { type: "same-line", ...current.from, right: isRightAligned(layout, current.from) }, arrivedOver: null, newLineAt: null, insertAt: null } : measureTarget({ x: event2.clientX, y: event2.clientY }, current);
+      } else {
+        measured = measureTarget({ x: event2.clientX, y: event2.clientY }, current);
+      }
+      const startingHeights = current.startingHeights ?? {
+        lines: linesRef.current?.offsetHeight ?? 0,
+        unused: unusedRef.current?.offsetHeight ?? 0
+      };
+      setDrag({ ...current, ...measured, active: true, position: position2, lastX: event2.clientX, startingHeights });
+    },
+    end: (event2) => {
+      const current = dragRef.current;
+      if (!current || event2.pointerId !== current.pointerId) return;
+      reactDomExports.unstable_batchedUpdates(() => {
+        if (current.active) {
+          justDraggedRef.current = true;
+          setTimeout(() => justDraggedRef.current = false);
+          if (current.target) onChange3(placeField(baseLayout, current.field, null, current.target));
+        }
+        setDrag(null);
+      });
+    }
+  };
+  const [wrappedRows, setWrappedRows] = reactExports.useState([]);
+  const measureWrappedRows = () => {
+    const container2 = linesRef.current;
+    if (!container2) return;
+    const containerRect = container2.getBoundingClientRect();
+    const nextRows = measureLines().flatMap(({ fields, leftCount }, line2) => ["left", "right"].flatMap((side) => {
+      const sideFields = side === "left" ? fields.slice(0, leftCount) : fields.slice(leftCount).map(mirror);
+      const first = sideFields.findIndex((field, index2) => index2 > 0 && startsRow(field, sideFields[index2 - 1]));
+      if (first === -1) return [];
+      const top2 = Math.min(...sideFields.slice(first).map((field) => field.top));
+      const bottom2 = Math.max(...sideFields.slice(first).map((field) => field.bottom));
+      return [{ line: line2, side, top: top2 - containerRect.top, height: bottom2 - top2 }];
+    }));
+    setWrappedRows((previous) => JSON.stringify(previous) === JSON.stringify(nextRows) ? previous : nextRows);
+  };
+  reactExports.useLayoutEffect(measureWrappedRows);
+  const targetLine = isDragging && drag2.target?.type === "same-line" ? drag2.target.line : null;
+  reactExports.useEffect(() => {
+    const container2 = linesRef.current;
+    if (!container2) return;
+    const observer = new ResizeObserver(() => measureWrappedRows());
+    observer.observe(container2);
+    return () => observer.disconnect();
+  }, []);
+  const hasDrag = drag2 !== null;
+  reactExports.useEffect(() => {
+    if (!hasDrag) return;
+    const move = (event2) => pointerHandlersRef.current.move(event2);
+    const end2 = (event2) => pointerHandlersRef.current.end(event2);
+    const cancel = () => setDrag(null);
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerup", end2);
+    window.addEventListener("pointercancel", cancel);
+    return () => {
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", end2);
+      window.removeEventListener("pointercancel", cancel);
+    };
+  }, [hasDrag]);
+  const linePill = ({ field, key, line: line2, from: from3, isGhost, rightAligned = false }) => /* @__PURE__ */ React$1.createElement(
+    Badge,
+    {
+      as: motion.div,
+      layout: "position",
+      layoutId: layoutId(key),
+      variant: "secondary",
+      pill: true,
+      key,
+      className: cx("tag-item", "field-pill", {
+        unknown: !isKnownField(entryField(field)),
+        ghost: isGhost,
+        "spacer-pill": entryField(field) === "spacer"
+      }),
+      "data-field": entryField(field),
+      "data-key": entryKey(field),
+      "data-line": line2 ?? void 0,
+      "aria-hidden": isGhost || void 0,
+      onPointerDown: from3 ? (event2) => startDrag(event2, field, key, from3) : void 0
+    },
+    /* @__PURE__ */ React$1.createElement(PillContent, { field, scene: scene2, fieldOptions: optionsFor(field), showValues, rightAligned }),
+    line2 !== null && hasFieldOptions(entryField(field)) && /* @__PURE__ */ React$1.createElement(
+      Button,
+      {
+        className: "pill-button field-options",
+        "aria-label": `${nameOf(field)} options`,
+        tabIndex: isGhost ? -1 : void 0,
+        onClick: () => {
+          if (justDraggedRef.current || !from3) return;
+          setOptionsEntry(field);
+        }
+      },
+      /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPenToSquare })
+    ),
+    line2 !== null && /* @__PURE__ */ React$1.createElement(
+      Button,
+      {
+        className: "pill-button remove-field",
+        "aria-label": `Remove ${nameOf(field)}`,
+        tabIndex: isGhost ? -1 : void 0,
+        onClick: () => {
+          if (justDraggedRef.current || !from3) return;
+          onChange3(placeField(layout, field, from3, { type: "remove" }));
+        }
+      },
+      /* @__PURE__ */ React$1.createElement(XLg, null)
+    )
+  );
+  return /* @__PURE__ */ React$1.createElement(LayoutGroup, { id: layoutGroupId }, /* @__PURE__ */ React$1.createElement(
+    "div",
+    {
+      className: cx("editor", { dragging: isDragging, "showing-values": showValues, "side-by-side": orientation2 === "landscape" }),
+      ref: editorRef
+    },
+    /* @__PURE__ */ React$1.createElement(motion.div, { layout: "position", className: "editor-toolbar" }, /* @__PURE__ */ React$1.createElement("div", { className: "shown-values" }, /* @__PURE__ */ React$1.createElement("span", { "aria-hidden": true }, "Show…"), /* @__PURE__ */ React$1.createElement(ButtonGroup, { "aria-label": "Show" }, ["names", "values"].map((option) => {
+      const active = option === shownValues;
+      return /* @__PURE__ */ React$1.createElement(
+        Button,
+        {
+          key: option,
+          variant: active ? "primary" : "secondary",
+          active,
+          "aria-pressed": active,
+          onClick: () => setShownValues(option)
+        },
+        shownValuesLabels[option]
+      );
+    }))), /* @__PURE__ */ React$1.createElement("div", { className: "editor-actions" }, !isDefault && /* @__PURE__ */ React$1.createElement(Button, { variant: "outline-warning", className: "reset", onClick: onReset }, "Reset to default"), /* @__PURE__ */ React$1.createElement(Button, { variant: "secondary", className: "cancel", onClick: onCancel }, "Cancel"), /* @__PURE__ */ React$1.createElement(Button, { className: "save", onClick: onSave }, "Save"))),
+    /* @__PURE__ */ React$1.createElement(
+      "div",
+      {
+        className: "editor-lines",
+        ref: linesRef,
+        style: isDragging && drag2.startingHeights ? { minHeight: drag2.startingHeights.lines } : void 0
+      },
+      (() => {
+        const seen = /* @__PURE__ */ new Map();
+        return shownLayout.map((line2, lineIndex) => {
+          const { left: left2, right: right2 } = lineSides(line2);
+          const pill = (field, index2) => {
+            const rightAligned = index2 >= left2.length;
+            if (field === ghostField && drag2) {
+              return linePill({ field: drag2.field, key: drag2.key, line: lineIndex, from: null, isGhost: true, rightAligned });
+            }
+            const from3 = { line: lineIndex, index: index2 };
+            const key = entryKey(field);
+            const occurrence = seen.get(key) ?? 0;
+            seen.set(key, occurrence + 1);
+            return linePill({ field, key: occurrence ? `${key}-${occurrence}` : key, line: lineIndex, from: from3, isGhost: false, rightAligned });
+          };
+          const vacated = !left2.length && !right2.length;
+          return /* @__PURE__ */ React$1.createElement(
+            "div",
+            {
+              key: lineIndex,
+              className: cx("editor-line", { "vacated-line": vacated, target: lineIndex === targetLine }),
+              "data-line": lineIndex,
+              style: lineIndex === drag2?.from?.line && fromLineHeight !== void 0 ? { minHeight: fromLineHeight } : void 0
+            },
+            !vacated && /* @__PURE__ */ React$1.createElement("div", { className: "line-side left" }, left2.map((field, index2) => pill(field, index2))),
+            right2.length > 0 && /* @__PURE__ */ React$1.createElement("div", { className: "line-side right" }, right2.map((field, index2) => pill(field, left2.length + index2)))
+          );
+        });
+      })(),
+      !shownLayout.length && /* @__PURE__ */ React$1.createElement("div", { className: "editor-empty" }, "No fields shown. Drag some up from below."),
+      wrappedRows.map(({ line: line2, side, top: top2, height: height3 }) => (
+        // In the indent of the side's later rows, one for all of them. Slides with them, like the pills.
+        /* @__PURE__ */ React$1.createElement(motion.div, { layout: "position", key: `${line2}-${side}`, className: cx("wrapped-line-marker", side), style: { top: top2, height: height3 }, "aria-hidden": true }, side === "left" ? /* @__PURE__ */ React$1.createElement(ArrowReturnRight, null) : /* @__PURE__ */ React$1.createElement(ArrowReturnLeft, null))
+      )),
+      isDragging && drag2.target?.type === "same-line" && drag2.insertAt && /* @__PURE__ */ React$1.createElement(
+        "div",
+        {
+          className: "insertion-line",
+          style: drag2.insertAt,
+          "aria-hidden": true
+        }
+      ),
+      isDragging && drag2.target?.type === "new-line" && drag2.newLineAt !== null && /* @__PURE__ */ React$1.createElement(
+        "div",
+        {
+          className: cx("ghost-line", { right: drag2.target.right }),
+          style: { top: drag2.newLineAt },
+          "aria-hidden": true
+        }
+      )
+    ),
+    /* @__PURE__ */ React$1.createElement(
+      motion.div,
+      {
+        layout: "position",
+        className: cx("unused-fields", { "drop-to-remove": isDragging && drag2.from && drag2.target?.type === "remove" }),
+        style: isDragging && drag2.startingHeights ? { minHeight: drag2.startingHeights.unused } : void 0,
+        ref: unusedRef
+      },
+      /* @__PURE__ */ React$1.createElement("p", { className: "hint" }, "Drag the fields you want to show into the section above"),
+      /* @__PURE__ */ React$1.createElement("div", { className: "unused-field-list" }, unused.map((field) => isDragging && field === entryKey(drag2.field) ? drag2.target?.type === "remove" && linePill({ field: drag2.field, key: drag2.key, line: null, from: null, isGhost: true }) : /* @__PURE__ */ React$1.createElement(
+        Badge,
+        {
+          as: motion.button,
+          layout: "position",
+          layoutId: layoutId(field),
+          type: "button",
+          variant: "secondary",
+          pill: true,
+          key: field,
+          className: cx("tag-item", "field-pill", { "spacer-pill": field === "spacer" }),
+          "data-field": field,
+          "aria-label": `Add ${nameOf(field)}`,
+          onPointerDown: (event2) => {
+            const entry = isRepeatableField(field) ? newFieldInstance(field) : field;
+            startDrag(event2, entry, entryKey(entry), null);
+          },
+          onClick: () => {
+            if (justDraggedRef.current) return;
+            const entry = isRepeatableField(field) ? newFieldInstance(field) : field;
+            onChange3(placeField(layout, entry, null, { type: "new-line", line: layout.length, right: false }));
           }
-        ),
-        renderedStudio
-      ] : renderedStudio;
-    }).flat()) : null;
-    scene2.title ? /* @__PURE__ */ React$1.createElement("h5", null, scene2.title) : null;
-    let sceneUrl = scene2.paths.stream?.split("/stream")[0]?.replace("/scene", "/scenes");
+        },
+        /* @__PURE__ */ React$1.createElement(PillContent, { field, scene: scene2, fieldOptions, showValues })
+      )))
+    ),
+    isDragging && /* @__PURE__ */ React$1.createElement(
+      "div",
+      {
+        className: "drag-overlay",
+        style: { left: drag2.position.left, top: drag2.position.top, width: drag2.grab.width }
+      },
+      /* @__PURE__ */ React$1.createElement(Badge, { as: "div", variant: "secondary", pill: true, className: cx("tag-item", "field-pill", "dragged", { "spacer-pill": entryField(drag2.field) === "spacer" }) }, /* @__PURE__ */ React$1.createElement(PillContent, { field: drag2.field, scene: scene2, fieldOptions: optionsFor(drag2.field), showValues }), drag2.from && hasFieldOptions(entryField(drag2.field)) && /* @__PURE__ */ React$1.createElement("span", { className: "pill-button field-options btn" }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPenToSquare })), drag2.from && /* @__PURE__ */ React$1.createElement("span", { className: "pill-button remove-field btn" }, /* @__PURE__ */ React$1.createElement(XLg, null)))
+    ),
+    optionsEntry && (() => {
+      const field = entryField(optionsEntry);
+      if (!hasFieldOptions(field)) return null;
+      return /* @__PURE__ */ React$1.createElement(
+        SceneInfoFieldOptionsModal,
+        {
+          field,
+          options: optionsFor(optionsEntry)[field],
+          onClose: () => setOptionsEntry(null),
+          onSave: (options2) => {
+            if (typeof optionsEntry === "string") onFieldOptionsChange(field, options2);
+            else onChange3(replaceEntry(layout, entryKey(optionsEntry), { ...optionsEntry, options: { ...options2 } }));
+            setOptionsEntry(null);
+          }
+        }
+      );
+    })()
+  ));
+}
+function PillContent({ field: entry, scene: scene2, fieldOptions, showValues, rightAligned }) {
+  const field = entryField(entry);
+  const isUnusedRepeatable = typeof entry === "string" && isRepeatableField(field);
+  if (!isKnownField(field) || !showValues || isUnusedRepeatable) {
+    return /* @__PURE__ */ React$1.createElement("span", { className: "pill-name" }, entryLabel(entry, fieldOptions));
+  }
+  return /* @__PURE__ */ React$1.createElement("span", { className: "pill-value", "data-empty-label": noValueLabel(field) }, /* @__PURE__ */ React$1.createElement(SceneInfoField, { field, scene: scene2, fieldOptions, rightAligned, preview: true }));
+}
+const SceneInfo = reactExports.forwardRef(
+  ({ scene: scene2, open, className, style: style2, onExternalLinkClick }, ref) => {
+    const { sceneInfoLayout, sceneInfoFieldOptions, set: setTvConfig, getDefault: getTvConfigDefault } = useTvConfig();
+    const { sceneInfoDraft: draft, set: setGlobalState } = useGlobalState();
+    const setDraft = (newDraft) => setGlobalState("sceneInfoDraft", newDraft);
+    const editing = draft !== null;
+    const fieldOptions = reactExports.useMemo(() => resolveFieldOptions(sceneInfoFieldOptions), [sceneInfoFieldOptions]);
+    const draftFieldOptions = reactExports.useMemo(() => draft && resolveFieldOptions(draft.fieldOptions), [draft?.fieldOptions]);
+    reactExports.useEffect(() => {
+      if (!open) setGlobalState("sceneInfoDraft", null);
+    }, [open]);
     return /* @__PURE__ */ React$1.createElement(
       "div",
       {
-        className: cx("SceneInfo", "hide-on-ui-hide", className),
+        className: cx("SceneInfo", "hide-on-ui-hide", { active: open, editing }, className),
         "data-testid": "MediaSlide--sceneInfo",
         style: style2,
         ref,
@@ -220625,16 +222303,111 @@ const SceneInfo = reactExports.forwardRef(
           event2.stopPropagation();
         }
       },
-      studio2,
-      /* @__PURE__ */ React$1.createElement("a", { href: sceneUrl || "", target: "_blank", onClick: onExternalLinkClick }, /* @__PURE__ */ React$1.createElement("h5", null, objectTitle(scene2))),
-      performers2,
-      date2
+      editing ? /* @__PURE__ */ React$1.createElement(motion.div, { layout: true, className: "panel-background", "aria-hidden": true }) : /* @__PURE__ */ React$1.createElement("div", { className: "panel-background", "aria-hidden": true }),
+      /* @__PURE__ */ React$1.createElement(PanelContent, { editing }, draft && draftFieldOptions ? /* @__PURE__ */ React$1.createElement(
+        SceneInfoEditor,
+        {
+          scene: scene2,
+          layout: draft.layout,
+          onChange: (layout) => setDraft({ ...draft, layout }),
+          fieldOptionsConfig: draft.fieldOptions,
+          onFieldOptionsChange: (field, options2) => setDraft({ ...draft, fieldOptions: { ...draft.fieldOptions, [field]: { ...options2 } } }),
+          onReset: () => setDraft({ layout: getTvConfigDefault("sceneInfoLayout"), fieldOptions: getTvConfigDefault("sceneInfoFieldOptions") }),
+          isDefault: JSON.stringify(draft.layout) === JSON.stringify(getTvConfigDefault("sceneInfoLayout")) && JSON.stringify(draftFieldOptions) === JSON.stringify(defaultSceneInfoFieldOptions),
+          onSave: () => {
+            setTvConfig("sceneInfoLayout", draft.layout);
+            setTvConfig("sceneInfoFieldOptions", draft.fieldOptions);
+            setDraft(null);
+          },
+          onCancel: () => setDraft(null)
+        }
+      ) : /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
+        Button,
+        {
+          variant: "link",
+          className: "edit-toggle",
+          onClick: () => setDraft({ layout: sceneInfoLayout, fieldOptions: sceneInfoFieldOptions }),
+          "aria-label": "Customise info panel",
+          title: "Customise info panel"
+        },
+        /* @__PURE__ */ React$1.createElement(Pencil, null)
+      ), /* @__PURE__ */ React$1.createElement(
+        FieldLines,
+        {
+          layout: sceneInfoLayout,
+          scene: scene2,
+          fieldOptionsConfig: sceneInfoFieldOptions,
+          fieldOptions,
+          onExternalLinkClick
+        }
+      )))
     );
   }
 );
-const getStashUrl = (path2) => {
-  return path2;
-};
+const spacerSizes = ["small", "medium", "big"];
+function collapseSpacers(lines) {
+  let run6 = [];
+  let shownBefore = false;
+  const collapseRun = (keepOne) => {
+    const biggest = keepOne ? run6.reduce((best, spacer) => spacer.size > best.size ? spacer : best, run6[0]) : null;
+    for (const { line: line2 } of run6) line2.classList.toggle("collapsed-spacer", line2 !== biggest?.line);
+    run6 = [];
+  };
+  for (const line2 of lines.children) {
+    line2.classList.remove("collapsed-spacer");
+    const fields = [...line2.querySelectorAll(":scope > .line-fields > .field")];
+    if (!fields.length) continue;
+    if (fields.every((field) => field.classList.contains("field-spacer"))) {
+      const size2 = Math.max(...fields.map((field) => spacerSizes.findIndex((size22) => field.classList.contains(`spacer-${size22}`))));
+      run6.push({ line: line2, size: size2 });
+      continue;
+    }
+    if (run6.length) collapseRun(shownBefore);
+    shownBefore = true;
+  }
+  if (run6.length) collapseRun(false);
+}
+function FieldLines({ layout, scene: scene2, fieldOptionsConfig, fieldOptions, onExternalLinkClick }) {
+  const ref = reactExports.useRef(null);
+  reactExports.useLayoutEffect(() => {
+    if (ref.current) collapseSpacers(ref.current);
+  });
+  return /* @__PURE__ */ React$1.createElement("div", { className: "field-lines", ref }, layout.map((line2, lineIndex) => {
+    const { left: left2, right: right2 } = lineSides(line2);
+    const fields = (entries, rightAligned) => entries.map((entry) => {
+      const field = entryField(entry);
+      if (!isKnownField(field)) return null;
+      return /* @__PURE__ */ React$1.createElement(
+        SceneInfoField,
+        {
+          key: entryKey(entry),
+          field,
+          scene: scene2,
+          fieldOptions: typeof entry === "string" ? fieldOptions : resolveFieldOptions(fieldOptionsConfig, entry),
+          rightAligned,
+          onExternalLinkClick
+        }
+      );
+    });
+    return /* @__PURE__ */ React$1.createElement("div", { className: "field-line", key: lineIndex }, /* @__PURE__ */ React$1.createElement("div", { className: "line-fields" }, fields(left2, false)), right2.length > 0 && /* @__PURE__ */ React$1.createElement("div", { className: "line-fields right-aligned-fields" }, fields(right2, true)));
+  }));
+}
+function PanelContent({ editing, children }) {
+  const ref = reactExports.useRef(null);
+  const [overflowing, setOverflowing] = reactExports.useState(false);
+  reactExports.useLayoutEffect(() => {
+    const content2 = ref.current;
+    if (!editing || !content2) return;
+    const measure = () => setOverflowing(content2.scrollHeight > content2.clientHeight + 1);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(content2);
+    for (const child of content2.children) observer.observe(child);
+    return () => observer.disconnect();
+  }, [editing]);
+  const className = cx("panel-content", { scrollable: !editing || overflowing });
+  return editing ? /* @__PURE__ */ React$1.createElement(motion.div, { layoutScroll: true, ref, className }, children) : /* @__PURE__ */ React$1.createElement("div", { ref, className }, children);
+}
 const ClipTimestamp = reactExports.memo(({ type: type3, progressPercentage: progressPercentage2 }) => {
   return /* @__PURE__ */ React$1.createElement(
     "div",
@@ -222400,40 +224173,6 @@ function useGamepadStatus() {
 }
 const TOGGLE_VIDEO_EVENT = "toggle-video";
 const PAUSE_VIDEO_EVENT = "pause-video";
-const getViewportScrollbarWidth = () => window.innerWidth - (window.visualViewport?.width ?? document.documentElement.clientWidth);
-let viewportScrollbarWidth = getViewportScrollbarWidth();
-const Modal = (props) => {
-  reactExports.useMemo(() => {
-    viewportScrollbarWidth = getViewportScrollbarWidth();
-  }, [props.show]);
-  reactExports.useEffect(() => {
-    const observer = new MutationObserver(() => {
-      const modalOpen = document.body.classList.contains("modal-open");
-      const fixedRightPadding = modalOpen ? viewportScrollbarWidth : 0;
-      document.documentElement.style.setProperty("--fixed-right-padding", `${fixedRightPadding}px`);
-    });
-    observer.observe(document.body, {
-      attributes: true,
-      attributeFilter: ["class"]
-    });
-    return () => observer.disconnect();
-  }, []);
-  return /* @__PURE__ */ React$1.createElement(
-    Modal$1,
-    {
-      ...props,
-      className: cx("Modal", props.className)
-    }
-  );
-};
-Modal.displayName = "Modal";
-Modal.Body = BootstrapModalBody;
-Modal.Header = ModalHeader;
-Modal.Title = BootstrapModalTitle;
-Modal.Footer = BootstrapModalFooter;
-Modal.Dialog = ModalDialog;
-Modal.TRANSITION_DURATION = 300;
-Modal.BACKDROP_TRANSITION_DURATION = 150;
 function useSyncPlayerWithPreferredStream({
   playerRef,
   enabled = true
@@ -223148,7 +224887,7 @@ const MediaSlideContent = (props) => {
           {
             ref: sceneInfoPanelRef,
             scene: scene2,
-            className: cx({ active: sceneInfoOpen }),
+            open: sceneInfoOpen,
             onExternalLinkClick: () => videojsPlayerRef.current?.pause()
           }
         ),
@@ -227624,7 +229363,7 @@ function useSprings(length2, props, deps) {
     () => propsFn || arguments.length == 3 ? SpringRef() : void 0,
     []
   );
-  const layoutId = reactExports.useRef(0);
+  const layoutId2 = reactExports.useRef(0);
   const forceUpdate = useForceUpdate();
   const state = reactExports.useMemo(
     () => ({
@@ -227632,7 +229371,7 @@ function useSprings(length2, props, deps) {
       queue: [],
       flush(ctrl, updates2) {
         const springs2 = getSprings(ctrl, updates2);
-        const canFlushSync = layoutId.current > 0 && !state.queue.length && !Object.keys(springs2).some((key) => !ctrl.springs[key]);
+        const canFlushSync = layoutId2.current > 0 && !state.queue.length && !Object.keys(springs2).some((key) => !ctrl.springs[key]);
         return canFlushSync ? flushUpdateQueue(ctrl, updates2) : new Promise((resolve) => {
           setSprings(ctrl, springs2);
           state.queue.push(() => {
@@ -227674,7 +229413,7 @@ function useSprings(length2, props, deps) {
   const prevContext = usePrev(context2);
   const hasContext = context2 !== prevContext && hasProps(context2);
   useIsomorphicLayoutEffect(() => {
-    layoutId.current++;
+    layoutId2.current++;
     state.ctrls = ctrls.current;
     const { queue: queue2 } = state;
     if (queue2.length) {
@@ -228450,24 +230189,6 @@ function AddConfigItemButton({
     /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faAdd }),
     /* @__PURE__ */ React$1.createElement("div", { className: "info" }, icon2, title2)
   );
-}
-function ConfigItemModal({
-  className,
-  header,
-  operation,
-  initialValues,
-  schema: schema2,
-  onClose,
-  onSave,
-  children
-}) {
-  const formik = useFormik({
-    initialValues,
-    enableReinitialize: true,
-    validate: yupFormikValidate(schema2),
-    onSubmit: (values3) => onSave(schema2.cast(values3))
-  });
-  return /* @__PURE__ */ React$1.createElement(Modal, { show: true, onHide: () => onClose(), title: "", className: cx("ConfigItemModal", className) }, /* @__PURE__ */ React$1.createElement(Modal.Header, null, header), /* @__PURE__ */ React$1.createElement(Modal.Body, null, /* @__PURE__ */ React$1.createElement("div", { className: "dialog-content" }, children(formik))), /* @__PURE__ */ React$1.createElement(Modal.Footer, null, /* @__PURE__ */ React$1.createElement(Button, { variant: "secondary", onClick: () => onClose() }, "Cancel"), /* @__PURE__ */ React$1.createElement(Button, { variant: "primary", onClick: () => formik.submitForm() }, operation === "add" ? "Add" : "Save")));
 }
 const logger = getLogger(["stash-tv", "ActionButtonSettingsModal"]);
 const ActionButtonSettingsModal = ({ initialActionButtonConfig, operation, onClose, onSave }) => {
@@ -229327,7 +231048,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setGlobalState("keyboardShortcutsOpen", true)
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.24.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.25.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -242324,4 +244045,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-DZVv6Ztm.js.map
+//# sourceMappingURL=index-DxgDl_xk.js.map
