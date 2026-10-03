@@ -221817,38 +221817,40 @@ function getFilterName(objectFilter) {
 function withObjectFilter(filter2, objectFilter) {
   return { ...filter2, name: getFilterName(objectFilter), object_filter: objectFilter };
 }
+function makeEntityCriterion(entityType, entity) {
+  const { modifier, depth } = entityCriteria[entityType];
+  return { modifier, value: { items: [toLabeledId(entity)], excluded: [], ...depth !== void 0 ? { depth } : {} } };
+}
 function makeEntityFilter(entityType, entity) {
-  const { criterion: criterion2, modifier, depth } = entityCriteria[entityType];
   return withObjectFilter({ mode: FilterMode.Scenes, name: "" }, {
-    [criterion2]: {
-      modifier,
-      value: { items: [toLabeledId(entity)], excluded: [], ...depth !== void 0 ? { depth } : {} }
-    }
+    [entityCriteria[entityType].criterion]: makeEntityCriterion(entityType, entity)
   });
 }
 function canAddEntityToFilter(filter2, entityType, entity) {
-  if (!entityCriteria[entityType].combinable) return false;
-  const criterion2 = filter2 && getCriterion(filter2, entityType);
+  if (!filter2) return false;
+  const { criterion: criterionName, combinable } = entityCriteria[entityType];
+  if (filter2.object_filter?.[criterionName] === void 0) return true;
+  const criterion2 = getCriterion(filter2, entityType);
   const items = criterion2?.value?.items;
-  if (!criterion2 || !items?.length) return false;
+  if (!criterion2 || !items) return false;
+  if (items.some((item) => item.id === entity.id)) return false;
+  if (!items.length) return true;
   const requiresAll = criterion2.modifier === CriterionModifier.IncludesAll || criterion2.modifier === CriterionModifier.Includes && items.length === 1;
-  return requiresAll && !items.some((item) => item.id === entity.id);
+  return combinable && requiresAll;
 }
 function addEntityToFilter(filter2, entityType, entity) {
   const { criterion: criterionName } = entityCriteria[entityType];
   const criterion2 = getCriterion(filter2, entityType);
-  if (!criterion2?.value) return filter2;
   return withObjectFilter(filter2, {
     ...filter2.object_filter,
-    [criterionName]: {
+    [criterionName]: criterion2?.value?.items.length ? {
       ...criterion2,
       modifier: CriterionModifier.IncludesAll,
       value: { ...criterion2.value, items: [...criterion2.value.items, toLabeledId(entity)] }
-    }
+    } : makeEntityCriterion(entityType, entity)
   });
 }
 function canRemoveEntityFromFilter(filter2, entityType, entity) {
-  if (!entityCriteria[entityType].combinable) return false;
   const items = filter2 && getCriterion(filter2, entityType)?.value?.items;
   if (!filter2 || !items?.some((item) => item.id === entity.id)) return false;
   const otherCriteria = Object.keys(filter2.object_filter ?? {}).filter((name2) => name2 !== entityCriteria[entityType].criterion);
@@ -232350,7 +232352,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setGlobalState("keyboardShortcutsOpen", true)
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.26.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.27.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -245347,4 +245349,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-DpOs_09Q.js.map
+//# sourceMappingURL=index-BJgwrtf7.js.map
