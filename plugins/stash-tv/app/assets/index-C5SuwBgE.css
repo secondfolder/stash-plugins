@@ -13367,8 +13367,17 @@ html:has(dialog[open]) .video-js .vjs-big-play-button {
   flex-direction: column;
   justify-content: end;
   align-items: end;
-  z-index: 3;
+  /* Over the scene info panel, even while it's being edited and lifted over the video's controls (see SceneInfo.css) */
+  z-index: 4;
   max-height: calc(var(--y-unit-small) * 100 - var(--bottom-offset));
+  /* Only its buttons take the pointer. Its scrolling area is wider than they are (room for their shadows and the scroll
+  bar), and reaches over what's beside the stack (e.g. the scene info panel's edit button), which it would otherwise
+  take clicks from. Scrolling it by touch or wheel over its buttons still works, as their events bubble to it. */
+  pointer-events: none;
+
+  .ActionButton, .folder {
+    pointer-events: auto;
+  }
 
   &.left-handed {
     --side-offset: calc(0.8em + (var(--crt-inset-right) / 2));
@@ -13733,6 +13742,63 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   }
 }
 
+/* A button rendered as just its icon, for a folder's preview (see ActionButtonFolderContext) */
+.ActionButton.icon-only {
+  display: block;
+  height: auto;
+
+  .folder-icon, .ActionButtonIcon {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.ActionButtonIcon {
+  /* Keeps the icons of action buttons legible over any video. The variables can be set on an ancestor to scale the shadow
+  for smaller icons (see folder previews in ActionButtonStack.css), or on the icon itself to adjust its weight. */
+  .ActionButton & {
+    filter:
+      drop-shadow(calc(var(--shadow-offset, 4px) * 1)  calc(var(--shadow-offset, 4px) * 1)  var(--shadow-blur, 4px) rgba(0, 0, 0, var(--shadow-layer-opacity, 0.2)))
+      drop-shadow(calc(var(--shadow-offset, 4px) * -1) calc(var(--shadow-offset, 4px) * -1) var(--shadow-blur, 4px) rgba(0, 0, 0, var(--shadow-layer-opacity, 0.2)))
+      drop-shadow(calc(var(--shadow-offset, 4px) * 1)  calc(var(--shadow-offset, 4px) * -1) var(--shadow-blur, 4px) rgba(0, 0, 0, var(--shadow-layer-opacity, 0.2)))
+      drop-shadow(calc(var(--shadow-offset, 4px) * -1) calc(var(--shadow-offset, 4px) * 1)  var(--shadow-blur, 4px) rgba(0, 0, 0, var(--shadow-layer-opacity, 0.2)));
+
+    /* Compensate for icons with less mass having visually lighter shadows */
+    &.fa-expand {
+      --shadow-layer-opacity: 0.24;
+    }
+
+    &.fa-down-left-and-up-right-to-center {
+      --shadow-layer-opacity: 0.14;
+    }
+
+    &.fa-repeat {
+      --shadow-layer-opacity: 0.19;
+    }
+
+    &.fa-ellipsis-vertical {
+      --shadow-layer-opacity: 0.15;
+    }
+
+    &.icon-fullscreen {
+      --shadow-layer-opacity: 0.3;
+    }
+  }
+
+  &.size-standard {
+    width: auto;
+    height: auto;
+  }
+  &.size-small {
+    width: 1.9em;
+    height: 1.9em;
+  }
+  &.size-max {
+    width: 100%;
+    height: 100%;
+  }
+}
 @keyframes slideInFromRight {
   from {
     translate: 0.5em;
@@ -13762,7 +13828,7 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   }
 }
 
-.popover.action-button-side-panel {
+.popover.PopoverPanel {
   background: var(--body-bg);
   color: var(--text-color);
   padding: 0.7em 0.9em;
@@ -13835,64 +13901,6 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
      Bootstrap's input group buttons (z-index 2), so lift the menu itself */
   .react-select__menu {
     z-index: 10;
-  }
-}
-
-/* A button rendered as just its icon, for a folder's preview (see ActionButtonFolderContext) */
-.ActionButton.icon-only {
-  display: block;
-  height: auto;
-
-  .folder-icon, .ActionButtonIcon {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.ActionButtonIcon {
-  /* Keeps the icons of action buttons legible over any video. The variables can be set on an ancestor to scale the shadow
-  for smaller icons (see folder previews in ActionButtonStack.css), or on the icon itself to adjust its weight. */
-  .ActionButton & {
-    filter:
-      drop-shadow(calc(var(--shadow-offset, 4px) * 1)  calc(var(--shadow-offset, 4px) * 1)  var(--shadow-blur, 4px) rgba(0, 0, 0, var(--shadow-layer-opacity, 0.2)))
-      drop-shadow(calc(var(--shadow-offset, 4px) * -1) calc(var(--shadow-offset, 4px) * -1) var(--shadow-blur, 4px) rgba(0, 0, 0, var(--shadow-layer-opacity, 0.2)))
-      drop-shadow(calc(var(--shadow-offset, 4px) * 1)  calc(var(--shadow-offset, 4px) * -1) var(--shadow-blur, 4px) rgba(0, 0, 0, var(--shadow-layer-opacity, 0.2)))
-      drop-shadow(calc(var(--shadow-offset, 4px) * -1) calc(var(--shadow-offset, 4px) * 1)  var(--shadow-blur, 4px) rgba(0, 0, 0, var(--shadow-layer-opacity, 0.2)));
-
-    /* Compensate for icons with less mass having visually lighter shadows */
-    &.fa-expand {
-      --shadow-layer-opacity: 0.24;
-    }
-
-    &.fa-down-left-and-up-right-to-center {
-      --shadow-layer-opacity: 0.14;
-    }
-
-    &.fa-repeat {
-      --shadow-layer-opacity: 0.19;
-    }
-
-    &.fa-ellipsis-vertical {
-      --shadow-layer-opacity: 0.15;
-    }
-
-    &.icon-fullscreen {
-      --shadow-layer-opacity: 0.3;
-    }
-  }
-
-  &.size-standard {
-    width: auto;
-    height: auto;
-  }
-  &.size-small {
-    width: 1.9em;
-    height: 1.9em;
-  }
-  &.size-max {
-    width: 100%;
-    height: 100%;
   }
 }
 .FeedbackOverlay {
@@ -15418,8 +15426,8 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
 .SceneInfo {
   /* The action button stack overlaps the panel at the side, and its scrolling area is wider than its buttons, so the
   panel's content (including the edit button) keeps clear of this much space beside it */
-  --padding-left: 3em;
-  --padding-right: 6.25em;
+  --padding-left: calc(var(--safe-inset-left-min) + 1em);
+  --padding-right: calc(var(--safe-inset-right) + 5em);
   position: absolute;
   bottom: calc(5em + var(--y-dynamic-diff));
   left: 0;
@@ -15430,6 +15438,18 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   display: flex;
   flex-direction: column;
   z-index: 3; /* Make sure it's above .text-selection-on-gesture-workaround if present */
+
+  /* Editing, it reaches the bottom of the screen, over the video's controls (which share its z-index, and come after
+  it), for more room. The action buttons are lifted to match, staying over it. */
+  &.editing {
+    z-index: 4;
+    bottom: var(--y-dynamic-diff);
+    max-height: calc(var(--y-unit-small) * 100 - var(--safe-inset-top) - var(--crt-inset-top, 0px));
+
+    .panel-content {
+      padding-bottom: calc(1em + var(--safe-inset-bottom-min) + var(--crt-inset-bottom, 0px));
+    }
+  }
 
   .panel-background {
     position: absolute;
@@ -15575,10 +15595,39 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     display: none;
   }
 
-  /* A spacer's pill, showing values, is named, there being nothing else to see */
-  .spacer-preview {
-    font-style: italic;
-    opacity: 0.6;
+  /* A spacer's pill, showing values, is a line as long as the space it adds (sized by the rules above), along the way
+  it adds it, with a tick at each end so its length reads. Fainter than a field with no value's "No …", being only a line. */
+  .spacer-preview > .spacer-line {
+    --spacer-line-width: 1px;
+    box-sizing: border-box;
+    height: 0.6em;
+    border: 0 solid currentColor;
+    border-inline-width: var(--spacer-line-width);
+    background: linear-gradient(currentColor, currentColor) center / 100% var(--spacer-line-width) no-repeat;
+    opacity: 0.3;
+  }
+
+  /* Up and down, alone on its line (with nothing else on it showing anything), as in the panel. Dragged, it's as it
+  will be where it's dropped: on a new line, or a line with nothing shown on it; with nowhere to go (outside the
+  editor, or being removed), as it was on the line it was dragged off, which it goes back to if let go there; and let
+  go, as it will be on the line it's sliding into. */
+  .layout-line:not(:has(.field:not(.field-spacer))),
+  .scene-info-editor .drag-overlay[data-drop="new-line"],
+  .scene-info-editor:has(.layout-line.target):not(:has(.layout-line.target .field:not(.field-spacer))) .drag-overlay[data-drop="same-line"],
+  .scene-info-editor:has(.layout-line.from-line):not(:has(.layout-line.from-line .field:not(.field-spacer))) .drag-overlay:is([data-drop="remove"], :not([data-drop])),
+  .scene-info-editor:has(.layout-line.settle-target):not(:has(.layout-line.settle-target .field:not(.field-spacer))) .drag-overlay.settling {
+    .spacer-preview > .spacer-line {
+      width: 0.6em;
+      border-inline-width: 0;
+      border-block-width: var(--spacer-line-width);
+      background-size: var(--spacer-line-width) 100%;
+    }
+    .spacer-small > .spacer-line { height: 0.5em; }
+    .spacer-medium > .spacer-line { height: 1em; }
+    .spacer-big > .spacer-line { height: 2em; }
+
+    /* Its pill is wider than its line, as nothing beside it on its line moves for that, and it's easier to hover over */
+    .spacer-pill:has(.spacer-line) { padding: 0 1.5em; }
   }
 
   /* The o-counter icon, followed by the o-count */
@@ -15610,9 +15659,6 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     flex-direction: column;
   }
 
-  /* In the editor, a line that wraps has its later rows indented (a hanging indent), so they don't look like lines of
-  their own. Room for the marker showing that, and a little space between it and the fields. */
-  --wrapped-line-indent: 2em;
   /* The least space between a line's left fields and its right-aligned ones, so they don't run together */
   --line-sides-gap: 2em;
 
@@ -15680,232 +15726,30 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     }
   }
 
-  .editor-lines {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Like the panel's lines (.field-line), each side's fields in a box wrapping on its own. The space between lines is
-  their margins (room for the ghost line); a row gap would also go around the absolutely positioned markers. */
-  .editor-line {
-    display: flex;
-    /* Each side's rows line up with the other's */
-    align-items: flex-start;
-    column-gap: var(--line-sides-gap);
-    margin: 0.4em 0;
-    /* Like the pills' corners */
-    border-radius: 1em;
-    transition: background-color 0.1s ease-out, box-shadow 0.1s ease-out;
-  }
-
-  /* The line a field's dragged onto, or that's hovered over, so it's clear which right-aligned fields share it with
-  which left ones. The shadow reaches into the space around the line, as the background alone would end at its pills. */
-  .editor-line.target {
-    background-color: rgba(255, 255, 255, 0.07);
-    box-shadow: 0 0 0 0.25em rgba(255, 255, 255, 0.07);
-  }
-
-  @media (hover: hover) {
-    .editor:not(.dragging) .editor-line:hover {
-      background-color: rgba(255, 255, 255, 0.07);
-      box-shadow: 0 0 0 0.25em rgba(255, 255, 255, 0.07);
-    }
-  }
-
-  .line-side {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 0.4em;
-    row-gap: 0.8em;
-    flex: 1 1 auto;
-  }
-
-  /* The left side's later rows are indented (see --wrapped-line-indent), with its first field outdented back */
-  .line-side.left {
-    padding-left: var(--wrapped-line-indent);
-
-    &:empty {
-      padding-left: 0;
-    }
-
-    /* Pills are no wider than their box, but the first one's outdented into its padding, so it has that much more */
-    > :first-child {
-      margin-left: calc(var(--wrapped-line-indent) * -1);
-      max-width: calc(100% + var(--wrapped-line-indent));
-    }
-  }
-
-  /* Like the panel's right-aligned fields, laid out from the line's end, mirroring the left side. As there, its later
-  rows are indented (from the right), with its first field outdented back. */
-  .line-side.right {
-    margin-left: auto;
-    flex-direction: row-reverse;
-    justify-content: flex-start;
-    padding-right: var(--wrapped-line-indent);
-
-    > :first-child {
-      margin-right: calc(var(--wrapped-line-indent) * -1);
-      max-width: calc(100% + var(--wrapped-line-indent));
-    }
-  }
-
-  /* In the indent of a side of a line's later rows, showing they're the same line wrapped rather than lines of their own */
-  .wrapped-line-marker {
-    position: absolute;
-    left: 0;
-    width: var(--wrapped-line-indent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    pointer-events: none;
-
-    /* In the right-aligned fields' indent */
-    &.right {
-      left: auto;
-      right: 0;
-    }
-  }
-
-  /* A hidden copy of a line, to measure how tall it would be with the dragged field on it (see probeLineHeight) */
-  .editor-line.height-probe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
-
-  /* Where a dragged field will go on a line, when showing its ghost there would make the line taller */
-  .insertion-line {
-    position: absolute;
-    width: 3px;
-    margin-left: -1.5px;
-    border-radius: 2px;
-    background: var(--text-muted);
-    opacity: 0.7;
-    pointer-events: none;
-  }
-
-  /* Where a dragged field will go on a new line, between the lines: on the half of them it will be aligned to */
-  .ghost-line {
-    position: absolute;
-    left: 0;
-    right: 50%;
-    height: 3px;
-    margin-top: -1.5px;
-    border-radius: 2px;
-    background: var(--text-muted);
-    opacity: 0.7;
-    pointer-events: none;
-    transition: top 0.1s ease-out, left 0.1s ease-out, right 0.1s ease-out;
-
-    &.right {
-      left: 50%;
-      right: 0;
-    }
-  }
-
-
-  .editor-empty {
-    color: var(--text-muted);
-    font-style: italic;
-    padding: 0.4em 0;
-  }
-
-  /* Pills are Stash's tag badges (.tag-item), so take its look; this only lays them out and handles dragging */
+  /* The editor's pills (LineLayoutEditor's items, which lay them out and handle dragging), showing a field's name or
+  value */
   .field-pill {
-    display: inline-flex;
-    align-items: center;
-    /* Between the field and its × */
-    gap: 0.3em;
-    border-radius: 1em;
-    max-width: 100%;
-    min-width: 0;
-    margin: 0;
-    /* Big enough to grab easily on a touchscreen */
-    font-size: 1rem;
-    padding: 0.3em 0.7em;
-    cursor: grab;
-    /* Dragging a pill mustn't scroll the page (the feed) or select text */
-    touch-action: none;
-    user-select: none;
-    -webkit-user-select: none;
-
-    /* Where the dragged field will go */
-    &.ghost {
-      /* A filter rather than opacity, which framer-motion sets inline on elements it lays out, overriding this */
-      filter: opacity(0.4);
-    }
-
-    /* The field being dragged, following the pointer */
-    &.dragged {
-      cursor: grabbing;
-      box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.7);
-    }
-
     &.unknown {
       font-style: italic;
     }
 
-    .pill-name, .pill-value {
+    .pill-name {
       min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
-    /* Values are shown to identify the field, not to be clicked */
+    /* Values are shown to identify the field, not to be clicked. Otherwise they're shown just as in the panel. */
     .pill-value {
+      min-width: 0;
       pointer-events: none;
 
       &:empty::before {
         content: attr(data-empty-label);
         font-style: italic;
-      }
-
-      .field, .field-studio, .field-tags, .field-tags .tag-list, .field-urls {
-        display: inline;
-      }
-
-      .field-label, .separator {
-        color: inherit;
         opacity: 0.6;
       }
-
-      h5 {
-        display: inline;
-        font-size: inherit;
-      }
-    }
-
-    /* Spaced by the pill's gap rather than Stash's .tag-item .btn margin and padding, so pills without one (the unused
-    fields) have even padding too */
-    .pill-button {
-      bottom: 0;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      font-size: 0.75em;
-      /* Clearer than Stash's half-faded .tag-item .btn */
-      opacity: 0.8;
-      /* A bigger target than the icon, for touch, without taking more room */
-      position: relative;
-
-      &::after {
-        content: "";
-        position: absolute;
-        inset: -0.6em;
-      }
-    }
-
-    .pill-button.field-options {
-      font-size: 0.85em;
     }
 
     /* Buttons in a value (e.g. the rating's stars) look as they do in the panel, not like Stash's buttons in a tag
@@ -15921,10 +15765,12 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     }
   }
 
-  /* Showing values, each pill shows its field as the panel does, outlined rather than as a badge */
-  .editor.showing-values .field-pill {
+  /* Showing values, each pill is its field as the panel shows it, rather than a badge (so none of the badge's text
+  styles), outlined only while it's hovered over (or its controls are otherwise shown, or it's dragged) */
+  .scene-info-editor.showing-values .field-pill {
     background: none;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid transparent;
+    transition: border-color 0.12s ease-out;
     color: inherit;
     font-size: inherit;
     font-weight: inherit;
@@ -15933,140 +15779,61 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
     white-space: normal;
     padding: 0.3em 0.7em;
 
-    .pill-value {
-      white-space: normal;
-      overflow: visible;
-
-      &:empty::before {
-        opacity: 0.6;
-      }
-
-      .field-studio {
-        display: flex;
-      }
-
-      .field-tags {
-        display: block;
-        margin: 0;
-
-        .tag-list {
-          display: flex;
-        }
-      }
-
-      .field-urls {
-        display: flex;
-      }
-
-      .field-label {
-        color: var(--text-muted);
-        opacity: 1;
-      }
-
-      .separator {
-        color: var(--text-muted);
-        opacity: 1;
-      }
-
-      h5 {
-        display: block;
-      }
-    }
-
-    .pill-button {
-      color: inherit;
+    &:is(.revealed, .dragged, :has(:focus-visible)) {
+      border-color: rgba(255, 255, 255, 0.2);
     }
   }
 
-  /* Unused fields' pills are buttons, which the browser gives a border */
-  button.field-pill {
-    border: none;
+  @media (hover: hover) {
+    .scene-info-editor.showing-values:not(.dragging) .field-pill:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
   }
 
   /* A spacer is space rather than a field, so it's just its name (and buttons), not a badge or outlined, and with no
   padding, whether the pills show names or values */
-  .editor .field-pill.spacer-pill,
-  .editor.showing-values .field-pill.spacer-pill {
+  .scene-info-editor .field-pill.spacer-pill,
+  .scene-info-editor.showing-values .field-pill.spacer-pill {
     background: none;
     border: none;
     padding: 0;
     box-shadow: none;
     color: var(--text-muted);
+  }
 
-    .pill-button {
-      color: inherit;
+  /* Showing values, it's just its line (see .spacer-preview), in the text's colour, so it takes up no more room than
+  the space does in the panel: no least width or height for its controls, which overflow it, over its neighbours (see
+  LineLayoutEditor.css) */
+  .scene-info-editor.showing-values .field-pill.spacer-pill:has(.spacer-line) {
+    min-width: 0;
+    color: inherit;
+
+    > .item-controls {
+      top: min(0px, 50% - 0.875em);
+      bottom: min(0px, 50% - 0.875em);
     }
 
-    .spacer-preview {
-      opacity: 1;
+    /* Easier to hover over than the line alone, without being any bigger */
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -0.5em -0.2em;
     }
   }
 
-  /* The toolbar, the lines and the unused fields, with the same space between them whether the unused fields are below
-  the lines or beside them */
-  .editor {
-    --editor-gap: 1.25rem;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: var(--editor-gap);
-
-    &.dragging {
-      cursor: grabbing;
-      user-select: none;
-      -webkit-user-select: none;
-    }
+  /* Overflowing away from its line's edge, its controls are moved a little past the edge, so their rounded corners
+  there still cover the end of its line */
+  .scene-info-editor.showing-values .line-side.left > .spacer-pill:first-child > .item-controls {
+    transform: translateX(-0.6em);
   }
-
-  /* On a screen wider than it's tall, the unused fields are beside the fields rather than below them */
-  .editor.side-by-side {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(12em, 40%);
-    gap: var(--editor-gap) 1.5em;
-    align-items: start;
-
-    .editor-toolbar {
-      grid-column: 1 / -1;
-    }
-  }
-
-  .drag-overlay {
-    position: absolute;
-    z-index: 2;
-    pointer-events: none;
-    display: flex;
-    /* Lifted and tilted, so over its ghost it doesn't look like the ghost has turned solid */
-    transform: rotate(-3deg) scale(1.05);
-    transform-origin: center;
-  }
-
-  .unused-fields {
-    padding: 0.75em 1em 1em;
-    border: 1px dashed rgba(255, 255, 255, 0.35);
-    border-radius: 0.5em;
-
-    &.drop-to-remove {
-      border-color: var(--danger, #db3737);
-      background: rgba(219, 55, 55, 0.15);
-    }
-
-    .hint {
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      margin-bottom: 0.4em;
-    }
-  }
-
-  .unused-field-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4em;
+  .scene-info-editor.showing-values .line-side.right > .spacer-pill:first-child > .item-controls {
+    transform: translateX(0.6em);
   }
 }
 
 .MediaSlide.left-handed .SceneInfo {
-  --padding-left: 6.25em;
-  --padding-right: 3em;
+  --padding-left: calc(var(--safe-inset-left-min) + 5em);
+  --padding-right: calc(var(--safe-inset-right) + 1em);
 }
 /* Icons in the choices' buttons (e.g. a label's "Icon"), the size of their text. Some (e.g. the resolution's) are
 otherwise as big as they can be. */
@@ -16115,6 +15882,358 @@ html:not(.force-landscape) {
 .modal-backdrop {
   width: calc(var(--x-unit-large) * 100);
   height: calc(var(--y-unit-large) * 100);
+}
+/* The toolbar, the lines and the available items, with the same space between them whether the available items are
+below the lines or beside them */
+.LineLayoutEditor {
+  /* A line that wraps has its later rows indented (a hanging indent), so they don't look like lines of their own. Room
+  for the marker showing that, and a little space between it and the items. */
+  --wrapped-line-indent: 2em;
+  /* The least space between a line's left items and its right-aligned ones, so they don't run together */
+  --line-sides-gap: 2em;
+  --layout-editor-gap: 1.25rem;
+  /* The width of the buttons either side of an item's controls (and of its drag handle, at least) */
+  --item-control-width: 1.75em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-editor-gap);
+
+  &.dragging {
+    cursor: grabbing;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* With the available items beside the lines rather than below them */
+  &.side-by-side {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(12em, 40%);
+    gap: var(--layout-editor-gap) 1.5em;
+    align-items: start;
+
+    .layout-toolbar {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .layout-lines {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Each side's items in a box wrapping on its own. The space between lines is their margins (room for the ghost line);
+  a row gap would also go around the absolutely positioned markers. */
+  .layout-line {
+    display: flex;
+    /* Each side's rows line up with the other's */
+    align-items: flex-start;
+    column-gap: var(--line-sides-gap);
+    margin: 0.4em 0;
+    /* Like the items' corners */
+    border-radius: 1em;
+    transition: background-color 0.1s ease-out, box-shadow 0.1s ease-out;
+  }
+
+  /* The line an item's dragged onto, or that's hovered over, so it's clear which right-aligned items share it with
+  which left ones. The shadow reaches into the space around the line, as the background alone would end at its items. */
+  .layout-line.target {
+    background-color: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 0 0 0.25em rgba(255, 255, 255, 0.07);
+  }
+
+  @media (hover: hover) {
+    &:not(.dragging) .layout-line:hover {
+      background-color: rgba(255, 255, 255, 0.07);
+      box-shadow: 0 0 0 0.25em rgba(255, 255, 255, 0.07);
+    }
+  }
+
+  .line-side {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 0.4em;
+    row-gap: 0.8em;
+  }
+
+  /* The left side's later rows are indented (see --wrapped-line-indent), with its first item outdented back */
+  .line-side.left {
+    padding-left: var(--wrapped-line-indent);
+
+    &:empty {
+      padding-left: 0;
+    }
+
+    /* Items are no wider than their box, but the first one's outdented into its padding, so it has that much more */
+    > :first-child {
+      margin-left: calc(var(--wrapped-line-indent) * -1);
+      max-width: calc(100% + var(--wrapped-line-indent));
+    }
+  }
+
+  /* Laid out from the line's end, mirroring the left side. Its later rows are indented (from the right), with its
+  first item outdented back. */
+  .line-side.right {
+    margin-left: auto;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    padding-right: var(--wrapped-line-indent);
+
+    > :first-child {
+      margin-right: calc(var(--wrapped-line-indent) * -1);
+      max-width: calc(100% + var(--wrapped-line-indent));
+    }
+  }
+
+  /* In the indent of a side of a line's later rows, showing they're the same line wrapped rather than lines of their own */
+  .wrapped-line-marker {
+    position: absolute;
+    left: 0;
+    width: var(--wrapped-line-indent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    pointer-events: none;
+
+    /* In the right-aligned items' indent */
+    &.right {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  /* A hidden copy of a line, to measure how tall it would be with the dragged item on it (see probeLineHeight) */
+  .layout-line.height-probe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* The dragged item as it would be on a line, unseen, which the height probe copies */
+  .probe-source {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Where a dragged item will go on a line, when showing its ghost there would change the line's height */
+  .insertion-line {
+    position: absolute;
+    width: 3px;
+    margin-left: -1.5px;
+    border-radius: 2px;
+    background: var(--text-muted);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  /* Where a dragged item will go on a new line, between the lines: on the half of them it will be aligned to */
+  .ghost-line {
+    position: absolute;
+    left: 0;
+    right: 50%;
+    height: 3px;
+    margin-top: -1.5px;
+    border-radius: 2px;
+    background: var(--text-muted);
+    opacity: 0.7;
+    pointer-events: none;
+    transition: top 0.1s ease-out, left 0.1s ease-out, right 0.1s ease-out;
+
+    &.right {
+      left: 50%;
+      right: 0;
+    }
+  }
+
+  .layout-empty {
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 0.4em 0;
+  }
+
+  /* Items are Stash's tag badges (.tag-item), so take its look; this only lays them out and handles dragging */
+  .layout-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1em;
+    max-width: 100%;
+    /* Wide enough for its controls, shown over it */
+    min-width: calc(var(--item-control-width) * 3);
+    margin: 0;
+    /* Its controls are laid over it. Being positioned doesn't change other items' offset parent (see the docs). */
+    position: relative;
+    /* Big enough to grab easily on a touchscreen */
+    font-size: 1rem;
+    padding: 0.3em 0.7em;
+    cursor: grab;
+    /* Dragging an item mustn't scroll the page (in Stash TV, the feed) or select text */
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+
+    /* Where the dragged item will go */
+    &.ghost {
+      /* A filter rather than opacity, which framer-motion sets inline on elements it lays out, overriding this */
+      filter: opacity(0.4);
+    }
+
+    /* The item being dragged, following the pointer */
+    &.dragged {
+      cursor: grabbing;
+      box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.7);
+    }
+
+    /* Where the dragged item is sliding to once it's let go, until it gets there */
+    &.settling {
+      visibility: hidden;
+    }
+  }
+
+  /* Over an item, shown when it's hovered over, tapped or has keyboard focus: its × (or +), a drag handle, and its own
+  button */
+  .item-controls {
+    position: absolute;
+    /* Over the item, and at least wide enough for its buttons: over an item narrower than that (one with no least
+    width, e.g. a spacer's line in Stash TV's scene info editor) they overflow it either side, over its neighbours,
+    rather than the item making room for them */
+    --overflow: min(0px, 50% - var(--item-control-width) * 1.5);
+    inset: 0 var(--overflow);
+    display: grid;
+    grid-template-columns: var(--item-control-width) minmax(0, 1fr) var(--item-control-width);
+    border-radius: inherit;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 1rem;
+    opacity: 0;
+    transition: opacity 0.12s ease-out;
+    /* Hidden, they mustn't take the pointer from the item's neighbours they overflow onto */
+    pointer-events: none;
+  }
+
+  /* Overflowing a line's first item, they overflow away from the line's edge (for the left side, its start; for the
+  right-aligned side, its end), rather than past it. The corners over the item's edge are barely rounded, so they
+  still cover all of what's at that edge. */
+  .line-side.left > :first-child > .item-controls {
+    --overflow: min(0px, 100% - var(--item-control-width) * 3);
+    left: 0;
+    right: var(--overflow);
+  }
+  .line-side.right > :first-child > .item-controls {
+    --overflow: min(0px, 100% - var(--item-control-width) * 3);
+    left: var(--overflow);
+    right: 0;
+  }
+
+  /* Over its neighbours, which its controls may overflow onto */
+  .layout-item:is(.revealed, :has(:focus-visible)) {
+    z-index: 1;
+  }
+
+  @media (hover: hover) {
+    &:not(.dragging) .layout-item:hover {
+      z-index: 1;
+    }
+  }
+
+  .layout-item.revealed > .item-controls,
+  .layout-item:has(:focus-visible) > .item-controls {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @media (hover: hover) {
+    &:not(.dragging) .layout-item:hover > .item-controls {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  /* Not while an item's dragged */
+  &.dragging .item-controls {
+    display: none;
+  }
+
+  .item-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+
+    &.drag-handle {
+      color: var(--text-muted);
+      cursor: grab;
+    }
+
+    /* Stash's .tag-item .btn is a small faded button with margins; these fill their side of the item */
+    .item-button {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+      color: inherit;
+      font-size: 0.9em;
+      line-height: 1;
+      opacity: 1;
+
+      &:hover, &:focus-visible {
+        background: rgba(255, 255, 255, 0.15);
+      }
+    }
+  }
+
+  .drag-overlay {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    display: flex;
+    /* Lifted and tilted, so over its ghost it doesn't look like the ghost has turned solid */
+    transform: rotate(-3deg) scale(1.05);
+    transform-origin: center;
+  }
+
+  .available-items {
+    padding: 0.75em 1em 1em;
+    border: 1px dashed rgba(255, 255, 255, 0.35);
+    border-radius: 0.5em;
+
+    &.drop-to-remove {
+      border-color: var(--danger, #db3737);
+      background: rgba(219, 55, 55, 0.15);
+    }
+
+    .hint {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-bottom: 0.4em;
+    }
+  }
+
+  .available-item-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+  }
 }
 /* Nest in .video-js to increase specificity */
 .video-js {
@@ -16404,7 +16523,7 @@ html:not(.force-landscape) {
   padding-left: 1.5em;
   margin-left: -1em;
 }
-.ConfigList .config-list-item .drag-handle.disable .fa-grip-vertical {
+.ConfigList .config-list-item .drag-handle.disable .drag-icon {
   visibility: hidden;
 }
 .ConfigList .config-list-item .controls button {
@@ -17217,10 +17336,14 @@ html {
   --x-unit-dynamic: 1dvw;
   --y-unit-dynamic: 1dvh;
   --y-dynamic-diff: calc((100 * var(--y-unit-large)) - (100 * var(--y-unit-dynamic)));
+  /* The safe area inset for least inset part of the screen which on iOS is middle with the home indicator */
+  --physical-safe-inset-bottom-min: max(0px, calc(env(safe-area-inset-bottom, 0px) - 20px));
   --safe-inset-top: env(safe-area-inset-top, 0);
   --safe-inset-right: env(safe-area-inset-right, 0);
   --safe-inset-bottom: env(safe-area-inset-bottom, 0);
+  --safe-inset-bottom-min: var(--physical-safe-inset-bottom-min);
   --safe-inset-left: env(safe-area-inset-left, 0);
+  --safe-inset-left-min: var(--safe-inset-left);
   scroll-snap-type: y mandatory;
   scroll-behavior: auto;
   container: viewport/size;
@@ -17249,7 +17372,9 @@ html {
     --safe-inset-top: env(safe-area-inset-left, 0);
     --safe-inset-right: env(safe-area-inset-top, 0);
     --safe-inset-bottom: env(safe-area-inset-right, 0);
+    --safe-inset-bottom-min: var(--safe-inset-bottom);
     --safe-inset-left: env(safe-area-inset-bottom, 0);
+    --safe-inset-left-min: var(--physical-safe-inset-bottom-min);
 
     scroll-snap-type: unset; /* When the root is rotated scroll snapping doesn't seem to work on the root so we set it on a child instead */
     position: absolute;
