@@ -15835,6 +15835,984 @@ overflow-x to visible. So we hide it instead to avoid horizontal scrollbars appe
   --padding-left: calc(var(--safe-inset-left-min) + 5em);
   --padding-right: calc(var(--safe-inset-right) + 1em);
 }
+.studio-details .logo {
+  margin-bottom: 4rem;
+  max-height: 50vh;
+  max-width: 100%;
+}
+
+.studio-card button.btn.favorite-button {
+  padding: 0;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+}
+.studio-card button.btn.favorite-button svg.fa-icon {
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+}
+.studio-card:hover button.btn.favorite-button.not-favorite {
+  opacity: 1;
+}
+
+#studio-page {
+  /* stylelint-disable selector-class-pattern */
+  /* stylelint-enable selector-class-pattern */
+}
+#studio-page .studio-head .name-icons .not-favorite {
+  color: rgba(191, 204, 214, 0.5);
+}
+#studio-page .studio-head .name-icons .favorite {
+  color: #ff7373;
+}
+#studio-page .rating-number .text-input {
+  width: auto;
+}
+#studio-page .collapsed .detail-item.stash_ids {
+  display: none;
+}.popover.EntityPopover {
+  max-width: min(20rem, calc(100vw - 2rem));
+  display: flex;
+  flex-direction: column;
+
+  /* Scrolls as a whole (the card and its buttons) when the popover is limited to the space available (see
+     setMaxSizeModifier), and only up and down */
+  > .entity-popover-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Don't pass scrolling on to the feed behind the popover, which would move to another video */
+    overscroll-behavior: contain;
+    text-align: left;
+  }
+
+  .entity-popover-card {
+    flex-shrink: 0;
+  }
+
+  /* Its buttons are on the side nearest what opened it: at the bottom when it's above it, at the top when below */
+  &.bs-popover-bottom > .entity-popover-content {
+    flex-direction: column-reverse;
+  }
+
+  .entity-popover-actions {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .entity-popover-action {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+
+  /**
+   * Taken from packages/stash-ui/stash/ui/v2.5/src/components/Scenes/styles.scss
+   * and used by various Stash entity card components.
+   */
+  .card-popovers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .btn {
+      padding-bottom: 3px;
+      padding-top: 3px;
+    }
+
+    .fa-icon {
+      margin-right: 7px;
+    }
+  }
+}
+
+/* Cards blend into the popover, as in Stash's own popovers */
+.EntityPopover .entity-popover-card .grid-card {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Stash shows the favourite button of an entity that isn't one only while its card's hovered over, which a touch screen
+   can't do */
+.EntityPopover .entity-popover-card .grid-card button.btn.favorite-button.not-favorite {
+  opacity: 1;
+}
+
+/* An entity with only Stash's stand-in image (see hasDefaultImage) is shown without it, but keeps the favourite button
+   shown over the image (in a link of its own, if any, not the image's), which then sits beside its name */
+.EntityPopover .entity-card-no-image {
+  .thumbnail-section > a:has(> img) {
+    display: none;
+  }
+
+  .card-section-title {
+    padding-right: 2.5rem;
+  }
+}
+
+.LoadingIndicator {
+  animation: fadeInAnimation ease 200ms;
+  animation-delay: 200ms;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  opacity: 0;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.LoadingIndicator {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.LoadingIndicator:not(.card-based) {
+  padding-top: 2rem;
+}
+.LoadingIndicator-message {
+  margin-top: 1rem;
+}
+.LoadingIndicator .spinner-border {
+  height: 3rem;
+  width: 3rem;
+}
+.LoadingIndicator.inline {
+  display: inline;
+  height: auto;
+  margin-left: 0.5rem;
+}
+.LoadingIndicator.small .spinner-border {
+  height: 1rem;
+  width: 1rem;
+}
+
+.details-edit {
+  /*
+    The penultimate button should be wrapped in an unstyled div.
+    This allows the div to expand, to right-justify the last (save / delete) button.
+  */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  padding: 0;
+  row-gap: 0.5rem;
+}
+.details-edit .btn {
+  margin-right: 0.5rem;
+  white-space: nowrap;
+}
+
+.col-md-8 .details-edit div:nth-last-child(2),
+.detail-header.edit .details-edit div:nth-last-child(2) {
+  flex: 1;
+  max-width: 100%;
+}
+
+.select-suggest:hover {
+  cursor: text;
+}
+
+.duration-input .duration-control,
+.duration-input .percent-control,
+.percent-input .duration-control,
+.percent-input .percent-control {
+  min-width: 3rem;
+}
+.duration-input .duration-button,
+.duration-input .percent-button,
+.percent-input .duration-button,
+.percent-input .percent-button {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  line-height: 10px;
+  padding: 1px 7px;
+}
+.duration-input .btn + .btn,
+.percent-input .btn + .btn {
+  margin-left: 0;
+}
+
+.multi-set .btn-group > button.btn {
+  z-index: auto;
+}
+
+.folder-item button {
+  padding: 0;
+}
+
+.folder-list {
+  list-style-type: none;
+  margin: 0;
+  max-height: 30vw;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  padding-top: 1rem;
+}
+.folder-list-item {
+  white-space: nowrap;
+}
+.folder-list-item .btn {
+  border: none;
+  color: white;
+  font-weight: 400;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+}
+.folder-list-item:last-child .btn span::before {
+  content: "└ 📁";
+}
+.folder-list-item .btn span::before {
+  content: "├ 📁";
+  display: inline-block;
+  padding-right: 1rem;
+  transform: scale(1.5);
+}
+.folder-list-parent .btn span::before {
+  visibility: hidden;
+}
+.folder-list-parent .btn-link {
+  font-weight: 500;
+}
+
+.scrape-dialog .modal-content .dialog-container {
+  max-height: calc(100vh - 14rem);
+  overflow-y: auto;
+  padding-right: 15px;
+}
+.scrape-dialog .image-selection-parent {
+  min-width: 100%;
+}
+.scrape-dialog .image-selection .select-buttons {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.scrape-dialog .image-selection .select-buttons .image-index {
+  flex-grow: 1;
+  text-align: center;
+}
+.scrape-dialog .image-selection .loading {
+  opacity: 0.5;
+}
+.scrape-dialog .image-selection .LoadingIndicator {
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+
+button.collapse-button.btn-primary:not(:disabled):not(.disabled):hover,
+button.collapse-button.btn-primary:not(:disabled):not(.disabled):focus,
+button.collapse-button.btn-primary:not(:disabled):not(.disabled):active {
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: #f5f8fa;
+  text-align: left;
+}
+
+button.collapse-button {
+  padding-left: 0;
+}
+button.collapse-button .fa-icon {
+  margin-left: 0;
+}
+
+.hover-popover-content {
+  max-width: 32rem;
+  text-align: center;
+}
+
+.ErrorMessage {
+  align-items: center;
+  height: 20rem;
+  justify-content: center;
+}
+.ErrorMessage-content {
+  display: inline-block;
+}
+
+.grid-card a .card-section-title {
+  color: #f5f8fa;
+  text-decoration: none;
+}
+.grid-card .progress-bar {
+  background-color: rgba(115, 133, 159, 0.5019607843);
+  bottom: 5px;
+  display: block;
+  height: 5px;
+  position: absolute;
+  width: 100%;
+}
+.grid-card .progress-indicator {
+  background-color: #137cbd;
+  height: 5px;
+}
+.grid-card .card-controls {
+  align-items: center;
+  display: flex;
+  left: 0.5rem;
+  position: absolute;
+  top: 0.7rem;
+  z-index: 1;
+}
+.grid-card .card-check,
+.grid-card .card-drag-handle {
+  height: 1.2rem;
+  opacity: 0;
+  width: 1.2rem;
+}
+@media (hover: none), (pointer: coarse) {
+  .grid-card .card-check,
+  .grid-card .card-drag-handle {
+    opacity: 0.25;
+  }
+}
+.grid-card .card-drag-handle {
+  cursor: move;
+}
+.grid-card .card-check {
+  padding-left: 15px;
+}
+.grid-card .card-check:checked {
+  opacity: 0.75;
+}
+@media (hover: none), (pointer: coarse) {
+  .grid-card .card-check {
+    width: 1.5rem;
+  }
+}
+.grid-card:hover .card-check, .grid-card:hover .card-drag-handle {
+  opacity: 0.75;
+  transition: opacity 0.5s;
+}
+
+.TruncatedText {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: pre-line;
+}
+.TruncatedText-tooltip .tooltip-inner {
+  max-width: 300px;
+  white-space: pre-line;
+}
+.file-info-panel a > .TruncatedText {
+  word-break: break-all;
+}
+
+.RatingStars-unfilled path {
+  fill: white;
+}
+.RatingStars-filled path {
+  fill: gold;
+}
+
+.three-state-checkbox {
+  align-items: center;
+  display: flex;
+}
+.three-state-checkbox button.btn {
+  font-size: 12.67px;
+  margin-left: -0.2em;
+  margin-right: 0.25rem;
+  padding: 0;
+}
+.three-state-checkbox button.btn:not(:disabled):active, .three-state-checkbox button.btn:not(:disabled):active:focus, .three-state-checkbox button.btn:not(:disabled):hover, .three-state-checkbox button.btn:not(:disabled):not(:hover) {
+  background-color: initial;
+  box-shadow: none;
+}
+.three-state-checkbox.unset .label {
+  color: #bfccd6;
+  text-decoration: line-through;
+}
+.three-state-checkbox.checked svg {
+  color: #0f9960;
+}
+.three-state-checkbox.not-checked svg {
+  color: #db3737;
+}
+
+.input-group-prepend .btn {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.ModalComponent .modal-footer {
+  justify-content: space-between;
+}
+
+.scrape-url-button:disabled {
+  opacity: 0.5;
+}
+
+.string-list-input .input-group {
+  margin-bottom: 0.35rem;
+}
+
+.bulk-update-text-input button {
+  background-color: #394b59;
+  color: #bfccd6;
+  font-size: 0.875rem;
+  margin: 0.375rem 0.75rem;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  z-index: 4;
+}
+.bulk-update-text-input button:hover, .bulk-update-text-input button:focus, .bulk-update-text-input button:active, .bulk-update-text-input button:not(:disabled):not(.disabled):active, .bulk-update-text-input button:not(:disabled):not(.disabled):active:focus {
+  background-color: #394b59;
+  border-color: transparent;
+  box-shadow: none;
+}
+.bulk-update-text-input.unset button {
+  visibility: hidden;
+}
+
+.date-input.form-control:focus {
+  z-index: inherit;
+}
+
+/* stylelint-disable */
+div.react-datepicker {
+  background-color: #202b33;
+  border-color: #30404d;
+  color: #f5f8fa;
+}
+div.react-datepicker .react-datepicker__header,
+div.react-datepicker .react-datepicker-time__header {
+  background-color: #394b59;
+  color: #f5f8fa;
+  padding-top: 0.4rem;
+}
+div.react-datepicker .react-datepicker__navigation {
+  top: 0.4rem;
+}
+div.react-datepicker .react-datepicker__day {
+  color: #f5f8fa;
+}
+div.react-datepicker .react-datepicker__day.react-datepicker__day--disabled {
+  color: #bfccd6;
+}
+div.react-datepicker .react-datepicker__day:hover {
+  background: rgba(138, 155, 168, 0.15);
+}
+div.react-datepicker div.react-datepicker__time-container div.react-datepicker__time {
+  background-color: #202b33;
+  color: #f5f8fa;
+}
+div.react-datepicker div.react-datepicker__time-container div.react-datepicker__time ul.react-datepicker__time-list li.react-datepicker__time-list-item:hover {
+  background-color: rgba(138, 155, 168, 0.15);
+}
+div.react-datepicker .react-datepicker__day-name {
+  color: #f5f8fa;
+}
+div.react-datepicker .react-datepicker__current-month {
+  display: none;
+}
+div.react-datepicker .react-datepicker__triangle {
+  display: none;
+}
+div.react-datepicker .react-datepicker__month-dropdown-container {
+  margin-left: 0;
+  margin-right: 0.1rem;
+}
+div.react-datepicker .react-datepicker__year-dropdown-container {
+  margin-left: 0.1rem;
+  margin-right: 0;
+}
+div.react-datepicker .react-datepicker__month-dropdown-container .react-datepicker__month-read-view,
+div.react-datepicker .react-datepicker__year-dropdown-container .react-datepicker__year-read-view {
+  font-weight: bold;
+  font-size: 0.944rem;
+  visibility: visible !important;
+}
+div.react-datepicker .react-datepicker__month-dropdown-container .react-datepicker__month-read-view--down-arrow,
+div.react-datepicker .react-datepicker__year-dropdown-container .react-datepicker__year-read-view--down-arrow {
+  display: none;
+}
+div.react-datepicker .react-datepicker__year-dropdown,
+div.react-datepicker .react-datepicker__month-dropdown {
+  background-color: #202b33;
+}
+div.react-datepicker .react-datepicker__year-dropdown .react-datepicker__year-option:hover,
+div.react-datepicker .react-datepicker__year-dropdown .react-datepicker__month-option:hover,
+div.react-datepicker .react-datepicker__month-dropdown .react-datepicker__year-option:hover,
+div.react-datepicker .react-datepicker__month-dropdown .react-datepicker__month-option:hover {
+  background-color: rgba(138, 155, 168, 0.1490196078);
+}
+
+/* stylelint-enable */
+#date-picker-portal .react-datepicker-popper {
+  z-index: 1600;
+}
+
+.clearable-input-group {
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.clearable-text-field,
+.clearable-text-field:active,
+.clearable-text-field:focus {
+  background-color: #394b59;
+  border: 0;
+  border-color: #394b59;
+  color: #fff;
+}
+
+.clearable-text-field-clear {
+  background-color: #394b59;
+  bottom: 0;
+  color: #bfccd6;
+  font-size: 0.875rem;
+  margin: 0.375rem 0.75rem;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 4;
+}
+.clearable-text-field-clear:hover, .clearable-text-field-clear:focus, .clearable-text-field-clear:active, .clearable-text-field-clear:not(:disabled):not(.disabled):active, .clearable-text-field-clear:not(:disabled):not(.disabled):active:focus {
+  background-color: #394b59;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.string-list-row .input-group {
+  flex-wrap: nowrap;
+}
+
+.stash-id-pill {
+  display: inline-block;
+  font-size: 90%;
+  font-weight: 700;
+  line-height: 1;
+  padding-bottom: 0.25em;
+  padding-top: 0.25em;
+  text-align: center;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+.stash-id-pill span,
+.stash-id-pill a {
+  display: inline-block;
+  padding: 0.25em 0.6em;
+}
+.stash-id-pill span {
+  background-color: #007bff;
+  border-radius: 0.25rem 0 0 0.25rem;
+  min-width: 5em;
+}
+.stash-id-pill a {
+  background-color: #394b59;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.react-select-image-option {
+  align-items: baseline;
+  display: flex;
+}
+
+button.btn.favorite-button {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+button.btn.favorite-button.not-favorite {
+  color: rgba(191, 204, 214, 0.5);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
+}
+button.btn.favorite-button.not-favorite.hide-not-favorite {
+  opacity: 0;
+}
+button.btn.favorite-button.favorite {
+  color: #ff7373;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
+}
+button.btn.favorite-button:hover, button.btn.favorite-button:active, button.btn.favorite-button:focus, button.btn.favorite-button:active:focus {
+  background: none;
+  box-shadow: none;
+}
+
+.count-button {
+  border-radius: 5px;
+}
+.count-button:hover {
+  background: rgba(138, 155, 168, 0.15);
+  color: #f5f8fa;
+}
+.count-button .count-icon {
+  padding-left: 0.5rem;
+  padding-right: 0.25rem;
+}
+.count-button .count-value {
+  padding-left: 0.25rem;
+  padding-right: 0.5rem;
+}
+.count-button button.count-icon:hover, .count-button.increment-only button.count-value:hover {
+  background: none;
+  color: #f5f8fa;
+}
+.count-button button.btn-secondary.count-icon:focus,
+.count-button button.btn-secondary.count-value:focus {
+  border: none;
+  box-shadow: none;
+  color: #f5f8fa;
+}
+.count-button button.btn-secondary.count-icon:focus:not(:hover),
+.count-button button.btn-secondary.count-value:focus:not(:hover) {
+  background: none;
+}
+
+.external-links-button {
+  display: inline-block;
+}
+
+.scraper-menu .dropdown-menu {
+  min-width: 250px;
+  padding-top: 0;
+}
+.scraper-menu .dropdown-menu .dropdown-divider {
+  border-top-color: rgba(16, 22, 26, 0.3);
+  margin: 0;
+}
+.scraper-menu .dropdown-menu .scraper-filter-container {
+  background-color: #394b59;
+  border-bottom: solid 1px rgba(16, 22, 26, 0.3);
+  padding: 5px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.scraper-menu .dropdown-menu .scraper-filter-container .btn-group {
+  border: solid 1px rgba(16, 22, 26, 0.3);
+  border-radius: 5px;
+  width: 100%;
+}
+.scraper-menu .dropdown-menu .scraper-filter-container .clearable-text-field {
+  background-color: rgba(16, 22, 26, 0.3);
+}
+.scraper-menu .dropdown-menu .scraper-filter-container .clearable-text-field-clear {
+  background-color: unset;
+  border: unset;
+}
+.scraper-menu .dropdown-menu .scraper-filter-container .reload-button.btn {
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.custom-fields .detail-item .detail-item-title {
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.custom-fields-input > .collapse-button {
+  font-weight: 700;
+}
+
+.custom-fields-row {
+  align-items: center;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.875rem;
+}
+.custom-fields-row .form-label {
+  margin-bottom: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.custom-fields-row div.custom-fields-field label.form-label {
+  cursor: inherit;
+  text-decoration: inherit;
+}
+.custom-fields-row .form-control,
+.custom-fields-row .btn {
+  font-size: 0.875rem;
+}
+.custom-fields-row.custom-fields-new > div:not(:last-child) {
+  padding-right: 0;
+}.studio-popover-card .studio-card {
+  width: 16rem;
+  max-width: 100%;
+  margin: 0;
+}
+
+.studio-popover-card-placeholder {
+  display: flex;
+  width: 16rem;
+  min-height: 12rem;
+}
+
+#performer-page {
+  /* stylelint-disable selector-class-pattern */
+  /* stylelint-enable selector-class-pattern */
+}
+#performer-page .performer-image-container .btn {
+  box-shadow: none;
+}
+#performer-page .performer-image-container .performer {
+  max-height: calc(100vh - 6rem);
+  max-width: 100%;
+}
+#performer-page .content-container {
+  padding-bottom: 10px;
+}
+#performer-page .performer-head {
+  display: inline-block;
+  vertical-align: top;
+}
+#performer-page .performer-head .name-icons .not-favorite {
+  color: rgba(191, 204, 214, 0.5);
+}
+#performer-page .performer-head .name-icons .favorite {
+  color: #ff7373;
+}
+#performer-page .performer-head .name-icons .instagram {
+  color: pink;
+}
+#performer-page .performer-head .rating-number .form-control {
+  width: inherit;
+}
+#performer-page .alias {
+  font-weight: bold;
+}
+#performer-page .collapsed .detail-item.tattoos,
+#performer-page .collapsed .detail-item.piercings,
+#performer-page .collapsed .detail-item.career_length,
+#performer-page .collapsed .detail-item.details,
+#performer-page .collapsed .detail-item.tags,
+#performer-page .collapsed .detail-item.stash_ids {
+  display: none;
+}
+#performer-page .detail-group .custom-fields .collapse-button {
+  display: table-cell;
+  font-weight: 700;
+  padding-left: 0;
+}
+#performer-page .custom-fields .detail-item-title,
+#performer-page .custom-fields .detail-item-value {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.new-view {
+  margin-bottom: 2rem;
+}
+.new-view .photo {
+  padding: 1rem 1rem 1rem 2rem;
+  width: 100%;
+}
+
+.performer-card {
+  width: 20rem;
+}
+@media (max-width: 576px) {
+  .performer-card {
+    width: 100%;
+  }
+}
+.performer-card .thumbnail-section {
+  position: relative;
+}
+.performer-card-image {
+  aspect-ratio: 2/3;
+  min-width: 11.25rem;
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+}
+.performer-card .fi {
+  bottom: 1rem;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
+  height: 2rem;
+  position: absolute;
+  right: 1rem;
+  width: 3rem;
+}
+.performer-card button.btn.favorite-button {
+  padding: 0;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+}
+.performer-card button.btn.favorite-button svg.fa-icon {
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+}
+.performer-card:hover button.btn.favorite-button.not-favorite {
+  opacity: 1;
+}
+.performer-card__age {
+  color: #bfccd6;
+}
+.performer-card__country-string {
+  display: none;
+}
+
+.card.performer-card {
+  padding: 0 0 1rem 0;
+}
+
+.scrape-dialog .performer-image {
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  max-width: 100%;
+}
+
+#performer-scraper-popover {
+  z-index: 1;
+}
+
+.PerformerScrapeModal-list {
+  list-style: none;
+  max-height: 50vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-inline-start: 0;
+}
+.PerformerScrapeModal-list li {
+  cursor: pointer;
+}
+
+.flex-aligned {
+  align-items: center;
+  column-gap: 0.5rem;
+  display: flex;
+}
+
+.fa-mars {
+  color: #89cff0;
+}
+
+.fa-venus {
+  color: #f38cac;
+}
+
+.fa-transgender,
+.fa-transgender-alt {
+  color: #c8a2c8;
+}
+
+.performer-height .height-imperial::before,
+.performer-weight .weight-imperial::before,
+.performer-penis-length .penis-length-imperial::before {
+  content: " (";
+}
+.performer-height .height-imperial::after,
+.performer-weight .weight-imperial::after,
+.performer-penis-length .penis-length-imperial::after {
+  content: ")";
+}
+
+.penis-circumcised::before {
+  content: " ";
+}
+
+.favourite-data .favorite {
+  color: #ff7373;
+}
+
+.performer-table .height-imperial,
+.performer-table .weight-imperial,
+.performer-table .penis-length-imperial,
+.performer-disambiguation {
+  color: #bfccd6;
+  font-size: 0.875em;
+}
+
+.performer-table .age-data span {
+  border-bottom: 1px dotted #f5f8fa;
+}
+
+.performer-result .performer-details > span::after {
+  content: " • ";
+}
+.performer-result .performer-details > span:last-child::after {
+  content: "";
+}
+
+.performer-select-value .performer-disambiguation {
+  color: initial;
+}
+
+.performer-select-option .performer-select-row {
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+.performer-select-option .performer-select-row .performer-select-image {
+  margin-right: 0.4em;
+  max-height: 50px;
+  max-width: 50px;
+}
+.performer-select-option .performer-select-row .performer-select-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-height: 4.1rem;
+  overflow: hidden;
+}
+.performer-select-option .performer-select-row .performer-select-details .performer-select-name {
+  flex-shrink: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.performer-select-option .performer-select-row .performer-select-details .performer-select-name .performer-select-alias {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.performer-select-option .performer-select-row .performer-select-details .performer-select-disambiguation,
+.performer-select-option .performer-select-row .performer-select-details .performer-select-birthdate {
+  color: #bfccd6;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.edit-performers-dialog .modal-body {
+  max-height: calc(100vh - 12rem);
+  overflow-y: auto;
+  padding-right: 1.5rem;
+}/* Narrower than in Stash's lists (20rem), as its image is portrait */
+.performer-popover-card .performer-card {
+  margin: 0;
+  width: unset;
+
+  .thumbnail-section {
+    width: 14rem;
+    max-width: 100%;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
+}
+
+.performer-popover-card-placeholder {
+  display: flex;
+  width: 14rem;
+  min-height: 24rem;
+}
 /* Icons in the choices' buttons (e.g. a label's "Icon"), the size of their text. Some (e.g. the resolution's) are
 otherwise as big as they can be. */
 .SceneInfoFieldOptionsModal .btn svg {
@@ -16571,6 +17549,11 @@ below the lines or beside them */
 .ChannelSettings .channel .randomised-icon {
   opacity: 0.6;
 }
+.ChannelSettings .channel .temporary-badge {
+  margin-left: 0.5em;
+  font-size: 0.65em;
+  vertical-align: middle;
+}
 .ChannelSettings .channel.active {
   position: relative;
 }
@@ -16591,601 +17574,17 @@ below the lines or beside them */
   font-style: italic;
   opacity: 0.7;
 }
-.LoadingIndicator {
-  animation: fadeInAnimation ease 200ms;
-  animation-delay: 200ms;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 1;
-  opacity: 0;
-}
 
-@keyframes fadeInAnimation {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.LoadingIndicator {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-}
-.LoadingIndicator:not(.card-based) {
-  padding-top: 2rem;
-}
-.LoadingIndicator-message {
-  margin-top: 1rem;
-}
-.LoadingIndicator .spinner-border {
-  height: 3rem;
-  width: 3rem;
-}
-.LoadingIndicator.inline {
-  display: inline;
-  height: auto;
-  margin-left: 0.5rem;
-}
-.LoadingIndicator.small .spinner-border {
-  height: 1rem;
-  width: 1rem;
-}
-
-.details-edit {
-  /*
-    The penultimate button should be wrapped in an unstyled div.
-    This allows the div to expand, to right-justify the last (save / delete) button.
-  */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
-  padding: 0;
-  row-gap: 0.5rem;
-}
-.details-edit .btn {
-  margin-right: 0.5rem;
-  white-space: nowrap;
-}
-
-.col-md-8 .details-edit div:nth-last-child(2),
-.detail-header.edit .details-edit div:nth-last-child(2) {
-  flex: 1;
-  max-width: 100%;
-}
-
-.select-suggest:hover {
-  cursor: text;
-}
-
-.duration-input .duration-control,
-.duration-input .percent-control,
-.percent-input .duration-control,
-.percent-input .percent-control {
-  min-width: 3rem;
-}
-.duration-input .duration-button,
-.duration-input .percent-button,
-.percent-input .duration-button,
-.percent-input .percent-button {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-  line-height: 10px;
-  padding: 1px 7px;
-}
-.duration-input .btn + .btn,
-.percent-input .btn + .btn {
-  margin-left: 0;
-}
-
-.multi-set .btn-group > button.btn {
-  z-index: auto;
-}
-
-.folder-item button {
+/* The temporary channel, below the others (see ChannelSettings), striped as if it were in their list */
+.temporary-channel-list {
+  list-style: none;
   padding: 0;
 }
-
-.folder-list {
-  list-style-type: none;
-  margin: 0;
-  max-height: 30vw;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
-  padding-top: 1rem;
-}
-.folder-list-item {
-  white-space: nowrap;
-}
-.folder-list-item .btn {
-  border: none;
-  color: white;
-  font-weight: 400;
-  padding: 0;
-  text-align: left;
-  width: 100%;
-}
-.folder-list-item:last-child .btn span::before {
-  content: "└ 📁";
-}
-.folder-list-item .btn span::before {
-  content: "├ 📁";
-  display: inline-block;
-  padding-right: 1rem;
-  transform: scale(1.5);
-}
-.folder-list-parent .btn span::before {
-  visibility: hidden;
-}
-.folder-list-parent .btn-link {
-  font-weight: 500;
-}
-
-.scrape-dialog .modal-content .dialog-container {
-  max-height: calc(100vh - 14rem);
-  overflow-y: auto;
-  padding-right: 15px;
-}
-.scrape-dialog .image-selection-parent {
-  min-width: 100%;
-}
-.scrape-dialog .image-selection .select-buttons {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-.scrape-dialog .image-selection .select-buttons .image-index {
-  flex-grow: 1;
-  text-align: center;
-}
-.scrape-dialog .image-selection .loading {
-  opacity: 0.5;
-}
-.scrape-dialog .image-selection .LoadingIndicator {
-  height: 100%;
-  position: absolute;
-  top: 0;
-}
-
-button.collapse-button.btn-primary:not(:disabled):not(.disabled):hover,
-button.collapse-button.btn-primary:not(:disabled):not(.disabled):focus,
-button.collapse-button.btn-primary:not(:disabled):not(.disabled):active {
-  background: none;
-  border: none;
-  box-shadow: none;
-  color: #f5f8fa;
-  text-align: left;
-}
-
-button.collapse-button {
-  padding-left: 0;
-}
-button.collapse-button .fa-icon {
-  margin-left: 0;
-}
-
-.hover-popover-content {
-  max-width: 32rem;
-  text-align: center;
-}
-
-.ErrorMessage {
-  align-items: center;
-  height: 20rem;
-  justify-content: center;
-}
-.ErrorMessage-content {
-  display: inline-block;
-}
-
-.grid-card a .card-section-title {
-  color: #f5f8fa;
-  text-decoration: none;
-}
-.grid-card .progress-bar {
-  background-color: rgba(115, 133, 159, 0.5019607843);
-  bottom: 5px;
-  display: block;
-  height: 5px;
-  position: absolute;
-  width: 100%;
-}
-.grid-card .progress-indicator {
-  background-color: #137cbd;
-  height: 5px;
-}
-.grid-card .card-controls {
-  align-items: center;
-  display: flex;
-  left: 0.5rem;
-  position: absolute;
-  top: 0.7rem;
-  z-index: 1;
-}
-.grid-card .card-check,
-.grid-card .card-drag-handle {
-  height: 1.2rem;
-  opacity: 0;
-  width: 1.2rem;
-}
-@media (hover: none), (pointer: coarse) {
-  .grid-card .card-check,
-  .grid-card .card-drag-handle {
-    opacity: 0.25;
-  }
-}
-.grid-card .card-drag-handle {
-  cursor: move;
-}
-.grid-card .card-check {
-  padding-left: 15px;
-}
-.grid-card .card-check:checked {
-  opacity: 0.75;
-}
-@media (hover: none), (pointer: coarse) {
-  .grid-card .card-check {
-    width: 1.5rem;
-  }
-}
-.grid-card:hover .card-check, .grid-card:hover .card-drag-handle {
-  opacity: 0.75;
-  transition: opacity 0.5s;
-}
-
-.TruncatedText {
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-  overflow: hidden;
-  white-space: pre-line;
-}
-.TruncatedText-tooltip .tooltip-inner {
-  max-width: 300px;
-  white-space: pre-line;
-}
-.file-info-panel a > .TruncatedText {
-  word-break: break-all;
-}
-
-.RatingStars-unfilled path {
-  fill: white;
-}
-.RatingStars-filled path {
-  fill: gold;
-}
-
-.three-state-checkbox {
-  align-items: center;
-  display: flex;
-}
-.three-state-checkbox button.btn {
-  font-size: 12.67px;
-  margin-left: -0.2em;
-  margin-right: 0.25rem;
-  padding: 0;
-}
-.three-state-checkbox button.btn:not(:disabled):active, .three-state-checkbox button.btn:not(:disabled):active:focus, .three-state-checkbox button.btn:not(:disabled):hover, .three-state-checkbox button.btn:not(:disabled):not(:hover) {
-  background-color: initial;
-  box-shadow: none;
-}
-.three-state-checkbox.unset .label {
-  color: #bfccd6;
-  text-decoration: line-through;
-}
-.three-state-checkbox.checked svg {
-  color: #0f9960;
-}
-.three-state-checkbox.not-checked svg {
-  color: #db3737;
-}
-
-.input-group-prepend .btn {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-}
-
-.ModalComponent .modal-footer {
-  justify-content: space-between;
-}
-
-.scrape-url-button:disabled {
-  opacity: 0.5;
-}
-
-.string-list-input .input-group {
-  margin-bottom: 0.35rem;
-}
-
-.bulk-update-text-input button {
-  background-color: #394b59;
-  color: #bfccd6;
-  font-size: 0.875rem;
-  margin: 0.375rem 0.75rem;
-  padding: 0;
-  position: absolute;
-  right: 0;
-  z-index: 4;
-}
-.bulk-update-text-input button:hover, .bulk-update-text-input button:focus, .bulk-update-text-input button:active, .bulk-update-text-input button:not(:disabled):not(.disabled):active, .bulk-update-text-input button:not(:disabled):not(.disabled):active:focus {
-  background-color: #394b59;
-  border-color: transparent;
-  box-shadow: none;
-}
-.bulk-update-text-input.unset button {
-  visibility: hidden;
-}
-
-.date-input.form-control:focus {
-  z-index: inherit;
-}
-
-/* stylelint-disable */
-div.react-datepicker {
-  background-color: #202b33;
-  border-color: #30404d;
-  color: #f5f8fa;
-}
-div.react-datepicker .react-datepicker__header,
-div.react-datepicker .react-datepicker-time__header {
-  background-color: #394b59;
-  color: #f5f8fa;
-  padding-top: 0.4rem;
-}
-div.react-datepicker .react-datepicker__navigation {
-  top: 0.4rem;
-}
-div.react-datepicker .react-datepicker__day {
-  color: #f5f8fa;
-}
-div.react-datepicker .react-datepicker__day.react-datepicker__day--disabled {
-  color: #bfccd6;
-}
-div.react-datepicker .react-datepicker__day:hover {
-  background: rgba(138, 155, 168, 0.15);
-}
-div.react-datepicker div.react-datepicker__time-container div.react-datepicker__time {
-  background-color: #202b33;
-  color: #f5f8fa;
-}
-div.react-datepicker div.react-datepicker__time-container div.react-datepicker__time ul.react-datepicker__time-list li.react-datepicker__time-list-item:hover {
-  background-color: rgba(138, 155, 168, 0.15);
-}
-div.react-datepicker .react-datepicker__day-name {
-  color: #f5f8fa;
-}
-div.react-datepicker .react-datepicker__current-month {
-  display: none;
-}
-div.react-datepicker .react-datepicker__triangle {
-  display: none;
-}
-div.react-datepicker .react-datepicker__month-dropdown-container {
-  margin-left: 0;
-  margin-right: 0.1rem;
-}
-div.react-datepicker .react-datepicker__year-dropdown-container {
-  margin-left: 0.1rem;
-  margin-right: 0;
-}
-div.react-datepicker .react-datepicker__month-dropdown-container .react-datepicker__month-read-view,
-div.react-datepicker .react-datepicker__year-dropdown-container .react-datepicker__year-read-view {
-  font-weight: bold;
-  font-size: 0.944rem;
-  visibility: visible !important;
-}
-div.react-datepicker .react-datepicker__month-dropdown-container .react-datepicker__month-read-view--down-arrow,
-div.react-datepicker .react-datepicker__year-dropdown-container .react-datepicker__year-read-view--down-arrow {
-  display: none;
-}
-div.react-datepicker .react-datepicker__year-dropdown,
-div.react-datepicker .react-datepicker__month-dropdown {
-  background-color: #202b33;
-}
-div.react-datepicker .react-datepicker__year-dropdown .react-datepicker__year-option:hover,
-div.react-datepicker .react-datepicker__year-dropdown .react-datepicker__month-option:hover,
-div.react-datepicker .react-datepicker__month-dropdown .react-datepicker__year-option:hover,
-div.react-datepicker .react-datepicker__month-dropdown .react-datepicker__month-option:hover {
-  background-color: rgba(138, 155, 168, 0.1490196078);
-}
-
-/* stylelint-enable */
-#date-picker-portal .react-datepicker-popper {
-  z-index: 1600;
-}
-
-.clearable-input-group {
-  align-items: stretch;
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-}
-
-.clearable-text-field,
-.clearable-text-field:active,
-.clearable-text-field:focus {
-  background-color: #394b59;
-  border: 0;
-  border-color: #394b59;
-  color: #fff;
-}
-
-.clearable-text-field-clear {
-  background-color: #394b59;
-  bottom: 0;
-  color: #bfccd6;
-  font-size: 0.875rem;
-  margin: 0.375rem 0.75rem;
-  padding: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 4;
-}
-.clearable-text-field-clear:hover, .clearable-text-field-clear:focus, .clearable-text-field-clear:active, .clearable-text-field-clear:not(:disabled):not(.disabled):active, .clearable-text-field-clear:not(:disabled):not(.disabled):active:focus {
-  background-color: #394b59;
-  border-color: transparent;
-  box-shadow: none;
-}
-
-.string-list-row .input-group {
-  flex-wrap: nowrap;
-}
-
-.stash-id-pill {
-  display: inline-block;
-  font-size: 90%;
-  font-weight: 700;
-  line-height: 1;
-  padding-bottom: 0.25em;
-  padding-top: 0.25em;
-  text-align: center;
-  vertical-align: baseline;
-  white-space: nowrap;
-}
-.stash-id-pill span,
-.stash-id-pill a {
-  display: inline-block;
-  padding: 0.25em 0.6em;
-}
-.stash-id-pill span {
-  background-color: #007bff;
-  border-radius: 0.25rem 0 0 0.25rem;
-  min-width: 5em;
-}
-.stash-id-pill a {
-  background-color: #394b59;
-  border-radius: 0 0.25rem 0.25rem 0;
-}
-
-.react-select-image-option {
-  align-items: baseline;
-  display: flex;
-}
-
-button.btn.favorite-button {
-  opacity: 1;
-  transition: opacity 0.5s;
-}
-button.btn.favorite-button.not-favorite {
-  color: rgba(191, 204, 214, 0.5);
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
-}
-button.btn.favorite-button.not-favorite.hide-not-favorite {
-  opacity: 0;
-}
-button.btn.favorite-button.favorite {
-  color: #ff7373;
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
-}
-button.btn.favorite-button:hover, button.btn.favorite-button:active, button.btn.favorite-button:focus, button.btn.favorite-button:active:focus {
-  background: none;
-  box-shadow: none;
-}
-
-.count-button {
-  border-radius: 5px;
-}
-.count-button:hover {
-  background: rgba(138, 155, 168, 0.15);
-  color: #f5f8fa;
-}
-.count-button .count-icon {
-  padding-left: 0.5rem;
-  padding-right: 0.25rem;
-}
-.count-button .count-value {
-  padding-left: 0.25rem;
-  padding-right: 0.5rem;
-}
-.count-button button.count-icon:hover, .count-button.increment-only button.count-value:hover {
-  background: none;
-  color: #f5f8fa;
-}
-.count-button button.btn-secondary.count-icon:focus,
-.count-button button.btn-secondary.count-value:focus {
-  border: none;
-  box-shadow: none;
-  color: #f5f8fa;
-}
-.count-button button.btn-secondary.count-icon:focus:not(:hover),
-.count-button button.btn-secondary.count-value:focus:not(:hover) {
+.temporary-channel-list li:nth-child(odd) {
   background: none;
 }
-
-.external-links-button {
-  display: inline-block;
-}
-
-.scraper-menu .dropdown-menu {
-  min-width: 250px;
-  padding-top: 0;
-}
-.scraper-menu .dropdown-menu .dropdown-divider {
-  border-top-color: rgba(16, 22, 26, 0.3);
-  margin: 0;
-}
-.scraper-menu .dropdown-menu .scraper-filter-container {
-  background-color: #394b59;
-  border-bottom: solid 1px rgba(16, 22, 26, 0.3);
-  padding: 5px;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-.scraper-menu .dropdown-menu .scraper-filter-container .btn-group {
-  border: solid 1px rgba(16, 22, 26, 0.3);
-  border-radius: 5px;
-  width: 100%;
-}
-.scraper-menu .dropdown-menu .scraper-filter-container .clearable-text-field {
-  background-color: rgba(16, 22, 26, 0.3);
-}
-.scraper-menu .dropdown-menu .scraper-filter-container .clearable-text-field-clear {
-  background-color: unset;
-  border: unset;
-}
-.scraper-menu .dropdown-menu .scraper-filter-container .reload-button.btn {
-  border-bottom-right-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-}
-
-.custom-fields .detail-item .detail-item-title {
-  max-width: 130px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.custom-fields-input > .collapse-button {
-  font-weight: 700;
-}
-
-.custom-fields-row {
-  align-items: center;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 0.875rem;
-}
-.custom-fields-row .form-label {
-  margin-bottom: 0;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-.custom-fields-row div.custom-fields-field label.form-label {
-  cursor: inherit;
-  text-decoration: inherit;
-}
-.custom-fields-row .form-control,
-.custom-fields-row .btn {
-  font-size: 0.875rem;
-}
-.custom-fields-row.custom-fields-new > div:not(:last-child) {
-  padding-right: 0;
+.temporary-channel-list li.odd-row {
+  background: rgba(0, 0, 0, 0.15);
 }.GuideOverlay {
   position: fixed;
   top: 0;

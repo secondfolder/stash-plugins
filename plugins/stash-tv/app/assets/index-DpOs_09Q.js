@@ -6577,14 +6577,14 @@ function requireDocument$1() {
 }
 var documentExports = requireDocument$1();
 const document$1$1 = /* @__PURE__ */ getDefaultExportFromCjs(documentExports);
-function _extends$1C() {
-  return _extends$1C = Object.assign ? Object.assign.bind() : function(n) {
+function _extends$1E() {
+  return _extends$1E = Object.assign ? Object.assign.bind() : function(n) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t4 = arguments[e2];
       for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
     }
     return n;
-  }, _extends$1C.apply(null, arguments);
+  }, _extends$1E.apply(null, arguments);
 }
 var keycode$1 = { exports: {} };
 var hasRequiredKeycode;
@@ -6745,10 +6745,10 @@ function requireTuple() {
 var tupleExports = requireTuple();
 const safeParseTuple = /* @__PURE__ */ getDefaultExportFromCjs(tupleExports);
 var lib$4 = { exports: {} };
-var _extends$1B = { exports: {} };
+var _extends$1D = { exports: {} };
 var hasRequired_extends;
 function require_extends() {
-  if (hasRequired_extends) return _extends$1B.exports;
+  if (hasRequired_extends) return _extends$1D.exports;
   hasRequired_extends = 1;
   (function(module2) {
     function _extends2() {
@@ -6761,8 +6761,8 @@ function require_extends() {
       }, module2.exports.__esModule = true, module2.exports["default"] = module2.exports, _extends2.apply(null, arguments);
     }
     module2.exports = _extends2, module2.exports.__esModule = true, module2.exports["default"] = module2.exports;
-  })(_extends$1B);
-  return _extends$1B.exports;
+  })(_extends$1D);
+  return _extends$1D.exports;
 }
 var isFunction_1;
 var hasRequiredIsFunction;
@@ -8954,7 +8954,7 @@ var ParseStream = /* @__PURE__ */ (function(_Stream) {
       }
       match2 = /^#EXT-X-BYTERANGE:?(.*)?$/.exec(newLine);
       if (match2) {
-        event2 = _extends$1C(parseByterange(match2[1]), {
+        event2 = _extends$1E(parseByterange(match2[1]), {
           type: "tag",
           tagType: "byterange"
         });
@@ -9578,7 +9578,7 @@ var Parser$3 = /* @__PURE__ */ (function(_Stream) {
               if (!currentUri.attributes) {
                 currentUri.attributes = {};
               }
-              _extends$1C(currentUri.attributes, entry.attributes);
+              _extends$1E(currentUri.attributes, entry.attributes);
             },
             media: function media() {
               this.manifest.mediaGroups = this.manifest.mediaGroups || defaultMediaGroups;
@@ -16941,7 +16941,7 @@ function assign$4(target) {
     sources[_key - 1] = arguments[_key];
   }
   if (Object.assign) {
-    return _extends$1C.apply(void 0, [target].concat(sources));
+    return _extends$1E.apply(void 0, [target].concat(sources));
   }
   sources.forEach(function(source2) {
     if (!source2) {
@@ -20310,7 +20310,7 @@ var REMOTE = {
     privateName: "remoteTextTrackEls_"
   }
 };
-var ALL = _extends$1C({}, NORMAL, REMOTE);
+var ALL = _extends$1E({}, NORMAL, REMOTE);
 REMOTE.names = Object.keys(REMOTE);
 NORMAL.names = Object.keys(NORMAL);
 ALL.names = [].concat(REMOTE.names).concat(NORMAL.names);
@@ -24684,7 +24684,7 @@ var ErrorDisplay = /* @__PURE__ */ (function(_ModalDialog) {
   };
   return ErrorDisplay2;
 })(ModalDialog$1);
-ErrorDisplay.prototype.options_ = _extends$1C({}, ModalDialog$1.prototype.options_, {
+ErrorDisplay.prototype.options_ = _extends$1E({}, ModalDialog$1.prototype.options_, {
   pauseOnOpen: false,
   fillAlways: true,
   temporary: false,
@@ -30409,7 +30409,7 @@ var addPropertiesToMaster = function addPropertiesToMaster2(master, uri, createG
           }
         }
       }
-      properties.playlists = [_extends$1C({}, properties)];
+      properties.playlists = [_extends$1E({}, properties)];
     }
     properties.playlists.forEach(function(p3, i4) {
       var groupId = createGroupID(mediaType, groupKey, labelKey, p3);
@@ -38307,7 +38307,7 @@ var workerCallback = function workerCallback2(options2) {
   var transmuxer = options2.transmuxer;
   var endAction = options2.endAction || options2.action;
   var callback2 = options2.callback;
-  var message = _extends$1C({}, options2, {
+  var message = _extends$1E({}, options2, {
     endAction: null,
     transmuxer: null,
     callback: null
@@ -40843,10 +40843,10 @@ var SegmentLoader = /* @__PURE__ */ (function(_videojs$EventTarget) {
     }
     if (!this.hasEnoughInfoToLoad_()) {
       this.loadQueue_.push(function() {
-        var options2 = _extends$1C({}, segmentInfo, {
+        var options2 = _extends$1E({}, segmentInfo, {
           forceTimestampOffset: true
         });
-        _extends$1C(segmentInfo, _this4.generateSegmentInfo_(options2));
+        _extends$1E(segmentInfo, _this4.generateSegmentInfo_(options2));
         _this4.isPendingTimestampOffset_ = false;
         _this4.updateTransmuxerAndRequestSegment_(segmentInfo);
       });
@@ -153041,13 +153041,17 @@ function usePerformerCreateMutation(baseOptions) {
   const options2 = { ...defaultOptions$2, ...baseOptions };
   return useMutation(PerformerCreateDocument, options2);
 }
-gql`
+const PerformerUpdateDocument = gql`
     mutation PerformerUpdate($input: PerformerUpdateInput!) {
   performerUpdate(input: $input) {
     ...PerformerData
   }
 }
     ${PerformerDataFragmentDoc}`;
+function usePerformerUpdateMutation(baseOptions) {
+  const options2 = { ...defaultOptions$2, ...baseOptions };
+  return useMutation(PerformerUpdateDocument, options2);
+}
 gql`
     mutation BulkPerformerUpdate($input: BulkPerformerUpdateInput!) {
   bulkPerformerUpdate(input: $input) {
@@ -153343,13 +153347,17 @@ function useStudioCreateMutation(baseOptions) {
   const options2 = { ...defaultOptions$2, ...baseOptions };
   return useMutation(StudioCreateDocument, options2);
 }
-gql`
+const StudioUpdateDocument = gql`
     mutation StudioUpdate($input: StudioUpdateInput!) {
   studioUpdate(input: $input) {
     ...StudioData
   }
 }
     ${StudioDataFragmentDoc}`;
+function useStudioUpdateMutation(baseOptions) {
+  const options2 = { ...defaultOptions$2, ...baseOptions };
+  return useMutation(StudioUpdateDocument, options2);
+}
 gql`
     mutation StudioDestroy($id: ID!) {
   studioDestroy(input: {id: $id})
@@ -153620,13 +153628,17 @@ const FindPerformersDocument = gql`
   }
 }
     ${PerformerDataFragmentDoc}`;
-gql`
+const FindPerformerDocument = gql`
     query FindPerformer($id: ID!) {
   findPerformer(id: $id) {
     ...PerformerData
   }
 }
     ${PerformerDataFragmentDoc}`;
+function useFindPerformerQuery(baseOptions) {
+  const options2 = { ...defaultOptions$2, ...baseOptions };
+  return useQuery(FindPerformerDocument, options2);
+}
 const FindPerformersForSelectDocument = gql`
     query FindPerformersForSelect($filter: FindFilterType, $performer_filter: PerformerFilterType, $ids: [ID!]) {
   findPerformers(filter: $filter, performer_filter: $performer_filter, ids: $ids) {
@@ -154049,6 +154061,10 @@ const FindStudioDocument = gql`
   }
 }
     ${StudioDataFragmentDoc}`;
+function useFindStudioQuery(baseOptions) {
+  const options2 = { ...defaultOptions$2, ...baseOptions };
+  return useQuery(FindStudioDocument, options2);
+}
 const FindStudiosForSelectDocument = gql`
     query FindStudiosForSelect($filter: FindFilterType, $studio_filter: StudioFilterType, $ids: [ID!]) {
   findStudios(filter: $filter, studio_filter: $studio_filter, ids: $ids) {
@@ -155377,6 +155393,10 @@ const queryFindGalleriesByIDForSelect = (galleryIDs) => client$1.query({
     ids: galleryIDs
   }
 });
+const useFindPerformer = (id2) => {
+  const skip = id2 === "new" || id2 === "";
+  return useFindPerformerQuery({ variables: { id: id2 }, skip });
+};
 const queryFindPerformersByIDForSelect = (performerIDs) => client$1.query({
   query: FindPerformersForSelectDocument,
   variables: {
@@ -155390,6 +155410,10 @@ const queryFindPerformersForSelect = (filter2) => client$1.query({
     performer_filter: filter2.makeFilter()
   }
 });
+const useFindStudio = (id2) => {
+  const skip = id2 === "new" || id2 === "";
+  return useFindStudioQuery({ variables: { id: id2 }, skip });
+};
 const queryFindStudio = (id2) => client$1.query({
   query: FindStudioDocument,
   variables: { id: id2 }
@@ -155733,6 +155757,14 @@ const useSceneMarkersDestroy = (input) => useSceneMarkersDestroyMutation({
 const performerMutationImpactedTypeFields = {
   Tag: ["performer_count"]
 };
+const performerMutationImpactedQueries = [
+  FindScenesDocument,
+  FindImagesDocument,
+  FindGalleriesDocument,
+  FindPerformersDocument,
+  FindTagsDocument
+  // filter by performer count
+];
 const usePerformerCreate = () => usePerformerCreateMutation({
   update(cache2, result) {
     var _a2;
@@ -155748,6 +155780,27 @@ const usePerformerCreate = () => usePerformerCreateMutation({
     ]);
   }
 });
+const usePerformerUpdate = () => usePerformerUpdateMutation({
+  update(cache2, result) {
+    var _a2;
+    if (!((_a2 = result.data) === null || _a2 === void 0 ? void 0 : _a2.performerUpdate))
+      return;
+    evictTypeFields(cache2, performerMutationImpactedTypeFields);
+    evictQueries(cache2, performerMutationImpactedQueries);
+  }
+});
+const studioMutationImpactedTypeFields = {
+  Studio: ["child_studios"]
+};
+const studioMutationImpactedQueries = [
+  FindScenesDocument,
+  FindImagesDocument,
+  FindGroupsDocument,
+  FindGalleriesDocument,
+  FindPerformersDocument,
+  FindStudiosDocument
+  // various filters
+];
 const useStudioCreate = () => useStudioCreateMutation({
   update(cache2, result, { variables }) {
     var _a2;
@@ -155766,6 +155819,22 @@ const useStudioCreate = () => useStudioCreateMutation({
       FindStudiosDocument
       // various filters
     ]);
+  }
+});
+const useStudioUpdate = () => useStudioUpdateMutation({
+  update(cache2, result) {
+    var _a2;
+    const studio2 = (_a2 = result.data) === null || _a2 === void 0 ? void 0 : _a2.studioUpdate;
+    if (!studio2)
+      return;
+    const obj = { __typename: "Studio", id: studio2.id };
+    evictTypeFields(
+      cache2,
+      studioMutationImpactedTypeFields,
+      cache2.identify(obj)
+      // don't evict this studio
+    );
+    evictQueries(cache2, studioMutationImpactedQueries);
   }
 });
 const tagMutationImpactedTypeFields = {
@@ -155815,7 +155884,7 @@ const useTagUpdate = () => useTagUpdateMutation({
     evictQueries(cache2, tagMutationImpactedQueries);
   }
 });
-function _objectWithoutPropertiesLoose$1E(r3, e2) {
+function _objectWithoutPropertiesLoose$1G(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -155861,10 +155930,10 @@ function useUncontrolledProp(propValue, defaultValue, handler) {
 function useUncontrolled(props, config2) {
   return Object.keys(config2).reduce(function(result, fieldName) {
     var _extends2;
-    var _ref3 = result, defaultValue = _ref3[defaultKey(fieldName)], propsValue = _ref3[fieldName], rest = _objectWithoutPropertiesLoose$1E(_ref3, [defaultKey(fieldName), fieldName].map(_toPropertyKey$3));
+    var _ref3 = result, defaultValue = _ref3[defaultKey(fieldName)], propsValue = _ref3[fieldName], rest = _objectWithoutPropertiesLoose$1G(_ref3, [defaultKey(fieldName), fieldName].map(_toPropertyKey$3));
     var handlerName = config2[fieldName];
     var _useUncontrolledProp = useUncontrolledProp(propsValue, defaultValue, props[handlerName]), value = _useUncontrolledProp[0], handler = _useUncontrolledProp[1];
-    return _extends$1C({}, rest, (_extends2 = {}, _extends2[fieldName] = value, _extends2[handlerName] = handler, _extends2));
+    return _extends$1E({}, rest, (_extends2 = {}, _extends2[fieldName] = value, _extends2[handlerName] = handler, _extends2));
   }, props);
 }
 var ThemeContext$1 = /* @__PURE__ */ React$1.createContext({});
@@ -155877,7 +155946,7 @@ function useBootstrapPrefix(prefix2, defaultPrefix) {
 var SelectableContext = /* @__PURE__ */ React$1.createContext(null);
 var context$2 = /* @__PURE__ */ React$1.createContext(null);
 context$2.displayName = "AccordionContext";
-var _excluded$2g = ["as", "children", "eventKey", "onClick"];
+var _excluded$2i = ["as", "children", "eventKey", "onClick"];
 function useAccordionToggle(eventKey, onClick) {
   var contextEventKey = reactExports.useContext(context$2);
   var onSelect = reactExports.useContext(SelectableContext);
@@ -155888,12 +155957,12 @@ function useAccordionToggle(eventKey, onClick) {
   };
 }
 var AccordionToggle$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "button" : _ref$as, children = _ref3.children, eventKey = _ref3.eventKey, onClick = _ref3.onClick, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$2g);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "button" : _ref$as, children = _ref3.children, eventKey = _ref3.eventKey, onClick = _ref3.onClick, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$2i);
   var accordionOnClick = useAccordionToggle(eventKey, onClick);
   if (Component2 === "button") {
     props.type = "button";
   }
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({
     ref,
     onClick: accordionOnClick
   }, props), children);
@@ -156243,7 +156312,7 @@ var Transition = /* @__PURE__ */ (function(_React$Component) {
     _this$props.onExiting;
     _this$props.onExited;
     _this$props.nodeRef;
-    var childProps = _objectWithoutPropertiesLoose$1E(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
+    var childProps = _objectWithoutPropertiesLoose$1G(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
     return (
       // allows for nested Transitions
       /* @__PURE__ */ React$1.createElement(TransitionGroupContext.Provider, {
@@ -156402,7 +156471,7 @@ function createChainedFunction() {
 function triggerBrowserReflow(node2) {
   node2.offsetHeight;
 }
-var _excluded$2f = ["onEnter", "onEntering", "onEntered", "onExit", "onExiting", "className", "children", "dimension", "getDimensionValue"];
+var _excluded$2h = ["onEnter", "onEntering", "onEntered", "onExit", "onExiting", "className", "children", "dimension", "getDimensionValue"];
 var _collapseStyles;
 var MARGINS = {
   height: ["marginTop", "marginBottom"],
@@ -156426,7 +156495,7 @@ var defaultProps$i = {
   getDimensionValue: getDefaultDimensionValue
 };
 var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, className = _ref3.className, children = _ref3.children, _ref$dimension = _ref3.dimension, dimension = _ref$dimension === void 0 ? "height" : _ref$dimension, _ref$getDimensionValu = _ref3.getDimensionValue, getDimensionValue = _ref$getDimensionValu === void 0 ? getDefaultDimensionValue : _ref$getDimensionValu, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$2f);
+  var onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, className = _ref3.className, children = _ref3.children, _ref$dimension = _ref3.dimension, dimension = _ref$dimension === void 0 ? "height" : _ref$dimension, _ref$getDimensionValu = _ref3.getDimensionValue, getDimensionValue = _ref$getDimensionValu === void 0 ? getDefaultDimensionValue : _ref$getDimensionValu, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$2h);
   var computedDimension = typeof dimension === "function" ? dimension() : dimension;
   var handleEnter = reactExports.useMemo(function() {
     return createChainedFunction(function(elem) {
@@ -156457,7 +156526,7 @@ var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, [computedDimension, onExiting]);
   return /* @__PURE__ */ React$1.createElement(
     Transition,
-    _extends$1C({
+    _extends$1E({
       ref,
       addEndListener: transitionEndListener
     }, props, {
@@ -156469,36 +156538,36 @@ var Collapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
       onExiting: handleExiting
     }),
     function(state, innerProps) {
-      return /* @__PURE__ */ React$1.cloneElement(children, _extends$1C({}, innerProps, {
+      return /* @__PURE__ */ React$1.cloneElement(children, _extends$1E({}, innerProps, {
         className: cx(className, children.props.className, collapseStyles[state], computedDimension === "width" && "width")
       }));
     }
   );
 });
 Collapse.defaultProps = defaultProps$i;
-var _excluded$2e = ["children", "eventKey"];
+var _excluded$2g = ["children", "eventKey"];
 var AccordionCollapse = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var children = _ref3.children, eventKey = _ref3.eventKey, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$2e);
+  var children = _ref3.children, eventKey = _ref3.eventKey, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$2g);
   var contextEventKey = reactExports.useContext(context$2);
   return /* @__PURE__ */ React$1.createElement(SelectableContext.Provider, {
     value: null
-  }, /* @__PURE__ */ React$1.createElement(Collapse, _extends$1C({
+  }, /* @__PURE__ */ React$1.createElement(Collapse, _extends$1E({
     ref,
     in: contextEventKey === eventKey
   }, props), /* @__PURE__ */ React$1.createElement("div", null, React$1.Children.only(children))));
 });
 AccordionCollapse.displayName = "AccordionCollapse";
-var _excluded$2d = ["as", "activeKey", "bsPrefix", "children", "className", "onSelect"];
+var _excluded$2f = ["as", "activeKey", "bsPrefix", "children", "className", "onSelect"];
 var Accordion = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
   var _useUncontrolled = useUncontrolled(props, {
     activeKey: "onSelect"
-  }), _useUncontrolled$as = _useUncontrolled.as, Component2 = _useUncontrolled$as === void 0 ? "div" : _useUncontrolled$as, activeKey = _useUncontrolled.activeKey, bsPrefix = _useUncontrolled.bsPrefix, children = _useUncontrolled.children, className = _useUncontrolled.className, onSelect = _useUncontrolled.onSelect, controlledProps = _objectWithoutPropertiesLoose$1E(_useUncontrolled, _excluded$2d);
+  }), _useUncontrolled$as = _useUncontrolled.as, Component2 = _useUncontrolled$as === void 0 ? "div" : _useUncontrolled$as, activeKey = _useUncontrolled.activeKey, bsPrefix = _useUncontrolled.bsPrefix, children = _useUncontrolled.children, className = _useUncontrolled.className, onSelect = _useUncontrolled.onSelect, controlledProps = _objectWithoutPropertiesLoose$1G(_useUncontrolled, _excluded$2f);
   var finalClassName = cx(className, useBootstrapPrefix(bsPrefix, "accordion"));
   return /* @__PURE__ */ React$1.createElement(context$2.Provider, {
     value: activeKey || null
   }, /* @__PURE__ */ React$1.createElement(SelectableContext.Provider, {
     value: onSelect || null
-  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({
+  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({
     ref
   }, controlledProps, {
     className: finalClassName
@@ -156520,7 +156589,7 @@ function useEventCallback$1(fn3) {
     return ref.current && ref.current(...args);
   }, [ref]);
 }
-var _excluded$2c = ["className", "children"];
+var _excluded$2e = ["className", "children"];
 var _fadeStyles;
 var defaultProps$h = {
   in: false,
@@ -156531,25 +156600,25 @@ var defaultProps$h = {
 };
 var fadeStyles = (_fadeStyles = {}, _fadeStyles[ENTERING] = "show", _fadeStyles[ENTERED] = "show", _fadeStyles);
 var Fade = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$2c);
+  var className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$2e);
   var handleEnter = reactExports.useCallback(function(node2) {
     triggerBrowserReflow(node2);
     if (props.onEnter) props.onEnter(node2);
   }, [props]);
-  return /* @__PURE__ */ React$1.createElement(Transition, _extends$1C({
+  return /* @__PURE__ */ React$1.createElement(Transition, _extends$1E({
     ref,
     addEndListener: transitionEndListener
   }, props, {
     onEnter: handleEnter
   }), function(status2, innerProps) {
-    return /* @__PURE__ */ React$1.cloneElement(children, _extends$1C({}, innerProps, {
+    return /* @__PURE__ */ React$1.cloneElement(children, _extends$1E({}, innerProps, {
       className: cx("fade", className, children.props.className, fadeStyles[status2])
     }));
   });
 });
 Fade.defaultProps = defaultProps$h;
 Fade.displayName = "Fade";
-var _excluded$2b = ["label", "onClick", "className"];
+var _excluded$2d = ["label", "onClick", "className"];
 var propTypes$2 = {
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func
@@ -156558,8 +156627,8 @@ var defaultProps$g = {
   label: "Close"
 };
 var CloseButton = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var label = _ref3.label, onClick = _ref3.onClick, className = _ref3.className, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$2b);
-  return /* @__PURE__ */ React$1.createElement("button", _extends$1C({
+  var label = _ref3.label, onClick = _ref3.onClick, className = _ref3.className, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$2d);
+  return /* @__PURE__ */ React$1.createElement("button", _extends$1E({
     ref,
     type: "button",
     className: cx("close", className),
@@ -156575,7 +156644,7 @@ CloseButton.propTypes = propTypes$2;
 CloseButton.defaultProps = defaultProps$g;
 const divWithClassName = (function(className) {
   return /* @__PURE__ */ React$1.forwardRef(function(p2, ref) {
-    return /* @__PURE__ */ React$1.createElement("div", _extends$1C({}, p2, {
+    return /* @__PURE__ */ React$1.createElement("div", _extends$1E({}, p2, {
       ref,
       className: cx(p2.className, className)
     }));
@@ -156587,16 +156656,16 @@ function camelize$1(string2) {
     return chr.toUpperCase();
   });
 }
-var _excluded$2a = ["className", "bsPrefix", "as"];
+var _excluded$2c = ["className", "bsPrefix", "as"];
 var pascalCase = function pascalCase2(str) {
   return str[0].toUpperCase() + camelize$1(str).slice(1);
 };
 function createWithBsPrefix(prefix2, _temp) {
   var _ref3 = _temp === void 0 ? {} : _temp, _ref$displayName = _ref3.displayName, displayName = _ref$displayName === void 0 ? pascalCase(prefix2) : _ref$displayName, Component2 = _ref3.Component, defaultProps2 = _ref3.defaultProps;
   var BsComponent = /* @__PURE__ */ React$1.forwardRef(function(_ref22, ref) {
-    var className = _ref22.className, bsPrefix = _ref22.bsPrefix, _ref2$as = _ref22.as, Tag2 = _ref2$as === void 0 ? Component2 || "div" : _ref2$as, props = _objectWithoutPropertiesLoose$1E(_ref22, _excluded$2a);
+    var className = _ref22.className, bsPrefix = _ref22.bsPrefix, _ref2$as = _ref22.as, Tag2 = _ref2$as === void 0 ? Component2 || "div" : _ref2$as, props = _objectWithoutPropertiesLoose$1G(_ref22, _excluded$2c);
     var resolvedPrefix = useBootstrapPrefix(bsPrefix, prefix2);
-    return /* @__PURE__ */ React$1.createElement(Tag2, _extends$1C({
+    return /* @__PURE__ */ React$1.createElement(Tag2, _extends$1E({
       ref,
       className: cx(className, resolvedPrefix)
     }, props));
@@ -156605,12 +156674,12 @@ function createWithBsPrefix(prefix2, _temp) {
   BsComponent.displayName = displayName;
   return BsComponent;
 }
-var _excluded$29 = ["as", "disabled", "onKeyDown"];
+var _excluded$2b = ["as", "disabled", "onKeyDown"];
 function isTrivialHref(href) {
   return !href || href.trim() === "#";
 }
 var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "a" : _ref$as, disabled2 = _ref3.disabled, onKeyDown = _ref3.onKeyDown, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$29);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "a" : _ref$as, disabled2 = _ref3.disabled, onKeyDown = _ref3.onKeyDown, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$2b);
   var handleClick = function handleClick2(event2) {
     var href = props.href, onClick = props.onClick;
     if (disabled2 || isTrivialHref(href)) {
@@ -156638,7 +156707,7 @@ var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     props.tabIndex = -1;
     props["aria-disabled"] = true;
   }
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({
     ref
   }, props, {
     onClick: handleClick,
@@ -156646,14 +156715,14 @@ var SafeAnchor = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 SafeAnchor.displayName = "SafeAnchor";
-var _excluded$28 = ["bsPrefix", "variant", "pill", "className", "as"];
+var _excluded$2a = ["bsPrefix", "variant", "pill", "className", "as"];
 var defaultProps$f = {
   pill: false
 };
 var Badge = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, pill = _ref3.pill, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "span" : _ref$as, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$28);
+  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, pill = _ref3.pill, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "span" : _ref$as, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$2a);
   var prefix2 = useBootstrapPrefix(bsPrefix, "badge");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({
     ref
   }, props, {
     className: cx(className, prefix2, pill && prefix2 + "-pill", variant && prefix2 + "-" + variant)
@@ -156661,18 +156730,18 @@ var Badge = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 });
 Badge.displayName = "Badge";
 Badge.defaultProps = defaultProps$f;
-var _excluded$27 = ["bsPrefix", "variant", "size", "active", "className", "block", "type", "as"];
+var _excluded$29 = ["bsPrefix", "variant", "size", "active", "className", "block", "type", "as"];
 var defaultProps$e = {
   variant: "primary",
   active: false,
   disabled: false
 };
 var Button = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, size2 = _ref3.size, active = _ref3.active, className = _ref3.className, block2 = _ref3.block, type3 = _ref3.type, as = _ref3.as, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$27);
+  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, size2 = _ref3.size, active = _ref3.active, className = _ref3.className, block2 = _ref3.block, type3 = _ref3.type, as = _ref3.as, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$29);
   var prefix2 = useBootstrapPrefix(bsPrefix, "btn");
   var classes = cx(className, prefix2, active && "active", variant && prefix2 + "-" + variant, block2 && prefix2 + "-block", size2 && prefix2 + "-" + size2);
   if (props.href) {
-    return /* @__PURE__ */ React$1.createElement(SafeAnchor, _extends$1C({}, props, {
+    return /* @__PURE__ */ React$1.createElement(SafeAnchor, _extends$1E({}, props, {
       as,
       ref,
       className: cx(classes, props.disabled && "disabled")
@@ -156687,24 +156756,24 @@ var Button = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     props.type = "button";
   }
   var Component2 = as || "button";
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({}, props, {
     className: classes
   }));
 });
 Button.displayName = "Button";
 Button.defaultProps = defaultProps$e;
-var _excluded$26 = ["bsPrefix", "size", "toggle", "vertical", "className", "as"];
+var _excluded$28 = ["bsPrefix", "size", "toggle", "vertical", "className", "as"];
 var defaultProps$d = {
   vertical: false,
   toggle: false,
   role: "group"
 };
 var ButtonGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, toggle2 = _ref3.toggle, vertical = _ref3.vertical, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, rest = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$26);
+  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, toggle2 = _ref3.toggle, vertical = _ref3.vertical, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, rest = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$28);
   var prefix2 = useBootstrapPrefix(bsPrefix, "btn-group");
   var baseClass = prefix2;
   if (vertical) baseClass = prefix2 + "-vertical";
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({}, rest, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({}, rest, {
     ref,
     className: cx(className, baseClass, size2 && prefix2 + "-" + size2, toggle2 && prefix2 + "-toggle")
   }));
@@ -156713,16 +156782,16 @@ ButtonGroup.displayName = "ButtonGroup";
 ButtonGroup.defaultProps = defaultProps$d;
 var context$1 = /* @__PURE__ */ React$1.createContext(null);
 context$1.displayName = "CardContext";
-var _excluded$25 = ["bsPrefix", "className", "variant", "as"];
+var _excluded$27 = ["bsPrefix", "className", "variant", "as"];
 var defaultProps$c = {
   variant: null
 };
 var CardImg = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, variant = _ref3.variant, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "img" : _ref$as, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$25);
+    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, variant = _ref3.variant, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "img" : _ref$as, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$27);
     var prefix2 = useBootstrapPrefix(bsPrefix, "card-img");
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({
       ref,
       className: cx(variant ? prefix2 + "-" + variant : prefix2, className)
     }, props));
@@ -156730,7 +156799,7 @@ var CardImg = /* @__PURE__ */ React$1.forwardRef(
 );
 CardImg.displayName = "CardImg";
 CardImg.defaultProps = defaultProps$c;
-var _excluded$24 = ["bsPrefix", "className", "bg", "text", "border", "body", "children", "as"];
+var _excluded$26 = ["bsPrefix", "className", "bg", "text", "border", "body", "children", "as"];
 var DivStyledAsH5 = divWithClassName("h5");
 var DivStyledAsH6 = divWithClassName("h6");
 var CardBody = createWithBsPrefix("card-body");
@@ -156753,7 +156822,7 @@ var defaultProps$b = {
   body: false
 };
 var Card = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, bg = _ref3.bg, text2 = _ref3.text, border = _ref3.border, body = _ref3.body, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$24);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, bg = _ref3.bg, text2 = _ref3.text, border = _ref3.border, body = _ref3.body, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$26);
   var prefix2 = useBootstrapPrefix(bsPrefix, "card");
   var cardContext = reactExports.useMemo(function() {
     return {
@@ -156762,7 +156831,7 @@ var Card = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, [prefix2]);
   return /* @__PURE__ */ React$1.createElement(context$1.Provider, {
     value: cardContext
-  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({
+  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({
     ref
   }, props, {
     className: cx(className, prefix2, bg && "bg-" + bg, text2 && "text-" + text2, border && "border-" + border)
@@ -156829,12 +156898,12 @@ function useTimeout() {
     };
   }, []);
 }
-var _excluded$23 = ["bsPrefix", "className", "as"];
+var _excluded$25 = ["bsPrefix", "className", "as"];
 var DEVICE_SIZES$1 = ["xl", "lg", "md", "sm", "xs"];
 var Col = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$23);
+    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$25);
     var prefix2 = useBootstrapPrefix(bsPrefix, "col");
     var spans = [];
     var classes = [];
@@ -156860,7 +156929,7 @@ var Col = /* @__PURE__ */ React$1.forwardRef(
     if (!spans.length) {
       spans.push(prefix2);
     }
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({}, props, {
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({}, props, {
       ref,
       className: cx.apply(void 0, [className].concat(spans, classes))
     }));
@@ -158213,7 +158282,7 @@ var ariaDescribedByModifier = {
 };
 var EMPTY_MODIFIERS$2 = [];
 function usePopper$1(referenceElement, popperElement, _temp) {
-  var _ref3 = _temp === void 0 ? {} : _temp, _ref3$enabled = _ref3.enabled, enabled = _ref3$enabled === void 0 ? true : _ref3$enabled, _ref3$placement = _ref3.placement, placement = _ref3$placement === void 0 ? "bottom" : _ref3$placement, _ref3$strategy = _ref3.strategy, strategy = _ref3$strategy === void 0 ? "absolute" : _ref3$strategy, _ref3$modifiers = _ref3.modifiers, modifiers = _ref3$modifiers === void 0 ? EMPTY_MODIFIERS$2 : _ref3$modifiers, config2 = _objectWithoutPropertiesLoose$1E(_ref3, ["enabled", "placement", "strategy", "modifiers"]);
+  var _ref3 = _temp === void 0 ? {} : _temp, _ref3$enabled = _ref3.enabled, enabled = _ref3$enabled === void 0 ? true : _ref3$enabled, _ref3$placement = _ref3.placement, placement = _ref3$placement === void 0 ? "bottom" : _ref3$placement, _ref3$strategy = _ref3.strategy, strategy = _ref3$strategy === void 0 ? "absolute" : _ref3$strategy, _ref3$modifiers = _ref3.modifiers, modifiers = _ref3$modifiers === void 0 ? EMPTY_MODIFIERS$2 : _ref3$modifiers, config2 = _objectWithoutPropertiesLoose$1G(_ref3, ["enabled", "placement", "strategy", "modifiers"]);
   var popperInstanceRef = reactExports.useRef();
   var update2 = reactExports.useCallback(function() {
     var _popperInstanceRef$cu;
@@ -158270,7 +158339,7 @@ function usePopper$1(referenceElement, popperElement, _temp) {
     if (!enabled || referenceElement == null || popperElement == null) {
       return void 0;
     }
-    popperInstanceRef.current = createPopper$1(referenceElement, popperElement, _extends$1C({}, config2, {
+    popperInstanceRef.current = createPopper$1(referenceElement, popperElement, _extends$1E({}, config2, {
       placement,
       strategy,
       modifiers: [].concat(modifiers, [ariaDescribedByModifier, updateModifier])
@@ -158280,7 +158349,7 @@ function usePopper$1(referenceElement, popperElement, _temp) {
         popperInstanceRef.current.destroy();
         popperInstanceRef.current = void 0;
         setState2(function(s4) {
-          return _extends$1C({}, s4, {
+          return _extends$1E({}, s4, {
             attributes: {},
             styles: {
               popper: initialPopperStyles(strategy)
@@ -158408,31 +158477,31 @@ function mergeOptionsWithPopperConfig(_ref3) {
   var _modifiers$preventOve, _modifiers$preventOve2, _modifiers$offset, _modifiers$arrow;
   var enabled = _ref3.enabled, enableEvents = _ref3.enableEvents, placement = _ref3.placement, flip2 = _ref3.flip, offset3 = _ref3.offset, fixed = _ref3.fixed, containerPadding = _ref3.containerPadding, arrowElement = _ref3.arrowElement, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig;
   var modifiers = toModifierMap(popperConfig.modifiers);
-  return _extends$1C({}, popperConfig, {
+  return _extends$1E({}, popperConfig, {
     placement,
     enabled,
     strategy: fixed ? "fixed" : popperConfig.strategy,
-    modifiers: toModifierArray(_extends$1C({}, modifiers, {
+    modifiers: toModifierArray(_extends$1E({}, modifiers, {
       eventListeners: {
         enabled: enableEvents
       },
-      preventOverflow: _extends$1C({}, modifiers.preventOverflow, {
-        options: containerPadding ? _extends$1C({
+      preventOverflow: _extends$1E({}, modifiers.preventOverflow, {
+        options: containerPadding ? _extends$1E({
           padding: containerPadding
         }, (_modifiers$preventOve = modifiers.preventOverflow) == null ? void 0 : _modifiers$preventOve.options) : (_modifiers$preventOve2 = modifiers.preventOverflow) == null ? void 0 : _modifiers$preventOve2.options
       }),
       offset: {
-        options: _extends$1C({
+        options: _extends$1E({
           offset: offset3
         }, (_modifiers$offset = modifiers.offset) == null ? void 0 : _modifiers$offset.options)
       },
-      arrow: _extends$1C({}, modifiers.arrow, {
+      arrow: _extends$1E({}, modifiers.arrow, {
         enabled: !!arrowElement,
-        options: _extends$1C({}, (_modifiers$arrow = modifiers.arrow) == null ? void 0 : _modifiers$arrow.options, {
+        options: _extends$1E({}, (_modifiers$arrow = modifiers.arrow) == null ? void 0 : _modifiers$arrow.options, {
           element: arrowElement
         })
       }),
-      flip: _extends$1C({
+      flip: _extends$1E({
         enabled: !!flip2
       }, modifiers.flip)
     }))
@@ -158663,7 +158732,7 @@ function requireAll$1() {
   return all$1.exports;
 }
 requireAll$1();
-var _excluded$22 = ["as", "className", "type", "tooltip"];
+var _excluded$24 = ["as", "className", "type", "tooltip"];
 var propTypes$1 = {
   /**
    * Specify whether the feedback is for valid or invalid fields
@@ -158678,8 +158747,8 @@ var propTypes$1 = {
 var Feedback = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "valid" : _ref$type, _ref$tooltip = _ref3.tooltip, tooltip = _ref$tooltip === void 0 ? false : _ref$tooltip, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$22);
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({}, props, {
+    var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "valid" : _ref$type, _ref$tooltip = _ref3.tooltip, tooltip = _ref$tooltip === void 0 ? false : _ref$tooltip, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$24);
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({}, props, {
       ref,
       className: cx(className, type3 + "-" + (tooltip ? "tooltip" : "feedback"))
     }));
@@ -158690,13 +158759,13 @@ Feedback.propTypes = propTypes$1;
 var FormContext = /* @__PURE__ */ React$1.createContext({
   controlId: void 0
 });
-var _excluded$21 = ["id", "bsPrefix", "bsCustomPrefix", "className", "type", "isValid", "isInvalid", "isStatic", "as"];
+var _excluded$23 = ["id", "bsPrefix", "bsCustomPrefix", "className", "type", "isValid", "isInvalid", "isStatic", "as"];
 var FormCheckInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, isStatic = _ref3.isStatic, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$21);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, isStatic = _ref3.isStatic, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$23);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-control-input"] : [bsPrefix, "form-check-input"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({}, props, {
     ref,
     type: type3,
     id: id2 || controlId,
@@ -158704,22 +158773,22 @@ var FormCheckInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 FormCheckInput.displayName = "FormCheckInput";
-var _excluded$20 = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
+var _excluded$22 = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
 var FormCheckLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$20);
+  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$22);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-control-label"] : [bsPrefix, "form-check-label"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement("label", _extends$1C({}, props, {
+  return /* @__PURE__ */ React$1.createElement("label", _extends$1E({}, props, {
     ref,
     htmlFor: htmlFor || controlId,
     className: cx(className, bsPrefix)
   }));
 });
 FormCheckLabel.displayName = "FormCheckLabel";
-var _excluded$1$ = ["id", "bsPrefix", "bsCustomPrefix", "inline", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "title", "type", "label", "children", "custom", "as"];
+var _excluded$21 = ["id", "bsPrefix", "bsCustomPrefix", "inline", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "title", "type", "label", "children", "custom", "as"];
 var FormCheck = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$inline = _ref3.inline, inline = _ref$inline === void 0 ? false : _ref$inline, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? "" : _ref$title, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, label = _ref3.label, children = _ref3.children, propCustom = _ref3.custom, _ref$as = _ref3.as, as = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1$);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$inline = _ref3.inline, inline = _ref$inline === void 0 ? false : _ref$inline, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? "" : _ref$title, _ref$type = _ref3.type, type3 = _ref$type === void 0 ? "checkbox" : _ref$type, label = _ref3.label, children = _ref3.children, propCustom = _ref3.custom, _ref$as = _ref3.as, as = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$21);
   var custom2 = type3 === "switch" ? true : propCustom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-control"] : [bsPrefix, "form-check"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -158731,7 +158800,7 @@ var FormCheck = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     };
   }, [controlId, custom2, id2]);
   var hasLabel = custom2 || label != null && label !== false && !children;
-  var input = /* @__PURE__ */ React$1.createElement(FormCheckInput, _extends$1C({}, props, {
+  var input = /* @__PURE__ */ React$1.createElement(FormCheckInput, _extends$1E({}, props, {
     type: type3 === "switch" ? "checkbox" : type3,
     ref,
     isValid: isValid2,
@@ -158755,14 +158824,14 @@ var FormCheck = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 FormCheck.displayName = "FormCheck";
 FormCheck.Input = FormCheckInput;
 FormCheck.Label = FormCheckLabel;
-var _excluded$1_ = ["id", "bsPrefix", "bsCustomPrefix", "className", "isValid", "isInvalid", "lang", "as"];
+var _excluded$20 = ["id", "bsPrefix", "bsCustomPrefix", "className", "isValid", "isInvalid", "lang", "as"];
 var FormFileInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, isValid2 = _ref3.isValid, isInvalid = _ref3.isInvalid, lang = _ref3.lang, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1_);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, isValid2 = _ref3.isValid, isInvalid = _ref3.isInvalid, lang = _ref3.lang, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$20);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var type3 = "file";
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-file-input"] : [bsPrefix, "form-control-file"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({}, props, {
     ref,
     id: id2 || controlId,
     type: type3,
@@ -158771,13 +158840,13 @@ var FormFileInput = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 FormFileInput.displayName = "FormFileInput";
-var _excluded$1Z = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
+var _excluded$1$ = ["bsPrefix", "bsCustomPrefix", "className", "htmlFor"];
 var FormFileLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1Z);
+  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1$);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId, custom2 = _useContext.custom;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom-file-label"] : [bsPrefix, "form-file-label"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
-  return /* @__PURE__ */ React$1.createElement("label", _extends$1C({}, props, {
+  return /* @__PURE__ */ React$1.createElement("label", _extends$1E({}, props, {
     ref,
     htmlFor: htmlFor || controlId,
     className: cx(className, bsPrefix),
@@ -158785,9 +158854,9 @@ var FormFileLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }));
 });
 FormFileLabel.displayName = "FormFileLabel";
-var _excluded$1Y = ["id", "bsPrefix", "bsCustomPrefix", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "label", "children", "custom", "lang", "data-browse", "as", "inputAs"];
+var _excluded$1_ = ["id", "bsPrefix", "bsCustomPrefix", "disabled", "isValid", "isInvalid", "feedbackTooltip", "feedback", "className", "style", "label", "children", "custom", "lang", "data-browse", "as", "inputAs"];
 var FormFile = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, label = _ref3.label, children = _ref3.children, custom2 = _ref3.custom, lang = _ref3.lang, dataBrowse = _ref3["data-browse"], _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, _ref$inputAs = _ref3.inputAs, inputAs = _ref$inputAs === void 0 ? "input" : _ref$inputAs, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1Y);
+  var id2 = _ref3.id, bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, _ref$disabled = _ref3.disabled, disabled2 = _ref$disabled === void 0 ? false : _ref$disabled, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, _ref$feedbackTooltip = _ref3.feedbackTooltip, feedbackTooltip = _ref$feedbackTooltip === void 0 ? false : _ref$feedbackTooltip, feedback = _ref3.feedback, className = _ref3.className, style2 = _ref3.style, label = _ref3.label, children = _ref3.children, custom2 = _ref3.custom, lang = _ref3.lang, dataBrowse = _ref3["data-browse"], _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, _ref$inputAs = _ref3.inputAs, inputAs = _ref$inputAs === void 0 ? "input" : _ref$inputAs, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1_);
   var _ref22 = custom2 ? [bsCustomPrefix, "custom"] : [bsPrefix, "form-file"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
   var type3 = "file";
@@ -158799,7 +158868,7 @@ var FormFile = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     };
   }, [controlId, custom2, id2]);
   var hasLabel = label != null && label !== false && !children;
-  var input = /* @__PURE__ */ React$1.createElement(FormFileInput, _extends$1C({}, props, {
+  var input = /* @__PURE__ */ React$1.createElement(FormFileInput, _extends$1E({}, props, {
     ref,
     isValid: isValid2,
     isInvalid,
@@ -158822,9 +158891,9 @@ var FormFile = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 FormFile.displayName = "FormFile";
 FormFile.Input = FormFileInput;
 FormFile.Label = FormFileLabel;
-var _excluded$1X = ["bsPrefix", "bsCustomPrefix", "type", "size", "htmlSize", "id", "className", "isValid", "isInvalid", "plaintext", "readOnly", "custom", "as"];
+var _excluded$1Z = ["bsPrefix", "bsCustomPrefix", "type", "size", "htmlSize", "id", "className", "isValid", "isInvalid", "plaintext", "readOnly", "custom", "as"];
 var FormControl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, type3 = _ref3.type, size2 = _ref3.size, htmlSize = _ref3.htmlSize, id2 = _ref3.id, className = _ref3.className, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, plaintext = _ref3.plaintext, readOnly = _ref3.readOnly, custom2 = _ref3.custom, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1X);
+  var bsPrefix = _ref3.bsPrefix, bsCustomPrefix = _ref3.bsCustomPrefix, type3 = _ref3.type, size2 = _ref3.size, htmlSize = _ref3.htmlSize, id2 = _ref3.id, className = _ref3.className, _ref$isValid = _ref3.isValid, isValid2 = _ref$isValid === void 0 ? false : _ref$isValid, _ref$isInvalid = _ref3.isInvalid, isInvalid = _ref$isInvalid === void 0 ? false : _ref$isInvalid, plaintext = _ref3.plaintext, readOnly = _ref3.readOnly, custom2 = _ref3.custom, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "input" : _ref$as, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1Z);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId;
   var _ref22 = custom2 ? [bsCustomPrefix, "custom"] : [bsPrefix, "form-control"], prefix2 = _ref22[0], defaultPrefix = _ref22[1];
   bsPrefix = useBootstrapPrefix(prefix2, defaultPrefix);
@@ -158845,7 +158914,7 @@ var FormControl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     var _classes5;
     classes = (_classes5 = {}, _classes5[bsPrefix] = true, _classes5[bsPrefix + "-" + size2] = size2, _classes5);
   }
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({}, props, {
     type: type3,
     size: htmlSize,
     ref,
@@ -158858,9 +158927,9 @@ FormControl.displayName = "FormControl";
 const FormControl$1 = Object.assign(FormControl, {
   Feedback
 });
-var _excluded$1W = ["bsPrefix", "className", "children", "controlId", "as"];
+var _excluded$1Y = ["bsPrefix", "className", "children", "controlId", "as"];
 var FormGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, controlId = _ref3.controlId, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1W);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, controlId = _ref3.controlId, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1Y);
   bsPrefix = useBootstrapPrefix(bsPrefix, "form-group");
   var context2 = reactExports.useMemo(function() {
     return {
@@ -158869,26 +158938,26 @@ var FormGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, [controlId]);
   return /* @__PURE__ */ React$1.createElement(FormContext.Provider, {
     value: context2
-  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({}, props, {
+  }, /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({}, props, {
     ref,
     className: cx(className, bsPrefix)
   }), children));
 });
 FormGroup.displayName = "FormGroup";
-var _excluded$1V = ["as", "bsPrefix", "column", "srOnly", "className", "htmlFor"];
+var _excluded$1X = ["as", "bsPrefix", "column", "srOnly", "className", "htmlFor"];
 var defaultProps$a = {
   column: false,
   srOnly: false
 };
 var FormLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "label" : _ref$as, bsPrefix = _ref3.bsPrefix, column2 = _ref3.column, srOnly = _ref3.srOnly, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1V);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "label" : _ref$as, bsPrefix = _ref3.bsPrefix, column2 = _ref3.column, srOnly = _ref3.srOnly, className = _ref3.className, htmlFor = _ref3.htmlFor, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1X);
   var _useContext = reactExports.useContext(FormContext), controlId = _useContext.controlId;
   bsPrefix = useBootstrapPrefix(bsPrefix, "form-label");
   var columnClass = "col-form-label";
   if (typeof column2 === "string") columnClass = columnClass + " " + columnClass + "-" + column2;
   var classes = cx(className, bsPrefix, srOnly && "sr-only", column2 && columnClass);
   htmlFor = htmlFor || controlId;
-  if (column2) return /* @__PURE__ */ React$1.createElement(Col, _extends$1C({
+  if (column2) return /* @__PURE__ */ React$1.createElement(Col, _extends$1E({
     ref,
     as: "label",
     className: classes,
@@ -158896,7 +158965,7 @@ var FormLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   }, props));
   return (
     // eslint-disable-next-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control
-    /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({
+    /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({
       ref,
       className: classes,
       htmlFor
@@ -158905,13 +158974,13 @@ var FormLabel = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 });
 FormLabel.displayName = "FormLabel";
 FormLabel.defaultProps = defaultProps$a;
-var _excluded$1U = ["bsPrefix", "className", "as", "muted"];
+var _excluded$1W = ["bsPrefix", "className", "as", "muted"];
 var FormText = /* @__PURE__ */ React$1.forwardRef(
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   function(_ref3, ref) {
-    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "small" : _ref$as, muted = _ref3.muted, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1U);
+    var bsPrefix = _ref3.bsPrefix, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "small" : _ref$as, muted = _ref3.muted, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1W);
     bsPrefix = useBootstrapPrefix(bsPrefix, "form-text");
-    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({}, props, {
+    return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({}, props, {
       ref,
       className: cx(className, bsPrefix, muted && "text-muted")
     }));
@@ -158919,7 +158988,7 @@ var FormText = /* @__PURE__ */ React$1.forwardRef(
 );
 FormText.displayName = "FormText";
 var Switch$1 = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
-  return /* @__PURE__ */ React$1.createElement(FormCheck, _extends$1C({}, props, {
+  return /* @__PURE__ */ React$1.createElement(FormCheck, _extends$1E({}, props, {
     ref,
     type: "switch"
   }));
@@ -158927,15 +158996,15 @@ var Switch$1 = /* @__PURE__ */ React$1.forwardRef(function(props, ref) {
 Switch$1.displayName = "Switch";
 Switch$1.Input = FormCheck.Input;
 Switch$1.Label = FormCheck.Label;
-var _excluded$1T = ["bsPrefix", "inline", "className", "validated", "as"];
+var _excluded$1V = ["bsPrefix", "inline", "className", "validated", "as"];
 var FormRow = createWithBsPrefix("form-row");
 var defaultProps$9 = {
   inline: false
 };
 var FormImpl = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, inline = _ref3.inline, className = _ref3.className, validated = _ref3.validated, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "form" : _ref$as, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1T);
+  var bsPrefix = _ref3.bsPrefix, inline = _ref3.inline, className = _ref3.className, validated = _ref3.validated, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "form" : _ref$as, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1V);
   bsPrefix = useBootstrapPrefix(bsPrefix, "form");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({}, props, {
     ref,
     className: cx(className, validated && "was-validated", inline && bsPrefix + "-inline")
   }));
@@ -158950,26 +159019,26 @@ FormImpl.File = FormFile;
 FormImpl.Switch = Switch$1;
 FormImpl.Label = FormLabel;
 FormImpl.Text = FormText;
-var _excluded$1S = ["bsPrefix", "size", "hasValidation", "className", "as"];
+var _excluded$1U = ["bsPrefix", "size", "hasValidation", "className", "as"];
 var InputGroupAppend = createWithBsPrefix("input-group-append");
 var InputGroupPrepend = createWithBsPrefix("input-group-prepend");
 var InputGroupText = createWithBsPrefix("input-group-text", {
   Component: "span"
 });
 var InputGroupCheckbox = function InputGroupCheckbox2(props) {
-  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1C({
+  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1E({
     type: "checkbox"
   }, props)));
 };
 var InputGroupRadio = function InputGroupRadio2(props) {
-  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1C({
+  return /* @__PURE__ */ React$1.createElement(InputGroupText, null, /* @__PURE__ */ React$1.createElement("input", _extends$1E({
     type: "radio"
   }, props)));
 };
 var InputGroup = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, hasValidation = _ref3.hasValidation, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1S);
+  var bsPrefix = _ref3.bsPrefix, size2 = _ref3.size, hasValidation = _ref3.hasValidation, className = _ref3.className, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1U);
   bsPrefix = useBootstrapPrefix(bsPrefix, "input-group");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({
     ref
   }, props, {
     className: cx(className, bsPrefix, size2 && bsPrefix + "-" + size2, hasValidation && "has-validation")
@@ -159252,7 +159321,7 @@ var Modal$2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$show = _ref3.show, show = _ref$show === void 0 ? false : _ref$show, _ref$role = _ref3.role, role = _ref$role === void 0 ? "dialog" : _ref$role, className = _ref3.className, style2 = _ref3.style, children = _ref3.children, _ref$backdrop = _ref3.backdrop, backdrop = _ref$backdrop === void 0 ? true : _ref$backdrop, _ref$keyboard = _ref3.keyboard, keyboard = _ref$keyboard === void 0 ? true : _ref$keyboard, onBackdropClick = _ref3.onBackdropClick, onEscapeKeyDown = _ref3.onEscapeKeyDown, transition = _ref3.transition, backdropTransition = _ref3.backdropTransition, _ref$autoFocus = _ref3.autoFocus, autoFocus = _ref$autoFocus === void 0 ? true : _ref$autoFocus, _ref$enforceFocus = _ref3.enforceFocus, enforceFocus = _ref$enforceFocus === void 0 ? true : _ref$enforceFocus, _ref$restoreFocus = _ref3.restoreFocus, restoreFocus = _ref$restoreFocus === void 0 ? true : _ref$restoreFocus, restoreFocusOptions = _ref3.restoreFocusOptions, renderDialog = _ref3.renderDialog, _ref$renderBackdrop = _ref3.renderBackdrop, renderBackdrop = _ref$renderBackdrop === void 0 ? function(props) {
     return /* @__PURE__ */ React$1.createElement("div", props);
   } : _ref$renderBackdrop, providedManager = _ref3.manager, containerRef = _ref3.container, containerClassName = _ref3.containerClassName, onShow = _ref3.onShow, _ref$onHide = _ref3.onHide, onHide3 = _ref$onHide === void 0 ? function() {
-  } : _ref$onHide, onExit = _ref3.onExit, onExited = _ref3.onExited, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, rest = _objectWithoutPropertiesLoose$1E(_ref3, ["show", "role", "className", "style", "children", "backdrop", "keyboard", "onBackdropClick", "onEscapeKeyDown", "transition", "backdropTransition", "autoFocus", "enforceFocus", "restoreFocus", "restoreFocusOptions", "renderDialog", "renderBackdrop", "manager", "container", "containerClassName", "onShow", "onHide", "onExit", "onExited", "onExiting", "onEnter", "onEntering", "onEntered"]);
+  } : _ref$onHide, onExit = _ref3.onExit, onExited = _ref3.onExited, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onEntered = _ref3.onEntered, rest = _objectWithoutPropertiesLoose$1G(_ref3, ["show", "role", "className", "style", "children", "backdrop", "keyboard", "onBackdropClick", "onEscapeKeyDown", "transition", "backdropTransition", "autoFocus", "enforceFocus", "restoreFocus", "restoreFocusOptions", "renderDialog", "renderBackdrop", "manager", "container", "containerClassName", "onShow", "onHide", "onExit", "onExited", "onExiting", "onEnter", "onEntering", "onEntered"]);
   var container2 = useWaitForDOMRef(containerRef);
   var modal = useModalManager(providedManager);
   var isMounted = useMounted();
@@ -159359,7 +159428,7 @@ var Modal$2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   if (!container2 || !(show || Transition2 && !exited)) {
     return null;
   }
-  var dialogProps = _extends$1C({
+  var dialogProps = _extends$1E({
     role,
     ref: modal.setDialogRef,
     // apparently only works on the dialog role element
@@ -159600,12 +159669,12 @@ var ModalContext = /* @__PURE__ */ React$1.createContext({
   onHide: function onHide() {
   }
 });
-var _excluded$1R = ["bsPrefix", "className", "contentClassName", "centered", "size", "children", "scrollable"];
+var _excluded$1T = ["bsPrefix", "className", "contentClassName", "centered", "size", "children", "scrollable"];
 var ModalDialog = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, contentClassName = _ref3.contentClassName, centered = _ref3.centered, size2 = _ref3.size, children = _ref3.children, scrollable = _ref3.scrollable, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1R);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, contentClassName = _ref3.contentClassName, centered = _ref3.centered, size2 = _ref3.size, children = _ref3.children, scrollable = _ref3.scrollable, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1T);
   bsPrefix = useBootstrapPrefix(bsPrefix, "modal");
   var dialogClass = bsPrefix + "-dialog";
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1C({}, props, {
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1E({}, props, {
     ref,
     className: cx(dialogClass, className, size2 && bsPrefix + "-" + size2, centered && dialogClass + "-centered", scrollable && dialogClass + "-scrollable")
   }), /* @__PURE__ */ React$1.createElement("div", {
@@ -159614,20 +159683,20 @@ var ModalDialog = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 });
 ModalDialog.displayName = "ModalDialog";
 const BootstrapModalFooter = createWithBsPrefix("modal-footer");
-var _excluded$1Q = ["bsPrefix", "closeLabel", "closeButton", "onHide", "className", "children"];
+var _excluded$1S = ["bsPrefix", "closeLabel", "closeButton", "onHide", "className", "children"];
 var defaultProps$8 = {
   closeLabel: "Close",
   closeButton: false
 };
 var ModalHeader = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, closeLabel = _ref3.closeLabel, closeButton = _ref3.closeButton, onHide3 = _ref3.onHide, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1Q);
+  var bsPrefix = _ref3.bsPrefix, closeLabel = _ref3.closeLabel, closeButton = _ref3.closeButton, onHide3 = _ref3.onHide, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1S);
   bsPrefix = useBootstrapPrefix(bsPrefix, "modal-header");
   var context2 = reactExports.useContext(ModalContext);
   var handleClick = useEventCallback$1(function() {
     if (context2) context2.onHide();
     if (onHide3) onHide3();
   });
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1C({
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1E({
     ref
   }, props, {
     className: cx(className, bsPrefix)
@@ -159642,7 +159711,7 @@ var DivStyledAsH4 = divWithClassName("h4");
 const BootstrapModalTitle = createWithBsPrefix("modal-title", {
   Component: DivStyledAsH4
 });
-var _excluded$1P = ["bsPrefix", "className", "style", "dialogClassName", "contentClassName", "children", "dialogAs", "aria-labelledby", "aria-describedby", "aria-label", "show", "animation", "backdrop", "keyboard", "onEscapeKeyDown", "onShow", "onHide", "container", "autoFocus", "enforceFocus", "restoreFocus", "restoreFocusOptions", "onEntered", "onExit", "onExiting", "onEnter", "onEntering", "onExited", "backdropClassName", "manager"];
+var _excluded$1R = ["bsPrefix", "className", "style", "dialogClassName", "contentClassName", "children", "dialogAs", "aria-labelledby", "aria-describedby", "aria-label", "show", "animation", "backdrop", "keyboard", "onEscapeKeyDown", "onShow", "onHide", "container", "autoFocus", "enforceFocus", "restoreFocus", "restoreFocusOptions", "onEntered", "onExit", "onExiting", "onEnter", "onEntering", "onExited", "backdropClassName", "manager"];
 var manager;
 var defaultProps$7 = {
   show: false,
@@ -159655,17 +159724,17 @@ var defaultProps$7 = {
   dialogAs: ModalDialog
 };
 function DialogTransition(props) {
-  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1C({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1E({}, props, {
     timeout: null
   }));
 }
 function BackdropTransition(props) {
-  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1C({}, props, {
+  return /* @__PURE__ */ React$1.createElement(Fade, _extends$1E({}, props, {
     timeout: null
   }));
 }
 var Modal$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, style2 = _ref3.style, dialogClassName = _ref3.dialogClassName, contentClassName = _ref3.contentClassName, children = _ref3.children, Dialog = _ref3.dialogAs, ariaLabelledby = _ref3["aria-labelledby"], ariaDescribedby = _ref3["aria-describedby"], ariaLabel = _ref3["aria-label"], show = _ref3.show, animation = _ref3.animation, backdrop = _ref3.backdrop, keyboard = _ref3.keyboard, onEscapeKeyDown = _ref3.onEscapeKeyDown, onShow = _ref3.onShow, onHide3 = _ref3.onHide, container2 = _ref3.container, autoFocus = _ref3.autoFocus, enforceFocus = _ref3.enforceFocus, restoreFocus = _ref3.restoreFocus, restoreFocusOptions = _ref3.restoreFocusOptions, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onExited = _ref3.onExited, backdropClassName = _ref3.backdropClassName, propsManager = _ref3.manager, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1P);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, style2 = _ref3.style, dialogClassName = _ref3.dialogClassName, contentClassName = _ref3.contentClassName, children = _ref3.children, Dialog = _ref3.dialogAs, ariaLabelledby = _ref3["aria-labelledby"], ariaDescribedby = _ref3["aria-describedby"], ariaLabel = _ref3["aria-label"], show = _ref3.show, animation = _ref3.animation, backdrop = _ref3.backdrop, keyboard = _ref3.keyboard, onEscapeKeyDown = _ref3.onEscapeKeyDown, onShow = _ref3.onShow, onHide3 = _ref3.onHide, container2 = _ref3.container, autoFocus = _ref3.autoFocus, enforceFocus = _ref3.enforceFocus, restoreFocus = _ref3.restoreFocus, restoreFocusOptions = _ref3.restoreFocusOptions, onEntered = _ref3.onEntered, onExit = _ref3.onExit, onExiting = _ref3.onExiting, onEnter = _ref3.onEnter, onEntering = _ref3.onEntering, onExited = _ref3.onExited, backdropClassName = _ref3.backdropClassName, propsManager = _ref3.manager, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1R);
   var _useState = reactExports.useState({}), modalStyle = _useState[0], setStyle = _useState[1];
   var _useState2 = reactExports.useState(false), animateStaticModal = _useState2[0], setAnimateStaticModal = _useState2[1];
   var waitingForMouseUpRef = reactExports.useRef(false);
@@ -159772,16 +159841,16 @@ var Modal$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     removeEventListener(window, "resize", handleWindowResize);
   };
   var renderBackdrop = reactExports.useCallback(function(backdropProps) {
-    return /* @__PURE__ */ React$1.createElement("div", _extends$1C({}, backdropProps, {
+    return /* @__PURE__ */ React$1.createElement("div", _extends$1E({}, backdropProps, {
       className: cx(bsPrefix + "-backdrop", backdropClassName, !animation && "show")
     }));
   }, [animation, backdropClassName, bsPrefix]);
-  var baseModalStyle = _extends$1C({}, style2, modalStyle);
+  var baseModalStyle = _extends$1E({}, style2, modalStyle);
   if (!animation) {
     baseModalStyle.display = "block";
   }
   var renderDialog = function renderDialog2(dialogProps) {
-    return /* @__PURE__ */ React$1.createElement("div", _extends$1C({
+    return /* @__PURE__ */ React$1.createElement("div", _extends$1E({
       role: "dialog"
     }, dialogProps, {
       style: baseModalStyle,
@@ -159791,7 +159860,7 @@ var Modal$1 = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
       "aria-label": ariaLabel,
       "aria-labelledby": ariaLabelledby,
       "aria-describedby": ariaDescribedby
-    }), /* @__PURE__ */ React$1.createElement(Dialog, _extends$1C({}, props, {
+    }), /* @__PURE__ */ React$1.createElement(Dialog, _extends$1E({}, props, {
       onMouseDown: handleDialogMouseDown,
       className: dialogClassName,
       contentClassName
@@ -159851,7 +159920,7 @@ var Overlay$1 = /* @__PURE__ */ React$1.forwardRef(function(props, outerRef) {
     offset: offset3,
     arrowElement,
     popperConfig
-  })), styles2 = _usePopper.styles, attributes = _usePopper.attributes, popper2 = _objectWithoutPropertiesLoose$1E(_usePopper, ["styles", "attributes"]);
+  })), styles2 = _usePopper.styles, attributes = _usePopper.attributes, popper2 = _objectWithoutPropertiesLoose$1G(_usePopper, ["styles", "attributes"]);
   if (props.show) {
     if (exited) setExited(false);
   } else if (!props.transition && !exited) {
@@ -159871,13 +159940,13 @@ var Overlay$1 = /* @__PURE__ */ React$1.forwardRef(function(props, outerRef) {
   if (!mountOverlay) {
     return null;
   }
-  var child = props.children(_extends$1C({}, popper2, {
+  var child = props.children(_extends$1E({}, popper2, {
     show: !!props.show,
-    props: _extends$1C({}, attributes.popper, {
+    props: _extends$1E({}, attributes.popper, {
       style: styles2.popper,
       ref: mergedRef
     }),
-    arrowProps: _extends$1C({}, attributes.arrow, {
+    arrowProps: _extends$1E({}, attributes.arrow, {
       style: styles2.arrow,
       ref: attachArrowRef
     })
@@ -160013,7 +160082,7 @@ Overlay$1.propTypes = {
    */
   onExited: PropTypes.func
 };
-var _excluded$1O = ["children", "transition", "popperConfig"], _excluded2$2 = ["props", "arrowProps", "show", "update", "forceUpdate", "placement", "state"];
+var _excluded$1Q = ["children", "transition", "popperConfig"], _excluded2$2 = ["props", "arrowProps", "show", "update", "forceUpdate", "placement", "state"];
 var defaultProps$6 = {
   transition: Fade,
   rootClose: false,
@@ -160031,13 +160100,13 @@ function wrapRefs(props, arrowProps) {
   });
 }
 function Overlay(_ref3) {
-  var overlay = _ref3.children, transition = _ref3.transition, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, outerProps = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1O);
+  var overlay = _ref3.children, transition = _ref3.transition, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, outerProps = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1Q);
   var popperRef = reactExports.useRef({});
   var _usePopperMarginModif = usePopperMarginModifiers(), ref = _usePopperMarginModif[0], marginModifiers = _usePopperMarginModif[1];
   var actualTransition = transition === true ? Fade : transition || null;
-  return /* @__PURE__ */ React$1.createElement(Overlay$1, _extends$1C({}, outerProps, {
+  return /* @__PURE__ */ React$1.createElement(Overlay$1, _extends$1E({}, outerProps, {
     ref,
-    popperConfig: _extends$1C({}, popperConfig, {
+    popperConfig: _extends$1E({}, popperConfig, {
       modifiers: marginModifiers.concat(popperConfig.modifiers || [])
     }),
     transition: actualTransition
@@ -160045,7 +160114,7 @@ function Overlay(_ref3) {
     var _state$modifiersData$;
     var overlayProps = _ref22.props, arrowProps = _ref22.arrowProps, show = _ref22.show, update2 = _ref22.update;
     _ref22.forceUpdate;
-    var placement = _ref22.placement, state = _ref22.state, props = _objectWithoutPropertiesLoose$1E(_ref22, _excluded2$2);
+    var placement = _ref22.placement, state = _ref22.state, props = _objectWithoutPropertiesLoose$1G(_ref22, _excluded2$2);
     wrapRefs(overlayProps, arrowProps);
     var popper2 = Object.assign(popperRef.current, {
       state,
@@ -160053,7 +160122,7 @@ function Overlay(_ref3) {
       placement,
       outOfBoundaries: (state == null ? void 0 : (_state$modifiersData$ = state.modifiersData.hide) == null ? void 0 : _state$modifiersData$.isReferenceHidden) || false
     });
-    if (typeof overlay === "function") return overlay(_extends$1C({}, props, overlayProps, {
+    if (typeof overlay === "function") return overlay(_extends$1E({}, props, overlayProps, {
       placement,
       show
     }, !transition && show && {
@@ -160062,17 +160131,17 @@ function Overlay(_ref3) {
       popper: popper2,
       arrowProps
     }));
-    return /* @__PURE__ */ React$1.cloneElement(overlay, _extends$1C({}, props, overlayProps, {
+    return /* @__PURE__ */ React$1.cloneElement(overlay, _extends$1E({}, props, overlayProps, {
       placement,
       arrowProps,
       popper: popper2,
       className: cx(overlay.props.className, !transition && show && "show"),
-      style: _extends$1C({}, overlay.props.style, overlayProps.style)
+      style: _extends$1E({}, overlay.props.style, overlayProps.style)
     }));
   });
 }
 Overlay.defaultProps = defaultProps$6;
-var _excluded$1N = ["trigger", "overlay", "children", "popperConfig", "show", "defaultShow", "onToggle", "delay", "placement", "flip"];
+var _excluded$1P = ["trigger", "overlay", "children", "popperConfig", "show", "defaultShow", "onToggle", "delay", "placement", "flip"];
 var RefHolder = /* @__PURE__ */ (function(_React$Component) {
   _inheritsLoose$2(RefHolder2, _React$Component);
   function RefHolder2() {
@@ -160103,7 +160172,7 @@ var defaultProps$5 = {
   trigger: ["hover", "focus"]
 };
 function OverlayTrigger(_ref3) {
-  var trigger2 = _ref3.trigger, overlay = _ref3.overlay, children = _ref3.children, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, propsShow = _ref3.show, _ref$defaultShow = _ref3.defaultShow, defaultShow = _ref$defaultShow === void 0 ? false : _ref$defaultShow, onToggle = _ref3.onToggle, propsDelay = _ref3.delay, placement = _ref3.placement, _ref$flip = _ref3.flip, flip2 = _ref$flip === void 0 ? placement && placement.indexOf("auto") !== -1 : _ref$flip, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1N);
+  var trigger2 = _ref3.trigger, overlay = _ref3.overlay, children = _ref3.children, _ref$popperConfig = _ref3.popperConfig, popperConfig = _ref$popperConfig === void 0 ? {} : _ref$popperConfig, propsShow = _ref3.show, _ref$defaultShow = _ref3.defaultShow, defaultShow = _ref$defaultShow === void 0 ? false : _ref$defaultShow, onToggle = _ref3.onToggle, propsDelay = _ref3.delay, placement = _ref3.placement, _ref$flip = _ref3.flip, flip2 = _ref$flip === void 0 ? placement && placement.indexOf("auto") !== -1 : _ref$flip, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1P);
   var triggerNodeRef = reactExports.useRef(null);
   var timeout = useTimeout();
   var hoverStateRef = reactExports.useRef("");
@@ -160178,11 +160247,11 @@ function OverlayTrigger(_ref3) {
     triggerProps.onMouseOver = handleMouseOver;
     triggerProps.onMouseOut = handleMouseOut;
   }
-  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, typeof children === "function" ? children(_extends$1C({}, triggerProps, {
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, typeof children === "function" ? children(_extends$1E({}, triggerProps, {
     ref: triggerNodeRef
   })) : /* @__PURE__ */ React$1.createElement(RefHolder, {
     ref: triggerNodeRef
-  }, /* @__PURE__ */ reactExports.cloneElement(children, triggerProps)), /* @__PURE__ */ React$1.createElement(Overlay, _extends$1C({}, props, {
+  }, /* @__PURE__ */ reactExports.cloneElement(children, triggerProps)), /* @__PURE__ */ React$1.createElement(Overlay, _extends$1E({}, props, {
     show,
     onHide: handleHide,
     flip: flip2,
@@ -160192,27 +160261,27 @@ function OverlayTrigger(_ref3) {
   }), overlay));
 }
 OverlayTrigger.defaultProps = defaultProps$5;
-var _excluded$1M = ["as", "bsPrefix", "className", "children"];
+var _excluded$1O = ["as", "bsPrefix", "className", "children"];
 var PopoverTitle = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1M);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1O);
   bsPrefix = useBootstrapPrefix(bsPrefix, "popover-header");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({
     ref
   }, props, {
     className: cx(bsPrefix, className)
   }), children);
 });
-var _excluded$1L = ["as", "bsPrefix", "className", "children"];
+var _excluded$1N = ["as", "bsPrefix", "className", "children"];
 var PopoverContent = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1L);
+  var _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, bsPrefix = _ref3.bsPrefix, className = _ref3.className, children = _ref3.children, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1N);
   bsPrefix = useBootstrapPrefix(bsPrefix, "popover-body");
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({
     ref
   }, props, {
     className: cx(className, bsPrefix)
   }), children);
 });
-var _excluded$1K = ["bsPrefix", "placement", "className", "style", "children", "content", "arrowProps", "popper", "show"];
+var _excluded$1M = ["bsPrefix", "placement", "className", "style", "children", "content", "arrowProps", "popper", "show"];
 var defaultProps$4 = {
   placement: "right"
 };
@@ -160220,29 +160289,29 @@ var Popover = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   var bsPrefix = _ref3.bsPrefix, placement = _ref3.placement, className = _ref3.className, style2 = _ref3.style, children = _ref3.children, content2 = _ref3.content, arrowProps = _ref3.arrowProps;
   _ref3.popper;
   _ref3.show;
-  var props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1K);
+  var props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1M);
   var decoratedBsPrefix = useBootstrapPrefix(bsPrefix, "popover");
   var _ref22 = (placement == null ? void 0 : placement.split("-")) || [], primaryPlacement = _ref22[0];
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1C({
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1E({
     ref,
     role: "tooltip",
     style: style2,
     "x-placement": primaryPlacement,
     className: cx(className, decoratedBsPrefix, primaryPlacement && "bs-popover-" + primaryPlacement)
-  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1C({
+  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1E({
     className: "arrow"
   }, arrowProps)), content2 ? /* @__PURE__ */ React$1.createElement(PopoverContent, null, children) : children);
 });
 Popover.defaultProps = defaultProps$4;
 Popover.Title = PopoverTitle;
 Popover.Content = PopoverContent;
-var _excluded$1J = ["bsPrefix", "className", "noGutters", "as"];
+var _excluded$1L = ["bsPrefix", "className", "noGutters", "as"];
 var DEVICE_SIZES = ["xl", "lg", "md", "sm", "xs"];
 var defaultProps$3 = {
   noGutters: false
 };
 var Row = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, noGutters = _ref3.noGutters, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1J);
+  var bsPrefix = _ref3.bsPrefix, className = _ref3.className, noGutters = _ref3.noGutters, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1L);
   var decoratedBsPrefix = useBootstrapPrefix(bsPrefix, "row");
   var sizePrefix = decoratedBsPrefix + "-cols";
   var classes = [];
@@ -160258,7 +160327,7 @@ var Row = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
     var infix = brkPoint !== "xs" ? "-" + brkPoint : "";
     if (cols != null) classes.push("" + sizePrefix + infix + "-" + cols);
   });
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({
     ref
   }, props, {
     className: cx.apply(void 0, [className, decoratedBsPrefix, noGutters && "no-gutters"].concat(classes))
@@ -160266,19 +160335,19 @@ var Row = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
 });
 Row.displayName = "Row";
 Row.defaultProps = defaultProps$3;
-var _excluded$1I = ["bsPrefix", "variant", "animation", "size", "children", "as", "className"];
+var _excluded$1K = ["bsPrefix", "variant", "animation", "size", "children", "as", "className"];
 var Spinner = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
-  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, animation = _ref3.animation, size2 = _ref3.size, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1I);
+  var bsPrefix = _ref3.bsPrefix, variant = _ref3.variant, animation = _ref3.animation, size2 = _ref3.size, children = _ref3.children, _ref$as = _ref3.as, Component2 = _ref$as === void 0 ? "div" : _ref$as, className = _ref3.className, props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1K);
   bsPrefix = useBootstrapPrefix(bsPrefix, "spinner");
   var bsSpinnerPrefix = bsPrefix + "-" + animation;
-  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1C({
+  return /* @__PURE__ */ React$1.createElement(Component2, _extends$1E({
     ref
   }, props, {
     className: cx(className, bsSpinnerPrefix, size2 && bsSpinnerPrefix + "-" + size2, variant && "text-" + variant)
   }), children);
 });
 Spinner.displayName = "Spinner";
-var _excluded$1H = ["bsPrefix", "placement", "className", "style", "children", "arrowProps", "popper", "show"];
+var _excluded$1J = ["bsPrefix", "placement", "className", "style", "children", "arrowProps", "popper", "show"];
 var defaultProps$2 = {
   placement: "right"
 };
@@ -160286,16 +160355,16 @@ var Tooltip = /* @__PURE__ */ React$1.forwardRef(function(_ref3, ref) {
   var bsPrefix = _ref3.bsPrefix, placement = _ref3.placement, className = _ref3.className, style2 = _ref3.style, children = _ref3.children, arrowProps = _ref3.arrowProps;
   _ref3.popper;
   _ref3.show;
-  var props = _objectWithoutPropertiesLoose$1E(_ref3, _excluded$1H);
+  var props = _objectWithoutPropertiesLoose$1G(_ref3, _excluded$1J);
   bsPrefix = useBootstrapPrefix(bsPrefix, "tooltip");
   var _ref22 = (placement == null ? void 0 : placement.split("-")) || [], primaryPlacement = _ref22[0];
-  return /* @__PURE__ */ React$1.createElement("div", _extends$1C({
+  return /* @__PURE__ */ React$1.createElement("div", _extends$1E({
     ref,
     style: style2,
     role: "tooltip",
     "x-placement": primaryPlacement,
     className: cx(className, bsPrefix, "bs-tooltip-" + primaryPlacement)
-  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1C({
+  }, props), /* @__PURE__ */ React$1.createElement("div", _extends$1E({
     className: "arrow"
   }, arrowProps)), /* @__PURE__ */ React$1.createElement("div", {
     className: bsPrefix + "-inner"
@@ -163600,16 +163669,16 @@ function _objectSpread2$2(e2) {
   }
   return e2;
 }
-function _objectWithoutProperties$1B(e2, t4) {
+function _objectWithoutProperties$1D(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i3 = _objectWithoutPropertiesLoose$1D(e2, t4);
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1F(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
   }
   return i3;
 }
-function _objectWithoutPropertiesLoose$1D(r3, e2) {
+function _objectWithoutPropertiesLoose$1F(r3, e2) {
   if (null == r3) return {};
   var t4 = {};
   for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
@@ -163729,7 +163798,7 @@ function camelize(string2) {
   });
   return string2.substr(0, 1).toLowerCase() + string2.substr(1);
 }
-var _excluded$1G = ["style"];
+var _excluded$1I = ["style"];
 function capitalize$1(val) {
   return val.charAt(0).toUpperCase() + val.slice(1);
 }
@@ -163775,7 +163844,7 @@ function convert(createElement2, element) {
   }, {
     attrs: {}
   });
-  var _extraProps$style = extraProps.style, existingStyle = _extraProps$style === void 0 ? {} : _extraProps$style, remaining = _objectWithoutProperties$1B(extraProps, _excluded$1G);
+  var _extraProps$style = extraProps.style, existingStyle = _extraProps$style === void 0 ? {} : _extraProps$style, remaining = _objectWithoutProperties$1D(extraProps, _excluded$1I);
   mixins.attrs["style"] = _objectSpread2$2(_objectSpread2$2({}, mixins.attrs["style"]), existingStyle);
   return createElement2.apply(void 0, [element.tag, _objectSpread2$2(_objectSpread2$2({}, mixins.attrs), remaining)].concat(_toConsumableArray$1(children)));
 }
@@ -164030,6 +164099,11 @@ const faShuffle = {
   iconName: "shuffle",
   icon: [512, 512, [128256, "random"], "f074", "M403.8 34.4c12-5 25.7-2.2 34.9 6.9l64 64c6 6 9.4 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-64 64c-9.2 9.2-22.9 11.9-34.9 6.9s-19.8-16.6-19.8-29.6l0-32-32 0c-10.1 0-19.6 4.7-25.6 12.8L284 229.3 244 176l31.2-41.6C293.3 110.2 321.8 96 352 96l32 0 0-32c0-12.9 7.8-24.6 19.8-29.6zM164 282.7L204 336l-31.2 41.6C154.7 401.8 126.2 416 96 416l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c10.1 0 19.6-4.7 25.6-12.8L164 282.7zm274.6 188c-9.2 9.2-22.9 11.9-34.9 6.9s-19.8-16.6-19.8-29.6l0-32-32 0c-30.2 0-58.7-14.2-76.8-38.4L121.6 172.8c-6-8.1-15.5-12.8-25.6-12.8l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c30.2 0 58.7 14.2 76.8 38.4L326.4 339.2c6 8.1 15.5 12.8 25.6 12.8l32 0 0-32c0-12.9 7.8-24.6 19.8-29.6s25.7-2.2 34.9 6.9l64 64c6 6 9.4 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-64 64z"]
 };
+const faVenus = {
+  prefix: "fas",
+  iconName: "venus",
+  icon: [384, 512, [9792], "f221", "M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"]
+};
 const faImage = {
   prefix: "fas",
   iconName: "image",
@@ -164081,10 +164155,20 @@ const faGear = {
   iconName: "gear",
   icon: [512, 512, [9881, "cog"], "f013", "M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z"]
 };
+const faGripVertical = {
+  prefix: "fas",
+  iconName: "grip-vertical",
+  icon: [320, 512, [], "f58e", "M40 352l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0c-22.1 0-40-17.9-40-40l0-48c0-22.1 17.9-40 40-40zm192 0l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0c-22.1 0-40-17.9-40-40l0-48c0-22.1 17.9-40 40-40zM40 320c-22.1 0-40-17.9-40-40l0-48c0-22.1 17.9-40 40-40l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0zM232 192l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0c-22.1 0-40-17.9-40-40l0-48c0-22.1 17.9-40 40-40zM40 160c-22.1 0-40-17.9-40-40L0 72C0 49.9 17.9 32 40 32l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0zM232 32l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0c-22.1 0-40-17.9-40-40l0-48c0-22.1 17.9-40 40-40z"]
+};
 const faClock = {
   prefix: "fas",
   iconName: "clock",
   icon: [512, 512, [128339, "clock-four"], "f017", "M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"]
+};
+const faFolderTree = {
+  prefix: "fas",
+  iconName: "folder-tree",
+  icon: [576, 512, [], "f802", "M64 32C64 14.3 49.7 0 32 0S0 14.3 0 32l0 96L0 384c0 35.3 28.7 64 64 64l192 0 0-64L64 384l0-224 192 0 0-64L64 96l0-64zM288 192c0 17.7 14.3 32 32 32l224 0c17.7 0 32-14.3 32-32l0-128c0-17.7-14.3-32-32-32l-98.7 0c-8.5 0-16.6-3.4-22.6-9.4L409.4 9.4c-6-6-14.1-9.4-22.6-9.4L320 0c-17.7 0-32 14.3-32 32l0 160zm0 288c0 17.7 14.3 32 32 32l224 0c17.7 0 32-14.3 32-32l0-128c0-17.7-14.3-32-32-32l-98.7 0c-8.5 0-16.6-3.4-22.6-9.4l-13.3-13.3c-6-6-14.1-9.4-22.6-9.4L320 288c-17.7 0-32 14.3-32 32l0 160z"]
 };
 const faEllipsisVertical = {
   prefix: "fas",
@@ -164112,6 +164196,11 @@ const faFileArrowDown = {
   icon: [384, 512, ["file-download"], "f56d", "M64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-288-128 0c-17.7 0-32-14.3-32-32L224 0 64 0zM256 0l0 128 128 0L256 0zM216 232l0 102.1 31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31L168 232c0-13.3 10.7-24 24-24s24 10.7 24 24z"]
 };
 const faFileDownload = faFileArrowDown;
+const faMars = {
+  prefix: "fas",
+  iconName: "mars",
+  icon: [448, 512, [9794], "f222", "M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"]
+};
 const faGripLines = {
   prefix: "fas",
   iconName: "grip-lines",
@@ -164169,6 +164258,12 @@ const faSpinner = {
   iconName: "spinner",
   icon: [512, 512, [], "f110", "M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z"]
 };
+const faTransgender = {
+  prefix: "fas",
+  iconName: "transgender",
+  icon: [512, 512, [9895, "transgender-alt"], "f225", "M112 0c6.5 0 12.3 3.9 14.8 9.9s1.1 12.9-3.5 17.4l-31 31L112 78.1l7-7c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-7 7 15.2 15.2C187.7 107.6 220.5 96 256 96s68.3 11.6 94.9 31.2l68.8-68.8-31-31c-4.6-4.6-5.9-11.5-3.5-17.4s8.3-9.9 14.8-9.9l96 0c8.8 0 16 7.2 16 16l0 96c0 6.5-3.9 12.3-9.9 14.8s-12.9 1.1-17.4-3.5l-31-31-68.8 68.8C404.4 187.7 416 220.5 416 256c0 80.2-59 146.6-136 158.2l0 17.8 16 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-16 0 0 8c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-8-16 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l16 0 0-17.8C155 402.6 96 336.2 96 256c0-35.5 11.6-68.3 31.2-94.9L112 145.9l-7 7c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l7-7L58.3 92.3l-31 31c-4.6 4.6-11.5 5.9-17.4 3.5S0 118.5 0 112L0 16C0 7.2 7.2 0 16 0l96 0zM352 256a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"]
+};
+const faTransgenderAlt = faTransgender;
 const faClockRotateLeft = {
   prefix: "fas",
   iconName: "clock-rotate-left",
@@ -177589,8 +177684,2512 @@ const useGlobalState = create()(
     }
   })
 );
+var propertyExpr;
+var hasRequiredPropertyExpr;
+function requirePropertyExpr() {
+  if (hasRequiredPropertyExpr) return propertyExpr;
+  hasRequiredPropertyExpr = 1;
+  function Cache2(maxSize) {
+    this._maxSize = maxSize;
+    this.clear();
+  }
+  Cache2.prototype.clear = function() {
+    this._size = 0;
+    this._values = /* @__PURE__ */ Object.create(null);
+  };
+  Cache2.prototype.get = function(key) {
+    return this._values[key];
+  };
+  Cache2.prototype.set = function(key, value) {
+    this._size >= this._maxSize && this.clear();
+    if (!(key in this._values)) this._size++;
+    return this._values[key] = value;
+  };
+  var SPLIT_REGEX = /[^.^\]^[]+|(?=\[\]|\.\.)/g, DIGIT_REGEX = /^\d+$/, LEAD_DIGIT_REGEX = /^\d/, SPEC_CHAR_REGEX = /[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g, CLEAN_QUOTES_REGEX = /^\s*(['"]?)(.*?)(\1)\s*$/, MAX_CACHE_SIZE = 512;
+  var pathCache = new Cache2(MAX_CACHE_SIZE), setCache = new Cache2(MAX_CACHE_SIZE), getCache = new Cache2(MAX_CACHE_SIZE);
+  propertyExpr = {
+    Cache: Cache2,
+    split: split2,
+    normalizePath: normalizePath4,
+    setter: function(path2) {
+      var parts = normalizePath4(path2);
+      return setCache.get(path2) || setCache.set(path2, function setter(obj, value) {
+        var index2 = 0;
+        var len = parts.length;
+        var data2 = obj;
+        while (index2 < len - 1) {
+          var part = parts[index2];
+          if (part === "__proto__" || part === "constructor" || part === "prototype") {
+            return obj;
+          }
+          data2 = data2[parts[index2++]];
+        }
+        data2[parts[index2]] = value;
+      });
+    },
+    getter: function(path2, safe) {
+      var parts = normalizePath4(path2);
+      return getCache.get(path2) || getCache.set(path2, function getter(data2) {
+        var index2 = 0, len = parts.length;
+        while (index2 < len) {
+          if (data2 != null || !safe) data2 = data2[parts[index2++]];
+          else return;
+        }
+        return data2;
+      });
+    },
+    join: function(segments) {
+      return segments.reduce(function(path2, part) {
+        return path2 + (isQuoted(part) || DIGIT_REGEX.test(part) ? "[" + part + "]" : (path2 ? "." : "") + part);
+      }, "");
+    },
+    forEach: function(path2, cb2, thisArg) {
+      forEach2(Array.isArray(path2) ? path2 : split2(path2), cb2, thisArg);
+    }
+  };
+  function normalizePath4(path2) {
+    return pathCache.get(path2) || pathCache.set(
+      path2,
+      split2(path2).map(function(part) {
+        return part.replace(CLEAN_QUOTES_REGEX, "$2");
+      })
+    );
+  }
+  function split2(path2) {
+    return path2.match(SPLIT_REGEX) || [""];
+  }
+  function forEach2(parts, iter, thisArg) {
+    var len = parts.length, part, idx, isArray2, isBracket;
+    for (idx = 0; idx < len; idx++) {
+      part = parts[idx];
+      if (part) {
+        if (shouldBeQuoted(part)) {
+          part = '"' + part + '"';
+        }
+        isBracket = isQuoted(part);
+        isArray2 = !isBracket && /^\d+$/.test(part);
+        iter.call(thisArg, part, isBracket, isArray2, idx, parts);
+      }
+    }
+  }
+  function isQuoted(str) {
+    return typeof str === "string" && str && ["'", '"'].indexOf(str.charAt(0)) !== -1;
+  }
+  function hasLeadingNumber(part) {
+    return part.match(LEAD_DIGIT_REGEX) && !part.match(DIGIT_REGEX);
+  }
+  function hasSpecialChars(part) {
+    return SPEC_CHAR_REGEX.test(part);
+  }
+  function shouldBeQuoted(part) {
+    return !isQuoted(part) && (hasLeadingNumber(part) || hasSpecialChars(part));
+  }
+  return propertyExpr;
+}
+var propertyExprExports = requirePropertyExpr();
+var tinyCase;
+var hasRequiredTinyCase;
+function requireTinyCase() {
+  if (hasRequiredTinyCase) return tinyCase;
+  hasRequiredTinyCase = 1;
+  const reWords = /[A-Z\xc0-\xd6\xd8-\xde]?[a-z\xdf-\xf6\xf8-\xff]+(?:['’](?:d|ll|m|re|s|t|ve))?(?=[\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000]|[A-Z\xc0-\xd6\xd8-\xde]|$)|(?:[A-Z\xc0-\xd6\xd8-\xde]|[^\ud800-\udfff\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\d+\u2700-\u27bfa-z\xdf-\xf6\xf8-\xffA-Z\xc0-\xd6\xd8-\xde])+(?:['’](?:D|LL|M|RE|S|T|VE))?(?=[\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000]|[A-Z\xc0-\xd6\xd8-\xde](?:[a-z\xdf-\xf6\xf8-\xff]|[^\ud800-\udfff\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\d+\u2700-\u27bfa-z\xdf-\xf6\xf8-\xffA-Z\xc0-\xd6\xd8-\xde])|$)|[A-Z\xc0-\xd6\xd8-\xde]?(?:[a-z\xdf-\xf6\xf8-\xff]|[^\ud800-\udfff\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\d+\u2700-\u27bfa-z\xdf-\xf6\xf8-\xffA-Z\xc0-\xd6\xd8-\xde])+(?:['’](?:d|ll|m|re|s|t|ve))?|[A-Z\xc0-\xd6\xd8-\xde]+(?:['’](?:D|LL|M|RE|S|T|VE))?|\d*(?:1ST|2ND|3RD|(?![123])\dTH)(?=\b|[a-z_])|\d*(?:1st|2nd|3rd|(?![123])\dth)(?=\b|[A-Z_])|\d+|(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe2f\u20d0-\u20ff]|\ud83c[\udffb-\udfff])?(?:\u200d(?:[^\ud800-\udfff]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe2f\u20d0-\u20ff]|\ud83c[\udffb-\udfff])?)*/g;
+  const words = (str) => str.match(reWords) || [];
+  const upperFirst = (str) => str[0].toUpperCase() + str.slice(1);
+  const join2 = (str, d4) => words(str).join(d4).toLowerCase();
+  const camelCase3 = (str) => words(str).reduce(
+    (acc, next2) => `${acc}${!acc ? next2.toLowerCase() : next2[0].toUpperCase() + next2.slice(1).toLowerCase()}`,
+    ""
+  );
+  const pascalCase3 = (str) => upperFirst(camelCase3(str));
+  const snakeCase = (str) => join2(str, "_");
+  const kebabCase = (str) => join2(str, "-");
+  const sentenceCase = (str) => upperFirst(join2(str, " "));
+  const titleCase = (str) => words(str).map(upperFirst).join(" ");
+  tinyCase = {
+    words,
+    upperFirst,
+    camelCase: camelCase3,
+    pascalCase: pascalCase3,
+    snakeCase,
+    kebabCase,
+    sentenceCase,
+    titleCase
+  };
+  return tinyCase;
+}
+var tinyCaseExports = requireTinyCase();
+var toposort$1 = { exports: {} };
+var hasRequiredToposort;
+function requireToposort() {
+  if (hasRequiredToposort) return toposort$1.exports;
+  hasRequiredToposort = 1;
+  toposort$1.exports = function(edges) {
+    return toposort2(uniqueNodes(edges), edges);
+  };
+  toposort$1.exports.array = toposort2;
+  function toposort2(nodes, edges) {
+    var cursor2 = nodes.length, sorted = new Array(cursor2), visited = {}, i3 = cursor2, outgoingEdges = makeOutgoingEdges(edges), nodesHash = makeNodesHash(nodes);
+    edges.forEach(function(edge) {
+      if (!nodesHash.has(edge[0]) || !nodesHash.has(edge[1])) {
+        throw new Error("Unknown node. There is an unknown node in the supplied edges.");
+      }
+    });
+    while (i3--) {
+      if (!visited[i3]) visit2(nodes[i3], i3, /* @__PURE__ */ new Set());
+    }
+    return sorted;
+    function visit2(node2, i4, predecessors) {
+      if (predecessors.has(node2)) {
+        var nodeRep;
+        try {
+          nodeRep = ", node was:" + JSON.stringify(node2);
+        } catch (e2) {
+          nodeRep = "";
+        }
+        throw new Error("Cyclic dependency" + nodeRep);
+      }
+      if (!nodesHash.has(node2)) {
+        throw new Error("Found unknown node. Make sure to provided all involved nodes. Unknown node: " + JSON.stringify(node2));
+      }
+      if (visited[i4]) return;
+      visited[i4] = true;
+      var outgoing = outgoingEdges.get(node2) || /* @__PURE__ */ new Set();
+      outgoing = Array.from(outgoing);
+      if (i4 = outgoing.length) {
+        predecessors.add(node2);
+        do {
+          var child = outgoing[--i4];
+          visit2(child, nodesHash.get(child), predecessors);
+        } while (i4);
+        predecessors.delete(node2);
+      }
+      sorted[--cursor2] = node2;
+    }
+  }
+  function uniqueNodes(arr) {
+    var res = /* @__PURE__ */ new Set();
+    for (var i3 = 0, len = arr.length; i3 < len; i3++) {
+      var edge = arr[i3];
+      res.add(edge[0]);
+      res.add(edge[1]);
+    }
+    return Array.from(res);
+  }
+  function makeOutgoingEdges(arr) {
+    var edges = /* @__PURE__ */ new Map();
+    for (var i3 = 0, len = arr.length; i3 < len; i3++) {
+      var edge = arr[i3];
+      if (!edges.has(edge[0])) edges.set(edge[0], /* @__PURE__ */ new Set());
+      if (!edges.has(edge[1])) edges.set(edge[1], /* @__PURE__ */ new Set());
+      edges.get(edge[0]).add(edge[1]);
+    }
+    return edges;
+  }
+  function makeNodesHash(arr) {
+    var res = /* @__PURE__ */ new Map();
+    for (var i3 = 0, len = arr.length; i3 < len; i3++) {
+      res.set(arr[i3], i3);
+    }
+    return res;
+  }
+  return toposort$1.exports;
+}
+var toposortExports = requireToposort();
+const toposort = /* @__PURE__ */ getDefaultExportFromCjs(toposortExports);
+const toString = Object.prototype.toString;
+const errorToString$1 = Error.prototype.toString;
+const regExpToString = RegExp.prototype.toString;
+const symbolToString = typeof Symbol !== "undefined" ? Symbol.prototype.toString : () => "";
+const SYMBOL_REGEXP = /^Symbol\((.*)\)(.*)$/;
+function printNumber(val) {
+  if (val != +val) return "NaN";
+  const isNegativeZero = val === 0 && 1 / val < 0;
+  return isNegativeZero ? "-0" : "" + val;
+}
+function printSimpleValue(val, quoteStrings = false) {
+  if (val == null || val === true || val === false) return "" + val;
+  const typeOf2 = typeof val;
+  if (typeOf2 === "number") return printNumber(val);
+  if (typeOf2 === "string") return quoteStrings ? `"${val}"` : val;
+  if (typeOf2 === "function") return "[Function " + (val.name || "anonymous") + "]";
+  if (typeOf2 === "symbol") return symbolToString.call(val).replace(SYMBOL_REGEXP, "Symbol($1)");
+  const tag2 = toString.call(val).slice(8, -1);
+  if (tag2 === "Date") return isNaN(val.getTime()) ? "" + val : val.toISOString(val);
+  if (tag2 === "Error" || val instanceof Error) return "[" + errorToString$1.call(val) + "]";
+  if (tag2 === "RegExp") return regExpToString.call(val);
+  return null;
+}
+function printValue(value, quoteStrings) {
+  let result = printSimpleValue(value, quoteStrings);
+  if (result !== null) return result;
+  return JSON.stringify(value, function(key, value2) {
+    let result2 = printSimpleValue(this[key], quoteStrings);
+    if (result2 !== null) return result2;
+    return value2;
+  }, 2);
+}
+function toArray$1(value) {
+  return value == null ? [] : [].concat(value);
+}
+let _Symbol$toStringTag, _Symbol$hasInstance, _Symbol$toStringTag2;
+let strReg = /\$\{\s*(\w+)\s*\}/g;
+_Symbol$toStringTag = Symbol.toStringTag;
+class ValidationErrorNoStack {
+  constructor(errorOrErrors, value, field, type3) {
+    this.name = void 0;
+    this.message = void 0;
+    this.value = void 0;
+    this.path = void 0;
+    this.type = void 0;
+    this.params = void 0;
+    this.errors = void 0;
+    this.inner = void 0;
+    this[_Symbol$toStringTag] = "Error";
+    this.name = "ValidationError";
+    this.value = value;
+    this.path = field;
+    this.type = type3;
+    this.errors = [];
+    this.inner = [];
+    toArray$1(errorOrErrors).forEach((err) => {
+      if (ValidationError.isError(err)) {
+        this.errors.push(...err.errors);
+        const innerErrors = err.inner.length ? err.inner : [err];
+        this.inner.push(...innerErrors);
+      } else {
+        this.errors.push(err);
+      }
+    });
+    this.message = this.errors.length > 1 ? `${this.errors.length} errors occurred` : this.errors[0];
+  }
+}
+_Symbol$hasInstance = Symbol.hasInstance;
+_Symbol$toStringTag2 = Symbol.toStringTag;
+class ValidationError extends Error {
+  static formatError(message, params) {
+    const path2 = params.label || params.path || "this";
+    params = Object.assign({}, params, {
+      path: path2,
+      originalPath: params.path
+    });
+    if (typeof message === "string") return message.replace(strReg, (_, key) => printValue(params[key]));
+    if (typeof message === "function") return message(params);
+    return message;
+  }
+  static isError(err) {
+    return err && err.name === "ValidationError";
+  }
+  constructor(errorOrErrors, value, field, type3, disableStack) {
+    const errorNoStack = new ValidationErrorNoStack(errorOrErrors, value, field, type3);
+    if (disableStack) {
+      return errorNoStack;
+    }
+    super();
+    this.value = void 0;
+    this.path = void 0;
+    this.type = void 0;
+    this.params = void 0;
+    this.errors = [];
+    this.inner = [];
+    this[_Symbol$toStringTag2] = "Error";
+    this.name = errorNoStack.name;
+    this.message = errorNoStack.message;
+    this.type = errorNoStack.type;
+    this.value = errorNoStack.value;
+    this.path = errorNoStack.path;
+    this.errors = errorNoStack.errors;
+    this.inner = errorNoStack.inner;
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, ValidationError);
+    }
+  }
+  static [_Symbol$hasInstance](inst) {
+    return ValidationErrorNoStack[Symbol.hasInstance](inst) || super[Symbol.hasInstance](inst);
+  }
+}
+let mixed = {
+  default: "${path} is invalid",
+  required: "${path} is a required field",
+  defined: "${path} must be defined",
+  notNull: "${path} cannot be null",
+  oneOf: "${path} must be one of the following values: ${values}",
+  notOneOf: "${path} must not be one of the following values: ${values}",
+  notType: ({
+    path: path2,
+    type: type3,
+    value,
+    originalValue
+  }) => {
+    const castMsg = originalValue != null && originalValue !== value ? ` (cast from the value \`${printValue(originalValue, true)}\`).` : ".";
+    return type3 !== "mixed" ? `${path2} must be a \`${type3}\` type, but the final value was: \`${printValue(value, true)}\`` + castMsg : `${path2} must match the configured type. The validated value was: \`${printValue(value, true)}\`` + castMsg;
+  }
+};
+let string = {
+  length: "${path} must be exactly ${length} characters",
+  min: "${path} must be at least ${min} characters",
+  max: "${path} must be at most ${max} characters",
+  matches: '${path} must match the following: "${regex}"',
+  email: "${path} must be a valid email",
+  url: "${path} must be a valid URL",
+  uuid: "${path} must be a valid UUID",
+  datetime: "${path} must be a valid ISO date-time",
+  datetime_precision: "${path} must be a valid ISO date-time with a sub-second precision of exactly ${precision} digits",
+  datetime_offset: '${path} must be a valid ISO date-time with UTC "Z" timezone',
+  trim: "${path} must be a trimmed string",
+  lowercase: "${path} must be a lowercase string",
+  uppercase: "${path} must be a upper case string"
+};
+let number$1 = {
+  min: "${path} must be greater than or equal to ${min}",
+  max: "${path} must be less than or equal to ${max}",
+  lessThan: "${path} must be less than ${less}",
+  moreThan: "${path} must be greater than ${more}",
+  positive: "${path} must be a positive number",
+  negative: "${path} must be a negative number",
+  integer: "${path} must be an integer"
+};
+let date$1 = {
+  min: "${path} field must be later than ${min}",
+  max: "${path} field must be at earlier than ${max}"
+};
+let boolean = {
+  isValue: "${path} field must be ${value}"
+};
+let object = {
+  noUnknown: "${path} field has unspecified keys: ${unknown}",
+  exact: "${path} object contains unknown properties: ${properties}"
+};
+let array = {
+  min: "${path} field must have at least ${min} items",
+  max: "${path} field must have less than or equal to ${max} items",
+  length: "${path} must have ${length} items"
+};
+let tuple = {
+  notType: (params) => {
+    const {
+      path: path2,
+      value,
+      spec
+    } = params;
+    const typeLen = spec.types.length;
+    if (Array.isArray(value)) {
+      if (value.length < typeLen) return `${path2} tuple value has too few items, expected a length of ${typeLen} but got ${value.length} for value: \`${printValue(value, true)}\``;
+      if (value.length > typeLen) return `${path2} tuple value has too many items, expected a length of ${typeLen} but got ${value.length} for value: \`${printValue(value, true)}\``;
+    }
+    return ValidationError.formatError(mixed.notType, params);
+  }
+};
+Object.assign(/* @__PURE__ */ Object.create(null), {
+  mixed,
+  string,
+  number: number$1,
+  date: date$1,
+  object,
+  array,
+  boolean,
+  tuple
+});
+const isSchema = (obj) => obj && obj.__isYupSchema__;
+class Condition {
+  static fromOptions(refs, config2) {
+    if (!config2.then && !config2.otherwise) throw new TypeError("either `then:` or `otherwise:` is required for `when()` conditions");
+    let {
+      is: is2,
+      then,
+      otherwise
+    } = config2;
+    let check2 = typeof is2 === "function" ? is2 : (...values3) => values3.every((value) => value === is2);
+    return new Condition(refs, (values3, schema2) => {
+      var _branch;
+      let branch = check2(...values3) ? then : otherwise;
+      return (_branch = branch == null ? void 0 : branch(schema2)) != null ? _branch : schema2;
+    });
+  }
+  constructor(refs, builder) {
+    this.fn = void 0;
+    this.refs = refs;
+    this.refs = refs;
+    this.fn = builder;
+  }
+  resolve(base, options2) {
+    let values3 = this.refs.map((ref) => (
+      // TODO: ? operator here?
+      ref.getValue(options2 == null ? void 0 : options2.value, options2 == null ? void 0 : options2.parent, options2 == null ? void 0 : options2.context)
+    ));
+    let schema2 = this.fn(values3, base, options2);
+    if (schema2 === void 0 || // @ts-ignore this can be base
+    schema2 === base) {
+      return base;
+    }
+    if (!isSchema(schema2)) throw new TypeError("conditions must return a schema object");
+    return schema2.resolve(options2);
+  }
+}
+const prefixes$1 = {
+  context: "$",
+  value: "."
+};
+let Reference$1 = class Reference2 {
+  constructor(key, options2 = {}) {
+    this.key = void 0;
+    this.isContext = void 0;
+    this.isValue = void 0;
+    this.isSibling = void 0;
+    this.path = void 0;
+    this.getter = void 0;
+    this.map = void 0;
+    if (typeof key !== "string") throw new TypeError("ref must be a string, got: " + key);
+    this.key = key.trim();
+    if (key === "") throw new TypeError("ref must be a non-empty string");
+    this.isContext = this.key[0] === prefixes$1.context;
+    this.isValue = this.key[0] === prefixes$1.value;
+    this.isSibling = !this.isContext && !this.isValue;
+    let prefix2 = this.isContext ? prefixes$1.context : this.isValue ? prefixes$1.value : "";
+    this.path = this.key.slice(prefix2.length);
+    this.getter = this.path && propertyExprExports.getter(this.path, true);
+    this.map = options2.map;
+  }
+  getValue(value, parent, context2) {
+    let result = this.isContext ? context2 : this.isValue ? value : parent;
+    if (this.getter) result = this.getter(result || {});
+    if (this.map) result = this.map(result);
+    return result;
+  }
+  /**
+   *
+   * @param {*} value
+   * @param {Object} options
+   * @param {Object=} options.context
+   * @param {Object=} options.parent
+   */
+  cast(value, options2) {
+    return this.getValue(value, options2 == null ? void 0 : options2.parent, options2 == null ? void 0 : options2.context);
+  }
+  resolve() {
+    return this;
+  }
+  describe() {
+    return {
+      type: "ref",
+      key: this.key
+    };
+  }
+  toString() {
+    return `Ref(${this.key})`;
+  }
+  static isRef(value) {
+    return value && value.__isYupRef;
+  }
+};
+Reference$1.prototype.__isYupRef = true;
+const isAbsent = (value) => value == null;
+function createValidation(config2) {
+  function validate({
+    value,
+    path: path2 = "",
+    options: options2,
+    originalValue,
+    schema: schema2
+  }, panic, next2) {
+    const {
+      name: name2,
+      test: test2,
+      params,
+      message,
+      skipAbsent
+    } = config2;
+    let {
+      parent,
+      context: context2,
+      abortEarly = schema2.spec.abortEarly,
+      disableStackTrace = schema2.spec.disableStackTrace
+    } = options2;
+    const resolveOptions2 = {
+      value,
+      parent,
+      context: context2
+    };
+    function createError(overrides = {}) {
+      const nextParams = resolveParams(Object.assign({
+        value,
+        originalValue,
+        label: schema2.spec.label,
+        path: overrides.path || path2,
+        spec: schema2.spec,
+        disableStackTrace: overrides.disableStackTrace || disableStackTrace
+      }, params, overrides.params), resolveOptions2);
+      const error = new ValidationError(ValidationError.formatError(overrides.message || message, nextParams), value, nextParams.path, overrides.type || name2, nextParams.disableStackTrace);
+      error.params = nextParams;
+      return error;
+    }
+    const invalid = abortEarly ? panic : next2;
+    let ctx = {
+      path: path2,
+      parent,
+      type: name2,
+      from: options2.from,
+      createError,
+      resolve(item) {
+        return resolveMaybeRef(item, resolveOptions2);
+      },
+      options: options2,
+      originalValue,
+      schema: schema2
+    };
+    const handleResult = (validOrError) => {
+      if (ValidationError.isError(validOrError)) invalid(validOrError);
+      else if (!validOrError) invalid(createError());
+      else next2(null);
+    };
+    const handleError2 = (err) => {
+      if (ValidationError.isError(err)) invalid(err);
+      else panic(err);
+    };
+    const shouldSkip = skipAbsent && isAbsent(value);
+    if (shouldSkip) {
+      return handleResult(true);
+    }
+    let result;
+    try {
+      var _result;
+      result = test2.call(ctx, value, ctx);
+      if (typeof ((_result = result) == null ? void 0 : _result.then) === "function") {
+        if (options2.sync) {
+          throw new Error(`Validation test of type: "${ctx.type}" returned a Promise during a synchronous validate. This test will finish after the validate call has returned`);
+        }
+        return Promise.resolve(result).then(handleResult, handleError2);
+      }
+    } catch (err) {
+      handleError2(err);
+      return;
+    }
+    handleResult(result);
+  }
+  validate.OPTIONS = config2;
+  return validate;
+}
+function resolveParams(params, options2) {
+  if (!params) return params;
+  for (const key of Object.keys(params)) {
+    params[key] = resolveMaybeRef(params[key], options2);
+  }
+  return params;
+}
+function resolveMaybeRef(item, options2) {
+  return Reference$1.isRef(item) ? item.getValue(options2.value, options2.parent, options2.context) : item;
+}
+function getIn$1(schema2, path2, value, context2 = value) {
+  let parent, lastPart, lastPartDebug;
+  if (!path2) return {
+    parent,
+    parentPath: path2,
+    schema: schema2
+  };
+  propertyExprExports.forEach(path2, (_part, isBracket, isArray2) => {
+    let part = isBracket ? _part.slice(1, _part.length - 1) : _part;
+    schema2 = schema2.resolve({
+      context: context2,
+      parent,
+      value
+    });
+    let isTuple = schema2.type === "tuple";
+    let idx = isArray2 ? parseInt(part, 10) : 0;
+    if (schema2.innerType || isTuple) {
+      if (isTuple && !isArray2) throw new Error(`Yup.reach cannot implicitly index into a tuple type. the path part "${lastPartDebug}" must contain an index to the tuple element, e.g. "${lastPartDebug}[0]"`);
+      if (value && idx >= value.length) {
+        throw new Error(`Yup.reach cannot resolve an array item at index: ${_part}, in the path: ${path2}. because there is no value at that index. `);
+      }
+      parent = value;
+      value = value && value[idx];
+      schema2 = isTuple ? schema2.spec.types[idx] : schema2.innerType;
+    }
+    if (!isArray2) {
+      if (!schema2.fields || !schema2.fields[part]) throw new Error(`The schema does not contain the path: ${path2}. (failed at: ${lastPartDebug} which is a type: "${schema2.type}")`);
+      parent = value;
+      value = value && value[part];
+      schema2 = schema2.fields[part];
+    }
+    lastPart = part;
+    lastPartDebug = isBracket ? "[" + _part + "]" : "." + _part;
+  });
+  return {
+    schema: schema2,
+    parent,
+    parentPath: lastPart
+  };
+}
+class ReferenceSet extends Set {
+  describe() {
+    const description2 = [];
+    for (const item of this.values()) {
+      description2.push(Reference$1.isRef(item) ? item.describe() : item);
+    }
+    return description2;
+  }
+  resolveAll(resolve) {
+    let result = [];
+    for (const item of this.values()) {
+      result.push(resolve(item));
+    }
+    return result;
+  }
+  clone() {
+    return new ReferenceSet(this.values());
+  }
+  merge(newItems, removeItems) {
+    const next2 = this.clone();
+    newItems.forEach((value) => next2.add(value));
+    removeItems.forEach((value) => next2.delete(value));
+    return next2;
+  }
+}
+function clone(src2, seen = /* @__PURE__ */ new Map()) {
+  if (isSchema(src2) || !src2 || typeof src2 !== "object") return src2;
+  if (seen.has(src2)) return seen.get(src2);
+  let copy2;
+  if (src2 instanceof Date) {
+    copy2 = new Date(src2.getTime());
+    seen.set(src2, copy2);
+  } else if (src2 instanceof RegExp) {
+    copy2 = new RegExp(src2);
+    seen.set(src2, copy2);
+  } else if (Array.isArray(src2)) {
+    copy2 = new Array(src2.length);
+    seen.set(src2, copy2);
+    for (let i3 = 0; i3 < src2.length; i3++) copy2[i3] = clone(src2[i3], seen);
+  } else if (src2 instanceof Map) {
+    copy2 = /* @__PURE__ */ new Map();
+    seen.set(src2, copy2);
+    for (const [k2, v] of src2.entries()) copy2.set(k2, clone(v, seen));
+  } else if (src2 instanceof Set) {
+    copy2 = /* @__PURE__ */ new Set();
+    seen.set(src2, copy2);
+    for (const v of src2) copy2.add(clone(v, seen));
+  } else if (src2 instanceof Object) {
+    copy2 = {};
+    seen.set(src2, copy2);
+    for (const [k2, v] of Object.entries(src2)) copy2[k2] = clone(v, seen);
+  } else {
+    throw Error(`Unable to clone ${src2}`);
+  }
+  return copy2;
+}
+function createStandardPath(path2) {
+  if (!(path2 != null && path2.length)) {
+    return void 0;
+  }
+  const segments = [];
+  let currentSegment = "";
+  let inBrackets = false;
+  let inQuotes = false;
+  for (let i3 = 0; i3 < path2.length; i3++) {
+    const char2 = path2[i3];
+    if (char2 === "[" && !inQuotes) {
+      if (currentSegment) {
+        segments.push(...currentSegment.split(".").filter(Boolean));
+        currentSegment = "";
+      }
+      inBrackets = true;
+      continue;
+    }
+    if (char2 === "]" && !inQuotes) {
+      if (currentSegment) {
+        if (/^\d+$/.test(currentSegment)) {
+          segments.push(currentSegment);
+        } else {
+          segments.push(currentSegment.replace(/^"|"$/g, ""));
+        }
+        currentSegment = "";
+      }
+      inBrackets = false;
+      continue;
+    }
+    if (char2 === '"') {
+      inQuotes = !inQuotes;
+      continue;
+    }
+    if (char2 === "." && !inBrackets && !inQuotes) {
+      if (currentSegment) {
+        segments.push(currentSegment);
+        currentSegment = "";
+      }
+      continue;
+    }
+    currentSegment += char2;
+  }
+  if (currentSegment) {
+    segments.push(...currentSegment.split(".").filter(Boolean));
+  }
+  return segments;
+}
+function createStandardIssues(error, parentPath) {
+  const path2 = parentPath ? `${parentPath}.${error.path}` : error.path;
+  return error.errors.map((err) => ({
+    message: err,
+    path: createStandardPath(path2)
+  }));
+}
+function issuesFromValidationError(error, parentPath) {
+  var _error$inner;
+  if (!((_error$inner = error.inner) != null && _error$inner.length) && error.errors.length) {
+    return createStandardIssues(error, parentPath);
+  }
+  const path2 = parentPath ? `${parentPath}.${error.path}` : error.path;
+  return error.inner.flatMap((err) => issuesFromValidationError(err, path2));
+}
+class Schema {
+  constructor(options2) {
+    this.type = void 0;
+    this.deps = [];
+    this.tests = void 0;
+    this.transforms = void 0;
+    this.conditions = [];
+    this._mutate = void 0;
+    this.internalTests = {};
+    this._whitelist = new ReferenceSet();
+    this._blacklist = new ReferenceSet();
+    this.exclusiveTests = /* @__PURE__ */ Object.create(null);
+    this._typeCheck = void 0;
+    this.spec = void 0;
+    this.tests = [];
+    this.transforms = [];
+    this.withMutation(() => {
+      this.typeError(mixed.notType);
+    });
+    this.type = options2.type;
+    this._typeCheck = options2.check;
+    this.spec = Object.assign({
+      strip: false,
+      strict: false,
+      abortEarly: true,
+      recursive: true,
+      disableStackTrace: false,
+      nullable: false,
+      optional: true,
+      coerce: true
+    }, options2 == null ? void 0 : options2.spec);
+    this.withMutation((s4) => {
+      s4.nonNullable();
+    });
+  }
+  // TODO: remove
+  get _type() {
+    return this.type;
+  }
+  clone(spec) {
+    if (this._mutate) {
+      if (spec) Object.assign(this.spec, spec);
+      return this;
+    }
+    const next2 = Object.create(Object.getPrototypeOf(this));
+    next2.type = this.type;
+    next2._typeCheck = this._typeCheck;
+    next2._whitelist = this._whitelist.clone();
+    next2._blacklist = this._blacklist.clone();
+    next2.internalTests = Object.assign({}, this.internalTests);
+    next2.exclusiveTests = Object.assign({}, this.exclusiveTests);
+    next2.deps = [...this.deps];
+    next2.conditions = [...this.conditions];
+    next2.tests = [...this.tests];
+    next2.transforms = [...this.transforms];
+    next2.spec = clone(Object.assign({}, this.spec, spec));
+    return next2;
+  }
+  label(label) {
+    let next2 = this.clone();
+    next2.spec.label = label;
+    return next2;
+  }
+  meta(...args) {
+    if (args.length === 0) return this.spec.meta;
+    let next2 = this.clone();
+    next2.spec.meta = Object.assign(next2.spec.meta || {}, args[0]);
+    return next2;
+  }
+  withMutation(fn3) {
+    let before = this._mutate;
+    this._mutate = true;
+    let result = fn3(this);
+    this._mutate = before;
+    return result;
+  }
+  concat(schema2) {
+    if (!schema2 || schema2 === this) return this;
+    if (schema2.type !== this.type && this.type !== "mixed") throw new TypeError(`You cannot \`concat()\` schema's of different types: ${this.type} and ${schema2.type}`);
+    let base = this;
+    let combined = schema2.clone();
+    const mergedSpec = Object.assign({}, base.spec, combined.spec);
+    combined.spec = mergedSpec;
+    combined.internalTests = Object.assign({}, base.internalTests, combined.internalTests);
+    combined._whitelist = base._whitelist.merge(schema2._whitelist, schema2._blacklist);
+    combined._blacklist = base._blacklist.merge(schema2._blacklist, schema2._whitelist);
+    combined.tests = base.tests;
+    combined.exclusiveTests = base.exclusiveTests;
+    combined.withMutation((next2) => {
+      schema2.tests.forEach((fn3) => {
+        next2.test(fn3.OPTIONS);
+      });
+    });
+    combined.transforms = [...base.transforms, ...combined.transforms];
+    return combined;
+  }
+  isType(v) {
+    if (v == null) {
+      if (this.spec.nullable && v === null) return true;
+      if (this.spec.optional && v === void 0) return true;
+      return false;
+    }
+    return this._typeCheck(v);
+  }
+  resolve(options2) {
+    let schema2 = this;
+    if (schema2.conditions.length) {
+      let conditions = schema2.conditions;
+      schema2 = schema2.clone();
+      schema2.conditions = [];
+      schema2 = conditions.reduce((prevSchema, condition) => condition.resolve(prevSchema, options2), schema2);
+      schema2 = schema2.resolve(options2);
+    }
+    return schema2;
+  }
+  resolveOptions(options2) {
+    var _options$strict, _options$abortEarly, _options$recursive, _options$disableStack;
+    return Object.assign({}, options2, {
+      from: options2.from || [],
+      strict: (_options$strict = options2.strict) != null ? _options$strict : this.spec.strict,
+      abortEarly: (_options$abortEarly = options2.abortEarly) != null ? _options$abortEarly : this.spec.abortEarly,
+      recursive: (_options$recursive = options2.recursive) != null ? _options$recursive : this.spec.recursive,
+      disableStackTrace: (_options$disableStack = options2.disableStackTrace) != null ? _options$disableStack : this.spec.disableStackTrace
+    });
+  }
+  /**
+   * Run the configured transform pipeline over an input value.
+   */
+  cast(value, options2 = {}) {
+    let resolvedSchema = this.resolve(Object.assign({
+      value
+    }, options2));
+    let allowOptionality = options2.assert === "ignore-optionality";
+    let result = resolvedSchema._cast(value, options2);
+    if (options2.assert !== false && !resolvedSchema.isType(result)) {
+      if (allowOptionality && isAbsent(result)) {
+        return result;
+      }
+      let formattedValue = printValue(value);
+      let formattedResult = printValue(result);
+      throw new TypeError(`The value of ${options2.path || "field"} could not be cast to a value that satisfies the schema type: "${resolvedSchema.type}". 
+
+attempted value: ${formattedValue} 
+` + (formattedResult !== formattedValue ? `result of cast: ${formattedResult}` : ""));
+    }
+    return result;
+  }
+  _cast(rawValue, options2) {
+    let value = rawValue === void 0 ? rawValue : this.transforms.reduce((prevValue, fn3) => fn3.call(this, prevValue, rawValue, this), rawValue);
+    if (value === void 0) {
+      value = this.getDefault(options2);
+    }
+    return value;
+  }
+  _validate(_value, options2 = {}, panic, next2) {
+    let {
+      path: path2,
+      originalValue = _value,
+      strict = this.spec.strict
+    } = options2;
+    let value = _value;
+    if (!strict) {
+      value = this._cast(value, Object.assign({
+        assert: false
+      }, options2));
+    }
+    let initialTests = [];
+    for (let test2 of Object.values(this.internalTests)) {
+      if (test2) initialTests.push(test2);
+    }
+    this.runTests({
+      path: path2,
+      value,
+      originalValue,
+      options: options2,
+      tests: initialTests
+    }, panic, (initialErrors) => {
+      if (initialErrors.length) {
+        return next2(initialErrors, value);
+      }
+      this.runTests({
+        path: path2,
+        value,
+        originalValue,
+        options: options2,
+        tests: this.tests
+      }, panic, next2);
+    });
+  }
+  /**
+   * Executes a set of validations, either schema, produced Tests or a nested
+   * schema validate result.
+   */
+  runTests(runOptions, panic, next2) {
+    let fired = false;
+    let {
+      tests,
+      value,
+      originalValue,
+      path: path2,
+      options: options2
+    } = runOptions;
+    let panicOnce = (arg) => {
+      if (fired) return;
+      fired = true;
+      panic(arg, value);
+    };
+    let nextOnce = (arg) => {
+      if (fired) return;
+      fired = true;
+      next2(arg, value);
+    };
+    let count2 = tests.length;
+    let nestedErrors = [];
+    if (!count2) return nextOnce([]);
+    let args = {
+      value,
+      originalValue,
+      path: path2,
+      options: options2,
+      schema: this
+    };
+    for (let i3 = 0; i3 < tests.length; i3++) {
+      const test2 = tests[i3];
+      test2(args, panicOnce, function finishTestRun(err) {
+        if (err) {
+          Array.isArray(err) ? nestedErrors.push(...err) : nestedErrors.push(err);
+        }
+        if (--count2 <= 0) {
+          nextOnce(nestedErrors);
+        }
+      });
+    }
+  }
+  asNestedTest({
+    key,
+    index: index2,
+    parent,
+    parentPath,
+    originalParent,
+    options: options2
+  }) {
+    const k2 = key != null ? key : index2;
+    if (k2 == null) {
+      throw TypeError("Must include `key` or `index` for nested validations");
+    }
+    const isIndex2 = typeof k2 === "number";
+    let value = parent[k2];
+    const testOptions = Object.assign({}, options2, {
+      // Nested validations fields are always strict:
+      //    1. parent isn't strict so the casting will also have cast inner values
+      //    2. parent is strict in which case the nested values weren't cast either
+      strict: true,
+      parent,
+      value,
+      originalValue: originalParent[k2],
+      // FIXME: tests depend on `index` being passed around deeply,
+      //   we should not let the options.key/index bleed through
+      key: void 0,
+      // index: undefined,
+      [isIndex2 ? "index" : "key"]: k2,
+      path: isIndex2 || k2.includes(".") ? `${parentPath || ""}[${isIndex2 ? k2 : `"${k2}"`}]` : (parentPath ? `${parentPath}.` : "") + key
+    });
+    return (_, panic, next2) => this.resolve(testOptions)._validate(value, testOptions, panic, next2);
+  }
+  validate(value, options2) {
+    var _options$disableStack2;
+    let schema2 = this.resolve(Object.assign({}, options2, {
+      value
+    }));
+    let disableStackTrace = (_options$disableStack2 = options2 == null ? void 0 : options2.disableStackTrace) != null ? _options$disableStack2 : schema2.spec.disableStackTrace;
+    return new Promise((resolve, reject) => schema2._validate(value, options2, (error, parsed) => {
+      if (ValidationError.isError(error)) error.value = parsed;
+      reject(error);
+    }, (errors2, validated) => {
+      if (errors2.length) reject(new ValidationError(errors2, validated, void 0, void 0, disableStackTrace));
+      else resolve(validated);
+    }));
+  }
+  validateSync(value, options2) {
+    var _options$disableStack3;
+    let schema2 = this.resolve(Object.assign({}, options2, {
+      value
+    }));
+    let result;
+    let disableStackTrace = (_options$disableStack3 = options2 == null ? void 0 : options2.disableStackTrace) != null ? _options$disableStack3 : schema2.spec.disableStackTrace;
+    schema2._validate(value, Object.assign({}, options2, {
+      sync: true
+    }), (error, parsed) => {
+      if (ValidationError.isError(error)) error.value = parsed;
+      throw error;
+    }, (errors2, validated) => {
+      if (errors2.length) throw new ValidationError(errors2, value, void 0, void 0, disableStackTrace);
+      result = validated;
+    });
+    return result;
+  }
+  isValid(value, options2) {
+    return this.validate(value, options2).then(() => true, (err) => {
+      if (ValidationError.isError(err)) return false;
+      throw err;
+    });
+  }
+  isValidSync(value, options2) {
+    try {
+      this.validateSync(value, options2);
+      return true;
+    } catch (err) {
+      if (ValidationError.isError(err)) return false;
+      throw err;
+    }
+  }
+  _getDefault(options2) {
+    let defaultValue = this.spec.default;
+    if (defaultValue == null) {
+      return defaultValue;
+    }
+    return typeof defaultValue === "function" ? defaultValue.call(this, options2) : clone(defaultValue);
+  }
+  getDefault(options2) {
+    let schema2 = this.resolve(options2 || {});
+    return schema2._getDefault(options2);
+  }
+  default(def) {
+    if (arguments.length === 0) {
+      return this._getDefault();
+    }
+    let next2 = this.clone({
+      default: def
+    });
+    return next2;
+  }
+  strict(isStrict = true) {
+    return this.clone({
+      strict: isStrict
+    });
+  }
+  nullability(nullable, message) {
+    const next2 = this.clone({
+      nullable
+    });
+    next2.internalTests.nullable = createValidation({
+      message,
+      name: "nullable",
+      test(value) {
+        return value === null ? this.schema.spec.nullable : true;
+      }
+    });
+    return next2;
+  }
+  optionality(optional, message) {
+    const next2 = this.clone({
+      optional
+    });
+    next2.internalTests.optionality = createValidation({
+      message,
+      name: "optionality",
+      test(value) {
+        return value === void 0 ? this.schema.spec.optional : true;
+      }
+    });
+    return next2;
+  }
+  optional() {
+    return this.optionality(true);
+  }
+  defined(message = mixed.defined) {
+    return this.optionality(false, message);
+  }
+  nullable() {
+    return this.nullability(true);
+  }
+  nonNullable(message = mixed.notNull) {
+    return this.nullability(false, message);
+  }
+  required(message = mixed.required) {
+    return this.clone().withMutation((next2) => next2.nonNullable(message).defined(message));
+  }
+  notRequired() {
+    return this.clone().withMutation((next2) => next2.nullable().optional());
+  }
+  transform(fn3) {
+    let next2 = this.clone();
+    next2.transforms.push(fn3);
+    return next2;
+  }
+  /**
+   * Adds a test function to the schema's queue of tests.
+   * tests can be exclusive or non-exclusive.
+   *
+   * - exclusive tests, will replace any existing tests of the same name.
+   * - non-exclusive: can be stacked
+   *
+   * If a non-exclusive test is added to a schema with an exclusive test of the same name
+   * the exclusive test is removed and further tests of the same name will be stacked.
+   *
+   * If an exclusive test is added to a schema with non-exclusive tests of the same name
+   * the previous tests are removed and further tests of the same name will replace each other.
+   */
+  test(...args) {
+    let opts;
+    if (args.length === 1) {
+      if (typeof args[0] === "function") {
+        opts = {
+          test: args[0]
+        };
+      } else {
+        opts = args[0];
+      }
+    } else if (args.length === 2) {
+      opts = {
+        name: args[0],
+        test: args[1]
+      };
+    } else {
+      opts = {
+        name: args[0],
+        message: args[1],
+        test: args[2]
+      };
+    }
+    if (opts.message === void 0) opts.message = mixed.default;
+    if (typeof opts.test !== "function") throw new TypeError("`test` is a required parameters");
+    let next2 = this.clone();
+    let validate = createValidation(opts);
+    let isExclusive = opts.exclusive || opts.name && next2.exclusiveTests[opts.name] === true;
+    if (opts.exclusive) {
+      if (!opts.name) throw new TypeError("Exclusive tests must provide a unique `name` identifying the test");
+    }
+    if (opts.name) next2.exclusiveTests[opts.name] = !!opts.exclusive;
+    next2.tests = next2.tests.filter((fn3) => {
+      if (fn3.OPTIONS.name === opts.name) {
+        if (isExclusive) return false;
+        if (fn3.OPTIONS.test === validate.OPTIONS.test) return false;
+      }
+      return true;
+    });
+    next2.tests.push(validate);
+    return next2;
+  }
+  when(keys3, options2) {
+    if (!Array.isArray(keys3) && typeof keys3 !== "string") {
+      options2 = keys3;
+      keys3 = ".";
+    }
+    let next2 = this.clone();
+    let deps = toArray$1(keys3).map((key) => new Reference$1(key));
+    deps.forEach((dep2) => {
+      if (dep2.isSibling) next2.deps.push(dep2.key);
+    });
+    next2.conditions.push(typeof options2 === "function" ? new Condition(deps, options2) : Condition.fromOptions(deps, options2));
+    return next2;
+  }
+  typeError(message) {
+    let next2 = this.clone();
+    next2.internalTests.typeError = createValidation({
+      message,
+      name: "typeError",
+      skipAbsent: true,
+      test(value) {
+        if (!this.schema._typeCheck(value)) return this.createError({
+          params: {
+            type: this.schema.type
+          }
+        });
+        return true;
+      }
+    });
+    return next2;
+  }
+  oneOf(enums, message = mixed.oneOf) {
+    let next2 = this.clone();
+    enums.forEach((val) => {
+      next2._whitelist.add(val);
+      next2._blacklist.delete(val);
+    });
+    next2.internalTests.whiteList = createValidation({
+      message,
+      name: "oneOf",
+      skipAbsent: true,
+      test(value) {
+        let valids = this.schema._whitelist;
+        let resolved = valids.resolveAll(this.resolve);
+        return resolved.includes(value) ? true : this.createError({
+          params: {
+            values: Array.from(valids).join(", "),
+            resolved
+          }
+        });
+      }
+    });
+    return next2;
+  }
+  notOneOf(enums, message = mixed.notOneOf) {
+    let next2 = this.clone();
+    enums.forEach((val) => {
+      next2._blacklist.add(val);
+      next2._whitelist.delete(val);
+    });
+    next2.internalTests.blacklist = createValidation({
+      message,
+      name: "notOneOf",
+      test(value) {
+        let invalids = this.schema._blacklist;
+        let resolved = invalids.resolveAll(this.resolve);
+        if (resolved.includes(value)) return this.createError({
+          params: {
+            values: Array.from(invalids).join(", "),
+            resolved
+          }
+        });
+        return true;
+      }
+    });
+    return next2;
+  }
+  strip(strip = true) {
+    let next2 = this.clone();
+    next2.spec.strip = strip;
+    return next2;
+  }
+  /**
+   * Return a serialized description of the schema including validations, flags, types etc.
+   *
+   * @param options Provide any needed context for resolving runtime schema alterations (lazy, when conditions, etc).
+   */
+  describe(options2) {
+    const next2 = (options2 ? this.resolve(options2) : this).clone();
+    const {
+      label,
+      meta,
+      optional,
+      nullable
+    } = next2.spec;
+    const description2 = {
+      meta,
+      label,
+      optional,
+      nullable,
+      default: next2.getDefault(options2),
+      type: next2.type,
+      oneOf: next2._whitelist.describe(),
+      notOneOf: next2._blacklist.describe(),
+      tests: next2.tests.filter((n, idx, list) => list.findIndex((c3) => c3.OPTIONS.name === n.OPTIONS.name) === idx).map((fn3) => {
+        const params = fn3.OPTIONS.params && options2 ? resolveParams(Object.assign({}, fn3.OPTIONS.params), options2) : fn3.OPTIONS.params;
+        return {
+          name: fn3.OPTIONS.name,
+          params
+        };
+      })
+    };
+    return description2;
+  }
+  get ["~standard"]() {
+    const schema2 = this;
+    const standard = {
+      version: 1,
+      vendor: "yup",
+      async validate(value) {
+        try {
+          const result = await schema2.validate(value, {
+            abortEarly: false
+          });
+          return {
+            value: result
+          };
+        } catch (err) {
+          if (err instanceof ValidationError) {
+            return {
+              issues: issuesFromValidationError(err)
+            };
+          }
+          throw err;
+        }
+      }
+    };
+    return standard;
+  }
+}
+Schema.prototype.__isYupSchema__ = true;
+for (const method of ["validate", "validateSync"]) Schema.prototype[`${method}At`] = function(path2, value, options2 = {}) {
+  const {
+    parent,
+    parentPath,
+    schema: schema2
+  } = getIn$1(this, path2, value, options2.context);
+  return schema2[method](parent && parent[parentPath], Object.assign({}, options2, {
+    parent,
+    path: path2
+  }));
+};
+for (const alias of ["equals", "is"]) Schema.prototype[alias] = Schema.prototype.oneOf;
+for (const alias of ["not", "nope"]) Schema.prototype[alias] = Schema.prototype.notOneOf;
+function create$7() {
+  return new BooleanSchema();
+}
+class BooleanSchema extends Schema {
+  constructor() {
+    super({
+      type: "boolean",
+      check(v) {
+        if (v instanceof Boolean) v = v.valueOf();
+        return typeof v === "boolean";
+      }
+    });
+    this.withMutation(() => {
+      this.transform((value, _raw, ctx) => {
+        if (ctx.spec.coerce && !ctx.isType(value)) {
+          if (/^(true|1)$/i.test(String(value))) return true;
+          if (/^(false|0)$/i.test(String(value))) return false;
+        }
+        return value;
+      });
+    });
+  }
+  isTrue(message = boolean.isValue) {
+    return this.test({
+      message,
+      name: "is-value",
+      exclusive: true,
+      params: {
+        value: "true"
+      },
+      test(value) {
+        return isAbsent(value) || value === true;
+      }
+    });
+  }
+  isFalse(message = boolean.isValue) {
+    return this.test({
+      message,
+      name: "is-value",
+      exclusive: true,
+      params: {
+        value: "false"
+      },
+      test(value) {
+        return isAbsent(value) || value === false;
+      }
+    });
+  }
+  default(def) {
+    return super.default(def);
+  }
+  defined(msg) {
+    return super.defined(msg);
+  }
+  optional() {
+    return super.optional();
+  }
+  required(msg) {
+    return super.required(msg);
+  }
+  notRequired() {
+    return super.notRequired();
+  }
+  nullable() {
+    return super.nullable();
+  }
+  nonNullable(msg) {
+    return super.nonNullable(msg);
+  }
+  strip(v) {
+    return super.strip(v);
+  }
+}
+create$7.prototype = BooleanSchema.prototype;
+const isoReg = /^(\d{4}|[+-]\d{6})(?:-?(\d{2})(?:-?(\d{2}))?)?(?:[ T]?(\d{2}):?(\d{2})(?::?(\d{2})(?:[,.](\d{1,}))?)?(?:(Z)|([+-])(\d{2})(?::?(\d{2}))?)?)?$/;
+function parseIsoDate(date2) {
+  const struct = parseDateStruct(date2);
+  if (!struct) return Date.parse ? Date.parse(date2) : Number.NaN;
+  if (struct.z === void 0 && struct.plusMinus === void 0) {
+    return new Date(struct.year, struct.month, struct.day, struct.hour, struct.minute, struct.second, struct.millisecond).valueOf();
+  }
+  let totalMinutesOffset = 0;
+  if (struct.z !== "Z" && struct.plusMinus !== void 0) {
+    totalMinutesOffset = struct.hourOffset * 60 + struct.minuteOffset;
+    if (struct.plusMinus === "+") totalMinutesOffset = 0 - totalMinutesOffset;
+  }
+  return Date.UTC(struct.year, struct.month, struct.day, struct.hour, struct.minute + totalMinutesOffset, struct.second, struct.millisecond);
+}
+function parseDateStruct(date2) {
+  var _regexResult$7$length, _regexResult$;
+  const regexResult = isoReg.exec(date2);
+  if (!regexResult) return null;
+  return {
+    year: toNumber(regexResult[1]),
+    month: toNumber(regexResult[2], 1) - 1,
+    day: toNumber(regexResult[3], 1),
+    hour: toNumber(regexResult[4]),
+    minute: toNumber(regexResult[5]),
+    second: toNumber(regexResult[6]),
+    millisecond: regexResult[7] ? (
+      // allow arbitrary sub-second precision beyond milliseconds
+      toNumber(regexResult[7].substring(0, 3))
+    ) : 0,
+    precision: (_regexResult$7$length = (_regexResult$ = regexResult[7]) == null ? void 0 : _regexResult$.length) != null ? _regexResult$7$length : void 0,
+    z: regexResult[8] || void 0,
+    plusMinus: regexResult[9] || void 0,
+    hourOffset: toNumber(regexResult[10]),
+    minuteOffset: toNumber(regexResult[11])
+  };
+}
+function toNumber(str, defaultValue = 0) {
+  return Number(str) || defaultValue;
+}
+let rEmail = (
+  // eslint-disable-next-line
+  /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+);
+let rUrl = (
+  // eslint-disable-next-line
+  /^((https?|ftp):)?\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i
+);
+let rUUID = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
+let yearMonthDay = "^\\d{4}-\\d{2}-\\d{2}";
+let hourMinuteSecond = "\\d{2}:\\d{2}:\\d{2}";
+let zOrOffset = "(([+-]\\d{2}(:?\\d{2})?)|Z)";
+let rIsoDateTime = new RegExp(`${yearMonthDay}T${hourMinuteSecond}(\\.\\d+)?${zOrOffset}$`);
+let isTrimmed = (value) => isAbsent(value) || value === value.trim();
+let objStringTag = {}.toString();
+function create$6() {
+  return new StringSchema();
+}
+class StringSchema extends Schema {
+  constructor() {
+    super({
+      type: "string",
+      check(value) {
+        if (value instanceof String) value = value.valueOf();
+        return typeof value === "string";
+      }
+    });
+    this.withMutation(() => {
+      this.transform((value, _raw, ctx) => {
+        if (!ctx.spec.coerce || ctx.isType(value)) return value;
+        if (Array.isArray(value)) return value;
+        const strValue = value != null && value.toString ? value.toString() : value;
+        if (strValue === objStringTag) return value;
+        return strValue;
+      });
+    });
+  }
+  required(message) {
+    return super.required(message).withMutation((schema2) => schema2.test({
+      message: message || mixed.required,
+      name: "required",
+      skipAbsent: true,
+      test: (value) => !!value.length
+    }));
+  }
+  notRequired() {
+    return super.notRequired().withMutation((schema2) => {
+      schema2.tests = schema2.tests.filter((t4) => t4.OPTIONS.name !== "required");
+      return schema2;
+    });
+  }
+  length(length2, message = string.length) {
+    return this.test({
+      message,
+      name: "length",
+      exclusive: true,
+      params: {
+        length: length2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value.length === this.resolve(length2);
+      }
+    });
+  }
+  min(min2, message = string.min) {
+    return this.test({
+      message,
+      name: "min",
+      exclusive: true,
+      params: {
+        min: min2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value.length >= this.resolve(min2);
+      }
+    });
+  }
+  max(max2, message = string.max) {
+    return this.test({
+      name: "max",
+      exclusive: true,
+      message,
+      params: {
+        max: max2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value.length <= this.resolve(max2);
+      }
+    });
+  }
+  matches(regex, options2) {
+    let excludeEmptyString = false;
+    let message;
+    let name2;
+    if (options2) {
+      if (typeof options2 === "object") {
+        ({
+          excludeEmptyString = false,
+          message,
+          name: name2
+        } = options2);
+      } else {
+        message = options2;
+      }
+    }
+    return this.test({
+      name: name2 || "matches",
+      message: message || string.matches,
+      params: {
+        regex
+      },
+      skipAbsent: true,
+      test: (value) => value === "" && excludeEmptyString || value.search(regex) !== -1
+    });
+  }
+  email(message = string.email) {
+    return this.matches(rEmail, {
+      name: "email",
+      message,
+      excludeEmptyString: true
+    });
+  }
+  url(message = string.url) {
+    return this.matches(rUrl, {
+      name: "url",
+      message,
+      excludeEmptyString: true
+    });
+  }
+  uuid(message = string.uuid) {
+    return this.matches(rUUID, {
+      name: "uuid",
+      message,
+      excludeEmptyString: false
+    });
+  }
+  datetime(options2) {
+    let message = "";
+    let allowOffset;
+    let precision;
+    if (options2) {
+      if (typeof options2 === "object") {
+        ({
+          message = "",
+          allowOffset = false,
+          precision = void 0
+        } = options2);
+      } else {
+        message = options2;
+      }
+    }
+    return this.matches(rIsoDateTime, {
+      name: "datetime",
+      message: message || string.datetime,
+      excludeEmptyString: true
+    }).test({
+      name: "datetime_offset",
+      message: message || string.datetime_offset,
+      params: {
+        allowOffset
+      },
+      skipAbsent: true,
+      test: (value) => {
+        if (!value || allowOffset) return true;
+        const struct = parseDateStruct(value);
+        if (!struct) return false;
+        return !!struct.z;
+      }
+    }).test({
+      name: "datetime_precision",
+      message: message || string.datetime_precision,
+      params: {
+        precision
+      },
+      skipAbsent: true,
+      test: (value) => {
+        if (!value || precision == void 0) return true;
+        const struct = parseDateStruct(value);
+        if (!struct) return false;
+        return struct.precision === precision;
+      }
+    });
+  }
+  //-- transforms --
+  ensure() {
+    return this.default("").transform((val) => val === null ? "" : val);
+  }
+  trim(message = string.trim) {
+    return this.transform((val) => val != null ? val.trim() : val).test({
+      message,
+      name: "trim",
+      test: isTrimmed
+    });
+  }
+  lowercase(message = string.lowercase) {
+    return this.transform((value) => !isAbsent(value) ? value.toLowerCase() : value).test({
+      message,
+      name: "string_case",
+      exclusive: true,
+      skipAbsent: true,
+      test: (value) => isAbsent(value) || value === value.toLowerCase()
+    });
+  }
+  uppercase(message = string.uppercase) {
+    return this.transform((value) => !isAbsent(value) ? value.toUpperCase() : value).test({
+      message,
+      name: "string_case",
+      exclusive: true,
+      skipAbsent: true,
+      test: (value) => isAbsent(value) || value === value.toUpperCase()
+    });
+  }
+}
+create$6.prototype = StringSchema.prototype;
+let isNaN$1 = (value) => value != +value;
+function create$5() {
+  return new NumberSchema();
+}
+class NumberSchema extends Schema {
+  constructor() {
+    super({
+      type: "number",
+      check(value) {
+        if (value instanceof Number) value = value.valueOf();
+        return typeof value === "number" && !isNaN$1(value);
+      }
+    });
+    this.withMutation(() => {
+      this.transform((value, _raw, ctx) => {
+        if (!ctx.spec.coerce) return value;
+        let parsed = value;
+        if (typeof parsed === "string") {
+          parsed = parsed.replace(/\s/g, "");
+          if (parsed === "") return NaN;
+          parsed = +parsed;
+        }
+        if (ctx.isType(parsed) || parsed === null) return parsed;
+        return parseFloat(parsed);
+      });
+    });
+  }
+  min(min2, message = number$1.min) {
+    return this.test({
+      message,
+      name: "min",
+      exclusive: true,
+      params: {
+        min: min2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value >= this.resolve(min2);
+      }
+    });
+  }
+  max(max2, message = number$1.max) {
+    return this.test({
+      message,
+      name: "max",
+      exclusive: true,
+      params: {
+        max: max2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value <= this.resolve(max2);
+      }
+    });
+  }
+  lessThan(less, message = number$1.lessThan) {
+    return this.test({
+      message,
+      name: "max",
+      exclusive: true,
+      params: {
+        less
+      },
+      skipAbsent: true,
+      test(value) {
+        return value < this.resolve(less);
+      }
+    });
+  }
+  moreThan(more, message = number$1.moreThan) {
+    return this.test({
+      message,
+      name: "min",
+      exclusive: true,
+      params: {
+        more
+      },
+      skipAbsent: true,
+      test(value) {
+        return value > this.resolve(more);
+      }
+    });
+  }
+  positive(msg = number$1.positive) {
+    return this.moreThan(0, msg);
+  }
+  negative(msg = number$1.negative) {
+    return this.lessThan(0, msg);
+  }
+  integer(message = number$1.integer) {
+    return this.test({
+      name: "integer",
+      message,
+      skipAbsent: true,
+      test: (val) => Number.isInteger(val)
+    });
+  }
+  truncate() {
+    return this.transform((value) => !isAbsent(value) ? value | 0 : value);
+  }
+  round(method) {
+    var _method;
+    let avail = ["ceil", "floor", "round", "trunc"];
+    method = ((_method = method) == null ? void 0 : _method.toLowerCase()) || "round";
+    if (method === "trunc") return this.truncate();
+    if (avail.indexOf(method.toLowerCase()) === -1) throw new TypeError("Only valid options for round() are: " + avail.join(", "));
+    return this.transform((value) => !isAbsent(value) ? Math[method](value) : value);
+  }
+}
+create$5.prototype = NumberSchema.prototype;
+let invalidDate = /* @__PURE__ */ new Date("");
+let isDate$1 = (obj) => Object.prototype.toString.call(obj) === "[object Date]";
+class DateSchema extends Schema {
+  constructor() {
+    super({
+      type: "date",
+      check(v) {
+        return isDate$1(v) && !isNaN(v.getTime());
+      }
+    });
+    this.withMutation(() => {
+      this.transform((value, _raw, ctx) => {
+        if (!ctx.spec.coerce || ctx.isType(value) || value === null) return value;
+        value = parseIsoDate(value);
+        return !isNaN(value) ? new Date(value) : DateSchema.INVALID_DATE;
+      });
+    });
+  }
+  prepareParam(ref, name2) {
+    let param;
+    if (!Reference$1.isRef(ref)) {
+      let cast2 = this.cast(ref);
+      if (!this._typeCheck(cast2)) throw new TypeError(`\`${name2}\` must be a Date or a value that can be \`cast()\` to a Date`);
+      param = cast2;
+    } else {
+      param = ref;
+    }
+    return param;
+  }
+  min(min2, message = date$1.min) {
+    let limit = this.prepareParam(min2, "min");
+    return this.test({
+      message,
+      name: "min",
+      exclusive: true,
+      params: {
+        min: min2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value >= this.resolve(limit);
+      }
+    });
+  }
+  max(max2, message = date$1.max) {
+    let limit = this.prepareParam(max2, "max");
+    return this.test({
+      message,
+      name: "max",
+      exclusive: true,
+      params: {
+        max: max2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value <= this.resolve(limit);
+      }
+    });
+  }
+}
+DateSchema.INVALID_DATE = invalidDate;
+function sortFields(fields, excludedEdges = []) {
+  let edges = [];
+  let nodes = /* @__PURE__ */ new Set();
+  let excludes = new Set(excludedEdges.map(([a4, b3]) => `${a4}-${b3}`));
+  function addNode(depPath, key) {
+    let node2 = propertyExprExports.split(depPath)[0];
+    nodes.add(node2);
+    if (!excludes.has(`${key}-${node2}`)) edges.push([key, node2]);
+  }
+  for (const key of Object.keys(fields)) {
+    let value = fields[key];
+    nodes.add(key);
+    if (Reference$1.isRef(value) && value.isSibling) addNode(value.path, key);
+    else if (isSchema(value) && "deps" in value) value.deps.forEach((path2) => addNode(path2, key));
+  }
+  return toposort.array(Array.from(nodes), edges).reverse();
+}
+function findIndex$2(arr, err) {
+  let idx = Infinity;
+  arr.some((key, ii) => {
+    var _err$path;
+    if ((_err$path = err.path) != null && _err$path.includes(key)) {
+      idx = ii;
+      return true;
+    }
+  });
+  return idx;
+}
+function sortByKeyOrder(keys3) {
+  return (a4, b3) => {
+    return findIndex$2(keys3, a4) - findIndex$2(keys3, b3);
+  };
+}
+const parseJson = (value, _, ctx) => {
+  if (typeof value !== "string") {
+    return value;
+  }
+  let parsed = value;
+  try {
+    parsed = JSON.parse(value);
+  } catch (err) {
+  }
+  return ctx.isType(parsed) ? parsed : value;
+};
+function deepPartial(schema2) {
+  if ("fields" in schema2) {
+    const partial = {};
+    for (const [key, fieldSchema] of Object.entries(schema2.fields)) {
+      partial[key] = deepPartial(fieldSchema);
+    }
+    return schema2.setFields(partial);
+  }
+  if (schema2.type === "array") {
+    const nextArray = schema2.optional();
+    if (nextArray.innerType) nextArray.innerType = deepPartial(nextArray.innerType);
+    return nextArray;
+  }
+  if (schema2.type === "tuple") {
+    return schema2.optional().clone({
+      types: schema2.spec.types.map(deepPartial)
+    });
+  }
+  if ("optional" in schema2) {
+    return schema2.optional();
+  }
+  return schema2;
+}
+const deepHas = (obj, p2) => {
+  const path2 = [...propertyExprExports.normalizePath(p2)];
+  if (path2.length === 1) return path2[0] in obj;
+  let last = path2.pop();
+  let parent = propertyExprExports.getter(propertyExprExports.join(path2), true)(obj);
+  return !!(parent && last in parent);
+};
+let isObject$2 = (obj) => Object.prototype.toString.call(obj) === "[object Object]";
+function unknown(ctx, value) {
+  let known = Object.keys(ctx.fields);
+  return Object.keys(value).filter((key) => known.indexOf(key) === -1);
+}
+const defaultSort = sortByKeyOrder([]);
+function create$3(spec) {
+  return new ObjectSchema(spec);
+}
+class ObjectSchema extends Schema {
+  constructor(spec) {
+    super({
+      type: "object",
+      check(value) {
+        return isObject$2(value) || typeof value === "function";
+      }
+    });
+    this.fields = /* @__PURE__ */ Object.create(null);
+    this._sortErrors = defaultSort;
+    this._nodes = [];
+    this._excludedEdges = [];
+    this.withMutation(() => {
+      if (spec) {
+        this.shape(spec);
+      }
+    });
+  }
+  _cast(_value, options2 = {}) {
+    var _options$stripUnknown;
+    let value = super._cast(_value, options2);
+    if (value === void 0) return this.getDefault(options2);
+    if (!this._typeCheck(value)) return value;
+    let fields = this.fields;
+    let strip = (_options$stripUnknown = options2.stripUnknown) != null ? _options$stripUnknown : this.spec.noUnknown;
+    let props = [].concat(this._nodes, Object.keys(value).filter((v) => !this._nodes.includes(v)));
+    let intermediateValue = {};
+    let innerOptions = Object.assign({}, options2, {
+      parent: intermediateValue,
+      __validating: options2.__validating || false
+    });
+    let isChanged = false;
+    for (const prop of props) {
+      let field = fields[prop];
+      let exists = prop in value;
+      if (field) {
+        let fieldValue;
+        let inputValue = value[prop];
+        innerOptions.path = (options2.path ? `${options2.path}.` : "") + prop;
+        field = field.resolve({
+          value: inputValue,
+          context: options2.context,
+          parent: intermediateValue
+        });
+        let fieldSpec = field instanceof Schema ? field.spec : void 0;
+        let strict = fieldSpec == null ? void 0 : fieldSpec.strict;
+        if (fieldSpec != null && fieldSpec.strip) {
+          isChanged = isChanged || prop in value;
+          continue;
+        }
+        fieldValue = !options2.__validating || !strict ? (
+          // TODO: use _cast, this is double resolving
+          field.cast(value[prop], innerOptions)
+        ) : value[prop];
+        if (fieldValue !== void 0) {
+          intermediateValue[prop] = fieldValue;
+        }
+      } else if (exists && !strip) {
+        intermediateValue[prop] = value[prop];
+      }
+      if (exists !== prop in intermediateValue || intermediateValue[prop] !== value[prop]) {
+        isChanged = true;
+      }
+    }
+    return isChanged ? intermediateValue : value;
+  }
+  _validate(_value, options2 = {}, panic, next2) {
+    let {
+      from: from3 = [],
+      originalValue = _value,
+      recursive = this.spec.recursive
+    } = options2;
+    options2.from = [{
+      schema: this,
+      value: originalValue
+    }, ...from3];
+    options2.__validating = true;
+    options2.originalValue = originalValue;
+    super._validate(_value, options2, panic, (objectErrors, value) => {
+      if (!recursive || !isObject$2(value)) {
+        next2(objectErrors, value);
+        return;
+      }
+      originalValue = originalValue || value;
+      let tests = [];
+      for (let key of this._nodes) {
+        let field = this.fields[key];
+        if (!field || Reference$1.isRef(field)) {
+          continue;
+        }
+        tests.push(field.asNestedTest({
+          options: options2,
+          key,
+          parent: value,
+          parentPath: options2.path,
+          originalParent: originalValue
+        }));
+      }
+      this.runTests({
+        tests,
+        value,
+        originalValue,
+        options: options2
+      }, panic, (fieldErrors) => {
+        next2(fieldErrors.sort(this._sortErrors).concat(objectErrors), value);
+      });
+    });
+  }
+  clone(spec) {
+    const next2 = super.clone(spec);
+    next2.fields = Object.assign({}, this.fields);
+    next2._nodes = this._nodes;
+    next2._excludedEdges = this._excludedEdges;
+    next2._sortErrors = this._sortErrors;
+    return next2;
+  }
+  concat(schema2) {
+    let next2 = super.concat(schema2);
+    let nextFields = next2.fields;
+    for (let [field, schemaOrRef] of Object.entries(this.fields)) {
+      const target = nextFields[field];
+      nextFields[field] = target === void 0 ? schemaOrRef : target;
+    }
+    return next2.withMutation((s4) => (
+      // XXX: excludes here is wrong
+      s4.setFields(nextFields, [...this._excludedEdges, ...schema2._excludedEdges])
+    ));
+  }
+  _getDefault(options2) {
+    if ("default" in this.spec) {
+      return super._getDefault(options2);
+    }
+    if (!this._nodes.length) {
+      return void 0;
+    }
+    let dft = {};
+    this._nodes.forEach((key) => {
+      var _innerOptions;
+      const field = this.fields[key];
+      let innerOptions = options2;
+      if ((_innerOptions = innerOptions) != null && _innerOptions.value) {
+        innerOptions = Object.assign({}, innerOptions, {
+          parent: innerOptions.value,
+          value: innerOptions.value[key]
+        });
+      }
+      dft[key] = field && "getDefault" in field ? field.getDefault(innerOptions) : void 0;
+    });
+    return dft;
+  }
+  setFields(shape, excludedEdges) {
+    let next2 = this.clone();
+    next2.fields = shape;
+    next2._nodes = sortFields(shape, excludedEdges);
+    next2._sortErrors = sortByKeyOrder(Object.keys(shape));
+    if (excludedEdges) next2._excludedEdges = excludedEdges;
+    return next2;
+  }
+  shape(additions, excludes = []) {
+    return this.clone().withMutation((next2) => {
+      let edges = next2._excludedEdges;
+      if (excludes.length) {
+        if (!Array.isArray(excludes[0])) excludes = [excludes];
+        edges = [...next2._excludedEdges, ...excludes];
+      }
+      return next2.setFields(Object.assign(next2.fields, additions), edges);
+    });
+  }
+  partial() {
+    const partial = {};
+    for (const [key, schema2] of Object.entries(this.fields)) {
+      partial[key] = "optional" in schema2 && schema2.optional instanceof Function ? schema2.optional() : schema2;
+    }
+    return this.setFields(partial);
+  }
+  deepPartial() {
+    const next2 = deepPartial(this);
+    return next2;
+  }
+  pick(keys3) {
+    const picked = {};
+    for (const key of keys3) {
+      if (this.fields[key]) picked[key] = this.fields[key];
+    }
+    return this.setFields(picked, this._excludedEdges.filter(([a4, b3]) => keys3.includes(a4) && keys3.includes(b3)));
+  }
+  omit(keys3) {
+    const remaining = [];
+    for (const key of Object.keys(this.fields)) {
+      if (keys3.includes(key)) continue;
+      remaining.push(key);
+    }
+    return this.pick(remaining);
+  }
+  from(from3, to2, alias) {
+    let fromGetter = propertyExprExports.getter(from3, true);
+    return this.transform((obj) => {
+      if (!obj) return obj;
+      let newObj = obj;
+      if (deepHas(obj, from3)) {
+        newObj = Object.assign({}, obj);
+        if (!alias) delete newObj[from3];
+        newObj[to2] = fromGetter(obj);
+      }
+      return newObj;
+    });
+  }
+  /** Parse an input JSON string to an object */
+  json() {
+    return this.transform(parseJson);
+  }
+  /**
+   * Similar to `noUnknown` but only validates that an object is the right shape without stripping the unknown keys
+   */
+  exact(message) {
+    return this.test({
+      name: "exact",
+      exclusive: true,
+      message: message || object.exact,
+      test(value) {
+        if (value == null) return true;
+        const unknownKeys = unknown(this.schema, value);
+        return unknownKeys.length === 0 || this.createError({
+          params: {
+            properties: unknownKeys.join(", ")
+          }
+        });
+      }
+    });
+  }
+  stripUnknown() {
+    return this.clone({
+      noUnknown: true
+    });
+  }
+  noUnknown(noAllow = true, message = object.noUnknown) {
+    if (typeof noAllow !== "boolean") {
+      message = noAllow;
+      noAllow = true;
+    }
+    let next2 = this.test({
+      name: "noUnknown",
+      exclusive: true,
+      message,
+      test(value) {
+        if (value == null) return true;
+        const unknownKeys = unknown(this.schema, value);
+        return !noAllow || unknownKeys.length === 0 || this.createError({
+          params: {
+            unknown: unknownKeys.join(", ")
+          }
+        });
+      }
+    });
+    next2.spec.noUnknown = noAllow;
+    return next2;
+  }
+  unknown(allow = true, message = object.noUnknown) {
+    return this.noUnknown(!allow, message);
+  }
+  transformKeys(fn3) {
+    return this.transform((obj) => {
+      if (!obj) return obj;
+      const result = {};
+      for (const key of Object.keys(obj)) result[fn3(key)] = obj[key];
+      return result;
+    });
+  }
+  camelCase() {
+    return this.transformKeys(tinyCaseExports.camelCase);
+  }
+  snakeCase() {
+    return this.transformKeys(tinyCaseExports.snakeCase);
+  }
+  constantCase() {
+    return this.transformKeys((key) => tinyCaseExports.snakeCase(key).toUpperCase());
+  }
+  describe(options2) {
+    const next2 = (options2 ? this.resolve(options2) : this).clone();
+    const base = super.describe(options2);
+    base.fields = {};
+    for (const [key, value] of Object.entries(next2.fields)) {
+      var _innerOptions2;
+      let innerOptions = options2;
+      if ((_innerOptions2 = innerOptions) != null && _innerOptions2.value) {
+        innerOptions = Object.assign({}, innerOptions, {
+          parent: innerOptions.value,
+          value: innerOptions.value[key]
+        });
+      }
+      base.fields[key] = value.describe(innerOptions);
+    }
+    return base;
+  }
+}
+create$3.prototype = ObjectSchema.prototype;
+function create$2(type3) {
+  return new ArraySchema(type3);
+}
+class ArraySchema extends Schema {
+  constructor(type3) {
+    super({
+      type: "array",
+      spec: {
+        types: type3
+      },
+      check(v) {
+        return Array.isArray(v);
+      }
+    });
+    this.innerType = void 0;
+    this.innerType = type3;
+  }
+  _cast(_value, _opts) {
+    const value = super._cast(_value, _opts);
+    if (!this._typeCheck(value) || !this.innerType) {
+      return value;
+    }
+    let isChanged = false;
+    const castArray = value.map((v, idx) => {
+      const castElement = this.innerType.cast(v, Object.assign({}, _opts, {
+        path: `${_opts.path || ""}[${idx}]`
+      }));
+      if (castElement !== v) {
+        isChanged = true;
+      }
+      return castElement;
+    });
+    return isChanged ? castArray : value;
+  }
+  _validate(_value, options2 = {}, panic, next2) {
+    var _options$recursive;
+    let innerType = this.innerType;
+    let recursive = (_options$recursive = options2.recursive) != null ? _options$recursive : this.spec.recursive;
+    options2.originalValue != null ? options2.originalValue : _value;
+    super._validate(_value, options2, panic, (arrayErrors, value) => {
+      var _options$originalValu2;
+      if (!recursive || !innerType || !this._typeCheck(value)) {
+        next2(arrayErrors, value);
+        return;
+      }
+      let tests = new Array(value.length);
+      for (let index2 = 0; index2 < value.length; index2++) {
+        var _options$originalValu;
+        tests[index2] = innerType.asNestedTest({
+          options: options2,
+          index: index2,
+          parent: value,
+          parentPath: options2.path,
+          originalParent: (_options$originalValu = options2.originalValue) != null ? _options$originalValu : _value
+        });
+      }
+      this.runTests({
+        value,
+        tests,
+        originalValue: (_options$originalValu2 = options2.originalValue) != null ? _options$originalValu2 : _value,
+        options: options2
+      }, panic, (innerTypeErrors) => next2(innerTypeErrors.concat(arrayErrors), value));
+    });
+  }
+  clone(spec) {
+    const next2 = super.clone(spec);
+    next2.innerType = this.innerType;
+    return next2;
+  }
+  /** Parse an input JSON string to an object */
+  json() {
+    return this.transform(parseJson);
+  }
+  concat(schema2) {
+    let next2 = super.concat(schema2);
+    next2.innerType = this.innerType;
+    if (schema2.innerType)
+      next2.innerType = next2.innerType ? (
+        // @ts-expect-error Lazy doesn't have concat and will break
+        next2.innerType.concat(schema2.innerType)
+      ) : schema2.innerType;
+    return next2;
+  }
+  of(schema2) {
+    let next2 = this.clone();
+    if (!isSchema(schema2)) throw new TypeError("`array.of()` sub-schema must be a valid yup schema not: " + printValue(schema2));
+    next2.innerType = schema2;
+    next2.spec = Object.assign({}, next2.spec, {
+      types: schema2
+    });
+    return next2;
+  }
+  length(length2, message = array.length) {
+    return this.test({
+      message,
+      name: "length",
+      exclusive: true,
+      params: {
+        length: length2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value.length === this.resolve(length2);
+      }
+    });
+  }
+  min(min2, message) {
+    message = message || array.min;
+    return this.test({
+      message,
+      name: "min",
+      exclusive: true,
+      params: {
+        min: min2
+      },
+      skipAbsent: true,
+      // FIXME(ts): Array<typeof T>
+      test(value) {
+        return value.length >= this.resolve(min2);
+      }
+    });
+  }
+  max(max2, message) {
+    message = message || array.max;
+    return this.test({
+      message,
+      name: "max",
+      exclusive: true,
+      params: {
+        max: max2
+      },
+      skipAbsent: true,
+      test(value) {
+        return value.length <= this.resolve(max2);
+      }
+    });
+  }
+  ensure() {
+    return this.default(() => []).transform((val, original) => {
+      if (this._typeCheck(val)) return val;
+      return original == null ? [] : [].concat(original);
+    });
+  }
+  compact(rejector) {
+    let reject = !rejector ? (v) => !!v : (v, i3, a4) => !rejector(v, i3, a4);
+    return this.transform((values3) => values3 != null ? values3.filter(reject) : values3);
+  }
+  describe(options2) {
+    const next2 = (options2 ? this.resolve(options2) : this).clone();
+    const base = super.describe(options2);
+    if (next2.innerType) {
+      var _innerOptions;
+      let innerOptions = options2;
+      if ((_innerOptions = innerOptions) != null && _innerOptions.value) {
+        innerOptions = Object.assign({}, innerOptions, {
+          parent: innerOptions.value,
+          value: innerOptions.value[0]
+        });
+      }
+      base.innerType = next2.innerType.describe(innerOptions);
+    }
+    return base;
+  }
+}
+create$2.prototype = ArraySchema.prototype;
 function generateConfigId() {
   return `${Date.now()}-${Math.random().toString().slice(2)}`;
+}
+const TEMPORARY_CHANNEL_ID = "temporary";
+function isTemporaryChannel(channel) {
+  return channel.sources.some((source2) => source2.type === "temporary-filter");
+}
+function persistedChannels(channels) {
+  return channels.filter((channel) => !isTemporaryChannel(channel));
+}
+function normalizeChannels(channels) {
+  const temporaryChannel = channels.findLast(isTemporaryChannel);
+  const persisted = persistedChannels(channels);
+  return temporaryChannel ? [...persisted, temporaryChannel] : persisted;
+}
+function withTemporaryChannel(channels, filter2) {
+  return [
+    ...persistedChannels(channels),
+    { id: TEMPORARY_CHANNEL_ID, sources: [{ type: "temporary-filter", filter: filter2, randomise: false }] }
+  ];
+}
+function getTemporaryFilter(channels) {
+  for (const channel of channels) {
+    for (const source2 of channel.sources) {
+      if (source2.type === "temporary-filter") return source2.filter;
+    }
+  }
+  return void 0;
+}
+const sourceSchema = create$3({
+  type: create$6().oneOf(["stash-saved-filter", "all"]).required(),
+  randomise: create$7().required(),
+  savedFilterId: create$6().when("type", {
+    is: "stash-saved-filter",
+    then: (schema2) => schema2.required("Choose a filter"),
+    otherwise: (schema2) => schema2.strip()
+  }),
+  entityType: create$6().when("type", {
+    is: "all",
+    then: (schema2) => schema2.oneOf(["scene", "marker"]).required(),
+    otherwise: (schema2) => schema2.strip()
+  })
+});
+const channelConfigSchema = create$3({
+  id: create$6().required(),
+  sources: create$2().of(sourceSchema).min(1, "Choose a filter").max(1).required()
+});
+function createNewChannelConfig() {
+  return {
+    id: generateConfigId(),
+    sources: []
+  };
+}
+function entityTypeToFilterMode(entityType) {
+  return entityType === "scene" ? FilterMode.Scenes : FilterMode.SceneMarkers;
+}
+function filterModeToEntityType(mode) {
+  if (mode === FilterMode.Scenes) return "scene";
+  if (mode === FilterMode.SceneMarkers) return "marker";
+  return void 0;
+}
+function makeEmptySavedFilter(mode) {
+  return {
+    id: "",
+    mode,
+    name: "",
+    filter: ""
+  };
+}
+function getAllMediaSourceName(entityType) {
+  return entityType === "scene" ? "All scenes" : "All markers";
+}
+function getSourceTargetKey(source2) {
+  if (!source2) return "none";
+  if (source2.type === "stash-saved-filter") return `stash-saved-filter:${source2.savedFilterId}`;
+  if (source2.type === "all") return `all:${source2.entityType}`;
+  if (source2.type === "temporary-filter") return `temporary-filter:${JSON.stringify(source2.filter)}`;
+  return "unknown";
+}
+function getChannelSourceInfo(source2, availableSavedFilters, availableSavedFiltersLoading) {
+  if (source2.type === "all") {
+    return { name: getAllMediaSourceName(source2.entityType), entityType: source2.entityType, missing: false, sortedRandomly: false };
+  }
+  if (source2.type === "stash-saved-filter") {
+    const savedFilter = availableSavedFilters.find((filter2) => filter2.id === source2.savedFilterId);
+    if (!savedFilter) {
+      return availableSavedFiltersLoading ? { name: "Loading…", missing: false, sortedRandomly: false } : { name: "Missing filter", missing: true, sortedRandomly: false };
+    }
+    return {
+      name: savedFilter.name,
+      entityType: savedFilter.entityType,
+      missing: false,
+      sortedRandomly: !!savedFilter.find_filter?.sort?.startsWith("random_")
+    };
+  }
+  if (source2.type === "temporary-filter") {
+    return {
+      name: source2.filter.name,
+      entityType: filterModeToEntityType(source2.filter.mode),
+      missing: false,
+      sortedRandomly: !!source2.filter.find_filter?.sort?.startsWith("random")
+    };
+  }
+  return { name: "Unknown source", missing: true, sortedRandomly: false };
+}
+const savedFilterNamePrefixes = {
+  scene: "Scenes: ",
+  marker: "Markers: "
+};
+function getChannelName(channel, availableSavedFilters, availableSavedFiltersLoading) {
+  const source2 = channel.sources[0];
+  if (!source2) return { prefix: "", name: "Empty channel", sourceInfo: void 0 };
+  const sourceInfo = getChannelSourceInfo(source2, availableSavedFilters, availableSavedFiltersLoading);
+  const prefix2 = source2.type !== "all" && sourceInfo.entityType ? savedFilterNamePrefixes[sourceInfo.entityType] : "";
+  return { prefix: prefix2, name: sourceInfo.name, sourceInfo };
 }
 function defaultSpacer(id2, size2) {
   return { field: "spacer", id: `default-${id2}`, options: { size: size2 } };
@@ -177729,7 +180328,10 @@ const useTvConfig = create()(
           return;
         }
         set4((state) => {
-          const resolvedValue = typeof value === "function" ? value(state[propName]) : value;
+          let resolvedValue = typeof value === "function" ? value(state[propName]) : value;
+          if (propName === "channels") {
+            resolvedValue = normalizeChannels(resolvedValue);
+          }
           if (propName === "showDebuggingInfo") {
             const enableRenderDebugging = resolvedValue.includes("render-debugging");
             const previousEnableRenderDebugging = localStorage.getItem("enableRenderDebugging") === "true";
@@ -177766,6 +180368,8 @@ const useTvConfig = create()(
     {
       name: tvConfigStorageKey,
       storage: createJSONStorage(() => createHybridStorage()),
+      // The temporary channel only lasts until Stash TV is closed
+      partialize: (state) => ({ ...state, channels: persistedChannels(state.channels) }),
       onRehydrateStorage: (state) => {
         return () => useGlobalState.setState({ tvConfigLoaded: true });
       },
@@ -178184,7 +180788,7 @@ videojs.hook("beforesetup", function(videoEl, options2) {
   }
   for (const hook3 of beforeSetupHooks[playerId] || []) {
     const opts = hook3(videoEl, videojs.mergeOptions(options2));
-    if (!isObject$2(opts) || Array.isArray(opts)) {
+    if (!isObject$1(opts) || Array.isArray(opts)) {
       console.error("please return an object in beforesetup hooks");
       return;
     }
@@ -178192,7 +180796,7 @@ videojs.hook("beforesetup", function(videoEl, options2) {
   }
   return options2;
 });
-function isObject$2(value) {
+function isObject$1(value) {
   return !!value && typeof value === "object";
 }
 videojs.hook("setup", function(player) {
@@ -179112,13 +181716,13 @@ const singleColorRegex = /^(#[0-9a-f]{3}|#(?:[0-9a-f]{2}){2,4}|(rgb|hsl)a?\((-?[
 function isString$1(v) {
   return typeof v === "string";
 }
-const number$1 = {
+const number = {
   test: (v) => typeof v === "number",
   parse: parseFloat,
   transform: (v) => v
 };
-const alpha = Object.assign(Object.assign({}, number$1), { transform: clamp$5(0, 1) });
-const scale = Object.assign(Object.assign({}, number$1), { default: 1 });
+const alpha = Object.assign(Object.assign({}, number), { transform: clamp$5(0, 1) });
+const scale = Object.assign(Object.assign({}, number), { default: 1 });
 const createUnitType = (unit) => ({
   test: (v) => isString$1(v) && v.endsWith(unit) && v.split(" ").length === 1,
   parse: parseFloat,
@@ -179152,7 +181756,7 @@ const hsla$1 = {
   }
 };
 const clampRgbUnit = clamp$5(0, 255);
-const rgbUnit = Object.assign(Object.assign({}, number$1), { transform: (v) => Math.round(clampRgbUnit(v)) });
+const rgbUnit = Object.assign(Object.assign({}, number), { transform: (v) => Math.round(clampRgbUnit(v)) });
 const rgba$1 = {
   test: isColorString("rgb", "red"),
   parse: splitColor("red", "green", "blue"),
@@ -179225,7 +181829,7 @@ function analyse$1(v) {
   const numbers2 = v.match(floatRegex);
   if (numbers2) {
     v = v.replace(floatRegex, numberToken);
-    values3.push(...numbers2.map(number$1.parse));
+    values3.push(...numbers2.map(number.parse));
   }
   return { values: values3, numColors, tokenised: v };
 }
@@ -179269,7 +181873,7 @@ const filter$1 = Object.assign(Object.assign({}, complex), { getAnimatableNone: 
   const functions2 = v.match(functionRegex);
   return functions2 ? functions2.map(applyDefaultFilter).join(" ") : v;
 } });
-var int = __assign(__assign({}, number$1), { transform: Math.round });
+var int = __assign(__assign({}, number), { transform: Math.round });
 var numberValueTypes = {
   // Border props
   borderWidth: px,
@@ -181405,7 +184009,7 @@ var auto = {
     return v;
   }
 };
-var dimensionValueTypes = [number$1, px, percent, degrees, vw, vh, auto];
+var dimensionValueTypes = [number, px, percent, degrees, vw, vh, auto];
 var findDimensionValueType = function(v) {
   return dimensionValueTypes.find(testValueType(v));
 };
@@ -183084,7 +185688,7 @@ var setAndResetVelocity = function(value, to2) {
   value.set(to2);
 };
 var isNumOrPxType = function(v) {
-  return v === number$1 || v === px;
+  return v === number || v === px;
 };
 var BoundingBoxDimension;
 (function(BoundingBoxDimension2) {
@@ -188827,2470 +191431,6 @@ function useConditionalMemo(factory3, deps, shouldRecompute) {
     return valueRef.current;
   }, [shouldRecompute, ...deps || []]);
 }
-var propertyExpr;
-var hasRequiredPropertyExpr;
-function requirePropertyExpr() {
-  if (hasRequiredPropertyExpr) return propertyExpr;
-  hasRequiredPropertyExpr = 1;
-  function Cache2(maxSize) {
-    this._maxSize = maxSize;
-    this.clear();
-  }
-  Cache2.prototype.clear = function() {
-    this._size = 0;
-    this._values = /* @__PURE__ */ Object.create(null);
-  };
-  Cache2.prototype.get = function(key) {
-    return this._values[key];
-  };
-  Cache2.prototype.set = function(key, value) {
-    this._size >= this._maxSize && this.clear();
-    if (!(key in this._values)) this._size++;
-    return this._values[key] = value;
-  };
-  var SPLIT_REGEX = /[^.^\]^[]+|(?=\[\]|\.\.)/g, DIGIT_REGEX = /^\d+$/, LEAD_DIGIT_REGEX = /^\d/, SPEC_CHAR_REGEX = /[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g, CLEAN_QUOTES_REGEX = /^\s*(['"]?)(.*?)(\1)\s*$/, MAX_CACHE_SIZE = 512;
-  var pathCache = new Cache2(MAX_CACHE_SIZE), setCache = new Cache2(MAX_CACHE_SIZE), getCache = new Cache2(MAX_CACHE_SIZE);
-  propertyExpr = {
-    Cache: Cache2,
-    split: split2,
-    normalizePath: normalizePath4,
-    setter: function(path2) {
-      var parts = normalizePath4(path2);
-      return setCache.get(path2) || setCache.set(path2, function setter(obj, value) {
-        var index2 = 0;
-        var len = parts.length;
-        var data2 = obj;
-        while (index2 < len - 1) {
-          var part = parts[index2];
-          if (part === "__proto__" || part === "constructor" || part === "prototype") {
-            return obj;
-          }
-          data2 = data2[parts[index2++]];
-        }
-        data2[parts[index2]] = value;
-      });
-    },
-    getter: function(path2, safe) {
-      var parts = normalizePath4(path2);
-      return getCache.get(path2) || getCache.set(path2, function getter(data2) {
-        var index2 = 0, len = parts.length;
-        while (index2 < len) {
-          if (data2 != null || !safe) data2 = data2[parts[index2++]];
-          else return;
-        }
-        return data2;
-      });
-    },
-    join: function(segments) {
-      return segments.reduce(function(path2, part) {
-        return path2 + (isQuoted(part) || DIGIT_REGEX.test(part) ? "[" + part + "]" : (path2 ? "." : "") + part);
-      }, "");
-    },
-    forEach: function(path2, cb2, thisArg) {
-      forEach2(Array.isArray(path2) ? path2 : split2(path2), cb2, thisArg);
-    }
-  };
-  function normalizePath4(path2) {
-    return pathCache.get(path2) || pathCache.set(
-      path2,
-      split2(path2).map(function(part) {
-        return part.replace(CLEAN_QUOTES_REGEX, "$2");
-      })
-    );
-  }
-  function split2(path2) {
-    return path2.match(SPLIT_REGEX) || [""];
-  }
-  function forEach2(parts, iter, thisArg) {
-    var len = parts.length, part, idx, isArray2, isBracket;
-    for (idx = 0; idx < len; idx++) {
-      part = parts[idx];
-      if (part) {
-        if (shouldBeQuoted(part)) {
-          part = '"' + part + '"';
-        }
-        isBracket = isQuoted(part);
-        isArray2 = !isBracket && /^\d+$/.test(part);
-        iter.call(thisArg, part, isBracket, isArray2, idx, parts);
-      }
-    }
-  }
-  function isQuoted(str) {
-    return typeof str === "string" && str && ["'", '"'].indexOf(str.charAt(0)) !== -1;
-  }
-  function hasLeadingNumber(part) {
-    return part.match(LEAD_DIGIT_REGEX) && !part.match(DIGIT_REGEX);
-  }
-  function hasSpecialChars(part) {
-    return SPEC_CHAR_REGEX.test(part);
-  }
-  function shouldBeQuoted(part) {
-    return !isQuoted(part) && (hasLeadingNumber(part) || hasSpecialChars(part));
-  }
-  return propertyExpr;
-}
-var propertyExprExports = requirePropertyExpr();
-var tinyCase;
-var hasRequiredTinyCase;
-function requireTinyCase() {
-  if (hasRequiredTinyCase) return tinyCase;
-  hasRequiredTinyCase = 1;
-  const reWords = /[A-Z\xc0-\xd6\xd8-\xde]?[a-z\xdf-\xf6\xf8-\xff]+(?:['’](?:d|ll|m|re|s|t|ve))?(?=[\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000]|[A-Z\xc0-\xd6\xd8-\xde]|$)|(?:[A-Z\xc0-\xd6\xd8-\xde]|[^\ud800-\udfff\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\d+\u2700-\u27bfa-z\xdf-\xf6\xf8-\xffA-Z\xc0-\xd6\xd8-\xde])+(?:['’](?:D|LL|M|RE|S|T|VE))?(?=[\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000]|[A-Z\xc0-\xd6\xd8-\xde](?:[a-z\xdf-\xf6\xf8-\xff]|[^\ud800-\udfff\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\d+\u2700-\u27bfa-z\xdf-\xf6\xf8-\xffA-Z\xc0-\xd6\xd8-\xde])|$)|[A-Z\xc0-\xd6\xd8-\xde]?(?:[a-z\xdf-\xf6\xf8-\xff]|[^\ud800-\udfff\xac\xb1\xd7\xf7\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf\u2000-\u206f \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\d+\u2700-\u27bfa-z\xdf-\xf6\xf8-\xffA-Z\xc0-\xd6\xd8-\xde])+(?:['’](?:d|ll|m|re|s|t|ve))?|[A-Z\xc0-\xd6\xd8-\xde]+(?:['’](?:D|LL|M|RE|S|T|VE))?|\d*(?:1ST|2ND|3RD|(?![123])\dTH)(?=\b|[a-z_])|\d*(?:1st|2nd|3rd|(?![123])\dth)(?=\b|[A-Z_])|\d+|(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe2f\u20d0-\u20ff]|\ud83c[\udffb-\udfff])?(?:\u200d(?:[^\ud800-\udfff]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe2f\u20d0-\u20ff]|\ud83c[\udffb-\udfff])?)*/g;
-  const words = (str) => str.match(reWords) || [];
-  const upperFirst = (str) => str[0].toUpperCase() + str.slice(1);
-  const join2 = (str, d4) => words(str).join(d4).toLowerCase();
-  const camelCase3 = (str) => words(str).reduce(
-    (acc, next2) => `${acc}${!acc ? next2.toLowerCase() : next2[0].toUpperCase() + next2.slice(1).toLowerCase()}`,
-    ""
-  );
-  const pascalCase3 = (str) => upperFirst(camelCase3(str));
-  const snakeCase = (str) => join2(str, "_");
-  const kebabCase = (str) => join2(str, "-");
-  const sentenceCase = (str) => upperFirst(join2(str, " "));
-  const titleCase = (str) => words(str).map(upperFirst).join(" ");
-  tinyCase = {
-    words,
-    upperFirst,
-    camelCase: camelCase3,
-    pascalCase: pascalCase3,
-    snakeCase,
-    kebabCase,
-    sentenceCase,
-    titleCase
-  };
-  return tinyCase;
-}
-var tinyCaseExports = requireTinyCase();
-var toposort$1 = { exports: {} };
-var hasRequiredToposort;
-function requireToposort() {
-  if (hasRequiredToposort) return toposort$1.exports;
-  hasRequiredToposort = 1;
-  toposort$1.exports = function(edges) {
-    return toposort2(uniqueNodes(edges), edges);
-  };
-  toposort$1.exports.array = toposort2;
-  function toposort2(nodes, edges) {
-    var cursor2 = nodes.length, sorted = new Array(cursor2), visited = {}, i3 = cursor2, outgoingEdges = makeOutgoingEdges(edges), nodesHash = makeNodesHash(nodes);
-    edges.forEach(function(edge) {
-      if (!nodesHash.has(edge[0]) || !nodesHash.has(edge[1])) {
-        throw new Error("Unknown node. There is an unknown node in the supplied edges.");
-      }
-    });
-    while (i3--) {
-      if (!visited[i3]) visit2(nodes[i3], i3, /* @__PURE__ */ new Set());
-    }
-    return sorted;
-    function visit2(node2, i4, predecessors) {
-      if (predecessors.has(node2)) {
-        var nodeRep;
-        try {
-          nodeRep = ", node was:" + JSON.stringify(node2);
-        } catch (e2) {
-          nodeRep = "";
-        }
-        throw new Error("Cyclic dependency" + nodeRep);
-      }
-      if (!nodesHash.has(node2)) {
-        throw new Error("Found unknown node. Make sure to provided all involved nodes. Unknown node: " + JSON.stringify(node2));
-      }
-      if (visited[i4]) return;
-      visited[i4] = true;
-      var outgoing = outgoingEdges.get(node2) || /* @__PURE__ */ new Set();
-      outgoing = Array.from(outgoing);
-      if (i4 = outgoing.length) {
-        predecessors.add(node2);
-        do {
-          var child = outgoing[--i4];
-          visit2(child, nodesHash.get(child), predecessors);
-        } while (i4);
-        predecessors.delete(node2);
-      }
-      sorted[--cursor2] = node2;
-    }
-  }
-  function uniqueNodes(arr) {
-    var res = /* @__PURE__ */ new Set();
-    for (var i3 = 0, len = arr.length; i3 < len; i3++) {
-      var edge = arr[i3];
-      res.add(edge[0]);
-      res.add(edge[1]);
-    }
-    return Array.from(res);
-  }
-  function makeOutgoingEdges(arr) {
-    var edges = /* @__PURE__ */ new Map();
-    for (var i3 = 0, len = arr.length; i3 < len; i3++) {
-      var edge = arr[i3];
-      if (!edges.has(edge[0])) edges.set(edge[0], /* @__PURE__ */ new Set());
-      if (!edges.has(edge[1])) edges.set(edge[1], /* @__PURE__ */ new Set());
-      edges.get(edge[0]).add(edge[1]);
-    }
-    return edges;
-  }
-  function makeNodesHash(arr) {
-    var res = /* @__PURE__ */ new Map();
-    for (var i3 = 0, len = arr.length; i3 < len; i3++) {
-      res.set(arr[i3], i3);
-    }
-    return res;
-  }
-  return toposort$1.exports;
-}
-var toposortExports = requireToposort();
-const toposort = /* @__PURE__ */ getDefaultExportFromCjs(toposortExports);
-const toString = Object.prototype.toString;
-const errorToString$1 = Error.prototype.toString;
-const regExpToString = RegExp.prototype.toString;
-const symbolToString = typeof Symbol !== "undefined" ? Symbol.prototype.toString : () => "";
-const SYMBOL_REGEXP = /^Symbol\((.*)\)(.*)$/;
-function printNumber(val) {
-  if (val != +val) return "NaN";
-  const isNegativeZero = val === 0 && 1 / val < 0;
-  return isNegativeZero ? "-0" : "" + val;
-}
-function printSimpleValue(val, quoteStrings = false) {
-  if (val == null || val === true || val === false) return "" + val;
-  const typeOf2 = typeof val;
-  if (typeOf2 === "number") return printNumber(val);
-  if (typeOf2 === "string") return quoteStrings ? `"${val}"` : val;
-  if (typeOf2 === "function") return "[Function " + (val.name || "anonymous") + "]";
-  if (typeOf2 === "symbol") return symbolToString.call(val).replace(SYMBOL_REGEXP, "Symbol($1)");
-  const tag2 = toString.call(val).slice(8, -1);
-  if (tag2 === "Date") return isNaN(val.getTime()) ? "" + val : val.toISOString(val);
-  if (tag2 === "Error" || val instanceof Error) return "[" + errorToString$1.call(val) + "]";
-  if (tag2 === "RegExp") return regExpToString.call(val);
-  return null;
-}
-function printValue(value, quoteStrings) {
-  let result = printSimpleValue(value, quoteStrings);
-  if (result !== null) return result;
-  return JSON.stringify(value, function(key, value2) {
-    let result2 = printSimpleValue(this[key], quoteStrings);
-    if (result2 !== null) return result2;
-    return value2;
-  }, 2);
-}
-function toArray$1(value) {
-  return value == null ? [] : [].concat(value);
-}
-let _Symbol$toStringTag, _Symbol$hasInstance, _Symbol$toStringTag2;
-let strReg = /\$\{\s*(\w+)\s*\}/g;
-_Symbol$toStringTag = Symbol.toStringTag;
-class ValidationErrorNoStack {
-  constructor(errorOrErrors, value, field, type3) {
-    this.name = void 0;
-    this.message = void 0;
-    this.value = void 0;
-    this.path = void 0;
-    this.type = void 0;
-    this.params = void 0;
-    this.errors = void 0;
-    this.inner = void 0;
-    this[_Symbol$toStringTag] = "Error";
-    this.name = "ValidationError";
-    this.value = value;
-    this.path = field;
-    this.type = type3;
-    this.errors = [];
-    this.inner = [];
-    toArray$1(errorOrErrors).forEach((err) => {
-      if (ValidationError.isError(err)) {
-        this.errors.push(...err.errors);
-        const innerErrors = err.inner.length ? err.inner : [err];
-        this.inner.push(...innerErrors);
-      } else {
-        this.errors.push(err);
-      }
-    });
-    this.message = this.errors.length > 1 ? `${this.errors.length} errors occurred` : this.errors[0];
-  }
-}
-_Symbol$hasInstance = Symbol.hasInstance;
-_Symbol$toStringTag2 = Symbol.toStringTag;
-class ValidationError extends Error {
-  static formatError(message, params) {
-    const path2 = params.label || params.path || "this";
-    params = Object.assign({}, params, {
-      path: path2,
-      originalPath: params.path
-    });
-    if (typeof message === "string") return message.replace(strReg, (_, key) => printValue(params[key]));
-    if (typeof message === "function") return message(params);
-    return message;
-  }
-  static isError(err) {
-    return err && err.name === "ValidationError";
-  }
-  constructor(errorOrErrors, value, field, type3, disableStack) {
-    const errorNoStack = new ValidationErrorNoStack(errorOrErrors, value, field, type3);
-    if (disableStack) {
-      return errorNoStack;
-    }
-    super();
-    this.value = void 0;
-    this.path = void 0;
-    this.type = void 0;
-    this.params = void 0;
-    this.errors = [];
-    this.inner = [];
-    this[_Symbol$toStringTag2] = "Error";
-    this.name = errorNoStack.name;
-    this.message = errorNoStack.message;
-    this.type = errorNoStack.type;
-    this.value = errorNoStack.value;
-    this.path = errorNoStack.path;
-    this.errors = errorNoStack.errors;
-    this.inner = errorNoStack.inner;
-    if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, ValidationError);
-    }
-  }
-  static [_Symbol$hasInstance](inst) {
-    return ValidationErrorNoStack[Symbol.hasInstance](inst) || super[Symbol.hasInstance](inst);
-  }
-}
-let mixed = {
-  default: "${path} is invalid",
-  required: "${path} is a required field",
-  defined: "${path} must be defined",
-  notNull: "${path} cannot be null",
-  oneOf: "${path} must be one of the following values: ${values}",
-  notOneOf: "${path} must not be one of the following values: ${values}",
-  notType: ({
-    path: path2,
-    type: type3,
-    value,
-    originalValue
-  }) => {
-    const castMsg = originalValue != null && originalValue !== value ? ` (cast from the value \`${printValue(originalValue, true)}\`).` : ".";
-    return type3 !== "mixed" ? `${path2} must be a \`${type3}\` type, but the final value was: \`${printValue(value, true)}\`` + castMsg : `${path2} must match the configured type. The validated value was: \`${printValue(value, true)}\`` + castMsg;
-  }
-};
-let string = {
-  length: "${path} must be exactly ${length} characters",
-  min: "${path} must be at least ${min} characters",
-  max: "${path} must be at most ${max} characters",
-  matches: '${path} must match the following: "${regex}"',
-  email: "${path} must be a valid email",
-  url: "${path} must be a valid URL",
-  uuid: "${path} must be a valid UUID",
-  datetime: "${path} must be a valid ISO date-time",
-  datetime_precision: "${path} must be a valid ISO date-time with a sub-second precision of exactly ${precision} digits",
-  datetime_offset: '${path} must be a valid ISO date-time with UTC "Z" timezone',
-  trim: "${path} must be a trimmed string",
-  lowercase: "${path} must be a lowercase string",
-  uppercase: "${path} must be a upper case string"
-};
-let number = {
-  min: "${path} must be greater than or equal to ${min}",
-  max: "${path} must be less than or equal to ${max}",
-  lessThan: "${path} must be less than ${less}",
-  moreThan: "${path} must be greater than ${more}",
-  positive: "${path} must be a positive number",
-  negative: "${path} must be a negative number",
-  integer: "${path} must be an integer"
-};
-let date$1 = {
-  min: "${path} field must be later than ${min}",
-  max: "${path} field must be at earlier than ${max}"
-};
-let boolean = {
-  isValue: "${path} field must be ${value}"
-};
-let object = {
-  noUnknown: "${path} field has unspecified keys: ${unknown}",
-  exact: "${path} object contains unknown properties: ${properties}"
-};
-let array = {
-  min: "${path} field must have at least ${min} items",
-  max: "${path} field must have less than or equal to ${max} items",
-  length: "${path} must have ${length} items"
-};
-let tuple = {
-  notType: (params) => {
-    const {
-      path: path2,
-      value,
-      spec
-    } = params;
-    const typeLen = spec.types.length;
-    if (Array.isArray(value)) {
-      if (value.length < typeLen) return `${path2} tuple value has too few items, expected a length of ${typeLen} but got ${value.length} for value: \`${printValue(value, true)}\``;
-      if (value.length > typeLen) return `${path2} tuple value has too many items, expected a length of ${typeLen} but got ${value.length} for value: \`${printValue(value, true)}\``;
-    }
-    return ValidationError.formatError(mixed.notType, params);
-  }
-};
-Object.assign(/* @__PURE__ */ Object.create(null), {
-  mixed,
-  string,
-  number,
-  date: date$1,
-  object,
-  array,
-  boolean,
-  tuple
-});
-const isSchema = (obj) => obj && obj.__isYupSchema__;
-class Condition {
-  static fromOptions(refs, config2) {
-    if (!config2.then && !config2.otherwise) throw new TypeError("either `then:` or `otherwise:` is required for `when()` conditions");
-    let {
-      is: is2,
-      then,
-      otherwise
-    } = config2;
-    let check2 = typeof is2 === "function" ? is2 : (...values3) => values3.every((value) => value === is2);
-    return new Condition(refs, (values3, schema2) => {
-      var _branch;
-      let branch = check2(...values3) ? then : otherwise;
-      return (_branch = branch == null ? void 0 : branch(schema2)) != null ? _branch : schema2;
-    });
-  }
-  constructor(refs, builder) {
-    this.fn = void 0;
-    this.refs = refs;
-    this.refs = refs;
-    this.fn = builder;
-  }
-  resolve(base, options2) {
-    let values3 = this.refs.map((ref) => (
-      // TODO: ? operator here?
-      ref.getValue(options2 == null ? void 0 : options2.value, options2 == null ? void 0 : options2.parent, options2 == null ? void 0 : options2.context)
-    ));
-    let schema2 = this.fn(values3, base, options2);
-    if (schema2 === void 0 || // @ts-ignore this can be base
-    schema2 === base) {
-      return base;
-    }
-    if (!isSchema(schema2)) throw new TypeError("conditions must return a schema object");
-    return schema2.resolve(options2);
-  }
-}
-const prefixes$1 = {
-  context: "$",
-  value: "."
-};
-let Reference$1 = class Reference2 {
-  constructor(key, options2 = {}) {
-    this.key = void 0;
-    this.isContext = void 0;
-    this.isValue = void 0;
-    this.isSibling = void 0;
-    this.path = void 0;
-    this.getter = void 0;
-    this.map = void 0;
-    if (typeof key !== "string") throw new TypeError("ref must be a string, got: " + key);
-    this.key = key.trim();
-    if (key === "") throw new TypeError("ref must be a non-empty string");
-    this.isContext = this.key[0] === prefixes$1.context;
-    this.isValue = this.key[0] === prefixes$1.value;
-    this.isSibling = !this.isContext && !this.isValue;
-    let prefix2 = this.isContext ? prefixes$1.context : this.isValue ? prefixes$1.value : "";
-    this.path = this.key.slice(prefix2.length);
-    this.getter = this.path && propertyExprExports.getter(this.path, true);
-    this.map = options2.map;
-  }
-  getValue(value, parent, context2) {
-    let result = this.isContext ? context2 : this.isValue ? value : parent;
-    if (this.getter) result = this.getter(result || {});
-    if (this.map) result = this.map(result);
-    return result;
-  }
-  /**
-   *
-   * @param {*} value
-   * @param {Object} options
-   * @param {Object=} options.context
-   * @param {Object=} options.parent
-   */
-  cast(value, options2) {
-    return this.getValue(value, options2 == null ? void 0 : options2.parent, options2 == null ? void 0 : options2.context);
-  }
-  resolve() {
-    return this;
-  }
-  describe() {
-    return {
-      type: "ref",
-      key: this.key
-    };
-  }
-  toString() {
-    return `Ref(${this.key})`;
-  }
-  static isRef(value) {
-    return value && value.__isYupRef;
-  }
-};
-Reference$1.prototype.__isYupRef = true;
-const isAbsent = (value) => value == null;
-function createValidation(config2) {
-  function validate({
-    value,
-    path: path2 = "",
-    options: options2,
-    originalValue,
-    schema: schema2
-  }, panic, next2) {
-    const {
-      name: name2,
-      test: test2,
-      params,
-      message,
-      skipAbsent
-    } = config2;
-    let {
-      parent,
-      context: context2,
-      abortEarly = schema2.spec.abortEarly,
-      disableStackTrace = schema2.spec.disableStackTrace
-    } = options2;
-    const resolveOptions2 = {
-      value,
-      parent,
-      context: context2
-    };
-    function createError(overrides = {}) {
-      const nextParams = resolveParams(Object.assign({
-        value,
-        originalValue,
-        label: schema2.spec.label,
-        path: overrides.path || path2,
-        spec: schema2.spec,
-        disableStackTrace: overrides.disableStackTrace || disableStackTrace
-      }, params, overrides.params), resolveOptions2);
-      const error = new ValidationError(ValidationError.formatError(overrides.message || message, nextParams), value, nextParams.path, overrides.type || name2, nextParams.disableStackTrace);
-      error.params = nextParams;
-      return error;
-    }
-    const invalid = abortEarly ? panic : next2;
-    let ctx = {
-      path: path2,
-      parent,
-      type: name2,
-      from: options2.from,
-      createError,
-      resolve(item) {
-        return resolveMaybeRef(item, resolveOptions2);
-      },
-      options: options2,
-      originalValue,
-      schema: schema2
-    };
-    const handleResult = (validOrError) => {
-      if (ValidationError.isError(validOrError)) invalid(validOrError);
-      else if (!validOrError) invalid(createError());
-      else next2(null);
-    };
-    const handleError2 = (err) => {
-      if (ValidationError.isError(err)) invalid(err);
-      else panic(err);
-    };
-    const shouldSkip = skipAbsent && isAbsent(value);
-    if (shouldSkip) {
-      return handleResult(true);
-    }
-    let result;
-    try {
-      var _result;
-      result = test2.call(ctx, value, ctx);
-      if (typeof ((_result = result) == null ? void 0 : _result.then) === "function") {
-        if (options2.sync) {
-          throw new Error(`Validation test of type: "${ctx.type}" returned a Promise during a synchronous validate. This test will finish after the validate call has returned`);
-        }
-        return Promise.resolve(result).then(handleResult, handleError2);
-      }
-    } catch (err) {
-      handleError2(err);
-      return;
-    }
-    handleResult(result);
-  }
-  validate.OPTIONS = config2;
-  return validate;
-}
-function resolveParams(params, options2) {
-  if (!params) return params;
-  for (const key of Object.keys(params)) {
-    params[key] = resolveMaybeRef(params[key], options2);
-  }
-  return params;
-}
-function resolveMaybeRef(item, options2) {
-  return Reference$1.isRef(item) ? item.getValue(options2.value, options2.parent, options2.context) : item;
-}
-function getIn$1(schema2, path2, value, context2 = value) {
-  let parent, lastPart, lastPartDebug;
-  if (!path2) return {
-    parent,
-    parentPath: path2,
-    schema: schema2
-  };
-  propertyExprExports.forEach(path2, (_part, isBracket, isArray2) => {
-    let part = isBracket ? _part.slice(1, _part.length - 1) : _part;
-    schema2 = schema2.resolve({
-      context: context2,
-      parent,
-      value
-    });
-    let isTuple = schema2.type === "tuple";
-    let idx = isArray2 ? parseInt(part, 10) : 0;
-    if (schema2.innerType || isTuple) {
-      if (isTuple && !isArray2) throw new Error(`Yup.reach cannot implicitly index into a tuple type. the path part "${lastPartDebug}" must contain an index to the tuple element, e.g. "${lastPartDebug}[0]"`);
-      if (value && idx >= value.length) {
-        throw new Error(`Yup.reach cannot resolve an array item at index: ${_part}, in the path: ${path2}. because there is no value at that index. `);
-      }
-      parent = value;
-      value = value && value[idx];
-      schema2 = isTuple ? schema2.spec.types[idx] : schema2.innerType;
-    }
-    if (!isArray2) {
-      if (!schema2.fields || !schema2.fields[part]) throw new Error(`The schema does not contain the path: ${path2}. (failed at: ${lastPartDebug} which is a type: "${schema2.type}")`);
-      parent = value;
-      value = value && value[part];
-      schema2 = schema2.fields[part];
-    }
-    lastPart = part;
-    lastPartDebug = isBracket ? "[" + _part + "]" : "." + _part;
-  });
-  return {
-    schema: schema2,
-    parent,
-    parentPath: lastPart
-  };
-}
-class ReferenceSet extends Set {
-  describe() {
-    const description2 = [];
-    for (const item of this.values()) {
-      description2.push(Reference$1.isRef(item) ? item.describe() : item);
-    }
-    return description2;
-  }
-  resolveAll(resolve) {
-    let result = [];
-    for (const item of this.values()) {
-      result.push(resolve(item));
-    }
-    return result;
-  }
-  clone() {
-    return new ReferenceSet(this.values());
-  }
-  merge(newItems, removeItems) {
-    const next2 = this.clone();
-    newItems.forEach((value) => next2.add(value));
-    removeItems.forEach((value) => next2.delete(value));
-    return next2;
-  }
-}
-function clone(src2, seen = /* @__PURE__ */ new Map()) {
-  if (isSchema(src2) || !src2 || typeof src2 !== "object") return src2;
-  if (seen.has(src2)) return seen.get(src2);
-  let copy2;
-  if (src2 instanceof Date) {
-    copy2 = new Date(src2.getTime());
-    seen.set(src2, copy2);
-  } else if (src2 instanceof RegExp) {
-    copy2 = new RegExp(src2);
-    seen.set(src2, copy2);
-  } else if (Array.isArray(src2)) {
-    copy2 = new Array(src2.length);
-    seen.set(src2, copy2);
-    for (let i3 = 0; i3 < src2.length; i3++) copy2[i3] = clone(src2[i3], seen);
-  } else if (src2 instanceof Map) {
-    copy2 = /* @__PURE__ */ new Map();
-    seen.set(src2, copy2);
-    for (const [k2, v] of src2.entries()) copy2.set(k2, clone(v, seen));
-  } else if (src2 instanceof Set) {
-    copy2 = /* @__PURE__ */ new Set();
-    seen.set(src2, copy2);
-    for (const v of src2) copy2.add(clone(v, seen));
-  } else if (src2 instanceof Object) {
-    copy2 = {};
-    seen.set(src2, copy2);
-    for (const [k2, v] of Object.entries(src2)) copy2[k2] = clone(v, seen);
-  } else {
-    throw Error(`Unable to clone ${src2}`);
-  }
-  return copy2;
-}
-function createStandardPath(path2) {
-  if (!(path2 != null && path2.length)) {
-    return void 0;
-  }
-  const segments = [];
-  let currentSegment = "";
-  let inBrackets = false;
-  let inQuotes = false;
-  for (let i3 = 0; i3 < path2.length; i3++) {
-    const char2 = path2[i3];
-    if (char2 === "[" && !inQuotes) {
-      if (currentSegment) {
-        segments.push(...currentSegment.split(".").filter(Boolean));
-        currentSegment = "";
-      }
-      inBrackets = true;
-      continue;
-    }
-    if (char2 === "]" && !inQuotes) {
-      if (currentSegment) {
-        if (/^\d+$/.test(currentSegment)) {
-          segments.push(currentSegment);
-        } else {
-          segments.push(currentSegment.replace(/^"|"$/g, ""));
-        }
-        currentSegment = "";
-      }
-      inBrackets = false;
-      continue;
-    }
-    if (char2 === '"') {
-      inQuotes = !inQuotes;
-      continue;
-    }
-    if (char2 === "." && !inBrackets && !inQuotes) {
-      if (currentSegment) {
-        segments.push(currentSegment);
-        currentSegment = "";
-      }
-      continue;
-    }
-    currentSegment += char2;
-  }
-  if (currentSegment) {
-    segments.push(...currentSegment.split(".").filter(Boolean));
-  }
-  return segments;
-}
-function createStandardIssues(error, parentPath) {
-  const path2 = parentPath ? `${parentPath}.${error.path}` : error.path;
-  return error.errors.map((err) => ({
-    message: err,
-    path: createStandardPath(path2)
-  }));
-}
-function issuesFromValidationError(error, parentPath) {
-  var _error$inner;
-  if (!((_error$inner = error.inner) != null && _error$inner.length) && error.errors.length) {
-    return createStandardIssues(error, parentPath);
-  }
-  const path2 = parentPath ? `${parentPath}.${error.path}` : error.path;
-  return error.inner.flatMap((err) => issuesFromValidationError(err, path2));
-}
-class Schema {
-  constructor(options2) {
-    this.type = void 0;
-    this.deps = [];
-    this.tests = void 0;
-    this.transforms = void 0;
-    this.conditions = [];
-    this._mutate = void 0;
-    this.internalTests = {};
-    this._whitelist = new ReferenceSet();
-    this._blacklist = new ReferenceSet();
-    this.exclusiveTests = /* @__PURE__ */ Object.create(null);
-    this._typeCheck = void 0;
-    this.spec = void 0;
-    this.tests = [];
-    this.transforms = [];
-    this.withMutation(() => {
-      this.typeError(mixed.notType);
-    });
-    this.type = options2.type;
-    this._typeCheck = options2.check;
-    this.spec = Object.assign({
-      strip: false,
-      strict: false,
-      abortEarly: true,
-      recursive: true,
-      disableStackTrace: false,
-      nullable: false,
-      optional: true,
-      coerce: true
-    }, options2 == null ? void 0 : options2.spec);
-    this.withMutation((s4) => {
-      s4.nonNullable();
-    });
-  }
-  // TODO: remove
-  get _type() {
-    return this.type;
-  }
-  clone(spec) {
-    if (this._mutate) {
-      if (spec) Object.assign(this.spec, spec);
-      return this;
-    }
-    const next2 = Object.create(Object.getPrototypeOf(this));
-    next2.type = this.type;
-    next2._typeCheck = this._typeCheck;
-    next2._whitelist = this._whitelist.clone();
-    next2._blacklist = this._blacklist.clone();
-    next2.internalTests = Object.assign({}, this.internalTests);
-    next2.exclusiveTests = Object.assign({}, this.exclusiveTests);
-    next2.deps = [...this.deps];
-    next2.conditions = [...this.conditions];
-    next2.tests = [...this.tests];
-    next2.transforms = [...this.transforms];
-    next2.spec = clone(Object.assign({}, this.spec, spec));
-    return next2;
-  }
-  label(label) {
-    let next2 = this.clone();
-    next2.spec.label = label;
-    return next2;
-  }
-  meta(...args) {
-    if (args.length === 0) return this.spec.meta;
-    let next2 = this.clone();
-    next2.spec.meta = Object.assign(next2.spec.meta || {}, args[0]);
-    return next2;
-  }
-  withMutation(fn3) {
-    let before = this._mutate;
-    this._mutate = true;
-    let result = fn3(this);
-    this._mutate = before;
-    return result;
-  }
-  concat(schema2) {
-    if (!schema2 || schema2 === this) return this;
-    if (schema2.type !== this.type && this.type !== "mixed") throw new TypeError(`You cannot \`concat()\` schema's of different types: ${this.type} and ${schema2.type}`);
-    let base = this;
-    let combined = schema2.clone();
-    const mergedSpec = Object.assign({}, base.spec, combined.spec);
-    combined.spec = mergedSpec;
-    combined.internalTests = Object.assign({}, base.internalTests, combined.internalTests);
-    combined._whitelist = base._whitelist.merge(schema2._whitelist, schema2._blacklist);
-    combined._blacklist = base._blacklist.merge(schema2._blacklist, schema2._whitelist);
-    combined.tests = base.tests;
-    combined.exclusiveTests = base.exclusiveTests;
-    combined.withMutation((next2) => {
-      schema2.tests.forEach((fn3) => {
-        next2.test(fn3.OPTIONS);
-      });
-    });
-    combined.transforms = [...base.transforms, ...combined.transforms];
-    return combined;
-  }
-  isType(v) {
-    if (v == null) {
-      if (this.spec.nullable && v === null) return true;
-      if (this.spec.optional && v === void 0) return true;
-      return false;
-    }
-    return this._typeCheck(v);
-  }
-  resolve(options2) {
-    let schema2 = this;
-    if (schema2.conditions.length) {
-      let conditions = schema2.conditions;
-      schema2 = schema2.clone();
-      schema2.conditions = [];
-      schema2 = conditions.reduce((prevSchema, condition) => condition.resolve(prevSchema, options2), schema2);
-      schema2 = schema2.resolve(options2);
-    }
-    return schema2;
-  }
-  resolveOptions(options2) {
-    var _options$strict, _options$abortEarly, _options$recursive, _options$disableStack;
-    return Object.assign({}, options2, {
-      from: options2.from || [],
-      strict: (_options$strict = options2.strict) != null ? _options$strict : this.spec.strict,
-      abortEarly: (_options$abortEarly = options2.abortEarly) != null ? _options$abortEarly : this.spec.abortEarly,
-      recursive: (_options$recursive = options2.recursive) != null ? _options$recursive : this.spec.recursive,
-      disableStackTrace: (_options$disableStack = options2.disableStackTrace) != null ? _options$disableStack : this.spec.disableStackTrace
-    });
-  }
-  /**
-   * Run the configured transform pipeline over an input value.
-   */
-  cast(value, options2 = {}) {
-    let resolvedSchema = this.resolve(Object.assign({
-      value
-    }, options2));
-    let allowOptionality = options2.assert === "ignore-optionality";
-    let result = resolvedSchema._cast(value, options2);
-    if (options2.assert !== false && !resolvedSchema.isType(result)) {
-      if (allowOptionality && isAbsent(result)) {
-        return result;
-      }
-      let formattedValue = printValue(value);
-      let formattedResult = printValue(result);
-      throw new TypeError(`The value of ${options2.path || "field"} could not be cast to a value that satisfies the schema type: "${resolvedSchema.type}". 
-
-attempted value: ${formattedValue} 
-` + (formattedResult !== formattedValue ? `result of cast: ${formattedResult}` : ""));
-    }
-    return result;
-  }
-  _cast(rawValue, options2) {
-    let value = rawValue === void 0 ? rawValue : this.transforms.reduce((prevValue, fn3) => fn3.call(this, prevValue, rawValue, this), rawValue);
-    if (value === void 0) {
-      value = this.getDefault(options2);
-    }
-    return value;
-  }
-  _validate(_value, options2 = {}, panic, next2) {
-    let {
-      path: path2,
-      originalValue = _value,
-      strict = this.spec.strict
-    } = options2;
-    let value = _value;
-    if (!strict) {
-      value = this._cast(value, Object.assign({
-        assert: false
-      }, options2));
-    }
-    let initialTests = [];
-    for (let test2 of Object.values(this.internalTests)) {
-      if (test2) initialTests.push(test2);
-    }
-    this.runTests({
-      path: path2,
-      value,
-      originalValue,
-      options: options2,
-      tests: initialTests
-    }, panic, (initialErrors) => {
-      if (initialErrors.length) {
-        return next2(initialErrors, value);
-      }
-      this.runTests({
-        path: path2,
-        value,
-        originalValue,
-        options: options2,
-        tests: this.tests
-      }, panic, next2);
-    });
-  }
-  /**
-   * Executes a set of validations, either schema, produced Tests or a nested
-   * schema validate result.
-   */
-  runTests(runOptions, panic, next2) {
-    let fired = false;
-    let {
-      tests,
-      value,
-      originalValue,
-      path: path2,
-      options: options2
-    } = runOptions;
-    let panicOnce = (arg) => {
-      if (fired) return;
-      fired = true;
-      panic(arg, value);
-    };
-    let nextOnce = (arg) => {
-      if (fired) return;
-      fired = true;
-      next2(arg, value);
-    };
-    let count2 = tests.length;
-    let nestedErrors = [];
-    if (!count2) return nextOnce([]);
-    let args = {
-      value,
-      originalValue,
-      path: path2,
-      options: options2,
-      schema: this
-    };
-    for (let i3 = 0; i3 < tests.length; i3++) {
-      const test2 = tests[i3];
-      test2(args, panicOnce, function finishTestRun(err) {
-        if (err) {
-          Array.isArray(err) ? nestedErrors.push(...err) : nestedErrors.push(err);
-        }
-        if (--count2 <= 0) {
-          nextOnce(nestedErrors);
-        }
-      });
-    }
-  }
-  asNestedTest({
-    key,
-    index: index2,
-    parent,
-    parentPath,
-    originalParent,
-    options: options2
-  }) {
-    const k2 = key != null ? key : index2;
-    if (k2 == null) {
-      throw TypeError("Must include `key` or `index` for nested validations");
-    }
-    const isIndex2 = typeof k2 === "number";
-    let value = parent[k2];
-    const testOptions = Object.assign({}, options2, {
-      // Nested validations fields are always strict:
-      //    1. parent isn't strict so the casting will also have cast inner values
-      //    2. parent is strict in which case the nested values weren't cast either
-      strict: true,
-      parent,
-      value,
-      originalValue: originalParent[k2],
-      // FIXME: tests depend on `index` being passed around deeply,
-      //   we should not let the options.key/index bleed through
-      key: void 0,
-      // index: undefined,
-      [isIndex2 ? "index" : "key"]: k2,
-      path: isIndex2 || k2.includes(".") ? `${parentPath || ""}[${isIndex2 ? k2 : `"${k2}"`}]` : (parentPath ? `${parentPath}.` : "") + key
-    });
-    return (_, panic, next2) => this.resolve(testOptions)._validate(value, testOptions, panic, next2);
-  }
-  validate(value, options2) {
-    var _options$disableStack2;
-    let schema2 = this.resolve(Object.assign({}, options2, {
-      value
-    }));
-    let disableStackTrace = (_options$disableStack2 = options2 == null ? void 0 : options2.disableStackTrace) != null ? _options$disableStack2 : schema2.spec.disableStackTrace;
-    return new Promise((resolve, reject) => schema2._validate(value, options2, (error, parsed) => {
-      if (ValidationError.isError(error)) error.value = parsed;
-      reject(error);
-    }, (errors2, validated) => {
-      if (errors2.length) reject(new ValidationError(errors2, validated, void 0, void 0, disableStackTrace));
-      else resolve(validated);
-    }));
-  }
-  validateSync(value, options2) {
-    var _options$disableStack3;
-    let schema2 = this.resolve(Object.assign({}, options2, {
-      value
-    }));
-    let result;
-    let disableStackTrace = (_options$disableStack3 = options2 == null ? void 0 : options2.disableStackTrace) != null ? _options$disableStack3 : schema2.spec.disableStackTrace;
-    schema2._validate(value, Object.assign({}, options2, {
-      sync: true
-    }), (error, parsed) => {
-      if (ValidationError.isError(error)) error.value = parsed;
-      throw error;
-    }, (errors2, validated) => {
-      if (errors2.length) throw new ValidationError(errors2, value, void 0, void 0, disableStackTrace);
-      result = validated;
-    });
-    return result;
-  }
-  isValid(value, options2) {
-    return this.validate(value, options2).then(() => true, (err) => {
-      if (ValidationError.isError(err)) return false;
-      throw err;
-    });
-  }
-  isValidSync(value, options2) {
-    try {
-      this.validateSync(value, options2);
-      return true;
-    } catch (err) {
-      if (ValidationError.isError(err)) return false;
-      throw err;
-    }
-  }
-  _getDefault(options2) {
-    let defaultValue = this.spec.default;
-    if (defaultValue == null) {
-      return defaultValue;
-    }
-    return typeof defaultValue === "function" ? defaultValue.call(this, options2) : clone(defaultValue);
-  }
-  getDefault(options2) {
-    let schema2 = this.resolve(options2 || {});
-    return schema2._getDefault(options2);
-  }
-  default(def) {
-    if (arguments.length === 0) {
-      return this._getDefault();
-    }
-    let next2 = this.clone({
-      default: def
-    });
-    return next2;
-  }
-  strict(isStrict = true) {
-    return this.clone({
-      strict: isStrict
-    });
-  }
-  nullability(nullable, message) {
-    const next2 = this.clone({
-      nullable
-    });
-    next2.internalTests.nullable = createValidation({
-      message,
-      name: "nullable",
-      test(value) {
-        return value === null ? this.schema.spec.nullable : true;
-      }
-    });
-    return next2;
-  }
-  optionality(optional, message) {
-    const next2 = this.clone({
-      optional
-    });
-    next2.internalTests.optionality = createValidation({
-      message,
-      name: "optionality",
-      test(value) {
-        return value === void 0 ? this.schema.spec.optional : true;
-      }
-    });
-    return next2;
-  }
-  optional() {
-    return this.optionality(true);
-  }
-  defined(message = mixed.defined) {
-    return this.optionality(false, message);
-  }
-  nullable() {
-    return this.nullability(true);
-  }
-  nonNullable(message = mixed.notNull) {
-    return this.nullability(false, message);
-  }
-  required(message = mixed.required) {
-    return this.clone().withMutation((next2) => next2.nonNullable(message).defined(message));
-  }
-  notRequired() {
-    return this.clone().withMutation((next2) => next2.nullable().optional());
-  }
-  transform(fn3) {
-    let next2 = this.clone();
-    next2.transforms.push(fn3);
-    return next2;
-  }
-  /**
-   * Adds a test function to the schema's queue of tests.
-   * tests can be exclusive or non-exclusive.
-   *
-   * - exclusive tests, will replace any existing tests of the same name.
-   * - non-exclusive: can be stacked
-   *
-   * If a non-exclusive test is added to a schema with an exclusive test of the same name
-   * the exclusive test is removed and further tests of the same name will be stacked.
-   *
-   * If an exclusive test is added to a schema with non-exclusive tests of the same name
-   * the previous tests are removed and further tests of the same name will replace each other.
-   */
-  test(...args) {
-    let opts;
-    if (args.length === 1) {
-      if (typeof args[0] === "function") {
-        opts = {
-          test: args[0]
-        };
-      } else {
-        opts = args[0];
-      }
-    } else if (args.length === 2) {
-      opts = {
-        name: args[0],
-        test: args[1]
-      };
-    } else {
-      opts = {
-        name: args[0],
-        message: args[1],
-        test: args[2]
-      };
-    }
-    if (opts.message === void 0) opts.message = mixed.default;
-    if (typeof opts.test !== "function") throw new TypeError("`test` is a required parameters");
-    let next2 = this.clone();
-    let validate = createValidation(opts);
-    let isExclusive = opts.exclusive || opts.name && next2.exclusiveTests[opts.name] === true;
-    if (opts.exclusive) {
-      if (!opts.name) throw new TypeError("Exclusive tests must provide a unique `name` identifying the test");
-    }
-    if (opts.name) next2.exclusiveTests[opts.name] = !!opts.exclusive;
-    next2.tests = next2.tests.filter((fn3) => {
-      if (fn3.OPTIONS.name === opts.name) {
-        if (isExclusive) return false;
-        if (fn3.OPTIONS.test === validate.OPTIONS.test) return false;
-      }
-      return true;
-    });
-    next2.tests.push(validate);
-    return next2;
-  }
-  when(keys3, options2) {
-    if (!Array.isArray(keys3) && typeof keys3 !== "string") {
-      options2 = keys3;
-      keys3 = ".";
-    }
-    let next2 = this.clone();
-    let deps = toArray$1(keys3).map((key) => new Reference$1(key));
-    deps.forEach((dep2) => {
-      if (dep2.isSibling) next2.deps.push(dep2.key);
-    });
-    next2.conditions.push(typeof options2 === "function" ? new Condition(deps, options2) : Condition.fromOptions(deps, options2));
-    return next2;
-  }
-  typeError(message) {
-    let next2 = this.clone();
-    next2.internalTests.typeError = createValidation({
-      message,
-      name: "typeError",
-      skipAbsent: true,
-      test(value) {
-        if (!this.schema._typeCheck(value)) return this.createError({
-          params: {
-            type: this.schema.type
-          }
-        });
-        return true;
-      }
-    });
-    return next2;
-  }
-  oneOf(enums, message = mixed.oneOf) {
-    let next2 = this.clone();
-    enums.forEach((val) => {
-      next2._whitelist.add(val);
-      next2._blacklist.delete(val);
-    });
-    next2.internalTests.whiteList = createValidation({
-      message,
-      name: "oneOf",
-      skipAbsent: true,
-      test(value) {
-        let valids = this.schema._whitelist;
-        let resolved = valids.resolveAll(this.resolve);
-        return resolved.includes(value) ? true : this.createError({
-          params: {
-            values: Array.from(valids).join(", "),
-            resolved
-          }
-        });
-      }
-    });
-    return next2;
-  }
-  notOneOf(enums, message = mixed.notOneOf) {
-    let next2 = this.clone();
-    enums.forEach((val) => {
-      next2._blacklist.add(val);
-      next2._whitelist.delete(val);
-    });
-    next2.internalTests.blacklist = createValidation({
-      message,
-      name: "notOneOf",
-      test(value) {
-        let invalids = this.schema._blacklist;
-        let resolved = invalids.resolveAll(this.resolve);
-        if (resolved.includes(value)) return this.createError({
-          params: {
-            values: Array.from(invalids).join(", "),
-            resolved
-          }
-        });
-        return true;
-      }
-    });
-    return next2;
-  }
-  strip(strip = true) {
-    let next2 = this.clone();
-    next2.spec.strip = strip;
-    return next2;
-  }
-  /**
-   * Return a serialized description of the schema including validations, flags, types etc.
-   *
-   * @param options Provide any needed context for resolving runtime schema alterations (lazy, when conditions, etc).
-   */
-  describe(options2) {
-    const next2 = (options2 ? this.resolve(options2) : this).clone();
-    const {
-      label,
-      meta,
-      optional,
-      nullable
-    } = next2.spec;
-    const description2 = {
-      meta,
-      label,
-      optional,
-      nullable,
-      default: next2.getDefault(options2),
-      type: next2.type,
-      oneOf: next2._whitelist.describe(),
-      notOneOf: next2._blacklist.describe(),
-      tests: next2.tests.filter((n, idx, list) => list.findIndex((c3) => c3.OPTIONS.name === n.OPTIONS.name) === idx).map((fn3) => {
-        const params = fn3.OPTIONS.params && options2 ? resolveParams(Object.assign({}, fn3.OPTIONS.params), options2) : fn3.OPTIONS.params;
-        return {
-          name: fn3.OPTIONS.name,
-          params
-        };
-      })
-    };
-    return description2;
-  }
-  get ["~standard"]() {
-    const schema2 = this;
-    const standard = {
-      version: 1,
-      vendor: "yup",
-      async validate(value) {
-        try {
-          const result = await schema2.validate(value, {
-            abortEarly: false
-          });
-          return {
-            value: result
-          };
-        } catch (err) {
-          if (err instanceof ValidationError) {
-            return {
-              issues: issuesFromValidationError(err)
-            };
-          }
-          throw err;
-        }
-      }
-    };
-    return standard;
-  }
-}
-Schema.prototype.__isYupSchema__ = true;
-for (const method of ["validate", "validateSync"]) Schema.prototype[`${method}At`] = function(path2, value, options2 = {}) {
-  const {
-    parent,
-    parentPath,
-    schema: schema2
-  } = getIn$1(this, path2, value, options2.context);
-  return schema2[method](parent && parent[parentPath], Object.assign({}, options2, {
-    parent,
-    path: path2
-  }));
-};
-for (const alias of ["equals", "is"]) Schema.prototype[alias] = Schema.prototype.oneOf;
-for (const alias of ["not", "nope"]) Schema.prototype[alias] = Schema.prototype.notOneOf;
-function create$7() {
-  return new BooleanSchema();
-}
-class BooleanSchema extends Schema {
-  constructor() {
-    super({
-      type: "boolean",
-      check(v) {
-        if (v instanceof Boolean) v = v.valueOf();
-        return typeof v === "boolean";
-      }
-    });
-    this.withMutation(() => {
-      this.transform((value, _raw, ctx) => {
-        if (ctx.spec.coerce && !ctx.isType(value)) {
-          if (/^(true|1)$/i.test(String(value))) return true;
-          if (/^(false|0)$/i.test(String(value))) return false;
-        }
-        return value;
-      });
-    });
-  }
-  isTrue(message = boolean.isValue) {
-    return this.test({
-      message,
-      name: "is-value",
-      exclusive: true,
-      params: {
-        value: "true"
-      },
-      test(value) {
-        return isAbsent(value) || value === true;
-      }
-    });
-  }
-  isFalse(message = boolean.isValue) {
-    return this.test({
-      message,
-      name: "is-value",
-      exclusive: true,
-      params: {
-        value: "false"
-      },
-      test(value) {
-        return isAbsent(value) || value === false;
-      }
-    });
-  }
-  default(def) {
-    return super.default(def);
-  }
-  defined(msg) {
-    return super.defined(msg);
-  }
-  optional() {
-    return super.optional();
-  }
-  required(msg) {
-    return super.required(msg);
-  }
-  notRequired() {
-    return super.notRequired();
-  }
-  nullable() {
-    return super.nullable();
-  }
-  nonNullable(msg) {
-    return super.nonNullable(msg);
-  }
-  strip(v) {
-    return super.strip(v);
-  }
-}
-create$7.prototype = BooleanSchema.prototype;
-const isoReg = /^(\d{4}|[+-]\d{6})(?:-?(\d{2})(?:-?(\d{2}))?)?(?:[ T]?(\d{2}):?(\d{2})(?::?(\d{2})(?:[,.](\d{1,}))?)?(?:(Z)|([+-])(\d{2})(?::?(\d{2}))?)?)?$/;
-function parseIsoDate(date2) {
-  const struct = parseDateStruct(date2);
-  if (!struct) return Date.parse ? Date.parse(date2) : Number.NaN;
-  if (struct.z === void 0 && struct.plusMinus === void 0) {
-    return new Date(struct.year, struct.month, struct.day, struct.hour, struct.minute, struct.second, struct.millisecond).valueOf();
-  }
-  let totalMinutesOffset = 0;
-  if (struct.z !== "Z" && struct.plusMinus !== void 0) {
-    totalMinutesOffset = struct.hourOffset * 60 + struct.minuteOffset;
-    if (struct.plusMinus === "+") totalMinutesOffset = 0 - totalMinutesOffset;
-  }
-  return Date.UTC(struct.year, struct.month, struct.day, struct.hour, struct.minute + totalMinutesOffset, struct.second, struct.millisecond);
-}
-function parseDateStruct(date2) {
-  var _regexResult$7$length, _regexResult$;
-  const regexResult = isoReg.exec(date2);
-  if (!regexResult) return null;
-  return {
-    year: toNumber(regexResult[1]),
-    month: toNumber(regexResult[2], 1) - 1,
-    day: toNumber(regexResult[3], 1),
-    hour: toNumber(regexResult[4]),
-    minute: toNumber(regexResult[5]),
-    second: toNumber(regexResult[6]),
-    millisecond: regexResult[7] ? (
-      // allow arbitrary sub-second precision beyond milliseconds
-      toNumber(regexResult[7].substring(0, 3))
-    ) : 0,
-    precision: (_regexResult$7$length = (_regexResult$ = regexResult[7]) == null ? void 0 : _regexResult$.length) != null ? _regexResult$7$length : void 0,
-    z: regexResult[8] || void 0,
-    plusMinus: regexResult[9] || void 0,
-    hourOffset: toNumber(regexResult[10]),
-    minuteOffset: toNumber(regexResult[11])
-  };
-}
-function toNumber(str, defaultValue = 0) {
-  return Number(str) || defaultValue;
-}
-let rEmail = (
-  // eslint-disable-next-line
-  /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
-);
-let rUrl = (
-  // eslint-disable-next-line
-  /^((https?|ftp):)?\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i
-);
-let rUUID = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
-let yearMonthDay = "^\\d{4}-\\d{2}-\\d{2}";
-let hourMinuteSecond = "\\d{2}:\\d{2}:\\d{2}";
-let zOrOffset = "(([+-]\\d{2}(:?\\d{2})?)|Z)";
-let rIsoDateTime = new RegExp(`${yearMonthDay}T${hourMinuteSecond}(\\.\\d+)?${zOrOffset}$`);
-let isTrimmed = (value) => isAbsent(value) || value === value.trim();
-let objStringTag = {}.toString();
-function create$6() {
-  return new StringSchema();
-}
-class StringSchema extends Schema {
-  constructor() {
-    super({
-      type: "string",
-      check(value) {
-        if (value instanceof String) value = value.valueOf();
-        return typeof value === "string";
-      }
-    });
-    this.withMutation(() => {
-      this.transform((value, _raw, ctx) => {
-        if (!ctx.spec.coerce || ctx.isType(value)) return value;
-        if (Array.isArray(value)) return value;
-        const strValue = value != null && value.toString ? value.toString() : value;
-        if (strValue === objStringTag) return value;
-        return strValue;
-      });
-    });
-  }
-  required(message) {
-    return super.required(message).withMutation((schema2) => schema2.test({
-      message: message || mixed.required,
-      name: "required",
-      skipAbsent: true,
-      test: (value) => !!value.length
-    }));
-  }
-  notRequired() {
-    return super.notRequired().withMutation((schema2) => {
-      schema2.tests = schema2.tests.filter((t4) => t4.OPTIONS.name !== "required");
-      return schema2;
-    });
-  }
-  length(length2, message = string.length) {
-    return this.test({
-      message,
-      name: "length",
-      exclusive: true,
-      params: {
-        length: length2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value.length === this.resolve(length2);
-      }
-    });
-  }
-  min(min2, message = string.min) {
-    return this.test({
-      message,
-      name: "min",
-      exclusive: true,
-      params: {
-        min: min2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value.length >= this.resolve(min2);
-      }
-    });
-  }
-  max(max2, message = string.max) {
-    return this.test({
-      name: "max",
-      exclusive: true,
-      message,
-      params: {
-        max: max2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value.length <= this.resolve(max2);
-      }
-    });
-  }
-  matches(regex, options2) {
-    let excludeEmptyString = false;
-    let message;
-    let name2;
-    if (options2) {
-      if (typeof options2 === "object") {
-        ({
-          excludeEmptyString = false,
-          message,
-          name: name2
-        } = options2);
-      } else {
-        message = options2;
-      }
-    }
-    return this.test({
-      name: name2 || "matches",
-      message: message || string.matches,
-      params: {
-        regex
-      },
-      skipAbsent: true,
-      test: (value) => value === "" && excludeEmptyString || value.search(regex) !== -1
-    });
-  }
-  email(message = string.email) {
-    return this.matches(rEmail, {
-      name: "email",
-      message,
-      excludeEmptyString: true
-    });
-  }
-  url(message = string.url) {
-    return this.matches(rUrl, {
-      name: "url",
-      message,
-      excludeEmptyString: true
-    });
-  }
-  uuid(message = string.uuid) {
-    return this.matches(rUUID, {
-      name: "uuid",
-      message,
-      excludeEmptyString: false
-    });
-  }
-  datetime(options2) {
-    let message = "";
-    let allowOffset;
-    let precision;
-    if (options2) {
-      if (typeof options2 === "object") {
-        ({
-          message = "",
-          allowOffset = false,
-          precision = void 0
-        } = options2);
-      } else {
-        message = options2;
-      }
-    }
-    return this.matches(rIsoDateTime, {
-      name: "datetime",
-      message: message || string.datetime,
-      excludeEmptyString: true
-    }).test({
-      name: "datetime_offset",
-      message: message || string.datetime_offset,
-      params: {
-        allowOffset
-      },
-      skipAbsent: true,
-      test: (value) => {
-        if (!value || allowOffset) return true;
-        const struct = parseDateStruct(value);
-        if (!struct) return false;
-        return !!struct.z;
-      }
-    }).test({
-      name: "datetime_precision",
-      message: message || string.datetime_precision,
-      params: {
-        precision
-      },
-      skipAbsent: true,
-      test: (value) => {
-        if (!value || precision == void 0) return true;
-        const struct = parseDateStruct(value);
-        if (!struct) return false;
-        return struct.precision === precision;
-      }
-    });
-  }
-  //-- transforms --
-  ensure() {
-    return this.default("").transform((val) => val === null ? "" : val);
-  }
-  trim(message = string.trim) {
-    return this.transform((val) => val != null ? val.trim() : val).test({
-      message,
-      name: "trim",
-      test: isTrimmed
-    });
-  }
-  lowercase(message = string.lowercase) {
-    return this.transform((value) => !isAbsent(value) ? value.toLowerCase() : value).test({
-      message,
-      name: "string_case",
-      exclusive: true,
-      skipAbsent: true,
-      test: (value) => isAbsent(value) || value === value.toLowerCase()
-    });
-  }
-  uppercase(message = string.uppercase) {
-    return this.transform((value) => !isAbsent(value) ? value.toUpperCase() : value).test({
-      message,
-      name: "string_case",
-      exclusive: true,
-      skipAbsent: true,
-      test: (value) => isAbsent(value) || value === value.toUpperCase()
-    });
-  }
-}
-create$6.prototype = StringSchema.prototype;
-let isNaN$1 = (value) => value != +value;
-function create$5() {
-  return new NumberSchema();
-}
-class NumberSchema extends Schema {
-  constructor() {
-    super({
-      type: "number",
-      check(value) {
-        if (value instanceof Number) value = value.valueOf();
-        return typeof value === "number" && !isNaN$1(value);
-      }
-    });
-    this.withMutation(() => {
-      this.transform((value, _raw, ctx) => {
-        if (!ctx.spec.coerce) return value;
-        let parsed = value;
-        if (typeof parsed === "string") {
-          parsed = parsed.replace(/\s/g, "");
-          if (parsed === "") return NaN;
-          parsed = +parsed;
-        }
-        if (ctx.isType(parsed) || parsed === null) return parsed;
-        return parseFloat(parsed);
-      });
-    });
-  }
-  min(min2, message = number.min) {
-    return this.test({
-      message,
-      name: "min",
-      exclusive: true,
-      params: {
-        min: min2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value >= this.resolve(min2);
-      }
-    });
-  }
-  max(max2, message = number.max) {
-    return this.test({
-      message,
-      name: "max",
-      exclusive: true,
-      params: {
-        max: max2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value <= this.resolve(max2);
-      }
-    });
-  }
-  lessThan(less, message = number.lessThan) {
-    return this.test({
-      message,
-      name: "max",
-      exclusive: true,
-      params: {
-        less
-      },
-      skipAbsent: true,
-      test(value) {
-        return value < this.resolve(less);
-      }
-    });
-  }
-  moreThan(more, message = number.moreThan) {
-    return this.test({
-      message,
-      name: "min",
-      exclusive: true,
-      params: {
-        more
-      },
-      skipAbsent: true,
-      test(value) {
-        return value > this.resolve(more);
-      }
-    });
-  }
-  positive(msg = number.positive) {
-    return this.moreThan(0, msg);
-  }
-  negative(msg = number.negative) {
-    return this.lessThan(0, msg);
-  }
-  integer(message = number.integer) {
-    return this.test({
-      name: "integer",
-      message,
-      skipAbsent: true,
-      test: (val) => Number.isInteger(val)
-    });
-  }
-  truncate() {
-    return this.transform((value) => !isAbsent(value) ? value | 0 : value);
-  }
-  round(method) {
-    var _method;
-    let avail = ["ceil", "floor", "round", "trunc"];
-    method = ((_method = method) == null ? void 0 : _method.toLowerCase()) || "round";
-    if (method === "trunc") return this.truncate();
-    if (avail.indexOf(method.toLowerCase()) === -1) throw new TypeError("Only valid options for round() are: " + avail.join(", "));
-    return this.transform((value) => !isAbsent(value) ? Math[method](value) : value);
-  }
-}
-create$5.prototype = NumberSchema.prototype;
-let invalidDate = /* @__PURE__ */ new Date("");
-let isDate$1 = (obj) => Object.prototype.toString.call(obj) === "[object Date]";
-class DateSchema extends Schema {
-  constructor() {
-    super({
-      type: "date",
-      check(v) {
-        return isDate$1(v) && !isNaN(v.getTime());
-      }
-    });
-    this.withMutation(() => {
-      this.transform((value, _raw, ctx) => {
-        if (!ctx.spec.coerce || ctx.isType(value) || value === null) return value;
-        value = parseIsoDate(value);
-        return !isNaN(value) ? new Date(value) : DateSchema.INVALID_DATE;
-      });
-    });
-  }
-  prepareParam(ref, name2) {
-    let param;
-    if (!Reference$1.isRef(ref)) {
-      let cast2 = this.cast(ref);
-      if (!this._typeCheck(cast2)) throw new TypeError(`\`${name2}\` must be a Date or a value that can be \`cast()\` to a Date`);
-      param = cast2;
-    } else {
-      param = ref;
-    }
-    return param;
-  }
-  min(min2, message = date$1.min) {
-    let limit = this.prepareParam(min2, "min");
-    return this.test({
-      message,
-      name: "min",
-      exclusive: true,
-      params: {
-        min: min2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value >= this.resolve(limit);
-      }
-    });
-  }
-  max(max2, message = date$1.max) {
-    let limit = this.prepareParam(max2, "max");
-    return this.test({
-      message,
-      name: "max",
-      exclusive: true,
-      params: {
-        max: max2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value <= this.resolve(limit);
-      }
-    });
-  }
-}
-DateSchema.INVALID_DATE = invalidDate;
-function sortFields(fields, excludedEdges = []) {
-  let edges = [];
-  let nodes = /* @__PURE__ */ new Set();
-  let excludes = new Set(excludedEdges.map(([a4, b3]) => `${a4}-${b3}`));
-  function addNode(depPath, key) {
-    let node2 = propertyExprExports.split(depPath)[0];
-    nodes.add(node2);
-    if (!excludes.has(`${key}-${node2}`)) edges.push([key, node2]);
-  }
-  for (const key of Object.keys(fields)) {
-    let value = fields[key];
-    nodes.add(key);
-    if (Reference$1.isRef(value) && value.isSibling) addNode(value.path, key);
-    else if (isSchema(value) && "deps" in value) value.deps.forEach((path2) => addNode(path2, key));
-  }
-  return toposort.array(Array.from(nodes), edges).reverse();
-}
-function findIndex$2(arr, err) {
-  let idx = Infinity;
-  arr.some((key, ii) => {
-    var _err$path;
-    if ((_err$path = err.path) != null && _err$path.includes(key)) {
-      idx = ii;
-      return true;
-    }
-  });
-  return idx;
-}
-function sortByKeyOrder(keys3) {
-  return (a4, b3) => {
-    return findIndex$2(keys3, a4) - findIndex$2(keys3, b3);
-  };
-}
-const parseJson = (value, _, ctx) => {
-  if (typeof value !== "string") {
-    return value;
-  }
-  let parsed = value;
-  try {
-    parsed = JSON.parse(value);
-  } catch (err) {
-  }
-  return ctx.isType(parsed) ? parsed : value;
-};
-function deepPartial(schema2) {
-  if ("fields" in schema2) {
-    const partial = {};
-    for (const [key, fieldSchema] of Object.entries(schema2.fields)) {
-      partial[key] = deepPartial(fieldSchema);
-    }
-    return schema2.setFields(partial);
-  }
-  if (schema2.type === "array") {
-    const nextArray = schema2.optional();
-    if (nextArray.innerType) nextArray.innerType = deepPartial(nextArray.innerType);
-    return nextArray;
-  }
-  if (schema2.type === "tuple") {
-    return schema2.optional().clone({
-      types: schema2.spec.types.map(deepPartial)
-    });
-  }
-  if ("optional" in schema2) {
-    return schema2.optional();
-  }
-  return schema2;
-}
-const deepHas = (obj, p2) => {
-  const path2 = [...propertyExprExports.normalizePath(p2)];
-  if (path2.length === 1) return path2[0] in obj;
-  let last = path2.pop();
-  let parent = propertyExprExports.getter(propertyExprExports.join(path2), true)(obj);
-  return !!(parent && last in parent);
-};
-let isObject$1 = (obj) => Object.prototype.toString.call(obj) === "[object Object]";
-function unknown(ctx, value) {
-  let known = Object.keys(ctx.fields);
-  return Object.keys(value).filter((key) => known.indexOf(key) === -1);
-}
-const defaultSort = sortByKeyOrder([]);
-function create$3(spec) {
-  return new ObjectSchema(spec);
-}
-class ObjectSchema extends Schema {
-  constructor(spec) {
-    super({
-      type: "object",
-      check(value) {
-        return isObject$1(value) || typeof value === "function";
-      }
-    });
-    this.fields = /* @__PURE__ */ Object.create(null);
-    this._sortErrors = defaultSort;
-    this._nodes = [];
-    this._excludedEdges = [];
-    this.withMutation(() => {
-      if (spec) {
-        this.shape(spec);
-      }
-    });
-  }
-  _cast(_value, options2 = {}) {
-    var _options$stripUnknown;
-    let value = super._cast(_value, options2);
-    if (value === void 0) return this.getDefault(options2);
-    if (!this._typeCheck(value)) return value;
-    let fields = this.fields;
-    let strip = (_options$stripUnknown = options2.stripUnknown) != null ? _options$stripUnknown : this.spec.noUnknown;
-    let props = [].concat(this._nodes, Object.keys(value).filter((v) => !this._nodes.includes(v)));
-    let intermediateValue = {};
-    let innerOptions = Object.assign({}, options2, {
-      parent: intermediateValue,
-      __validating: options2.__validating || false
-    });
-    let isChanged = false;
-    for (const prop of props) {
-      let field = fields[prop];
-      let exists = prop in value;
-      if (field) {
-        let fieldValue;
-        let inputValue = value[prop];
-        innerOptions.path = (options2.path ? `${options2.path}.` : "") + prop;
-        field = field.resolve({
-          value: inputValue,
-          context: options2.context,
-          parent: intermediateValue
-        });
-        let fieldSpec = field instanceof Schema ? field.spec : void 0;
-        let strict = fieldSpec == null ? void 0 : fieldSpec.strict;
-        if (fieldSpec != null && fieldSpec.strip) {
-          isChanged = isChanged || prop in value;
-          continue;
-        }
-        fieldValue = !options2.__validating || !strict ? (
-          // TODO: use _cast, this is double resolving
-          field.cast(value[prop], innerOptions)
-        ) : value[prop];
-        if (fieldValue !== void 0) {
-          intermediateValue[prop] = fieldValue;
-        }
-      } else if (exists && !strip) {
-        intermediateValue[prop] = value[prop];
-      }
-      if (exists !== prop in intermediateValue || intermediateValue[prop] !== value[prop]) {
-        isChanged = true;
-      }
-    }
-    return isChanged ? intermediateValue : value;
-  }
-  _validate(_value, options2 = {}, panic, next2) {
-    let {
-      from: from3 = [],
-      originalValue = _value,
-      recursive = this.spec.recursive
-    } = options2;
-    options2.from = [{
-      schema: this,
-      value: originalValue
-    }, ...from3];
-    options2.__validating = true;
-    options2.originalValue = originalValue;
-    super._validate(_value, options2, panic, (objectErrors, value) => {
-      if (!recursive || !isObject$1(value)) {
-        next2(objectErrors, value);
-        return;
-      }
-      originalValue = originalValue || value;
-      let tests = [];
-      for (let key of this._nodes) {
-        let field = this.fields[key];
-        if (!field || Reference$1.isRef(field)) {
-          continue;
-        }
-        tests.push(field.asNestedTest({
-          options: options2,
-          key,
-          parent: value,
-          parentPath: options2.path,
-          originalParent: originalValue
-        }));
-      }
-      this.runTests({
-        tests,
-        value,
-        originalValue,
-        options: options2
-      }, panic, (fieldErrors) => {
-        next2(fieldErrors.sort(this._sortErrors).concat(objectErrors), value);
-      });
-    });
-  }
-  clone(spec) {
-    const next2 = super.clone(spec);
-    next2.fields = Object.assign({}, this.fields);
-    next2._nodes = this._nodes;
-    next2._excludedEdges = this._excludedEdges;
-    next2._sortErrors = this._sortErrors;
-    return next2;
-  }
-  concat(schema2) {
-    let next2 = super.concat(schema2);
-    let nextFields = next2.fields;
-    for (let [field, schemaOrRef] of Object.entries(this.fields)) {
-      const target = nextFields[field];
-      nextFields[field] = target === void 0 ? schemaOrRef : target;
-    }
-    return next2.withMutation((s4) => (
-      // XXX: excludes here is wrong
-      s4.setFields(nextFields, [...this._excludedEdges, ...schema2._excludedEdges])
-    ));
-  }
-  _getDefault(options2) {
-    if ("default" in this.spec) {
-      return super._getDefault(options2);
-    }
-    if (!this._nodes.length) {
-      return void 0;
-    }
-    let dft = {};
-    this._nodes.forEach((key) => {
-      var _innerOptions;
-      const field = this.fields[key];
-      let innerOptions = options2;
-      if ((_innerOptions = innerOptions) != null && _innerOptions.value) {
-        innerOptions = Object.assign({}, innerOptions, {
-          parent: innerOptions.value,
-          value: innerOptions.value[key]
-        });
-      }
-      dft[key] = field && "getDefault" in field ? field.getDefault(innerOptions) : void 0;
-    });
-    return dft;
-  }
-  setFields(shape, excludedEdges) {
-    let next2 = this.clone();
-    next2.fields = shape;
-    next2._nodes = sortFields(shape, excludedEdges);
-    next2._sortErrors = sortByKeyOrder(Object.keys(shape));
-    if (excludedEdges) next2._excludedEdges = excludedEdges;
-    return next2;
-  }
-  shape(additions, excludes = []) {
-    return this.clone().withMutation((next2) => {
-      let edges = next2._excludedEdges;
-      if (excludes.length) {
-        if (!Array.isArray(excludes[0])) excludes = [excludes];
-        edges = [...next2._excludedEdges, ...excludes];
-      }
-      return next2.setFields(Object.assign(next2.fields, additions), edges);
-    });
-  }
-  partial() {
-    const partial = {};
-    for (const [key, schema2] of Object.entries(this.fields)) {
-      partial[key] = "optional" in schema2 && schema2.optional instanceof Function ? schema2.optional() : schema2;
-    }
-    return this.setFields(partial);
-  }
-  deepPartial() {
-    const next2 = deepPartial(this);
-    return next2;
-  }
-  pick(keys3) {
-    const picked = {};
-    for (const key of keys3) {
-      if (this.fields[key]) picked[key] = this.fields[key];
-    }
-    return this.setFields(picked, this._excludedEdges.filter(([a4, b3]) => keys3.includes(a4) && keys3.includes(b3)));
-  }
-  omit(keys3) {
-    const remaining = [];
-    for (const key of Object.keys(this.fields)) {
-      if (keys3.includes(key)) continue;
-      remaining.push(key);
-    }
-    return this.pick(remaining);
-  }
-  from(from3, to2, alias) {
-    let fromGetter = propertyExprExports.getter(from3, true);
-    return this.transform((obj) => {
-      if (!obj) return obj;
-      let newObj = obj;
-      if (deepHas(obj, from3)) {
-        newObj = Object.assign({}, obj);
-        if (!alias) delete newObj[from3];
-        newObj[to2] = fromGetter(obj);
-      }
-      return newObj;
-    });
-  }
-  /** Parse an input JSON string to an object */
-  json() {
-    return this.transform(parseJson);
-  }
-  /**
-   * Similar to `noUnknown` but only validates that an object is the right shape without stripping the unknown keys
-   */
-  exact(message) {
-    return this.test({
-      name: "exact",
-      exclusive: true,
-      message: message || object.exact,
-      test(value) {
-        if (value == null) return true;
-        const unknownKeys = unknown(this.schema, value);
-        return unknownKeys.length === 0 || this.createError({
-          params: {
-            properties: unknownKeys.join(", ")
-          }
-        });
-      }
-    });
-  }
-  stripUnknown() {
-    return this.clone({
-      noUnknown: true
-    });
-  }
-  noUnknown(noAllow = true, message = object.noUnknown) {
-    if (typeof noAllow !== "boolean") {
-      message = noAllow;
-      noAllow = true;
-    }
-    let next2 = this.test({
-      name: "noUnknown",
-      exclusive: true,
-      message,
-      test(value) {
-        if (value == null) return true;
-        const unknownKeys = unknown(this.schema, value);
-        return !noAllow || unknownKeys.length === 0 || this.createError({
-          params: {
-            unknown: unknownKeys.join(", ")
-          }
-        });
-      }
-    });
-    next2.spec.noUnknown = noAllow;
-    return next2;
-  }
-  unknown(allow = true, message = object.noUnknown) {
-    return this.noUnknown(!allow, message);
-  }
-  transformKeys(fn3) {
-    return this.transform((obj) => {
-      if (!obj) return obj;
-      const result = {};
-      for (const key of Object.keys(obj)) result[fn3(key)] = obj[key];
-      return result;
-    });
-  }
-  camelCase() {
-    return this.transformKeys(tinyCaseExports.camelCase);
-  }
-  snakeCase() {
-    return this.transformKeys(tinyCaseExports.snakeCase);
-  }
-  constantCase() {
-    return this.transformKeys((key) => tinyCaseExports.snakeCase(key).toUpperCase());
-  }
-  describe(options2) {
-    const next2 = (options2 ? this.resolve(options2) : this).clone();
-    const base = super.describe(options2);
-    base.fields = {};
-    for (const [key, value] of Object.entries(next2.fields)) {
-      var _innerOptions2;
-      let innerOptions = options2;
-      if ((_innerOptions2 = innerOptions) != null && _innerOptions2.value) {
-        innerOptions = Object.assign({}, innerOptions, {
-          parent: innerOptions.value,
-          value: innerOptions.value[key]
-        });
-      }
-      base.fields[key] = value.describe(innerOptions);
-    }
-    return base;
-  }
-}
-create$3.prototype = ObjectSchema.prototype;
-function create$2(type3) {
-  return new ArraySchema(type3);
-}
-class ArraySchema extends Schema {
-  constructor(type3) {
-    super({
-      type: "array",
-      spec: {
-        types: type3
-      },
-      check(v) {
-        return Array.isArray(v);
-      }
-    });
-    this.innerType = void 0;
-    this.innerType = type3;
-  }
-  _cast(_value, _opts) {
-    const value = super._cast(_value, _opts);
-    if (!this._typeCheck(value) || !this.innerType) {
-      return value;
-    }
-    let isChanged = false;
-    const castArray = value.map((v, idx) => {
-      const castElement = this.innerType.cast(v, Object.assign({}, _opts, {
-        path: `${_opts.path || ""}[${idx}]`
-      }));
-      if (castElement !== v) {
-        isChanged = true;
-      }
-      return castElement;
-    });
-    return isChanged ? castArray : value;
-  }
-  _validate(_value, options2 = {}, panic, next2) {
-    var _options$recursive;
-    let innerType = this.innerType;
-    let recursive = (_options$recursive = options2.recursive) != null ? _options$recursive : this.spec.recursive;
-    options2.originalValue != null ? options2.originalValue : _value;
-    super._validate(_value, options2, panic, (arrayErrors, value) => {
-      var _options$originalValu2;
-      if (!recursive || !innerType || !this._typeCheck(value)) {
-        next2(arrayErrors, value);
-        return;
-      }
-      let tests = new Array(value.length);
-      for (let index2 = 0; index2 < value.length; index2++) {
-        var _options$originalValu;
-        tests[index2] = innerType.asNestedTest({
-          options: options2,
-          index: index2,
-          parent: value,
-          parentPath: options2.path,
-          originalParent: (_options$originalValu = options2.originalValue) != null ? _options$originalValu : _value
-        });
-      }
-      this.runTests({
-        value,
-        tests,
-        originalValue: (_options$originalValu2 = options2.originalValue) != null ? _options$originalValu2 : _value,
-        options: options2
-      }, panic, (innerTypeErrors) => next2(innerTypeErrors.concat(arrayErrors), value));
-    });
-  }
-  clone(spec) {
-    const next2 = super.clone(spec);
-    next2.innerType = this.innerType;
-    return next2;
-  }
-  /** Parse an input JSON string to an object */
-  json() {
-    return this.transform(parseJson);
-  }
-  concat(schema2) {
-    let next2 = super.concat(schema2);
-    next2.innerType = this.innerType;
-    if (schema2.innerType)
-      next2.innerType = next2.innerType ? (
-        // @ts-expect-error Lazy doesn't have concat and will break
-        next2.innerType.concat(schema2.innerType)
-      ) : schema2.innerType;
-    return next2;
-  }
-  of(schema2) {
-    let next2 = this.clone();
-    if (!isSchema(schema2)) throw new TypeError("`array.of()` sub-schema must be a valid yup schema not: " + printValue(schema2));
-    next2.innerType = schema2;
-    next2.spec = Object.assign({}, next2.spec, {
-      types: schema2
-    });
-    return next2;
-  }
-  length(length2, message = array.length) {
-    return this.test({
-      message,
-      name: "length",
-      exclusive: true,
-      params: {
-        length: length2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value.length === this.resolve(length2);
-      }
-    });
-  }
-  min(min2, message) {
-    message = message || array.min;
-    return this.test({
-      message,
-      name: "min",
-      exclusive: true,
-      params: {
-        min: min2
-      },
-      skipAbsent: true,
-      // FIXME(ts): Array<typeof T>
-      test(value) {
-        return value.length >= this.resolve(min2);
-      }
-    });
-  }
-  max(max2, message) {
-    message = message || array.max;
-    return this.test({
-      message,
-      name: "max",
-      exclusive: true,
-      params: {
-        max: max2
-      },
-      skipAbsent: true,
-      test(value) {
-        return value.length <= this.resolve(max2);
-      }
-    });
-  }
-  ensure() {
-    return this.default(() => []).transform((val, original) => {
-      if (this._typeCheck(val)) return val;
-      return original == null ? [] : [].concat(original);
-    });
-  }
-  compact(rejector) {
-    let reject = !rejector ? (v) => !!v : (v, i3, a4) => !rejector(v, i3, a4);
-    return this.transform((values3) => values3 != null ? values3.filter(reject) : values3);
-  }
-  describe(options2) {
-    const next2 = (options2 ? this.resolve(options2) : this).clone();
-    const base = super.describe(options2);
-    if (next2.innerType) {
-      var _innerOptions;
-      let innerOptions = options2;
-      if ((_innerOptions = innerOptions) != null && _innerOptions.value) {
-        innerOptions = Object.assign({}, innerOptions, {
-          parent: innerOptions.value,
-          value: innerOptions.value[0]
-        });
-      }
-      base.innerType = next2.innerType.describe(innerOptions);
-    }
-    return base;
-  }
-}
-create$2.prototype = ArraySchema.prototype;
-const sourceSchema = create$3({
-  type: create$6().oneOf(["stash-saved-filter", "all"]).required(),
-  randomise: create$7().required(),
-  savedFilterId: create$6().when("type", {
-    is: "stash-saved-filter",
-    then: (schema2) => schema2.required("Choose a filter"),
-    otherwise: (schema2) => schema2.strip()
-  }),
-  entityType: create$6().when("type", {
-    is: "all",
-    then: (schema2) => schema2.oneOf(["scene", "marker"]).required(),
-    otherwise: (schema2) => schema2.strip()
-  })
-});
-const channelConfigSchema = create$3({
-  id: create$6().required(),
-  sources: create$2().of(sourceSchema).min(1, "Choose a filter").max(1).required()
-});
-function createNewChannelConfig() {
-  return {
-    id: generateConfigId(),
-    sources: []
-  };
-}
-function entityTypeToFilterMode(entityType) {
-  return entityType === "scene" ? FilterMode.Scenes : FilterMode.SceneMarkers;
-}
-function makeEmptySavedFilter(mode) {
-  return {
-    id: "",
-    mode,
-    name: "",
-    filter: ""
-  };
-}
-function getAllMediaSourceName(entityType) {
-  return entityType === "scene" ? "All scenes" : "All markers";
-}
-function getSourceTargetKey(source2) {
-  if (!source2) return "none";
-  if (source2.type === "stash-saved-filter") return `stash-saved-filter:${source2.savedFilterId}`;
-  if (source2.type === "all") return `all:${source2.entityType}`;
-  return "unknown";
-}
-function getChannelSourceInfo(source2, availableSavedFilters, availableSavedFiltersLoading) {
-  if (source2.type === "all") {
-    return { name: getAllMediaSourceName(source2.entityType), entityType: source2.entityType, missing: false, sortedRandomly: false };
-  }
-  if (source2.type === "stash-saved-filter") {
-    const savedFilter = availableSavedFilters.find((filter2) => filter2.id === source2.savedFilterId);
-    if (!savedFilter) {
-      return availableSavedFiltersLoading ? { name: "Loading…", missing: false, sortedRandomly: false } : { name: "Missing filter", missing: true, sortedRandomly: false };
-    }
-    return {
-      name: savedFilter.name,
-      entityType: savedFilter.entityType,
-      missing: false,
-      sortedRandomly: !!savedFilter.find_filter?.sort?.startsWith("random_")
-    };
-  }
-  return { name: "Unknown source", missing: true, sortedRandomly: false };
-}
-const savedFilterNamePrefixes = {
-  scene: "Scenes: ",
-  marker: "Markers: "
-};
-function getChannelName(channel, availableSavedFilters, availableSavedFiltersLoading) {
-  const source2 = channel.sources[0];
-  if (!source2) return { prefix: "", name: "Empty channel", sourceInfo: void 0 };
-  const sourceInfo = getChannelSourceInfo(source2, availableSavedFilters, availableSavedFiltersLoading);
-  const prefix2 = source2.type === "stash-saved-filter" && sourceInfo.entityType ? savedFilterNamePrefixes[sourceInfo.entityType] : "";
-  return { prefix: prefix2, name: sourceInfo.name, sourceInfo };
-}
 const useGlobalFilterState = create(() => ({
   loadingResponsibilityClaimed: false,
   activeChannelId: void 0,
@@ -191305,6 +191445,18 @@ function getStartupChannel(channels, startupChannel, lastViewedChannelId) {
     if (lastViewed) return lastViewed;
   }
   return channels[0];
+}
+function setActiveChannel(channelId) {
+  useGlobalFilterState.setState({ activeChannelId: channelId });
+  const { channels, set: setTvConfig } = useTvConfig.getState();
+  const channel = channels.find((channel2) => channel2.id === channelId);
+  if (channel && !isTemporaryChannel(channel)) {
+    setTvConfig("lastViewedChannelId", channelId);
+  }
+}
+function showTemporaryFilter(filter2) {
+  useTvConfig.getState().set("channels", (channels) => withTemporaryChannel(channels, filter2));
+  setActiveChannel(TEMPORARY_CHANNEL_ID);
 }
 function useMediaItemFilters() {
   const {
@@ -191338,8 +191490,7 @@ function useMediaItemFilters() {
     onlyShowMatchingOrientation,
     channels,
     startupChannel,
-    lastViewedChannelId,
-    set: setTvConfig
+    lastViewedChannelId
   } = useTvConfig();
   const { orientation: orientation2 } = useWindowSize();
   const activeChannel = channels.find((channel) => channel.id === activeChannelId);
@@ -191419,6 +191570,14 @@ function useMediaItemFilters() {
           // See the comment above about the `filter` prop
         };
       }
+      if (activeSource.type === "temporary-filter") {
+        return {
+          ...activeSource.filter,
+          id: "",
+          filter: ""
+          // See the comment above about the `filter` prop
+        };
+      }
       throw new Error(`Unsupported channel source: ${JSON.stringify(activeSource)}`);
     }
     loadActiveSource().then((savedFilter) => {
@@ -191432,10 +191591,6 @@ function useMediaItemFilters() {
       cancelled = true;
     };
   }, [isResponsibleForLoading, loadingDataRequiredBeforeLoadingCurrentFilter, activeChannelId, activeSourceTargetKey, stashDefaultScenesFilter]);
-  function setActiveChannel(channelId) {
-    useGlobalFilterState.setState({ activeChannelId: channelId });
-    setTvConfig("lastViewedChannelId", channelId);
-  }
   async function fetchSavedFilterFromStash(apolloClient2, filterId) {
     const { data: data2 } = await apolloClient2.query({
       query: FindSavedFilterDocument,
@@ -191527,6 +191682,7 @@ function useMediaItemFilters() {
     lastLoadedCurrentMediaItemFilter,
     activeChannel,
     setActiveChannel,
+    showTemporaryFilter,
     availableSavedFilters
   };
 }
@@ -193475,6 +193631,106 @@ const SvgAddMarkerOutline = (props) => /* @__PURE__ */ reactExports.createElemen
   strokeLinecap: "butt",
   strokeMiterlimit: 2
 } })));
+var _excluded$1H = ["color", "size", "title", "className"];
+function _extends$1C() {
+  return _extends$1C = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e2 = 1; e2 < arguments.length; e2++) {
+      var t4 = arguments[e2];
+      for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
+    }
+    return n;
+  }, _extends$1C.apply(null, arguments);
+}
+function _objectWithoutProperties$1C(e2, t4) {
+  if (null == e2) return {};
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1E(e2, t4);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e2);
+    for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
+  }
+  return i3;
+}
+function _objectWithoutPropertiesLoose$1E(r3, e2) {
+  if (null == r3) return {};
+  var t4 = {};
+  for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
+    if (-1 !== e2.indexOf(n)) continue;
+    t4[n] = r3[n];
+  }
+  return t4;
+}
+var Icon0CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+  var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1C(_ref3, _excluded$1H);
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1C({
+    ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size2,
+    height: size2,
+    fill: color2,
+    className: ["bi", "bi-0-circle-fill", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    d: "M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.012 4.158c1.858 0 2.96-1.582 2.96-3.99V7.84c0-2.426-1.079-3.996-2.936-3.996-1.864 0-2.965 1.588-2.965 3.996v.328c0 2.42 1.09 3.99 2.941 3.99"
+  }));
+});
+Icon0CircleFill.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.string,
+  className: PropTypes.string
+};
+var _excluded$1G = ["color", "size", "title", "className"];
+function _extends$1B() {
+  return _extends$1B = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e2 = 1; e2 < arguments.length; e2++) {
+      var t4 = arguments[e2];
+      for (var r3 in t4) ({}).hasOwnProperty.call(t4, r3) && (n[r3] = t4[r3]);
+    }
+    return n;
+  }, _extends$1B.apply(null, arguments);
+}
+function _objectWithoutProperties$1B(e2, t4) {
+  if (null == e2) return {};
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1D(e2, t4);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e2);
+    for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
+  }
+  return i3;
+}
+function _objectWithoutPropertiesLoose$1D(r3, e2) {
+  if (null == r3) return {};
+  var t4 = {};
+  for (var n in r3) if ({}.hasOwnProperty.call(r3, n)) {
+    if (-1 !== e2.indexOf(n)) continue;
+    t4[n] = r3[n];
+  }
+  return t4;
+}
+var Icon0Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+  var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1B(_ref3, _excluded$1G);
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$1B({
+    ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size2,
+    height: size2,
+    fill: color2,
+    className: ["bi", "bi-0-circle", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    d: "M7.988 12.158c-1.851 0-2.941-1.57-2.941-3.99V7.84c0-2.408 1.101-3.996 2.965-3.996 1.857 0 2.935 1.57 2.935 3.996v.328c0 2.408-1.101 3.99-2.959 3.99M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
+  }));
+});
+Icon0Circle.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.string,
+  className: PropTypes.string
+};
 var _excluded$1F = ["color", "size", "title", "className"];
 function _extends$1A() {
   return _extends$1A = Object.assign ? Object.assign.bind() : function(n) {
@@ -193503,7 +193759,7 @@ function _objectWithoutPropertiesLoose$1C(r3, e2) {
   }
   return t4;
 }
-var Icon0CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon1CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1A(_ref3, _excluded$1F);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1A({
     ref,
@@ -193512,14 +193768,12 @@ var Icon0CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-0-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-1-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.012 4.158c1.858 0 2.96-1.582 2.96-3.99V7.84c0-2.426-1.079-3.996-2.936-3.996-1.864 0-2.965 1.588-2.965 3.996v.328c0 2.42 1.09 3.99 2.941 3.99"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002H7.971L6.072 5.385v1.271l1.834-1.318h.065V12h1.312z"
   }));
 });
-Icon0CircleFill.propTypes = {
+Icon1CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193553,7 +193807,7 @@ function _objectWithoutPropertiesLoose$1B(r3, e2) {
   }
   return t4;
 }
-var Icon0Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon1Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1z(_ref3, _excluded$1E);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1z({
     ref,
@@ -193562,14 +193816,12 @@ var Icon0Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-0-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-1-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M7.988 12.158c-1.851 0-2.941-1.57-2.941-3.99V7.84c0-2.408 1.101-3.996 2.965-3.996 1.857 0 2.935 1.57 2.935 3.996v.328c0 2.408-1.101 3.99-2.959 3.99M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383z"
   }));
 });
-Icon0Circle.propTypes = {
+Icon1Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193603,7 +193855,7 @@ function _objectWithoutPropertiesLoose$1A(r3, e2) {
   }
   return t4;
 }
-var Icon1CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon2CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1y(_ref3, _excluded$1D);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1y({
     ref,
@@ -193612,12 +193864,12 @@ var Icon1CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-1-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-2-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002H7.971L6.072 5.385v1.271l1.834-1.318h.065V12h1.312z"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492 1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971 3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763 1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758 0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"
   }));
 });
-Icon1CircleFill.propTypes = {
+Icon2CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193651,7 +193903,7 @@ function _objectWithoutPropertiesLoose$1z(r3, e2) {
   }
   return t4;
 }
-var Icon1Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon2Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1x(_ref3, _excluded$1C);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1x({
     ref,
@@ -193660,12 +193912,12 @@ var Icon1Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-1-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-2-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383z"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306"
   }));
 });
-Icon1Circle.propTypes = {
+Icon2Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193699,7 +193951,7 @@ function _objectWithoutPropertiesLoose$1y(r3, e2) {
   }
   return t4;
 }
-var Icon2CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon3CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1w(_ref3, _excluded$1B);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1w({
     ref,
@@ -193708,12 +193960,12 @@ var Icon2CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-2-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-3-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492 1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971 3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763 1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758 0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.082.414c.92 0 1.535.54 1.541 1.318.012.791-.615 1.36-1.588 1.354-.861-.006-1.482-.469-1.54-1.066H5.104c.047 1.177 1.05 2.144 2.754 2.144 1.653 0 2.954-.937 2.93-2.396-.023-1.278-1.031-1.846-1.734-1.916v-.07c.597-.1 1.505-.739 1.482-1.876-.03-1.177-1.043-2.074-2.637-2.062-1.675.006-2.59.984-2.625 2.12h1.248c.036-.556.557-1.054 1.348-1.054.785 0 1.348.486 1.348 1.195.006.715-.563 1.237-1.342 1.237h-.838v1.072h.879Z"
   }));
 });
-Icon2CircleFill.propTypes = {
+Icon3CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193747,7 +193999,7 @@ function _objectWithoutPropertiesLoose$1x(r3, e2) {
   }
   return t4;
 }
-var Icon2Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon3Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1v(_ref3, _excluded$1A);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1v({
     ref,
@@ -193756,12 +194008,14 @@ var Icon2Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-2-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-3-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306"
+    d: "M7.918 8.414h-.879V7.342h.838c.78 0 1.348-.522 1.342-1.237 0-.709-.563-1.195-1.348-1.195-.79 0-1.312.498-1.348 1.055H5.275c.036-1.137.95-2.115 2.625-2.121 1.594-.012 2.608.885 2.637 2.062.023 1.137-.885 1.776-1.482 1.875v.07c.703.07 1.71.64 1.734 1.917.024 1.459-1.277 2.396-2.93 2.396-1.705 0-2.707-.967-2.754-2.144H6.33c.059.597.68 1.06 1.541 1.066.973.006 1.6-.563 1.588-1.354-.006-.779-.621-1.318-1.541-1.318"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
   }));
 });
-Icon2Circle.propTypes = {
+Icon3Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193795,7 +194049,7 @@ function _objectWithoutPropertiesLoose$1w(r3, e2) {
   }
   return t4;
 }
-var Icon3CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon4CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1u(_ref3, _excluded$1z);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1u({
     ref,
@@ -193804,12 +194058,12 @@ var Icon3CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-3-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-4-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.082.414c.92 0 1.535.54 1.541 1.318.012.791-.615 1.36-1.588 1.354-.861-.006-1.482-.469-1.54-1.066H5.104c.047 1.177 1.05 2.144 2.754 2.144 1.653 0 2.954-.937 2.93-2.396-.023-1.278-1.031-1.846-1.734-1.916v-.07c.597-.1 1.505-.739 1.482-1.876-.03-1.177-1.043-2.074-2.637-2.062-1.675.006-2.59.984-2.625 2.12h1.248c.036-.556.557-1.054 1.348-1.054.785 0 1.348.486 1.348 1.195.006.715-.563 1.237-1.342 1.237h-.838v1.072h.879Z"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M7.519 5.057c-.886 1.418-1.772 2.838-2.542 4.265v1.12H8.85V12h1.26v-1.559h1.007V9.334H10.11V4.002H8.176zM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218"
   }));
 });
-Icon3CircleFill.propTypes = {
+Icon4CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193843,7 +194097,7 @@ function _objectWithoutPropertiesLoose$1v(r3, e2) {
   }
   return t4;
 }
-var Icon3Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon4Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1t(_ref3, _excluded$1y);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1t({
     ref,
@@ -193852,14 +194106,14 @@ var Icon3Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-3-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-4-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M7.918 8.414h-.879V7.342h.838c.78 0 1.348-.522 1.342-1.237 0-.709-.563-1.195-1.348-1.195-.79 0-1.312.498-1.348 1.055H5.275c.036-1.137.95-2.115 2.625-2.121 1.594-.012 2.608.885 2.637 2.062.023 1.137-.885 1.776-1.482 1.875v.07c.703.07 1.71.64 1.734 1.917.024 1.459-1.277 2.396-2.93 2.396-1.705 0-2.707-.967-2.754-2.144H6.33c.059.597.68 1.06 1.541 1.066.973.006 1.6-.563 1.588-1.354-.006-.779-.621-1.318-1.541-1.318"
+    d: "M7.519 5.057q.33-.527.657-1.055h1.933v5.332h1.008v1.107H10.11V12H8.85v-1.559H4.978V9.322c.77-1.427 1.656-2.847 2.542-4.265ZM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218"
   }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
   }));
 });
-Icon3Circle.propTypes = {
+Icon4Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193893,7 +194147,7 @@ function _objectWithoutPropertiesLoose$1u(r3, e2) {
   }
   return t4;
 }
-var Icon4CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon5CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1s(_ref3, _excluded$1x);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1s({
     ref,
@@ -193902,12 +194156,12 @@ var Icon4CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-4-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-5-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M7.519 5.057c-.886 1.418-1.772 2.838-2.542 4.265v1.12H8.85V12h1.26v-1.559h1.007V9.334H10.11V4.002H8.176zM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.006 4.158c1.74 0 2.924-1.119 2.924-2.806 0-1.641-1.178-2.584-2.56-2.584-.897 0-1.442.421-1.612.68h-.064l.193-2.344h3.621V4.002H5.791L5.445 8.63h1.149c.193-.358.668-.809 1.435-.809.85 0 1.582.604 1.582 1.57 0 1.085-.779 1.682-1.57 1.682-.697 0-1.389-.31-1.53-1.031H5.276c.065 1.213 1.149 2.115 2.72 2.115Z"
   }));
 });
-Icon4CircleFill.propTypes = {
+Icon5CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193941,7 +194195,7 @@ function _objectWithoutPropertiesLoose$1t(r3, e2) {
   }
   return t4;
 }
-var Icon4Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon5Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1r(_ref3, _excluded$1w);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1r({
     ref,
@@ -193950,14 +194204,12 @@ var Icon4Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-4-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-5-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M7.519 5.057q.33-.527.657-1.055h1.933v5.332h1.008v1.107H10.11V12H8.85v-1.559H4.978V9.322c.77-1.427 1.656-2.847 2.542-4.265ZM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8"
+    d: "M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8m15 0A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-8.006 4.158c-1.57 0-2.654-.902-2.719-2.115h1.237c.14.72.832 1.031 1.529 1.031.791 0 1.57-.597 1.57-1.681 0-.967-.732-1.57-1.582-1.57-.767 0-1.242.45-1.435.808H5.445L5.791 4h4.705v1.103H6.875l-.193 2.343h.064c.17-.258.715-.68 1.611-.68 1.383 0 2.561.944 2.561 2.585 0 1.687-1.184 2.806-2.924 2.806Z"
   }));
 });
-Icon4Circle.propTypes = {
+Icon5Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -193991,7 +194243,7 @@ function _objectWithoutPropertiesLoose$1s(r3, e2) {
   }
   return t4;
 }
-var Icon5CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon6CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1q(_ref3, _excluded$1v);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1q({
     ref,
@@ -194000,12 +194252,12 @@ var Icon5CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-5-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-6-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.006 4.158c1.74 0 2.924-1.119 2.924-2.806 0-1.641-1.178-2.584-2.56-2.584-.897 0-1.442.421-1.612.68h-.064l.193-2.344h3.621V4.002H5.791L5.445 8.63h1.149c.193-.358.668-.809 1.435-.809.85 0 1.582.604 1.582 1.57 0 1.085-.779 1.682-1.57 1.682-.697 0-1.389-.31-1.53-1.031H5.276c.065 1.213 1.149 2.115 2.72 2.115Z"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.21 3.855c-1.868 0-3.116 1.395-3.116 4.407 0 1.183.228 2.039.597 2.642.569.926 1.477 1.254 2.409 1.254 1.629 0 2.847-1.013 2.847-2.783 0-1.676-1.254-2.555-2.508-2.555-1.125 0-1.752.61-1.98 1.155h-.082c-.012-1.946.727-3.036 1.805-3.036.802 0 1.213.457 1.312.815h1.29c-.06-.908-.962-1.899-2.573-1.899Zm-.099 4.008c-.92 0-1.564.65-1.564 1.576 0 1.032.703 1.635 1.558 1.635.868 0 1.553-.533 1.553-1.629 0-1.06-.744-1.582-1.547-1.582"
   }));
 });
-Icon5CircleFill.propTypes = {
+Icon6CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194039,7 +194291,7 @@ function _objectWithoutPropertiesLoose$1r(r3, e2) {
   }
   return t4;
 }
-var Icon5Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon6Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1p(_ref3, _excluded$1u);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1p({
     ref,
@@ -194048,12 +194300,12 @@ var Icon5Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-5-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-6-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8m15 0A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-8.006 4.158c-1.57 0-2.654-.902-2.719-2.115h1.237c.14.72.832 1.031 1.529 1.031.791 0 1.57-.597 1.57-1.681 0-.967-.732-1.57-1.582-1.57-.767 0-1.242.45-1.435.808H5.445L5.791 4h4.705v1.103H6.875l-.193 2.343h.064c.17-.258.715-.68 1.611-.68 1.383 0 2.561.944 2.561 2.585 0 1.687-1.184 2.806-2.924 2.806Z"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.21 3.855c1.612 0 2.515.99 2.573 1.899H9.494c-.1-.358-.51-.815-1.312-.815-1.078 0-1.817 1.09-1.805 3.036h.082c.229-.545.855-1.155 1.98-1.155 1.254 0 2.508.88 2.508 2.555 0 1.77-1.218 2.783-2.847 2.783-.932 0-1.84-.328-2.409-1.254-.369-.603-.597-1.459-.597-2.642 0-3.012 1.248-4.407 3.117-4.407Zm-.099 4.008c-.92 0-1.564.65-1.564 1.576 0 1.032.703 1.635 1.558 1.635.868 0 1.553-.533 1.553-1.629 0-1.06-.744-1.582-1.547-1.582"
   }));
 });
-Icon5Circle.propTypes = {
+Icon6Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194087,7 +194339,7 @@ function _objectWithoutPropertiesLoose$1q(r3, e2) {
   }
   return t4;
 }
-var Icon6CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon7CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1o(_ref3, _excluded$1t);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1o({
     ref,
@@ -194096,12 +194348,12 @@ var Icon6CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-6-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-7-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.21 3.855c-1.868 0-3.116 1.395-3.116 4.407 0 1.183.228 2.039.597 2.642.569.926 1.477 1.254 2.409 1.254 1.629 0 2.847-1.013 2.847-2.783 0-1.676-1.254-2.555-2.508-2.555-1.125 0-1.752.61-1.98 1.155h-.082c-.012-1.946.727-3.036 1.805-3.036.802 0 1.213.457 1.312.815h1.29c-.06-.908-.962-1.899-2.573-1.899Zm-.099 4.008c-.92 0-1.564.65-1.564 1.576 0 1.032.703 1.635 1.558 1.635.868 0 1.553-.533 1.553-1.629 0-1.06-.744-1.582-1.547-1.582"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.37 5.11h3.972v.07L6.025 12H7.42l3.258-6.85V4.002H5.369v1.107Z"
   }));
 });
-Icon6CircleFill.propTypes = {
+Icon7CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194135,7 +194387,7 @@ function _objectWithoutPropertiesLoose$1p(r3, e2) {
   }
   return t4;
 }
-var Icon6Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon7Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1n(_ref3, _excluded$1s);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1n({
     ref,
@@ -194144,12 +194396,12 @@ var Icon6Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-6-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-7-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.21 3.855c1.612 0 2.515.99 2.573 1.899H9.494c-.1-.358-.51-.815-1.312-.815-1.078 0-1.817 1.09-1.805 3.036h.082c.229-.545.855-1.155 1.98-1.155 1.254 0 2.508.88 2.508 2.555 0 1.77-1.218 2.783-2.847 2.783-.932 0-1.84-.328-2.409-1.254-.369-.603-.597-1.459-.597-2.642 0-3.012 1.248-4.407 3.117-4.407Zm-.099 4.008c-.92 0-1.564.65-1.564 1.576 0 1.032.703 1.635 1.558 1.635.868 0 1.553-.533 1.553-1.629 0-1.06-.744-1.582-1.547-1.582"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.37 5.11V4.001h5.308V5.15L7.42 12H6.025l3.317-6.82v-.07H5.369Z"
   }));
 });
-Icon6Circle.propTypes = {
+Icon7Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194183,7 +194435,7 @@ function _objectWithoutPropertiesLoose$1o(r3, e2) {
   }
   return t4;
 }
-var Icon7CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon8CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1m(_ref3, _excluded$1r);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1m({
     ref,
@@ -194192,12 +194444,12 @@ var Icon7CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-7-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-8-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.37 5.11h3.972v.07L6.025 12H7.42l3.258-6.85V4.002H5.369v1.107Z"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-5.03 1.803c0-1.248-.943-1.84-1.646-1.992v-.065c.598-.187 1.336-.72 1.336-1.781 0-1.225-1.084-2.121-2.654-2.121s-2.66.896-2.66 2.12c0 1.044.709 1.589 1.33 1.782v.065c-.697.152-1.647.732-1.647 2.003 0 1.39 1.19 2.344 2.953 2.344 1.77 0 2.989-.96 2.989-2.355Zm-4.347-3.71c0 .739.586 1.255 1.383 1.255s1.377-.516 1.377-1.254c0-.733-.58-1.23-1.377-1.23s-1.383.497-1.383 1.23Zm-.281 3.645c0 .838.72 1.412 1.664 1.412.943 0 1.658-.574 1.658-1.412 0-.843-.715-1.424-1.658-1.424-.944 0-1.664.58-1.664 1.424"
   }));
 });
-Icon7CircleFill.propTypes = {
+Icon8CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194231,7 +194483,7 @@ function _objectWithoutPropertiesLoose$1n(r3, e2) {
   }
   return t4;
 }
-var Icon7Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon8Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1l(_ref3, _excluded$1q);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1l({
     ref,
@@ -194240,12 +194492,12 @@ var Icon7Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-7-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-8-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.37 5.11V4.001h5.308V5.15L7.42 12H6.025l3.317-6.82v-.07H5.369Z"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-5.03 1.803c0 1.394-1.218 2.355-2.988 2.355-1.763 0-2.953-.955-2.953-2.344 0-1.271.95-1.851 1.647-2.003v-.065c-.621-.193-1.33-.738-1.33-1.781 0-1.225 1.09-2.121 2.66-2.121s2.654.896 2.654 2.12c0 1.061-.738 1.595-1.336 1.782v.065c.703.152 1.647.744 1.647 1.992Zm-4.347-3.71c0 .739.586 1.255 1.383 1.255s1.377-.516 1.377-1.254c0-.733-.58-1.23-1.377-1.23s-1.383.497-1.383 1.23Zm-.281 3.645c0 .838.72 1.412 1.664 1.412.943 0 1.658-.574 1.658-1.412 0-.843-.715-1.424-1.658-1.424-.944 0-1.664.58-1.664 1.424"
   }));
 });
-Icon7Circle.propTypes = {
+Icon8Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194279,7 +194531,7 @@ function _objectWithoutPropertiesLoose$1m(r3, e2) {
   }
   return t4;
 }
-var Icon8CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon9CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1k(_ref3, _excluded$1p);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1k({
     ref,
@@ -194288,12 +194540,12 @@ var Icon8CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-8-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-9-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-5.03 1.803c0-1.248-.943-1.84-1.646-1.992v-.065c.598-.187 1.336-.72 1.336-1.781 0-1.225-1.084-2.121-2.654-2.121s-2.66.896-2.66 2.12c0 1.044.709 1.589 1.33 1.782v.065c-.697.152-1.647.732-1.647 2.003 0 1.39 1.19 2.344 2.953 2.344 1.77 0 2.989-.96 2.989-2.355Zm-4.347-3.71c0 .739.586 1.255 1.383 1.255s1.377-.516 1.377-1.254c0-.733-.58-1.23-1.377-1.23s-1.383.497-1.383 1.23Zm-.281 3.645c0 .838.72 1.412 1.664 1.412.943 0 1.658-.574 1.658-1.412 0-.843-.715-1.424-1.658-1.424-.944 0-1.664.58-1.664 1.424"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.223 4.146c2.104 0 3.123-1.464 3.123-4.3 0-3.147-1.459-4.014-2.97-4.014-1.63 0-2.871 1.02-2.871 2.73 0 1.706 1.171 2.667 2.566 2.667 1.06 0 1.7-.557 1.934-1.184h.076c.047 1.67-.475 3.023-1.834 3.023-.71 0-1.149-.363-1.248-.72H5.258c.094.908.926 1.798 2.52 1.798Zm.118-3.972c.808 0 1.535-.528 1.535-1.594s-.668-1.676-1.56-1.676c-.838 0-1.517.616-1.517 1.659 0 1.072.708 1.61 1.54 1.61Z"
   }));
 });
-Icon8CircleFill.propTypes = {
+Icon9CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194327,7 +194579,7 @@ function _objectWithoutPropertiesLoose$1l(r3, e2) {
   }
   return t4;
 }
-var Icon8Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Icon9Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1j(_ref3, _excluded$1o);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1j({
     ref,
@@ -194336,12 +194588,12 @@ var Icon8Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-8-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-9-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-5.03 1.803c0 1.394-1.218 2.355-2.988 2.355-1.763 0-2.953-.955-2.953-2.344 0-1.271.95-1.851 1.647-2.003v-.065c-.621-.193-1.33-.738-1.33-1.781 0-1.225 1.09-2.121 2.66-2.121s2.654.896 2.654 2.12c0 1.061-.738 1.595-1.336 1.782v.065c.703.152 1.647.744 1.647 1.992Zm-4.347-3.71c0 .739.586 1.255 1.383 1.255s1.377-.516 1.377-1.254c0-.733-.58-1.23-1.377-1.23s-1.383.497-1.383 1.23Zm-.281 3.645c0 .838.72 1.412 1.664 1.412.943 0 1.658-.574 1.658-1.412 0-.843-.715-1.424-1.658-1.424-.944 0-1.664.58-1.664 1.424"
+    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.223 4.146c-1.593 0-2.425-.89-2.52-1.798h1.296c.1.357.539.72 1.248.72 1.36 0 1.88-1.353 1.834-3.023h-.076c-.235.627-.873 1.184-1.934 1.184-1.395 0-2.566-.961-2.566-2.666 0-1.711 1.242-2.731 2.87-2.731 1.512 0 2.971.867 2.971 4.014 0 2.836-1.02 4.3-3.123 4.3m.118-3.972c.808 0 1.535-.528 1.535-1.594s-.668-1.676-1.56-1.676c-.838 0-1.517.616-1.517 1.659 0 1.072.708 1.61 1.54 1.61Z"
   }));
 });
-Icon8Circle.propTypes = {
+Icon9Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194375,7 +194627,7 @@ function _objectWithoutPropertiesLoose$1k(r3, e2) {
   }
   return t4;
 }
-var Icon9CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ArchiveFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1i(_ref3, _excluded$1n);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1i({
     ref,
@@ -194384,12 +194636,12 @@ var Icon9CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-9-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-archive-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.223 4.146c2.104 0 3.123-1.464 3.123-4.3 0-3.147-1.459-4.014-2.97-4.014-1.63 0-2.871 1.02-2.871 2.73 0 1.706 1.171 2.667 2.566 2.667 1.06 0 1.7-.557 1.934-1.184h.076c.047 1.67-.475 3.023-1.834 3.023-.71 0-1.149-.363-1.248-.72H5.258c.094.908.926 1.798 2.52 1.798Zm.118-3.972c.808 0 1.535-.528 1.535-1.594s-.668-1.676-1.56-1.676c-.838 0-1.517.616-1.517 1.659 0 1.072.708 1.61 1.54 1.61Z"
+    d: "M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z"
   }));
 });
-Icon9CircleFill.propTypes = {
+ArchiveFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194423,7 +194675,7 @@ function _objectWithoutPropertiesLoose$1j(r3, e2) {
   }
   return t4;
 }
-var Icon9Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Archive = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1h(_ref3, _excluded$1m);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1h({
     ref,
@@ -194432,12 +194684,12 @@ var Icon9Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-9-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-archive", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.223 4.146c-1.593 0-2.425-.89-2.52-1.798h1.296c.1.357.539.72 1.248.72 1.36 0 1.88-1.353 1.834-3.023h-.076c-.235.627-.873 1.184-1.934 1.184-1.395 0-2.566-.961-2.566-2.666 0-1.711 1.242-2.731 2.87-2.731 1.512 0 2.971.867 2.971 4.014 0 2.836-1.02 4.3-3.123 4.3m.118-3.972c.808 0 1.535-.528 1.535-1.594s-.668-1.676-1.56-1.676c-.838 0-1.517.616-1.517 1.659 0 1.072.708 1.61 1.54 1.61Z"
+    d: "M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"
   }));
 });
-Icon9Circle.propTypes = {
+Archive.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194471,7 +194723,7 @@ function _objectWithoutPropertiesLoose$1i(r3, e2) {
   }
   return t4;
 }
-var ArchiveFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Arrow90degRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1g(_ref3, _excluded$1l);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1g({
     ref,
@@ -194480,12 +194732,13 @@ var ArchiveFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-archive-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-arrow-90deg-right", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z"
+    fillRule: "evenodd",
+    d: "M14.854 4.854a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 4H3.5A2.5 2.5 0 0 0 1 6.5v8a.5.5 0 0 0 1 0v-8A1.5 1.5 0 0 1 3.5 5h9.793l-3.147 3.146a.5.5 0 0 0 .708.708z"
   }));
 });
-ArchiveFill.propTypes = {
+Arrow90degRight.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194519,7 +194772,7 @@ function _objectWithoutPropertiesLoose$1h(r3, e2) {
   }
   return t4;
 }
-var Archive = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ArrowLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1f(_ref3, _excluded$1k);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1f({
     ref,
@@ -194528,12 +194781,13 @@ var Archive = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-archive", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-arrow-left", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"
+    fillRule: "evenodd",
+    d: "M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
   }));
 });
-Archive.propTypes = {
+ArrowLeft.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194567,7 +194821,7 @@ function _objectWithoutPropertiesLoose$1g(r3, e2) {
   }
   return t4;
 }
-var Arrow90degRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ArrowReturnLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1e(_ref3, _excluded$1j);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1e({
     ref,
@@ -194576,13 +194830,13 @@ var Arrow90degRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-arrow-90deg-right", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-arrow-return-left", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
     fillRule: "evenodd",
-    d: "M14.854 4.854a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 4H3.5A2.5 2.5 0 0 0 1 6.5v8a.5.5 0 0 0 1 0v-8A1.5 1.5 0 0 1 3.5 5h9.793l-3.147 3.146a.5.5 0 0 0 .708.708z"
+    d: "M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"
   }));
 });
-Arrow90degRight.propTypes = {
+ArrowReturnLeft.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194616,7 +194870,7 @@ function _objectWithoutPropertiesLoose$1f(r3, e2) {
   }
   return t4;
 }
-var ArrowLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ArrowReturnRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1d(_ref3, _excluded$1i);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1d({
     ref,
@@ -194625,13 +194879,13 @@ var ArrowLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-arrow-left", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-arrow-return-right", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
     fillRule: "evenodd",
-    d: "M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+    d: "M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5"
   }));
 });
-ArrowLeft.propTypes = {
+ArrowReturnRight.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194665,7 +194919,7 @@ function _objectWithoutPropertiesLoose$1e(r3, e2) {
   }
   return t4;
 }
-var ArrowReturnLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Backpack3Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1c(_ref3, _excluded$1h);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1c({
     ref,
@@ -194674,13 +194928,14 @@ var ArrowReturnLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-arrow-return-left", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-backpack3-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"
+    d: "M5 10v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M6 2v.341a6 6 0 0 0-1.308.653l-.416-1.247a1 1 0 0 0-1.749-.284l-.77 1.027a1 1 0 0 0-.149.917l.803 2.407A6 6 0 0 0 2 8v5.5A2.5 2.5 0 0 0 4.5 16h7a2.5 2.5 0 0 0 2.5-2.5V8c0-.771-.146-1.509-.41-2.186l.801-2.407a1 1 0 0 0-.148-.917l-.77-1.027a1 1 0 0 0-1.75.284l-.415 1.247A6 6 0 0 0 10 2.34V2a2 2 0 1 0-4 0m1 0a1 1 0 0 1 2 0v.083a6 6 0 0 0-2 0zm5.941 2.595a6 6 0 0 0-.8-.937l.531-1.595.77 1.027zM3.86 3.658a6 6 0 0 0-.8.937L2.557 3.09l.77-1.027zm.18 3.772a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.142 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.142M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5z"
   }));
 });
-ArrowReturnLeft.propTypes = {
+Backpack3Fill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194714,7 +194969,7 @@ function _objectWithoutPropertiesLoose$1d(r3, e2) {
   }
   return t4;
 }
-var ArrowReturnRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Backpack3 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1b(_ref3, _excluded$1g);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1b({
     ref,
@@ -194723,13 +194978,14 @@ var ArrowReturnRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, r
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-arrow-return-right", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-backpack3", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5"
+    d: "M4.04 7.43a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M6 2.341V2a2 2 0 1 1 4 0v.341c.465.165.904.385 1.308.653l.416-1.247a1 1 0 0 1 1.748-.284l.77 1.027a1 1 0 0 1 .15.917l-.803 2.407C13.854 6.49 14 7.229 14 8v5.5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5V8c0-.771.146-1.509.41-2.186l-.802-2.407a1 1 0 0 1 .15-.917l.77-1.027a1 1 0 0 1 1.748.284l.416 1.247A6 6 0 0 1 6 2.34ZM7 2v.083a6 6 0 0 1 2 0V2a1 1 0 1 0-2 0m5.941 2.595.502-1.505-.77-1.027-.532 1.595q.447.427.8.937M3.86 3.658l-.532-1.595-.77 1.027.502 1.505q.352-.51.8-.937M8 3a5 5 0 0 0-5 5v5.5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5V8a5 5 0 0 0-5-5"
   }));
 });
-ArrowReturnRight.propTypes = {
+Backpack3.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194763,7 +195019,7 @@ function _objectWithoutPropertiesLoose$1c(r3, e2) {
   }
   return t4;
 }
-var ArrowsMove = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var BagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$1a(_ref3, _excluded$1f);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$1a({
     ref,
@@ -194772,13 +195028,12 @@ var ArrowsMove = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-arrows-move", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bag-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10M.146 8.354a.5.5 0 0 1 0-.708l2-2a.5.5 0 1 1 .708.708L1.707 7.5H5.5a.5.5 0 0 1 0 1H1.707l1.147 1.146a.5.5 0 0 1-.708.708zM10 8a.5.5 0 0 1 .5-.5h3.793l-1.147-1.146a.5.5 0 0 1 .708-.708l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L14.293 8.5H10.5A.5.5 0 0 1 10 8"
+    d: "M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z"
   }));
 });
-ArrowsMove.propTypes = {
+BagFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194812,7 +195067,7 @@ function _objectWithoutPropertiesLoose$1b(r3, e2) {
   }
   return t4;
 }
-var Backpack3Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Bag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$19(_ref3, _excluded$1e);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$19({
     ref,
@@ -194821,14 +195076,12 @@ var Backpack3Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref)
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-backpack3-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bag", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M5 10v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6 2v.341a6 6 0 0 0-1.308.653l-.416-1.247a1 1 0 0 0-1.749-.284l-.77 1.027a1 1 0 0 0-.149.917l.803 2.407A6 6 0 0 0 2 8v5.5A2.5 2.5 0 0 0 4.5 16h7a2.5 2.5 0 0 0 2.5-2.5V8c0-.771-.146-1.509-.41-2.186l.801-2.407a1 1 0 0 0-.148-.917l-.77-1.027a1 1 0 0 0-1.75.284l-.415 1.247A6 6 0 0 0 10 2.34V2a2 2 0 1 0-4 0m1 0a1 1 0 0 1 2 0v.083a6 6 0 0 0-2 0zm5.941 2.595a6 6 0 0 0-.8-.937l.531-1.595.77 1.027zM3.86 3.658a6 6 0 0 0-.8.937L2.557 3.09l.77-1.027zm.18 3.772a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.142 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.142M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5z"
+    d: "M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"
   }));
 });
-Backpack3Fill.propTypes = {
+Bag.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194862,7 +195115,7 @@ function _objectWithoutPropertiesLoose$1a(r3, e2) {
   }
   return t4;
 }
-var Backpack3 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Basket2Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$18(_ref3, _excluded$1d);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$18({
     ref,
@@ -194871,14 +195124,12 @@ var Backpack3 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-backpack3", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-basket2-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4.04 7.43a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6 2.341V2a2 2 0 1 1 4 0v.341c.465.165.904.385 1.308.653l.416-1.247a1 1 0 0 1 1.748-.284l.77 1.027a1 1 0 0 1 .15.917l-.803 2.407C13.854 6.49 14 7.229 14 8v5.5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5V8c0-.771.146-1.509.41-2.186l-.802-2.407a1 1 0 0 1 .15-.917l.77-1.027a1 1 0 0 1 1.748.284l.416 1.247A6 6 0 0 1 6 2.34ZM7 2v.083a6 6 0 0 1 2 0V2a1 1 0 1 0-2 0m5.941 2.595.502-1.505-.77-1.027-.532 1.595q.447.427.8.937M3.86 3.658l-.532-1.595-.77 1.027.502 1.505q.352-.51.8-.937M8 3a5 5 0 0 0-5 5v5.5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5V8a5 5 0 0 0-5-5"
+    d: "M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"
   }));
 });
-Backpack3.propTypes = {
+Basket2Fill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194912,7 +195163,7 @@ function _objectWithoutPropertiesLoose$19(r3, e2) {
   }
   return t4;
 }
-var BagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Basket2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$17(_ref3, _excluded$1c);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$17({
     ref,
@@ -194921,12 +195172,14 @@ var BagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bag-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-basket2", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z"
+    d: "M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6z"
   }));
 });
-BagFill.propTypes = {
+Basket2.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -194960,7 +195213,7 @@ function _objectWithoutPropertiesLoose$18(r3, e2) {
   }
   return t4;
 }
-var Bag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var BellFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$16(_ref3, _excluded$1b);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$16({
     ref,
@@ -194969,12 +195222,12 @@ var Bag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bag", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bell-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"
+    d: "M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"
   }));
 });
-Bag.propTypes = {
+BellFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195008,7 +195261,7 @@ function _objectWithoutPropertiesLoose$17(r3, e2) {
   }
   return t4;
 }
-var Basket2Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Bell = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$15(_ref3, _excluded$1a);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$15({
     ref,
@@ -195017,12 +195270,12 @@ var Basket2Fill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-basket2-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bell", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"
+    d: "M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"
   }));
 });
-Basket2Fill.propTypes = {
+Bell.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195056,7 +195309,7 @@ function _objectWithoutPropertiesLoose$16(r3, e2) {
   }
   return t4;
 }
-var Basket2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var BookmarkFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$14(_ref3, _excluded$19);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$14({
     ref,
@@ -195065,14 +195318,12 @@ var Basket2 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-basket2", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bookmark-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6z"
+    d: "M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"
   }));
 });
-Basket2.propTypes = {
+BookmarkFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195106,7 +195357,7 @@ function _objectWithoutPropertiesLoose$15(r3, e2) {
   }
   return t4;
 }
-var BellFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Bookmark = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$13(_ref3, _excluded$18);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$13({
     ref,
@@ -195115,12 +195366,12 @@ var BellFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bell-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-bookmark", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"
+    d: "M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"
   }));
 });
-BellFill.propTypes = {
+Bookmark.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195154,7 +195405,7 @@ function _objectWithoutPropertiesLoose$14(r3, e2) {
   }
   return t4;
 }
-var Bell = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CardList = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$12(_ref3, _excluded$17);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$12({
     ref,
@@ -195163,12 +195414,14 @@ var Bell = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bell", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-card-list", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"
+    d: "M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"
   }));
 });
-Bell.propTypes = {
+CardList.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195202,7 +195455,7 @@ function _objectWithoutPropertiesLoose$13(r3, e2) {
   }
   return t4;
 }
-var BookmarkFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CheckCircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$11(_ref3, _excluded$16);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$11({
     ref,
@@ -195211,12 +195464,12 @@ var BookmarkFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) 
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bookmark-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-check-circle-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
   }));
 });
-BookmarkFill.propTypes = {
+CheckCircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195250,7 +195503,7 @@ function _objectWithoutPropertiesLoose$12(r3, e2) {
   }
   return t4;
 }
-var Bookmark = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CheckCircle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$10(_ref3, _excluded$15);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$10({
     ref,
@@ -195259,12 +195512,14 @@ var Bookmark = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-bookmark", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-check-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"
+    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"
   }));
 });
-Bookmark.propTypes = {
+CheckCircle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195298,7 +195553,7 @@ function _objectWithoutPropertiesLoose$11(r3, e2) {
   }
   return t4;
 }
-var CardList = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ChevronLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$$(_ref3, _excluded$14);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$$({
     ref,
@@ -195307,14 +195562,13 @@ var CardList = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-card-list", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-chevron-left", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"
+    fillRule: "evenodd",
+    d: "M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
   }));
 });
-CardList.propTypes = {
+ChevronLeft.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195348,7 +195602,7 @@ function _objectWithoutPropertiesLoose$10(r3, e2) {
   }
   return t4;
 }
-var CheckCircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ChevronRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$_(_ref3, _excluded$13);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$_({
     ref,
@@ -195357,12 +195611,13 @@ var CheckCircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-check-circle-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-chevron-right", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+    fillRule: "evenodd",
+    d: "M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
   }));
 });
-CheckCircleFill.propTypes = {
+ChevronRight.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195396,7 +195651,7 @@ function _objectWithoutPropertiesLoose$$(r3, e2) {
   }
   return t4;
 }
-var CheckCircle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$Z(_ref3, _excluded$12);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$Z({
     ref,
@@ -195405,14 +195660,14 @@ var CheckCircle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-check-circle", className].filter(Boolean).join(" ")
-  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"
+    className: ["bi", "bi-circle-fill", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("circle", {
+    cx: "8",
+    cy: "8",
+    r: "8"
   }));
 });
-CheckCircle.propTypes = {
+CircleFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195446,7 +195701,7 @@ function _objectWithoutPropertiesLoose$_(r3, e2) {
   }
   return t4;
 }
-var ChevronLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$Y(_ref3, _excluded$11);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$Y({
     ref,
@@ -195455,13 +195710,12 @@ var ChevronLeft = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-chevron-left", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
   }));
 });
-ChevronLeft.propTypes = {
+Circle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195495,7 +195749,7 @@ function _objectWithoutPropertiesLoose$Z(r3, e2) {
   }
   return t4;
 }
-var ChevronRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ClipboardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$X(_ref3, _excluded$10);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$X({
     ref,
@@ -195504,13 +195758,13 @@ var ChevronRight = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) 
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-chevron-right", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-clipboard-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
     fillRule: "evenodd",
-    d: "M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+    d: "M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2"
   }));
 });
-ChevronRight.propTypes = {
+ClipboardFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195544,7 +195798,7 @@ function _objectWithoutPropertiesLoose$Y(r3, e2) {
   }
   return t4;
 }
-var CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Clipboard = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$W(_ref3, _excluded$$);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$W({
     ref,
@@ -195553,14 +195807,14 @@ var CircleFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-circle-fill", className].filter(Boolean).join(" ")
-  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("circle", {
-    cx: "8",
-    cy: "8",
-    r: "8"
+    className: ["bi", "bi-clipboard", className].filter(Boolean).join(" ")
+  }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
+    d: "M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"
   }));
 });
-CircleFill.propTypes = {
+Clipboard.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195594,7 +195848,7 @@ function _objectWithoutPropertiesLoose$X(r3, e2) {
   }
   return t4;
 }
-var Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ClockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$V(_ref3, _excluded$_);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$V({
     ref,
@@ -195603,12 +195857,12 @@ var Circle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-circle", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-clock-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
   }));
 });
-Circle.propTypes = {
+ClockFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195642,7 +195896,7 @@ function _objectWithoutPropertiesLoose$W(r3, e2) {
   }
   return t4;
 }
-var ClipboardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Clock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$U(_ref3, _excluded$Z);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$U({
     ref,
@@ -195651,13 +195905,14 @@ var ClipboardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref)
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-clipboard-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-clock", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2"
+    d: "M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"
   }));
 });
-ClipboardFill.propTypes = {
+Clock.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195691,7 +195946,7 @@ function _objectWithoutPropertiesLoose$V(r3, e2) {
   }
   return t4;
 }
-var Clipboard = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CollectionFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$T(_ref3, _excluded$Y);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$T({
     ref,
@@ -195700,14 +195955,12 @@ var Clipboard = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-clipboard", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-collection-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"
+    d: "M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3m2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1"
   }));
 });
-Clipboard.propTypes = {
+CollectionFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195741,7 +195994,7 @@ function _objectWithoutPropertiesLoose$U(r3, e2) {
   }
   return t4;
 }
-var ClockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CollectionPlayFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$S(_ref3, _excluded$X);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$S({
     ref,
@@ -195750,12 +196003,12 @@ var ClockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-clock-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-collection-play-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
+    d: "M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437"
   }));
 });
-ClockFill.propTypes = {
+CollectionPlayFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195789,7 +196042,7 @@ function _objectWithoutPropertiesLoose$T(r3, e2) {
   }
   return t4;
 }
-var Clock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var CollectionPlay = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$R(_ref3, _excluded$W);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$R({
     ref,
@@ -195798,14 +196051,14 @@ var Clock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-clock", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-collection-play", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
+    d: "M2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3m2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1m2.765 5.576A.5.5 0 0 0 6 7v5a.5.5 0 0 0 .765.424l4-2.5a.5.5 0 0 0 0-.848z"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"
+    d: "M1.5 14.5A1.5 1.5 0 0 1 0 13V6a1.5 1.5 0 0 1 1.5-1.5h13A1.5 1.5 0 0 1 16 6v7a1.5 1.5 0 0 1-1.5 1.5zm13-1a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5h-13A.5.5 0 0 0 1 6v7a.5.5 0 0 0 .5.5z"
   }));
 });
-Clock.propTypes = {
+CollectionPlay.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195839,7 +196092,7 @@ function _objectWithoutPropertiesLoose$S(r3, e2) {
   }
   return t4;
 }
-var CollectionFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Collection$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$Q(_ref3, _excluded$V);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$Q({
     ref,
@@ -195848,12 +196101,12 @@ var CollectionFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-collection-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-collection", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3m2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1"
+    d: "M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"
   }));
 });
-CollectionFill.propTypes = {
+Collection$1.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195887,7 +196140,7 @@ function _objectWithoutPropertiesLoose$R(r3, e2) {
   }
   return t4;
 }
-var CollectionPlayFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var DashCircle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$P(_ref3, _excluded$U);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$P({
     ref,
@@ -195896,12 +196149,14 @@ var CollectionPlayFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3,
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-collection-play-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-dash-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437"
+    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"
   }));
 });
-CollectionPlayFill.propTypes = {
+DashCircle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195935,7 +196190,7 @@ function _objectWithoutPropertiesLoose$Q(r3, e2) {
   }
   return t4;
 }
-var CollectionPlay = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var DropletFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$O(_ref3, _excluded$T);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$O({
     ref,
@@ -195944,14 +196199,12 @@ var CollectionPlay = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-collection-play", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-droplet-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3m2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1m2.765 5.576A.5.5 0 0 0 6 7v5a.5.5 0 0 0 .765.424l4-2.5a.5.5 0 0 0 0-.848z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1.5 14.5A1.5 1.5 0 0 1 0 13V6a1.5 1.5 0 0 1 1.5-1.5h13A1.5 1.5 0 0 1 16 6v7a1.5 1.5 0 0 1-1.5 1.5zm13-1a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5h-13A.5.5 0 0 0 1 6v7a.5.5 0 0 0 .5.5z"
+    d: "M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 0 0 6 6M6.646 4.646l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448c.82-1.641 1.717-2.753 2.093-3.13"
   }));
 });
-CollectionPlay.propTypes = {
+DropletFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -195985,7 +196238,7 @@ function _objectWithoutPropertiesLoose$P(r3, e2) {
   }
   return t4;
 }
-var Collection$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Droplet = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$N(_ref3, _excluded$S);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$N({
     ref,
@@ -195994,12 +196247,16 @@ var Collection$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) 
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-collection", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-droplet", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"
+    fillRule: "evenodd",
+    d: "M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    fillRule: "evenodd",
+    d: "M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"
   }));
 });
-Collection$1.propTypes = {
+Droplet.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196033,7 +196290,7 @@ function _objectWithoutPropertiesLoose$O(r3, e2) {
   }
   return t4;
 }
-var DropletFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var EyeFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$M(_ref3, _excluded$R);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$M({
     ref,
@@ -196042,12 +196299,14 @@ var DropletFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-droplet-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-eye-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 0 0 6 6M6.646 4.646l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448c.82-1.641 1.717-2.753 2.093-3.13"
+    d: "M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"
   }));
 });
-DropletFill.propTypes = {
+EyeFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196081,7 +196340,7 @@ function _objectWithoutPropertiesLoose$N(r3, e2) {
   }
   return t4;
 }
-var Droplet = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Eye = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$L(_ref3, _excluded$Q);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$L({
     ref,
@@ -196090,16 +196349,14 @@ var Droplet = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-droplet", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-eye", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"
+    d: "M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"
+    d: "M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"
   }));
 });
-Droplet.propTypes = {
+Eye.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196133,7 +196390,7 @@ function _objectWithoutPropertiesLoose$M(r3, e2) {
   }
   return t4;
 }
-var EyeFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var FastForwardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$K(_ref3, _excluded$P);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$K({
     ref,
@@ -196142,14 +196399,14 @@ var EyeFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-eye-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-fast-forward-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"
+    d: "M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"
+    d: "M15.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"
   }));
 });
-EyeFill.propTypes = {
+FastForwardFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196183,7 +196440,7 @@ function _objectWithoutPropertiesLoose$L(r3, e2) {
   }
   return t4;
 }
-var Eye = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var FastForward = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$J(_ref3, _excluded$O);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$J({
     ref,
@@ -196192,14 +196449,14 @@ var Eye = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-eye", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-fast-forward", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"
+    d: "M6.804 8 1 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"
+    d: "M14.804 8 9 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"
   }));
 });
-Eye.propTypes = {
+FastForward.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196233,7 +196490,7 @@ function _objectWithoutPropertiesLoose$K(r3, e2) {
   }
   return t4;
 }
-var FastForwardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var FlagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$I(_ref3, _excluded$N);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$I({
     ref,
@@ -196242,14 +196499,12 @@ var FastForwardFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, re
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-fast-forward-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-flag-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M15.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"
+    d: "M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001"
   }));
 });
-FastForwardFill.propTypes = {
+FlagFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196283,7 +196538,7 @@ function _objectWithoutPropertiesLoose$J(r3, e2) {
   }
   return t4;
 }
-var FastForward = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Flag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$H(_ref3, _excluded$M);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$H({
     ref,
@@ -196292,14 +196547,12 @@ var FastForward = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-fast-forward", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-flag", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6.804 8 1 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M14.804 8 9 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"
+    d: "M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21 21 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21 21 0 0 0 14 7.655V1.222z"
   }));
 });
-FastForward.propTypes = {
+Flag.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196333,7 +196586,7 @@ function _objectWithoutPropertiesLoose$I(r3, e2) {
   }
   return t4;
 }
-var FlagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var FloppyFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$G(_ref3, _excluded$L);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$G({
     ref,
@@ -196342,12 +196595,14 @@ var FlagFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-flag-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-floppy-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001"
+    d: "M0 1.5A1.5 1.5 0 0 1 1.5 0H3v5.5A1.5 1.5 0 0 0 4.5 7h7A1.5 1.5 0 0 0 13 5.5V0h.086a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5H14v-5.5A1.5 1.5 0 0 0 12.5 9h-9A1.5 1.5 0 0 0 2 10.5V16h-.5A1.5 1.5 0 0 1 0 14.5z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M3 16h10v-5.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5zm9-16H4v5.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5zM9 1h2v4H9z"
   }));
 });
-FlagFill.propTypes = {
+FloppyFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196381,7 +196636,7 @@ function _objectWithoutPropertiesLoose$H(r3, e2) {
   }
   return t4;
 }
-var Flag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Floppy = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$F(_ref3, _excluded$K);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$F({
     ref,
@@ -196390,12 +196645,14 @@ var Flag = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-flag", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-floppy", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21 21 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21 21 0 0 0 14 7.655V1.222z"
+    d: "M11 2H9v3h2z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"
   }));
 });
-Flag.propTypes = {
+Floppy.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196429,7 +196686,7 @@ function _objectWithoutPropertiesLoose$G(r3, e2) {
   }
   return t4;
 }
-var FloppyFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var FolderFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$E(_ref3, _excluded$J);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$E({
     ref,
@@ -196438,14 +196695,12 @@ var FloppyFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-floppy-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-folder-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M0 1.5A1.5 1.5 0 0 1 1.5 0H3v5.5A1.5 1.5 0 0 0 4.5 7h7A1.5 1.5 0 0 0 13 5.5V0h.086a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5H14v-5.5A1.5 1.5 0 0 0 12.5 9h-9A1.5 1.5 0 0 0 2 10.5V16h-.5A1.5 1.5 0 0 1 0 14.5z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M3 16h10v-5.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5zm9-16H4v5.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5zM9 1h2v4H9z"
+    d: "M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3m-8.322.12q.322-.119.684-.12h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981z"
   }));
 });
-FloppyFill.propTypes = {
+FolderFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196479,7 +196734,7 @@ function _objectWithoutPropertiesLoose$F(r3, e2) {
   }
   return t4;
 }
-var Floppy = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Folder$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$D(_ref3, _excluded$I);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$D({
     ref,
@@ -196488,14 +196743,12 @@ var Floppy = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-floppy", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-folder", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M11 2H9v3h2z"
-  }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"
+    d: "M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139q.323-.119.684-.12h5.396z"
   }));
 });
-Floppy.propTypes = {
+Folder$1.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196529,7 +196782,7 @@ function _objectWithoutPropertiesLoose$E(r3, e2) {
   }
   return t4;
 }
-var FolderFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Funnel = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$C(_ref3, _excluded$H);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$C({
     ref,
@@ -196538,12 +196791,12 @@ var FolderFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-folder-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-funnel", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3m-8.322.12q.322-.119.684-.12h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981z"
+    d: "M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2z"
   }));
 });
-FolderFill.propTypes = {
+Funnel.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196577,7 +196830,7 @@ function _objectWithoutPropertiesLoose$D(r3, e2) {
   }
   return t4;
 }
-var Folder$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var GearFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$B(_ref3, _excluded$G);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$B({
     ref,
@@ -196586,12 +196839,12 @@ var Folder$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-folder", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-gear-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139q.323-.119.684-.12h5.396z"
+    d: "M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"
   }));
 });
-Folder$1.propTypes = {
+GearFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196625,7 +196878,7 @@ function _objectWithoutPropertiesLoose$C(r3, e2) {
   }
   return t4;
 }
-var GearFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var HandThumbsDownFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$A(_ref3, _excluded$F);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$A({
     ref,
@@ -196634,12 +196887,12 @@ var GearFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-gear-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-hand-thumbs-down-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"
+    d: "M6.956 14.534c.065.936.952 1.659 1.908 1.42l.261-.065a1.38 1.38 0 0 0 1.012-.965c.22-.816.533-2.512.062-4.51q.205.03.443.051c.713.065 1.669.071 2.516-.211.518-.173.994-.68 1.2-1.272a1.9 1.9 0 0 0-.234-1.734c.058-.118.103-.242.138-.362.077-.27.113-.568.113-.856 0-.29-.036-.586-.113-.857a2 2 0 0 0-.16-.403c.169-.387.107-.82-.003-1.149a3.2 3.2 0 0 0-.488-.9c.054-.153.076-.313.076-.465a1.86 1.86 0 0 0-.253-.912C13.1.757 12.437.28 11.5.28H8c-.605 0-1.07.08-1.466.217a4.8 4.8 0 0 0-.97.485l-.048.029c-.504.308-.999.61-2.068.723C2.682 1.815 2 2.434 2 3.279v4c0 .851.685 1.433 1.357 1.616.849.232 1.574.787 2.132 1.41.56.626.914 1.28 1.039 1.638.199.575.356 1.54.428 2.591"
   }));
 });
-GearFill.propTypes = {
+HandThumbsDownFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196673,7 +196926,7 @@ function _objectWithoutPropertiesLoose$B(r3, e2) {
   }
   return t4;
 }
-var HandThumbsDownFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var HandThumbsDown = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$z(_ref3, _excluded$E);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$z({
     ref,
@@ -196682,12 +196935,12 @@ var HandThumbsDownFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3,
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-hand-thumbs-down-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-hand-thumbs-down", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6.956 14.534c.065.936.952 1.659 1.908 1.42l.261-.065a1.38 1.38 0 0 0 1.012-.965c.22-.816.533-2.512.062-4.51q.205.03.443.051c.713.065 1.669.071 2.516-.211.518-.173.994-.68 1.2-1.272a1.9 1.9 0 0 0-.234-1.734c.058-.118.103-.242.138-.362.077-.27.113-.568.113-.856 0-.29-.036-.586-.113-.857a2 2 0 0 0-.16-.403c.169-.387.107-.82-.003-1.149a3.2 3.2 0 0 0-.488-.9c.054-.153.076-.313.076-.465a1.86 1.86 0 0 0-.253-.912C13.1.757 12.437.28 11.5.28H8c-.605 0-1.07.08-1.466.217a4.8 4.8 0 0 0-.97.485l-.048.029c-.504.308-.999.61-2.068.723C2.682 1.815 2 2.434 2 3.279v4c0 .851.685 1.433 1.357 1.616.849.232 1.574.787 2.132 1.41.56.626.914 1.28 1.039 1.638.199.575.356 1.54.428 2.591"
+    d: "M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856s-.036.586-.113.856c-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a10 10 0 0 1-.443-.05 9.36 9.36 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a9 9 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581s-.027-.414-.075-.581c-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.2 2.2 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.9.9 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1"
   }));
 });
-HandThumbsDownFill.propTypes = {
+HandThumbsDown.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196721,7 +196974,7 @@ function _objectWithoutPropertiesLoose$A(r3, e2) {
   }
   return t4;
 }
-var HandThumbsDown = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var HandThumbsUpFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$y(_ref3, _excluded$D);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$y({
     ref,
@@ -196730,12 +196983,12 @@ var HandThumbsDown = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-hand-thumbs-down", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-hand-thumbs-up-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856s-.036.586-.113.856c-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a10 10 0 0 1-.443-.05 9.36 9.36 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a9 9 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581s-.027-.414-.075-.581c-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.2 2.2 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.9.9 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1"
+    d: "M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"
   }));
 });
-HandThumbsDown.propTypes = {
+HandThumbsUpFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196769,7 +197022,7 @@ function _objectWithoutPropertiesLoose$z(r3, e2) {
   }
   return t4;
 }
-var HandThumbsUpFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var HandThumbsUp = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$x(_ref3, _excluded$C);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$x({
     ref,
@@ -196778,12 +197031,12 @@ var HandThumbsUpFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, r
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-hand-thumbs-up-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-hand-thumbs-up", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"
+    d: "M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2 2 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a10 10 0 0 0-.443.05 9.4 9.4 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a9 9 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.2 2.2 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.9.9 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"
   }));
 });
-HandThumbsUpFill.propTypes = {
+HandThumbsUp.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196817,7 +197070,7 @@ function _objectWithoutPropertiesLoose$y(r3, e2) {
   }
   return t4;
 }
-var HandThumbsUp = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var HeartFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$w(_ref3, _excluded$B);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$w({
     ref,
@@ -196826,12 +197079,13 @@ var HandThumbsUp = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) 
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-hand-thumbs-up", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-heart-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2 2 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a10 10 0 0 0-.443.05 9.4 9.4 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a9 9 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.2 2.2 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.9.9 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"
+    fillRule: "evenodd",
+    d: "M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
   }));
 });
-HandThumbsUp.propTypes = {
+HeartFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196865,7 +197119,7 @@ function _objectWithoutPropertiesLoose$x(r3, e2) {
   }
   return t4;
 }
-var HeartFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Heart = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$v(_ref3, _excluded$A);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$v({
     ref,
@@ -196874,13 +197128,12 @@ var HeartFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-heart-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-heart", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
+    d: "m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
   }));
 });
-HeartFill.propTypes = {
+Heart.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196914,7 +197167,7 @@ function _objectWithoutPropertiesLoose$w(r3, e2) {
   }
   return t4;
 }
-var Heart = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var InboxFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$u(_ref3, _excluded$z);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$u({
     ref,
@@ -196923,12 +197176,12 @@ var Heart = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-heart", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-inbox-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+    d: "M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm-1.17-.437A1.5 1.5 0 0 1 4.98 3h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z"
   }));
 });
-Heart.propTypes = {
+InboxFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -196962,7 +197215,7 @@ function _objectWithoutPropertiesLoose$v(r3, e2) {
   }
   return t4;
 }
-var InboxFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Inbox = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$t(_ref3, _excluded$y);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$t({
     ref,
@@ -196971,12 +197224,12 @@ var InboxFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-inbox-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-inbox", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm-1.17-.437A1.5 1.5 0 0 1 4.98 3h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z"
+    d: "M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562a.5.5 0 0 0 .497.438h12.234a.5.5 0 0 0 .496-.438zM3.809 3.563A1.5 1.5 0 0 1 4.981 3h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z"
   }));
 });
-InboxFill.propTypes = {
+Inbox.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197010,7 +197263,7 @@ function _objectWithoutPropertiesLoose$u(r3, e2) {
   }
   return t4;
 }
-var Inbox = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var LightbulbFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$s(_ref3, _excluded$x);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$s({
     ref,
@@ -197019,12 +197272,12 @@ var Inbox = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-inbox", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-lightbulb-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562a.5.5 0 0 0 .497.438h12.234a.5.5 0 0 0 .496-.438zM3.809 3.563A1.5 1.5 0 0 1 4.981 3h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z"
+    d: "M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5"
   }));
 });
-Inbox.propTypes = {
+LightbulbFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197058,7 +197311,7 @@ function _objectWithoutPropertiesLoose$t(r3, e2) {
   }
   return t4;
 }
-var LightbulbFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Lightbulb = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$r(_ref3, _excluded$w);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$r({
     ref,
@@ -197067,12 +197320,12 @@ var LightbulbFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref)
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-lightbulb-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-lightbulb", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5"
+    d: "M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1"
   }));
 });
-LightbulbFill.propTypes = {
+Lightbulb.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197106,7 +197359,7 @@ function _objectWithoutPropertiesLoose$s(r3, e2) {
   }
   return t4;
 }
-var Lightbulb = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var ListUl = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$q(_ref3, _excluded$v);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$q({
     ref,
@@ -197115,12 +197368,13 @@ var Lightbulb = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-lightbulb", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-list-ul", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1"
+    fillRule: "evenodd",
+    d: "M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
   }));
 });
-Lightbulb.propTypes = {
+ListUl.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197154,7 +197408,7 @@ function _objectWithoutPropertiesLoose$r(r3, e2) {
   }
   return t4;
 }
-var ListUl = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var LockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$p(_ref3, _excluded$u);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$p({
     ref,
@@ -197163,13 +197417,13 @@ var ListUl = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-list-ul", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-lock-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
     fillRule: "evenodd",
-    d: "M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+    d: "M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4m0 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"
   }));
 });
-ListUl.propTypes = {
+LockFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197203,7 +197457,7 @@ function _objectWithoutPropertiesLoose$q(r3, e2) {
   }
   return t4;
 }
-var LockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Lock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$o(_ref3, _excluded$t);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$o({
     ref,
@@ -197212,13 +197466,13 @@ var LockFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-lock-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-lock", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
     fillRule: "evenodd",
-    d: "M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4m0 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"
+    d: "M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4M4.5 7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7zM8 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"
   }));
 });
-LockFill.propTypes = {
+Lock.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197252,7 +197506,7 @@ function _objectWithoutPropertiesLoose$p(r3, e2) {
   }
   return t4;
 }
-var Lock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Pencil = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$n(_ref3, _excluded$s);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$n({
     ref,
@@ -197261,13 +197515,12 @@ var Lock = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-lock", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-pencil", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    fillRule: "evenodd",
-    d: "M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4M4.5 7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7zM8 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"
+    d: "M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"
   }));
 });
-Lock.propTypes = {
+Pencil.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197301,7 +197554,7 @@ function _objectWithoutPropertiesLoose$o(r3, e2) {
   }
   return t4;
 }
-var Pencil = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var PersonFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$m(_ref3, _excluded$r);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$m({
     ref,
@@ -197310,12 +197563,12 @@ var Pencil = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-pencil", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-person-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"
+    d: "M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
   }));
 });
-Pencil.propTypes = {
+PersonFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197349,7 +197602,7 @@ function _objectWithoutPropertiesLoose$n(r3, e2) {
   }
   return t4;
 }
-var PersonFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Person = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$l(_ref3, _excluded$q);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$l({
     ref,
@@ -197358,12 +197611,12 @@ var PersonFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-person-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-person", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
+    d: "M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"
   }));
 });
-PersonFill.propTypes = {
+Person.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197397,7 +197650,7 @@ function _objectWithoutPropertiesLoose$m(r3, e2) {
   }
   return t4;
 }
-var Person = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var PinFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$k(_ref3, _excluded$p);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$k({
     ref,
@@ -197406,12 +197659,12 @@ var Person = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-person", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-pin-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"
+    d: "M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A6 6 0 0 1 5 6.708V2.277a3 3 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354"
   }));
 });
-Person.propTypes = {
+PinFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197445,7 +197698,7 @@ function _objectWithoutPropertiesLoose$l(r3, e2) {
   }
   return t4;
 }
-var PinFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Pin = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$j(_ref3, _excluded$o);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$j({
     ref,
@@ -197454,12 +197707,12 @@ var PinFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-pin-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-pin", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A6 6 0 0 1 5 6.708V2.277a3 3 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354"
+    d: "M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A6 6 0 0 1 5 6.708V2.277a3 3 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354m1.58 1.408-.002-.001zm-.002-.001.002.001A.5.5 0 0 1 6 2v5a.5.5 0 0 1-.276.447h-.002l-.012.007-.054.03a5 5 0 0 0-.827.58c-.318.278-.585.596-.725.936h7.792c-.14-.34-.407-.658-.725-.936a5 5 0 0 0-.881-.61l-.012-.006h-.002A.5.5 0 0 1 10 7V2a.5.5 0 0 1 .295-.458 1.8 1.8 0 0 0 .351-.271c.08-.08.155-.17.214-.271H5.14q.091.15.214.271a1.8 1.8 0 0 0 .37.282"
   }));
 });
-PinFill.propTypes = {
+Pin.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197493,7 +197746,7 @@ function _objectWithoutPropertiesLoose$k(r3, e2) {
   }
   return t4;
 }
-var Pin = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var PipFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$i(_ref3, _excluded$n);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$i({
     ref,
@@ -197502,12 +197755,12 @@ var Pin = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-pin", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-pip-fill", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A6 6 0 0 1 5 6.708V2.277a3 3 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354m1.58 1.408-.002-.001zm-.002-.001.002.001A.5.5 0 0 1 6 2v5a.5.5 0 0 1-.276.447h-.002l-.012.007-.054.03a5 5 0 0 0-.827.58c-.318.278-.585.596-.725.936h7.792c-.14-.34-.407-.658-.725-.936a5 5 0 0 0-.881-.61l-.012-.006h-.002A.5.5 0 0 1 10 7V2a.5.5 0 0 1 .295-.458 1.8 1.8 0 0 0 .351-.271c.08-.08.155-.17.214-.271H5.14q.091.15.214.271a1.8 1.8 0 0 0 .37.282"
+    d: "M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm7 6h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5"
   }));
 });
-Pin.propTypes = {
+PipFill.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197541,7 +197794,7 @@ function _objectWithoutPropertiesLoose$j(r3, e2) {
   }
   return t4;
 }
-var PipFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var Pip = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$h(_ref3, _excluded$m);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$h({
     ref,
@@ -197550,12 +197803,14 @@ var PipFill = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-pip-fill", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-pip", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm7 6h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5"
+    d: "M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"
+  }), /* @__PURE__ */ React$1.createElement("path", {
+    d: "M8 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5z"
   }));
 });
-PipFill.propTypes = {
+Pip.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -197589,7 +197844,7 @@ function _objectWithoutPropertiesLoose$i(r3, e2) {
   }
   return t4;
 }
-var Pip = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
+var PlusCircle = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
   var _ref$color = _ref3.color, color2 = _ref$color === void 0 ? "currentColor" : _ref$color, _ref$size = _ref3.size, size2 = _ref$size === void 0 ? "1em" : _ref$size, _ref$title = _ref3.title, title2 = _ref$title === void 0 ? null : _ref$title, _ref$className = _ref3.className, className = _ref$className === void 0 ? "" : _ref$className, rest = _objectWithoutProperties$g(_ref3, _excluded$l);
   return /* @__PURE__ */ React$1.createElement("svg", _extends$g({
     ref,
@@ -197598,14 +197853,14 @@ var Pip = /* @__PURE__ */ reactExports.forwardRef(function(_ref3, ref) {
     width: size2,
     height: size2,
     fill: color2,
-    className: ["bi", "bi-pip", className].filter(Boolean).join(" ")
+    className: ["bi", "bi-plus-circle", className].filter(Boolean).join(" ")
   }, rest), title2 ? /* @__PURE__ */ React$1.createElement("title", null, title2) : null, /* @__PURE__ */ React$1.createElement("path", {
-    d: "M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"
+    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
   }), /* @__PURE__ */ React$1.createElement("path", {
-    d: "M8 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5z"
+    d: "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"
   }));
 });
-Pip.propTypes = {
+PlusCircle.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
@@ -199961,7 +200216,7 @@ function _slicedToArray(r3, e2) {
 }
 function _objectWithoutProperties$1(e2, t4) {
   if (null == e2) return {};
-  var o2, r3, i3 = _objectWithoutPropertiesLoose$1E(e2, t4);
+  var o2, r3, i3 = _objectWithoutPropertiesLoose$1G(e2, t4);
   if (Object.getOwnPropertySymbols) {
     var n = Object.getOwnPropertySymbols(e2);
     for (r3 = 0; r3 < n.length; r3++) o2 = n[r3], -1 === t4.indexOf(o2) && {}.propertyIsEnumerable.call(e2, o2) && (i3[o2] = e2[o2]);
@@ -200731,7 +200986,7 @@ var MenuPlacer = function MenuPlacer2(props) {
 };
 var Menu = function Menu2(props) {
   var children = props.children, innerRef = props.innerRef, innerProps = props.innerProps;
-  return jsx("div", _extends$1C({}, getStyleProps(props, "menu", {
+  return jsx("div", _extends$1E({}, getStyleProps(props, "menu", {
     menu: true
   }), {
     ref: innerRef
@@ -200753,7 +201008,7 @@ var menuListCSS = function menuListCSS2(_ref4, unstyled) {
 };
 var MenuList = function MenuList2(props) {
   var children = props.children, innerProps = props.innerProps, innerRef = props.innerRef, isMulti = props.isMulti;
-  return jsx("div", _extends$1C({}, getStyleProps(props, "menuList", {
+  return jsx("div", _extends$1E({}, getStyleProps(props, "menuList", {
     "menu-list": true,
     "menu-list--is-multi": isMulti
   }), {
@@ -200773,7 +201028,7 @@ var noOptionsMessageCSS = noticeCSS;
 var loadingMessageCSS = noticeCSS;
 var NoOptionsMessage = function NoOptionsMessage2(_ref6) {
   var _ref6$children = _ref6.children, children = _ref6$children === void 0 ? "No options" : _ref6$children, innerProps = _ref6.innerProps, restProps = _objectWithoutProperties$1(_ref6, _excluded$3$1);
-  return jsx("div", _extends$1C({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
+  return jsx("div", _extends$1E({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
     children,
     innerProps
   }), "noOptionsMessage", {
@@ -200783,7 +201038,7 @@ var NoOptionsMessage = function NoOptionsMessage2(_ref6) {
 };
 var LoadingMessage = function LoadingMessage2(_ref7) {
   var _ref7$children = _ref7.children, children = _ref7$children === void 0 ? "Loading..." : _ref7$children, innerProps = _ref7.innerProps, restProps = _objectWithoutProperties$1(_ref7, _excluded2$1);
-  return jsx("div", _extends$1C({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
+  return jsx("div", _extends$1E({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
     children,
     innerProps
   }), "loadingMessage", {
@@ -200846,7 +201101,7 @@ var MenuPortal = function MenuPortal2(props) {
     runAutoUpdate();
   }, [runAutoUpdate]);
   if (!appendTo && menuPosition !== "fixed" || !computedPosition) return null;
-  var menuWrapper = jsx("div", _extends$1C({
+  var menuWrapper = jsx("div", _extends$1E({
     ref: setMenuPortalElement
   }, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, props), {}, {
     offset: computedPosition.offset,
@@ -200871,7 +201126,7 @@ var containerCSS = function containerCSS2(_ref3) {
 };
 var SelectContainer = function SelectContainer2(props) {
   var children = props.children, innerProps = props.innerProps, isDisabled3 = props.isDisabled, isRtl = props.isRtl;
-  return jsx("div", _extends$1C({}, getStyleProps(props, "container", {
+  return jsx("div", _extends$1E({}, getStyleProps(props, "container", {
     "--is-disabled": isDisabled3,
     "--is-rtl": isRtl
   }), innerProps), children);
@@ -200892,7 +201147,7 @@ var valueContainerCSS = function valueContainerCSS2(_ref22, unstyled) {
 };
 var ValueContainer = function ValueContainer2(props) {
   var children = props.children, innerProps = props.innerProps, isMulti = props.isMulti, hasValue = props.hasValue;
-  return jsx("div", _extends$1C({}, getStyleProps(props, "valueContainer", {
+  return jsx("div", _extends$1E({}, getStyleProps(props, "valueContainer", {
     "value-container": true,
     "value-container--is-multi": isMulti,
     "value-container--has-value": hasValue
@@ -200908,7 +201163,7 @@ var indicatorsContainerCSS = function indicatorsContainerCSS2() {
 };
 var IndicatorsContainer = function IndicatorsContainer2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1C({}, getStyleProps(props, "indicatorsContainer", {
+  return jsx("div", _extends$1E({}, getStyleProps(props, "indicatorsContainer", {
     indicators: true
   }), innerProps), children);
 };
@@ -200920,7 +201175,7 @@ var _ref2$2 = {
 };
 var Svg = function Svg2(_ref3) {
   var size2 = _ref3.size, props = _objectWithoutProperties$1(_ref3, _excluded$2$1);
-  return jsx("svg", _extends$1C({
+  return jsx("svg", _extends$1E({
     height: size2,
     width: size2,
     viewBox: "0 0 20 20",
@@ -200930,14 +201185,14 @@ var Svg = function Svg2(_ref3) {
   }, props));
 };
 var CrossIcon = function CrossIcon2(props) {
-  return jsx(Svg, _extends$1C({
+  return jsx(Svg, _extends$1E({
     size: 20
   }, props), jsx("path", {
     d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"
   }));
 };
 var DownChevron = function DownChevron2(props) {
-  return jsx(Svg, _extends$1C({
+  return jsx(Svg, _extends$1E({
     size: 20
   }, props), jsx("path", {
     d: "M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
@@ -200960,7 +201215,7 @@ var baseCSS = function baseCSS2(_ref3, unstyled) {
 var dropdownIndicatorCSS = baseCSS;
 var DropdownIndicator = function DropdownIndicator2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1C({}, getStyleProps(props, "dropdownIndicator", {
+  return jsx("div", _extends$1E({}, getStyleProps(props, "dropdownIndicator", {
     indicator: true,
     "dropdown-indicator": true
   }), innerProps), children || jsx(DownChevron, null));
@@ -200968,7 +201223,7 @@ var DropdownIndicator = function DropdownIndicator2(props) {
 var clearIndicatorCSS = baseCSS;
 var ClearIndicator = function ClearIndicator2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1C({}, getStyleProps(props, "clearIndicator", {
+  return jsx("div", _extends$1E({}, getStyleProps(props, "clearIndicator", {
     indicator: true,
     "clear-indicator": true
   }), innerProps), children || jsx(CrossIcon, null));
@@ -200987,7 +201242,7 @@ var indicatorSeparatorCSS = function indicatorSeparatorCSS2(_ref4, unstyled) {
 };
 var IndicatorSeparator = function IndicatorSeparator2(props) {
   var innerProps = props.innerProps;
-  return jsx("span", _extends$1C({}, innerProps, getStyleProps(props, "indicatorSeparator", {
+  return jsx("span", _extends$1E({}, innerProps, getStyleProps(props, "indicatorSeparator", {
     "indicator-separator": true
   })));
 };
@@ -201026,7 +201281,7 @@ var LoadingDot = function LoadingDot2(_ref6) {
 };
 var LoadingIndicator$1 = function LoadingIndicator2(_ref7) {
   var innerProps = _ref7.innerProps, isRtl = _ref7.isRtl, _ref7$size = _ref7.size, size2 = _ref7$size === void 0 ? 4 : _ref7$size, restProps = _objectWithoutProperties$1(_ref7, _excluded2);
-  return jsx("div", _extends$1C({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
+  return jsx("div", _extends$1E({}, getStyleProps(_objectSpread2$1(_objectSpread2$1({}, restProps), {}, {
     innerProps,
     isRtl,
     size: size2
@@ -201071,7 +201326,7 @@ var css$1 = function css3(_ref3, unstyled) {
 };
 var Control = function Control2(props) {
   var children = props.children, isDisabled3 = props.isDisabled, isFocused = props.isFocused, innerRef = props.innerRef, innerProps = props.innerProps, menuIsOpen = props.menuIsOpen;
-  return jsx("div", _extends$1C({
+  return jsx("div", _extends$1E({
     ref: innerRef
   }, getStyleProps(props, "control", {
     control: true,
@@ -201093,9 +201348,9 @@ var groupCSS = function groupCSS2(_ref3, unstyled) {
 };
 var Group = function Group2(props) {
   var children = props.children, cx2 = props.cx, getStyles = props.getStyles, getClassNames = props.getClassNames, Heading = props.Heading, headingProps = props.headingProps, innerProps = props.innerProps, label = props.label, theme = props.theme, selectProps = props.selectProps;
-  return jsx("div", _extends$1C({}, getStyleProps(props, "group", {
+  return jsx("div", _extends$1E({}, getStyleProps(props, "group", {
     group: true
-  }), innerProps), jsx(Heading, _extends$1C({}, headingProps, {
+  }), innerProps), jsx(Heading, _extends$1E({}, headingProps, {
     selectProps,
     theme,
     getStyles,
@@ -201123,7 +201378,7 @@ var GroupHeading = function GroupHeading2(props) {
   var _cleanCommonProps = cleanCommonProps(props);
   _cleanCommonProps.data;
   var innerProps = _objectWithoutProperties$1(_cleanCommonProps, _excluded$1$1);
-  return jsx("div", _extends$1C({}, getStyleProps(props, "groupHeading", {
+  return jsx("div", _extends$1E({}, getStyleProps(props, "groupHeading", {
     "group-heading": true
   }), innerProps));
 };
@@ -201175,11 +201430,11 @@ var inputStyle = function inputStyle2(isHidden) {
 var Input = function Input2(props) {
   var cx2 = props.cx, value = props.value;
   var _cleanCommonProps = cleanCommonProps(props), innerRef = _cleanCommonProps.innerRef, isDisabled3 = _cleanCommonProps.isDisabled, isHidden = _cleanCommonProps.isHidden, inputClassName = _cleanCommonProps.inputClassName, innerProps = _objectWithoutProperties$1(_cleanCommonProps, _excluded$6);
-  return jsx("div", _extends$1C({}, getStyleProps(props, "input", {
+  return jsx("div", _extends$1E({}, getStyleProps(props, "input", {
     "input-container": true
   }), {
     "data-value": value || ""
-  }), jsx("input", _extends$1C({
+  }), jsx("input", _extends$1E({
     className: cx2({
       input: true
     }, inputClassName),
@@ -201239,7 +201494,7 @@ var MultiValueContainer = MultiValueGeneric;
 var MultiValueLabel = MultiValueGeneric;
 function MultiValueRemove(_ref5) {
   var children = _ref5.children, innerProps = _ref5.innerProps;
-  return jsx("div", _extends$1C({
+  return jsx("div", _extends$1E({
     role: "button"
   }, innerProps), children || jsx(CrossIcon, {
     size: 14
@@ -201294,7 +201549,7 @@ var optionCSS = function optionCSS2(_ref3, unstyled) {
 };
 var Option = function Option2(props) {
   var children = props.children, isDisabled3 = props.isDisabled, isFocused = props.isFocused, isSelected = props.isSelected, innerRef = props.innerRef, innerProps = props.innerProps;
-  return jsx("div", _extends$1C({}, getStyleProps(props, "option", {
+  return jsx("div", _extends$1E({}, getStyleProps(props, "option", {
     option: true,
     "option--is-disabled": isDisabled3,
     "option--is-focused": isFocused,
@@ -201318,7 +201573,7 @@ var placeholderCSS = function placeholderCSS2(_ref3, unstyled) {
 };
 var Placeholder = function Placeholder2(props) {
   var children = props.children, innerProps = props.innerProps;
-  return jsx("div", _extends$1C({}, getStyleProps(props, "placeholder", {
+  return jsx("div", _extends$1E({}, getStyleProps(props, "placeholder", {
     placeholder: true
   }), innerProps), children);
 };
@@ -201340,7 +201595,7 @@ var css2 = function css32(_ref3, unstyled) {
 };
 var SingleValue = function SingleValue2(props) {
   var children = props.children, isDisabled3 = props.isDisabled, innerProps = props.innerProps;
-  return jsx("div", _extends$1C({}, getStyleProps(props, "singleValue", {
+  return jsx("div", _extends$1E({}, getStyleProps(props, "singleValue", {
     "single-value": true,
     "single-value--is-disabled": isDisabled3
   }), innerProps), children);
@@ -201430,7 +201685,7 @@ var _ref = {
   styles: "label:a11yText;z-index:9999;border:0;clip:rect(1px, 1px, 1px, 1px);height:1px;width:1px;position:absolute;overflow:hidden;padding:0;white-space:nowrap"
 };
 var A11yText = function A11yText2(props) {
-  return jsx("span", _extends$1C({
+  return jsx("span", _extends$1E({
     css: _ref
   }, props));
 };
@@ -201886,7 +202141,7 @@ var _excluded$5 = ["innerRef"];
 function DummyInput(_ref3) {
   var innerRef = _ref3.innerRef, props = _objectWithoutProperties$1(_ref3, _excluded$5);
   var filteredProps = removeProps(props, "onExited", "in", "enter", "exit", "appear");
-  return jsx("input", _extends$1C({
+  return jsx("input", _extends$1E({
     ref: innerRef
   }, filteredProps, {
     css: /* @__PURE__ */ css({
@@ -203272,7 +203527,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           "aria-describedby": this.getElementId("placeholder")
         });
         if (!isSearchable) {
-          return /* @__PURE__ */ reactExports.createElement(DummyInput, _extends$1C({
+          return /* @__PURE__ */ reactExports.createElement(DummyInput, _extends$1E({
             id: id2,
             innerRef: this.getInputRef,
             onBlur: this.onInputBlur,
@@ -203285,7 +203540,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
             value: ""
           }, ariaAttributes));
         }
-        return /* @__PURE__ */ reactExports.createElement(Input3, _extends$1C({}, commonProps, {
+        return /* @__PURE__ */ reactExports.createElement(Input3, _extends$1E({}, commonProps, {
           autoCapitalize: "none",
           autoComplete: "off",
           autoCorrect: "off",
@@ -203313,7 +203568,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var _this$props9 = this.props, controlShouldRenderValue = _this$props9.controlShouldRenderValue, isDisabled3 = _this$props9.isDisabled, isMulti = _this$props9.isMulti, inputValue = _this$props9.inputValue, placeholder = _this$props9.placeholder;
       var _this$state5 = this.state, selectValue = _this$state5.selectValue, focusedValue = _this$state5.focusedValue, isFocused = _this$state5.isFocused;
       if (!this.hasValue() || !controlShouldRenderValue) {
-        return inputValue ? null : /* @__PURE__ */ reactExports.createElement(Placeholder3, _extends$1C({}, commonProps, {
+        return inputValue ? null : /* @__PURE__ */ reactExports.createElement(Placeholder3, _extends$1E({}, commonProps, {
           key: "placeholder",
           isDisabled: isDisabled3,
           isFocused,
@@ -203326,7 +203581,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         return selectValue.map(function(opt, index2) {
           var isOptionFocused = opt === focusedValue;
           var key = "".concat(_this3.getOptionLabel(opt), "-").concat(_this3.getOptionValue(opt));
-          return /* @__PURE__ */ reactExports.createElement(MultiValue3, _extends$1C({}, commonProps, {
+          return /* @__PURE__ */ reactExports.createElement(MultiValue3, _extends$1E({}, commonProps, {
             components: {
               Container: MultiValueContainer2,
               Label: MultiValueLabel2,
@@ -203355,7 +203610,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         return null;
       }
       var singleValue = selectValue[0];
-      return /* @__PURE__ */ reactExports.createElement(SingleValue3, _extends$1C({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(SingleValue3, _extends$1E({}, commonProps, {
         data: singleValue,
         isDisabled: isDisabled3
       }), this.formatOptionLabel(singleValue, "value"));
@@ -203375,7 +203630,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         onTouchEnd: this.onClearIndicatorTouchEnd,
         "aria-hidden": "true"
       };
-      return /* @__PURE__ */ reactExports.createElement(ClearIndicator3, _extends$1C({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(ClearIndicator3, _extends$1E({}, commonProps, {
         innerProps,
         isFocused
       }));
@@ -203391,7 +203646,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var innerProps = {
         "aria-hidden": "true"
       };
-      return /* @__PURE__ */ reactExports.createElement(LoadingIndicator3, _extends$1C({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(LoadingIndicator3, _extends$1E({}, commonProps, {
         innerProps,
         isDisabled: isDisabled3,
         isFocused
@@ -203405,7 +203660,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var commonProps = this.commonProps;
       var isDisabled3 = this.props.isDisabled;
       var isFocused = this.state.isFocused;
-      return /* @__PURE__ */ reactExports.createElement(IndicatorSeparator3, _extends$1C({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(IndicatorSeparator3, _extends$1E({}, commonProps, {
         isDisabled: isDisabled3,
         isFocused
       }));
@@ -203423,7 +203678,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         onTouchEnd: this.onDropdownIndicatorTouchEnd,
         "aria-hidden": "true"
       };
-      return /* @__PURE__ */ reactExports.createElement(DropdownIndicator3, _extends$1C({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(DropdownIndicator3, _extends$1E({}, commonProps, {
         innerProps,
         isDisabled: isDisabled3,
         isFocused
@@ -203458,7 +203713,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           "aria-selected": _this4.state.isAppleDevice ? void 0 : isSelected
           // is not supported on Apple devices
         };
-        return /* @__PURE__ */ reactExports.createElement(Option3, _extends$1C({}, commonProps, {
+        return /* @__PURE__ */ reactExports.createElement(Option3, _extends$1E({}, commonProps, {
           innerProps,
           data: data2,
           isDisabled: isDisabled3,
@@ -203478,7 +203733,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
             var _data = item.data, options2 = item.options, groupIndex = item.index;
             var groupId = "".concat(_this4.getElementId("group"), "-").concat(groupIndex);
             var headingId = "".concat(groupId, "-heading");
-            return /* @__PURE__ */ reactExports.createElement(Group3, _extends$1C({}, commonProps, {
+            return /* @__PURE__ */ reactExports.createElement(Group3, _extends$1E({}, commonProps, {
               key: groupId,
               data: _data,
               options: options2,
@@ -203515,9 +203770,9 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         menuPosition,
         menuShouldScrollIntoView
       };
-      var menuElement = /* @__PURE__ */ reactExports.createElement(MenuPlacer, _extends$1C({}, commonProps, menuPlacementProps), function(_ref4) {
+      var menuElement = /* @__PURE__ */ reactExports.createElement(MenuPlacer, _extends$1E({}, commonProps, menuPlacementProps), function(_ref4) {
         var ref = _ref4.ref, _ref4$placerProps = _ref4.placerProps, placement = _ref4$placerProps.placement, maxHeight = _ref4$placerProps.maxHeight;
-        return /* @__PURE__ */ reactExports.createElement(Menu3, _extends$1C({}, commonProps, menuPlacementProps, {
+        return /* @__PURE__ */ reactExports.createElement(Menu3, _extends$1E({}, commonProps, menuPlacementProps, {
           innerRef: ref,
           innerProps: {
             onMouseDown: _this4.onMenuMouseDown,
@@ -203531,7 +203786,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           onBottomArrive: onMenuScrollToBottom,
           lockEnabled: menuShouldBlockScroll
         }, function(scrollTargetRef) {
-          return /* @__PURE__ */ reactExports.createElement(MenuList3, _extends$1C({}, commonProps, {
+          return /* @__PURE__ */ reactExports.createElement(MenuList3, _extends$1E({}, commonProps, {
             innerRef: function innerRef(instance) {
               _this4.getMenuListRef(instance);
               scrollTargetRef(instance);
@@ -203547,7 +203802,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
           }), menuUI);
         }));
       });
-      return menuPortalTarget || menuPosition === "fixed" ? /* @__PURE__ */ reactExports.createElement(MenuPortal3, _extends$1C({}, commonProps, {
+      return menuPortalTarget || menuPosition === "fixed" ? /* @__PURE__ */ reactExports.createElement(MenuPortal3, _extends$1E({}, commonProps, {
         appendTo: menuPortalTarget,
         controlElement: this.controlRef,
         menuPlacement,
@@ -203607,7 +203862,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var commonProps = this.commonProps;
       var _this$state6 = this.state, ariaSelection = _this$state6.ariaSelection, focusedOption = _this$state6.focusedOption, focusedValue = _this$state6.focusedValue, isFocused = _this$state6.isFocused, selectValue = _this$state6.selectValue;
       var focusableOptions = this.getFocusableOptions();
-      return /* @__PURE__ */ reactExports.createElement(LiveRegion$1, _extends$1C({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(LiveRegion$1, _extends$1E({}, commonProps, {
         id: this.getElementId("live-region"),
         ariaSelection,
         focusedOption,
@@ -203625,7 +203880,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
       var _this$props14 = this.props, className = _this$props14.className, id2 = _this$props14.id, isDisabled3 = _this$props14.isDisabled, menuIsOpen = _this$props14.menuIsOpen;
       var isFocused = this.state.isFocused;
       var commonProps = this.commonProps = this.getCommonProps();
-      return /* @__PURE__ */ reactExports.createElement(SelectContainer3, _extends$1C({}, commonProps, {
+      return /* @__PURE__ */ reactExports.createElement(SelectContainer3, _extends$1E({}, commonProps, {
         className,
         innerProps: {
           id: id2,
@@ -203633,7 +203888,7 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         },
         isDisabled: isDisabled3,
         isFocused
-      }), this.renderLiveRegion(), /* @__PURE__ */ reactExports.createElement(Control3, _extends$1C({}, commonProps, {
+      }), this.renderLiveRegion(), /* @__PURE__ */ reactExports.createElement(Control3, _extends$1E({}, commonProps, {
         innerRef: this.getControlRef,
         innerProps: {
           onMouseDown: this.onControlMouseDown,
@@ -203642,9 +203897,9 @@ var Select$1 = /* @__PURE__ */ (function(_Component) {
         isDisabled: isDisabled3,
         isFocused,
         menuIsOpen
-      }), /* @__PURE__ */ reactExports.createElement(ValueContainer3, _extends$1C({}, commonProps, {
+      }), /* @__PURE__ */ reactExports.createElement(ValueContainer3, _extends$1E({}, commonProps, {
         isDisabled: isDisabled3
-      }), this.renderPlaceholderOrValue(), this.renderInput()), /* @__PURE__ */ reactExports.createElement(IndicatorsContainer3, _extends$1C({}, commonProps, {
+      }), this.renderPlaceholderOrValue(), this.renderInput()), /* @__PURE__ */ reactExports.createElement(IndicatorsContainer3, _extends$1E({}, commonProps, {
         isDisabled: isDisabled3
       }), this.renderClearIndicator(), this.renderLoadingIndicator(), this.renderIndicatorSeparator(), this.renderDropdownIndicator())), this.renderMenu(), this.renderFormField());
     }
@@ -203835,7 +204090,7 @@ function useAsync(_ref3) {
 var AsyncSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   var stateManagedProps = useAsync(props);
   var selectProps = useStateManager(stateManagedProps);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1C({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1E({
     ref
   }, selectProps));
 });
@@ -203910,7 +204165,7 @@ var AsyncCreatableSelect = /* @__PURE__ */ reactExports.forwardRef(function(prop
   var stateManagerProps = useAsync(props);
   var creatableProps = useStateManager(stateManagerProps);
   var selectProps = useCreatable(creatableProps);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1C({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1E({
     ref
   }, selectProps));
 });
@@ -204887,7 +205142,7 @@ function ChangeChannelActionButton({
     logger$c.warn("Invalid config for change channel action button, falling back to the channel list", { error, config: config2 });
   }
   const { channels } = useTvConfig();
-  const { activeChannel, setActiveChannel, availableSavedFilters, availableSavedFiltersLoading } = useMediaItemFilters();
+  const { activeChannel, setActiveChannel: setActiveChannel2, availableSavedFilters, availableSavedFiltersLoading } = useMediaItemFilters();
   const { setFeedback } = useFeedback();
   const channelName = (channel) => {
     const { prefix: prefix2, name: name2 } = getChannelName(channel, availableSavedFilters, availableSavedFiltersLoading);
@@ -204905,7 +205160,7 @@ function ChangeChannelActionButton({
       onClick: cycle ? () => {
         const nextChannel = getNextOption(channels.map((channel) => ({ value: channel.id, channel })), activeChannel?.id ?? "");
         if (!nextChannel) return;
-        setActiveChannel(nextChannel.channel.id);
+        setActiveChannel2(nextChannel.channel.id);
         setFeedback(channelName(nextChannel.channel), { displayDuration: 3e3 });
       } : void 0,
       sidePanel: cycle ? void 0 : ({ close }) => /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, channels.map((channel) => {
@@ -204917,7 +205172,7 @@ function ChangeChannelActionButton({
             variant: isActive ? "primary" : "link",
             "aria-current": isActive ? "true" : void 0,
             onClick: () => {
-              setActiveChannel(channel.id);
+              setActiveChannel2(channel.id);
               close();
             }
           },
@@ -204940,7 +205195,7 @@ function SettingsForm$4({ formik }) {
 }
 var StateManagedSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   var baseSelectProps = useStateManager(props);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1C({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1E({
     ref
   }, baseSelectProps));
 });
@@ -204948,7 +205203,7 @@ var StateManagedSelect$1 = StateManagedSelect;
 var CreatableSelect = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   var creatableProps = useStateManager(props);
   var selectProps = useCreatable(creatableProps);
-  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1C({
+  return /* @__PURE__ */ reactExports.createElement(Select$1, _extends$1E({
     ref
   }, selectProps));
 });
@@ -205084,7 +205339,7 @@ function createLocation(path2, state, key, currentLocation) {
     location2 = parsePath(path2);
     location2.state = state;
   } else {
-    location2 = _extends$1C({}, path2);
+    location2 = _extends$1E({}, path2);
     if (location2.pathname === void 0) location2.pathname = "";
     if (location2.search) {
       if (location2.search.charAt(0) !== "?") location2.search = "?" + location2.search;
@@ -205223,7 +205478,7 @@ function createBrowserHistory(props) {
   }
   var transitionManager = createTransitionManager();
   function setState2(nextState) {
-    _extends$1C(history2, nextState);
+    _extends$1E(history2, nextState);
     history2.length = globalHistory.length;
     transitionManager.notifyListeners(history2.location, history2.action);
   }
@@ -205438,7 +205693,7 @@ function createHashHistory(props) {
   }
   var transitionManager = createTransitionManager();
   function setState2(nextState) {
-    _extends$1C(history2, nextState);
+    _extends$1E(history2, nextState);
     history2.length = globalHistory.length;
     transitionManager.notifyListeners(history2.location, history2.action);
   }
@@ -205617,7 +205872,7 @@ function createMemoryHistory(props) {
   var _props = props, getUserConfirmation = _props.getUserConfirmation, _props$initialEntries = _props.initialEntries, initialEntries = _props$initialEntries === void 0 ? ["/"] : _props$initialEntries, _props$initialIndex = _props.initialIndex, initialIndex = _props$initialIndex === void 0 ? 0 : _props$initialIndex, _props$keyLength = _props.keyLength, keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
   var transitionManager = createTransitionManager();
   function setState2(nextState) {
-    _extends$1C(history2, nextState);
+    _extends$1E(history2, nextState);
     history2.length = history2.entries.length;
     transitionManager.notifyListeners(history2.location, history2.action);
   }
@@ -206330,7 +206585,7 @@ function isEmptyChildren(children) {
       !context$12 ? invariant() : void 0;
       var location2 = _this.props.location || context$12.location;
       var match2 = _this.props.computedMatch ? _this.props.computedMatch : _this.props.path ? matchPath(location2.pathname, _this.props) : context$12.match;
-      var props = _extends$1C({}, context$12, {
+      var props = _extends$1E({}, context$12, {
         location: location2,
         match: match2
       });
@@ -206350,7 +206605,7 @@ function addLeadingSlash(path2) {
 }
 function addBasename(basename, location2) {
   if (!basename) return location2;
-  return _extends$1C({}, location2, {
+  return _extends$1E({}, location2, {
     pathname: addLeadingSlash(basename) + location2.pathname
   });
 }
@@ -206358,7 +206613,7 @@ function stripBasename(basename, location2) {
   if (!basename) return location2;
   var base = addLeadingSlash(basename);
   if (location2.pathname.indexOf(base) !== 0) return location2;
-  return _extends$1C({}, location2, {
+  return _extends$1E({}, location2, {
     pathname: location2.pathname.substr(base.length)
   });
 }
@@ -206402,7 +206657,7 @@ function noop$2() {
     context2.url = createURL(context2.location);
   };
   _proto.render = function render2() {
-    var _this$props2 = this.props, _this$props2$basename = _this$props2.basename, basename = _this$props2$basename === void 0 ? "" : _this$props2$basename, _this$props2$context = _this$props2.context, context2 = _this$props2$context === void 0 ? {} : _this$props2$context, _this$props2$location = _this$props2.location, location2 = _this$props2$location === void 0 ? "/" : _this$props2$location, rest = _objectWithoutPropertiesLoose$1E(_this$props2, ["basename", "context", "location"]);
+    var _this$props2 = this.props, _this$props2$basename = _this$props2.basename, basename = _this$props2$basename === void 0 ? "" : _this$props2$basename, _this$props2$context = _this$props2.context, context2 = _this$props2$context === void 0 ? {} : _this$props2$context, _this$props2$location = _this$props2.location, location2 = _this$props2$location === void 0 ? "/" : _this$props2$location, rest = _objectWithoutPropertiesLoose$1G(_this$props2, ["basename", "context", "location"]);
     var history2 = {
       createHref: function createHref(path2) {
         return addLeadingSlash(basename + createURL(path2));
@@ -206417,7 +206672,7 @@ function noop$2() {
       listen: this.handleListen,
       block: this.handleBlock
     };
-    return /* @__PURE__ */ React$1.createElement(Router, _extends$1C({}, rest, {
+    return /* @__PURE__ */ React$1.createElement(Router, _extends$1E({}, rest, {
       history: history2,
       staticContext: context2
     }));
@@ -206440,7 +206695,7 @@ function noop$2() {
         if (match2 == null && /* @__PURE__ */ React$1.isValidElement(child)) {
           element = child;
           var path2 = child.props.path || child.props.from;
-          match2 = path2 ? matchPath(location2.pathname, _extends$1C({}, child.props, {
+          match2 = path2 ? matchPath(location2.pathname, _extends$1E({}, child.props, {
             path: path2
           })) : context2.match;
         }
@@ -206511,9 +206766,9 @@ function isModifiedEvent(event2) {
   return !!(event2.metaKey || event2.altKey || event2.ctrlKey || event2.shiftKey);
 }
 var LinkAnchor = forwardRef(function(_ref3, forwardedRef) {
-  var innerRef = _ref3.innerRef, navigate = _ref3.navigate, _onClick = _ref3.onClick, rest = _objectWithoutPropertiesLoose$1E(_ref3, ["innerRef", "navigate", "onClick"]);
+  var innerRef = _ref3.innerRef, navigate = _ref3.navigate, _onClick = _ref3.onClick, rest = _objectWithoutPropertiesLoose$1G(_ref3, ["innerRef", "navigate", "onClick"]);
   var target = rest.target;
-  var props = _extends$1C({}, rest, {
+  var props = _extends$1E({}, rest, {
     onClick: function onClick(event2) {
       try {
         if (_onClick) _onClick(event2);
@@ -206538,13 +206793,13 @@ var LinkAnchor = forwardRef(function(_ref3, forwardedRef) {
   return /* @__PURE__ */ React$1.createElement("a", props);
 });
 var Link = forwardRef(function(_ref22, forwardedRef) {
-  var _ref2$component = _ref22.component, component = _ref2$component === void 0 ? LinkAnchor : _ref2$component, replace2 = _ref22.replace, to2 = _ref22.to, innerRef = _ref22.innerRef, rest = _objectWithoutPropertiesLoose$1E(_ref22, ["component", "replace", "to", "innerRef"]);
+  var _ref2$component = _ref22.component, component = _ref2$component === void 0 ? LinkAnchor : _ref2$component, replace2 = _ref22.replace, to2 = _ref22.to, innerRef = _ref22.innerRef, rest = _objectWithoutPropertiesLoose$1G(_ref22, ["component", "replace", "to", "innerRef"]);
   return /* @__PURE__ */ React$1.createElement(context.Consumer, null, function(context2) {
     !context2 ? invariant() : void 0;
     var history2 = context2.history;
     var location2 = normalizeToLocation(resolveToLocation(to2, context2.location), context2.location);
     var href = location2 ? history2.createHref(location2) : "";
-    var props = _extends$1C({}, rest, {
+    var props = _extends$1E({}, rest, {
       href,
       navigate: function navigate() {
         var location22 = resolveToLocation(to2, context2.location);
@@ -206577,7 +206832,7 @@ function joinClassnames() {
   }).join(" ");
 }
 forwardRef$1(function(_ref3, forwardedRef) {
-  var _ref$ariaCurrent = _ref3["aria-current"], ariaCurrent = _ref$ariaCurrent === void 0 ? "page" : _ref$ariaCurrent, _ref$activeClassName = _ref3.activeClassName, activeClassName = _ref$activeClassName === void 0 ? "active" : _ref$activeClassName, activeStyle = _ref3.activeStyle, classNameProp = _ref3.className, exact = _ref3.exact, isActiveProp = _ref3.isActive, locationProp = _ref3.location, sensitive = _ref3.sensitive, strict = _ref3.strict, styleProp = _ref3.style, to2 = _ref3.to, innerRef = _ref3.innerRef, rest = _objectWithoutPropertiesLoose$1E(_ref3, ["aria-current", "activeClassName", "activeStyle", "className", "exact", "isActive", "location", "sensitive", "strict", "style", "to", "innerRef"]);
+  var _ref$ariaCurrent = _ref3["aria-current"], ariaCurrent = _ref$ariaCurrent === void 0 ? "page" : _ref$ariaCurrent, _ref$activeClassName = _ref3.activeClassName, activeClassName = _ref$activeClassName === void 0 ? "active" : _ref$activeClassName, activeStyle = _ref3.activeStyle, classNameProp = _ref3.className, exact = _ref3.exact, isActiveProp = _ref3.isActive, locationProp = _ref3.location, sensitive = _ref3.sensitive, strict = _ref3.strict, styleProp = _ref3.style, to2 = _ref3.to, innerRef = _ref3.innerRef, rest = _objectWithoutPropertiesLoose$1G(_ref3, ["aria-current", "activeClassName", "activeStyle", "className", "exact", "isActive", "location", "sensitive", "strict", "style", "to", "innerRef"]);
   return /* @__PURE__ */ React$1.createElement(context.Consumer, null, function(context2) {
     !context2 ? invariant() : void 0;
     var currentLocation = locationProp || context2.location;
@@ -206595,9 +206850,9 @@ forwardRef$1(function(_ref3, forwardedRef) {
     var style2 = typeof styleProp === "function" ? styleProp(isActive) : styleProp;
     if (isActive) {
       className = joinClassnames(className, activeClassName);
-      style2 = _extends$1C({}, style2, activeStyle);
+      style2 = _extends$1E({}, style2, activeStyle);
     }
-    var props = _extends$1C({
+    var props = _extends$1E({
       "aria-current": isActive && ariaCurrent || null,
       className,
       style: style2,
@@ -207770,14 +208025,14 @@ const TagCardDetails = PatchComponent("TagCard.Details", ({ tag: tag2 }) => {
       } }) });
     }
   }
-  function maybeRenderChildren() {
+  function maybeRenderChildren2() {
     if (tag2.children.length > 0) {
       return jsxRuntimeExports.jsx("div", { className: "tag-sub-tags", children: jsxRuntimeExports.jsx(MemoizedFormattedMessage, { id: "parent_of", values: {
         children: jsxRuntimeExports.jsxs(Link, { to: NavUtils.makeChildTagsUrl(tag2), children: [tag2.children.length, " ", jsxRuntimeExports.jsx(MemoizedFormattedMessage, { id: "countables.tags", values: { count: tag2.children.length } })] })
       } }) });
     }
   }
-  return jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [maybeRenderDescription(), maybeRenderParents(), maybeRenderChildren()] });
+  return jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [maybeRenderDescription(), maybeRenderParents(), maybeRenderChildren2()] });
 });
 const TagCardImage = PatchComponent("TagCard.Image", ({ tag: tag2 }) => {
   var _a2;
@@ -207787,7 +208042,7 @@ const TagCardTitle = PatchComponent("TagCard.Title", ({ tag: tag2 }) => {
   var _a2;
   return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: (_a2 = tag2.name) !== null && _a2 !== void 0 ? _a2 : "" });
 });
-const TagCard = PatchComponent("TagCard", (props) => {
+const TagCard$1 = PatchComponent("TagCard", (props) => {
   const { tag: tag2, containerWidth, zoomIndex, selecting, selected, onSelectedChanged } = props;
   const [cardWidth, setCardWidth] = reactExports.useState();
   reactExports.useEffect(() => {
@@ -207813,7 +208068,7 @@ const TagCard = PatchComponent("TagCard", (props) => {
   }, [containerWidth, zoomIndex]);
   return jsxRuntimeExports.jsx(GridCard, { className: `tag-card zoom-${zoomIndex}`, url: `/tags/${tag2.id}`, width: cardWidth, title: jsxRuntimeExports.jsx(TagCardTitle, { ...props }), linkClassName: "tag-card-header", image: jsxRuntimeExports.jsx(TagCardImage, { ...props }), details: jsxRuntimeExports.jsx(TagCardDetails, { ...props }), overlays: jsxRuntimeExports.jsx(TagCardOverlays, { ...props }), popovers: jsxRuntimeExports.jsx(TagCardPopovers, { ...props }), selected, selecting, onSelectedChanged });
 });
-const TagPopoverCard = ({ id: id2 }) => {
+const TagPopoverCard$1 = ({ id: id2 }) => {
   const { data: data2, loading: loading2, error } = useFindTag(id2);
   if (loading2)
     return jsxRuntimeExports.jsx("div", { className: "tag-popover-card-placeholder", children: jsxRuntimeExports.jsx(LoadingIndicator, { card: true, message: "" }) });
@@ -207822,16 +208077,16 @@ const TagPopoverCard = ({ id: id2 }) => {
   if (!(data2 === null || data2 === void 0 ? void 0 : data2.findTag))
     return jsxRuntimeExports.jsx(ErrorMessage, { error: `No tag found with id ${id2}.` });
   const tag2 = data2.findTag;
-  return jsxRuntimeExports.jsx("div", { className: "tag-popover-card", children: jsxRuntimeExports.jsx(TagCard, { tag: tag2, zoomIndex: 0 }) });
+  return jsxRuntimeExports.jsx("div", { className: "tag-popover-card", children: jsxRuntimeExports.jsx(TagCard$1, { tag: tag2, zoomIndex: 0 }) });
 };
-const TagPopover = ({ id: id2, hide: hide2, children, placement = "top", target }) => {
+const TagPopover$1 = ({ id: id2, hide: hide2, children, placement = "top", target }) => {
   var _a2;
   const { configuration: config2 } = React$1.useContext(ConfigurationContext);
   const showTagCardOnHover = (_a2 = config2 === null || config2 === void 0 ? void 0 : config2.ui.showTagCardOnHover) !== null && _a2 !== void 0 ? _a2 : true;
   if (hide2 || !showTagCardOnHover) {
     return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children });
   }
-  return jsxRuntimeExports.jsx(HoverPopover, { target, placement, enterDelay: 500, leaveDelay: 100, content: jsxRuntimeExports.jsx(TagPopoverCard, { id: id2 }), children });
+  return jsxRuntimeExports.jsx(HoverPopover, { target, placement, enterDelay: 500, leaveDelay: 100, content: jsxRuntimeExports.jsx(TagPopoverCard$1, { id: id2 }), children });
 };
 function sortTagsByRelevance(input, tags2) {
   return sortByRelevance(input, tags2, (t4) => t4.name, (t4) => t4.aliases);
@@ -207876,7 +208131,7 @@ const _TagSelect = (props) => {
     }
     thisOptionProps = {
       ...optionProps,
-      children: jsxRuntimeExports.jsx(TagPopover, { id: object2.id, placement: (_b3 = props.hoverPlacement) !== null && _b3 !== void 0 ? _b3 : "right", children: jsxRuntimeExports.jsxs("span", { className: "react-select-image-option", children: [jsxRuntimeExports.jsx("span", { children: name2 }), alias && jsxRuntimeExports.jsxs("span", { className: "alias", children: [" (", alias, ")"] })] }) })
+      children: jsxRuntimeExports.jsx(TagPopover$1, { id: object2.id, placement: (_b3 = props.hoverPlacement) !== null && _b3 !== void 0 ? _b3 : "right", children: jsxRuntimeExports.jsxs("span", { className: "react-select-image-option", children: [jsxRuntimeExports.jsx("span", { children: name2 }), alias && jsxRuntimeExports.jsxs("span", { className: "alias", children: [" (", alias, ")"] })] }) })
     };
     return jsxRuntimeExports.jsx(components.Option, { ...thisOptionProps });
   };
@@ -208605,9 +208860,12 @@ const MarkerTitleSuggest = (props) => {
   }
   return jsxRuntimeExports.jsx(SelectComponent, { isMulti: false, creatable: true, onChange: onChange3, isLoading: loading2, items, initialIds, placeholder: "Marker title...", className: "select-suggest", showDropdown: false, groupHeader: "Previously used titles..." });
 };
-function TagIdSelect(props) {
+function WithBrowserRouter({ children }) {
   const history2 = reactExports.useMemo(() => createBrowserHistory(), []);
-  return /* @__PURE__ */ React$1.createElement(Router, { history: history2 }, /* @__PURE__ */ React$1.createElement(
+  return /* @__PURE__ */ React$1.createElement(Router, { history: history2 }, children);
+}
+function TagIdSelect(props) {
+  return /* @__PURE__ */ React$1.createElement(WithBrowserRouter, null, /* @__PURE__ */ React$1.createElement(
     TagIDSelect,
     {
       ...props
@@ -217608,8 +217866,7 @@ function useMediaItemTags(mediaItem) {
   };
 }
 function TagSelect(props) {
-  const history2 = reactExports.useMemo(() => createBrowserHistory(), []);
-  return /* @__PURE__ */ React$1.createElement(Router, { history: history2 }, /* @__PURE__ */ React$1.createElement(
+  return /* @__PURE__ */ React$1.createElement(WithBrowserRouter, null, /* @__PURE__ */ React$1.createElement(
     TagSelect$1,
     {
       ...props
@@ -221245,9 +221502,6 @@ const Folder = ({
 function defineField(definition) {
   return definition;
 }
-const getStashUrl = (path2) => {
-  return path2;
-};
 const FieldMorphKeyContext = reactExports.createContext(void 0);
 function Field({ field, showLabel, icon: icon2, className, children }) {
   const morphKey = reactExports.useContext(FieldMorphKeyContext);
@@ -221268,6 +221522,412 @@ function joinAsSentence(items) {
     return /* @__PURE__ */ React$1.createElement(React$1.Fragment, { key: i3 }, item, suffix);
   });
 }
+const SortNameLinkComponent = ({ link, sortName, className, children }) => {
+  return jsxRuntimeExports.jsx(Badge, { "data-name": className, "data-sort-name": sortName, className: cx("tag-item", className), variant: "secondary", children: jsxRuntimeExports.jsx(Link, { to: link, children }) });
+};
+const TagLink = PatchComponent("TagLink", ({ tag: tag2, linkType = "scene", className, hoverPlacement, showHierarchyIcon = false, hierarchyTooltipID }) => {
+  var _a2;
+  const link = reactExports.useMemo(() => {
+    var _a3;
+    switch (linkType) {
+      case "scene":
+        return NavUtils.makeTagScenesUrl(tag2);
+      case "performer":
+        return NavUtils.makeTagPerformersUrl(tag2);
+      case "studio":
+        return NavUtils.makeTagStudiosUrl(tag2);
+      case "gallery":
+        return NavUtils.makeTagGalleriesUrl(tag2);
+      case "image":
+        return NavUtils.makeTagImagesUrl(tag2);
+      case "group":
+        return NavUtils.makeTagGroupsUrl(tag2);
+      case "scene_marker":
+        return NavUtils.makeTagSceneMarkersUrl(tag2);
+      case "details":
+        return NavUtils.makeTagUrl((_a3 = tag2.id) !== null && _a3 !== void 0 ? _a3 : "");
+    }
+  }, [tag2, linkType]);
+  const title2 = tag2.name || "";
+  const tooltip = reactExports.useMemo(() => {
+    if (!hierarchyTooltipID) {
+      return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
+    }
+    return jsxRuntimeExports.jsx(Tooltip, { id: "tag-hierarchy-tooltip", children: jsxRuntimeExports.jsx(MemoizedFormattedMessage, { id: hierarchyTooltipID }) });
+  }, [hierarchyTooltipID]);
+  return jsxRuntimeExports.jsx(SortNameLinkComponent, { sortName: tag2.sort_name || title2, link, className, children: jsxRuntimeExports.jsxs(TagPopover$1, { id: (_a2 = tag2.id) !== null && _a2 !== void 0 ? _a2 : "", placement: hoverPlacement, children: [title2, showHierarchyIcon && jsxRuntimeExports.jsx(OverlayTrigger, { placement: "top", overlay: tooltip, children: jsxRuntimeExports.jsxs("span", { className: "icon-wrapper", children: [jsxRuntimeExports.jsx("span", { className: "vertical-line", children: "|" }), jsxRuntimeExports.jsx(Icon, { icon: faFolderTree, className: "tag-icon" })] }) })] }) });
+});
+const RatingBanner = ({ rating: rating2 }) => {
+  var _a2;
+  const { configuration: config2 } = reactExports.useContext(ConfigurationContext);
+  const ratingSystemOptions = (_a2 = config2 === null || config2 === void 0 ? void 0 : config2.ui.ratingSystemOptions) !== null && _a2 !== void 0 ? _a2 : defaultRatingSystemOptions;
+  const isLegacy = ratingSystemOptions.type === RatingSystemType.Stars && ratingSystemOptions.starPrecision === RatingStarPrecision.Full;
+  const convertedRating = convertToRatingFormat(rating2 !== null && rating2 !== void 0 ? rating2 : void 0, ratingSystemOptions);
+  return rating2 ? jsxRuntimeExports.jsxs("div", { className: isLegacy ? `rating-banner rating-${convertedRating}` : `rating-banner rating-100-${Math.trunc(rating2 / 5)}`, children: [jsxRuntimeExports.jsx(MemoizedFormattedMessage, { id: "rating" }), ": ", convertedRating] }) : jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
+};
+const FavoriteIcon = ({ favorite, onToggleFavorite, size: size2, className }) => {
+  return jsxRuntimeExports.jsx(Button, { className: cx("minimal", "mousetrap", "favorite-button", className, favorite ? "favorite" : "not-favorite"), onClick: () => onToggleFavorite(!favorite), children: jsxRuntimeExports.jsx(Icon, { icon: faHeart, size: size2 }) });
+};
+function maybeRenderParent(studio2, hideParent) {
+  if (!hideParent && studio2.parent_studio) {
+    return jsxRuntimeExports.jsx("div", { className: "studio-parent-studios", children: jsxRuntimeExports.jsx(MemoizedFormattedMessage, { id: "part_of", values: {
+      parent: jsxRuntimeExports.jsx(Link, { to: `/studios/${studio2.parent_studio.id}`, children: studio2.parent_studio.name })
+    } }) });
+  }
+}
+function maybeRenderChildren(studio2) {
+  if (studio2.child_studios.length > 0) {
+    return jsxRuntimeExports.jsx("div", { className: "studio-child-studios", children: jsxRuntimeExports.jsx(MemoizedFormattedMessage, { id: "parent_of", values: {
+      children: jsxRuntimeExports.jsxs(Link, { to: NavUtils.makeChildStudiosUrl(studio2), children: [studio2.child_studios.length, " ", jsxRuntimeExports.jsx(MemoizedFormattedMessage, { id: "countables.studios", values: { count: studio2.child_studios.length } })] })
+    } }) });
+  }
+}
+const StudioCard$1 = ({ studio: studio2, containerWidth, hideParent, selecting, selected, zoomIndex, onSelectedChanged }) => {
+  var _a2;
+  const [updateStudio] = useStudioUpdate();
+  const [cardWidth, setCardWidth] = reactExports.useState();
+  reactExports.useEffect(() => {
+    if (!containerWidth || zoomIndex === void 0 || ScreenUtils.isMobile())
+      return;
+    let zoomValue = zoomIndex;
+    console.log(zoomValue);
+    let preferredCardWidth;
+    switch (zoomValue) {
+      case 0:
+        preferredCardWidth = 280;
+        break;
+      case 1:
+        preferredCardWidth = 340;
+        break;
+      case 2:
+        preferredCardWidth = 420;
+        break;
+      case 3:
+        preferredCardWidth = 560;
+    }
+    let fittedCardWidth = calculateCardWidth(containerWidth, preferredCardWidth);
+    setCardWidth(fittedCardWidth);
+  }, [containerWidth, zoomIndex]);
+  function onToggleFavorite(v) {
+    if (studio2.id) {
+      updateStudio({
+        variables: {
+          input: {
+            id: studio2.id,
+            favorite: v
+          }
+        }
+      });
+    }
+  }
+  function maybeRenderScenesPopoverButton() {
+    if (!studio2.scene_count)
+      return;
+    return jsxRuntimeExports.jsx(PopoverCountButton, { className: "scene-count", type: "scene", count: studio2.scene_count, url: NavUtils.makeStudioScenesUrl(studio2) });
+  }
+  function maybeRenderImagesPopoverButton() {
+    if (!studio2.image_count)
+      return;
+    return jsxRuntimeExports.jsx(PopoverCountButton, { className: "image-count", type: "image", count: studio2.image_count, url: NavUtils.makeStudioImagesUrl(studio2) });
+  }
+  function maybeRenderGalleriesPopoverButton() {
+    if (!studio2.gallery_count)
+      return;
+    return jsxRuntimeExports.jsx(PopoverCountButton, { className: "gallery-count", type: "gallery", count: studio2.gallery_count, url: NavUtils.makeStudioGalleriesUrl(studio2) });
+  }
+  function maybeRenderGroupsPopoverButton() {
+    if (!studio2.group_count)
+      return;
+    return jsxRuntimeExports.jsx(PopoverCountButton, { className: "group-count", type: "group", count: studio2.group_count, url: NavUtils.makeStudioGroupsUrl(studio2) });
+  }
+  function maybeRenderPerformersPopoverButton() {
+    if (!studio2.performer_count)
+      return;
+    return jsxRuntimeExports.jsx(PopoverCountButton, { className: "performer-count", type: "performer", count: studio2.performer_count, url: NavUtils.makeStudioPerformersUrl(studio2) });
+  }
+  function maybeRenderTagPopoverButton() {
+    if (studio2.tags.length <= 0)
+      return;
+    const popoverContent = studio2.tags.map((tag2) => jsxRuntimeExports.jsx(TagLink, { linkType: "studio", tag: tag2 }, tag2.id));
+    return jsxRuntimeExports.jsx(HoverPopover, { placement: "bottom", content: popoverContent, children: jsxRuntimeExports.jsxs(Button, { className: "minimal tag-count", children: [jsxRuntimeExports.jsx(Icon, { icon: faTag }), jsxRuntimeExports.jsx("span", { children: studio2.tags.length })] }) });
+  }
+  function maybeRenderPopoverButtonGroup() {
+    if (studio2.scene_count || studio2.image_count || studio2.gallery_count || studio2.group_count || studio2.performer_count || studio2.tags.length > 0) {
+      return jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("hr", {}), jsxRuntimeExports.jsxs(ButtonGroup, { className: "card-popovers", children: [maybeRenderScenesPopoverButton(), maybeRenderGroupsPopoverButton(), maybeRenderImagesPopoverButton(), maybeRenderGalleriesPopoverButton(), maybeRenderPerformersPopoverButton(), maybeRenderTagPopoverButton()] })] });
+    }
+  }
+  return jsxRuntimeExports.jsx(GridCard, { className: `studio-card zoom-${zoomIndex}`, url: `/studios/${studio2.id}`, width: cardWidth, title: studio2.name, linkClassName: "studio-card-header", image: jsxRuntimeExports.jsx("img", { loading: "lazy", className: "studio-card-image", alt: studio2.name, src: (_a2 = studio2.image_path) !== null && _a2 !== void 0 ? _a2 : "" }), details: jsxRuntimeExports.jsxs("div", { className: "studio-card__details", children: [maybeRenderParent(studio2, hideParent), maybeRenderChildren(studio2), jsxRuntimeExports.jsx(RatingBanner, { rating: studio2.rating100 })] }), overlays: jsxRuntimeExports.jsx(FavoriteIcon, { favorite: studio2.favorite, onToggleFavorite: (v) => onToggleFavorite(v), size: "2x", className: "hide-not-favorite" }), popovers: maybeRenderPopoverButtonGroup(), selected, selecting, onSelectedChanged });
+};
+function StudioCard(props) {
+  return /* @__PURE__ */ React$1.createElement(WithBrowserRouter, null, /* @__PURE__ */ React$1.createElement(StudioCard$1, { ...props }));
+}
+const aboveOrBelowModifier = {
+  name: "aboveOrBelow",
+  enabled: true,
+  phase: "main",
+  requiresIfExists: ["offset"],
+  fn({ state }) {
+    const preventOverflowOptions = state.orderedModifiers.find((mod) => mod.name === "preventOverflow")?.options;
+    const overflowOptions = {
+      boundary: preventOverflowOptions?.boundary,
+      rootBoundary: preventOverflowOptions?.rootBoundary,
+      padding: preventOverflowOptions?.padding
+    };
+    const overflowAbove = detectOverflow(state, { ...overflowOptions, placement: "top" }).top;
+    const overflowBelow = detectOverflow(state, { ...overflowOptions, placement: "bottom" }).bottom;
+    let placement;
+    if (overflowAbove <= 0) placement = "top";
+    else if (overflowBelow <= 0) placement = "bottom";
+    else placement = overflowAbove <= overflowBelow ? "top" : "bottom";
+    if (state.placement !== placement) {
+      state.placement = placement;
+      state.reset = true;
+    }
+  }
+};
+const getStashOrigin = () => location.origin;
+const getStashUrl = (path2) => new URL(path2, getStashOrigin()).toString();
+const CloseEntityPopoverContext = reactExports.createContext(() => {
+});
+function EntityPopoverAction({ id: id2, label, icon: icon2, onClick }) {
+  const close = reactExports.useContext(CloseEntityPopoverContext);
+  return /* @__PURE__ */ React$1.createElement(
+    Button,
+    {
+      variant: "secondary",
+      className: cx("entity-popover-action", `action-${id2}`),
+      onClick: () => {
+        close();
+        onClick();
+      }
+    },
+    icon2,
+    /* @__PURE__ */ React$1.createElement("span", null, label)
+  );
+}
+const hoverOpenDelay = 500;
+const hoverCloseDelay = 200;
+function EntityPopover({
+  label,
+  card,
+  actions: actions2,
+  onOpenStashLink,
+  className,
+  children
+}) {
+  const id2 = `entity-popover-${useUID()}`;
+  const [triggerElement, setTriggerElement] = reactExports.useState(null);
+  const [hovered, setHovered] = reactExports.useState(false);
+  const pinned = useCurrentOpenPopover() === id2;
+  const show = hovered || pinned;
+  const hoverTimer = reactExports.useRef();
+  reactExports.useEffect(() => () => clearTimeout(hoverTimer.current), []);
+  const onMouseEnter = reactExports.useCallback(() => {
+    clearTimeout(hoverTimer.current);
+    hoverTimer.current = setTimeout(() => setHovered(true), hoverOpenDelay);
+  }, []);
+  const onMouseLeave = reactExports.useCallback(() => {
+    clearTimeout(hoverTimer.current);
+    hoverTimer.current = setTimeout(() => setHovered(false), hoverCloseDelay);
+  }, []);
+  const close = reactExports.useCallback(() => {
+    clearTimeout(hoverTimer.current);
+    setHovered(false);
+    if (useCurrentOpenPopover.getState() === id2) useCurrentOpenPopover.setState(null);
+  }, [id2]);
+  const onClick = (event2) => {
+    if (event2.ctrlKey || event2.metaKey || event2.shiftKey || event2.altKey || event2.button !== 0) return;
+    event2.preventDefault();
+    if (pinned) {
+      close();
+    } else {
+      clearTimeout(hoverTimer.current);
+      useCurrentOpenPopover.setState(id2);
+    }
+  };
+  let boundary;
+  if (hasMediaItemStateContext()) {
+    const { mediaSlideElementRef } = useMediaItemState();
+    boundary = mediaSlideElementRef.current ?? void 0;
+  }
+  const preventOverflowModifier = usePreventOverflowModifier({ boundary });
+  const outsideClickModifier = useOutsideClickModifier({ onOutsideClick: close });
+  const offscreenModifier = useOffscreenModifier({ onOffscreen: close });
+  const popperConfig = {
+    modifiers: [
+      // Above if there's room, otherwise below, or whichever has more room
+      aboveOrBelowModifier,
+      preventOverflowModifier,
+      setMaxSizeModifier,
+      updateOnResizeModifier,
+      offscreenModifier,
+      // Once clicked, it stays open until a click outside it. Hovered, a click elsewhere does what it would otherwise.
+      ...pinned ? [outsideClickModifier] : []
+    ]
+  };
+  const openLinksInStash = (event2) => {
+    const link = event2.target instanceof Element ? event2.target.closest("a[href]") : null;
+    if (!link) return;
+    const button = event2.target instanceof Element ? event2.target.closest("button") : null;
+    if (button && link.contains(button)) return;
+    event2.preventDefault();
+    event2.stopPropagation();
+    onOpenStashLink?.();
+    const url2 = new URL(link.getAttribute("href") ?? "", location.origin);
+    window.open(getStashUrl(url2.pathname + url2.search + url2.hash), "_blank");
+  };
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, children({
+    ref: setTriggerElement,
+    onClick,
+    onMouseEnter,
+    onMouseLeave,
+    "aria-haspopup": "dialog",
+    "aria-expanded": show
+  }), /* @__PURE__ */ React$1.createElement(Overlay, { show: show && !!triggerElement, target: triggerElement, placement: "top", popperConfig }, /* @__PURE__ */ React$1.createElement(
+    Popover,
+    {
+      id: id2,
+      role: "dialog",
+      "aria-label": label,
+      className: cx("EntityPopover", className),
+      onMouseEnter,
+      onMouseLeave
+    },
+    /* @__PURE__ */ React$1.createElement(Popover.Content, { className: "entity-popover-content" }, /* @__PURE__ */ React$1.createElement(CloseEntityPopoverContext.Provider, { value: close }, /* @__PURE__ */ React$1.createElement("div", { className: "entity-popover-card", onClickCapture: openLinksInStash }, card), /* @__PURE__ */ React$1.createElement("div", { className: "entity-popover-actions" }, actions2)))
+  )));
+}
+const toLabeledId = (entity) => ({ id: entity.id, label: entity.name });
+const entityCriteria = {
+  tag: { criterion: "tags", modifier: CriterionModifier.IncludesAll, depth: 0, combinable: true },
+  performer: { criterion: "performers", modifier: CriterionModifier.IncludesAll, depth: void 0, combinable: true },
+  // With its sub-studios, as the info panel shows a studio's parents: a network's scenes are mostly its studios'
+  studio: { criterion: "studios", modifier: CriterionModifier.Includes, depth: -1, combinable: false }
+};
+function isListCriterion(criterion2) {
+  const value = criterion2?.value;
+  return typeof value === "object" && !!value && "items" in value && Array.isArray(value.items);
+}
+function getCriterion(filter2, entityType) {
+  const criterion2 = filter2.object_filter?.[entityCriteria[entityType].criterion];
+  return isListCriterion(criterion2) ? criterion2 : void 0;
+}
+function getFilterName(objectFilter) {
+  return Object.values(objectFilter).flatMap((criterion2) => isListCriterion(criterion2) ? criterion2.value?.items.map((item) => item.label) ?? [] : []).join(" & ");
+}
+function withObjectFilter(filter2, objectFilter) {
+  return { ...filter2, name: getFilterName(objectFilter), object_filter: objectFilter };
+}
+function makeEntityFilter(entityType, entity) {
+  const { criterion: criterion2, modifier, depth } = entityCriteria[entityType];
+  return withObjectFilter({ mode: FilterMode.Scenes, name: "" }, {
+    [criterion2]: {
+      modifier,
+      value: { items: [toLabeledId(entity)], excluded: [], ...depth !== void 0 ? { depth } : {} }
+    }
+  });
+}
+function canAddEntityToFilter(filter2, entityType, entity) {
+  if (!entityCriteria[entityType].combinable) return false;
+  const criterion2 = filter2 && getCriterion(filter2, entityType);
+  const items = criterion2?.value?.items;
+  if (!criterion2 || !items?.length) return false;
+  const requiresAll = criterion2.modifier === CriterionModifier.IncludesAll || criterion2.modifier === CriterionModifier.Includes && items.length === 1;
+  return requiresAll && !items.some((item) => item.id === entity.id);
+}
+function addEntityToFilter(filter2, entityType, entity) {
+  const { criterion: criterionName } = entityCriteria[entityType];
+  const criterion2 = getCriterion(filter2, entityType);
+  if (!criterion2?.value) return filter2;
+  return withObjectFilter(filter2, {
+    ...filter2.object_filter,
+    [criterionName]: {
+      ...criterion2,
+      modifier: CriterionModifier.IncludesAll,
+      value: { ...criterion2.value, items: [...criterion2.value.items, toLabeledId(entity)] }
+    }
+  });
+}
+function canRemoveEntityFromFilter(filter2, entityType, entity) {
+  if (!entityCriteria[entityType].combinable) return false;
+  const items = filter2 && getCriterion(filter2, entityType)?.value?.items;
+  if (!filter2 || !items?.some((item) => item.id === entity.id)) return false;
+  const otherCriteria = Object.keys(filter2.object_filter ?? {}).filter((name2) => name2 !== entityCriteria[entityType].criterion);
+  return items.length > 1 || otherCriteria.length > 0;
+}
+function removeEntityFromFilter(filter2, entityType, entity) {
+  const { criterion: criterionName } = entityCriteria[entityType];
+  const criterion2 = getCriterion(filter2, entityType);
+  if (!criterion2?.value) return filter2;
+  const { [criterionName]: _removed, ...otherCriteria } = filter2.object_filter ?? {};
+  const items = criterion2.value.items.filter((item) => item.id !== entity.id);
+  return withObjectFilter(filter2, items.length ? { ...otherCriteria, [criterionName]: { ...criterion2, value: { ...criterion2.value, items } } } : otherCriteria);
+}
+function EntityActions({ entityType, entity, mediaLabel }) {
+  const temporaryFilter = getTemporaryFilter(useTvConfig((state) => state.channels));
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
+    EntityPopoverAction,
+    {
+      id: "show-in-feed",
+      label: `Show ${mediaLabel}`,
+      icon: /* @__PURE__ */ React$1.createElement(Funnel, { "aria-hidden": true }),
+      onClick: () => showTemporaryFilter(makeEntityFilter(entityType, entity))
+    }
+  ), canAddEntityToFilter(temporaryFilter, entityType, entity) && /* @__PURE__ */ React$1.createElement(
+    EntityPopoverAction,
+    {
+      id: "add-to-filter",
+      label: "Add to channel filter",
+      icon: /* @__PURE__ */ React$1.createElement(PlusCircle, { "aria-hidden": true }),
+      onClick: () => showTemporaryFilter(addEntityToFilter(temporaryFilter, entityType, entity))
+    }
+  ), canRemoveEntityFromFilter(temporaryFilter, entityType, entity) && /* @__PURE__ */ React$1.createElement(
+    EntityPopoverAction,
+    {
+      id: "remove-from-filter",
+      label: "Remove from channel filter",
+      icon: /* @__PURE__ */ React$1.createElement(DashCircle, { "aria-hidden": true }),
+      onClick: () => showTemporaryFilter(removeEntityFromFilter(temporaryFilter, entityType, entity))
+    }
+  ));
+}
+function EntityPopoverCard({ className, entityLabel, id: id2, query: { data: data2, loading: loading2, error }, children }) {
+  if (loading2) {
+    return /* @__PURE__ */ React$1.createElement("div", { className: cx(`${className}-placeholder`, "entity-popover-card-placeholder") }, /* @__PURE__ */ React$1.createElement(LoadingIndicator, { card: true, message: "" }));
+  }
+  if (error) return /* @__PURE__ */ React$1.createElement("div", { className: "entity-popover-error" }, "Error: ", error.message);
+  if (!data2) return /* @__PURE__ */ React$1.createElement("div", { className: "entity-popover-error" }, "No ", entityLabel, " found with id ", id2, ".");
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, children(data2));
+}
+function hasDefaultImage(imagePath) {
+  if (!imagePath) return true;
+  return new URL(imagePath, location.origin).searchParams.get("default") === "true";
+}
+function StudioPopoverCard({ id: id2 }) {
+  const { data: data2, loading: loading2, error } = useFindStudio(id2);
+  return /* @__PURE__ */ React$1.createElement(
+    EntityPopoverCard,
+    {
+      className: "studio-popover-card",
+      entityLabel: "studio",
+      id: id2,
+      query: { data: data2?.findStudio, loading: loading2, error }
+    },
+    (studio2) => /* @__PURE__ */ React$1.createElement("div", { className: cx("studio-popover-card", { "entity-card-no-image": hasDefaultImage(studio2.image_path) }) }, /* @__PURE__ */ React$1.createElement(StudioCard, { studio: studio2 }))
+  );
+}
+function StudioPopover({ studio: studio2, onOpenInStash, children }) {
+  return /* @__PURE__ */ React$1.createElement(
+    EntityPopover,
+    {
+      className: "StudioPopover",
+      label: studio2.name,
+      card: /* @__PURE__ */ React$1.createElement(StudioPopoverCard, { id: studio2.id }),
+      actions: /* @__PURE__ */ React$1.createElement(EntityActions, { entityType: "studio", entity: studio2, mediaLabel: "scenes from this studio" }),
+      onOpenStashLink: onOpenInStash
+    },
+    children
+  );
+}
 const logger$1 = getLogger(["stash-tv", "SceneInfo"]);
 const getStudioOwnershipChain = async (studio2) => {
   const chain2 = [studio2];
@@ -221285,7 +221945,7 @@ const getStudioOwnershipChain = async (studio2) => {
   }
   return chain2;
 };
-function StudioField({ scene: scene2 }) {
+function StudioField({ scene: scene2, preview, onExternalLinkClick }) {
   const [studioOwnershipChain, setStudioOwnershipChain] = reactExports.useState(scene2.studio ? [scene2.studio] : []);
   reactExports.useEffect(() => {
     (async () => {
@@ -221296,15 +221956,8 @@ function StudioField({ scene: scene2 }) {
   }, [scene2.studio]);
   if (!scene2.studio) return null;
   return /* @__PURE__ */ React$1.createElement(Field, { field: fieldDefinition$i }, studioOwnershipChain.map((studio2, i3) => {
-    const renderedStudio = /* @__PURE__ */ React$1.createElement(
-      "a",
-      {
-        key: studio2.id,
-        href: getStashUrl(`/studios/${studio2.id}`),
-        target: "_blank"
-      },
-      studio2.name
-    );
+    const href = getStashUrl(`/studios/${studio2.id}`);
+    const renderedStudio = preview ? /* @__PURE__ */ React$1.createElement("a", { key: studio2.id, href, target: "_blank" }, studio2.name) : /* @__PURE__ */ React$1.createElement(StudioPopover, { key: studio2.id, studio: studio2, onOpenInStash: onExternalLinkClick }, (triggerProps) => /* @__PURE__ */ React$1.createElement("a", { href, target: "_blank", ...triggerProps }, studio2.name));
     return i3 > 0 ? [
       /* @__PURE__ */ React$1.createElement(
         ChevronLeft,
@@ -221351,12 +222004,169 @@ function resolveOptions(schema2, set4) {
     return [name2, value !== void 0 && isAllowedValue(option, value) ? value : option.default];
   }));
 }
+const CountryFlag = ({ className, country: isoCountry, includeName, includeOverlay }) => {
+  const { locale: locale2 } = useIntl();
+  const country2 = getCountryByISO(isoCountry, locale2);
+  if (!isoCountry || !country2)
+    return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
+  return jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [includeName ? country2 : "", includeOverlay ? jsxRuntimeExports.jsx(OverlayTrigger, { overlay: jsxRuntimeExports.jsx(Tooltip, { id: "{country}-tooltip", children: country2 }), children: jsxRuntimeExports.jsx("span", { className: `${className !== null && className !== void 0 ? className : ""} fi fi-${isoCountry.toLowerCase()}` }) }) : jsxRuntimeExports.jsx("span", { className: `${className !== null && className !== void 0 ? className : ""} fi fi-${isoCountry.toLowerCase()}` })] });
+};
+const SweatDrops = () => jsxRuntimeExports.jsx("span", { children: jsxRuntimeExports.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", "aria-hidden": "true", focusable: "false", width: "1em", height: "1em", style: { transform: "rotate(360deg)" }, preserveAspectRatio: "xMidYMid meet", viewBox: "0 0 36 36", children: [jsxRuntimeExports.jsx("path", { fill: "currentColor", d: "M22.855.758L7.875 7.024l12.537 9.733c2.633 2.224 6.377 2.937 9.77 1.518c4.826-2.018 7.096-7.576 5.072-12.413C33.232 1.024 27.68-1.261 22.855.758zm-9.962 17.924L2.05 10.284L.137 23.529a7.993 7.993 0 0 0 2.958 7.803a8.001 8.001 0 0 0 9.798-12.65zm15.339 7.015l-8.156-4.69l-.033 9.223c-.088 2 .904 3.98 2.75 5.041a5.462 5.462 0 0 0 7.479-2.051c1.499-2.644.589-6.013-2.04-7.523z" }), jsxRuntimeExports.jsx("rect", { x: "0", y: "0", width: "36", height: "36", fill: "rgba(0, 0, 0, 0)" })] }) });
+const GenderIcon = ({ gender: gender2, className }) => {
+  const intl = useIntl();
+  if (gender2) {
+    const icon2 = gender2 === GenderEnum.Male ? faMars : gender2 === GenderEnum.Female ? faVenus : faTransgenderAlt;
+    return jsxRuntimeExports.jsx(FontAwesomeIcon, { title: intl.formatMessage({ id: "gender_types." + gender2 }), className, icon: icon2 });
+  }
+  return null;
+};
+const PerformerCardPopovers = PatchComponent("PerformerCard.Popovers", ({ performer: performer2, extraCriteria }) => {
+  function maybeRenderScenesPopoverButton() {
+    if (!performer2.scene_count)
+      return;
+    return jsxRuntimeExports.jsx(PopoverCountButton, { className: "scene-count", type: "scene", count: performer2.scene_count, url: NavUtils.makePerformerScenesUrl(performer2, extraCriteria === null || extraCriteria === void 0 ? void 0 : extraCriteria.performer, extraCriteria === null || extraCriteria === void 0 ? void 0 : extraCriteria.scenes) });
+  }
+  function maybeRenderImagesPopoverButton() {
+    if (!performer2.image_count)
+      return;
+    return jsxRuntimeExports.jsx(PopoverCountButton, { className: "image-count", type: "image", count: performer2.image_count, url: NavUtils.makePerformerImagesUrl(performer2, extraCriteria === null || extraCriteria === void 0 ? void 0 : extraCriteria.performer, extraCriteria === null || extraCriteria === void 0 ? void 0 : extraCriteria.images) });
+  }
+  function maybeRenderGalleriesPopoverButton() {
+    if (!performer2.gallery_count)
+      return;
+    return jsxRuntimeExports.jsx(PopoverCountButton, { className: "gallery-count", type: "gallery", count: performer2.gallery_count, url: NavUtils.makePerformerGalleriesUrl(performer2, extraCriteria === null || extraCriteria === void 0 ? void 0 : extraCriteria.performer, extraCriteria === null || extraCriteria === void 0 ? void 0 : extraCriteria.galleries) });
+  }
+  function maybeRenderOCounter() {
+    if (!performer2.o_counter)
+      return;
+    return jsxRuntimeExports.jsx("div", { className: "o-counter", children: jsxRuntimeExports.jsxs(Button, { className: "minimal", children: [jsxRuntimeExports.jsx("span", { className: "fa-icon", children: jsxRuntimeExports.jsx(SweatDrops, {}) }), jsxRuntimeExports.jsx("span", { children: performer2.o_counter })] }) });
+  }
+  function maybeRenderTagPopoverButton() {
+    if (performer2.tags.length <= 0)
+      return;
+    const popoverContent = performer2.tags.map((tag2) => jsxRuntimeExports.jsx(TagLink, { linkType: "performer", tag: tag2 }, tag2.id));
+    return jsxRuntimeExports.jsx(HoverPopover, { placement: "bottom", content: popoverContent, children: jsxRuntimeExports.jsxs(Button, { className: "minimal tag-count", children: [jsxRuntimeExports.jsx(Icon, { icon: faTag }), jsxRuntimeExports.jsx("span", { children: performer2.tags.length })] }) });
+  }
+  function maybeRenderGroupsPopoverButton() {
+    if (!performer2.group_count)
+      return;
+    return jsxRuntimeExports.jsx(PopoverCountButton, { className: "group-count", type: "group", count: performer2.group_count, url: NavUtils.makePerformerGroupsUrl(performer2, extraCriteria === null || extraCriteria === void 0 ? void 0 : extraCriteria.performer, extraCriteria === null || extraCriteria === void 0 ? void 0 : extraCriteria.groups) });
+  }
+  if (performer2.scene_count || performer2.image_count || performer2.gallery_count || performer2.tags.length > 0 || performer2.o_counter || performer2.group_count) {
+    return jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("hr", {}), jsxRuntimeExports.jsxs(ButtonGroup, { className: "card-popovers", children: [maybeRenderScenesPopoverButton(), maybeRenderGroupsPopoverButton(), maybeRenderImagesPopoverButton(), maybeRenderGalleriesPopoverButton(), maybeRenderTagPopoverButton(), maybeRenderOCounter()] })] });
+  }
+  return null;
+});
+const PerformerCardOverlays = PatchComponent("PerformerCard.Overlays", ({ performer: performer2 }) => {
+  const [updatePerformer] = usePerformerUpdate();
+  function onToggleFavorite(v) {
+    if (performer2.id) {
+      updatePerformer({
+        variables: {
+          input: {
+            id: performer2.id,
+            favorite: v
+          }
+        }
+      });
+    }
+  }
+  function maybeRenderRatingBanner() {
+    if (!performer2.rating100) {
+      return;
+    }
+    return jsxRuntimeExports.jsx(RatingBanner, { rating: performer2.rating100 });
+  }
+  function maybeRenderFlag() {
+    if (performer2.country) {
+      return jsxRuntimeExports.jsxs(Link, { to: NavUtils.makePerformersCountryUrl(performer2), children: [jsxRuntimeExports.jsx(CountryFlag, { className: "performer-card__country-flag", country: performer2.country, includeOverlay: true }), jsxRuntimeExports.jsx("span", { className: "performer-card__country-string", children: performer2.country })] });
+    }
+  }
+  return jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(FavoriteIcon, { favorite: performer2.favorite, onToggleFavorite, size: "2x", className: "hide-not-favorite" }), maybeRenderRatingBanner(), maybeRenderFlag()] });
+});
+const PerformerCardDetails = PatchComponent("PerformerCard.Details", ({ performer: performer2, ageFromDate }) => {
+  const intl = useIntl();
+  const age2 = TextUtils.age(performer2.birthdate, ageFromDate !== null && ageFromDate !== void 0 ? ageFromDate : performer2.death_date);
+  const ageL10nId = ageFromDate ? "media_info.performer_card.age_context" : "media_info.performer_card.age";
+  const ageL10String = intl.formatMessage({
+    id: "years_old",
+    defaultMessage: "years old"
+  });
+  const ageString = intl.formatMessage({ id: ageL10nId }, { age: age2, years_old: ageL10String });
+  return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: age2 !== 0 ? jsxRuntimeExports.jsx("div", { className: "performer-card__age", children: ageString }) : "" });
+});
+const PerformerCardImage = PatchComponent("PerformerCard.Image", ({ performer: performer2 }) => {
+  var _a2, _b2;
+  return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: jsxRuntimeExports.jsx("img", { loading: "lazy", className: "performer-card-image", alt: (_a2 = performer2.name) !== null && _a2 !== void 0 ? _a2 : "", src: (_b2 = performer2.image_path) !== null && _b2 !== void 0 ? _b2 : "" }) });
+});
+const PerformerCardTitle = PatchComponent("PerformerCard.Title", ({ performer: performer2 }) => {
+  return jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx("span", { className: "performer-name", children: performer2.name }), performer2.disambiguation && jsxRuntimeExports.jsx("span", { className: "performer-disambiguation", children: ` (${performer2.disambiguation})` })] });
+});
+const PerformerCard$1 = PatchComponent("PerformerCard", (props) => {
+  const { performer: performer2, containerWidth, selecting, selected, onSelectedChanged, zoomIndex } = props;
+  const [cardWidth, setCardWidth] = reactExports.useState();
+  reactExports.useEffect(() => {
+    if (!containerWidth || zoomIndex === void 0 || ScreenUtils.isMobile())
+      return;
+    let zoomValue = zoomIndex;
+    let preferredCardWidth;
+    switch (zoomValue) {
+      case 0:
+        preferredCardWidth = 240;
+        break;
+      case 1:
+        preferredCardWidth = 300;
+        break;
+      case 2:
+        preferredCardWidth = 375;
+        break;
+      case 3:
+        preferredCardWidth = 470;
+    }
+    let fittedCardWidth = calculateCardWidth(containerWidth, preferredCardWidth);
+    setCardWidth(fittedCardWidth);
+  }, [containerWidth, zoomIndex]);
+  return jsxRuntimeExports.jsx(GridCard, { className: `performer-card zoom-${zoomIndex}`, url: `/performers/${performer2.id}`, width: cardWidth, pretitleIcon: jsxRuntimeExports.jsx(GenderIcon, { className: "gender-icon", gender: performer2.gender }), title: jsxRuntimeExports.jsx(PerformerCardTitle, { ...props }), image: jsxRuntimeExports.jsx(PerformerCardImage, { ...props }), overlays: jsxRuntimeExports.jsx(PerformerCardOverlays, { ...props }), details: jsxRuntimeExports.jsx(PerformerCardDetails, { ...props }), popovers: jsxRuntimeExports.jsx(PerformerCardPopovers, { ...props }), selected, selecting, onSelectedChanged });
+});
+function PerformerCard(props) {
+  return /* @__PURE__ */ React$1.createElement(WithBrowserRouter, null, /* @__PURE__ */ React$1.createElement(PerformerCard$1, { ...props }));
+}
+function PerformerPopoverCard({ id: id2, ageFromDate }) {
+  const { data: data2, loading: loading2, error } = useFindPerformer(id2);
+  return /* @__PURE__ */ React$1.createElement(
+    EntityPopoverCard,
+    {
+      className: "performer-popover-card",
+      entityLabel: "performer",
+      id: id2,
+      query: { data: data2?.findPerformer, loading: loading2, error }
+    },
+    (performer2) => /* @__PURE__ */ React$1.createElement("div", { className: "performer-popover-card" }, /* @__PURE__ */ React$1.createElement(PerformerCard, { performer: performer2, ageFromDate }))
+  );
+}
+function PerformerPopover({ performer: performer2, ageFromDate, onOpenInStash, children }) {
+  return /* @__PURE__ */ React$1.createElement(
+    EntityPopover,
+    {
+      className: "PerformerPopover",
+      label: performer2.name,
+      card: /* @__PURE__ */ React$1.createElement(PerformerPopoverCard, { id: performer2.id, ageFromDate }),
+      actions: /* @__PURE__ */ React$1.createElement(EntityActions, { entityType: "performer", entity: performer2, mediaLabel: "scenes with this performer" }),
+      onOpenStashLink: onOpenInStash
+    },
+    children
+  );
+}
 const schema$8 = {
   label: labelOption({ name: "Performers", icons: { active: PersonFill, inactive: Person }, allowNone: true, default: "icon" })
 };
-function PerformersField({ scene: scene2, options: { label } }) {
+function PerformersField({ scene: scene2, options: { label }, preview, onExternalLinkClick }) {
   if (!scene2.performers.length) return null;
-  return /* @__PURE__ */ React$1.createElement(Field, { field: fieldDefinition$g, ...labelProps(schema$8.label, label, true) }, joinAsSentence(sortPerformers(scene2.performers).map((performer2) => /* @__PURE__ */ React$1.createElement("a", { href: getStashUrl(`/performers/${performer2.id}`), target: "_blank" }, performer2.name))));
+  return /* @__PURE__ */ React$1.createElement(Field, { field: fieldDefinition$g, ...labelProps(schema$8.label, label, true) }, joinAsSentence(sortPerformers(scene2.performers).map((performer2) => {
+    const href = getStashUrl(`/performers/${performer2.id}`);
+    if (preview) return /* @__PURE__ */ React$1.createElement("a", { href, target: "_blank" }, performer2.name);
+    return /* @__PURE__ */ React$1.createElement(PerformerPopover, { performer: performer2, ageFromDate: scene2.date ?? void 0, onOpenInStash: onExternalLinkClick }, (triggerProps) => /* @__PURE__ */ React$1.createElement("a", { href, target: "_blank", ...triggerProps }, performer2.name));
+  })));
 }
 const fieldDefinition$g = defineField({ id: "performers", label: "Performers", component: PerformersField, options: schema$8 });
 function DateField({ scene: scene2 }) {
@@ -221403,6 +222213,33 @@ function DetailsField({ scene: scene2, options: options2, preview }) {
   ));
 }
 const fieldDefinition$e = defineField({ id: "details", label: "Details", component: DetailsField, options: schema$7 });
+function TagCard(props) {
+  return /* @__PURE__ */ React$1.createElement(WithBrowserRouter, null, /* @__PURE__ */ React$1.createElement(TagCard$1, { ...props }));
+}
+function TagPopoverCard({ id: id2 }) {
+  const { data: data2, loading: loading2, error } = useFindTag(id2);
+  return /* @__PURE__ */ React$1.createElement(EntityPopoverCard, { className: "tag-popover-card", entityLabel: "tag", id: id2, query: { data: data2?.findTag, loading: loading2, error } }, (tag2) => /* @__PURE__ */ React$1.createElement("div", { className: cx("tag-popover-card", { "entity-card-no-image": hasDefaultImage(tag2.image_path) }) }, /* @__PURE__ */ React$1.createElement(TagCard, { tag: tag2, zoomIndex: 0 })));
+}
+function TagPopover({ tag: tag2, onOpenInStash, children }) {
+  return /* @__PURE__ */ React$1.createElement(
+    EntityPopover,
+    {
+      className: "TagPopover",
+      label: tag2.name,
+      card: /* @__PURE__ */ React$1.createElement(TagPopoverCard, { id: tag2.id }),
+      actions: /* @__PURE__ */ React$1.createElement(
+        EntityActions,
+        {
+          entityType: "tag",
+          entity: tag2,
+          mediaLabel: "scenes with this tag"
+        }
+      ),
+      onOpenStashLink: onOpenInStash
+    },
+    children
+  );
+}
 const schema$6 = {
   /** Whether every tag is always shown, rather than cut short until "Show N more" is clicked */
   showAll: toggle(false, {
@@ -221424,7 +222261,7 @@ function measureRows(list) {
   }
   return rows;
 }
-function TagsField({ scene: scene2, options: options2, preview }) {
+function TagsField({ scene: scene2, options: options2, preview, onExternalLinkClick }) {
   const [expanded, setExpanded] = reactExports.useState(false);
   const [cut, setCut] = reactExports.useState(null);
   const listRef = reactExports.useRef(null);
@@ -221440,7 +222277,9 @@ function TagsField({ scene: scene2, options: options2, preview }) {
   if (!scene2.tags.length) return null;
   const capped = capping && cut;
   const showMore = capped && `Show ${cut.hidden} more`;
-  return /* @__PURE__ */ React$1.createElement(Field, { field: fieldDefinition$d, className: cx({ capped }) }, /* @__PURE__ */ React$1.createElement("div", { ref: listRef, className: "tag-list", style: capped ? { maxHeight: cut.bottom } : void 0 }, scene2.tags.map((tag2) => /* @__PURE__ */ React$1.createElement("a", { key: tag2.id, href: getStashUrl(`/tags/${tag2.id}`), target: "_blank" }, /* @__PURE__ */ React$1.createElement(Tag, { tag: tag2 })))), capped && (preview ? /* @__PURE__ */ React$1.createElement("span", { className: "show-more btn btn-link btn-sm" }, showMore) : /* @__PURE__ */ React$1.createElement(Button, { variant: "link", size: "sm", className: "show-more", onClick: () => setExpanded(true) }, showMore)));
+  return /* @__PURE__ */ React$1.createElement(Field, { field: fieldDefinition$d, className: cx({ capped }) }, /* @__PURE__ */ React$1.createElement("div", { ref: listRef, className: "tag-list", style: capped ? { maxHeight: cut.bottom } : void 0 }, scene2.tags.map(
+    (tag2) => preview ? /* @__PURE__ */ React$1.createElement(Tag, { key: tag2.id, tag: tag2 }) : /* @__PURE__ */ React$1.createElement(TagPopover, { key: tag2.id, tag: tag2, onOpenInStash: onExternalLinkClick }, (triggerProps) => /* @__PURE__ */ React$1.createElement("a", { href: getStashUrl(`/tags/${tag2.id}`), target: "_blank", ...triggerProps }, /* @__PURE__ */ React$1.createElement(Tag, { tag: tag2 })))
+  )), capped && (preview ? /* @__PURE__ */ React$1.createElement("span", { className: "show-more btn btn-link btn-sm" }, showMore) : /* @__PURE__ */ React$1.createElement(Button, { variant: "link", size: "sm", className: "show-more", onClick: () => setExpanded(true) }, showMore)));
 }
 const fieldDefinition$d = defineField({ id: "tags", label: "Tags", component: TagsField, options: schema$6 });
 function GroupsField({ scene: scene2 }) {
@@ -222272,7 +223111,7 @@ function LineLayoutEditor({
       onClick: onTap(onAddOrRemove)
     },
     area2 === "line" ? /* @__PURE__ */ React$1.createElement(XLg, null) : /* @__PURE__ */ React$1.createElement(PlusLg, null)
-  )), /* @__PURE__ */ React$1.createElement("div", { className: "item-control drag-handle", "aria-hidden": true }, /* @__PURE__ */ React$1.createElement(ArrowsMove, null)), /* @__PURE__ */ React$1.createElement("div", { className: "item-control end" }, renderItemActions?.(item, { area: area2, onTap })));
+  )), /* @__PURE__ */ React$1.createElement("div", { className: "item-control drag-handle", "aria-hidden": true }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faGripVertical })), /* @__PURE__ */ React$1.createElement("div", { className: "item-control end" }, renderItemActions?.(item, { area: area2, onTap })));
   const itemStateClasses = (key) => ({ revealed: key === revealedKey, settling: key === settle?.key });
   const lineItem = ({ item, key, line: line2, from: from3, isGhost, rightAligned = false }) => {
     const { className: itemClassName, ...dataAttributes } = itemProps?.(item) ?? {};
@@ -230618,7 +231457,7 @@ function ConfigListItem({
   children,
   ...props
 }) {
-  return /* @__PURE__ */ React$1.createElement("div", { className: cx("config-list-item", className), ...props }, /* @__PURE__ */ React$1.createElement("div", { className: "config-list-item-row" }, /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement("div", { className: cx("drag-handle", { disable: !dragHandleProps }), ...dragHandleProps }, /* @__PURE__ */ React$1.createElement(ArrowsMove, { className: "drag-icon" }), icon2), title2), controls && /* @__PURE__ */ React$1.createElement("div", { className: "inline controls" }, controls)), children);
+  return /* @__PURE__ */ React$1.createElement("div", { className: cx("config-list-item", className), ...props }, /* @__PURE__ */ React$1.createElement("div", { className: "config-list-item-row" }, /* @__PURE__ */ React$1.createElement("div", { className: "inline" }, /* @__PURE__ */ React$1.createElement("div", { className: cx("drag-handle", { disable: !dragHandleProps }), ...dragHandleProps }, /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { className: "drag-icon", icon: faGripVertical }), icon2), title2), controls && /* @__PURE__ */ React$1.createElement("div", { className: "inline controls" }, controls)), children);
 }
 function AddConfigItemButton({
   className,
@@ -230745,7 +231584,6 @@ function ChannelSourceSelect({
     }
   ));
 }
-const getStashOrigin = () => location.origin;
 const ChannelSettingsModal = ({ initialChannelConfig, operation, onClose, onSave }) => {
   const { availableSavedFilters, availableSavedFiltersLoading } = useMediaItemFilters();
   return /* @__PURE__ */ React$1.createElement(
@@ -230791,16 +231629,78 @@ const startupChannelOptions = [
 ];
 function ChannelSettings() {
   const { channels, startupChannel, set: setTvConfig } = useTvConfig();
-  const { activeChannel, setActiveChannel, availableSavedFilters, availableSavedFiltersLoading } = useMediaItemFilters();
+  const { activeChannel, setActiveChannel: setActiveChannel2, availableSavedFilters, availableSavedFiltersLoading } = useMediaItemFilters();
   const [channelDraft, setChannelDraft] = reactExports.useState(null);
   const isInChannelList = (channel) => channels.some((otherChannel) => otherChannel.id === channel.id);
+  const savedChannels = persistedChannels(channels);
+  const persistedChannelCount = savedChannels.length;
+  const temporaryChannel = channels.find(isTemporaryChannel);
   const saveChannelDraft = (channel) => {
     if (isInChannelList(channel)) {
       setTvConfig("channels", channels.map((otherChannel) => otherChannel.id === channel.id ? channel : otherChannel));
     } else {
       setTvConfig("channels", [...channels, channel]);
-      setActiveChannel(channel.id);
+      setActiveChannel2(channel.id);
     }
+  };
+  const renderChannel = (channel, dragHandleProps) => {
+    const source2 = channel.sources[0];
+    const { prefix: prefix2, name: name2, sourceInfo } = getChannelName(channel, availableSavedFilters, availableSavedFiltersLoading);
+    const isActive = channel.id === activeChannel?.id;
+    const temporary = isTemporaryChannel(channel);
+    return /* @__PURE__ */ React$1.createElement(
+      ConfigListItem,
+      {
+        className: cx("channel", { active: isActive, missing: sourceInfo?.missing, temporary }),
+        dragHandleProps,
+        title: /* @__PURE__ */ React$1.createElement(
+          Button,
+          {
+            variant: "link",
+            className: "select-channel",
+            "aria-current": isActive ? "true" : void 0,
+            onClick: () => setActiveChannel2(channel.id)
+          },
+          /* @__PURE__ */ React$1.createElement("span", { className: "channel-title" }, prefix2 && /* @__PURE__ */ React$1.createElement("span", { className: "channel-name-prefix" }, prefix2), /* @__PURE__ */ React$1.createElement("span", { className: "channel-name" }, name2)),
+          temporary && /* @__PURE__ */ React$1.createElement(
+            Badge,
+            {
+              variant: "secondary",
+              className: "temporary-badge",
+              title: "Not saved: it's gone once Stash TV is closed"
+            },
+            "Temporary"
+          ),
+          source2?.randomise && !sourceInfo?.sortedRandomly && /* @__PURE__ */ React$1.createElement(
+            FontAwesomeIcon,
+            {
+              className: "randomised-icon",
+              icon: faShuffle,
+              title: "Randomised"
+            }
+          )
+        ),
+        controls: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, !temporary && /* @__PURE__ */ React$1.createElement(
+          Button,
+          {
+            variant: "link",
+            className: cx("edit-channel", "muted"),
+            onClick: () => setChannelDraft(channel),
+            "aria-label": "Edit channel"
+          },
+          /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPenToSquare })
+        ), (temporary || persistedChannelCount > 1) && /* @__PURE__ */ React$1.createElement(
+          Button,
+          {
+            variant: "link",
+            className: cx("delete-channel", "muted"),
+            onClick: () => setTvConfig("channels", channels.filter((otherChannel) => otherChannel !== channel)),
+            "aria-label": "Delete channel"
+          },
+          /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faTrashCan })
+        ))
+      }
+    );
   };
   return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, channelDraft && /* @__PURE__ */ React$1.createElement(
     ChannelSettingsModal,
@@ -230817,61 +231717,15 @@ function ChannelSettings() {
     ConfigList,
     {
       className: "channel-list",
-      items: channels,
-      onItemsOrderChange: (newOrder) => setTvConfig("channels", newOrder),
+      items: savedChannels,
+      onItemsOrderChange: (newOrder) => setTvConfig("channels", temporaryChannel ? [...newOrder, temporaryChannel] : newOrder),
       getItemKey: (channel) => channel.id,
-      renderItem: ({ item: channel, items, getDragHandleProps }) => {
-        const dragHandleProps = getDragHandleProps({ className: "drag-handle" });
-        const source2 = channel.sources[0];
-        const { prefix: prefix2, name: name2, sourceInfo } = getChannelName(channel, availableSavedFilters, availableSavedFiltersLoading);
-        const isActive = channel.id === activeChannel?.id;
-        return /* @__PURE__ */ React$1.createElement(
-          ConfigListItem,
-          {
-            className: cx("channel", { active: isActive, missing: sourceInfo?.missing }),
-            dragHandleProps: items.length > 1 ? dragHandleProps : void 0,
-            title: /* @__PURE__ */ React$1.createElement(
-              Button,
-              {
-                variant: "link",
-                className: "select-channel",
-                "aria-current": isActive ? "true" : void 0,
-                onClick: () => setActiveChannel(channel.id)
-              },
-              /* @__PURE__ */ React$1.createElement("span", { className: "channel-title" }, prefix2 && /* @__PURE__ */ React$1.createElement("span", { className: "channel-name-prefix" }, prefix2), /* @__PURE__ */ React$1.createElement("span", { className: "channel-name" }, name2)),
-              source2?.randomise && !sourceInfo?.sortedRandomly && /* @__PURE__ */ React$1.createElement(
-                FontAwesomeIcon,
-                {
-                  className: "randomised-icon",
-                  icon: faShuffle,
-                  title: "Randomised"
-                }
-              )
-            ),
-            controls: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
-              Button,
-              {
-                variant: "link",
-                className: cx("edit-channel", "muted"),
-                onClick: () => setChannelDraft(channel),
-                "aria-label": "Edit channel"
-              },
-              /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faPenToSquare })
-            ), items.length > 1 && /* @__PURE__ */ React$1.createElement(
-              Button,
-              {
-                variant: "link",
-                className: cx("delete-channel", "muted"),
-                onClick: () => setTvConfig("channels", channels.filter((otherChannel) => otherChannel !== channel)),
-                "aria-label": "Delete channel"
-              },
-              /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faTrashCan })
-            ))
-          }
-        );
-      }
+      renderItem: ({ item: channel, items, getDragHandleProps }) => renderChannel(
+        channel,
+        items.length > 1 ? getDragHandleProps({ className: "drag-handle" }) : void 0
+      )
     }
-  ), !channels.length && /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Showing all scenes. Add a channel to choose what the feed shows."), /* @__PURE__ */ React$1.createElement("div", { className: "form-subgroup" }, /* @__PURE__ */ React$1.createElement(
+  ), temporaryChannel && /* @__PURE__ */ React$1.createElement("ul", { className: cx("ConfigList", "channel-list", "temporary-channel-list") }, /* @__PURE__ */ React$1.createElement("li", { className: cx({ "odd-row": savedChannels.length % 2 === 0 }) }, renderChannel(temporaryChannel))), !channels.length && /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Showing all scenes. Add a channel to choose what the feed shows."), /* @__PURE__ */ React$1.createElement("div", { className: "form-subgroup" }, /* @__PURE__ */ React$1.createElement(
     AddConfigItemButton,
     {
       className: "add-channel",
@@ -231496,7 +232350,7 @@ const SettingsTab = reactExports.memo(() => {
         onClick: () => setGlobalState("keyboardShortcutsOpen", true)
       },
       "Show Keyboard Shortcuts"
-    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.25.1"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(FormImpl.Text, { className: "text-muted" }, "Show keyboard shortcuts for Stash TV.")), /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement("strong", null, "Version:"), " ", "2.26.0"), /* @__PURE__ */ React$1.createElement(FormImpl.Group, { className: "inline" }, /* @__PURE__ */ React$1.createElement("p", null, "Want to support Stash TV's development? You can donate via ", /* @__PURE__ */ React$1.createElement("a", { href: "https://ko-fi.com/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "Ko-Fi"), " ", "or ", /* @__PURE__ */ React$1.createElement("a", { href: "https://github.com/sponsors/secondfolder", target: "_blank", rel: "noopener noreferrer" }, "GitHub Sponsors"), ". Thanks!"), /* @__PURE__ */ React$1.createElement(FontAwesomeIcon, { icon: faHeart, className: "accent-icon large-icon" })))), showDevOptions && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(AccordionToggle, { eventKey: "4" }, "Developer Options"), /* @__PURE__ */ React$1.createElement(Accordion.Collapse, { eventKey: "4" }, /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(FormImpl.Group, null, /* @__PURE__ */ React$1.createElement(
       Switch,
       {
         id: "show-dev-options",
@@ -244493,4 +245347,4 @@ ReactDOM.render(
   /* @__PURE__ */ React$1.createElement(ApolloProvider, { client: getApolloClient() }, /* @__PURE__ */ React$1.createElement(App, null)),
   container
 );
-//# sourceMappingURL=index-BbNXUMAN.js.map
+//# sourceMappingURL=index-DpOs_09Q.js.map
