@@ -1,14 +1,19 @@
 name: Deploy repository to Github Pages
 
+# The site is generated from the latest releases of the plugins' repos (see build_site.sh), so plugin repos trigger
+# this after releasing with a repository_dispatch event, e.g.:
+#   gh api repos/secondfolder/stash-plugins/dispatches -f event_type=deploy
+# (the token used needs write access to this repo's contents)
+
 on:
   push:
     branches: [main, stable]
 
+  repository_dispatch:
+    types: [deploy]
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-  # Allows other workflows (e.g. publish-plugin.yml) to deploy
-  workflow_call:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -16,27 +21,23 @@ permissions:
   pages: write
   id-token: write
 
+# Don't let deploys overlap, but make sure the most recent one always runs
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-22.04
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
-      - name: Checkout main
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          path: main
           ref: main
-      - run: |
-          cd main
-          ./build_site.sh ../_site/stable
-      - name: Checkout dev
-        uses: actions/checkout@v2
-        with:
-          path: dev
-          # change this ref to whatever dev branch/tag we need when necessary
-          ref: main
-      - run: |
-          cd dev
-          ../main/build_site.sh ../_site/develop
+      - run: ./build_site.sh _site/stable stable
+      - run: ./build_site.sh _site/develop develop
       - uses: actions/upload-pages-artifact@v3
 
   deploy:

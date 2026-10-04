@@ -1,0 +1,2 @@
+# The GitHub repos of the plugins in this repository, one per line. See build_site.sh for what their releases need.
+secondfolder/stash-tv
