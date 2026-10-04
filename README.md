@@ -10,18 +10,31 @@ Plugins are installed using the **Available Plugins** section. First this repo m
 
 **Name:**
 ```
-secondfolder's plugins (stable)
+lewd.toys (stable)
 ```
 **Source URL:**
 ```
-https://secondfolder.github.io/stash-plugins/stable/index.yml
+https://stashplugins.lewd.toys/stable/index.yml
 ```
 **Local Path:**
 ```
-secondfolder-stable
+lewd.toys/stable
 ```
 
-Plugins can then be installed from the new **secondfolder's plugins (stable)** section. Once installed plugins can be 
+Like this: 
+
+<p align="center">
+   <img src="./docs/add-source.png" alt="Screenshot of add source dialog">
+</p>
+
+Plugins can then be installed from the new **lewd.toys (stable)** section. 
+
+<p align="center">
+   <img src="./docs/install-plugin.png" alt="Screenshot of available plugins section">
+</p>
+<p align="center">
+
+Once installed plugins can be 
 updated or uninstalled from the **Installed Plugins** section.
 
 ### Installing manually
